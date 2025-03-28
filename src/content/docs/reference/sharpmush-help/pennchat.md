@@ -19,7 +19,7 @@ There are some aliases in place for players more familiar with the MUX comsys - 
 - [@channel](#@channel)
 - [@chat](#@chat)
 - [@cemit](#@cemit)
-- [channel functions](#channel functions)
+- [channel functions](#channel-functions)
 - [CHAN_USEFIRSTMATCH](#CHAN_USEFIRSTMATCH)
 - [@chatformat](#@chatformat)
 - [@clock](#@clock)

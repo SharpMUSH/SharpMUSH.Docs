@@ -60,9 +60,9 @@ See also:
 
 ## @RESPOND
 
-`@respond <code> <text>`
-`@respond/type <content-type>`
-`@respond/header <name>=<value>`
+- `@respond <code> <text>`
+- `@respond/type <content-type>`
+- `@respond/header <name>=<value>`
 
 Within the context of an HTTP Player connection, `@respond` is used to modify the headers sent back to the HTTP client.
 
