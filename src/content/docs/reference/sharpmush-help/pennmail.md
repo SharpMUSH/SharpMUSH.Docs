@@ -2,8 +2,7 @@
 title: Mail Help
 description: Helpfiles on SharpMUSH Internal Mail.
 ---
-# MAIL
-# @MAIL
+## MAIL
 
 `@mail[/<switches>] [<msg-list>[=<target>]]`
 `@mail[/<switches>] <player-list>=[<subject>/]<message>`
@@ -38,10 +37,7 @@ See also:
 - [help mail-reviewing|mail-reviewing]
 - [help @mailquota|@mailquota]
 
-# MAIL-READING
-# @MAIL/READ
-# @MAIL/LIST
-# @MAIL/CSTATS
+## MAIL-READING
 
 `@mail <msg #>`
 `@mail/read <msg-list>`
@@ -62,9 +58,7 @@ See also:
 `@mail/cstats`
 * Shows how many messages you have, in the same format as the automatic mail check when you connect.
 
-# MAIL-SENDING
-# @MAIL/SEND
-# @MAIL/FWD
+## MAIL-SENDING
 
 `@mail[/switch] <player-list>=[<subject>]/<msg>`
 * This sends the message *<msg>* to all players in *<player-list>*.
@@ -82,14 +76,7 @@ If you have an @mailsignature attribute set on yourself, its contents will be ev
 `@mail/fwd <msg-list>=<player-list>`
 * This sends a copy of all the messages in *<msg-list>* to all the players in *<player-list>*. The copy will appear to have been sent by you (not the original sender), and its status will be "Forwarded".
 
-# MAIL-OTHER
-# @MAIL/CLEAR
-# @MAIL/UNCLEAR
-# @MAIL/PURGE
-# @MAIL/TAG
-# @MAIL/UNTAG
-# @MAIL/UNREAD
-# @MAIL/STATUS
+## MAIL-OTHER
 
 `@mail/clear [<msg-list> | all]`
 `@mail/unclear [<msg-list> | all]`
@@ -124,10 +111,7 @@ To clear all mail from Paul and Chani:
 * *<status>* can be one of: tagged, untagged, cleared, uncleared, read, unread, urgent or unurgent.
 * Read marks a new message as read without reading it, urgent/unurgent toggle the urgent flag, and the others are equivalent to @mail/tag, @mail/untag, @mail/clear, @mail/unclear and @mail/unread respectively.
 
-# MAIL-FOLDERS
-# @MAIL/FOLDER
-# @MAIL/UNFOLDER
-# @MAIL/FILE
+## MAIL-FOLDERS
 
 The MUSH mail system allows each player 16 folders, numbered from 0 to 15. Mail can only be in 1 folder at a time. Folder 0 is the "inbox" where new mail is received. Most @mail commands operate on only the current folder.
 
@@ -148,9 +132,7 @@ The MUSH mail system allows each player 16 folders, numbered from 0 to 15. Mail 
 
 See also: [help @mailfilter|@mailfilter]
 
-# MAIL-REVIEWING
-# @MAIL/REVIEW
-# @MAIL/RETRACT
+## MAIL-REVIEWING
 
 `@mail/review [<player>]`
 * Reviews the messages you have sent to *<player>*, or all messages you've sent if no *<player>* is specified.
@@ -161,7 +143,7 @@ See also: [help @mailfilter|@mailfilter]
 `@mail/retract <player>=<msglist>`
 * Retracts (deletes) unread messages you have sent to *<player>*.
 
-# @MAILQUOTA
+## @MAILQUOTA
 
 `@mailquota <player>[=<limit>]`
 
@@ -174,8 +156,7 @@ Example:
 > @wall Please @mail any and all problems to Complaints_Department.
 ```
 
-# @MAILFILTER
-# MAILFILTER
+## @MAILFILTER
 
 The @mailfilter attribute specifies automatic filing of incoming @mail messages into folders. When an @mail message is received, the contents of @mailfilter are evaluated, with the following arguments passed:
 * `%0` - dbref of message sender
@@ -192,8 +173,7 @@ Example: Filter urgent messages into folder 1
 
 See also: [help mail-folders|mail-folders]
 
-# @MAILSIGNATURE
-# MAILSIGNATURE
+## @MAILSIGNATURE
 
 `@mailsignature <object>[=<signature>]`
 
@@ -206,7 +186,7 @@ Example:
 
 See also: [help @mail|@mail], [help mail-sending|mail-sending]
 
-# MAIL-ADMIN
+## MAIL-ADMIN
 
 The @mail command can also take the following switches:
 
@@ -226,7 +206,7 @@ The /debug switch does sanity checking on the mail database, and may only be use
 
 The /nuke switch destroys the post office, erasing all @mail everywhere. It may only be used by God.
 
-# @MALIAS
+## @MALIAS
 
 `@malias [<alias>]`
 
@@ -238,7 +218,7 @@ The @malias command is used to create, view, and manipulate @mail aliases, or li
 
 See also: [help @malias2|@malias2]
 
-# @MALIAS2
+## @MALIAS2
 
 `@malias[/create] <alias>=<player list>`
 `@malias/desc <alias>=<description>`
@@ -255,7 +235,7 @@ The first form above creates a new alias for the given list of players.
 
 See also: [help @malias3|@malias3]
 
-# @MALIAS3
+## @MALIAS3
 
 `@malias/set <alias>=<player list>`
 `@malias/add <alias>=<player list>`
@@ -269,7 +249,7 @@ See also: [help @malias3|@malias3]
 
 See also: [help @malias4|@malias4]
 
-# @MALIAS4
+## @MALIAS4
 
 `@malias/use <alias>=<perm list>`
 `@malias/see <alias>=<perm list>`
@@ -284,7 +264,7 @@ By default, the owner and alias members may see and use the alias, but only the 
 
 See also: [help @malias5|@malias5]
 
-# @MALIAS5
+## @MALIAS5
 
 `@malias/all`
 `@malias/stat`
@@ -299,7 +279,7 @@ See also: [help @malias5|@malias5]
 
 `@malias/nuke` is a God-only command that destroys all aliases.
 
-# Mail Functions
+## Mail Functions
 
 Mail functions work with @mail.
 
@@ -317,7 +297,7 @@ Available functions:
 * [help mailtime|mailtime]
 * [help malias|malias]
 
-# FOLDERSTATS()
+## FOLDERSTATS()
 
 `folderstats()`
 `folderstats(<folder #>)`
@@ -328,7 +308,7 @@ folderstats() returns the number of read, unread, and cleared messages in a spec
 
 See also: [help mailstats|mailstats]
 
-# MAIL()
+## MAIL()
 
 `mail()`
 `mail(<player name>)`
@@ -347,7 +327,7 @@ Example:
 
 See also: [help maillist|maillist], [help mailfrom|mailfrom]
 
-# MAILLIST()
+## MAILLIST()
 
 `maillist([<player>, ]<message-list>)`
 
@@ -365,10 +345,7 @@ Examples:
 
 See also: [help mail|mail], [help mailfrom|mailfrom]
 
-# MAILFROM()
-# MAILTIME()
-# MAILSTATUS()
-# MAILSUBJECT()
+## MAILFROM()
 
 `mailfrom([<player>, ][<folder #>:]<mail message #>)`
 `mailtime([<player>, ][<folder #>:]<mail message #>)`
@@ -382,9 +359,7 @@ See also: [help mail|mail], [help mailfrom|mailfrom]
 
 See also: [help mail|mail], [help maillist|maillist]
 
-# MAILSTATS()
-# MAILDSTATS()
-# MAILFSTATS()
+## MAILSTATS()
 
 `mailstats([<player>])`
 `maildstats([<player>])`
@@ -403,13 +378,13 @@ Example:
 
 See also: [help folderstats|folderstats]
 
-# MAILSEND()
+## MAILSEND()
 
 `mailsend(<player>,[<subject>/]<message>)`
 
 This function sends a message to a player, just like @mail/send. It returns nothing if successful, or an error message.
 
-# MALIAS()
+## MALIAS()
 
 `malias([<delimiter>])`
 `malias(<malias name>)`

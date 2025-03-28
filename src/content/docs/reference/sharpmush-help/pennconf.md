@@ -3,7 +3,7 @@ title: Admin Configuration Help
 description: Helpfiles on SharpMUSH Config.
 ---
 
-# @config parameters
+## @config parameters
 Many of the mush's run-time options can be set from the game by wizards, using `@config/set <option>=<new value>`. Those that can be set with visible changes are listed below, grouped by category. See [help @config <category>|@config] for details on each.
 
 Categories:
@@ -27,7 +27,7 @@ Options which take a *<time>* will accept either a number of seconds or a combin
 
 *<dbref>* options can be given with or without the leading '#', so '1' and '#1' are the same.
 
-# @config attribs
+## @config attribs
 These options control some attribute behavior.
 
 - `adestroy=<boolean>`: Is the @adestroy attribute used?
@@ -40,7 +40,7 @@ These options control some attribute behavior.
 - `empty_attrs=<boolean>`: Can attributes be set to an empty string?
 - `reverse_shs=<boolean>`: Reverse the endedness of the shs password encryption? (**Warning**: Playing with this will break logins)
 
-# @config chat
+## @config chat
 These options control chat system settings.
 
 - `chan_cost=<number>`: How many pennies a channel costs to create.
@@ -51,7 +51,7 @@ These options control chat system settings.
 - `use_muxcomm=<boolean>`: Enable MUX-style channel aliases? See [help muxcomsys|muxcomsys]
 - `chat_token_alias=<character>`: A single character that can be used as well as + for talking on channels (+<chan> <msg>)
 
-# @config cmds
+## @config cmds
 These options affect command behavior.
 
 - `noisy_whisper=<boolean>`: Does whisper default to whisper/noisy?
@@ -64,7 +64,7 @@ These options affect command behavior.
 - `really_safe=<boolean>`: Does SAFE prevent @nuking?
 - `destroy_possessions=<boolean>`: When a player is destroyed, are their objects as well?
 
-# @config cosmetic
+## @config cosmetic
 These are cosmetic options of various sorts.
 
 - `money_singular=<string>`: What is one penny called?
@@ -78,7 +78,7 @@ These are cosmetic options of various sorts.
 
 See [help @config cosmetic2|@config cosmetic2]
 
-# @config cosmetic2
+## @config cosmetic2
 More cosmetic options.
 
 - `page_aliases=<boolean>`: Are aliases included in page listings? For example, Foo(F) pages: Blah
@@ -92,7 +92,7 @@ More cosmetic options.
 - `newline_one_char=<boolean>`: Is strlen(%r) equal to 1?
 - `only_ascii_in_names=<boolean>`: Names are ascii-only or are extended characters permitted?
 
-# @config costs
+## @config costs
 These options control how many pennies various things cost.
 
 - `object_cost=<number>`: How many pennies it costs to create an object.
@@ -103,7 +103,7 @@ These options control how many pennies various things cost.
 - `quota_cost=<number>`: How much @quota goes down by for each object.
 - `find_cost=<number>`: How many pennies it costs to use @search, @find, @entrances, and their function versions.
 
-# @config db
+## @config db
 These are database options.
 
 - `player_start=<dbref>`: What room newly created players are in.
@@ -117,7 +117,7 @@ These are database options.
 - `exits_connect_rooms=<boolean>`: Is a room with any exit at all in not considered disconnected for FLOATING checks?
 - `zone_control_zmp_only=<boolean>`: Do we only perform control checks on ZMPs, or do we check ZMOs and ZMRs too?
 
-# @config dump
+## @config dump
 These options affect database saves and other periodic checks.
 
 - `forking_dump=<boolean>`: Does the game clone itself and save in the copy, or just pause while the save happens?
@@ -130,7 +130,7 @@ These options affect database saves and other periodic checks.
 - `purge_interval=<time>`: Seconds between automatic @purges.
 - `dbck_interval=<time>`: Seconds between automatic @dbcks.
 
-# @config flags
+## @config flags
 These options set the default flags for newly-created objects and channels.
 
 - `player_flags=<string>`: List of flags to set on newly created players
@@ -139,13 +139,13 @@ These options set the default flags for newly-created objects and channels.
 - `exit_flags=<string>`: List of flags to set on newly created exits
 - `channel_flags=<string>`: List of flags to set on newly created channels
 
-# @config funcs
+## @config funcs
 These options affect the behavior of some functions.
 
 - `safer_ufun=<boolean>`: Are objects stopped from evaluting attributes on objects with more privileges than themselves?
 - `function_side_effects=<boolean>`: Are function side effects (functions which alter the database) allowed?
 
-# @config limits
+## @config limits
 Limits and other constants.
 
 - `max_dbref=<dbref>`: The highest dbref an object can have. If 0, there is no limit on database size.
@@ -159,7 +159,7 @@ Limits and other constants.
 
 See [help @config limits2|@config limits2]
 
-# @config limits2
+## @config limits2
 Limits and constants, continued.
 
 - `whisper_loudness=<number>`: The percentage chance of a whisper/noisy being heard.
@@ -175,7 +175,7 @@ Limits and constants, continued.
 
 See [help @config limits3|@config limits3]
 
-# @config limits3
+## @config limits3
 Limits and constants, continued.
 
 - `function_recursion_limit=<number>`: The depth to which softcode functions can call more functions.
@@ -188,7 +188,7 @@ Limits and constants, continued.
 
 See [help @config limits4|@config limits4]
 
-# @config limits4
+## @config limits4
 Limits and constants, continued.
 
 - `max_aliases=<number>`: The maximum number of aliases a player can have.
@@ -197,13 +197,13 @@ Limits and constants, continued.
 - `call_limit=<number>`: The maximum number of times the parser can be called recursively for any one expression.
 - `chunk_migrate=<number>`: Maximum number of attributes that can be moved to disk cache per second.
 
-# @config log
+## @config log
 These options affect logging.
 
 - `log_commands=<boolean>`: Are all commands logged?
 - `log_forces=<boolean>`: Are @forces of wizard objects logged?
 
-# @config net
+## @config net
 Networking and connection-related options.
 
 - `mud_name=<string>`: The name of the mush for mudname() and @version and the like.
@@ -219,7 +219,7 @@ Networking and connection-related options.
 - `sql_host=<string>`: What is the hostname or ip address of the SQL server
 - `ssl_require_client_cert=<boolean>`: Are client certificates verified in SSL connections?
 
-# @config tiny
+## @config tiny
 Options that help control compability with TinyMUSH servers.
 
 - `null_eq_zero=<boolean>`: Is a null string where a number is expected considered a 0?

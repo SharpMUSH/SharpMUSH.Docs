@@ -3,7 +3,7 @@ title: Flag Help
 description: Helpfiles on SharpMUSH Flags.
 ---
 
-# FLAGS
+## FLAGS
 
 Flags give objects certain abilities or qualities. For example, a wizard player has wiz powers because s/he has the WIZARD flag set.
 
@@ -15,7 +15,7 @@ A descriptive list of default flags is available in [help flag list|flag list]. 
 
 Continued in [help flags2|flags2].
 
-# FLAGS2
+## FLAGS2
 
 You can see the list of flags set on an object in several ways:
 
@@ -27,8 +27,7 @@ Note: The object type (player, thing, room, exit or garbage) is not actually a f
 
 See also: [help examine|examine], [help flags()|flags()], [help hasflag()|hasflag()], [help orflags()|orflags()], [help andflags()|andflags()], [help orlflags()|orlflags()], [help andlflags()|andlflags()], [help types of objects|types of objects], [help type()|type()], [help hastype()|hastype()], [help @flag|@flag], [help FLAG LIST|FLAG LIST], [help @set|@set], [help set()|set()], [help attribute flags|attribute flags]
 
-# FLAG LIST
-# FLAGS LIST
+## FLAG LIST
 
 | Flag | Title | Flag | Title | Flag | Title |
 |------|-------|------|-------|------|-------|
@@ -62,7 +61,7 @@ Additional Flags:
 
 Some flags may not be enabled on some MUSHes. `@flag/list` will show which are available.
 
-# ABODE
+## ABODE
 
 **Flag: ABODE (rooms)**
 
@@ -72,7 +71,7 @@ To make a room your home, type `@link me=here` while standing in the room.
 
 See also: [help @link|@link], [help LINK_OK|LINK_OK]
 
-# ANSI
+## ANSI
 
 **Flag: ANSI (players)**
 
@@ -82,7 +81,7 @@ ANSI highlight can also be enabled on a per-connection basis with `@sockset`.
 
 See also: [help ansi()|ansi()], [help COLOR|COLOR], [help XTERM256|XTERM256], [help @config|@config], [help @sockset|@sockset]
 
-# AUDIBLE
+## AUDIBLE
 
 **Flag: AUDIBLE (all types)**
 
@@ -96,7 +95,7 @@ Setting the AUDIBLE flag on a ROOM activates audible exits in that room. EXITs w
 
 See also: [help @forwardlist|@forwardlist], [help @filter|@filter], [help @prefix|@prefix]
 
-# TRACK_MONEY
+## TRACK_MONEY
 
 **Flag: TRACK_MONEY (players)**
 
@@ -119,7 +118,7 @@ GAME: Object Walker(#123) lost a Penny to queue loss.
 
 See also: [help no_pay|no_pay]
 
-# CHOWN_OK
+## CHOWN_OK
 
 **Flag: CHOWN_OK (things, rooms, exits)**
 
@@ -127,7 +126,7 @@ You can set this flag on an object you own to allow other players to transfer ow
 
 See also: [help @chown|@chown]
 
-# CLOUDY
+## CLOUDY
 
 **Flag: CLOUDY (exits)**
 
@@ -137,7 +136,7 @@ If the flag is set on a TRANSPARENT exit, when a player looks at the exit they w
 
 See also: [help TRANSPARENT|TRANSPARENT], [help look|look]
 
-# COLOR
+## COLOR
 
 **Flag: COLOR (players)**
 
@@ -148,7 +147,7 @@ ANSI colors can also be enabled on a per-connection basis with `@sockset`.
 See also: [help ANSI|ANSI], [help XTERM256|XTERM256], [help ansi()|ansi()], [help @sockset|@sockset]
 
 
-# XTERM256
+## XTERM256
 
 **Flag: XTERM256 (players)**
 
@@ -160,7 +159,7 @@ XTERM colors can also be enabled on a per-connection basis with `@sockset`.
 
 See also: [help ANSI|ANSI], [help COLOR|COLOR], [help ansi()|ansi()], [help @sockset|@sockset]
 
-# CONNECTED
+## CONNECTED
 
 **Flag: CONNECTED (players)**
 
@@ -170,7 +169,7 @@ Prior to 1.8.5p6, mortal objects couldn't use `hasflag(<player>, connected)` to 
 
 See also: [help conn()|conn()], [help lwho()|lwho()], [help mwho()|mwho()]
 
-# DARK
+## DARK
 
 **Flag: DARK (all types)**
 
@@ -186,16 +185,16 @@ In the past, players set DARK were automatically hidden from the WHO list via `@
 
 See also: [help LIGHT|LIGHT], [help @hide|@hide]
 
-# DEBUG
+## DEBUG
 
 **Flag: DEBUG (all types)**
 
 The DEBUG flag is used for debugging MUSHcode. When an object is set DEBUG, all parser evaluation results will be shown to the object's owner and to any dbrefs in the object's DEBUGFORWARDLIST, in the format:
 
 ```
-#dbref! <string to evaluate> :
-#dbref!  recursive evaluation of functions in string
-#dbref! <string to evaluate> => <evaluated string>
+##dbref! <string to evaluate> :
+##dbref!  recursive evaluation of functions in string
+##dbref! <string to evaluate> => <evaluated string>
 ```
 
 Because the parser does recursive evaluations, you will see successive messages evaluating specific parts of an expression. This enables you to pinpoint exactly which evaluation is going wrong.
@@ -208,7 +207,7 @@ See [help debug2|debug2] for an example.
 
 See also: [help VERBOSE|VERBOSE], [help PUPPET|PUPPET], [help }|}]
 
-# DEBUG2
+## DEBUG2
 
 ```
 > @create Test
@@ -216,20 +215,20 @@ See also: [help VERBOSE|VERBOSE], [help PUPPET|PUPPET], [help }|}]
 > &cmd test=$wc *: say String %0 has [strlen(%0)] letters and [words(%0)] words.
 > wc This is my test string
 
-#14! String %0 has [strlen(%0)] letters and [words(%0)] words. :
-#14!  strlen(%0) :
-#14!   %0 => This is my test string
-#14!  strlen(%0) => 22
-#14!  words(%0) :
-#14!   %0 => This is my test string
-#14!  words(%0) => 5
-#14! String %0 has [strlen(%0)] letters and [words(%0)] words. =>
+##14! String %0 has [strlen(%0)] letters and [words(%0)] words. :
+##14!  strlen(%0) :
+##14!   %0 => This is my test string
+##14!  strlen(%0) => 22
+##14!  words(%0) :
+##14!   %0 => This is my test string
+##14!  words(%0) => 5
+##14! String %0 has [strlen(%0)] letters and [words(%0)] words. =>
 String This is my test string has 22 letters and 5 words.
 
 Test says, "String This is my test string has 22 letters and 5 words."
 ```
 
-# DESTROY_OK
+## DESTROY_OK
 
 **Flag: DESTROY_OK (things)**
 
@@ -239,7 +238,7 @@ DESTROY_OK takes precedence over SAFE.
 
 See also: [help @destroy|@destroy]
 
-# ENTER_OK
+## ENTER_OK
 
 **Flag: ENTER_OK (all types)**
 
@@ -258,7 +257,7 @@ ENTER_OK is often used in conjunction with AUDIBLE on vehicles and buildings.
 
 See also: [help enter|enter], [help give|give], [help @tel|@tel], [help @lock|@lock]
 
-# FIXED
+## FIXED
 
 **Flag: FIXED (exits)**
 
@@ -266,13 +265,13 @@ A FIXED exit cannot be unlinked. Only the owner can remove the FIXED flag. This 
 
 See also: [help @unlink|@unlink]
 
-# FLOATING
+## FLOATING
 
 **Flag: FLOATING (rooms)**
 
 A FLOATING room is one that isn't linked to by any exits. Such rooms can only be reached by teleporting to them. This flag is set automatically by the MUSH.
 
-# GAGGED
+## GAGGED
 
 **Flag: GAGGED (players)**
 
@@ -280,7 +279,7 @@ A GAGGED player cannot speak, pose, emit, or whisper. They can still page and us
 
 See also: [help say|say], [help pose|pose], [help @emit|@emit], [help whisper|whisper], [help page|page]
 
-# GOING
+## GOING
 
 **Flag: GOING (all types)**
 
@@ -288,7 +287,7 @@ The GOING flag is used internally by the MUSH to mark objects which are schedule
 
 See also: [help @destroy|@destroy]
 
-# HALTED
+## HALTED
 
 **Flag: HALTED (all types)**
 
@@ -296,7 +295,7 @@ A HALTED object cannot run its commands. Commands on the object are not even che
 
 See also: [help @halt|@halt], [help @restart|@restart]
 
-# HAVEN
+## HAVEN
 
 **Flag: HAVEN (rooms, players)**
 
@@ -306,13 +305,13 @@ A HAVEN player cannot be paged. They can still use channels and receive pages th
 
 See also: [help page|page], [help channel|channel]
 
-# INHERIT
+## INHERIT
 
 **Flag: INHERIT (all types)**
 
 The INHERIT flag is used internally by the MUSH. It cannot be set or cleared manually.
 
-# JUMP_OK
+## JUMP_OK
 
 **Flag: JUMP_OK (rooms)**
 
@@ -320,13 +319,13 @@ If a room is set JUMP_OK, anyone can link exits to it, if they pass its `@lock/l
 
 See also: [help @link|@link], [help LINK_OK|LINK_OK]
 
-# KEEPALIVE
+## KEEPALIVE
 
 **Flag: KEEPALIVE (players)**
 
 The KEEPALIVE flag prevents you from being automatically disconnected after a period of inactivity.
 
-# LIGHT
+## LIGHT
 
 **Flag: LIGHT (all types)**
 
@@ -334,7 +333,7 @@ Objects which are set LIGHT show up in the contents list of DARK rooms. They do 
 
 See also: [help DARK|DARK]
 
-# LINK_OK
+## LINK_OK
 
 **Flag: LINK_OK (rooms)**
 
@@ -342,7 +341,7 @@ If a room is set LINK_OK, anyone can make it their home, if they pass its `@lock
 
 See also: [help @link|@link], [help JUMP_OK|JUMP_OK]
 
-# MONITOR
+## MONITOR
 
 **Flag: MONITOR (players)**
 
@@ -350,13 +349,13 @@ When a player is set MONITOR, they receive notification whenever another player 
 
 See also: [help page|page], [help HAVEN|HAVEN]
 
-# MYOPIC
+## MYOPIC
 
 **Flag: MYOPIC (players)**
 
 A MYOPIC player only sees the flags on objects that they own or control.
 
-# NOSPOOF
+## NOSPOOF
 
 **Flag: NOSPOOF (players)**
 
@@ -366,19 +365,19 @@ The NOSPOOF prefix can be customized by setting the `@nospoof_message` config op
 
 See also: [help @config|@config]
 
-# OPAQUE
+## OPAQUE
 
 **Flag: OPAQUE (all types)**
 
 An OPAQUE object's flags are not visible to others in its location's contents list.
 
-# ORPHAN
+## ORPHAN
 
 **Flag: ORPHAN (all types)**
 
 The ORPHAN flag marks objects which were owned by a player who has been destroyed. Such objects can be claimed by anyone who passes their `@lock/chown`.
 
-# PUPPET
+## PUPPET
 
 **Flag: PUPPET (things)**
 
@@ -388,13 +387,13 @@ If a PUPPET is also set LISTEN, it will respond to what it hears according to it
 
 See also: [help @force|@force], [help @pemit|@pemit], [help @remit|@remit], [help LISTEN|LISTEN]
 
-# QUIET
+## QUIET
 
 **Flag: QUIET (all types)**
 
 A QUIET object doesn't show the usual messages when someone enters or leaves it, or when it is created or destroyed.
 
-# SAFE
+## SAFE
 
 **Flag: SAFE (all types)**
 
@@ -402,13 +401,13 @@ A SAFE object cannot be destroyed with `@destroy`. Only a Wizard can remove the 
 
 See also: [help @destroy|@destroy], [help DESTROY_OK|DESTROY_OK]
 
-# SHARED
+## SHARED
 
 **Flag: SHARED (exits)**
 
 A SHARED exit can be triggered from either end. When someone uses a SHARED exit from its destination, they go to its source. This is useful for creating two-way passages with a single exit.
 
-# STICKY
+## STICKY
 
 **Flag: STICKY (things, rooms)**
 
@@ -416,7 +415,7 @@ When a STICKY thing is dropped, it goes to its home instead of staying in the cu
 
 When someone leaves a STICKY room through any exit (including `@tel`), they are sent to their home instead of the exit's destination.
 
-# TRANSPARENT
+## TRANSPARENT
 
 **Flag: TRANSPARENT (exits)**
 
@@ -426,7 +425,7 @@ If the exit is also set CLOUDY, they only see the destination's description, not
 
 See also: [help CLOUDY|CLOUDY], [help look|look]
 
-# UNFINDABLE
+## UNFINDABLE
 
 **Flag: UNFINDABLE (all types)**
 
@@ -434,20 +433,20 @@ An UNFINDABLE object cannot be found with `@find`, `@search`, or `locate`. Only 
 
 See also: [help @find|@find], [help @search|@search], [help locate|locate]
 
-# UNINSPECTED
+## UNINSPECTED
 
 **Flag: UNINSPECTED (players)**
 
 The UNINSPECTED flag is used by some MUSHes to mark new players who haven't been approved by staff yet. Its exact meaning varies by MUSH.
 
-# VERBOSE
+## VERBOSE
 
 **Flag: VERBOSE (all types)**
 
 The VERBOSE flag is similar to DEBUG, but shows less information. When an object is set VERBOSE, all command evaluation results will be shown to the object's owner, in the format:
 
 ```
-#dbref! <string to evaluate> => <evaluated string>
+##dbref! <string to evaluate> => <evaluated string>
 ```
 
 Objects run under this flag are computationally expensive, and can generate large amounts of spam, so this flag should only be set when needed, and cleared afterwards.
@@ -456,7 +455,7 @@ There's also a VERBOSE attribute flag, which only affects a single attribute; se
 
 See also: [help DEBUG|DEBUG]
 
-# VISUAL
+## VISUAL
 
 **Flag: VISUAL (all types)**
 
@@ -464,7 +463,7 @@ A VISUAL object's attributes can be examined by anyone in its location who passe
 
 See also: [help examine|examine], [help @lock|@lock]
 
-# WIZARD
+## WIZARD
 
 **Flag: WIZARD (players)**
 

@@ -3,7 +3,7 @@ title: Enhanced Client Help
 description: Helpfiles on SharpMUSH Client Enhancements.
 ---
 
-# PUEBLO
+## PUEBLO
 
 Pueblo is a client made by Chaco (a now defunct company). It attempts to mix HTML with MUSH. There are other clients (notably MUSHclient) that also offer Pueblo features. SharpMUSH can offer support for some of the enhanced features of Pueblo, enabled via the 'pueblo' @config option.
 
@@ -11,7 +11,7 @@ SharpMUSH will automatically detect a Pueblo client (rather, the client will ann
 
 See also: [help pueblo2|pueblo2]
 
-# PUEBLO2
+## PUEBLO2
 
 SharpMUSH makes the following enhancements visible to Pueblo users when Pueblo support is enabled:
 
@@ -32,7 +32,7 @@ See also:
 - [help pueblo()|pueblo()]
 - [help HTML Functions|HTML Functions]
 
-# HTML
+## HTML
 
 Hyper Text Markup Language (http://www.w3.org)
 
@@ -45,7 +45,7 @@ See also:
 - [help PUEBLO|PUEBLO]
 - [help html()|html()]
 
-# PUEBLO()
+## PUEBLO()
 
 `pueblo(<player|descriptor>)`
 
@@ -60,9 +60,7 @@ See also:
 - [help html()|html()]
 - [help PUEBLO|PUEBLO]
 
-# @VRML_URL
-# VRML_URL
-# VRML
+## VRML
 
 `@vrml_url <object>[=<url>]`
 
@@ -79,7 +77,7 @@ See also:
 - [help HTML|HTML]
 - [help PUEBLO|PUEBLO]
 
-# HTML FUNCTIONS
+## HTML FUNCTIONS
 
 HTML Functions are used to output HTML tags to HTML capable users. These tags will be stripped by the system for anything non-HTML related. These functions are only available when Pueblo support is enabled (see '@config pueblo').
 
@@ -105,7 +103,7 @@ Each of these produces the HTML output:
 
 Mortals are restricted in the tags they may use. Most standard HTML tags are ok; protocol-specific tags like SEND and XCH_CMD can only be sent by Wizards or those with the Send_OOB @power.
 
-# HTML()
+## HTML()
 
 `html(<string>)`
 
@@ -130,7 +128,7 @@ See also:
 
 [... Previous content ...]
 
-# TAG()
+## TAG()
 
 `tag(<name>[, <param1>[, ... , <paramN>]])`
 
@@ -151,7 +149,7 @@ See also:
 - [help tagwrap()|tagwrap()]
 - [help html()|html()]
 
-# ENDTAG()
+## ENDTAG()
 
 `endtag(<name>)`
 
@@ -172,7 +170,7 @@ See also:
 - [help tagwrap()|tagwrap()]
 - [help html()|html()]
 
-# TAGWRAP()
+## TAGWRAP()
 
 `tagwrap(<name>[, <parameters>], <string>)`
 
@@ -195,7 +193,7 @@ See also:
 - [help endtag()|endtag()]
 - [help html()|html()]
 
-# WEBSOCKETS
+## WEBSOCKETS
 
 WebSockets are a network protocol used by JavaScript-enabled web browsers to make persistent network connections, similar to the telnet connection you use to connect to SharpMUSH. With WebSockets enabled in mush.cnf, it is possible to connect from MUSH clients embedded in HTML pages using JavaScript. A WebSocket client can natively render HTML, but can also parse Pueblo links into HTML links that send a command to the MUSH when clicked. For safety, we separate plain text from the other kinds of HTML/Pueblo code that we want rendered. In order to render HTML/Pueblo, a player with the Pueblo_Send power uses special functions to embed HTML/Pueblo markup. Players without the PUEBLO_SEND power can not use these markup functions. Any HTML code strings that are not properly marked up will simply show up as unrendered plain text.
 
@@ -229,8 +227,7 @@ See also:
 - [help wshtml()|wshtml()]
 - [help wsjson()|wsjson()]
 
-# WSHTML()
-# WSJSON()
+## WSHTML()
 
 `wshtml(<html string>[, <default string>])`
 `wsjson(<json string>[, <default string>])`

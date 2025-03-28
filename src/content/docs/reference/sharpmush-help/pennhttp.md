@@ -2,15 +2,7 @@
 title: HTTP Help
 description: Helpfiles on SharpMUSH Built-in HTTP Handler and sending.
 ---
-# HTTP
-
-# http_handler
-
-# http_per_second
-
-# @config http_per_second
-
-# @config http_handler
+## HTTP
 If http_handler `@config` is a dbref of a valid player, SharpMUSH will support HTTP requests reaching its mush port. It is very low level, and a little tricky to understand.
 
 If an HTTP Handler isn't set, or a given method attribute doesn't exist on the http handler object, Penn will default to responding with mud_url or an error page.
@@ -30,7 +22,7 @@ To modify the response headers, use the command `@respond`
 
 See also: [help http2|http2]
 
-# HTTP2
+## HTTP2
 To use SharpMUSH HTTP Handler:
 
 ```
@@ -50,7 +42,7 @@ See also:
 
 See also: [help http3|http3]
 
-# HTTP3
+## HTTP3
 HTTP connections to SharpMUSH are limited to BUFFER_LEN in header and body size.
 
 Incoming headers will be set in Q-registers: *%q<headers>* contains a list of all headers by name. Individual headers will be set in *%q<hdr.[name]>*, prefixed with hdr. e.g: *%q<hdr.host>* to obtain the value to the Host: header. Or *%q<hdr.Cookie>* for Cookies.
@@ -66,11 +58,7 @@ See also:
 - [help urlencode()|urlencode()]
 - [help urldecode()|urldecode()]
 
-# @RESPOND
-
-# @RESPOND/TYPE
-
-# @RESPOND/HEADER
+## @RESPOND
 
 `@respond <code> <text>`
 `@respond/type <content-type>`
@@ -92,7 +80,7 @@ See also:
 - [help @respond2|@respond2]
 - [help @respond3|@respond3]
 
-# @RESPOND2
+## @RESPOND2
 `@respond` examples:
 
 To modify the response code:
@@ -119,7 +107,7 @@ Add Headers:
 
 Adding a Content-Length header is not allowed - SharpMUSH calculates it from the output before sending.
 
-# @RESPOND3
+## @RESPOND3
 To vaguely comply with most HTTP requirements:
 
 `@respond <code> <text>`
@@ -134,7 +122,7 @@ To vaguely comply with most HTTP requirements:
 `@respond/type <ctype>`
 - *<ctype>* should be alphanumeric, +, ., /, -. HTTP/1.1 does allow for parameters (text/plain; content-encoding=...), so we don't enforce anything at present except printability().
 
-# FORMDECODE()
+## FORMDECODE()
 `formdecode(<string>[, <paramname>[, <osep>]])`
 
 formdecode() is intended for use with the HTTP Handler. See [help http|http] for more.
@@ -164,7 +152,7 @@ You say, "potato^cheese"
 You say, "name,hobby,like,like"
 ```
 
-# HTTP EXAMPLES
+## HTTP EXAMPLES
 There are a number of HTTP Examples.
 
 Examples all assume the following:
@@ -179,7 +167,7 @@ See also:
 - [help http get|http get]
 - [help http post|http post]
 
-# HTTP SIMPLE
+## HTTP SIMPLE
 The examples on this page are all simple, single-result handlers.
 
 Return the output of WHO to any GET request:
@@ -194,7 +182,7 @@ Whenever a POST is performed, say the path and body:
 > &POST *HTTPHandler=say POST attempted at %0: %1
 ```
 
-# HTTP GET
+## HTTP GET
 GET requests are the simplest: There's no form data, and the path can be split into the path (before(%0,?)) and parameters (after(%0,?))
 
 Return a JSON array of users to any GET request:
@@ -228,7 +216,7 @@ Look at something, whose name is passed by ?name=... value:
 
 Check: http://yourmush:port/look?name=here
 
-# HTTP POST
+## HTTP POST
 Suppose you want a web hook for notifications from an external system.
 HTTP via POST is ideal for that:
 
@@ -256,7 +244,7 @@ Maybe you want to do either, depending on if the client is using JSON or not?
 
 Check: Post with either form data OR json data!
 
-# HTTP SITELOCK
+## HTTP SITELOCK
 You can configure what paths and IPs you want to limit access to via `@sitelock`.
 
 HTTP Requests will check `@sitelock` for IP restrictions and path restrictions for the config(http_handler) player. Right now, we don't resolve hosts before HTTP connections are handled due to the time delay, but that may be an option in the future.
