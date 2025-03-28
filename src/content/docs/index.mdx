@@ -1,36 +1,39 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
+title: SharpMUSH
+description: Discover and get set up with SharpMUSH.
 template: splash
 hero:
-  tagline: Congrats on setting up a new Starlight project!
+  tagline: Discover and get set up with SharpMUSH. A newer generation of MUSH.
   image:
-    file: ../../assets/houston.webp
+    file: ../../assets/logo.svg
   actions:
-    - text: Example Guide
-      link: /guides/example/
+    - text: Documentation
+      link: /guides/get-started/
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
+    - text: Contribute on GitHub
+      link: https://github.com/SharpMUSH/SharpMUSH
       icon: external
       variant: minimal
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
-## Next steps
+## Get started with SharpMUSH
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
+	<Card title="Bring over PennMUSH" icon="rocket">
+		Use a tool to bring your PennMUSH data and configuration over! SharpMUSH is best-effort compatible.
+		See our [Compatibility Guide](/guides/compatibility/) for details.
 	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
+	<Card title="Runs on Docker" icon="seti:docker">
+		[Getting Started](/guides/get-started/) with SharpMUSH is as easy as booting up a Docker image! Host it on Kubernetes or any other container orchestration system. 
+		
 	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
+	<Card title="Configure your new MUSH" icon="setting">
+		Use our admin panel to configure your new MUSH.
 	</Card>
 	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
+		Learn more in our [SharpMUSH docs](/guides/). 
+		Looking for a specific feature? Check out our [API Reference](/api/).
 	</Card>
 </CardGrid>
