@@ -8,6 +8,7 @@ export default defineConfig({
   integrations: [
       starlight({
           title: 'SharpMUSH',
+          customCss: ['./src/styles/colors.css'],
           social: {
               github: 'https://github.com/SharpMUSH/SharpMUSH',
           },
