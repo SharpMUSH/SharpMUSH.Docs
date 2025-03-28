@@ -1,0 +1,35 @@
+---
+title: "Compatibility"
+description: "Lays out the Compatibility with PennMUSH"
+---
+
+import { Card } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+SharpMUSH does away with some of the more unique aspects of PennMUSH parser curiosities.
+
+<Card title="Unbalanced Parenthesis">
+
+No support for unbalanced parenthesis.
+In PennMUSH, the following is legal, while is not in SharpMUSH:
+`think add(1,2` -> `3`
+<Aside>Use `think add(1,2)`</Aside>
+`think add(1,2))` -> `3)` 
+<Aside>Use `think add(1,2)\)`</Aside>
+
+
+</Card>
+
+<Card title="Full Recursion">
+
+No support for full recursion parsing.
+In PennMUSH, TinyMUX, etc, you can do the following:
+
+`&fn me=ucstr; think [v(fn)](foo)` -> `FOO`
+<Aside>Use `&fn me=ucstr; think callfn(v(fn),foo)`</Aside>
+
+This is an awesome feature of MUSH-likes, but we explicitly do not support this, as it makes the parser non-deterministic and harder to maintain. Most existing Softcode does not rely on this behavior.
+SharpMUSH introduces `callfn()` and `@callcmd` to replace this loss, which ensures most scenarios have a way to build the compatibility back in.
+
+</Card>
+

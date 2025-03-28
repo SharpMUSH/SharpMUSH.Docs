@@ -1,0 +1,31 @@
+---
+title: "Comparison"
+description: "SharpMUSH compared to PennMUSH"
+---
+
+import { Card } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+
+<Card title="Advantages">
+
+* A database layer that allows the use of other databases to store, access and maintain its data - such as [ArangoDB](https://arangodb.com/) - as well as expanding upon its capabilities. Database Transactions ensure no more data loss and greatly diminish the chance of database corruption.
+* Full Unicode support, as well as both Websocket and Telnet negotiation and communication.
+* A buffer size that does not get in the way, allowing for better integration with modern web applications, use cases, and avoids user confusion.
+* Written in [C#](https://dotnet.microsoft.com/en-us/languages/csharp), allowing memory safety and easier community maintenance and improvements with support for all Operating Systems.
+* Designed with a wide range of [Unit Tests](https://tunit.dev/), ensuring the performance and capability remains as the project matures: from Telnet to ANSI to commands and function parsing.
+* Uses [Docker](https://www.docker.com/) to make Installation as easy as possible.
+* Attribute Flags to enable syntax highlighting for Functions and Commands in examine output, as well as syntax error detection.
+* A strict parser to make errors easier to find and fix.
+
+</Card>
+
+<Card title="Disadvantages">
+
+* A less mature code base.
+* Dropped support for non-standard Pueblo items, such as Panes.
+* One way database transfers - SharpMUSH provides a tool to take a PennMUSH database and stores it in its own. It does not provide a way to go back beyond decompiling.
+* No support for the more esoteric features of PennMUSH, such as full recursion parsing. See our [Compatibility](/reference/compatibility) for more details.
+
+</Card>
+

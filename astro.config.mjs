@@ -26,6 +26,8 @@ export default defineConfig({
               {
                   label: 'Reference',
                   items: [
+                    { label: 'Compatibility', slug: 'reference/compatibility'},
+                    { label: 'Comparison', slug: 'reference/comparison'},
                     {label: 'SharpMUSH Helpfiles', autogenerate: { directory: 'reference/sharpmush-help' }}
                   ]
               },
