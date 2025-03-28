@@ -8,9 +8,11 @@ export default defineConfig({
   integrations: [
       starlight({
           title: 'SharpMUSH',
+          logo: { src : './src/assets/logo.svg' },
           customCss: ['./src/styles/colors.css'],
           social: {
               github: 'https://github.com/SharpMUSH/SharpMUSH',
+              discord: 'https://discord.com/invite/jYErRbqaC9',
           },
           sidebar: [
               {
