@@ -163,15 +163,15 @@ Help for `@channel` is split into a number of topics. Please see [@channel](#@ch
 - [CHAT](#CHAT)
 - [@chat](#@chat)
 - [@cemit](#@cemit)
-- [channel functions](#channel functions)
+- [channel functions](#channel-functions)
 
 ## @CHANNEL JOINING
 
-`@channel/list[/on|/off][/quiet] [<prefix>]`
-`@channel/what [<prefix>]`
-`@channel/who <channel>`
-`@channel/on <channel>[=<player>]`
-`@channel/off <channel>[=<player>]`
+- `@channel/list[/on|/off][/quiet] [<prefix>]`
+- `@channel/what [<prefix>]`
+- `@channel/who <channel>`
+- `@channel/on <channel>[=<player>]`
+- `@channel/off <channel>[=<player>]`
 
 `@channel/list` shows a list of all the channels you can see, along with some basic information such as whether you are on the channel, how it's locked, etc. [@channel list](#@channel list) explains the output in detail. If a *<prefix>* is given, only channels whose names begin with *<prefix>* are shown. If the /on switch is given, only channels you've joined are shown. If /off is given, channels you are on will not be shown. The /quiet switch shows just a list of channel names, without any extra information.
 
@@ -183,10 +183,10 @@ Help for `@channel` is split into a number of topics. Please see [@channel](#@ch
 
 ## @CHANNEL JOINING2
 
-`@channel/gag [<channel>][=<yes|no>]`
-`@channel/mute [<channel>][=<yes|no>]`
-`@channel/hide [<channel>][=<yes|no>]`
-`@channel/combine [<channel>][=<yes|no>]`
+- `@channel/gag [<channel>][=<yes|no>]`
+- `@channel/mute [<channel>][=<yes|no>]`
+- `@channel/hide [<channel>][=<yes|no>]`
+- `@channel/combine [<channel>][=<yes|no>]`
 
 `@channel/gag` allows you to stay on a channel but stop receiving messages on it. Channels are automatically ungagged when you disconnect. You cannot speak on channels you're gagging unless they have the "open" priv.
 
@@ -208,13 +208,13 @@ For all four of these commands, you can specify a single channel to affect, or o
 
 ## @CHANNEL OTHER
 
-`@channel/recall[/last] <channel>[=<count>]`
-`@channel/title <channel>=<title>`
-`@channel/buffer <channel>=<size>`
+- `@channel/recall[/last] <channel>[=<count>]`
+- `@channel/title <channel>=<title>`
+- `@channel/buffer <channel>=<size>`
 
 `@channel/recall` displays the last *<count>* messages sent on *<channel>*. If *<count>* is not given, it shows the last 10. The /last switch shows messages starting from the *<count>*th most recent message.
 
-`@channel/title` sets your title on *<channel>*. Your title appears in front of your name when you speak on the channel, if the channel is set to show titles. If *<title>* is not given, your title is cleared.
+`@channel/title` sets your title on *<channel>*. Your title appears in front of your name when you speak on the channel, if the channel is set to show titles. If *\<title\>* is not given, your title is cleared.
 
 `@channel/buffer` sets the recall buffer size for *<channel>* to *<size>*. Only channel admins can do this. A size of 0 disables the recall buffer.
 
@@ -224,15 +224,15 @@ For all four of these commands, you can specify a single channel to affect, or o
 
 ## @CHANNEL ADMIN
 
-`@channel/add <channel>[=<description>]`
-`@channel/delete <channel>`
-`@channel/mogrifier <channel>=<object>`
-`@channel/chown <channel>=<player>`
-`@channel/name <channel>=<newname>`
-`@channel/desc <channel>=<description>`
-`@channel/privs <channel>=<privlist>`
-`@channel/wipe <channel>`
-`@channel/clock[/on|/off|/clear|/add|/remove|/hide|/unhide|/list] <channel>[=<lock>]`
+- `@channel/add <channel>[=<description>]`
+- `@channel/delete <channel>`
+- `@channel/mogrifier <channel>=<object>`
+- `@channel/chown <channel>=<player>`
+- `@channel/name <channel>=<newname>`
+- `@channel/desc <channel>=<description>`
+- `@channel/privs <channel>=<privlist>`
+- `@channel/wipe <channel>`
+- `@channel/clock[/on|/off|/clear|/add|/remove|/hide|/unhide|/list] <channel>[=<lock>]`
 
 `@channel/add` creates a new channel. You must be able to pay the cost of the channel. The channel's description is optional.
 
@@ -342,12 +342,12 @@ Only channel admins can set locks. Players must pass:
 
 ## CHANNEL FUNCTIONS
 
-`channels([<player>][,<type>])`
-`cowner(<channel>)`
-`cflags(<channel>[,<player>])`
-`cstatus([<player>][,<channel>])`
-`cemit(<channel>,<message>[,<noisy>])`
-`nscemit(<channel>,<message>[,<noisy>])`
+- `channels([<player>][,<type>])`
+- `cowner(<channel>)`
+- `cflags(<channel>[,<player>])`
+- `cstatus([<player>][,<channel>])`
+- `cemit(<channel>,<message>[,<noisy>])`
+- `nscemit(<channel>,<message>[,<noisy>])`
 
 These functions provide information about channels:
 
