@@ -13,31 +13,40 @@ SharpMUSH does away with some of the more unique aspects of PennMUSH parser curi
 
 In PennMUSH, the following is legal, while is not in SharpMUSH:
 
-```lisp title="SharpMUSH" frame="terminal" {"Instead use:":3} "> 3"
+```lisp title="PennMUSH" frame="terminal" "> 3"
 think add(1,2 
 > 3
+```
 
+Instead, complete the parenthesis.
+```lisp title="SharpMUSH" frame="terminal" "> 3"
 think add(1,2)
 > 3
 ```
 
 </Card>
 
-<Card title="Full Recursion">
+<Card title="Full Recursion Parsing">
 
-No support for full recursion parsing.
 In PennMUSH, TinyMUX, etc, you can do the following:
 
-```lisp title="SharpMUSH" frame="terminal" {"Instead use:":3} "> 3"
+```lisp title="PennMUSH" frame="terminal" "> FOO"
 &fn me=ucstr; think [v(fn)](foo)
 > FOO
+```
 
+Instead, use `callfn()` to call the intended function.
+```lisp title="PennMUSH" frame="terminal" "> FOO"
 &fn me=ucstr; think callfn(v(fn),foo)
 > FOO
 ```
 
-This is an awesome feature of MUSH-likes, but we explicitly do not support this, as it makes the parser non-deterministic and harder to maintain. Most existing Softcode does not rely on this behavior.
+This is an awesome feature of MUSH-likes, but we explicitly do not support this, as it makes the parser non-deterministic, ambiguous and harder to maintain. 
+Most existing Softcode does not rely on this behavior however. 
+
+<Aside>
 SharpMUSH introduces `callfn()` and `@callcmd` to replace this loss, which ensures most scenarios have a way to build the compatibility back in.
+</Aside>
 
 </Card>
 
