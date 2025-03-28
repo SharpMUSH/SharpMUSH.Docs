@@ -13,16 +13,16 @@ You can list, join, and configure channels using the `@channel` command.
 
 To speak on channels, use the `@chat` command.
 
-There are some aliases in place for players more familiar with the MUX comsys - see [help muxcomsys|muxcomsys] for more details.
+There are some aliases in place for players more familiar with the MUX comsys - see [muxcomsys](#muxcomsys) for more details.
 
 ### See Also
-- [help @channel|@channel]
-- [help @chat|@chat]
-- [help @cemit|@cemit]
-- [help channel functions|channel functions]
-- [help CHAN_USEFIRSTMATCH|CHAN_USEFIRSTMATCH]
-- [help @chatformat|@chatformat]
-- [help @clock|@clock]
+- [@channel](#@channel)
+- [@chat](#@chat)
+- [@cemit](#@cemit)
+- [channel functions](#channel functions)
+- [CHAN_USEFIRSTMATCH](#CHAN_USEFIRSTMATCH)
+- [@chatformat](#@chatformat)
+- [@clock](#@clock)
 
 ## @chat
 
@@ -42,8 +42,8 @@ The `@chat` command is used to speak on channels. Everyone on the channel will s
 ```
 
 ### See Also
-- [help @channel|@channel]
-- [help @cemit|@cemit]
+- [@channel](#@channel)
+- [@cemit](#@cemit)
 
 ## @CHATFORMAT
 
@@ -67,11 +67,11 @@ The chatformat attribute is evaluated when an object receives a channel message.
 If the channel is NO_NAME, and the speaker either has no title or the channel is also set NO_TITLE, then %3 will be "Someone".
 
 ### See Also
-- [help @chat|@chat]
-- [help @pageformat|@pageformat]
-- [help @message|@message]
-- [help speak()|speak()]
-- [help mogrify|mogrify]
+- [@chat](#@chat)
+- [@pageformat](#@pageformat)
+- [@message](#@message)
+- [speak()](#speak())
+- [mogrify](#mogrify)
 
 ## @CHATFORMAT2
 
@@ -91,7 +91,7 @@ Suppose you want it just like the old version, but anytime somebody says your na
 @chatformat me=ansi(switch(%2,*[name(%!)]*,r,n),%5)
 ```
 
-See [help @chatformat3|@chatformat3] for more examples.
+See [@chatformat3](#@chatformat3) for more examples.
 
 ## @CHATFORMAT3
 
@@ -125,9 +125,9 @@ or
 Normally, when an object attempts to speak on the channel system with @chat, using an ambiguous channel name produces an error message. With this flag set, it will instead speak on the first channel whose name is a match. Other commands in the chat system are not affected by the flag.
 
 ### See Also
-- [help CHAT|CHAT]
-- [help @chat|@chat]
-- [help @cemit|@cemit]
+- [CHAT](#CHAT)
+- [@chat](#@chat)
+- [@cemit](#@cemit)
 
 ## Channel Emit
 
@@ -147,23 +147,23 @@ cemit() and nscemit() work the same as @cemit/silent and @nscemit/silent, respec
 @cemit is intended for use in writing extended chat systems. 
 
 ### See Also
-- [help @chat|@chat]
+- [@chat](#@chat)
 
 ## @channel
 
 The `@channel` command is used to add, join, list and modify channels in the chat system. It takes many different switches.
 
-Help for `@channel` is split into a number of topics. Please see [help @channel <topic>|@channel] for more, where *<topic>* is one of the words below. For help on a specific switch to `@channel`, use [help @channel/<switch>|@channel].
+Help for `@channel` is split into a number of topics. Please see [@channel](#@channel) for more, where *<topic>* is one of the words below. For help on a specific switch to `@channel`, use [@channel](#@channel).
 
 - **Joining** - How to find, join, and leave channels
 - **Other** - Setting channel titles, recalling previous chat messages
 - **Admin** - Adding, deleting and modifying channels
 
 ### See Also
-- [help CHAT|CHAT]
-- [help @chat|@chat]
-- [help @cemit|@cemit]
-- [help channel functions|channel functions]
+- [CHAT](#CHAT)
+- [@chat](#@chat)
+- [@cemit](#@cemit)
+- [channel functions](#channel functions)
 
 ## @CHANNEL JOINING
 
@@ -173,7 +173,7 @@ Help for `@channel` is split into a number of topics. Please see [help @channel 
 `@channel/on <channel>[=<player>]`
 `@channel/off <channel>[=<player>]`
 
-`@channel/list` shows a list of all the channels you can see, along with some basic information such as whether you are on the channel, how it's locked, etc. [help @channel list|@channel list] explains the output in detail. If a *<prefix>* is given, only channels whose names begin with *<prefix>* are shown. If the /on switch is given, only channels you've joined are shown. If /off is given, channels you are on will not be shown. The /quiet switch shows just a list of channel names, without any extra information.
+`@channel/list` shows a list of all the channels you can see, along with some basic information such as whether you are on the channel, how it's locked, etc. [@channel list](#@channel list) explains the output in detail. If a *<prefix>* is given, only channels whose names begin with *<prefix>* are shown. If the /on switch is given, only channels you've joined are shown. If /off is given, channels you are on will not be shown. The /quiet switch shows just a list of channel names, without any extra information.
 
 `@channel/what` shows the name, description, owner, priv flags, mogrifier and buffer size for all channels, or all channels whose names begin with *<prefix>* if one is given.
 
@@ -199,12 +199,12 @@ Connect and disconnect messages across all channels you have marked with `@chann
 For all four of these commands, you can specify a single channel to affect, or omit *<channel>* to affect all channels you're on. To undo the gag/mute/hide, either use `@channel/<switch> [<channel>]=no` or `@channel/un<switch> [<channel>]`.
 
 ### See Also
-- [help @channel/who|@channel/who]
-- [help cstatus()|cstatus()]
-- [help cowner()|cowner()]
-- [help cflags()|cflags()]
-- [help channels()|channels()]
-- [help @channel/privs|@channel/privs]
+- [@channel/who](#@channel/who)
+- [cstatus()](#cstatus())
+- [cowner()](#cowner())
+- [cflags()](#cflags())
+- [channels()](#channels())
+- [@channel/privs](#@channel/privs)
 
 ## @CHANNEL OTHER
 
@@ -219,8 +219,8 @@ For all four of these commands, you can specify a single channel to affect, or o
 `@channel/buffer` sets the recall buffer size for *<channel>* to *<size>*. Only channel admins can do this. A size of 0 disables the recall buffer.
 
 ### See Also
-- [help @channel/who|@channel/who]
-- [help @channel/privs|@channel/privs]
+- [@channel/who](#@channel/who)
+- [@channel/privs](#@channel/privs)
 
 ## @CHANNEL ADMIN
 
@@ -238,7 +238,7 @@ For all four of these commands, you can specify a single channel to affect, or o
 
 `@channel/delete` removes a channel. Only channel admins can do this.
 
-`@channel/mogrifier` sets an object to be the channel's mogrifier. Only channel admins can do this. See [help mogrifier|mogrifier] for details.
+`@channel/mogrifier` sets an object to be the channel's mogrifier. Only channel admins can do this. See [mogrifier](#mogrifier) for details.
 
 `@channel/chown` changes the owner of a channel. Only channel admins can do this.
 
@@ -246,16 +246,16 @@ For all four of these commands, you can specify a single channel to affect, or o
 
 `@channel/desc` changes a channel's description. Only channel admins can do this.
 
-`@channel/privs` changes a channel's privileges. Only channel admins can do this. See [help @channel privs|@channel privs] for details.
+`@channel/privs` changes a channel's privileges. Only channel admins can do this. See [@channel privs](#@channel privs) for details.
 
 `@channel/wipe` removes all players from a channel. Only channel admins can do this.
 
-`@channel/clock` manages channel locks. Only channel admins can do this. See [help @channel clock|@channel clock] for details.
+`@channel/clock` manages channel locks. Only channel admins can do this. See [@channel clock](#@channel clock) for details.
 
 ### See Also
-- [help @channel/who|@channel/who]
-- [help @channel/privs|@channel/privs]
-- [help @clock|@clock]
+- [@channel/who](#@channel/who)
+- [@channel/privs](#@channel/privs)
+- [@clock](#@clock)
 
 ## @CHANNEL LIST
 
@@ -280,9 +280,9 @@ The Lock column shows:
 - `(DISABLED)` if the channel is disabled
 
 ### See Also
-- [help @channel/who|@channel/who]
-- [help @channel/privs|@channel/privs]
-- [help @clock|@clock]
+- [@channel/who](#@channel/who)
+- [@channel/privs](#@channel/privs)
+- [@clock](#@clock)
 
 ## @CHANNEL PRIVS
 
@@ -305,9 +305,9 @@ Available privileges:
 ```
 
 ### See Also
-- [help @channel/who|@channel/who]
-- [help @channel clock|@channel clock]
-- [help @clock|@clock]
+- [@channel/who](#@channel/who)
+- [@channel clock](#@channel clock)
+- [@clock](#@clock)
 
 ## @CHANNEL CLOCK
 
@@ -336,9 +336,9 @@ Only channel admins can set locks. Players must pass:
 ```
 
 ### See Also
-- [help @lock|@lock]
-- [help locks|locks]
-- [help @channel privs|@channel privs]
+- [@lock](#@lock)
+- [locks](#locks)
+- [@channel privs](#@channel privs)
 
 ## CHANNEL FUNCTIONS
 
@@ -370,7 +370,7 @@ These functions provide information about channels:
   - With both: Their status on that channel
   Status is one of: OFF ON GAG HIDE MUTE COMBINE
 
-- **cemit()** and **nscemit()**: Emit *<message>* on *<channel>*. See [help @cemit|@cemit].
+- **cemit()** and **nscemit()**: Emit *<message>* on *<channel>*. See [@cemit](#@cemit).
 
 ### Examples
 ```
@@ -387,9 +387,9 @@ ON COMBINE
 ```
 
 ### See Also
-- [help @channel|@channel]
-- [help @chat|@chat]
-- [help @cemit|@cemit]
+- [@channel](#@channel)
+- [@chat](#@chat)
+- [@cemit](#@cemit)
 
 ## MUXCOMSYS
 
@@ -406,6 +406,6 @@ SharpMUSH provides some aliases for players more familiar with the MUX comsys:
 Note that SharpMUSH does not actually support channel aliases - the above commands work by looking up the real channel name. You must use enough of the channel name to uniquely identify it.
 
 ### See Also
-- [help @channel|@channel]
-- [help @chat|@chat]
-- [help CHAN_USEFIRSTMATCH|CHAN_USEFIRSTMATCH]
+- [@channel](#@channel)
+- [@chat](#@chat)
+- [CHAN_USEFIRSTMATCH](#CHAN_USEFIRSTMATCH)

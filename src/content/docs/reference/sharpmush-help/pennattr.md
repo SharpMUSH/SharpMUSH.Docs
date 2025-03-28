@@ -3,7 +3,7 @@ title: Attribute Help
 description: Helpfiles on SharpMUSH Attributes.
 ---
 
-## ATTRIBUTE FLAGS
+### ATTRIBUTE FLAGS
 
 Attribute flags are set on an object's attributes using `@set`, or applied to attributes globally using `@attribute`. Their names (and, when applicable, the character used in examine as shorthand for the flag) are shown below.
 
@@ -19,9 +19,9 @@ These attribute flags restrict access, and are inherited down attribute trees (i
 - `locked (+)`        Attribute is locked with `@atrlock`.
 - `safe (S)`          Attribute can't be modified without unsetting this flag.
 
-See [help attribute flags2|attribute flags2]
+See [attribute flags2](#attribute-flags2)
 
-## ATTRIBUTE FLAGS2
+### ATTRIBUTE FLAGS2
 
 These attribute flags grant access. They are not inherited down attribute trees, and must be set on a branch attribute as well as a leaf to take effect (to make FOO\`BAR visual, FOO must be visual too):
 
@@ -37,9 +37,9 @@ These attribute flags alter the way attributes are used in commands and ^-listen
 - `nospace (s)`       Attribute won't add a space after the object name in @o-* messages. See **'help verbs'**
 - `noname (N)`        Attribute won't show name in @o-* messages.
 
-See [help attribute flags3|attribute flags3]
+See [attribute flags3](#attribute-flags3)
 
-## ATTRIBUTE FLAGS3
+### ATTRIBUTE FLAGS3
 
 - `aahear (A)`        ^-listens on this attribute match like `@aahear`
 - `amhear (M)`        ^-listens on this attribute match like `@amhear`
@@ -47,14 +47,14 @@ See [help attribute flags3|attribute flags3]
 - `quiet (Q)`         When altering the attribute's value or flags, don't show the usual confirmation message
 
 These attribute flags are only used internally. They cannot be set, but seen on 'examine' and flags()/lflags(), tested for with hasflag(), etc:
-- `branch (\`)`        This attribute is a branch. See: [help ATTRIBUTE TREES|ATTRIBUTE TREES]
+- `branch (\`)`        This attribute is a branch. See: [ATTRIBUTE TREES](#ATTRIBUTE TREES)
 
-### See Also
-- [help @set|@set]
-- [help @attribute|@attribute]
-- [help ATTRIBUTE TREES|ATTRIBUTE TREES]
+#### See Also
+- [@set](#@set)
+- [@attribute](#@attribute)
+- [ATTRIBUTE TREES](#ATTRIBUTE-TREES)
 
-## ATTRIBUTE TREES
+### ATTRIBUTE TREES
 
 Attributes can be arranged in a hierarchical tree; these are called "attribute trees", and a conceptually similar to the way that files and directories/folders are organized on computer filesystems. Attribute trees can be used to reduce spam when examining and to provide organized control over permissions for related attributes.
 
@@ -68,9 +68,9 @@ Attribute names may not start or end with the backtick, and may not contain two 
 
 All attributes are either branch attributes or leaf attributes. A branch attribute is an attribute that has other branches or leaves beneath it; a leaf attribute is one that does not. Any attribute may act as a branch. If you try to create an unsupported leaf, branch attributes will be created as needed to support it.
 
-See [help attribute trees2|attribute trees2] for more information and examples.
+See [attribute trees2](#attribute-trees2) for more information and examples.
 
-## ATTRIBUTE TREES2
+### ATTRIBUTE TREES2
 
 Attribute trees provide two immediate benefits. First, they reduce spam when examining objects. The usual * and ? wildcards for attributes do not match the \` character; the new ** wildcard does. Some examples of using examine:
 
@@ -87,12 +87,12 @@ The same principles apply to lattr(). `@decompile obj` is a special case, and di
 
 Branch attributes will be displayed with a \` in the attribute flags on examine. 
 
-See [help attribute trees3|attribute trees3] for more information and examples.
+See [attribute trees3](#attribute-trees3) for more information and examples.
 
-### See Also
-- [help WILDCARDS|WILDCARDS]
+#### See Also
+- [WILDCARDS](#WILDCARDS)
 
-## ATTRIBUTE TREES3
+### ATTRIBUTE TREES3
 
 The second benefit of attributes trees is convenient access control. Attribute flags that restrict attribute access or execution (no_inherit, no_command, mortal_dark, wizard) propagate down attribute trees, so if a branch is set mortal_dark, mortals can not read any of its leaves or subbranches either.
 
@@ -114,9 +114,9 @@ They're also handy for things like character attributes:
 ```
 etc.
 
-See [help attribute trees4|attribute trees4] for information about `@parent` and attribute trees.
+See [attribute trees4](#attribute-trees4) for information about `@parent` and attribute trees.
 
-## ATTRIBUTE TREES4
+### ATTRIBUTE TREES4
 
 Attribute trees interact with `@parent` in several ways.
 

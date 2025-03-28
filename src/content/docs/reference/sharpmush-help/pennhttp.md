@@ -14,13 +14,13 @@ When an HTTP request hits the SharpMUSH port, SharpMUSH invisibly logs in to the
 Immediately when the `@include` finishes, the http request is complete. Any queued entries (such as `@wait`, `$-commands`, etc) are not going to be sent to the HTTP client - you'll need to code using `@include`, `/inline` switches, and the like.
 
 - *%0* will be the pathname, e.g: "/", "/path/to", "/foo?bar=baz", etc.
-- *%1* will be the body of the request. If it's json, use json_query to deal with it. If it's form-encoded, look at [help formdecode()|formdecode()]
+- *%1* will be the body of the request. If it's json, use json_query to deal with it. If it's form-encoded, look at [formdecode()](#formdecode())
 
 Anything sent to the HTTP Handler player during evaluation of this code is included in the body sent to the HTTP Client. There is a maximum size of BUFFER_LEN for the body of the response.
 
 To modify the response headers, use the command `@respond`
 
-See also: [help http2|http2]
+See also: [http2](#http2)
 
 ## HTTP2
 To use SharpMUSH HTTP Handler:
@@ -36,11 +36,11 @@ You will very likely want to set the http_handler option in your mush.cnf file t
 By default, SharpMUSH will respond with a **404 NOT FOUND**. You will need to use `@respond` to control what is sent to the client.
 
 See also:
-- [help http examples|http examples]
-- [help http sitelock|http sitelock]
-- [help event http|event http]
+- [http examples](#http examples)
+- [http sitelock](#http sitelock)
+- [event http](#event http)
 
-See also: [help http3|http3]
+See also: [http3](#http3)
 
 ## HTTP3
 HTTP connections to SharpMUSH are limited to BUFFER_LEN in header and body size.
@@ -52,11 +52,11 @@ Multiple header lines will be added to the same q-register name, but %r-delimite
 HTTP Responses are limited to BUFFER_LEN in response size. Anything sent to the HTTPHandler player, whether it uses think or is `@pemitted`, is added to the response buffer.
 
 See also:
-- [help @respond|@respond]
-- [help formdecode()|formdecode()]
-- [help json_query()|json_query()]
-- [help urlencode()|urlencode()]
-- [help urldecode()|urldecode()]
+- [@respond](#@respond)
+- [formdecode()](#formdecode())
+- [json_query()](#json_query())
+- [urlencode()](#urlencode())
+- [urldecode()](#urldecode())
 
 ## @RESPOND
 
@@ -77,8 +77,8 @@ If an attribute exists, Penn defaults to **200 OK**, and Content-Type **"text/pl
 If `@respond` is run outside of an HTTP Context, the enactor will see "(HTTP): ..." for debugging, but it isn't buffered for output as if it was an active http request.
 
 See also:
-- [help @respond2|@respond2]
-- [help @respond3|@respond3]
+- [@respond2](#@respond2)
+- [@respond3](#@respond3)
 
 ## @RESPOND2
 `@respond` examples:
@@ -111,7 +111,7 @@ Adding a Content-Length header is not allowed - SharpMUSH calculates it from the
 To vaguely comply with most HTTP requirements:
 
 `@respond <code> <text>`
-- *<code>* must be 3 digits, followed by a space, then printable ascii text
+- *\<code\>* must be 3 digits, followed by a space, then printable ascii text
 - Total length must be < 40 characters
 - This will be prepended by HTTP/1.1 when sent back to the client
 
@@ -125,7 +125,7 @@ To vaguely comply with most HTTP requirements:
 ## FORMDECODE()
 `formdecode(<string>[, <paramname>[, <osep>]])`
 
-formdecode() is intended for use with the HTTP Handler. See [help http|http] for more.
+formdecode() is intended for use with the HTTP Handler. See [http](#http) for more.
 
 formdecode() converts form-encoded data, such as HTTP GET paths (after the ?) or the contents of POST with form-urlencoded data. It searches for the parameter named *<paramname>* and returns with its decoded value.
 
@@ -163,9 +163,9 @@ Examples all assume the following:
 ```
 
 See also:
-- [help http simple|http simple]
-- [help http get|http get]
-- [help http post|http post]
+- [http simple](#http simple)
+- [http get](#http get)
+- [http post](#http post)
 
 ## HTTP SIMPLE
 The examples on this page are all simple, single-result handlers.

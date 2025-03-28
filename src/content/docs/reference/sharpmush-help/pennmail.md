@@ -24,18 +24,18 @@ A *<player-list>* is a space-separated list of recipients, which may be:
 * Player names
 * Player dbref #'s
 * Message #'s, in which case you send to the sender of that message
-* An alias name (see [help @malias|@malias])
+* An alias name (see [@malias](#@malias))
 
 See also:
-- [help mail-sending|mail-sending]
-- [help mail-reading|mail-reading]
-- [help mail-folders|mail-folders]
-- [help mail-forward|mail-forward]
-- [help mail-other|mail-other]
-- [help mail-admin|mail-admin]
-- [help @malias|@malias]
-- [help mail-reviewing|mail-reviewing]
-- [help @mailquota|@mailquota]
+- [mail-sending](#mail-sending)
+- [mail-reading](#mail-reading)
+- [mail-folders](#mail-folders)
+- [mail-forward](#mail-forward)
+- [mail-other](#mail-other)
+- [mail-admin](#mail-admin)
+- [@malias](#@malias)
+- [mail-reviewing](#mail-reviewing)
+- [@mailquota](#@mailquota)
 
 ## MAIL-READING
 
@@ -130,7 +130,7 @@ The MUSH mail system allows each player 16 folders, numbered from 0 to 15. Mail 
 `@mail/file <msg-list>=<folder#>`
 * This command moves all messages in *<msg-list>* from the current folder to a new folder, *<folder#>*.
 
-See also: [help @mailfilter|@mailfilter]
+See also: [@mailfilter](#@mailfilter)
 
 ## MAIL-REVIEWING
 
@@ -171,7 +171,7 @@ Example: Filter urgent messages into folder 1
 > @mailfilter me=if(strmatch(%3,*U*),1)
 ```
 
-See also: [help mail-folders|mail-folders]
+See also: [mail-folders](#mail-folders)
 
 ## @MAILSIGNATURE
 
@@ -184,7 +184,7 @@ Example:
 > @mailsignature me=%r%r-- %n%r%r[u(funny_quote)]
 ```
 
-See also: [help @mail|@mail], [help mail-sending|mail-sending]
+See also: [@mail](#@mail), [mail-sending](#mail-sending)
 
 ## MAIL-ADMIN
 
@@ -216,7 +216,7 @@ The @malias command is used to create, view, and manipulate @mail aliases, or li
 
 `@malias` with a single argument (the name of an alias) lists the members of that alias, if you're allowed to see them. Other forms of the same command are `@malias/members <alias>` or `@malias/who <alias>`
 
-See also: [help @malias2|@malias2]
+See also: [@malias2](#@malias2)
 
 ## @MALIAS2
 
@@ -233,7 +233,7 @@ The first form above creates a new alias for the given list of players.
 
 `@malias/destroy` destroys the alias completely.
 
-See also: [help @malias3|@malias3]
+See also: [@malias3](#@malias3)
 
 ## @MALIAS3
 
@@ -247,7 +247,7 @@ See also: [help @malias3|@malias3]
 
 `@malias/remove` removes players from the alias. If a player is on the alias more than once, a single remove will remove only one instance of that player.
 
-See also: [help @malias4|@malias4]
+See also: [@malias4](#@malias4)
 
 ## @MALIAS4
 
@@ -262,7 +262,7 @@ An empty permission list allows any player. The permission list may also be a sp
 
 By default, the owner and alias members may see and use the alias, but only the owner may list the members. Note that admin may always list aliases and their members, regardless of these settings, but are treated like anyone else when trying to @mail with an alias.
 
-See also: [help @malias5|@malias5]
+See also: [@malias5](#@malias5)
 
 ## @MALIAS5
 
@@ -284,18 +284,18 @@ See also: [help @malias5|@malias5]
 Mail functions work with @mail.
 
 Available functions:
-* [help folderstats|folderstats]
-* [help mail|mail]
-* [help maildstats|maildstats]
-* [help mailfrom|mailfrom]
-* [help mailfstats|mailfstats]
-* [help maillist|maillist]
-* [help mailsend|mailsend]
-* [help mailstats|mailstats]
-* [help mailstatus|mailstatus]
-* [help mailsubject|mailsubject]
-* [help mailtime|mailtime]
-* [help malias|malias]
+* [folderstats](#folderstats)
+* [mail](#mail)
+* [maildstats](#maildstats)
+* [mailfrom](#mailfrom)
+* [mailfstats](#mailfstats)
+* [maillist](#maillist)
+* [mailsend](#mailsend)
+* [mailstats](#mailstats)
+* [mailstatus](#mailstatus)
+* [mailsubject](#mailsubject)
+* [mailtime](#mailtime)
+* [malias](#malias)
 
 ## FOLDERSTATS()
 
@@ -306,7 +306,7 @@ Available functions:
 
 folderstats() returns the number of read, unread, and cleared messages in a specific folder, or, if none is given, the player's current folder. Only Wizards may use forms which get other players' mail information.
 
-See also: [help mailstats|mailstats]
+See also: [mailstats](#mailstats)
 
 ## MAIL()
 
@@ -325,13 +325,13 @@ Example:
 (text of the second message in the player's third folder)
 ```
 
-See also: [help maillist|maillist], [help mailfrom|mailfrom]
+See also: [maillist](#maillist), [mailfrom](#mailfrom)
 
 ## MAILLIST()
 
 `maillist([<player>, ]<message-list>)`
 
-maillist() returns a list of all *<player>*'s @mail messages which match the given *<message-list>* (the same as @mail/list *<message-list>*). If no *<player>* is given, the executor's mail is matched. The *<message-list>* argument is described in [help mail|mail].
+maillist() returns a list of all *<player>*'s @mail messages which match the given *<message-list>* (the same as @mail/list *<message-list>*). If no *<player>* is given, the executor's mail is matched. The *<message-list>* argument is described in [mail](#mail).
 
 Examples:
 ```
@@ -343,7 +343,7 @@ Examples:
 1:1 1:2
 ```
 
-See also: [help mail|mail], [help mailfrom|mailfrom]
+See also: [mail](#mail), [mailfrom](#mailfrom)
 
 ## MAILFROM()
 
@@ -357,7 +357,7 @@ See also: [help mail|mail], [help mailfrom|mailfrom]
 * mailsubject() is similar, but returns the subject of the message.
 * mailstatus() returns the mail's status characters (as per @mail/list).
 
-See also: [help mail|mail], [help maillist|maillist]
+See also: [mail](#mail), [maillist](#maillist)
 
 ## MAILSTATS()
 
@@ -376,7 +376,7 @@ Example:
 <# received unread> <# received cleared> <# received bytes>
 ```
 
-See also: [help folderstats|folderstats]
+See also: [folderstats](#folderstats)
 
 ## MAILSEND()
 
