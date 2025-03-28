@@ -129,12 +129,12 @@ Normally, when an object attempts to speak on the channel system with @chat, usi
 - [@chat](#@chat)
 - [@cemit](#@cemit)
 
-## Channel Emit
+## @cemit
 
-`@cemit[/noisy|/silent][/noeval] <channel>=<message>`
-`@nscemit[/noisy|/silent][/noeval] <channel>=<message>`
-`cemit(<channel>, <message>[, <noisy>])`
-`nscemit(<channel>, <message>[, <noisy>])`
+- `@cemit[/noisy|/silent][/noeval] <channel>=<message>`
+- `@nscemit[/noisy|/silent][/noeval] <channel>=<message>`
+- `cemit(<channel>, <message>[, <noisy>])`
+- `nscemit(<channel>, <message>[, <noisy>])`
 
 @cemit emits *<message>* on *<channel>*. It does not include your name. The channel prefix is included if the /noisy switch is given, and omitted if /silent is given - if neither is given, the default behaviour is controlled by the noisy_cemit @config option. The /noeval switch prevents *<message>* from being evaluated.
 
