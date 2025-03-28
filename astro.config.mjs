@@ -25,7 +25,9 @@ export default defineConfig({
               },
               {
                   label: 'Reference',
-                  autogenerate: { directory: 'reference' },
+                  items: [
+                    {label: 'SharpMUSH Helpfiles', autogenerate: { directory: 'reference/sharpmush-help' }}
+                  ]
               },
           ],
       }),
