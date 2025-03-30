@@ -1,0 +1,40 @@
+---
+title: "Design Premise"
+description: "Why this project exists."
+---
+
+## Why should I choose SharpMUSH? 
+SharpMUSH features all of the following:
+- Modern Framework
+- Hardcode and Softcode customization
+- Modern Softcode Tooling
+- [Compatibility Layer](/reference/compatibility) with existing MUSHCode (PennMUSH)
+- Scene Logging System
+- Web Interface for easy access to the server
+- Easy to set up and get going 
+- [And more!](/reference/features)
+
+## What about other products?
+There are already wonderful products in this space - such as AresMUSH, Evennia - as well as their ancestor systems such as TinyMUSH, RhostMUSH, PennMUSH, and TinyMUX. Many of which are still actively being developed. And each has a different offering.
+
+- [AresMUSH](https://aresmush.com/) is a new style of server build on Ruby and Ember.JS that is considered by many to be a 'ready game out of a box', and is fantastic for people who are looking to launch a MUSH without having or needing any coding experience, and even comes with combat and scene logging systems out of the box. It can be expanded upon, but was not designed around this premise.
+- [Evennia](https://www.evennia.com) is a fantastic MU creation system written in Python, using the Django CMS. It allows custom code to be written, but this is generally the domain of whomever has file-system access. Those looking for a more closed off system like this, but enjoy writing their new tools and commands explicitly using Python, this is a fantastic choice.
+- Older MUSH & MUX Frameworks are based on their use of 'Softcode', also referred to as a Domain Specific Language. It allows customization by a team of people on the game. They generally also have the ability to be customized in their server langauge (C or C++), though this is less common of a practice. These games generally only offer Telnet, or Websocket connection, and everything else has to be customized on top of them. With some offering some ways of reaching out to HTTP addresses or use scripts to expand. Games are still actively developed on these frameworks.
+
+## Who is this for?
+SharpMUSH is for more advanced MUSH Creators who prefer to build upon an existing knowledgebase, and are willing to add some coding experience into the mix - or wish to uplift their existing codebase to a newer framework with little-to-no hassle. It strikes a balance between the older ancestor systems, while bringing Web and Roleplaying Tools like AresMUSH does. 
+
+## What drove the creation of SharpMUSH?
+We saw a need for something that could 'uplift' older systems into the newer generation with built-in Scene Logging Systems and a web presence, while keeping Softcode around. 
+
+The SharpMUSH team believes that the existence of Softcode is part of what makes MUSHes so attractive, allowing players to create their own little commands for themselves within a few minutes or even seconds of work - or format their roleplay in ways they prefer with color and other formatting. The easy access to Softcode, even for players, means that the barrier-to-entry for players to become a new generation of wizards is the lowest it can be, while still allowing deep game customization.
+
+## Why a _PennMUSH_ compatibility layer?
+Creating a new MUSH can be a daunting experience for a new creator. And for many, learning a new whole set of tools is a significant barrier to entry. As such, enrsuring that existing code that can be found on sites like [mushcode.com](https://mushcode.com/) - or full on tooling like [Volund's MUSHcode Packages](https://github.com/volundmush/mushcode) - will just work, is important to us. 
+
+SharpMUSH chose PennMUSH-specific compatibility because of its smaller scope of tooling, and historically permissive sourcecode license.
+
+## What about Backwards Compatibility?
+You can read about our compatibility in more details on our [Compatibility](guides/compatibility) page. SharpMUSH aims for 'best effort' compatibility; This means that while we expect most tools to be compatible, we are not afraid to break some more idiosynchratic elements. 
+
+SharpMUSH aims to expand upon those systems from there while breaking as little as possible, and give creators more power and an easier time to manage their code.

@@ -16,6 +16,13 @@ export default defineConfig({
           },
           sidebar: [
               {
+                label: 'About SharpMUSH',
+                items: [
+                    { label: 'What is SharpMUSH',slug: 'about/what-is' },
+                    { label: 'Design Premise',slug: 'about/design-premise' }
+                ]
+              },
+              {
                   label: 'Guides',
                   items: [
                       // Each item here is one entry in the navigation menu.
@@ -26,6 +33,7 @@ export default defineConfig({
               {
                   label: 'Reference',
                   items: [
+                    { label: 'Features', slug: 'reference/features'},
                     { label: 'Compatibility', slug: 'reference/compatibility'},
                     { label: 'Comparison', slug: 'reference/comparison'},
                     {label: 'SharpMUSH Helpfiles', autogenerate: { directory: 'reference/sharpmush-help' }}
