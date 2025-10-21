@@ -1,33 +1,44 @@
-# Starlight Starter Kit: Basics
+# SharpMUSH Documentation
+
+The official documentation website for SharpMUSH, built with [Astro](https://astro.build) and [Starlight](https://starlight.astro.build).
 
 [![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
 
+## 🎯 Overview
+
+This documentation site automatically pulls help files from the main [SharpMUSH repository](https://github.com/SharpMUSH/SharpMUSH) using Git submodules and converts them to a modern, searchable web interface.
+
+## 🚀 Quick Start
+
+```bash
+# Clone with submodules
+git clone --recursive https://github.com/SharpMUSH/SharpMUSH.Docs.git
+cd SharpMUSH.Docs
+
+# Install dependencies
+npm install
+
+# Start development server (auto-converts docs)
+npm run dev
 ```
-npm create astro@latest -- --template starlight
-```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/starlight/tree/main/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/starlight/tree/main/examples/basics)
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/withastro/starlight&create_from_path=examples/basics)
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fwithastro%2Fstarlight%2Ftree%2Fmain%2Fexamples%2Fbasics&project-name=my-starlight-docs&repository-name=my-starlight-docs)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro + Starlight project, you'll see the following folders and files:
+## � Project Structure
 
 ```
 .
-├── public/
+├── SharpMUSH-submodule/           # Git submodule to main repository
+├── scripts/
+│   ├── convert-docs.js            # Documentation converter
+│   └── README.md                  # Converter documentation
 ├── src/
-│   ├── assets/
 │   ├── content/
-│   │   ├── docs/
-│   └── content.config.ts
+│   │   └── docs/
+│   │       └── reference/
+│   │           └── sharpmush-help/ # Auto-generated from submodule
+│   └── assets/
+├── .github/workflows/             # CI/CD for automatic updates
 ├── astro.config.mjs
-├── package.json
-└── tsconfig.json
+└── package.json
 ```
 
 Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.

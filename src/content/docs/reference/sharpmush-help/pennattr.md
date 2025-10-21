@@ -1,9 +1,9 @@
 ---
-title: Attribute Help
-description: Helpfiles on SharpMUSH Attributes.
+title: "ATTRIBUTE FLAGS"
+description: "SharpMUSH documentation for ATTRIBUTE FLAGS"
 ---
 
-### ATTRIBUTE FLAGS
+# ATTRIBUTE FLAGS
 
 Attribute flags are set on an object's attributes using `@set`, or applied to attributes globally using `@attribute`. Their names (and, when applicable, the character used in examine as shorthand for the flag) are shown below.
 
@@ -15,13 +15,13 @@ These attribute flags restrict access, and are inherited down attribute trees (i
 - `mortal_dark (m)`   Attribute cannot be seen by mortals. This flag can only be set by royalty and wizards. "hidden" is a synonym.
 - `wizard (w)`        Attribute can only be set by wizards. This flag can only be set by royalty and wizards.
 - `veiled (V)`        Attribute value won't be shown on default examine, but is still otherwise accessible (for spammy attribs).
-- `nearby (n)`        Even if the attribute is visual, it can only be retrieved if you're near the object (see **'help nearby()'**).
+- `nearby (n)`        Even if the attribute is visual, it can only be retrieved if you're near the object (see **[nearby()](/reference/sharpmush-help/pennfunc/#nearby)**).
 - `locked (+)`        Attribute is locked with `@atrlock`.
 - `safe (S)`          Attribute can't be modified without unsetting this flag.
 
-See [attribute flags2](#attribute-flags2)
+See [attribute flags2](/reference/sharpmush-help/pennattr/#attribute-flags2)
 
-### ATTRIBUTE FLAGS2
+# ATTRIBUTE FLAGS2
 
 These attribute flags grant access. They are not inherited down attribute trees, and must be set on a branch attribute as well as a leaf to take effect (to make FOO\`BAR visual, FOO must be visual too):
 
@@ -32,14 +32,14 @@ These attribute flags alter the way attributes are used in commands and ^-listen
 
 - `debug (b)`         Start showing debug output while this attr is evaluated.
 - `no_debug (B)`      Stop showing debug output when this attr is evaluated
-- `regexp (R)`        Match $-commands and ^-listens using regular expressions. See **'help regexps'**
+- `regexp (R)`        Match $-commands and ^-listens using regular expressions. See **[regexps](/reference/sharpmush-help/pennconf/#regexps)**
 - `case (C)`          Match $-commands and ^-listens case sensitively.
-- `nospace (s)`       Attribute won't add a space after the object name in @o-* messages. See **'help verbs'**
+- `nospace (s)`       Attribute won't add a space after the object name in @o-* messages. See **[verbs](/reference/sharpmush-help/penncmd/#verbs)**
 - `noname (N)`        Attribute won't show name in @o-* messages.
 
-See [attribute flags3](#attribute-flags3)
+See [attribute flags3](/reference/sharpmush-help/pennattr/#attribute-flags3)
 
-### ATTRIBUTE FLAGS3
+# ATTRIBUTE FLAGS3
 
 - `aahear (A)`        ^-listens on this attribute match like `@aahear`
 - `amhear (M)`        ^-listens on this attribute match like `@amhear`
@@ -47,39 +47,45 @@ See [attribute flags3](#attribute-flags3)
 - `quiet (Q)`         When altering the attribute's value or flags, don't show the usual confirmation message
 
 These attribute flags are only used internally. They cannot be set, but seen on 'examine' and flags()/lflags(), tested for with hasflag(), etc:
-- `branch (\`)`        This attribute is a branch. See: [ATTRIBUTE TREES](#ATTRIBUTE TREES)
+- `branch (\`)`        This attribute is a branch. See: [ATTRIBUTE TREES](/reference/sharpmush-help/pennattr/#attribute-trees)
 
-#### See Also
-- [@set](#@set)
-- [@attribute](#@attribute)
-- [ATTRIBUTE TREES](#ATTRIBUTE-TREES)
+## See Also
+- [@set](/reference/sharpmush-help/penncmd/#set)
+- [@attribute](/reference/sharpmush-help/penncmd/#attribute)
+- [ATTRIBUTE TREES](/reference/sharpmush-help/pennattr/#attribute-trees)
 
-### ATTRIBUTE TREES
+# ATTRIBUTE TREES
+# ATTR TREES
+# ATTRIB TREES
+# \`
 
 Attributes can be arranged in a hierarchical tree; these are called "attribute trees", and a conceptually similar to the way that files and directories/folders are organized on computer filesystems. Attribute trees can be used to reduce spam when examining and to provide organized control over permissions for related attributes.
 
 Attribute trees use the backtick (\`) character to separate their components (much as filesystems use / or \\). For example, the following attribute name would be a couple levels down in its tree:
 
 ```
-CHAR\`SKILLS\`PHYSICAL
+CHAR`SKILLS`PHYSICAL
 ```
 
 Attribute names may not start or end with the backtick, and may not contain two backticks in a row.
 
 All attributes are either branch attributes or leaf attributes. A branch attribute is an attribute that has other branches or leaves beneath it; a leaf attribute is one that does not. Any attribute may act as a branch. If you try to create an unsupported leaf, branch attributes will be created as needed to support it.
 
-See [attribute trees2](#attribute-trees2) for more information and examples.
+See [attribute trees2](/reference/sharpmush-help/pennattr/#attribute-trees2) for more information and examples.
 
-### ATTRIBUTE TREES2
+# ATTRIBUTE TREES2
+# ATTR TREES2
+# ATTRIB TREES2
+# \`2
 
 Attribute trees provide two immediate benefits. First, they reduce spam when examining objects. The usual * and ? wildcards for attributes do not match the \` character; the new ** wildcard does. Some examples of using examine:
 
 ```
 examine obj              displays top-level attributes (plus object header)
 examine obj/*            displays top-level attributes
-examine obj/BRANCH\`      displays only attributes immediately under BRANCH
-examine obj/BRANCH\`*     displays only attributes immediately under BRANCH
-examine obj/BRANCH\`**    displays entire tree under BRANCH
+examine obj/BRANCH`      displays only attributes immediately under BRANCH
+examine obj/BRANCH`*     displays only attributes immediately under BRANCH
+examine obj/BRANCH`**    displays entire tree under BRANCH
 examine obj/**           displays all attributes of object
 ```
 
@@ -87,12 +93,15 @@ The same principles apply to lattr(). `@decompile obj` is a special case, and di
 
 Branch attributes will be displayed with a \` in the attribute flags on examine. 
 
-See [attribute trees3](#attribute-trees3) for more information and examples.
+See [attribute trees3](/reference/sharpmush-help/pennattr/#attribute-trees3) for more information and examples.
 
-#### See Also
-- [WILDCARDS](#WILDCARDS)
+## See Also
+- [WILDCARDS](/reference/sharpmush-help/pennconf/#wildcards)
 
-### ATTRIBUTE TREES3
+# ATTRIBUTE TREES3
+# ATTR TREES3
+# ATTRIB TREES3
+# \`3
 
 The second benefit of attributes trees is convenient access control. Attribute flags that restrict attribute access or execution (no_inherit, no_command, mortal_dark, wizard) propagate down attribute trees, so if a branch is set mortal_dark, mortals can not read any of its leaves or subbranches either.
 
@@ -102,7 +111,7 @@ These properties make attribute trees ideal for data attributes:
 ```
 > &DATA bank = Data for each depositor is stored here, by dbref
 > @set bank/DATA = no_command
-> &DATA\`#30 bank = $2000 savings:$1000 loan @ 5%
+> &DATA`#30 bank = $2000 savings:$1000 loan @ 5%
 ```
 etc.
 
@@ -110,13 +119,16 @@ They're also handy for things like character attributes:
 ```
 > @attribute/access CHAR = wizard mortal_dark no_clone no_inherit
 > &CHAR #30 = Character data
-> &CHAR\`SKILLS #30 = coding:3 documentation:1 obfuscation:5
+> &CHAR`SKILLS #30 = coding:3 documentation:1 obfuscation:5
 ```
 etc.
 
-See [attribute trees4](#attribute-trees4) for information about `@parent` and attribute trees.
+See [attribute trees4](/reference/sharpmush-help/pennattr/#attribute-trees4) for information about `@parent` and attribute trees.
 
-### ATTRIBUTE TREES4
+# ATTRIBUTE TREES4
+# ATTR TREES4
+# ATTRIB TREES4
+# \`4
 
 Attribute trees interact with `@parent` in several ways.
 
@@ -124,8 +136,8 @@ As usual, children inherit attributes from their parent unless the child has its
 
 ```
 > &BRANCH parent = a branch
-> &BRANCH\`LEAF parent = a leaf
-> &BRANCH\`LEAF child = a new leaf
+> &BRANCH`LEAF parent = a leaf
+> &BRANCH`LEAF child = a new leaf
 ```
 
 In this case, a new BRANCH attribute will be created on the child, so '-[get(child/BRANCH)]-' will return '--'. This may not be what you actually want. In these cases, the pfun() function can be useful:
