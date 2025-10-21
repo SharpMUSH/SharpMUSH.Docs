@@ -9,8 +9,9 @@
     "preview": "astro preview",
     "astro": "astro",
     "convert-docs": "node scripts/convert-docs.js",
+    "index-headers": "node scripts/index-headers.js",
     "update-submodule": "git submodule update --remote",
-    "prebuild": "npm run update-submodule && npm run convert-docs",
+    "prebuild": "npm run update-submodule && npm run index-headers && npm run convert-docs",
     "predev": "npm run convert-docs"
   },
   "dependencies": {

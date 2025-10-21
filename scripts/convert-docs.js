@@ -17,31 +17,39 @@ const LINK_MAPPINGS = {
   // Pattern: [help nearby()|nearby()] -> /reference/sharpmush-help/pennfunc/#nearby (for functions)
 };
 
-// Known document mappings based on typical PennMUSH organization
-const DOC_MAPPINGS = {
-  'ATTRIBUTE FLAGS': 'pennattr',
-  'ATTRIBUTE FLAGS2': 'pennattr', 
-  'ATTRIBUTE FLAGS3': 'pennattr',
-  'ATTRIBUTE TREES': 'pennattr',
-  '@SET': 'penncmd',
-  '@ATTRIBUTE': 'penncmd',
-  '@ATRLOCK': 'penncmd',
-  '@CLONE': 'penncmd',
-  '@EMIT': 'penncmd',
-  '@TELEPORT': 'penncmd',
-  'NEARBY()': 'pennfunc',
-  'NAME()': 'pennfunc',
-  'LOC()': 'pennfunc',
-  'GET()': 'pennfunc',
-  'EVAL()': 'pennfunc',
-  'UFUN()': 'pennfunc',
-  'ZFUN()': 'pennfunc',
-  'FLAGS()': 'pennfunc',
-  'LFLAGS()': 'pennfunc',
-  'HASFLAG()': 'pennfunc',
-  'REGEXPS': 'pennconf',
-  'VERBS': 'penncmd'
+// Known file titles based on filenames
+const FILE_TITLES = {
+  'pennattr.md': 'Attributes',
+  'pennchat.md': 'Chat and Channels',
+  'penncmd.md': 'Commands',
+  'penncode.md': 'Coding and Programming',
+  'pennconf.md': 'Configuration',
+  'pennevents.md': 'Events',
+  'pennflag.md': 'Flags',
+  'pennfunc.md': 'Functions',
+  'pennhttp.md': 'HTTP Features',
+  'pennlock.md': 'Locks',
+  'pennmail.md': 'Mail System',
+  'pennpueb.md': 'Pueblo Client',
+  'penntop.md': 'Top-Level Topics'
 };
+
+// Load document mappings from JSON file
+let DOC_MAPPINGS = {};
+
+async function loadDocMappings() {
+  try {
+    const mappingsPath = path.join(__dirname, 'doc-mappings.json');
+    const mappingsData = await fs.readFile(mappingsPath, 'utf-8');
+    const parsed = JSON.parse(mappingsData);
+    DOC_MAPPINGS = parsed.mappings || {};
+    console.log(`Loaded ${Object.keys(DOC_MAPPINGS).length} header mappings from doc-mappings.json`);
+  } catch (error) {
+    console.warn('Could not load doc-mappings.json, using fallback logic:', error.message);
+    console.warn('Run "node scripts/index-headers.js" to generate mappings.');
+    DOC_MAPPINGS = {};
+  }
+}
 
 function createSlugFromTitle(title) {
   return title.toLowerCase()
@@ -195,9 +203,10 @@ function convertHeadingLevels(content) {
   
   return content;
 }
-  // Extract the first heading as title
-  const titleMatch = content.match(/^#\s+(.+)$/m);
-  let title = titleMatch ? titleMatch[1] : filename.replace('.md', '');
+
+function addFrontmatter(content, filename) {
+  // Use filename-based title instead of extracting from headers
+  let title = FILE_TITLES[filename] || filename.replace('.md', '');
   
   // Clean and escape title for YAML
   title = title
@@ -258,6 +267,9 @@ async function convertAllDocs() {
     console.log('Starting documentation conversion...');
     console.log(`Source: ${SUBMODULE_DOCS_PATH}`);
     console.log(`Target: ${OUTPUT_DOCS_PATH}`);
+    
+    // Load document mappings
+    await loadDocMappings();
     
     // Ensure source directory exists
     try {

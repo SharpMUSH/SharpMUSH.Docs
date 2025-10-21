@@ -1,9 +1,9 @@
 ---
-title: "ATTRIBUTE FLAGS"
-description: "SharpMUSH documentation for ATTRIBUTE FLAGS"
+title: "Attributes"
+description: "SharpMUSH documentation for Attributes"
 ---
 
-# ATTRIBUTE FLAGS
+## ATTRIBUTE FLAGS
 
 Attribute flags are set on an object's attributes using `@set`, or applied to attributes globally using `@attribute`. Their names (and, when applicable, the character used in examine as shorthand for the flag) are shown below.
 
@@ -21,7 +21,7 @@ These attribute flags restrict access, and are inherited down attribute trees (i
 
 See [attribute flags2](/reference/sharpmush-help/pennattr/#attribute-flags2)
 
-# ATTRIBUTE FLAGS2
+## ATTRIBUTE FLAGS2
 
 These attribute flags grant access. They are not inherited down attribute trees, and must be set on a branch attribute as well as a leaf to take effect (to make FOO\`BAR visual, FOO must be visual too):
 
@@ -32,14 +32,14 @@ These attribute flags alter the way attributes are used in commands and ^-listen
 
 - `debug (b)`         Start showing debug output while this attr is evaluated.
 - `no_debug (B)`      Stop showing debug output when this attr is evaluated
-- `regexp (R)`        Match $-commands and ^-listens using regular expressions. See **[regexps](/reference/sharpmush-help/pennconf/#regexps)**
+- `regexp (R)`        Match $-commands and ^-listens using regular expressions. See **[regexps](/reference/sharpmush-help/penntop/#regexps)**
 - `case (C)`          Match $-commands and ^-listens case sensitively.
-- `nospace (s)`       Attribute won't add a space after the object name in @o-* messages. See **[verbs](/reference/sharpmush-help/penncmd/#verbs)**
+- `nospace (s)`       Attribute won't add a space after the object name in @o-* messages. See **[verbs](/reference/sharpmush-help/penntop/#verbs)**
 - `noname (N)`        Attribute won't show name in @o-* messages.
 
 See [attribute flags3](/reference/sharpmush-help/pennattr/#attribute-flags3)
 
-# ATTRIBUTE FLAGS3
+## ATTRIBUTE FLAGS3
 
 - `aahear (A)`        ^-listens on this attribute match like `@aahear`
 - `amhear (M)`        ^-listens on this attribute match like `@amhear`
@@ -49,15 +49,15 @@ See [attribute flags3](/reference/sharpmush-help/pennattr/#attribute-flags3)
 These attribute flags are only used internally. They cannot be set, but seen on 'examine' and flags()/lflags(), tested for with hasflag(), etc:
 - `branch (\`)`        This attribute is a branch. See: [ATTRIBUTE TREES](/reference/sharpmush-help/pennattr/#attribute-trees)
 
-## See Also
+### See Also
 - [@set](/reference/sharpmush-help/penncmd/#set)
 - [@attribute](/reference/sharpmush-help/penncmd/#attribute)
 - [ATTRIBUTE TREES](/reference/sharpmush-help/pennattr/#attribute-trees)
 
-# ATTRIBUTE TREES
-# ATTR TREES
-# ATTRIB TREES
-# \`
+## ATTRIBUTE TREES
+## ATTR TREES
+## ATTRIB TREES
+## \`
 
 Attributes can be arranged in a hierarchical tree; these are called "attribute trees", and a conceptually similar to the way that files and directories/folders are organized on computer filesystems. Attribute trees can be used to reduce spam when examining and to provide organized control over permissions for related attributes.
 
@@ -73,10 +73,10 @@ All attributes are either branch attributes or leaf attributes. A branch attribu
 
 See [attribute trees2](/reference/sharpmush-help/pennattr/#attribute-trees2) for more information and examples.
 
-# ATTRIBUTE TREES2
-# ATTR TREES2
-# ATTRIB TREES2
-# \`2
+## ATTRIBUTE TREES2
+## ATTR TREES2
+## ATTRIB TREES2
+## \`2
 
 Attribute trees provide two immediate benefits. First, they reduce spam when examining objects. The usual * and ? wildcards for attributes do not match the \` character; the new ** wildcard does. Some examples of using examine:
 
@@ -95,13 +95,13 @@ Branch attributes will be displayed with a \` in the attribute flags on examine.
 
 See [attribute trees3](/reference/sharpmush-help/pennattr/#attribute-trees3) for more information and examples.
 
-## See Also
-- [WILDCARDS](/reference/sharpmush-help/pennconf/#wildcards)
+### See Also
+- [WILDCARDS](/reference/sharpmush-help/penntop/#wildcards)
 
-# ATTRIBUTE TREES3
-# ATTR TREES3
-# ATTRIB TREES3
-# \`3
+## ATTRIBUTE TREES3
+## ATTR TREES3
+## ATTRIB TREES3
+## \`3
 
 The second benefit of attributes trees is convenient access control. Attribute flags that restrict attribute access or execution (no_inherit, no_command, mortal_dark, wizard) propagate down attribute trees, so if a branch is set mortal_dark, mortals can not read any of its leaves or subbranches either.
 
@@ -125,10 +125,10 @@ etc.
 
 See [attribute trees4](/reference/sharpmush-help/pennattr/#attribute-trees4) for information about `@parent` and attribute trees.
 
-# ATTRIBUTE TREES4
-# ATTR TREES4
-# ATTRIB TREES4
-# \`4
+## ATTRIBUTE TREES4
+## ATTR TREES4
+## ATTRIB TREES4
+## \`4
 
 Attribute trees interact with `@parent` in several ways.
 

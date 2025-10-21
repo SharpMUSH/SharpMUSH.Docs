@@ -8,9 +8,21 @@ This directory contains scripts for automatically converting SharpMUSH documenta
 
 Converts markdown files from the SharpMUSH submodule into Starlight-compatible documentation with:
 
+- **Filename-based titles**: Uses predefined titles based on filenames for consistent documentation structure
 - **Frontmatter generation**: Adds Starlight-compatible YAML frontmatter with title and description
+- **Heading level adjustment**: Converts H1 (`#`) to H2 (`##`) and H2 (`##`) to H3 (`###`) for better integration with Starlight navigation
 - **Link conversion**: Converts PennMUSH-style internal links (`[help TOPIC|DISPLAY]`) to Starlight navigation links
 - **Automatic categorization**: Intelligently maps help topics to appropriate documentation files
+
+### `index-headers.js`
+
+Analyzes all documentation files to generate comprehensive header mappings:
+
+- **Header extraction**: Finds all `#` and `##` headers in documentation files
+- **Normalization**: Converts headers to consistent format for matching
+- **Mapping generation**: Creates topic-to-document mappings for accurate cross-references
+- **JSON output**: Saves mappings to `doc-mappings.json` for use by the converter
+- **Analysis reporting**: Provides statistics on headers found per document
 
 #### Link Conversion Examples
 
@@ -47,6 +59,26 @@ The script automatically categorizes topics into appropriate documents:
 - **pennpueb**: Pueblo client topics
 - **pennconf**: Configuration and other topics (fallback)
 
+#### File Titles
+
+Document titles are mapped from filenames for consistency:
+
+| Filename | Title |
+|----------|-------|
+| `pennattr.md` | Attributes |
+| `pennchat.md` | Chat and Channels |
+| `penncmd.md` | Commands |
+| `penncode.md` | Coding and Programming |
+| `pennconf.md` | Configuration |
+| `pennevents.md` | Events |
+| `pennflag.md` | Flags |
+| `pennfunc.md` | Functions |
+| `pennhttp.md` | HTTP Features |
+| `pennlock.md` | Locks |
+| `pennmail.md` | Mail System |
+| `pennpueb.md` | Pueblo Client |
+| `penntop.md` | Top-Level Topics |
+
 ## Usage
 
 ### Manual Conversion
@@ -55,10 +87,17 @@ The script automatically categorizes topics into appropriate documents:
 npm run convert-docs
 ```
 
+### Generate Header Mappings
+
+```bash
+npm run index-headers
+```
+
 ### Update Submodule and Convert
 
 ```bash
 npm run update-submodule
+npm run index-headers
 npm run convert-docs
 ```
 
@@ -74,9 +113,37 @@ The conversion runs automatically during:
 
 To modify the conversion behavior, edit the following sections in `convert-docs.js`:
 
-- **DOC_MAPPINGS**: Add or modify topic-to-document mappings
+- **FILE_TITLES**: Update filename-to-title mappings for consistent documentation structure
+- **doc-mappings.json**: Generated header-to-document mappings (regenerate with `npm run index-headers`)
 - **convertInternalLinks()**: Modify link conversion patterns
 - **addFrontmatter()**: Customize frontmatter generation
+
+### Updating Header Mappings
+
+Header mappings are automatically generated from the source documentation:
+
+```bash
+# Regenerate mappings from current documentation
+npm run index-headers
+```
+
+This creates/updates `scripts/doc-mappings.json` with:
+- All headers found in documentation files
+- Normalized header names for consistent matching
+- Document assignments for each header
+- Metadata about the generation process
+
+### Updating File Titles
+
+To change the title for a documentation file, update the `FILE_TITLES` object:
+
+```javascript
+const FILE_TITLES = {
+  'pennattr.md': 'New Attributes Title',
+  'penncmd.md': 'New Commands Title',
+  // ...
+};
+```
 
 ## Troubleshooting
 

@@ -1,17 +1,17 @@
 ---
-title: "HTTP"
-description: "SharpMUSH documentation for HTTP"
+title: "HTTP Features"
+description: "SharpMUSH documentation for HTTP Features"
 ---
 
-# HTTP
+## HTTP
 
-# http_handler
+## http_handler
 
-# http_per_second
+## http_per_second
 
-# @config http_per_second
+## @config http_per_second
 
-# @config http_handler
+## @config http_handler
 If http_handler `@config` is a dbref of a valid player, SharpMUSH will support HTTP requests reaching its mush port. It is very low level, and a little tricky to understand.
 
 If an HTTP Handler isn't set, or a given method attribute doesn't exist on the http handler object, Penn will default to responding with mud_url or an error page.
@@ -23,17 +23,17 @@ When an HTTP request hits the SharpMUSH port, SharpMUSH invisibly logs in to the
 Immediately when the `@include` finishes, the http request is complete. Any queued entries (such as `@wait`, `$-commands`, etc) are not going to be sent to the HTTP client - you'll need to code using `@include`, `/inline` switches, and the like.
 
 - *%0* will be the pathname, e.g: "/", "/path/to", "/foo?bar=baz", etc.
-- *%1* will be the body of the request. If it's json, use json_query to deal with it. If it's form-encoded, look at [formdecode()](/reference/sharpmush-help/pennfunc/#formdecode)
+- *%1* will be the body of the request. If it's json, use json_query to deal with it. If it's form-encoded, look at [formdecode()](/reference/sharpmush-help/pennhttp/#formdecode)
 
 Anything sent to the HTTP Handler player during evaluation of this code is included in the body sent to the HTTP Client. There is a maximum size of BUFFER_LEN for the body of the response.
 
 To modify the response headers, use the command `@respond`
 
 
-## See Also
+### See Also
 - [http2]
 
-# HTTP2
+## HTTP2
 To use SharpMUSH HTTP Handler:
 
 ```
@@ -47,16 +47,16 @@ You will very likely want to set the http_handler option in your mush.cnf file t
 By default, SharpMUSH will respond with a **404 NOT FOUND**. You will need to use `@respond` to control what is sent to the client.
 
 
-## See Also
+### See Also
 - [- [http examples]
 - [http sitelock]
 - [event http]
 
 
-## See Also
+### See Also
 - [http3]
 
-# HTTP3
+## HTTP3
 HTTP connections to SharpMUSH are limited to BUFFER_LEN in header and body size.
 
 Incoming headers will be set in Q-registers: *%q<headers>* contains a list of all headers by name. Individual headers will be set in *%q<hdr.[name](/reference/sharpmush-help/pennconf/#name)>*, prefixed with hdr. e.g: *%q<hdr.host>* to obtain the value to the Host: header. Or *%q<hdr.Cookie>* for Cookies.
@@ -66,18 +66,18 @@ Multiple header lines will be added to the same q-register name, but %r-delimite
 HTTP Responses are limited to BUFFER_LEN in response size. Anything sent to the HTTPHandler player, whether it uses think or is `@pemitted`, is added to the response buffer.
 
 
-## See Also
+### See Also
 - [- [@respond](/reference/sharpmush-help/pennconf/#respond)
-- [formdecode()](/reference/sharpmush-help/pennfunc/#formdecode)
+- [formdecode()](/reference/sharpmush-help/pennhttp/#formdecode)
 - [json_query()](/reference/sharpmush-help/pennfunc/#jsonquery)
 - [urlencode()](/reference/sharpmush-help/pennfunc/#urlencode)
 - [urldecode()](/reference/sharpmush-help/pennfunc/#urldecode)
 
-# @RESPOND
+## @RESPOND
 
-# @RESPOND/TYPE
+## @RESPOND/TYPE
 
-# @RESPOND/HEADER
+## @RESPOND/HEADER
 
 `@respond <code> <text>`
 `@respond/type <content-type>`
@@ -96,11 +96,11 @@ If an attribute exists, Penn defaults to **200 OK**, and Content-Type **"text/pl
 If `@respond` is run outside of an HTTP Context, the enactor will see "(HTTP): ..." for debugging, but it isn't buffered for output as if it was an active http request.
 
 
-## See Also
+### See Also
 - [- [@respond2](/reference/sharpmush-help/pennconf/#respond2)
-- [@respond3](/reference/sharpmush-help/penncmd/#respond3)
+- [@respond3](/reference/sharpmush-help/pennhttp/#respond3)
 
-# @RESPOND2
+## @RESPOND2
 `@respond` examples:
 
 To modify the response code:
@@ -127,7 +127,7 @@ Add Headers:
 
 Adding a Content-Length header is not allowed - SharpMUSH calculates it from the output before sending.
 
-# @RESPOND3
+## @RESPOND3
 To vaguely comply with most HTTP requirements:
 
 `@respond <code> <text>`
@@ -142,7 +142,7 @@ To vaguely comply with most HTTP requirements:
 `@respond/type <ctype>`
 - *<ctype>* should be alphanumeric, +, ., /, -. HTTP/1.1 does allow for parameters (text/plain; content-encoding=...), so we don't enforce anything at present except printability().
 
-# FORMDECODE()
+## FORMDECODE()
 `formdecode(<string>[, <paramname>[, <osep>]])`
 
 formdecode() is intended for use with the HTTP Handler. See [http] for more.
@@ -172,7 +172,7 @@ You say, "potato^cheese"
 You say, "name,hobby,like,like"
 ```
 
-# HTTP EXAMPLES
+## HTTP EXAMPLES
 There are a number of HTTP Examples.
 
 Examples all assume the following:
@@ -183,12 +183,12 @@ Examples all assume the following:
 ```
 
 
-## See Also
+### See Also
 - [- [http simple]
 - [http get]
 - [http post]
 
-# HTTP SIMPLE
+## HTTP SIMPLE
 The examples on this page are all simple, single-result handlers.
 
 Return the output of WHO to any GET request:
@@ -203,7 +203,7 @@ Whenever a POST is performed, say the path and body:
 > &POST *HTTPHandler=say POST attempted at %0: %1
 ```
 
-# HTTP GET
+## HTTP GET
 GET requests are the simplest: There's no form data, and the path can be split into the path (before(%0,?)) and parameters (after(%0,?))
 
 Return a JSON array of users to any GET request:
@@ -237,7 +237,7 @@ Look at something, whose name is passed by ?name=... value:
 
 Check: http://yourmush:port/look?name=here
 
-# HTTP POST
+## HTTP POST
 Suppose you want a web hook for notifications from an external system.
 HTTP via POST is ideal for that:
 
@@ -265,7 +265,7 @@ Maybe you want to do either, depending on if the client is using JSON or not?
 
 Check: Post with either form data OR json data!
 
-# HTTP SITELOCK
+## HTTP SITELOCK
 You can configure what paths and IPs you want to limit access to via `@sitelock`.
 
 HTTP Requests will check `@sitelock` for IP restrictions and path restrictions for the config(http_handler) player. Right now, we don't resolve hosts before HTTP connections are handled due to the time delay, but that may be an option in the future.

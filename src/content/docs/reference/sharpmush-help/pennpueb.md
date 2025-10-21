@@ -1,19 +1,19 @@
 ---
-title: "PUEBLO"
-description: "SharpMUSH documentation for PUEBLO"
+title: "Pueblo Client"
+description: "SharpMUSH documentation for Pueblo Client"
 ---
 
-# PUEBLO
+## PUEBLO
 
 Pueblo is a client made by Chaco (a now defunct company). It attempts to mix HTML with MUSH. There are other clients (notably MUSHclient) that also offer Pueblo features. SharpMUSH can offer support for some of the enhanced features of Pueblo, enabled via the 'pueblo' @config option.
 
 SharpMUSH will automatically detect a Pueblo client (rather, the client will announce itself and SharpMUSH will detect that), and set up that connection for Pueblo use. 
 
 
-## See Also
+### See Also
 - [pueblo2](/reference/sharpmush-help/pennpueb/#pueblo2)
 
-# PUEBLO2
+## PUEBLO2
 
 SharpMUSH makes the following enhancements visible to Pueblo users when Pueblo support is enabled:
 
@@ -31,25 +31,25 @@ While Pueblo brings a number of new features and markups to MUSHes, in many ways
 ```
 
 
-## See Also
+### See Also
 - [- [pueblo()]
-- [HTML Functions](/reference/sharpmush-help/pennconf/#html-functions)
+- [HTML Functions](/reference/sharpmush-help/pennpueb/#html-functions)
 
-# HTML
+## HTML
 
 Hyper Text Markup Language (http://www.w3.org)
 
-The only HTML implementation supported by the MUSH is the one supported by Pueblo (see [pueblo](/reference/sharpmush-help/pennpueb/#pueblo) for more info). To utilize HTML, use one of the MUSH HTML Functions (see [HTML Functions](/reference/sharpmush-help/pennconf/#html-functions) for a list).
+The only HTML implementation supported by the MUSH is the one supported by Pueblo (see [pueblo](/reference/sharpmush-help/pennpueb/#pueblo) for more info). To utilize HTML, use one of the MUSH HTML Functions (see [HTML Functions](/reference/sharpmush-help/pennpueb/#html-functions) for a list).
 
 HTML tags are stripped when sent to non-HTML capable players.
 
 
-## See Also
+### See Also
 - [- [HTML Functions](/reference/sharpmush-help/pennconf/#html-functions)
 - [PUEBLO](/reference/sharpmush-help/pennpueb/#pueblo)
-- [html()](/reference/sharpmush-help/pennfunc/#html)
+- [html()](/reference/sharpmush-help/pennpueb/#html)
 
-# PUEBLO()
+## PUEBLO()
 
 `pueblo(<player|descriptor>)`
 
@@ -60,14 +60,14 @@ If used on a player/descriptor which is not connected, pueblo() returns #-1 NOT 
 When used with a *<player>* argument, the most recently active connection is used if the *<player>* is logged in more than once.
 
 
-## See Also
+### See Also
 - [- [terminfo()]
-- [html()](/reference/sharpmush-help/pennfunc/#html)
+- [html()](/reference/sharpmush-help/pennpueb/#html)
 - [PUEBLO](/reference/sharpmush-help/pennpueb/#pueblo)
 
-# @VRML_URL
-# VRML_URL
-# VRML
+## @VRML_URL
+## VRML_URL
+## VRML
 
 `@vrml_url <object>[=<url>]`
 
@@ -81,11 +81,11 @@ Example:
 To learn about the VRML Format, have a look at the Pueblo Help, which mentions several good sites for learning.
 
 
-## See Also
+### See Also
 - [- [HTML](/reference/sharpmush-help/pennconf/#html)
 - [PUEBLO](/reference/sharpmush-help/pennpueb/#pueblo)
 
-# HTML FUNCTIONS
+## HTML FUNCTIONS
 
 HTML Functions are used to output HTML tags to HTML capable users. These tags will be stripped by the system for anything non-HTML related. These functions are only available when Pueblo support is enabled (see '@config pueblo').
 
@@ -111,7 +111,7 @@ Each of these produces the HTML output:
 
 Mortals are restricted in the tags they may use. Most standard HTML tags are ok; protocol-specific tags like SEND and XCH_CMD can only be sent by Wizards or those with the Send_OOB @power.
 
-# HTML()
+## HTML()
 
 `html(<string>)`
 
@@ -130,14 +130,14 @@ Will output (in HTML):
 Non-wizards should see the tag(), endtag(), and tagwrap() functions, which are similar but can be used by mortals.
 
 
-## See Also
+### See Also
 - [- [PUEBLO](/reference/sharpmush-help/pennpueb/#pueblo)
-- [HTML](/reference/sharpmush-help/pennconf/#html)
-- [HTML Functions](/reference/sharpmush-help/pennconf/#html-functions)
+- [HTML](/reference/sharpmush-help/pennpueb/#html)
+- [HTML Functions](/reference/sharpmush-help/pennpueb/#html-functions)
 
 [... Previous content ...](/reference/sharpmush-help/pennconf/#previous-content)
 
-# TAG()
+## TAG()
 
 `tag(<name>[, <param1>[, ... , <paramN>]])`
 
@@ -154,12 +154,12 @@ Will output (in HTML):
 ```
 
 
-## See Also
+### See Also
 - [- [endtag()]
-- [tagwrap()](/reference/sharpmush-help/pennfunc/#tagwrap)
-- [html()](/reference/sharpmush-help/pennfunc/#html)
+- [tagwrap()](/reference/sharpmush-help/pennpueb/#tagwrap)
+- [html()](/reference/sharpmush-help/pennpueb/#html)
 
-# ENDTAG()
+## ENDTAG()
 
 `endtag(<name>)`
 
@@ -176,12 +176,12 @@ Will output (in HTML):
 ```
 
 
-## See Also
+### See Also
 - [- [tag()]
-- [tagwrap()](/reference/sharpmush-help/pennfunc/#tagwrap)
-- [html()](/reference/sharpmush-help/pennfunc/#html)
+- [tagwrap()](/reference/sharpmush-help/pennpueb/#tagwrap)
+- [html()](/reference/sharpmush-help/pennpueb/#html)
 
-# TAGWRAP()
+## TAGWRAP()
 
 `tagwrap(<name>[, <parameters>], <string>)`
 
@@ -200,12 +200,12 @@ Will output (in HTML):
 A particularly important use of this function is `tagwrap(pre, <string>)`. Because Pueblo works like an html browser, spaces and tabs are compressed to a single space. If you have code (a +who function, for example) that relies on exact spacing, surround its output with a tagwrap(pre,...) so that Pueblo will render it as "preformatted" text.
 
 
-## See Also
+### See Also
 - [- [tag()]
-- [endtag()](/reference/sharpmush-help/pennfunc/#endtag)
-- [html()](/reference/sharpmush-help/pennfunc/#html)
+- [endtag()](/reference/sharpmush-help/pennpueb/#endtag)
+- [html()](/reference/sharpmush-help/pennpueb/#html)
 
-# WEBSOCKETS
+## WEBSOCKETS
 
 WebSockets are a network protocol used by JavaScript-enabled web browsers to make persistent network connections, similar to the telnet connection you use to connect to SharpMUSH. With WebSockets enabled in mush.cnf, it is possible to connect from MUSH clients embedded in HTML pages using JavaScript. A WebSocket client can natively render HTML, but can also parse Pueblo links into HTML links that send a command to the MUSH when clicked. For safety, we separate plain text from the other kinds of HTML/Pueblo code that we want rendered. In order to render HTML/Pueblo, a player with the Pueblo_Send power uses special functions to embed HTML/Pueblo markup. Players without the PUEBLO_SEND power can not use these markup functions. Any HTML code strings that are not properly marked up will simply show up as unrendered plain text.
 
@@ -220,28 +220,28 @@ The different kinds of markup that can be sent to clients are:
 
 Without using any HTML markup functions, output is rendered as normal plain text (including ANSI and xterm256 color).
 
-See [HTML Functions](/reference/sharpmush-help/pennconf/#html-functions) for functions used to embed HTML markup tags one at a time.
-See [wshtml()](/reference/sharpmush-help/pennfunc/#wshtml) for help embedding large segments of raw HTML markup to be sent to WebSocket clients.
+See [HTML Functions](/reference/sharpmush-help/pennpueb/#html-functions) for functions used to embed HTML markup tags one at a time.
+See [wshtml()](/reference/sharpmush-help/pennpueb/#wshtml) for help embedding large segments of raw HTML markup to be sent to WebSocket clients.
 
 Support for Pueblo links depends on the WebSocket client, however the example client above supports xch_cmd for command links and xch_hint for tooltip text popups. For clickable command links, embed a link tag with the command to be executed in the "xch_cmd" attribute, e.g. `<a xch_cmd="+who">Who is online?</a>`.
 
 You can also send data encapsulated in a JSON object.
 
 See [json()](/reference/sharpmush-help/pennfunc/#json) for information about formatting data into JSON object strings.
-See [wsjson()](/reference/sharpmush-help/pennfunc/#wsjson) for help sending formatted JSON object strings to WebSocket clients as a JavaScript object.
+See [wsjson()](/reference/sharpmush-help/pennpueb/#wsjson) for help sending formatted JSON object strings to WebSocket clients as a JavaScript object.
 
 See [@prompt](/reference/sharpmush-help/penncmd/#prompt) for information about sending telnet GOAHEAD prompts. Support for prompts depends on the WebSocket client. The example client above shows prompts on their own line, separating the input and output windows, but requires PROMPT_NEWLINES to be turned off.
 
 
-## See Also
+### See Also
 - [- [HTML Functions](/reference/sharpmush-help/pennconf/#html-functions)
 - [json()](/reference/sharpmush-help/pennfunc/#json)
 - [pueblo](/reference/sharpmush-help/pennpueb/#pueblo)
-- [wshtml()](/reference/sharpmush-help/pennfunc/#wshtml)
-- [wsjson()](/reference/sharpmush-help/pennfunc/#wsjson)
+- [wshtml()](/reference/sharpmush-help/pennpueb/#wshtml)
+- [wsjson()](/reference/sharpmush-help/pennpueb/#wsjson)
 
-# WSHTML()
-# WSJSON()
+## WSHTML()
+## WSJSON()
 
 `wshtml(<html string>[, <default string>])`
 `wsjson(<json string>[, <default string>])`
@@ -273,8 +273,8 @@ Go to http://pennmush.org
 ```
 
 
-## See Also
+### See Also
 - [- [WebSockets](/reference/sharpmush-help/pennconf/#websockets)
 - [Pueblo](/reference/sharpmush-help/pennpueb/#pueblo)
-- [HTML Functions](/reference/sharpmush-help/pennconf/#html-functions)
-- [JSON Functions](/reference/sharpmush-help/pennconf/#json-functions)
+- [HTML Functions](/reference/sharpmush-help/pennpueb/#html-functions)
+- [JSON Functions](/reference/sharpmush-help/pennfunc/#json-functions)

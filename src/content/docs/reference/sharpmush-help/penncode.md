@@ -1,11 +1,11 @@
 ---
-title: "code"
-description: "SharpMUSH documentation for code"
+title: "Coding and Programming"
+description: "SharpMUSH documentation for Coding and Programming"
 ---
 
-# code
+## code
 
-# contact
+## contact
 PennMUSH is developed by a team of developers whose names are listed in [changes](/reference/sharpmush-help/pennconf/#changes). Suggestions, comments, and bug reports are welcome.
 
 The main PennMUSH web page is at http://www.pennmush.org
@@ -14,22 +14,22 @@ Report bugs and make suggestions at https://github.com/pennmush/pennmush/issues
 
 The PennMUSH community page is at http://community.pennmush.org
 
-For information about downloading PennMUSH, see [download](/reference/sharpmush-help/pennconf/#download).
+For information about downloading PennMUSH, see [download](/reference/sharpmush-help/penncode/#download).
 For information about changes in versions of the code, see [changes](/reference/sharpmush-help/pennconf/#changes).
 
-# download
+## download
 The latest version of this MUSH code is available from https://github.com/pennmush/pennmush/releases or http://download.pennmush.org. It will be called something like pennmush-1.8.3p9.tar.bz2, depending on the version number.
 
 The MUSH manual is available from http://download.pennmush.org, in the /Manuals directory. It should be called mushman.2.008.tar.Z or something similar; you should attempt to get at least version 2.007. Also on that site is Javelin's Guide for PennMUSH Gods, in /Guide, available as plain text or
 HTML.
 
-# i18n
+## i18n
 
-# internationalization
+## internationalization
 
-# locale
+## locale
 
-# translation
+## translation
 Internationalization support in PennMUSH includes:
 * Support for (8-bit) locale-based character sets, including translation of iso-8859-1 accented characters to html entities for Pueblo, the `accent()` and `stripaccents()` functions, and the NOACCENTS flag.
 * Support for locale-based date/time formats
@@ -41,11 +41,11 @@ Most of these features get enabled by setting an appropriate environment variabl
 
 Unicode is not currently supported.
 
-# copyright
+## copyright
 
-# copyrite
+## copyrite
 
-# license
+## license
 Copyright, License, and Credits for PennMUSH 1.x. Revised March 2006.
 
 I. Copyrights
