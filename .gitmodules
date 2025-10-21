@@ -1,0 +1,3 @@
+[submodule "SharpMUSH-submodule"]
+	path = SharpMUSH-submodule
+	url = https://github.com/SharpMUSH/SharpMUSH.git

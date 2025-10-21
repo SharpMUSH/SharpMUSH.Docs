@@ -3,11 +3,16 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
+    "dev": "npm run convert-docs && astro dev",
+    "start": "npm run convert-docs && astro dev",
+    "build": "npm run convert-docs && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "convert-docs": "node scripts/convert-docs.js",
+    "index-headers": "node scripts/index-headers.js",
+    "update-submodule": "git submodule update --remote",
+    "prebuild": "npm run update-submodule && npm run index-headers && npm run convert-docs",
+    "predev": "npm run convert-docs"
   },
   "dependencies": {
     "@astrojs/netlify": "^6.2.4",

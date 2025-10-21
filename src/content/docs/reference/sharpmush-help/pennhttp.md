@@ -1,8 +1,17 @@
 ---
-title: HTTP Help
-description: Helpfiles on SharpMUSH Built-in HTTP Handler and sending.
+title: "HTTP Features"
+description: "SharpMUSH documentation for HTTP Features"
 ---
+
 ## HTTP
+
+## http_handler
+
+## http_per_second
+
+## @config http_per_second
+
+## @config http_handler
 If http_handler `@config` is a dbref of a valid player, SharpMUSH will support HTTP requests reaching its mush port. It is very low level, and a little tricky to understand.
 
 If an HTTP Handler isn't set, or a given method attribute doesn't exist on the http handler object, Penn will default to responding with mud_url or an error page.
@@ -14,13 +23,15 @@ When an HTTP request hits the SharpMUSH port, SharpMUSH invisibly logs in to the
 Immediately when the `@include` finishes, the http request is complete. Any queued entries (such as `@wait`, `$-commands`, etc) are not going to be sent to the HTTP client - you'll need to code using `@include`, `/inline` switches, and the like.
 
 - *%0* will be the pathname, e.g: "/", "/path/to", "/foo?bar=baz", etc.
-- *%1* will be the body of the request. If it's json, use json_query to deal with it. If it's form-encoded, look at [formdecode()](#formdecode())
+- *%1* will be the body of the request. If it's json, use json_query to deal with it. If it's form-encoded, look at [formdecode()](/reference/sharpmush-help/pennhttp/#formdecode)
 
 Anything sent to the HTTP Handler player during evaluation of this code is included in the body sent to the HTTP Client. There is a maximum size of BUFFER_LEN for the body of the response.
 
 To modify the response headers, use the command `@respond`
 
-See also: [http2](#http2)
+
+### See Also
+- [http2]
 
 ## HTTP2
 To use SharpMUSH HTTP Handler:
@@ -35,34 +46,42 @@ You will very likely want to set the http_handler option in your mush.cnf file t
 
 By default, SharpMUSH will respond with a **404 NOT FOUND**. You will need to use `@respond` to control what is sent to the client.
 
-See also:
-- [http examples](#http examples)
-- [http sitelock](#http sitelock)
-- [event http](#event http)
 
-See also: [http3](#http3)
+### See Also
+- [- [http examples]
+- [http sitelock]
+- [event http]
+
+
+### See Also
+- [http3]
 
 ## HTTP3
 HTTP connections to SharpMUSH are limited to BUFFER_LEN in header and body size.
 
-Incoming headers will be set in Q-registers: *%q<headers>* contains a list of all headers by name. Individual headers will be set in *%q<hdr.[name]>*, prefixed with hdr. e.g: *%q<hdr.host>* to obtain the value to the Host: header. Or *%q<hdr.Cookie>* for Cookies.
+Incoming headers will be set in Q-registers: *%q<headers>* contains a list of all headers by name. Individual headers will be set in *%q<hdr.[name](/reference/sharpmush-help/pennconf/#name)>*, prefixed with hdr. e.g: *%q<hdr.host>* to obtain the value to the Host: header. Or *%q<hdr.Cookie>* for Cookies.
 
 Multiple header lines will be added to the same q-register name, but %r-delimited. So two "Cookie:" lines becomes *%q<Cookies>* with two %r-delimited lines.
 
 HTTP Responses are limited to BUFFER_LEN in response size. Anything sent to the HTTPHandler player, whether it uses think or is `@pemitted`, is added to the response buffer.
 
-See also:
-- [@respond](#@respond)
-- [formdecode()](#formdecode())
-- [json_query()](#json_query())
-- [urlencode()](#urlencode())
-- [urldecode()](#urldecode())
+
+### See Also
+- [- [@respond](/reference/sharpmush-help/pennconf/#respond)
+- [formdecode()](/reference/sharpmush-help/pennhttp/#formdecode)
+- [json_query()](/reference/sharpmush-help/pennfunc/#jsonquery)
+- [urlencode()](/reference/sharpmush-help/pennfunc/#urlencode)
+- [urldecode()](/reference/sharpmush-help/pennfunc/#urldecode)
 
 ## @RESPOND
 
-- `@respond <code> <text>`
-- `@respond/type <content-type>`
-- `@respond/header <name>=<value>`
+## @RESPOND/TYPE
+
+## @RESPOND/HEADER
+
+`@respond <code> <text>`
+`@respond/type <content-type>`
+`@respond/header <name>=<value>`
 
 Within the context of an HTTP Player connection, `@respond` is used to modify the headers sent back to the HTTP client.
 
@@ -76,9 +95,10 @@ If an attribute exists, Penn defaults to **200 OK**, and Content-Type **"text/pl
 
 If `@respond` is run outside of an HTTP Context, the enactor will see "(HTTP): ..." for debugging, but it isn't buffered for output as if it was an active http request.
 
-See also:
-- [@respond2](#@respond2)
-- [@respond3](#@respond3)
+
+### See Also
+- [- [@respond2](/reference/sharpmush-help/pennconf/#respond2)
+- [@respond3](/reference/sharpmush-help/pennhttp/#respond3)
 
 ## @RESPOND2
 `@respond` examples:
@@ -111,7 +131,7 @@ Adding a Content-Length header is not allowed - SharpMUSH calculates it from the
 To vaguely comply with most HTTP requirements:
 
 `@respond <code> <text>`
-- *\<code\>* must be 3 digits, followed by a space, then printable ascii text
+- *<code>* must be 3 digits, followed by a space, then printable ascii text
 - Total length must be < 40 characters
 - This will be prepended by HTTP/1.1 when sent back to the client
 
@@ -125,7 +145,7 @@ To vaguely comply with most HTTP requirements:
 ## FORMDECODE()
 `formdecode(<string>[, <paramname>[, <osep>]])`
 
-formdecode() is intended for use with the HTTP Handler. See [http](#http) for more.
+formdecode() is intended for use with the HTTP Handler. See [http] for more.
 
 formdecode() converts form-encoded data, such as HTTP GET paths (after the ?) or the contents of POST with form-urlencoded data. It searches for the parameter named *<paramname>* and returns with its decoded value.
 
@@ -162,10 +182,11 @@ Examples all assume the following:
 > @config/set http_handler=pmatch(HTTPHandler)
 ```
 
-See also:
-- [http simple](#http simple)
-- [http get](#http get)
-- [http post](#http post)
+
+### See Also
+- [- [http simple]
+- [http get]
+- [http post]
 
 ## HTTP SIMPLE
 The examples on this page are all simple, single-result handlers.

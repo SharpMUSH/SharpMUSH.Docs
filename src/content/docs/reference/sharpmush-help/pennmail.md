@@ -1,11 +1,13 @@
 ---
-title: Mail Help
-description: Helpfiles on SharpMUSH Internal Mail.
+title: "Mail System"
+description: "SharpMUSH documentation for Mail System"
 ---
-## MAIL
 
-`@mail[/<switches>] [<msg-list>[=<target>]]`
-`@mail[/<switches>] <player-list>=[<subject>/]<message>`
+## MAIL
+## @MAIL
+
+- `@mail[/<switches>] [<msg-list>[=<target>]]`
+- `@mail[/<switches>] <player-list>=[<subject>/]<message>`
 
 @mail invokes the built-in MUSH mailer, which allows players to send and receive mail. Pronoun/function substitution is performed on any messages you may try to send.
 
@@ -24,28 +26,32 @@ A *<player-list>* is a space-separated list of recipients, which may be:
 * Player names
 * Player dbref #'s
 * Message #'s, in which case you send to the sender of that message
-* An alias name (see [@malias](#@malias))
+* An alias name (see [@malias](/reference/sharpmush-help/pennmail/#malias))
 
-See also:
-- [mail-sending](#mail-sending)
-- [mail-reading](#mail-reading)
-- [mail-folders](#mail-folders)
-- [mail-forward](#mail-forward)
-- [mail-other](#mail-other)
-- [mail-admin](#mail-admin)
-- [@malias](#@malias)
-- [mail-reviewing](#mail-reviewing)
-- [@mailquota](#@mailquota)
+
+### See Also
+- [- [mail-sending](/reference/sharpmush-help/pennmail/#mail-sending)
+- [mail-reading](/reference/sharpmush-help/pennmail/#mail-reading)
+- [mail-folders](/reference/sharpmush-help/pennmail/#mail-folders)
+- [mail-forward](/reference/sharpmush-help/pennmail/#mail-forward)
+- [mail-other](/reference/sharpmush-help/pennmail/#mail-other)
+- [mail-admin](/reference/sharpmush-help/pennmail/#mail-admin)
+- [@malias](/reference/sharpmush-help/pennmail/#malias)
+- [mail-reviewing](/reference/sharpmush-help/pennmail/#mail-reviewing)
+- [@mailquota](/reference/sharpmush-help/pennmail/#mailquota)
 
 ## MAIL-READING
+## @MAIL/READ
+## @MAIL/LIST
+## @MAIL/CSTATS
 
-`@mail <msg #>`
-`@mail/read <msg-list>`
+- `@mail <msg #>`
+- `@mail/read <msg-list>`
 * This displays messages which match the msg# or msg-list from your current folder.
 
-`@mail`
-`@mail <msg-list, but not a single msg #>`
-`@mail/list <msg-list>`
+- `@mail`
+- `@mail <msg-list, but not a single msg #>`
+- `@mail/list <msg-list>`
 * This gives a brief list of all mail in the current folder, with sender name, time sent, and message status.
 * The status field is a set of characters (ex: NC-UF+) which mean:
 * N = New (unread) message
@@ -59,8 +65,10 @@ See also:
 * Shows how many messages you have, in the same format as the automatic mail check when you connect.
 
 ## MAIL-SENDING
+## @MAIL/SEND
+## @MAIL/FWD
 
-`@mail[/switch] <player-list>=[<subject>]/<msg>`
+- `@mail[/switch] <player-list>=[<subject>]/<msg>`
 * This sends the message *<msg>* to all players in *<player-list>*.
 * If no subject is given, the message subject is the beginning of the message itself. To include a literal / in the subject, double it up (//).
 * All function substitutions are valid in *<msg>* including mail(#) which will allow you to forward mail you have received to other users.
@@ -73,22 +81,29 @@ The following switches are available:
 
 If you have an @mailsignature attribute set on yourself, its contents will be evaluated and appended to the message unless the /nosig switch is given.
 
-`@mail/fwd <msg-list>=<player-list>`
+- `@mail/fwd <msg-list>=<player-list>`
 * This sends a copy of all the messages in *<msg-list>* to all the players in *<player-list>*. The copy will appear to have been sent by you (not the original sender), and its status will be "Forwarded".
 
 ## MAIL-OTHER
+## @MAIL/CLEAR
+## @MAIL/UNCLEAR
+## @MAIL/PURGE
+## @MAIL/TAG
+## @MAIL/UNTAG
+## @MAIL/UNREAD
+## @MAIL/STATUS
 
-`@mail/clear [<msg-list> | all]`
-`@mail/unclear [<msg-list> | all]`
+- `@mail/clear [<msg-list> | all]`
+- `@mail/unclear [<msg-list> | all]`
 * These commands mark mail in the current folder as cleared or uncleared. Mail marked for clearing is deleted when you disconnect, or if you use @mail/purge.
 * If no msg-list is specified, all mail in your current folder is cleared.
 * If "all" is given instead of a msg-list, all mail in **all** folders is cleared/uncleared.
 
-`@mail/purge`
+- `@mail/purge`
 * Actually deletes all messages marked for clearing with @mail/clear. This is done automatically when you log out.
 
-`@mail/tag [<msg-list> | all]`
-`@mail/untag [<msg-list> | all]`
+- `@mail/tag [<msg-list> | all]`
+- `@mail/untag [<msg-list> | all]`
 * These commands tag or untag mail in the current folder.
 * Tagged mail can be later acted on en masse by using "tagged" as the msg-list for other commands (which does **not** untag them afterward).
 * If no msg-list is specified, all messages in the current folder are tagged/untagged.
@@ -103,49 +118,56 @@ To clear all mail from Paul and Chani:
 @mail/untag all
 ```
 
-`@mail/unread [<msg-list> | all]`
+- `@mail/unread [<msg-list> | all]`
 * Mark messages which have already been read as new/unread.
 
-`@mail/status [<msg-list> | all]=<status>`
+- `@mail/status [<msg-list> | all]=<status>`
 * Set the status of the given messages.
 * *<status>* can be one of: tagged, untagged, cleared, uncleared, read, unread, urgent or unurgent.
 * Read marks a new message as read without reading it, urgent/unurgent toggle the urgent flag, and the others are equivalent to @mail/tag, @mail/untag, @mail/clear, @mail/unclear and @mail/unread respectively.
 
 ## MAIL-FOLDERS
+## @MAIL/FOLDER
+## @MAIL/UNFOLDER
+## @MAIL/FILE
 
 The MUSH mail system allows each player 16 folders, numbered from 0 to 15. Mail can only be in 1 folder at a time. Folder 0 is the "inbox" where new mail is received. Most @mail commands operate on only the current folder.
 
-`@mail/folder`
+- `@mail/folder`
 * This commands lists all folders which contain mail, telling how many messages are in each, and what the current folder is.
 
-`@mail/folder <folder#|foldername>`
+- `@mail/folder <folder#|foldername>`
 * This command sets your current folder to *<folder#>*.
 
-`@mail/folder <folder#> = <foldername>`
+- `@mail/folder <folder#> = <foldername>`
 * This command gives *<folder#>* a name.
 
-`@mail/unfolder <folder#|foldername>`
+- `@mail/unfolder <folder#|foldername>`
 * This command removes a folder's name
 
-`@mail/file <msg-list>=<folder#>`
+- `@mail/file <msg-list>=<folder#>`
 * This command moves all messages in *<msg-list>* from the current folder to a new folder, *<folder#>*.
 
-See also: [@mailfilter](#@mailfilter)
+
+### See Also
+- [@mailfilter](/reference/sharpmush-help/pennmail/#mailfilter)
 
 ## MAIL-REVIEWING
+## @MAIL/REVIEW
+## @MAIL/RETRACT
 
-`@mail/review [<player>]`
+- `@mail/review [<player>]`
 * Reviews the messages you have sent to *<player>*, or all messages you've sent if no *<player>* is specified.
 
-`@mail/review <player>=<msglist>`
+- `@mail/review <player>=<msglist>`
 * Reads the messages you have sent to *<player>*.
 
-`@mail/retract <player>=<msglist>`
+- `@mail/retract <player>=<msglist>`
 * Retracts (deletes) unread messages you have sent to *<player>*.
 
 ## @MAILQUOTA
 
-`@mailquota <player>[=<limit>]`
+- `@mailquota <player>[=<limit>]`
 
 This attribute allows wizards to change the maximum number of messages a player can have in their inbox, override the mail_limit @config option for specific people. *<limit>* should be a number between 1 and 50000, inclusive.
 
@@ -157,6 +179,7 @@ Example:
 ```
 
 ## @MAILFILTER
+## MAILFILTER
 
 The @mailfilter attribute specifies automatic filing of incoming @mail messages into folders. When an @mail message is received, the contents of @mailfilter are evaluated, with the following arguments passed:
 * `%0` - dbref of message sender
@@ -171,11 +194,14 @@ Example: Filter urgent messages into folder 1
 > @mailfilter me=if(strmatch(%3,*U*),1)
 ```
 
-See also: [mail-folders](#mail-folders)
+
+### See Also
+- [mail-folders](/reference/sharpmush-help/pennmail/#mail-folders)
 
 ## @MAILSIGNATURE
+## MAILSIGNATURE
 
-`@mailsignature <object>[=<signature>]`
+- `@mailsignature <object>[=<signature>]`
 
 When set, this attribute is evaluated and appended to any @mail messages sent by *<object>*, unless the @mail/nosig command is used.
 
@@ -184,18 +210,21 @@ Example:
 > @mailsignature me=%r%r-- %n%r%r[u(funny_quote)]
 ```
 
-See also: [@mail](#@mail), [mail-sending](#mail-sending)
+
+### See Also
+- [@mail](/reference/sharpmush-help/pennmail/#mail)
+- [mail-sending](/reference/sharpmush-help/pennmail/#mail-sending)
 
 ## MAIL-ADMIN
 
 The @mail command can also take the following switches:
 
-`@mail/stats [<player>]` - Basic mail statistics.
-`@mail/dstats [<player>]` - Also provides read/unread count.
-`@mail/fstats [<player>]` - Does all that, plus gives space usage.
+- `@mail/stats [<player>]` - Basic mail statistics.
+- `@mail/dstats [<player>]` - Also provides read/unread count.
+- `@mail/fstats [<player>]` - Does all that, plus gives space usage.
 
-`@mail/debug <action>[=<player>]`
-`@mail/nuke`
+- `@mail/debug <action>[=<player>]`
+- `@mail/nuke`
 
 Only wizards may stats players other than themselves.
 
@@ -208,7 +237,7 @@ The /nuke switch destroys the post office, erasing all @mail everywhere. It may 
 
 ## @MALIAS
 
-`@malias [<alias>]`
+- `@malias [<alias>]`
 
 The @malias command is used to create, view, and manipulate @mail aliases, or lists. An alias is a shorthand way of specifying a list of players for @mail. Aliases begin with the '+' (plus) prefix, and represent a list of dbrefs; aliases may not include other aliases.
 
@@ -216,14 +245,16 @@ The @malias command is used to create, view, and manipulate @mail aliases, or li
 
 `@malias` with a single argument (the name of an alias) lists the members of that alias, if you're allowed to see them. Other forms of the same command are `@malias/members <alias>` or `@malias/who <alias>`
 
-See also: [@malias2](#@malias2)
+
+### See Also
+- [@malias2](/reference/sharpmush-help/pennmail/#malias2)
 
 ## @MALIAS2
 
-`@malias[/create] <alias>=<player list>`
-`@malias/desc <alias>=<description>`
-`@malias/rename <alias>=<newalias>`
-`@malias/destroy <alias>`
+- `@malias[/create] <alias>=<player list>`
+- `@malias/desc <alias>=<description>`
+- `@malias/rename <alias>=<newalias>`
+- `@malias/destroy <alias>`
 
 The first form above creates a new alias for the given list of players.
 
@@ -233,13 +264,15 @@ The first form above creates a new alias for the given list of players.
 
 `@malias/destroy` destroys the alias completely.
 
-See also: [@malias3](#@malias3)
+
+### See Also
+- [@malias3](/reference/sharpmush-help/pennmail/#malias3)
 
 ## @MALIAS3
 
-`@malias/set <alias>=<player list>`
-`@malias/add <alias>=<player list>`
-`@malias/remove <alias>=<player list>`
+- `@malias/set <alias>=<player list>`
+- `@malias/add <alias>=<player list>`
+- `@malias/remove <alias>=<player list>`
 
 `@malias/set` resets the list of players on the alias to *<player list>*.
 
@@ -247,12 +280,14 @@ See also: [@malias3](#@malias3)
 
 `@malias/remove` removes players from the alias. If a player is on the alias more than once, a single remove will remove only one instance of that player.
 
-See also: [@malias4](#@malias4)
+
+### See Also
+- [@malias4](/reference/sharpmush-help/pennmail/#malias4)
 
 ## @MALIAS4
 
-`@malias/use <alias>=<perm list>`
-`@malias/see <alias>=<perm list>`
+- `@malias/use <alias>=<perm list>`
+- `@malias/see <alias>=<perm list>`
 
 `@malias/use` controls who may use an alias. Players who may use an alias will see it in their @malias list, and can @mail to the alias.
 
@@ -262,14 +297,16 @@ An empty permission list allows any player. The permission list may also be a sp
 
 By default, the owner and alias members may see and use the alias, but only the owner may list the members. Note that admin may always list aliases and their members, regardless of these settings, but are treated like anyone else when trying to @mail with an alias.
 
-See also: [@malias5](#@malias5)
+
+### See Also
+- [@malias5](/reference/sharpmush-help/pennmail/#malias5)
 
 ## @MALIAS5
 
-`@malias/all`
-`@malias/stat`
-`@malias/chown <alias>=<player>`
-`@malias/nuke`
+- `@malias/all`
+- `@malias/stat`
+- `@malias/chown <alias>=<player>`
+- `@malias/nuke`
 
 `@malias/all` is an admin-only command that lists all aliases in the MUSH.
 
@@ -284,36 +321,38 @@ See also: [@malias5](#@malias5)
 Mail functions work with @mail.
 
 Available functions:
-* [folderstats](#folderstats)
-* [mail](#mail)
-* [maildstats](#maildstats)
-* [mailfrom](#mailfrom)
-* [mailfstats](#mailfstats)
-* [maillist](#maillist)
-* [mailsend](#mailsend)
-* [mailstats](#mailstats)
-* [mailstatus](#mailstatus)
-* [mailsubject](#mailsubject)
-* [mailtime](#mailtime)
-* [malias](#malias)
+* [folderstats](/reference/sharpmush-help/pennconf/#folderstats)
+* [mail](/reference/sharpmush-help/pennmail/#mail)
+* [maildstats](/reference/sharpmush-help/pennmail/#maildstats)
+* [mailfrom](/reference/sharpmush-help/pennmail/#mailfrom)
+* [mailfstats](/reference/sharpmush-help/pennmail/#mailfstats)
+* [maillist](/reference/sharpmush-help/pennmail/#maillist)
+* [mailsend](/reference/sharpmush-help/pennmail/#mailsend)
+* [mailstats](/reference/sharpmush-help/pennmail/#mailstats)
+* [mailstatus](/reference/sharpmush-help/pennmail/#mailstatus)
+* [mailsubject](/reference/sharpmush-help/pennmail/#mailsubject)
+* [mailtime](/reference/sharpmush-help/pennmail/#mailtime)
+* [malias](/reference/sharpmush-help/pennconf/#malias)
 
 ## FOLDERSTATS()
 
-`folderstats()`
-`folderstats(<folder #>)`
-`folderstats(<player>)`
-`folderstats(<player>, <folder #>)`
+- `folderstats()`
+- `folderstats(<folder #>)`
+- `folderstats(<player>)`
+- `folderstats(<player>, <folder #>)`
 
 folderstats() returns the number of read, unread, and cleared messages in a specific folder, or, if none is given, the player's current folder. Only Wizards may use forms which get other players' mail information.
 
-See also: [mailstats](#mailstats)
+
+### See Also
+- [mailstats](/reference/sharpmush-help/pennmail/#mailstats)
 
 ## MAIL()
 
-`mail()`
-`mail(<player name>)`
-`mail([<folder #>:]<mail message #>)`
-`mail(<player>, [<folder #>:]<mail message #>)`
+- `mail()`
+- `mail(<player name>)`
+- `mail([<folder #>:]<mail message #>)`
+- `mail(<player>, [<folder #>:]<mail message #>)`
 
 Without arguments, mail() returns the number of messages in all the player's mail folders. With a player name argument, mail() returns the number of read, unread, and cleared messages *<player>* has in all folders. Only Wizards can use this on other players.
 
@@ -325,13 +364,16 @@ Example:
 (text of the second message in the player's third folder)
 ```
 
-See also: [maillist](#maillist), [mailfrom](#mailfrom)
+
+### See Also
+- [maillist](/reference/sharpmush-help/pennmail/#maillist)
+- [mailfrom](/reference/sharpmush-help/pennmail/#mailfrom)
 
 ## MAILLIST()
 
-`maillist([<player>, ]<message-list>)`
+- `maillist([<player>, ]<message-list>)`
 
-maillist() returns a list of all *<player>*'s @mail messages which match the given *<message-list>* (the same as @mail/list *<message-list>*). If no *<player>* is given, the executor's mail is matched. The *<message-list>* argument is described in [mail](#mail).
+maillist() returns a list of all *<player>*'s @mail messages which match the given *<message-list>* (the same as @mail/list *<message-list>*). If no *<player>* is given, the executor's mail is matched. The *<message-list>* argument is described in [mail](/reference/sharpmush-help/pennmail/#mail).
 
 Examples:
 ```
@@ -343,27 +385,38 @@ Examples:
 1:1 1:2
 ```
 
-See also: [mail](#mail), [mailfrom](#mailfrom)
+
+### See Also
+- [mail](/reference/sharpmush-help/pennmail/#mail)
+- [mailfrom](/reference/sharpmush-help/pennmail/#mailfrom)
 
 ## MAILFROM()
+## MAILTIME()
+## MAILSTATUS()
+## MAILSUBJECT()
 
-`mailfrom([<player>, ][<folder #>:]<mail message #>)`
-`mailtime([<player>, ][<folder #>:]<mail message #>)`
-`mailstatus([<player>, ][<folder #>:]<mail message #>)`
-`mailsubject([<player>, ][<folder #>:]<mail message #>)`
+- `mailfrom([<player>, ][<folder #>:]<mail message #>)`
+- `mailtime([<player>, ][<folder #>:]<mail message #>)`
+- `mailstatus([<player>, ][<folder #>:]<mail message #>)`
+- `mailsubject([<player>, ][<folder #>:]<mail message #>)`
 
 * mailfrom() returns the dbref number of the sender of a mail message.
 * mailtime() is similar, but returns the time the mail was sent.
 * mailsubject() is similar, but returns the subject of the message.
 * mailstatus() returns the mail's status characters (as per @mail/list).
 
-See also: [mail](#mail), [maillist](#maillist)
+
+### See Also
+- [mail](/reference/sharpmush-help/pennmail/#mail)
+- [maillist](/reference/sharpmush-help/pennmail/#maillist)
 
 ## MAILSTATS()
+## MAILDSTATS()
+## MAILFSTATS()
 
-`mailstats([<player>])`
-`maildstats([<player>])`
-`mailfstats([<player>])`
+- `mailstats([<player>])`
+- `maildstats([<player>])`
+- `mailfstats([<player>])`
 
 The mail*stats() functions return data like @mail/*stats does. You either must use this on yourself, or you must be a wizard. The information will be joined together as a space separated list of numbers.
 
@@ -376,19 +429,21 @@ Example:
 <# received unread> <# received cleared> <# received bytes>
 ```
 
-See also: [folderstats](#folderstats)
+
+### See Also
+- [folderstats](/reference/sharpmush-help/pennconf/#folderstats)
 
 ## MAILSEND()
 
-`mailsend(<player>,[<subject>/]<message>)`
+- `mailsend(<player>,[<subject>/]<message>)`
 
 This function sends a message to a player, just like @mail/send. It returns nothing if successful, or an error message.
 
 ## MALIAS()
 
-`malias([<delimiter>])`
-`malias(<malias name>)`
-`malias(<malias name>[,<delimiter>])`
+- `malias([<delimiter>])`
+- `malias(<malias name>)`
+- `malias(<malias name>[,<delimiter>])`
 
 With no arguments, malias() returns the list of all malias names which are visible to the player. With two arguments, returns the list of dbrefs that are members of the given malias, delimited by *<delimiter>*.
 
