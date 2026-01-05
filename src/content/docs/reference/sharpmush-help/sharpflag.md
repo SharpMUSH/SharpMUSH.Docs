@@ -32,8 +32,8 @@ Note: The object type (player, thing, room, exit or garbage) is not actually a f
 - [hasflag()](/reference/sharpmush-help/sharpfunc/#hasflag)
 - [orflags()](/reference/sharpmush-help/sharpfunc/#orflags)
 - [andflags()](/reference/sharpmush-help/sharpfunc/#andflags)
-- [orlflags()](/reference/sharpmush-help/sharpfunc/#orlflags)
-- [andlflags()](/reference/sharpmush-help/sharpfunc/#andlflags)
+- [orlflags()](/reference/sharpmush-help/sharpfunc/#orflags)
+- [andlflags()](/reference/sharpmush-help/sharpfunc/#andflags)
 - [types of objects](/reference/sharpmush-help/sharptop/#types-of-objects)
 - [type()](/reference/sharpmush-help/sharpfunc/#type)
 - [hastype()](/reference/sharpmush-help/sharpfunc/#hastype)
@@ -44,7 +44,6 @@ Note: The object type (player, thing, room, exit or garbage) is not actually a f
 - [attribute flags](/reference/sharpmush-help/sharpattr/#attribute-flags)
 
 ## FLAG LIST
-## FLAGS LIST
 
 | Flag | Title | Flag | Title | Flag | Title |
 |------|-------|------|-------|------|-------|
@@ -317,10 +316,10 @@ ENTER_OK is often used in conjunction with AUDIBLE on vehicles and buildings.
 
 
 **See Also:**
-- [enter](/reference/sharpmush-help/sharpcmd/#enter)
+- [enter](/reference/sharpmush-help/sharpcmd/#aenter)
 - [give](/reference/sharpmush-help/sharpcmd/#give)
 - [@tel](/reference/sharpmush-help/sharpcmd/#tel)
-- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [@lock](/reference/sharpmush-help/sharpcmd/#locking)
 
 ## FIXED
 
@@ -539,7 +538,7 @@ An UNFINDABLE object cannot be found with `@find`, `@search`, or `locate`. Only 
 
 **See Also:**
 - [@find](/reference/sharpmush-help/sharpcmd/#find)
-- [@search](/reference/sharpmush-help/sharpcmd/#search)
+- [@search](/reference/sharpmush-help/sharpcmd/#lsearch)
 - [locate](/reference/sharpmush-help/sharpconf/#locate)
 
 ## UNINSPECTED
@@ -575,7 +574,7 @@ A VISUAL object's attributes can be examined by anyone in its location who passe
 
 **See Also:**
 - [examine](/reference/sharpmush-help/sharpcmd/#examine)
-- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [@lock](/reference/sharpmush-help/sharpcmd/#locking)
 
 ## WIZARD
 

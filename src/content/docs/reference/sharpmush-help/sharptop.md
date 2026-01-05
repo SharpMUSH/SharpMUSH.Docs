@@ -61,8 +61,8 @@ This is the index to the MUSH online help files.
 
 **See Also:**
 - [textfile()](/reference/sharpmush-help/sharpfunc/#textfile)
-- [textentries()](/reference/sharpmush-help/sharpfunc/#textentries)
-- [textsearch()](/reference/sharpmush-help/sharpfunc/#textsearch)
+- [textentries()](/reference/sharpmush-help/sharpfunc/#textfile)
+- [textsearch()](/reference/sharpmush-help/sharpfunc/#textfile)
 
 ## helpfile2
 
@@ -153,9 +153,9 @@ This is the index to the MUSH online help files.
 
 
 **See Also:**
-- [goto](/reference/sharpmush-help/sharpcmd/#goto)
+- [goto](/reference/sharpmush-help/sharpcmd/#go)
 - [home](/reference/sharpmush-help/sharptop/#home)
-- [enter](/reference/sharpmush-help/sharpcmd/#enter)
+- [enter](/reference/sharpmush-help/sharpcmd/#aenter)
 - [leave](/reference/sharpmush-help/sharpcmd/#leave)
 - [@teleport](/reference/sharpmush-help/sharpcmd/#teleport)
 - [@link](/reference/sharpmush-help/sharpcmd/#link)
@@ -646,7 +646,7 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 **See Also:**
 - [code](/reference/sharpmush-help/sharpcode/#code)
-- [license](/reference/sharpmush-help/sharpcode/#license)
+- [license](/reference/sharpmush-help/sharpcode/#copyright)
 
 ## DATABASE
 
@@ -698,7 +698,7 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 **See Also:**
 - [objid()](/reference/sharpmush-help/sharpfunc/#objid)
-- [@lock-objid](/reference/sharpmush-help/sharplock/#lock-objid)
+- [@lock-objid](/reference/sharpmush-help/sharplock/#lock-simple)
 - [DBREFS](/reference/sharpmush-help/sharptop/#dbrefs)
 
 ## DROP-TOS
@@ -718,7 +718,7 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 - [@link](/reference/sharpmush-help/sharpcmd/#link)
 - [STICKY](/reference/sharpmush-help/sharpflag/#sticky)
 - [LINK_OK](/reference/sharpmush-help/sharpflag/#linkok)
-- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [@lock](/reference/sharpmush-help/sharpcmd/#locking)
 
 ## %#
 
@@ -843,14 +843,14 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
   See [failure2](/reference/sharpmush-help/sharptop/#failure2)
 
-  See [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+  See [@lock](/reference/sharpmush-help/sharpcmd/#locking)
 
 
 **See Also:**
 - [verbs](/reference/sharpmush-help/sharptop/#verbs)
-- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
-- [@failure](/reference/sharpmush-help/sharpcmd/#failure)
-- [@efail](/reference/sharpmush-help/sharpcmd/#efail)
+- [@lock](/reference/sharpmush-help/sharpcmd/#locking)
+- [@failure](/reference/sharpmush-help/sharpcmd/#afailure)
+- [@efail](/reference/sharpmush-help/sharpcmd/#aefail)
 - [@lfail](/reference/sharpmush-help/sharpcmd/#lfail)
 
 ## failure2
@@ -971,7 +971,7 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 
 **See Also:**
-- [enter](/reference/sharpmush-help/sharpcmd/#enter)
+- [enter](/reference/sharpmush-help/sharpcmd/#aenter)
 - [leave](/reference/sharpmush-help/sharpcmd/#leave)
 - [@prefix](/reference/sharpmush-help/sharpcmd/#prefix)
 - [@filter](/reference/sharpmush-help/sharpcmd/#filter)
@@ -979,7 +979,6 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 - [@listen](/reference/sharpmush-help/sharpcmd/#listen)
 
 ## LAST
-## LASTLOGOUT
 
 ## LAST
 
@@ -1068,8 +1067,8 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 **See Also:**
 - [@listen](/reference/sharpmush-help/sharpcmd/#listen)
 - [@ahear](/reference/sharpmush-help/sharpcmd/#ahear)
-- [@amhear](/reference/sharpmush-help/sharpcmd/#amhear)
-- [@aahear](/reference/sharpmush-help/sharpcmd/#aahear)
+- [@amhear](/reference/sharpmush-help/sharpcmd/#ahear)
+- [@aahear](/reference/sharpmush-help/sharpcmd/#ahear)
 - [MONITOR](/reference/sharpmush-help/sharpflag/#monitor)
 - [LISTEN_PARENT](/reference/sharpmush-help/sharpconf/#listenparent)
 - [USER-DEFINED COMMANDS](/reference/sharpmush-help/sharptop/#user-defined-commands)
@@ -1131,7 +1130,7 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 **See Also:**
 - [NEWBIE](/reference/sharpmush-help/sharptop/#newbie)
-- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [@lock](/reference/sharpmush-help/sharpcmd/#locking)
 - [@describe](/reference/sharpmush-help/sharpcmd/#describe)
 - [@sex](/reference/sharpmush-help/sharpcmd/#sex)
 - [MATCHING](/reference/sharpmush-help/sharptop/#matching)
@@ -1148,8 +1147,8 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 - [COSTS](/reference/sharpmush-help/sharptop/#costs)
 - [give](/reference/sharpmush-help/sharpcmd/#give)
 - [@cost](/reference/sharpmush-help/sharpcmd/#cost)
-- [@payment](/reference/sharpmush-help/sharpcmd/#payment)
-- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [@payment](/reference/sharpmush-help/sharpcmd/#apayment)
+- [@lock](/reference/sharpmush-help/sharpcmd/#locking)
 - [buy](/reference/sharpmush-help/sharpcmd/#buy)
 - [@buy](/reference/sharpmush-help/sharpcmd/#buy)
 - [score](/reference/sharpmush-help/sharpcmd/#score)
@@ -1609,7 +1608,7 @@ See [queue2](/reference/sharpmush-help/sharptop/#queue2)
 - [registers()](/reference/sharpmush-help/sharpfunc/#registers)
 - [listq()](/reference/sharpmush-help/sharpfunc/#listq)
 - [letq()](/reference/sharpmush-help/sharpfunc/#letq)
-- [unsetq()](/reference/sharpmush-help/sharpfunc/#unsetq)
+- [unsetq()](/reference/sharpmush-help/sharpfunc/#listq)
 - [strmatch()](/reference/sharpmush-help/sharpfunc/#strmatch)
 
 ## RQUOTA
@@ -1620,7 +1619,7 @@ See [queue2](/reference/sharpmush-help/sharptop/#queue2)
 
 **See Also:**
 - [@quota](/reference/sharpmush-help/sharpcmd/#quota)
-- [@squota](/reference/sharpmush-help/sharpcmd/#squota)
+- [@squota](/reference/sharpmush-help/sharpcmd/#quota2)
 
 ## SEMAPHORES
   The most complicated thing about semaphores is their name. Before you try to use semaphores, you should first be familiar with the "`@wait`" command. If you are, then you know that normally, you type:
@@ -1898,13 +1897,13 @@ See [queue2](/reference/sharpmush-help/sharptop/#queue2)
 
 
 **See Also:**
-- [FAILURE](/reference/sharpmush-help/sharptop/#failure)
-- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [FAILURE](/reference/sharpmush-help/sharptop/#afailure)
+- [@lock](/reference/sharpmush-help/sharpcmd/#locking)
 - [VERBS](/reference/sharpmush-help/sharptop/#verbs)
 - [ATTRIBUTES](/reference/sharpmush-help/sharptop/#attributes)
-- [@success](/reference/sharpmush-help/sharpcmd/#success)
+- [@success](/reference/sharpmush-help/sharpcmd/#asuccess)
 - [@asuccess](/reference/sharpmush-help/sharpcmd/#asuccess)
-- [@osuccess](/reference/sharpmush-help/sharpcmd/#osuccess)
+- [@osuccess](/reference/sharpmush-help/sharpcmd/#asuccess)
 
 ## SWITCHES
 
@@ -2005,7 +2004,7 @@ See [queue2](/reference/sharpmush-help/sharptop/#queue2)
 
 **See Also:**
 - [@destroy](/reference/sharpmush-help/sharpcmd/#destroy)
-- [@stats](/reference/sharpmush-help/sharpcmd/#stats)
+- [@stats](/reference/sharpmush-help/sharpcmd/#lstats)
 
 ## $-COMMANDS
 
@@ -2055,7 +2054,7 @@ See [queue2](/reference/sharpmush-help/sharptop/#queue2)
 - [STACK](/reference/sharpmush-help/sharptop/#stack)
 - [SUBSTITUTIONS](/reference/sharpmush-help/sharptop/#substitutions)
 - [WILDCARDS](/reference/sharpmush-help/sharptop/#wildcards)
-- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [@lock](/reference/sharpmush-help/sharpcmd/#locking)
 
 ## VERBS
   Verb attributes are ones which are shown (or triggered) when you use a particular command, or perform a certain action. There are normally three: the 'verb' attribute (shown to the enactor), the 'overb' attribute (shown to others in the enactor's location), and the 'averb' attribute (an action list which is triggered). One example is `@use`, `@ouse`, and `@ause`, which are shown/triggered when the 'use' command is run on an object.
@@ -2213,7 +2212,7 @@ See [queue2](/reference/sharpmush-help/sharptop/#queue2)
 
 **See Also:**
 - [SHARED](/reference/sharpmush-help/sharpflag/#shared)
-- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [@lock](/reference/sharpmush-help/sharpcmd/#locking)
 - [ZMO](/reference/sharpmush-help/sharpconf/#zmo)
 
 ## ZONES
@@ -2332,9 +2331,9 @@ This is the AHELP index.
 
 **See Also:**
 - [@command](/reference/sharpmush-help/sharpcmd/#command)
-- [@function](/reference/sharpmush-help/sharpcmd/#function)
+- [@function](/reference/sharpmush-help/sharpcmd/#functions)
 - [@attribute](/reference/sharpmush-help/sharpcmd/#attribute)
-- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [@lock](/reference/sharpmush-help/sharpcmd/#locking)
 
 ## DESCRIPTOR
 
@@ -2346,7 +2345,7 @@ This is the AHELP index.
 
 **See Also:**
 - [WHO](/reference/sharpmush-help/sharpcmd/#who)
-- [ports()](/reference/sharpmush-help/sharpfunc/#ports)
+- [ports()](/reference/sharpmush-help/sharpfunc/#lports)
 - [lports()](/reference/sharpmush-help/sharpfunc/#lports)
 - [player()](/reference/sharpmush-help/sharpfunc/#player)
 - [@boot](/reference/sharpmush-help/sharpcmd/#boot)
@@ -2362,7 +2361,7 @@ A few functions support Unicode-aware text transformations:
 
 When the MUSH is compiled with the ICU library (See `@config` compile), additional functions support Unicode-aware text transformations:
 
-- [lcstr2()](/reference/sharpmush-help/sharpfunc/#lcstr2)
-- [ucstr2()](/reference/sharpmush-help/sharpfunc/#ucstr2)
+- [lcstr2()](/reference/sharpmush-help/sharpfunc/#lcstr)
+- [ucstr2()](/reference/sharpmush-help/sharpfunc/#ucstr)
 
 When using these functions, do not assume that they return the same number of characters as their argument.

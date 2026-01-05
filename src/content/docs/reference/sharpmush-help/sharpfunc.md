@@ -4,7 +4,6 @@ description: "SharpMUSH documentation for Functions"
 ---
 
 ## FUNCTIONS
-## FUNCTION
   Functions are specialized commands used to manipulate strings and other input. Functions take the general form: `[FUNCTION(<input>)]`
 
   The brackets are used to delimit and force evaluation of the function (or nested functions). The brackets can also be used to group functions for the purposes of string concatenation. In general, more than one pair of brackets is not required, but you can nest an arbitrary number of brackets.
@@ -24,14 +23,13 @@ You say, "is"
 ## FUNCTIONS2
   There are two types of functions, "built-in functions" and "global user functions", also known as "@functions". You can get a complete list of functions on this game with "@list/functions".
 
-  Built-in functions are written in the game hardcode, while @functions are written in softcode, and then made global with the "@function" command. Both are used in exactly the same manner. For more information on @functions, see [@function](/reference/sharpmush-help/sharpcmd/#function).
+  Built-in functions are written in the game hardcode, while @functions are written in softcode, and then made global with the "@function" command. Both are used in exactly the same manner. For more information on @functions, see [@function](/reference/sharpmush-help/sharpcmd/#functions).
 
 
 **See Also:**
 - [MUSHCODE](/reference/sharpmush-help/sharptop/#mushcode)
 - [FUNCTION LIST](/reference/sharpmush-help/sharpfunc/#function-list)
 ## FUNCTION LIST
-## FUNCTION TYPES
   Several major variants of functions are available. The help topics are listed below, together with a quick summary of the function type and some examples of that type of function.
 
   Attribute functions: attribute-related manipulations (GET, UFUN)
@@ -264,7 +262,6 @@ sql()         sqlescape()   mapsql()
   uptime()`
 
 ## @@()
-## NULL()
 `@@(<expression>)`
 `null(<expression>[, ... , <expression>])`
 
@@ -341,7 +338,6 @@ You say, "2"
 
   See 'HELP ACCENTS3' for examples
 ## ACCENT2
-## ACCENTS3
   Some examples of accent() and their expected outputs:
 
     > think accent(Aule, ---:)
@@ -410,7 +406,6 @@ You say, "r baz"
 - [before()](/reference/sharpmush-help/sharpfunc/#before)
 - [rest()](/reference/sharpmush-help/sharpfunc/#rest)
 ## ALIGN()
-## LALIGN()
 `align(<widths>, <col>[, ... , <colN>[, <filler>[, <colsep>[, <rowsep>]]]])`
 `lalign(<widths>, <colList>[, <delim>[, <filler>[, <colsep>[, <rowsep>]]]])`
 
@@ -539,7 +534,7 @@ You say, "r baz"
 **See Also:**
 - [firstof()](/reference/sharpmush-help/sharpfunc/#firstof)
 - [BOOLEAN VALUES](/reference/sharpmush-help/sharptop/#boolean-values)
-- [strallof()](/reference/sharpmush-help/sharpfunc/#strallof)
+- [strallof()](/reference/sharpmush-help/sharpfunc/#strfirstof)
 - [filter()](/reference/sharpmush-help/sharpfunc/#filter)
 ## ALPHAMAX()
 `alphamax(<word>[, ... , <wordN>])`
@@ -563,7 +558,6 @@ You say, "r baz"
 - [alphamax()](/reference/sharpmush-help/sharpfunc/#alphamax)
 - [min()](/reference/sharpmush-help/sharpfunc/#min)
 ## AND()
-## CAND()
 `and(<boolean1>, <boolean2>[, ... , <booleanN>])`
 `cand(<boolean1>, <boolean2>[, ... , <booleanN>])`
 
@@ -578,7 +572,6 @@ You say, "r baz"
 - [not()](/reference/sharpmush-help/sharpfunc/#not)
 - [lmath()](/reference/sharpmush-help/sharpfunc/#lmath)
 ## ANDFLAGS()
-## ANDLFLAGS()
 `andflags(<object>, <string of flag letters>)`
 `andlflags(<object>, <list of flag names>)`
 
@@ -673,7 +666,6 @@ would show white text on an ANSI-blue background.
   ANSI-blue text on a bisque background
   > think ansi(+yellow/+bisque b, the 'b' overrides the earlier '+yellow')
 ## APOSS()
-## %a
 `aposs(<object>)`
 
   Returns the absolute possessive pronoun - his/hers/its/theirs - for an object. The %a substitution returns the absolute possessive pronoun of the enactor.
@@ -703,7 +695,6 @@ would show white text on an ANSI-blue background.
 - [sin()](/reference/sharpmush-help/sharpfunc/#sin)
 - [tan()](/reference/sharpmush-help/sharpfunc/#tan)
 ## ATAN()
-## ATAN2()
 `atan(<tangent>[, <angle type>])`
 `atan2(<number1>, <number2>[, <angle type>])`
 
@@ -855,8 +846,8 @@ think brackets(v(desc))
 
 
 **See Also:**
-- [ceil()](/reference/sharpmush-help/sharpfunc/#ceil)
-- [floor()](/reference/sharpmush-help/sharpfunc/#floor)
+- [ceil()](/reference/sharpmush-help/sharpfunc/#round)
+- [floor()](/reference/sharpmush-help/sharpfunc/#round)
 - [round()](/reference/sharpmush-help/sharpfunc/#round)
 - [trunc()](/reference/sharpmush-help/sharpfunc/#trunc)
 ## BXOR()
@@ -884,7 +875,6 @@ Foo bar baz
 - [lcstr()](/reference/sharpmush-help/sharpfunc/#lcstr)
 - [ucstr()](/reference/sharpmush-help/sharpfunc/#ucstr)
 ## CAT()
-## STRCAT()
 `cat(<string>[, ... , <stringN>])`
 `strcat(<string1>[, ... , <stringN>])`
 
@@ -936,7 +926,6 @@ You say, "--X--"
 - [@password](/reference/sharpmush-help/sharpcmd/#password)
 - [@newpassword](/reference/sharpmush-help/sharpcmd/#newpassword)
 ## CHR()
-## ORD()
 `chr(<number>)`
 `ord(<character>)`
 
@@ -1092,9 +1081,6 @@ greenyellow yellowgreen lightgoldenrodyellow lightyellow yellow lightyellow1 lig
 - [lcon()](/reference/sharpmush-help/sharpfunc/#lcon)
 - [next()](/reference/sharpmush-help/sharpfunc/#next)
 ## COND()
-## CONDALL()
-## NCOND()
-## NCONDALL()
 `cond(<cond>, <expr>[, ... , <condN>, <exprN>][, <default>])`
 `condall(<cond>, <expr>[, ... , <condN>, <exprN>][, <default>])`
 `ncond(<cond>, <expr>[, ... , <condN>, <exprN>][, <default>])`
@@ -1153,7 +1139,6 @@ Penny
 - [visible()](/reference/sharpmush-help/sharpfunc/#visible)
 - [CONTROL](/reference/sharpmush-help/sharptop/#control)
 ## CONVSECS()
-## CONVUTCSECS()
 `convsecs(<seconds>[, <timezone>])`
 `convutcsecs(<seconds>)`
 
@@ -1184,7 +1169,6 @@ You say, "709395750"
 - [time()](/reference/sharpmush-help/sharpfunc/#time)
 - [timefmt()](/reference/sharpmush-help/sharpfunc/#timefmt)
 ## CONVTIME()
-## CONVUTCTIME()
 `convtime(<time string>,[<timezone>])`
 `convutctime(<time string>)`
 
@@ -1261,7 +1245,6 @@ You say, "0"
 - [dig()](/reference/sharpmush-help/sharpfunc/#dig)
 - [open()](/reference/sharpmush-help/sharpfunc/#open)
 ## CTIME()
-## CSECS()
 `ctime(<object>[, <utc>])`
 `csecs(<object>)`
 
@@ -1379,13 +1362,12 @@ You say "apple orange banana"
 **See Also:**
 - [get()](/reference/sharpmush-help/sharpfunc/#get)
 - [hasattr()](/reference/sharpmush-help/sharpfunc/#hasattr)
-- [ufun()](/reference/sharpmush-help/sharpfunc/#ufun)
+- [ufun()](/reference/sharpmush-help/sharpfunc/#u)
 - [edefault()](/reference/sharpmush-help/sharpfunc/#edefault)
 - [udefault()](/reference/sharpmush-help/sharpfunc/#udefault)
-- [uldefault()](/reference/sharpmush-help/sharpfunc/#uldefault)
+- [uldefault()](/reference/sharpmush-help/sharpfunc/#udefault)
 - [strfirstof()](/reference/sharpmush-help/sharpfunc/#strfirstof)
 ## STRDELETE()
-## DELETE()
 `strdelete(<string>, <first>, <len>)`
 
   Return a modified `<string>`, with `<len>` characters starting after the character at position `<first>` deleted. In other words, it copies `<first>` characters, skips `<len>` characters, and then copies the remainder of the string. If `<len>` is negative, deletes characters leftwards from `<first>`. Characters are numbered starting at 0.
@@ -1437,10 +1419,6 @@ think die(3, 6, 1)
 - [create()](/reference/sharpmush-help/sharpfunc/#create)
 - [pcreate()](/reference/sharpmush-help/sharpfunc/#pcreate)
 ## DIGEST()
-## MD5
-## SHA1
-## CHECKSUM
-## HASH
 `digest(list)`
 `digest(<algorithm>, <string>)`
 
@@ -1489,8 +1467,6 @@ SHA224(foo) => 0808f64e60d58979fcb676c96ec938270dea42445aeefcd3a4e6f8db
 - [dist2d()](/reference/sharpmush-help/sharpfunc/#dist2d)
 - [lmath()](/reference/sharpmush-help/sharpfunc/#lmath)
 ## DIV()
-## FLOORDIV()
-## FDIV()
 `div(<number1>, <number2>[, ... , <numberN>])`
 `fdiv(<number1>, <number2>[, ... , <numberN>])`
 `floordiv(<number1>, <number2>[, ... , <numberN>])`
@@ -1514,7 +1490,7 @@ SHA224(foo) => 0808f64e60d58979fcb676c96ec938270dea42445aeefcd3a4e6f8db
 
 
 **See Also:**
-- [modulo()](/reference/sharpmush-help/sharpfunc/#modulo)
+- [modulo()](/reference/sharpmush-help/sharpfunc/#mod)
 - [lmath()](/reference/sharpmush-help/sharpfunc/#lmath)
 ## DOING()
 `doing(<player|descriptor>)`
@@ -1524,10 +1500,9 @@ SHA224(foo) => 0808f64e60d58979fcb676c96ec938270dea42445aeefcd3a4e6f8db
 
 **See Also:**
 - [@poll](/reference/sharpmush-help/sharpcmd/#poll)
-- [@doing](/reference/sharpmush-help/sharpcmd/#doing)
+- [@doing](/reference/sharpmush-help/sharpcmd/#who)
 - [poll()](/reference/sharpmush-help/sharpfunc/#poll)
 ## E()
-## EXP()
 `e([<number>])`
 
   With no argument, returns the value of "e" (2.71828182845904523536, rounded to the game's float_precision setting).
@@ -1559,7 +1534,7 @@ You say "You have lost 6 marbles."
 **See Also:**
 - [get()](/reference/sharpmush-help/sharpfunc/#get)
 - [eval()](/reference/sharpmush-help/sharpfunc/#eval)
-- [ufun()](/reference/sharpmush-help/sharpfunc/#ufun)
+- [ufun()](/reference/sharpmush-help/sharpfunc/#u)
 - [default()](/reference/sharpmush-help/sharpfunc/#default)
 - [udefault()](/reference/sharpmush-help/sharpfunc/#udefault)
 - [hasattr()](/reference/sharpmush-help/sharpfunc/#hasattr)
@@ -1629,13 +1604,12 @@ think elock(Dancing Slippers/drop, Princess)
 
 
 **See Also:**
-- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [@lock](/reference/sharpmush-help/sharpcmd/#locking)
 - [locktypes](/reference/sharpmush-help/sharplock/#locktypes)
 - [testlock()](/reference/sharpmush-help/sharpfunc/#testlock)
 - [lockfilter()](/reference/sharpmush-help/sharpfunc/#lockfilter)
 - [@lset](/reference/sharpmush-help/sharpcmd/#lset)
 ## EMIT()
-## NSEMIT()
 `emit(<message>)`
 `nsemit(<message>)`
 
@@ -1647,12 +1621,10 @@ think elock(Dancing Slippers/drop, Princess)
 **See Also:**
 - [pemit()](/reference/sharpmush-help/sharpfunc/#pemit)
 - [remit()](/reference/sharpmush-help/sharpfunc/#remit)
-- [lemit()](/reference/sharpmush-help/sharpfunc/#lemit)
+- [lemit()](/reference/sharpmush-help/sharpfunc/#nslemit)
 - [oemit()](/reference/sharpmush-help/sharpfunc/#oemit)
 - [zemit()](/reference/sharpmush-help/sharpfunc/#zemit)
 ## ENCODE64()
-## DECODE64()
-## base64
 `encode64(<string>)`
 `decode64(<string>)`
 
@@ -1665,7 +1637,6 @@ think elock(Dancing Slippers/drop, Princess)
 - [encrypt()](/reference/sharpmush-help/sharpfunc/#encrypt)
 - [digest()](/reference/sharpmush-help/sharpfunc/#digest)
 ## ENCRYPT()
-## DECRYPT()
 `encrypt(<string>, <password>[, <encode>])`
 `decrypt(<string>, <password>[, <encoded>])`
 
@@ -1719,7 +1690,6 @@ think elock(Dancing Slippers/drop, Princess)
 - [secure()](/reference/sharpmush-help/sharpfunc/#secure)
 - []
 ## EVAL()
-## GET_EVAL()
 `eval(<object>, <attribute>)`
 `get_eval(<object>/<attribute>)`
 
@@ -1738,7 +1708,7 @@ test
 **See Also:**
 - [get()](/reference/sharpmush-help/sharpfunc/#get)
 - [u()](/reference/sharpmush-help/sharpfunc/#u)
-- [xget()](/reference/sharpmush-help/sharpfunc/#xget)
+- [xget()](/reference/sharpmush-help/sharpfunc/#get)
 - [edefault()](/reference/sharpmush-help/sharpfunc/#edefault)
 ## EXIT()
 `exit(<object>)`
@@ -1778,7 +1748,6 @@ a test
 - [elements()](/reference/sharpmush-help/sharpfunc/#elements)
 - [grab()](/reference/sharpmush-help/sharpfunc/#grab)
 ## FILTER()
-## FILTERBOOL()
 `filter([<obj>/]<attr>, <list>[, <delimiter>[, <osep>[, ..., <argN>]]])`
 `filterbool([<obj>]/<attr>, <list>[, <delimiter>[, <osep>[, ..., <argN>]]])`
 
@@ -1904,7 +1873,6 @@ NO_COMMAND PUPPET
 - [flags()](/reference/sharpmush-help/sharpfunc/#flags)
 - [list()](/reference/sharpmush-help/sharpfunc/#list)
 ## FLIP()
-## REVERSE()
 `flip(<string>)`
 
   flip() reverses a string. reverse() is an alias for flip().
@@ -1930,7 +1898,7 @@ think fmod(6.1,2.5)
 ```
 
 **See Also:**
-- [fdiv()](/reference/sharpmush-help/sharpfunc/#fdiv)
+- [fdiv()](/reference/sharpmush-help/sharpfunc/#div)
 - [div()](/reference/sharpmush-help/sharpfunc/#div)
 - [mod()](/reference/sharpmush-help/sharpfunc/#mod)
 - [lmath()](/reference/sharpmush-help/sharpfunc/#lmath)
@@ -2068,7 +2036,7 @@ You say, "South;sout;sou;so;s"
 - [accname()](/reference/sharpmush-help/sharpfunc/#accname)
 - [iname()](/reference/sharpmush-help/sharpfunc/#iname)
 - [alias()](/reference/sharpmush-help/sharpfunc/#alias)
-- [fullalias()](/reference/sharpmush-help/sharpfunc/#fullalias)
+- [fullalias()](/reference/sharpmush-help/sharpfunc/#alias)
 ## FUNCTIONS()
 `functions([<type>])`
 
@@ -2079,7 +2047,6 @@ You say, "South;sout;sou;so;s"
 - [list()](/reference/sharpmush-help/sharpfunc/#list)
 - [config()](/reference/sharpmush-help/sharpfunc/#config)
 ## GET()
-## XGET()
 `get(<object>/<attribute>)`
 `xget(<object>, <attribute>)`
 
@@ -2096,7 +2063,7 @@ This is [a test].
 **See Also:**
 - [hasattr()](/reference/sharpmush-help/sharpfunc/#hasattr)
 - [visible()](/reference/sharpmush-help/sharpfunc/#visible)
-- [ufun()](/reference/sharpmush-help/sharpfunc/#ufun)
+- [ufun()](/reference/sharpmush-help/sharpfunc/#u)
 - [default()](/reference/sharpmush-help/sharpfunc/#default)
 - [udefault()](/reference/sharpmush-help/sharpfunc/#udefault)
 ## GETPIDS()
@@ -2112,8 +2079,6 @@ This is [a test].
 - [pidinfo()](/reference/sharpmush-help/sharpfunc/#pidinfo)
 - [SEMAPHORES](/reference/sharpmush-help/sharptop/#semaphores)
 ## GRAB()
-## REGRAB()
-## REGRABI()
 `grab(<list>, <pattern>[, <delimiter>])`
 `regrab(<list>, <regexp>[, <delimiter>])`
 `regrabi(<list>, <regexp>[, <delimiter>])`
@@ -2127,13 +2092,11 @@ This is [a test].
 
 **See Also:**
 - [graball()](/reference/sharpmush-help/sharpfunc/#graball)
-- [match()](/reference/sharpmush-help/sharpfunc/#match)
+- [match()](/reference/sharpmush-help/sharpfunc/#element)
 - [extract()](/reference/sharpmush-help/sharpfunc/#extract)
 - [elements()](/reference/sharpmush-help/sharpfunc/#elements)
 - [regmatch()](/reference/sharpmush-help/sharpfunc/#regmatch)
 ## GRABALL()
-## REGRABALL()
-## REGRABALLI()
 `graball(<list>, <pattern>[, <delim>[, <osep>]])`
 `regraball(<list>, <regexp>[, <delim>[, <osep>]])`
 `regraballi(<list>, <regexp>[, <delim>[, <osep>]])`
@@ -2152,17 +2115,11 @@ You say "This is"
 
 
 **See Also:**
-- [match()](/reference/sharpmush-help/sharpfunc/#match)
-- [matchall()](/reference/sharpmush-help/sharpfunc/#matchall)
+- [match()](/reference/sharpmush-help/sharpfunc/#element)
+- [matchall()](/reference/sharpmush-help/sharpfunc/#element)
 - [grab()](/reference/sharpmush-help/sharpfunc/#grab)
 - [regmatch()](/reference/sharpmush-help/sharpfunc/#regmatch)
 ## GREP()
-## REGREP()
-## WILDGREP()
-## GREPI()
-## REGREPI()
-## WILDGREPI()
-## PGREP()
 `grep(<object>, <attrs>, <substring>)`
 `wildgrep(<object>, <attrs>, <pattern>)`
 `regrep(<object>, <attrs>, <regexp>)`
@@ -2212,9 +2169,6 @@ You say "This is"
 - [neq()](/reference/sharpmush-help/sharpfunc/#neq)
 - [lmath()](/reference/sharpmush-help/sharpfunc/#lmath)
 ## HASATTR()
-## HASATTRP()
-## HASATTRVAL()
-## HASATTRPVAL()
 `hasattr(<object>, <attribute>)`
 `hasattrp(<object>, <attribute>)`
 `hasattrval(<object>, <attribute>)`
@@ -2251,8 +2205,8 @@ think hasflag(me, wizard)
 
 
 **See Also:**
-- [orlflags()](/reference/sharpmush-help/sharpfunc/#orlflags)
-- [andlflags()](/reference/sharpmush-help/sharpfunc/#andlflags)
+- [orlflags()](/reference/sharpmush-help/sharpfunc/#orflags)
+- [andlflags()](/reference/sharpmush-help/sharpfunc/#andflags)
 - [orflags()](/reference/sharpmush-help/sharpfunc/#orflags)
 - [andflags()](/reference/sharpmush-help/sharpfunc/#andflags)
 - [flags()](/reference/sharpmush-help/sharpfunc/#flags)
@@ -2308,7 +2262,6 @@ think hastype(test object, PLAYER THING)
 **See Also:**
 - [@link](/reference/sharpmush-help/sharpcmd/#link)
 ## HOST()
-## HOSTNAME()
 `host(<player|descriptor>)`
 
   Returns the hostname a player is connected from, as shown on the wizard WHO. This may be more reliable that get(`<player>`/lastsite) if the player has multple connections from different locations, and the function is called with a descriptor argument.
@@ -2321,10 +2274,9 @@ think hastype(test object, PLAYER THING)
 **See Also:**
 - [Connection Functions](/reference/sharpmush-help/sharpfunc/#connection-functions)
 - [ipaddr()](/reference/sharpmush-help/sharpfunc/#ipaddr)
-- [ports()](/reference/sharpmush-help/sharpfunc/#ports)
+- [ports()](/reference/sharpmush-help/sharpfunc/#lports)
 - [lports()](/reference/sharpmush-help/sharpfunc/#lports)
 ## IDLE()
-## IDLESECS()
 `idle(<player|descriptor>)`
 
   This function returns the number of seconds a player has been idle, much as WHO does. `<player name>` must be the full name of a player, or a player's dbref. You can also specify a `<descriptor>`, useful if a player is connected multiple times, or for connections which are still at the login screen. Players who are not connected have an idle time of "-1", as do dark wizards, when idle() is used on them by a non-priv'ed player.
@@ -2336,7 +2288,6 @@ think hastype(test object, PLAYER THING)
 - [Connection Functions](/reference/sharpmush-help/sharpfunc/#connection-functions)
 - [conn()](/reference/sharpmush-help/sharpfunc/#conn)
 ## IF()
-## IFELSE()
 `if(<condition>, <true expression>[, <false expression>])`
 `ifelse(<condition>, <true expression>, <false expression>)`
 
@@ -2412,7 +2363,6 @@ You say, "Mug of Beer"
 - [elements()](/reference/sharpmush-help/sharpfunc/#elements)
 - [grab()](/reference/sharpmush-help/sharpfunc/#grab)
 ## INSERT()
-## LINSERT()
 `linsert(<list>, <position>, <new item>[, <delim>])`
 
   If `<position>` is a positive integer, this inserts `<new item>` BEFORE the item at `<position>` from the left in `<list>`. That means that `<new item>` then becomes the `<position>`th element of `<list>`.
@@ -2448,7 +2398,6 @@ You say, "meep GOOP bleep gleep"
 - [timezones](/reference/sharpmush-help/sharpfunc/#timezones)
 - [secs()](/reference/sharpmush-help/sharpfunc/#secs)
 ## ISDBREF()
-## ISOBJID()
 `isdbref(<string>)`
 `isobjid(<string>)`
 
@@ -2533,7 +2482,6 @@ The next object to be created will be #33.
 **See Also:**
 - [words()](/reference/sharpmush-help/sharpfunc/#words)
 ## ITEMIZE()
-## ELIST()
 `itemize(<list>[, <delim>[, <conjunction>[, <punctuation>]]])`
 `elist(<list>[, <conjunction>[, <delim>[, <osep>[, <punctuation>]]]])`
 
@@ -2554,7 +2502,6 @@ say itemize(eggs bacon spam, ,&,;)
 You say, "eggs; bacon; & spam"
 ```
 ## ITER()
-## PARSE()
 `iter(<list>, <pattern>[, <delimiter>[, <output separator>]])`
 
   For each word in `<list>`, iter() evaluates `<pattern>` once, and returns a list of the results of those evaluations. Words in `<list>` are separated by `<delimiter>`, if given, and spaces if not. Words in the resulting list are separated by the given `<ouput separator>`, or a space if no output separator is given.
@@ -2570,8 +2517,8 @@ You say, "eggs; bacon; & spam"
   See [iter2](/reference/sharpmush-help/sharpfunc/#iter2) for examples.
 
 **See Also:**
-- [itext()](/reference/sharpmush-help/sharpfunc/#itext)
-- [inum()](/reference/sharpmush-help/sharpfunc/#inum)
+- [itext()](/reference/sharpmush-help/sharpfunc/#ilev)
+- [inum()](/reference/sharpmush-help/sharpfunc/#ilev)
 - [ilev()](/reference/sharpmush-help/sharpfunc/#ilev)
 - [ibreak()](/reference/sharpmush-help/sharpfunc/#ibreak)
 - [map()](/reference/sharpmush-help/sharpfunc/#map)
@@ -2626,14 +2573,10 @@ You say, "Test 1! Test 2! Test 3!"
 
 **See Also:**
 - [iter()](/reference/sharpmush-help/sharpfunc/#iter)
-- [itext()](/reference/sharpmush-help/sharpfunc/#itext)
-- [inum()](/reference/sharpmush-help/sharpfunc/#inum)
+- [itext()](/reference/sharpmush-help/sharpfunc/#ilev)
+- [inum()](/reference/sharpmush-help/sharpfunc/#ilev)
 - [ilev()](/reference/sharpmush-help/sharpfunc/#ilev)
 ## ILEV()
-## ITEXT()
-## INUM()
-## %i
-## %i0
 `ilev()`
 `itext(\<n\>)`
   %i`\<n\>`
@@ -2685,8 +2628,8 @@ You say, "1:red 1:red 2:blue 2:blue 3:green 3:green"
 
 **See Also:**
 - [Connection Functions](/reference/sharpmush-help/sharpfunc/#connection-functions)
-- [hostname()](/reference/sharpmush-help/sharpfunc/#hostname)
-- [ports()](/reference/sharpmush-help/sharpfunc/#ports)
+- [hostname()](/reference/sharpmush-help/sharpfunc/#host)
+- [ports()](/reference/sharpmush-help/sharpfunc/#lports)
 - [lports()](/reference/sharpmush-help/sharpfunc/#lports)
 ## LAST()
 `last(<list>[, <delimiter>])`
@@ -2700,9 +2643,6 @@ You say, "1:red 1:red 2:blue 2:blue 3:green 3:green"
 - [before()](/reference/sharpmush-help/sharpfunc/#before)
 - [after()](/reference/sharpmush-help/sharpfunc/#after)
 ## LATTR()
-## LATTRP()
-## REGLATTR()
-## REGLATTRP()
 `lattr(<object>[/<attribute pattern>][, <output separator>])`
 `lattrp(<object>[/<attribute pattern>][, <output separator>])`
 `reglattr(<object>[/<regexp>][, <output separator>])`
@@ -2727,11 +2667,6 @@ You say, "1:red 1:red 2:blue 2:blue 3:green 3:green"
 - [grep()](/reference/sharpmush-help/sharpfunc/#grep)
 - [WILDCARDS](/reference/sharpmush-help/sharptop/#wildcards)
 ## NATTR()
-## NATTRP()
-## ATTRCNT()
-## ATTRPCNT()
-## REGNATTR()
-## REGNATTRP()
 `nattr(<object>[/<attribute pattern>])`
 `nattrp(<object>[/<attribute pattern>])`
 `regnattr(<object>[/<regexp>])`
@@ -2776,7 +2711,6 @@ You say, "1:red 1:red 2:blue 2:blue 3:green 3:green"
 - [next()](/reference/sharpmush-help/sharpfunc/#next)
 - [lvcon()](/reference/sharpmush-help/sharpfunc/#lvcon)
 ## LCSTR()
-## LCSTR2()
 `lcstr(<string>)`
 `lcstr2(<string>)`
 
@@ -2817,7 +2751,7 @@ You say, "foo ~ bar ~ boing"
 **See Also:**
 - [strdelete()](/reference/sharpmush-help/sharpfunc/#strdelete)
 - [remove()](/reference/sharpmush-help/sharpfunc/#remove)
-- [linsert()](/reference/sharpmush-help/sharpfunc/#linsert)
+- [linsert()](/reference/sharpmush-help/sharpfunc/#insert)
 ## LEFT()
 `left(<string>, <length>)`
 
@@ -2829,7 +2763,6 @@ You say, "foo ~ bar ~ boing"
 - [mid()](/reference/sharpmush-help/sharpfunc/#mid)
 - [ljust()](/reference/sharpmush-help/sharpfunc/#ljust)
 ## NSLEMIT()
-## LEMIT()
 `lemit(<message>)`
 `nslemit(<message>)`
 
@@ -2839,7 +2772,7 @@ You say, "foo ~ bar ~ boing"
 
 
 **See Also:**
-- [@lemit](/reference/sharpmush-help/sharpcmd/#lemit)
+- [@lemit](/reference/sharpmush-help/sharpcmd/#nslemit)
 - [remit()](/reference/sharpmush-help/sharpfunc/#remit)
 ## LETQ()
 `letq([<reg1>, <value1>[, ... , <regN>, <valueN>], <expr>)`
@@ -2859,8 +2792,8 @@ think setr(A, 1)[setr(B,1)]:[letq(A, 2, %qA[setr(B,2)])]:%qA%qB
 
 **See Also:**
 - [setq()](/reference/sharpmush-help/sharpfunc/#setq)
-- [setr()](/reference/sharpmush-help/sharpfunc/#setr)
-- [unsetq()](/reference/sharpmush-help/sharpfunc/#unsetq)
+- [setr()](/reference/sharpmush-help/sharpfunc/#setq)
+- [unsetq()](/reference/sharpmush-help/sharpfunc/#listq)
 - [listq()](/reference/sharpmush-help/sharpfunc/#listq)
 - [localize()](/reference/sharpmush-help/sharpfunc/#localize)
 - [ulocal()](/reference/sharpmush-help/sharpfunc/#ulocal)
@@ -2942,7 +2875,7 @@ You say, "foo   "
 - [lflags()](/reference/sharpmush-help/sharpfunc/#lflags)
 - [config()](/reference/sharpmush-help/sharpfunc/#config)
 - [functions()](/reference/sharpmush-help/sharpfunc/#functions)
-- [@listmotd](/reference/sharpmush-help/sharpcmd/#listmotd)
+- [@listmotd](/reference/sharpmush-help/sharpcmd/#motd)
 - [@motd](/reference/sharpmush-help/sharpcmd/#motd)
 `llocks()`
 ## LIT()
@@ -3047,10 +2980,10 @@ You say, "Outside-Inside-Inside"
 **See Also:**
 - [letq()](/reference/sharpmush-help/sharpfunc/#letq)
 - [setq()](/reference/sharpmush-help/sharpfunc/#setq)
-- [setr()](/reference/sharpmush-help/sharpfunc/#setr)
+- [setr()](/reference/sharpmush-help/sharpfunc/#setq)
 - [r()](/reference/sharpmush-help/sharpfunc/#r)
 - [ulocal()](/reference/sharpmush-help/sharpfunc/#ulocal)
-- [uldefault()](/reference/sharpmush-help/sharpfunc/#uldefault)
+- [uldefault()](/reference/sharpmush-help/sharpfunc/#udefault)
 ## LOCATE()
 `locate(<looker>, <name>, <parameters>)`
 
@@ -3122,7 +3055,7 @@ think locate(%#, %0, PFym)
 
 
 **See Also:**
-- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [@lock](/reference/sharpmush-help/sharpcmd/#locking)
 - [locktypes](/reference/sharpmush-help/sharplock/#locktypes)
 - [elock()](/reference/sharpmush-help/sharpfunc/#elock)
 - [lockflags()](/reference/sharpmush-help/sharpfunc/#lockflags)
@@ -3132,7 +3065,6 @@ think locate(%#, %0, PFym)
 - [lockowner()](/reference/sharpmush-help/sharpfunc/#lockowner)
 - [lockfilter()](/reference/sharpmush-help/sharpfunc/#lockfilter)
 ## LLOCKS()
-## LOCKS()
 `llocks([<object>])`
 `locks(<object>)`
 
@@ -3151,7 +3083,7 @@ Basic USER:ITSME Use
 
 
 **See Also:**
-- [lock()](/reference/sharpmush-help/sharpfunc/#lock)
+- [lock()](/reference/sharpmush-help/sharpfunc/#locking)
 - [lset()](/reference/sharpmush-help/sharpfunc/#lset)
 - [lockflags()](/reference/sharpmush-help/sharpfunc/#lockflags)
 - [llockflags()](/reference/sharpmush-help/sharpfunc/#llockflags)
@@ -3187,8 +3119,8 @@ Walker WalkerBot Wilco
 
 
 **See Also:**
-- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
-- [lock()](/reference/sharpmush-help/sharpfunc/#lock)
+- [@lock](/reference/sharpmush-help/sharpcmd/#locking)
+- [lock()](/reference/sharpmush-help/sharpfunc/#locking)
 - [elock()](/reference/sharpmush-help/sharpfunc/#elock)
 - [lockkeys](/reference/sharpmush-help/sharplock/#lockkeys)
 - [filter()](/reference/sharpmush-help/sharpfunc/#filter)
@@ -3205,7 +3137,7 @@ Walker WalkerBot Wilco
 **See Also:**
 - [llockflags()](/reference/sharpmush-help/sharpfunc/#llockflags)
 - [lset()](/reference/sharpmush-help/sharpfunc/#lset)
-- [lock()](/reference/sharpmush-help/sharpfunc/#lock)
+- [lock()](/reference/sharpmush-help/sharpfunc/#locking)
 - [llocks()](/reference/sharpmush-help/sharpfunc/#llocks)
 - [lockowner()](/reference/sharpmush-help/sharpfunc/#lockowner)
 ## LLOCKFLAGS()
@@ -3220,7 +3152,7 @@ Walker WalkerBot Wilco
 **See Also:**
 - [lockflags()](/reference/sharpmush-help/sharpfunc/#lockflags)
 - [lset()](/reference/sharpmush-help/sharpfunc/#lset)
-- [lock()](/reference/sharpmush-help/sharpfunc/#lock)
+- [lock()](/reference/sharpmush-help/sharpfunc/#locking)
 - [llocks()](/reference/sharpmush-help/sharpfunc/#llocks)
 - [lockowner()](/reference/sharpmush-help/sharpfunc/#lockowner)
 ## LOCKOWNER()
@@ -3233,7 +3165,7 @@ Walker WalkerBot Wilco
 - [lockflags()](/reference/sharpmush-help/sharpfunc/#lockflags)
 - [llockflags()](/reference/sharpmush-help/sharpfunc/#llockflags)
 - [lset()](/reference/sharpmush-help/sharpfunc/#lset)
-- [lock()](/reference/sharpmush-help/sharpfunc/#lock)
+- [lock()](/reference/sharpmush-help/sharpfunc/#locking)
 - [llocks()](/reference/sharpmush-help/sharpfunc/#llocks)
 ## LSET()
 `lset(<object>/<locktype>,[!]<flag>)`
@@ -3246,7 +3178,7 @@ Walker WalkerBot Wilco
 **See Also:**
 - [lockflags()](/reference/sharpmush-help/sharpfunc/#lockflags)
 - [llockflags()](/reference/sharpmush-help/sharpfunc/#llockflags)
-- [lock()](/reference/sharpmush-help/sharpfunc/#lock)
+- [lock()](/reference/sharpmush-help/sharpfunc/#locking)
 - [lockowner()](/reference/sharpmush-help/sharpfunc/#lockowner)
 ## LOG()
 `log(<number>[, <base>])`
@@ -3264,7 +3196,7 @@ Walker WalkerBot Wilco
 
 **See Also:**
 - [parent()](/reference/sharpmush-help/sharpfunc/#parent)
-- [children()](/reference/sharpmush-help/sharpfunc/#children)
+- [children()](/reference/sharpmush-help/sharpfunc/#lsearch)
 - [PARENTS](/reference/sharpmush-help/sharptop/#parents)
 - [ANCESTORS](/reference/sharpmush-help/sharptop/#ancestors)
 ## LPLAYERS()
@@ -3303,15 +3235,9 @@ You say, "1 4 8"
 **See Also:**
 - [pos()](/reference/sharpmush-help/sharpfunc/#pos)
 - [member()](/reference/sharpmush-help/sharpfunc/#member)
-- [match()](/reference/sharpmush-help/sharpfunc/#match)
+- [match()](/reference/sharpmush-help/sharpfunc/#element)
 - [wordpos()](/reference/sharpmush-help/sharpfunc/#wordpos)
 ## LSEARCH()
-## NLSEARCH()
-## SEARCH()
-## NSEARCH()
-## LSEARCHR()
-## CHILDREN()
-## NCHILDREN()
 `lsearch(<player>[, ... , <classN>, <restrictionN>])`
 `nlsearch(<player>[, ... , <classN>, <restrictionN>])`
 `lsearchr(<player>[, ... , <classN>, <restrictionN>])`
@@ -3320,7 +3246,7 @@ You say, "1 4 8"
 
   This function is similar to the @search command, except it returns just a list of dbref numbers. The function must have at least three arguments. You can specify "all" or `<player>` for the `<player>` field; for mortals, only objects they can examine are included. If you do not want to restrict something, use "none" for `<class>` and `<restriction>`.
 
-  The possible `<class>`es and `<restriction>`s are the same as those accepted by @search. lsearch() can accept multiple class/restriction pairs, and applies them in a boolean "AND" fashion, returning only dbrefs that fulfill all restrictions. See [@search](/reference/sharpmush-help/sharpcmd/#search) for information about them.
+  The possible `<class>`es and `<restriction>`s are the same as those accepted by @search. lsearch() can accept multiple class/restriction pairs, and applies them in a boolean "AND" fashion, returning only dbrefs that fulfill all restrictions. See [@search](/reference/sharpmush-help/sharpcmd/#lsearch) for information about them.
 
   children() is exactly the same as lsearch([me|all](/reference/sharpmush-help/sharpconf/#meall), parent, `<object>`), using "all" for See_All/Search players and "me" for others.
 
@@ -3328,7 +3254,6 @@ You say, "1 4 8"
 
   See [lsearch2](/reference/sharpmush-help/sharpfunc/#lsearch2).
 ## LSEARCH2
-## SEARCH2
 
   If `<class>` is one of the eval classes (EVAL, EEXITS, EROOMS, ETHINGS or EPLAYERS), note that any brackets, percent signs, or other special characters should be escaped, as the code in `<restriction>` will be evaluated twice - once as an argument to lsearch(), and then again for each object looked at in the search. Before the per-object evaluation, the string "##" is replaced with the object dbref.
 
@@ -3340,12 +3265,11 @@ You say, "1 4 8"
 
 
 **See Also:**
-- [@search](/reference/sharpmush-help/sharpcmd/#search)
+- [@search](/reference/sharpmush-help/sharpcmd/#lsearch)
 - [@find](/reference/sharpmush-help/sharpcmd/#find)
 - [lparent()](/reference/sharpmush-help/sharpfunc/#lparent)
-- [stats()](/reference/sharpmush-help/sharpfunc/#stats)
+- [stats()](/reference/sharpmush-help/sharpfunc/#lstats)
 ## LSEARCH3
-## SEARCH3
   lsearch() Examples:
 
   lsearch(all, flags, Wc)                  <-- lists all connected wizards.
@@ -3357,7 +3281,6 @@ You say, "1 4 8"
   lsearch(all, type, player, elock, sex:m*) <- lists all players with an @sex beginning with 'm'
   lsearch(me, elock, !desc:*)              <-- lists all objects you own that don't have an @desc set
 ## LSTATS()
-## STATS()
 `lstats([<player>])`
 
   This function returns the breakdown of objects in the database, in a format similar to "@stats". If `<player>` is "all" (the default), a breakdown is done for the entire database. Otherwise, the breakdown is returned for that particular player.
@@ -3368,7 +3291,7 @@ You say, "1 4 8"
   stats() is an alias for lstats().
 
 **See Also:**
-- [nsearch()](/reference/sharpmush-help/sharpfunc/#nsearch)
+- [nsearch()](/reference/sharpmush-help/sharpfunc/#lsearch)
 ## LT()
 `lt(<number1>, <number2>[, ... , <numberN>])`
 
@@ -3448,7 +3371,6 @@ th lt(1,3,2)
 - [lvcon()](/reference/sharpmush-help/sharpfunc/#lvcon)
 - [lvexits()](/reference/sharpmush-help/sharpfunc/#lvexits)
 ## LWHO()
-## LWHOID()
 `lwho([<viewer>[, <status>]])`
 `lwhoid([<viewer>[, <status>]])`
 
@@ -3463,7 +3385,7 @@ th lt(1,3,2)
 
 **See Also:**
 - [mwho()](/reference/sharpmush-help/sharpfunc/#mwho)
-- [nwho()](/reference/sharpmush-help/sharpfunc/#nwho)
+- [nwho()](/reference/sharpmush-help/sharpfunc/#nmwho)
 - [xwho()](/reference/sharpmush-help/sharpfunc/#xwho)
 - [lports()](/reference/sharpmush-help/sharpfunc/#lports)
 ## MAP()
@@ -3491,8 +3413,6 @@ th lt(1,3,2)
 - [iter()](/reference/sharpmush-help/sharpfunc/#iter)
 - [@dolist](/reference/sharpmush-help/sharpcmd/#dolist)
 ## ELEMENT()
-## MATCH()
-## MATCHALL()
 `match(<list>, <pattern>[, <delimiter>])`
 `matchall(<list>, <pattern>[, <delimiter>[, <output separator>]])`
 
@@ -3528,9 +3448,6 @@ You say, "3"
     >say matchall(foo bar baz boing, sprocket)
     You say, ""
 ## REGLMATCH()
-## REGLMATCHI()
-## REGLMATCHALL()
-## REGLMATCHALLI()
 `reglmatch(<list>, <regexp>[, <delimiter>])`
 `reglmatchi(<list>, <regexp>[, <delimiter>])`
 `reglmatchall(<list>, <regexp>[, <delimiter>[, <output separator>]])`
@@ -3546,8 +3463,8 @@ You say, "3"
 
 **See Also:**
 - [regmatch()](/reference/sharpmush-help/sharpfunc/#regmatch)
-- [regrab()](/reference/sharpmush-help/sharpfunc/#regrab)
-- [match()](/reference/sharpmush-help/sharpfunc/#match)
+- [regrab()](/reference/sharpmush-help/sharpfunc/#grab)
+- [match()](/reference/sharpmush-help/sharpfunc/#element)
 - [REGEXP SYNTAX](/reference/sharpmush-help/sharptop/#regexp-syntax)
 ## REGLMATCH2
   Examples:
@@ -3574,7 +3491,6 @@ You say, "3"
 - [bound()](/reference/sharpmush-help/sharpfunc/#bound)
 - [alphamax()](/reference/sharpmush-help/sharpfunc/#alphamax)
 ## AVG()
-## MEAN()
 `mean(<number1>, <number2>[, ... , <numberN>])`
 
   Returns the mean (arithmetic average) of its arguments.
@@ -3593,7 +3509,7 @@ You say, "3"
 
 
 **See Also:**
-- [mean()](/reference/sharpmush-help/sharpfunc/#mean)
+- [mean()](/reference/sharpmush-help/sharpfunc/#avg)
 - [stddev()](/reference/sharpmush-help/sharpfunc/#stddev)
 - [lmath()](/reference/sharpmush-help/sharpfunc/#lmath)
 ## MEMBER()
@@ -3605,7 +3521,7 @@ You say, "3"
 
 
 **See Also:**
-- [match()](/reference/sharpmush-help/sharpfunc/#match)
+- [match()](/reference/sharpmush-help/sharpfunc/#element)
 - [grab()](/reference/sharpmush-help/sharpfunc/#grab)
 - [comp()](/reference/sharpmush-help/sharpfunc/#comp)
 - [strmatch()](/reference/sharpmush-help/sharpfunc/#strmatch)
@@ -3714,9 +3630,6 @@ You say, "es"
 - [map()](/reference/sharpmush-help/sharpfunc/#map)
 - [step()](/reference/sharpmush-help/sharpfunc/#step)
 ## MOD()
-## MODULO()
-## MODULUS()
-## REMAINDER()
 `modulo(<number>, <number>[, ..., <numberN>])`
 `remainder(<number>, <number>[, ..., <numberN>])`
 
@@ -3767,7 +3680,6 @@ You say, "150"
 **See Also:**
 - [score](/reference/sharpmush-help/sharpcmd/#score)
 ## MTIME()
-## MSECS()
 `mtime(<object>[, <utc?>])`
 `msecs(<object>)`
 
@@ -3785,7 +3697,6 @@ You say, "150"
 - [convtime()](/reference/sharpmush-help/sharpfunc/#convtime)
 - [convsecs()](/reference/sharpmush-help/sharpfunc/#convsecs)
 ## MUDNAME()
-## MUDURL()
 `mudname()`
 `mudurl()`
 
@@ -3811,7 +3722,7 @@ You say, "http://www.testmush.com"
 **See Also:**
 - [lmath()](/reference/sharpmush-help/sharpfunc/#lmath)
 - [div()](/reference/sharpmush-help/sharpfunc/#div)
-- [fdiv()](/reference/sharpmush-help/sharpfunc/#fdiv)
+- [fdiv()](/reference/sharpmush-help/sharpfunc/#div)
 ## MUNGE()
 `munge([<object>/]<attribute>, <list1>, <list2>[, <delimiter>[, <osep>]])`
 
@@ -3841,7 +3752,6 @@ You say, "http://www.testmush.com"
 **See Also:**
 - [anonymous attributes](/reference/sharpmush-help/sharptop/#anonymous-attributes)
 ## MWHO()
-## MWHOID()
 `mwho()`
 `mwhoid()`
 
@@ -3852,9 +3762,8 @@ You say, "http://www.testmush.com"
 
 **See Also:**
 - [lwho()](/reference/sharpmush-help/sharpfunc/#lwho)
-- [nwho()](/reference/sharpmush-help/sharpfunc/#nwho)
+- [nwho()](/reference/sharpmush-help/sharpfunc/#nmwho)
 ## ALIAS()
-## FULLALIAS()
 `alias(<object>[, <new alias>])`
 `fullalias(<object>)`
 
@@ -3890,7 +3799,6 @@ You say, "$;No;Nol;Noli;Nolt"
 - [alias()](/reference/sharpmush-help/sharpfunc/#alias)
 - [moniker()](/reference/sharpmush-help/sharpfunc/#moniker)
 ## MONIKER()
-## CNAME()
 `moniker(<object>)`
 
   Returns `<object>`'s accented name, with the color template from its @moniker applied. moniker() always returns the colored name, even if monikers are disabled via @config.
@@ -3926,7 +3834,6 @@ You say, "#1 #7 #56 #-1"
 - [num()](/reference/sharpmush-help/sharpfunc/#num)
 - [pmatch()](/reference/sharpmush-help/sharpfunc/#pmatch)
 ## NAMEGRAB()
-## NAMEGRABALL()
 `namegrab(<dbref list>, <name>)`
 `namegraball(<dbref list>, <name>)`
 
@@ -3947,7 +3854,6 @@ You say, "#1 #7 #56 #-1"
 - [namelist()](/reference/sharpmush-help/sharpfunc/#namelist)
 - [locate()](/reference/sharpmush-help/sharpfunc/#locate)
 ## NAND()
-## NCAND()
 `nand(<boolean1>[, ... , <booleanN>])`
 `ncand(<boolean1>[, ... , <booleanN>])`
 
@@ -3959,7 +3865,7 @@ You say, "#1 #7 #56 #-1"
 **See Also:**
 - [lmath()](/reference/sharpmush-help/sharpfunc/#lmath)
 - [and()](/reference/sharpmush-help/sharpfunc/#and)
-- [cand()](/reference/sharpmush-help/sharpfunc/#cand)
+- [cand()](/reference/sharpmush-help/sharpfunc/#and)
 - [or()](/reference/sharpmush-help/sharpfunc/#or)
 - [nor()](/reference/sharpmush-help/sharpfunc/#nor)
 ## NEARBY()
@@ -4001,10 +3907,9 @@ You say, "#1 #7 #56 #-1"
 
 
 **See Also:**
-- [@stats](/reference/sharpmush-help/sharpcmd/#stats)
-- [stats()](/reference/sharpmush-help/sharpfunc/#stats)
+- [@stats](/reference/sharpmush-help/sharpcmd/#lstats)
+- [stats()](/reference/sharpmush-help/sharpfunc/#lstats)
 ## NOR()
-## NCOR()
 `nor(<boolean1>[, ... , <booleanN>])`
 `ncor(<boolean1>[, ... , <booleanN>])`
 
@@ -4046,7 +3951,6 @@ You say, "#1 #7 #56 #-1"
 - [rnum()](/reference/sharpmush-help/sharpfunc/#rnum)
 - [pmatch()](/reference/sharpmush-help/sharpfunc/#pmatch)
 ## NVCON()
-## NCON()
 `ncon(<object>)`
 `nvcon(<object>)`
 
@@ -4054,13 +3958,12 @@ You say, "#1 #7 #56 #-1"
 
 
 **See Also:**
-- [nexits()](/reference/sharpmush-help/sharpfunc/#nexits)
-- [nplayers()](/reference/sharpmush-help/sharpfunc/#nplayers)
-- [xcon()](/reference/sharpmush-help/sharpfunc/#xcon)
+- [nexits()](/reference/sharpmush-help/sharpfunc/#nvexits)
+- [nplayers()](/reference/sharpmush-help/sharpfunc/#nvplayers)
+- [xcon()](/reference/sharpmush-help/sharpfunc/#xvcon)
 - [lcon()](/reference/sharpmush-help/sharpfunc/#lcon)
 - [lvcon()](/reference/sharpmush-help/sharpfunc/#lvcon)
 ## NVEXITS()
-## NEXITS()
 `nexits(<room>)`
 `nvexits(<room>)`
 
@@ -4068,13 +3971,12 @@ You say, "#1 #7 #56 #-1"
 
 
 **See Also:**
-- [ncon()](/reference/sharpmush-help/sharpfunc/#ncon)
-- [nplayers()](/reference/sharpmush-help/sharpfunc/#nplayers)
-- [xexits()](/reference/sharpmush-help/sharpfunc/#xexits)
+- [ncon()](/reference/sharpmush-help/sharpfunc/#nvcon)
+- [nplayers()](/reference/sharpmush-help/sharpfunc/#nvplayers)
+- [xexits()](/reference/sharpmush-help/sharpfunc/#xvexits)
 - [lexits()](/reference/sharpmush-help/sharpfunc/#lexits)
 - [lvexits()](/reference/sharpmush-help/sharpfunc/#lvexits)
 ## NVPLAYERS()
-## NPLAYERS()
 `nplayers(<object>)`
 `nvplayers(<object>)`
 
@@ -4082,13 +3984,12 @@ You say, "#1 #7 #56 #-1"
 
 
 **See Also:**
-- [ncon()](/reference/sharpmush-help/sharpfunc/#ncon)
-- [nexits()](/reference/sharpmush-help/sharpfunc/#nexits)
-- [xplayers()](/reference/sharpmush-help/sharpfunc/#xplayers)
+- [ncon()](/reference/sharpmush-help/sharpfunc/#nvcon)
+- [nexits()](/reference/sharpmush-help/sharpfunc/#nvexits)
+- [xplayers()](/reference/sharpmush-help/sharpfunc/#xvplayers)
 - [lplayers()](/reference/sharpmush-help/sharpfunc/#lplayers)
 - [lvplayers()](/reference/sharpmush-help/sharpfunc/#lvplayers)
 ## NVTHINGS()
-## NTHINGS()
 `nthings(<object>)`
 `nvthings(<object>)`
 
@@ -4096,13 +3997,12 @@ You say, "#1 #7 #56 #-1"
 
 
 **See Also:**
-- [ncon()](/reference/sharpmush-help/sharpfunc/#ncon)
-- [nexits()](/reference/sharpmush-help/sharpfunc/#nexits)
-- [xthings()](/reference/sharpmush-help/sharpfunc/#xthings)
+- [ncon()](/reference/sharpmush-help/sharpfunc/#nvcon)
+- [nexits()](/reference/sharpmush-help/sharpfunc/#nvexits)
+- [xthings()](/reference/sharpmush-help/sharpfunc/#xvthings)
 - [lthings()](/reference/sharpmush-help/sharpfunc/#lthings)
 - [lvthings()](/reference/sharpmush-help/sharpfunc/#lvthings)
 ## NMWHO()
-## NWHO()
 `nwho([<viewer>])`
 `nmwho()`
 
@@ -4117,9 +4017,8 @@ You say, "#1 #7 #56 #-1"
 - [lwho()](/reference/sharpmush-help/sharpfunc/#lwho)
 - [mwho()](/reference/sharpmush-help/sharpfunc/#mwho)
 - [xwho()](/reference/sharpmush-help/sharpfunc/#xwho)
-- [xmwho()](/reference/sharpmush-help/sharpfunc/#xmwho)
+- [xmwho()](/reference/sharpmush-help/sharpfunc/#xwho)
 ## OBJ()
-## %o
 `obj(<object>)`
 
   Returns the objective pronoun - him/her/it - for an object. The %o substitution will return the objective pronoun of the enactor.
@@ -4136,7 +4035,7 @@ You say, "#1 #7 #56 #-1"
 
 
 **See Also:**
-- [s()](/reference/sharpmush-help/sharpfunc/#s)
+- [s()](/reference/sharpmush-help/sharpfunc/#subj)
 ## OBJID()
 `objid(<object>)`
 
@@ -4149,7 +4048,7 @@ You say, "#1 #7 #56 #-1"
 
 **See Also:**
 - [num()](/reference/sharpmush-help/sharpfunc/#num)
-- [csecs()](/reference/sharpmush-help/sharpfunc/#csecs)
+- [csecs()](/reference/sharpmush-help/sharpfunc/#ctime)
 - [ctime()](/reference/sharpmush-help/sharpfunc/#ctime)
 - [ENACTOR](/reference/sharpmush-help/sharptop/#enactor)
 ## OBJMEM()
@@ -4161,7 +4060,6 @@ You say, "#1 #7 #56 #-1"
 **See Also:**
 - [playermem()](/reference/sharpmush-help/sharpfunc/#playermem)
 ## OEMIT()
-## NSOEMIT()
 `oemit([<room>/]<object> [... <object>], <message>)`
 `nsoemit([<room>/]<object> [... <object>], <message>)`
 
@@ -4189,7 +4087,6 @@ You say, "#1 #7 #56 #-1"
 - [create()](/reference/sharpmush-help/sharpfunc/#create)
 - [pcreate()](/reference/sharpmush-help/sharpfunc/#pcreate)
 ## OR()
-## COR()
 `or(<boolean1>, <boolean2>[, ... , <booleanN>])`
 `cor(<boolean1>, <boolean2>[, ... , <booleanN>])`
 
@@ -4204,7 +4101,6 @@ You say, "#1 #7 #56 #-1"
 - [allof()](/reference/sharpmush-help/sharpfunc/#allof)
 - [lmath()](/reference/sharpmush-help/sharpfunc/#lmath)
 ## ORFLAGS()
-## ORLFLAGS()
 `orflags(<object>, <string of flag characters>)`
 `orlflags(<object>, <list of flag names>)`
 
@@ -4237,7 +4133,7 @@ You say, "#1 #7 #56 #-1"
 - [andlpowers()](/reference/sharpmush-help/sharpfunc/#andlpowers)
 - [POWERS LIST](/reference/sharpmush-help/sharpconf/#powers-list)
 - [@power](/reference/sharpmush-help/sharpcmd/#power)
-- [orlflags()](/reference/sharpmush-help/sharpfunc/#orlflags)
+- [orlflags()](/reference/sharpmush-help/sharpfunc/#orflags)
 ## OWNER()
 `owner(<object>[/<attribute>])`
 `owner(<object>[/<attribute>], <new owner>[, preserve])`
@@ -4265,9 +4161,6 @@ You say, "#1 #7 #56 #-1"
 - [pfun()](/reference/sharpmush-help/sharpfunc/#pfun)
 - [lparent()](/reference/sharpmush-help/sharpfunc/#lparent)
 ## PEMIT()
-## NSPEMIT()
-## PROMPT()
-## NSPROMPT()
 `pemit(<object list|port numbers>, <message>)`
 `nspemit(<object list|port numbers>, <message>)`
 `prompt(<object list>, <message>)`
@@ -4281,8 +4174,8 @@ You say, "#1 #7 #56 #-1"
 
 
 **See Also:**
-- [@prompt](/reference/sharpmush-help/sharpcmd/#prompt)
-- [@nsprompt](/reference/sharpmush-help/sharpcmd/#nsprompt)
+- [@prompt](/reference/sharpmush-help/sharpcmd/#pemit)
+- [@nsprompt](/reference/sharpmush-help/sharpcmd/#pemit)
 - [PROMPT_NEWLINES](/reference/sharpmush-help/sharpcmd/#promptnewlines)
 ## PI()
 `pi()`
@@ -4323,7 +4216,7 @@ You say, "#1 #7 #56 #-1"
 
 **See Also:**
 - [lports()](/reference/sharpmush-help/sharpfunc/#lports)
-- [ports()](/reference/sharpmush-help/sharpfunc/#ports)
+- [ports()](/reference/sharpmush-help/sharpfunc/#lports)
 ## PMATCH()
 `pmatch(<name>)`
 
@@ -4344,8 +4237,8 @@ You say, "#1 #7 #56 #-1"
 
 **See Also:**
 - [@poll](/reference/sharpmush-help/sharpcmd/#poll)
-- [doing()](/reference/sharpmush-help/sharpfunc/#doing)
-- [@doing](/reference/sharpmush-help/sharpcmd/#doing)
+- [doing()](/reference/sharpmush-help/sharpfunc/#who)
+- [@doing](/reference/sharpmush-help/sharpcmd/#who)
 ## LPIDS()
 `lpids([<object>[, <queue types>]])`
 
@@ -4363,7 +4256,6 @@ You say, "#1 #7 #56 #-1"
 - [getpids()](/reference/sharpmush-help/sharpfunc/#getpids)
 - [pidinfo()](/reference/sharpmush-help/sharpfunc/#pidinfo)
 ## LPORTS()
-## PORTS()
 `lports([<viewer>[, <status>]])`
 `ports(<player name>)`
 
@@ -4388,11 +4280,10 @@ You say, "#1 #7 #56 #-1"
 
 **See Also:**
 - [member()](/reference/sharpmush-help/sharpfunc/#member)
-- [match()](/reference/sharpmush-help/sharpfunc/#match)
+- [match()](/reference/sharpmush-help/sharpfunc/#element)
 - [lpos()](/reference/sharpmush-help/sharpfunc/#lpos)
 - [wordpos()](/reference/sharpmush-help/sharpfunc/#wordpos)
 ## POSS()
-## %p
 `poss(<object>)`
 
   Returns the possessive pronoun - his/her/its - for an object. The %p substitution also returns the possessive pronoun of the enactor.
@@ -4437,14 +4328,12 @@ You say, "#1 #7 #56 #-1"
 
 **See Also:**
 - [@quota](/reference/sharpmush-help/sharpcmd/#quota)
-- [@squota](/reference/sharpmush-help/sharpcmd/#squota)
-- [@allquota](/reference/sharpmush-help/sharpcmd/#allquota)
+- [@squota](/reference/sharpmush-help/sharpcmd/#quota2)
+- [@allquota](/reference/sharpmush-help/sharpcmd/#quota2)
 - [QUOTAS](/reference/sharpmush-help/sharptop/#quotas)
 - [Quotas Power](/reference/sharpmush-help/sharpconf/#quotas-power)
 - [No_Quota Power](/reference/sharpmush-help/sharpconf/#noquota-power)
 ## R()
-## %q
-## R-FUNCTION
 `r(<register>[, <type>])`
 
   The r() function can be used to access registers. It can retrieve the value of q-registers set with setq() and related functions, as well as the 30 stack values (the first ten of which are also available via %0-%9), and also iter() and switch() context (also available through itext() and stext(), respectively). The registers() function can be used to obtain a list of available registers.
@@ -4464,13 +4353,13 @@ You say, "#1 #7 #56 #-1"
 - [setq()](/reference/sharpmush-help/sharpfunc/#setq)
 - [letq()](/reference/sharpmush-help/sharpfunc/#letq)
 - [listq()](/reference/sharpmush-help/sharpfunc/#listq)
-- [unsetq()](/reference/sharpmush-help/sharpfunc/#unsetq)
+- [unsetq()](/reference/sharpmush-help/sharpfunc/#listq)
 - [registers()](/reference/sharpmush-help/sharpfunc/#registers)
 - [v()](/reference/sharpmush-help/sharpfunc/#v)
-- [itext()](/reference/sharpmush-help/sharpfunc/#itext)
+- [itext()](/reference/sharpmush-help/sharpfunc/#ilev)
 - [stext()](/reference/sharpmush-help/sharpfunc/#stext)
 - [ilev()](/reference/sharpmush-help/sharpfunc/#ilev)
-- [slev()](/reference/sharpmush-help/sharpfunc/#slev)
+- [slev()](/reference/sharpmush-help/sharpfunc/#stext)
 ## RAND()
 `rand()`
 `rand(<num>)`
@@ -4491,7 +4380,6 @@ You say, "#1 #7 #56 #-1"
 **See Also:**
 - [randword()](/reference/sharpmush-help/sharpfunc/#randword)
 ## RANDWORD()
-## PICKRAND()
 `randword(<list>[, <delimiter>])`
 
   Returns a randomly selected element from `<list>`. Elements of the list are separated by `<delimiter>`, which defaults to a space.
@@ -4529,9 +4417,6 @@ You say, "this test is this is is"
 - [rand()](/reference/sharpmush-help/sharpfunc/#rand)
 - [randword()](/reference/sharpmush-help/sharpfunc/#randword)
 ## REGEDIT()
-## REGEDITALL()
-## REGEDITI()
-## REGEDITALLI()
 `regedit(<string>, <regexp>, <replace>[, ... , <regexpN>, <replaceN>])`
 `regediti(<string>, <regexp>, <replace>[, ... , <regexpN>, <replaceN>])`
 `regeditall(<string>, <regexp>, <replace>[, ... , <regexpN>, <replaceN>])`
@@ -4554,9 +4439,8 @@ You say "this Trash is the Brash string"
 - [edit()](/reference/sharpmush-help/sharpfunc/#edit)
 - [@edit](/reference/sharpmush-help/sharpcmd/#edit)
 - [regmatch()](/reference/sharpmush-help/sharpfunc/#regmatch)
-- [regrab()](/reference/sharpmush-help/sharpfunc/#regrab)
+- [regrab()](/reference/sharpmush-help/sharpfunc/#grab)
 ## REGMATCH()
-## REGMATCHI()
   (Help text from TinyMUSH 2.2.4, with permission)
 `regmatch(<string>, <regexp>[, <register list>])`
 `regmatchi(<string>, <regexp>[, <register list>])`
@@ -4571,7 +4455,7 @@ You say "this Trash is the Brash string"
 
 
 **See Also:**
-- [regrab()](/reference/sharpmush-help/sharpfunc/#regrab)
+- [regrab()](/reference/sharpmush-help/sharpfunc/#grab)
 - [regedit()](/reference/sharpmush-help/sharpfunc/#regedit)
 - [valid()](/reference/sharpmush-help/sharpfunc/#valid)
 - [reswitch()](/reference/sharpmush-help/sharpfunc/#reswitch)
@@ -4587,7 +4471,6 @@ You say "this Trash is the Brash string"
 
   See [regexp syntax](/reference/sharpmush-help/sharptop/#regexp-syntax) for an explanation of regular expressions.
 ## REMIT()
-## NSREMIT()
 `remit(<object list>, <message>)`
 `nsremit(<object list>, <message>)`
 
@@ -4599,7 +4482,7 @@ You say "this Trash is the Brash string"
 **See Also:**
 - [@remit](/reference/sharpmush-help/sharpcmd/#remit)
 - [pemit()](/reference/sharpmush-help/sharpfunc/#pemit)
-- [lemit()](/reference/sharpmush-help/sharpfunc/#lemit)
+- [lemit()](/reference/sharpmush-help/sharpfunc/#nslemit)
 ## REMOVE()
 `remove(<list>, <words>[, <delimiter>])`
 
@@ -4609,7 +4492,7 @@ You say "this Trash is the Brash string"
 
 
 **See Also:**
-- [linsert()](/reference/sharpmush-help/sharpfunc/#linsert)
+- [linsert()](/reference/sharpmush-help/sharpfunc/#insert)
 - [ldelete()](/reference/sharpmush-help/sharpfunc/#ldelete)
 - [setdiff()](/reference/sharpmush-help/sharpfunc/#setdiff)
 ## RENDER()
@@ -4652,7 +4535,6 @@ You say, "TestTestTestTestTest"
 **See Also:**
 - [space()](/reference/sharpmush-help/sharpfunc/#space)
 ## LREPLACE()
-## REPLACE()
 `lreplace(<list>, <position(s)>, <new item>[, <delimiter>[, <osep>]])`
 
   This replaces the item(s) at the given `<position(s)>` in `<list>` with `<new item>`. `<delimiter>` defaults to a space, and `<osep>` defaults to `<delimiter>`. Null items are counted when determining position.
@@ -4679,7 +4561,7 @@ You say, "Turn south at the junction"
 
 **See Also:**
 - [ldelete()](/reference/sharpmush-help/sharpfunc/#ldelete)
-- [linsert()](/reference/sharpmush-help/sharpfunc/#linsert)
+- [linsert()](/reference/sharpmush-help/sharpfunc/#insert)
 - [setdiff()](/reference/sharpmush-help/sharpfunc/#setdiff)
 - [splice()](/reference/sharpmush-help/sharpfunc/#splice)
 - [strreplace()](/reference/sharpmush-help/sharpfunc/#strreplace)
@@ -4804,8 +4686,6 @@ think power(3, 3)
 - [sqrt()](/reference/sharpmush-help/sharpfunc/#sqrt)
 - [power()](/reference/sharpmush-help/sharpfunc/#power)
 ## ROUND()
-## CEIL()
-## FLOOR()
 `round(<number>, <places>[, <pad>])`
 `floor(<number>)`
 `ceil(<number>)`
@@ -4870,11 +4750,10 @@ think pemit(me,test)
 
 
 **See Also:**
-- [@function](/reference/sharpmush-help/sharpcmd/#function)
+- [@function](/reference/sharpmush-help/sharpcmd/#functions)
 - [RESTRICT](/reference/sharpmush-help/sharptop/#restrict)
 - [attribute flags](/reference/sharpmush-help/sharpattr/#attribute-flags)
 ## S()
-## S-FUNCTION
 `s(<string>)`
 
   This function performs a second round of evaluation on `<string>`, and returns the result. It should be considered extremely dangerous to use on user input, or any other string which you don't have complete control over. There are very few genuine uses for this function; things can normally be achieved another, safer way.
@@ -5013,7 +4892,6 @@ You say, "bar gleep"
 - [setsymdiff()](/reference/sharpmush-help/sharpfunc/#setsymdiff)
 - [setunion()](/reference/sharpmush-help/sharpfunc/#setunion)
 ## SETQ()
-## SETR()
 `setq(<register1>, <string1>[, ... , <registerN>, <stringN>])`
 `setr(<register1>, <string1>[, ... , <registerN>, <stringN>])`
 
@@ -5028,7 +4906,7 @@ You say, "bar gleep"
 **See Also:**
 - [r()](/reference/sharpmush-help/sharpfunc/#r)
 - [listq()](/reference/sharpmush-help/sharpfunc/#listq)
-- [unsetq()](/reference/sharpmush-help/sharpfunc/#unsetq)
+- [unsetq()](/reference/sharpmush-help/sharpfunc/#listq)
 - [letq()](/reference/sharpmush-help/sharpfunc/#letq)
 - [localize()](/reference/sharpmush-help/sharpfunc/#localize)
 - [ulocal()](/reference/sharpmush-help/sharpfunc/#ulocal)
@@ -5068,7 +4946,6 @@ Object says "bar"
 Object says "foo"
 ```
 ## LISTQ()
-## UNSETQ()
 `listq([<pattern>])`
 `unsetq([<pattern1> [<pattern2> [...]]])`
 
@@ -5119,12 +4996,12 @@ LOC
 **See Also:**
 - [listq()](/reference/sharpmush-help/sharpfunc/#listq)
 - [setq()](/reference/sharpmush-help/sharpfunc/#setq)
-- [setr()](/reference/sharpmush-help/sharpfunc/#setr)
+- [setr()](/reference/sharpmush-help/sharpfunc/#setq)
 - [letq()](/reference/sharpmush-help/sharpfunc/#letq)
 - [r()](/reference/sharpmush-help/sharpfunc/#r)
 - [v()](/reference/sharpmush-help/sharpfunc/#v)
 - [stext()](/reference/sharpmush-help/sharpfunc/#stext)
-- [itext()](/reference/sharpmush-help/sharpfunc/#itext)
+- [itext()](/reference/sharpmush-help/sharpfunc/#ilev)
 ## SETUNION()
 `setunion(<list1>, <list2>[, <delimiter>[, <sort type>[, <osep>]]])`
 
@@ -5187,7 +5064,7 @@ You say, "baz foo gleep bar"
 
 **See Also:**
 - [scramble()](/reference/sharpmush-help/sharpfunc/#scramble)
-- [pickrand()](/reference/sharpmush-help/sharpfunc/#pickrand)
+- [pickrand()](/reference/sharpmush-help/sharpfunc/#randword)
 ## SIGN()
 `sign(<number>)`
 
@@ -5328,7 +5205,7 @@ You say, "-1"
 
 
 **See Also:**
-- [soundslike()](/reference/sharpmush-help/sharpfunc/#soundslike)
+- [soundslike()](/reference/sharpmush-help/sharpfunc/#soundlike)
 ## SOUNDEX2
   Here's how the soundex algorithm works:
   1. The first letter of the soundex code is the first letter of the word (exception: words starting with PH get a soundex starting with F)
@@ -5348,7 +5225,6 @@ You say, "-1"
 
  The optional second argument can be 'soundex' (The default), for the transformation described above, or 'phone', for a different phonetic hash algorithm.
 ## SOUNDLIKE()
-## SOUNDSLIKE()
 `soundslike(<word>, <word>[, <hash type>])`
 `soundlike(<word>, <word>[, <hash type>])`
 
@@ -5380,7 +5256,6 @@ Amberyl says, "a     b"
 **See Also:**
 - [repeat()](/reference/sharpmush-help/sharpfunc/#repeat)
 ## SPEAK()
-## SPEAKPENN()
 `speak(<speaker>, <string>[, <say string>[, [<transform obj>/]<transform attr>[, [<isnull obj>/]<isnull attr>[, <open>[, <close>]]]]])`
 
   This function is used to format speech-like constructs, and is capable of transforming text within a speech string; it is useful for implementing "language code" and the like.
@@ -5682,7 +5557,6 @@ You don\'t say
 **See Also:**
 - [trim()](/reference/sharpmush-help/sharpfunc/#trim)
 ## STARTTIME()
-## RESTARTTIME()
 `starttime()`
 `restarttime()`
 
@@ -5710,7 +5584,7 @@ Tue Sep 22 13:54:04 2015
 
 
 **See Also:**
-- [restarttime()](/reference/sharpmush-help/sharpfunc/#restarttime)
+- [restarttime()](/reference/sharpmush-help/sharpfunc/#starttime)
 - [starttime()](/reference/sharpmush-help/sharpfunc/#starttime)
 ## SSL()
 `ssl(<player|descriptor>)`
@@ -5753,11 +5627,10 @@ d - e -
 
 
 **See Also:**
-- [mean()](/reference/sharpmush-help/sharpfunc/#mean)
+- [mean()](/reference/sharpmush-help/sharpfunc/#avg)
 - [median()](/reference/sharpmush-help/sharpfunc/#median)
 - [lmath()](/reference/sharpmush-help/sharpfunc/#lmath)
 ## STRFIRSTOF()
-## STRALLOF()
 `strfirstof(<expr>[, ... , <exprN>], <default>)`
 `strallof(<expr>[, ... , <exprN>], <osep>)`
 
@@ -5803,7 +5676,7 @@ My name
 
 **See Also:**
 - [strdelete()](/reference/sharpmush-help/sharpfunc/#strdelete)
-- [linsert()](/reference/sharpmush-help/sharpfunc/#linsert)
+- [linsert()](/reference/sharpmush-help/sharpfunc/#insert)
 - [strreplace()](/reference/sharpmush-help/sharpfunc/#strreplace)
 ## STRIPACCENTS()
 `stripaccents(<string>[, <smart>])`
@@ -5873,7 +5746,7 @@ You say, "1"
 
 **See Also:**
 - [comp()](/reference/sharpmush-help/sharpfunc/#comp)
-- [match()](/reference/sharpmush-help/sharpfunc/#match)
+- [match()](/reference/sharpmush-help/sharpfunc/#element)
 - [setq()](/reference/sharpmush-help/sharpfunc/#setq)
 - [r()](/reference/sharpmush-help/sharpfunc/#r)
 - [WILDCARDS](/reference/sharpmush-help/sharptop/#wildcards)
@@ -5913,7 +5786,6 @@ You say, "abcdefgh"
 - [lmath()](/reference/sharpmush-help/sharpfunc/#lmath)
 - [vsub()](/reference/sharpmush-help/sharpfunc/#vsub)
 ## SUBJ()
-## %s
 `subj(<object>)`
 
   Returns the subjective pronoun - he/she/it - for an object. You can also use the %s substitution to get the subjective pronoun of the enactor.
@@ -5924,9 +5796,6 @@ You say, "abcdefgh"
 - [obj()](/reference/sharpmush-help/sharpfunc/#obj)
 - [poss()](/reference/sharpmush-help/sharpfunc/#poss)
 ## RESWITCH()
-## RESWITCHI()
-## RESWITCHALL()
-## RESWITCHALLI()
 `reswitch(<str>, <re1>, <list1>[, ... , <reN>, <listN>][, <default>])`
 `reswitchall(<str>, <re1>, <list1>[, ... , <reN>, <listN>][, <default>])`
 `reswitchi(<str>, <re1>, <list1>[, ... , <reN>, <listN>][, <default>])`
@@ -5947,9 +5816,6 @@ You say, "abcdefgh"
 - [regedit()](/reference/sharpmush-help/sharpfunc/#regedit)
 - [REGEXPS](/reference/sharpmush-help/sharptop/#regexps)
 ## SWITCH()
-## SWITCHALL()
-## CASE()
-## CASEALL()
 `switch(<str>, <expr1>, <list1>[, ... , <exprN>, <listN>][, <default>])`
 `switchall(<str>, <expr1>, <list1>[, ... , <exprN>, <listN>][, <default>])`
 `case(<str>, <expr1>, <list1>[, ... , <exprN>, <listN>][, <default>])`
@@ -5967,7 +5833,7 @@ You say, "abcdefgh"
 **See Also:**
 - [reswitch()](/reference/sharpmush-help/sharpfunc/#reswitch)
 - [stext()](/reference/sharpmush-help/sharpfunc/#stext)
-- [slev()](/reference/sharpmush-help/sharpfunc/#slev)
+- [slev()](/reference/sharpmush-help/sharpfunc/#stext)
 - [if()](/reference/sharpmush-help/sharpfunc/#if)
 - [cond()](/reference/sharpmush-help/sharpfunc/#cond)
 - [firstof()](/reference/sharpmush-help/sharpfunc/#firstof)
@@ -6011,9 +5877,6 @@ You say, "neat"
 **See Also:**
 - [WILDCARDS](/reference/sharpmush-help/sharptop/#wildcards)
 ## STEXT()
-## SLEV()
-## %$
-## %$0
 `slev()`
 `stext([\<n\>])`
   %$`\<n\>`
@@ -6111,7 +5974,7 @@ a          b          areallylon d
 **See Also:**
 - [pueblo()](/reference/sharpmush-help/sharppueb/#pueblo)
 - [width()](/reference/sharpmush-help/sharpfunc/#width)
-- [height()](/reference/sharpmush-help/sharpfunc/#height)
+- [height()](/reference/sharpmush-help/sharpfunc/#width)
 - [ssl()](/reference/sharpmush-help/sharpfunc/#ssl)
 - [@sockset](/reference/sharpmush-help/sharpcmd/#sockset)
 - [oob()](/reference/sharpmush-help/sharpfunc/#oob)
@@ -6128,7 +5991,6 @@ a          b          areallylon d
 **See Also:**
 - [JSON PATHS](/reference/sharpmush-help/sharpfunc/#json-paths)
 ## OOB()
-## GMCP
 `oob(<players>, <package>[, <message>])`
 
   This function sends an out-of-band message using the General MUD Communication Protocol (GMCP - http://www.gammon.com.au/gmcp) and a WebSocket.
@@ -6146,7 +6008,7 @@ a          b          areallylon d
 
 **See Also:**
 - [json()](/reference/sharpmush-help/sharpfunc/#json)
-- [wsjson()](/reference/sharpmush-help/sharppueb/#wsjson)
+- [wsjson()](/reference/sharpmush-help/sharppueb/#wshtml)
 ## ISJSON()
 `isjson(<text>)`
 
@@ -6391,15 +6253,12 @@ think testlock(\\+FOO:BAR,*Walker)
 
 
 **See Also:**
-- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
-- [lock()](/reference/sharpmush-help/sharpfunc/#lock)
+- [@lock](/reference/sharpmush-help/sharpcmd/#locking)
+- [lock()](/reference/sharpmush-help/sharpfunc/#locking)
 - [elock()](/reference/sharpmush-help/sharpfunc/#elock)
 - [lockfilter()](/reference/sharpmush-help/sharpfunc/#lockfilter)
 - [locktypes](/reference/sharpmush-help/sharplock/#locktypes)
 ## TEXTFILE()
-## TEXTENTRIES()
-## TEXTSEARCH()
-## DYNHELP()
 `textfile(<type>, <entry>)`
 `textentries(<type>, <pattern>[, <osep>])`
 `textsearch(<type>, <pattern>[, <osep>])`
@@ -6432,7 +6291,6 @@ You say, "CWHO() LWHO() MWHO() NWHO() XWHO() ZWHO()"
 **See Also:**
 - [WILDCARDS](/reference/sharpmush-help/sharptop/#wildcards)
 ## TIME()
-## UTCTIME()
 `time()`
 `time(<timezone>)`
 `time(<dbref>)`
@@ -6466,7 +6324,6 @@ Continued in HELP TIME2
 - [convtime()](/reference/sharpmush-help/sharpfunc/#convtime)
 - [TIMEZONES](/reference/sharpmush-help/sharpfunc/#timezones)
 ## TIMECALC()
-## SECSCALC()
 `timecalc(<timestring>, <modifier>, ...)`
 `secscalc(<timestring>, <modifier>, ...)`
 
@@ -6513,7 +6370,6 @@ think timecalc(secs(), unixepoch)
 Wed May 09 12:19:21 2018
 ```
 ## TIMEZONES
-## @TZ
 
   The time(), timefmt() and convsecs() functions have an optional time zone argument that's used for formatting the time. Without this time zone specified, the one the game's server is running under is used.
 
@@ -7015,8 +6871,6 @@ You say, "hello"
 - [merge()](/reference/sharpmush-help/sharpfunc/#merge)
 - [splice()](/reference/sharpmush-help/sharpfunc/#splice)
 ## TRIM()
-## TRIMPENN()
-## TRIMTINY()
 `trim(<string>[, <characters to trim>[, <trim style>]])`
 `trimpenn(<string>[, <characters to trim>[, <trim style>]])`
 `trimtiny(<string>[, <trim style>[, <characters to trim>]])`
@@ -7046,7 +6900,6 @@ You say "Trim Test"
 - [squish()](/reference/sharpmush-help/sharpfunc/#squish)
 - [edit()](/reference/sharpmush-help/sharpfunc/#edit)
 ## TRUNC()
-## VAL()
 `trunc(<string>)`
 
   This function truncates floating point numbers to integers. It can also be used to return the leading numeric prefix of a string. If `<string>` does not start with a number, 0 is returned.
@@ -7063,8 +6916,8 @@ You say, "101"
 
 
 **See Also:**
-- [ceil()](/reference/sharpmush-help/sharpfunc/#ceil)
-- [floor()](/reference/sharpmush-help/sharpfunc/#floor)
+- [ceil()](/reference/sharpmush-help/sharpfunc/#round)
+- [floor()](/reference/sharpmush-help/sharpfunc/#round)
 - [bound()](/reference/sharpmush-help/sharpfunc/#bound)
 - [round()](/reference/sharpmush-help/sharpfunc/#round)
 - [left()](/reference/sharpmush-help/sharpfunc/#left)
@@ -7123,7 +6976,7 @@ ParentFoo
 
 
 **See Also:**
-- [ufun()](/reference/sharpmush-help/sharpfunc/#ufun)
+- [ufun()](/reference/sharpmush-help/sharpfunc/#u)
 - [get()](/reference/sharpmush-help/sharpfunc/#get)
 - [parent()](/reference/sharpmush-help/sharpfunc/#parent)
 - [zfun()](/reference/sharpmush-help/sharpfunc/#zfun)
@@ -7147,8 +7000,6 @@ ParentFoo
 
   Good for inherited @chatformats which use CHATFORMAT``<channel>` leaf attrs to store channel-specific formats and the like.
 ## U()
-## UFUN()
-## ULAMBDA()
 `ufun([<object>/]<attribute>[, <arg0>[, ... , <arg29>]])`
 `ulambda([<object>/]<attribute>[, <arg0>[, ... , <arg29>]])`
 
@@ -7158,16 +7009,14 @@ ParentFoo
 
   ulambda() is the same, but accepts anonymous attributes. See [lambda](/reference/sharpmush-help/sharptop/#lambda).
 
-  See [ufun2](/reference/sharpmush-help/sharpfunc/#ufun2).
+  See [ufun2](/reference/sharpmush-help/sharpfunc/#u2).
 ## U2
-## UFUN2
   The attribute is evaluated by the object it's set on, with that object's priviledges, and NOT by the object using ufun(). Because of this, allowing arbitrary use of ufun() can be insecure.
 
   You must be able to examine an attribute to ufun() it. If the safer_ufun @config option is on, you must also have equal priviliges (in terms of mortal/Royalty/Wizard/God) to the object the attribute is on. However, attributes with the 'public' flag on can be evaluated by anyone. This is necessary for attributes like 'describe', but should not be set on attributes containing code unless you're sure it's safe for anyone to use them.
 
-  See [ufun3](/reference/sharpmush-help/sharpfunc/#ufun3).
+  See [ufun3](/reference/sharpmush-help/sharpfunc/#u3).
 ## U3
-## UFUN3
   Example:
 ```
 &testcmd Object=$test *: say ufun(testfun, %0); @emit %0
@@ -7190,7 +7039,6 @@ string
 - [attribute flags](/reference/sharpmush-help/sharpattr/#attribute-flags)
 - [@include](/reference/sharpmush-help/sharpcmd/#include)
 ## UCSTR()
-## UCSTR2()
 `ucstr(<string>)`
 `ucstr2(<string>)`
 
@@ -7211,7 +7059,6 @@ You say, "GRÜSSEN
 - [lcstr()](/reference/sharpmush-help/sharpfunc/#lcstr)
 - [capstr()](/reference/sharpmush-help/sharpfunc/#capstr)
 ## UDEFAULT()
-## ULDEFAULT()
 `udefault([<object>/]<attribute>, <default case>[, <arg0>[, ... , <arg29>]])`
 `uldefault([<object>/]<attribute>, <default case>[, <arg0>[, ... <arg29>]])`
 
@@ -7235,7 +7082,7 @@ You say "-- BOOM --"
 **See Also:**
 - [get()](/reference/sharpmush-help/sharpfunc/#get)
 - [eval()](/reference/sharpmush-help/sharpfunc/#eval)
-- [ufun()](/reference/sharpmush-help/sharpfunc/#ufun)
+- [ufun()](/reference/sharpmush-help/sharpfunc/#u)
 - [default()](/reference/sharpmush-help/sharpfunc/#default)
 - [edefault()](/reference/sharpmush-help/sharpfunc/#edefault)
 - [ulocal()](/reference/sharpmush-help/sharpfunc/#ulocal)
@@ -7265,7 +7112,7 @@ You say "bananas are delicious!"
 
 
 **See Also:**
-- [ufun()](/reference/sharpmush-help/sharpfunc/#ufun)
+- [ufun()](/reference/sharpmush-help/sharpfunc/#u)
 - [setq()](/reference/sharpmush-help/sharpfunc/#setq)
 - [letq()](/reference/sharpmush-help/sharpfunc/#letq)
 - [r()](/reference/sharpmush-help/sharpfunc/#r)
@@ -7290,7 +7137,6 @@ think unique(1|2|3|3, n, |, _)
 - [setunion()](/reference/sharpmush-help/sharpfunc/#setunion)
 - [sort()](/reference/sharpmush-help/sharpfunc/#sort)
 ## V()
-## V-FUNCTION
 `v(<variable>)`
 `v(<integer>)`
 `v(<attribute>)`
@@ -7432,7 +7278,6 @@ think unique(1|2|3|3, n, |, _)
 **See Also:**
 - [VECTOR FUNCTIONS](/reference/sharpmush-help/sharpfunc/#vector-functions)
 ## VERSION()
-## NUMVERSION()
 `version()`
 `numversion()`
 
@@ -7514,9 +7359,6 @@ You say "1008001004"
 **See Also:**
 - [VECTOR FUNCTIONS](/reference/sharpmush-help/sharpfunc/#vector-functions)
 ## WIDTH()
-## HEIGHT()
-## SCREENWIDTH
-## SCREENHEIGHT
 `width(<player|descriptor>[, <default>])`
 `height(<player|descriptor>[, <default>])`
 
@@ -7600,9 +7442,6 @@ think words(1 2%b%b3, %b)
 @desc here=iter(wrap(Hanging indent, 72, 76, %r), switch(#@, >1, space(4))%i0, %r, %r)
 ```
 ## XATTR()
-## XATTRP()
-## REGXATTR()
-## REGXATTRP()
 `xattr(<object>[/<attribute pattern>], <start>, <count>[, <osep>])`
 `xattrp(<object>[/<attribute pattern>], <start>, <count>[, <osep>])`
 `regxattr(<object>[/<regexp>], <start>, <count>[, <osep>])`
@@ -7637,7 +7476,6 @@ think words(1 2%b%b3, %b)
 - [nor()](/reference/sharpmush-help/sharpfunc/#nor)
 - [lmath()](/reference/sharpmush-help/sharpfunc/#lmath)
 ## XVCON()
-## XCON()
 `xcon(<object>, <start>, <count>)`
 `xvcon(<object>, <start>, <count>)`
 
@@ -7649,11 +7487,10 @@ think words(1 2%b%b3, %b)
 
 
 **See Also:**
-- [ncon()](/reference/sharpmush-help/sharpfunc/#ncon)
+- [ncon()](/reference/sharpmush-help/sharpfunc/#nvcon)
 - [lcon()](/reference/sharpmush-help/sharpfunc/#lcon)
 - [lvcon()](/reference/sharpmush-help/sharpfunc/#lvcon)
 ## XVEXITS()
-## XEXITS()
 `xexits(<room>, <start>, <count>)`
 `xvexits(<room>, <start>, <count>)`
 
@@ -7665,11 +7502,10 @@ think words(1 2%b%b3, %b)
 
 
 **See Also:**
-- [nexits()](/reference/sharpmush-help/sharpfunc/#nexits)
+- [nexits()](/reference/sharpmush-help/sharpfunc/#nvexits)
 - [lexits()](/reference/sharpmush-help/sharpfunc/#lexits)
 - [lvexits()](/reference/sharpmush-help/sharpfunc/#lvexits)
 ## XVPLAYERS()
-## XPLAYERS()
 `xplayers(<object>, <start>, <count>)`
 `xvplayers(<object>, <start>, <count>)`
 
@@ -7681,13 +7517,12 @@ think words(1 2%b%b3, %b)
 
 
 **See Also:**
-- [nplayers()](/reference/sharpmush-help/sharpfunc/#nplayers)
+- [nplayers()](/reference/sharpmush-help/sharpfunc/#nvplayers)
 - [lplayers()](/reference/sharpmush-help/sharpfunc/#lplayers)
 - [lvplayers()](/reference/sharpmush-help/sharpfunc/#lvplayers)
-- [xthings()](/reference/sharpmush-help/sharpfunc/#xthings)
-- [xexits()](/reference/sharpmush-help/sharpfunc/#xexits)
+- [xthings()](/reference/sharpmush-help/sharpfunc/#xvthings)
+- [xexits()](/reference/sharpmush-help/sharpfunc/#xvexits)
 ## XVTHINGS()
-## XTHINGS()
 `xthings(<object>, <start>, <count>)`
 `xvthings(<object>, <start>, <count>)`
 
@@ -7699,15 +7534,12 @@ think words(1 2%b%b3, %b)
 
 
 **See Also:**
-- [nthings()](/reference/sharpmush-help/sharpfunc/#nthings)
+- [nthings()](/reference/sharpmush-help/sharpfunc/#nvthings)
 - [lthings()](/reference/sharpmush-help/sharpfunc/#lthings)
 - [lvthings()](/reference/sharpmush-help/sharpfunc/#lvthings)
-- [xplayers()](/reference/sharpmush-help/sharpfunc/#xplayers)
-- [xexits()](/reference/sharpmush-help/sharpfunc/#xexits)
+- [xplayers()](/reference/sharpmush-help/sharpfunc/#xvplayers)
+- [xexits()](/reference/sharpmush-help/sharpfunc/#xvexits)
 ## XWHO()
-## XWHOID()
-## XMWHO()
-## XMWHOID()
 `xwho([<looker>, ]<start>, <count>)`
 `xmwho(<start>, <count>)`
 `xwhoid([<looker>, ]<start>, <count>)`
@@ -7725,10 +7557,9 @@ think words(1 2%b%b3, %b)
 **See Also:**
 - [lwho()](/reference/sharpmush-help/sharpfunc/#lwho)
 - [mwho()](/reference/sharpmush-help/sharpfunc/#mwho)
-- [nwho()](/reference/sharpmush-help/sharpfunc/#nwho)
+- [nwho()](/reference/sharpmush-help/sharpfunc/#nmwho)
 - [zwho()](/reference/sharpmush-help/sharpfunc/#zwho)
 ## ZWHO()
-## ZMWHO()
 `zwho(<object>[, <viewer>])`
 `zmwho(<object>)`
 
@@ -7739,12 +7570,11 @@ think words(1 2%b%b3, %b)
 
 **See Also:**
 - [lwho()](/reference/sharpmush-help/sharpfunc/#lwho)
-- [nwho()](/reference/sharpmush-help/sharpfunc/#nwho)
+- [nwho()](/reference/sharpmush-help/sharpfunc/#nmwho)
 - [zone()](/reference/sharpmush-help/sharpfunc/#zone)
 - [zfun()](/reference/sharpmush-help/sharpfunc/#zfun)
 - [zemit()](/reference/sharpmush-help/sharpfunc/#zemit)
 ## ZEMIT()
-## NSZEMIT()
 `zemit(<zone>, <message>)`
 `nszemit(<zone>, <message>)`
 
@@ -7768,7 +7598,7 @@ think words(1 2%b%b3, %b)
 
 
 **See Also:**
-- [ufun()](/reference/sharpmush-help/sharpfunc/#ufun)
+- [ufun()](/reference/sharpmush-help/sharpfunc/#u)
 - [get()](/reference/sharpmush-help/sharpfunc/#get)
 - [zone()](/reference/sharpmush-help/sharpfunc/#zone)
 - [zemit()](/reference/sharpmush-help/sharpfunc/#zemit)
@@ -7807,7 +7637,7 @@ think words(1 2%b%b3, %b)
 - [convsecs()](/reference/sharpmush-help/sharpfunc/#convsecs)
 - [time()](/reference/sharpmush-help/sharpfunc/#time)
 - [starttime()](/reference/sharpmush-help/sharpfunc/#starttime)
-- [restarttime()](/reference/sharpmush-help/sharpfunc/#restarttime)
+- [restarttime()](/reference/sharpmush-help/sharpfunc/#starttime)
 - [restarts()](/reference/sharpmush-help/sharpfunc/#restarts)
 - [@dbck](/reference/sharpmush-help/sharpcmd/#dbck)
 - [@purge](/reference/sharpmush-help/sharpcmd/#purge)

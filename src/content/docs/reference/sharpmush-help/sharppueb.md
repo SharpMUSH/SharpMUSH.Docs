@@ -211,9 +211,9 @@ Support for Pueblo links depends on the WebSocket client, however the example cl
 You can also send data encapsulated in a JSON object.
 
 See [json()](/reference/sharpmush-help/sharpfunc/#json) for information about formatting data into JSON object strings.
-See [wsjson()](/reference/sharpmush-help/sharppueb/#wsjson) for help sending formatted JSON object strings to WebSocket clients as a JavaScript object.
+See [wsjson()](/reference/sharpmush-help/sharppueb/#wshtml) for help sending formatted JSON object strings to WebSocket clients as a JavaScript object.
 
-See [@prompt](/reference/sharpmush-help/sharpcmd/#prompt) for information about sending telnet GOAHEAD prompts. Support for prompts depends on the WebSocket client. The example client above shows prompts on their own line, separating the input and output windows, but requires PROMPT_NEWLINES to be turned off.
+See [@prompt](/reference/sharpmush-help/sharpcmd/#pemit) for information about sending telnet GOAHEAD prompts. Support for prompts depends on the WebSocket client. The example client above shows prompts on their own line, separating the input and output windows, but requires PROMPT_NEWLINES to be turned off.
 
 
 **See Also:**
@@ -221,10 +221,9 @@ See [@prompt](/reference/sharpmush-help/sharpcmd/#prompt) for information about 
 - [json()](/reference/sharpmush-help/sharpfunc/#json)
 - [pueblo](/reference/sharpmush-help/sharppueb/#pueblo)
 - [wshtml()](/reference/sharpmush-help/sharppueb/#wshtml)
-- [wsjson()](/reference/sharpmush-help/sharppueb/#wsjson)
+- [wsjson()](/reference/sharpmush-help/sharppueb/#wshtml)
 
 ## WSHTML()
-## WSJSON()
 
 `wshtml(<html string>[, <default string>])`
 `wsjson(<json string>[, <default string>])`

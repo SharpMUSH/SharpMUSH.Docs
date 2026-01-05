@@ -4,7 +4,6 @@ description: "SharpMUSH documentation for Mail System"
 ---
 
 ## MAIL
-## @MAIL
 
 - `@mail[/<switches>] [<msg-list>[=<target>]]`
 - `@mail[/<switches>] <player-list>=[<subject>/]<message>`
@@ -41,9 +40,6 @@ A *<player-list>* is a space-separated list of recipients, which may be:
 - [@mailquota](/reference/sharpmush-help/sharpmail/#mailquota)
 
 ## MAIL-READING
-## @MAIL/READ
-## @MAIL/LIST
-## @MAIL/CSTATS
 
 - `@mail <msg #>`
 - `@mail/read <msg-list>`
@@ -65,8 +61,6 @@ A *<player-list>* is a space-separated list of recipients, which may be:
 * Shows how many messages you have, in the same format as the automatic mail check when you connect.
 
 ## MAIL-SENDING
-## @MAIL/SEND
-## @MAIL/FWD
 
 - `@mail[/switch] <player-list>=[<subject>]/<msg>`
 * This sends the message *<msg>* to all players in *<player-list>*.
@@ -85,13 +79,6 @@ If you have an @mailsignature attribute set on yourself, its contents will be ev
 * This sends a copy of all the messages in *<msg-list>* to all the players in *<player-list>*. The copy will appear to have been sent by you (not the original sender), and its status will be "Forwarded".
 
 ## MAIL-OTHER
-## @MAIL/CLEAR
-## @MAIL/UNCLEAR
-## @MAIL/PURGE
-## @MAIL/TAG
-## @MAIL/UNTAG
-## @MAIL/UNREAD
-## @MAIL/STATUS
 
 - `@mail/clear [<msg-list> | all]`
 - `@mail/unclear [<msg-list> | all]`
@@ -127,9 +114,6 @@ To clear all mail from Paul and Chani:
 * Read marks a new message as read without reading it, urgent/unurgent toggle the urgent flag, and the others are equivalent to @mail/tag, @mail/untag, @mail/clear, @mail/unclear and @mail/unread respectively.
 
 ## MAIL-FOLDERS
-## @MAIL/FOLDER
-## @MAIL/UNFOLDER
-## @MAIL/FILE
 
 The MUSH mail system allows each player 16 folders, numbered from 0 to 15. Mail can only be in 1 folder at a time. Folder 0 is the "inbox" where new mail is received. Most @mail commands operate on only the current folder.
 
@@ -153,8 +137,6 @@ The MUSH mail system allows each player 16 folders, numbered from 0 to 15. Mail 
 - [@mailfilter](/reference/sharpmush-help/sharpmail/#mailfilter)
 
 ## MAIL-REVIEWING
-## @MAIL/REVIEW
-## @MAIL/RETRACT
 
 - `@mail/review [<player>]`
 * Reviews the messages you have sent to *<player>*, or all messages you've sent if no *<player>* is specified.
@@ -179,7 +161,6 @@ Example:
 ```
 
 ## @MAILFILTER
-## MAILFILTER
 
 The @mailfilter attribute specifies automatic filing of incoming @mail messages into folders. When an @mail message is received, the contents of @mailfilter are evaluated, with the following arguments passed:
 * `%0` - dbref of message sender
@@ -199,7 +180,6 @@ Example: Filter urgent messages into folder 1
 - [mail-folders](/reference/sharpmush-help/sharpmail/#mail-folders)
 
 ## @MAILSIGNATURE
-## MAILSIGNATURE
 
 - `@mailsignature <object>[=<signature>]`
 
@@ -323,15 +303,15 @@ Mail functions work with @mail.
 Available functions:
 * [folderstats](/reference/sharpmush-help/sharpconf/#folderstats)
 * [mail](/reference/sharpmush-help/sharpmail/#mail)
-* [maildstats](/reference/sharpmush-help/sharpmail/#maildstats)
+* [maildstats](/reference/sharpmush-help/sharpmail/#mailstats)
 * [mailfrom](/reference/sharpmush-help/sharpmail/#mailfrom)
-* [mailfstats](/reference/sharpmush-help/sharpmail/#mailfstats)
-* [maillist](/reference/sharpmush-help/sharpmail/#maillist)
-* [mailsend](/reference/sharpmush-help/sharpmail/#mailsend)
+* [mailfstats](/reference/sharpmush-help/sharpmail/#mailstats)
+* [maillist](/reference/sharpmush-help/sharpmail/#mail-reading)
+* [mailsend](/reference/sharpmush-help/sharpmail/#mail-sending)
 * [mailstats](/reference/sharpmush-help/sharpmail/#mailstats)
-* [mailstatus](/reference/sharpmush-help/sharpmail/#mailstatus)
-* [mailsubject](/reference/sharpmush-help/sharpmail/#mailsubject)
-* [mailtime](/reference/sharpmush-help/sharpmail/#mailtime)
+* [mailstatus](/reference/sharpmush-help/sharpmail/#mailfrom)
+* [mailsubject](/reference/sharpmush-help/sharpmail/#mailfrom)
+* [mailtime](/reference/sharpmush-help/sharpmail/#mailfrom)
 * [malias](/reference/sharpmush-help/sharpconf/#malias)
 
 ## FOLDERSTATS()
@@ -366,7 +346,7 @@ Example:
 
 
 **See Also:**
-- [maillist](/reference/sharpmush-help/sharpmail/#maillist)
+- [maillist](/reference/sharpmush-help/sharpmail/#mail-reading)
 - [mailfrom](/reference/sharpmush-help/sharpmail/#mailfrom)
 
 ## MAILLIST()
@@ -391,9 +371,6 @@ Examples:
 - [mailfrom](/reference/sharpmush-help/sharpmail/#mailfrom)
 
 ## MAILFROM()
-## MAILTIME()
-## MAILSTATUS()
-## MAILSUBJECT()
 
 - `mailfrom([<player>, ][<folder #>:]<mail message #>)`
 - `mailtime([<player>, ][<folder #>:]<mail message #>)`
@@ -408,11 +385,9 @@ Examples:
 
 **See Also:**
 - [mail](/reference/sharpmush-help/sharpmail/#mail)
-- [maillist](/reference/sharpmush-help/sharpmail/#maillist)
+- [maillist](/reference/sharpmush-help/sharpmail/#mail-reading)
 
 ## MAILSTATS()
-## MAILDSTATS()
-## MAILFSTATS()
 
 - `mailstats([<player>])`
 - `maildstats([<player>])`

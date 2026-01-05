@@ -196,11 +196,35 @@ function convertTopicToLink(topic, displayText) {
 }
 
 function convertHeadingLevels(content) {
+  // Remove alias headers (consecutive # headers where subsequent ones are aliases)
+  // Split content into lines to process aliases
+  const lines = content.split('\n');
+  const processedLines = [];
+  
+  for (let i = 0; i < lines.length; i++) {
+    const currentLine = lines[i];
+    
+    // Check if this is a # header (handle Windows line endings with \r)
+    if (currentLine.match(/^# .+/)) {
+      // Keep the first header in a sequence
+      processedLines.push(currentLine);
+      
+      // Skip any immediately following # headers (these are aliases)
+      while (i + 1 < lines.length && lines[i + 1].match(/^# .+/)) {
+        i++; // Skip the alias
+      }
+    } else {
+      processedLines.push(currentLine);
+    }
+  }
+  
+  content = processedLines.join('\n');
+  
   // First convert ## H2 tags to ### H3 tags
-  content = content.replace(/^## (.+)$/gm, '### $1');
+  content = content.replace(/^## (.+)/gm, '### $1');
   
   // Then convert # H1 tags to ## H2 tags
-  content = content.replace(/^# (.+)$/gm, '## $1');
+  content = content.replace(/^# (.+)/gm, '## $1');
   
   return content;
 }
@@ -241,7 +265,7 @@ async function convertFile(sourceFile, targetFile) {
     
     let content = await fs.readFile(sourceFile, 'utf-8');
     
-    // Convert heading levels (H1 -> H2, H2 -> H3)
+    // Convert heading levels (H1 -> H2, H2 -> H3) and remove aliases
     content = convertHeadingLevels(content);
     
     // Convert internal links
@@ -260,6 +284,69 @@ async function convertFile(sourceFile, targetFile) {
   } catch (error) {
     console.error(`✗ Error converting ${sourceFile}:`, error.message);
     throw error;
+  }
+}
+
+// Build alias map from source files
+async function buildAliasMap() {
+  const files = await fs.readdir(SUBMODULE_DOCS_PATH);
+  const markdownFiles = files.filter(file => file.endsWith('.md'));
+  
+  const aliasMap = {}; // Maps "alias-slug" -> "main-topic-slug"
+  
+  for (const file of markdownFiles) {
+    const filePath = path.join(SUBMODULE_DOCS_PATH, file);
+    const content = await fs.readFile(filePath, 'utf-8');
+    const lines = content.split('\n');
+    
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+      
+      // Check if this is a # header (handle Windows line endings)
+      if (line.match(/^# .+/)) {
+        // Extract the header text
+        const mainTopic = line.substring(2).trim().replace(/\r$/, '');
+        const mainSlug = createSlugFromTitle(mainTopic);
+        
+        // Check for consecutive aliases
+        let j = i + 1;
+        while (j < lines.length && lines[j].match(/^# .+/)) {
+          const aliasTopic = lines[j].substring(2).trim().replace(/\r$/, '');
+          const aliasSlug = createSlugFromTitle(aliasTopic);
+          
+          // Map alias to main topic
+          aliasMap[aliasSlug] = mainSlug;
+          
+          j++;
+        }
+        
+        // Skip past the aliases we just processed
+        i = j - 1;
+      }
+    }
+  }
+  
+  return aliasMap;
+}
+
+// Fix links in a file that point to removed aliases
+async function fixAliasLinksInFile(filePath, aliasMap) {
+  let content = await fs.readFile(filePath, 'utf-8');
+  
+  // Pattern: [text](/reference/sharpmush-help/filename/#anchor)
+  const linkPattern = /\[([^\]]+)\]\(\/reference\/sharpmush-help\/([^#)]+)#([^)]+)\)/g;
+  
+  const newContent = content.replace(linkPattern, (match, linkText, filename, anchor) => {
+    // Check if this anchor is an alias that should be replaced
+    if (aliasMap[anchor]) {
+      const newAnchor = aliasMap[anchor];
+      return `[${linkText}](/reference/sharpmush-help/${filename}#${newAnchor})`;
+    }
+    return match;
+  });
+  
+  if (newContent !== content) {
+    await fs.writeFile(filePath, newContent, 'utf-8');
   }
 }
 
@@ -301,6 +388,18 @@ async function convertAllDocs() {
     }
     
     console.log(`\n✅ Successfully converted ${markdownFiles.length} files`);
+    
+    // Fix links that point to removed aliases
+    console.log('\nFixing links to removed aliases...');
+    const aliasMap = await buildAliasMap();
+    console.log(`Found ${Object.keys(aliasMap).length} aliases to check`);
+    
+    for (const file of markdownFiles) {
+      const targetFile = path.join(OUTPUT_DOCS_PATH, file);
+      await fixAliasLinksInFile(targetFile, aliasMap);
+    }
+    
+    console.log('✅ Links updated');
     console.log(`📁 Output directory: ${OUTPUT_DOCS_PATH}`);
     
   } catch (error) {

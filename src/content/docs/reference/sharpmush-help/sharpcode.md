@@ -4,7 +4,6 @@ description: "SharpMUSH documentation for Coding and Programming"
 ---
 
 ## code
-## contact
 SharpMUSH is developed by a team of developers whose names are listed in [changes](/reference/sharpmush-help/sharpconf/#changes). Suggestions, comments, and bug reports are welcome.
 
 The main SharpMUSH web page is at http://sharpmush.com
@@ -20,9 +19,6 @@ For information about changes in versions of the code, see [changes](/reference/
 The latest version of this MUSH code is available from https://github.com/SharpMUSH/SharpMUSH/releases. 
 
 ## i18n
-## internationalization
-## locale
-## translation
 Internationalization support in SharpMUSH includes:
 * Support for (8-bit) locale-based character sets, including translation of iso-8859-1 accented characters to html entities for Pueblo, the `accent()` and `stripaccents()` functions, and the NOACCENTS flag.
 * Support for UTF-8 and UTF-16
@@ -36,8 +32,6 @@ Most of these features get enabled by setting an appropriate environment variabl
 Unicode is not currently supported.
 
 ## copyright
-## copyrite
-## license
 Copyright, License, and Credits for SharpMUSH 1.x.
 
 I. Copyrights

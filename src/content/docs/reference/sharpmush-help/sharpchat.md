@@ -4,9 +4,6 @@ description: "SharpMUSH documentation for Chat and Channels"
 ---
 
 ## CHAT
-## CHAT SYSTEM
-## comsys
-## CHANNELS
 
 SharpMUSH has a built-in chat system which allows you to speak to other players who are on the same channel without needing to be in the same room as them. It supports a large number of channels which can be customized and restricted in various ways.
 
@@ -21,14 +18,13 @@ There are some aliases in place for players more familiar with the MUX comsys - 
 **See Also:**
 - [@channel](/reference/sharpmush-help/sharpchat/#channel)
 - [@chat](/reference/sharpmush-help/sharpchat/#chat)
-- [@cemit](/reference/sharpmush-help/sharpchat/#cemit)
+- [@cemit](/reference/sharpmush-help/sharpchat/#channel-functions)
 - [channel functions](/reference/sharpmush-help/sharpchat/#channel-functions)
 - [CHAN_USEFIRSTMATCH](/reference/sharpmush-help/sharpchat/#chanusefirstmatch)
 - [@chatformat](/reference/sharpmush-help/sharpchat/#chatformat)
-- [@clock](/reference/sharpmush-help/sharpchat/#clock)
+- [@clock](/reference/sharpmush-help/sharpchat/#channel-clock)
 
 ## @chat
-## +
 
 - `@chat <channel>=<message>`
 - `+<channel> <message>`
@@ -47,7 +43,7 @@ The `@chat` command is used to speak on channels. Everyone on the channel will s
 
 **See Also:**
 - [@channel](/reference/sharpmush-help/sharpchat/#channel)
-- [@cemit](/reference/sharpmush-help/sharpchat/#cemit)
+- [@cemit](/reference/sharpmush-help/sharpchat/#channel-functions)
 
 ## @CHATFORMAT
 
@@ -131,12 +127,9 @@ Normally, when an object attempts to speak on the channel system with @chat, usi
 **See Also:**
 - [CHAT](/reference/sharpmush-help/sharpchat/#chat)
 - [@chat](/reference/sharpmush-help/sharpchat/#chat)
-- [@cemit](/reference/sharpmush-help/sharpchat/#cemit)
+- [@cemit](/reference/sharpmush-help/sharpchat/#channel-functions)
 
 ## @CEMIT
-## @NSCEMIT
-## CEMIT()
-## NSCEMIT()
 
 - `@cemit[/noisy|/silent][/noeval] <channel>=<message>`
 - `@nscemit[/noisy|/silent][/noeval] <channel>=<message>`
@@ -169,17 +162,10 @@ Help for `@channel` is split into a number of topics. Please see [@channel \<top
 **See Also:**
 - [CHAT](/reference/sharpmush-help/sharpchat/#chat)
 - [@chat](/reference/sharpmush-help/sharpchat/#chat)
-- [@cemit](/reference/sharpmush-help/sharpchat/#cemit)
+- [@cemit](/reference/sharpmush-help/sharpchat/#channel-functions)
 - [channel functions](/reference/sharpmush-help/sharpchat/#channel-functions)
 
 ## @CHANNEL JOINING
-## @channel/list
-## @channel/what
-## @channel/who
-## @channel/on
-## @channel/join
-## @channel/off
-## @channel/leave
 
 - `@channel/list[/on|/off][/quiet] [<prefix>]`
 - `@channel/what [<prefix>]`
@@ -196,13 +182,6 @@ Help for `@channel` is split into a number of topics. Please see [@channel \<top
 `@channel/on` and `@channel/off` add or remove you from the given *\<channel\>*. You only hear messages for channels you're on, and most channels require you to join them before you can speak on them. /join and /leave are aliases for /on and /off.
 
 ## @CHANNEL JOINING2
-## @channel/gag
-## @channel/ungag
-## @channel/hide
-## @channel/unhide
-## @channel/mute
-## @channel/combine
-## @channel/uncombine
 
 - `@channel/gag [<channel>][=<yes|no>]`
 - `@channel/mute [<channel>][=<yes|no>]`
@@ -221,16 +200,13 @@ For all four of these commands, you can specify a single channel to affect, or o
 
 **See Also:**
 - [@channel/who]
-- [cstatus()](/reference/sharpmush-help/sharpchat/#cstatus)
-- [cowner()](/reference/sharpmush-help/sharpchat/#cowner)
-- [cflags()](/reference/sharpmush-help/sharpchat/#cflags)
-- [channels()](/reference/sharpmush-help/sharpchat/#channels)
+- [cstatus()](/reference/sharpmush-help/sharpchat/#channel-functions)
+- [cowner()](/reference/sharpmush-help/sharpchat/#channel-functions)
+- [cflags()](/reference/sharpmush-help/sharpchat/#channel-functions)
+- [channels()](/reference/sharpmush-help/sharpchat/#channel-functions)
 - [@channel/privs]
 
 ## @CHANNEL OTHER
-## @channel/recall
-## @channel/title
-## @channel/buffer
 
 - `@channel/recall[/last] <channel>[=<count>]`
 - `@channel/title <channel>=<title>`
@@ -247,15 +223,6 @@ For all four of these commands, you can specify a single channel to affect, or o
 - [@channel/privs]
 
 ## @CHANNEL ADMIN
-## @channel/add
-## @channel/delete
-## @channel/mogrifier
-## @channel/chown
-## @channel/name
-## @channel/desc
-## @channel/privs
-## @channel/wipe
-## @channel/clock
 
 - `@channel/add <channel>[=<description>]`
 - `@channel/delete <channel>`
@@ -288,7 +255,7 @@ For all four of these commands, you can specify a single channel to affect, or o
 **See Also:**
 - [@channel/who]
 - [@channel/privs]
-- [@clock](/reference/sharpmush-help/sharpchat/#clock)
+- [@clock](/reference/sharpmush-help/sharpchat/#channel-clock)
 
 ## @CHANNEL LIST
 
@@ -315,7 +282,7 @@ The Lock column shows:
 **See Also:**
 - [@channel/who]
 - [@channel/privs]
-- [@clock](/reference/sharpmush-help/sharpchat/#clock)
+- [@clock](/reference/sharpmush-help/sharpchat/#channel-clock)
 
 ## @CHANNEL PRIVS
 
@@ -340,10 +307,9 @@ Available privileges:
 **See Also:**
 - [@channel/who]
 - [@channel clock](/reference/sharpmush-help/sharpchat/#channel-clock)
-- [@clock](/reference/sharpmush-help/sharpchat/#clock)
+- [@clock](/reference/sharpmush-help/sharpchat/#channel-clock)
 
 ## @CHANNEL CLOCK
-## @clock
 
 `@channel/clock[/switch] <channel>[=<lock>]`
 
@@ -370,17 +336,11 @@ Only channel admins can set locks. Players must pass:
 ```
 
 **See Also:**
-- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
-- [locks](/reference/sharpmush-help/sharpcmd/#locks)
+- [@lock](/reference/sharpmush-help/sharpcmd/#locking)
+- [locks](/reference/sharpmush-help/sharpcmd/#llocks)
 - [@channel privs](/reference/sharpmush-help/sharpchat/#channel-privs)
 
 ## CHANNEL FUNCTIONS
-## CHANNELS()
-## COWNER()
-## CFLAGS()
-## CSTATUS()
-## CEMIT()
-## NSCEMIT()
 
 `channels([<player>][,<type>])`
 `cowner(<channel>)`
@@ -410,7 +370,7 @@ These functions provide information about channels:
   - With both: Their status on that channel
   Status is one of: OFF ON GAG HIDE MUTE COMBINE
 
-- **cemit()** and **nscemit()**: Emit *\<message\>* on *\<channel\>*. See [@cemit](/reference/sharpmush-help/sharpchat/#cemit).
+- **cemit()** and **nscemit()**: Emit *\<message\>* on *\<channel\>*. See [@cemit](/reference/sharpmush-help/sharpchat/#channel-functions).
 
 **Examples**
 ```
@@ -429,7 +389,7 @@ ON COMBINE
 **See Also:**
 - [@channel](/reference/sharpmush-help/sharpchat/#channel)
 - [@chat](/reference/sharpmush-help/sharpchat/#chat)
-- [@cemit](/reference/sharpmush-help/sharpchat/#cemit)
+- [@cemit](/reference/sharpmush-help/sharpchat/#channel-functions)
 
 ## MUXCOMSYS
 

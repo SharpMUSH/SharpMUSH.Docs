@@ -5,7 +5,7 @@ description: "SharpMUSH documentation for Locks"
 
 ## LOCK KEYS
 
-There are many key types, and it is also possible to form more complex locks by using boolean symbols and grouping. See [@lock-complex](/reference/sharpmush-help/sharplock/#lock-complex) for examples.
+There are many key types, and it is also possible to form more complex locks by using boolean symbols and grouping. See [@lock-complex](/reference/sharpmush-help/sharplock/#lock-keys2) for examples.
 
 The types of keys are outlined below. Detailed help for each is available by typing [@lock-<key>](/reference/sharpmush-help/sharpcmd/#lock-key), replacing *<key>* with the word on the left.
 
@@ -23,7 +23,6 @@ The types of keys are outlined below. Detailed help for each is available by typ
 You can negate lock keys, and combine multiple keys, as explained in [lockkeys2](/reference/sharpmush-help/sharplock/#lockkeys2).
 
 ## LOCK KEYS2
-## @LOCK-COMPLEX
 
 A lock key can be negated by prefixing the key with an "!". For example:
 
@@ -58,13 +57,12 @@ allows non-players to pass, or players who do not have the "unregistered" flag s
 
 
 **See Also:**
-- [- [@lock](/reference/sharpmush-help/sharplock/#lock)
+- [- [@lock](/reference/sharpmush-help/sharplock/#locking)
 - [locktypes](/reference/sharpmush-help/sharplock/#locktypes)
-- [@clock](/reference/sharpmush-help/sharpchat/#clock)
+- [@clock](/reference/sharpmush-help/sharpchat/#channel-clock)
 - [objid()](/reference/sharpmush-help/sharpfunc/#objid)
 
 ## @LOCK-SIMPLE
-## @LOCK-OBJID
 
 **SIMPLE LOCKS**
 
@@ -78,12 +76,11 @@ This lock will always fail.
 ```
 > @lock My Toy = =me
 ```
-This locks the object "My Toy" to you and you alone. It is recommended that you `@lock me = =me` in order to prevent anyone else from picking you up. The two = signs are NOT a typo! The first is part of the @lock syntax (as shown at the top of [@lock](/reference/sharpmush-help/sharpcmd/#lock)) the second is a lock key that means "only this exact object".
+This locks the object "My Toy" to you and you alone. It is recommended that you `@lock me = =me` in order to prevent anyone else from picking you up. The two = signs are NOT a typo! The first is part of the @lock syntax (as shown at the top of [@lock](/reference/sharpmush-help/sharpcmd/#locking)) the second is a lock key that means "only this exact object".
 
 For backwards compatibility, `OBJID^<object>` is an alias for `=<object>`.
 
 ## @LOCK-OWNER
-## @LOCK-CARRY
 
 **## OWNER LOCK**
 
@@ -143,7 +140,6 @@ The person trying to pass the lock is %# and *<object>* is %! when the evaluatio
 - [@lock-eval2](/reference/sharpmush-help/sharplock/#lock-eval2)
 
 ## @LOCK-EVAL2
-## @LOCK-EVALUATION2
 
 Example:
 ```
@@ -175,10 +171,6 @@ For example, to lock "Bob's Tools" to only people with a name beginning with Bob
 ```
 
 ## @LOCK-BIT
-## @LOCK-FLAG
-## @LOCK-TYPE
-## @LOCK-POWER
-## @LOCK-CHANNEL
 
 **## BIT LOCKS**
 You can test for set flags, powers, or object types in a lock directly, without using an evaluation lock, with these formats:
@@ -199,7 +191,6 @@ You can also test for channel membership with:
 `@lock <object>=channel^<channel>`
 
 ## @LOCK-DBREFLIST
-## @LOCK-LIST
 
 **## LIST LOCK**
 You can test to see if the enactor is a member of a space-separated list of dbrefs or objids on an attribute on the object, with:
@@ -216,7 +207,7 @@ For example:
 ## @LOCK-INDIRECT
 
 **## INDIRECT LOCKS**
-An "indirect" lock allows you to lock something to the same thing as another object (very useful in setting channel locks; see [@clock](/reference/sharpmush-help/sharpchat/#clock)):
+An "indirect" lock allows you to lock something to the same thing as another object (very useful in setting channel locks; see [@clock](/reference/sharpmush-help/sharpchat/#channel-clock)):
 ```
 @lock Second Puppet=@First Puppet
 ```
@@ -246,13 +237,10 @@ This locks *<object>* to players (and the objects of players) currently connecte
 
 **See Also:**
 - [- [ipaddr()]
-- [hostname()](/reference/sharpmush-help/sharpfunc/#hostname)
+- [hostname()](/reference/sharpmush-help/sharpfunc/#host)
 - [LASTSITE](/reference/sharpmush-help/sharptop/#lastsite)
 
 ## LOCKTYPES
-## LOCKLIST
-## LOCK TYPES
-## LOCK LIST
 
 These are the standard lock types supported by SharpMUSH. For more detailed information about any lock type, see [@lock/<lock>].
 
@@ -271,10 +259,9 @@ Standard Lock Types:
 
 
 **See Also:**
-- [locktypes2](/reference/sharpmush-help/sharplock/#locktypes2)
+- [locktypes2](/reference/sharpmush-help/sharplock/#lock-types2)
 
 ## LOCK TYPES2
-## LOCKTYPES2
 
 More standard lock types:
 
@@ -304,15 +291,12 @@ More standard lock types:
 
 
 **See Also:**
-- [- [@lock](/reference/sharpmush-help/sharplock/#lock)
+- [- [@lock](/reference/sharpmush-help/sharplock/#locking)
 - [@lset](/reference/sharpmush-help/sharpcmd/#lset)
-- [@clock](/reference/sharpmush-help/sharpchat/#clock)
-- [FAILURE](/reference/sharpmush-help/sharptop/#failure)
+- [@clock](/reference/sharpmush-help/sharpchat/#channel-clock)
+- [FAILURE](/reference/sharpmush-help/sharptop/#afailure)
 
 ## @LOCK/BASIC
-## @LOCK/ENTER
-## @LOCK/LEAVE
-## @LOCK/TELEPORT
 
 **## Basic Lock**
 For exits, this lock controls who can pass through the exit.
@@ -321,9 +305,9 @@ For rooms, it determines whether the @success or @failure verbs are triggered wh
 
 
 **See Also:**
-- [- [@success](/reference/sharpmush-help/sharpconf/#success)
-- [@failure](/reference/sharpmush-help/sharpcmd/#failure)
-- [goto](/reference/sharpmush-help/sharpcmd/#goto)
+- [- [@success](/reference/sharpmush-help/sharpconf/#asuccess)
+- [@failure](/reference/sharpmush-help/sharpcmd/#afailure)
+- [goto](/reference/sharpmush-help/sharpcmd/#go)
 - [get](/reference/sharpmush-help/sharpcmd/#get)
 - [look](/reference/sharpmush-help/sharpcmd/#look)
 
@@ -332,10 +316,10 @@ For players and things, the Enter lock controls who can "enter" an ENTER_OK obje
 
 
 **See Also:**
-- [- [@enter](/reference/sharpmush-help/sharpconf/#enter)
-- [@efail](/reference/sharpmush-help/sharpcmd/#efail)
+- [- [@enter](/reference/sharpmush-help/sharpconf/#aenter)
+- [@efail](/reference/sharpmush-help/sharpcmd/#aefail)
 - [ENTER_OK](/reference/sharpmush-help/sharpflag/#enterok)
-- [enter](/reference/sharpmush-help/sharpcmd/#enter)
+- [enter](/reference/sharpmush-help/sharpcmd/#aenter)
 - [empty](/reference/sharpmush-help/sharpcmd/#empty)
 
 **## Leave Lock**
@@ -354,20 +338,18 @@ For rooms, the Teleport lock controls who can "@teleport" into the room, if it h
 **See Also:**
 - [- [JUMP_OK](/reference/sharpmush-help/sharpconf/#jumpok)
 - [@teleport](/reference/sharpmush-help/sharpcmd/#teleport)
-- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [@lock](/reference/sharpmush-help/sharpcmd/#locking)
 - [locktypes](/reference/sharpmush-help/sharplock/#locktypes)
 - [lockkeys](/reference/sharpmush-help/sharplock/#lockkeys)
 
 ## @LOCK/FOLLOW
-## @LOCK/FORWARD
-## @LOCK/DROPTO
 
 **## Follow Lock**
 For players and things, controls who may "follow" the object. Has no meaning for rooms or exits.
 
 
 **See Also:**
-- [FAILURE](/reference/sharpmush-help/sharptop/#failure)
+- [FAILURE](/reference/sharpmush-help/sharptop/#afailure)
 
 **## Forward Lock**
 For players, things and rooms, controls who can forward sound to an object, via @forwardlist or @debugforwardlist. Meaningless for exits.
@@ -384,24 +366,22 @@ For rooms, only objects which pass this lock will be sent to the rooms Drop-To. 
 
 **See Also:**
 - [- [DROP-TOS](/reference/sharpmush-help/sharpconf/#drop-tos)
-- [drop](/reference/sharpmush-help/sharpcmd/#drop)
+- [drop](/reference/sharpmush-help/sharpcmd/#adrop)
 - [empty](/reference/sharpmush-help/sharpcmd/#empty)
-- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [@lock](/reference/sharpmush-help/sharpcmd/#locking)
 - [locktypes](/reference/sharpmush-help/sharplock/#locktypes)
 - [lockkeys](/reference/sharpmush-help/sharplock/#lockkeys)
 
 ## @LOCK/USE
-## @LOCK/COMMAND
-## @LOCK/LISTEN
 
 **## Use Lock**
 For players, things and rooms, this lock controls who may "use" the object. You must also pass an object's Use lock to trigger $-commands or ^-listens on it (as well as the Command/Listen lock; see below). When an object is used as a Channel Mogrifier, only players who pass the object's Use lock will have their speech on the channel mogrified. Has no meaning for exits.
 
 
 **See Also:**
-- [- [@use](/reference/sharpmush-help/sharpconf/#use)
-- [@ufail](/reference/sharpmush-help/sharpcmd/#ufail)
-- [use](/reference/sharpmush-help/sharpcmd/#use)
+- [- [@use](/reference/sharpmush-help/sharpconf/#ause)
+- [@ufail](/reference/sharpmush-help/sharpcmd/#aufail)
+- [use](/reference/sharpmush-help/sharpcmd/#ause)
 - [$-commands]
 - [^]
 - [MOGRIFY](/reference/sharpmush-help/sharpconf/#mogrify)
@@ -412,7 +392,7 @@ For players, things and rooms, you must pass this lock (as well as the Use lock)
 
 **See Also:**
 - [- [$-commands]
-- [FAILURE](/reference/sharpmush-help/sharptop/#failure)
+- [FAILURE](/reference/sharpmush-help/sharptop/#afailure)
 
 **## Listen Lock**
 For players, things and rooms, you must pass this lock (as well as the Use lock) to trigger ^-listen patterns on the object when it's set MONITOR. Meaningless for exits.
@@ -422,17 +402,13 @@ For players, things and rooms, you must pass this lock (as well as the Use lock)
 - [^]
 
 ## @LOCK/PAGE
-## @LOCK/SPEECH
-## @LOCK/MAIL
-## @LOCK/MAILFORWARD
-## @LOCK/INTERACT
 
 **## Page Lock**
 For players, things and rooms, you must pass this lock to page or @pemit to the object, or @remit inside it. Meaningless for exits.
 
 
 **See Also:**
-- [- [FAILURE](/reference/sharpmush-help/sharpconf/#failure)
+- [- [FAILURE](/reference/sharpmush-help/sharpconf/#afailure)
 - [@haven](/reference/sharpmush-help/sharpcmd/#haven)
 
 **## Speech Lock**
@@ -440,7 +416,7 @@ Controls who can speak (via say, pose, @*emit or teach) inside an object. Meanin
 
 
 **See Also:**
-- [FAILURE](/reference/sharpmush-help/sharptop/#failure)
+- [FAILURE](/reference/sharpmush-help/sharptop/#afailure)
 
 **## Mail Lock**
 Controls who can send @mail to this object.
@@ -448,7 +424,7 @@ Controls who can send @mail to this object.
 
 **See Also:**
 - [- [@mail](/reference/sharpmush-help/sharpmail/#mail)
-- [FAILURE](/reference/sharpmush-help/sharptop/#failure)
+- [FAILURE](/reference/sharpmush-help/sharptop/#afailure)
 
 **## Mailforward Lock**
 Controls who can forward @mail to this object via @mailforward.
@@ -463,19 +439,13 @@ Controls who can forward @mail to this object via @mailforward.
 Controls whose indirect speech you'll hear (from say, pose, channels, @emit, etc). Does not block sound directed specifically at you, such as page, whisper, @pemit, etc; use @lock/page for those. **Note**: if sound is blocked by the interact lock, the speaker will not be informed.
 
 ## @LOCK/DROP
-## @LOCK/DROPIN
-## @LOCK/GIVE
-## @LOCK/FROM
-## @LOCK/PAY
-## @LOCK/RECEIVE
-## @LOCK/TAKE
 
 **## Drop Lock**
 For players and things, controls who can drop the object. Has no meaning for exits. On rooms, has the same meaning as @lock/dropin.
 
 
 **See Also:**
-- [- [drop](/reference/sharpmush-help/sharpconf/#drop)
+- [- [drop](/reference/sharpmush-help/sharpconf/#adrop)
 - [empty](/reference/sharpmush-help/sharpcmd/#empty)
 
 **## Dropin Lock**
@@ -504,7 +474,6 @@ Controls who can take from this container.
 - [@lock/enter]
 
 ## @LOCK/FILTER
-## @LOCK/INFILTER
 
 **## Filter Lock**
 **## Infilter Lock**
@@ -516,8 +485,6 @@ These are lock versions of @filter and @infilter, respectively. Anyone who fails
 - [@infilter](/reference/sharpmush-help/sharpcmd/#infilter)
 
 ## @LOCK/CONTROL
-## @LOCK/DESTROY
-## @LOCK/EXAMINE
 
 **## Control Lock**
 Allows objects which would not normally control something to do so. Does not work for players.
@@ -543,11 +510,6 @@ Limits who can examine a VISUAL object.
 - [VISUAL](/reference/sharpmush-help/sharpflag/#visual)
 
 ## @LOCK/ZONE
-## @LOCK/CHZONE
-## @LOCK/CHOWN
-## @LOCK/PARENT
-## @LOCK/LINK
-## @LOCK/OPEN
 
 **## Zone Lock**
 Objects which pass a SHARED player's @lock/zone control all the objects the shared player owns. If the zone_control_zmp_only @config option is off, anything passing the @lock/zone of other objects will control everything @chzoned to the object.
@@ -603,7 +565,6 @@ Controls who can @open an exit from this OPEN_OK room.
 - [OPEN_ANYWHERE POWER](/reference/sharpmush-help/sharpconf/#openanywhere-power)
 
 ## @LOCK/USER
-## @LOCK/USER:<NAME>
 
 **## User-defined Locks**
 User-defined locks have no hardcoded meaning. They allow you to set locks for any purpose, which you can test using the elock() function. *<name>* can be anything which is a valid attribute name. For example, in a combat system you might use a "wield" @lock on weapons, similar to:
@@ -618,6 +579,6 @@ and then test it with `elock(War Hammer/wield, %#)`.
 **See Also:**
 - [- [elock()]
 - [valid()](/reference/sharpmush-help/sharpfunc/#valid)
-- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [@lock](/reference/sharpmush-help/sharpcmd/#locking)
 - [locktypes](/reference/sharpmush-help/sharplock/#locktypes)
 - [lockkeys](/reference/sharpmush-help/sharplock/#lockkeys)
