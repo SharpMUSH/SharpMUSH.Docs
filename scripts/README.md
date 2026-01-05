@@ -11,7 +11,7 @@ Converts markdown files from the SharpMUSH submodule into Starlight-compatible d
 - **Filename-based titles**: Uses predefined titles based on filenames for consistent documentation structure
 - **Frontmatter generation**: Adds Starlight-compatible YAML frontmatter with title and description
 - **Heading level adjustment**: Converts H1 (`#`) to H2 (`##`) and H2 (`##`) to H3 (`###`) for better integration with Starlight navigation
-- **Link conversion**: Converts PennMUSH-style internal links (`[help TOPIC|DISPLAY]`) to Starlight navigation links
+- **Link conversion**: Converts SharpMUSH-style internal links (`[help TOPIC|DISPLAY]`) to Starlight navigation links
 - **Automatic categorization**: Intelligently maps help topics to appropriate documentation files
 
 ### `index-headers.js`
@@ -26,11 +26,11 @@ Analyzes all documentation files to generate comprehensive header mappings:
 
 #### Link Conversion Examples
 
-- `[help ATTRIBUTE FLAGS|attribute flags]` → `[attribute flags](/reference/sharpmush-help/pennattr/#attribute-flags)`
-- `[help @set|@set]` → `[@set](/reference/sharpmush-help/penncmd/#set)`
-- `[help nearby()|nearby()]` → `[nearby()](/reference/sharpmush-help/pennfunc/#nearby)`
-- `[attribute flags2]` → `[attribute flags2](/reference/sharpmush-help/pennattr/#attribute-flags2)`
-- `[nearby()]` → `[nearby()](/reference/sharpmush-help/pennfunc/#nearby)`
+- `[help ATTRIBUTE FLAGS|attribute flags]` → `[attribute flags](/reference/sharpmush-help/sharpattr/#attribute-flags)`
+- `[help @set|@set]` → `[@set](/reference/sharpmush-help/sharpcmd/#set)`
+- `[help nearby()|nearby()]` → `[nearby()](/reference/sharpmush-help/sharpfunc/#nearby)`
+- `[attribute flags2]` → `[attribute flags2](/reference/sharpmush-help/sharpattr/#attribute-flags2)`
+- `[nearby()]` → `[nearby()](/reference/sharpmush-help/sharpfunc/#nearby)`
 
 ### Exclusions
 
@@ -47,17 +47,17 @@ The converter intelligently excludes certain patterns from conversion:
 
 The script automatically categorizes topics into appropriate documents:
 
-- **pennattr**: Attribute-related topics (ATTRIBUTE FLAGS, ATTRIBUTE TREES, etc.)
-- **penncmd**: Commands (topics starting with @)
-- **pennfunc**: Functions (topics ending with ())
-- **pennflag**: Flag-related topics
-- **pennlock**: Lock-related topics
-- **pennmail**: Mail system topics
-- **pennchat**: Chat/channel topics
-- **pennevents**: Event system topics
-- **pennhttp**: HTTP-related topics
-- **pennpueb**: Pueblo client topics
-- **pennconf**: Configuration and other topics (fallback)
+- **sharpattr**: Attribute-related topics (ATTRIBUTE FLAGS, ATTRIBUTE TREES, etc.)
+- **sharpcmd**: Commands (topics starting with @)
+- **sharpfunc**: Functions (topics ending with ())
+- **sharpflag**: Flag-related topics
+- **sharplock**: Lock-related topics
+- **sharpmail**: Mail system topics
+- **sharpchat**: Chat/channel topics
+- **sharpevents**: Event system topics
+- **sharphttp**: HTTP-related topics
+- **sharppueb**: Pueblo client topics
+- **sharpconf**: Configuration and other topics (fallback)
 
 #### File Titles
 
@@ -65,19 +65,19 @@ Document titles are mapped from filenames for consistency:
 
 | Filename | Title |
 |----------|-------|
-| `pennattr.md` | Attributes |
-| `pennchat.md` | Chat and Channels |
-| `penncmd.md` | Commands |
-| `penncode.md` | Coding and Programming |
-| `pennconf.md` | Configuration |
-| `pennevents.md` | Events |
-| `pennflag.md` | Flags |
-| `pennfunc.md` | Functions |
-| `pennhttp.md` | HTTP Features |
-| `pennlock.md` | Locks |
-| `pennmail.md` | Mail System |
-| `pennpueb.md` | Pueblo Client |
-| `penntop.md` | Top-Level Topics |
+| `sharpattr.md` | Attributes |
+| `sharpchat.md` | Chat and Channels |
+| `sharpcmd.md` | Commands |
+| `sharpcode.md` | Coding and Programming |
+| `sharpconf.md` | Configuration |
+| `sharpevents.md` | Events |
+| `sharpflag.md` | Flags |
+| `sharpfunc.md` | Functions |
+| `sharphttp.md` | HTTP Features |
+| `sharplock.md` | Locks |
+| `sharpmail.md` | Mail System |
+| `sharppueb.md` | Pueblo Client |
+| `sharptop.md` | Top-Level Topics |
 
 ## Usage
 
@@ -139,8 +139,8 @@ To change the title for a documentation file, update the `FILE_TITLES` object:
 
 ```javascript
 const FILE_TITLES = {
-  'pennattr.md': 'New Attributes Title',
-  'penncmd.md': 'New Commands Title',
+  'sharpattr.md': 'New Attributes Title',
+  'sharpcmd.md': 'New Commands Title',
   // ...
 };
 ```

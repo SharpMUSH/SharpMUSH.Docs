@@ -148,8 +148,8 @@ Output:
 
 **See Also:**
 - [rendermarkdowncustom()](/reference/sharpmush-help/markdown/#rendermarkdowncustom)
-- [MARKUP](/reference/sharpmush-help/pennconf/#markup)
-- [ANSI](/reference/sharpmush-help/pennflag/#ansi)
+- [MARKUP](/reference/sharpmush-help/sharpconf/#markup)
+- [ANSI](/reference/sharpmush-help/sharpflag/#ansi)
 
 ## RENDERMARKDOWNCUSTOM()
 `rendermarkdowncustom(<markdown>, <object>[, <width>])`
@@ -277,6 +277,6 @@ Tasks
 
 **See Also:**
 - [rendermarkdown()](/reference/sharpmush-help/markdown/#rendermarkdown)
-- [get()](/reference/sharpmush-help/pennfunc/#get)
-- [u()](/reference/sharpmush-help/pennfunc/#u)
-- [ANSI](/reference/sharpmush-help/pennflag/#ansi)
+- [get()](/reference/sharpmush-help/sharpfunc/#get)
+- [u()](/reference/sharpmush-help/sharpfunc/#u)
+- [ANSI](/reference/sharpmush-help/sharpflag/#ansi)

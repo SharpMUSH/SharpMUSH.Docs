@@ -12,26 +12,26 @@ const OUTPUT_DOCS_PATH = path.join(__dirname, '..', 'src', 'content', 'docs', 'r
 
 // Mapping of internal link patterns to Starlight-compatible links
 const LINK_MAPPINGS = {
-  // Pattern: [help ATTRIBUTE FLAGS|ATTRIBUTE FLAGS] -> /reference/sharpmush-help/pennattr/#attribute-flags
-  // Pattern: [help @set|@set] -> /reference/sharpmush-help/penncmd/#set (for commands)
-  // Pattern: [help nearby()|nearby()] -> /reference/sharpmush-help/pennfunc/#nearby (for functions)
+  // Pattern: [help ATTRIBUTE FLAGS|ATTRIBUTE FLAGS] -> /reference/sharpmush-help/sharpattr/#attribute-flags
+  // Pattern: [help @set|@set] -> /reference/sharpmush-help/sharpcmd/#set (for commands)
+  // Pattern: [help nearby()|nearby()] -> /reference/sharpmush-help/sharpfunc/#nearby (for functions)
 };
 
 // Known file titles based on filenames
 const FILE_TITLES = {
-  'penntop.md': 'Top-Level Topics',
-  'pennattr.md': 'Attributes',
-  'pennchat.md': 'Chat and Channels',
-  'penncmd.md': 'Commands',
-  'penncode.md': 'Coding and Programming',
-  'pennconf.md': 'Configuration',
-  'pennevents.md': 'Events',
-  'pennflag.md': 'Flags',
-  'pennfunc.md': 'Functions',
-  'pennhttp.md': 'HTTP Features',
-  'pennlock.md': 'Locks',
-  'pennmail.md': 'Mail System',
-  'pennpueb.md': 'Pueblo Client',
+  'sharptop.md': 'Top-Level Topics',
+  'sharpattr.md': 'Attributes',
+  'sharpchat.md': 'Chat and Channels',
+  'sharpcmd.md': 'Commands',
+  'sharpcode.md': 'Coding and Programming',
+  'sharpconf.md': 'Configuration',
+  'sharpevents.md': 'Events',
+  'sharpflag.md': 'Flags',
+  'sharpfunc.md': 'Functions',
+  'sharphttp.md': 'HTTP Features',
+  'sharplock.md': 'Locks',
+  'sharpmail.md': 'Mail System',
+  'sharppueb.md': 'Pueblo Client',
   'markdown.md': 'Markdown',
 };
 
@@ -161,31 +161,31 @@ function convertTopicToLink(topic, displayText) {
   // If not found in mappings, try to guess based on naming patterns
   if (!targetDoc) {
     if (topicUpper.includes('()') || topicUpper.endsWith('()')) {
-      targetDoc = 'pennfunc';
+      targetDoc = 'sharpfunc';
     } else if (topicUpper.startsWith('@')) {
-      targetDoc = 'penncmd';
+      targetDoc = 'sharpcmd';
     } else if (topicUpper.includes('ATTRIBUTE') || topicUpper.includes('ATTR')) {
-      targetDoc = 'pennattr';
+      targetDoc = 'sharpattr';
     } else if (topicUpper.includes('FLAG')) {
-      targetDoc = 'pennflag';
+      targetDoc = 'sharpflag';
     } else if (topicUpper.includes('LOCK')) {
-      targetDoc = 'pennlock';
+      targetDoc = 'sharplock';
     } else if (topicUpper.includes('MAIL')) {
-      targetDoc = 'pennmail';
+      targetDoc = 'sharpmail';
     } else if (topicUpper.includes('CHAT') || topicUpper.includes('CHANNEL')) {
-      targetDoc = 'pennchat';
+      targetDoc = 'sharpchat';
     } else if (topicUpper.includes('EVENT')) {
-      targetDoc = 'pennevents';
+      targetDoc = 'sharpevents';
     } else if (topicUpper.includes('HTTP')) {
-      targetDoc = 'pennhttp';
+      targetDoc = 'sharphttp';
     } else if (topicUpper.includes('PUEBLO')) {
-      targetDoc = 'pennpueb';
+      targetDoc = 'sharppueb';
     } else if (topicUpper.includes('REGEX')) {
-      targetDoc = 'pennconf';
+      targetDoc = 'sharpconf';
     } else if (topicUpper.includes('VERB')) {
-      targetDoc = 'penncmd';
+      targetDoc = 'sharpcmd';
     } else {
-      targetDoc = 'pennconf'; // Default fallback
+      targetDoc = 'sharpconf'; // Default fallback
     }
   }
   
