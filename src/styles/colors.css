@@ -27,3 +27,69 @@
 	--sl-color-gray-7: #f5f6f8;
 	--sl-color-black: #ffffff;
 }
+
+/* Table styling for flexible full-width tables */
+.sl-markdown-content table,
+article table,
+main table,
+.content-panel table,
+[data-slug] table,
+.starlight table,
+main article table,
+.sl-content table {
+	width: 100%;
+	display: table;
+	table-layout: auto;
+	border-collapse: collapse;
+	margin: 1.5rem 0;
+	max-width: 100%;
+}
+
+/* Table cells should use available space flexibly */
+.sl-markdown-content table td,
+.sl-markdown-content table th,
+article table td,
+article table th,
+main table td,
+main table th,
+.content-panel table td,
+.content-panel table th,
+[data-slug] table td,
+[data-slug] table th,
+.starlight table td,
+.starlight table th,
+main article table td,
+main article table th,
+.sl-content table td,
+.sl-content table th {
+	padding: 0.75rem 1rem;
+	text-align: left;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+}
+
+/* Responsive table wrapper - allow horizontal scroll on small screens */
+@media (max-width: 768px) {
+	.sl-markdown-content,
+	article,
+	main,
+	.content-panel,
+	[data-slug],
+	.starlight,
+	.sl-content {
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+	
+	.sl-markdown-content table,
+	article table,
+	main table,
+	.content-panel table,
+	[data-slug] table,
+	.starlight table,
+	main article table,
+	.sl-content table {
+		min-width: 100%;
+		display: table;
+	}
+}
