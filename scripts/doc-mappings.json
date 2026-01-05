@@ -1,6 +1,6 @@
 {
   "_metadata": {
-    "generatedAt": "2026-01-05T19:59:42.262Z",
+    "generatedAt": "2026-01-05T20:07:58.423Z",
     "sourceFiles": [
       "markdown.md",
       "pennattr.md",
@@ -17,7 +17,7 @@
       "pennpueb.md",
       "penntop.md"
     ],
-    "totalMappings": 1566
+    "totalMappings": 1522
   },
   "mappings": {
     "RENDERMARKDOWN()": "markdown",
@@ -46,7 +46,6 @@
     "CHANNELS": "pennchat",
     "@CHAT": "pennchat",
     "@CHATFORMAT": "pennchat",
-    "REGISTERS": "penntop",
     "@CHATFORMAT2": "pennchat",
     "@CHATFORMAT3": "pennchat",
     "CHAN_USEFIRSTMATCH": "pennchat",
@@ -1213,32 +1212,22 @@
     "@LOCK-COMPLEX": "pennlock",
     "@LOCK-SIMPLE": "pennlock",
     "@LOCK-OBJID": "pennlock",
-    "SIMPLE LOCKS": "pennlock",
     "@LOCK-OWNER": "pennlock",
     "@LOCK-CARRY": "pennlock",
-    "OWNER LOCK": "pennlock",
-    "CARRY LOCK": "pennlock",
     "@LOCK-ATTRIBUTE": "pennlock",
-    "ATTRIBUTE LOCKS": "pennlock",
     "@LOCK-EVALUATION": "pennlock",
-    "EVALUATION LOCK": "pennlock",
     "@LOCK-EVAL2": "pennlock",
     "@LOCK-EVALUATION2": "pennlock",
     "@LOCK-NAME": "pennlock",
-    "NAME LOCKS": "pennlock",
     "@LOCK-BIT": "pennlock",
     "@LOCK-FLAG": "pennlock",
     "@LOCK-TYPE": "pennlock",
     "@LOCK-POWER": "pennlock",
     "@LOCK-CHANNEL": "pennlock",
-    "BIT LOCKS": "pennlock",
     "@LOCK-DBREFLIST": "pennlock",
     "@LOCK-LIST": "pennlock",
-    "LIST LOCK": "pennlock",
     "@LOCK-INDIRECT": "pennlock",
-    "INDIRECT LOCKS": "pennlock",
     "@LOCK-HOST": "pennlock",
-    "HOST LOCKS": "pennlock",
     "LOCKTYPES": "pennlock",
     "LOCKLIST": "pennlock",
     "LOCK TYPES": "pennlock",
@@ -1249,32 +1238,17 @@
     "@LOCK/ENTER": "pennlock",
     "@LOCK/LEAVE": "pennlock",
     "@LOCK/TELEPORT": "pennlock",
-    "BASIC LOCK": "pennlock",
-    "ENTER LOCK": "pennlock",
-    "LEAVE LOCK": "pennlock",
-    "TELEPORT LOCK": "pennlock",
     "@LOCK/FOLLOW": "pennlock",
     "@LOCK/FORWARD": "pennlock",
     "@LOCK/DROPTO": "pennlock",
-    "FOLLOW LOCK": "pennlock",
-    "FORWARD LOCK": "pennlock",
-    "DROPTO LOCK": "pennlock",
     "@LOCK/USE": "pennlock",
     "@LOCK/COMMAND": "pennlock",
     "@LOCK/LISTEN": "pennlock",
-    "USE LOCK": "pennlock",
-    "COMMAND LOCK": "pennlock",
-    "LISTEN LOCK": "pennlock",
     "@LOCK/PAGE": "pennlock",
     "@LOCK/SPEECH": "pennlock",
     "@LOCK/MAIL": "pennlock",
     "@LOCK/MAILFORWARD": "pennlock",
     "@LOCK/INTERACT": "pennlock",
-    "PAGE LOCK": "pennlock",
-    "SPEECH LOCK": "pennlock",
-    "MAIL LOCK": "pennlock",
-    "MAILFORWARD LOCK": "pennlock",
-    "INTERACT LOCK": "pennlock",
     "@LOCK/DROP": "pennlock",
     "@LOCK/DROPIN": "pennlock",
     "@LOCK/GIVE": "pennlock",
@@ -1282,38 +1256,19 @@
     "@LOCK/PAY": "pennlock",
     "@LOCK/RECEIVE": "pennlock",
     "@LOCK/TAKE": "pennlock",
-    "DROP LOCK": "pennlock",
-    "DROPIN LOCK": "pennlock",
-    "GIVE LOCK": "pennlock",
-    "FROM LOCK": "pennlock",
-    "PAY LOCK": "pennlock",
-    "RECEIVE LOCK": "pennlock",
-    "TAKE LOCK": "pennlock",
     "@LOCK/FILTER": "pennlock",
     "@LOCK/INFILTER": "pennlock",
-    "FILTER LOCK": "pennlock",
-    "INFILTER LOCK": "pennlock",
     "@LOCK/CONTROL": "pennlock",
     "@LOCK/DESTROY": "pennlock",
     "@LOCK/EXAMINE": "pennlock",
-    "CONTROL LOCK": "pennlock",
-    "DESTROY LOCK": "pennlock",
-    "EXAMINE LOCK": "pennlock",
     "@LOCK/ZONE": "pennlock",
     "@LOCK/CHZONE": "pennlock",
     "@LOCK/CHOWN": "pennlock",
     "@LOCK/PARENT": "pennlock",
     "@LOCK/LINK": "pennlock",
     "@LOCK/OPEN": "pennlock",
-    "ZONE LOCK": "pennlock",
-    "CHZONE LOCK": "pennlock",
-    "CHOWN LOCK": "pennlock",
-    "PARENT LOCK": "pennlock",
-    "LINK LOCK": "pennlock",
-    "OPEN LOCK": "pennlock",
     "@LOCK/USER": "pennlock",
     "@LOCK/USER:<NAME>": "pennlock",
-    "USER-DEFINED LOCKS": "pennlock",
     "MAIL": "pennmail",
     "@MAIL": "pennmail",
     "MAIL-READING": "pennmail",
@@ -1509,6 +1464,7 @@
     "REGEXP CLASSES": "penntop",
     "REGEXP CLASSES2": "penntop",
     "REGEXP EXAMPLES": "penntop",
+    "REGISTERS": "penntop",
     "REGISTERS2": "penntop",
     "RQUOTA": "penntop",
     "SEMAPHORES": "penntop",
@@ -1696,10 +1652,6 @@
       {
         "original": "@CHATFORMAT",
         "normalized": "@CHATFORMAT"
-      },
-      {
-        "original": "Registers",
-        "normalized": "REGISTERS"
       },
       {
         "original": "@CHATFORMAT2",
@@ -6390,10 +6342,6 @@
         "normalized": "@LOCK-OBJID"
       },
       {
-        "original": "SIMPLE LOCKS",
-        "normalized": "SIMPLE LOCKS"
-      },
-      {
         "original": "@LOCK-OWNER",
         "normalized": "@LOCK-OWNER"
       },
@@ -6402,28 +6350,12 @@
         "normalized": "@LOCK-CARRY"
       },
       {
-        "original": "OWNER LOCK",
-        "normalized": "OWNER LOCK"
-      },
-      {
-        "original": "CARRY LOCK",
-        "normalized": "CARRY LOCK"
-      },
-      {
         "original": "@LOCK-ATTRIBUTE",
         "normalized": "@LOCK-ATTRIBUTE"
       },
       {
-        "original": "ATTRIBUTE LOCKS",
-        "normalized": "ATTRIBUTE LOCKS"
-      },
-      {
         "original": "@LOCK-EVALUATION",
         "normalized": "@LOCK-EVALUATION"
-      },
-      {
-        "original": "EVALUATION LOCK",
-        "normalized": "EVALUATION LOCK"
       },
       {
         "original": "@LOCK-EVAL2",
@@ -6436,10 +6368,6 @@
       {
         "original": "@LOCK-NAME",
         "normalized": "@LOCK-NAME"
-      },
-      {
-        "original": "NAME LOCKS",
-        "normalized": "NAME LOCKS"
       },
       {
         "original": "@LOCK-BIT",
@@ -6462,10 +6390,6 @@
         "normalized": "@LOCK-CHANNEL"
       },
       {
-        "original": "BIT LOCKS",
-        "normalized": "BIT LOCKS"
-      },
-      {
         "original": "@LOCK-DBREFLIST",
         "normalized": "@LOCK-DBREFLIST"
       },
@@ -6474,24 +6398,12 @@
         "normalized": "@LOCK-LIST"
       },
       {
-        "original": "LIST LOCK",
-        "normalized": "LIST LOCK"
-      },
-      {
         "original": "@LOCK-INDIRECT",
         "normalized": "@LOCK-INDIRECT"
       },
       {
-        "original": "INDIRECT LOCKS",
-        "normalized": "INDIRECT LOCKS"
-      },
-      {
         "original": "@LOCK-HOST",
         "normalized": "@LOCK-HOST"
-      },
-      {
-        "original": "HOST LOCKS",
-        "normalized": "HOST LOCKS"
       },
       {
         "original": "LOCKTYPES",
@@ -6534,22 +6446,6 @@
         "normalized": "@LOCK/TELEPORT"
       },
       {
-        "original": "Basic Lock",
-        "normalized": "BASIC LOCK"
-      },
-      {
-        "original": "Enter Lock",
-        "normalized": "ENTER LOCK"
-      },
-      {
-        "original": "Leave Lock",
-        "normalized": "LEAVE LOCK"
-      },
-      {
-        "original": "Teleport Lock",
-        "normalized": "TELEPORT LOCK"
-      },
-      {
         "original": "@LOCK/FOLLOW",
         "normalized": "@LOCK/FOLLOW"
       },
@@ -6562,18 +6458,6 @@
         "normalized": "@LOCK/DROPTO"
       },
       {
-        "original": "Follow Lock",
-        "normalized": "FOLLOW LOCK"
-      },
-      {
-        "original": "Forward Lock",
-        "normalized": "FORWARD LOCK"
-      },
-      {
-        "original": "Dropto Lock",
-        "normalized": "DROPTO LOCK"
-      },
-      {
         "original": "@LOCK/USE",
         "normalized": "@LOCK/USE"
       },
@@ -6584,18 +6468,6 @@
       {
         "original": "@LOCK/LISTEN",
         "normalized": "@LOCK/LISTEN"
-      },
-      {
-        "original": "Use Lock",
-        "normalized": "USE LOCK"
-      },
-      {
-        "original": "Command Lock",
-        "normalized": "COMMAND LOCK"
-      },
-      {
-        "original": "Listen Lock",
-        "normalized": "LISTEN LOCK"
       },
       {
         "original": "@LOCK/PAGE",
@@ -6616,26 +6488,6 @@
       {
         "original": "@LOCK/INTERACT",
         "normalized": "@LOCK/INTERACT"
-      },
-      {
-        "original": "Page Lock",
-        "normalized": "PAGE LOCK"
-      },
-      {
-        "original": "Speech Lock",
-        "normalized": "SPEECH LOCK"
-      },
-      {
-        "original": "Mail Lock",
-        "normalized": "MAIL LOCK"
-      },
-      {
-        "original": "Mailforward Lock",
-        "normalized": "MAILFORWARD LOCK"
-      },
-      {
-        "original": "Interact Lock",
-        "normalized": "INTERACT LOCK"
       },
       {
         "original": "@LOCK/DROP",
@@ -6666,48 +6518,12 @@
         "normalized": "@LOCK/TAKE"
       },
       {
-        "original": "Drop Lock",
-        "normalized": "DROP LOCK"
-      },
-      {
-        "original": "Dropin Lock",
-        "normalized": "DROPIN LOCK"
-      },
-      {
-        "original": "Give Lock",
-        "normalized": "GIVE LOCK"
-      },
-      {
-        "original": "From Lock",
-        "normalized": "FROM LOCK"
-      },
-      {
-        "original": "Pay Lock",
-        "normalized": "PAY LOCK"
-      },
-      {
-        "original": "Receive Lock",
-        "normalized": "RECEIVE LOCK"
-      },
-      {
-        "original": "Take Lock",
-        "normalized": "TAKE LOCK"
-      },
-      {
         "original": "@LOCK/FILTER",
         "normalized": "@LOCK/FILTER"
       },
       {
         "original": "@LOCK/INFILTER",
         "normalized": "@LOCK/INFILTER"
-      },
-      {
-        "original": "Filter Lock",
-        "normalized": "FILTER LOCK"
-      },
-      {
-        "original": "Infilter Lock",
-        "normalized": "INFILTER LOCK"
       },
       {
         "original": "@LOCK/CONTROL",
@@ -6720,18 +6536,6 @@
       {
         "original": "@LOCK/EXAMINE",
         "normalized": "@LOCK/EXAMINE"
-      },
-      {
-        "original": "Control Lock",
-        "normalized": "CONTROL LOCK"
-      },
-      {
-        "original": "Destroy Lock",
-        "normalized": "DESTROY LOCK"
-      },
-      {
-        "original": "Examine Lock",
-        "normalized": "EXAMINE LOCK"
       },
       {
         "original": "@LOCK/ZONE",
@@ -6758,40 +6562,12 @@
         "normalized": "@LOCK/OPEN"
       },
       {
-        "original": "Zone Lock",
-        "normalized": "ZONE LOCK"
-      },
-      {
-        "original": "Chzone Lock",
-        "normalized": "CHZONE LOCK"
-      },
-      {
-        "original": "Chown Lock",
-        "normalized": "CHOWN LOCK"
-      },
-      {
-        "original": "Parent Lock",
-        "normalized": "PARENT LOCK"
-      },
-      {
-        "original": "Link Lock",
-        "normalized": "LINK LOCK"
-      },
-      {
-        "original": "Open Lock",
-        "normalized": "OPEN LOCK"
-      },
-      {
         "original": "@LOCK/USER",
         "normalized": "@LOCK/USER"
       },
       {
         "original": "@LOCK/USER:<NAME>",
         "normalized": "@LOCK/USER:<NAME>"
-      },
-      {
-        "original": "User-defined Locks",
-        "normalized": "USER-DEFINED LOCKS"
       }
     ],
     "pennmail": [
