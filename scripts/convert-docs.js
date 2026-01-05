@@ -19,6 +19,7 @@ const LINK_MAPPINGS = {
 
 // Known file titles based on filenames
 const FILE_TITLES = {
+  'penntop.md': 'Top-Level Topics',
   'pennattr.md': 'Attributes',
   'pennchat.md': 'Chat and Channels',
   'penncmd.md': 'Commands',
@@ -31,7 +32,7 @@ const FILE_TITLES = {
   'pennlock.md': 'Locks',
   'pennmail.md': 'Mail System',
   'pennpueb.md': 'Pueblo Client',
-  'penntop.md': 'Top-Level Topics'
+  'markdown.md': 'Markdown',
 };
 
 // Load document mappings from JSON file

@@ -1,6 +1,6 @@
 ---
-title: "markdown"
-description: "SharpMUSH documentation for markdown"
+title: "Markdown"
+description: "SharpMUSH documentation for Markdown"
 ---
 
 ## RENDERMARKDOWN()
