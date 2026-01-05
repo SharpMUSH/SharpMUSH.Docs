@@ -7,13 +7,13 @@ description: "SharpMUSH documentation for Top-Level Topics"
 This is the index to the MUSH online help files.
 
   For an explanation of the help system, type:    help newbie
-  For a walkthrough of PennMUSH systems, type:    help getting started
+  For a walkthrough of SharpMUSH systems, type:   help getting started
   For help finding the helpfile you want:         help helpfile
 
   For the list of MUSH commands, type:            help commands
   For the list of MUSH topics, type:              help topics
   For an alphabetical list of all help entries:   help entries
-  For information about PennMUSH:                 help code
+  For information about SharpMUSH:                help code
 
   For a list of flags:                            help flag list
   For a list of functions:                        help function list
@@ -22,7 +22,7 @@ This is the index to the MUSH online help files.
 
   On many MUSHes, list local commands with:       `+help`
 
-  If there are any errors in the help text, please notify a wizard in the game, or file an issue at https://github.com/pennmush/pennmush/issues, which is the bug-tracking site for PennMUSH (and its distributed help files) but probably has no relation to this MUSH in particular.
+  If there are any errors in the help text, please notify a wizard in the game, or file an issue at https://github.com/SharpMUSH/SharpMUSH/issues, which is the bug-tracking site for SharpMUSH (and its distributed help files) but probably has no relation to this MUSH in particular.
 
 ## help search
 
@@ -54,15 +54,15 @@ This is the index to the MUSH online help files.
   > help/search @switch
 ```
 
-  help/query is a more advanced and complex way to search our helpfiles, see [helpfile2](/reference/sharpmush-help/penntop/#helpfile2) for more.
+  help/query is a more advanced and complex way to search our helpfiles, see [helpfile2](/reference/sharpmush-help/sharptop/#helpfile2) for more.
 
   To add more categories and commands (like 'news'), read "game/txt/README"
 
 
 **See Also:**
-- [textfile()](/reference/sharpmush-help/pennfunc/#textfile)
-- [textentries()](/reference/sharpmush-help/pennfunc/#textentries)
-- [textsearch()](/reference/sharpmush-help/pennfunc/#textsearch)
+- [textfile()](/reference/sharpmush-help/sharpfunc/#textfile)
+- [textentries()](/reference/sharpmush-help/sharpfunc/#textentries)
+- [textsearch()](/reference/sharpmush-help/sharpfunc/#textsearch)
 
 ## helpfile2
 
@@ -87,7 +87,7 @@ This is the index to the MUSH online help files.
 
   You should not type the [] or <> brackets when entering a command.
 
-  See [newbie2](/reference/sharpmush-help/penntop/#newbie2)
+  See [newbie2](/reference/sharpmush-help/sharptop/#newbie2)
 
 ## newbie2
   For example, the syntax of the help command is:
@@ -102,33 +102,30 @@ This is the index to the MUSH online help files.
 
   Just type help `<command>` for help. Example: help page
 
-  See [newbie3](/reference/sharpmush-help/penntop/#newbie3)
+  See [newbie3](/reference/sharpmush-help/sharptop/#newbie3)
 
 ## newbie3
   There is help available on every standard MUSH command. If you see a command or someone mentions one to you that you want to know more about, try just typing: help `<command name>` -- that will most likely bring up the help file on it.
 
   Please note that just because there is help available on a command does not necessarily mean that the command can be used on this MUSH. The siteadmin of the MUSH can choose to turn off some commands. If there's something that you would like available, and it isn't, please ask a wizard why not.
 
-  It is also highly recommended that any new player read the MUSH manual, written by Amberyl. It is available from http://download.pennmush.org/Manuals/
-
-
 **See Also:**
-- [Getting Started](/reference/sharpmush-help/penntop/#getting-started)
+- [Getting Started](/reference/sharpmush-help/sharptop/#getting-started)
 
 ## Getting Started
 
 ## GS
 
 ## Walkthrough
-  This helpfile is a quick walkthrough of some of PennMUSH's standard systems. It uses the same syntax as the other helpfiles; if you're not familiar with the syntax of the PennMUSH helpfiles, please read [newbie](/reference/sharpmush-help/penntop/#newbie) first, as it's explained there.
+  This helpfile is a quick walkthrough of some of SharpMUSH's standard systems. It uses the same syntax as the other helpfiles; if you're not familiar with the syntax of the SharpMUSH helpfiles, please read [newbie](/reference/sharpmush-help/sharptop/#newbie) first, as it's explained there.
 
-  For help with getting around, please see [gs moving](/reference/sharpmush-help/penntop/#gs-moving).
+  For help with getting around, please see [gs moving](/reference/sharpmush-help/sharptop/#gs-moving).
 
-  To talk to people in the room with you, see [gs talking](/reference/sharpmush-help/penntop/#gs-talking).
+  To talk to people in the room with you, see [gs talking](/reference/sharpmush-help/sharptop/#gs-talking).
 
-  For a brief guide to the PennMUSH chat system, see [gs chat](/reference/sharpmush-help/penntop/#gs-chat).
+  For a brief guide to the SharpMUSH chat system, see [gs chat](/reference/sharpmush-help/sharptop/#gs-chat).
 
-  For information on how to send and read mail using PennMUSH's built-in mail system, `@mail`, please type 'help gs mail'.
+  For information on how to send and read mail using SharpMUSH's built-in mail system, `@mail`, please type 'help gs mail'.
 
 ## GS MOVING
   To see the room you're in, type 'look'. You'll probably see something similar to this (though some MUSHes customize the appearance of rooms):
@@ -145,7 +142,7 @@ This is the index to the MUSH online help files.
 
   To move through one of the exits, you can simply type its name (Out), or you can use the "goto" command (goto Out).
 
-  See [gs moving2](/reference/sharpmush-help/penntop/#gs-moving2)
+  See [gs moving2](/reference/sharpmush-help/sharptop/#gs-moving2)
 
 ## GS MOVING2
   All players on a MUSH have a "home", which is usually the room you started in. You can go back to your home by just typing 'home', or 'goto home'. Some MUSHes may also allow you to change your home to somewhere else; you can do that by typing '`@link` me=here' when you're in the room.
@@ -156,12 +153,12 @@ This is the index to the MUSH online help files.
 
 
 **See Also:**
-- [goto](/reference/sharpmush-help/penncmd/#goto)
-- [home](/reference/sharpmush-help/penntop/#home)
-- [enter](/reference/sharpmush-help/penncmd/#enter)
-- [leave](/reference/sharpmush-help/penncmd/#leave)
-- [@teleport](/reference/sharpmush-help/penncmd/#teleport)
-- [@link](/reference/sharpmush-help/penncmd/#link)
+- [goto](/reference/sharpmush-help/sharpcmd/#goto)
+- [home](/reference/sharpmush-help/sharptop/#home)
+- [enter](/reference/sharpmush-help/sharpcmd/#enter)
+- [leave](/reference/sharpmush-help/sharpcmd/#leave)
+- [@teleport](/reference/sharpmush-help/sharpcmd/#teleport)
+- [@link](/reference/sharpmush-help/sharpcmd/#link)
 
 ## GS TALKING
   You can talk to others in the room with you (those listed in the 'Contents' of the room) in a number of ways. The easiest is to use the 'say' command.
@@ -177,7 +174,7 @@ This is the index to the MUSH online help files.
     "Hello!
   if you wish; it works exactly the same.
 
-  See [gs talking2](/reference/sharpmush-help/penntop/#gs-talking2)
+  See [gs talking2](/reference/sharpmush-help/sharptop/#gs-talking2)
 
 ## GS TALKING2
   You can also perform actions, using the 'pose' command, or ':' for short.
@@ -200,24 +197,24 @@ This is the index to the MUSH online help files.
 
 
 **See Also:**
-- [GS CHAT](/reference/sharpmush-help/penntop/#gs-chat)
-- [say](/reference/sharpmush-help/penncmd/#say)
-- [pose](/reference/sharpmush-help/penncmd/#pose)
-- [semipose](/reference/sharpmush-help/penncmd/#semipose)
-- [@emit](/reference/sharpmush-help/penncmd/#emit)
+- [GS CHAT](/reference/sharpmush-help/sharptop/#gs-chat)
+- [say](/reference/sharpmush-help/sharpcmd/#say)
+- [pose](/reference/sharpmush-help/sharpcmd/#pose)
+- [semipose](/reference/sharpmush-help/sharpcmd/#semipose)
+- [@emit](/reference/sharpmush-help/sharpcmd/#emit)
 
 ## GS CHAT
 
 ## GS CHANNELS
-  PennMUSH has a built-in channel system, which allows you to talk with players who are on the same channels as you, even if you're in different rooms.
+  SharpMUSH has a built-in channel system, which allows you to talk with players who are on the same channels as you, even if you're in different rooms.
 
   Most games have a number of different channels, either for discussing different subjects, or for different groups/factions of players to chat on.
 
-  To see a list of channels, type '`@channel`/list'. This shows the names of all the channels, whether or not you're on the channel, and some other information (the rest is explained in [channel-list](/reference/sharpmush-help/pennchat/#channel-list)).
+  To see a list of channels, type '`@channel`/list'. This shows the names of all the channels, whether or not you're on the channel, and some other information (the rest is explained in [channel-list](/reference/sharpmush-help/sharpchat/#channel-list)).
 
   To join a channel, type '`@channel`/on `<channel>`'. To leave it again, use '`@channel`/leave `<channel>`'. If you want to stop hearing a channel for a while without leaving it totally, use '`@channel`/gag `<channel>`'.
 
-  See [gs chat2](/reference/sharpmush-help/penntop/#gs-chat2)
+  See [gs chat2](/reference/sharpmush-help/sharptop/#gs-chat2)
 
 ## GS CHAT2
   When you've joined a channel, you can chat on it in two ways:
@@ -238,12 +235,12 @@ This is the index to the MUSH online help files.
   There's much more you can do with the channel system - see [`@channel`] for the other commands.
 
 **See Also:**
-- [GS TALKING](/reference/sharpmush-help/penntop/#gs-talking)
-- [@channel](/reference/sharpmush-help/pennchat/#channel)
-- [@chat](/reference/sharpmush-help/pennchat/#chat)
+- [GS TALKING](/reference/sharpmush-help/sharptop/#gs-talking)
+- [@channel](/reference/sharpmush-help/sharpchat/#channel)
+- [@chat](/reference/sharpmush-help/sharpchat/#chat)
 
 ## GS MAIL
-  PennMUSH has a built-in mail system that lets you send messages to players, even if they aren't online. You can keep mail you receive for as long as you like, and re-read it any time.
+  SharpMUSH has a built-in mail system that lets you send messages to players, even if they aren't online. You can keep mail you receive for as long as you like, and re-read it any time.
 
   To list all the messages you've received, type '`@mail`'. You'll see something like:
 ```
@@ -254,7 +251,7 @@ This is the index to the MUSH online help files.
 ```
   The number after the ':' is the message number; to read that message, type '`@mail` `<number>`'.
 
-  See [gs mail2](/reference/sharpmush-help/penntop/#gs-mail2)
+  See [gs mail2](/reference/sharpmush-help/sharptop/#gs-mail2)
 
 ## GS MAIL2
   To send mail to someone, type:
@@ -268,7 +265,7 @@ This is the index to the MUSH online help files.
 
 
 **See Also:**
-- [@mail](/reference/sharpmush-help/pennmail/#mail)
+- [@mail](/reference/sharpmush-help/sharpmail/#mail)
 
 ## topics
 Help is available on the following topics:
@@ -285,7 +282,7 @@ Help is available on the following topics:
   LISTENING                LISTS                    LOOPING
   MASTER ROOM              MATCHING                 ME
 
-  See [topics2](/reference/sharpmush-help/penntop/#topics2)
+  See [topics2](/reference/sharpmush-help/sharptop/#topics2)
 
 ## topics2
   MONEY                    MUSHCODE                 NON-STANDARD ATTRIBUTES
@@ -299,7 +296,7 @@ Help is available on the following topics:
   ZONES
 
 Type 'help `<topic name>`' for help.
-For a list of all topics, see [entries](/reference/sharpmush-help/pennconf/#entries).
+For a list of all topics, see [entries](/reference/sharpmush-help/sharpconf/#entries).
 
 ## ACTION LISTS
   An "action list" is simply a list of MUSH commands which are run together, one after the other. Each command in the list is separated by a semicolon. Action lists appear in many places: in user-defined commands, triggered in `@a`-attributes by the MUSH, and even as arguments to other commands, like `@switch` and `@dolist`.
@@ -308,11 +305,11 @@ For a list of all topics, see [entries](/reference/sharpmush-help/pennconf/#entr
 
   Substitution will be performed on the contents of action lists before they are executed.
 
-  See [action2](/reference/sharpmush-help/penntop/#action2)
+  See [action2](/reference/sharpmush-help/sharptop/#action2)
 
 **See Also:**
-- [@-ATTRIBUTES](/reference/sharpmush-help/penncmd/#attributes)
-- [VERBS](/reference/sharpmush-help/penntop/#verbs)
+- [@-ATTRIBUTES](/reference/sharpmush-help/sharpcmd/#attributes)
+- [VERBS](/reference/sharpmush-help/sharptop/#verbs)
 - [$-COMMANDS]
 
 ## ACTION2
@@ -338,10 +335,10 @@ For a list of all topics, see [entries](/reference/sharpmush-help/pennconf/#entr
 
 
 **See Also:**
-- [ATTRIBUTES](/reference/sharpmush-help/penntop/#attributes)
-- [SUBSTITUTION](/reference/sharpmush-help/pennconf/#substitution)
-- [@asuccess](/reference/sharpmush-help/penncmd/#asuccess)
-- [@dolist](/reference/sharpmush-help/penncmd/#dolist)
+- [ATTRIBUTES](/reference/sharpmush-help/sharptop/#attributes)
+- [SUBSTITUTION](/reference/sharpmush-help/sharpconf/#substitution)
+- [@asuccess](/reference/sharpmush-help/sharpcmd/#asuccess)
+- [@dolist](/reference/sharpmush-help/sharpcmd/#dolist)
 
 ## ANCESTORS
   ANCESTORS
@@ -356,8 +353,8 @@ For a list of all topics, see [entries](/reference/sharpmush-help/pennconf/#entr
 
 
 **See Also:**
-- [PARENTS](/reference/sharpmush-help/penntop/#parents)
-- [ORPHAN](/reference/sharpmush-help/pennflag/#orphan)
+- [PARENTS](/reference/sharpmush-help/sharptop/#parents)
+- [ORPHAN](/reference/sharpmush-help/sharpflag/#orphan)
 
 ## ANONYMOUS ATTRIBUTES
 
@@ -380,7 +377,7 @@ For a list of all topics, see [entries](/reference/sharpmush-help/pennconf/#entr
 
   These anonymous attributes should be used for short and simple pieces of code. Anything long or complicated should go in an actual attribute, for readability and maintainability.
 
-  See [ANONYMOUS2](/reference/sharpmush-help/penntop/#anonymous2)
+  See [ANONYMOUS2](/reference/sharpmush-help/sharptop/#anonymous2)
 
 ## ANONYMOUS2
 
@@ -408,7 +405,7 @@ For a list of all topics, see [entries](/reference/sharpmush-help/pennconf/#entr
 
   The first time '#lambda/hasattrval([decompose(before(%0, /))], \%0)' is parsed in a call like 'u(lattrval, #1234)', it is turned into '#lambda/hasattrval(#1234, %0)', thus avoiding the need for a `setq()` or the like to store the top-level %0 for use in a real attribute called by `filter()`. However, this can lead to problems with evaluating un-trusted code. Use `decompose()` where neccessary.
 
-  See [ANONYMOUS3](/reference/sharpmush-help/penntop/#anonymous3)
+  See [ANONYMOUS3](/reference/sharpmush-help/sharptop/#anonymous3)
 
 ## ANONYMOUS3
 
@@ -427,7 +424,7 @@ For a list of all topics, see [entries](/reference/sharpmush-help/pennconf/#entr
   > think mix(#apply2/ansi, r g b, foo bar baz)
 ```
 
-  See [ANONYMOUS4](/reference/sharpmush-help/penntop/#anonymous4)
+  See [ANONYMOUS4](/reference/sharpmush-help/sharptop/#anonymous4)
 
 ## ANONYMOUS4
 
@@ -453,10 +450,10 @@ For a list of all topics, see [entries](/reference/sharpmush-help/pennconf/#entr
 
 
 **See Also:**
-- [@atrlock](/reference/sharpmush-help/penncmd/#atrlock)
-- [@atrchown](/reference/sharpmush-help/penncmd/#atrchown)
-- [owner()](/reference/sharpmush-help/pennfunc/#owner)
-- [ATTRIBUTES](/reference/sharpmush-help/penntop/#attributes)
+- [@atrlock](/reference/sharpmush-help/sharpcmd/#atrlock)
+- [@atrchown](/reference/sharpmush-help/sharpcmd/#atrchown)
+- [owner()](/reference/sharpmush-help/sharpfunc/#owner)
+- [ATTRIBUTES](/reference/sharpmush-help/sharptop/#attributes)
 
 ## ATTRIBUTES
 
@@ -479,19 +476,19 @@ Standard Attributes: (see `@list`/attribs for the complete list)
   OXMOVE        PAYMENT       QUEUE (*)     RQUOTA (*)    RUNOUT
   SEX           STARTUP       SUCCESS       TFPREFIX
 
-  See [attributes2](/reference/sharpmush-help/penntop/#attributes2)
+  See [attributes2](/reference/sharpmush-help/sharptop/#attributes2)
 
 ## ATTRIBUTES2
-  An attribute is part of the code on an object that makes it unique. An attribute can contain any sort of text -- from a single word, to a long paragraph, to a piece of MUSHcode. Some attributes are standard in PennMUSH. That means that their effects are pre-set.
+  An attribute is part of the code on an object that makes it unique. An attribute can contain any sort of text -- from a single word, to a long paragraph, to a piece of MUSHcode. Some attributes are standard in SharpMUSH. That means that their effects are pre-set.
 
   Standard attributes can be set using one of the following commands:
     @`<attribute name>` `<object>`=`<content>`
     `@set` `<object>`=`<attribute name>`:`<content>`
     &`<attribute name>` `<object>`=`<content>`
 
-  It is also possible to have non-standard attributes, which can be named anything you like. Please see [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/penntop/#non-standard-attributes) for more information on those.
+  It is also possible to have non-standard attributes, which can be named anything you like. Please see [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/sharptop/#non-standard-attributes) for more information on those.
 
-  See [attributes3](/reference/sharpmush-help/penntop/#attributes3)
+  See [attributes3](/reference/sharpmush-help/sharptop/#attributes3)
 
 ## ATTRIBUTES3
   Any attribute name can be shortened, but a shorter forms run the risk of conflicting with other attribute names. This could result in you setting an unwanted attribute.
@@ -502,9 +499,9 @@ Standard Attributes: (see `@list`/attribs for the complete list)
     `@adescribe` me=think %n looks at you.
   would.
 
-  To see the attributes that are set on you or on any of the objects you own, you should use the "examine" command. See [examine](/reference/sharpmush-help/penncmd/#examine).
+  To see the attributes that are set on you or on any of the objects you own, you should use the "examine" command. See [examine](/reference/sharpmush-help/sharpcmd/#examine).
 
-  See [attributes4](/reference/sharpmush-help/penntop/#attributes4)
+  See [attributes4](/reference/sharpmush-help/sharptop/#attributes4)
 
 ## ATTRIBUTES4
   Attributes can be owned by someone other than the object they are set on. This allows the person to change the content of just that attribute while not the rest of the object. Attributes can also be locked, which prevents them from being changed by anyone.
@@ -513,17 +510,17 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 
 **See Also:**
-- [ATTRIB-OWNERSHIP](/reference/sharpmush-help/penntop/#attrib-ownership)
-- [@set](/reference/sharpmush-help/penncmd/#set)
-- [examine](/reference/sharpmush-help/penncmd/#examine)
-- [@atrchown](/reference/sharpmush-help/penncmd/#atrchown)
-- [@atrlock](/reference/sharpmush-help/penncmd/#atrlock)
-- [hasattr()](/reference/sharpmush-help/pennfunc/#hasattr)
-- [get()](/reference/sharpmush-help/pennfunc/#get)
-- [v()](/reference/sharpmush-help/pennfunc/#v)
-- [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/penntop/#non-standard-attributes)
-- [SETTING-ATTRIBUTES](/reference/sharpmush-help/penntop/#setting-attributes)
-- [ATTRIBUTE TREES](/reference/sharpmush-help/pennattr/#attribute-trees)
+- [ATTRIB-OWNERSHIP](/reference/sharpmush-help/sharptop/#attrib-ownership)
+- [@set](/reference/sharpmush-help/sharpcmd/#set)
+- [examine](/reference/sharpmush-help/sharpcmd/#examine)
+- [@atrchown](/reference/sharpmush-help/sharpcmd/#atrchown)
+- [@atrlock](/reference/sharpmush-help/sharpcmd/#atrlock)
+- [hasattr()](/reference/sharpmush-help/sharpfunc/#hasattr)
+- [get()](/reference/sharpmush-help/sharpfunc/#get)
+- [v()](/reference/sharpmush-help/sharpfunc/#v)
+- [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/sharptop/#non-standard-attributes)
+- [SETTING-ATTRIBUTES](/reference/sharpmush-help/sharptop/#setting-attributes)
+- [ATTRIBUTE TREES](/reference/sharpmush-help/sharpattr/#attribute-trees)
 
 ## BOOLEAN VALUES
 
@@ -531,7 +528,7 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
   Other functions expect to operate on boolean values. What they consider "true" or "false", however, depends on the setting of the "tiny_booleans" config option (`@config` tiny will show this).
 
-  See [boolean2](/reference/sharpmush-help/penntop/#boolean2)
+  See [boolean2](/reference/sharpmush-help/sharptop/#boolean2)
 
 ## BOOLEAN2
   If tiny_booleans is...
@@ -551,7 +548,7 @@ Standard Attributes: (see `@list`/attribs for the complete list)
   0<non-numbers..>      TRUE                    FALSE               *
   <non-numbers...>      TRUE                    FALSE               *
 
-  See [boolean3](/reference/sharpmush-help/penntop/#boolean3)
+  See [boolean3](/reference/sharpmush-help/sharptop/#boolean3)
 
 ## BOOLEAN3
 
@@ -567,14 +564,14 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 
 **See Also:**
-- [BOOLEAN FUNCTIONS](/reference/sharpmush-help/pennfunc/#boolean-functions)
-- [not()](/reference/sharpmush-help/pennfunc/#not)
-- [t()](/reference/sharpmush-help/pennfunc/#t)
+- [BOOLEAN FUNCTIONS](/reference/sharpmush-help/sharpfunc/#boolean-functions)
+- [not()](/reference/sharpmush-help/sharpfunc/#not)
+- [t()](/reference/sharpmush-help/sharpfunc/#t)
 
 ## CLIENTS
   Clients are special software programs that you can use to connect to MUSHes. They are usually much nicer to use than raw telnet and give you many additional features, such as larger text buffers (so you can type more), backscroll, history of previous commands, macros, and so on.
 
-  Here is a list of common clients and the web sites where they can be found.  Please note that the below sites are subject to change. The below are listed solely for your information and possible benefit. The developers of PennMUSH have nothing to do with the clients. Except for Potato, which is made by Mike. Not that this is a shameless plug. Noooo. Carry on.
+  Here is a list of common clients and the web sites where they can be found.  Please note that the below sites are subject to change. The below are listed solely for your information and possible benefit. The developers of SharpMUSH have nothing to do with the clients. Except for Potato, which is made by Mike. Not that this is a shameless plug. Noooo. Carry on.
 
   OPERATING
   SYSTEM          CLIENT      WEB SITE
@@ -613,11 +610,11 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 
 **See Also:**
-- [controls()](/reference/sharpmush-help/pennfunc/#controls)
-- [TRUST](/reference/sharpmush-help/pennconf/#trust)
-- [MISTRUST](/reference/sharpmush-help/pennconf/#mistrust)
-- [ZONES](/reference/sharpmush-help/penntop/#zones)
-- [SHARED PLAYERS](/reference/sharpmush-help/penntop/#shared-players)
+- [controls()](/reference/sharpmush-help/sharpfunc/#controls)
+- [TRUST](/reference/sharpmush-help/sharpconf/#trust)
+- [MISTRUST](/reference/sharpmush-help/sharpconf/#mistrust)
+- [ZONES](/reference/sharpmush-help/sharptop/#zones)
+- [SHARED PLAYERS](/reference/sharpmush-help/sharptop/#shared-players)
 
 ## COSTS
   Some things on the MUSH cost pennies. The default costs are shown below:
@@ -632,24 +629,24 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 
 **See Also:**
-- [MONEY](/reference/sharpmush-help/penntop/#money)
-- [money()](/reference/sharpmush-help/pennfunc/#money)
-- [score](/reference/sharpmush-help/penncmd/#score)
+- [MONEY](/reference/sharpmush-help/sharptop/#money)
+- [money()](/reference/sharpmush-help/sharpfunc/#money)
+- [score](/reference/sharpmush-help/sharpcmd/#score)
 
 ## CREDITS
   Maintainer: Raevnos [SW]
   Developers: Greg Millam [GM], Mike Griffiths [MG], Intrevis, Tim Krajcar/Rince [TK]
-  Past Porters: Nick Gammon [NJG](/reference/sharpmush-help/pennconf/#njg) (win32), Dan Williams [DW] (MacOS), Sylvia (OS/2)
-  Former developers: Rhyanna [RLM](/reference/sharpmush-help/pennconf/#rlm), Trivian [TN], Halatir [LdW](/reference/sharpmush-help/pennconf/#ldw), Talek [TAP](/reference/sharpmush-help/pennconf/#tap), Javelin, Ervin Hearn III [EEH](/reference/sharpmush-help/pennconf/#eeh)
+  Past Porters: Nick Gammon [NJG](/reference/sharpmush-help/sharpconf/#njg) (win32), Dan Williams [DW] (MacOS), Sylvia (OS/2)
+  Former developers: Rhyanna [RLM](/reference/sharpmush-help/sharpconf/#rlm), Trivian [TN], Halatir [LdW](/reference/sharpmush-help/sharpconf/#ldw), Talek [TAP](/reference/sharpmush-help/sharpconf/#tap), Javelin, Ervin Hearn III [EEH](/reference/sharpmush-help/sharpconf/#eeh)
 
-  The original TinyMUSH 1.0 code was written by Lawrence Foard, and was based upon James Aspnes' TinyMUD server. Since then, the code has been modified by the programmers of MicroMUSE (then MicroMUSH), and Joseph Traub (Moonchilde of PernMUSH). From January 1992 to January 1995, Lydia Leong (Amberyl of PernMUSH / Polgara of Belgariad) maintained the code currently known as PennMUSH 1.50. From January 1995 until July 2006, Alan Schwartz (Paul of DuneMUSH / Javelin elsewhere) maintained this code, along with a development team. From July 2006 on, Raevnos has been the maintainer.
+  The original TinyMUSH 1.0 code was written by Lawrence Foard, and was based upon James Aspnes' TinyMUD server. Since then, the code has been modified by the programmers of MicroMUSE (then MicroMUSH), and Joseph Traub (Moonchilde of PernMUSH). From January 1992 to January 1995, Lydia Leong (Amberyl of PernMUSH / Polgara of Belgariad) maintained the code currently known as SharpMUSH 1.50. From January 1995 until July 2006, Alan Schwartz (Paul of DuneMUSH / Javelin elsewhere) maintained this code, along with a development team. From July 2006 on, Raevnos has been the maintainer.
 
-  Big thanks to the developers of TinyMUSH 2.0, 2.2 [2.2](/reference/sharpmush-help/pennconf/#22), 3.0 [3], MUX2, and Rhost [Rhost](/reference/sharpmush-help/pennconf/#rhost) servers, as well as to the players of Belgariad MUSH, DuneMUSH, and M*U*S*H, and everyone else using this server!
+  Big thanks to the developers of TinyMUSH 2.0, 2.2 [2.2](/reference/sharpmush-help/sharpconf/#22), 3.0 [3], MUX2, and Rhost [Rhost](/reference/sharpmush-help/sharpconf/#rhost) servers, as well as to the players of Belgariad MUSH, DuneMUSH, and M*U*S*H, and everyone else using this server!
 
 
 **See Also:**
-- [code](/reference/sharpmush-help/penncode/#code)
-- [license](/reference/sharpmush-help/penncode/#license)
+- [code](/reference/sharpmush-help/sharpcode/#code)
+- [license](/reference/sharpmush-help/sharpcode/#license)
 
 ## DATABASE
 
@@ -664,7 +661,7 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
   Using DBREFs is also faster than using names, even if the object is in your location. This is because whenever you try to do something with an object (such as look at it, take it, etc.), the MUSH first has to locate the object. Since the dbref is unique, it can immediately find the object rather than checking through all the contents of your area to see if one matches the name.
 
-  See [dbref2](/reference/sharpmush-help/penntop/#dbref2)
+  See [dbref2](/reference/sharpmush-help/sharptop/#dbref2)
 
 ## DBREF2
 
@@ -682,11 +679,11 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 ```
 
 **See Also:**
-- [MYOPIC](/reference/sharpmush-help/pennflag/#myopic)
-- [OPAQUE](/reference/sharpmush-help/pennflag/#opaque)
-- [MUSHCODE](/reference/sharpmush-help/penntop/#mushcode)
-- [MATCHING](/reference/sharpmush-help/penntop/#matching)
-- [OBJIDS](/reference/sharpmush-help/penntop/#objids)
+- [MYOPIC](/reference/sharpmush-help/sharpflag/#myopic)
+- [OPAQUE](/reference/sharpmush-help/sharpflag/#opaque)
+- [MUSHCODE](/reference/sharpmush-help/sharptop/#mushcode)
+- [MATCHING](/reference/sharpmush-help/sharptop/#matching)
+- [OBJIDS](/reference/sharpmush-help/sharptop/#objids)
 
 ## OBJIDS
 
@@ -700,9 +697,9 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 
 **See Also:**
-- [objid()](/reference/sharpmush-help/pennfunc/#objid)
-- [@lock-objid](/reference/sharpmush-help/pennlock/#lock-objid)
-- [DBREFS](/reference/sharpmush-help/penntop/#dbrefs)
+- [objid()](/reference/sharpmush-help/sharpfunc/#objid)
+- [@lock-objid](/reference/sharpmush-help/sharplock/#lock-objid)
+- [DBREFS](/reference/sharpmush-help/sharptop/#dbrefs)
 
 ## DROP-TOS
 
@@ -718,10 +715,10 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 
 **See Also:**
-- [@link](/reference/sharpmush-help/penncmd/#link)
-- [STICKY](/reference/sharpmush-help/pennflag/#sticky)
-- [LINK_OK](/reference/sharpmush-help/pennflag/#linkok)
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
+- [@link](/reference/sharpmush-help/sharpcmd/#link)
+- [STICKY](/reference/sharpmush-help/sharpflag/#sticky)
+- [LINK_OK](/reference/sharpmush-help/sharpflag/#linkok)
+- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
 
 ## %#
 
@@ -742,16 +739,16 @@ Standard Attributes: (see `@list`/attribs for the complete list)
     %~ = the enactor's accented name
     %k = the enactor's name, colored by their `@moniker` (if any)
     %: = the enactor's unique identifier, like objid(%#)
-    %a, %o, %p, %s = pronoun substitutions, based on the enactor's `@sex`. See [gender](/reference/sharpmush-help/penntop/#gender) for more information.
+    %a, %o, %p, %s = pronoun substitutions, based on the enactor's `@sex`. See [gender](/reference/sharpmush-help/sharptop/#gender) for more information.
 
   If, for example, you have an `@osuccess` on an object that includes the %n subtitution, whenever someone picks up the object, that %n will evaluate to the name of the enactor (the person who typed 'get `<object>`' in this case).
 
 
 **See Also:**
-- [EXECUTOR](/reference/sharpmush-help/penntop/#executor)
-- [CALLER](/reference/sharpmush-help/penntop/#caller)
-- [SUBSTITUTIONS](/reference/sharpmush-help/penntop/#substitutions)
-- [DBREF](/reference/sharpmush-help/pennconf/#dbref)
+- [EXECUTOR](/reference/sharpmush-help/sharptop/#executor)
+- [CALLER](/reference/sharpmush-help/sharptop/#caller)
+- [SUBSTITUTIONS](/reference/sharpmush-help/sharptop/#substitutions)
+- [DBREF](/reference/sharpmush-help/sharpconf/#dbref)
 
 ## %!
 
@@ -773,9 +770,9 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 
 **See Also:**
-- [ENACTOR](/reference/sharpmush-help/penntop/#enactor)
-- [CALLER](/reference/sharpmush-help/penntop/#caller)
-- [SUBSTITUTIONS](/reference/sharpmush-help/penntop/#substitutions)
+- [ENACTOR](/reference/sharpmush-help/sharptop/#enactor)
+- [CALLER](/reference/sharpmush-help/sharptop/#caller)
+- [SUBSTITUTIONS](/reference/sharpmush-help/sharptop/#substitutions)
 
 ## %@
 
@@ -795,15 +792,15 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 ```
 
 **See Also:**
-- [ENACTOR](/reference/sharpmush-help/penntop/#enactor)
-- [EXECUTOR](/reference/sharpmush-help/penntop/#executor)
+- [ENACTOR](/reference/sharpmush-help/sharptop/#enactor)
+- [EXECUTOR](/reference/sharpmush-help/sharptop/#executor)
 
 ## EVALUATION ORDER
   Whenever some text is entered by an object, the MUSH attempts to match it against a valid game command in the following order of possible commands:
 
     Socket commands (*): QUIT, SCREENWIDTH, etc
     Single-token commands: ", :, ;, +, \, #
-    MUX-style channel aliases, if enabled (see [muxcomm](/reference/sharpmush-help/pennconf/#muxcomm))
+    MUX-style channel aliases, if enabled (see [muxcomm](/reference/sharpmush-help/sharpconf/#muxcomm))
     Exits in the room
     &attribute setting
     Regular game commands: get, inventory, `@emit`, etc
@@ -820,7 +817,7 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
   (*) Socket commands are only matched when the command is entered by a player directly from their client.
 
-  See [evaluation2](/reference/sharpmush-help/penntop/#evaluation2)
+  See [evaluation2](/reference/sharpmush-help/sharptop/#evaluation2)
 
 ## EVALUATION2
     If still nothing is matched:
@@ -834,30 +831,30 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 
 **See Also:**
-- [@command](/reference/sharpmush-help/penncmd/#command)
-- [@hook](/reference/sharpmush-help/penncmd/#hook)
+- [@command](/reference/sharpmush-help/sharpcmd/#command)
+- [@hook](/reference/sharpmush-help/sharpcmd/#hook)
 - [$-commands]
-- [huh_command](/reference/sharpmush-help/penncmd/#huhcommand)
+- [huh_command](/reference/sharpmush-help/sharpcmd/#huhcommand)
 
 ## FAILURE
   FAILURE
 
   A "failure" usually occurs when you try to do something that is governed by an `@lock` and you don't pass the lock. If you try to take a player or thing, or pass through an exit, and you don't pass its Basic `@lock`, you will set off their `@failure`/`@ofailure`/`@afailure` attributes. A few failures have special attributes, while others use `<locktype>`_LOCK`FAILURE, `<locktype>`_LOCK`OFAILURE and `<locktype>`_LOCK`AFAILURE attributes.
 
-  See [failure2](/reference/sharpmush-help/penntop/#failure2)
+  See [failure2](/reference/sharpmush-help/sharptop/#failure2)
 
-  See [@lock](/reference/sharpmush-help/penncmd/#lock)
+  See [@lock](/reference/sharpmush-help/sharpcmd/#lock)
 
 
 **See Also:**
-- [verbs](/reference/sharpmush-help/penntop/#verbs)
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
-- [@failure](/reference/sharpmush-help/penncmd/#failure)
-- [@efail](/reference/sharpmush-help/penncmd/#efail)
-- [@lfail](/reference/sharpmush-help/penncmd/#lfail)
+- [verbs](/reference/sharpmush-help/sharptop/#verbs)
+- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [@failure](/reference/sharpmush-help/sharpcmd/#failure)
+- [@efail](/reference/sharpmush-help/sharpcmd/#efail)
+- [@lfail](/reference/sharpmush-help/sharpcmd/#lfail)
 
 ## failure2
-  The following failures are defined in PennMUSH:
+  The following failures are defined in SharpMUSH:
 
   Failure to...                                 Lock     Attribute
   --------------------------------------------- -------- --------------------
@@ -890,8 +887,8 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 
 **See Also:**
-- [@sex](/reference/sharpmush-help/penncmd/#sex)
-- [SUBSTITUTION](/reference/sharpmush-help/pennconf/#substitution)
+- [@sex](/reference/sharpmush-help/sharpcmd/#sex)
+- [SUBSTITUTION](/reference/sharpmush-help/sharpconf/#substitution)
 
 ## GLOBALS
 
@@ -900,9 +897,9 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 
 **See Also:**
-- [MASTER ROOM](/reference/sharpmush-help/penntop/#master-room)
-- [USER-DEFINED COMMANDS](/reference/sharpmush-help/penntop/#user-defined-commands)
-- [EVALUATION ORDER](/reference/sharpmush-help/penntop/#evaluation-order)
+- [MASTER ROOM](/reference/sharpmush-help/sharptop/#master-room)
+- [USER-DEFINED COMMANDS](/reference/sharpmush-help/sharptop/#user-defined-commands)
+- [EVALUATION ORDER](/reference/sharpmush-help/sharptop/#evaluation-order)
 
 ## HERE
   The word 'here' refers to the room you are in. For example, to rename the room you're in (if you control it), you could use:
@@ -913,7 +910,7 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 
 **See Also:**
-- [MATCHING](/reference/sharpmush-help/penntop/#matching)
+- [MATCHING](/reference/sharpmush-help/sharptop/#matching)
 
 ## HOMES
 
@@ -935,14 +932,14 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 
 **See Also:**
-- [DROP-TOS](/reference/sharpmush-help/penntop/#drop-tos)
-- [@link](/reference/sharpmush-help/penncmd/#link)
-- [STICKY](/reference/sharpmush-help/pennflag/#sticky)
-- [LINK_OK](/reference/sharpmush-help/pennflag/#linkok)
-- [FIXED](/reference/sharpmush-help/pennflag/#fixed)
-- [EXITS](/reference/sharpmush-help/penntop/#exits)
-- [home()](/reference/sharpmush-help/pennfunc/#home)
-- [loc()](/reference/sharpmush-help/pennfunc/#loc)
+- [DROP-TOS](/reference/sharpmush-help/sharptop/#drop-tos)
+- [@link](/reference/sharpmush-help/sharpcmd/#link)
+- [STICKY](/reference/sharpmush-help/sharpflag/#sticky)
+- [LINK_OK](/reference/sharpmush-help/sharpflag/#linkok)
+- [FIXED](/reference/sharpmush-help/sharpflag/#fixed)
+- [EXITS](/reference/sharpmush-help/sharptop/#exits)
+- [home()](/reference/sharpmush-help/sharpfunc/#home)
+- [loc()](/reference/sharpmush-help/sharpfunc/#loc)
 
 ## INTERIORS
   Here's a quick description of how to make things that can be entered:
@@ -958,7 +955,7 @@ Standard Attributes: (see `@list`/attribs for the complete list)
   `@enter` car=You get into the car.      { The plain messages are shown to
   `@leave` car=You get out of the car.    { the one entering or leaving
 
-  See [interiors2](/reference/sharpmush-help/penntop/#interiors2)
+  See [interiors2](/reference/sharpmush-help/sharptop/#interiors2)
 
 ## INTERIORS2
   Now, if you want people inside to be able to hear and communicate with the outside, you also need to do the following.
@@ -974,12 +971,12 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 
 **See Also:**
-- [enter](/reference/sharpmush-help/penncmd/#enter)
-- [leave](/reference/sharpmush-help/penncmd/#leave)
-- [@prefix](/reference/sharpmush-help/penncmd/#prefix)
-- [@filter](/reference/sharpmush-help/penncmd/#filter)
-- [AUDIBLE](/reference/sharpmush-help/pennflag/#audible)
-- [@listen](/reference/sharpmush-help/penncmd/#listen)
+- [enter](/reference/sharpmush-help/sharpcmd/#enter)
+- [leave](/reference/sharpmush-help/sharpcmd/#leave)
+- [@prefix](/reference/sharpmush-help/sharpcmd/#prefix)
+- [@filter](/reference/sharpmush-help/sharpcmd/#filter)
+- [AUDIBLE](/reference/sharpmush-help/sharpflag/#audible)
+- [@listen](/reference/sharpmush-help/sharpcmd/#listen)
 
 ## LAST
 ## LASTLOGOUT
@@ -993,7 +990,7 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 
 **See Also:**
-- [LASTSITE](/reference/sharpmush-help/penntop/#lastsite)
+- [LASTSITE](/reference/sharpmush-help/sharptop/#lastsite)
 
 ## LASTSITE
 
@@ -1004,7 +1001,7 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 
 **See Also:**
-- [LAST](/reference/sharpmush-help/penntop/#last)
+- [LAST](/reference/sharpmush-help/sharptop/#last)
 
 ## LINKING
 
@@ -1012,9 +1009,9 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 
 **See Also:**
-- [LINK_OK](/reference/sharpmush-help/pennflag/#linkok)
-- [ABODE](/reference/sharpmush-help/pennflag/#abode)
-- [@link](/reference/sharpmush-help/penncmd/#link)
+- [LINK_OK](/reference/sharpmush-help/sharpflag/#linkok)
+- [ABODE](/reference/sharpmush-help/sharpflag/#abode)
+- [@link](/reference/sharpmush-help/sharpcmd/#link)
 
 ## LISTENING
 
@@ -1032,7 +1029,7 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
   To trigger an object's `@listen`, you must pass its `@lock`/listen.
 
-  See [listening2](/reference/sharpmush-help/penntop/#listening2)
+  See [listening2](/reference/sharpmush-help/sharptop/#listening2)
 
 ## ^
 
@@ -1058,7 +1055,7 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
   In order to trigger an object's ^-listen patterns, you must pass BOTH its `@lock`/use and its `@lock`/listen.
 
-  See [listening3](/reference/sharpmush-help/penntop/#listening3)
+  See [listening3](/reference/sharpmush-help/sharptop/#listening3)
 
 ## LISTENING3
   By default, ^-patterns work like `@ahear`. To have them work like `@amhear`, set the AMHEAR attribute flag on the attribute; to have them work like `@aahear`, set the AAHEAR attribute flag on the attribute (Note that the triggering object is whatever happens to be %#, so, for example, when you `@set` an object MONITOR, you are %# with regard to the "Object is now listening" message, and this message can be picked up with an ^-pattern.)
@@ -1069,14 +1066,14 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 
 **See Also:**
-- [@listen](/reference/sharpmush-help/penncmd/#listen)
-- [@ahear](/reference/sharpmush-help/penncmd/#ahear)
-- [@amhear](/reference/sharpmush-help/penncmd/#amhear)
-- [@aahear](/reference/sharpmush-help/penncmd/#aahear)
-- [MONITOR](/reference/sharpmush-help/pennflag/#monitor)
-- [LISTEN_PARENT](/reference/sharpmush-help/pennconf/#listenparent)
-- [USER-DEFINED COMMANDS](/reference/sharpmush-help/penntop/#user-defined-commands)
-- [INTERIORS](/reference/sharpmush-help/penntop/#interiors)
+- [@listen](/reference/sharpmush-help/sharpcmd/#listen)
+- [@ahear](/reference/sharpmush-help/sharpcmd/#ahear)
+- [@amhear](/reference/sharpmush-help/sharpcmd/#amhear)
+- [@aahear](/reference/sharpmush-help/sharpcmd/#aahear)
+- [MONITOR](/reference/sharpmush-help/sharpflag/#monitor)
+- [LISTEN_PARENT](/reference/sharpmush-help/sharpconf/#listenparent)
+- [USER-DEFINED COMMANDS](/reference/sharpmush-help/sharptop/#user-defined-commands)
+- [INTERIORS](/reference/sharpmush-help/sharptop/#interiors)
 
 ## LISTS
   The word "list" is used in the help files to refer to a string that is a series of smaller strings separated by one or more spaces. A list can also have its elements separated by some other kind of character -- the separating character is called the "delimiter". For example, the following are all lists:
@@ -1092,9 +1089,9 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 
 **See Also:**
-- [STRINGS](/reference/sharpmush-help/penntop/#strings)
-- [List Functions](/reference/sharpmush-help/pennfunc/#list-functions)
-- [ACTION LISTS](/reference/sharpmush-help/penntop/#action-lists)
+- [STRINGS](/reference/sharpmush-help/sharptop/#strings)
+- [List Functions](/reference/sharpmush-help/sharpfunc/#list-functions)
+- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
 
 ## LOOPING
   Looping in an object can have its good parts and its bad parts. The good part is when you activate part of a program multiple times to exhaustively perform an operation. This can be done like this:
@@ -1108,12 +1105,12 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 
 **See Also:**
-- [@ps](/reference/sharpmush-help/penncmd/#ps)
-- [HALT](/reference/sharpmush-help/pennconf/#halt)
-- [COSTS](/reference/sharpmush-help/penntop/#costs)
-- [@trigger](/reference/sharpmush-help/penncmd/#trigger)
-- [@retry](/reference/sharpmush-help/penncmd/#retry)
-- [SUBSTITUTIONS3](/reference/sharpmush-help/penntop/#substitutions3)
+- [@ps](/reference/sharpmush-help/sharpcmd/#ps)
+- [HALT](/reference/sharpmush-help/sharpconf/#halt)
+- [COSTS](/reference/sharpmush-help/sharptop/#costs)
+- [@trigger](/reference/sharpmush-help/sharpcmd/#trigger)
+- [@retry](/reference/sharpmush-help/sharpcmd/#retry)
+- [SUBSTITUTIONS3](/reference/sharpmush-help/sharptop/#substitutions3)
 
 ## MASTER ROOM
 
@@ -1121,8 +1118,8 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 
 **See Also:**
-- [EVALUATION](/reference/sharpmush-help/pennconf/#evaluation)
-- [GLOBAL COMMANDS](/reference/sharpmush-help/penntop/#global-commands)
+- [EVALUATION](/reference/sharpmush-help/sharpconf/#evaluation)
+- [GLOBAL COMMANDS](/reference/sharpmush-help/sharptop/#global-commands)
 
 ## ME
   The word 'me' refers to yourself. Some things to do when starting out:
@@ -1133,11 +1130,11 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 
 **See Also:**
-- [NEWBIE](/reference/sharpmush-help/penntop/#newbie)
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
-- [@describe](/reference/sharpmush-help/penncmd/#describe)
-- [@sex](/reference/sharpmush-help/penncmd/#sex)
-- [MATCHING](/reference/sharpmush-help/penntop/#matching)
+- [NEWBIE](/reference/sharpmush-help/sharptop/#newbie)
+- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [@describe](/reference/sharpmush-help/sharpcmd/#describe)
+- [@sex](/reference/sharpmush-help/sharpcmd/#sex)
+- [MATCHING](/reference/sharpmush-help/sharptop/#matching)
 
 ## MONEY
   The MUSH has a built-in money system, which gives a starting amount of money to new players and hands out a daily allowance thereafter. MUSH money (the default name is "pennies", but this may be different depending on the particular MUSH) is spent on some MUSH commands that are computationally expensive or alter the database. In addition, every time you "queue" a command, it costs you a certain amount of money -- this prevents looping from getting out of control, since when all your money is spent, you can't queue any more commands.
@@ -1148,15 +1145,15 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 
 **See Also:**
-- [COSTS](/reference/sharpmush-help/penntop/#costs)
-- [give](/reference/sharpmush-help/penncmd/#give)
-- [@cost](/reference/sharpmush-help/penncmd/#cost)
-- [@payment](/reference/sharpmush-help/penncmd/#payment)
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
-- [buy](/reference/sharpmush-help/penncmd/#buy)
-- [@buy](/reference/sharpmush-help/penncmd/#buy)
-- [score](/reference/sharpmush-help/penncmd/#score)
-- [money()](/reference/sharpmush-help/pennfunc/#money)
+- [COSTS](/reference/sharpmush-help/sharptop/#costs)
+- [give](/reference/sharpmush-help/sharpcmd/#give)
+- [@cost](/reference/sharpmush-help/sharpcmd/#cost)
+- [@payment](/reference/sharpmush-help/sharpcmd/#payment)
+- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [buy](/reference/sharpmush-help/sharpcmd/#buy)
+- [@buy](/reference/sharpmush-help/sharpcmd/#buy)
+- [score](/reference/sharpmush-help/sharpcmd/#score)
+- [money()](/reference/sharpmush-help/sharpfunc/#money)
 
 ## MONIKERS
 
@@ -1164,7 +1161,7 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
   By default, anyone can use the `@moniker` command to set a moniker for themselves or their objects. However, where monikers are displayed - and for what types of objects - is controlled via the "monikers" `@config` option.
 
-  See [monikers2](/reference/sharpmush-help/penntop/#monikers2)
+  See [monikers2](/reference/sharpmush-help/sharptop/#monikers2)
 
 ## MONIKERS2
 
@@ -1190,9 +1187,9 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 
 **See Also:**
-- [@moniker](/reference/sharpmush-help/penncmd/#moniker)
-- [moniker()](/reference/sharpmush-help/pennfunc/#moniker)
-- [MONIKER](/reference/sharpmush-help/pennconf/#moniker)
+- [@moniker](/reference/sharpmush-help/sharpcmd/#moniker)
+- [moniker()](/reference/sharpmush-help/sharpfunc/#moniker)
+- [MONIKER](/reference/sharpmush-help/sharpconf/#moniker)
 
 ## MUSHCODE
 
@@ -1202,27 +1199,27 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
   At its most basic, writing MUSHcode is just stringing together a series of commands that you would otherwise just type in one at a time. You can store MUSHcode in attributes on any type of object you own or control (including yourself!). The series of commands can be triggered by using a user-defined command or by using `@trigger`.
 
-  See [mushcode2](/reference/sharpmush-help/penntop/#mushcode2)
+  See [mushcode2](/reference/sharpmush-help/sharptop/#mushcode2)
 
 ## MUSHCODE2
 
-  If you would like to learn more about MUSHcoding and how to create `$-commands` for yourself, the following help files may be useful. You may also find it useful to download a copy of Amberyl's MUSH manual and follow the examples described there. However, the manual is quite old now, and some parts may no longer be relevant or entirely accurate. The manual is available for download at http://download.pennmush.org/Manuals/
-
+  If you would like to learn more about MUSHcoding and how to create `$-commands` for yourself, the following help files may be useful. You may also find it useful to download a copy of Amberyl's MUSH manual and follow the examples described there. However, the manual is quite old now, and some parts may no longer be relevant or entirely accurate. 
+  
   Related Help Topics (in no particular order)
   -------------------
-  - [ATTRIBUTES](/reference/sharpmush-help/penntop/#attributes)
-  - [SUBSTITUTION](/reference/sharpmush-help/pennconf/#substitution)
-  - [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/penntop/#non-standard-attributes)
-  - [ENACTOR](/reference/sharpmush-help/penntop/#enactor)
-  - [EXECUTOR](/reference/sharpmush-help/penntop/#executor)
-  - [USER-DEFINED COMMANDS](/reference/sharpmush-help/penntop/#user-defined-commands)
-  - [DBREFS](/reference/sharpmush-help/penntop/#dbrefs)
-  - [EVALUATION](/reference/sharpmush-help/pennconf/#evaluation)
-  - [TYPES OF OBJECTS](/reference/sharpmush-help/penntop/#types-of-objects)
-  - [WILDCARDS](/reference/sharpmush-help/penntop/#wildcards)
-  - [STRINGS](/reference/sharpmush-help/penntop/#strings)
-  - [LISTS](/reference/sharpmush-help/penntop/#lists)
-  - [ACTION LISTS](/reference/sharpmush-help/penntop/#action-lists)
+  - [ATTRIBUTES](/reference/sharpmush-help/sharptop/#attributes)
+  - [SUBSTITUTION](/reference/sharpmush-help/sharpconf/#substitution)
+  - [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/sharptop/#non-standard-attributes)
+  - [ENACTOR](/reference/sharpmush-help/sharptop/#enactor)
+  - [EXECUTOR](/reference/sharpmush-help/sharptop/#executor)
+  - [USER-DEFINED COMMANDS](/reference/sharpmush-help/sharptop/#user-defined-commands)
+  - [DBREFS](/reference/sharpmush-help/sharptop/#dbrefs)
+  - [EVALUATION](/reference/sharpmush-help/sharpconf/#evaluation)
+  - [TYPES OF OBJECTS](/reference/sharpmush-help/sharptop/#types-of-objects)
+  - [WILDCARDS](/reference/sharpmush-help/sharptop/#wildcards)
+  - [STRINGS](/reference/sharpmush-help/sharptop/#strings)
+  - [LISTS](/reference/sharpmush-help/sharptop/#lists)
+  - [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
 
 ## NON-STANDARD ATTRIBUTES
   While there are many standard attributes in MUSH, objects can also have an enormous number of attributes, with any name you wish to use. In the past, you were limited to attributes named VA-VZ, WA-WZ, XA-XZ; these are still available as standard attributes. However, it is strongly recommended that you use non-standard attributes and meaningful names in order to make maintaining your MUSHCode easier.
@@ -1236,11 +1233,11 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 
 **See Also:**
-- [ATTRIBUTES](/reference/sharpmush-help/penntop/#attributes)
-- [ATTRIB-OWNERSHIP](/reference/sharpmush-help/penntop/#attrib-ownership)
-- [Attribute Functions](/reference/sharpmush-help/pennfunc/#attribute-functions)
-- [ATTRIBUTE TREES](/reference/sharpmush-help/pennattr/#attribute-trees)
-- [ATTRIBUTE FLAGS](/reference/sharpmush-help/pennattr/#attribute-flags)
+- [ATTRIBUTES](/reference/sharpmush-help/sharptop/#attributes)
+- [ATTRIB-OWNERSHIP](/reference/sharpmush-help/sharptop/#attrib-ownership)
+- [Attribute Functions](/reference/sharpmush-help/sharpfunc/#attribute-functions)
+- [ATTRIBUTE TREES](/reference/sharpmush-help/sharpattr/#attribute-trees)
+- [ATTRIBUTE FLAGS](/reference/sharpmush-help/sharpattr/#attribute-flags)
 
 ## PARENT
 
@@ -1252,9 +1249,9 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
   Objects may have multiple levels of parents - thus, if #100 is the parent of #101, which is the parent of #102, object #102 checks itself, #101, and #100 for attributes. Attributes are checked on the object itself first, followed by its parent, followed by that parent's parent, and so on. There is a (configurable) maximum length of the parent chain for an object; the default is 10.
 
-  After the parent chain is exhausted, the type-specific ancestor is also checked in similar fashion. See [ANCESTORS](/reference/sharpmush-help/penntop/#ancestors) for more about ancestors.
+  After the parent chain is exhausted, the type-specific ancestor is also checked in similar fashion. See [ANCESTORS](/reference/sharpmush-help/sharptop/#ancestors) for more about ancestors.
 
-  See [parents2](/reference/sharpmush-help/penntop/#parents2)
+  See [parents2](/reference/sharpmush-help/sharptop/#parents2)
 
 ## PARENTS2
 
@@ -1263,7 +1260,7 @@ Standard Attributes: (see `@list`/attribs for the complete list)
   There are some limitations to the use of `@parent`. The most important is that ^-pattern checking is not done on the parent of an object, unless the object is set LISTEN_PARENT. For the purposes of automated game checks, the following attributes are not inherited:
     CHARGES, EALIAS, LALIAS, LAST, LASTSITE, LISTEN, QUEUE, RQUOTA, SEMAPHORE, and STARTUP.
 
-  See [parents3](/reference/sharpmush-help/penntop/#parents3)
+  See [parents3](/reference/sharpmush-help/sharptop/#parents3)
 
 ## PARENTS3
   If a child and its parent both have the same attribute set, the attribute on the child will always be used first. However, a child can use the `pfun()` function to get the value of an attribute from its parent, even when it has an attribute with the same name.
@@ -1279,7 +1276,7 @@ Standard Attributes: (see `@list`/attribs for the complete list)
     I'm the child (Foo)
 ```
 
-  See [parents4](/reference/sharpmush-help/penntop/#parents4)
+  See [parents4](/reference/sharpmush-help/sharptop/#parents4)
 
 ## PARENTS4
   If a parent has the same `$-command` name in a different attribute, however, BOTH the parent and child commands will execute:
@@ -1298,7 +1295,7 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
   `@parent` is most useful when several objects use common attributes.
 
-  See [parents5](/reference/sharpmush-help/penntop/#parents5)
+  See [parents5](/reference/sharpmush-help/sharptop/#parents5)
 
 ## PARENTS5
 
@@ -1310,12 +1307,12 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 
 **See Also:**
-- [@parent](/reference/sharpmush-help/penncmd/#parent)
+- [@parent](/reference/sharpmush-help/sharpcmd/#parent)
 - [$-COMMANDS]
-- [ATTRIBUTES](/reference/sharpmush-help/penntop/#attributes)
-- [ANCESTORS](/reference/sharpmush-help/penntop/#ancestors)
-- [ORPHAN](/reference/sharpmush-help/pennflag/#orphan)
-- [pfun()](/reference/sharpmush-help/pennfunc/#pfun)
+- [ATTRIBUTES](/reference/sharpmush-help/sharptop/#attributes)
+- [ANCESTORS](/reference/sharpmush-help/sharptop/#ancestors)
+- [ORPHAN](/reference/sharpmush-help/sharpflag/#orphan)
+- [pfun()](/reference/sharpmush-help/sharpfunc/#pfun)
 
 ## PUPPETS
   A thing is turned into a puppet by setting the PUPPET flag on it. A puppet object is an extension of its owner and relays everything it sees and hears to its owner, except if it is in the same room as the owner (a puppet with the VERBOSE flag will relay even if it's in the same room). Things relayed by the puppet will be prefixed by the name of the puppet.
@@ -1324,7 +1321,7 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
   You can control your puppets using the `@force` command. It is important to remember the DBREF numbers of your puppets so you can control them even if they are not in the same room with you. You can also have your puppets follow you by using the 'follow' command.
 
-  See [puppets2](/reference/sharpmush-help/penntop/#puppets2)
+  See [puppets2](/reference/sharpmush-help/sharptop/#puppets2)
 
 ## PUPPETS2
   An example of a puppet:
@@ -1353,9 +1350,9 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
 
 **See Also:**
-- [PUPPET](/reference/sharpmush-help/pennflag/#puppet)
-- [@force](/reference/sharpmush-help/penncmd/#force)
-- [DBREF](/reference/sharpmush-help/pennconf/#dbref)
+- [PUPPET](/reference/sharpmush-help/sharpflag/#puppet)
+- [@force](/reference/sharpmush-help/sharpcmd/#force)
+- [DBREF](/reference/sharpmush-help/sharpconf/#dbref)
 
 ## QUEUE
   QUEUE
@@ -1370,7 +1367,7 @@ Standard Attributes: (see `@list`/attribs for the complete list)
 
   You can see which commands are currently queued with the `@ps` command, and with the `getpids()`, `lpids()` and `pidinfo()` functions. Queued commands can be cancelled with `@halt` and/or `@drain`.
 
-See [queue2](/reference/sharpmush-help/penntop/#queue2)
+See [queue2](/reference/sharpmush-help/sharptop/#queue2)
 
 ## QUEUE2
   There are several `@config` options which affect queueing.
@@ -1379,15 +1376,15 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
   Normally each object has its own queue count, but if the 'owner_queues' option is enabled, objects share a queue count with their owner.
 
-  'queue_chunk' controls how many commands PennMUSH runs before checking again for incoming socket commands or connections.
+  'queue_chunk' controls how many commands SharpMUSH runs before checking again for incoming socket commands or connections.
 
   It costs a certain number of pennies to queue an action list; the exact amount is set in the 'queue_cost' `@config` option. These pennies are returned after the action list is run. Sometimes, you'll lose a penny when queueing a command; the chance of this happening is controlled by the 'queue_loss' option.
 
 
 **See Also:**
-- [@ps](/reference/sharpmush-help/penncmd/#ps)
-- [LOOPING](/reference/sharpmush-help/penntop/#looping)
-- [ACTION LISTS](/reference/sharpmush-help/penntop/#action-lists)
+- [@ps](/reference/sharpmush-help/sharpcmd/#ps)
+- [LOOPING](/reference/sharpmush-help/sharptop/#looping)
+- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
 
 ## QUOTAS
   The Quota system controls how many objects a player may own. It is only used of the 'use_quota' `@config` option is set to Yes.
@@ -1400,10 +1397,10 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
 
 **See Also:**
-- [@quota](/reference/sharpmush-help/penncmd/#quota)
-- [quota()](/reference/sharpmush-help/pennfunc/#quota)
-- [Quotas Power](/reference/sharpmush-help/pennconf/#quotas-power)
-- [No_Quota Power](/reference/sharpmush-help/pennconf/#noquota-power)
+- [@quota](/reference/sharpmush-help/sharpcmd/#quota)
+- [quota()](/reference/sharpmush-help/sharpfunc/#quota)
+- [Quotas Power](/reference/sharpmush-help/sharpconf/#quotas-power)
+- [No_Quota Power](/reference/sharpmush-help/sharpconf/#noquota-power)
 
 ## REGEXP
 
@@ -1416,7 +1413,7 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
   In a regular expression match, the substring of the string which matched the regexp pattern is %0; %1 through %9 are the substrings of the string which matched parenthesized expressions within the regexp pattern.
 
-  See [regexps2](/reference/sharpmush-help/penntop/#regexps2)
+  See [regexps2](/reference/sharpmush-help/sharptop/#regexps2)
 
 ## REGEXPS2
   Regular expressions are extremely useful when you want to enforce a data type. For example, if you have a command where you want a player to enter a string and a number ('`+setnum` `<player>`=`<number>`', for example), you might do it like this:
@@ -1432,16 +1429,16 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
   However, keep in mind that players who attempt to use the command and give invalid input (such as "`+setnum` cookies=thirty") will receive the normal, non-descriptive Huh? message. Using a broader match and validating the input in softcode, so you can give more descriptive error messages, may be desirable.
 
-  Regular expression syntax is explained in [regexp syntax](/reference/sharpmush-help/penntop/#regexp-syntax).
+  Regular expression syntax is explained in [regexp syntax](/reference/sharpmush-help/sharptop/#regexp-syntax).
 
 ## REGEXP SYNTAX
-  PennMUSH uses PCRE for its regular expression engine. PCRE is an open source library of functions to support regular expressions whose syntax and semantics are as close as possible to those of the Perl 5 language. The text below is excerpted from its man page. PCRE was written by Philip Hazel <ph10@cam.ac.uk>, and is Copyright (c) 1997-1999 University of Cambridge, England. You can find it at ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/
+  SharpMUSH uses PCRE for its regular expression engine. PCRE is an open source library of functions to support regular expressions whose syntax and semantics are as close as possible to those of the Perl 5 language. The text below is excerpted from its man page. PCRE was written by Philip Hazel <ph10@cam.ac.uk>, and is Copyright (c) 1997-1999 University of Cambridge, England. You can find it at ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/
 
-  (Note that in PennMUSH, if the regular expression is in an eval'd context (like an argument to regmatch), you'll have to do a lot of escaping to make things work right. One way to escape an argument like %0 is: regeditall(%0,\\W,\\$0) or similar).
+  (Note that in SharpMUSH, if the regular expression is in an eval'd context (like an argument to regmatch), you'll have to do a lot of escaping to make things work right. One way to escape an argument like %0 is: regeditall(%0,\\W,\\$0) or similar).
 
-  Regular expression matching in PennMUSH can be used on user-defined command or listen patterns. In this usage, regular expressions are matched case-insensitively unless the attribute has the CASE flag set. Regular expressions can also be matched in MUSHcode using `regmatch()`, `regrab()`, regedit, etc. function families, which usually come in case-sensitive and case-insensitive versions.
+  Regular expression matching in SharpMUSH can be used on user-defined command or listen patterns. In this usage, regular expressions are matched case-insensitively unless the attribute has the CASE flag set. Regular expressions can also be matched in MUSHcode using `regmatch()`, `regrab()`, regedit, etc. function families, which usually come in case-sensitive and case-insensitive versions.
 
-  See [regexp syntax2](/reference/sharpmush-help/penntop/#regexp-syntax2)
+  See [regexp syntax2](/reference/sharpmush-help/sharptop/#regexp-syntax2)
 
 ## regexp syntax2
   A regular expression is a pattern that is matched against a subject string from left to right. Most characters stand for themselves in a pattern, and match the corresponding characters in the subject.
@@ -1468,7 +1465,7 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
        \      general escape character
        ^      negate the class, if the first character in the class
        -      indicates character range (e.g. A-Z, 0-4)
-   [:NAME:]   A symbol for a group of characters that can vary according to the language the mush is using. See [regexp classes](/reference/sharpmush-help/penntop/#regexp-classes) for more information.
+   [:NAME:]   A symbol for a group of characters that can vary according to the language the mush is using. See [regexp classes](/reference/sharpmush-help/sharptop/#regexp-classes) for more information.
        ]      terminates the character class
 
   A backslash will escape most metacharacters, and can turn some normal characters into generic character types:
@@ -1534,23 +1531,23 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
   PCRE's engine can also do conditional subpattern matching, embedded comments in regexps, and a bunch of other things. See a regexp book for details.
 
 ## REGEXP CLASSES
-  In a character class, you can use a number of additional keywords that match certain types of characters. The keywords are enclosed in [: and :](/reference/sharpmush-help/pennconf/#and), within the character class, so the whole thing looks like [[:NAME:](/reference/sharpmush-help/pennconf/#name)].
+  In a character class, you can use a number of additional keywords that match certain types of characters. The keywords are enclosed in [: and :](/reference/sharpmush-help/sharpconf/#and), within the character class, so the whole thing looks like [[:NAME:](/reference/sharpmush-help/sharpconf/#name)].
 
-  These keywords can be mixed with other things in the character class, like [ab[:digit:](/reference/sharpmush-help/pennconf/#abdigit)], which will match 'a, 'b', or a digit. [:^NAME:](/reference/sharpmush-help/pennconf/#name) reverses the meaning of NAME - it expands to everything but characters that would match [:NAME:](/reference/sharpmush-help/pennconf/#name).
+  These keywords can be mixed with other things in the character class, like [ab[:digit:](/reference/sharpmush-help/sharpconf/#abdigit)], which will match 'a, 'b', or a digit. [:^NAME:](/reference/sharpmush-help/sharpconf/#name) reverses the meaning of NAME - it expands to everything but characters that would match [:NAME:](/reference/sharpmush-help/sharpconf/#name).
 
   Some recognized NAMEs:
-   digit, for numbers. [[:digit:](/reference/sharpmush-help/pennconf/#digit)] is the same as \d. [[:^digit:](/reference/sharpmush-help/pennconf/#digit)] is the same as \D.
+   digit, for numbers. [[:digit:](/reference/sharpmush-help/sharpconf/#digit)] is the same as \d. [[:^digit:](/reference/sharpmush-help/sharpconf/#digit)] is the same as \D.
    alpha, for letters.
    alnum, for numbers and letters.
    lower, for lower-case letters.
    upper, for upper-case letters.
-   word, for word characters. [[:word:](/reference/sharpmush-help/pennconf/#word)] is the same as \w. [[:^word:](/reference/sharpmush-help/pennconf/#word)] is the same as \W.
-   space, for whitespace characters. [[:space:](/reference/sharpmush-help/pennconf/#space)] is the same as \s. [[:^space:](/reference/sharpmush-help/pennconf/#space)] is the same as \S.
+   word, for word characters. [[:word:](/reference/sharpmush-help/sharpconf/#word)] is the same as \w. [[:^word:](/reference/sharpmush-help/sharpconf/#word)] is the same as \W.
+   space, for whitespace characters. [[:space:](/reference/sharpmush-help/sharpconf/#space)] is the same as \s. [[:^space:](/reference/sharpmush-help/sharpconf/#space)] is the same as \S.
 
-  See [regexp classes2](/reference/sharpmush-help/penntop/#regexp-classes2)
+  See [regexp classes2](/reference/sharpmush-help/sharptop/#regexp-classes2)
 
 ## REGEXP CLASSES2
-  These keywords (Or the corresponding \codes) should be used instead of explicit ranges where possible to improve portability. For example, [A-Za-z](/reference/sharpmush-help/pennconf/#a-za-z) and [[:alpha:](/reference/sharpmush-help/pennconf/#alpha)] are not the same thing in languages with accented characters.
+  These keywords (Or the corresponding \codes) should be used instead of explicit ranges where possible to improve portability. For example, [A-Za-z](/reference/sharpmush-help/sharpconf/#a-za-z) and [[:alpha:](/reference/sharpmush-help/sharpconf/#alpha)] are not the same thing in languages with accented characters.
 
 
   Examples:
@@ -1569,10 +1566,10 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
   The regexp pattern '.*' is equivalent to the wildcard '*'; it matches zero or more arbitrary characters. To match one or more arbitrary characters, the regexp pattern is '.+'.
 
-  To match a string of numbers, use:       [0-9](/reference/sharpmush-help/pennconf/#0-9)+    or \d+
-  To match a string of letters only, use:  [A-Za-z](/reference/sharpmush-help/pennconf/#a-za-z)+ or \w+
+  To match a string of numbers, use:       [0-9](/reference/sharpmush-help/sharpconf/#0-9)+    or \d+
+  To match a string of letters only, use:  [A-Za-z](/reference/sharpmush-help/sharpconf/#a-za-z)+ or \w+
 
-  See [regexp syntax](/reference/sharpmush-help/penntop/#regexp-syntax)
+  See [regexp syntax](/reference/sharpmush-help/sharptop/#regexp-syntax)
 
 ## REGISTERS
   A register is essentially a little reserved piece of computer memory that can hold some variable information that you want to pass on to another command. There are thirty registers on the MUSH available via the %0-%9 substitutions and v(0)-v(9) and r(0,args) to r(29,args). There are also many setq registers available via %q- substitution (%q0 - %q9, %qA - %qZ and arbitrary names), or the `r()` function.
@@ -1585,7 +1582,7 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
     whee is in register 0 and blert foo is in register 1.
 ```
 
-  See [registers2](/reference/sharpmush-help/penntop/#registers2)
+  See [registers2](/reference/sharpmush-help/sharptop/#registers2)
 
 ## REGISTERS2
   As you can see from the above example, the command trigger had two wildcards separated by a "=" sign. When the user types in the command with some words taking the place of the wildcards, the first register (register 0) is filled with whatever part of the command replaces the first wildcard (in this case, "whee") and the second register is filled with whatever replaces the second ("blert foo").
@@ -1602,18 +1599,18 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
 
 **See Also:**
-- [SUBSTITUTIONS](/reference/sharpmush-help/penntop/#substitutions)
-- [@trigger](/reference/sharpmush-help/penncmd/#trigger)
-- [USER-DEFINED COMMANDS](/reference/sharpmush-help/penntop/#user-defined-commands)
-- [WILDCARDS](/reference/sharpmush-help/penntop/#wildcards)
-- [setq()](/reference/sharpmush-help/pennfunc/#setq)
-- [v()](/reference/sharpmush-help/pennfunc/#v)
-- [r()](/reference/sharpmush-help/pennfunc/#r)
-- [registers()](/reference/sharpmush-help/pennfunc/#registers)
-- [listq()](/reference/sharpmush-help/pennfunc/#listq)
-- [letq()](/reference/sharpmush-help/pennfunc/#letq)
-- [unsetq()](/reference/sharpmush-help/pennfunc/#unsetq)
-- [strmatch()](/reference/sharpmush-help/pennfunc/#strmatch)
+- [SUBSTITUTIONS](/reference/sharpmush-help/sharptop/#substitutions)
+- [@trigger](/reference/sharpmush-help/sharpcmd/#trigger)
+- [USER-DEFINED COMMANDS](/reference/sharpmush-help/sharptop/#user-defined-commands)
+- [WILDCARDS](/reference/sharpmush-help/sharptop/#wildcards)
+- [setq()](/reference/sharpmush-help/sharpfunc/#setq)
+- [v()](/reference/sharpmush-help/sharpfunc/#v)
+- [r()](/reference/sharpmush-help/sharpfunc/#r)
+- [registers()](/reference/sharpmush-help/sharpfunc/#registers)
+- [listq()](/reference/sharpmush-help/sharpfunc/#listq)
+- [letq()](/reference/sharpmush-help/sharpfunc/#letq)
+- [unsetq()](/reference/sharpmush-help/sharpfunc/#unsetq)
+- [strmatch()](/reference/sharpmush-help/sharpfunc/#strmatch)
 
 ## RQUOTA
   RQUOTA
@@ -1622,8 +1619,8 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
 
 **See Also:**
-- [@quota](/reference/sharpmush-help/penncmd/#quota)
-- [@squota](/reference/sharpmush-help/penncmd/#squota)
+- [@quota](/reference/sharpmush-help/sharpcmd/#quota)
+- [@squota](/reference/sharpmush-help/sharpcmd/#squota)
 
 ## SEMAPHORES
   The most complicated thing about semaphores is their name. Before you try to use semaphores, you should first be familiar with the "`@wait`" command. If you are, then you know that normally, you type:
@@ -1637,7 +1634,7 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
   and the action takes place after the object has been "notified" that its time for it to happen. You can also set a timeout -- if the object hasn't been notified by the time that number of seconds has passed, the action will take place. Any object (player, thing, exit, room) that you control or that is set LINK_OK can be used to wait actions on.
 
-  See [semaphores2](/reference/sharpmush-help/penntop/#semaphores2)
+  See [semaphores2](/reference/sharpmush-help/sharptop/#semaphores2)
 
 ## SEMAPHORES2
 
@@ -1647,7 +1644,7 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
   Semaphores can be used to make sure that events occur in the right order, or to make sure that two players can't use the same object at the same time.
 
-  See [semaphores3](/reference/sharpmush-help/penntop/#semaphores3)
+  See [semaphores3](/reference/sharpmush-help/sharptop/#semaphores3)
 
 ## SEMAPHORES3
 
@@ -1665,7 +1662,7 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
     [ 30 seconds passes. ]
     Wizard waits 30 seconds.
 ```
-  See [semaphores4](/reference/sharpmush-help/penntop/#semaphores4)
+  See [semaphores4](/reference/sharpmush-help/sharptop/#semaphores4)
 
 ## SEMAPHORES4
   Semaphores can be used to enforce mutual exclusion - to prevent the same object from being used simultaneously by two players. The basic strategy is to ensure that the object always has a SEMAPHORE of -1, to enclose commands in an `@wait`, and to conclude the set of commands with an `@notify` me:
@@ -1685,20 +1682,20 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
   If a second player types doit as well, the second player's command is put on the semaphore queue and not run until the `@notify` me at the end of the REPORT attribute. Note the STARTUP attribute - because semaphores are cleared when the MUSH starts up, you must insure that the object gets `@notify`'d once when it starts up.
 
-  See [semaphores5](/reference/sharpmush-help/penntop/#semaphores5)
+  See [semaphores5](/reference/sharpmush-help/sharptop/#semaphores5)
 
 ## SEMAPHORES5
   Normally, semaphores use the SEMAPHORE attribute. However, other attributes can be used, as long as they follow a few simple rules: If the attribute is already set, it has to have the same owner (God) and flags as the SEMAPHORE attribute would (typically no_inherit, no_clone, and locked - see [`@set`] and '`@atrlock`'), and have a numeric or empty value. If it's not set, it can't be one of the built in attributes (See `@list` attribs) unless, naturally, it is SEMAPHORE.
 
   See the help on `@wait`, `@notify` and `@drain` for details, but, briefly, you can use named semaphores with `<object>`/`<attribute>` where you would normally just use `<object>` in those commands. This means you can't have an untimed semaphore on an attribute with a numeric name.
 
-  See [semaphores6](/reference/sharpmush-help/penntop/#semaphores6)
+  See [semaphores6](/reference/sharpmush-help/sharptop/#semaphores6)
 
 
 **See Also:**
-- [@wait](/reference/sharpmush-help/penncmd/#wait)
-- [@drain](/reference/sharpmush-help/penncmd/#drain)
-- [@notify](/reference/sharpmush-help/penncmd/#notify)
+- [@wait](/reference/sharpmush-help/sharpcmd/#wait)
+- [@drain](/reference/sharpmush-help/sharpcmd/#drain)
+- [@notify](/reference/sharpmush-help/sharpcmd/#notify)
 
 ## SEMAPHORES6
   An example:
@@ -1736,14 +1733,14 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
 
 **See Also:**
-- [ATTRIBUTES](/reference/sharpmush-help/penntop/#attributes)
-- [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/penntop/#non-standard-attributes)
-- [@set](/reference/sharpmush-help/penncmd/#set)
-- [@wipe](/reference/sharpmush-help/penncmd/#wipe)
-- [attrib_set()](/reference/sharpmush-help/pennfunc/#attribset)
-- [set()](/reference/sharpmush-help/pennfunc/#set)
-- [wipe()](/reference/sharpmush-help/pennfunc/#wipe)
-- [ATTRIBUTE FLAGS](/reference/sharpmush-help/pennattr/#attribute-flags)
+- [ATTRIBUTES](/reference/sharpmush-help/sharptop/#attributes)
+- [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/sharptop/#non-standard-attributes)
+- [@set](/reference/sharpmush-help/sharpcmd/#set)
+- [@wipe](/reference/sharpmush-help/sharpcmd/#wipe)
+- [attrib_set()](/reference/sharpmush-help/sharpfunc/#attribset)
+- [set()](/reference/sharpmush-help/sharpfunc/#set)
+- [wipe()](/reference/sharpmush-help/sharpfunc/#wipe)
+- [ATTRIBUTE FLAGS](/reference/sharpmush-help/sharpattr/#attribute-flags)
 
 ## SPOOFING
   Spoofing is the act of making other characters think that a person said or did something that they did not. This is very easy to accomplish, and has some good effects, which is why it is allowed. However, abusing it is very twinkish and will most likely get you in hot water with your wizards. Note that if you are being spoofed and want to know who is doing it, you can set yourself NOSPOOF and you will be notified who is making the `@emits`.
@@ -1754,12 +1751,12 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
 
 **See Also:**
-- [@emit](/reference/sharpmush-help/penncmd/#emit)
-- [@pemit](/reference/sharpmush-help/penncmd/#pemit)
-- [@remit](/reference/sharpmush-help/penncmd/#remit)
-- [@oemit](/reference/sharpmush-help/penncmd/#oemit)
-- [NOSPOOF](/reference/sharpmush-help/pennflag/#nospoof)
-- [PARANOID](/reference/sharpmush-help/pennconf/#paranoid)
+- [@emit](/reference/sharpmush-help/sharpcmd/#emit)
+- [@pemit](/reference/sharpmush-help/sharpcmd/#pemit)
+- [@remit](/reference/sharpmush-help/sharpcmd/#remit)
+- [@oemit](/reference/sharpmush-help/sharpcmd/#oemit)
+- [NOSPOOF](/reference/sharpmush-help/sharpflag/#nospoof)
+- [PARANOID](/reference/sharpmush-help/sharpconf/#paranoid)
 
 ## STACK
   For those unfamiliar with the term stack, it refers to a programming data structure that follows a LIFO (Last-In-First-Out) principle. The stack in MUSH holds the REGISTERS. The first ten registers can be accessed via the %0-%9 %-substitutions and v(0)-v(29), while all 30 registers can be accessed via the `r()` function (r(0, args) up to v(29,args)).
@@ -1768,9 +1765,9 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
 
 **See Also:**
-- [REGISTERS](/reference/sharpmush-help/penntop/#registers)
-- [r()](/reference/sharpmush-help/pennfunc/#r)
-- [v()](/reference/sharpmush-help/pennfunc/#v)
+- [REGISTERS](/reference/sharpmush-help/sharptop/#registers)
+- [r()](/reference/sharpmush-help/sharpfunc/#r)
+- [v()](/reference/sharpmush-help/sharpfunc/#v)
 
 ## STRINGS
   A string is simply a bunch of characters. A word is a string that begins and ends with the space character. A sentence is a string made up of smaller substrings that are words. Please note that a "word" or "sentence" in this technical sense does not have to make sense in English (or in any other language, for that matter). As far as mush functions and commands are concerned, this is a perfectly good sentence:
@@ -1779,7 +1776,7 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
 
 **See Also:**
-- [string functions](/reference/sharpmush-help/pennfunc/#string-functions)
+- [string functions](/reference/sharpmush-help/sharpfunc/#string-functions)
 
 ## %
 
@@ -1805,7 +1802,7 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
   Case makes a difference in all substitutions; capitalizing the first letter after the % will capitalize the first letter of the resulting substitution.
 
-  See [substitutions2](/reference/sharpmush-help/penntop/#substitutions2)
+  See [substitutions2](/reference/sharpmush-help/sharptop/#substitutions2)
 
 ## SUBSTITUTIONS2
 
@@ -1830,7 +1827,7 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
      %wa-%wz, %xa-%xz = as above, for WA-WZ and XA-XZ
   These are the equivilent of get(me/`<attribute>`).
 
-  See [substitutions3](/reference/sharpmush-help/penntop/#substitutions3)
+  See [substitutions3](/reference/sharpmush-help/sharptop/#substitutions3)
 
 ## SUBSTITUTIONS3
 
@@ -1862,15 +1859,15 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
     %iN = equivalent of itext(N), the list element for `iter()`/`@dolist`.
     %`$N` = equivalent of stext(N), the `<string>` in `switch()`/`@switch`.
 
-  See [substitutions4](/reference/sharpmush-help/penntop/#substitutions4)
+  See [substitutions4](/reference/sharpmush-help/sharptop/#substitutions4)
 
 **See Also:**
-- [EVALUATION](/reference/sharpmush-help/pennconf/#evaluation)
-- [ENACTOR](/reference/sharpmush-help/penntop/#enactor)
-- [EXECUTOR](/reference/sharpmush-help/penntop/#executor)
-- [DBREFS](/reference/sharpmush-help/penntop/#dbrefs)
-- [REGISTERS](/reference/sharpmush-help/penntop/#registers)
-- [v()](/reference/sharpmush-help/pennfunc/#v)
+- [EVALUATION](/reference/sharpmush-help/sharpconf/#evaluation)
+- [ENACTOR](/reference/sharpmush-help/sharptop/#enactor)
+- [EXECUTOR](/reference/sharpmush-help/sharptop/#executor)
+- [DBREFS](/reference/sharpmush-help/sharptop/#dbrefs)
+- [REGISTERS](/reference/sharpmush-help/sharptop/#registers)
+- [v()](/reference/sharpmush-help/sharpfunc/#v)
 
 ## SUBSTITUTIONS4
 
@@ -1901,13 +1898,13 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
 
 **See Also:**
-- [FAILURE](/reference/sharpmush-help/penntop/#failure)
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
-- [VERBS](/reference/sharpmush-help/penntop/#verbs)
-- [ATTRIBUTES](/reference/sharpmush-help/penntop/#attributes)
-- [@success](/reference/sharpmush-help/penncmd/#success)
-- [@asuccess](/reference/sharpmush-help/penncmd/#asuccess)
-- [@osuccess](/reference/sharpmush-help/penncmd/#osuccess)
+- [FAILURE](/reference/sharpmush-help/sharptop/#failure)
+- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [VERBS](/reference/sharpmush-help/sharptop/#verbs)
+- [ATTRIBUTES](/reference/sharpmush-help/sharptop/#attributes)
+- [@success](/reference/sharpmush-help/sharpcmd/#success)
+- [@asuccess](/reference/sharpmush-help/sharpcmd/#asuccess)
+- [@osuccess](/reference/sharpmush-help/sharpcmd/#osuccess)
 
 ## SWITCHES
 
@@ -1941,8 +1938,8 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
 
 **See Also:**
-- [type()](/reference/sharpmush-help/pennfunc/#type)
-- [hastype()](/reference/sharpmush-help/pennfunc/#hastype)
+- [type()](/reference/sharpmush-help/sharpfunc/#type)
+- [hastype()](/reference/sharpmush-help/sharpfunc/#hastype)
 
 ## PLAYERS
   Players can be created at the login screen (or with `@pcreate`) and connected to. They can also receive `@mail`, and have a number of attributes set on them by the MUSH automatically, including LAST, LASTSITE, etc. They can have multiple `@aliases`, and are checked for `$-commands` and ^-listens.
@@ -1951,10 +1948,10 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
 
 **See Also:**
-- [TYPES OF OBJECTS](/reference/sharpmush-help/penntop/#types-of-objects)
-- [type()](/reference/sharpmush-help/pennfunc/#type)
-- [hastype()](/reference/sharpmush-help/pennfunc/#hastype)
-- [@pcreate](/reference/sharpmush-help/penncmd/#pcreate)
+- [TYPES OF OBJECTS](/reference/sharpmush-help/sharptop/#types-of-objects)
+- [type()](/reference/sharpmush-help/sharpfunc/#type)
+- [hastype()](/reference/sharpmush-help/sharpfunc/#hastype)
+- [@pcreate](/reference/sharpmush-help/sharpcmd/#pcreate)
 
 ## ROOMS
   Rooms are outermost-containers: they cannot be moved. They are created with `@dig`. Rooms can contain exits. They are checked for `$-commands` and ^-listens. Rooms do not have aliases.
@@ -1963,11 +1960,11 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
 
 **See Also:**
-- [TYPES OF OBJECTS](/reference/sharpmush-help/penntop/#types-of-objects)
-- [type()](/reference/sharpmush-help/pennfunc/#type)
-- [hastype()](/reference/sharpmush-help/pennfunc/#hastype)
-- [@dig](/reference/sharpmush-help/penncmd/#dig)
-- [DROP-TOS](/reference/sharpmush-help/penntop/#drop-tos)
+- [TYPES OF OBJECTS](/reference/sharpmush-help/sharptop/#types-of-objects)
+- [type()](/reference/sharpmush-help/sharpfunc/#type)
+- [hastype()](/reference/sharpmush-help/sharpfunc/#hastype)
+- [@dig](/reference/sharpmush-help/sharpcmd/#dig)
+- [DROP-TOS](/reference/sharpmush-help/sharptop/#drop-tos)
 
 ## THINGS
   Things are created with `@create`. They can move around the MUSH, be entered and carried. They are checked for `$-commands` and ^-listens. Things do not have aliases.
@@ -1976,10 +1973,10 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
 
 **See Also:**
-- [TYPES OF OBJECTS](/reference/sharpmush-help/penntop/#types-of-objects)
-- [type()](/reference/sharpmush-help/pennfunc/#type)
-- [hastype()](/reference/sharpmush-help/pennfunc/#hastype)
-- [@create](/reference/sharpmush-help/penncmd/#create)
+- [TYPES OF OBJECTS](/reference/sharpmush-help/sharptop/#types-of-objects)
+- [type()](/reference/sharpmush-help/sharpfunc/#type)
+- [hastype()](/reference/sharpmush-help/sharpfunc/#hastype)
+- [@create](/reference/sharpmush-help/sharpcmd/#create)
 
 ## EXITS
   Exits are created with `@open`. They link rooms together, and can be used by players and things to move from one room to another with the GOTO command. Exits cannot move (though they can be `@teleported` to another room). They can have multiple aliases in their `@alias`. They are NOT checked for `$-commands` or ^-listens. Exits can have variable destinations; see [`@destination`] for more information.
@@ -1992,13 +1989,13 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
 
 **See Also:**
-- [TYPES OF OBJECTS](/reference/sharpmush-help/penntop/#types-of-objects)
-- [type()](/reference/sharpmush-help/pennfunc/#type)
-- [hastype()](/reference/sharpmush-help/pennfunc/#hastype)
-- [@open](/reference/sharpmush-help/penncmd/#open)
-- [@link](/reference/sharpmush-help/penncmd/#link)
-- [@destination](/reference/sharpmush-help/penncmd/#destination)
-- [AUDIBLE](/reference/sharpmush-help/pennflag/#audible)
+- [TYPES OF OBJECTS](/reference/sharpmush-help/sharptop/#types-of-objects)
+- [type()](/reference/sharpmush-help/sharpfunc/#type)
+- [hastype()](/reference/sharpmush-help/sharpfunc/#hastype)
+- [@open](/reference/sharpmush-help/sharpcmd/#open)
+- [@link](/reference/sharpmush-help/sharpcmd/#link)
+- [@destination](/reference/sharpmush-help/sharpcmd/#destination)
+- [AUDIBLE](/reference/sharpmush-help/sharpflag/#audible)
 
 ## GARBAGE
   Garbage objects previously existed as one of the four main types (player, thing, exit or room) but were destroyed with `@destroy`/`@nuke`. They exist only as placeholders in the database; you can do nothing with them. The dbrefs of garbage objects will be reused when new objects are created (but with a different creation time/object id).
@@ -2007,8 +2004,8 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
 
 **See Also:**
-- [@destroy](/reference/sharpmush-help/penncmd/#destroy)
-- [@stats](/reference/sharpmush-help/penncmd/#stats)
+- [@destroy](/reference/sharpmush-help/sharpcmd/#destroy)
+- [@stats](/reference/sharpmush-help/sharpcmd/#stats)
 
 ## $-COMMANDS
 
@@ -2028,16 +2025,16 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
   Such attributes can also be `@triggered` as if the $`<command name>`: did not exist.
 
-  It is recommended that `<command pattern>` not begin with "@", as many of PennMUSH's built-in commands start with "@". Conventionally, global `$-commands` are often named with the "+" prefix, and local `$-commands` commonly have a "+" or "." prefix.
+  It is recommended that `<command pattern>` not begin with "@", as many of SharpMUSH's built-in commands start with "@". Conventionally, global `$-commands` are often named with the "+" prefix, and local `$-commands` commonly have a "+" or "." prefix.
 
-  See [user-defined2](/reference/sharpmush-help/penntop/#user-defined2)
+  See [user-defined2](/reference/sharpmush-help/sharptop/#user-defined2)
 
 ## $-COMMANDS2
 
 ## MACROS2
 
 ## USER-DEFINED2
-  Any number of wildcards, * and ?, may be in present in `<command pattern>`. A * matches any number of characters (including none), and ? matches exactly one character. When the action list is executed, the values on the stack in %0-%9 and v(10)-v(29) are the portions of what the user types that match the first 30 *'s or ?'s. You can also match a regular expression rather than wildcards by setting the REGEXP attribute flag on `<attribute>`; see [regexps](/reference/sharpmush-help/penntop/#regexps) for details. When using named regexp captures, the named arguments can be accessed via r(`<name>`, args).
+  Any number of wildcards, * and ?, may be in present in `<command pattern>`. A * matches any number of characters (including none), and ? matches exactly one character. When the action list is executed, the values on the stack in %0-%9 and v(10)-v(29) are the portions of what the user types that match the first 30 *'s or ?'s. You can also match a regular expression rather than wildcards by setting the REGEXP attribute flag on `<attribute>`; see [regexps](/reference/sharpmush-help/sharptop/#regexps) for details. When using named regexp captures, the named arguments can be accessed via r(`<name>`, args).
 
   For example, to make a 'wave' command, you could do the following:
 ```
@@ -2053,12 +2050,12 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
 
 **See Also:**
-- [GLOBAL COMMANDS](/reference/sharpmush-help/penntop/#global-commands)
-- [EVALUATION ORDER](/reference/sharpmush-help/penntop/#evaluation-order)
-- [STACK](/reference/sharpmush-help/penntop/#stack)
-- [SUBSTITUTIONS](/reference/sharpmush-help/penntop/#substitutions)
-- [WILDCARDS](/reference/sharpmush-help/penntop/#wildcards)
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
+- [GLOBAL COMMANDS](/reference/sharpmush-help/sharptop/#global-commands)
+- [EVALUATION ORDER](/reference/sharpmush-help/sharptop/#evaluation-order)
+- [STACK](/reference/sharpmush-help/sharptop/#stack)
+- [SUBSTITUTIONS](/reference/sharpmush-help/sharptop/#substitutions)
+- [WILDCARDS](/reference/sharpmush-help/sharptop/#wildcards)
+- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
 
 ## VERBS
   Verb attributes are ones which are shown (or triggered) when you use a particular command, or perform a certain action. There are normally three: the 'verb' attribute (shown to the enactor), the 'overb' attribute (shown to others in the enactor's location), and the 'averb' attribute (an action list which is triggered). One example is `@use`, `@ouse`, and `@ause`, which are shown/triggered when the 'use' command is run on an object.
@@ -2067,7 +2064,7 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
   You can create your own verbs for softcoded commands/actions with the `@verb` command.
 
-  See [verbs2](/reference/sharpmush-help/penntop/#verbs2)
+  See [verbs2](/reference/sharpmush-help/sharptop/#verbs2)
 
 ## VERBS2
 
@@ -2097,8 +2094,8 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 ```
 
 **See Also:**
-- [@verb](/reference/sharpmush-help/penncmd/#verb)
-- [attribute flags](/reference/sharpmush-help/pennattr/#attribute-flags)
+- [@verb](/reference/sharpmush-help/sharpcmd/#verb)
+- [attribute flags](/reference/sharpmush-help/sharpattr/#attribute-flags)
 
 ## WARNINGS
 
@@ -2121,7 +2118,7 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
   my-desc               Warn on missing player description
   lock-checks           Warn on `@lock` problems
 
-  See [warnings list2](/reference/sharpmush-help/penntop/#warnings-list2)
+  See [warnings list2](/reference/sharpmush-help/sharptop/#warnings-list2)
 
 ## WARNINGS LIST2
   These warnings combine the functionality of multiple warnings above:
@@ -2141,7 +2138,7 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 ## ?
 
 ## **
-  PennMUSH has two standard wildcards, which can be used in `$-commands`, as well as a number of softcode functions: an asterisk (*) matches zero or more of any characters, and a question mark (?) matches exactly one character. The most common use of wildcards is to allow people to pass arguments to `$-commands`. For example, let's say you want to have a 'wave' command which allows you to wave to a specific person:
+  SharpMUSH has two standard wildcards, which can be used in `$-commands`, as well as a number of softcode functions: an asterisk (*) matches zero or more of any characters, and a question mark (?) matches exactly one character. The most common use of wildcards is to allow people to pass arguments to `$-commands`. For example, let's say you want to have a 'wave' command which allows you to wave to a specific person:
 
 ```
     > &cmd.wave me=$wave *: pose waves.
@@ -2168,14 +2165,14 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
   The "**" wildcard is also available for matching attribute names - see HELP ATTRIBUTE TREES2 for more information.
 
-  It's also possible to use regular expressions, rather than wildcards, for matching strings. Regexps allow a lot more control over what is matched, but are therefore somewhat more complex. See [regexp](/reference/sharpmush-help/penntop/#regexp) for details.
+  It's also possible to use regular expressions, rather than wildcards, for matching strings. Regexps allow a lot more control over what is matched, but are therefore somewhat more complex. See [regexp](/reference/sharpmush-help/sharptop/#regexp) for details.
 
 
 **See Also:**
-- [USER-DEFINED COMMANDS](/reference/sharpmush-help/penntop/#user-defined-commands)
-- [REGEXP](/reference/sharpmush-help/penntop/#regexp)
-- [STACK](/reference/sharpmush-help/penntop/#stack)
-- [REGISTERS](/reference/sharpmush-help/penntop/#registers)
+- [USER-DEFINED COMMANDS](/reference/sharpmush-help/sharptop/#user-defined-commands)
+- [REGEXP](/reference/sharpmush-help/sharptop/#regexp)
+- [STACK](/reference/sharpmush-help/sharptop/#stack)
+- [REGISTERS](/reference/sharpmush-help/sharptop/#registers)
 
 ## ZONE MASTER ROOMS
 
@@ -2187,9 +2184,9 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
 
 **See Also:**
-- [ZONES](/reference/sharpmush-help/penntop/#zones)
-- [MASTER ROOM](/reference/sharpmush-help/penntop/#master-room)
-- [EVALUATION](/reference/sharpmush-help/pennconf/#evaluation)
+- [ZONES](/reference/sharpmush-help/sharptop/#zones)
+- [MASTER ROOM](/reference/sharpmush-help/sharptop/#master-room)
+- [EVALUATION](/reference/sharpmush-help/sharpconf/#evaluation)
 
 ## ZONE MASTERS
 
@@ -2204,7 +2201,7 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
   Shared players used to be known as Zone Masters. The term was changed to emphasize the fact that they are not related to Zone Master Objects, which are used to allow area-specific `$-commands`.
 
-  See [SHARED PLAYERS2](/reference/sharpmush-help/penntop/#shared-players2)
+  See [SHARED PLAYERS2](/reference/sharpmush-help/sharptop/#shared-players2)
 
 ## SHARED PLAYERS2
   Some suggested uses of shared players:
@@ -2215,9 +2212,9 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
 
 **See Also:**
-- [SHARED](/reference/sharpmush-help/pennflag/#shared)
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
-- [ZMO](/reference/sharpmush-help/pennconf/#zmo)
+- [SHARED](/reference/sharpmush-help/sharpflag/#shared)
+- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [ZMO](/reference/sharpmush-help/sharpconf/#zmo)
 
 ## ZONES
 
@@ -2234,9 +2231,9 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
   The default zone is NOTHING. Any building done by a player defaults to belonging to the same zone that the player belongs to. Every zone is defined by a Zone Master Object (ZMO). The ZMO is an ordinary MUSH object owned by some player. A wizard may change the zone of an object or player to a ZMO.
 
-  If the ZMO is a room, it is called a "Zone Master Room." Most of the statements about ZMOs also apply to zone master rooms; for details, see [Zone Master Rooms](/reference/sharpmush-help/penntop/#zone-master-rooms).
+  If the ZMO is a room, it is called a "Zone Master Room." Most of the statements about ZMOs also apply to zone master rooms; for details, see [Zone Master Rooms](/reference/sharpmush-help/sharptop/#zone-master-rooms).
 
-  See [zones2](/reference/sharpmush-help/penntop/#zones2)
+  See [zones2](/reference/sharpmush-help/sharptop/#zones2)
 
 ## ZONES2
   `$-commands` on a ZMO are treated as global within that zone. The game attempts to match `$-commands` for the ZMO of the player's location, as well as `$-commands` for the player's own zone.
@@ -2245,8 +2242,8 @@ See [queue2](/reference/sharpmush-help/penntop/#queue2)
 
 
 **See Also:**
-- [@chzone](/reference/sharpmush-help/penncmd/#chzone)
-- [SHARED PLAYERS](/reference/sharpmush-help/penntop/#shared-players)
+- [@chzone](/reference/sharpmush-help/sharpcmd/#chzone)
+- [SHARED PLAYERS](/reference/sharpmush-help/sharptop/#shared-players)
 
 ## MATCHING
   Matching is the process the MUSH uses to determine which object you mean when you try to do something with an object. Different commands and functions do matching in different ways, but most will allow you to specify an object as:
@@ -2287,11 +2284,11 @@ This is the AHELP index.
 
   For commands, if `<error message>` is given, that message is sent to the player who runs it instead of a generic, unhelpful error message.
 
-  See [restrict2](/reference/sharpmush-help/penntop/#restrict2)
+  See [restrict2](/reference/sharpmush-help/sharptop/#restrict2)
 
 ## RESTRICT2
 
-  For commands, `<restriction>` should be an `@lock`-style boolexp (though, for backwards compatability, the restrictions below can be used, and will be converted into an `@lock` automatically). For functions, `<restriction>` should be any combination of the phrases below. For attributes, `<restriction>` is a list of attribute flags, or "none" to create a standard attribute with no restrictions (see [attribute flags](/reference/sharpmush-help/pennattr/#attribute-flags)).
+  For commands, `<restriction>` should be an `@lock`-style boolexp (though, for backwards compatability, the restrictions below can be used, and will be converted into an `@lock` automatically). For functions, `<restriction>` should be any combination of the phrases below. For attributes, `<restriction>` is a list of attribute flags, or "none" to create a standard attribute with no restrictions (see [attribute flags](/reference/sharpmush-help/sharpattr/#attribute-flags)).
 
     god        Command or function is usable only by God.
     wizard     Usable only by wizards.
@@ -2314,7 +2311,7 @@ This is the AHELP index.
      noplayer   Cannot be used by players.
   Commands can also give any flag, power or type, to restrict to objects with one of those flags or powers, or of one of those types.
 
-  See [restrict3](/reference/sharpmush-help/penntop/#restrict3)
+  See [restrict3](/reference/sharpmush-help/sharptop/#restrict3)
 
 ## RESTRICT3
   In cases where there are a function and command that do the same thing (like `pemit()` and `@pemit`), the command's restrictions are also checked when the function is called, so to use `pemit()` you must also be able to use `@pemit`. However, a function's restrictions are not checked when a command is called, to allow disabling side-effect functions.
@@ -2334,10 +2331,10 @@ This is the AHELP index.
 ```
 
 **See Also:**
-- [@command](/reference/sharpmush-help/penncmd/#command)
-- [@function](/reference/sharpmush-help/penncmd/#function)
-- [@attribute](/reference/sharpmush-help/penncmd/#attribute)
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
+- [@command](/reference/sharpmush-help/sharpcmd/#command)
+- [@function](/reference/sharpmush-help/sharpcmd/#function)
+- [@attribute](/reference/sharpmush-help/sharpcmd/#attribute)
+- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
 
 ## DESCRIPTOR
 
@@ -2348,24 +2345,24 @@ This is the AHELP index.
 
 
 **See Also:**
-- [WHO](/reference/sharpmush-help/penncmd/#who)
-- [ports()](/reference/sharpmush-help/pennfunc/#ports)
-- [lports()](/reference/sharpmush-help/pennfunc/#lports)
-- [player()](/reference/sharpmush-help/pennfunc/#player)
-- [@boot](/reference/sharpmush-help/penncmd/#boot)
-- [CONNECTION FUNCTIONS](/reference/sharpmush-help/pennfunc/#connection-functions)
+- [WHO](/reference/sharpmush-help/sharpcmd/#who)
+- [ports()](/reference/sharpmush-help/sharpfunc/#ports)
+- [lports()](/reference/sharpmush-help/sharpfunc/#lports)
+- [player()](/reference/sharpmush-help/sharpfunc/#player)
+- [@boot](/reference/sharpmush-help/sharpcmd/#boot)
+- [CONNECTION FUNCTIONS](/reference/sharpmush-help/sharpfunc/#connection-functions)
 
 ## UNICODE
 
-At the moment, PennMUSH has very minimal support for Unicode. Almost all text is treated internally as being in the Latin-1 character set. Clients that support telnet character set negotiation can send and receive UTF-8, but only characters in the Basic Latin and Latin-1 Supplement blocks are accepted (Others are replaced with question marks).
+At the moment, SharpMUSH has very minimal support for Unicode. Almost all text is treated internally as being in the Latin-1 character set. Clients that support telnet character set negotiation can send and receive UTF-8, but only characters in the Basic Latin and Latin-1 Supplement blocks are accepted (Others are replaced with question marks).
 
 A few functions support Unicode-aware text transformations:
 
-- [stripaccents()](/reference/sharpmush-help/pennfunc/#stripaccents)
+- [stripaccents()](/reference/sharpmush-help/sharpfunc/#stripaccents)
 
 When the MUSH is compiled with the ICU library (See `@config` compile), additional functions support Unicode-aware text transformations:
 
-- [lcstr2()](/reference/sharpmush-help/pennfunc/#lcstr2)
-- [ucstr2()](/reference/sharpmush-help/pennfunc/#ucstr2)
+- [lcstr2()](/reference/sharpmush-help/sharpfunc/#lcstr2)
+- [ucstr2()](/reference/sharpmush-help/sharpfunc/#ucstr2)
 
 When using these functions, do not assume that they return the same number of characters as their argument.

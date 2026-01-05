@@ -112,8 +112,8 @@ These '@' command set other standard attributes on objects that don't follow the
 
 
 **See Also:**
-- [ATTRIBUTES](/reference/sharpmush-help/penntop/#attributes)
-- [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/penntop/#non-standard-attributes)
+- [ATTRIBUTES](/reference/sharpmush-help/sharptop/#attributes)
+- [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/sharptop/#non-standard-attributes)
 
 ## @-BUILDING
 These '@' commands are building-related (they create or modify objects):
@@ -276,10 +276,10 @@ See []2] for more examples.
 
 
 **See Also:**
-- [lit()](/reference/sharpmush-help/pennfunc/#lit)
-- [decompose()](/reference/sharpmush-help/pennfunc/#decompose)
-- [escape()](/reference/sharpmush-help/pennfunc/#escape)
-- [@command](/reference/sharpmush-help/penncmd/#command)
+- [lit()](/reference/sharpmush-help/sharpfunc/#lit)
+- [decompose()](/reference/sharpmush-help/sharpfunc/#decompose)
+- [escape()](/reference/sharpmush-help/sharpfunc/#escape)
+- [@command](/reference/sharpmush-help/sharpcmd/#command)
 - [}]
 ## ]2
 Using ']' with $-commands:
@@ -315,7 +315,7 @@ In order for debug to be shown for triggered $-commands, you must either control
 
 
 **See Also:**
-- [DEBUG](/reference/sharpmush-help/pennflag/#debug)
+- [DEBUG](/reference/sharpmush-help/sharpflag/#debug)
 - []
 ## @@
 `@@ [<text>]`
@@ -330,7 +330,7 @@ Example:
 
 **See Also:**
 - [@@()]
-- [null()](/reference/sharpmush-help/pennfunc/#null)
+- [null()](/reference/sharpmush-help/sharpfunc/#null)
 ## @aclone
 `@aclone <object>=<action list>`
 
@@ -340,9 +340,9 @@ Please note that there are no @clone or @oclone attributes.
 
 
 **See Also:**
-- [@clone](/reference/sharpmush-help/penncmd/#clone)
-- [@create](/reference/sharpmush-help/penncmd/#create)
-- [ACTION LISTS](/reference/sharpmush-help/penntop/#action-lists)
+- [@clone](/reference/sharpmush-help/sharpcmd/#clone)
+- [@create](/reference/sharpmush-help/sharpcmd/#create)
+- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
 ## @aconnect
 `@aconnect <object>=<action list>`
 
@@ -360,9 +360,9 @@ Example:
 
 
 **See Also:**
-- [@adisconnect](/reference/sharpmush-help/penncmd/#adisconnect)
-- [ACTION LISTS](/reference/sharpmush-help/penntop/#action-lists)
-- [EVENTS](/reference/sharpmush-help/pennevents/#events)
+- [@adisconnect](/reference/sharpmush-help/sharpcmd/#adisconnect)
+- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
+- [EVENTS](/reference/sharpmush-help/sharpevents/#events)
 ## @amail
 `@amail <object>=<action list>`
 
@@ -370,13 +370,13 @@ Sets the actions to be taken by `<object>` whenever it receives @mail. Admin-onl
 
 
 **See Also:**
-- [@mail](/reference/sharpmush-help/pennmail/#mail)
+- [@mail](/reference/sharpmush-help/sharpmail/#mail)
 ## @adescribe
 ## @odescribe
 `@odescribe <object>[=<message>]`
 `@adescribe <object>[=<action list>]`
 
-These attributes contain the message shown to others in the enactor's location when he looks at `<object>`, and the actions to be taken by `<object>` when someone looks at it. (See [@describe](/reference/sharpmush-help/penncmd/#describe) for the attribute shown to the enactor when he looks at `<object>`.) When the enactor is inside `<object>`, the @oidescribe and @aidescribe attributes will be used instead, if set. Please note that using these attributes to show long messages is often found annoying.
+These attributes contain the message shown to others in the enactor's location when he looks at `<object>`, and the actions to be taken by `<object>` when someone looks at it. (See [@describe](/reference/sharpmush-help/sharpcmd/#describe) for the attribute shown to the enactor when he looks at `<object>`.) When the enactor is inside `<object>`, the @oidescribe and @aidescribe attributes will be used instead, if set. Please note that using these attributes to show long messages is often found annoying.
 
 Examples:
 ```
@@ -386,10 +386,10 @@ Examples:
 
 
 **See Also:**
-- [look](/reference/sharpmush-help/penncmd/#look)
-- [@describe](/reference/sharpmush-help/penncmd/#describe)
-- [@idescribe](/reference/sharpmush-help/penncmd/#idescribe)
-- [ACTION LISTS](/reference/sharpmush-help/penntop/#action-lists)
+- [look](/reference/sharpmush-help/sharpcmd/#look)
+- [@describe](/reference/sharpmush-help/sharpcmd/#describe)
+- [@idescribe](/reference/sharpmush-help/sharpcmd/#idescribe)
+- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
 ## @adestroy
 `@adestroy <object>[=<action list>]`
 
@@ -399,9 +399,9 @@ Please note that there are no destroy or odestroy attributes.
 
 
 **See Also:**
-- [@destroy](/reference/sharpmush-help/penncmd/#destroy)
-- [@undestroy](/reference/sharpmush-help/penncmd/#undestroy)
-- [EVENTS](/reference/sharpmush-help/pennevents/#events)
+- [@destroy](/reference/sharpmush-help/sharpcmd/#destroy)
+- [@undestroy](/reference/sharpmush-help/sharpcmd/#undestroy)
+- [EVENTS](/reference/sharpmush-help/sharpevents/#events)
 ## @adisconnect
 `@adisconnect <object>[=<action list>]`
 
@@ -421,12 +421,12 @@ Example:
 
 
 **See Also:**
-- [@aconnect](/reference/sharpmush-help/penncmd/#aconnect)
-- [ACTION LISTS](/reference/sharpmush-help/penntop/#action-lists)
-- [recv()](/reference/sharpmush-help/pennfunc/#recv)
-- [sent()](/reference/sharpmush-help/pennfunc/#sent)
-- [cmds()](/reference/sharpmush-help/pennfunc/#cmds)
-- [EVENTS](/reference/sharpmush-help/pennevents/#events)
+- [@aconnect](/reference/sharpmush-help/sharpcmd/#aconnect)
+- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
+- [recv()](/reference/sharpmush-help/sharpfunc/#recv)
+- [sent()](/reference/sharpmush-help/sharpfunc/#sent)
+- [cmds()](/reference/sharpmush-help/sharpfunc/#cmds)
+- [EVENTS](/reference/sharpmush-help/sharpevents/#events)
 ## @adrop
 ## @odrop
 ## @drop
@@ -450,11 +450,11 @@ Example:
 
 
 **See Also:**
-- [drop](/reference/sharpmush-help/penncmd/#drop)
-- [empty](/reference/sharpmush-help/penncmd/#empty)
-- [ACTION LISTS](/reference/sharpmush-help/penntop/#action-lists)
-- [VERBS](/reference/sharpmush-help/penntop/#verbs)
-- [@success](/reference/sharpmush-help/penncmd/#success)
+- [drop](/reference/sharpmush-help/sharpcmd/#drop)
+- [empty](/reference/sharpmush-help/sharpcmd/#empty)
+- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
+- [VERBS](/reference/sharpmush-help/sharptop/#verbs)
+- [@success](/reference/sharpmush-help/sharpcmd/#success)
 ## @aefail
 ## @oefail
 ## @efail
@@ -466,11 +466,11 @@ These attributes contain the message shown to someone who fails to enter `<objec
 
 
 **See Also:**
-- [enter](/reference/sharpmush-help/penncmd/#enter)
-- [@enter](/reference/sharpmush-help/penncmd/#enter)
-- [FAILURE](/reference/sharpmush-help/penntop/#failure)
-- [ACTION LISTS](/reference/sharpmush-help/penntop/#action-lists)
-- [VERBS](/reference/sharpmush-help/penntop/#verbs)
+- [enter](/reference/sharpmush-help/sharpcmd/#enter)
+- [@enter](/reference/sharpmush-help/sharpcmd/#enter)
+- [FAILURE](/reference/sharpmush-help/sharptop/#failure)
+- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
+- [VERBS](/reference/sharpmush-help/sharptop/#verbs)
 ## @aufail
 ## @oufail
 ## @ufail
@@ -482,15 +482,15 @@ Sets the message shown to a player who fails to use an object via the 'use' comm
 
 Note that these attributes are @ufail, NOT @ufailure, for TinyMUSH compatibility.
 
-Although the Use @lock also restricts who can trigger $-commands or ^-listens on an object, these attributes will not be triggered for those failures. Instead, the COMMAND_LOCK`* and LISTEN_LOCK`* attributes are triggered. See [failure](/reference/sharpmush-help/penntop/#failure) for more information.
+Although the Use @lock also restricts who can trigger $-commands or ^-listens on an object, these attributes will not be triggered for those failures. Instead, the COMMAND_LOCK`* and LISTEN_LOCK`* attributes are triggered. See [failure](/reference/sharpmush-help/sharptop/#failure) for more information.
 
 
 **See Also:**
-- [use](/reference/sharpmush-help/penncmd/#use)
-- [@use](/reference/sharpmush-help/penncmd/#use)
-- [FAILURE](/reference/sharpmush-help/penntop/#failure)
-- [ACTION LISTS](/reference/sharpmush-help/penntop/#action-lists)
-- [VERBS](/reference/sharpmush-help/penntop/#verbs)
+- [use](/reference/sharpmush-help/sharpcmd/#use)
+- [@use](/reference/sharpmush-help/sharpcmd/#use)
+- [FAILURE](/reference/sharpmush-help/sharptop/#failure)
+- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
+- [VERBS](/reference/sharpmush-help/sharptop/#verbs)
 ## @afailure
 ## @ofailure
 ## @failure
@@ -504,12 +504,12 @@ For players and things, this means failure to get/take. For exits, it means fail
 
 
 **See Also:**
-- [get](/reference/sharpmush-help/penncmd/#get)
-- [move](/reference/sharpmush-help/penncmd/#move)
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
-- [ACTION LISTS](/reference/sharpmush-help/penntop/#action-lists)
-- [VERBS](/reference/sharpmush-help/penntop/#verbs)
-- [@success](/reference/sharpmush-help/penncmd/#success)
+- [get](/reference/sharpmush-help/sharpcmd/#get)
+- [move](/reference/sharpmush-help/sharpcmd/#move)
+- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
+- [VERBS](/reference/sharpmush-help/sharptop/#verbs)
+- [@success](/reference/sharpmush-help/sharpcmd/#success)
 ## @follow
 ## @ofollow
 ## @afollow
@@ -521,12 +521,12 @@ Sets the message shown to someone who begins following `<object>`, the message s
 
 
 **See Also:**
-- [follow](/reference/sharpmush-help/penncmd/#follow)
-- [unfollow](/reference/sharpmush-help/penncmd/#unfollow)
-- [@unfollow](/reference/sharpmush-help/penncmd/#unfollow)
-- [followers()](/reference/sharpmush-help/pennfunc/#followers)
-- [ACTION LISTS](/reference/sharpmush-help/penntop/#action-lists)
-- [VERBS](/reference/sharpmush-help/penntop/#verbs)
+- [follow](/reference/sharpmush-help/sharpcmd/#follow)
+- [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow)
+- [@unfollow](/reference/sharpmush-help/sharpcmd/#unfollow)
+- [followers()](/reference/sharpmush-help/sharpfunc/#followers)
+- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
+- [VERBS](/reference/sharpmush-help/sharptop/#verbs)
 ## @unfollow
 ## @ounfollow
 ## @aunfollow
@@ -538,12 +538,12 @@ Sets the message shown to someone who stops following `<object>`, the message sh
 
 
 **See Also:**
-- [follow](/reference/sharpmush-help/penncmd/#follow)
-- [unfollow](/reference/sharpmush-help/penncmd/#unfollow)
-- [@follow](/reference/sharpmush-help/penncmd/#follow)
-- [followers()](/reference/sharpmush-help/pennfunc/#followers)
-- [ACTION LISTS](/reference/sharpmush-help/penntop/#action-lists)
-- [VERBS](/reference/sharpmush-help/penntop/#verbs)
+- [follow](/reference/sharpmush-help/sharpcmd/#follow)
+- [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow)
+- [@follow](/reference/sharpmush-help/sharpcmd/#follow)
+- [followers()](/reference/sharpmush-help/sharpfunc/#followers)
+- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
+- [VERBS](/reference/sharpmush-help/sharptop/#verbs)
 ## @ahear
 ## @amhear
 ## @aahear
@@ -555,9 +555,9 @@ Sets the actions to be taken after the object's @listen is matched. @ahear will 
 
 
 **See Also:**
-- [@listen](/reference/sharpmush-help/penncmd/#listen)
-- [LISTENING](/reference/sharpmush-help/penntop/#listening)
-- [ACTION LISTS](/reference/sharpmush-help/penntop/#action-lists)
+- [@listen](/reference/sharpmush-help/sharpcmd/#listen)
+- [LISTENING](/reference/sharpmush-help/sharptop/#listening)
+- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
 ## @leave
 ## @oleave
 ## @oxleave
@@ -573,11 +573,11 @@ The leaver's new location is passed in %0, if `<object>` has permission to see i
 
 
 **See Also:**
-- [leave](/reference/sharpmush-help/penncmd/#leave)
-- [@oxleave](/reference/sharpmush-help/penncmd/#oxleave)
-- [@lfail](/reference/sharpmush-help/penncmd/#lfail)
-- [ACTION LISTS](/reference/sharpmush-help/penntop/#action-lists)
-- [VERBS](/reference/sharpmush-help/penntop/#verbs)
+- [leave](/reference/sharpmush-help/sharpcmd/#leave)
+- [@oxleave](/reference/sharpmush-help/sharpcmd/#oxleave)
+- [@lfail](/reference/sharpmush-help/sharpcmd/#lfail)
+- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
+- [VERBS](/reference/sharpmush-help/sharptop/#verbs)
 ## @lfail
 ## @olfail
 ## @alfail
@@ -591,12 +591,12 @@ Such a failure usually occurs because `<object>` is set NO_LEAVE, or because the
 
 
 **See Also:**
-- [leave](/reference/sharpmush-help/penncmd/#leave)
-- [@leave](/reference/sharpmush-help/penncmd/#leave)
-- [NO_LEAVE](/reference/sharpmush-help/pennconf/#noleave)
-- [locktypes](/reference/sharpmush-help/pennlock/#locktypes)
-- [ACTION LISTS](/reference/sharpmush-help/penntop/#action-lists)
-- [VERBS](/reference/sharpmush-help/penntop/#verbs)
+- [leave](/reference/sharpmush-help/sharpcmd/#leave)
+- [@leave](/reference/sharpmush-help/sharpcmd/#leave)
+- [NO_LEAVE](/reference/sharpmush-help/sharpconf/#noleave)
+- [locktypes](/reference/sharpmush-help/sharplock/#locktypes)
+- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
+- [VERBS](/reference/sharpmush-help/sharptop/#verbs)
 ## @alias
 `@alias <player>[=<name1>[;<name2>[;...;<nameN>]]]`
 `@alias <object>[=<string>]`
@@ -613,9 +613,9 @@ For other types of object, @alias has no special meaning.
 
 
 **See Also:**
-- [@name](/reference/sharpmush-help/penncmd/#name)
-- [alias()](/reference/sharpmush-help/pennfunc/#alias)
-- [fullalias()](/reference/sharpmush-help/pennfunc/#fullalias)
+- [@name](/reference/sharpmush-help/sharpcmd/#name)
+- [alias()](/reference/sharpmush-help/sharpfunc/#alias)
+- [fullalias()](/reference/sharpmush-help/sharpfunc/#fullalias)
 ## @move
 ## @omove
 ## @oxmove
@@ -638,10 +638,10 @@ Example:
 
 
 **See Also:**
-- [goto](/reference/sharpmush-help/penncmd/#goto)
-- [@oxmove](/reference/sharpmush-help/penncmd/#oxmove)
-- [ACTION LISTS](/reference/sharpmush-help/penntop/#action-lists)
-- [VERBS](/reference/sharpmush-help/penntop/#verbs)
+- [goto](/reference/sharpmush-help/sharpcmd/#goto)
+- [@oxmove](/reference/sharpmush-help/sharpcmd/#oxmove)
+- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
+- [VERBS](/reference/sharpmush-help/sharptop/#verbs)
 ## @aenter
 ## @enter
 ## @oenter
@@ -665,11 +665,11 @@ Example:
 
 
 **See Also:**
-- [enter](/reference/sharpmush-help/penncmd/#enter)
-- [@ealias](/reference/sharpmush-help/penncmd/#ealias)
-- [leave](/reference/sharpmush-help/penncmd/#leave)
-- [ACTION LISTS](/reference/sharpmush-help/penntop/#action-lists)
-- [VERBS](/reference/sharpmush-help/penntop/#verbs)
+- [enter](/reference/sharpmush-help/sharpcmd/#enter)
+- [@ealias](/reference/sharpmush-help/sharpcmd/#ealias)
+- [leave](/reference/sharpmush-help/sharpcmd/#leave)
+- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
+- [VERBS](/reference/sharpmush-help/sharptop/#verbs)
 ## @apayment
 ## @payment
 ## @opayment
@@ -688,12 +688,12 @@ Example:
 
 
 **See Also:**
-- [give](/reference/sharpmush-help/penncmd/#give)
-- [@cost](/reference/sharpmush-help/penncmd/#cost)
-- [buy](/reference/sharpmush-help/penncmd/#buy)
-- [MONEY](/reference/sharpmush-help/penntop/#money)
-- [ACTION LISTS](/reference/sharpmush-help/penntop/#action-lists)
-- [VERBS](/reference/sharpmush-help/penntop/#verbs)
+- [give](/reference/sharpmush-help/sharpcmd/#give)
+- [@cost](/reference/sharpmush-help/sharpcmd/#cost)
+- [buy](/reference/sharpmush-help/sharpcmd/#buy)
+- [MONEY](/reference/sharpmush-help/sharptop/#money)
+- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
+- [VERBS](/reference/sharpmush-help/sharptop/#verbs)
 ## @atport
 ## @tport
 ## @otport
@@ -716,9 +716,9 @@ Example:
 
 
 **See Also:**
-- [@teleport](/reference/sharpmush-help/penncmd/#teleport)
-- [ACTION LISTS](/reference/sharpmush-help/penntop/#action-lists)
-- [VERBS](/reference/sharpmush-help/penntop/#verbs)
+- [@teleport](/reference/sharpmush-help/sharpcmd/#teleport)
+- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
+- [VERBS](/reference/sharpmush-help/sharptop/#verbs)
 ## @atrchown
 ## @attrchown
 `@atrchown <object>/<attribute>=<new owner>`
@@ -727,11 +727,11 @@ This command changes the ownership of the attribute `<attribute>` on `<object>` 
 
 
 **See Also:**
-- [@atrlock](/reference/sharpmush-help/penncmd/#atrlock)
-- [@chown](/reference/sharpmush-help/penncmd/#chown)
-- [owner()](/reference/sharpmush-help/pennfunc/#owner)
-- [ATTRIBUTES](/reference/sharpmush-help/penntop/#attributes)
-- [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/penntop/#non-standard-attributes)
+- [@atrlock](/reference/sharpmush-help/sharpcmd/#atrlock)
+- [@chown](/reference/sharpmush-help/sharpcmd/#chown)
+- [owner()](/reference/sharpmush-help/sharpfunc/#owner)
+- [ATTRIBUTES](/reference/sharpmush-help/sharptop/#attributes)
+- [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/sharptop/#non-standard-attributes)
 ## @atrlock
 ## @attrlock
 `@atrlock <object>/<attribute>`
@@ -745,10 +745,10 @@ If you wish to lock an attribute without gaining ownership, you can set it "lock
 
 
 **See Also:**
-- [atrlock()](/reference/sharpmush-help/pennfunc/#atrlock)
-- [@atrchown](/reference/sharpmush-help/penncmd/#atrchown)
-- [ATTRIBUTES](/reference/sharpmush-help/penntop/#attributes)
-- [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/penntop/#non-standard-attributes)
+- [atrlock()](/reference/sharpmush-help/sharpfunc/#atrlock)
+- [@atrchown](/reference/sharpmush-help/sharpcmd/#atrchown)
+- [ATTRIBUTES](/reference/sharpmush-help/sharptop/#attributes)
+- [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/sharptop/#non-standard-attributes)
 ## @asuccess
 ## @success
 ## @osuccess
@@ -775,14 +775,14 @@ Example:
 
 
 **See Also:**
-- [get](/reference/sharpmush-help/penncmd/#get)
-- [goto](/reference/sharpmush-help/penncmd/#goto)
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
-- [SUCCESS](/reference/sharpmush-help/penntop/#success)
-- [FAILURE](/reference/sharpmush-help/penntop/#failure)
-- [@odrop](/reference/sharpmush-help/penncmd/#odrop)
-- [ACTION LISTS](/reference/sharpmush-help/penntop/#action-lists)
-- [VERBS](/reference/sharpmush-help/penntop/#verbs)
+- [get](/reference/sharpmush-help/sharpcmd/#get)
+- [goto](/reference/sharpmush-help/sharpcmd/#goto)
+- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [SUCCESS](/reference/sharpmush-help/sharptop/#success)
+- [FAILURE](/reference/sharpmush-help/sharptop/#failure)
+- [@odrop](/reference/sharpmush-help/sharpcmd/#odrop)
+- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
+- [VERBS](/reference/sharpmush-help/sharptop/#verbs)
 ## @attribute
 `@attribute <attrib>`
 
@@ -792,7 +792,7 @@ Since 1.8.5p1, changes to the attribute table are saved across reboots and shutd
 
 The first form of the command displays the full name of the attribute `<attrib>`, along with the its attribute flags, and the dbref of the object which added it to the attribute table.
 
-See [@attribute2](/reference/sharpmush-help/penncmd/#attribute2).
+See [@attribute2](/reference/sharpmush-help/sharpcmd/#attribute2).
 ## @attribute2
 `@attribute/access[/retroactive] <attrib>=<flag list>`
 `@attribute/delete <attrib>`
@@ -810,7 +810,7 @@ Only Wizards can modify the attribute table.
 
 `@attribute/decompile` prints out a list of @attribute/access commands needed to recreate the attribute table on another MUSH. If `/retroactive` is given, that switch will be included in the output. If `<pattern>` is given, only attributes matching `<pattern>` are decompiled.
 
-See [@attribute3](/reference/sharpmush-help/penncmd/#attribute3).
+See [@attribute3](/reference/sharpmush-help/sharpcmd/#attribute3).
 ## @attribute3
 `@attribute/limit <attrib>=<regexp pattern>`
 `@attribute/enum [<delim>] <attrib>=<list of choices>`
@@ -828,12 +828,12 @@ Examples:
 
 
 **See Also:**
-- [ATTRIBUTES](/reference/sharpmush-help/penntop/#attributes)
-- [attribute flags](/reference/sharpmush-help/pennattr/#attribute-flags)
-- [@set](/reference/sharpmush-help/penncmd/#set)
-- [@atrchown](/reference/sharpmush-help/penncmd/#atrchown)
-- [@atrlock](/reference/sharpmush-help/penncmd/#atrlock)
-- [@list](/reference/sharpmush-help/penncmd/#list)
+- [ATTRIBUTES](/reference/sharpmush-help/sharptop/#attributes)
+- [attribute flags](/reference/sharpmush-help/sharpattr/#attribute-flags)
+- [@set](/reference/sharpmush-help/sharpcmd/#set)
+- [@atrchown](/reference/sharpmush-help/sharpcmd/#atrchown)
+- [@atrlock](/reference/sharpmush-help/sharpcmd/#atrlock)
+- [@list](/reference/sharpmush-help/sharpcmd/#list)
 ## @ause
 ## @use
 ## @ouse
@@ -843,7 +843,7 @@ Examples:
 
 These attributes contain the message shown to someone who successfully uses `<object>`, the message shown to others when someone uses `<object>`, and the actions to be taken by `<object>` when it is used, respectively.
 
-Note that, if `<object>` has a CHARGES attribute set and it does not contain a number greater than 0, the RUNOUT attribute is triggered instead of the AUSE attribute. See [@charges](/reference/sharpmush-help/penncmd/#charges) for more information.
+Note that, if `<object>` has a CHARGES attribute set and it does not contain a number greater than 0, the RUNOUT attribute is triggered instead of the AUSE attribute. See [@charges](/reference/sharpmush-help/sharpcmd/#charges) for more information.
 
 Example:
 ```
@@ -855,11 +855,11 @@ Example:
 
 
 **See Also:**
-- [use](/reference/sharpmush-help/penncmd/#use)
-- [@charges](/reference/sharpmush-help/penncmd/#charges)
-- [@runout](/reference/sharpmush-help/penncmd/#runout)
-- [ACTION LISTS](/reference/sharpmush-help/penntop/#action-lists)
-- [VERBS](/reference/sharpmush-help/penntop/#verbs)
+- [use](/reference/sharpmush-help/sharpcmd/#use)
+- [@charges](/reference/sharpmush-help/sharpcmd/#charges)
+- [@runout](/reference/sharpmush-help/sharpcmd/#runout)
+- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
+- [VERBS](/reference/sharpmush-help/sharptop/#verbs)
 ## @away
 `@away <player>[=<message>]`
 
@@ -872,8 +872,8 @@ Example:
 
 
 **See Also:**
-- [@idle](/reference/sharpmush-help/penncmd/#idle)
-- [@haven](/reference/sharpmush-help/penncmd/#haven)
+- [@idle](/reference/sharpmush-help/sharpcmd/#idle)
+- [@haven](/reference/sharpmush-help/sharpcmd/#haven)
 ## @boot
 `@boot[/silent] <player>`
 `@boot/port[/silent] <descriptor number>`
@@ -891,8 +891,8 @@ Only admin and those with the "boot" power can @boot other players.
 
 
 **See Also:**
-- [QUIT](/reference/sharpmush-help/penncmd/#quit)
-- [LOGOUT](/reference/sharpmush-help/penncmd/#logout)
+- [QUIT](/reference/sharpmush-help/sharpcmd/#quit)
+- [LOGOUT](/reference/sharpmush-help/sharpcmd/#logout)
 ## @break
 ## @assert
 `@break[/queued] <boolean>[=<action list>]`
@@ -900,18 +900,18 @@ Only admin and those with the "boot" power can @boot other players.
 
 `@break` stops the execution of further commands in the current action list if `<boolean>` is a true value. It doesn't affect new queue entries made by previous commands in the action list. It can be useful for doing error checking without having to nest @switches.
 
-If `<action list>` is given, it is executed instead of the rest of the commands in the current action list. By default, `<action list>` is run immediately, replacing the rest of the action list @break was called in. If the `/queued` switch is given, `<action list>` will instead be queued to be run later. @break also accepts an /inline switch, for Rhost compatability; this switch does nothing on PennMUSH.
+If `<action list>` is given, it is executed instead of the rest of the commands in the current action list. By default, `<action list>` is run immediately, replacing the rest of the action list @break was called in. If the `/queued` switch is given, `<action list>` will instead be queued to be run later. @break also accepts an /inline switch, for Rhost compatability; this switch does nothing on SharpMUSH.
 
 `@assert` does the inverse: it stops execution if `<boolean>` evaluates to false.
 
-See [@break2](/reference/sharpmush-help/penncmd/#break2) for examples.
+See [@break2](/reference/sharpmush-help/sharpcmd/#break2) for examples.
 
 **See Also:**
-- [ACTION LISTS](/reference/sharpmush-help/penntop/#action-lists)
-- [QUEUE](/reference/sharpmush-help/penntop/#queue)
-- [BOOLEAN VALUES](/reference/sharpmush-help/penntop/#boolean-values)
-- [@switch](/reference/sharpmush-help/penncmd/#switch)
-- [@if](/reference/sharpmush-help/penncmd/#if)
+- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
+- [QUEUE](/reference/sharpmush-help/sharptop/#queue)
+- [BOOLEAN VALUES](/reference/sharpmush-help/sharptop/#boolean-values)
+- [@switch](/reference/sharpmush-help/sharpcmd/#switch)
+- [@if](/reference/sharpmush-help/sharpcmd/#if)
 ## @break2
 ## @assert2
 Examples:
@@ -932,7 +932,7 @@ And you succeed!
 > @force me={@switch 1=1, think Third; think First; @break 1; think Second}
 First
 Third
-(The @switch is run, which queues 'think Third', think First is run, displaying 'First', command execution is broken (so we never think Second), and then the queued 'think Third' is run, displaying Third. If you figured that out, you have a very good understanding of the PennMUSH queue. :)
+(The @switch is run, which queues 'think Third', think First is run, displaying 'First', command execution is broken (so we never think Second), and then the queued 'think Third' is run, displaying Third. If you figured that out, you have a very good understanding of the SharpMUSH queue. :)
 ```
 ## @charges
 ## @runout
@@ -943,13 +943,13 @@ These attributes can limit how many times an object can be successfully "use"d. 
 
 When the CHARGES attribute is present and AUSE is triggered, the value of the CHARGES attribute is automatically decreased by 1. When no CHARGES attribute is set, AUSE is always triggered.
 
-See [charges2](/reference/sharpmush-help/penncmd/#charges2) for an example.
+See [charges2](/reference/sharpmush-help/sharpcmd/#charges2) for an example.
 
 
 **See Also:**
-- [use](/reference/sharpmush-help/penncmd/#use)
-- [@ause](/reference/sharpmush-help/penncmd/#ause)
-- [ACTION LISTS](/reference/sharpmush-help/penntop/#action-lists)
+- [use](/reference/sharpmush-help/sharpcmd/#use)
+- [@ause](/reference/sharpmush-help/sharpcmd/#ause)
+- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
 ## charges2
 ## runout2
 Example:
@@ -989,7 +989,7 @@ Changes the ownership of `<object>` to `<player>`. You can chown things, rooms o
 
 Normally, @chown'ing an object clears privileged flags and powers, and sets the object halt. Wizards can use `@chown/preserve` to avoid this. Doing this to an active object with queued commands is not recommended, and may have strange and insecure effects.
 
-If `/<attribute>` is specified, it acts as an alias for @atrchown; see [@atrchown](/reference/sharpmush-help/penncmd/#atrchown) for details.
+If `/<attribute>` is specified, it acts as an alias for @atrchown; see [@atrchown](/reference/sharpmush-help/sharpcmd/#atrchown) for details.
 
 Examples:
 ```
@@ -999,11 +999,11 @@ Examples:
 
 
 **See Also:**
-- [CHOWN_OK](/reference/sharpmush-help/pennflag/#chownok)
-- [Zone Masters](/reference/sharpmush-help/penntop/#zone-masters)
-- [@chownall](/reference/sharpmush-help/penncmd/#chownall)
-- [owner()](/reference/sharpmush-help/pennfunc/#owner)
-- [@atrchown](/reference/sharpmush-help/penncmd/#atrchown)
+- [CHOWN_OK](/reference/sharpmush-help/sharpflag/#chownok)
+- [Zone Masters](/reference/sharpmush-help/sharptop/#zone-masters)
+- [@chownall](/reference/sharpmush-help/sharpcmd/#chownall)
+- [owner()](/reference/sharpmush-help/sharpfunc/#owner)
+- [@atrchown](/reference/sharpmush-help/sharpcmd/#atrchown)
 ## @chownall
 `@chownall[/preserve][/<types>] <player>[=<new owner>]`
 
@@ -1015,7 +1015,7 @@ This command can only be used by Wizards.
 
 
 **See Also:**
-- [@chown](/reference/sharpmush-help/penncmd/#chown)
+- [@chown](/reference/sharpmush-help/sharpcmd/#chown)
 ## @chzone
 `@chzone[/preserve] <object>=<zone>`
 `@chzone <object>=none`
@@ -1028,19 +1028,19 @@ If a player is @chzoned, any objects he creates from that point on will automati
 
 You must control `<object>`, and either control `<zone>` or pass its @lock/chzone.
 
-See [@chzone2](/reference/sharpmush-help/penncmd/#chzone2).
+See [@chzone2](/reference/sharpmush-help/sharpcmd/#chzone2).
 ## @chzone2
 To see the Zone of an object, you can use either 'brief' or 'examine' to examine it. The Zone is listed on the same line as the Owner of the object.
 
-If `<zone>` does not have a Zone @lock when something is @chzoned to it, the lock is automatically set to `_`<zone>` (see [@lock](/reference/sharpmush-help/penncmd/#lock) for more info).
+If `<zone>` does not have a Zone @lock when something is @chzoned to it, the lock is automatically set to `_`<zone>` (see [@lock](/reference/sharpmush-help/sharpcmd/#lock) for more info).
 
 Whenever an object besides a player is @chzoned to a zone object, the WIZARD, ROYALTY, and TRUST flags will be reset, as will all @power's (for security purposes). For similar reasons, it is strongly recommended that you do not @chzone admin- or wizard-owned objects to any zone that less privileged players have access to. Wizards can use the `/preserve` switch to prevent this reset.
 
 
 **See Also:**
-- [ZONES](/reference/sharpmush-help/penntop/#zones)
-- [@chzoneall](/reference/sharpmush-help/penncmd/#chzoneall)
-- [zone()](/reference/sharpmush-help/pennfunc/#zone)
+- [ZONES](/reference/sharpmush-help/sharptop/#zones)
+- [@chzoneall](/reference/sharpmush-help/sharpcmd/#chzoneall)
+- [zone()](/reference/sharpmush-help/sharpfunc/#zone)
 ## @chzoneall
 `@chzoneall[/preserve] <player>=<zone object>`
 
@@ -1048,8 +1048,8 @@ Changes the zone of all objects owned by `<player>` to `<zone object>`. If `<zon
 
 
 **See Also:**
-- [@chzone](/reference/sharpmush-help/penncmd/#chzone)
-- [ZONES](/reference/sharpmush-help/penntop/#zones)
+- [@chzone](/reference/sharpmush-help/sharpcmd/#chzone)
+- [ZONES](/reference/sharpmush-help/sharptop/#zones)
 ## @clone
 `@clone <object>[=<new name>[, <dbref>]]`
 `@clone/preserve <object>[=<new name>[, <dbref>]]`
@@ -1074,10 +1074,10 @@ Note: If @create is restricted or disabled, it will also restrict or disable thi
 
 
 **See Also:**
-- [@create](/reference/sharpmush-help/penncmd/#create)
-- [clone()](/reference/sharpmush-help/pennfunc/#clone)
-- [create()](/reference/sharpmush-help/pennfunc/#create)
-- [@cpattr](/reference/sharpmush-help/penncmd/#cpattr)
+- [@create](/reference/sharpmush-help/sharpcmd/#create)
+- [clone()](/reference/sharpmush-help/sharpfunc/#clone)
+- [create()](/reference/sharpmush-help/sharpfunc/#create)
+- [@cpattr](/reference/sharpmush-help/sharpcmd/#cpattr)
 ## @command
 `@command <command>`
 `@command/<switch> <command>`
@@ -1091,7 +1091,7 @@ With no switches, @command shows all sorts of interesting information about how 
 
 The `/alias` switch creates an alias for `<command>`, allowing players to type `<alias>` to run `<command>`. The `/clone` switch creates a separate copy of `<command>`, which works the same initially but can be restricted, @hooked, etc, separately.
 
-`@command/restrict` can be used to restrict who can use `<command>`. See [restrict](/reference/sharpmush-help/penntop/#restrict) for more information.
+`@command/restrict` can be used to restrict who can use `<command>`. See [restrict](/reference/sharpmush-help/sharptop/#restrict) for more information.
 
 Switches include:
 - /add : Add a new command that does nothing, but can be @hook'd.
@@ -1101,7 +1101,7 @@ Switches include:
 
 The `/quiet` switch can be used to suppress output from @command.
 
-See [@command2](/reference/sharpmush-help/penncmd/#command2).
+See [@command2](/reference/sharpmush-help/sharpcmd/#command2).
 ## @command2
 `@command/add` is a powerful tool that lets you create new commands which are matched before normal $-commands, and which can be set not to parse their arguments, but (via @hook) can still execute softcode like an $-command.
 
@@ -1117,12 +1117,12 @@ Any command added with neither `/noparse` or `/rsnoparse` is provided with a `/n
 
 Commands added with `@command/add`, like other standard commands, are always case-insensitive. Commands can also be added in the alias.cnf file.
 
-See [@command3](/reference/sharpmush-help/penncmd/#command3) for examples.
+See [@command3](/reference/sharpmush-help/sharpcmd/#command3) for examples.
 
 **See Also:**
-- [@hook](/reference/sharpmush-help/penncmd/#hook)
-- [RESTRICT](/reference/sharpmush-help/penntop/#restrict)
-- [EVALUATION ORDER](/reference/sharpmush-help/penntop/#evaluation-order)
+- [@hook](/reference/sharpmush-help/sharpcmd/#hook)
+- [RESTRICT](/reference/sharpmush-help/sharptop/#restrict)
+- [EVALUATION ORDER](/reference/sharpmush-help/sharptop/#evaluation-order)
 ## @command3
 Examples:
 ```
@@ -1153,7 +1153,7 @@ This is a wizard-only command which sets a COMMENT attribute on `<object>`. The 
 
 
 **See Also:**
-- [@@](/reference/sharpmush-help/penncmd/)
+- [@@](/reference/sharpmush-help/sharpcmd/)
 - [@@()]
 ## @config
 `@config`
@@ -1165,7 +1165,7 @@ With no arguments, @config lists the categories of configuration options for the
 
 The wizard-only `/set` switch changes the value of `<option>` to `<value>`. This change does not last across reboots. God can also use the `/save` switch, which attempts to save the new `<value>` in the mush.cnf configuration file, as well as changing it in-game.
 
-For information about parameters, see [@config parameters](/reference/sharpmush-help/pennconf/#config-parameters)
+For information about parameters, see [@config parameters](/reference/sharpmush-help/sharpconf/#config-parameters)
 ## @conformat
 `@conformat <object>[=<format>]`
 
@@ -1188,12 +1188,12 @@ Show just the object names (with no ansi) in a table:
 
 
 **See Also:**
-- [look](/reference/sharpmush-help/penncmd/#look)
-- [@exitformat](/reference/sharpmush-help/penncmd/#exitformat)
-- [@nameformat](/reference/sharpmush-help/penncmd/#nameformat)
-- [@descformat](/reference/sharpmush-help/penncmd/#descformat)
-- [@invformat](/reference/sharpmush-help/penncmd/#invformat)
-- [@idescformat](/reference/sharpmush-help/penncmd/#idescformat)
+- [look](/reference/sharpmush-help/sharpcmd/#look)
+- [@exitformat](/reference/sharpmush-help/sharpcmd/#exitformat)
+- [@nameformat](/reference/sharpmush-help/sharpcmd/#nameformat)
+- [@descformat](/reference/sharpmush-help/sharpcmd/#descformat)
+- [@invformat](/reference/sharpmush-help/sharpcmd/#invformat)
+- [@idescformat](/reference/sharpmush-help/sharpcmd/#idescformat)
 ## @include
 `@include[/<switches>] <object>/<attribute>[=<arg1>,<arg2>,...]`
 
@@ -1213,7 +1213,7 @@ When including attribute contents, @include ignores any ^...: or $...: at the st
 
 The including environment (%0-%9) is available to the included actions. If arguments are provided to @include, they are substituted for the environment's %0, %1, etc. while the included action list is running. The environment is then restored after the @include.
 
-See [@include2](/reference/sharpmush-help/penncmd/#include2).
+See [@include2](/reference/sharpmush-help/sharpcmd/#include2).
 ## @include2
 @include takes the following switches to alter its behaviour:
 - /nobreak: Prevents an @break/@assert in the included attribute from breaking the including action list.
@@ -1222,9 +1222,9 @@ See [@include2](/reference/sharpmush-help/penncmd/#include2).
 
 
 **See Also:**
-- [@trigger](/reference/sharpmush-help/penncmd/#trigger)
-- [ufun()](/reference/sharpmush-help/pennfunc/#ufun)
-- [@break](/reference/sharpmush-help/penncmd/#break)
+- [@trigger](/reference/sharpmush-help/sharpcmd/#trigger)
+- [ufun()](/reference/sharpmush-help/sharpfunc/#ufun)
+- [@break](/reference/sharpmush-help/sharpcmd/#break)
 ## @invformat
 `@invformat <object>[=<format>]`
 
@@ -1239,12 +1239,12 @@ You're holding: Red Ball, Pickle, and Piano
 
 
 **See Also:**
-- [inventory](/reference/sharpmush-help/penncmd/#inventory)
-- [@conformat](/reference/sharpmush-help/penncmd/#conformat)
-- [@exitformat](/reference/sharpmush-help/penncmd/#exitformat)
-- [@nameformat](/reference/sharpmush-help/penncmd/#nameformat)
-- [@descformat](/reference/sharpmush-help/penncmd/#descformat)
-- [@idescformat](/reference/sharpmush-help/penncmd/#idescformat)
+- [inventory](/reference/sharpmush-help/sharpcmd/#inventory)
+- [@conformat](/reference/sharpmush-help/sharpcmd/#conformat)
+- [@exitformat](/reference/sharpmush-help/sharpcmd/#exitformat)
+- [@nameformat](/reference/sharpmush-help/sharpcmd/#nameformat)
+- [@descformat](/reference/sharpmush-help/sharpcmd/#descformat)
+- [@idescformat](/reference/sharpmush-help/sharpcmd/#idescformat)
 ## @descformat
 `@descformat <object>[=<format>]`
 
@@ -1261,12 +1261,12 @@ Example:
 
 
 **See Also:**
-- [look](/reference/sharpmush-help/penncmd/#look)
-- [@exitformat](/reference/sharpmush-help/penncmd/#exitformat)
-- [@nameformat](/reference/sharpmush-help/penncmd/#nameformat)
-- [@conformat](/reference/sharpmush-help/penncmd/#conformat)
-- [@idescformat](/reference/sharpmush-help/penncmd/#idescformat)
-- [@invformat](/reference/sharpmush-help/penncmd/#invformat)
+- [look](/reference/sharpmush-help/sharpcmd/#look)
+- [@exitformat](/reference/sharpmush-help/sharpcmd/#exitformat)
+- [@nameformat](/reference/sharpmush-help/sharpcmd/#nameformat)
+- [@conformat](/reference/sharpmush-help/sharpcmd/#conformat)
+- [@idescformat](/reference/sharpmush-help/sharpcmd/#idescformat)
+- [@invformat](/reference/sharpmush-help/sharpcmd/#invformat)
 ## @idescformat
 `@idescformat <object>[=<format>]`
 
@@ -1285,28 +1285,28 @@ Example:
 
 
 **See Also:**
-- [look](/reference/sharpmush-help/penncmd/#look)
-- [@exitformat](/reference/sharpmush-help/penncmd/#exitformat)
-- [@nameformat](/reference/sharpmush-help/penncmd/#nameformat)
-- [@conformat](/reference/sharpmush-help/penncmd/#conformat)
-- [@descformat](/reference/sharpmush-help/penncmd/#descformat)
-- [@invformat](/reference/sharpmush-help/penncmd/#invformat)
+- [look](/reference/sharpmush-help/sharpcmd/#look)
+- [@exitformat](/reference/sharpmush-help/sharpcmd/#exitformat)
+- [@nameformat](/reference/sharpmush-help/sharpcmd/#nameformat)
+- [@conformat](/reference/sharpmush-help/sharpcmd/#conformat)
+- [@descformat](/reference/sharpmush-help/sharpcmd/#descformat)
+- [@invformat](/reference/sharpmush-help/sharpcmd/#invformat)
 ## @nameaccent
 `@nameaccent <object>[=<accent template>]`
 
 When this attribute holds an accent template that is the same length as `<object>`'s @name, it is used to change the object's name in some situations (how it shows up in speech, look, and a few other commands). This allows for accented names without having to use the accented characters directly in a name, which can make it harder for people to type.
 
-The `<accent template>` is explained in [accents](/reference/sharpmush-help/pennfunc/#accents).
+The `<accent template>` is explained in [accents](/reference/sharpmush-help/sharpfunc/#accents).
 
 If a container has both a @nameaccent and a @nameformat, the @nameformat is used.
 
 
 **See Also:**
-- [accent()](/reference/sharpmush-help/pennfunc/#accent)
-- [@nameformat](/reference/sharpmush-help/penncmd/#nameformat)
-- [accname()](/reference/sharpmush-help/pennfunc/#accname)
-- [stripaccents()](/reference/sharpmush-help/pennfunc/#stripaccents)
-- [iname()](/reference/sharpmush-help/pennfunc/#iname)
+- [accent()](/reference/sharpmush-help/sharpfunc/#accent)
+- [@nameformat](/reference/sharpmush-help/sharpcmd/#nameformat)
+- [accname()](/reference/sharpmush-help/sharpfunc/#accname)
+- [stripaccents()](/reference/sharpmush-help/sharpfunc/#stripaccents)
+- [iname()](/reference/sharpmush-help/sharpfunc/#iname)
 ## @nameformat
 `@nameformat <object>[=<format>]`
 
@@ -1324,14 +1324,14 @@ Show the room's zone after its name.
 
 
 **See Also:**
-- [look](/reference/sharpmush-help/penncmd/#look)
-- [@exitformat](/reference/sharpmush-help/penncmd/#exitformat)
-- [@conformat](/reference/sharpmush-help/penncmd/#conformat)
-- [@descformat](/reference/sharpmush-help/penncmd/#descformat)
-- [@nameaccent](/reference/sharpmush-help/penncmd/#nameaccent)
-- [@invformat](/reference/sharpmush-help/penncmd/#invformat)
-- [@idescformat](/reference/sharpmush-help/penncmd/#idescformat)
-- [iname()](/reference/sharpmush-help/pennfunc/#iname)
+- [look](/reference/sharpmush-help/sharpcmd/#look)
+- [@exitformat](/reference/sharpmush-help/sharpcmd/#exitformat)
+- [@conformat](/reference/sharpmush-help/sharpcmd/#conformat)
+- [@descformat](/reference/sharpmush-help/sharpcmd/#descformat)
+- [@nameaccent](/reference/sharpmush-help/sharpcmd/#nameaccent)
+- [@invformat](/reference/sharpmush-help/sharpcmd/#invformat)
+- [@idescformat](/reference/sharpmush-help/sharpcmd/#idescformat)
+- [iname()](/reference/sharpmush-help/sharpfunc/#iname)
 ## @cost
 `@cost <object>[=<amount>]`
 
@@ -1359,11 +1359,11 @@ Your exit has been created.
 
 
 **See Also:**
-- [give](/reference/sharpmush-help/penncmd/#give)
-- [MONEY](/reference/sharpmush-help/penntop/#money)
-- [@pay](/reference/sharpmush-help/penncmd/#pay)
-- [money()](/reference/sharpmush-help/pennfunc/#money)
-- [buy](/reference/sharpmush-help/penncmd/#buy)
+- [give](/reference/sharpmush-help/sharpcmd/#give)
+- [MONEY](/reference/sharpmush-help/sharptop/#money)
+- [@pay](/reference/sharpmush-help/sharpcmd/#pay)
+- [money()](/reference/sharpmush-help/sharpfunc/#money)
+- [buy](/reference/sharpmush-help/sharpcmd/#buy)
 ## @cpattr
 ## @mvattr
 `@cpattr[/noflagcopy] <obj>/<attr>=<obj1>[/<attr1>][, ..., <objN>[/<attrN>]]`
@@ -1387,9 +1387,9 @@ would copy the TEST attribute from "box" to TEST on "cube".
 
 
 **See Also:**
-- [ATTRIBUTES](/reference/sharpmush-help/penntop/#attributes)
-- [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/penntop/#non-standard-attributes)
-- [@set](/reference/sharpmush-help/penncmd/#set)
+- [ATTRIBUTES](/reference/sharpmush-help/sharptop/#attributes)
+- [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/sharptop/#non-standard-attributes)
+- [@set](/reference/sharpmush-help/sharpcmd/#set)
 ## @create
 `@create <name>[=<cost>[,<dbref>]]`
 
@@ -1401,14 +1401,14 @@ Wizards and objects with the pick_dbref power can also specify the `<dbref>` of 
 
 
 **See Also:**
-- [give](/reference/sharpmush-help/penncmd/#give)
-- [@quota](/reference/sharpmush-help/penncmd/#quota)
-- [MONEY](/reference/sharpmush-help/penntop/#money)
-- [@clone](/reference/sharpmush-help/penncmd/#clone)
-- [create()](/reference/sharpmush-help/pennfunc/#create)
-- [@dig](/reference/sharpmush-help/penncmd/#dig)
-- [@open](/reference/sharpmush-help/penncmd/#open)
-- [@pcreate](/reference/sharpmush-help/penncmd/#pcreate)
+- [give](/reference/sharpmush-help/sharpcmd/#give)
+- [@quota](/reference/sharpmush-help/sharpcmd/#quota)
+- [MONEY](/reference/sharpmush-help/sharptop/#money)
+- [@clone](/reference/sharpmush-help/sharpcmd/#clone)
+- [create()](/reference/sharpmush-help/sharpfunc/#create)
+- [@dig](/reference/sharpmush-help/sharpcmd/#dig)
+- [@open](/reference/sharpmush-help/sharpcmd/#open)
+- [@pcreate](/reference/sharpmush-help/sharpcmd/#pcreate)
 ## @dbck
 `@dbck`
 
@@ -1435,7 +1435,7 @@ You can either @decompile an entire object, or just certain parts of it. To @dec
 ```
 including each attribute. Attribute patterns can be wildcards.
 
-See [@decompile2](/reference/sharpmush-help/penncmd/#decompile2).
+See [@decompile2](/reference/sharpmush-help/sharpcmd/#decompile2).
 ## @decompile2
 @decompile takes the following switches, which can be combined:
 
@@ -1450,9 +1450,9 @@ Only the code to set the object's attributes is printed. Same as `@decompile <ob
 `@decompile/skipdefaults`
 Don't output commands to set attribute flags if those flags are the defaults for that attribute on that MUSH.
 `@decompile/tf`
-Explained in [@decompile3](/reference/sharpmush-help/penncmd/#decompile3).
+Explained in [@decompile3](/reference/sharpmush-help/sharpcmd/#decompile3).
 
-See [@decompile3](/reference/sharpmush-help/penncmd/#decompile3).
+See [@decompile3](/reference/sharpmush-help/sharpcmd/#decompile3).
 ## @decompile3
 `@decompile/tf <object>[/<attribute>]`
 
@@ -1476,10 +1476,10 @@ Set your Options -> Grab Password
 
 
 **See Also:**
-- [CLIENTS](/reference/sharpmush-help/penntop/#clients)
-- [ATTRIBUTES](/reference/sharpmush-help/penntop/#attributes)
-- [WILDCARDS](/reference/sharpmush-help/penntop/#wildcards)
-- [MUSHCODE](/reference/sharpmush-help/penntop/#mushcode)
+- [CLIENTS](/reference/sharpmush-help/sharptop/#clients)
+- [ATTRIBUTES](/reference/sharpmush-help/sharptop/#attributes)
+- [WILDCARDS](/reference/sharpmush-help/sharptop/#wildcards)
+- [MUSHCODE](/reference/sharpmush-help/sharptop/#mushcode)
 ## @describe
 ## @desc
 `@describe <object>[=<description>]`
@@ -1494,10 +1494,10 @@ When inside a thing or player, you will see its @idescribe instead, if one is se
 
 
 **See Also:**
-- [look](/reference/sharpmush-help/penncmd/#look)
-- [@adescribe](/reference/sharpmush-help/penncmd/#adescribe)
-- [@idescribe](/reference/sharpmush-help/penncmd/#idescribe)
-- [@descformat](/reference/sharpmush-help/penncmd/#descformat)
+- [look](/reference/sharpmush-help/sharpcmd/#look)
+- [@adescribe](/reference/sharpmush-help/sharpcmd/#adescribe)
+- [@idescribe](/reference/sharpmush-help/sharpcmd/#idescribe)
+- [@descformat](/reference/sharpmush-help/sharpcmd/#descformat)
 ## @destroy
 ## @recycle
 ## @nuke
@@ -1510,15 +1510,15 @@ To destroy objects set SAFE, you must use `@destroy/override` or @nuke. If the r
 
 @recycle is an alias for @destroy. Some MUSHes disable @destroy and only use @recycle, to avoid players mistyping. @nuke is an alias for `@destroy/override`.
 
-See [@destroy2](/reference/sharpmush-help/penncmd/#destroy2) for a description of the destruction process.
+See [@destroy2](/reference/sharpmush-help/sharpcmd/#destroy2) for a description of the destruction process.
 
 **See Also:**
-- [@undestroy](/reference/sharpmush-help/penncmd/#undestroy)
-- [@create](/reference/sharpmush-help/penncmd/#create)
-- [@dig](/reference/sharpmush-help/penncmd/#dig)
-- [@open](/reference/sharpmush-help/penncmd/#open)
-- [DESTROY_OK](/reference/sharpmush-help/pennflag/#destroyok)
-- [SAFE](/reference/sharpmush-help/pennflag/#safe)
+- [@undestroy](/reference/sharpmush-help/sharpcmd/#undestroy)
+- [@create](/reference/sharpmush-help/sharpcmd/#create)
+- [@dig](/reference/sharpmush-help/sharpcmd/#dig)
+- [@open](/reference/sharpmush-help/sharpcmd/#open)
+- [DESTROY_OK](/reference/sharpmush-help/sharpflag/#destroyok)
+- [SAFE](/reference/sharpmush-help/sharpflag/#safe)
 ## @destroy2
 ## DESTRUCTION
 When an object is marked for destruction, the GOING flag is set on it and its @adestroy attribute is triggered (if the 'adestroy' @config option is true). If `<object>` is a room, all the exits in the room are marked for destruction as well. If `<object>` is a player, and the @config option destroy_possessions is on, everything he owns is marked for destruction as well. (If really_safe is also on, his SAFE objects are spared.)
@@ -1531,8 +1531,8 @@ Players can only be @destroyed when they are not connected, and even then can on
 
 
 **See Also:**
-- [SAFE](/reference/sharpmush-help/pennflag/#safe)
-- [EVENTS](/reference/sharpmush-help/pennevents/#events)
+- [SAFE](/reference/sharpmush-help/sharpflag/#safe)
+- [EVENTS](/reference/sharpmush-help/sharpevents/#events)
 ## @undestroy
 ## @unrecycle
 `@undestroy <object>`
@@ -1547,19 +1547,19 @@ If `<object>` is a player and the 'destroy_possessions' @config option is on, al
 
 
 **See Also:**
-- [@destroy](/reference/sharpmush-help/penncmd/#destroy)
-- [GOING](/reference/sharpmush-help/pennflag/#going)
-- [@startup](/reference/sharpmush-help/penncmd/#startup)
+- [@destroy](/reference/sharpmush-help/sharpcmd/#destroy)
+- [GOING](/reference/sharpmush-help/sharpflag/#going)
+- [@startup](/reference/sharpmush-help/sharpcmd/#startup)
 ## @dig
 `@dig[/teleport] <room name>[=<exit to>, <exit from>, <room dbref>, <to dbref>, <from dbref>]`
 
 This command creates a new room named `<room name>`. Creating a room costs some pennies (see '@config room_cost' for exactly how many). If the `/teleport` switch is given, you will be teleported to the room after it's created, as per the @teleport command.
 
-If `<exit to>` is given, the MUSH will automatically open an exit from your current location to the new room named `<exit to>`, if you have permission. You can also specify `<exit from>`, to create an exit from the new room back to your current location. Opening exists also costs pennies; see '@config exit_cost'. The exit names may contain multiple aliases, separated with semicolons, as per [@name](/reference/sharpmush-help/penncmd/#name).
+If `<exit to>` is given, the MUSH will automatically open an exit from your current location to the new room named `<exit to>`, if you have permission. You can also specify `<exit from>`, to create an exit from the new room back to your current location. Opening exists also costs pennies; see '@config exit_cost'. The exit names may contain multiple aliases, separated with semicolons, as per [@name](/reference/sharpmush-help/sharpcmd/#name).
 
 Wizards and objects with the pick_dbref power can also specify the dbrefs of garbage objects to use when creating the room and the to and from exits.
 
-See [@dig2](/reference/sharpmush-help/penncmd/#dig2) for examples.
+See [@dig2](/reference/sharpmush-help/sharpcmd/#dig2) for examples.
 ## @dig2
 Examples:
 ```
@@ -1577,12 +1577,12 @@ This will do just the same as the above, except it will also create an exit name
 
 
 **See Also:**
-- [@open](/reference/sharpmush-help/penncmd/#open)
-- [@link](/reference/sharpmush-help/penncmd/#link)
-- [EXITS](/reference/sharpmush-help/penntop/#exits)
-- [@create](/reference/sharpmush-help/penncmd/#create)
-- [DBREF](/reference/sharpmush-help/pennconf/#dbref)
-- [dig()](/reference/sharpmush-help/pennfunc/#dig)
+- [@open](/reference/sharpmush-help/sharpcmd/#open)
+- [@link](/reference/sharpmush-help/sharpcmd/#link)
+- [EXITS](/reference/sharpmush-help/sharptop/#exits)
+- [@create](/reference/sharpmush-help/sharpcmd/#create)
+- [DBREF](/reference/sharpmush-help/sharpconf/#dbref)
+- [dig()](/reference/sharpmush-help/sharpfunc/#dig)
 ## @doing
 `@doing <object>[=<message>]`
 
@@ -1594,9 +1594,9 @@ To change the message shown above player @doings in WHO, use @poll.
 
 
 **See Also:**
-- [@poll](/reference/sharpmush-help/penncmd/#poll)
-- [WHO](/reference/sharpmush-help/penncmd/#who)
-- [doing()](/reference/sharpmush-help/pennfunc/#doing)
+- [@poll](/reference/sharpmush-help/sharpcmd/#poll)
+- [WHO](/reference/sharpmush-help/sharpcmd/#who)
+- [doing()](/reference/sharpmush-help/sharpfunc/#doing)
 ## @dolist
 `@dolist[/<switches>][/notify][/delimit <delim>] <list>=<action list>`
 
@@ -1606,7 +1606,7 @@ The %i0 substitution, or the function itext(0), can be used in the `<action list
 
 For backwards compatability, the string "##" is also replaced with the current element of the list, and "#@" the current position. However, these replacements occur BEFORE evaluation, which means that they always return the values for the outermost @dolist, and are thus unsuitable for nesting. It also makes them unsafe for use on user-input or strings which may contain special characters; using the %i* sub or itext() instead is very strongly recommended.
 
-See [@dolist2](/reference/sharpmush-help/penncmd/#dolist2).
+See [@dolist2](/reference/sharpmush-help/sharpcmd/#dolist2).
 ## @dolist2
 If the `/notify` switch is given, the command "@notify me" is queued after all copies of `<action list>` have been queued. This is useful for object synchronization with semaphores.
 
@@ -1619,15 +1619,15 @@ When using `@dolist/inline`, an @break in an `<action list>` will stop the calli
 
 `@dolist/inplace` is an alias for `@dolist/inline/nobreak/localize`.
 
-See [@dolist3](/reference/sharpmush-help/penncmd/#dolist3) for examples.
+See [@dolist3](/reference/sharpmush-help/sharpcmd/#dolist3) for examples.
 
 **See Also:**
-- [iter()](/reference/sharpmush-help/pennfunc/#iter)
-- [itext()](/reference/sharpmush-help/pennfunc/#itext)
-- [map()](/reference/sharpmush-help/pennfunc/#map)
-- [@notify](/reference/sharpmush-help/penncmd/#notify)
-- [SEMAPHORES](/reference/sharpmush-help/penntop/#semaphores)
-- [ACTION LISTS](/reference/sharpmush-help/penntop/#action-lists)
+- [iter()](/reference/sharpmush-help/sharpfunc/#iter)
+- [itext()](/reference/sharpmush-help/sharpfunc/#itext)
+- [map()](/reference/sharpmush-help/sharpfunc/#map)
+- [@notify](/reference/sharpmush-help/sharpcmd/#notify)
+- [SEMAPHORES](/reference/sharpmush-help/sharptop/#semaphores)
+- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
 ## @dolist3
 Examples:
 ```
@@ -1674,10 +1674,10 @@ You may not specify both the `/any` switch and a specific attribute. Similarly, 
 
 
 **See Also:**
-- [SEMAPHORES](/reference/sharpmush-help/penntop/#semaphores)
-- [@wait](/reference/sharpmush-help/penncmd/#wait)
-- [@notify](/reference/sharpmush-help/penncmd/#notify)
-- [@halt](/reference/sharpmush-help/penncmd/#halt)
+- [SEMAPHORES](/reference/sharpmush-help/sharptop/#semaphores)
+- [@wait](/reference/sharpmush-help/sharpcmd/#wait)
+- [@notify](/reference/sharpmush-help/sharpcmd/#notify)
+- [@halt](/reference/sharpmush-help/sharpcmd/#halt)
 ## @dump
 `@dump`
 `@dump[/paranoid|/debug|/nofork] [<check interval>]`
@@ -1694,7 +1694,7 @@ These switches should ONLY be used if a normal @dump is not being done correctly
 
 
 **See Also:**
-- [@shutdown](/reference/sharpmush-help/penncmd/#shutdown)
+- [@shutdown](/reference/sharpmush-help/sharpcmd/#shutdown)
 ## @ealias
 ## @lalias
 `@ealias <object>[=<enter alias1>[; ... ; <enter aliasN>]]`
@@ -1712,10 +1712,10 @@ Example:
 
 
 **See Also:**
-- [enter](/reference/sharpmush-help/penncmd/#enter)
-- [leave](/reference/sharpmush-help/penncmd/#leave)
-- [goto](/reference/sharpmush-help/penncmd/#goto)
-- [ENTER_OK](/reference/sharpmush-help/pennflag/#enterok)
+- [enter](/reference/sharpmush-help/sharpcmd/#enter)
+- [leave](/reference/sharpmush-help/sharpcmd/#leave)
+- [goto](/reference/sharpmush-help/sharpcmd/#goto)
+- [ENTER_OK](/reference/sharpmush-help/sharpflag/#enterok)
 ## @edit
 ## @gedit
 `@edit[/first][/check][/quiet] <object>/<attributes>=<search>, <replace>`
@@ -1734,7 +1734,7 @@ If the `/quiet` switch is given, you won't be shown the modified text, you'll ju
 
 `<search>` and `<replace>` are not evaluated, so you don't need to escape special characters. If either contains commas, however, you may need to wrap the string in {curly braces}.
 
-See [@edit2](/reference/sharpmush-help/penncmd/#edit2).
+See [@edit2](/reference/sharpmush-help/sharpcmd/#edit2).
 ## @edit2
 `@edit/regexp[/all][/nocase][/check][/quiet] <object>/<attributes>=<regexp>,<replace>`
 
@@ -1759,10 +1759,10 @@ Replace a literal '^' with 'v'
 
 
 **See Also:**
-- [edit()](/reference/sharpmush-help/pennfunc/#edit)
-- [regedit()](/reference/sharpmush-help/pennfunc/#regedit)
-- [ATTRIBUTES](/reference/sharpmush-help/penntop/#attributes)
-- [WILDCARDS](/reference/sharpmush-help/penntop/#wildcards)
+- [edit()](/reference/sharpmush-help/sharpfunc/#edit)
+- [regedit()](/reference/sharpmush-help/sharpfunc/#regedit)
+- [ATTRIBUTES](/reference/sharpmush-help/sharptop/#attributes)
+- [WILDCARDS](/reference/sharpmush-help/sharptop/#wildcards)
 ## @elock
 ## @eunlock
 `@elock <object>[=<key>]`
@@ -1777,10 +1777,10 @@ and
 
 
 **See Also:**
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
-- [locktypes](/reference/sharpmush-help/pennlock/#locktypes)
-- [enter](/reference/sharpmush-help/penncmd/#enter)
-- [ENTER_OK](/reference/sharpmush-help/pennflag/#enterok)
+- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [locktypes](/reference/sharpmush-help/sharplock/#locktypes)
+- [enter](/reference/sharpmush-help/sharpcmd/#enter)
+- [ENTER_OK](/reference/sharpmush-help/sharpflag/#enterok)
 ## @emit
 ## \
 `@emit[/<switch>] <message>`
@@ -1794,30 +1794,30 @@ The `/noeval` switch prevents the MUSH from evaluating `<message>`. The `/spoof`
 
 
 **See Also:**
-- [@nsemit](/reference/sharpmush-help/penncmd/#nsemit)
-- [emit()](/reference/sharpmush-help/pennfunc/#emit)
-- [@pemit](/reference/sharpmush-help/penncmd/#pemit)
-- [@remit](/reference/sharpmush-help/penncmd/#remit)
-- [@oemit](/reference/sharpmush-help/penncmd/#oemit)
-- [@lemit](/reference/sharpmush-help/penncmd/#lemit)
-- [@zemit](/reference/sharpmush-help/penncmd/#zemit)
-- [@cemit](/reference/sharpmush-help/pennchat/#cemit)
-- [@speechmod](/reference/sharpmush-help/penncmd/#speechmod)
-- [NOSPOOF](/reference/sharpmush-help/pennflag/#nospoof)
-- [SPOOFING](/reference/sharpmush-help/penntop/#spoofing).]
+- [@nsemit](/reference/sharpmush-help/sharpcmd/#nsemit)
+- [emit()](/reference/sharpmush-help/sharpfunc/#emit)
+- [@pemit](/reference/sharpmush-help/sharpcmd/#pemit)
+- [@remit](/reference/sharpmush-help/sharpcmd/#remit)
+- [@oemit](/reference/sharpmush-help/sharpcmd/#oemit)
+- [@lemit](/reference/sharpmush-help/sharpcmd/#lemit)
+- [@zemit](/reference/sharpmush-help/sharpcmd/#zemit)
+- [@cemit](/reference/sharpmush-help/sharpchat/#cemit)
+- [@speechmod](/reference/sharpmush-help/sharpcmd/#speechmod)
+- [NOSPOOF](/reference/sharpmush-help/sharpflag/#nospoof)
+- [SPOOFING](/reference/sharpmush-help/sharptop/#spoofing).]
 ## @enable
 ## @disable
 `@enable <option>`
 `@disable <option>`
 
-These wizard-only commands allow for any boolean @config options to be changed (see [@config paramaters](/reference/sharpmush-help/penncmd/#config-paramaters) for a list).
+These wizard-only commands allow for any boolean @config options to be changed (see [@config paramaters](/reference/sharpmush-help/sharpcmd/#config-paramaters) for a list).
 
 `@enable <option>` is the same thing as `@config/set <option>=yes`
 `@disable <option>` is the same thing as `@config/set <option>=no`
 
 
 **See Also:**
-- [@config](/reference/sharpmush-help/penncmd/#config)
+- [@config](/reference/sharpmush-help/sharpcmd/#config)
 ## @zenter
 ## @ozenter
 ## @azenter
@@ -1833,11 +1833,11 @@ Zone entry is assumed to occur before room entry, so these are triggered before 
 
 
 **See Also:**
-- [@zleave](/reference/sharpmush-help/penncmd/#zleave)
-- [ZONES](/reference/sharpmush-help/penntop/#zones)
-- [@zemit](/reference/sharpmush-help/penncmd/#zemit)
-- [zwho()](/reference/sharpmush-help/pennfunc/#zwho)
-- [VERBS](/reference/sharpmush-help/penntop/#verbs)
+- [@zleave](/reference/sharpmush-help/sharpcmd/#zleave)
+- [ZONES](/reference/sharpmush-help/sharptop/#zones)
+- [@zemit](/reference/sharpmush-help/sharpcmd/#zemit)
+- [zwho()](/reference/sharpmush-help/sharpfunc/#zwho)
+- [VERBS](/reference/sharpmush-help/sharptop/#verbs)
 ## @zleave
 ## @ozleave
 ## @azleave
@@ -1853,11 +1853,11 @@ Zone leaving is assumed to occur after room leaving, so these are triggered afte
 
 
 **See Also:**
-- [@zenter](/reference/sharpmush-help/penncmd/#zenter)
-- [ZONES](/reference/sharpmush-help/penntop/#zones)
-- [@zemit](/reference/sharpmush-help/penncmd/#zemit)
-- [zwho()](/reference/sharpmush-help/pennfunc/#zwho)
-- [VERBS](/reference/sharpmush-help/penntop/#verbs)
+- [@zenter](/reference/sharpmush-help/sharpcmd/#zenter)
+- [ZONES](/reference/sharpmush-help/sharptop/#zones)
+- [@zemit](/reference/sharpmush-help/sharpcmd/#zemit)
+- [zwho()](/reference/sharpmush-help/sharpfunc/#zwho)
+- [VERBS](/reference/sharpmush-help/sharptop/#verbs)
 ## @entrances
 `@entrances[/<switch>] [<object>][=<begin>[, <end>]]`
 
@@ -1873,9 +1873,9 @@ If you control `<object>`, or have the Search or See_All powers, all objects lin
 
 
 **See Also:**
-- [@link](/reference/sharpmush-help/penncmd/#link)
-- [@search](/reference/sharpmush-help/penncmd/#search)
-- [entrances()](/reference/sharpmush-help/pennfunc/#entrances)
+- [@link](/reference/sharpmush-help/sharpcmd/#link)
+- [@search](/reference/sharpmush-help/sharpcmd/#search)
+- [entrances()](/reference/sharpmush-help/sharpfunc/#entrances)
 ## @exitformat
 `@exitformat <object>[=<format>]`
 
@@ -1890,10 +1890,10 @@ Example:
 
 
 **See Also:**
-- [TRANSPARENT](/reference/sharpmush-help/pennflag/#transparent)
-- [@conformat](/reference/sharpmush-help/penncmd/#conformat)
-- [@nameformat](/reference/sharpmush-help/penncmd/#nameformat)
-- [@descformat](/reference/sharpmush-help/penncmd/#descformat)
+- [TRANSPARENT](/reference/sharpmush-help/sharpflag/#transparent)
+- [@conformat](/reference/sharpmush-help/sharpcmd/#conformat)
+- [@nameformat](/reference/sharpmush-help/sharpcmd/#nameformat)
+- [@descformat](/reference/sharpmush-help/sharpcmd/#descformat)
 ## @HTTP
 `@http <obj>/<attr>=<URL>`
 `@http/delete <obj>/<att>=<URL>[,<data>]`
@@ -1912,8 +1912,8 @@ Note: The response body has the same 8k limit as other MUSH strings. Anything lo
 
 
 **See Also:**
-- [urlencode()](/reference/sharpmush-help/pennfunc/#urlencode)
-- [urldecode()](/reference/sharpmush-help/pennfunc/#urldecode)
+- [urlencode()](/reference/sharpmush-help/sharpfunc/#urlencode)
+- [urldecode()](/reference/sharpmush-help/sharpfunc/#urldecode)
 ## @firstexit
 `@firstexit <exit1>[, ... , <exitN>]`
 
@@ -1936,9 +1936,9 @@ One, Two, and Three
 
 
 **See Also:**
-- [EXITS](/reference/sharpmush-help/penntop/#exits)
-- [@open](/reference/sharpmush-help/penncmd/#open)
-- [@link](/reference/sharpmush-help/penncmd/#link)
+- [EXITS](/reference/sharpmush-help/sharptop/#exits)
+- [@open](/reference/sharpmush-help/sharpcmd/#open)
+- [@link](/reference/sharpmush-help/sharpcmd/#link)
 ## @filter
 `@filter <object>[=<pattern1>[, <pattern2>[, ..., <patternN>]]`
 
@@ -1952,17 +1952,17 @@ You can set the regexp flag on the filter attribute to use regular expressions i
 
 Sounds are only forwarded if the speaker also passes `<object>`'s @lock/filter, which receives the sound heard as %0.
 
-See [@filter2](/reference/sharpmush-help/penncmd/#filter2) for an example.
+See [@filter2](/reference/sharpmush-help/sharpcmd/#filter2) for an example.
 
 
 **See Also:**
-- [AUDIBLE](/reference/sharpmush-help/pennflag/#audible)
-- [@infilter](/reference/sharpmush-help/penncmd/#infilter)
-- [attribute flags](/reference/sharpmush-help/pennattr/#attribute-flags)
-- [LISTENING](/reference/sharpmush-help/penntop/#listening)
-- [@forwardlist](/reference/sharpmush-help/penncmd/#forwardlist)
-- [@prefix](/reference/sharpmush-help/penncmd/#prefix)
-- [WILDCARDS](/reference/sharpmush-help/penntop/#wildcards)
+- [AUDIBLE](/reference/sharpmush-help/sharpflag/#audible)
+- [@infilter](/reference/sharpmush-help/sharpcmd/#infilter)
+- [attribute flags](/reference/sharpmush-help/sharpattr/#attribute-flags)
+- [LISTENING](/reference/sharpmush-help/sharptop/#listening)
+- [@forwardlist](/reference/sharpmush-help/sharpcmd/#forwardlist)
+- [@prefix](/reference/sharpmush-help/sharpcmd/#prefix)
+- [WILDCARDS](/reference/sharpmush-help/sharptop/#wildcards)
 ## @filter2
 Example:
 An audible exit leads from the room where Wizard is standing to another room where the puppet "Wiztoy" is standing.
@@ -1995,9 +1995,9 @@ You may wish to use the @search command instead, which can filter the results mo
 
 
 **See Also:**
-- [@search](/reference/sharpmush-help/penncmd/#search)
-- [lsearch()](/reference/sharpmush-help/pennfunc/#lsearch)
-- [@entrances](/reference/sharpmush-help/penncmd/#entrances)
+- [@search](/reference/sharpmush-help/sharpcmd/#search)
+- [lsearch()](/reference/sharpmush-help/sharpfunc/#lsearch)
+- [@entrances](/reference/sharpmush-help/sharpcmd/#entrances)
 ## @forwardlist
 ## forwardlist
 `@forwardlist <object>[=<list of dbrefs>]`
@@ -2008,12 +2008,12 @@ In order to forward to an object, you must either control it, have the pemit_all
 
 
 **See Also:**
-- [@filter](/reference/sharpmush-help/penncmd/#filter)
-- [@prefix](/reference/sharpmush-help/penncmd/#prefix)
-- [AUDIBLE](/reference/sharpmush-help/pennflag/#audible)
-- [PUPPET](/reference/sharpmush-help/pennflag/#puppet)
-- [@debugforwardlist](/reference/sharpmush-help/penncmd/#debugforwardlist)
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
+- [@filter](/reference/sharpmush-help/sharpcmd/#filter)
+- [@prefix](/reference/sharpmush-help/sharpcmd/#prefix)
+- [AUDIBLE](/reference/sharpmush-help/sharpflag/#audible)
+- [PUPPET](/reference/sharpmush-help/sharpflag/#puppet)
+- [@debugforwardlist](/reference/sharpmush-help/sharpcmd/#debugforwardlist)
+- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
 ## @debugforwardlist
 ## debugforwardlist
 `@debugforwardlist <object>[=<list of dbrefs>]`
@@ -2024,9 +2024,9 @@ The @debugforwardlist must be a space-seperated list of dbrefs. In order to forw
 
 
 **See Also:**
-- [DEBUG](/reference/sharpmush-help/pennflag/#debug)
-- [@forwardlist](/reference/sharpmush-help/penncmd/#forwardlist)
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
+- [DEBUG](/reference/sharpmush-help/sharpflag/#debug)
+- [@forwardlist](/reference/sharpmush-help/sharpcmd/#forwardlist)
+- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
 ## @force
 `@force[/noeval][/inline] <object>=<action list>`
 
@@ -2042,7 +2042,7 @@ If `/inline` is given, `<object>` will run `<action list>` _now_, instead of bei
 @force can be abbreviated as
 `<dbref> <action list>`
 
-See [@force2](/reference/sharpmush-help/penncmd/#force2).
+See [@force2](/reference/sharpmush-help/sharpcmd/#force2).
 ## @force2
 Normally, the action list is evaluated twice - once when @force is run, and again when `<object>` runs the action list. If the `/noeval` switch is given, `<action list>` is not evaluated until it is run by `<object>`.
 
@@ -2059,7 +2059,7 @@ Lackey pages: Hi there!
 Lackey pages: Whee
 ```
 
-See [@force3](/reference/sharpmush-help/penncmd/#force3).
+See [@force3](/reference/sharpmush-help/sharpcmd/#force3).
 ## @force3
 Normally, @force creates a new queue entry. `@force/inline` does not.
 
@@ -2084,9 +2084,9 @@ You say, "Done?"
 
 
 **See Also:**
-- [PUPPET](/reference/sharpmush-help/pennflag/#puppet)
-- [DBREF](/reference/sharpmush-help/pennconf/#dbref)
-- [objeval()](/reference/sharpmush-help/pennfunc/#objeval)
+- [PUPPET](/reference/sharpmush-help/sharpflag/#puppet)
+- [DBREF](/reference/sharpmush-help/sharpconf/#dbref)
+- [objeval()](/reference/sharpmush-help/sharpfunc/#objeval)
 ## @flag
 `@flag <flag name>`
 `@flag/list [<flag name pattern>]`
@@ -2112,20 +2112,20 @@ All other switches to this command are restricted to God:
 - /delete deletes a flag completely, removing it from all objects in the database and then removing it permanently from the flag table. It requires the exact flag name or alias to be used. Be very very careful with this.
 - /decompile prints out a list of @flag/add commands needed to recreate the flag table on another MUSH. If `<pattern>` is given, only flags whose names match that wildcard pattern are shown.
 
-See [@flag2](/reference/sharpmush-help/penncmd/#flag2) for information on `@flag/add`.
+See [@flag2](/reference/sharpmush-help/sharpcmd/#flag2) for information on `@flag/add`.
 
 
 **See Also:**
-- [FLAGS](/reference/sharpmush-help/pennflag/#flags)
-- [@set](/reference/sharpmush-help/penncmd/#set)
-- [@power](/reference/sharpmush-help/penncmd/#power)
-- [flag permissions](/reference/sharpmush-help/penncmd/#flag-permissions)
+- [FLAGS](/reference/sharpmush-help/sharpflag/#flags)
+- [@set](/reference/sharpmush-help/sharpcmd/#set)
+- [@power](/reference/sharpmush-help/sharpcmd/#power)
+- [flag permissions](/reference/sharpmush-help/sharpcmd/#flag-permissions)
 ## @flag2
 `@flag/add` is used to add a new flag with the given name. Arguments other than the flag name are optional:
 
 `<letter>` gives the flag's one-letter abbreviation, which must not conflict with the one-letter abbreviation of another flag that could be applied to the same object type(s). It defaults to none, which means it won't appear in a list of flag characters but can still be tested for with hasflag(), andlflags(), and orlflags().
 `<type>` specifies the space-separated list of types to which the flag applies, and may be 'any' (the default) or one or more of 'room', 'thing', 'player', or 'exit'.
-`<setperms>` specifies the space-separated list of permissions for who can set and/or see the flag. See [flag permissions](/reference/sharpmush-help/penncmd/#flag-permissions) for details. It defaults to 'any'
+`<setperms>` specifies the space-separated list of permissions for who can set and/or see the flag. See [flag permissions](/reference/sharpmush-help/sharpcmd/#flag-permissions) for details. It defaults to 'any'
 `<unsetperms>` specifies the space-separated list of permissions for who can clear the flag on an object they control. It defaults to whatever `<setperms>` is given, or 'any'.
 
 Flags added with `@flag/add` are saved with the database when it is dumped, and do not need to be re-added at startup. They are treated exactly as any other flag in the server.
@@ -2146,7 +2146,7 @@ The following permissions can be used to specify whether `<looker>` can see the 
 The following permissions control other behavior related to the flag:
 
 log Log when the flag is set or cleared. Only meaningful in `<setperms>`.
-event Trigger the OBJECT`FLAG event when this flag is set or cleared. Only meaningful in `<setperms>`. See [events](/reference/sharpmush-help/pennevents/#events) for more information.
+event Trigger the OBJECT`FLAG event when this flag is set or cleared. Only meaningful in `<setperms>`. See [events](/reference/sharpmush-help/sharpevents/#events) for more information.
 ## @function
 `@function [<function name>]`
 `@function[/preserve] <name>=<obj>, <attrib>[, <min args>, <max args>[, <restrictions>]]`
@@ -2170,7 +2170,7 @@ When used with a function name, it displays some information about how that func
 
 Otherwise, this command defines a global function with the name `<function name>`, which evaluates to `<attribute>` on `<object>`.
 
-See [@function2](/reference/sharpmush-help/penncmd/#function2).
+See [@function2](/reference/sharpmush-help/sharpcmd/#function2).
 ## @function2
 `<object>` can be anything that the player using the @function command controls (if safer_ufun is enabled) or can examine (if not). `<function name>` must be 30 characters or less.
 
@@ -2195,7 +2195,7 @@ You say, "foo bar"
 You say, "foo bar"
 ```
 
-See [@function3](/reference/sharpmush-help/penncmd/#function3).
+See [@function3](/reference/sharpmush-help/sharpcmd/#function3).
 ## @function3
 Global user-defined functions are not automatically loaded when the game is restarted. In order to avoid objects which attempt to use functions that have not been loaded, a @startup containing @function commands should be set on a wizard object with as low a dbref number as possible; God (#1) is suggested for this use. You can also create functions from the alias.cnf file.
 
@@ -2206,7 +2206,7 @@ For example, if you have one object that stores all your global functions, you c
 
 And then store each function as an attribute of the same name on object #100.
 
-See [@function4](/reference/sharpmush-help/penncmd/#function4).
+See [@function4](/reference/sharpmush-help/sharpcmd/#function4).
 ## @function4
 Normally, built in functions cannot be overriden by @functions. However, if a built-in function is deleted with `@function/delete`, you can then make a @function with the same name. "Deleted" built-ins can still be called through the FN() function, and can have restrictions applied with `@function/restrict/builtin`. `@function/restore` will delete the @function and turn the built in version back on.
 
@@ -2223,11 +2223,11 @@ This creates a new version of ansi() that doesn't do any colorization, and that 
 
 
 **See Also:**
-- [RESTRICT](/reference/sharpmush-help/penntop/#restrict)
-- [FUNCTIONS](/reference/sharpmush-help/pennfunc/#functions)
-- [@startup](/reference/sharpmush-help/penncmd/#startup)
-- [fn()](/reference/sharpmush-help/pennfunc/#fn)
-- [valid()](/reference/sharpmush-help/pennfunc/#valid)
+- [RESTRICT](/reference/sharpmush-help/sharptop/#restrict)
+- [FUNCTIONS](/reference/sharpmush-help/sharpfunc/#functions)
+- [@startup](/reference/sharpmush-help/sharpcmd/#startup)
+- [fn()](/reference/sharpmush-help/sharpfunc/#fn)
+- [valid()](/reference/sharpmush-help/sharpfunc/#valid)
 ## @grep
 `@grep[/<switches>] <object>[/<attrs>]=<pattern>`
 
@@ -2245,10 +2245,10 @@ For backwards compatability, the `/list` switch provides the default behaviour o
 
 
 **See Also:**
-- [grep()](/reference/sharpmush-help/pennfunc/#grep)
-- [wildgrep()](/reference/sharpmush-help/pennfunc/#wildgrep)
-- [regrep()](/reference/sharpmush-help/pennfunc/#regrep)
-- [WILDCARDS](/reference/sharpmush-help/penntop/#wildcards)
+- [grep()](/reference/sharpmush-help/sharpfunc/#grep)
+- [wildgrep()](/reference/sharpmush-help/sharpfunc/#wildgrep)
+- [regrep()](/reference/sharpmush-help/sharpfunc/#regrep)
+- [WILDCARDS](/reference/sharpmush-help/sharptop/#wildcards)
 ## @halt
 ## @allhalt
 `@halt[/noeval] <object>[=<action list>]`
@@ -2268,11 +2268,11 @@ Only wizards and objects with the halt @power can @halt other player's objects. 
 
 
 **See Also:**
-- [@wait](/reference/sharpmush-help/penncmd/#wait)
-- [@ps](/reference/sharpmush-help/penncmd/#ps)
-- [SEMAPHORES](/reference/sharpmush-help/penntop/#semaphores)
-- [@drain](/reference/sharpmush-help/penncmd/#drain)
-- [@notify](/reference/sharpmush-help/penncmd/#notify)
+- [@wait](/reference/sharpmush-help/sharpcmd/#wait)
+- [@ps](/reference/sharpmush-help/sharpcmd/#ps)
+- [SEMAPHORES](/reference/sharpmush-help/sharptop/#semaphores)
+- [@drain](/reference/sharpmush-help/sharpcmd/#drain)
+- [@notify](/reference/sharpmush-help/sharpcmd/#notify)
 ## @haven
 `@haven <player>[=<message>]`
 
@@ -2286,11 +2286,11 @@ Example:
 
 
 **See Also:**
-- [HAVEN](/reference/sharpmush-help/pennflag/#haven)
-- [page](/reference/sharpmush-help/penncmd/#page)
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
-- [@away](/reference/sharpmush-help/penncmd/#away)
-- [@idle](/reference/sharpmush-help/penncmd/#idle)
+- [HAVEN](/reference/sharpmush-help/sharpflag/#haven)
+- [page](/reference/sharpmush-help/sharpcmd/#page)
+- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [@away](/reference/sharpmush-help/sharpcmd/#away)
+- [@idle](/reference/sharpmush-help/sharpcmd/#idle)
 ## @hide
 `@hide[/<switch>] <descriptor>`
 `@hide[/<switch>] [<player>]`
@@ -2303,11 +2303,11 @@ The `/on` and `/yes` switches hide connections, while `/off` and `/no` unhide co
 
 
 **See Also:**
-- [hidden()](/reference/sharpmush-help/pennfunc/#hidden)
-- [WHO](/reference/sharpmush-help/penncmd/#who)
-- [lwho()](/reference/sharpmush-help/pennfunc/#lwho)
-- [lports()](/reference/sharpmush-help/pennfunc/#lports)
-- [ports()](/reference/sharpmush-help/pennfunc/#ports)
+- [hidden()](/reference/sharpmush-help/sharpfunc/#hidden)
+- [WHO](/reference/sharpmush-help/sharpcmd/#who)
+- [lwho()](/reference/sharpmush-help/sharpfunc/#lwho)
+- [lports()](/reference/sharpmush-help/sharpfunc/#lports)
+- [ports()](/reference/sharpmush-help/sharpfunc/#ports)
 ## @idescribe
 ## @oidescribe
 ## @aidescribe
@@ -2323,13 +2323,13 @@ If there is no IDESCRIBE set for an object, those who enter or look inside it wi
 
 
 **See Also:**
-- [enter](/reference/sharpmush-help/penncmd/#enter)
-- [@enter](/reference/sharpmush-help/penncmd/#enter)
-- [ENTER_OK](/reference/sharpmush-help/pennflag/#enterok)
-- [@describe](/reference/sharpmush-help/penncmd/#describe)
-- [look](/reference/sharpmush-help/penncmd/#look)
-- [@idescformat](/reference/sharpmush-help/penncmd/#idescformat)
-- [VERBS](/reference/sharpmush-help/penntop/#verbs)
+- [enter](/reference/sharpmush-help/sharpcmd/#enter)
+- [@enter](/reference/sharpmush-help/sharpcmd/#enter)
+- [ENTER_OK](/reference/sharpmush-help/sharpflag/#enterok)
+- [@describe](/reference/sharpmush-help/sharpcmd/#describe)
+- [look](/reference/sharpmush-help/sharpcmd/#look)
+- [@idescformat](/reference/sharpmush-help/sharpcmd/#idescformat)
+- [VERBS](/reference/sharpmush-help/sharptop/#verbs)
 ## @hook
 `@hook/<switch> <command>[=<object>[, <attribute>]]`
 `@hook/list [<command>]`
@@ -2344,17 +2344,17 @@ If there is no IDESCRIBE set for an object, those who enter or look inside it wi
 - @hook/extend: If an invalid switch is given to the command, attempt to run a matching $-command in `<object>[/<attribute>]` instead of giving an error. Allows extending built-in commands in softcode without having to rewrite the core functionality.
 - @hook/extend/inline: As above, but the $-command won't be queued.
 
-See [@hook2](/reference/sharpmush-help/penncmd/#hook2).
+See [@hook2](/reference/sharpmush-help/sharpcmd/#hook2).
 ## @hook2
 In all cases, %# is the dbref of the object doing the command, and all hooks share the same set of q-registers. With `/before` and `/after`, the results of the evaluated attribute is thrown away like it was wrapped in a call of null(). Also, in cases where a command and function do the same thing (e.g., @pemit and pemit()), only the command gets the hooks.
 
-A number of named registers are available in @hooks, accessible via `r(<name>, args)`, containing the arguments passed to the command. The exact registers available depend on the command type and the arguments passed; see [@hook7](/reference/sharpmush-help/penncmd/#hook7) for a description of all possible registers.
+A number of named registers are available in @hooks, accessible via `r(<name>, args)`, containing the arguments passed to the command. The exact registers available depend on the command type and the arguments passed; see [@hook7](/reference/sharpmush-help/sharpcmd/#hook7) for a description of all possible registers.
 
 Hooks can also be set in the alias.cnf file.
 
 Leaving out the object and attribute clears an existing hook. Wizards can see existing hooks with @command or `@hook/list`.
 
-See [@hook3](/reference/sharpmush-help/penncmd/#hook3) for more information about `@hook/override/inline`, [@hook4](/reference/sharpmush-help/penncmd/#hook4) for information on `@hook/extend`, [@hook5](/reference/sharpmush-help/penncmd/#hook5) for examples, and 'help @hook7' for an list of available named registers.
+See [@hook3](/reference/sharpmush-help/sharpcmd/#hook3) for more information about `@hook/override/inline`, [@hook4](/reference/sharpmush-help/sharpcmd/#hook4) for information on `@hook/extend`, [@hook5](/reference/sharpmush-help/sharpcmd/#hook5) for examples, and 'help @hook7' for an list of available named registers.
 ## @hook3
 `@hook/override/inline` and `@hook/extend/inline` allow you to write softcoded commands which act exactly like built-in commands - because they're run immediately, instead of being queued, output from the command appears in the right order relative to other commands in the action list. By default, commands hooked with `/inline` have access to the q-registers of the calling action list, and @breaks in the hooked command propagate to the calling action list, allowing you to write your own control structures.
 
@@ -2372,7 +2372,7 @@ This behaviour can be altered by adding the following switches to `@hook/inline`
 
 `@hook/inplace` is an alias for `@hook/inline/localize/clearregs/nobreak`.
 
-See [@hook6](/reference/sharpmush-help/penncmd/#hook6) for some examples of using `@hook/override/inline`.
+See [@hook6](/reference/sharpmush-help/sharpcmd/#hook6) for some examples of using `@hook/override/inline`.
 ## @hook4
 `@hook/extend` can be used to add new features to a built-in command, via additional switches, without forcing you to also rewrite the existing functionality like `@hook/override` would. For example:
 ```
@@ -2406,7 +2406,7 @@ You're done looking.
 <OOC> Robert says, "test"
 ```
 
-See [@hook6](/reference/sharpmush-help/penncmd/#hook6) for /inplace examples.
+See [@hook6](/reference/sharpmush-help/sharpcmd/#hook6) for /inplace examples.
 ## @hook6
 ```
 > &dance me=$dance:pose sticks his right foot in ; say Do the hokey pokey ; pose sticks his right foot out
@@ -2475,10 +2475,10 @@ Announcement: Room Zero shouts, "Dunce wins his first typo trophy!"
 
 
 **See Also:**
-- [@hook](/reference/sharpmush-help/penncmd/#hook)
-- [EVALUATION ORDER](/reference/sharpmush-help/penntop/#evaluation-order)
-- [warn_on_missing](/reference/sharpmush-help/penncmd/#warnonmissing)
-- [unimplemented_command](/reference/sharpmush-help/penncmd/#unimplementedcommand)
+- [@hook](/reference/sharpmush-help/sharpcmd/#hook)
+- [EVALUATION ORDER](/reference/sharpmush-help/sharptop/#evaluation-order)
+- [warn_on_missing](/reference/sharpmush-help/sharpcmd/#warnonmissing)
+- [unimplemented_command](/reference/sharpmush-help/sharpcmd/#unimplementedcommand)
 ## @idle
 `@idle <player>[=<message>]`
 
@@ -2493,8 +2493,8 @@ Players paging me will only see the "I'm idle" message if I've been idle for ove
 
 
 **See Also:**
-- [@away](/reference/sharpmush-help/penncmd/#away)
-- [@haven](/reference/sharpmush-help/penncmd/#haven)
+- [@away](/reference/sharpmush-help/sharpcmd/#away)
+- [@haven](/reference/sharpmush-help/sharpcmd/#haven)
 ## @if
 ## @ifelse
 ## @skip
@@ -2507,13 +2507,13 @@ For RhostMUSH compatability, @skip runs the action list `<false>` when `<boolean
 
 @ifelse and `@skip/ifelse` are aliases for @if.
 
-See [@if2](/reference/sharpmush-help/penncmd/#if2) for examples.
+See [@if2](/reference/sharpmush-help/sharpcmd/#if2) for examples.
 
 **See Also:**
-- [@break](/reference/sharpmush-help/penncmd/#break)
-- [@switch](/reference/sharpmush-help/penncmd/#switch)
-- [if()](/reference/sharpmush-help/pennfunc/#if)
-- [BOOLEAN VALUES](/reference/sharpmush-help/penntop/#boolean-values)
+- [@break](/reference/sharpmush-help/sharpcmd/#break)
+- [@switch](/reference/sharpmush-help/sharpcmd/#switch)
+- [if()](/reference/sharpmush-help/sharpfunc/#if)
+- [BOOLEAN VALUES](/reference/sharpmush-help/sharptop/#boolean-values)
 ## @if2
 Examples:
 ```
@@ -2553,11 +2553,11 @@ For an explanation of infilter patterns, see the help for "@filter".
 
 
 **See Also:**
-- [@filter](/reference/sharpmush-help/penncmd/#filter)
-- [@listen](/reference/sharpmush-help/penncmd/#listen)
-- [@inprefix](/reference/sharpmush-help/penncmd/#inprefix)
-- [AUDIBLE](/reference/sharpmush-help/pennflag/#audible)
-- [LISTENING](/reference/sharpmush-help/penntop/#listening)
+- [@filter](/reference/sharpmush-help/sharpcmd/#filter)
+- [@listen](/reference/sharpmush-help/sharpcmd/#listen)
+- [@inprefix](/reference/sharpmush-help/sharpcmd/#inprefix)
+- [AUDIBLE](/reference/sharpmush-help/sharpflag/#audible)
+- [LISTENING](/reference/sharpmush-help/sharptop/#listening)
 ## @inprefix
 `@inprefix <object>[=<message>]`
 
@@ -2578,9 +2578,9 @@ From outside, Test bounces.
 
 
 **See Also:**
-- [@prefix](/reference/sharpmush-help/penncmd/#prefix)
-- [@listen](/reference/sharpmush-help/penncmd/#listen)
-- [@infilter](/reference/sharpmush-help/penncmd/#infilter)
+- [@prefix](/reference/sharpmush-help/sharpcmd/#prefix)
+- [@listen](/reference/sharpmush-help/sharpcmd/#listen)
+- [@infilter](/reference/sharpmush-help/sharpcmd/#infilter)
 ## @kick
 `@kick <number>`
 
@@ -2588,8 +2588,8 @@ This wizard-only command forces the immediate execution of `<number>` items from
 
 
 **See Also:**
-- [@ps](/reference/sharpmush-help/penncmd/#ps)
-- [QUEUE](/reference/sharpmush-help/penntop/#queue)
+- [@ps](/reference/sharpmush-help/sharpcmd/#ps)
+- [QUEUE](/reference/sharpmush-help/sharptop/#queue)
 ## @lemit
 `@lemit[/<switch>] <message>`
 
@@ -2601,8 +2601,8 @@ The `/spoof` switch causes nospoof notifications to show the enactor's dbref ins
 
 
 **See Also:**
-- [@remit](/reference/sharpmush-help/penncmd/#remit)
-- [@nslemit](/reference/sharpmush-help/penncmd/#nslemit)
+- [@remit](/reference/sharpmush-help/sharpcmd/#remit)
+- [@nslemit](/reference/sharpmush-help/sharpcmd/#nslemit)
 ## @list
 `@list/<switch>`
 `@list[/lowercase] <switch>`
@@ -2625,19 +2625,19 @@ By default, information is shown in upper-case. Add the `/lowercase` switch to s
 
 
 **See Also:**
-- [list()](/reference/sharpmush-help/pennfunc/#list)
-- [@config](/reference/sharpmush-help/penncmd/#config)
-- [config()](/reference/sharpmush-help/pennfunc/#config)
-- [functions()](/reference/sharpmush-help/pennfunc/#functions)
-- [@stats](/reference/sharpmush-help/penncmd/#stats)
-- [@command](/reference/sharpmush-help/penncmd/#command)
-- [@function](/reference/sharpmush-help/penncmd/#function)
-- [@flag](/reference/sharpmush-help/penncmd/#flag)
-- [@power](/reference/sharpmush-help/penncmd/#power)
-- [@attribute](/reference/sharpmush-help/penncmd/#attribute)
-- [@listmotd](/reference/sharpmush-help/penncmd/#listmotd)
-- [@motd](/reference/sharpmush-help/penncmd/#motd)
-- [locktypes](/reference/sharpmush-help/pennlock/#locktypes)
+- [list()](/reference/sharpmush-help/sharpfunc/#list)
+- [@config](/reference/sharpmush-help/sharpcmd/#config)
+- [config()](/reference/sharpmush-help/sharpfunc/#config)
+- [functions()](/reference/sharpmush-help/sharpfunc/#functions)
+- [@stats](/reference/sharpmush-help/sharpcmd/#stats)
+- [@command](/reference/sharpmush-help/sharpcmd/#command)
+- [@function](/reference/sharpmush-help/sharpcmd/#function)
+- [@flag](/reference/sharpmush-help/sharpcmd/#flag)
+- [@power](/reference/sharpmush-help/sharpcmd/#power)
+- [@attribute](/reference/sharpmush-help/sharpcmd/#attribute)
+- [@listmotd](/reference/sharpmush-help/sharpcmd/#listmotd)
+- [@motd](/reference/sharpmush-help/sharpcmd/#motd)
+- [locktypes](/reference/sharpmush-help/sharplock/#locktypes)
 ## @link
 `@link[/preserve] <object>=[<dbref> | here | home | variable]`
 
@@ -2653,11 +2653,11 @@ LINK_OK objects can also be used as semaphores, and any object can be @parented 
 
 
 **See Also:**
-- [EXITS](/reference/sharpmush-help/penntop/#exits)
-- [@open](/reference/sharpmush-help/penncmd/#open)
-- [@dig](/reference/sharpmush-help/penncmd/#dig)
-- [DROP-TO](/reference/sharpmush-help/pennconf/#drop-to)
-- [HOME](/reference/sharpmush-help/penntop/#home)
+- [EXITS](/reference/sharpmush-help/sharptop/#exits)
+- [@open](/reference/sharpmush-help/sharpcmd/#open)
+- [@dig](/reference/sharpmush-help/sharpcmd/#dig)
+- [DROP-TO](/reference/sharpmush-help/sharpconf/#drop-to)
+- [HOME](/reference/sharpmush-help/sharptop/#home)
 ## @destination
 ## @exitto
 ## Variable Exits
@@ -2682,11 +2682,11 @@ Example:
 
 
 **See Also:**
-- [EXITS](/reference/sharpmush-help/penntop/#exits)
-- [@link](/reference/sharpmush-help/penncmd/#link)
-- [@open](/reference/sharpmush-help/penncmd/#open)
-- [LINK_OK](/reference/sharpmush-help/pennflag/#linkok)
-- [Link_Anywhere Power](/reference/sharpmush-help/pennconf/#linkanywhere-power)
+- [EXITS](/reference/sharpmush-help/sharptop/#exits)
+- [@link](/reference/sharpmush-help/sharpcmd/#link)
+- [@open](/reference/sharpmush-help/sharpcmd/#open)
+- [LINK_OK](/reference/sharpmush-help/sharpflag/#linkok)
+- [Link_Anywhere Power](/reference/sharpmush-help/sharpconf/#linkanywhere-power)
 ## @listen
 `@listen <object>[=<pattern>]`
 
@@ -2709,7 +2709,7 @@ Cyclonus has arrived.
 Butler walks over to the new arrival and takes his coat.
 ```
 
-See [@listen2](/reference/sharpmush-help/penncmd/#listen2).
+See [@listen2](/reference/sharpmush-help/sharpcmd/#listen2).
 ## @listen2
 An object "hears" anything that another player standing in the same room would hear. For example, if you type in a command, the object does NOT hear it. If the command has a result that people in the room hear, the object will hear it.
 
@@ -2730,42 +2730,42 @@ Recorder records: Whee!
 
 
 **See Also:**
-- [LISTENING](/reference/sharpmush-help/penntop/#listening)
-- [@ahear](/reference/sharpmush-help/penncmd/#ahear)
-- [@amhear](/reference/sharpmush-help/penncmd/#amhear)
-- [@aahear](/reference/sharpmush-help/penncmd/#aahear)
-- [WILDCARDS](/reference/sharpmush-help/penntop/#wildcards)
+- [LISTENING](/reference/sharpmush-help/sharptop/#listening)
+- [@ahear](/reference/sharpmush-help/sharpcmd/#ahear)
+- [@amhear](/reference/sharpmush-help/sharpcmd/#amhear)
+- [@aahear](/reference/sharpmush-help/sharpcmd/#aahear)
+- [WILDCARDS](/reference/sharpmush-help/sharptop/#wildcards)
 ## LOCKING
 ## LOCKS
 ## @lock
 `@lock[/<switch>] <object>=<key>`
 
-This command "locks" the object, specifying a key which determines who or what can do certain things with the object. There are many different types of locks, all of which are described in [locktypes](/reference/sharpmush-help/pennlock/#locktypes) and which are designated by the switch. The "basic" lock determines, for players and things, who can pick them up. For exits, it determines who can go through the exit. All other locks can be set the same way as the basic lock.
+This command "locks" the object, specifying a key which determines who or what can do certain things with the object. There are many different types of locks, all of which are described in [locktypes](/reference/sharpmush-help/sharplock/#locktypes) and which are designated by the switch. The "basic" lock determines, for players and things, who can pick them up. For exits, it determines who can go through the exit. All other locks can be set the same way as the basic lock.
 
-Whenever you "pass" the basic lock, you succeed in doing something with the object. This triggers the @success/@osuccess/@asuccess messages and actions. If you fail to pass the basic lock, you trigger the @failure/@ofailure/@afailure messages and actions. Other locktypes may also have such success/failure messages: see [failure](/reference/sharpmush-help/penntop/#failure) for info.
+Whenever you "pass" the basic lock, you succeed in doing something with the object. This triggers the @success/@osuccess/@asuccess messages and actions. If you fail to pass the basic lock, you trigger the @failure/@ofailure/@afailure messages and actions. Other locktypes may also have such success/failure messages: see [failure](/reference/sharpmush-help/sharptop/#failure) for info.
 
-Just like attributes, locks can be inherited from parents. By default, locks are set no_inherit, but this flag can be cleared using @lset. More details and a list of flags can be found in [@lset](/reference/sharpmush-help/penncmd/#lset).
+Just like attributes, locks can be inherited from parents. By default, locks are set no_inherit, but this flag can be cleared using @lset. More details and a list of flags can be found in [@lset](/reference/sharpmush-help/sharpcmd/#lset).
 
-A listing of lock types, such as pagelocks, look at [locktypes](/reference/sharpmush-help/pennlock/#locktypes). For the available key types, such as how to check an attribute on an object trying to pass a lock, see [lockkeys](/reference/sharpmush-help/pennlock/#lockkeys).
+A listing of lock types, such as pagelocks, look at [locktypes](/reference/sharpmush-help/sharplock/#locktypes). For the available key types, such as how to check an attribute on an object trying to pass a lock, see [lockkeys](/reference/sharpmush-help/sharplock/#lockkeys).
 
 
 **See Also:**
-- [@lock-simple](/reference/sharpmush-help/pennlock/#lock-simple)
-- [locktypes](/reference/sharpmush-help/pennlock/#locktypes)
-- [lockkeys](/reference/sharpmush-help/pennlock/#lockkeys)
-- [@clock](/reference/sharpmush-help/pennchat/#clock)
-- [failure](/reference/sharpmush-help/penntop/#failure)
-- [success](/reference/sharpmush-help/penntop/#success)
-- [elock()](/reference/sharpmush-help/pennfunc/#elock)
-- [lock()](/reference/sharpmush-help/pennfunc/#lock)
-- [@lset](/reference/sharpmush-help/penncmd/#lset)
-- [@clock](/reference/sharpmush-help/pennchat/#clock)
-- [testlock()](/reference/sharpmush-help/pennfunc/#testlock)
-- [locks()](/reference/sharpmush-help/pennfunc/#locks)
-- [lockflags()](/reference/sharpmush-help/pennfunc/#lockflags)
-- [lockowner()](/reference/sharpmush-help/pennfunc/#lockowner)
-- [clock()](/reference/sharpmush-help/pennfunc/#clock)
-- [llocks()](/reference/sharpmush-help/pennfunc/#llocks)
+- [@lock-simple](/reference/sharpmush-help/sharplock/#lock-simple)
+- [locktypes](/reference/sharpmush-help/sharplock/#locktypes)
+- [lockkeys](/reference/sharpmush-help/sharplock/#lockkeys)
+- [@clock](/reference/sharpmush-help/sharpchat/#clock)
+- [failure](/reference/sharpmush-help/sharptop/#failure)
+- [success](/reference/sharpmush-help/sharptop/#success)
+- [elock()](/reference/sharpmush-help/sharpfunc/#elock)
+- [lock()](/reference/sharpmush-help/sharpfunc/#lock)
+- [@lset](/reference/sharpmush-help/sharpcmd/#lset)
+- [@clock](/reference/sharpmush-help/sharpchat/#clock)
+- [testlock()](/reference/sharpmush-help/sharpfunc/#testlock)
+- [locks()](/reference/sharpmush-help/sharpfunc/#locks)
+- [lockflags()](/reference/sharpmush-help/sharpfunc/#lockflags)
+- [lockowner()](/reference/sharpmush-help/sharpfunc/#lockowner)
+- [clock()](/reference/sharpmush-help/sharpfunc/#clock)
+- [llocks()](/reference/sharpmush-help/sharpfunc/#llocks)
 ## @lset
 `@lset <object>/<lock type>=[!]<flag>`
 
@@ -2780,10 +2780,10 @@ Valid flags include:
 
 
 **See Also:**
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
-- [lockflags()](/reference/sharpmush-help/pennfunc/#lockflags)
-- [llockflags()](/reference/sharpmush-help/pennfunc/#llockflags)
-- [lset()](/reference/sharpmush-help/pennfunc/#lset)
+- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [lockflags()](/reference/sharpmush-help/sharpfunc/#lockflags)
+- [llockflags()](/reference/sharpmush-help/sharpfunc/#llockflags)
+- [lset()](/reference/sharpmush-help/sharpfunc/#lset)
 ## @log
 `@log[/<switch>] <message>`
 `@log/recall/<switch> [<number>]`
@@ -2794,7 +2794,7 @@ Adding the `/recall` switch will display the last `<number>` lines written to th
 
 
 **See Also:**
-- [@logwipe](/reference/sharpmush-help/penncmd/#logwipe)
+- [@logwipe](/reference/sharpmush-help/sharpcmd/#logwipe)
 ## @logwipe
 `@logwipe/<log>[/<switch>] <password>`
 
@@ -2813,7 +2813,7 @@ God must give the log wipe password from the MUSH's configuration file to use th
 
 
 **See Also:**
-- [@log](/reference/sharpmush-help/penncmd/#log)
+- [@log](/reference/sharpmush-help/sharpcmd/#log)
 ## @message
 `@message[/<switches>] <recipients>=<defmsg>,[<obj>/]<attr>[,<arg0>[, ... , <arg29>]]]`
 
@@ -2829,20 +2829,20 @@ Switches:
 - /noeval -- none of @message's arguments will be evaluated
 - /spoof -- the message will appear to be from the enactor, not the executor. Requires the Can_Spoof @power
 - /remit -- works like @remit, treating `<recipients>` as a list of rooms to send the message to
-- /oemit -- works like @oemit, with `<recipients>` as a list of objects not to emit to. See [@oemit](/reference/sharpmush-help/penncmd/#oemit) for more info
+- /oemit -- works like @oemit, with `<recipients>` as a list of objects not to emit to. See [@oemit](/reference/sharpmush-help/sharpcmd/#oemit) for more info
 - /nospoof -- don't show nospoof info, as per @nspemit/@nsremit/@nsoemit
 - /silent -- don't show a confirmation message
 - /noisy -- show a confirmation message; default depends on the silent_pemit @config option
 
-See [@message2](/reference/sharpmush-help/penncmd/#message2) for examples.
+See [@message2](/reference/sharpmush-help/sharpcmd/#message2) for examples.
 
 **See Also:**
-- [message()](/reference/sharpmush-help/pennfunc/#message)
-- [@chatformat](/reference/sharpmush-help/pennchat/#chatformat)
-- [@pageformat](/reference/sharpmush-help/penncmd/#pageformat)
-- [@oemit](/reference/sharpmush-help/penncmd/#oemit)
-- [@remit](/reference/sharpmush-help/penncmd/#remit)
-- [speak()](/reference/sharpmush-help/pennfunc/#speak)
+- [message()](/reference/sharpmush-help/sharpfunc/#message)
+- [@chatformat](/reference/sharpmush-help/sharpchat/#chatformat)
+- [@pageformat](/reference/sharpmush-help/sharpcmd/#pageformat)
+- [@oemit](/reference/sharpmush-help/sharpcmd/#oemit)
+- [@remit](/reference/sharpmush-help/sharpcmd/#remit)
+- [speak()](/reference/sharpmush-help/sharpfunc/#speak)
 ## @message2
 Example:
 ```
@@ -2871,7 +2871,7 @@ A rough implementation of @chatformat:
 > @set Globals/cmd.chat=regexp
 ```
 
-See [@message3](/reference/sharpmush-help/penncmd/#message3) for more examples.
+See [@message3](/reference/sharpmush-help/sharpcmd/#message3) for more examples.
 ## @message3
 A (very) basic language system:
 ```
@@ -2898,7 +2898,7 @@ Mike says (Spanish), "The rain in Spain falls mainly on the plain"
 ## @moniker
 `@moniker <object>[=<moniker>]`
 
-This command sets or clears the "moniker" for `<object>`. A moniker is an ansi template, to show the object's name in color. Exactly where this color is displayed depends on the "monikers" @config option; see [monikers](/reference/sharpmush-help/penntop/#monikers) for more information.
+This command sets or clears the "moniker" for `<object>`. A moniker is an ansi template, to show the object's name in color. Exactly where this color is displayed depends on the "monikers" @config option; see [monikers](/reference/sharpmush-help/sharptop/#monikers) for more information.
 
 `<moniker>` can contain any text - it will be ignored, and only the ansi colors will be taken into account. If `<object>`'s name is longer than `<moniker>`, the last color will be used for the remaining letters.
 
@@ -2915,12 +2915,12 @@ Show the first letter in orange, and the rest with no color
 
 
 **See Also:**
-- [MONIKERS](/reference/sharpmush-help/penntop/#monikers)
-- [moniker()](/reference/sharpmush-help/pennfunc/#moniker)
-- [ansi()](/reference/sharpmush-help/pennfunc/#ansi)
-- [@nameformat](/reference/sharpmush-help/penncmd/#nameformat)
-- [@nameaccent](/reference/sharpmush-help/penncmd/#nameaccent)
-- [MONIKER](/reference/sharpmush-help/pennconf/#moniker)
+- [MONIKERS](/reference/sharpmush-help/sharptop/#monikers)
+- [moniker()](/reference/sharpmush-help/sharpfunc/#moniker)
+- [ansi()](/reference/sharpmush-help/sharpfunc/#ansi)
+- [@nameformat](/reference/sharpmush-help/sharpcmd/#nameformat)
+- [@nameaccent](/reference/sharpmush-help/sharpcmd/#nameaccent)
+- [MONIKER](/reference/sharpmush-help/sharpconf/#moniker)
 ## @motd
 ## @listmotd
 ## @wizmotd
@@ -2953,7 +2953,7 @@ Players can change their name to anything valid which is not currently in use by
 
 You can change the alias for a player or exit while renaming it, by giving the alias(es) after the new name, each separated by a semicolon. If the name is followed by a semicolon with no aliases, the existing alias will be cleared instead.
 
-When `<object>`'s name is changed, its ONAME and ANAME verb attributes will be triggered. See [@oname](/reference/sharpmush-help/penncmd/#oname) for details.
+When `<object>`'s name is changed, its ONAME and ANAME verb attributes will be triggered. See [@oname](/reference/sharpmush-help/sharpcmd/#oname) for details.
 
 Examples:
 ```
@@ -2969,10 +2969,10 @@ Name set.
 
 
 **See Also:**
-- [@alias](/reference/sharpmush-help/penncmd/#alias)
-- [@oname](/reference/sharpmush-help/penncmd/#oname)
-- [name()](/reference/sharpmush-help/pennfunc/#name)
-- [fullname()](/reference/sharpmush-help/pennfunc/#fullname)
+- [@alias](/reference/sharpmush-help/sharpcmd/#alias)
+- [@oname](/reference/sharpmush-help/sharpcmd/#oname)
+- [name()](/reference/sharpmush-help/sharpfunc/#name)
+- [fullname()](/reference/sharpmush-help/sharpfunc/#fullname)
 Config options: player_name_spaces, player_name_len, only_ascii_in_names
 ## @ONAME
 ## @ANAME
@@ -2989,9 +2989,9 @@ Example:
 
 
 **See Also:**
-- [@name](/reference/sharpmush-help/penncmd/#name)
-- [name()](/reference/sharpmush-help/pennfunc/#name)
-- [VERBS](/reference/sharpmush-help/penntop/#verbs)
+- [@name](/reference/sharpmush-help/sharpcmd/#name)
+- [name()](/reference/sharpmush-help/sharpfunc/#name)
+- [VERBS](/reference/sharpmush-help/sharptop/#verbs)
 ## @newpassword
 `@newpassword <player>=<password>`
 `@newpassword/generate <player>`
@@ -3005,8 +3005,8 @@ The `<password>` must not contain whitespace, unprintable characters, or '='.
 
 
 **See Also:**
-- [@password](/reference/sharpmush-help/penncmd/#password)
-- [checkpass()](/reference/sharpmush-help/pennfunc/#checkpass)
+- [@password](/reference/sharpmush-help/sharpcmd/#password)
+- [checkpass()](/reference/sharpmush-help/sharpfunc/#checkpass)
 ## @notify
 `@notify[/any][/all] <object>[/<attribute>][=<number>]`
 `@notify/setq <object>[/<attribute>]=<qreg1>,<qval1>[,...]`
@@ -3021,7 +3021,7 @@ If the `/all` switch was not used, and there were not enough queue entries waiti
 
 You may not specify both the `/any` switch and a specific attribute. Similarly, you may not specify both the `/all` switch and a number.
 
-See [@notify2](/reference/sharpmush-help/penncmd/#notify2).
+See [@notify2](/reference/sharpmush-help/sharpcmd/#notify2).
 ## @notify2
 `@notify/setq` is a special form of @notify: It requires that a queue entry exists and is waiting on `<object>[/<attr>]`. When this is the case, then `@notify/setq` will modify the Q-registers of the extant queue entry.
 
@@ -3036,10 +3036,10 @@ Hello, Walker!
 
 
 **See Also:**
-- [SEMAPHORES](/reference/sharpmush-help/penntop/#semaphores)
-- [@drain](/reference/sharpmush-help/penncmd/#drain)
-- [@wait](/reference/sharpmush-help/penncmd/#wait)
-- [@halt](/reference/sharpmush-help/penncmd/#halt)
+- [SEMAPHORES](/reference/sharpmush-help/sharptop/#semaphores)
+- [@drain](/reference/sharpmush-help/sharpcmd/#drain)
+- [@wait](/reference/sharpmush-help/sharpcmd/#wait)
+- [@halt](/reference/sharpmush-help/sharpcmd/#halt)
 ## @nspemit
 ## @nsemit
 ## @nslemit
@@ -3059,21 +3059,21 @@ These commands work like @emit, @lemit, @pemit, @prompt, @remit, @oemit, and @ze
 
 
 **See Also:**
-- [@emit](/reference/sharpmush-help/penncmd/#emit)
-- [@lemit](/reference/sharpmush-help/penncmd/#lemit)
-- [@pemit](/reference/sharpmush-help/penncmd/#pemit)
-- [@prompt](/reference/sharpmush-help/penncmd/#prompt)
-- [@remit](/reference/sharpmush-help/penncmd/#remit)
-- [@oemit](/reference/sharpmush-help/penncmd/#oemit)
-- [@zemit](/reference/sharpmush-help/penncmd/#zemit)
-- [nsemit()](/reference/sharpmush-help/pennfunc/#nsemit)
-- [nslemit()](/reference/sharpmush-help/pennfunc/#nslemit)
-- [nspemit()](/reference/sharpmush-help/pennfunc/#nspemit)
-- [nsprompt()](/reference/sharpmush-help/pennfunc/#nsprompt)
-- [nsremit()](/reference/sharpmush-help/pennfunc/#nsremit)
-- [nsoemit()](/reference/sharpmush-help/pennfunc/#nsoemit)
-- [nszemit()](/reference/sharpmush-help/pennfunc/#nszemit)
-- [PROMPT_NEWLINES](/reference/sharpmush-help/penncmd/#promptnewlines)
+- [@emit](/reference/sharpmush-help/sharpcmd/#emit)
+- [@lemit](/reference/sharpmush-help/sharpcmd/#lemit)
+- [@pemit](/reference/sharpmush-help/sharpcmd/#pemit)
+- [@prompt](/reference/sharpmush-help/sharpcmd/#prompt)
+- [@remit](/reference/sharpmush-help/sharpcmd/#remit)
+- [@oemit](/reference/sharpmush-help/sharpcmd/#oemit)
+- [@zemit](/reference/sharpmush-help/sharpcmd/#zemit)
+- [nsemit()](/reference/sharpmush-help/sharpfunc/#nsemit)
+- [nslemit()](/reference/sharpmush-help/sharpfunc/#nslemit)
+- [nspemit()](/reference/sharpmush-help/sharpfunc/#nspemit)
+- [nsprompt()](/reference/sharpmush-help/sharpfunc/#nsprompt)
+- [nsremit()](/reference/sharpmush-help/sharpfunc/#nsremit)
+- [nsoemit()](/reference/sharpmush-help/sharpfunc/#nsoemit)
+- [nszemit()](/reference/sharpmush-help/sharpfunc/#nszemit)
+- [PROMPT_NEWLINES](/reference/sharpmush-help/sharpcmd/#promptnewlines)
 ## @oemit
 `@oemit[/<switch>] [<room>/]<object> [... <object>]=<message>`
 
@@ -3084,16 +3084,16 @@ If `<room>` is specified (usually as a dbref), this command shows `<message>` to
 The `/noeval` switch prevents the MUSH from evaluating `<message>`.
 The `/spoof` switch causes nospoof notifications to show the enactor's dbref instead of the executor's dbref, and requires control over the enactor or the Can_spoof power.
 
-See [@oemit2](/reference/sharpmush-help/penncmd/#oemit2) for examples.
+See [@oemit2](/reference/sharpmush-help/sharpcmd/#oemit2) for examples.
 
 **See Also:**
-- [@emit](/reference/sharpmush-help/penncmd/#emit)
-- [@pemit](/reference/sharpmush-help/penncmd/#pemit)
-- [@nsoemit](/reference/sharpmush-help/penncmd/#nsoemit)
-- [oemit()](/reference/sharpmush-help/pennfunc/#oemit)
-- [nsoemit()](/reference/sharpmush-help/pennfunc/#nsoemit)
-- [NOSPOOF](/reference/sharpmush-help/pennflag/#nospoof)
-- [SPOOFING](/reference/sharpmush-help/penntop/#spoofing)
+- [@emit](/reference/sharpmush-help/sharpcmd/#emit)
+- [@pemit](/reference/sharpmush-help/sharpcmd/#pemit)
+- [@nsoemit](/reference/sharpmush-help/sharpcmd/#nsoemit)
+- [oemit()](/reference/sharpmush-help/sharpfunc/#oemit)
+- [nsoemit()](/reference/sharpmush-help/sharpfunc/#nsoemit)
+- [NOSPOOF](/reference/sharpmush-help/sharpflag/#nospoof)
+- [SPOOFING](/reference/sharpmush-help/sharptop/#spoofing)
 ## @oemit2
 Examples:
 Show a message in the locations of players Bob and Fred, to everyone except those two players:
@@ -3117,7 +3117,7 @@ This command opens an exit, named `<exit name>`, in your current location, or in
 
 If `<return exit name>` is given, the MUSH will attempt to open an exit back from `<destination>` and link it to `<exit name>`'s source.
 
-Both `<exit name>` and `<return exit name>` can include any number of aliases for the exits, separated by semicolons. See [@name](/reference/sharpmush-help/penncmd/#name) for details.
+Both `<exit name>` and `<return exit name>` can include any number of aliases for the exits, separated by semicolons. See [@name](/reference/sharpmush-help/sharpcmd/#name) for details.
 
 Wizards and objects with the pick_dbref power can specify garbage dbrefs to use for the exit and return exit.
 
@@ -3130,10 +3130,10 @@ Example:
 
 
 **See Also:**
-- [EXITS](/reference/sharpmush-help/penntop/#exits)
-- [@link](/reference/sharpmush-help/penncmd/#link)
-- [@dig](/reference/sharpmush-help/penncmd/#dig)
-- [open()](/reference/sharpmush-help/pennfunc/#open)
+- [EXITS](/reference/sharpmush-help/sharptop/#exits)
+- [@link](/reference/sharpmush-help/sharpcmd/#link)
+- [@dig](/reference/sharpmush-help/sharpcmd/#dig)
+- [open()](/reference/sharpmush-help/sharpfunc/#open)
 ## @parent
 `@parent <object>[=<parent>]`
 
@@ -3141,10 +3141,10 @@ This command sets the parent of `<object>` to `<parent>`. If no `<parent>` is gi
 
 
 **See Also:**
-- [PARENTS](/reference/sharpmush-help/penntop/#parents)
-- [parent()](/reference/sharpmush-help/pennfunc/#parent)
-- [lparent()](/reference/sharpmush-help/pennfunc/#lparent)
-- [ANCESTORS](/reference/sharpmush-help/penntop/#ancestors)
+- [PARENTS](/reference/sharpmush-help/sharptop/#parents)
+- [parent()](/reference/sharpmush-help/sharpfunc/#parent)
+- [lparent()](/reference/sharpmush-help/sharpfunc/#lparent)
+- [ANCESTORS](/reference/sharpmush-help/sharptop/#ancestors)
 ## @password
 `@password <old password>=<new password>`
 
@@ -3153,8 +3153,8 @@ The `<new password>` must not contain whitespace, unprintable characters, or '='
 
 
 **See Also:**
-- [@newpassword](/reference/sharpmush-help/penncmd/#newpassword)
-- [checkpass()](/reference/sharpmush-help/pennfunc/#checkpass)
+- [@newpassword](/reference/sharpmush-help/sharpcmd/#newpassword)
+- [checkpass()](/reference/sharpmush-help/sharpfunc/#checkpass)
 ## @pageformat
 ## @outpageformat
 `@outpageformat <object>[=<message>]`
@@ -3169,15 +3169,15 @@ The `<new password>` must not contain whitespace, unprintable characters, or '='
 %3 will be a space-separated list of recipient dbrefs.
 %4 will be set to the default message.
 
-See [@pageformat2](/reference/sharpmush-help/penncmd/#pageformat2) for examples.
+See [@pageformat2](/reference/sharpmush-help/sharpcmd/#pageformat2) for examples.
 
 
 **See Also:**
-- [page](/reference/sharpmush-help/penncmd/#page)
-- [speak()](/reference/sharpmush-help/pennfunc/#speak)
-- [@chatformat](/reference/sharpmush-help/pennchat/#chatformat)
-- [@speechmod](/reference/sharpmush-help/penncmd/#speechmod)
-- [@message](/reference/sharpmush-help/penncmd/#message)
+- [page](/reference/sharpmush-help/sharpcmd/#page)
+- [speak()](/reference/sharpmush-help/sharpfunc/#speak)
+- [@chatformat](/reference/sharpmush-help/sharpchat/#chatformat)
+- [@speechmod](/reference/sharpmush-help/sharpcmd/#speechmod)
+- [@message](/reference/sharpmush-help/sharpcmd/#message)
 ## @pageformat2
 ## @outpageformat2
 For simple page timestamps:
@@ -3208,12 +3208,12 @@ In all cases, %0 is the dbref of the object received. If the object was 'give'n,
 
 
 **See Also:**
-- [give](/reference/sharpmush-help/penncmd/#give)
-- [get](/reference/sharpmush-help/penncmd/#get)
-- [@give](/reference/sharpmush-help/penncmd/#give)
-- [@success](/reference/sharpmush-help/penncmd/#success)
-- [ACTION LISTS](/reference/sharpmush-help/penntop/#action-lists)
-- [VERBS](/reference/sharpmush-help/penntop/#verbs)
+- [give](/reference/sharpmush-help/sharpcmd/#give)
+- [get](/reference/sharpmush-help/sharpcmd/#get)
+- [@give](/reference/sharpmush-help/sharpcmd/#give)
+- [@success](/reference/sharpmush-help/sharpcmd/#success)
+- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
+- [VERBS](/reference/sharpmush-help/sharptop/#verbs)
 ## @give
 ## @ogive
 ## @agive
@@ -3227,10 +3227,10 @@ In all cases, %0 is the dbref of the object being given, and %1 is the dbref of 
 
 
 **See Also:**
-- [give](/reference/sharpmush-help/penncmd/#give)
-- [@receive](/reference/sharpmush-help/penncmd/#receive)
-- [ACTION LISTS](/reference/sharpmush-help/penntop/#action-lists)
-- [VERBS](/reference/sharpmush-help/penntop/#verbs)
+- [give](/reference/sharpmush-help/sharpcmd/#give)
+- [@receive](/reference/sharpmush-help/sharpcmd/#receive)
+- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
+- [VERBS](/reference/sharpmush-help/sharptop/#verbs)
 ## @pcreate
 `@pcreate <name>=<password>[, <dbref>]`
 
@@ -3238,7 +3238,7 @@ This wizard-only command creates a player with the given name and password. If s
 
 
 **See Also:**
-- [pcreate()](/reference/sharpmush-help/pennfunc/#pcreate)
+- [pcreate()](/reference/sharpmush-help/sharpfunc/#pcreate)
 ## @prompt
 `@prompt[/<switch>] <dbref list>[=<message>]`
 
@@ -3250,11 +3250,11 @@ If `<message>` is omitted, an empty prompt is sent.
 
 
 **See Also:**
-- [@pemit](/reference/sharpmush-help/penncmd/#pemit)
-- [@nsprompt](/reference/sharpmush-help/penncmd/#nsprompt)
-- [prompt()](/reference/sharpmush-help/pennfunc/#prompt)
-- [nsprompt()](/reference/sharpmush-help/pennfunc/#nsprompt)
-- [PROMPT_NEWLINES](/reference/sharpmush-help/penncmd/#promptnewlines)
+- [@pemit](/reference/sharpmush-help/sharpcmd/#pemit)
+- [@nsprompt](/reference/sharpmush-help/sharpcmd/#nsprompt)
+- [prompt()](/reference/sharpmush-help/sharpfunc/#prompt)
+- [nsprompt()](/reference/sharpmush-help/sharpfunc/#nsprompt)
+- [PROMPT_NEWLINES](/reference/sharpmush-help/sharpcmd/#promptnewlines)
 ## PROMPT_NEWLINES
 `PROMPT_NEWLINES [1|0]`
 
@@ -3264,10 +3264,10 @@ Some clients, like TinyFugue, are smart enough to interpret GOAHEAD and treat pr
 
 
 **See Also:**
-- [@prompt](/reference/sharpmush-help/penncmd/#prompt)
-- [prompt()](/reference/sharpmush-help/pennfunc/#prompt)
-- [terminfo()](/reference/sharpmush-help/pennfunc/#terminfo)
-- [@sockset](/reference/sharpmush-help/penncmd/#sockset)
+- [@prompt](/reference/sharpmush-help/sharpcmd/#prompt)
+- [prompt()](/reference/sharpmush-help/sharpfunc/#prompt)
+- [terminfo()](/reference/sharpmush-help/sharpfunc/#terminfo)
+- [@sockset](/reference/sharpmush-help/sharpcmd/#sockset)
 ## @pemit
 `@pemit[/<switches>] <object>=<message>`
 `@pemit/list[/<switches>] <object list>=<message>`
@@ -3279,7 +3279,7 @@ The basic form of this command sends `<message>` to `<object>` directly. It is v
 
 `@pemit/port` can only be used by Wizards/Royalty, and sends `<message>` to one or more connections. It can be used to send messages to connections which are still at the login screen, or to send a message to just one of a player's connections when he's logged in multiple times.
 
-See [@pemit2](/reference/sharpmush-help/penncmd/#pemit2) for more.
+See [@pemit2](/reference/sharpmush-help/sharpcmd/#pemit2) for more.
 ## @pemit2
 The @pemit command can take the following additional switches:
 - /contents -- equivalent to @remit.
@@ -3292,13 +3292,13 @@ You cannot @pemit to objects set HAVEN, or objects whose @lock/page you do not p
 
 
 **See Also:**
-- [@emit](/reference/sharpmush-help/penncmd/#emit)
-- [@nspemit](/reference/sharpmush-help/penncmd/#nspemit)
-- [@oemit](/reference/sharpmush-help/penncmd/#oemit)
-- [@remit](/reference/sharpmush-help/penncmd/#remit)
-- [NOSPOOF](/reference/sharpmush-help/pennflag/#nospoof)
-- [SPOOFING](/reference/sharpmush-help/penntop/#spoofing)
-- [page](/reference/sharpmush-help/penncmd/#page)
+- [@emit](/reference/sharpmush-help/sharpcmd/#emit)
+- [@nspemit](/reference/sharpmush-help/sharpcmd/#nspemit)
+- [@oemit](/reference/sharpmush-help/sharpcmd/#oemit)
+- [@remit](/reference/sharpmush-help/sharpcmd/#remit)
+- [NOSPOOF](/reference/sharpmush-help/sharpflag/#nospoof)
+- [SPOOFING](/reference/sharpmush-help/sharptop/#spoofing)
+- [page](/reference/sharpmush-help/sharpcmd/#page)
 ## @poll
 `@poll`
 `@poll <message>`
@@ -3308,9 +3308,9 @@ This command manipulate the message at the top of WHO/DOING. By itself, it displ
 
 
 **See Also:**
-- [@doing](/reference/sharpmush-help/penncmd/#doing)
-- [WHO](/reference/sharpmush-help/penncmd/#who)
-- [DOING](/reference/sharpmush-help/penncmd/#doing)
+- [@doing](/reference/sharpmush-help/sharpcmd/#doing)
+- [WHO](/reference/sharpmush-help/sharpcmd/#who)
+- [DOING](/reference/sharpmush-help/sharpcmd/#doing)
 ## @poor
 `@poor <value>`
 
@@ -3318,14 +3318,14 @@ This command sets the pennies of every player on the MUSH to `<value>`. It can o
 
 
 **See Also:**
-- [MONEY](/reference/sharpmush-help/penntop/#money)
-- [give](/reference/sharpmush-help/penncmd/#give)
+- [MONEY](/reference/sharpmush-help/sharptop/#money)
+- [give](/reference/sharpmush-help/sharpcmd/#give)
 ## @power
 `@power/list [<power name pattern>]`
 `@power <power>`
 `@power <object>=[!]<power>`
 
-`@power/list` lists the defined powers (see [powers](/reference/sharpmush-help/pennconf/#powers)). A list of standard powers with explanations is given in [powers list](/reference/sharpmush-help/pennconf/#powers-list). When given a power name as an argument, @power displays information
+`@power/list` lists the defined powers (see [powers](/reference/sharpmush-help/sharpconf/#powers)). A list of standard powers with explanations is given in [powers list](/reference/sharpmush-help/sharpconf/#powers-list). When given a power name as an argument, @power displays information
 about a power.
 
 The third form manipulates powers on objects, and is limited to Wizards. `@power <object>=[!]<power>` sets (or clears) the given power on an object.
@@ -3334,8 +3334,8 @@ God can add, delete, and otherwise manipulate power definitions. See help @power
 
 
 **See Also:**
-- [powers()](/reference/sharpmush-help/pennfunc/#powers)
-- [@flag](/reference/sharpmush-help/penncmd/#flag)
+- [powers()](/reference/sharpmush-help/sharpfunc/#powers)
+- [@flag](/reference/sharpmush-help/sharpcmd/#flag)
 ## @power2
 `@power/add <power>=[<letter>], [<type(s)>], [<setperms>], [<unsetperms>]`
 `@power/delete <power>`
@@ -3361,7 +3361,7 @@ See help @power3 for information on `@power/add`
 
 `<letter>` gives the power's one-letter abbreviation, which must not conflict with the one-letter abbreviation of another power that could be applied to the same object type(s). It defaults to none, which means it won't appear in a list of power characters but can still be tested for with haspower(), andlpowers(), and orlpowers().
 `<type>` specifies the space-separated list of types to which the power applies, and may be 'any' or one or more of 'room', 'thing', 'player', or 'exit'. It defaults to 'any'.
-`<setperms>` specifies the space-separated list of permissions for who can set and/or see the power. See [flag permissions](/reference/sharpmush-help/penncmd/#flag-permissions) for details. It defaults to 'any'
+`<setperms>` specifies the space-separated list of permissions for who can set and/or see the power. See [flag permissions](/reference/sharpmush-help/sharpcmd/#flag-permissions) for details. It defaults to 'any'
 `<unsetperms>` specifies the space-separated list of permissions for who can clear the power on an object they control. It defaults to whatever `<setperms>` is given, or 'any'.
 
 Powers added with `@power/add` are saved with the database when it is dumped, and do not need to be re-added at startup. They are treated exactly as any other power in the server.
@@ -3374,9 +3374,9 @@ For example, if you have an audible exit "Outside" leading from a room Garden to
 
 
 **See Also:**
-- [@inprefix](/reference/sharpmush-help/penncmd/#inprefix)
-- [AUDIBLE](/reference/sharpmush-help/pennflag/#audible)
-- [@listen](/reference/sharpmush-help/penncmd/#listen)
+- [@inprefix](/reference/sharpmush-help/sharpcmd/#inprefix)
+- [AUDIBLE](/reference/sharpmush-help/sharpflag/#audible)
+- [@listen](/reference/sharpmush-help/sharpcmd/#listen)
 ## @ps
 `@ps[/<switch>] [<player>]`
 `@ps[/debug] <pid>`
@@ -3384,13 +3384,13 @@ For example, if you have an audible exit "Outside" leading from a room Garden to
 @ps lists all commands currently on your 'to be executed' queue, thus allowing you to identify infinite (or unnecessary) loops with-out putting in says or poses. It gives a count of the total commands in each of the queues (Command, Wait, and Semaphore), displayed in the format:
 `<Number of your queued commands> / <Total number of queued commands>`.
 
-Some of the queues also include a [Ndel](/reference/sharpmush-help/pennconf/#ndel) after the total. That number is the number of entries made by objects that have been halted but haven't been removed from the queue yet.
+Some of the queues also include a [Ndel](/reference/sharpmush-help/sharpconf/#ndel) after the total. That number is the number of entries made by objects that have been halted but haven't been removed from the queue yet.
 
 It also shows a running load average of the number of queue entries executed per second for the last 1, 5 and 15 minutes.
 
 @ps with no arguments will show you your own queue. Wizards may specify the `/all` switch, and see the full queue. They may also specify a player. `@ps/summary` just displays the queue totals for the whole queue. `@ps/quick` displays the queue totals for just your queue.
 
-See [@ps2](/reference/sharpmush-help/penncmd/#ps2).
+See [@ps2](/reference/sharpmush-help/sharpcmd/#ps2).
 ## @ps2
 With a `<pid>` argument, @ps shows information on a single queue entry. The `/debug` switch will also display the queue entry's environment: Arguments, q registers, executor, enactor and caller dbrefs.
 
@@ -3398,11 +3398,11 @@ Each line includes the process id of the queue entry, the object and attribute b
 
 
 **See Also:**
-- [@wait](/reference/sharpmush-help/penncmd/#wait)
-- [@halt](/reference/sharpmush-help/penncmd/#halt)
-- [@notify](/reference/sharpmush-help/penncmd/#notify)
-- [@drain](/reference/sharpmush-help/penncmd/#drain)
-- [SEMAPHORES](/reference/sharpmush-help/penntop/#semaphores)
+- [@wait](/reference/sharpmush-help/sharpcmd/#wait)
+- [@halt](/reference/sharpmush-help/sharpcmd/#halt)
+- [@notify](/reference/sharpmush-help/sharpcmd/#notify)
+- [@drain](/reference/sharpmush-help/sharpcmd/#drain)
+- [SEMAPHORES](/reference/sharpmush-help/sharptop/#semaphores)
 ## @purge
 @purge is a wizard only command that calls the internal purge routine to advance the clock of each object scheduled to be destroyed, and destroy those things whose time is up. The internal purge routine is normally run automatically approximately every 10 minutes.
 
@@ -3410,7 +3410,7 @@ The @purge command should almost never need to be performed manually. If you do 
 
 
 **See Also:**
-- [@dbck](/reference/sharpmush-help/penncmd/#dbck)
+- [@dbck](/reference/sharpmush-help/sharpcmd/#dbck)
 ## @quota
 `@quota [<player>]`
 
@@ -3418,7 +3418,7 @@ These commands are only meaningful if the Quota system is enabled (check the use
 
 @quota shows the current quota for `<player>`, or for the executor if no `<player>` is given. You must control `<player>`, or have either the See_All or Quotas @power.
 
-See [@quota2](/reference/sharpmush-help/penncmd/#quota2).
+See [@quota2](/reference/sharpmush-help/sharpcmd/#quota2).
 ## @quota2
 ## @squota
 ## @allquota
@@ -3435,9 +3435,9 @@ Players always have enough quota for the objects they currently own; if you atte
 
 
 **See Also:**
-- [QUOTAS](/reference/sharpmush-help/penntop/#quotas)
-- [Quotas Power](/reference/sharpmush-help/pennconf/#quotas-power)
-- [No_Quota Power](/reference/sharpmush-help/pennconf/#noquota-power)
+- [QUOTAS](/reference/sharpmush-help/sharptop/#quotas)
+- [Quotas Power](/reference/sharpmush-help/sharpconf/#quotas-power)
+- [No_Quota Power](/reference/sharpmush-help/sharpconf/#noquota-power)
 ## @readcache
 `@readcache`
 
@@ -3451,7 +3451,7 @@ A site admin can achieve the same effect by sending the MUSH process a kill -1 o
 
 
 **See Also:**
-- [@shutdown](/reference/sharpmush-help/penncmd/#shutdown)
+- [@shutdown](/reference/sharpmush-help/sharpcmd/#shutdown)
 ## @remit
 `@remit[/switches] <object>=<message>`
 
@@ -3466,12 +3466,12 @@ The `/noeval` switch causes `<message>` to not be evaluated.
 
 
 **See Also:**
-- [@emit](/reference/sharpmush-help/penncmd/#emit)
-- [@pemit](/reference/sharpmush-help/penncmd/#pemit)
-- [@oemit](/reference/sharpmush-help/penncmd/#oemit)
-- [SPOOFING](/reference/sharpmush-help/penntop/#spoofing)
-- [NOSPOOF](/reference/sharpmush-help/pennflag/#nospoof)
-- [CONTROL](/reference/sharpmush-help/penntop/#control).]
+- [@emit](/reference/sharpmush-help/sharpcmd/#emit)
+- [@pemit](/reference/sharpmush-help/sharpcmd/#pemit)
+- [@oemit](/reference/sharpmush-help/sharpcmd/#oemit)
+- [SPOOFING](/reference/sharpmush-help/sharptop/#spoofing)
+- [NOSPOOF](/reference/sharpmush-help/sharpflag/#nospoof)
+- [CONTROL](/reference/sharpmush-help/sharptop/#control).]
 ## @retry
 `@retry <boolean>`
 `@retry <boolean>=<arg0>[,...[,<argN>]]`
@@ -3482,14 +3482,14 @@ Please note: @retry only restarts the action list it is currently in. If you hav
 
 Watch out for infinite loops! @retry does respect all the limits (cpu_limit, function_invocation_limit, etc). But because @retry causes the queue parser to repeat itself _without_ invoking a new function, it doesn't risk hitting any issues other than infinite loops.
 
-See [@retry2](/reference/sharpmush-help/penncmd/#retry2) for examples.
+See [@retry2](/reference/sharpmush-help/sharpcmd/#retry2) for examples.
 
 
 **See Also:**
-- [ACTION LISTS](/reference/sharpmush-help/penntop/#action-lists)
-- [BOOLEAN VALUES](/reference/sharpmush-help/penntop/#boolean-values)
-- [@break](/reference/sharpmush-help/penncmd/#break)
-- [@include](/reference/sharpmush-help/penncmd/#include)
+- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
+- [BOOLEAN VALUES](/reference/sharpmush-help/sharptop/#boolean-values)
+- [@break](/reference/sharpmush-help/sharpcmd/#break)
+- [@include](/reference/sharpmush-help/sharpcmd/#include)
 ## @retry2
 Example: 'while'
 ```
@@ -3517,9 +3517,9 @@ This command halts `<object>` (as described in @halt), and then triggers the STA
 
 
 **See Also:**
-- [@halt](/reference/sharpmush-help/penncmd/#halt)
-- [@startup](/reference/sharpmush-help/penncmd/#startup)
-- [@shutdown](/reference/sharpmush-help/penncmd/#shutdown)
+- [@halt](/reference/sharpmush-help/sharpcmd/#halt)
+- [@startup](/reference/sharpmush-help/sharpcmd/#startup)
+- [@shutdown](/reference/sharpmush-help/sharpcmd/#shutdown)
 ## @scan
 `@scan[/<switches>] <command>`
 
@@ -3536,7 +3536,7 @@ If no switch is given, all locations are checked. `<command>` must be entered ex
 
 **See Also:**
 - [$-commands]
-- [EVALUATION ORDER](/reference/sharpmush-help/penntop/#evaluation-order)
+- [EVALUATION ORDER](/reference/sharpmush-help/sharptop/#evaluation-order)
 ## @search
 `@search [<player>] [<classN>=<restrictionN>[,...]][,<begin>,<end>]`
 
@@ -3554,7 +3554,7 @@ If `<class>`=ZONE, only objects in the zone `<restriction>` will be listed.
 If `<class>`=PARENT, only children of parent `<restriction>` will be listed.
 For ZONE and PARENT, `<restriction>` must be specified as a dbref number.
 
-See [@search2](/reference/sharpmush-help/penncmd/#search2).
+See [@search2](/reference/sharpmush-help/sharpcmd/#search2).
 ## @search2
 If `<class>`=FLAGS or LFLAGS, only objects with the list of flags specified by `<restriction>` will be listed. For FLAGS, flags to match should be given as a string of single flag letters, with appropriate case. For LFLAGS, flags to match should be given as a space-separated list of flag names.
 
@@ -3564,7 +3564,7 @@ If `<class>`=ELOCK, only objects that pass the given lock string (as in help @lo
 
 If `<class>`=EVAL, only objects for which `<restriction>` evaluates to a true boolean value will be listed. The token '##' in `<restriction>`, which is a function, is replaced by each dbref sequentially. Classes EPLAYER, EROOM, EEXIT, and ETHING work like EVAL but are restricted to a single type.
 
-See [@search3](/reference/sharpmush-help/penncmd/#search3). for more.
+See [@search3](/reference/sharpmush-help/sharpcmd/#search3). for more.
 ## @search3
 If `<class>`=MINDB, only objects with dbrefs of `<restriction>` or higher will be listed. If `<class>`=MAXDB, only objects with dbrefs of `<restriction>` or lower will be listed.
 
@@ -3576,7 +3576,7 @@ If `<class>`=COMMAND, then @search will only return objects that respond to `<re
 
 If `<class>`=LISTEN, then @search will only return objects that respond to `<restriction>` through a listen.
 
-See [@search4](/reference/sharpmush-help/penncmd/#search4).
+See [@search4](/reference/sharpmush-help/sharpcmd/#search4).
 ## @search4
 For the class TYPE=PLAYER, and for PLAYER=`<player-name>`, anyone may obtain information on any player. In all other cases, wizards may obtain information about other players, and players who pass a ZMP's zone-lock may obtain information about the ZMP.
 
@@ -3584,11 +3584,11 @@ If multiple `<class>` and `<restrictions>` are given, objects must meet all crit
 
 @search is only mildly computationally expensive for most of the search classes. Computationally expensive searches are the evaluating searches (EVAL, EPLAYER, ETHING, EROOM, EEXIT), the attribute pattern searches (COMMAND, LISTEN), and ELOCK searches which perform evaluation searches (attr/value) or indirect locks (@obj/lock). These searches all cost a number of pennies (the exact amount is configurable; see @config find_cost).
 
-See [@search5](/reference/sharpmush-help/penncmd/#search5) for some examples.
+See [@search5](/reference/sharpmush-help/sharpcmd/#search5) for some examples.
 
 **See Also:**
-- [lsearch()](/reference/sharpmush-help/pennfunc/#lsearch)
-- [@find](/reference/sharpmush-help/penncmd/#find)
+- [lsearch()](/reference/sharpmush-help/sharpfunc/#lsearch)
+- [@find](/reference/sharpmush-help/sharpcmd/#find)
 ## @search5
 Examples:
 ```
@@ -3606,7 +3606,7 @@ Examples:
 `@set <object>=<attribute>:<value>`
 `@set <object>/<attribute>=[!]<attrflag>`
 
-The first form sets (or unsets) flag(s) on `<object>`. See [flags](/reference/sharpmush-help/pennflag/#flags).
+The first form sets (or unsets) flag(s) on `<object>`. See [flags](/reference/sharpmush-help/sharpflag/#flags).
 Ex: `@set me=VISUAL`
 Flags may be specified by full name (recommended) or by flag character.
 Flags are set or reset in the order supplied.
@@ -3619,13 +3619,13 @@ Ex: `@set Test Object=random:This is a random attribute.`
 `&random Test Object=This is a random attribute.`
 An important difference between these two forms is that @set will always evaluate the `<value>` before setting it on `<object>`, while the `&<attribute>` form will not evaluate when entered directly by a player in his client (and is usually what you want).
 
-The fourth form sets (or unsets) an attribute flag on the specified attribute. See [attribute flags](/reference/sharpmush-help/pennattr/#attribute-flags).
+The fourth form sets (or unsets) an attribute flag on the specified attribute. See [attribute flags](/reference/sharpmush-help/sharpattr/#attribute-flags).
 
 
 **See Also:**
-- [ATTRIB_SET](/reference/sharpmush-help/penncmd/#attribset)
-- [attrib_set()](/reference/sharpmush-help/pennfunc/#attribset)
-- [set()](/reference/sharpmush-help/pennfunc/#set)
+- [ATTRIB_SET](/reference/sharpmush-help/sharpcmd/#attribset)
+- [attrib_set()](/reference/sharpmush-help/sharpfunc/#attribset)
+- [set()](/reference/sharpmush-help/sharpfunc/#set)
 ## ATTRIB_SET
 ## @_
 `&<attr> <object>[=<value>]`
@@ -3638,8 +3638,8 @@ ATTRIB_SET is the internal command which powers &attr and @_attr setting; it can
 
 
 **See Also:**
-- [@set](/reference/sharpmush-help/penncmd/#set)
-- [attrib_set()](/reference/sharpmush-help/pennfunc/#attribset)
+- [@set](/reference/sharpmush-help/sharpcmd/#set)
+- [attrib_set()](/reference/sharpmush-help/sharpfunc/#attribset)
 ## @sex
 `@sex <player>[=<gender>]`
 
@@ -3657,11 +3657,11 @@ Examples:
 
 
 **See Also:**
-- [GENDER](/reference/sharpmush-help/penntop/#gender)
-- [subj()](/reference/sharpmush-help/pennfunc/#subj)
-- [poss()](/reference/sharpmush-help/pennfunc/#poss)
-- [aposs()](/reference/sharpmush-help/pennfunc/#aposs)
-- [obj()](/reference/sharpmush-help/pennfunc/#obj)
+- [GENDER](/reference/sharpmush-help/sharptop/#gender)
+- [subj()](/reference/sharpmush-help/sharpfunc/#subj)
+- [poss()](/reference/sharpmush-help/sharpfunc/#poss)
+- [aposs()](/reference/sharpmush-help/sharpfunc/#aposs)
+- [obj()](/reference/sharpmush-help/sharpfunc/#obj)
 ## @shutdown
 `@shutdown[/panic][/reboot][/paranoid]`
 
@@ -3692,13 +3692,13 @@ For backward compatibility, `@sitelock/ban` is shorthand for setting options "!c
 
 If the `/player` switch is given, `<host-pattern>` is treated as a player name, and sitelock rules are added for that player's LASTIP and LASTSITE, if set.
 
-See [@sitelock2](/reference/sharpmush-help/penncmd/#sitelock2).
+See [@sitelock2](/reference/sharpmush-help/sharpcmd/#sitelock2).
 
 **See Also:**
-- [WILDCARDS](/reference/sharpmush-help/penntop/#wildcards)
-- [REGEXPS](/reference/sharpmush-help/penntop/#regexps)
-- [ipaddr()](/reference/sharpmush-help/pennfunc/#ipaddr)
-- [hostname()](/reference/sharpmush-help/pennfunc/#hostname)
+- [WILDCARDS](/reference/sharpmush-help/sharptop/#wildcards)
+- [REGEXPS](/reference/sharpmush-help/sharptop/#regexps)
+- [ipaddr()](/reference/sharpmush-help/sharpfunc/#ipaddr)
+- [hostname()](/reference/sharpmush-help/sharpfunc/#hostname)
 ## @sitelock2
 Sitelock allow/deny options:
 - connect -- allow this site to connect to non-guest players
@@ -3721,7 +3721,7 @@ Sitelock special options:
 - deny_silent -- don't log failed access attempts from this site.
 - regexp -- Treat the hostname pattern as a regular expression instead of a wildcard pattern.
 
-See [@sitelock3](/reference/sharpmush-help/penncmd/#sitelock3).
+See [@sitelock3](/reference/sharpmush-help/sharpcmd/#sitelock3).
 ## @sitelock3
 If you specify a character name after the options, the options are only checked if the host pattern matches, AND the character being checked for connect support matches the one you gave. Use it only with connect and !connect options, since they're the only ones where an existing character is used.
 
@@ -3754,7 +3754,7 @@ With no args, SOCKSET shows the current value of the socket options. With an `<o
 @sockset is a similar in-game command, but can specify which descriptor to change options for, and can set multiple options at once. Only Wizards can change the options for other players' descriptors. `<descriptor>` defaults to your least-idle descriptor, when used by a player; for non-players, it has no default.
 
 Options:
-- colorstyle: See [colorstyle](/reference/sharpmush-help/penncmd/#colorstyle)
+- colorstyle: See [colorstyle](/reference/sharpmush-help/sharpcmd/#colorstyle)
 - outputprefix: Same as OUTPUTPREFIX
 - outputsuffix: Same as OUTPUTSUFFIX
 - pueblo: Sets Pueblo-related options. If value has md5=...", then it will set the pueblo checksum. If empty, Pueblo mode is turned off.
@@ -3763,23 +3763,23 @@ Options:
 - height: Set your height(), same as SCREENHEIGHT
 - terminaltype: Your terminal type, used by terminfo()
 - prompt_newlines: Set whether a newline is shown after prompts from @prompt, same as PROMPT_NEWLINES
-- stripaccents: Strip accents for this connection. Like the NOACCENTS flag, but connection-specific. Set by default on connections which negotiate charset as [US-](/reference/sharpmush-help/pennconf/#us)ASCII
+- stripaccents: Strip accents for this connection. Like the NOACCENTS flag, but connection-specific. Set by default on connections which negotiate charset as [US-](/reference/sharpmush-help/sharpconf/#us)ASCII
 - noquota: Input command quota is set to max every refresh. Can only be set by a logged-in Wizard.
 
 Note that changing 'telnet' or 'pueblo' may stop your client from parsing or displaying output correctly; only use if you know what you're doing!
 
 
 **See Also:**
-- [SOCKET COMMANDS](/reference/sharpmush-help/penncmd/#socket-commands)
-- [terminfo()](/reference/sharpmush-help/pennfunc/#terminfo)
-- [Pueblo](/reference/sharpmush-help/pennpueb/#pueblo)
-- [colorstyle](/reference/sharpmush-help/penncmd/#colorstyle)
-- [@prompt](/reference/sharpmush-help/penncmd/#prompt)
+- [SOCKET COMMANDS](/reference/sharpmush-help/sharpcmd/#socket-commands)
+- [terminfo()](/reference/sharpmush-help/sharpfunc/#terminfo)
+- [Pueblo](/reference/sharpmush-help/sharppueb/#pueblo)
+- [colorstyle](/reference/sharpmush-help/sharpcmd/#colorstyle)
+- [@prompt](/reference/sharpmush-help/sharpcmd/#prompt)
 ## COLORSTYLE
 `SOCKSET colorstyle=<value>`
 `@SOCKSET [me|<descriptor>]=colorstyle,<value>`
 
-You can override the color format you receive from PennMUSH. Normally, PennMUSH tries to guess what your client is capable of through telnet negotiation and your player flags. @sockset lets you inform PennMUSH that your client can support more colors than expected.
+You can override the color format you receive from SharpMUSH. Normally, SharpMUSH tries to guess what your client is capable of through telnet negotiation and your player flags. @sockset lets you inform SharpMUSH that your client can support more colors than expected.
 
 Colorstyle options are:
 
@@ -3787,16 +3787,16 @@ Colorstyle options are:
 - hilite: You only receive hilite text. No colors, just ansi-hilite.
 - 16color: You receive hilite text and the ANSI 16 colors.
 - xterm256: You receive xterm-style 256 colors for text and background.
-- auto: go back to what PennMUSH determined was your client's capabilities.
+- auto: go back to what SharpMUSH determined was your client's capabilities.
 
-In the event that your client receives a color that it is unable to display, PennMUSH will attempt to find a close match that can fit your client's capabilities.
+In the event that your client receives a color that it is unable to display, SharpMUSH will attempt to find a close match that can fit your client's capabilities.
 
 
 **See Also:**
-- [ANSI](/reference/sharpmush-help/pennflag/#ansi)
-- [COLOR](/reference/sharpmush-help/pennflag/#color)
-- [XTERM256](/reference/sharpmush-help/pennflag/#xterm256)
-- [@sockset](/reference/sharpmush-help/penncmd/#sockset)
+- [ANSI](/reference/sharpmush-help/sharpflag/#ansi)
+- [COLOR](/reference/sharpmush-help/sharpflag/#color)
+- [XTERM256](/reference/sharpmush-help/sharpflag/#xterm256)
+- [@sockset](/reference/sharpmush-help/sharpcmd/#sockset)
 ## @SPEECHMOD
 `@speechmod <object>[=<modifier>]`
 
@@ -3825,11 +3825,11 @@ Test
 
 
 **See Also:**
-- [say](/reference/sharpmush-help/penncmd/#say)
-- [pose](/reference/sharpmush-help/penncmd/#pose)
-- [@emit](/reference/sharpmush-help/penncmd/#emit)
-- [@chatformat](/reference/sharpmush-help/pennchat/#chatformat)
-- [@pageformat](/reference/sharpmush-help/penncmd/#pageformat)
+- [say](/reference/sharpmush-help/sharpcmd/#say)
+- [pose](/reference/sharpmush-help/sharpcmd/#pose)
+- [@emit](/reference/sharpmush-help/sharpcmd/#emit)
+- [@chatformat](/reference/sharpmush-help/sharpchat/#chatformat)
+- [@pageformat](/reference/sharpmush-help/sharpcmd/#pageformat)
 ## @mapsql
 `@mapsql[/notify][/colnames][/spoof] <obj>/<attr>=<query>`
 
@@ -3856,10 +3856,10 @@ Examples:
 
 
 **See Also:**
-- [@sql](/reference/sharpmush-help/penncmd/#sql)
-- [sql()](/reference/sharpmush-help/pennfunc/#sql)
-- [sqlescape()](/reference/sharpmush-help/pennfunc/#sqlescape)
-- [mapsql()](/reference/sharpmush-help/pennfunc/#mapsql)
+- [@sql](/reference/sharpmush-help/sharpcmd/#sql)
+- [sql()](/reference/sharpmush-help/sharpfunc/#sql)
+- [sqlescape()](/reference/sharpmush-help/sharpfunc/#sqlescape)
+- [mapsql()](/reference/sharpmush-help/sharpfunc/#mapsql)
 ## @sql
 `@sql <query>`
 
@@ -3874,10 +3874,10 @@ Example:
 
 
 **See Also:**
-- [sql()](/reference/sharpmush-help/pennfunc/#sql)
-- [sqlescape()](/reference/sharpmush-help/pennfunc/#sqlescape)
-- [mapsql()](/reference/sharpmush-help/pennfunc/#mapsql)
-- [@mapsql](/reference/sharpmush-help/penncmd/#mapsql)
+- [sql()](/reference/sharpmush-help/sharpfunc/#sql)
+- [sqlescape()](/reference/sharpmush-help/sharpfunc/#sqlescape)
+- [mapsql()](/reference/sharpmush-help/sharpfunc/#mapsql)
+- [@mapsql](/reference/sharpmush-help/sharpcmd/#mapsql)
 ## @startup
 `@startup <object>[=<action list>]`
 
@@ -3889,12 +3889,12 @@ Note that @startups are NEVER inherited from parent objects.
 
 
 **See Also:**
-- [@restart](/reference/sharpmush-help/penncmd/#restart)
-- [@undestroy](/reference/sharpmush-help/penncmd/#undestroy)
-- [ACTION LISTS](/reference/sharpmush-help/penntop/#action-lists)
-- [@function](/reference/sharpmush-help/penncmd/#function)
-- [@command](/reference/sharpmush-help/penncmd/#command)
-- [@hook](/reference/sharpmush-help/penncmd/#hook)
+- [@restart](/reference/sharpmush-help/sharpcmd/#restart)
+- [@undestroy](/reference/sharpmush-help/sharpcmd/#undestroy)
+- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
+- [@function](/reference/sharpmush-help/sharpcmd/#function)
+- [@command](/reference/sharpmush-help/sharpcmd/#command)
+- [@hook](/reference/sharpmush-help/sharpcmd/#hook)
 ## @stats
 `@stats [<player>]`
 `@stats/tables`
@@ -3919,7 +3919,7 @@ The four command options can also be used as switches (i.e., you can use "`@swee
 
 
 **See Also:**
-- [@scan](/reference/sharpmush-help/penncmd/#scan)
+- [@scan](/reference/sharpmush-help/sharpcmd/#scan)
 ## @switch
 ## @select
 `@switch[/<switch>] <string>=<expr1>, <action1> [,<exprN>, <actionN>]... [,<default>]`
@@ -3937,7 +3937,7 @@ The string "#$" in `<action>`'s will be replaced with the evaluated result of `<
 `@switch/inline` runs all actions in place, instead of creating a new queue entry for them.
 `@switch/regexp` makes `<expr>`s case-insensitive regular expressions, not wildcard/glob patterns.
 
-See [@switch2](/reference/sharpmush-help/penncmd/#switch2).
+See [@switch2](/reference/sharpmush-help/sharpcmd/#switch2).
 ## @switch2
 When using `@switch/inline`, an @break in an `<action>` will stop the calling action list (and any further `<action>`s) from running. Each `<action>` will also be able to see/alter the q-registers for the calling action list. The following switches can be used with `/inline` to alter this behaviour:
 - /nobreak: @breaks in `<action>` do not effect to the calling action list
@@ -3946,15 +3946,15 @@ When using `@switch/inline`, an @break in an `<action>` will stop the calling ac
 
 `@switch/inplace` is an alias for `@switch/inline/nobreak/localize`.
 
-See [@switch3](/reference/sharpmush-help/penncmd/#switch3) for examples.
+See [@switch3](/reference/sharpmush-help/sharpcmd/#switch3) for examples.
 
 **See Also:**
-- [SWITCH WILDCARDS](/reference/sharpmush-help/pennfunc/#switch-wildcards)
-- [switch()](/reference/sharpmush-help/pennfunc/#switch)
-- [@if](/reference/sharpmush-help/penncmd/#if)
-- [@break](/reference/sharpmush-help/penncmd/#break)
-- [stext()](/reference/sharpmush-help/pennfunc/#stext)
-- [slev()](/reference/sharpmush-help/pennfunc/#slev)
+- [SWITCH WILDCARDS](/reference/sharpmush-help/sharpfunc/#switch-wildcards)
+- [switch()](/reference/sharpmush-help/sharpfunc/#switch)
+- [@if](/reference/sharpmush-help/sharpcmd/#if)
+- [@break](/reference/sharpmush-help/sharpcmd/#break)
+- [stext()](/reference/sharpmush-help/sharpfunc/#stext)
+- [slev()](/reference/sharpmush-help/sharpfunc/#slev)
 ## @switch3
 Examples:
 ```
@@ -3984,7 +3984,7 @@ thing says, "Not Puppet!"
 thing says, "Before: 'foob'. After: 'rbaz'
 ```
 
-See [@switch4](/reference/sharpmush-help/penncmd/#switch4).
+See [@switch4](/reference/sharpmush-help/sharpcmd/#switch4).
 ## @switch4
 Examples:
 ```
@@ -4014,7 +4014,7 @@ Admin and those with the tport_anything power can teleport an object even if the
 
 Privileged players who teleport a player to another player send them to the location of the target, unless the `/inside` switch is used, in which case they are sent to the inventory of the target.
 
-See [@teleport2](/reference/sharpmush-help/penncmd/#teleport2).
+See [@teleport2](/reference/sharpmush-help/sharpcmd/#teleport2).
 ## @teleport2
 Teleporting to an exit works the same as using "goto". If you don't control the exit and don't have the tport_anywhere power, either you or `<object>` must be nearby the exit.
 
@@ -4026,11 +4026,11 @@ As a special case, using "home" as the `<room>` has the same effect as the home 
 
 
 **See Also:**
-- [JUMP_OK](/reference/sharpmush-help/pennflag/#jumpok)
-- [NO_TEL](/reference/sharpmush-help/pennconf/#notel)
-- [Z_TEL](/reference/sharpmush-help/pennconf/#ztel)
-- [@tport](/reference/sharpmush-help/penncmd/#tport)
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
+- [JUMP_OK](/reference/sharpmush-help/sharpflag/#jumpok)
+- [NO_TEL](/reference/sharpmush-help/sharpconf/#notel)
+- [Z_TEL](/reference/sharpmush-help/sharpconf/#ztel)
+- [@tport](/reference/sharpmush-help/sharpcmd/#tport)
+- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
 ## @trigger
 `@trigger[/<switches>] <object>/<attribute>[=<arg0>, ..., <arg29>]`
 `@trigger/match[/<switches>] <object>/<attribute>=<string>`
@@ -4048,13 +4048,13 @@ If `/inline` is given, the following switches can be used:
 
 `/inplace` is an alias for `/inline/localize/nobreak`.
 
-The `/match` switch is explained in [@trigger2](/reference/sharpmush-help/penncmd/#trigger2)
+The `/match` switch is explained in [@trigger2](/reference/sharpmush-help/sharpcmd/#trigger2)
 
 You must control `<object>`, or it must be Link_OK and you must have the same owner, to trigger an attribute on it.
 
 The triggered attribute is queued - the new action list is not run instantly. The action list is executed by `<object>`, not by the object using @trigger.
 
-See [@trigger2](/reference/sharpmush-help/penncmd/#trigger2).
+See [@trigger2](/reference/sharpmush-help/sharpcmd/#trigger2).
 ## @trigger2
 By default, the object using @trigger will be the enactor (%#) for the triggered attribute. However, if you control `<object>`, the `/spoof` switch can be used to preserve the current enactor. This is useful for global commands with @a* verb attributes.
 
@@ -4075,12 +4075,12 @@ Note that you have to pass %0 and %1 yourself. For some $-commands or listens, t
 Walker slaps himself around with a trout
 ```
 
-See [@trigger3](/reference/sharpmush-help/penncmd/#trigger3) for examples.
+See [@trigger3](/reference/sharpmush-help/sharpcmd/#trigger3) for examples.
 
 **See Also:**
-- [@include](/reference/sharpmush-help/penncmd/#include)
-- [ufun()](/reference/sharpmush-help/pennfunc/#ufun)
-- [VERBS](/reference/sharpmush-help/penntop/#verbs)
+- [@include](/reference/sharpmush-help/sharpcmd/#include)
+- [ufun()](/reference/sharpmush-help/sharpfunc/#ufun)
+- [VERBS](/reference/sharpmush-help/sharptop/#verbs)
 ## @trigger3
 Examples:
 ```
@@ -4127,15 +4127,15 @@ Example: if I want everyone but Bob to be able to use my toy, I would "`@lock/us
 
 
 **See Also:**
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
-- [use](/reference/sharpmush-help/penncmd/#use)
-- [locktypes](/reference/sharpmush-help/pennlock/#locktypes)
+- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [use](/reference/sharpmush-help/sharpcmd/#use)
+- [locktypes](/reference/sharpmush-help/sharplock/#locktypes)
 ## @uptime
 `@uptime[/mortal]`
 
 This command, for mortals, gives the time until the next database dump. For wizards, it also gives the system uptime (just as if 'uptime' had been typed at the shell prompt) and process statistics, some of which are explained in the next help entry. Wizards can use the `/mortal` switch to avoid seeing the extra process statistics.
 
-See [@uptime2](/reference/sharpmush-help/penncmd/#uptime2).
+See [@uptime2](/reference/sharpmush-help/sharpcmd/#uptime2).
 ## @uptime2
 While the exact statistics displayed depends on the operating system of the game's server, typical things might include the process ID, the machine page size, the maximum resident set size utilized (in K), "integral" memory (in K x seconds-of-execution), the number of page faults ("hard" ones require I/O activity, "soft" ones do not), the number of times the process was "swapped" out of main memory, the number of times the process had to perform disk I/O, the number of network packets sent and received, the number of context switches, and the number of signals delivered to the process.
 
@@ -4143,8 +4143,8 @@ Under Linux, memory usage is split into a number of different categories includi
 
 
 **See Also:**
-- [@stats](/reference/sharpmush-help/penncmd/#stats)
-- [@list](/reference/sharpmush-help/penncmd/#list)
+- [@stats](/reference/sharpmush-help/sharpcmd/#stats)
+- [@list](/reference/sharpmush-help/sharpcmd/#list)
 ## @unlink
 `@unlink <exit>`
 `@unlink <room>`
@@ -4155,8 +4155,8 @@ The second form removes the DROP-TO on the room.
 
 
 **See Also:**
-- [@link](/reference/sharpmush-help/penncmd/#link)
-- [DROP-TO](/reference/sharpmush-help/pennconf/#drop-to)
+- [@link](/reference/sharpmush-help/sharpcmd/#link)
+- [DROP-TO](/reference/sharpmush-help/sharpconf/#drop-to)
 ## @unlock
 `@unlock[/<switch>] <object>`
 
@@ -4164,8 +4164,8 @@ Removes the lock on `<object>`. It can take as many switches as @lock can.
 
 
 **See Also:**
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
-- [locktypes](/reference/sharpmush-help/pennlock/#locktypes)
+- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [locktypes](/reference/sharpmush-help/sharplock/#locktypes)
 ## @version
 `@version`
 
@@ -4173,8 +4173,8 @@ Tells the player the name of the MUSH, which version of the code is currently ru
 
 
 **See Also:**
-- [version()](/reference/sharpmush-help/pennfunc/#version)
-- [numversion()](/reference/sharpmush-help/pennfunc/#numversion)
+- [version()](/reference/sharpmush-help/sharpfunc/#version)
+- [numversion()](/reference/sharpmush-help/sharpfunc/#numversion)
 ## @verb
 `@verb <victim>=<actor>,<what>,<whatd>,<owhat>,<owhatd>,<awhat>,<args>`
 
@@ -4186,20 +4186,20 @@ Everyone in the same room as `<actor>` sees the contents of `<victim>`'s `<owhat
 
 By supplying up to 29 `<args>`, you may pass those values on the stack (i.e. %0, %1, %2, etc. up through %9, and `r(0,args)` to `r(29,args)`).
 
-See [@verb2](/reference/sharpmush-help/penncmd/#verb2).
+See [@verb2](/reference/sharpmush-help/sharpcmd/#verb2).
 ## @verb2
 In order to use this command, at least one of the following criterion must apply:
 1. The object which did the @verb is a wizard.
 2. The object which did the @verb controls both `<actor>` and `<victim>`
 3. The thing which triggered the @verb (such as through a $-command on the object which did the @verb) must be `<actor>`, AND the object which did the @verb must be either privileged or control `<victim>` or `<victim>` must be VISUAL.
 
-See [@verb3](/reference/sharpmush-help/penncmd/#verb3) for examples.
+See [@verb3](/reference/sharpmush-help/sharpcmd/#verb3) for examples.
 
 **See Also:**
-- [USER-DEFINED COMMANDS](/reference/sharpmush-help/penntop/#user-defined-commands)
-- [STACK](/reference/sharpmush-help/penntop/#stack)
-- [VERBS](/reference/sharpmush-help/penntop/#verbs)
-- [@trigger](/reference/sharpmush-help/penncmd/#trigger)
+- [USER-DEFINED COMMANDS](/reference/sharpmush-help/sharptop/#user-defined-commands)
+- [STACK](/reference/sharpmush-help/sharptop/#stack)
+- [VERBS](/reference/sharpmush-help/sharptop/#verbs)
+- [@trigger](/reference/sharpmush-help/sharpcmd/#trigger)
 ## @verb3
 Examples:
 ```
@@ -4219,7 +4219,7 @@ You have just tested this object!
 Cyclonus has failed!
 ```
 
-See [@verb4](/reference/sharpmush-help/penncmd/#verb4) for another example.
+See [@verb4](/reference/sharpmush-help/sharpcmd/#verb4) for another example.
 ## @verb4
 In order to make this into a global command that anyone can use, we need to put it on a WIZARD object in the Master Room.
 ```
@@ -4245,13 +4245,13 @@ The second form sets up a semaphore wait on `<object>`. The enactor will execute
 
 The third form combines the first two: the enactor will execute `<command_list>` when `<object>` is @notified or when `<time>` passes, whichever happens first.
 
-More forms that support semaphores on arbitrary attributes are described in [@wait2](/reference/sharpmush-help/penncmd/#wait2).
+More forms that support semaphores on arbitrary attributes are described in [@wait2](/reference/sharpmush-help/sharpcmd/#wait2).
 
 
 **See Also:**
-- [SEMAPHORES](/reference/sharpmush-help/penntop/#semaphores)
-- [@drain](/reference/sharpmush-help/penncmd/#drain)
-- [@notify](/reference/sharpmush-help/penncmd/#notify)
+- [SEMAPHORES](/reference/sharpmush-help/sharptop/#semaphores)
+- [@drain](/reference/sharpmush-help/sharpcmd/#drain)
+- [@notify](/reference/sharpmush-help/sharpcmd/#notify)
 ## @wait2
 Normally, a semaphore wait depends on the SEMAPHORE attribute of the object in question. However, it is useful to be able to use other attributes as semaphores, so one object can be used as the blocker for multiple different things at once. Possible attribute names aren't completely arbitrary. See 'HELP SEMAPHORES5' for details.
 
@@ -4262,7 +4262,7 @@ The syntax for these are:
 
 You cannot do a non-timed semaphore on an attribute with a numeric name, as that is taken as a timeout instead.
 
-See [@wait3](/reference/sharpmush-help/penncmd/#wait3).
+See [@wait3](/reference/sharpmush-help/sharpcmd/#wait3).
 ## @wait3
 `@wait/pid <pid>=<seconds>`
 `@wait/pid <pid>=[+-]<adjustment>`
@@ -4286,8 +4286,8 @@ The message is prefixed with the value of the wall_prefix, rwall_prefix or wizwa
 
 
 **See Also:**
-- [@wizwall](/reference/sharpmush-help/penncmd/#wizwall)
-- [@rwall](/reference/sharpmush-help/penncmd/#rwall)
+- [@wizwall](/reference/sharpmush-help/sharpcmd/#wizwall)
+- [@rwall](/reference/sharpmush-help/sharpcmd/#rwall)
 ## @warnings
 `@warnings <object>=<warning list>`
 
@@ -4295,13 +4295,13 @@ This command will set the types of warnings which should be reported on an objec
 
 When an object is checked for warnings (via @wcheck by the owner, or automatically), only warnings which are set to be reported on the object will be reported. If no warnings are set on the object, the owner's warning settings will be used. When admin use @wcheck to check non-owned objects, their personal warnings are always used.
 
-For a list of warnings, see [warnings list](/reference/sharpmush-help/penntop/#warnings-list).
-For examples, see [@warnings2](/reference/sharpmush-help/penncmd/#warnings2).
+For a list of warnings, see [warnings list](/reference/sharpmush-help/sharptop/#warnings-list).
+For examples, see [@warnings2](/reference/sharpmush-help/sharpcmd/#warnings2).
 
 
 **See Also:**
-- [@wcheck](/reference/sharpmush-help/penncmd/#wcheck)
-- [NO_WARN](/reference/sharpmush-help/pennconf/#nowarn)
+- [@wcheck](/reference/sharpmush-help/sharpcmd/#wcheck)
+- [NO_WARN](/reference/sharpmush-help/sharpconf/#nowarn)
 ## @warnings2
 Example 1: Normal building situations
 Most people will simply want to leave their @warnings set to "normal" and their objects' @warnings set to "none". They will then receive normal warnings for all their objects.
@@ -4309,7 +4309,7 @@ Most people will simply want to leave their @warnings set to "normal" and their 
 Example 2: Warning-lover
 People who find warnings very helpful (like heavy builders) may want to set their personal @warnings to "extra" or "all", and keep their objects' warnings at "none". If a specific object should be treated less strictly, set that object's @warnings differently. If an object shouldn't be warned on at all, set the NO_WARN flag on the object.
 
-See [@warnings3](/reference/sharpmush-help/penncmd/#warnings3).
+See [@warnings3](/reference/sharpmush-help/sharpcmd/#warnings3).
 ## @warnings3
 Example 3: Warning-hater
 People who prefer not to be warned except for specific object may set their personal @warnings to "none" and set the @warnings on those objects to appropriate levels.
@@ -4329,9 +4329,9 @@ The third runs it on all objects the player owns that aren't set NO_WARN.
 
 
 **See Also:**
-- [@warnings](/reference/sharpmush-help/penncmd/#warnings)
-- [WARNINGS](/reference/sharpmush-help/penntop/#warnings)
-- [NO_WARN](/reference/sharpmush-help/pennconf/#nowarn)
+- [@warnings](/reference/sharpmush-help/sharpcmd/#warnings)
+- [WARNINGS](/reference/sharpmush-help/sharptop/#warnings)
+- [NO_WARN](/reference/sharpmush-help/sharpconf/#nowarn)
 ## @whereis
 `@whereis <player>`
 
@@ -4346,8 +4346,8 @@ Example:
 
 
 **See Also:**
-- [UNFINDABLE](/reference/sharpmush-help/pennflag/#unfindable)
-- [loc()](/reference/sharpmush-help/pennfunc/#loc)
+- [UNFINDABLE](/reference/sharpmush-help/sharpflag/#unfindable)
+- [loc()](/reference/sharpmush-help/sharpfunc/#loc)
 ## @wipe
 `@wipe <object>[/<attribute pattern>]`
 
@@ -4365,11 +4365,11 @@ The `/silent` switch suppresses the confirmation message, and `/noisy` causes it
 
 
 **See Also:**
-- [@nszemit](/reference/sharpmush-help/penncmd/#nszemit)
-- [zemit()](/reference/sharpmush-help/pennfunc/#zemit)
-- [zone()](/reference/sharpmush-help/pennfunc/#zone)
-- [zwho()](/reference/sharpmush-help/pennfunc/#zwho)
-- [ZONES](/reference/sharpmush-help/penntop/#zones)
+- [@nszemit](/reference/sharpmush-help/sharpcmd/#nszemit)
+- [zemit()](/reference/sharpmush-help/sharpfunc/#zemit)
+- [zone()](/reference/sharpmush-help/sharpfunc/#zone)
+- [zwho()](/reference/sharpmush-help/sharpfunc/#zwho)
+- [ZONES](/reference/sharpmush-help/sharptop/#zones)
 ## ahelp
 ## anews
 `ahelp [<topic>]`
@@ -4385,7 +4385,7 @@ This command works like an abbreviated version of "examine", showing information
 
 
 **See Also:**
-- [examine](/reference/sharpmush-help/penncmd/#examine)
+- [examine](/reference/sharpmush-help/sharpcmd/#examine)
 ## cd
 ## ch
 ## cv
@@ -4403,8 +4403,8 @@ None of those commands affect the hidden status of other connections, if you're 
 
 
 **See Also:**
-- [DARK](/reference/sharpmush-help/pennflag/#dark)
-- [@hide](/reference/sharpmush-help/penncmd/#hide)
+- [DARK](/reference/sharpmush-help/sharpflag/#dark)
+- [@hide](/reference/sharpmush-help/sharpcmd/#hide)
 ## OUTPUTPREFIX
 ## OUTPUTSUFFIX
 `OUTPUTPREFIX <string>`
@@ -4420,8 +4420,8 @@ Some routers will only consider a connection alive if text is received, as well 
 
 
 **See Also:**
-- [KEEPALIVE](/reference/sharpmush-help/pennflag/#keepalive)
-- [@idle](/reference/sharpmush-help/penncmd/#idle)
+- [KEEPALIVE](/reference/sharpmush-help/sharpflag/#keepalive)
+- [@idle](/reference/sharpmush-help/sharpcmd/#idle)
 ## teach
 `teach <command>`
 `teach/list <action list>`
@@ -4450,8 +4450,8 @@ You say, "Third"
 
 
 **See Also:**
-- [@trigger](/reference/sharpmush-help/penncmd/#trigger)
-- [@include](/reference/sharpmush-help/penncmd/#include)
+- [@trigger](/reference/sharpmush-help/sharpcmd/#trigger)
+- [@include](/reference/sharpmush-help/sharpcmd/#include)
 ## drop
 `drop <object>`
 
@@ -4461,10 +4461,10 @@ In order to drop an object, you must pass it's Drop lock and your location's Dro
 
 
 **See Also:**
-- [empty](/reference/sharpmush-help/penncmd/#empty)
-- [get](/reference/sharpmush-help/penncmd/#get)
-- [STICKY](/reference/sharpmush-help/pennflag/#sticky)
-- [DROP-TO](/reference/sharpmush-help/pennconf/#drop-to)
+- [empty](/reference/sharpmush-help/sharpcmd/#empty)
+- [get](/reference/sharpmush-help/sharpcmd/#get)
+- [STICKY](/reference/sharpmush-help/sharpflag/#sticky)
+- [DROP-TO](/reference/sharpmush-help/sharpconf/#drop-to)
 ## enter
 `enter <object>`
 
@@ -4472,7 +4472,7 @@ Used to enter a thing or player. You can only enter an object if you own it or i
 
 Insides of objects are best used for vehicles, or storage spaces when you don't have a home. You can describe the interior of an object differently from its exterior by using @idescribe.
 
-See: [@enter](/reference/sharpmush-help/penncmd/#enter), [@efail](/reference/sharpmush-help/penncmd/#efail), [@ealias](/reference/sharpmush-help/penncmd/#ealias), [leave](/reference/sharpmush-help/penncmd/#leave), [@lock](/reference/sharpmush-help/penncmd/#lock), [@idescribe](/reference/sharpmush-help/penncmd/#idescribe), [INTERIORS](/reference/sharpmush-help/penntop/#interiors)
+See: [@enter](/reference/sharpmush-help/sharpcmd/#enter), [@efail](/reference/sharpmush-help/sharpcmd/#efail), [@ealias](/reference/sharpmush-help/sharpcmd/#ealias), [leave](/reference/sharpmush-help/sharpcmd/#leave), [@lock](/reference/sharpmush-help/sharpcmd/#lock), [@idescribe](/reference/sharpmush-help/sharpcmd/#idescribe), [INTERIORS](/reference/sharpmush-help/sharptop/#interiors)
 ## examine
 `examine[/<switches>] <object>[/<attribute>]`
 
@@ -4491,10 +4491,10 @@ The `/opaque` switch omits contents listings.
 
 
 **See Also:**
-- [ATTRIBUTE TREES](/reference/sharpmush-help/pennattr/#attribute-trees)
-- [brief](/reference/sharpmush-help/penncmd/#brief)
-- [lattr()](/reference/sharpmush-help/pennfunc/#lattr)
-- [WILDCARDS](/reference/sharpmush-help/penntop/#wildcards)
+- [ATTRIBUTE TREES](/reference/sharpmush-help/sharpattr/#attribute-trees)
+- [brief](/reference/sharpmush-help/sharpcmd/#brief)
+- [lattr()](/reference/sharpmush-help/sharpfunc/#lattr)
+- [WILDCARDS](/reference/sharpmush-help/sharptop/#wildcards)
 ## follow
 `follow <object>`
 
@@ -4502,14 +4502,14 @@ If you pass the object's follow lock, you begin following it. As the object move
 
 
 **See Also:**
-- [unfollow](/reference/sharpmush-help/penncmd/#unfollow)
-- [dismiss](/reference/sharpmush-help/penncmd/#dismiss)
-- [desert](/reference/sharpmush-help/penncmd/#desert)
-- [followers()](/reference/sharpmush-help/pennfunc/#followers)
-- [following()](/reference/sharpmush-help/pennfunc/#following)
-- [@follow](/reference/sharpmush-help/penncmd/#follow)
-- [@ofollow](/reference/sharpmush-help/penncmd/#ofollow)
-- [@afollow](/reference/sharpmush-help/penncmd/#afollow)
+- [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow)
+- [dismiss](/reference/sharpmush-help/sharpcmd/#dismiss)
+- [desert](/reference/sharpmush-help/sharpcmd/#desert)
+- [followers()](/reference/sharpmush-help/sharpfunc/#followers)
+- [following()](/reference/sharpmush-help/sharpfunc/#following)
+- [@follow](/reference/sharpmush-help/sharpcmd/#follow)
+- [@ofollow](/reference/sharpmush-help/sharpcmd/#ofollow)
+- [@afollow](/reference/sharpmush-help/sharpcmd/#afollow)
 ## dismiss
 `dismiss <object>`
 `dismiss`
@@ -4518,10 +4518,10 @@ The dismiss command stops `<object>` from following you. If no object is given, 
 
 
 **See Also:**
-- [follow](/reference/sharpmush-help/penncmd/#follow)
-- [unfollow](/reference/sharpmush-help/penncmd/#unfollow)
-- [desert](/reference/sharpmush-help/penncmd/#desert)
-- [followers()](/reference/sharpmush-help/pennfunc/#followers)
+- [follow](/reference/sharpmush-help/sharpcmd/#follow)
+- [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow)
+- [desert](/reference/sharpmush-help/sharpcmd/#desert)
+- [followers()](/reference/sharpmush-help/sharpfunc/#followers)
 ## desert
 `desert <object>`
 `desert`
@@ -4530,11 +4530,11 @@ The desert command stops `<object>` from following you and stops you from follow
 
 
 **See Also:**
-- [follow](/reference/sharpmush-help/penncmd/#follow)
-- [unfollow](/reference/sharpmush-help/penncmd/#unfollow)
-- [dismiss](/reference/sharpmush-help/penncmd/#dismiss)
-- [followers()](/reference/sharpmush-help/pennfunc/#followers)
-- [following()](/reference/sharpmush-help/pennfunc/#following)
+- [follow](/reference/sharpmush-help/sharpcmd/#follow)
+- [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow)
+- [dismiss](/reference/sharpmush-help/sharpcmd/#dismiss)
+- [followers()](/reference/sharpmush-help/sharpfunc/#followers)
+- [following()](/reference/sharpmush-help/sharpfunc/#following)
 ## empty
 `empty <object>`
 
@@ -4544,8 +4544,8 @@ The empty command assumes that all `<object>`'s items pass through the hands of 
 
 
 **See Also:**
-- [get](/reference/sharpmush-help/penncmd/#get)
-- [drop](/reference/sharpmush-help/penncmd/#drop)
+- [get](/reference/sharpmush-help/sharpcmd/#get)
+- [drop](/reference/sharpmush-help/sharpcmd/#drop)
 ## get
 ## take
 `get <object>`
@@ -4561,12 +4561,12 @@ To get an object from someone else's inventory, the possessive_get @config optio
 
 
 **See Also:**
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
-- [ENTER_OK](/reference/sharpmush-help/pennflag/#enterok)
-- [give](/reference/sharpmush-help/penncmd/#give)
-- [drop](/reference/sharpmush-help/penncmd/#drop)
-- [@success](/reference/sharpmush-help/penncmd/#success)
-- [inventory](/reference/sharpmush-help/penncmd/#inventory)
+- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [ENTER_OK](/reference/sharpmush-help/sharpflag/#enterok)
+- [give](/reference/sharpmush-help/sharpcmd/#give)
+- [drop](/reference/sharpmush-help/sharpcmd/#drop)
+- [@success](/reference/sharpmush-help/sharpcmd/#success)
+- [inventory](/reference/sharpmush-help/sharpcmd/#inventory)
 ## @buy
 ## @abuy
 ## @obuy
@@ -4585,13 +4585,13 @@ Example:
 
 
 **See Also:**
-- [buy](/reference/sharpmush-help/penncmd/#buy)
-- [@pricelist](/reference/sharpmush-help/penncmd/#pricelist)
-- [MONEY](/reference/sharpmush-help/penntop/#money)
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
-- [VERBS](/reference/sharpmush-help/penntop/#verbs)
-- [@cost](/reference/sharpmush-help/penncmd/#cost)
-- [give](/reference/sharpmush-help/penncmd/#give)
+- [buy](/reference/sharpmush-help/sharpcmd/#buy)
+- [@pricelist](/reference/sharpmush-help/sharpcmd/#pricelist)
+- [MONEY](/reference/sharpmush-help/sharptop/#money)
+- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [VERBS](/reference/sharpmush-help/sharptop/#verbs)
+- [@cost](/reference/sharpmush-help/sharpcmd/#cost)
+- [give](/reference/sharpmush-help/sharpcmd/#give)
 ## @pricelist
 `@pricelist <object>=<item1>:<price1>[,<price2>][ <item2>:...]`
 
@@ -4610,12 +4610,12 @@ Example::
 
 
 **See Also:**
-- [buy](/reference/sharpmush-help/penncmd/#buy)
-- [@buy](/reference/sharpmush-help/penncmd/#buy)
-- [MONEY](/reference/sharpmush-help/penntop/#money)
-- [@cost](/reference/sharpmush-help/penncmd/#cost)
-- [give](/reference/sharpmush-help/penncmd/#give)
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
+- [buy](/reference/sharpmush-help/sharpcmd/#buy)
+- [@buy](/reference/sharpmush-help/sharpcmd/#buy)
+- [MONEY](/reference/sharpmush-help/sharptop/#money)
+- [@cost](/reference/sharpmush-help/sharpcmd/#cost)
+- [give](/reference/sharpmush-help/sharpcmd/#give)
+- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
 ## buy
 `buy <item>[ from <vendor>][ for <cost>]`
 
@@ -4635,10 +4635,10 @@ You enjoy a delicious coke.
 
 
 **See Also:**
-- [@BUY](/reference/sharpmush-help/penncmd/#buy)
-- [@PRICELIST](/reference/sharpmush-help/penncmd/#pricelist)
-- [give](/reference/sharpmush-help/penncmd/#give)
-- [@COST](/reference/sharpmush-help/penncmd/#cost)
+- [@BUY](/reference/sharpmush-help/sharpcmd/#buy)
+- [@PRICELIST](/reference/sharpmush-help/sharpcmd/#pricelist)
+- [give](/reference/sharpmush-help/sharpcmd/#give)
+- [@COST](/reference/sharpmush-help/sharpcmd/#cost)
 ## give
 `give[/silent] <recipient>=<number>`
 `give[/silent] <number> to <recipient>`
@@ -4651,14 +4651,14 @@ The last two forms of this command give an `<object>` from your inventory to `<r
 
 
 **See Also:**
-- [@pay](/reference/sharpmush-help/penncmd/#pay)
-- [@cost](/reference/sharpmush-help/penncmd/#cost)
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
-- [inventory](/reference/sharpmush-help/penncmd/#inventory)
-- [@receive](/reference/sharpmush-help/penncmd/#receive)
-- [@give](/reference/sharpmush-help/penncmd/#give)
-- [buy](/reference/sharpmush-help/penncmd/#buy)
-- [@success](/reference/sharpmush-help/penncmd/#success)
+- [@pay](/reference/sharpmush-help/sharpcmd/#pay)
+- [@cost](/reference/sharpmush-help/sharpcmd/#cost)
+- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [inventory](/reference/sharpmush-help/sharpcmd/#inventory)
+- [@receive](/reference/sharpmush-help/sharpcmd/#receive)
+- [@give](/reference/sharpmush-help/sharpcmd/#give)
+- [buy](/reference/sharpmush-help/sharpcmd/#buy)
+- [@success](/reference/sharpmush-help/sharpcmd/#success)
 ## go
 ## goto
 ## move
@@ -4673,11 +4673,11 @@ Goes in the specified direction. `<Direction>` can be the name or alias of an ex
 
 
 **See Also:**
-- [HOME](/reference/sharpmush-help/penntop/#home)
-- [@link](/reference/sharpmush-help/penncmd/#link)
-- [@ealias](/reference/sharpmush-help/penncmd/#ealias)
-- [@lalias](/reference/sharpmush-help/penncmd/#lalias)
-- [EXITS](/reference/sharpmush-help/penntop/#exits)
+- [HOME](/reference/sharpmush-help/sharptop/#home)
+- [@link](/reference/sharpmush-help/sharpcmd/#link)
+- [@ealias](/reference/sharpmush-help/sharpcmd/#ealias)
+- [@lalias](/reference/sharpmush-help/sharpcmd/#lalias)
+- [EXITS](/reference/sharpmush-help/sharptop/#exits)
 ## INFO
 `INFO`
 
@@ -4685,7 +4685,7 @@ This command returns some information about the MUSH you are on, such as its ver
 
 
 **See Also:**
-- [MSSP-REQUEST](/reference/sharpmush-help/penncmd/#mssp-request)
+- [MSSP-REQUEST](/reference/sharpmush-help/sharpcmd/#mssp-request)
 ## inventory
 `inventory`
 
@@ -4695,12 +4695,12 @@ Note that on some MUSHes it is possible to take things that are in someone else'
 
 
 **See Also:**
-- [score](/reference/sharpmush-help/penncmd/#score)
-- [take](/reference/sharpmush-help/penncmd/#take)
-- [drop](/reference/sharpmush-help/penncmd/#drop)
-- [OPAQUE](/reference/sharpmush-help/pennflag/#opaque)
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
-- [@invformat](/reference/sharpmush-help/penncmd/#invformat)
+- [score](/reference/sharpmush-help/sharpcmd/#score)
+- [take](/reference/sharpmush-help/sharpcmd/#take)
+- [drop](/reference/sharpmush-help/sharpcmd/#drop)
+- [OPAQUE](/reference/sharpmush-help/sharpflag/#opaque)
+- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [@invformat](/reference/sharpmush-help/sharpcmd/#invformat)
 ## leave
 `leave`
 
@@ -4710,12 +4710,12 @@ The NO_LEAVE flag may be enabled on some MUSHes. Objects set with this flag cann
 
 
 **See Also:**
-- [enter](/reference/sharpmush-help/penncmd/#enter)
-- [@leave](/reference/sharpmush-help/penncmd/#leave)
-- [@lfail](/reference/sharpmush-help/penncmd/#lfail)
-- [@lalias](/reference/sharpmush-help/penncmd/#lalias)
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
-- [INTERIORS](/reference/sharpmush-help/penntop/#interiors)
+- [enter](/reference/sharpmush-help/sharpcmd/#enter)
+- [@leave](/reference/sharpmush-help/sharpcmd/#leave)
+- [@lfail](/reference/sharpmush-help/sharpcmd/#lfail)
+- [@lalias](/reference/sharpmush-help/sharpcmd/#lalias)
+- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [INTERIORS](/reference/sharpmush-help/sharptop/#interiors)
 ## LOGOUT
 `LOGOUT`
 
@@ -4731,7 +4731,7 @@ Displays the description of `<object>`, or the room you're in if you don't name 
 
 If you're inside a container, `look/outside` allows you to look at the room the container is in, or at other objects in your container's location, as long as your container is not set OPAQUE.
 
-See [look2](/reference/sharpmush-help/penncmd/#look2).
+See [look2](/reference/sharpmush-help/sharpcmd/#look2).
 ## look2
 If you look at an object that is not set OPAQUE, you will see any non-DARK items in its inventory. You can look at DARK items in your location if you know what their name is by typing 'look `<object>`', but they will not show up in the list of contents.
 
@@ -4743,15 +4743,15 @@ If a room is set DARK, when you look you will not see any of the exits or conten
 
 
 **See Also:**
-- [OPAQUE](/reference/sharpmush-help/pennflag/#opaque)
-- [FLAGS](/reference/sharpmush-help/pennflag/#flags)
-- [@describe](/reference/sharpmush-help/penncmd/#describe)
-- [@adescribe](/reference/sharpmush-help/penncmd/#adescribe)
-- [@odescribe](/reference/sharpmush-help/penncmd/#odescribe)
-- [DARK](/reference/sharpmush-help/pennflag/#dark)
-- [LIGHT](/reference/sharpmush-help/pennflag/#light)
-- [TRANSPARENT](/reference/sharpmush-help/pennflag/#transparent)
-- [CLOUDY](/reference/sharpmush-help/pennflag/#cloudy)
+- [OPAQUE](/reference/sharpmush-help/sharpflag/#opaque)
+- [FLAGS](/reference/sharpmush-help/sharpflag/#flags)
+- [@describe](/reference/sharpmush-help/sharpcmd/#describe)
+- [@adescribe](/reference/sharpmush-help/sharpcmd/#adescribe)
+- [@odescribe](/reference/sharpmush-help/sharpcmd/#odescribe)
+- [DARK](/reference/sharpmush-help/sharpflag/#dark)
+- [LIGHT](/reference/sharpmush-help/sharpflag/#light)
+- [TRANSPARENT](/reference/sharpmush-help/sharpflag/#transparent)
+- [CLOUDY](/reference/sharpmush-help/sharpflag/#cloudy)
 ## news
 `news [<topic>]`
 
@@ -4774,7 +4774,7 @@ You paged Airwolf with 'see, I don't have to retype the name.'.
 > page "John Lennon" Ringo=Paul's fine!
 ```
 
-See [page2](/reference/sharpmush-help/penncmd/#page2).
+See [page2](/reference/sharpmush-help/sharpcmd/#page2).
 ## page2
 Page will attempt a partial match on the name, checking both for an @alias and to see if the name matches someone connected. If the first character of `<message>` is a : or a ;, it will send the page in pose format.
 
@@ -4790,15 +4790,15 @@ The `/port` switch is admin-only, and will page a single port descriptor directl
 
 
 **See Also:**
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
-- [@alias](/reference/sharpmush-help/penncmd/#alias)
-- [@pageformat](/reference/sharpmush-help/penncmd/#pageformat)
-- [pose](/reference/sharpmush-help/penncmd/#pose)
+- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [@alias](/reference/sharpmush-help/sharpcmd/#alias)
+- [@pageformat](/reference/sharpmush-help/sharpcmd/#pageformat)
+- [pose](/reference/sharpmush-help/sharpcmd/#pose)
 - [:]
 - [;]
-- [HAVEN](/reference/sharpmush-help/pennflag/#haven)
-- [NOSPOOF](/reference/sharpmush-help/pennflag/#nospoof)
-- [FLAGS](/reference/sharpmush-help/pennflag/#flags)
+- [HAVEN](/reference/sharpmush-help/sharpflag/#haven)
+- [NOSPOOF](/reference/sharpmush-help/sharpflag/#nospoof)
+- [FLAGS](/reference/sharpmush-help/sharpflag/#flags)
 ## :
 ## ;
 ## pose
@@ -4814,12 +4814,12 @@ The pose and semipose commands allow you to perform actions. Pose shows your nam
 
 If you have a SPEECHMOD attribute set, it will be evaluated with `<action>` as %0 and either : (for pose) or ; (for semipose) as %1. The result is used instead of `<action>`, as long as it returns a non-empty string.
 
-See [pose2](/reference/sharpmush-help/penncmd/#pose2) for examples.
+See [pose2](/reference/sharpmush-help/sharpcmd/#pose2) for examples.
 
 **See Also:**
-- [say](/reference/sharpmush-help/penncmd/#say)
-- [@emit](/reference/sharpmush-help/penncmd/#emit)
-- [@speechmod](/reference/sharpmush-help/penncmd/#speechmod)
+- [say](/reference/sharpmush-help/sharpcmd/#say)
+- [@emit](/reference/sharpmush-help/sharpcmd/#emit)
+- [@speechmod](/reference/sharpmush-help/sharpcmd/#speechmod)
 ## pose2
 Examples:
 ```
@@ -4846,11 +4846,11 @@ If `<message>` begins with a double-quote and the chat_strip_quote @config optio
 
 
 **See Also:**
-- [pose](/reference/sharpmush-help/penncmd/#pose)
-- [whisper](/reference/sharpmush-help/penncmd/#whisper)
-- [@speechmod](/reference/sharpmush-help/penncmd/#speechmod)
-- [@emit](/reference/sharpmush-help/penncmd/#emit)
-- [page](/reference/sharpmush-help/penncmd/#page)
+- [pose](/reference/sharpmush-help/sharpcmd/#pose)
+- [whisper](/reference/sharpmush-help/sharpcmd/#whisper)
+- [@speechmod](/reference/sharpmush-help/sharpcmd/#speechmod)
+- [@emit](/reference/sharpmush-help/sharpcmd/#emit)
+- [page](/reference/sharpmush-help/sharpcmd/#page)
 ## score
 `score`
 
@@ -4858,11 +4858,11 @@ Displays how many pennies you have. Helpful to see if any machines are looping. 
 
 
 **See Also:**
-- [LOOPING](/reference/sharpmush-help/penntop/#looping)
-- [@ps](/reference/sharpmush-help/penncmd/#ps)
-- [QUEUE](/reference/sharpmush-help/penntop/#queue)
-- [MONEY](/reference/sharpmush-help/penntop/#money)
-- [TRACK_MONEY](/reference/sharpmush-help/pennflag/#trackmoney)
+- [LOOPING](/reference/sharpmush-help/sharptop/#looping)
+- [@ps](/reference/sharpmush-help/sharpcmd/#ps)
+- [QUEUE](/reference/sharpmush-help/sharptop/#queue)
+- [MONEY](/reference/sharpmush-help/sharptop/#money)
+- [TRACK_MONEY](/reference/sharpmush-help/sharpflag/#trackmoney)
 ## think
 `think <message>`
 
@@ -4872,8 +4872,8 @@ One possible use: `@adesc me=think %n just looked at you.`
 
 
 **See Also:**
-- [@pemit](/reference/sharpmush-help/penncmd/#pemit)
-- [@@](/reference/sharpmush-help/penncmd/)
+- [@pemit](/reference/sharpmush-help/sharpcmd/#pemit)
+- [@@](/reference/sharpmush-help/sharpcmd/)
 ## QUIT
 `QUIT`
 
@@ -4886,26 +4886,26 @@ This command stops you from following an object that you were formerly following
 
 
 **See Also:**
-- [follow](/reference/sharpmush-help/penncmd/#follow)
-- [dismiss](/reference/sharpmush-help/penncmd/#dismiss)
-- [desert](/reference/sharpmush-help/penncmd/#desert)
-- [followers()](/reference/sharpmush-help/pennfunc/#followers)
-- [@follow](/reference/sharpmush-help/penncmd/#follow)
-- [@ofollow](/reference/sharpmush-help/penncmd/#ofollow)
-- [@afollow](/reference/sharpmush-help/penncmd/#afollow)
+- [follow](/reference/sharpmush-help/sharpcmd/#follow)
+- [dismiss](/reference/sharpmush-help/sharpcmd/#dismiss)
+- [desert](/reference/sharpmush-help/sharpcmd/#desert)
+- [followers()](/reference/sharpmush-help/sharpfunc/#followers)
+- [@follow](/reference/sharpmush-help/sharpcmd/#follow)
+- [@ofollow](/reference/sharpmush-help/sharpcmd/#ofollow)
+- [@afollow](/reference/sharpmush-help/sharpcmd/#afollow)
 ## use
 `use <object>`
 
 This command attempts to "use" `<object>`. If you do not pass `<object>`'s @lock/use, the UFAIL/OUFAIL/AUFAIL attributes are triggered.
 
-If you pass the lock, you will see `<object>`'s USE attribute, and others in your location will see `<object>`'s OUSE. Depending on `<object>`'s CHARGES attribute, one of `<object>`'s AUSE or RUNOUT attributes will be triggered - see [@charges](/reference/sharpmush-help/penncmd/#charges) for more information.
+If you pass the lock, you will see `<object>`'s USE attribute, and others in your location will see `<object>`'s OUSE. Depending on `<object>`'s CHARGES attribute, one of `<object>`'s AUSE or RUNOUT attributes will be triggered - see [@charges](/reference/sharpmush-help/sharpcmd/#charges) for more information.
 
 
 **See Also:**
-- [@use](/reference/sharpmush-help/penncmd/#use)
-- [@charges](/reference/sharpmush-help/penncmd/#charges)
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
-- [@ufail](/reference/sharpmush-help/penncmd/#ufail)
+- [@use](/reference/sharpmush-help/sharpcmd/#use)
+- [@charges](/reference/sharpmush-help/sharpcmd/#charges)
+- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
+- [@ufail](/reference/sharpmush-help/sharpcmd/#ufail)
 ## WARN_ON_MISSING
 This internal command is run when someone attempts to run a command which starts with a function, for example:
 ```
@@ -4925,8 +4925,8 @@ Example:
 
 
 **See Also:**
-- [huh_command](/reference/sharpmush-help/penncmd/#huhcommand)
-- [unimplemented_command](/reference/sharpmush-help/penncmd/#unimplementedcommand)
+- [huh_command](/reference/sharpmush-help/sharpcmd/#huhcommand)
+- [unimplemented_command](/reference/sharpmush-help/sharpcmd/#unimplementedcommand)
 ## UNIMPLEMENTED_COMMAND
 This internal command is run when someone attempts to use an unimplemented command. Currently, this only occurs when a command has been added with @command/add but has not been properly @hooked to run softcode. UNIMPLEMENTED_COMMAND cannot be run directly.
 
@@ -4934,10 +4934,10 @@ By default, the command just shows the message "This command has not been implem
 
 
 **See Also:**
-- [huh_command](/reference/sharpmush-help/penncmd/#huhcommand)
-- [warn_on_missing](/reference/sharpmush-help/penncmd/#warnonmissing)
-- [@command](/reference/sharpmush-help/penncmd/#command)
-- [@hook](/reference/sharpmush-help/penncmd/#hook)
+- [huh_command](/reference/sharpmush-help/sharpcmd/#huhcommand)
+- [warn_on_missing](/reference/sharpmush-help/sharpcmd/#warnonmissing)
+- [@command](/reference/sharpmush-help/sharpcmd/#command)
+- [@hook](/reference/sharpmush-help/sharpcmd/#hook)
 ## whisper
 `whisper <player>=<message>`
 `whisper/silent <player>=<message>`
@@ -4955,9 +4955,9 @@ The `/list` switch lets you whisper to multiple people at once. In this case, `<
 
 
 **See Also:**
-- [page](/reference/sharpmush-help/penncmd/#page)
-- [pose](/reference/sharpmush-help/penncmd/#pose)
-- [@pemit](/reference/sharpmush-help/penncmd/#pemit)
+- [page](/reference/sharpmush-help/sharpcmd/#page)
+- [pose](/reference/sharpmush-help/sharpcmd/#pose)
+- [@pemit](/reference/sharpmush-help/sharpcmd/#pemit)
 ## WHO
 ## DOING
 `WHO [<pattern>]`
@@ -4971,12 +4971,12 @@ Admin can use the DOING command to see the same output mortals see with WHO, wit
 
 If a `<pattern>` is given for either command, only connected players whose names start with `<pattern>` are shown. If `<pattern>` is a wildcard, only players whose names or aliases match the pattern are shown.
 
-See [who2](/reference/sharpmush-help/penncmd/#who2).
+See [who2](/reference/sharpmush-help/sharpcmd/#who2).
 ## WHO2
-In earlier versions of PennMUSH, WHO was a socket command (meaning only players could use it, and that while it could not be overwritten, you could use softcoded 'who' commands along side it which worked as long as they weren't typed in all upper-case). Existing games which have softcoded 'who' commands can maintain this feature by using an @hook/ignore on the WHO command, such as:
+Existing games which have softcoded 'who' commands can maintain separation from 'WHO' by using an @hook/ignore on the WHO command, such as:
 ```
-> &HOOK.WHO <object>=not(comp(left(%c,3),WHO))
-> @hook/ignore WHO=<object>,HOOK.WHO
+> &HOOK`WHO <object>=not(comp(left(%c,3),WHO))
+> @hook/ignore WHO=<object>,HOOK`WHO
 ```
 
 @hooks are not maintained across reboots, and should be placed into an @startup on a low-dbref object.
@@ -4985,9 +4985,9 @@ Note: The WHO command available at the login screen is totally separate from the
 
 
 **See Also:**
-- [@doing](/reference/sharpmush-help/penncmd/#doing)
-- [@poll](/reference/sharpmush-help/penncmd/#poll)
-- [SESSION](/reference/sharpmush-help/penncmd/#session)
+- [@doing](/reference/sharpmush-help/sharpcmd/#doing)
+- [@poll](/reference/sharpmush-help/sharpcmd/#poll)
+- [SESSION](/reference/sharpmush-help/sharpcmd/#session)
 ## SESSION
 `SESSION [<pattern>]`
 
@@ -4995,7 +4995,7 @@ The SESSION command is the same as the admin WHO, but instead of showing the hos
 
 
 **See Also:**
-- [WHO](/reference/sharpmush-help/penncmd/#who)
+- [WHO](/reference/sharpmush-help/sharpcmd/#who)
 ## with
 `with[/room] <obj>=<command>`
 
@@ -5005,8 +5005,8 @@ Attempts to run a user-defined command on a specific object. If the `/room` swit
 
 
 **See Also:**
-- [USER-DEFINED COMMANDS](/reference/sharpmush-help/penntop/#user-defined-commands)
-- [EVALUATION ORDER](/reference/sharpmush-help/penntop/#evaluation-order)
+- [USER-DEFINED COMMANDS](/reference/sharpmush-help/sharptop/#user-defined-commands)
+- [EVALUATION ORDER](/reference/sharpmush-help/sharptop/#evaluation-order)
 ## socket commands
 These commands can only be entered by a connected player through their client. They generally do things that only affect a specific connection and would be meaningless if run by an object or disconnected player.
 
@@ -5039,7 +5039,7 @@ This socket command shows some basic information about the MUSH, along with any 
 
 
 **See Also:**
-- [INFO](/reference/sharpmush-help/penncmd/#info)
+- [INFO](/reference/sharpmush-help/sharpcmd/#info)
 ## @SUGGEST
 `@suggest[/list]`
 `@suggest/add <category>=<word>`
@@ -5062,5 +5062,5 @@ BIRD
 
 
 **See Also:**
-- [suggest()](/reference/sharpmush-help/pennfunc/#suggest)
+- [suggest()](/reference/sharpmush-help/sharpfunc/#suggest)
 

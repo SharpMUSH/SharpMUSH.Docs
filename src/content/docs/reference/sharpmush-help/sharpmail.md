@@ -26,19 +26,19 @@ A *<player-list>* is a space-separated list of recipients, which may be:
 * Player names
 * Player dbref #'s
 * Message #'s, in which case you send to the sender of that message
-* An alias name (see [@malias](/reference/sharpmush-help/pennmail/#malias))
+* An alias name (see [@malias](/reference/sharpmush-help/sharpmail/#malias))
 
 
 **See Also:**
-- [- [mail-sending](/reference/sharpmush-help/pennmail/#mail-sending)
-- [mail-reading](/reference/sharpmush-help/pennmail/#mail-reading)
-- [mail-folders](/reference/sharpmush-help/pennmail/#mail-folders)
-- [mail-forward](/reference/sharpmush-help/pennmail/#mail-forward)
-- [mail-other](/reference/sharpmush-help/pennmail/#mail-other)
-- [mail-admin](/reference/sharpmush-help/pennmail/#mail-admin)
-- [@malias](/reference/sharpmush-help/pennmail/#malias)
-- [mail-reviewing](/reference/sharpmush-help/pennmail/#mail-reviewing)
-- [@mailquota](/reference/sharpmush-help/pennmail/#mailquota)
+- [- [mail-sending](/reference/sharpmush-help/sharpmail/#mail-sending)
+- [mail-reading](/reference/sharpmush-help/sharpmail/#mail-reading)
+- [mail-folders](/reference/sharpmush-help/sharpmail/#mail-folders)
+- [mail-forward](/reference/sharpmush-help/sharpmail/#mail-forward)
+- [mail-other](/reference/sharpmush-help/sharpmail/#mail-other)
+- [mail-admin](/reference/sharpmush-help/sharpmail/#mail-admin)
+- [@malias](/reference/sharpmush-help/sharpmail/#malias)
+- [mail-reviewing](/reference/sharpmush-help/sharpmail/#mail-reviewing)
+- [@mailquota](/reference/sharpmush-help/sharpmail/#mailquota)
 
 ## MAIL-READING
 ## @MAIL/READ
@@ -150,7 +150,7 @@ The MUSH mail system allows each player 16 folders, numbered from 0 to 15. Mail 
 
 
 **See Also:**
-- [@mailfilter](/reference/sharpmush-help/pennmail/#mailfilter)
+- [@mailfilter](/reference/sharpmush-help/sharpmail/#mailfilter)
 
 ## MAIL-REVIEWING
 ## @MAIL/REVIEW
@@ -196,7 +196,7 @@ Example: Filter urgent messages into folder 1
 
 
 **See Also:**
-- [mail-folders](/reference/sharpmush-help/pennmail/#mail-folders)
+- [mail-folders](/reference/sharpmush-help/sharpmail/#mail-folders)
 
 ## @MAILSIGNATURE
 ## MAILSIGNATURE
@@ -212,8 +212,8 @@ Example:
 
 
 **See Also:**
-- [@mail](/reference/sharpmush-help/pennmail/#mail)
-- [mail-sending](/reference/sharpmush-help/pennmail/#mail-sending)
+- [@mail](/reference/sharpmush-help/sharpmail/#mail)
+- [mail-sending](/reference/sharpmush-help/sharpmail/#mail-sending)
 
 ## MAIL-ADMIN
 
@@ -247,7 +247,7 @@ The @malias command is used to create, view, and manipulate @mail aliases, or li
 
 
 **See Also:**
-- [@malias2](/reference/sharpmush-help/pennmail/#malias2)
+- [@malias2](/reference/sharpmush-help/sharpmail/#malias2)
 
 ## @MALIAS2
 
@@ -266,7 +266,7 @@ The first form above creates a new alias for the given list of players.
 
 
 **See Also:**
-- [@malias3](/reference/sharpmush-help/pennmail/#malias3)
+- [@malias3](/reference/sharpmush-help/sharpmail/#malias3)
 
 ## @MALIAS3
 
@@ -282,7 +282,7 @@ The first form above creates a new alias for the given list of players.
 
 
 **See Also:**
-- [@malias4](/reference/sharpmush-help/pennmail/#malias4)
+- [@malias4](/reference/sharpmush-help/sharpmail/#malias4)
 
 ## @MALIAS4
 
@@ -299,7 +299,7 @@ By default, the owner and alias members may see and use the alias, but only the 
 
 
 **See Also:**
-- [@malias5](/reference/sharpmush-help/pennmail/#malias5)
+- [@malias5](/reference/sharpmush-help/sharpmail/#malias5)
 
 ## @MALIAS5
 
@@ -321,18 +321,18 @@ By default, the owner and alias members may see and use the alias, but only the 
 Mail functions work with @mail.
 
 Available functions:
-* [folderstats](/reference/sharpmush-help/pennconf/#folderstats)
-* [mail](/reference/sharpmush-help/pennmail/#mail)
-* [maildstats](/reference/sharpmush-help/pennmail/#maildstats)
-* [mailfrom](/reference/sharpmush-help/pennmail/#mailfrom)
-* [mailfstats](/reference/sharpmush-help/pennmail/#mailfstats)
-* [maillist](/reference/sharpmush-help/pennmail/#maillist)
-* [mailsend](/reference/sharpmush-help/pennmail/#mailsend)
-* [mailstats](/reference/sharpmush-help/pennmail/#mailstats)
-* [mailstatus](/reference/sharpmush-help/pennmail/#mailstatus)
-* [mailsubject](/reference/sharpmush-help/pennmail/#mailsubject)
-* [mailtime](/reference/sharpmush-help/pennmail/#mailtime)
-* [malias](/reference/sharpmush-help/pennconf/#malias)
+* [folderstats](/reference/sharpmush-help/sharpconf/#folderstats)
+* [mail](/reference/sharpmush-help/sharpmail/#mail)
+* [maildstats](/reference/sharpmush-help/sharpmail/#maildstats)
+* [mailfrom](/reference/sharpmush-help/sharpmail/#mailfrom)
+* [mailfstats](/reference/sharpmush-help/sharpmail/#mailfstats)
+* [maillist](/reference/sharpmush-help/sharpmail/#maillist)
+* [mailsend](/reference/sharpmush-help/sharpmail/#mailsend)
+* [mailstats](/reference/sharpmush-help/sharpmail/#mailstats)
+* [mailstatus](/reference/sharpmush-help/sharpmail/#mailstatus)
+* [mailsubject](/reference/sharpmush-help/sharpmail/#mailsubject)
+* [mailtime](/reference/sharpmush-help/sharpmail/#mailtime)
+* [malias](/reference/sharpmush-help/sharpconf/#malias)
 
 ## FOLDERSTATS()
 
@@ -345,7 +345,7 @@ folderstats() returns the number of read, unread, and cleared messages in a spec
 
 
 **See Also:**
-- [mailstats](/reference/sharpmush-help/pennmail/#mailstats)
+- [mailstats](/reference/sharpmush-help/sharpmail/#mailstats)
 
 ## MAIL()
 
@@ -366,14 +366,14 @@ Example:
 
 
 **See Also:**
-- [maillist](/reference/sharpmush-help/pennmail/#maillist)
-- [mailfrom](/reference/sharpmush-help/pennmail/#mailfrom)
+- [maillist](/reference/sharpmush-help/sharpmail/#maillist)
+- [mailfrom](/reference/sharpmush-help/sharpmail/#mailfrom)
 
 ## MAILLIST()
 
 - `maillist([<player>, ]<message-list>)`
 
-maillist() returns a list of all *<player>*'s @mail messages which match the given *<message-list>* (the same as @mail/list *<message-list>*). If no *<player>* is given, the executor's mail is matched. The *<message-list>* argument is described in [mail](/reference/sharpmush-help/pennmail/#mail).
+maillist() returns a list of all *<player>*'s @mail messages which match the given *<message-list>* (the same as @mail/list *<message-list>*). If no *<player>* is given, the executor's mail is matched. The *<message-list>* argument is described in [mail](/reference/sharpmush-help/sharpmail/#mail).
 
 Examples:
 ```
@@ -387,8 +387,8 @@ Examples:
 
 
 **See Also:**
-- [mail](/reference/sharpmush-help/pennmail/#mail)
-- [mailfrom](/reference/sharpmush-help/pennmail/#mailfrom)
+- [mail](/reference/sharpmush-help/sharpmail/#mail)
+- [mailfrom](/reference/sharpmush-help/sharpmail/#mailfrom)
 
 ## MAILFROM()
 ## MAILTIME()
@@ -407,8 +407,8 @@ Examples:
 
 
 **See Also:**
-- [mail](/reference/sharpmush-help/pennmail/#mail)
-- [maillist](/reference/sharpmush-help/pennmail/#maillist)
+- [mail](/reference/sharpmush-help/sharpmail/#mail)
+- [maillist](/reference/sharpmush-help/sharpmail/#maillist)
 
 ## MAILSTATS()
 ## MAILDSTATS()
@@ -431,7 +431,7 @@ Example:
 
 
 **See Also:**
-- [folderstats](/reference/sharpmush-help/pennconf/#folderstats)
+- [folderstats](/reference/sharpmush-help/sharpconf/#folderstats)
 
 ## MAILSEND()
 

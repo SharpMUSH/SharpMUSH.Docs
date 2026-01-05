@@ -15,11 +15,11 @@ These attribute flags restrict access, and are inherited down attribute trees (i
 - `mortal_dark (m)`   Attribute cannot be seen by mortals. This flag can only be set by royalty and wizards. "hidden" is a synonym.
 - `wizard (w)`        Attribute can only be set by wizards. This flag can only be set by royalty and wizards.
 - `veiled (V)`        Attribute value won't be shown on default examine, but is still otherwise accessible (for spammy attribs).
-- `nearby (n)`        Even if the attribute is visual, it can only be retrieved if you're near the object (see **[nearby()](/reference/sharpmush-help/pennfunc/#nearby)**).
+- `nearby (n)`        Even if the attribute is visual, it can only be retrieved if you're near the object (see **[nearby()](/reference/sharpmush-help/sharpfunc/#nearby)**).
 - `locked (+)`        Attribute is locked with `@atrlock`.
 - `safe (S)`          Attribute can't be modified without unsetting this flag.
 
-See [attribute flags2](/reference/sharpmush-help/pennattr/#attribute-flags2)
+See [attribute flags2](/reference/sharpmush-help/sharpattr/#attribute-flags2)
 
 ## ATTRIBUTE FLAGS2
 
@@ -32,12 +32,12 @@ These attribute flags alter the way attributes are used in commands and ^-listen
 
 - `debug (b)`         Start showing debug output while this attr is evaluated.
 - `no_debug (B)`      Stop showing debug output when this attr is evaluated
-- `regexp (R)`        Match $-commands and ^-listens using regular expressions. See **[regexps](/reference/sharpmush-help/penntop/#regexps)**
+- `regexp (R)`        Match $-commands and ^-listens using regular expressions. See **[regexps](/reference/sharpmush-help/sharptop/#regexps)**
 - `case (C)`          Match $-commands and ^-listens case sensitively.
-- `nospace (s)`       Attribute won't add a space after the object name in @o-* messages. See **[verbs](/reference/sharpmush-help/penntop/#verbs)**
+- `nospace (s)`       Attribute won't add a space after the object name in @o-* messages. See **[verbs](/reference/sharpmush-help/sharptop/#verbs)**
 - `noname (N)`        Attribute won't show name in @o-* messages.
 
-See [attribute flags3](/reference/sharpmush-help/pennattr/#attribute-flags3)
+See [attribute flags3](/reference/sharpmush-help/sharpattr/#attribute-flags3)
 
 ## ATTRIBUTE FLAGS3
 
@@ -47,12 +47,12 @@ See [attribute flags3](/reference/sharpmush-help/pennattr/#attribute-flags3)
 - `quiet (Q)`         When altering the attribute's value or flags, don't show the usual confirmation message
 
 These attribute flags are only used internally. They cannot be set, but seen on 'examine' and flags()/lflags(), tested for with hasflag(), etc:
-- `branch (\`)`        This attribute is a branch. See: [ATTRIBUTE TREES](/reference/sharpmush-help/pennattr/#attribute-trees)
+- `branch (\`)`        This attribute is a branch. See: [ATTRIBUTE TREES](/reference/sharpmush-help/sharpattr/#attribute-trees)
 
 **See Also:**
-- [@set](/reference/sharpmush-help/penncmd/#set)
-- [@attribute](/reference/sharpmush-help/penncmd/#attribute)
-- [ATTRIBUTE TREES](/reference/sharpmush-help/pennattr/#attribute-trees)
+- [@set](/reference/sharpmush-help/sharpcmd/#set)
+- [@attribute](/reference/sharpmush-help/sharpcmd/#attribute)
+- [ATTRIBUTE TREES](/reference/sharpmush-help/sharpattr/#attribute-trees)
 
 ## ATTRIBUTE TREES
 ## ATTR TREES
@@ -71,7 +71,7 @@ Attribute names may not start or end with the backtick, and may not contain two 
 
 All attributes are either branch attributes or leaf attributes. A branch attribute is an attribute that has other branches or leaves beneath it; a leaf attribute is one that does not. Any attribute may act as a branch. If you try to create an unsupported leaf, branch attributes will be created as needed to support it.
 
-See [attribute trees2](/reference/sharpmush-help/pennattr/#attribute-trees2) for more information and examples.
+See [attribute trees2](/reference/sharpmush-help/sharpattr/#attribute-trees2) for more information and examples.
 
 ## ATTRIBUTE TREES2
 ## \`2
@@ -93,10 +93,10 @@ The same principles apply to lattr(). `@decompile obj` is a special case, and di
 
 Branch attributes will be displayed with a \` in the attribute flags on examine. 
 
-See [attribute trees3](/reference/sharpmush-help/pennattr/#attribute-trees3) for more information and examples.
+See [attribute trees3](/reference/sharpmush-help/sharpattr/#attribute-trees3) for more information and examples.
 
 **See Also:**
-- [WILDCARDS](/reference/sharpmush-help/penntop/#wildcards)
+- [WILDCARDS](/reference/sharpmush-help/sharptop/#wildcards)
 
 ## ATTRIBUTE TREES3
 ## \`3
@@ -123,7 +123,7 @@ They're also handy for things like character attributes:
 ```
 etc.
 
-See [attribute trees4](/reference/sharpmush-help/pennattr/#attribute-trees4) for information about `@parent` and attribute trees.
+See [attribute trees4](/reference/sharpmush-help/sharpattr/#attribute-trees4) for information about `@parent` and attribute trees.
 
 ## ATTRIBUTE TREES4
 ## \`4

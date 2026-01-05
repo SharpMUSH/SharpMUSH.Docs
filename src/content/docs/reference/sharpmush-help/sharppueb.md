@@ -11,14 +11,13 @@ SharpMUSH will automatically detect a Pueblo client (rather, the client will ann
 
 
 **See Also:**
-- [pueblo2](/reference/sharpmush-help/pennpueb/#pueblo2)
+- [pueblo2](/reference/sharpmush-help/sharppueb/#pueblo2)
 
 ## PUEBLO2
 
 SharpMUSH makes the following enhancements visible to Pueblo users when Pueblo support is enabled:
 
 * Object/Room names are highlighted
-* Support for VRML graphics
 * Unordered list for contents and transparent exits
 * Contents and exits lists have links (Click an exit to walk through it)
 * Object lists (like the ones found in 'examine'/'inventory') have links
@@ -33,21 +32,21 @@ While Pueblo brings a number of new features and markups to MUSHes, in many ways
 
 **See Also:**
 - [- [pueblo()]
-- [HTML Functions](/reference/sharpmush-help/pennpueb/#html-functions)
+- [HTML Functions](/reference/sharpmush-help/sharppueb/#html-functions)
 
 ## HTML
 
 Hyper Text Markup Language (http://www.w3.org)
 
-The only HTML implementation supported by the MUSH is the one supported by Pueblo (see [pueblo](/reference/sharpmush-help/pennpueb/#pueblo) for more info). To utilize HTML, use one of the MUSH HTML Functions (see [HTML Functions](/reference/sharpmush-help/pennpueb/#html-functions) for a list).
+The only HTML implementation supported by the MUSH is the one supported by Pueblo (see [pueblo](/reference/sharpmush-help/sharppueb/#pueblo) for more info). To utilize HTML, use one of the MUSH HTML Functions (see [HTML Functions](/reference/sharpmush-help/sharppueb/#html-functions) for a list).
 
 HTML tags are stripped when sent to non-HTML capable players.
 
 
 **See Also:**
-- [- [HTML Functions](/reference/sharpmush-help/pennconf/#html-functions)
-- [PUEBLO](/reference/sharpmush-help/pennpueb/#pueblo)
-- [html()](/reference/sharpmush-help/pennpueb/#html)
+- [- [HTML Functions](/reference/sharpmush-help/sharpconf/#html-functions)
+- [PUEBLO](/reference/sharpmush-help/sharppueb/#pueblo)
+- [html()](/reference/sharpmush-help/sharppueb/#html)
 
 ## PUEBLO()
 
@@ -62,28 +61,12 @@ When used with a *<player>* argument, the most recently active connection is use
 
 **See Also:**
 - [- [terminfo()]
-- [html()](/reference/sharpmush-help/pennpueb/#html)
-- [PUEBLO](/reference/sharpmush-help/pennpueb/#pueblo)
-
-## @VRML_URL
-## VRML_URL
-## VRML
-
-`@vrml_url <object>[=<url>]`
-
-The VRML_URL attribute provides an object (usually a room) with a VRML world. When someone using a Pueblo-enabled client looks at the object, the VRML World listed in @VRML_URL will be loaded.
-
-Example:
-```
-> @vrml_url here=http://www.pennmush.org/pennmush.vrml
-```
-
-To learn about the VRML Format, have a look at the Pueblo Help, which mentions several good sites for learning.
-
+- [html()](/reference/sharpmush-help/sharppueb/#html)
+- [PUEBLO](/reference/sharpmush-help/sharppueb/#pueblo)
 
 **See Also:**
-- [- [HTML](/reference/sharpmush-help/pennconf/#html)
-- [PUEBLO](/reference/sharpmush-help/pennpueb/#pueblo)
+- [- [HTML](/reference/sharpmush-help/sharpconf/#html)
+- [PUEBLO](/reference/sharpmush-help/sharppueb/#pueblo)
 
 ## HTML FUNCTIONS
 
@@ -98,15 +81,15 @@ Available functions:
 
 Examples:
 ```
-> say html(a href="http://www.pennmush.org")SharpMUSH[html(/a)]
-> say tag(a,href="http://www.pennmush.org")SharpMUSH[endtag(a)]
-> say tagwrap(a,href="http://www.pennmush.org",SharpMUSH)
-> say wshtml(<a href="http://www.pennmush.org">SharpMUSH</a>)
+> say html(a href="https://sharpmush.com")SharpMUSH[html(/a)]
+> say tag(a,href="https://sharpmush.com")SharpMUSH[endtag(a)]
+> say tagwrap(a,href="https://sharpmush.com",SharpMUSH)
+> say wshtml(<a href="https://sharpmush.com">SharpMUSH</a>)
 ```
 
 Each of these produces the HTML output:
 ```
-<a href="http://www.pennmush.org">SharpMUSH</a>
+<a href="https://sharpmush.com">SharpMUSH</a>
 ```
 
 Mortals are restricted in the tags they may use. Most standard HTML tags are ok; protocol-specific tags like SEND and XCH_CMD can only be sent by Wizards or those with the Send_OOB @power.
@@ -131,11 +114,11 @@ Non-wizards should see the tag(), endtag(), and tagwrap() functions, which are s
 
 
 **See Also:**
-- [- [PUEBLO](/reference/sharpmush-help/pennpueb/#pueblo)
-- [HTML](/reference/sharpmush-help/pennpueb/#html)
-- [HTML Functions](/reference/sharpmush-help/pennpueb/#html-functions)
+- [- [PUEBLO](/reference/sharpmush-help/sharppueb/#pueblo)
+- [HTML](/reference/sharpmush-help/sharppueb/#html)
+- [HTML Functions](/reference/sharpmush-help/sharppueb/#html-functions)
 
-[... Previous content ...](/reference/sharpmush-help/pennconf/#previous-content)
+[... Previous content ...](/reference/sharpmush-help/sharpconf/#previous-content)
 
 ## TAG()
 
@@ -145,19 +128,19 @@ This function outputs the named HTML/Pueblo tag with the given paramaters.
 
 Example:
 ```
-tag(img,src="http://www.pennmush.org/image.jpg",align="left",width="300")
+tag(img,src="https://sharpmush.com/image.jpg",align="left",width="300")
 ```
 
 Will output (in HTML):
 ```
-<img src="http://www.pennmush.org/image.jpg" align="left" width="300">
+<img src="https://sharpmush.com/image.jpg" align="left" width="300">
 ```
 
 
 **See Also:**
 - [- [endtag()]
-- [tagwrap()](/reference/sharpmush-help/pennpueb/#tagwrap)
-- [html()](/reference/sharpmush-help/pennpueb/#html)
+- [tagwrap()](/reference/sharpmush-help/sharppueb/#tagwrap)
+- [html()](/reference/sharpmush-help/sharppueb/#html)
 
 ## ENDTAG()
 
@@ -178,8 +161,8 @@ Will output (in HTML):
 
 **See Also:**
 - [- [tag()]
-- [tagwrap()](/reference/sharpmush-help/pennpueb/#tagwrap)
-- [html()](/reference/sharpmush-help/pennpueb/#html)
+- [tagwrap()](/reference/sharpmush-help/sharppueb/#tagwrap)
+- [html()](/reference/sharpmush-help/sharppueb/#html)
 
 ## TAGWRAP()
 
@@ -189,12 +172,12 @@ This function outputs *<string>*, wrapped in the *<name>* HTML/Pueblo tag with t
 
 Example:
 ```
-tagwrap(a,href="http://download.pennmush.org",SharpMUSH Downloads)]
+tagwrap(a,href="https://sharpmush.com",SharpMUSH Downloads)]
 ```
 
 Will output (in HTML):
 ```
-<a href="http://download.pennmush.org">SharpMUSH Downloads</a>
+<a href="http://sharpmush.com">SharpMUSH Downloads</a>
 ```
 
 A particularly important use of this function is `tagwrap(pre, <string>)`. Because Pueblo works like an html browser, spaces and tabs are compressed to a single space. If you have code (a +who function, for example) that relies on exact spacing, surround its output with a tagwrap(pre,...) so that Pueblo will render it as "preformatted" text.
@@ -202,8 +185,8 @@ A particularly important use of this function is `tagwrap(pre, <string>)`. Becau
 
 **See Also:**
 - [- [tag()]
-- [endtag()](/reference/sharpmush-help/pennpueb/#endtag)
-- [html()](/reference/sharpmush-help/pennpueb/#html)
+- [endtag()](/reference/sharpmush-help/sharppueb/#endtag)
+- [html()](/reference/sharpmush-help/sharppueb/#html)
 
 ## WEBSOCKETS
 
@@ -220,25 +203,25 @@ The different kinds of markup that can be sent to clients are:
 
 Without using any HTML markup functions, output is rendered as normal plain text (including ANSI and xterm256 color).
 
-See [HTML Functions](/reference/sharpmush-help/pennpueb/#html-functions) for functions used to embed HTML markup tags one at a time.
-See [wshtml()](/reference/sharpmush-help/pennpueb/#wshtml) for help embedding large segments of raw HTML markup to be sent to WebSocket clients.
+See [HTML Functions](/reference/sharpmush-help/sharppueb/#html-functions) for functions used to embed HTML markup tags one at a time.
+See [wshtml()](/reference/sharpmush-help/sharppueb/#wshtml) for help embedding large segments of raw HTML markup to be sent to WebSocket clients.
 
 Support for Pueblo links depends on the WebSocket client, however the example client above supports xch_cmd for command links and xch_hint for tooltip text popups. For clickable command links, embed a link tag with the command to be executed in the "xch_cmd" attribute, e.g. `<a xch_cmd="+who">Who is online?</a>`.
 
 You can also send data encapsulated in a JSON object.
 
-See [json()](/reference/sharpmush-help/pennfunc/#json) for information about formatting data into JSON object strings.
-See [wsjson()](/reference/sharpmush-help/pennpueb/#wsjson) for help sending formatted JSON object strings to WebSocket clients as a JavaScript object.
+See [json()](/reference/sharpmush-help/sharpfunc/#json) for information about formatting data into JSON object strings.
+See [wsjson()](/reference/sharpmush-help/sharppueb/#wsjson) for help sending formatted JSON object strings to WebSocket clients as a JavaScript object.
 
-See [@prompt](/reference/sharpmush-help/penncmd/#prompt) for information about sending telnet GOAHEAD prompts. Support for prompts depends on the WebSocket client. The example client above shows prompts on their own line, separating the input and output windows, but requires PROMPT_NEWLINES to be turned off.
+See [@prompt](/reference/sharpmush-help/sharpcmd/#prompt) for information about sending telnet GOAHEAD prompts. Support for prompts depends on the WebSocket client. The example client above shows prompts on their own line, separating the input and output windows, but requires PROMPT_NEWLINES to be turned off.
 
 
 **See Also:**
-- [- [HTML Functions](/reference/sharpmush-help/pennconf/#html-functions)
-- [json()](/reference/sharpmush-help/pennfunc/#json)
-- [pueblo](/reference/sharpmush-help/pennpueb/#pueblo)
-- [wshtml()](/reference/sharpmush-help/pennpueb/#wshtml)
-- [wsjson()](/reference/sharpmush-help/pennpueb/#wsjson)
+- [- [HTML Functions](/reference/sharpmush-help/sharpconf/#html-functions)
+- [json()](/reference/sharpmush-help/sharpfunc/#json)
+- [pueblo](/reference/sharpmush-help/sharppueb/#pueblo)
+- [wshtml()](/reference/sharpmush-help/sharppueb/#wshtml)
+- [wsjson()](/reference/sharpmush-help/sharppueb/#wsjson)
 
 ## WSHTML()
 ## WSJSON()
@@ -250,31 +233,31 @@ These functions are used to embed HTML and JSON markup into the output for WebSo
 
 **wshtml()** embeds *<html string>* as HTML markup, to be rendered as HTML by a WebSocket client.
 
-**wsjson()** embeds *<json string>* as a JSON object which can be captured by a WebSocket client. See [json()](/reference/sharpmush-help/pennfunc/#json) for information about formatting JSON object strings.
+**wsjson()** embeds *<json string>* as a JSON object which can be captured by a WebSocket client. See [json()](/reference/sharpmush-help/sharpfunc/#json) for information about formatting JSON object strings.
 
 In both cases, the *<default string>* is shown as plain text if the recipient is not WebSocket-enabled.
 
 For example, if one uses:
 
 ```
-@emit [wshtml(<a href="http://pennmush.org">SharpMUSH</a>,Go to http://pennmush.org)]
+@emit [wshtml(<a href="https://sharpmush.com">SharpMUSH</a>,Go to https://sharpmush.com)]
 ```
 
 then any players in the room with a WebSocket connection would see (rendered as HTML)
 
 ```
-<a href="http://pennmush.org">SharpMUSH</a>
+<a href="https://sharpmush.com">SharpMUSH</a>
 ```
 
 while non-WebSocket connections and listening objects would see
 
 ```
-Go to http://pennmush.org
+Go to https://sharpmush.com
 ```
 
 
 **See Also:**
-- [- [WebSockets](/reference/sharpmush-help/pennconf/#websockets)
-- [Pueblo](/reference/sharpmush-help/pennpueb/#pueblo)
-- [HTML Functions](/reference/sharpmush-help/pennpueb/#html-functions)
-- [JSON Functions](/reference/sharpmush-help/pennfunc/#json-functions)
+- [- [WebSockets](/reference/sharpmush-help/sharpconf/#websockets)
+- [Pueblo](/reference/sharpmush-help/sharppueb/#pueblo)
+- [HTML Functions](/reference/sharpmush-help/sharppueb/#html-functions)
+- [JSON Functions](/reference/sharpmush-help/sharpfunc/#json-functions)

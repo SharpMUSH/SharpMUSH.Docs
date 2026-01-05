@@ -11,9 +11,9 @@ Some flags can only be set on certain types of objects, such as just players or 
 
 Flags can be set on an object with the `@set` command or `set()` function. To un-set a flag, use the exclamation point (`!`) before the flag name. For help on any particular flag, type **'help \<flag name\>'**.
 
-A descriptive list of default flags is available in [flag list](/reference/sharpmush-help/pennflag/#flag-list). A complete list of all flags is available through `@flag/list`.
+A descriptive list of default flags is available in [flag list](/reference/sharpmush-help/sharpflag/#flag-list). A complete list of all flags is available through `@flag/list`.
 
-See [flags2](/reference/sharpmush-help/pennflag/#flags2).
+See [flags2](/reference/sharpmush-help/sharpflag/#flags2).
 
 ## FLAGS2
 
@@ -23,25 +23,25 @@ You can see the list of flags set on an object in several ways:
 2. Flag abbreviations are also visible after the object's name in the room description, if the object is not set OPAQUE and you are not set MYOPIC
 3. The `lflags()` and `flags()` function will return a list of flag names and abbreviations for an object, respectively
 
-Note: The object type (player, thing, room, exit or garbage) is not actually a flag. See [types of objects](/reference/sharpmush-help/penntop/#types-of-objects) for more information.
+Note: The object type (player, thing, room, exit or garbage) is not actually a flag. See [types of objects](/reference/sharpmush-help/sharptop/#types-of-objects) for more information.
 
 
 **See Also:**
-- [examine](/reference/sharpmush-help/penncmd/#examine)
-- [flags()](/reference/sharpmush-help/pennfunc/#flags)
-- [hasflag()](/reference/sharpmush-help/pennfunc/#hasflag)
-- [orflags()](/reference/sharpmush-help/pennfunc/#orflags)
-- [andflags()](/reference/sharpmush-help/pennfunc/#andflags)
-- [orlflags()](/reference/sharpmush-help/pennfunc/#orlflags)
-- [andlflags()](/reference/sharpmush-help/pennfunc/#andlflags)
-- [types of objects](/reference/sharpmush-help/penntop/#types-of-objects)
-- [type()](/reference/sharpmush-help/pennfunc/#type)
-- [hastype()](/reference/sharpmush-help/pennfunc/#hastype)
-- [@flag](/reference/sharpmush-help/penncmd/#flag)
-- [FLAG LIST](/reference/sharpmush-help/pennflag/#flag-list)
-- [@set](/reference/sharpmush-help/penncmd/#set)
-- [set()](/reference/sharpmush-help/pennfunc/#set)
-- [attribute flags](/reference/sharpmush-help/pennattr/#attribute-flags)
+- [examine](/reference/sharpmush-help/sharpcmd/#examine)
+- [flags()](/reference/sharpmush-help/sharpfunc/#flags)
+- [hasflag()](/reference/sharpmush-help/sharpfunc/#hasflag)
+- [orflags()](/reference/sharpmush-help/sharpfunc/#orflags)
+- [andflags()](/reference/sharpmush-help/sharpfunc/#andflags)
+- [orlflags()](/reference/sharpmush-help/sharpfunc/#orlflags)
+- [andlflags()](/reference/sharpmush-help/sharpfunc/#andlflags)
+- [types of objects](/reference/sharpmush-help/sharptop/#types-of-objects)
+- [type()](/reference/sharpmush-help/sharpfunc/#type)
+- [hastype()](/reference/sharpmush-help/sharpfunc/#hastype)
+- [@flag](/reference/sharpmush-help/sharpcmd/#flag)
+- [FLAG LIST](/reference/sharpmush-help/sharpflag/#flag-list)
+- [@set](/reference/sharpmush-help/sharpcmd/#set)
+- [set()](/reference/sharpmush-help/sharpfunc/#set)
+- [attribute flags](/reference/sharpmush-help/sharpattr/#attribute-flags)
 
 ## FLAG LIST
 ## FLAGS LIST
@@ -88,8 +88,8 @@ To make a room your home, type `@link me=here` while standing in the room.
 
 
 **See Also:**
-- [@link](/reference/sharpmush-help/penncmd/#link)
-- [LINK_OK](/reference/sharpmush-help/pennflag/#linkok)
+- [@link](/reference/sharpmush-help/sharpcmd/#link)
+- [LINK_OK](/reference/sharpmush-help/sharpflag/#linkok)
 
 ## ANSI
 
@@ -101,11 +101,11 @@ ANSI highlight can also be enabled on a per-connection basis with `@sockset`.
 
 
 **See Also:**
-- [ansi()](/reference/sharpmush-help/pennfunc/#ansi)
-- [COLOR](/reference/sharpmush-help/pennflag/#color)
-- [XTERM256](/reference/sharpmush-help/pennflag/#xterm256)
-- [@config](/reference/sharpmush-help/penncmd/#config)
-- [@sockset](/reference/sharpmush-help/penncmd/#sockset)
+- [ansi()](/reference/sharpmush-help/sharpfunc/#ansi)
+- [COLOR](/reference/sharpmush-help/sharpflag/#color)
+- [XTERM256](/reference/sharpmush-help/sharpflag/#xterm256)
+- [@config](/reference/sharpmush-help/sharpcmd/#config)
+- [@sockset](/reference/sharpmush-help/sharpcmd/#sockset)
 
 ## AUDIBLE
 
@@ -113,7 +113,7 @@ ANSI highlight can also be enabled on a per-connection basis with `@sockset`.
 
 Objects which are set AUDIBLE forward sound in a number of ways. Only sound passing the object's `@filter`, and its `@lock/filter`, is forwarded. The lock receives the sound heard as *%0*. The forwarded sound is always prefixed with the object's `@prefix`.
 
-If an AUDIBLE object has an `@forwardlist` attribute set, sound heard by the object is forwarded to the objects listed in the `@forwardlist`. See [@forwardlist](/reference/sharpmush-help/penncmd/#forwardlist) for more information.
+If an AUDIBLE object has an `@forwardlist` attribute set, sound heard by the object is forwarded to the objects listed in the `@forwardlist`. See [@forwardlist](/reference/sharpmush-help/sharpcmd/#forwardlist) for more information.
 
 When a THING is set AUDIBLE, any sound made inside it is broadcast to other objects in its location. This is useful for coding vehicles. Only sound passing the `@filter` is broadcast, and is prefixed with the thing's `@prefix`, or "From [name(\<thing\>)], " if no `@prefix` is set.
 
@@ -121,9 +121,9 @@ Setting the AUDIBLE flag on a ROOM activates audible exits in that room. EXITs w
 
 
 **See Also:**
-- [@forwardlist](/reference/sharpmush-help/penncmd/#forwardlist)
-- [@filter](/reference/sharpmush-help/penncmd/#filter)
-- [@prefix](/reference/sharpmush-help/penncmd/#prefix)
+- [@forwardlist](/reference/sharpmush-help/sharpcmd/#forwardlist)
+- [@filter](/reference/sharpmush-help/sharpcmd/#filter)
+- [@prefix](/reference/sharpmush-help/sharpcmd/#prefix)
 
 ## TRACK_MONEY
 
@@ -148,7 +148,7 @@ GAME: Object Walker(#123) lost a Penny to queue loss.
 
 
 **See Also:**
-- [no_pay](/reference/sharpmush-help/pennconf/#nopay)
+- [no_pay](/reference/sharpmush-help/sharpconf/#nopay)
 
 ## CHOWN_OK
 
@@ -158,7 +158,7 @@ You can set this flag on an object you own to allow other players to transfer ow
 
 
 **See Also:**
-- [@chown](/reference/sharpmush-help/penncmd/#chown)
+- [@chown](/reference/sharpmush-help/sharpcmd/#chown)
 
 ## CLOUDY
 
@@ -170,8 +170,8 @@ If the flag is set on a TRANSPARENT exit, when a player looks at the exit they w
 
 
 **See Also:**
-- [TRANSPARENT](/reference/sharpmush-help/pennflag/#transparent)
-- [look](/reference/sharpmush-help/penncmd/#look)
+- [TRANSPARENT](/reference/sharpmush-help/sharpflag/#transparent)
+- [look](/reference/sharpmush-help/sharpcmd/#look)
 
 ## COLOR
 
@@ -183,10 +183,10 @@ ANSI colors can also be enabled on a per-connection basis with `@sockset`.
 
 
 **See Also:**
-- [ANSI](/reference/sharpmush-help/pennflag/#ansi)
-- [XTERM256](/reference/sharpmush-help/pennflag/#xterm256)
-- [ansi()](/reference/sharpmush-help/pennfunc/#ansi)
-- [@sockset](/reference/sharpmush-help/penncmd/#sockset)
+- [ANSI](/reference/sharpmush-help/sharpflag/#ansi)
+- [XTERM256](/reference/sharpmush-help/sharpflag/#xterm256)
+- [ansi()](/reference/sharpmush-help/sharpfunc/#ansi)
+- [@sockset](/reference/sharpmush-help/sharpcmd/#sockset)
 
 
 ## XTERM256
@@ -201,10 +201,10 @@ XTERM colors can also be enabled on a per-connection basis with `@sockset`.
 
 
 **See Also:**
-- [ANSI](/reference/sharpmush-help/pennflag/#ansi)
-- [COLOR](/reference/sharpmush-help/pennflag/#color)
-- [ansi()](/reference/sharpmush-help/pennfunc/#ansi)
-- [@sockset](/reference/sharpmush-help/penncmd/#sockset)
+- [ANSI](/reference/sharpmush-help/sharpflag/#ansi)
+- [COLOR](/reference/sharpmush-help/sharpflag/#color)
+- [ansi()](/reference/sharpmush-help/sharpfunc/#ansi)
+- [@sockset](/reference/sharpmush-help/sharpcmd/#sockset)
 
 ## CONNECTED
 
@@ -216,9 +216,9 @@ Prior to 1.8.5p6, mortal objects couldn't use `hasflag(<player>, connected)` to 
 
 
 **See Also:**
-- [conn()](/reference/sharpmush-help/pennfunc/#conn)
-- [lwho()](/reference/sharpmush-help/pennfunc/#lwho)
-- [mwho()](/reference/sharpmush-help/pennfunc/#mwho)
+- [conn()](/reference/sharpmush-help/sharpfunc/#conn)
+- [lwho()](/reference/sharpmush-help/sharpfunc/#lwho)
+- [mwho()](/reference/sharpmush-help/sharpfunc/#mwho)
 
 ## DARK
 
@@ -236,8 +236,8 @@ In the past, players set DARK were automatically hidden from the WHO list via `@
 
 
 **See Also:**
-- [LIGHT](/reference/sharpmush-help/pennflag/#light)
-- [@hide](/reference/sharpmush-help/penncmd/#hide)
+- [LIGHT](/reference/sharpmush-help/sharpflag/#light)
+- [@hide](/reference/sharpmush-help/sharpcmd/#hide)
 
 ## DEBUG
 
@@ -255,14 +255,14 @@ Because the parser does recursive evaluations, you will see successive messages 
 
 Objects run under this flag are computationally expensive, and can generate large amounts of spam, so this flag should only be set when needed, and cleared afterwards.
 
-There's also a DEBUG attribute flag, which only affects a single attribute; see [attribute flags](/reference/sharpmush-help/pennattr/#attribute-flags) for more information. You can also use the "}" command prefix to run a command with DEBUG output just once.
+There's also a DEBUG attribute flag, which only affects a single attribute; see [attribute flags](/reference/sharpmush-help/sharpattr/#attribute-flags) for more information. You can also use the "}" command prefix to run a command with DEBUG output just once.
 
-See [debug2](/reference/sharpmush-help/pennflag/#debug2) for an example.
+See [debug2](/reference/sharpmush-help/sharpflag/#debug2) for an example.
 
 
 **See Also:**
-- [VERBOSE](/reference/sharpmush-help/pennflag/#verbose)
-- [PUPPET](/reference/sharpmush-help/pennflag/#puppet)
+- [VERBOSE](/reference/sharpmush-help/sharpflag/#verbose)
+- [PUPPET](/reference/sharpmush-help/sharpflag/#puppet)
 - [}]
 
 ## DEBUG2
@@ -296,7 +296,7 @@ DESTROY_OK takes precedence over SAFE.
 
 
 **See Also:**
-- [@destroy](/reference/sharpmush-help/penncmd/#destroy)
+- [@destroy](/reference/sharpmush-help/sharpcmd/#destroy)
 
 ## ENTER_OK
 
@@ -317,10 +317,10 @@ ENTER_OK is often used in conjunction with AUDIBLE on vehicles and buildings.
 
 
 **See Also:**
-- [enter](/reference/sharpmush-help/penncmd/#enter)
-- [give](/reference/sharpmush-help/penncmd/#give)
-- [@tel](/reference/sharpmush-help/penncmd/#tel)
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
+- [enter](/reference/sharpmush-help/sharpcmd/#enter)
+- [give](/reference/sharpmush-help/sharpcmd/#give)
+- [@tel](/reference/sharpmush-help/sharpcmd/#tel)
+- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
 
 ## FIXED
 
@@ -330,7 +330,7 @@ A FIXED exit cannot be unlinked. Only the owner can remove the FIXED flag. This 
 
 
 **See Also:**
-- [@unlink](/reference/sharpmush-help/penncmd/#unlink)
+- [@unlink](/reference/sharpmush-help/sharpcmd/#unlink)
 
 ## FLOATING
 
@@ -346,11 +346,11 @@ A GAGGED player cannot speak, pose, emit, or whisper. They can still page and us
 
 
 **See Also:**
-- [say](/reference/sharpmush-help/penncmd/#say)
-- [pose](/reference/sharpmush-help/penncmd/#pose)
-- [@emit](/reference/sharpmush-help/penncmd/#emit)
-- [whisper](/reference/sharpmush-help/penncmd/#whisper)
-- [page](/reference/sharpmush-help/penncmd/#page)
+- [say](/reference/sharpmush-help/sharpcmd/#say)
+- [pose](/reference/sharpmush-help/sharpcmd/#pose)
+- [@emit](/reference/sharpmush-help/sharpcmd/#emit)
+- [whisper](/reference/sharpmush-help/sharpcmd/#whisper)
+- [page](/reference/sharpmush-help/sharpcmd/#page)
 
 ## GOING
 
@@ -360,7 +360,7 @@ The GOING flag is used internally by the MUSH to mark objects which are schedule
 
 
 **See Also:**
-- [@destroy](/reference/sharpmush-help/penncmd/#destroy)
+- [@destroy](/reference/sharpmush-help/sharpcmd/#destroy)
 
 ## HALTED
 
@@ -370,8 +370,8 @@ A HALTED object cannot run its commands. Commands on the object are not even che
 
 
 **See Also:**
-- [@halt](/reference/sharpmush-help/penncmd/#halt)
-- [@restart](/reference/sharpmush-help/penncmd/#restart)
+- [@halt](/reference/sharpmush-help/sharpcmd/#halt)
+- [@restart](/reference/sharpmush-help/sharpcmd/#restart)
 
 ## HAVEN
 
@@ -383,8 +383,8 @@ A HAVEN player cannot be paged. They can still use channels and receive pages th
 
 
 **See Also:**
-- [page](/reference/sharpmush-help/penncmd/#page)
-- [channel](/reference/sharpmush-help/pennchat/#channel)
+- [page](/reference/sharpmush-help/sharpcmd/#page)
+- [channel](/reference/sharpmush-help/sharpchat/#channel)
 
 ## INHERIT
 
@@ -400,8 +400,8 @@ If a room is set JUMP_OK, anyone can link exits to it, if they pass its `@lock/l
 
 
 **See Also:**
-- [@link](/reference/sharpmush-help/penncmd/#link)
-- [LINK_OK](/reference/sharpmush-help/pennflag/#linkok)
+- [@link](/reference/sharpmush-help/sharpcmd/#link)
+- [LINK_OK](/reference/sharpmush-help/sharpflag/#linkok)
 
 ## KEEPALIVE
 
@@ -417,7 +417,7 @@ Objects which are set LIGHT show up in the contents list of DARK rooms. They do 
 
 
 **See Also:**
-- [DARK](/reference/sharpmush-help/pennflag/#dark)
+- [DARK](/reference/sharpmush-help/sharpflag/#dark)
 
 ## LINK_OK
 
@@ -427,8 +427,8 @@ If a room is set LINK_OK, anyone can make it their home, if they pass its `@lock
 
 
 **See Also:**
-- [@link](/reference/sharpmush-help/penncmd/#link)
-- [JUMP_OK](/reference/sharpmush-help/pennflag/#jumpok)
+- [@link](/reference/sharpmush-help/sharpcmd/#link)
+- [JUMP_OK](/reference/sharpmush-help/sharpflag/#jumpok)
 
 ## MONITOR
 
@@ -438,8 +438,8 @@ When a player is set MONITOR, they receive notification whenever another player 
 
 
 **See Also:**
-- [page](/reference/sharpmush-help/penncmd/#page)
-- [HAVEN](/reference/sharpmush-help/pennflag/#haven)
+- [page](/reference/sharpmush-help/sharpcmd/#page)
+- [HAVEN](/reference/sharpmush-help/sharpflag/#haven)
 
 ## MYOPIC
 
@@ -457,7 +457,7 @@ The NOSPOOF prefix can be customized by setting the `@nospoof_message` config op
 
 
 **See Also:**
-- [@config](/reference/sharpmush-help/penncmd/#config)
+- [@config](/reference/sharpmush-help/sharpcmd/#config)
 
 ## OPAQUE
 
@@ -481,10 +481,10 @@ If a PUPPET is also set LISTEN, it will respond to what it hears according to it
 
 
 **See Also:**
-- [@force](/reference/sharpmush-help/penncmd/#force)
-- [@pemit](/reference/sharpmush-help/penncmd/#pemit)
-- [@remit](/reference/sharpmush-help/penncmd/#remit)
-- [LISTEN](/reference/sharpmush-help/pennconf/#listen)
+- [@force](/reference/sharpmush-help/sharpcmd/#force)
+- [@pemit](/reference/sharpmush-help/sharpcmd/#pemit)
+- [@remit](/reference/sharpmush-help/sharpcmd/#remit)
+- [LISTEN](/reference/sharpmush-help/sharpconf/#listen)
 
 ## QUIET
 
@@ -500,8 +500,8 @@ A SAFE object cannot be destroyed with `@destroy`. Only a Wizard can remove the 
 
 
 **See Also:**
-- [@destroy](/reference/sharpmush-help/penncmd/#destroy)
-- [DESTROY_OK](/reference/sharpmush-help/pennflag/#destroyok)
+- [@destroy](/reference/sharpmush-help/sharpcmd/#destroy)
+- [DESTROY_OK](/reference/sharpmush-help/sharpflag/#destroyok)
 
 ## SHARED
 
@@ -527,8 +527,8 @@ If the exit is also set CLOUDY, they only see the destination's description, not
 
 
 **See Also:**
-- [CLOUDY](/reference/sharpmush-help/pennflag/#cloudy)
-- [look](/reference/sharpmush-help/penncmd/#look)
+- [CLOUDY](/reference/sharpmush-help/sharpflag/#cloudy)
+- [look](/reference/sharpmush-help/sharpcmd/#look)
 
 ## UNFINDABLE
 
@@ -538,9 +538,9 @@ An UNFINDABLE object cannot be found with `@find`, `@search`, or `locate`. Only 
 
 
 **See Also:**
-- [@find](/reference/sharpmush-help/penncmd/#find)
-- [@search](/reference/sharpmush-help/penncmd/#search)
-- [locate](/reference/sharpmush-help/pennconf/#locate)
+- [@find](/reference/sharpmush-help/sharpcmd/#find)
+- [@search](/reference/sharpmush-help/sharpcmd/#search)
+- [locate](/reference/sharpmush-help/sharpconf/#locate)
 
 ## UNINSPECTED
 
@@ -560,11 +560,11 @@ The VERBOSE flag is similar to DEBUG, but shows less information. When an object
 
 Objects run under this flag are computationally expensive, and can generate large amounts of spam, so this flag should only be set when needed, and cleared afterwards.
 
-There's also a VERBOSE attribute flag, which only affects a single attribute; see [attribute flags](/reference/sharpmush-help/pennattr/#attribute-flags) for more information.
+There's also a VERBOSE attribute flag, which only affects a single attribute; see [attribute flags](/reference/sharpmush-help/sharpattr/#attribute-flags) for more information.
 
 
 **See Also:**
-- [DEBUG](/reference/sharpmush-help/pennflag/#debug)
+- [DEBUG](/reference/sharpmush-help/sharpflag/#debug)
 
 ## VISUAL
 
@@ -574,8 +574,8 @@ A VISUAL object's attributes can be examined by anyone in its location who passe
 
 
 **See Also:**
-- [examine](/reference/sharpmush-help/penncmd/#examine)
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
+- [examine](/reference/sharpmush-help/sharpcmd/#examine)
+- [@lock](/reference/sharpmush-help/sharpcmd/#lock)
 
 ## WIZARD
 
@@ -595,7 +595,7 @@ With great power comes great responsibility!
 
 
 **See Also:**
-- [wizhelp](/reference/sharpmush-help/pennconf/#wizhelp)
-- [@admin](/reference/sharpmush-help/penncmd/#admin)
+- [wizhelp](/reference/sharpmush-help/sharpconf/#wizhelp)
+- [@admin](/reference/sharpmush-help/sharpcmd/#admin)
 
-This concludes the comprehensive list of PennMUSH flags and their descriptions.
+This concludes the comprehensive list of SharpMUSH flags and their descriptions.

@@ -24,8 +24,8 @@ The enactor of an event is either:
 
 
 **See Also:**
-- [- [event list](/reference/sharpmush-help/pennevents/#event-list)
-- [event examples](/reference/sharpmush-help/pennevents/#event-examples)
+- [- [event list](/reference/sharpmush-help/sharpevents/#event-list)
+- [event examples](/reference/sharpmush-help/sharpevents/#event-examples)
 
 ## EVENT EXAMPLES
 Suppose you want random dbsave messages:
@@ -50,7 +50,7 @@ Broadcast: [Event Handler]: On descriptor 3, from IP '127.0.0.1', a failed conne
 
 
 **See Also:**
-- [event examples2](/reference/sharpmush-help/pennevents/#event-examples2)
+- [event examples2](/reference/sharpmush-help/sharpevents/#event-examples2)
 
 ## EVENT EXAMPLES2
 Suppose you want `@pcreated` players to be powered builder, set shared and zonelocked to roys, but players created at the connect screen to not be:
@@ -69,7 +69,7 @@ Event names are of the format *<type>\`<event>*. The 'type' is used simply to gr
 Event syntax in the help is of the form:
 *<eventgroup>\`<eventname>* (What is passed as %0, %1, ... %9)
 
-The following event types and events have been added to SharpMUSH. To see the help for them, type [event <type>](/reference/sharpmush-help/pennevents/#event-type).
+The following event types and events have been added to SharpMUSH. To see the help for them, type [event <type>](/reference/sharpmush-help/sharpevents/#event-type).
 
 Event Types:
 - **dump**: dump\`5min, dump\`1min, dump\`complete, dump\`error
@@ -183,7 +183,7 @@ To mimic old behaviour:
 - **socket\`loginfail** (*descriptor*, *IP*, *count*, *reason*, *playerobjid*, *name*)
 - Triggered when a login attempt fails. *<count>* is the number of fails in the past 10 minutes. If used in conjuction with the config option connect_fail_limit, then any failures after the limit is reached will **NOT** trigger socket\`loginfail. If the connect is a failed attempt to log into a valid player, *<playerobjid>* will be set to that objid. Otherwise it will be set to #-1. *<name>* is the name the connection attempted to connect with, and is only set when *<playerobjid>* is #-1.
 
-- **socket\`createfail** (*descriptor*, *ip*, *count*, *reason*, *name[*, *error](/reference/sharpmush-help/pennconf/#error)*)
+- **socket\`createfail** (*descriptor*, *ip*, *count*, *reason*, *name[*, *error](/reference/sharpmush-help/sharpconf/#error)*)
 - Triggered when a player create attempt fails. *<count>* is the # of fails caused by this ip. If the failure is from an attempt to register a player via email, the error code of the mailer program is provided as *<error>*.
 
 **Note**: A sitelock rule with deny_silent will not trigger socket\`createfail or socket\`createfail.

@@ -23,7 +23,7 @@ When an HTTP request hits the SharpMUSH port, SharpMUSH invisibly logs in to the
 Immediately when the `@include` finishes, the http request is complete. Any queued entries (such as `@wait`, `$-commands`, etc) are not going to be sent to the HTTP client - you'll need to code using `@include`, `/inline` switches, and the like.
 
 - *%0* will be the pathname, e.g: "/", "/path/to", "/foo?bar=baz", etc.
-- *%1* will be the body of the request. If it's json, use json_query to deal with it. If it's form-encoded, look at [formdecode()](/reference/sharpmush-help/pennhttp/#formdecode)
+- *%1* will be the body of the request. If it's json, use json_query to deal with it. If it's form-encoded, look at [formdecode()](/reference/sharpmush-help/sharphttp/#formdecode)
 
 Anything sent to the HTTP Handler player during evaluation of this code is included in the body sent to the HTTP Client. There is a maximum size of BUFFER_LEN for the body of the response.
 
@@ -59,7 +59,7 @@ By default, SharpMUSH will respond with a **404 NOT FOUND**. You will need to us
 ## HTTP3
 HTTP connections to SharpMUSH are limited to BUFFER_LEN in header and body size.
 
-Incoming headers will be set in Q-registers: *%q<headers>* contains a list of all headers by name. Individual headers will be set in *%q<hdr.[name](/reference/sharpmush-help/pennconf/#name)>*, prefixed with hdr. e.g: *%q<hdr.host>* to obtain the value to the Host: header. Or *%q<hdr.Cookie>* for Cookies.
+Incoming headers will be set in Q-registers: *%q<headers>* contains a list of all headers by name. Individual headers will be set in *%q<hdr.[name](/reference/sharpmush-help/sharpconf/#name)>*, prefixed with hdr. e.g: *%q<hdr.host>* to obtain the value to the Host: header. Or *%q<hdr.Cookie>* for Cookies.
 
 Multiple header lines will be added to the same q-register name, but %r-delimited. So two "Cookie:" lines becomes *%q<Cookies>* with two %r-delimited lines.
 
@@ -67,11 +67,11 @@ HTTP Responses are limited to BUFFER_LEN in response size. Anything sent to the 
 
 
 **See Also:**
-- [- [@respond](/reference/sharpmush-help/pennconf/#respond)
-- [formdecode()](/reference/sharpmush-help/pennhttp/#formdecode)
-- [json_query()](/reference/sharpmush-help/pennfunc/#jsonquery)
-- [urlencode()](/reference/sharpmush-help/pennfunc/#urlencode)
-- [urldecode()](/reference/sharpmush-help/pennfunc/#urldecode)
+- [- [@respond](/reference/sharpmush-help/sharpconf/#respond)
+- [formdecode()](/reference/sharpmush-help/sharphttp/#formdecode)
+- [json_query()](/reference/sharpmush-help/sharpfunc/#jsonquery)
+- [urlencode()](/reference/sharpmush-help/sharpfunc/#urlencode)
+- [urldecode()](/reference/sharpmush-help/sharpfunc/#urldecode)
 
 ## @RESPOND
 
@@ -97,8 +97,8 @@ If `@respond` is run outside of an HTTP Context, the enactor will see "(HTTP): .
 
 
 **See Also:**
-- [- [@respond2](/reference/sharpmush-help/pennconf/#respond2)
-- [@respond3](/reference/sharpmush-help/pennhttp/#respond3)
+- [- [@respond2](/reference/sharpmush-help/sharpconf/#respond2)
+- [@respond3](/reference/sharpmush-help/sharphttp/#respond3)
 
 ## @RESPOND2
 `@respond` examples:
