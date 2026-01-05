@@ -124,7 +124,7 @@ Example:
 
 Will output (in HTML):
 ```
-<b>Foo</b>
+\<b\>Foo</b>
 ```
 
 Non-wizards should see the tag(), endtag(), and tagwrap() functions, which are similar but can be used by mortals.
