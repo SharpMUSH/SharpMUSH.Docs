@@ -32,24 +32,24 @@ You say, "is"
 ## FUNCTION LIST
   Several major variants of functions are available. The help topics are listed below, together with a quick summary of the function type and some examples of that type of function.
 
-  [Attribute functions](/reference/sharpmush-help/sharpfunc/#attribute-functions): attribute-related manipulations (GET, UFUN)
-  [Bitwise functions](/reference/sharpmush-help/sharpfunc/#bitwise-functions): manipulation of individual bits of numbers (SHL, BOR)
-  [Boolean functions](/reference/sharpmush-help/sharpfunc/#boolean-functions): produce 0 or 1 (false or true) answers (OR, AND)
-  [Channel functions](/reference/sharpmush-help/sharpchat/#channel-functions): get information about channels (CTITLE, CWHO)
-  [Communication functions](/reference/sharpmush-help/sharpfunc/#communication-functions): send messages to objects (PEMIT, OEMIT)
-  [Connection functions](/reference/sharpmush-help/sharpfunc/#connection-functions): get information about a player's connection (CONN)
-  [Dbref functions](/reference/sharpmush-help/sharpfunc/#dbref-functions): return dbref info related to objects (LOC, LEXITS)
-  [HTML functions](/reference/sharpmush-help/sharppueb/#html-functions): output HTML tags for Pueblo and WebSocket clients
-  [Information functions](/reference/sharpmush-help/sharpfunc/#information-functions): find out something about objects (FLAGS, MONEY)
-  [JSON functions](/reference/sharpmush-help/sharpfunc/#json-functions): create and manipulate JSON objects (JSON, JSON_MAP)
-  [List functions](/reference/sharpmush-help/sharpfunc/#list-functions): manipulate lists (REVWORDS, FIRST)
-  [Mail functions](/reference/sharpmush-help/sharpmail/#mail-functions): manipulate @mail (MAIL, FOLDERSTATS)
-  [Math functions](/reference/sharpmush-help/sharpfunc/#math-functions): number manipulation, generic or integers only (ADD, DIV)
-  [Regular expression functions](/reference/sharpmush-help/sharpfunc/#regular-expression-functions): Regular expressions (REGMATCH, REGEDIT)
-  [SQL functions](/reference/sharpmush-help/sharpfunc/#sql-functions): access SQL databases (SQL, SQLESCAPE)
-  [String functions](/reference/sharpmush-help/sharpfunc/#string-functions): string manipulation (ESCAPE, FLIP)
-  [Time functions](/reference/sharpmush-help/sharpfunc/#time-functions): formatting and display of time (TIME, CONVSECS)
-  [Utility functions](/reference/sharpmush-help/sharpfunc/#utility-functions): general utilities (ISINT, COMP)
+  - [Attribute functions](/reference/sharpmush-help/sharpfunc/#attribute-functions): attribute-related manipulations (GET, UFUN)
+  - [Bitwise functions](/reference/sharpmush-help/sharpfunc/#bitwise-functions): manipulation of individual bits of numbers (SHL, BOR)
+  - [Boolean functions](/reference/sharpmush-help/sharpfunc/#boolean-functions): produce 0 or 1 (false or true) answers (OR, AND)
+  - [Channel functions](/reference/sharpmush-help/sharpchat/#channel-functions): get information about channels (CTITLE, CWHO)
+  - [Communication functions](/reference/sharpmush-help/sharpfunc/#communication-functions): send messages to objects (PEMIT, OEMIT)
+  - [Connection functions](/reference/sharpmush-help/sharpfunc/#connection-functions): get information about a player's connection (CONN)
+  - [Dbref functions](/reference/sharpmush-help/sharpfunc/#dbref-functions): return dbref info related to objects (LOC, LEXITS)
+  - [HTML functions](/reference/sharpmush-help/sharppueb/#html-functions): output HTML tags for Pueblo and WebSocket clients
+  - [Information functions](/reference/sharpmush-help/sharpfunc/#information-functions): find out something about objects (FLAGS, MONEY)
+  - [JSON functions](/reference/sharpmush-help/sharpfunc/#json-functions): create and manipulate JSON objects (JSON, JSON_MAP)
+  - [List functions](/reference/sharpmush-help/sharpfunc/#list-functions): manipulate lists (REVWORDS, FIRST)
+  - [Mail functions](/reference/sharpmush-help/sharpmail/#mail-functions): manipulate @mail (MAIL, FOLDERSTATS)
+  - [Math functions](/reference/sharpmush-help/sharpfunc/#math-functions): number manipulation, generic or integers only (ADD, DIV)
+  - [Regular expression functions](/reference/sharpmush-help/sharpfunc/#regular-expression-functions): Regular expressions (REGMATCH, REGEDIT)
+  - [SQL functions](/reference/sharpmush-help/sharpfunc/#sql-functions): access SQL databases (SQL, SQLESCAPE)
+  - [String functions](/reference/sharpmush-help/sharpfunc/#string-functions): string manipulation (ESCAPE, FLIP)
+  - [Time functions](/reference/sharpmush-help/sharpfunc/#time-functions): formatting and display of time (TIME, CONVSECS)
+  - [Utility functions](/reference/sharpmush-help/sharpfunc/#utility-functions): general utilities (ISINT, COMP)
 
   The command "@list/functions" lists all functions on the game.
   The command "@function" lists only the game's custom global functions defined via the @function command.
