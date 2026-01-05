@@ -10,7 +10,7 @@ Pueblo is a client made by Chaco (a now defunct company). It attempts to mix HTM
 SharpMUSH will automatically detect a Pueblo client (rather, the client will announce itself and SharpMUSH will detect that), and set up that connection for Pueblo use. 
 
 
-### See Also
+**See Also:**
 - [pueblo2](/reference/sharpmush-help/pennpueb/#pueblo2)
 
 ## PUEBLO2
@@ -31,7 +31,7 @@ While Pueblo brings a number of new features and markups to MUSHes, in many ways
 ```
 
 
-### See Also
+**See Also:**
 - [- [pueblo()]
 - [HTML Functions](/reference/sharpmush-help/pennpueb/#html-functions)
 
@@ -44,7 +44,7 @@ The only HTML implementation supported by the MUSH is the one supported by Puebl
 HTML tags are stripped when sent to non-HTML capable players.
 
 
-### See Also
+**See Also:**
 - [- [HTML Functions](/reference/sharpmush-help/pennconf/#html-functions)
 - [PUEBLO](/reference/sharpmush-help/pennpueb/#pueblo)
 - [html()](/reference/sharpmush-help/pennpueb/#html)
@@ -60,7 +60,7 @@ If used on a player/descriptor which is not connected, pueblo() returns #-1 NOT 
 When used with a *<player>* argument, the most recently active connection is used if the *<player>* is logged in more than once.
 
 
-### See Also
+**See Also:**
 - [- [terminfo()]
 - [html()](/reference/sharpmush-help/pennpueb/#html)
 - [PUEBLO](/reference/sharpmush-help/pennpueb/#pueblo)
@@ -81,7 +81,7 @@ Example:
 To learn about the VRML Format, have a look at the Pueblo Help, which mentions several good sites for learning.
 
 
-### See Also
+**See Also:**
 - [- [HTML](/reference/sharpmush-help/pennconf/#html)
 - [PUEBLO](/reference/sharpmush-help/pennpueb/#pueblo)
 
@@ -130,7 +130,7 @@ Will output (in HTML):
 Non-wizards should see the tag(), endtag(), and tagwrap() functions, which are similar but can be used by mortals.
 
 
-### See Also
+**See Also:**
 - [- [PUEBLO](/reference/sharpmush-help/pennpueb/#pueblo)
 - [HTML](/reference/sharpmush-help/pennpueb/#html)
 - [HTML Functions](/reference/sharpmush-help/pennpueb/#html-functions)
@@ -154,7 +154,7 @@ Will output (in HTML):
 ```
 
 
-### See Also
+**See Also:**
 - [- [endtag()]
 - [tagwrap()](/reference/sharpmush-help/pennpueb/#tagwrap)
 - [html()](/reference/sharpmush-help/pennpueb/#html)
@@ -176,7 +176,7 @@ Will output (in HTML):
 ```
 
 
-### See Also
+**See Also:**
 - [- [tag()]
 - [tagwrap()](/reference/sharpmush-help/pennpueb/#tagwrap)
 - [html()](/reference/sharpmush-help/pennpueb/#html)
@@ -200,7 +200,7 @@ Will output (in HTML):
 A particularly important use of this function is `tagwrap(pre, <string>)`. Because Pueblo works like an html browser, spaces and tabs are compressed to a single space. If you have code (a +who function, for example) that relies on exact spacing, surround its output with a tagwrap(pre,...) so that Pueblo will render it as "preformatted" text.
 
 
-### See Also
+**See Also:**
 - [- [tag()]
 - [endtag()](/reference/sharpmush-help/pennpueb/#endtag)
 - [html()](/reference/sharpmush-help/pennpueb/#html)
@@ -233,7 +233,7 @@ See [wsjson()](/reference/sharpmush-help/pennpueb/#wsjson) for help sending form
 See [@prompt](/reference/sharpmush-help/penncmd/#prompt) for information about sending telnet GOAHEAD prompts. Support for prompts depends on the WebSocket client. The example client above shows prompts on their own line, separating the input and output windows, but requires PROMPT_NEWLINES to be turned off.
 
 
-### See Also
+**See Also:**
 - [- [HTML Functions](/reference/sharpmush-help/pennconf/#html-functions)
 - [json()](/reference/sharpmush-help/pennfunc/#json)
 - [pueblo](/reference/sharpmush-help/pennpueb/#pueblo)
@@ -273,7 +273,7 @@ Go to http://pennmush.org
 ```
 
 
-### See Also
+**See Also:**
 - [- [WebSockets](/reference/sharpmush-help/pennconf/#websockets)
 - [Pueblo](/reference/sharpmush-help/pennpueb/#pueblo)
 - [HTML Functions](/reference/sharpmush-help/pennpueb/#html-functions)

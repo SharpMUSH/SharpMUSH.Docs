@@ -27,7 +27,7 @@ You say, "is"
   Built-in functions are written in the game hardcode, while @functions are written in softcode, and then made global with the "@function" command. Both are used in exactly the same manner. For more information on @functions, see [@function](/reference/sharpmush-help/penncmd/#function).
 
 
-### See Also
+**See Also:**
 - [MUSHCODE](/reference/sharpmush-help/penntop/#mushcode)
 - [FUNCTION LIST](/reference/sharpmush-help/pennfunc/#function-list)
 ## FUNCTION LIST
@@ -69,7 +69,7 @@ ulocal()       v()            wildgrep()     wildgrepi()    xattr()
 xget()         zfun()
 
 
-### See Also
+**See Also:**
 - [ATTRIBUTES](/reference/sharpmush-help/penntop/#attributes)
 - [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/penntop/#non-standard-attributes)
 ## Bitwise functions
@@ -90,7 +90,7 @@ gte()         lt()          lte()         nand()        neq()
 nor()         not()         or()          t()           xor()
 
 
-### See Also
+**See Also:**
 - [BOOLEAN VALUES](/reference/sharpmush-help/penntop/#boolean-values)
 - [@config](/reference/sharpmush-help/penncmd/#config)
 ## Communication functions
@@ -102,7 +102,7 @@ nszemit()     oemit()       pemit()       prompt()      remit()
 zemit()
 
 
-### See Also
+**See Also:**
 - [Channel functions](/reference/sharpmush-help/pennchat/#channel-functions)
 - [Mail functions](/reference/sharpmush-help/pennmail/#mail-functions)
 ## Connection functions
@@ -126,7 +126,7 @@ num()         owner()       parent()      pmatch()      rloc()
 rnum()        room()        where()       zone()
 
 
-### See Also
+**See Also:**
 - [DBREF](/reference/sharpmush-help/pennconf/#dbref)
 - [Information functions](/reference/sharpmush-help/pennfunc/#information-functions)
 ## Information functions
@@ -145,7 +145,7 @@ powers()       quota()        restarts()     type()         version()
 visible()
 
 
-### See Also
+**See Also:**
 - [Dbref functions](/reference/sharpmush-help/pennfunc/#dbref-functions)
 ## List functions
   List functions take at least one list of elements and return transformed lists or one or more members of those lists. Most of these functions can take an arbitrary `<delimiter>` argument to specify what delimits list elements; if none is provided, a space is used by default.
@@ -161,7 +161,7 @@ sortby()      sortkey()     splice()      step()        table()
 unique()      wordpos()     words()
 
 
-### See Also
+**See Also:**
 - [LISTS](/reference/sharpmush-help/penntop/#lists)
 ## Math functions
   Math functions take one or more floating point numbers and return a numeric value.
@@ -181,7 +181,7 @@ remainder()
   Math functions are affected by a number of @config options, including the TinyMUSH compatability options null_eq_zero and tiny_math.
 
 
-### See Also
+**See Also:**
 - [Vector Functions](/reference/sharpmush-help/pennfunc/#vector-functions)
 ## Vector functions
   These functions operate on n-dimensional vectors. A vector is a delimiter-separated list of numbers (space-separated, by default):
@@ -190,7 +190,7 @@ vadd()        vcross()      vdim()        vdot()        vmag()
 vmax()        vmin()        vmul()        vsub()        vunit()
 
 
-### See Also
+**See Also:**
 - [Math functions](/reference/sharpmush-help/pennfunc/#math-functions)
 ## Regular expression functions
   These functions take a regular expression (regexp, or re) and match it against assorted things.
@@ -202,7 +202,7 @@ regrepi()     reswitch()     reswitchall()  reswitchalli() reswitchi()
 regxattr()    regxattrp()
 
 
-### See Also
+**See Also:**
 - [string functions](/reference/sharpmush-help/pennfunc/#string-functions)
 - [regexp](/reference/sharpmush-help/penntop/#regexp)
 ## SQL functions
@@ -213,55 +213,55 @@ sql()         sqlescape()   mapsql()
 ## String functions
   String functions take at least one string and return a transformed string, parts of a string, or a value related to the string(s).
 
-accent()         after()          align()          alphamax()
-alphamin()       art()            before()         brackets()
-capstr()         case()           caseall()        cat()
-center()         chr()            comp()           cond()
-condall()        decode64()       decompose()      decrypt()
-digest()         edit()           encode64()       encrypt()
-escape()         flip()           foreach()        formdecode()
-hmac()           if()             ifelse()         lcstr()
-left()           lit()            ljust()          lpos()
-merge()          mid()            ord()            ordinal()
-pos()            regedit()        regmatch()       repeat()
-right()          rjust()          scramble()       secure()
-space()          spellnum()       squish()         strallof()
-strcat()         strdelete()      strfirstof()     strinsert()
-stripaccents()   stripansi()      strlen()         strmatch()
-strreplace()     switch()         tr()             trim()
-ucstr()          urldecode()      urlencode()      wrap()
+  accent()         after()          align()          alphamax()
+  alphamin()       art()            before()         brackets()
+  capstr()         case()           caseall()        cat()
+  center()         chr()            comp()           cond()
+  condall()        decode64()       decompose()      decrypt()
+  digest()         edit()           encode64()       encrypt()
+  escape()         flip()           foreach()        formdecode()
+  hmac()           if()             ifelse()         lcstr()
+  left()           lit()            ljust()          lpos()
+  merge()          mid()            ord()            ordinal()
+  pos()            regedit()        regmatch()       repeat()
+  right()          rjust()          scramble()       secure()
+  space()          spellnum()       squish()         strallof()
+  strcat()         strdelete()      strfirstof()     strinsert()
+  stripaccents()   stripansi()      strlen()         strmatch()
+  strreplace()     switch()         tr()             trim()
+  ucstr()          urldecode()      urlencode()      wrap()
 
 
 
-### See Also
+**See Also:**
 - [STRINGS](/reference/sharpmush-help/penntop/#strings)
 ## Time functions
   These functions return times or format times.
 
-convsecs()    convutcsecs() convtime()    convutctime() ctime()
-etime()       etimefmt()    isdaylight()  mtime()       restarttime()
-secs()        starttime()   stringsecs()  time()        timecalc()
-timefmt()     timestring()  utctime()     uptime()
+  convsecs()    convutcsecs() convtime()    convutctime() ctime()
+  etime()       etimefmt()    isdaylight()  mtime()       restarttime()
+  secs()        starttime()   stringsecs()  time()        timecalc()
+  timefmt()     timestring()  utctime()     uptime()
 
 
-### See Also
+**See Also:**
 - [TIMEZONES](/reference/sharpmush-help/pennfunc/#timezones)
 ## Utility functions
   These functions don't quite fit into any other category.
 
-allof()       ansi()        atrlock()     beep()        benchmark()
-checkpass()   clone()       create()      die()         dig()
-endtag()      firstof()     functions()   fn()          html()
-ibreak()      ilev()        inum()        isdbref()     isint()
-isnum()       isobjid()     isregexp()    isword()      itext()
-letq()        localize()    link()        list()        listq()
-lnum()        lset()        null()        numversion()  objeval()
-open()        pcreate()     r()           rand()        s()
-scan()        set()         setq()        setr()        slev()
-soundex()     soundslike()  speak()       stext()       suggest()
-tag()         tagwrap()     tel()         testlock()    textentries()
-textfile()    unsetq()      valid()       wipe()        @@()
-uptime()`
+  allof()       ansi()        atrlock()     beep()        benchmark()
+  checkpass()   clone()       create()      die()         dig()
+  endtag()      firstof()     functions()   fn()          html()
+  ibreak()      ilev()        inum()        isdbref()     isint()
+  isnum()       isobjid()     isregexp()    isword()      itext()
+  letq()        localize()    link()        list()        listq()
+  lnum()        lset()        null()        numversion()  objeval()
+  open()        pcreate()     r()           rand()        s()
+  scan()        set()         setq()        setr()        slev()
+  soundex()     soundslike()  speak()       stext()       suggest()
+  tag()         tagwrap()     tel()         testlock()    textentries()
+  textfile()    unsetq()      valid()       wipe()        @@()
+  uptime()`
 
 ## @@()
 ## NULL()
@@ -273,7 +273,7 @@ uptime()`
   The null() function is similar, but does evaluate its argument(s), so side-effects can occur within a null(). Useful for eating the output of functions when you don't use that output.
 
 
-### See Also
+**See Also:**
 - [@@](/reference/sharpmush-help/penncmd/)
 ## ABS()
 `abs(<number>)`
@@ -285,12 +285,12 @@ uptime()`
 say abs(-4)
 You say, "4"
 ```
+```
+> say abs(2)
+You say, "2"
+```
 
-    > say abs(2)
-    You say, "2"
-
-
-### See Also
+**See Also:**
 - [sign()](/reference/sharpmush-help/pennfunc/#sign)
 ## ACCENT()
 `accent(<string>, <template>)`
@@ -304,7 +304,7 @@ You say, "4"
   See [accent2](/reference/sharpmush-help/pennfunc/#accent2) for some examples.
 
 
-### See Also
+**See Also:**
 - [stripaccents()](/reference/sharpmush-help/pennfunc/#stripaccents)
 - [NOACCENTS](/reference/sharpmush-help/pennconf/#noaccents)
 - [@nameaccent](/reference/sharpmush-help/penncmd/#nameaccent)
@@ -371,7 +371,7 @@ You say, "4"
   @nameaccent, if any.
 
 
-### See Also
+**See Also:**
 - [name()](/reference/sharpmush-help/pennfunc/#name)
 - [fullname()](/reference/sharpmush-help/pennfunc/#fullname)
 - [iname()](/reference/sharpmush-help/pennfunc/#iname)
@@ -384,7 +384,7 @@ You say, "4"
   See 'HELP ANGLES' for more on the `<angle type>`.
 
 
-### See Also
+**See Also:**
 - [asin()](/reference/sharpmush-help/pennfunc/#asin)
 - [atan()](/reference/sharpmush-help/pennfunc/#atan)
 - [cos()](/reference/sharpmush-help/pennfunc/#cos)
@@ -397,7 +397,7 @@ You say, "4"
   Returns the sum of the given numbers.
 
 
-### See Also
+**See Also:**
 - [MATH FUNCTIONS](/reference/sharpmush-help/pennfunc/#math-functions)
 - [lmath()](/reference/sharpmush-help/pennfunc/#lmath)
 ## AFTER()
@@ -407,15 +407,15 @@ You say, "4"
 
   Examples:
 ```
-say after(foo bar baz,bar)
+> say after(foo bar baz,bar)
 You say, " baz"
 ```
+```
+> say after(foo bar baz,ba)
+You say, "r baz"
+```
 
-    > say after(foo bar baz,ba)
-    You say, "r baz"
-
-
-### See Also
+**See Also:**
 - [before()](/reference/sharpmush-help/pennfunc/#before)
 - [rest()](/reference/sharpmush-help/pennfunc/#rest)
 ## ALIGN()
@@ -452,7 +452,7 @@ You say, " baz"
 
   See '[align3](/reference/sharpmush-help/pennfunc/#align3)' for examples.
 
-### See Also
+**See Also:**
 - [center()](/reference/sharpmush-help/pennfunc/#center)
 - [ljust()](/reference/sharpmush-help/pennfunc/#ljust)
 - [rjust()](/reference/sharpmush-help/pennfunc/#rjust)
@@ -467,7 +467,9 @@ You say, " baz"
       (M) Ashen-Shug Apartment 306
           ar
       (F) Jane Doe   Nowhere
+```
 
+```
     > &line me=align(<3 10X 20X$,([ljust(get(%0/sex),1,,1)]), name(%0),name(loc(%0)))
     > th iter(lwho(),u(line,##),%b,%r)
       (M) Walker     Tree
@@ -477,6 +479,7 @@ You say, " baz"
 
         See '[align4](/reference/sharpmush-help/pennfunc/#align4)' for more examples.
 ## ALIGN4
+```
     > &haiku me = Alignment function,%rIt justifies your writing,%rBut the words still suck.%rLuke
 
     > th [align(5 -40 5,,[repeat(-,40)]%r[u(haiku)]%r[repeat(-,40)],,%b,+)]
@@ -487,9 +490,11 @@ You say, " baz"
          +       But the words still suck.        +
          +                  Luke                  +
          +----------------------------------------+
+```
 
   See '[align5](/reference/sharpmush-help/pennfunc/#align5)' for more examples.
 ## ALIGN5
+```
   > &dropcap me=%b_______%r|__%b%b%b__|%r%b%b%b|%b|%r%b%b%b|_|
   > &story me=%r'was the night before Christmas, when all through the house%rNot a creature was stirring, not even a mouse.%rThe stockings were hung by the chimney with care,%rIn hopes that St Nicholas soon would be there.
   > th align(9'(ch) 68, u(dropcap), u(story))
@@ -502,36 +507,45 @@ You say, " baz"
 
   The dropcap 'T' will be in ANSI cyan-highlight, and merges with the 'story'
   column.
+```
 
+```
   > th align(>15 60,Walker,Staff & Developer,x,x)
   xxxxxxxxxWalkerxStaff & Developerxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+```
   > th align(>15 60$,Walker,Staff & Developer,x,x)
   xxxxxxxxxWalkerxStaff & Developer
+```
 ## ALLOF()
 `allof(<expr>[, ... , <exprN>], <osep>)`
 
   Evaluates every `<expr>` argument (including side-effects) and returns the results of those which are true, in a list separated by `<osep>`. The output separator argument is required, and can be a string of any length (including an empty string; use %b for a space).
 
   The meaning of true or false depends on configuration options as explained in the 'BOOLEAN VALUES' help topics.
-
+```
     > &s me=Bats are similar to Rats which are afraid of Cats
     > say allof(grab(v(s),rats),grab(v(s),mats),grab(v(s),bats),)
     You say, "Rats Bats"
-
+```
+```
     > say allof(#-1,#101,#2970,,#-3,0,#319,null(This Doesn't Count),|)
     You say, "#101|#2970|#319"
-
+```
     > say allof(foo, 0, #-1, bar, baz,)
     You say, "foobarbaz"
+```
+```
     > say allof(foo, 0, #-1, bar, baz,%b)
     You say, "foo bar baz"
+```
 
-
-### See Also
-- [firstof()](/reference/sharpmush-help/pennfunc/#firstof)
-- [BOOLEAN VALUES](/reference/sharpmush-help/penntop/#boolean-values)
-- [strallof()](/reference/sharpmush-help/pennfunc/#strallof)
-- [filter()](/reference/sharpmush-help/pennfunc/#filter)
+**See Also:**
+- [firstof()]
+- [BOOLEAN VALUES]
+- [strallof()]
+- [filter()]
 ## ALPHAMAX()
 `alphamax(<word>[, ... , <wordN>])`
 
@@ -540,9 +554,9 @@ You say, " baz"
   This is equivilent to last(sort(`<word>` ... `<wordN>`,a)).
 
 
-### See Also
-- [alphamin()](/reference/sharpmush-help/pennfunc/#alphamin)
-- [max()](/reference/sharpmush-help/pennfunc/#max)
+**See Also:**
+- [alphamin()]
+- [max()]
 ## ALPHAMIN()
 `alphamin(<word>[, ... , <wordN>])`
 
@@ -551,9 +565,9 @@ You say, " baz"
   This is equivilent to first(sort(`<word>` ... `<wordN>`,a)).
 
 
-### See Also
-- [alphamax()](/reference/sharpmush-help/pennfunc/#alphamax)
-- [min()](/reference/sharpmush-help/pennfunc/#min)
+**See Also:**
+- [alphamax()]
+- [min()]
 ## AND()
 ## CAND()
 `and(<boolean1>, <boolean2>[, ... , <booleanN>])`
@@ -562,13 +576,13 @@ You say, " baz"
   These functions take any number of boolean values, and return 1 if all are true, and 0 otherwise. and() will always evaluate all its arguments (including side effects), while cand() stops evaluation after the first false argument.
 
 
-### See Also
-- [BOOLEAN VALUES](/reference/sharpmush-help/penntop/#boolean-values)
-- [nand()](/reference/sharpmush-help/pennfunc/#nand)
-- [or()](/reference/sharpmush-help/pennfunc/#or)
-- [xor()](/reference/sharpmush-help/pennfunc/#xor)
-- [not()](/reference/sharpmush-help/pennfunc/#not)
-- [lmath()](/reference/sharpmush-help/pennfunc/#lmath)
+**See Also:**
+- [BOOLEAN VALUES]
+- [nand()]
+- [or()]
+- [xor()]
+- [not()]
+- [lmath()]
 ## ANDFLAGS()
 ## ANDLFLAGS()
 `andflags(<object>, <string of flag letters>)`
@@ -583,10 +597,10 @@ You say, " baz"
     > say andlflags(%#, wizard dark !ansi)
 
 
-### See Also
-- [orflags()](/reference/sharpmush-help/pennfunc/#orflags)
-- [flags()](/reference/sharpmush-help/pennfunc/#flags)
-- [lflags()](/reference/sharpmush-help/pennfunc/#lflags)
+**See Also:**
+- [orflags()]
+- [flags()]
+- [lflags()]
 ## ANDLPOWERS()
 `andlpowers(<object>, <list of powers>)`
 
@@ -597,11 +611,11 @@ You say, " baz"
   If there is a syntax error like a ! without a following flag, '#-1 INVALID POWER' is returned. Unknown powers are treated as being not set.
 
 
-### See Also
-- [powers()](/reference/sharpmush-help/pennfunc/#powers)
-- [orlpowers()](/reference/sharpmush-help/pennfunc/#orlpowers)
-- [POWERS LIST](/reference/sharpmush-help/pennconf/#powers-list)
-- [@power](/reference/sharpmush-help/penncmd/#power)
+**See Also:**
+- [powers()]
+- [orlpowers()]
+- [POWERS LIST]
+- [@power]
 ## ANSI()
 `ansi(<codes>[ ... <codesN>], <string>)`
 
@@ -610,7 +624,7 @@ You say, " baz"
   The old-style `<ansi-codes>` are listed in "help ansi2".
   Each block of space-separated `<codes>` can be one or more old-style ANSI codes, as listed in "help ansi2", or a foreground and/or background color. Background colors are prefixed with a "/". Each color can be one of:
 
-    * +`<colorname>` (for a list of valid names, see [colors()](/reference/sharpmush-help/pennfunc/#colors))
+    * +`<colorname>` (for a list of valid names, see [colors()])
     * a hexcode, optionally in angle brackets (#000000, `<#ff0055>`, etc)
     * a list of red, green and blue values from 0-255, in angle brackets (`<0 0 0>`, `<255 0 85>`, etc)
     * a number from 0-255; this is the same as using "+xterm`<number>`", for Rhost compatability.
@@ -623,17 +637,17 @@ ansi(y /+green B <#ffffff>, test)
 would show white text on an ANSI-blue background.
 ```
 
-  See [ansi3](/reference/sharpmush-help/pennfunc/#ansi3) for more examples.
+  See [ansi3] for more examples.
 
-### See Also
-- [ANSI](/reference/sharpmush-help/pennflag/#ansi)
-- [COLOR](/reference/sharpmush-help/pennflag/#color)
-- [@sockset](/reference/sharpmush-help/penncmd/#sockset)
-- [colorstyle](/reference/sharpmush-help/penncmd/#colorstyle)
-- [colors()](/reference/sharpmush-help/pennfunc/#colors)
+**See Also:**
+- [ANSI]
+- [COLOR]
+- [@sockset]
+- [colorstyle]
+- [colors()]
 ## ANSI2
   Old-style valid color codes are:
-
+```
         f - flash                       F - not flash
         h - hilite                      H - not hilite
         u - underscore                  U - not underscore
@@ -649,7 +663,7 @@ would show white text on an ANSI-blue background.
         m - magenta foreground          M - magenta background
         c - cyan foreground             C - cyan background
         w - white foreground            W - white background
-
+```
   For example, "ansi(fc, Test)" would hilight "Test" in flashing cyan. Default foreground and background use the client's default color for fore and back.
 ## ANSI3
 
@@ -671,10 +685,10 @@ would show white text on an ANSI-blue background.
   Returns the absolute possessive pronoun - his/hers/its/theirs - for an object. The %a substitution returns the absolute possessive pronoun of the enactor.
 
 
-### See Also
-- [obj()](/reference/sharpmush-help/pennfunc/#obj)
-- [poss()](/reference/sharpmush-help/pennfunc/#poss)
-- [subj()](/reference/sharpmush-help/pennfunc/#subj)
+**See Also:**
+- [obj()]
+- [poss()]
+- [subj()]
 ## ART()
 `art(<string>)`
 
@@ -687,13 +701,13 @@ would show white text on an ANSI-blue background.
   See 'HELP ANGLES' for more on the angle type.
 
 
-### See Also
-- [acos()](/reference/sharpmush-help/pennfunc/#acos)
-- [atan()](/reference/sharpmush-help/pennfunc/#atan)
-- [cos()](/reference/sharpmush-help/pennfunc/#cos)
-- [ctu()](/reference/sharpmush-help/pennfunc/#ctu)
-- [sin()](/reference/sharpmush-help/pennfunc/#sin)
-- [tan()](/reference/sharpmush-help/pennfunc/#tan)
+**See Also:**
+- [acos()]
+- [atan()]
+- [cos()]
+- [ctu()]
+- [sin()]
+- [tan()]
 ## ATAN()
 ## ATAN2()
 `atan(<tangent>[, <angle type>])`
@@ -706,13 +720,13 @@ would show white text on an ANSI-blue background.
   See 'HELP ANGLES' for more on the angle type.
 
 
-### See Also
-- [acos()](/reference/sharpmush-help/pennfunc/#acos)
-- [asin()](/reference/sharpmush-help/pennfunc/#asin)
-- [cos()](/reference/sharpmush-help/pennfunc/#cos)
-- [ctu()](/reference/sharpmush-help/pennfunc/#ctu)
-- [sin()](/reference/sharpmush-help/pennfunc/#sin)
-- [tan()](/reference/sharpmush-help/pennfunc/#tan)
+**See Also:**
+- [acos()]
+- [asin()]
+- [cos()]
+- [ctu()]
+- [sin()]
+- [tan()]
 ## ATRLOCK()
 `atrlock(<object>/<attrib>[, [on|off]])`
 
@@ -728,10 +742,10 @@ would show white text on an ANSI-blue background.
   except that the attribute's owner is also changed when you lock it via atrlock().
 
 
-### See Also
-- [@atrlock](/reference/sharpmush-help/penncmd/#atrlock)
-- [@atrchown](/reference/sharpmush-help/penncmd/#atrchown)
-- [hasflag()](/reference/sharpmush-help/pennfunc/#hasflag)
+**See Also:**
+- [@atrlock]
+- [@atrchown]
+- [hasflag()]
 ## ATTRIB_SET()
 `attrib_set(<object>/<attrib>[, <value>])`
 
@@ -740,18 +754,18 @@ would show white text on an ANSI-blue background.
   If there is a second argument, then attrib_set() will create an attribute, even if the second argument is empty (in which case attrib_set() will create an empty attribute). If the empty_attrs configuration option is off, the attribute will be set to a single space. This means that attrib_set(me/foo,%0) will _always_ create an attribute.
 
 
-### See Also
-- [set()](/reference/sharpmush-help/pennfunc/#set)
-- [@set](/reference/sharpmush-help/penncmd/#set)
+**See Also:**
+- [set()]
+- [@set]
 ## BAND()
 `band(<integer>, <integer>[, ... , <integerN>])`
 
   Does a bitwise AND of all its arguments, returning the result (a number with only the bits set in every argument set in it).
 
 
-### See Also
-- [BITWISE FUNCTIONS](/reference/sharpmush-help/pennfunc/#bitwise-functions)
-- [lmath()](/reference/sharpmush-help/pennfunc/#lmath)
+**See Also:**
+- [BITWISE FUNCTIONS]
+- [lmath()]
 ## BASECONV()
 `baseconv(<number>, <from base>, <to base>)`
 
@@ -787,9 +801,9 @@ You say, "foo b"
 ```
 
 
-### See Also
-- [after()](/reference/sharpmush-help/pennfunc/#after)
-- [first()](/reference/sharpmush-help/pennfunc/#first)
+**See Also:**
+- [after()]
+- [first()]
 ## BENCHMARK()
 `benchmark(<expression>, <number>[, <sendto>])`
 
@@ -819,25 +833,25 @@ think brackets(v(desc))
   Returns `<integer1>` with every bit that was set in `<integer2>` cleared.
 
 
-### See Also
-- [BITWISE FUNCTIONS](/reference/sharpmush-help/pennfunc/#bitwise-functions)
+**See Also:**
+- [BITWISE FUNCTIONS]
 ## BNOT()
 `bnot(<integer>)`
 
   Returns the bitwise complement of `<integer>`. Every bit set in it is cleared, and every clear bit is set.
 
 
-### See Also
-- [BITWISE FUNCTIONS](/reference/sharpmush-help/pennfunc/#bitwise-functions)
+**See Also:**
+- [BITWISE FUNCTIONS]
 ## BOR()
 `bor(<integer>, <integer>[, ... , <integerN>])`
 
   Does a bitwise OR of all its arguments, returning the result. (A number with a bit set if that bit appears in any of its arguments).
 
 
-### See Also
-- [BITWISE FUNCTIONS](/reference/sharpmush-help/pennfunc/#bitwise-functions)
-- [lmath()](/reference/sharpmush-help/pennfunc/#lmath)
+**See Also:**
+- [BITWISE FUNCTIONS]
+- [lmath()]
 ## BOUND()
 `bound(<number>, <lower bound>, <higher bound>)`
 
@@ -846,20 +860,20 @@ think brackets(v(desc))
   If you just want to know whether `<number>` is within the range of `<lower>` to `<higher>`, consider using lte(`<lower>`, `<number>`, `<higher>`) instead to get a boolean result.
 
 
-### See Also
-- [ceil()](/reference/sharpmush-help/pennfunc/#ceil)
-- [floor()](/reference/sharpmush-help/pennfunc/#floor)
-- [round()](/reference/sharpmush-help/pennfunc/#round)
-- [trunc()](/reference/sharpmush-help/pennfunc/#trunc)
+**See Also:**
+- [ceil()]
+- [floor()]
+- [round()]
+- [trunc()]
 ## BXOR()
 `bxor(<integer>, <integer>[, ... , <integerN>])`
 
   Does a bitwise XOR of all its arguments, returning the result. (A number with a bit set if it's set in only one of its arguments).
 
 
-### See Also
-- [BITWISE FUNCTIONS](/reference/sharpmush-help/pennfunc/#bitwise-functions)
-- [lmath()](/reference/sharpmush-help/pennfunc/#lmath)
+**See Also:**
+- [BITWISE FUNCTIONS]
+- [lmath()]
 ## CAPSTR()
 `capstr(<string>)`
 
@@ -872,9 +886,9 @@ Foo bar baz
 ```
 
 
-### See Also
-- [lcstr()](/reference/sharpmush-help/pennfunc/#lcstr)
-- [ucstr()](/reference/sharpmush-help/pennfunc/#ucstr)
+**See Also:**
+- [lcstr()]
+- [ucstr()]
 ## CAT()
 ## STRCAT()
 `cat(<string>[, ... , <stringN>])`
@@ -912,10 +926,10 @@ You say, "--X--"
     You say, "12345hello543215"
 
 
-### See Also
-- [align()](/reference/sharpmush-help/pennfunc/#align)
-- [ljust()](/reference/sharpmush-help/pennfunc/#ljust)
-- [rjust()](/reference/sharpmush-help/pennfunc/#rjust)
+**See Also:**
+- [align()]
+- [ljust()]
+- [rjust()]
 ## CHECKPASS()
 `checkpass(<player>, <string>)`
 
@@ -924,9 +938,9 @@ You say, "--X--"
   This function can only be used by wizards.
 
 
-### See Also
-- [@password](/reference/sharpmush-help/penncmd/#password)
-- [@newpassword](/reference/sharpmush-help/penncmd/#newpassword)
+**See Also:**
+- [@password]
+- [@newpassword]
 ## CHR()
 ## ORD()
 `chr(<number>)`
@@ -952,11 +966,11 @@ You say, "A"
   Note: If @create or @clone is restricted or disabled, clone() will also be restricted/disabled.
 
 
-### See Also
-- [@clone](/reference/sharpmush-help/penncmd/#clone)
-- [create()](/reference/sharpmush-help/pennfunc/#create)
-- [dig()](/reference/sharpmush-help/pennfunc/#dig)
-- [open()](/reference/sharpmush-help/pennfunc/#open)
+**See Also:**
+- [@clone]
+- [create()]
+- [dig()]
+- [open()]
 ## CMDS()
 `cmds(<player|descriptor>)`
 
@@ -965,8 +979,8 @@ You say, "A"
   You must be a Wizard, Royalty or See_All to use this function on anyone but yourself.
 
 
-### See Also
-- [CONNECTION FUNCTIONS](/reference/sharpmush-help/pennfunc/#connection-functions)
+**See Also:**
+- [CONNECTION FUNCTIONS]
 ## SENT()
 `sent(<player|descriptor>)`
 
@@ -975,8 +989,8 @@ You say, "A"
   You must be a Wizard, Royalty or See_All to use this function on anyone but yourself.
 
 
-### See Also
-- [Connection Functions](/reference/sharpmush-help/pennfunc/#connection-functions)
+**See Also:**
+- [Connection Functions]
 ## RECV()
 `recv(<player|descriptor>)`
 
@@ -985,8 +999,8 @@ You say, "A"
   You must be a Wizard, Royalty or See_All to use this function on anyone but yourself.
 
 
-### See Also
-- [Connection Functions](/reference/sharpmush-help/pennfunc/#connection-functions)
+**See Also:**
+- [Connection Functions]
 ## COLORS()
 `colors()`
 `colors(<wildcard>)`
@@ -998,24 +1012,24 @@ You say, "A"
 
   With two arguments, colors() returns information about specific colors. `<colors>` can be any string accepted by the ansi() function's first argument. `<format>` must be one of:
 
-   hex, x:      return a hexcode in the format #rrggbb.
-   rgb, r:      return the RGB components as a list (0 0 0 - 255 255 255)
-   xterm256, d: return the number of the xterm color closest to the given `<color>`.
-   xterm256x,h: return the number of the xterm color in base 16.
-   16color, c:  return the letter of the closest ANSI color code (possibly including 'h' for highlight fg colors).
-   name:     return a list of names of all the colors exactly matching the given colors, or '#-1 NO MATCHING COLOR NAME' if there is no exact match with a named color.
-   auto:     returns the colors in the same format(s) they were given in.
+>   hex, x:      return a hexcode in the format #rrggbb.
+>   rgb, r:      return the RGB components as a list (0 0 0 - 255 255 255)
+>   xterm256, d: return the number of the xterm color closest to the given `<color>`.
+>   xterm256x,h: return the number of the xterm color in base 16.
+>   16color, c:  return the letter of the closest ANSI color code (possibly including 'h' for highlight fg colors).
+>   name:     return a list of names of all the colors exactly matching the given colors, or '#-1 NO MATCHING COLOR NAME' if there is no exact match with a named color.
+>   auto:     returns the colors in the same format(s) they were given in.
 
   It can be used for working out how certain colors will downgrade to people using clients which aren't fully color-capable.
 
   `<format>` can also include the word "styles", in which case all ANSI styling options (f, u, i and h) present in `<colors>` are included in the output.
 
-  See [colors2](/reference/sharpmush-help/pennfunc/#colors2) for examples.
+  See [colors2] for examples.
 
-### See Also
-- [ansi()](/reference/sharpmush-help/pennfunc/#ansi)
-- [valid()](/reference/sharpmush-help/pennfunc/#valid)
-- [colorstyle](/reference/sharpmush-help/penncmd/#colorstyle)
+**See Also:**
+- [ansi()]
+- [valid()]
+- [colorstyle]
 ## colors2
 
   Examples:
@@ -1024,26 +1038,34 @@ think colors(*yellow*)
 greenyellow yellowgreen lightgoldenrodyellow lightyellow yellow lightyellow1 lightyellow2 lightyellow3 lightyellow4 yellow1 yellow2 yellow3 yellow4
 ```
 
+```
     > think colors(+yellow, hex)
     #ffff00
-
+```
+```
     > think colors(+yellow, xterm256)
     226
-
+```
+```
     > think colors(+yellow, 16color)
     yh
-
+```
+```
     > think colors(/+yellow, 16color)
     Y
-
+```
+```
     > think colors(#ffff00, name)
     yellow yellow1
-
+```
+```
     > think colors(iuB+red, hex styles)
     ui#ff0000/#0000ee
-
+```
+```
     > think colors(+blue huyG/+black, auto)
     hy/+black
+```
 
 ## COMP()
 `comp(<value1>, <value2>[, <type>])`
@@ -1061,9 +1083,9 @@ greenyellow yellowgreen lightgoldenrodyellow lightyellow yellow lightyellow1 lig
 
   Whether or not the a sort type is case-sensitive or not depends on the particular MUSH and its environment.
 
-### See Also
-- [strmatch()](/reference/sharpmush-help/pennfunc/#strmatch)
-- [eq()](/reference/sharpmush-help/pennfunc/#eq)
+**See Also:**
+- [strmatch()]
+- [eq()]
 ## CON()
 `con(<object>)`
 
@@ -1072,9 +1094,9 @@ greenyellow yellowgreen lightgoldenrodyellow lightyellow yellow lightyellow1 lig
   You can get the complete contents of any container you may examine, regardless of whether or not objects are dark. You can get the partial contents (obeying DARK/LIGHT/etc.) of your current location or the enactor (%#). You CANNOT get the contents of anything else, regardless of whether or not you have objects in it.
 
 
-### See Also
-- [lcon()](/reference/sharpmush-help/pennfunc/#lcon)
-- [next()](/reference/sharpmush-help/pennfunc/#next)
+**See Also:**
+- [lcon()]
+- [next()]
 ## COND()
 ## CONDALL()
 ## NCOND()
@@ -1103,9 +1125,9 @@ You say, "This is true"
     You say, "This is falseThis is also false"
 
 
-### See Also
-- [firstof()](/reference/sharpmush-help/pennfunc/#firstof)
-- [allof()](/reference/sharpmush-help/pennfunc/#allof)
+**See Also:**
+- [firstof()]
+- [allof()]
 ## CONFIG()
 `config([<option>])`
 
@@ -1125,17 +1147,17 @@ Penny
   This function returns -1 for invalid `<player|descriptor>`s, offline players and players who are dark, if the caller is not able to see them.
 
 
-### See Also
-- [CONNECTION FUNCTIONS](/reference/sharpmush-help/pennfunc/#connection-functions)
+**See Also:**
+- [CONNECTION FUNCTIONS]
 ## CONTROLS()
 `controls(<object>, <victim>[/<attribute>])`
 
   With no `<attribute>`, this function returns 1 if `<object>` controls `<victim>`, or 0, if it does not. With an `<attribute>`, it will return 1 if `<object>` could successfully set `<attribute>` on `<victim>` (or alter `<attribute>`, if it already exists). If one of the objects does not exist, it will return #-1 ARGN NOT FOUND (where N is the argument which is the invalid object). If `<attribute>` is not a valid attribute name, it will return #-1 BAD ATTR NAME. You must control `<object>` or `<victim>`, or have the See_All power, to use this function.
 
 
-### See Also
-- [visible()](/reference/sharpmush-help/pennfunc/#visible)
-- [CONTROL](/reference/sharpmush-help/penntop/#control)
+**See Also:**
+- [visible()]
+- [CONTROL]
 ## CONVSECS()
 ## CONVUTCSECS()
 `convsecs(<seconds>[, <timezone>])`
@@ -1143,7 +1165,7 @@ Penny
 
   This function converts `<seconds>` (the number of seconds which have elapsed since midnight on January 1, 1970 UTC) to a time string. Because it's based on UTC, but returns local time, convsecs(0) is not going to be "Thu Jan 1 00:00:00 1970" unless you're in the UTC (GMT) timezone.
 
-  If a `<timezone>` argument is given, the return value is based on that timezone instead of the MUSH server's local time. See [timezones](/reference/sharpmush-help/pennfunc/#timezones) for more information on valid timezones.
+  If a `<timezone>` argument is given, the return value is based on that timezone instead of the MUSH server's local time. See [timezones] for more information on valid timezones.
 
   If Extended convtime() is supported (see @config compile), negative values for `<seconds>` representing dates prior to 1970 are allowed.
 
@@ -1154,18 +1176,19 @@ Penny
 say secs()
 You say, "709395750"
 ```
-
+```
     > say convsecs(709395750)
     You say, "Wed Jun 24 10:22:54 1992"
-
+```
+```
     > say convutcsecs(709395750)
     You say, "Wed Jun 24 14:22:30 1992"
+```
 
-
-### See Also
-- [convtime()](/reference/sharpmush-help/pennfunc/#convtime)
-- [time()](/reference/sharpmush-help/pennfunc/#time)
-- [timefmt()](/reference/sharpmush-help/pennfunc/#timefmt)
+**See Also:**
+- [convtime()]
+- [time()]
+- [timefmt()]
 ## CONVTIME()
 ## CONVUTCTIME()
 `convtime(<time string>,[<timezone>])`
@@ -1189,10 +1212,10 @@ You say, "Wed Jun 24 10:22:54 1992"
     You say, "709395774"
 
 
-### See Also
-- [convsecs()](/reference/sharpmush-help/pennfunc/#convsecs)
-- [time()](/reference/sharpmush-help/pennfunc/#time)
-- [timezones](/reference/sharpmush-help/pennfunc/#timezones)
+**See Also:**
+- [convsecs()]
+- [time()]
+- [timezones]
 ## COS()
 `cos(<angle>[, <angle type>])`
 
@@ -1203,20 +1226,20 @@ You say, "Wed Jun 24 10:22:54 1992"
 say cos(90, d)
 You say, "0"
 ```
-
+```
     > say cos(1.570796)
     You say, "0"
+```
 
   See 'HELP ANGLES' for more on the angle type.
 
-
-### See Also
-- [acos()](/reference/sharpmush-help/pennfunc/#acos)
-- [asin()](/reference/sharpmush-help/pennfunc/#asin)
-- [atan()](/reference/sharpmush-help/pennfunc/#atan)
-- [ctu()](/reference/sharpmush-help/pennfunc/#ctu)
-- [sin()](/reference/sharpmush-help/pennfunc/#sin)
-- [tan()](/reference/sharpmush-help/pennfunc/#tan)
+**See Also:**
+- [acos()]
+- [asin()]
+- [atan()]
+- [ctu()]
+- [sin()]
+- [tan()]
 ## PCREATE()
 `pcreate(<name>, <password>[, <dbref>])`
 
@@ -1225,11 +1248,11 @@ You say, "0"
   The optional third argument can be used to specify a garbage object to use for the new player.
 
 
-### See Also
-- [@pcreate](/reference/sharpmush-help/penncmd/#pcreate)
-- [create()](/reference/sharpmush-help/pennfunc/#create)
-- [dig()](/reference/sharpmush-help/pennfunc/#dig)
-- [open()](/reference/sharpmush-help/pennfunc/#open)
+**See Also:**
+- [@pcreate]
+- [create()]
+- [dig()]
+- [open()]
 ## CREATE()
 `create(<object>[, <cost>[, <dbref>]])`
 
@@ -1238,11 +1261,11 @@ You say, "0"
    Wizards may also specify a `<dbref>`; if this refers to a garbage object, the new object is created with this dbref.
 
 
-### See Also
-- [@create](/reference/sharpmush-help/penncmd/#create)
-- [pcreate()](/reference/sharpmush-help/pennfunc/#pcreate)
-- [dig()](/reference/sharpmush-help/pennfunc/#dig)
-- [open()](/reference/sharpmush-help/pennfunc/#open)
+**See Also:**
+- [@create]
+- [pcreate()]
+- [dig()]
+- [open()]
 ## CTIME()
 ## CSECS()
 `ctime(<object>[, <utc>])`
@@ -1253,11 +1276,11 @@ You say, "0"
   csecs() returns the time as the number of seconds since the epoch. Anyone can get the creation time of any object in the game.
 
 
-### See Also
-- [mtime()](/reference/sharpmush-help/pennfunc/#mtime)
-- [time()](/reference/sharpmush-help/pennfunc/#time)
-- [secs()](/reference/sharpmush-help/pennfunc/#secs)
-- [objid()](/reference/sharpmush-help/pennfunc/#objid)
+**See Also:**
+- [mtime()]
+- [time()]
+- [secs()]
+- [objid()]
 ## ANGLES
 
   In any function which accepts an angle type, the argument can be one of 'd' for degrees, 'r' for radians, or 'g' for gradians. Gradians are not used often, but it's included for completeness.
@@ -1265,14 +1288,14 @@ You say, "0"
   As a refresher, there are 180 degrees in pi radians in 200 gradians.
 
 
-### See Also
-- [acos()](/reference/sharpmush-help/pennfunc/#acos)
-- [asin()](/reference/sharpmush-help/pennfunc/#asin)
-- [atan()](/reference/sharpmush-help/pennfunc/#atan)
-- [cos()](/reference/sharpmush-help/pennfunc/#cos)
-- [ctu()](/reference/sharpmush-help/pennfunc/#ctu)
-- [sin()](/reference/sharpmush-help/pennfunc/#sin)
-- [tan()](/reference/sharpmush-help/pennfunc/#tan)
+**See Also:**
+- [acos()]
+- [asin()]
+- [atan()]
+- [cos()]
+- [ctu()]
+- [sin()]
+- [tan()]
 ## CTU()
 `ctu(<angle>, <from>, <to>)`
 
@@ -1285,39 +1308,44 @@ You say, "90 degrees is 1.570796 radians"
 ```
 
 
-### See Also
-- [acos()](/reference/sharpmush-help/pennfunc/#acos)
-- [asin()](/reference/sharpmush-help/pennfunc/#asin)
-- [atan()](/reference/sharpmush-help/pennfunc/#atan)
-- [cos()](/reference/sharpmush-help/pennfunc/#cos)
-- [sin()](/reference/sharpmush-help/pennfunc/#sin)
-- [tan()](/reference/sharpmush-help/pennfunc/#tan)
+**See Also:**
+- [acos()]
+- [asin()]
+- [atan()]
+- [cos()]
+- [sin()]
+- [tan()]
 ## DEC()
 `dec(<integer>)`
 `dec(<string-ending-in-integer>)`
 
   dec() returns the given `<integer>` minus 1. If given a string that ends in an integer, it decrements only the final integer portion. That is:
 
+```
     > think dec(3)
     2
-
+```
+```
     > think dec(hi3)
     hi2
-
+```
+```
     > think dec(1.3.3)
     1.3.2
-
+```
+```
     > think dec(1.3)
     1.2
+```
 
   Note especially the last example, which will trip you up if you use floating point numbers with dec() and expect it to work like sub().
 
   If the null_eq_zero @config option is on, using dec() on a string which does not end in an integer will return `<string>`-1. When null_eq_zero is turned off, it will return an error.
 
 
-### See Also
-- [inc()](/reference/sharpmush-help/pennfunc/#inc)
-- [sub()](/reference/sharpmush-help/pennfunc/#sub)
+**See Also:**
+- [inc()]
+- [sub()]
 ## DECOMPOSE()
 `decompose(<string>)`
 
@@ -1330,10 +1358,10 @@ This is \[a%b[ansi(y,test)]\] %b%b
 ```
 
 
-### See Also
-- [@decompile2](/reference/sharpmush-help/penncmd/#decompile2)
-- [escape()](/reference/sharpmush-help/pennfunc/#escape)
-- [secure()](/reference/sharpmush-help/pennfunc/#secure)
+**See Also:**
+- [@decompile2]
+- [escape()]
+- [secure()]
 - []
 ## DEFAULT()
 `default([<obj>/]<attr>[, ... ,[<objN>]/<attrN>], <default>)`
@@ -1348,20 +1376,20 @@ This is \[a%b[ansi(y,test)]\] %b%b
 say default(me/Test, No fruits!)
 You say "apple orange banana"
 ```
-
+```
     > &TEST ME
     > say default(me/Test, No fruits!)
     You say "No fruits!"
+```
 
-
-### See Also
-- [get()](/reference/sharpmush-help/pennfunc/#get)
-- [hasattr()](/reference/sharpmush-help/pennfunc/#hasattr)
-- [ufun()](/reference/sharpmush-help/pennfunc/#ufun)
-- [edefault()](/reference/sharpmush-help/pennfunc/#edefault)
-- [udefault()](/reference/sharpmush-help/pennfunc/#udefault)
-- [uldefault()](/reference/sharpmush-help/pennfunc/#uldefault)
-- [strfirstof()](/reference/sharpmush-help/pennfunc/#strfirstof)
+**See Also:**
+- [get()]
+- [hasattr()]
+- [ufun()]
+- [edefault()]
+- [udefault()]
+- [uldefault()]
+- [strfirstof()]
 ## STRDELETE()
 ## DELETE()
 `strdelete(<string>, <first>, <len>)`
@@ -1373,18 +1401,18 @@ You say "apple orange banana"
 say strdelete(abcdefgh, 3, 2)
 You say, "abcfgh"
 ```
-
+```
     > say strdelete(abcdefgh, 3, -2)
     You say, "abefgh"
-
+```
   delete() is an alias for strdelete(), for backwards compatability.
 
 
-### See Also
-- [strreplace()](/reference/sharpmush-help/pennfunc/#strreplace)
-- [strinsert()](/reference/sharpmush-help/pennfunc/#strinsert)
-- [mid()](/reference/sharpmush-help/pennfunc/#mid)
-- [ldelete()](/reference/sharpmush-help/pennfunc/#ldelete)
+**See Also:**
+- [strreplace()]
+- [strinsert()]
+- [mid()]
+- [ldelete()]
 ## DIE()
 `die(<number of times to roll die>, <number of sides on die>[, <show>])`
 
@@ -1398,8 +1426,8 @@ think die(3, 6, 1)
 5 2 1
 ```
 
-### See Also
-- [rand()](/reference/sharpmush-help/pennfunc/#rand)
+**See Also:**
+- [rand()]
 ## DIG()
 `dig(<name>[, <exit to>[, <exit from>[, <room dbref>, <to dbref>, <from dbref>]]])`
 
@@ -1408,12 +1436,12 @@ think die(3, 6, 1)
   Wizards and objects with the pick_dbref power can supply optional fourth through sixth arguments to specify garbage objects to use for the new room and exits.
 
 
-### See Also
-- [@dig](/reference/sharpmush-help/penncmd/#dig)
-- [open()](/reference/sharpmush-help/pennfunc/#open)
-- [@open](/reference/sharpmush-help/penncmd/#open)
-- [create()](/reference/sharpmush-help/pennfunc/#create)
-- [pcreate()](/reference/sharpmush-help/pennfunc/#pcreate)
+**See Also:**
+- [@dig]
+- [open()]
+- [@open]
+- [create()]
+- [pcreate()]
 ## DIGEST()
 ## MD5
 ## SHA1
@@ -1444,28 +1472,28 @@ SHA224(foo) => 0808f64e60d58979fcb676c96ec938270dea42445aeefcd3a4e6f8db
 ```
 
 
-### See Also
-- [encode64()](/reference/sharpmush-help/pennfunc/#encode64)
-- [encrypt()](/reference/sharpmush-help/pennfunc/#encrypt)
-- [hmac()](/reference/sharpmush-help/pennfunc/#hmac)
+**See Also:**
+- [encode64()]
+- [encrypt()]
+- [hmac()]
 ## DIST2D()
 `dist2d(<x1>, <y1>, <x2>, <y2>)`
 
   Returns the distance between two points in the Cartesian plane that have coordinates (`<x1>`, `<y1>`) and (`<x2>`, `<y2>`).
 
 
-### See Also
-- [dist3d()](/reference/sharpmush-help/pennfunc/#dist3d)
-- [lmath()](/reference/sharpmush-help/pennfunc/#lmath)
+**See Also:**
+- [dist3d()]
+- [lmath()]
 ## DIST3D()
 `dist3d(<x1>, <y1>, <z1>, <x2>, <y2>, <z2>)`
 
   Returns the distance between two points in space, with coordinates (`<x1>`, `<y1>`, `<z1>`) and (`<x2>`, `<y2>`, `<z2>`).
 
 
-### See Also
-- [dist2d()](/reference/sharpmush-help/pennfunc/#dist2d)
-- [lmath()](/reference/sharpmush-help/pennfunc/#lmath)
+**See Also:**
+- [dist2d()]
+- [lmath()]
 ## DIV()
 ## FLOORDIV()
 ## FDIV()
@@ -1478,7 +1506,7 @@ SHA224(foo) => 0808f64e60d58979fcb676c96ec938270dea42445aeefcd3a4e6f8db
   div() returns the integer part of the quotient. floordiv() returns the largest integer less than or equal to the quotient; for positive numbers, they are identical, but for negative numbers they may differ. fdiv() returns the floating-point quotient.
 
   Examples:
-
+```
    div(13,4)          ==>   3      and     floordiv(13,4)     ==>   3
    div(-13,4)         ==>  -3      but     floordiv(-13,4)    ==>  -4
    div(13,-4)         ==>  -3      but     floordiv(13,-4)    ==>  -4
@@ -1486,23 +1514,24 @@ SHA224(foo) => 0808f64e60d58979fcb676c96ec938270dea42445aeefcd3a4e6f8db
 
    fdiv(13,4)         ==>  3.25            fdiv(-13,4)        ==> -3.25
    fdiv(13,-4)        ==>  -3.25           fdiv(-13,-4)       ==>  3.25
+```
 
   Note that add(mul(div(%0,%1),%1),remainder(%0,%1)) always yields %0, and add(mul(floordiv(%0,%1),%1),modulo(%0,%1)) also always yields %0.
 
 
-### See Also
-- [modulo()](/reference/sharpmush-help/pennfunc/#modulo)
-- [lmath()](/reference/sharpmush-help/pennfunc/#lmath)
+**See Also:**
+- [modulo()]
+- [lmath()]
 ## DOING()
 `doing(<player|descriptor>)`
 
   When given the name of a player or descriptor, doing() returns the player's @doing. If no matching player or descriptor is found, or the descriptor is not yet connected to a player, an empty string is returned.
 
 
-### See Also
-- [@poll](/reference/sharpmush-help/penncmd/#poll)
-- [@doing](/reference/sharpmush-help/penncmd/#doing)
-- [poll()](/reference/sharpmush-help/pennfunc/#poll)
+**See Also:**
+- [@poll]
+- [@doing]
+- [poll()]
 ## E()
 ## EXP()
 `e([<number>])`
@@ -1513,9 +1542,9 @@ SHA224(foo) => 0808f64e60d58979fcb676c96ec938270dea42445aeefcd3a4e6f8db
 
   exp() is an alias for e().
 
-### See Also
-- [power()](/reference/sharpmush-help/pennfunc/#power)
-- [log()](/reference/sharpmush-help/pennfunc/#log)
+**See Also:**
+- [power()]
+- [log()]
 ## EDEFAULT()
 `edefault([<obj>/]<attr>, <default case>)`
 
@@ -1533,13 +1562,13 @@ You say "You have lost 6 marbles."
     You say "You have no marbles."
 
 
-### See Also
-- [get()](/reference/sharpmush-help/pennfunc/#get)
-- [eval()](/reference/sharpmush-help/pennfunc/#eval)
-- [ufun()](/reference/sharpmush-help/pennfunc/#ufun)
-- [default()](/reference/sharpmush-help/pennfunc/#default)
-- [udefault()](/reference/sharpmush-help/pennfunc/#udefault)
-- [hasattr()](/reference/sharpmush-help/pennfunc/#hasattr)
+**See Also:**
+- [get()]
+- [eval()]
+- [ufun()]
+- [default()]
+- [udefault()]
+- [hasattr()]
 ## EDIT()
 `edit(<string>, <search>, <replace>[, ... , <searchN>, <replaceN>])`
 
@@ -1559,9 +1588,9 @@ You say "I think this is an exam."
   edit() can not replace a literal single ^ or $. Use regedit() for that.
 
 
-### See Also
-- [@edit](/reference/sharpmush-help/penncmd/#edit)
-- [regedit()](/reference/sharpmush-help/pennfunc/#regedit)
+**See Also:**
+- [@edit]
+- [regedit()]
 ## ELEMENTS()
 `elements(<list of words>, <list of numbers>[, <delim>[, <osep>]])`
 
@@ -1582,10 +1611,10 @@ You say "Ack Moo"
     You say "foo"
 
 
-### See Also
-- [extract()](/reference/sharpmush-help/pennfunc/#extract)
-- [index()](/reference/sharpmush-help/pennfunc/#index)
-- [grab()](/reference/sharpmush-help/pennfunc/#grab)
+**See Also:**
+- [extract()]
+- [index()]
+- [grab()]
 ## ELOCK()
 `elock(<object>[/<locktype>], <victim>)`
 
@@ -1605,12 +1634,12 @@ think elock(Dancing Slippers/drop, Princess)
     0
 
 
-### See Also
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
-- [locktypes](/reference/sharpmush-help/pennlock/#locktypes)
-- [testlock()](/reference/sharpmush-help/pennfunc/#testlock)
-- [lockfilter()](/reference/sharpmush-help/pennfunc/#lockfilter)
-- [@lset](/reference/sharpmush-help/penncmd/#lset)
+**See Also:**
+- [@lock]
+- [locktypes]
+- [testlock()]
+- [lockfilter()]
+- [@lset]
 ## EMIT()
 ## NSEMIT()
 `emit(<message>)`
@@ -1621,12 +1650,12 @@ think elock(Dancing Slippers/drop, Princess)
   nsemit() works like @nsemit.
 
 
-### See Also
-- [pemit()](/reference/sharpmush-help/pennfunc/#pemit)
-- [remit()](/reference/sharpmush-help/pennfunc/#remit)
-- [lemit()](/reference/sharpmush-help/pennfunc/#lemit)
-- [oemit()](/reference/sharpmush-help/pennfunc/#oemit)
-- [zemit()](/reference/sharpmush-help/pennfunc/#zemit)
+**See Also:**
+- [pemit()]
+- [remit()]
+- [lemit()]
+- [oemit()]
+- [zemit()]
 ## ENCODE64()
 ## DECODE64()
 ## base64
@@ -1638,9 +1667,9 @@ think elock(Dancing Slippers/drop, Princess)
   decode64() converts a base-64 encoded `<string>` back to its original form.
 
 
-### See Also
-- [encrypt()](/reference/sharpmush-help/pennfunc/#encrypt)
-- [digest()](/reference/sharpmush-help/pennfunc/#digest)
+**See Also:**
+- [encrypt()]
+- [digest()]
 ## ENCRYPT()
 ## DECRYPT()
 `encrypt(<string>, <password>[, <encode>])`
@@ -1653,9 +1682,9 @@ think elock(Dancing Slippers/drop, Princess)
   decrypt() decrypts a string encrypted with encrypt(). The `<encoded>` argument indicates that the encrypted string was base-64 encoded.
 
 
-### See Also
-- [encode64()](/reference/sharpmush-help/pennfunc/#encode64)
-- [digest()](/reference/sharpmush-help/pennfunc/#digest)
+**See Also:**
+- [encode64()]
+- [digest()]
 ## ENTRANCES()
 `entrances([<object>[, <type>[, <begin>[, <end>]]]])`
 
@@ -1669,18 +1698,18 @@ think elock(Dancing Slippers/drop, Princess)
   You can also limit the range of the dbrefs searched by giving `<begin>` and `<end>`. If you control `<object>`, or have the Search or See_All powers, all objects linked to `<object>` are returned. Otherwise, only objects you can examine will be included.
 
 
-### See Also
-- [lsearch()](/reference/sharpmush-help/pennfunc/#lsearch)
-- [@entrances](/reference/sharpmush-help/penncmd/#entrances)
+**See Also:**
+- [lsearch()]
+- [@entrances]
 ## EQ()
 `eq(<number1>, <number2>[, ... , <numberN>])`
 
   Takes two or more `<number>`s, and returns 1 if they are all equal, and 0 otherwise.
 
 
-### See Also
-- [neq()](/reference/sharpmush-help/pennfunc/#neq)
-- [lmath()](/reference/sharpmush-help/pennfunc/#lmath)
+**See Also:**
+- [neq()]
+- [lmath()]
 ## ESCAPE()
 `escape(<string>)`
 
@@ -1691,9 +1720,9 @@ think elock(Dancing Slippers/drop, Princess)
   This function prevents code injection in strings entered by players. It is only needed when `<string>` will be passed through a command or function which will evaluate it again, which can usually be avoided. Since the function preserves the original string, it is, in most cases, a better choice than secure(), but decompose() is often better still.
 
 
-### See Also
-- [decompose()](/reference/sharpmush-help/pennfunc/#decompose)
-- [secure()](/reference/sharpmush-help/pennfunc/#secure)
+**See Also:**
+- [decompose()]
+- [secure()]
 - []
 ## EVAL()
 ## GET_EVAL()
@@ -1712,11 +1741,11 @@ test
 ```
 
 
-### See Also
-- [get()](/reference/sharpmush-help/pennfunc/#get)
-- [u()](/reference/sharpmush-help/pennfunc/#u)
-- [xget()](/reference/sharpmush-help/pennfunc/#xget)
-- [edefault()](/reference/sharpmush-help/pennfunc/#edefault)
+**See Also:**
+- [get()]
+- [u()]
+- [xget()]
+- [edefault()]
 ## EXIT()
 `exit(<object>)`
 
@@ -1725,9 +1754,9 @@ test
   You can get the complete exit list of any room you may examine, regardless of whether or not exits are dark. You can get the partial exit list (obeying DARK/LIGHT/etc.) of your current location or the enactor (%#). You CANNOT get the exit list of anything else, regardless of whether or not you have objects in it.
 
 
-### See Also
-- [lexits()](/reference/sharpmush-help/pennfunc/#lexits)
-- [next()](/reference/sharpmush-help/pennfunc/#next)
+**See Also:**
+- [lexits()]
+- [next()]
 ## EXTRACT()
 `extract(<list>[, <first>[, <length>[, <delimiter>]]])`
 
@@ -1750,10 +1779,10 @@ a test
     last three elements
 
 
-### See Also
-- [index()](/reference/sharpmush-help/pennfunc/#index)
-- [elements()](/reference/sharpmush-help/pennfunc/#elements)
-- [grab()](/reference/sharpmush-help/pennfunc/#grab)
+**See Also:**
+- [index()]
+- [elements()]
+- [grab()]
 ## FILTER()
 ## FILTERBOOL()
 `filter([<obj>/]<attr>, <list>[, <delimiter>[, <osep>[, ..., <argN>]]])`
@@ -1773,12 +1802,12 @@ You say, "1 3 5"
 ```
 
 
-### See Also
-- [anonymous attributes](/reference/sharpmush-help/penntop/#anonymous-attributes)
-- [firstof()](/reference/sharpmush-help/pennfunc/#firstof)
-- [allof()](/reference/sharpmush-help/pennfunc/#allof)
-- [lockfilter()](/reference/sharpmush-help/pennfunc/#lockfilter)
-- [boolean values](/reference/sharpmush-help/penntop/#boolean-values)
+**See Also:**
+- [anonymous attributes]
+- [firstof()]
+- [allof()]
+- [lockfilter()]
+- [boolean values]
 ## FINDABLE()
 `findable(<object>, <victim>)`
 
@@ -1787,21 +1816,21 @@ You say, "1 3 5"
   The object executing the function needs to be see_all or control both `<object>` and `<victim>`.
 
 
-### See Also
-- [locate()](/reference/sharpmush-help/pennfunc/#locate)
-- [loc()](/reference/sharpmush-help/pennfunc/#loc)
+**See Also:**
+- [locate()]
+- [loc()]
 ## FIRST()
 `first(<list>[, <delimiter>])`
 
   Returns the first element of a list.
 
 
-### See Also
-- [before()](/reference/sharpmush-help/pennfunc/#before)
-- [rest()](/reference/sharpmush-help/pennfunc/#rest)
-- [last()](/reference/sharpmush-help/pennfunc/#last)
-- [firstof()](/reference/sharpmush-help/pennfunc/#firstof)
-- [strfirstof()](/reference/sharpmush-help/pennfunc/#strfirstof)
+**See Also:**
+- [before()]
+- [rest()]
+- [last()]
+- [firstof()]
+- [strfirstof()]
 ## FIRSTOF()
 `firstof(<expr>[, ... , <exprN>], <default>)`
 
@@ -1827,11 +1856,11 @@ You say, "2"
     You say, ""
 
 
-### See Also
-- [allof()](/reference/sharpmush-help/pennfunc/#allof)
-- [BOOLEAN VALUES](/reference/sharpmush-help/penntop/#boolean-values)
-- [strfirstof()](/reference/sharpmush-help/pennfunc/#strfirstof)
-- [filter()](/reference/sharpmush-help/pennfunc/#filter)
+**See Also:**
+- [allof()]
+- [BOOLEAN VALUES]
+- [strfirstof()]
+- [filter()]
 ## FLAGS()
 `flags()`
 `flags([<object>[/<attribute>]])`
@@ -1854,9 +1883,9 @@ Tnp
     $vp
 
 
-### See Also
-- [lflags()](/reference/sharpmush-help/pennfunc/#lflags)
-- [list()](/reference/sharpmush-help/pennfunc/#list)
+**See Also:**
+- [lflags()]
+- [list()]
 ## LFLAGS()
 `lflags()`
 `lflags(<object>[/<attribute>])`
@@ -1877,9 +1906,9 @@ NO_COMMAND PUPPET
     NO_COMMAND VISUAL
 
 
-### See Also
-- [flags()](/reference/sharpmush-help/pennfunc/#flags)
-- [list()](/reference/sharpmush-help/pennfunc/#list)
+**See Also:**
+- [flags()]
+- [list()]
 ## FLIP()
 ## REVERSE()
 `flip(<string>)`
@@ -1893,8 +1922,8 @@ You say, "zab rab oof"
 ```
 
 
-### See Also
-- [revwords()](/reference/sharpmush-help/pennfunc/#revwords)
+**See Also:**
+- [revwords()]
 ## FMOD()
 `fmod(<number>, <divisor>)`
 
@@ -1906,11 +1935,11 @@ think fmod(6.1,2.5)
 1.1
 ```
 
-### See Also
-- [fdiv()](/reference/sharpmush-help/pennfunc/#fdiv)
-- [div()](/reference/sharpmush-help/pennfunc/#div)
-- [mod()](/reference/sharpmush-help/pennfunc/#mod)
-- [lmath()](/reference/sharpmush-help/pennfunc/#lmath)
+**See Also:**
+- [fdiv()]
+- [div()]
+- [mod()]
+- [lmath()]
 ## FOLD()
 `fold([<obj>/]<attr>, <list>[, <base case>[, <delimiter>]])`
 
@@ -1924,7 +1953,7 @@ think fmod(6.1,2.5)
 
   Note that it's not possible to pass a `<delimiter>` to fold without also giving a `<base case>`; see the examples for a way around this.
 
-  See [fold2](/reference/sharpmush-help/pennfunc/#fold2) for examples.
+  See [fold2] for examples.
 ## FOLD2
 
   Examples:
@@ -1949,28 +1978,28 @@ You say, "36"
 ```
 
 
-### See Also
-- [anonymous attributes](/reference/sharpmush-help/penntop/#anonymous-attributes)
+**See Also:**
+- [anonymous attributes]
 ## FOLLOWERS()
 `followers(<object>)`
 
   Returns the list of things and players following object. You must control `<object>`.
 
 
-### See Also
-- [following()](/reference/sharpmush-help/pennfunc/#following)
-- [follow](/reference/sharpmush-help/penncmd/#follow)
-- [unfollow](/reference/sharpmush-help/penncmd/#unfollow)
+**See Also:**
+- [following()]
+- [follow]
+- [unfollow]
 ## FOLLOWING()
 `following(<object>)`
 
   Returns the list of things and players that the object is following. You must control `<object>`.
 
 
-### See Also
-- [followers()](/reference/sharpmush-help/pennfunc/#followers)
-- [follow](/reference/sharpmush-help/penncmd/#follow)
-- [unfollow](/reference/sharpmush-help/penncmd/#unfollow)
+**See Also:**
+- [followers()]
+- [follow]
+- [unfollow]
 ## FOREACH()
 `foreach([<object>/]<attribute>, <string>[, <start>[, <end>]])`
 
@@ -1980,7 +2009,7 @@ You say, "36"
 
   If `<start>` is given, everything before the first occurrence of `<start>` is copied as-is, without being passed to the `<object>`/`<attribute>`. If `<end>` is given, everything after the first occurrence of `<end>` is copied as-is. The `<start>` and `<end>` characters themselves are not copied.
 
-  See [foreach2](/reference/sharpmush-help/pennfunc/#foreach2) for examples.
+  See [foreach2] for examples.
 ## FOREACH2
 
   Examples:
@@ -1996,14 +2025,14 @@ You say, "This is 1 number"
     > say foreach(upper, quiet quiet >shout`< quiet, >`, <)
     You say, "quiet quiet SHOUT quiet"
 
-    > &is_alphanum me=regmatch(%0, \[\[:alnum:\](/reference/sharpmush-help/pennconf/#alnum)\])%b
+    > &is_alphanum me=regmatch(%0, \[\[:alnum:\]\])%b
     > say foreach(is_alphanum,jt1o+)
     You say, "1 1 1 1 0 "
 
 
-### See Also
-- [map()](/reference/sharpmush-help/pennfunc/#map)
-- [anonymous attributes](/reference/sharpmush-help/penntop/#anonymous-attributes)
+**See Also:**
+- [map()]
+- [anonymous attributes]
 ## FRACTION()
 `fraction(<number>[, <whole>])`
 
@@ -2040,21 +2069,21 @@ You say, "South;sout;sou;so;s"
 ```
 
 
-### See Also
-- [name()](/reference/sharpmush-help/pennfunc/#name)
-- [accname()](/reference/sharpmush-help/pennfunc/#accname)
-- [iname()](/reference/sharpmush-help/pennfunc/#iname)
-- [alias()](/reference/sharpmush-help/pennfunc/#alias)
-- [fullalias()](/reference/sharpmush-help/pennfunc/#fullalias)
+**See Also:**
+- [name()]
+- [accname()]
+- [iname()]
+- [alias()]
+- [fullalias()]
 ## FUNCTIONS()
 `functions([<type>])`
 
   Returns a space-separated list of the names of functions. If `<type>` is "local", only @functions are listed. If "builtin", only builtin functions. If "all" or omitted, both are returned.
 
 
-### See Also
-- [list()](/reference/sharpmush-help/pennfunc/#list)
-- [config()](/reference/sharpmush-help/pennfunc/#config)
+**See Also:**
+- [list()]
+- [config()]
 ## GET()
 ## XGET()
 `get(<object>/<attribute>)`
@@ -2064,30 +2093,30 @@ You say, "South;sout;sou;so;s"
 
     Example:
 ```
-&test me=This is [a test].
+&test me=This is [a test](/reference/sharpmush-help/pennconf/#a-test).
 think get(me/test)
-This is [a test].
+This is [a test](/reference/sharpmush-help/pennconf/#a-test).
 ```
 
 
-### See Also
-- [hasattr()](/reference/sharpmush-help/pennfunc/#hasattr)
-- [visible()](/reference/sharpmush-help/pennfunc/#visible)
-- [ufun()](/reference/sharpmush-help/pennfunc/#ufun)
-- [default()](/reference/sharpmush-help/pennfunc/#default)
-- [udefault()](/reference/sharpmush-help/pennfunc/#udefault)
+**See Also:**
+- [hasattr()]
+- [visible()]
+- [ufun()]
+- [default()]
+- [udefault()]
 ## GETPIDS()
 `getpids(<object>[/<attribute>])`
 
   Returns a space-separated list of semaphore queue process ids waiting on the given `<object>` and semaphore `<attribute>`. If `<attribute>` is not given, pids for all semaphores on the object are returned.
 
 
-### See Also
-- [@ps](/reference/sharpmush-help/penncmd/#ps)
-- [@wait](/reference/sharpmush-help/penncmd/#wait)
-- [lpids()](/reference/sharpmush-help/pennfunc/#lpids)
-- [pidinfo()](/reference/sharpmush-help/pennfunc/#pidinfo)
-- [SEMAPHORES](/reference/sharpmush-help/penntop/#semaphores)
+**See Also:**
+- [@ps]
+- [@wait]
+- [lpids()]
+- [pidinfo()]
+- [SEMAPHORES]
 ## GRAB()
 ## REGRAB()
 ## REGRABI()
@@ -2095,19 +2124,19 @@ This is [a test].
 `regrab(<list>, <regexp>[, <delimiter>])`
 `regrabi(<list>, <regexp>[, <delimiter>])`
 
-  These functions return the first word in `<list>` which matches the pattern. For grab(), `<pattern>` is a wildcard pattern ([wildcards](/reference/sharpmush-help/penntop/#wildcards)). For regrab() and regrabi(), the pattern is a regular expression. regrabi() is case-insensitive. `<delimiter>` defaults to a space.
+  These functions return the first word in `<list>` which matches the pattern. For grab(), `<pattern>` is a wildcard pattern ([wildcards]). For regrab() and regrabi(), the pattern is a regular expression. regrabi() is case-insensitive. `<delimiter>` defaults to a space.
 
   Basically, this is a much more efficient way to do:
 `elements(<list>, match(<list>, <pattern>[, <delimiter>])[, <delimiter>])`
   or the regular expression variation thereof.
 
 
-### See Also
-- [graball()](/reference/sharpmush-help/pennfunc/#graball)
-- [match()](/reference/sharpmush-help/pennfunc/#match)
-- [extract()](/reference/sharpmush-help/pennfunc/#extract)
-- [elements()](/reference/sharpmush-help/pennfunc/#elements)
-- [regmatch()](/reference/sharpmush-help/pennfunc/#regmatch)
+**See Also:**
+- [graball()]
+- [match()]
+- [extract()]
+- [elements()]
+- [regmatch()]
 ## GRABALL()
 ## REGRABALL()
 ## REGRABALLI()
@@ -2128,11 +2157,11 @@ You say "This is"
 ```
 
 
-### See Also
-- [match()](/reference/sharpmush-help/pennfunc/#match)
-- [matchall()](/reference/sharpmush-help/pennfunc/#matchall)
-- [grab()](/reference/sharpmush-help/pennfunc/#grab)
-- [regmatch()](/reference/sharpmush-help/pennfunc/#regmatch)
+**See Also:**
+- [match()]
+- [matchall()]
+- [grab()]
+- [regmatch()]
 ## GREP()
 ## REGREP()
 ## WILDGREP()
@@ -2158,36 +2187,36 @@ You say "This is"
   pgrep() works like grep(), but also checks attributes inherited from parents.
 
 
-### See Also
-- [@grep](/reference/sharpmush-help/penncmd/#grep)
-- [lattr()](/reference/sharpmush-help/pennfunc/#lattr)
-- [WILDCARDS](/reference/sharpmush-help/penntop/#wildcards)
+**See Also:**
+- [@grep]
+- [lattr()]
+- [WILDCARDS]
 ## GT()
 `gt(<number1>, <number2>[, ... , <numberN>])`
 
   Takes two or more numbers, and returns 1 if and only if each number is greater than the number after it, and 0 otherwise.
 
 
-### See Also
-- [gte()](/reference/sharpmush-help/pennfunc/#gte)
-- [lt()](/reference/sharpmush-help/pennfunc/#lt)
-- [lte()](/reference/sharpmush-help/pennfunc/#lte)
-- [eq()](/reference/sharpmush-help/pennfunc/#eq)
-- [neq()](/reference/sharpmush-help/pennfunc/#neq)
-- [lmath()](/reference/sharpmush-help/pennfunc/#lmath)
+**See Also:**
+- [gte()]
+- [lt()]
+- [lte()]
+- [eq()]
+- [neq()]
+- [lmath()]
 ## GTE()
 `gte(<number1>, <number2>[, ... , <numberN>])`
 
   Takes two or more numbers, and returns 1 if and only if each number is greater than or equal to the number after it, and 0 otherwise.
 
 
-### See Also
-- [gt()](/reference/sharpmush-help/pennfunc/#gt)
-- [lt()](/reference/sharpmush-help/pennfunc/#lt)
-- [lte()](/reference/sharpmush-help/pennfunc/#lte)
-- [eq()](/reference/sharpmush-help/pennfunc/#eq)
-- [neq()](/reference/sharpmush-help/pennfunc/#neq)
-- [lmath()](/reference/sharpmush-help/pennfunc/#lmath)
+**See Also:**
+- [gt()]
+- [lt()]
+- [lte()]
+- [eq()]
+- [neq()]
+- [lmath()]
 ## HASATTR()
 ## HASATTRP()
 ## HASATTRVAL()
@@ -2210,9 +2239,9 @@ You say "This is"
   All four functions will also work with one argument in the form of `<object>`/`<attribute>`.
 
 
-### See Also
-- [visible()](/reference/sharpmush-help/pennfunc/#visible)
-- [lattr()](/reference/sharpmush-help/pennfunc/#lattr)
+**See Also:**
+- [visible()]
+- [lattr()]
 ## HASFLAG()
 `hasflag(<object>[/<attrib>], <flag>)`
 
@@ -2227,17 +2256,17 @@ think hasflag(me, wizard)
 ```
 
 
-### See Also
-- [orlflags()](/reference/sharpmush-help/pennfunc/#orlflags)
-- [andlflags()](/reference/sharpmush-help/pennfunc/#andlflags)
-- [orflags()](/reference/sharpmush-help/pennfunc/#orflags)
-- [andflags()](/reference/sharpmush-help/pennfunc/#andflags)
-- [flags()](/reference/sharpmush-help/pennfunc/#flags)
-- [lflags()](/reference/sharpmush-help/pennfunc/#lflags)
-- [attribute flags](/reference/sharpmush-help/pennattr/#attribute-flags)
-- [@flag](/reference/sharpmush-help/penncmd/#flag)
-- [haspower()](/reference/sharpmush-help/pennfunc/#haspower)
-- [hastype()](/reference/sharpmush-help/pennfunc/#hastype)
+**See Also:**
+- [orlflags()]
+- [andlflags()]
+- [orflags()]
+- [andflags()]
+- [flags()]
+- [lflags()]
+- [attribute flags]
+- [@flag]
+- [haspower()]
+- [hastype()]
 ## HASPOWER()
 `haspower(<object>, <power>)`
 
@@ -2246,10 +2275,10 @@ think hasflag(me, wizard)
   You can check the powers of any object, whether you control it or not.
 
 
-### See Also
-- [@power](/reference/sharpmush-help/penncmd/#power)
-- [powers list](/reference/sharpmush-help/pennconf/#powers-list)
-- [hasflag()](/reference/sharpmush-help/pennfunc/#hasflag)
+**See Also:**
+- [@power]
+- [powers list]
+- [hasflag()]
 ## HASTYPE()
 `hastype(<object>, <type list>)`
 
@@ -2265,25 +2294,25 @@ think hastype(test object, PLAYER THING)
 ```
 
 
-### See Also
-- [TYPES](/reference/sharpmush-help/penntop/#types)
-- [type()](/reference/sharpmush-help/pennfunc/#type)
+**See Also:**
+- [TYPES]
+- [type()]
 ## HIDDEN()
 `hidden(<player|descriptor>)`
 
   If you can see hidden players, this function returns 1 if `<player>` (or the player connected to `<descriptor>`) is hidden, and 0 otherwise. If you cannot see hidden players, hidden() returns #-1.
 
 
-### See Also
-- [@hide](/reference/sharpmush-help/penncmd/#hide)
+**See Also:**
+- [@hide]
 ## HOME()
 `home(<object>)`
 
   Returns the object's 'home', where it is @link'd to. This is the home for a player or thing, the drop-to of a room, or source of an exit.
 
 
-### See Also
-- [@link](/reference/sharpmush-help/penncmd/#link)
+**See Also:**
+- [@link]
 ## HOST()
 ## HOSTNAME()
 `host(<player|descriptor>)`
@@ -2295,11 +2324,11 @@ think hastype(test object, PLAYER THING)
   hostname() is an alias for host().
 
 
-### See Also
-- [Connection Functions](/reference/sharpmush-help/pennfunc/#connection-functions)
-- [ipaddr()](/reference/sharpmush-help/pennfunc/#ipaddr)
-- [ports()](/reference/sharpmush-help/pennfunc/#ports)
-- [lports()](/reference/sharpmush-help/pennfunc/#lports)
+**See Also:**
+- [Connection Functions]
+- [ipaddr()]
+- [ports()]
+- [lports()]
 ## IDLE()
 ## IDLESECS()
 `idle(<player|descriptor>)`
@@ -2309,9 +2338,9 @@ think hastype(test object, PLAYER THING)
   idlesecs() is an alias for idle().
 
 
-### See Also
-- [Connection Functions](/reference/sharpmush-help/pennfunc/#connection-functions)
-- [conn()](/reference/sharpmush-help/pennfunc/#conn)
+**See Also:**
+- [Connection Functions]
+- [conn()]
 ## IF()
 ## IFELSE()
 `if(<condition>, <true expression>[, <false expression>])`
@@ -2320,12 +2349,12 @@ think hastype(test object, PLAYER THING)
   These functions evaluate the `<condition>` and return `<true expression>` if the `<condition>` is true, or `<false expression>` (if provided) if the `<condition>` is false. Only the returned `<expression>` is evaluated.
 
 
-### See Also
-- [BOOLEAN VALUES](/reference/sharpmush-help/penntop/#boolean-values)
-- [switch()](/reference/sharpmush-help/pennfunc/#switch)
-- [@if](/reference/sharpmush-help/penncmd/#if)
-- [@break](/reference/sharpmush-help/penncmd/#break)
-- [cond()](/reference/sharpmush-help/pennfunc/#cond)
+**See Also:**
+- [BOOLEAN VALUES]
+- [switch()]
+- [@if]
+- [@break]
+- [cond()]
 ## INAME()
 `iname(<object>)`
 
@@ -2334,12 +2363,12 @@ think hastype(test object, PLAYER THING)
   You must be see_all, control `<object>`, or be inside it to use this function.
 
 
-### See Also
-- [@nameformat](/reference/sharpmush-help/penncmd/#nameformat)
-- [@nameaccent](/reference/sharpmush-help/penncmd/#nameaccent)
-- [name()](/reference/sharpmush-help/pennfunc/#name)
-- [fullname()](/reference/sharpmush-help/pennfunc/#fullname)
-- [accname()](/reference/sharpmush-help/pennfunc/#accname)
+**See Also:**
+- [@nameformat]
+- [@nameaccent]
+- [name()]
+- [fullname()]
+- [accname()]
 ## INC()
 `inc(<integer>)`
 `inc(<string-ending-in-integer>)`
@@ -2363,10 +2392,10 @@ think inc(3)
   If the null_eq_zero @config option is on, using inc() on a string which does not end in an integer will return `<string>`1. When null_eq_zero is turned off, it will return an error.
 
 
-### See Also
-- [dec()](/reference/sharpmush-help/pennfunc/#dec)
-- [add()](/reference/sharpmush-help/pennfunc/#add)
-- [sub()](/reference/sharpmush-help/pennfunc/#sub)
+**See Also:**
+- [dec()]
+- [add()]
+- [sub()]
 ## INDEX()
 `index(<list>, <character>, <first>, <length>)`
 
@@ -2384,10 +2413,10 @@ You say, "Mug of Beer"
     cute doll"
 
 
-### See Also
-- [extract()](/reference/sharpmush-help/pennfunc/#extract)
-- [elements()](/reference/sharpmush-help/pennfunc/#elements)
-- [grab()](/reference/sharpmush-help/pennfunc/#grab)
+**See Also:**
+- [extract()]
+- [elements()]
+- [grab()]
 ## INSERT()
 ## LINSERT()
 `linsert(<list>, <position>, <new item>[, <delim>])`
@@ -2411,19 +2440,19 @@ You say, "meep GOOP bleep gleep"
   insert() is an alias for linsert(), for backwards compatability.
 
 
-### See Also
-- [lreplace()](/reference/sharpmush-help/pennfunc/#lreplace)
-- [ldelete()](/reference/sharpmush-help/pennfunc/#ldelete)
-- [strinsert()](/reference/sharpmush-help/pennfunc/#strinsert)
+**See Also:**
+- [lreplace()]
+- [ldelete()]
+- [strinsert()]
 ## ISDAYLIGHT()
 `isdaylight([<secs>[, <timezone>]])`
 
   Returns 1 if it's daylight savings in the specified timezone at the given time. Defaults to the host server's time zone and current time if not specified.
 
 
-### See Also
-- [timezones](/reference/sharpmush-help/pennfunc/#timezones)
-- [secs()](/reference/sharpmush-help/pennfunc/#secs)
+**See Also:**
+- [timezones]
+- [secs()]
 ## ISDBREF()
 ## ISOBJID()
 `isdbref(<string>)`
@@ -2459,35 +2488,35 @@ The next object to be created will be #33.
     0
 
 
-### See Also
-- [DBREFS](/reference/sharpmush-help/penntop/#dbrefs)
-- [OBJECT IDS](/reference/sharpmush-help/penntop/#object-ids)
-- [num()](/reference/sharpmush-help/pennfunc/#num)
-- [objid()](/reference/sharpmush-help/pennfunc/#objid)
+**See Also:**
+- [DBREFS]
+- [OBJECT IDS]
+- [num()]
+- [objid()]
 ## ISINT()
 `isint(<string>)`
 
   Returns 1 if its argument is an integer, and 0 otherwise. Integers can begin with a '+' or '-' sign, but the rest of the string must be digits.
 
 
-### See Also
-- [isnum()](/reference/sharpmush-help/pennfunc/#isnum)
+**See Also:**
+- [isnum()]
 ## ISNUM()
 `isnum(<string>)`
 
   This function returns 1 if `<string>` is a number, and 0 if it is not. Numbers can begin with a '-' sign (for negatives), but the rest of the characters in the string must be digits, and an optional decimal point.
 
 
-### See Also
-- [isint()](/reference/sharpmush-help/pennfunc/#isint)
+**See Also:**
+- [isint()]
 ## ISREGEXP()
 `isregexp(<string>)`
 
   This function returns 1 if `<string>` is a valid regular expression, and 0 if it is not.
 
 
-### See Also
-- [REGEXP](/reference/sharpmush-help/penntop/#regexp)
+**See Also:**
+- [REGEXP]
 ## ISWORD()
 `isword(<string>)`
 
@@ -2507,8 +2536,8 @@ The next object to be created will be #33.
    Another way to think about this is that items() counts the number of times `<delim>` appears in `<list>`, and adds 1.
 
 
-### See Also
-- [words()](/reference/sharpmush-help/pennfunc/#words)
+**See Also:**
+- [words()]
 ## ITEMIZE()
 ## ELIST()
 `itemize(<list>[, <delim>[, <conjunction>[, <punctuation>]]])`
@@ -2544,15 +2573,15 @@ You say, "eggs; bacon; & spam"
 
   parse() is an alias for iter().
 
-  See [iter2](/reference/sharpmush-help/pennfunc/#iter2) for examples.
+  See [iter2] for examples.
 
-### See Also
-- [itext()](/reference/sharpmush-help/pennfunc/#itext)
-- [inum()](/reference/sharpmush-help/pennfunc/#inum)
-- [ilev()](/reference/sharpmush-help/pennfunc/#ilev)
-- [ibreak()](/reference/sharpmush-help/pennfunc/#ibreak)
-- [map()](/reference/sharpmush-help/pennfunc/#map)
-- [@dolist](/reference/sharpmush-help/penncmd/#dolist)
+**See Also:**
+- [itext()]
+- [inum()]
+- [ilev()]
+- [ibreak()]
+- [map()]
+- [@dolist]
 ## ITER2
   Examples:
 ```
@@ -2601,11 +2630,11 @@ You say, "Test 1! Test 2! Test 3!"
     You say, "1a 2a 3a 1b 2b 3b 1c "
 
 
-### See Also
-- [iter()](/reference/sharpmush-help/pennfunc/#iter)
-- [itext()](/reference/sharpmush-help/pennfunc/#itext)
-- [inum()](/reference/sharpmush-help/pennfunc/#inum)
-- [ilev()](/reference/sharpmush-help/pennfunc/#ilev)
+**See Also:**
+- [iter()]
+- [itext()]
+- [inum()]
+- [ilev()]
 ## ILEV()
 ## ITEXT()
 ## INUM()
@@ -2620,12 +2649,12 @@ You say, "Test 1! Test 2! Test 3!"
 
   ilev() returns the current nesting depth, or -1 when used outside an iter() or @dolist. Thus, itext(ilev()) will return the outermost ##, equivilent to %iL.
 
-  See [itext2](/reference/sharpmush-help/pennfunc/#itext2) for examples.
+  See [itext2] for examples.
 
-### See Also
-- [iter()](/reference/sharpmush-help/pennfunc/#iter)
-- [ibreak()](/reference/sharpmush-help/pennfunc/#ibreak)
-- [@dolist](/reference/sharpmush-help/penncmd/#dolist)
+**See Also:**
+- [iter()]
+- [ibreak()]
+- [@dolist]
 ## ITEXT2
 
   Examples:
@@ -2649,9 +2678,9 @@ You say, "1:red 1:red 2:blue 2:blue 3:green 3:green"
     You say, "green:fish green:shoe"
 
 
-### See Also
-- [iter()](/reference/sharpmush-help/pennfunc/#iter)
-- [@dolist](/reference/sharpmush-help/penncmd/#dolist)
+**See Also:**
+- [iter()]
+- [@dolist]
 ## IPADDR()
 `ipaddr(<player|descriptor>)`
 
@@ -2660,22 +2689,22 @@ You say, "1:red 1:red 2:blue 2:blue 3:green 3:green"
   The caller can use the function on himself, but using on any other player requires privileged power such as Wizard, Royalty or SEE_ALL.
 
 
-### See Also
-- [Connection Functions](/reference/sharpmush-help/pennfunc/#connection-functions)
-- [hostname()](/reference/sharpmush-help/pennfunc/#hostname)
-- [ports()](/reference/sharpmush-help/pennfunc/#ports)
-- [lports()](/reference/sharpmush-help/pennfunc/#lports)
+**See Also:**
+- [Connection Functions]
+- [hostname()]
+- [ports()]
+- [lports()]
 ## LAST()
 `last(<list>[, <delimiter>])`
 
   Returns the last element of a list. Elements in `<list>` are separated by `<delimiter>`, if given, or by a space if not.
 
 
-### See Also
-- [first()](/reference/sharpmush-help/pennfunc/#first)
-- [rest()](/reference/sharpmush-help/pennfunc/#rest)
-- [before()](/reference/sharpmush-help/pennfunc/#before)
-- [after()](/reference/sharpmush-help/pennfunc/#after)
+**See Also:**
+- [first()]
+- [rest()]
+- [before()]
+- [after()]
 ## LATTR()
 ## LATTRP()
 ## REGLATTR()
@@ -2696,13 +2725,13 @@ You say, "1:red 1:red 2:blue 2:blue 3:green 3:green"
   When returning large numbers of attributes, the results may be truncated due to buffer limits. In these cases, you can use nattr() and xattr() to retrieve the results in smaller pieces.
 
 
-### See Also
-- [nattr()](/reference/sharpmush-help/pennfunc/#nattr)
-- [xattr()](/reference/sharpmush-help/pennfunc/#xattr)
-- [hasattr()](/reference/sharpmush-help/pennfunc/#hasattr)
-- [examine](/reference/sharpmush-help/penncmd/#examine)
-- [grep()](/reference/sharpmush-help/pennfunc/#grep)
-- [WILDCARDS](/reference/sharpmush-help/penntop/#wildcards)
+**See Also:**
+- [nattr()]
+- [xattr()]
+- [hasattr()]
+- [examine]
+- [grep()]
+- [WILDCARDS]
 ## NATTR()
 ## NATTRP()
 ## ATTRCNT()
@@ -2723,11 +2752,11 @@ You say, "1:red 1:red 2:blue 2:blue 3:green 3:green"
   attrcnt() and attrpcnt() are aliases for nattr() and nattrp() respectively.
 
 
-### See Also
-- [lattr()](/reference/sharpmush-help/pennfunc/#lattr)
-- [hasattr()](/reference/sharpmush-help/pennfunc/#hasattr)
-- [xattr()](/reference/sharpmush-help/pennfunc/#xattr)
-- [WILDCARDS](/reference/sharpmush-help/penntop/#wildcards)
+**See Also:**
+- [lattr()]
+- [hasattr()]
+- [xattr()]
+- [WILDCARDS]
 ## LCON()
 `lcon(<object>[, <type>])`
 
@@ -2745,13 +2774,13 @@ You say, "1:red 1:red 2:blue 2:blue 3:green 3:green"
     puppet             - return only THINGs set PUPPET
 
 
-### See Also
-- [lexits()](/reference/sharpmush-help/pennfunc/#lexits)
-- [lplayers()](/reference/sharpmush-help/pennfunc/#lplayers)
-- [lthings()](/reference/sharpmush-help/pennfunc/#lthings)
-- [con()](/reference/sharpmush-help/pennfunc/#con)
-- [next()](/reference/sharpmush-help/pennfunc/#next)
-- [lvcon()](/reference/sharpmush-help/pennfunc/#lvcon)
+**See Also:**
+- [lexits()]
+- [lplayers()]
+- [lthings()]
+- [con()]
+- [next()]
+- [lvcon()]
 ## LCSTR()
 ## LCSTR2()
 `lcstr(<string>)`
@@ -2768,9 +2797,9 @@ You say, "foo bar baz"
 ```
 
 
-### See Also
-- [capstr()](/reference/sharpmush-help/pennfunc/#capstr)
-- [ucstr()](/reference/sharpmush-help/pennfunc/#ucstr)
+**See Also:**
+- [capstr()]
+- [ucstr()]
 ## LDELETE()
 `ldelete(<list>, <position(s)>[, <delimiter>[, <osep>]])`
 
@@ -2791,20 +2820,20 @@ You say, "foo ~ bar ~ boing"
 ```
 
 
-### See Also
-- [strdelete()](/reference/sharpmush-help/pennfunc/#strdelete)
-- [remove()](/reference/sharpmush-help/pennfunc/#remove)
-- [linsert()](/reference/sharpmush-help/pennfunc/#linsert)
+**See Also:**
+- [strdelete()]
+- [remove()]
+- [linsert()]
 ## LEFT()
 `left(<string>, <length>)`
 
   Returns the first `<length>` characters from `<string>`.
 
 
-### See Also
-- [right()](/reference/sharpmush-help/pennfunc/#right)
-- [mid()](/reference/sharpmush-help/pennfunc/#mid)
-- [ljust()](/reference/sharpmush-help/pennfunc/#ljust)
+**See Also:**
+- [right()]
+- [mid()]
+- [ljust()]
 ## NSLEMIT()
 ## LEMIT()
 `lemit(<message>)`
@@ -2815,9 +2844,9 @@ You say, "foo ~ bar ~ boing"
   nslemit() like @nslemit.
 
 
-### See Also
-- [@lemit](/reference/sharpmush-help/penncmd/#lemit)
-- [remit()](/reference/sharpmush-help/pennfunc/#remit)
+**See Also:**
+- [@lemit]
+- [remit()]
 ## LETQ()
 `letq([<reg1>, <value1>[, ... , <regN>, <valueN>], <expr>)`
 
@@ -2834,14 +2863,14 @@ think setr(A, 1)[setr(B,1)]:[letq(A, 2, %qA[setr(B,2)])]:%qA%qB
 ```
 
 
-### See Also
-- [setq()](/reference/sharpmush-help/pennfunc/#setq)
-- [setr()](/reference/sharpmush-help/pennfunc/#setr)
-- [unsetq()](/reference/sharpmush-help/pennfunc/#unsetq)
-- [listq()](/reference/sharpmush-help/pennfunc/#listq)
-- [localize()](/reference/sharpmush-help/pennfunc/#localize)
-- [ulocal()](/reference/sharpmush-help/pennfunc/#ulocal)
-- [r()](/reference/sharpmush-help/pennfunc/#r)
+**See Also:**
+- [setq()]
+- [setr()]
+- [unsetq()]
+- [listq()]
+- [localize()]
+- [ulocal()]
+- [r()]
 ## LEXITS()
 `lexits(<room>)`
 
@@ -2850,11 +2879,11 @@ think setr(A, 1)[setr(B,1)]:[letq(A, 2, %qA[setr(B,2)])]:%qA%qB
   You can get the complete exit list of any room you may examine, regardless of whether or not exits are dark. You can get the partial exit list (obeying DARK/LIGHT/etc.) of your current location or the enactor (%#). You CANNOT get the exit list of anything else, regardless of whether or not you have objects in it.
 
 
-### See Also
-- [lcon()](/reference/sharpmush-help/pennfunc/#lcon)
-- [exit()](/reference/sharpmush-help/pennfunc/#exit)
-- [next()](/reference/sharpmush-help/pennfunc/#next)
-- [lvexits()](/reference/sharpmush-help/pennfunc/#lvexits)
+**See Also:**
+- [lcon()]
+- [exit()]
+- [next()]
+- [lvexits()]
 ## LJUST()
 `ljust(<string>, <length>[, <fill>[, <truncate?>]])`
 
@@ -2880,20 +2909,20 @@ You say, "foo   "
     You say, "This is t"
 
 
-### See Also
-- [align()](/reference/sharpmush-help/pennfunc/#align)
-- [center()](/reference/sharpmush-help/pennfunc/#center)
-- [rjust()](/reference/sharpmush-help/pennfunc/#rjust)
-- [left()](/reference/sharpmush-help/pennfunc/#left)
+**See Also:**
+- [align()]
+- [center()]
+- [rjust()]
+- [left()]
 ## LINK()
 `link(<object>, <destination>[, <preserve>])`
 
   This function links `<object>` to `<destination>`. While normally used on exits, it has all of the other capabilities of @link as well. It returns #-1 or 0 on failure, 1 on success. If the optional third argument is true, acts like @link/preserve.
 
 
-### See Also
-- [@link](/reference/sharpmush-help/penncmd/#link)
-- [open()](/reference/sharpmush-help/pennfunc/#open)
+**See Also:**
+- [@link]
+- [open()]
 ## LIST()
 `list(<option>[, <type>])`
 
@@ -2913,14 +2942,14 @@ You say, "foo   "
   "commands"/"functions" return both built-in and local commands/functions by default. You can specify a `<type>` of either "builtin", "local" or "all" to limit this if you wish.
 
 
-### See Also
-- [@list](/reference/sharpmush-help/penncmd/#list)
-- [flags()](/reference/sharpmush-help/pennfunc/#flags)
-- [lflags()](/reference/sharpmush-help/pennfunc/#lflags)
-- [config()](/reference/sharpmush-help/pennfunc/#config)
-- [functions()](/reference/sharpmush-help/pennfunc/#functions)
-- [@listmotd](/reference/sharpmush-help/penncmd/#listmotd)
-- [@motd](/reference/sharpmush-help/penncmd/#motd)
+**See Also:**
+- [@list]
+- [flags()]
+- [lflags()]
+- [config()]
+- [functions()]
+- [@listmotd]
+- [@motd]
 `llocks()`
 ## LIT()
 `lit(<string>)`
@@ -2939,8 +2968,8 @@ You say, "foo   "
   Leaving out the {}'s will not work in the above.
 
 
-### See Also
-- [decompose()](/reference/sharpmush-help/pennfunc/#decompose)
+**See Also:**
+- [decompose()]
 ## LMATH()
 `lmath(<op>, <list>[, <delim>])`
 
@@ -2967,8 +2996,8 @@ think lmath(add, 1|2|3, |)
   Returns the natural log of `<number>`. This is equivilent to log(`<number>`, e).
 
 
-### See Also
-- [log()](/reference/sharpmush-help/pennfunc/#log)
+**See Also:**
+- [log()]
 ## LNUM()
 `lnum(<number>)`
 `lnum(<start number>, <end number>[, <output separator>[, <step>]])`
@@ -2993,14 +3022,14 @@ think lmath(add, 1|2|3, |)
   You can also get the location of the enactor using the %L substitution, whether you are near to/can examine it or not.
 
 
-### See Also
-- [locate()](/reference/sharpmush-help/pennfunc/#locate)
-- [rloc()](/reference/sharpmush-help/pennfunc/#rloc)
-- [home()](/reference/sharpmush-help/pennfunc/#home)
-- [where()](/reference/sharpmush-help/pennfunc/#where)
-- [rnum()](/reference/sharpmush-help/pennfunc/#rnum)
-- [room()](/reference/sharpmush-help/pennfunc/#room)
-- [@link](/reference/sharpmush-help/penncmd/#link)
+**See Also:**
+- [locate()]
+- [rloc()]
+- [home()]
+- [where()]
+- [rnum()]
+- [room()]
+- [@link]
   UNFINDABLE, @whereis
 ## LOCALIZE()
 `localize(<code>)`
@@ -3021,13 +3050,13 @@ You say, "Outside-Inside-Inside"
     You say, "Outside-Inside-Outside"
 
 
-### See Also
-- [letq()](/reference/sharpmush-help/pennfunc/#letq)
-- [setq()](/reference/sharpmush-help/pennfunc/#setq)
-- [setr()](/reference/sharpmush-help/pennfunc/#setr)
-- [r()](/reference/sharpmush-help/pennfunc/#r)
-- [ulocal()](/reference/sharpmush-help/pennfunc/#ulocal)
-- [uldefault()](/reference/sharpmush-help/pennfunc/#uldefault)
+**See Also:**
+- [letq()]
+- [setq()]
+- [setr()]
+- [r()]
+- [ulocal()]
+- [uldefault()]
 ## LOCATE()
 `locate(<looker>, <name>, <parameters>)`
 
@@ -3047,7 +3076,7 @@ You say, "Outside-Inside-Inside"
 
   If type(s) are given, locate() will attempt to find an object with one of the given types first. If none are found, it will attempt to find any type of object, unless 'F' is specified, in which case it will return #-1.
 
-  See [locate2](/reference/sharpmush-help/pennfunc/#locate2).
+  See [locate2].
 ## LOCATE2
 
   You can control where to look with:
@@ -3060,7 +3089,7 @@ You say, "Outside-Inside-Inside"
     m - If `<name>` is "me", return `<looker>`'s dbref
     n - Match `<name>` against the names of objects in `<looker>`'s location
     p - If `<name>` begins with a *, match the rest against player names
-    z - English-style matching (my 2nd book) of `<name>` (see [matching](/reference/sharpmush-help/penntop/#matching))
+    z - English-style matching (my 2nd book) of `<name>` (see [matching])
     * - All of the above (try a complete match). Default when no match parameters are given.
     y - Match `<name>` against player names whether it begins with a * or not
     x - Only match objects with the exact name `<name>`, no partial matches
@@ -3068,16 +3097,16 @@ You say, "Outside-Inside-Inside"
 
   Just string all the parameters together. Spaces are ignored, so you can use spaces between paramaters for clarity if you wish.
 
-  See [locate3](/reference/sharpmush-help/pennfunc/#locate3) for examples.
+  See [locate3] for examples.
 
-### See Also
-- [num()](/reference/sharpmush-help/pennfunc/#num)
-- [rnum()](/reference/sharpmush-help/pennfunc/#rnum)
-- [pmatch()](/reference/sharpmush-help/pennfunc/#pmatch)
-- [room()](/reference/sharpmush-help/pennfunc/#room)
-- [where()](/reference/sharpmush-help/pennfunc/#where)
-- [rloc()](/reference/sharpmush-help/pennfunc/#rloc)
-- [findable()](/reference/sharpmush-help/pennfunc/#findable)
+**See Also:**
+- [num()]
+- [rnum()]
+- [pmatch()]
+- [room()]
+- [where()]
+- [rloc()]
+- [findable()]
 ## LOCATE3
 
   Examples:
@@ -3098,16 +3127,16 @@ think locate(%#, %0, PFym)
   If a `<new value>` is given, lock() attempts to change the lock as @lock would first. You must control the object.
 
 
-### See Also
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
-- [locktypes](/reference/sharpmush-help/pennlock/#locktypes)
-- [elock()](/reference/sharpmush-help/pennfunc/#elock)
-- [lockflags()](/reference/sharpmush-help/pennfunc/#lockflags)
-- [llockflags()](/reference/sharpmush-help/pennfunc/#llockflags)
-- [lset()](/reference/sharpmush-help/pennfunc/#lset)
-- [llocks()](/reference/sharpmush-help/pennfunc/#llocks)
-- [lockowner()](/reference/sharpmush-help/pennfunc/#lockowner)
-- [lockfilter()](/reference/sharpmush-help/pennfunc/#lockfilter)
+**See Also:**
+- [@lock]
+- [locktypes]
+- [elock()]
+- [lockflags()]
+- [llockflags()]
+- [lset()]
+- [llocks()]
+- [lockowner()]
+- [lockfilter()]
 ## LLOCKS()
 ## LOCKS()
 `llocks([<object>])`
@@ -3127,12 +3156,12 @@ Basic USER:ITSME Use
 ```
 
 
-### See Also
-- [lock()](/reference/sharpmush-help/pennfunc/#lock)
-- [lset()](/reference/sharpmush-help/pennfunc/#lset)
-- [lockflags()](/reference/sharpmush-help/pennfunc/#lockflags)
-- [llockflags()](/reference/sharpmush-help/pennfunc/#llockflags)
-- [lockowner()](/reference/sharpmush-help/pennfunc/#lockowner)
+**See Also:**
+- [lock()]
+- [lset()]
+- [lockflags()]
+- [llockflags()]
+- [lockowner()]
 ## LOCKFILTER()
 `lockfilter(<key>, <dbrefs>[, <delim>])`
 
@@ -3163,13 +3192,13 @@ Walker WalkerBot Wilco
     Mike Walker Qon
 
 
-### See Also
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
-- [lock()](/reference/sharpmush-help/pennfunc/#lock)
-- [elock()](/reference/sharpmush-help/pennfunc/#elock)
-- [lockkeys](/reference/sharpmush-help/pennlock/#lockkeys)
-- [filter()](/reference/sharpmush-help/pennfunc/#filter)
-- [testlock()](/reference/sharpmush-help/pennfunc/#testlock)
+**See Also:**
+- [@lock]
+- [lock()]
+- [elock()]
+- [lockkeys]
+- [filter()]
+- [testlock()]
 ## LOCKFLAGS()
 `lockflags(<object>[/<locktype>])`
 `lockflags()`
@@ -3179,12 +3208,12 @@ Walker WalkerBot Wilco
   Given no arguments, this function returns a string consisting of all the flag letters the server knows.
 
 
-### See Also
-- [llockflags()](/reference/sharpmush-help/pennfunc/#llockflags)
-- [lset()](/reference/sharpmush-help/pennfunc/#lset)
-- [lock()](/reference/sharpmush-help/pennfunc/#lock)
-- [llocks()](/reference/sharpmush-help/pennfunc/#llocks)
-- [lockowner()](/reference/sharpmush-help/pennfunc/#lockowner)
+**See Also:**
+- [llockflags()]
+- [lset()]
+- [lock()]
+- [llocks()]
+- [lockowner()]
 ## LLOCKFLAGS()
 `llockflags(<object>[/<locktype>])`
 `llockflags()`
@@ -3194,75 +3223,75 @@ Walker WalkerBot Wilco
   Given no arguments, this function returns a space-separated list of all the names of all lock flags known to the server.
 
 
-### See Also
-- [lockflags()](/reference/sharpmush-help/pennfunc/#lockflags)
-- [lset()](/reference/sharpmush-help/pennfunc/#lset)
-- [lock()](/reference/sharpmush-help/pennfunc/#lock)
-- [llocks()](/reference/sharpmush-help/pennfunc/#llocks)
-- [lockowner()](/reference/sharpmush-help/pennfunc/#lockowner)
+**See Also:**
+- [lockflags()]
+- [lset()]
+- [lock()]
+- [llocks()]
+- [lockowner()]
 ## LOCKOWNER()
 `lockowner(<object>[/<locktype>])`
 
   This function returns the dbref of the player who owns the `<locktype>` lock on `<object>`, or the Basic lock if no `<locktype>` is given. You must be able to examine the lock to use this function.
 
 
-### See Also
-- [lockflags()](/reference/sharpmush-help/pennfunc/#lockflags)
-- [llockflags()](/reference/sharpmush-help/pennfunc/#llockflags)
-- [lset()](/reference/sharpmush-help/pennfunc/#lset)
-- [lock()](/reference/sharpmush-help/pennfunc/#lock)
-- [llocks()](/reference/sharpmush-help/pennfunc/#llocks)
+**See Also:**
+- [lockflags()]
+- [llockflags()]
+- [lset()]
+- [lock()]
+- [llocks()]
 ## LSET()
 `lset(<object>/<locktype>,[!]<flag>)`
 
   This functions sets or clears flags on locks.
 
-  See [@lset](/reference/sharpmush-help/penncmd/#lset) for more information on what flags are available.
+  See [@lset] for more information on what flags are available.
 
 
-### See Also
-- [lockflags()](/reference/sharpmush-help/pennfunc/#lockflags)
-- [llockflags()](/reference/sharpmush-help/pennfunc/#llockflags)
-- [lock()](/reference/sharpmush-help/pennfunc/#lock)
-- [lockowner()](/reference/sharpmush-help/pennfunc/#lockowner)
+**See Also:**
+- [lockflags()]
+- [llockflags()]
+- [lock()]
+- [lockowner()]
 ## LOG()
 `log(<number>[, <base>])`
 
   Returns the logarithm (base 10, or the given base) of `<number>`. `<base>` can be a floating-point number, or 'e' for the natural logarithm.
 
 
-### See Also
-- [ln()](/reference/sharpmush-help/pennfunc/#ln)
+**See Also:**
+- [ln()]
 ## LPARENT()
 `lparent(<object>)`
 
   This function returns a list consisting of `<object>`'s dbref (as per num()), the dbref of its parent, grandparent, greatgrandparent, etc. The list will not, however, show parents of objects which the player is not privileged to examine. Ancestor objects are not included.
 
 
-### See Also
-- [parent()](/reference/sharpmush-help/pennfunc/#parent)
-- [children()](/reference/sharpmush-help/pennfunc/#children)
-- [PARENTS](/reference/sharpmush-help/penntop/#parents)
-- [ANCESTORS](/reference/sharpmush-help/penntop/#ancestors)
+**See Also:**
+- [parent()]
+- [children()]
+- [PARENTS]
+- [ANCESTORS]
 ## LPLAYERS()
 `lplayers(<object>)`
 
   This function returns the dbrefs of all players, connected or not, in `<object>`. DARK wizards aren't listed to mortals or those without the see_all power. You must be in `<object>` or control it to use this function.
 
 
-### See Also
-- [lvplayers()](/reference/sharpmush-help/pennfunc/#lvplayers)
-- [lcon()](/reference/sharpmush-help/pennfunc/#lcon)
-- [lthings()](/reference/sharpmush-help/pennfunc/#lthings)
+**See Also:**
+- [lvplayers()]
+- [lcon()]
+- [lthings()]
 ## LTHINGS()
 `lthings(<object>)`
 
   This function returns the dbrefs of all things, dark or not, in `<object>`. You must be in `<object>` or control it to use this function.
 
 
-### See Also
-- [lvthings()](/reference/sharpmush-help/pennfunc/#lvthings)
-- [lcon()](/reference/sharpmush-help/pennfunc/#lcon)
+**See Also:**
+- [lvthings()]
+- [lcon()]
 ## LPOS()
 `lpos(<string>, <character>)`
 
@@ -3277,11 +3306,11 @@ You say, "1 4 8"
 ```
 
 
-### See Also
-- [pos()](/reference/sharpmush-help/pennfunc/#pos)
-- [member()](/reference/sharpmush-help/pennfunc/#member)
-- [match()](/reference/sharpmush-help/pennfunc/#match)
-- [wordpos()](/reference/sharpmush-help/pennfunc/#wordpos)
+**See Also:**
+- [pos()]
+- [member()]
+- [match()]
+- [wordpos()]
 ## LSEARCH()
 ## NLSEARCH()
 ## SEARCH()
@@ -3297,13 +3326,13 @@ You say, "1 4 8"
 
   This function is similar to the @search command, except it returns just a list of dbref numbers. The function must have at least three arguments. You can specify "all" or `<player>` for the `<player>` field; for mortals, only objects they can examine are included. If you do not want to restrict something, use "none" for `<class>` and `<restriction>`.
 
-  The possible `<class>`es and `<restriction>`s are the same as those accepted by @search. lsearch() can accept multiple class/restriction pairs, and applies them in a boolean "AND" fashion, returning only dbrefs that fulfill all restrictions. See [@search](/reference/sharpmush-help/penncmd/#search) for information about them.
+  The possible `<class>`es and `<restriction>`s are the same as those accepted by @search. lsearch() can accept multiple class/restriction pairs, and applies them in a boolean "AND" fashion, returning only dbrefs that fulfill all restrictions. See [@search] for information about them.
 
-  children() is exactly the same as lsearch([me|all](/reference/sharpmush-help/pennconf/#meall), parent, `<object>`), using "all" for See_All/Search players and "me" for others.
+  children() is exactly the same as lsearch([me|all], parent, `<object>`), using "all" for See_All/Search players and "me" for others.
 
   nlsearch(...) and nchildren(...) return the count of results that would be returned by lsearch() or children() with the same args.
 
-  See [lsearch2](/reference/sharpmush-help/pennfunc/#lsearch2).
+  See [lsearch2].
 ## LSEARCH2
 ## SEARCH2
 
@@ -3313,14 +3342,14 @@ You say, "1 4 8"
 
   lsearchr() is like an lsearch() run through revwords(). Results are returned from highest dbref to lowest. search() is an alias for lsearch().
 
-  See [lsearch3](/reference/sharpmush-help/pennfunc/#lsearch3) for examples.
+  See [lsearch3] for examples.
 
 
-### See Also
-- [@search](/reference/sharpmush-help/penncmd/#search)
-- [@find](/reference/sharpmush-help/penncmd/#find)
-- [lparent()](/reference/sharpmush-help/pennfunc/#lparent)
-- [stats()](/reference/sharpmush-help/pennfunc/#stats)
+**See Also:**
+- [@search]
+- [@find]
+- [lparent()]
+- [stats()]
 ## LSEARCH3
 ## SEARCH3
   lsearch() Examples:
@@ -3344,8 +3373,8 @@ You say, "1 4 8"
 
   stats() is an alias for lstats().
 
-### See Also
-- [nsearch()](/reference/sharpmush-help/pennfunc/#nsearch)
+**See Also:**
+- [nsearch()]
 ## LT()
 `lt(<number1>, <number2>[, ... , <numberN>])`
 
@@ -3362,68 +3391,68 @@ th lt(1,3,2)
 ```
 
 
-### See Also
-- [lte()](/reference/sharpmush-help/pennfunc/#lte)
-- [gt()](/reference/sharpmush-help/pennfunc/#gt)
-- [gte()](/reference/sharpmush-help/pennfunc/#gte)
-- [lnum()](/reference/sharpmush-help/pennfunc/#lnum)
-- [lmath()](/reference/sharpmush-help/pennfunc/#lmath)
+**See Also:**
+- [lte()]
+- [gt()]
+- [gte()]
+- [lnum()]
+- [lmath()]
 ## LTE()
 `lte(<number1>, <number2>[, ... , <numberN>])`
 
   Takes two or more numbers, and returns 1 if and only if each number is less than or equal to the number after it, and 0 otherwise.
 
 
-### See Also
-- [lt()](/reference/sharpmush-help/pennfunc/#lt)
-- [gt()](/reference/sharpmush-help/pennfunc/#gt)
-- [gte()](/reference/sharpmush-help/pennfunc/#gte)
-- [lnum()](/reference/sharpmush-help/pennfunc/#lnum)
-- [lmath()](/reference/sharpmush-help/pennfunc/#lmath)
+**See Also:**
+- [lt()]
+- [gt()]
+- [gte()]
+- [lnum()]
+- [lmath()]
 ## LVCON()
 `lvcon(<object>)`
 
   This function returns the dbrefs of all objects that are inside `<object>` and visible (non-dark). You must be in `<object>` or control it to use this function.
 
 
-### See Also
-- [lcon()](/reference/sharpmush-help/pennfunc/#lcon)
-- [lvplayers()](/reference/sharpmush-help/pennfunc/#lvplayers)
-- [lvthings()](/reference/sharpmush-help/pennfunc/#lvthings)
-- [lvexits()](/reference/sharpmush-help/pennfunc/#lvexits)
+**See Also:**
+- [lcon()]
+- [lvplayers()]
+- [lvthings()]
+- [lvexits()]
 ## LVEXITS()
 `lvexits(<room>)`
 
   This function returns the dbrefs of all visible (non-dark) exits from `<room>`. You must be in the room or control it to use this function.
 
 
-### See Also
-- [lexits()](/reference/sharpmush-help/pennfunc/#lexits)
-- [lvcon()](/reference/sharpmush-help/pennfunc/#lvcon)
-- [lvplayers()](/reference/sharpmush-help/pennfunc/#lvplayers)
-- [lvthings()](/reference/sharpmush-help/pennfunc/#lvthings)
+**See Also:**
+- [lexits()]
+- [lvcon()]
+- [lvplayers()]
+- [lvthings()]
 ## LVPLAYERS()
 `lvplayers(<object>)`
 
   This function returns the dbrefs of all connected and non-dark players in an object. You must be in the object or control it to use this function.
 
 
-### See Also
-- [lplayers()](/reference/sharpmush-help/pennfunc/#lplayers)
-- [lvcon()](/reference/sharpmush-help/pennfunc/#lvcon)
-- [lvthings()](/reference/sharpmush-help/pennfunc/#lvthings)
-- [lvexits()](/reference/sharpmush-help/pennfunc/#lvexits)
+**See Also:**
+- [lplayers()]
+- [lvcon()]
+- [lvthings()]
+- [lvexits()]
 ## LVTHINGS()
 `lvthings(<object>)`
 
   This function returns the dbrefs of all non-dark things inside an object. You must be in the object or control it to use this function.
 
 
-### See Also
-- [lthings()](/reference/sharpmush-help/pennfunc/#lthings)
-- [lvplayers()](/reference/sharpmush-help/pennfunc/#lvplayers)
-- [lvcon()](/reference/sharpmush-help/pennfunc/#lvcon)
-- [lvexits()](/reference/sharpmush-help/pennfunc/#lvexits)
+**See Also:**
+- [lthings()]
+- [lvplayers()]
+- [lvcon()]
+- [lvexits()]
 ## LWHO()
 ## LWHOID()
 `lwho([<viewer>[, <status>]])`
@@ -3438,11 +3467,11 @@ th lt(1,3,2)
   lwhoid() returns a list of objid's instead.
 
 
-### See Also
-- [mwho()](/reference/sharpmush-help/pennfunc/#mwho)
-- [nwho()](/reference/sharpmush-help/pennfunc/#nwho)
-- [xwho()](/reference/sharpmush-help/pennfunc/#xwho)
-- [lports()](/reference/sharpmush-help/pennfunc/#lports)
+**See Also:**
+- [mwho()]
+- [nwho()]
+- [xwho()]
+- [lports()]
 ## MAP()
 `map([<object>/]<attribute>, <list>[, <delim>[, <osep>]])`
 
@@ -3463,10 +3492,10 @@ th lt(1,3,2)
     You say, "2;4;6;8;10"
 
 
-### See Also
-- [anonymous attributes](/reference/sharpmush-help/penntop/#anonymous-attributes)
-- [iter()](/reference/sharpmush-help/pennfunc/#iter)
-- [@dolist](/reference/sharpmush-help/penncmd/#dolist)
+**See Also:**
+- [anonymous attributes]
+- [iter()]
+- [@dolist]
 ## ELEMENT()
 ## MATCH()
 ## MATCHALL()
@@ -3481,14 +3510,14 @@ th lt(1,3,2)
 
   To get the matching elements, instead of the indexes of where they appear in the list, use grab()/graball(). To see if a single string matches a wildcard pattern, use strmatch().
 
-  See [match2](/reference/sharpmush-help/pennfunc/#match2) for examples.
+  See [match2] for examples.
 
-### See Also
-- [grab()](/reference/sharpmush-help/pennfunc/#grab)
-- [strmatch()](/reference/sharpmush-help/pennfunc/#strmatch)
-- [member()](/reference/sharpmush-help/pennfunc/#member)
-- [reglmatch()](/reference/sharpmush-help/pennfunc/#reglmatch)
-- [WILDCARDS](/reference/sharpmush-help/penntop/#wildcards)
+**See Also:**
+- [grab()]
+- [strmatch()]
+- [member()]
+- [reglmatch()]
+- [WILDCARDS]
 ## MATCH2
   Examples:
 ```
@@ -3519,13 +3548,13 @@ You say, "3"
 
   In all cases, the elements of `<list>` are separated by `<delimiter>`, which defaults to a space. The elements outputted by reglmatchall() are separated by `<output separator>`, if one is given, or by `<delimiter>` if not.
 
-  See [reglmatch2](/reference/sharpmush-help/pennfunc/#reglmatch2) for examples.
+  See [reglmatch2] for examples.
 
-### See Also
-- [regmatch()](/reference/sharpmush-help/pennfunc/#regmatch)
-- [regrab()](/reference/sharpmush-help/pennfunc/#regrab)
-- [match()](/reference/sharpmush-help/pennfunc/#match)
-- [REGEXP SYNTAX](/reference/sharpmush-help/penntop/#regexp-syntax)
+**See Also:**
+- [regmatch()]
+- [regrab()]
+- [match()]
+- [REGEXP SYNTAX]
 ## REGLMATCH2
   Examples:
 ```
@@ -3545,11 +3574,11 @@ You say, "3"
   This function returns the largest number in its list of arguments. It can take any number of arguments.
 
 
-### See Also
-- [min()](/reference/sharpmush-help/pennfunc/#min)
-- [lmath()](/reference/sharpmush-help/pennfunc/#lmath)
-- [bound()](/reference/sharpmush-help/pennfunc/#bound)
-- [alphamax()](/reference/sharpmush-help/pennfunc/#alphamax)
+**See Also:**
+- [min()]
+- [lmath()]
+- [bound()]
+- [alphamax()]
 ## AVG()
 ## MEAN()
 `mean(<number1>, <number2>[, ... , <numberN>])`
@@ -3559,20 +3588,20 @@ You say, "3"
   avg() is an alias for mean(), for Rhost compatibility.
 
 
-### See Also
-- [median()](/reference/sharpmush-help/pennfunc/#median)
-- [stddev()](/reference/sharpmush-help/pennfunc/#stddev)
-- [lmath()](/reference/sharpmush-help/pennfunc/#lmath)
+**See Also:**
+- [median()]
+- [stddev()]
+- [lmath()]
 ## MEDIAN()
 `median(<number>, <number>[, ... , <numberN>)`
 
   Returns the median (the middlemost numerically) of its arguments.
 
 
-### See Also
-- [mean()](/reference/sharpmush-help/pennfunc/#mean)
-- [stddev()](/reference/sharpmush-help/pennfunc/#stddev)
-- [lmath()](/reference/sharpmush-help/pennfunc/#lmath)
+**See Also:**
+- [mean()]
+- [stddev()]
+- [lmath()]
 ## MEMBER()
 `member(<list>, <word>[, <delimiter>])`
 
@@ -3581,11 +3610,11 @@ You say, "3"
   member() is case-sensitive, and does not perform wildcard matching. If you need to do a wildcard match, use match(). To compare two strings (instead of a word and list elements), consider comp().
 
 
-### See Also
-- [match()](/reference/sharpmush-help/pennfunc/#match)
-- [grab()](/reference/sharpmush-help/pennfunc/#grab)
-- [comp()](/reference/sharpmush-help/pennfunc/#comp)
-- [strmatch()](/reference/sharpmush-help/pennfunc/#strmatch)
+**See Also:**
+- [match()]
+- [grab()]
+- [comp()]
+- [strmatch()]
 ## MERGE()
 `merge(<string1>, <string2>, <characters>)`
 
@@ -3606,13 +3635,13 @@ You say, "ABcdEF"
 ```
 
 
-### See Also
-- [splice()](/reference/sharpmush-help/pennfunc/#splice)
-- [tr()](/reference/sharpmush-help/pennfunc/#tr)
+**See Also:**
+- [splice()]
+- [tr()]
 ## MESSAGE()
 `message(<recipients>, <message>, [<object>/]<attribute>[, <arg0>[, ... , <arg9>][, <switches>]])`
 
-  message() is the function form of @message/silent, and sends a message, formatted through an attribute, to a list of objects. See [@message](/reference/sharpmush-help/penncmd/#message) for more information.
+  message() is the function form of @message/silent, and sends a message, formatted through an attribute, to a list of objects. See [@message] for more information.
 
   `<switches>` is a space-separated list of one or more of "nospoof", "spoof", "oemit" and "remit", and makes message() behaviour as per @message/`<switches>`. For backwards-compatability reasons, all ten `<arg>` arguments must be given (even if empty) to use `<switches>`.
 
@@ -3630,11 +3659,11 @@ Formatted> Foo Bar Baz
   Formatted> Backwards Compatability Is Annoying Sometimes
 
 
-### See Also
-- [@message](/reference/sharpmush-help/penncmd/#message)
-- [oemit()](/reference/sharpmush-help/pennfunc/#oemit)
-- [remit()](/reference/sharpmush-help/pennfunc/#remit)
-- [speak()](/reference/sharpmush-help/pennfunc/#speak)
+**See Also:**
+- [@message]
+- [oemit()]
+- [remit()]
+- [speak()]
 ## MID()
 `mid(<string>, <first>, <length>)`
 
@@ -3649,27 +3678,27 @@ You say, "es"
 ```
 
 
-### See Also
-- [left()](/reference/sharpmush-help/pennfunc/#left)
-- [right()](/reference/sharpmush-help/pennfunc/#right)
-- [strdelete()](/reference/sharpmush-help/pennfunc/#strdelete)
+**See Also:**
+- [left()]
+- [right()]
+- [strdelete()]
 ## MIN()
 `min(<number1>, <number2>[, ... , <numberN>])`
 
   This function returns the smallest number in its list of arguments. It can take any number of arguments.
 
 
-### See Also
-- [max()](/reference/sharpmush-help/pennfunc/#max)
-- [lmath()](/reference/sharpmush-help/pennfunc/#lmath)
-- [bound()](/reference/sharpmush-help/pennfunc/#bound)
-- [alphamin()](/reference/sharpmush-help/pennfunc/#alphamin)
+**See Also:**
+- [max()]
+- [lmath()]
+- [bound()]
+- [alphamin()]
 ## MIX()
 `mix([<object>/]<attribute>, <list1>, <list2>[, ... , <list30>, <delim>])`
 
   This function is similar to MAP(), except that it takes the elements of up to 30 lists, one by one, and passes them to the user-defined function as %0, %1, up to %9, respectively, for elements of `<list1>` to `<list30>`. Use v() to access elements 10 or higher. If the lists are of different sizes, the shorter ones are padded with empty elements. `<delim>` is used to separate elements; if it is not specified, it defaults to a space. If using more than 2 lists, the last argument must be a delimiter.
 
-  See [mix2](/reference/sharpmush-help/pennfunc/#mix2) for examples.
+  See [mix2] for examples.
 ## MIX2
   Examples of mix():
 
@@ -3686,10 +3715,10 @@ You say, "es"
     You say, "12:15:18"
 
 
-### See Also
-- [anonymous attributes](/reference/sharpmush-help/penntop/#anonymous-attributes)
-- [map()](/reference/sharpmush-help/pennfunc/#map)
-- [step()](/reference/sharpmush-help/pennfunc/#step)
+**See Also:**
+- [anonymous attributes]
+- [map()]
+- [step()]
 ## MOD()
 ## MODULO()
 ## MODULUS()
@@ -3713,9 +3742,9 @@ You say, "es"
   mod() and modulus() are aliases for modulo().
 
 
-### See Also
-- [div()](/reference/sharpmush-help/pennfunc/#div)
-- [lmath()](/reference/sharpmush-help/pennfunc/#lmath)
+**See Also:**
+- [div()]
+- [lmath()]
 ## MONEY()
 `money(<integer>)`
 `money(<object>)`
@@ -3741,8 +3770,8 @@ You say, "150"
     Count von Count says, "2 Pennies. Ah.. ah.. ah."
 
 
-### See Also
-- [score](/reference/sharpmush-help/penncmd/#score)
+**See Also:**
+- [score]
 ## MTIME()
 ## MSECS()
 `mtime(<object>[, <utc?>])`
@@ -3755,12 +3784,12 @@ You say, "150"
   Only things, rooms, and exits have modification times. You must be able to examine an object to see its modification time.
 
 
-### See Also
-- [ctime()](/reference/sharpmush-help/pennfunc/#ctime)
-- [time()](/reference/sharpmush-help/pennfunc/#time)
-- [secs()](/reference/sharpmush-help/pennfunc/#secs)
-- [convtime()](/reference/sharpmush-help/pennfunc/#convtime)
-- [convsecs()](/reference/sharpmush-help/pennfunc/#convsecs)
+**See Also:**
+- [ctime()]
+- [time()]
+- [secs()]
+- [convtime()]
+- [convsecs()]
 ## MUDNAME()
 ## MUDURL()
 `mudname()`
@@ -3777,18 +3806,18 @@ You say, "http://www.testmush.com"
 ```
 
 
-### See Also
-- [config()](/reference/sharpmush-help/pennfunc/#config)
+**See Also:**
+- [config()]
 ## MUL()
 `mul(<number1>, <number2>[, ... , <numberN>])`
 
   Returns the product of some numbers.
 
 
-### See Also
-- [lmath()](/reference/sharpmush-help/pennfunc/#lmath)
-- [div()](/reference/sharpmush-help/pennfunc/#div)
-- [fdiv()](/reference/sharpmush-help/pennfunc/#fdiv)
+**See Also:**
+- [lmath()]
+- [div()]
+- [fdiv()]
 ## MUNGE()
 `munge([<object>/]<attribute>, <list1>, <list2>[, <delimiter>[, <osep>]])`
 
@@ -3798,7 +3827,7 @@ You say, "http://www.testmush.com"
 
   `<delimiter>` defaults to a space, and `<osep>` defaults to `<delimiter>`.
 
-  See [munge2](/reference/sharpmush-help/pennfunc/#munge2) for examples.
+  See [munge2] for examples.
 ## MUNGE2
   For example: Consider attribute PLACES, which contains "Fort Benden Ista", and another attribute DBREFS contains the dbrefs of the main JUMP_OK location of these areas, "#20 #9000 #5000". We want to return a list of dbrefs, corresponding to the names of the places sorted alphabetically. The places sorted this way would be "Benden Fort Ista", so we want the final list to be "#9000 #20 #5000". The functions, using munge(), are simple:
 
@@ -3806,7 +3835,7 @@ You say, "http://www.testmush.com"
     > say munge(sort, v(places), v(dbrefs))
     You say, "#9000 #20 #5000"
 
-  See [munge3](/reference/sharpmush-help/pennfunc/#munge3) for another example.
+  See [munge3] for another example.
 ## MUNGE3
   Another common task that munge() is well suited for is sorting a list of dbrefs of players by order of connection. This example uses #apply to avoid the need for the sort attribute, and also unlike the other example, it builds the list to sort on out of the list to return.
 
@@ -3815,8 +3844,8 @@ You say, "http://www.testmush.com"
     You say, "#12 #234 #3"
 
 
-### See Also
-- [anonymous attributes](/reference/sharpmush-help/penntop/#anonymous-attributes)
+**See Also:**
+- [anonymous attributes]
 ## MWHO()
 ## MWHOID()
 `mwho()`
@@ -3827,9 +3856,9 @@ You say, "http://www.testmush.com"
   mwhoid() returns a list of objids instead.
 
 
-### See Also
-- [lwho()](/reference/sharpmush-help/pennfunc/#lwho)
-- [nwho()](/reference/sharpmush-help/pennfunc/#nwho)
+**See Also:**
+- [lwho()]
+- [nwho()]
 ## ALIAS()
 ## FULLALIAS()
 `alias(<object>[, <new alias>])`
@@ -3850,8 +3879,8 @@ You say, "$;No;Nol;Noli;Nolt"
 ```
 
 
-### See Also
-- [fullname()](/reference/sharpmush-help/pennfunc/#fullname)
+**See Also:**
+- [fullname()]
 ## NAME()
 `name(<object>[, <new name>])`
 
@@ -3860,12 +3889,12 @@ You say, "$;No;Nol;Noli;Nolt"
   With two arguments, name() attempts to rename `<object>` to `<new name>`, as per @name.
 
 
-### See Also
-- [fullname()](/reference/sharpmush-help/pennfunc/#fullname)
-- [accname()](/reference/sharpmush-help/pennfunc/#accname)
-- [iname()](/reference/sharpmush-help/pennfunc/#iname)
-- [alias()](/reference/sharpmush-help/pennfunc/#alias)
-- [moniker()](/reference/sharpmush-help/pennfunc/#moniker)
+**See Also:**
+- [fullname()]
+- [accname()]
+- [iname()]
+- [alias()]
+- [moniker()]
 ## MONIKER()
 ## CNAME()
 `moniker(<object>)`
@@ -3873,13 +3902,13 @@ You say, "$;No;Nol;Noli;Nolt"
   Returns `<object>`'s accented name, with the color template from its @moniker applied. moniker() always returns the colored name, even if monikers are disabled via @config.
 
 
-### See Also
-- [MONIKERS](/reference/sharpmush-help/penntop/#monikers)
-- [@moniker](/reference/sharpmush-help/penncmd/#moniker)
-- [name()](/reference/sharpmush-help/pennfunc/#name)
-- [MONIKER](/reference/sharpmush-help/pennconf/#moniker)
-- [iname()](/reference/sharpmush-help/pennfunc/#iname)
-- [accname()](/reference/sharpmush-help/pennfunc/#accname)
+**See Also:**
+- [MONIKERS]
+- [@moniker]
+- [name()]
+- [MONIKER]
+- [iname()]
+- [accname()]
 ## NAMELIST()
 `namelist(<player-list>[, [<object>/]<attribute>])`
 
@@ -3896,12 +3925,12 @@ You say, "#1 #7 #56 #-1"
 ```
 
 
-### See Also
-- [namegrab()](/reference/sharpmush-help/pennfunc/#namegrab)
-- [name()](/reference/sharpmush-help/pennfunc/#name)
-- [locate()](/reference/sharpmush-help/pennfunc/#locate)
-- [num()](/reference/sharpmush-help/pennfunc/#num)
-- [pmatch()](/reference/sharpmush-help/pennfunc/#pmatch)
+**See Also:**
+- [namegrab()]
+- [name()]
+- [locate()]
+- [num()]
+- [pmatch()]
 ## NAMEGRAB()
 ## NAMEGRABALL()
 `namegrab(<dbref list>, <name>)`
@@ -3920,9 +3949,9 @@ You say, "#1 #7 #56 #-1"
     You say, "#0 #2"
 
 
-### See Also
-- [namelist()](/reference/sharpmush-help/pennfunc/#namelist)
-- [locate()](/reference/sharpmush-help/pennfunc/#locate)
+**See Also:**
+- [namelist()]
+- [locate()]
 ## NAND()
 ## NCAND()
 `nand(<boolean1>[, ... , <booleanN>])`
@@ -3933,31 +3962,31 @@ You say, "#1 #7 #56 #-1"
   Equivalent to not(and()) and not(cand()), but more efficient.
 
 
-### See Also
-- [lmath()](/reference/sharpmush-help/pennfunc/#lmath)
-- [and()](/reference/sharpmush-help/pennfunc/#and)
-- [cand()](/reference/sharpmush-help/pennfunc/#cand)
-- [or()](/reference/sharpmush-help/pennfunc/#or)
-- [nor()](/reference/sharpmush-help/pennfunc/#nor)
+**See Also:**
+- [lmath()]
+- [and()]
+- [cand()]
+- [or()]
+- [nor()]
 ## NEARBY()
 `nearby(<object 1>, <object 2>)`
 
   Returns 1 if `<object 1>` is "nearby" `<object 2>`, and 0 otherwise. "Nearby" means the objects are in the same location, or that one is located inside the other. You must control at least one of the objects; if you don't, or if one of the objects can't be found, nearby() returns #-1.
 
 
-### See Also
-- [locate()](/reference/sharpmush-help/pennfunc/#locate)
-- [findable()](/reference/sharpmush-help/pennfunc/#findable)
+**See Also:**
+- [locate()]
+- [findable()]
 ## NEQ()
 `neq(<number1>, <number2>[, ... , <numberN>])`
 
   Returns 0 if all the given `<number>`s are the same, and 1 otherwise. Basically the same as [not(eq(`<number1>`, `<number2>`[, ... , `<numberN>`]))] but more efficient.
 
 
-### See Also
-- [eq()](/reference/sharpmush-help/pennfunc/#eq)
-- [not()](/reference/sharpmush-help/pennfunc/#not)
-- [lmath()](/reference/sharpmush-help/pennfunc/#lmath)
+**See Also:**
+- [eq()]
+- [not()]
+- [lmath()]
 ## NEXT()
 `next(<object>)`
 
@@ -3966,20 +3995,20 @@ You say, "#1 #7 #56 #-1"
   You can get the complete contents of any container you may examine, regardless of whether or not objects are dark. You can get the partial contents (obeying DARK/LIGHT/etc.) of your current location or the enactor (%#). You CANNOT get the contents of anything else, regardless of whether or not you have objects in it. These rules apply to exits, as well.
 
 
-### See Also
-- [lcon()](/reference/sharpmush-help/pennfunc/#lcon)
-- [lexits()](/reference/sharpmush-help/pennfunc/#lexits)
-- [con()](/reference/sharpmush-help/pennfunc/#con)
-- [exit()](/reference/sharpmush-help/pennfunc/#exit)
+**See Also:**
+- [lcon()]
+- [lexits()]
+- [con()]
+- [exit()]
 ## NEXTDBREF()
 `nextdbref()`
 
   This function returns the next dbref on the free list; when the next object is @created (or @dug, or @opened, or @pcreated, etc.), it will have this dbref.
 
 
-### See Also
-- [@stats](/reference/sharpmush-help/penncmd/#stats)
-- [stats()](/reference/sharpmush-help/pennfunc/#stats)
+**See Also:**
+- [@stats]
+- [stats()]
 ## NOR()
 ## NCOR()
 `nor(<boolean1>[, ... , <booleanN>])`
@@ -3990,38 +4019,38 @@ You say, "#1 #7 #56 #-1"
   Equivalent to not(or()) and not(cor()), but more efficient.
 
 
-### See Also
-- [and()](/reference/sharpmush-help/pennfunc/#and)
-- [or()](/reference/sharpmush-help/pennfunc/#or)
-- [xor()](/reference/sharpmush-help/pennfunc/#xor)
-- [not()](/reference/sharpmush-help/pennfunc/#not)
-- [nand()](/reference/sharpmush-help/pennfunc/#nand)
-- [lmath()](/reference/sharpmush-help/pennfunc/#lmath)
+**See Also:**
+- [and()]
+- [or()]
+- [xor()]
+- [not()]
+- [nand()]
+- [lmath()]
 ## NOT()
 `not(<boolean>)`
 
   not() returns 1 if `<boolean>` is false, and 0 if it's true.
 
-  The definition of truth and falsehood depends on configuration settings; see [boolean values](/reference/sharpmush-help/penntop/#boolean-values) for details.
+  The definition of truth and falsehood depends on configuration settings; see [boolean values] for details.
 
 
-### See Also
-- [Boolean Functions](/reference/sharpmush-help/pennfunc/#boolean-functions)
-- [t()](/reference/sharpmush-help/pennfunc/#t)
-- [and()](/reference/sharpmush-help/pennfunc/#and)
-- [or()](/reference/sharpmush-help/pennfunc/#or)
-- [nor()](/reference/sharpmush-help/pennfunc/#nor)
-- [xor()](/reference/sharpmush-help/pennfunc/#xor)
+**See Also:**
+- [Boolean Functions]
+- [t()]
+- [and()]
+- [or()]
+- [nor()]
+- [xor()]
 ## NUM()
 `num(<object>)`
 
-  Returns the dbref number of `<object>`. `<object>` must reference a valid object, as per [matching](/reference/sharpmush-help/penntop/#matching).
+  Returns the dbref number of `<object>`. `<object>` must reference a valid object, as per [matching].
 
 
-### See Also
-- [locate()](/reference/sharpmush-help/pennfunc/#locate)
-- [rnum()](/reference/sharpmush-help/pennfunc/#rnum)
-- [pmatch()](/reference/sharpmush-help/pennfunc/#pmatch)
+**See Also:**
+- [locate()]
+- [rnum()]
+- [pmatch()]
 ## NVCON()
 ## NCON()
 `ncon(<object>)`
@@ -4030,12 +4059,12 @@ You say, "#1 #7 #56 #-1"
   These functions return a the number of objects inside `<object>`. They are identical to words(lcon(`<object>`)) and words(lvcon(`<object>`)), respectively, but are more efficient and do not suffer from buffer constraints.
 
 
-### See Also
-- [nexits()](/reference/sharpmush-help/pennfunc/#nexits)
-- [nplayers()](/reference/sharpmush-help/pennfunc/#nplayers)
-- [xcon()](/reference/sharpmush-help/pennfunc/#xcon)
-- [lcon()](/reference/sharpmush-help/pennfunc/#lcon)
-- [lvcon()](/reference/sharpmush-help/pennfunc/#lvcon)
+**See Also:**
+- [nexits()]
+- [nplayers()]
+- [xcon()]
+- [lcon()]
+- [lvcon()]
 ## NVEXITS()
 ## NEXITS()
 `nexits(<room>)`
@@ -4044,12 +4073,12 @@ You say, "#1 #7 #56 #-1"
   These functions return a count of the exits in a room. They are equivilent to words(lexits(`<room>`)) and words(lvexits(`<room>`)) respectively, though are more efficient, and don't suffer from buffer constraints.
 
 
-### See Also
-- [ncon()](/reference/sharpmush-help/pennfunc/#ncon)
-- [nplayers()](/reference/sharpmush-help/pennfunc/#nplayers)
-- [xexits()](/reference/sharpmush-help/pennfunc/#xexits)
-- [lexits()](/reference/sharpmush-help/pennfunc/#lexits)
-- [lvexits()](/reference/sharpmush-help/pennfunc/#lvexits)
+**See Also:**
+- [ncon()]
+- [nplayers()]
+- [xexits()]
+- [lexits()]
+- [lvexits()]
 ## NVPLAYERS()
 ## NPLAYERS()
 `nplayers(<object>)`
@@ -4058,12 +4087,12 @@ You say, "#1 #7 #56 #-1"
   These functions return a count of the players in `<object>`. They are equivilent to words(lplayers(`<object>`)) and words(lvplayers(`<object>`)) respectively, though are more efficient and do not suffer from buffer constraints.
 
 
-### See Also
-- [ncon()](/reference/sharpmush-help/pennfunc/#ncon)
-- [nexits()](/reference/sharpmush-help/pennfunc/#nexits)
-- [xplayers()](/reference/sharpmush-help/pennfunc/#xplayers)
-- [lplayers()](/reference/sharpmush-help/pennfunc/#lplayers)
-- [lvplayers()](/reference/sharpmush-help/pennfunc/#lvplayers)
+**See Also:**
+- [ncon()]
+- [nexits()]
+- [xplayers()]
+- [lplayers()]
+- [lvplayers()]
 ## NVTHINGS()
 ## NTHINGS()
 `nthings(<object>)`
@@ -4072,12 +4101,12 @@ You say, "#1 #7 #56 #-1"
   These functions return a count of the things in a container. They are equivilent to words(lthings(`<object>`)) and words(lvthings(`<object>`)) respectively, though are more efficient and do not suffer from buffer constraints.
 
 
-### See Also
-- [ncon()](/reference/sharpmush-help/pennfunc/#ncon)
-- [nexits()](/reference/sharpmush-help/pennfunc/#nexits)
-- [xthings()](/reference/sharpmush-help/pennfunc/#xthings)
-- [lthings()](/reference/sharpmush-help/pennfunc/#lthings)
-- [lvthings()](/reference/sharpmush-help/pennfunc/#lvthings)
+**See Also:**
+- [ncon()]
+- [nexits()]
+- [xthings()]
+- [lthings()]
+- [lvthings()]
 ## NMWHO()
 ## NWHO()
 `nwho([<viewer>])`
@@ -4090,11 +4119,11 @@ You say, "#1 #7 #56 #-1"
   These functions are equivilent to words(lwho([`<viewer>`])) and words(mwho()), but are more efficient, and don't suffer from buffer constraints.
 
 
-### See Also
-- [lwho()](/reference/sharpmush-help/pennfunc/#lwho)
-- [mwho()](/reference/sharpmush-help/pennfunc/#mwho)
-- [xwho()](/reference/sharpmush-help/pennfunc/#xwho)
-- [xmwho()](/reference/sharpmush-help/pennfunc/#xmwho)
+**See Also:**
+- [lwho()]
+- [mwho()]
+- [xwho()]
+- [xmwho()]
 ## OBJ()
 ## %o
 `obj(<object>)`
@@ -4102,18 +4131,18 @@ You say, "#1 #7 #56 #-1"
   Returns the objective pronoun - him/her/it - for an object. The %o substitution will return the objective pronoun of the enactor.
 
 
-### See Also
-- [subj()](/reference/sharpmush-help/pennfunc/#subj)
-- [poss()](/reference/sharpmush-help/pennfunc/#poss)
-- [aposs()](/reference/sharpmush-help/pennfunc/#aposs)
+**See Also:**
+- [subj()]
+- [poss()]
+- [aposs()]
 ## OBJEVAL()
 `objeval(<object>, <expression>)`
 
   Allows you to evaluate `<expression>` from the viewpoint of `<object>`. If side-effect functions are enabled, you must control `<object>`; if not, you must either control `<object>` or have the see_all power. If `<object>` does not exist or you don't meet one of the criterion, the expression evaluates with your privileges.
 
 
-### See Also
-- [s()](/reference/sharpmush-help/pennfunc/#s)
+**See Also:**
+- [s()]
 ## OBJID()
 `objid(<object>)`
 
@@ -4124,19 +4153,19 @@ You say, "#1 #7 #56 #-1"
   The substitution %: returns the object id of the enactor.
 
 
-### See Also
-- [num()](/reference/sharpmush-help/pennfunc/#num)
-- [csecs()](/reference/sharpmush-help/pennfunc/#csecs)
-- [ctime()](/reference/sharpmush-help/pennfunc/#ctime)
-- [ENACTOR](/reference/sharpmush-help/penntop/#enactor)
+**See Also:**
+- [num()]
+- [csecs()]
+- [ctime()]
+- [ENACTOR]
 ## OBJMEM()
 `objmem(<object>)`
 
   This function returns the amount of memory, in bytes, being used by the object. It can only be used by players with Search powers.
 
 
-### See Also
-- [playermem()](/reference/sharpmush-help/pennfunc/#playermem)
+**See Also:**
+- [playermem()]
 ## OEMIT()
 ## NSOEMIT()
 `oemit([<room>/]<object> [... <object>], <message>)`
@@ -4158,13 +4187,13 @@ You say, "#1 #7 #56 #-1"
   It returns the dbref of the newly created exit, or #-1 on error.
 
 
-### See Also
-- [@open](/reference/sharpmush-help/penncmd/#open)
-- [@link](/reference/sharpmush-help/penncmd/#link)
-- [dig()](/reference/sharpmush-help/pennfunc/#dig)
-- [link()](/reference/sharpmush-help/pennfunc/#link)
-- [create()](/reference/sharpmush-help/pennfunc/#create)
-- [pcreate()](/reference/sharpmush-help/pennfunc/#pcreate)
+**See Also:**
+- [@open]
+- [@link]
+- [dig()]
+- [link()]
+- [create()]
+- [pcreate()]
 ## OR()
 ## COR()
 `or(<boolean1>, <boolean2>[, ... , <booleanN>])`
@@ -4173,13 +4202,13 @@ You say, "#1 #7 #56 #-1"
   These functions take a number of boolean values, and return 1 if any of them are true, and 0 if all are false. or() always evaluates all of its arguments, while cor() stops evaluating as soon as one is true.
 
 
-### See Also
-- [BOOLEAN VALUES](/reference/sharpmush-help/penntop/#boolean-values)
-- [and()](/reference/sharpmush-help/pennfunc/#and)
-- [nor()](/reference/sharpmush-help/pennfunc/#nor)
-- [firstof()](/reference/sharpmush-help/pennfunc/#firstof)
-- [allof()](/reference/sharpmush-help/pennfunc/#allof)
-- [lmath()](/reference/sharpmush-help/pennfunc/#lmath)
+**See Also:**
+- [BOOLEAN VALUES]
+- [and()]
+- [nor()]
+- [firstof()]
+- [allof()]
+- [lmath()]
 ## ORFLAGS()
 ## ORLFLAGS()
 `orflags(<object>, <string of flag characters>)`
@@ -4194,11 +4223,11 @@ You say, "#1 #7 #56 #-1"
     > say orlflags(%#, wizard dark !ansi)
 
 
-### See Also
-- [andflags()](/reference/sharpmush-help/pennfunc/#andflags)
-- [flags()](/reference/sharpmush-help/pennfunc/#flags)
-- [lflags()](/reference/sharpmush-help/pennfunc/#lflags)
-- [orlpowers()](/reference/sharpmush-help/pennfunc/#orlpowers)
+**See Also:**
+- [andflags()]
+- [flags()]
+- [lflags()]
+- [orlpowers()]
 ## ORLPOWERS()
 `orlpowers(<object>, <list of powers>)`
 
@@ -4209,12 +4238,12 @@ You say, "#1 #7 #56 #-1"
   If there is a syntax error like a ! without a following power, '#-1 INVALID POWER' is returned. Unknown powers are treated as being not set.
 
 
-### See Also
-- [powers()](/reference/sharpmush-help/pennfunc/#powers)
-- [andlpowers()](/reference/sharpmush-help/pennfunc/#andlpowers)
-- [POWERS LIST](/reference/sharpmush-help/pennconf/#powers-list)
-- [@power](/reference/sharpmush-help/penncmd/#power)
-- [orlflags()](/reference/sharpmush-help/pennfunc/#orlflags)
+**See Also:**
+- [powers()]
+- [andlpowers()]
+- [POWERS LIST]
+- [@power]
+- [orlflags()]
 ## OWNER()
 `owner(<object>[/<attribute>])`
 `owner(<object>[/<attribute>], <new owner>[, preserve])`
@@ -4225,10 +4254,10 @@ You say, "#1 #7 #56 #-1"
   If changing ownership, #-1 or 0 is returned on failure, 1 on success.
 
 
-### See Also
-- [lockowner()](/reference/sharpmush-help/pennfunc/#lockowner)
-- [@chown](/reference/sharpmush-help/penncmd/#chown)
-- [@atrchown](/reference/sharpmush-help/penncmd/#atrchown)
+**See Also:**
+- [lockowner()]
+- [@chown]
+- [@atrchown]
 
 ## PARENT()
 `parent(<object>[, <new parent>])`
@@ -4236,11 +4265,11 @@ You say, "#1 #7 #56 #-1"
   This function returns the dbref number of an object's parent. You must be able to examine the object to do this. If you specify a second argument, parent() attempts to change the parent first. You must control `<object>`, and be allowed to @parent to `<new parent>`.
 
 
-### See Also
-- [@parent](/reference/sharpmush-help/penncmd/#parent)
-- [ancestors](/reference/sharpmush-help/penntop/#ancestors)
-- [pfun()](/reference/sharpmush-help/pennfunc/#pfun)
-- [lparent()](/reference/sharpmush-help/pennfunc/#lparent)
+**See Also:**
+- [@parent]
+- [ancestors]
+- [pfun()]
+- [lparent()]
 ## PEMIT()
 ## NSPEMIT()
 ## PROMPT()
@@ -4257,10 +4286,10 @@ You say, "#1 #7 #56 #-1"
   prompt() adds a telnet GOAHEAD to the end of the message, as per the @prompt command. nsprompt() that works like @nsprompt.
 
 
-### See Also
-- [@prompt](/reference/sharpmush-help/penncmd/#prompt)
-- [@nsprompt](/reference/sharpmush-help/penncmd/#nsprompt)
-- [PROMPT_NEWLINES](/reference/sharpmush-help/penncmd/#promptnewlines)
+**See Also:**
+- [@prompt]
+- [@nsprompt]
+- [PROMPT_NEWLINES]
 ## PI()
 `pi()`
 
@@ -4280,27 +4309,27 @@ You say, "#1 #7 #56 #-1"
   If `<list of fields>` is not provided, all fields are returned. The fields are separated by `<output separator>`, which defaults to a space.
 
 
-### See Also
-- [@ps](/reference/sharpmush-help/penncmd/#ps)
-- [lpids()](/reference/sharpmush-help/pennfunc/#lpids)
-- [getpids()](/reference/sharpmush-help/pennfunc/#getpids)
+**See Also:**
+- [@ps]
+- [lpids()]
+- [getpids()]
 ## PLAYERMEM()
 `playermem(<player>)`
 
   This function returns the amount of memory, in bytes, being used by everything owned by the player. It can only be used by players with Search powers.
 
 
-### See Also
-- [objmem()](/reference/sharpmush-help/pennfunc/#objmem)
+**See Also:**
+- [objmem()]
 ## PLAYER()
 `player(<port>)`
 
   Returns the dbref of the player connected to a given port. Mortals can only use this function on their own ports, while See_All players can use it on any port.
 
 
-### See Also
-- [lports()](/reference/sharpmush-help/pennfunc/#lports)
-- [ports()](/reference/sharpmush-help/pennfunc/#ports)
+**See Also:**
+- [lports()]
+- [ports()]
 ## PMATCH()
 `pmatch(<name>)`
 
@@ -4309,20 +4338,20 @@ You say, "#1 #7 #56 #-1"
   pmatch() does not check for the string "me". If you wish to do that, you should use locate (for example, locate(`<player>`, `<name>`, PFym)).
 
 
-### See Also
-- [num()](/reference/sharpmush-help/pennfunc/#num)
-- [namelist()](/reference/sharpmush-help/pennfunc/#namelist)
-- [locate()](/reference/sharpmush-help/pennfunc/#locate)
+**See Also:**
+- [num()]
+- [namelist()]
+- [locate()]
 ## POLL()
 `poll()`
 
   This function returns the current @poll.
 
 
-### See Also
-- [@poll](/reference/sharpmush-help/penncmd/#poll)
-- [doing()](/reference/sharpmush-help/pennfunc/#doing)
-- [@doing](/reference/sharpmush-help/penncmd/#doing)
+**See Also:**
+- [@poll]
+- [doing()]
+- [@doing]
 ## LPIDS()
 `lpids([<object>[, <queue types>]])`
 
@@ -4335,10 +4364,10 @@ You say, "#1 #7 #56 #-1"
   If not specified, it defaults to "wait semaphore".
 
 
-### See Also
-- [@ps](/reference/sharpmush-help/penncmd/#ps)
-- [getpids()](/reference/sharpmush-help/pennfunc/#getpids)
-- [pidinfo()](/reference/sharpmush-help/pennfunc/#pidinfo)
+**See Also:**
+- [@ps]
+- [getpids()]
+- [pidinfo()]
 ## LPORTS()
 ## PORTS()
 `lports([<viewer>[, <status>]])`
@@ -4353,21 +4382,21 @@ You say, "#1 #7 #56 #-1"
   These port numbers also appear in the wizard WHO, and can be used with @boot/port, page/port, and the functions that return information about a connection to make them use a specific connection rather than the least-idle one when a player has multiple connections open. Players can get information about their own connections. See_all is needed to use them to get information about other people's ports.
 
 
-### See Also
-- [lwho()](/reference/sharpmush-help/pennfunc/#lwho)
-- [player()](/reference/sharpmush-help/pennfunc/#player)
-- [Connection Functions](/reference/sharpmush-help/pennfunc/#connection-functions)
+**See Also:**
+- [lwho()]
+- [player()]
+- [Connection Functions]
 ## POS()
 `pos(<needle>, <haystack>)`
 
   This function returns the position that `<needle>` begins in `<haystack>`. Unlike most other string functions, the first character of `<haystack>` is numbered 1, not 0. If `<needle>` is not present in `<haystack>`, pos() returns #-1.
 
 
-### See Also
-- [member()](/reference/sharpmush-help/pennfunc/#member)
-- [match()](/reference/sharpmush-help/pennfunc/#match)
-- [lpos()](/reference/sharpmush-help/pennfunc/#lpos)
-- [wordpos()](/reference/sharpmush-help/pennfunc/#wordpos)
+**See Also:**
+- [member()]
+- [match()]
+- [lpos()]
+- [wordpos()]
 ## POSS()
 ## %p
 `poss(<object>)`
@@ -4375,20 +4404,20 @@ You say, "#1 #7 #56 #-1"
   Returns the possessive pronoun - his/her/its - for an object. The %p substitution also returns the possessive pronoun of the enactor.
 
 
-### See Also
-- [subj()](/reference/sharpmush-help/pennfunc/#subj)
-- [obj()](/reference/sharpmush-help/pennfunc/#obj)
-- [aposs()](/reference/sharpmush-help/pennfunc/#aposs)
+**See Also:**
+- [subj()]
+- [obj()]
+- [aposs()]
 ## POWER()
 `power(<number>, <exponent>)`
 
   Returns `<number>` to the power of `<exponent>`.
 
-  (For the functional version of @power, see [powers()](/reference/sharpmush-help/pennfunc/#powers).)
+  (For the functional version of @power, see [powers()].)
 
 
-### See Also
-- [root()](/reference/sharpmush-help/pennfunc/#root)
+**See Also:**
+- [root()]
 ## POWERS()
 `powers()`
 `powers(<object>)`
@@ -4399,11 +4428,11 @@ You say, "#1 #7 #56 #-1"
   With two arguments, it attempts to set `<power>` on `<object>`, as per @power `<object>`=`<power>`.
 
 
-### See Also
-- [andlpowers()](/reference/sharpmush-help/pennfunc/#andlpowers)
-- [orlpowers()](/reference/sharpmush-help/pennfunc/#orlpowers)
-- [@power](/reference/sharpmush-help/penncmd/#power)
-- [POWERS LIST](/reference/sharpmush-help/pennconf/#powers-list)
+**See Also:**
+- [andlpowers()]
+- [orlpowers()]
+- [@power]
+- [POWERS LIST]
 ## QUOTA()
 `quota(<player>)`
 
@@ -4412,13 +4441,13 @@ You say, "#1 #7 #56 #-1"
   You must control `<player>` or have the See_All or Quotas @powers to use this function.
 
 
-### See Also
-- [@quota](/reference/sharpmush-help/penncmd/#quota)
-- [@squota](/reference/sharpmush-help/penncmd/#squota)
-- [@allquota](/reference/sharpmush-help/penncmd/#allquota)
-- [QUOTAS](/reference/sharpmush-help/penntop/#quotas)
-- [Quotas Power](/reference/sharpmush-help/pennconf/#quotas-power)
-- [No_Quota Power](/reference/sharpmush-help/pennconf/#noquota-power)
+**See Also:**
+- [@quota]
+- [@squota]
+- [@allquota]
+- [QUOTAS]
+- [Quotas Power]
+- [No_Quota Power]
 ## R()
 ## %q
 ## R-FUNCTION
@@ -4437,17 +4466,17 @@ You say, "#1 #7 #56 #-1"
   qregisters can also be accessed via the %qX (for one-char register names) or %q`<X>` (for registers with longer names) substitutions.
 
 
-### See Also
-- [setq()](/reference/sharpmush-help/pennfunc/#setq)
-- [letq()](/reference/sharpmush-help/pennfunc/#letq)
-- [listq()](/reference/sharpmush-help/pennfunc/#listq)
-- [unsetq()](/reference/sharpmush-help/pennfunc/#unsetq)
-- [registers()](/reference/sharpmush-help/pennfunc/#registers)
-- [v()](/reference/sharpmush-help/pennfunc/#v)
-- [itext()](/reference/sharpmush-help/pennfunc/#itext)
-- [stext()](/reference/sharpmush-help/pennfunc/#stext)
-- [ilev()](/reference/sharpmush-help/pennfunc/#ilev)
-- [slev()](/reference/sharpmush-help/pennfunc/#slev)
+**See Also:**
+- [setq()]
+- [letq()]
+- [listq()]
+- [unsetq()]
+- [registers()]
+- [v()]
+- [itext()]
+- [stext()]
+- [ilev()]
+- [slev()]
 ## RAND()
 `rand()`
 `rand(<num>)`
@@ -4465,8 +4494,8 @@ You say, "#1 #7 #56 #-1"
   beginning with #-1.
 
 
-### See Also
-- [randword()](/reference/sharpmush-help/pennfunc/#randword)
+**See Also:**
+- [randword()]
 ## RANDWORD()
 ## PICKRAND()
 `randword(<list>[, <delimiter>])`
@@ -4476,9 +4505,9 @@ You say, "#1 #7 #56 #-1"
   pickrand() is an alias for randword().
 
 
-### See Also
-- [rand()](/reference/sharpmush-help/pennfunc/#rand)
-- [randextract()](/reference/sharpmush-help/pennfunc/#randextract)
+**See Also:**
+- [rand()]
+- [randextract()]
 ## RANDEXTRACT()
 `randextract(<list>[, <count>[, <delim>[, <type>[, <osep>]]]])`
 
@@ -4502,9 +4531,9 @@ You say, "this test is this is is"
 ```
 
 
-### See Also
-- [rand()](/reference/sharpmush-help/pennfunc/#rand)
-- [randword()](/reference/sharpmush-help/pennfunc/#randword)
+**See Also:**
+- [rand()]
+- [randword()]
 ## REGEDIT()
 ## REGEDITALL()
 ## REGEDITI()
@@ -4527,42 +4556,42 @@ You say "this Trash is the Brash string"
 ```
 
 
-### See Also
-- [edit()](/reference/sharpmush-help/pennfunc/#edit)
-- [@edit](/reference/sharpmush-help/penncmd/#edit)
-- [regmatch()](/reference/sharpmush-help/pennfunc/#regmatch)
-- [regrab()](/reference/sharpmush-help/pennfunc/#regrab)
+**See Also:**
+- [edit()]
+- [@edit]
+- [regmatch()]
+- [regrab()]
 ## REGMATCH()
 ## REGMATCHI()
   (Help text from TinyMUSH 2.2.4, with permission)
 `regmatch(<string>, <regexp>[, <register list>])`
 `regmatchi(<string>, <regexp>[, <register list>])`
 
-  regmatch() checks to see if the entirety of `<string>` matches the regular expression `<regexp>`, and returns 1 if so and 0 if not. regmatchi() does the same thing, but case-insensitively. They are the regexp-equivilent of strmatch(); if you're looking for a regexp version of match(), see [reglmatch()](/reference/sharpmush-help/pennfunc/#reglmatch).
+  regmatch() checks to see if the entirety of `<string>` matches the regular expression `<regexp>`, and returns 1 if so and 0 if not. regmatchi() does the same thing, but case-insensitively. They are the regexp-equivilent of strmatch(); if you're looking for a regexp version of match(), see [reglmatch()].
 
   If `<register list>` is specified, there is a side-effect: any parenthesized substrings within the regular expression will be set into the specified local registers. The syntax for this is X:Y, where X is the number (0 is the entire matched text) or name of the substring, and Y is the q-register to save it in. If X: isn't given, the nth substring based on the register's position in the list minus one is used. The first element will have the complete matched text, the second the first substring, and so on. This is to maintain compatibility with old code; it's recommended for new uses that the X:Y syntax be used.
 
   If `<regexp>` is not a valid regular expression, an error in the form "#-1 REGEXP ERROR: `<description>`" will be returned.
 
-  See [regmatch2](/reference/sharpmush-help/pennfunc/#regmatch2) for an example.
+  See [regmatch2] for an example.
 
 
-### See Also
-- [regrab()](/reference/sharpmush-help/pennfunc/#regrab)
-- [regedit()](/reference/sharpmush-help/pennfunc/#regedit)
-- [valid()](/reference/sharpmush-help/pennfunc/#valid)
-- [reswitch()](/reference/sharpmush-help/pennfunc/#reswitch)
-- [strmatch()](/reference/sharpmush-help/pennfunc/#strmatch)
-- [regexp syntax](/reference/sharpmush-help/penntop/#regexp-syntax)
+**See Also:**
+- [regrab()]
+- [regedit()]
+- [valid()]
+- [reswitch()]
+- [strmatch()]
+- [regexp syntax]
 ## REGMATCH2
 
   For example, in
-    > think regmatch(cookies=30, (.+)=(\[0-9\](/reference/sharpmush-help/pennconf/#0-9)*) )
+    > think regmatch(cookies=30, (.+)=(\[0-9\]*) )
   (note use of escaping for MUSH parser), then the 0th substring matched is 'cookies=30', the 1st substring is 'cookies', and the 2nd substring is '30'. If `<register list>` is '0:0 1:3 2:5', then %q0 will become "cookies=30", %q3 will become "cookies", and %q5 will become "30".
 
   If `<register list>` was '0:0 2:5', then the "cookies" substring would simply be discarded. '1:food 2:amount' would store "cookies" in %q`<food>` and "30" in %q`<amount>`.
 
-  See [regexp syntax](/reference/sharpmush-help/penntop/#regexp-syntax) for an explanation of regular expressions.
+  See [regexp syntax] for an explanation of regular expressions.
 ## REMIT()
 ## NSREMIT()
 `remit(<object list>, <message>)`
@@ -4573,10 +4602,10 @@ You say "this Trash is the Brash string"
   nsremit() works like @nsremit/list.
 
 
-### See Also
-- [@remit](/reference/sharpmush-help/penncmd/#remit)
-- [pemit()](/reference/sharpmush-help/pennfunc/#pemit)
-- [lemit()](/reference/sharpmush-help/pennfunc/#lemit)
+**See Also:**
+- [@remit]
+- [pemit()]
+- [lemit()]
 ## REMOVE()
 `remove(<list>, <words>[, <delimiter>])`
 
@@ -4585,10 +4614,10 @@ You say "this Trash is the Brash string"
   Elements of `<list>` and `<words>` are both separated by `<delimiter>`, which defaults to a space.
 
 
-### See Also
-- [linsert()](/reference/sharpmush-help/pennfunc/#linsert)
-- [ldelete()](/reference/sharpmush-help/pennfunc/#ldelete)
-- [setdiff()](/reference/sharpmush-help/pennfunc/#setdiff)
+**See Also:**
+- [linsert()]
+- [ldelete()]
+- [setdiff()]
 ## RENDER()
 `render(<string>, <formats>)`
 
@@ -4607,13 +4636,13 @@ You say, "&lt;Test 1&gt; &amp; <u>Test 2</u>"
 ```
 
 
-### See Also
-- [stripaccents()](/reference/sharpmush-help/pennfunc/#stripaccents)
-- [stripansi()](/reference/sharpmush-help/pennfunc/#stripansi)
-- [Pueblo](/reference/sharpmush-help/pennpueb/#pueblo)
-- [@sql](/reference/sharpmush-help/penncmd/#sql)
-- [tagwrap()](/reference/sharpmush-help/pennpueb/#tagwrap)
-- [json()](/reference/sharpmush-help/pennfunc/#json)
+**See Also:**
+- [stripaccents()]
+- [stripansi()]
+- [Pueblo]
+- [@sql]
+- [tagwrap()]
+- [json()]
 ## REPEAT()
 `repeat(<string>, <number>)`
 
@@ -4626,8 +4655,8 @@ You say, "TestTestTestTestTest"
 ```
 
 
-### See Also
-- [space()](/reference/sharpmush-help/pennfunc/#space)
+**See Also:**
+- [space()]
 ## LREPLACE()
 ## REPLACE()
 `lreplace(<list>, <position(s)>, <new item>[, <delimiter>[, <osep>]])`
@@ -4654,22 +4683,22 @@ You say, "Turn south at the junction"
   replace() is an alias for lreplace(), for backwards compatability.
 
 
-### See Also
-- [ldelete()](/reference/sharpmush-help/pennfunc/#ldelete)
-- [linsert()](/reference/sharpmush-help/pennfunc/#linsert)
-- [setdiff()](/reference/sharpmush-help/pennfunc/#setdiff)
-- [splice()](/reference/sharpmush-help/pennfunc/#splice)
-- [strreplace()](/reference/sharpmush-help/pennfunc/#strreplace)
+**See Also:**
+- [ldelete()]
+- [linsert()]
+- [setdiff()]
+- [splice()]
+- [strreplace()]
 ## REST()
 `rest(<list>[, <delimiter>])`
 
   Returns a list minus its first element.
 
 
-### See Also
-- [after()](/reference/sharpmush-help/pennfunc/#after)
-- [first()](/reference/sharpmush-help/pennfunc/#first)
-- [last()](/reference/sharpmush-help/pennfunc/#last)
+**See Also:**
+- [after()]
+- [first()]
+- [last()]
 ## REVWORDS()
 `revwords(<list>[, <delimiter>[, <output separator>]])`
 
@@ -4682,17 +4711,17 @@ You say, "eep baz bar foo"
 ```
 
 
-### See Also
-- [flip()](/reference/sharpmush-help/pennfunc/#flip)
+**See Also:**
+- [flip()]
 ## RIGHT()
 `right(<string>, <length>)`
 
   Returns the `<length>` rightmost characters from `<string>`.
 
 
-### See Also
-- [left()](/reference/sharpmush-help/pennfunc/#left)
-- [mid()](/reference/sharpmush-help/pennfunc/#mid)
+**See Also:**
+- [left()]
+- [mid()]
 ## RJUST()
 `rjust(<string>, <length>[, <fill>[, <truncate?>]])`
 
@@ -4718,11 +4747,11 @@ You say, "-   foo-"
     You say, " too long"
 
 
-### See Also
-- [align()](/reference/sharpmush-help/pennfunc/#align)
-- [center()](/reference/sharpmush-help/pennfunc/#center)
-- [ljust()](/reference/sharpmush-help/pennfunc/#ljust)
-- [right()](/reference/sharpmush-help/pennfunc/#right)
+**See Also:**
+- [align()]
+- [center()]
+- [ljust()]
+- [right()]
 ## RLOC()
 `rloc(<object>, <levels>)`
 
@@ -4731,12 +4760,12 @@ You say, "-   foo-"
   If rloc() encounters a room, the dbref of that room is returned. If rloc() encounters an exit, the dbref of that exit's destination is returned. You must control `<object>`, be near it, or it must be a findable player.
 
 
-### See Also
-- [loc()](/reference/sharpmush-help/pennfunc/#loc)
-- [where()](/reference/sharpmush-help/pennfunc/#where)
-- [room()](/reference/sharpmush-help/pennfunc/#room)
-- [rnum()](/reference/sharpmush-help/pennfunc/#rnum)
-- [locate()](/reference/sharpmush-help/pennfunc/#locate)
+**See Also:**
+- [loc()]
+- [where()]
+- [room()]
+- [rnum()]
+- [locate()]
 ## RNUM()
 `rnum(<container>, <object>)`
 
@@ -4747,22 +4776,22 @@ You say, "-   foo-"
   This function has been deprecated and may be removed in a future patchlevel; locate(`<container>`, `<object>`, i) should be used instead.
 
 
-### See Also
-- [locate()](/reference/sharpmush-help/pennfunc/#locate)
-- [num()](/reference/sharpmush-help/pennfunc/#num)
-- [rloc()](/reference/sharpmush-help/pennfunc/#rloc)
-- [room()](/reference/sharpmush-help/pennfunc/#room)
+**See Also:**
+- [locate()]
+- [num()]
+- [rloc()]
+- [room()]
 ## ROOM()
 `room(<object>)`
 
   Returns the "absolute" location of an object. This is always a room; it is the container of all other containers of the object. The "absolute" location of an object is the place @lemit messages are sent to and NO_TEL status determined. You must control the object, be See_All, or be near the object in order for this function to work. The exception to this are players; if `<object>` is a player, the ROOM() function may be used to find the player's absolute location if the player is not set UNFINDABLE.
 
 
-### See Also
-- [loc()](/reference/sharpmush-help/pennfunc/#loc)
-- [rloc()](/reference/sharpmush-help/pennfunc/#rloc)
-- [rnum()](/reference/sharpmush-help/pennfunc/#rnum)
-- [where()](/reference/sharpmush-help/pennfunc/#where)
+**See Also:**
+- [loc()]
+- [rloc()]
+- [rnum()]
+- [where()]
 ## ROOT()
 `root(<number>, <n>)`
 
@@ -4777,9 +4806,9 @@ think power(3, 3)
 ```
 
 
-### See Also
-- [sqrt()](/reference/sharpmush-help/pennfunc/#sqrt)
-- [power()](/reference/sharpmush-help/pennfunc/#power)
+**See Also:**
+- [sqrt()]
+- [power()]
 ## ROUND()
 ## CEIL()
 ## FLOOR()
@@ -4804,9 +4833,9 @@ think floor(3.14159)
 ```
 
 
-### See Also
-- [bound()](/reference/sharpmush-help/pennfunc/#bound)
-- [trunc()](/reference/sharpmush-help/pennfunc/#trunc)
+**See Also:**
+- [bound()]
+- [trunc()]
 ## FN()
 `fn([<obj>/]<function name>[, <arg0>[, ... , <argN>]])`
 
@@ -4825,7 +4854,7 @@ think pemit(me,test)
 
   To prevent deleted functions from being used with fn(), @function/disable them prior to deleting.
 
-  See [fn2](/reference/sharpmush-help/pennfunc/#fn2).
+  See [fn2].
 ## FN2
   If `<obj>` is specified, the built-in function will be executed as `<obj>`, rather than as the object which called fn(). This is useful when using fn() to replace a side-effect function, to ensure priviledge checks, etc, are done correctly. You must control `<obj>`, or (if function side effects are disabled) must be see_all.
 
@@ -4846,10 +4875,10 @@ think pemit(me,test)
     (nothing happens)
 
 
-### See Also
-- [@function](/reference/sharpmush-help/penncmd/#function)
-- [RESTRICT](/reference/sharpmush-help/penntop/#restrict)
-- [attribute flags](/reference/sharpmush-help/pennattr/#attribute-flags)
+**See Also:**
+- [@function]
+- [RESTRICT]
+- [attribute flags]
 ## S()
 ## S-FUNCTION
 `s(<string>)`
@@ -4864,9 +4893,9 @@ You say, "When we eval [ucstr(test)], we get TEST"
 ```
 
 
-### See Also
-- [objeval()](/reference/sharpmush-help/pennfunc/#objeval)
-- [decompose()](/reference/sharpmush-help/pennfunc/#decompose)
+**See Also:**
+- [objeval()]
+- [decompose()]
 ## SCAN()
 `scan(<looker>, <command>[, <switches>])`
 `scan(<command>)`
@@ -4885,14 +4914,14 @@ You say, "When we eval [ucstr(test)], we get TEST"
     all       --  all of the above (the default)
     break     --  once a match is found, don't check in other locations
 
-  The order of searching for the "break" switch is the same as the order for normal $-command matching, as described in [evaluation order](/reference/sharpmush-help/penntop/#evaluation-order).
+  The order of searching for the "break" switch is the same as the order for normal $-command matching, as described in [evaluation order].
 
 
-### See Also
-- [@scan](/reference/sharpmush-help/penncmd/#scan)
-- [@sweep](/reference/sharpmush-help/penncmd/#sweep)
-- [MASTER ROOM](/reference/sharpmush-help/penntop/#master-room)
-- [EVALUATION ORDER](/reference/sharpmush-help/penntop/#evaluation-order)
+**See Also:**
+- [@scan]
+- [@sweep]
+- [MASTER ROOM]
+- [EVALUATION ORDER]
 - [$-COMMANDS]
 ## SCRAMBLE()
 `scramble(<string>)`
@@ -4906,17 +4935,17 @@ You say, "cfaedb"
 ```
 
 
-### See Also
-- [shuffle()](/reference/sharpmush-help/pennfunc/#shuffle)
+**See Also:**
+- [shuffle()]
 ## SECS()
 `secs()`
 
   This function takes no arguments, and returns the number of elapsed seconds since midnight, January 1, 1970 UTC. UTC is the base time zone, formerly GMT. This is a good way of synchronizing things that must run at a certain time.
 
 
-### See Also
-- [convsecs()](/reference/sharpmush-help/pennfunc/#convsecs)
-- [time()](/reference/sharpmush-help/pennfunc/#time)
+**See Also:**
+- [convsecs()]
+- [time()]
 ## SECURE()
 `secure(<string>)`
 
@@ -4925,9 +4954,9 @@ You say, "cfaedb"
   Note that the use of this function is very rarely needed.
 
 
-### See Also
-- [decompose()](/reference/sharpmush-help/pennfunc/#decompose)
-- [escape()](/reference/sharpmush-help/pennfunc/#escape)
+**See Also:**
+- [decompose()]
+- [escape()]
 ## SET()
 `set(<object>[/<attribute>], <flag>)`
 `set(<object>, <attribute>:<value>)`
@@ -4937,14 +4966,14 @@ You say, "cfaedb"
   The attribute-setting ability of set() is deprecated. You should use attrib_set() instead; it's easier to read, and allows you to clear attributes, too.
 
 
-### See Also
-- [attrib_set()](/reference/sharpmush-help/pennfunc/#attribset)
-- [@set](/reference/sharpmush-help/penncmd/#set)
-- [wipe()](/reference/sharpmush-help/pennfunc/#wipe)
+**See Also:**
+- [attrib_set()]
+- [@set]
+- [wipe()]
 ## SETDIFF()
 `setdiff(<list1>, <list2>[, <delimiter>[, <sort type>[, <osep>]]])`
 
-  This function returns the difference of two sets -- i.e., the elements in `<list1>` that aren't in `<list2>`. The list that is returned is sorted. Normally, alphabetic sorting is done. You can change this with the fourth argument, which is a sort type as defined in [sorting](/reference/sharpmush-help/pennfunc/#sorting). If used with exactly four arguments where the fourth is not a sort type, it's treated instead as the output separator.
+  This function returns the difference of two sets -- i.e., the elements in `<list1>` that aren't in `<list2>`. The list that is returned is sorted. Normally, alphabetic sorting is done. You can change this with the fourth argument, which is a sort type as defined in [sorting]. If used with exactly four arguments where the fourth is not a sort type, it's treated instead as the output separator.
 
   Example:
 ```
@@ -4953,14 +4982,14 @@ You say, "baz foo"
 ```
 
 
-### See Also
-- [setinter()](/reference/sharpmush-help/pennfunc/#setinter)
-- [setsymdiff()](/reference/sharpmush-help/pennfunc/#setsymdiff)
-- [setunion()](/reference/sharpmush-help/pennfunc/#setunion)
+**See Also:**
+- [setinter()]
+- [setsymdiff()]
+- [setunion()]
 ## SETSYMDIFF()
 `setsymdiff(<list1>, <list2>[, <delimiter>[, <sort type>[, <osep>]]])`
 
-  This function returns the symmetric difference of two sets -- i.e., the elements that only appear in one or the other of the lists, but not in both. The list that is returned is sorted. Normally, alphabetic sorting is done. You can change this with the fourth argument, which is a sort type as defined in [sorting](/reference/sharpmush-help/pennfunc/#sorting). If used with exactly four arguments where the fourth is not a sort type, it's treated instead as the output separator.
+  This function returns the symmetric difference of two sets -- i.e., the elements that only appear in one or the other of the lists, but not in both. The list that is returned is sorted. Normally, alphabetic sorting is done. You can change this with the fourth argument, which is a sort type as defined in [sorting]. If used with exactly four arguments where the fourth is not a sort type, it's treated instead as the output separator.
 
   Example:
 ```
@@ -4969,14 +4998,14 @@ You say, "baz foo moof"
 ```
 
 
-### See Also
-- [setdiff()](/reference/sharpmush-help/pennfunc/#setdiff)
-- [setinter()](/reference/sharpmush-help/pennfunc/#setinter)
-- [setunion()](/reference/sharpmush-help/pennfunc/#setunion)
+**See Also:**
+- [setdiff()]
+- [setinter()]
+- [setunion()]
 ## SETINTER()
 `setinter(<list1>, <list2>[, <delimiter>[, <sort type>[, <osep>]]])`
 
-  This function returns the intersection of two sets -- i.e., the elements that are in both `<list1>` and `<list2>`. The list that is returned is sorted. Normally, alphabetic sorting is done. You can change this with the fourth argument, which is a sort type as defined in [sorting](/reference/sharpmush-help/pennfunc/#sorting). If used with exactly four arguments where the fourth is not a sort type, it's treated instead as the output separator.
+  This function returns the intersection of two sets -- i.e., the elements that are in both `<list1>` and `<list2>`. The list that is returned is sorted. Normally, alphabetic sorting is done. You can change this with the fourth argument, which is a sort type as defined in [sorting]. If used with exactly four arguments where the fourth is not a sort type, it's treated instead as the output separator.
 
   Example:
 ```
@@ -4985,10 +5014,10 @@ You say, "bar gleep"
 ```
 
 
-### See Also
-- [setdiff()](/reference/sharpmush-help/pennfunc/#setdiff)
-- [setsymdiff()](/reference/sharpmush-help/pennfunc/#setsymdiff)
-- [setunion()](/reference/sharpmush-help/pennfunc/#setunion)
+**See Also:**
+- [setdiff()]
+- [setsymdiff()]
+- [setunion()]
 ## SETQ()
 ## SETR()
 `setq(<register1>, <string1>[, ... , <registerN>, <stringN>])`
@@ -5000,16 +5029,16 @@ You say, "bar gleep"
 
   Register names are case insensitive: setq(A, foo) and setq(a, foo) both set the same register, and %qA and %qa both fetch its value.
 
-  See [setq2](/reference/sharpmush-help/pennfunc/#setq2) for more on limits, or [setq3](/reference/sharpmush-help/pennfunc/#setq3) for examples.
+  See [setq2] for more on limits, or [setq3] for examples.
 
-### See Also
-- [r()](/reference/sharpmush-help/pennfunc/#r)
-- [listq()](/reference/sharpmush-help/pennfunc/#listq)
-- [unsetq()](/reference/sharpmush-help/pennfunc/#unsetq)
-- [letq()](/reference/sharpmush-help/pennfunc/#letq)
-- [localize()](/reference/sharpmush-help/pennfunc/#localize)
-- [ulocal()](/reference/sharpmush-help/pennfunc/#ulocal)
-- [registers()](/reference/sharpmush-help/pennfunc/#registers)
+**See Also:**
+- [r()]
+- [listq()]
+- [unsetq()]
+- [letq()]
+- [localize()]
+- [ulocal()]
+- [registers()]
 ## SETQ2
   Register names follow the same rules for attribute names, but they must be shorter than 64 characters in length.
 
@@ -5017,7 +5046,7 @@ You say, "bar gleep"
 
   The maximum number of q-registers you can have set is configured via @config max_attrs_per_obj. That number is for the total number of q-registers set in a queue entry: Including across localize()d calls. Beyond that count, you can only use single character registers (a-z 0-9). Attempts to create a new register will simply fail silently, with the exception of setq().
 
-  See [setq3](/reference/sharpmush-help/pennfunc/#setq3) for examples.
+  See [setq3] for examples.
 ## SETQ3
   The setq() function is probably best used at the start of the string being manipulated, such as in the following example:
 
@@ -5033,7 +5062,7 @@ You say, "bar gleep"
   > think setq(0,foo,one,bar)%q0%q`<one>` - [setq(0,r(one),one,%q0)]%q0%q`<one>`
   foobar - barfoo
 
-  See [setq4](/reference/sharpmush-help/pennfunc/#setq4) for scoping rules of setq().
+  See [setq4] for scoping rules of setq().
 ## SETQ4
   The registers set by setq() can be used in later commands in the same thread. That is, the registers are set to null on all $-commands, ^-commands, A-attribute triggers, etc., but are then retained from that point forward through the execution of all your code. Code branches like @wait and @switch retain the register values from the time of the branch.
 
@@ -5059,24 +5088,24 @@ Object says "foo"
 
   Example:
 ```
-think setq(name,Walker,num,#6061,loc,Bahamas)[listq()]
+think setq(name,Walker,num,#6061,loc,Bahamas)[listq()](/reference/sharpmush-help/pennfunc/#listq)
 LOC NAME NUM
 think setq(name,Walker,num,#6061,loc,Bahamas)[listq(n*)]
 NAME NUM
-think setq(name,Walker,num,#6061,loc,Bahamas)[unsetq(name)][listq()]
+think setq(name,Walker,num,#6061,loc,Bahamas)[unsetq(name)][listq()](/reference/sharpmush-help/pennfunc/#listq)
 LOC NUM
-think setq(name,Walker,num,#6061,loc,Bahamas)[unsetq(n*)][listq()]
+think setq(name,Walker,num,#6061,loc,Bahamas)[unsetq(n*)][listq()](/reference/sharpmush-help/pennfunc/#listq)
 LOC
 ```
 
 
-### See Also
-- [setq()](/reference/sharpmush-help/pennfunc/#setq)
-- [letq()](/reference/sharpmush-help/pennfunc/#letq)
-- [r()](/reference/sharpmush-help/pennfunc/#r)
-- [localize()](/reference/sharpmush-help/pennfunc/#localize)
-- [registers()](/reference/sharpmush-help/pennfunc/#registers)
-- [WILDCARDS](/reference/sharpmush-help/penntop/#wildcards)
+**See Also:**
+- [setq()]
+- [letq()]
+- [r()]
+- [localize()]
+- [registers()]
+- [WILDCARDS]
 ## REGISTERS()
 `registers([<pattern>[, <types>[, <osep>]]])`
 
@@ -5093,19 +5122,19 @@ LOC
   The list returned may contain duplicates (for instance, if %0 and %q0 both have a value, the list will include "0" twice), and is not sorted in any particular order.
 
 
-### See Also
-- [listq()](/reference/sharpmush-help/pennfunc/#listq)
-- [setq()](/reference/sharpmush-help/pennfunc/#setq)
-- [setr()](/reference/sharpmush-help/pennfunc/#setr)
-- [letq()](/reference/sharpmush-help/pennfunc/#letq)
-- [r()](/reference/sharpmush-help/pennfunc/#r)
-- [v()](/reference/sharpmush-help/pennfunc/#v)
-- [stext()](/reference/sharpmush-help/pennfunc/#stext)
-- [itext()](/reference/sharpmush-help/pennfunc/#itext)
+**See Also:**
+- [listq()]
+- [setq()]
+- [setr()]
+- [letq()]
+- [r()]
+- [v()]
+- [stext()]
+- [itext()]
 ## SETUNION()
 `setunion(<list1>, <list2>[, <delimiter>[, <sort type>[, <osep>]]])`
 
-  This function returns the union of two sets -- i.e., all the elements of both `<list1>` and `<list2>`, minus any duplicate elements. The list returned is sorted. Normally, alphabetic sorting is done. You can change this with the fourth argument, which is a sort type as defined in [sorting](/reference/sharpmush-help/pennfunc/#sorting). If used with exactly four arguments where the fourth is not a sort type, it's treated instead as the output separator.
+  This function returns the union of two sets -- i.e., all the elements of both `<list1>` and `<list2>`, minus any duplicate elements. The list returned is sorted. Normally, alphabetic sorting is done. You can change this with the fourth argument, which is a sort type as defined in [sorting]. If used with exactly four arguments where the fourth is not a sort type, it's treated instead as the output separator.
 
   Examples:
 ```
@@ -5120,17 +5149,17 @@ You say, "bar baz foo gleep moof"
     You say, "1.0 1.1"
 
 
-### See Also
-- [setdiff()](/reference/sharpmush-help/pennfunc/#setdiff)
-- [setinter()](/reference/sharpmush-help/pennfunc/#setinter)
-- [setsymdiff()](/reference/sharpmush-help/pennfunc/#setsymdiff)
+**See Also:**
+- [setdiff()]
+- [setinter()]
+- [setsymdiff()]
 ## SHA0()
 `sha0(<string>)`
 
   Returns the SHA-0 cryptographic hash of the string. See RFC 3174 for more information. Deprecated; use digest() and higher strength algorithms instead. On servers with newer versions of OpenSSL that no longer provide the algorithm, returns #-1 NOT SUPPORTED.
 
 
-### See Also
+**See Also:**
 - [digest().]
 ## SHL()
 `shl(<number>, <count>)`
@@ -5138,16 +5167,16 @@ You say, "bar baz foo gleep moof"
   Performs a leftwards bit-shift on `<number>`, shifting it `<count>` times. This is equivalent to mul(`<number>`, power(2, `<count>`), but much faster.
 
 
-### See Also
-- [shr()](/reference/sharpmush-help/pennfunc/#shr)
+**See Also:**
+- [shr()]
 ## SHR()
 `shr(<number>, <count>)`
 
   Performs a rightwards bit-shift on `<number>`, shifting it `<count>` times. This is equivalent to div(`<number>`, power(2, `<count>`), but much faster.
 
 
-### See Also
-- [shl()](/reference/sharpmush-help/pennfunc/#shl)
+**See Also:**
+- [shl()]
 ## SHUFFLE()
 `shuffle(<list>[, <delimiter>[, <osep>]])`
 
@@ -5162,9 +5191,9 @@ You say, "baz foo gleep bar"
 ```
 
 
-### See Also
-- [scramble()](/reference/sharpmush-help/pennfunc/#scramble)
-- [pickrand()](/reference/sharpmush-help/pennfunc/#pickrand)
+**See Also:**
+- [scramble()]
+- [pickrand()]
 ## SIGN()
 `sign(<number>)`
 
@@ -5183,9 +5212,9 @@ You say, "-1"
     You say, "0"
 
 
-### See Also
-- [abs()](/reference/sharpmush-help/pennfunc/#abs)
-- [bound()](/reference/sharpmush-help/pennfunc/#bound)
+**See Also:**
+- [abs()]
+- [bound()]
 ## SIN()
 `sin(<angle>[, <angle type>])`
 
@@ -5194,26 +5223,26 @@ You say, "-1"
   See 'HELP ANGLES' for more on the angle type.
 
 
-### See Also
-- [acos()](/reference/sharpmush-help/pennfunc/#acos)
-- [asin()](/reference/sharpmush-help/pennfunc/#asin)
-- [atan()](/reference/sharpmush-help/pennfunc/#atan)
-- [cos()](/reference/sharpmush-help/pennfunc/#cos)
-- [ctu()](/reference/sharpmush-help/pennfunc/#ctu)
-- [tan()](/reference/sharpmush-help/pennfunc/#tan)
+**See Also:**
+- [acos()]
+- [asin()]
+- [atan()]
+- [cos()]
+- [ctu()]
+- [tan()]
 ## SORT()
 `sort(<list>[, <sort type>[, <delimiter>[, <osep>]]])`
 
   This sorts a list of words. If no second argument is given, it will try to detect the type of sort it should do. If all the words are numbers, it will sort them in order of smallest to largest. If all the words are dbrefs, it will sort them in order of smallest to largest. Otherwise, it will perform a lexicographic sort.
 
-  The second argument is a sort type. See [sorting](/reference/sharpmush-help/pennfunc/#sorting).
+  The second argument is a sort type. See [sorting].
 
   The optional third argument gives the list's delimiter character. If not present, `<delimiter>` defaults to a space. The optional fourth argument gives a string that will delimit the resulting list; it defaults to `<delimiter>`.
 
 
-### See Also
-- [sortby()](/reference/sharpmush-help/pennfunc/#sortby)
-- [sortkey()](/reference/sharpmush-help/pennfunc/#sortkey)
+**See Also:**
+- [sortby()]
+- [sortkey()]
 ## SORTBY()
 `sortby([<obj>/]<attrib>, <list>[, <delimiter>[, <output separator>]])`
 
@@ -5232,15 +5261,15 @@ You say, "-1"
   Warning: the function invocation limit applies to this function. If this limit is exceeded, the function will fail _silently_. List and function sizes should be kept reasonable.
 
 
-### See Also
-- [anonymous attributes](/reference/sharpmush-help/penntop/#anonymous-attributes)
-- [sorting](/reference/sharpmush-help/pennfunc/#sorting)
-- [sort()](/reference/sharpmush-help/pennfunc/#sort)
-- [sortkey()](/reference/sharpmush-help/pennfunc/#sortkey)
+**See Also:**
+- [anonymous attributes]
+- [sorting]
+- [sort()]
+- [sortkey()]
 ## SORTKEY()
 `sortkey([<obj>/]<attrib>, <list>[, <sort type>[, <delimiter>[, <osep>]]])`
 
-  This function creates a list of keys by passing every element of `<list>` into the ufun given in `<attrib>`. The list is then sorted according to the sorting method in `<sort type>`, or is automatically guessed (as per [sorting](/reference/sharpmush-help/pennfunc/#sorting)).
+  This function creates a list of keys by passing every element of `<list>` into the ufun given in `<attrib>`. The list is then sorted according to the sorting method in `<sort type>`, or is automatically guessed (as per [sorting]).
 
   This is equivalent to:
     > &munge_sort me=sort(%0[, `<sort type>`])
@@ -5255,10 +5284,10 @@ You say, "-1"
     You say, "#2 #3 #1"
 
 
-### See Also
-- [anonymous attributes](/reference/sharpmush-help/penntop/#anonymous-attributes)
-- [sorting](/reference/sharpmush-help/pennfunc/#sorting)
-- [sortby()](/reference/sharpmush-help/pennfunc/#sortby)
+**See Also:**
+- [anonymous attributes]
+- [sorting]
+- [sortby()]
 ## SORTING
   In functions where you can specify a sorting method, you can provide one of these sort types:
 
@@ -5286,13 +5315,13 @@ You say, "-1"
   Whether or not the 'a' sort type is case-sensitive or not depends on the particular mush and its environment.
 
 
-### See Also
-- [sort()](/reference/sharpmush-help/pennfunc/#sort)
-- [sortby()](/reference/sharpmush-help/pennfunc/#sortby)
-- [sortkey()](/reference/sharpmush-help/pennfunc/#sortkey)
-- [setunion()](/reference/sharpmush-help/pennfunc/#setunion)
-- [setinter()](/reference/sharpmush-help/pennfunc/#setinter)
-- [setdiff()](/reference/sharpmush-help/pennfunc/#setdiff)
+**See Also:**
+- [sort()]
+- [sortby()]
+- [sortkey()]
+- [setunion()]
+- [setinter()]
+- [setdiff()]
 ## SOUNDEX()
 `soundex(<word>[, <hash type>])`
 
@@ -5301,11 +5330,11 @@ You say, "-1"
   > think soundex(foobar)
   F160
 
-  For details of how the algorithm works, see [soundex2](/reference/sharpmush-help/pennfunc/#soundex2).
+  For details of how the algorithm works, see [soundex2].
 
 
-### See Also
-- [soundslike()](/reference/sharpmush-help/pennfunc/#soundslike)
+**See Also:**
+- [soundslike()]
 ## SOUNDEX2
   Here's how the soundex algorithm works:
   1. The first letter of the soundex code is the first letter of the word (exception: words starting with PH get a soundex starting with F)
@@ -5329,7 +5358,7 @@ You say, "-1"
 `soundslike(<word>, <word>[, <hash type>])`
 `soundlike(<word>, <word>[, <hash type>])`
 
-  The soundslike function returns 1 if the two words have the same hash code (see [soundex()](/reference/sharpmush-help/pennfunc/#soundex) for information), which means, in general, if they sound alike. The hash type can be 'soundex' (Default) or 'phone' for a different algorithm that might give better results with some words.
+  The soundslike function returns 1 if the two words have the same hash code (see [soundex()] for information), which means, in general, if they sound alike. The hash type can be 'soundex' (Default) or 'phone' for a different algorithm that might give better results with some words.
 
   Examples:
 ```
@@ -5340,8 +5369,8 @@ think soundslike(robin,roebuck, phone)
 ```
 
 
-### See Also
-- [soundex()](/reference/sharpmush-help/pennfunc/#soundex)
+**See Also:**
+- [soundex()]
 ## SPACE()
 `space(<number>)`
 
@@ -5354,8 +5383,8 @@ Amberyl says, "a     b"
 ```
 
 
-### See Also
-- [repeat()](/reference/sharpmush-help/pennfunc/#repeat)
+**See Also:**
+- [repeat()]
 ## SPEAK()
 ## SPEAKPENN()
 `speak(<speaker>, <string>[, <say string>[, [<transform obj>/]<transform attr>[, [<isnull obj>/]<isnull attr>[, <open>[, <close>]]]]])`
@@ -5376,7 +5405,7 @@ Amberyl says, "a     b"
 
   If `<say string>` is specified, it is used instead of "says,".
 
-  See [speak2](/reference/sharpmush-help/pennfunc/#speak2).
+  See [speak2].
 ## SPEAK2
 
   Examples:
@@ -5409,7 +5438,7 @@ You say, "Wizard"
     > @emit [speak(&Mr. President,:has been misunderestimated.)]
     Mr. President has been misunderestimated.
 
-  See [speak3](/reference/sharpmush-help/pennfunc/#speak3).
+  See [speak3].
 ## SPEAK3
 
   If `<transform>` is specified (an object/attribute pair or attribute, as with map() and similar functions), the speech portions of `<string>` are passed through the transformation function.
@@ -5418,7 +5447,7 @@ You say, "Wizard"
 
   The transformation function receives the speech text as %0, the dbref of `<speaker>` as %1, and the speech fragment number as %2. For non-say input strings (i.e., for an original `<string>` beginning with the :, ;, or | tokens), fragments are numbered starting with 1; otherwise, fragments are numbered starting with 0. (A fragment is a chunk of speech text within the overall original input string.)
 
-  See [speak4](/reference/sharpmush-help/pennfunc/#speak4).
+  See [speak4].
 ## SPEAK4
 
   Examples:
@@ -5450,7 +5479,7 @@ You say, "Wizard"
     > @emit speak(me, :tests. "Hi." And... `<<Bye.>`> The end., ,va, , `<<, >`>)
     Wizard tests. "Hi." And... "Fragment 1 is: Bye." The end.
 
-  See [speak5](/reference/sharpmush-help/pennfunc/#speak5).
+  See [speak5].
 ## SPEAK5
 
   If the result of transforming a given speech fragment is a null string, and `<isnull>` is specified (an object/attribute pair or attribute), that function is used evaluate an alternative result, with %0 as the dbref of `<speaker>`, and %1 as the speech fragment number.
@@ -5466,7 +5495,7 @@ You say, "Wizard"
       OR
     Wizard tests. He mutters something.
 
-  See [speak6](/reference/sharpmush-help/pennfunc/#speak6).
+  See [speak6].
 ## SPEAK6
 
   Elegantly handling an empty string when the type of speech is a plain say is a bit more difficult. In order to facilitate this, when the speech type is a plain say, the '`<speaker>` says,' is only prepended to the output if the transformation of the first speech fragment produces something non-null. Also note that quotes are not placed around such speech automatically, to allow the user's code to insert whatever is appropriate.
@@ -5480,7 +5509,7 @@ You say, "Wizard"
       OR
     Wizard mutters something.
 
-  See [speak7](/reference/sharpmush-help/pennfunc/#speak7).
+  See [speak7].
 ## SPEAK7
 
   Here's another example, where words between + signs are reversed, but those within double-quotes are untouched (demonstrating a technique useful in something where you want to allow users to mix ordinary speech with transformed speech).
@@ -5501,8 +5530,8 @@ twelve thousand three hundred forty-five
 ```
 
 
-### See Also
-- [ordinal()](/reference/sharpmush-help/pennfunc/#ordinal)
+**See Also:**
+- [ordinal()]
 ## ORDINAL()
 `ordinal(<integer>)`
 
@@ -5515,8 +5544,8 @@ first
 ```
 
 
-### See Also
-- [spellnum()](/reference/sharpmush-help/pennfunc/#spellnum)
+**See Also:**
+- [spellnum()]
 ## SPLICE()
 `splice(<list1>, <list2>, <word>[, <delimiter>])`
 
@@ -5532,8 +5561,8 @@ You say, "foo moof baz"
 ```
 
 
-### See Also
-- [merge()](/reference/sharpmush-help/pennfunc/#merge)
+**See Also:**
+- [merge()]
 ## MAPSQL()
 `mapsql([<object>/]<attribute>, <query>[, <osep>[, <dofieldnames>]])`
 
@@ -5545,15 +5574,15 @@ You say, "foo moof baz"
 
   If `<dofieldnames>` evaluates to a true boolean, then the first call will be with row number (%0) set to 0, and %1-%9 and v(10) - v(29) will be set to the field names.
 
-  See [sql examples](/reference/sharpmush-help/pennfunc/#sql-examples) for examples.
+  See [sql examples] for examples.
 
 
-### See Also
-- [anonymous attributes](/reference/sharpmush-help/penntop/#anonymous-attributes)
-- [sqlescape()](/reference/sharpmush-help/pennfunc/#sqlescape)
-- [sql()](/reference/sharpmush-help/pennfunc/#sql)
-- [@sql](/reference/sharpmush-help/penncmd/#sql)
-- [@mapsql](/reference/sharpmush-help/penncmd/#mapsql)
+**See Also:**
+- [anonymous attributes]
+- [sqlescape()]
+- [sql()]
+- [@sql]
+- [@mapsql]
 ## SQL()
 `sql(<query>[, <row separator>[, <field separator>[, <register>]]])`
 
@@ -5567,16 +5596,16 @@ You say, "foo moof baz"
 
   If `<register>` is specified, and `<query>` alters the database (such as an UPDATE or INSERT query), there is a side-effect: the number of affected rows is stored into the specified q-register.
 
-  See [sql examples](/reference/sharpmush-help/pennfunc/#sql-examples) for examples.
+  See [sql examples] for examples.
 
 
-### See Also
-- [sqlescape()](/reference/sharpmush-help/pennfunc/#sqlescape)
-- [mapsql()](/reference/sharpmush-help/pennfunc/#mapsql)
-- [@sql](/reference/sharpmush-help/penncmd/#sql)
-- [setq()](/reference/sharpmush-help/pennfunc/#setq)
-- [r()](/reference/sharpmush-help/pennfunc/#r)
-- [@mapsql](/reference/sharpmush-help/penncmd/#mapsql)
+**See Also:**
+- [sqlescape()]
+- [mapsql()]
+- [@sql]
+- [setq()]
+- [r()]
+- [@mapsql]
 ## SQL Examples
 
   Example of using sqlescape() to prevent injection attacks:
@@ -5628,19 +5657,19 @@ You don\'t say
   You must be a WIZARD or have the Sql_Ok power to use this function.
 
 
-### See Also
-- [sql()](/reference/sharpmush-help/pennfunc/#sql)
-- [mapsql()](/reference/sharpmush-help/pennfunc/#mapsql)
-- [@sql](/reference/sharpmush-help/penncmd/#sql)
-- [@mapsql](/reference/sharpmush-help/penncmd/#mapsql)
+**See Also:**
+- [sql()]
+- [mapsql()]
+- [@sql]
+- [@mapsql]
 ## SQRT()
 `sqrt(<number>)`
 
   Returns the square root of `<number>`. `<number>` cannot be negative.
 
 
-### See Also
-- [root()](/reference/sharpmush-help/pennfunc/#root)
+**See Also:**
+- [root()]
 ## SQUISH()
 `squish(<string>[, <character>])`
 
@@ -5656,8 +5685,8 @@ You don\'t say
 ```
 
 
-### See Also
-- [trim()](/reference/sharpmush-help/pennfunc/#trim)
+**See Also:**
+- [trim()]
 ## STARTTIME()
 ## RESTARTTIME()
 `starttime()`
@@ -5667,36 +5696,36 @@ You don\'t say
 
   Example:
 ```
-say starttime()%r[restarttime()]
+say starttime()%r[restarttime()](/reference/sharpmush-help/pennfunc/#restarttime)
 You say "Sat Dec  7 00:09:13 1991
 You say "Sat Dec  7 00:09:13 1991
 @shutdown/reboot
-say starttime()%r[restarttime()]
+say starttime()%r[restarttime()](/reference/sharpmush-help/pennfunc/#restarttime)
 You say "Sat Dec  7 00:09:13 1991
 Tue Sep 22 13:54:04 2015
 ```
 
 
-### See Also
-- [convtime()](/reference/sharpmush-help/pennfunc/#convtime)
-- [restarts()](/reference/sharpmush-help/pennfunc/#restarts)
+**See Also:**
+- [convtime()]
+- [restarts()]
 ## RESTARTS()
 `restarts()`
 
   Returns the number of times the server has been rebooted with @shutdown/reboot since the last full startup.
 
 
-### See Also
-- [restarttime()](/reference/sharpmush-help/pennfunc/#restarttime)
-- [starttime()](/reference/sharpmush-help/pennfunc/#starttime)
+**See Also:**
+- [restarttime()]
+- [starttime()]
 ## SSL()
 `ssl(<player|descriptor>)`
 
   This function returns 1 if the player is using an SSL connection, and 0 otherwise. If SSL connections are disabled, it always returns 0. You must be See_All to use this function on another player.
 
 
-### See Also
-- [terminfo()](/reference/sharpmush-help/pennfunc/#terminfo)
+**See Also:**
+- [terminfo()]
 ## STEP()
 `step([<obj>/]<attr>, <list>, <step>[, <delim>[, <osep>]])`
 
@@ -5717,22 +5746,22 @@ d - e -
     d - e
 
 
-### See Also
-- [map()](/reference/sharpmush-help/pennfunc/#map)
-- [iter()](/reference/sharpmush-help/pennfunc/#iter)
-- [fold()](/reference/sharpmush-help/pennfunc/#fold)
-- [anonymous attributes](/reference/sharpmush-help/penntop/#anonymous-attributes)
-- [registers()](/reference/sharpmush-help/pennfunc/#registers)
+**See Also:**
+- [map()]
+- [iter()]
+- [fold()]
+- [anonymous attributes]
+- [registers()]
 ## STDDEV()
 `stddev(<number1>, <number2>[, ... , <numberN>])`
 
   Returns the sample standard deviation of its arguments.
 
 
-### See Also
-- [mean()](/reference/sharpmush-help/pennfunc/#mean)
-- [median()](/reference/sharpmush-help/pennfunc/#median)
-- [lmath()](/reference/sharpmush-help/pennfunc/#lmath)
+**See Also:**
+- [mean()]
+- [median()]
+- [lmath()]
 ## STRFIRSTOF()
 ## STRALLOF()
 `strfirstof(<expr>[, ... , <exprN>], <default>)`
@@ -5755,13 +5784,13 @@ You say, "foo"
     You say, "foo| |bar|baz|#-1"
 
 
-### See Also
-- [allof()](/reference/sharpmush-help/pennfunc/#allof)
-- [firstof()](/reference/sharpmush-help/pennfunc/#firstof)
-- [first()](/reference/sharpmush-help/pennfunc/#first)
-- [strlen()](/reference/sharpmush-help/pennfunc/#strlen)
-- [cat()](/reference/sharpmush-help/pennfunc/#cat)
-- [default()](/reference/sharpmush-help/pennfunc/#default)
+**See Also:**
+- [allof()]
+- [firstof()]
+- [first()]
+- [strlen()]
+- [cat()]
+- [default()]
 ## STRINSERT()
 `strinsert(<string>, <position>, <insert>)`
 
@@ -5778,10 +5807,10 @@ My name
 ```
 
 
-### See Also
-- [strdelete()](/reference/sharpmush-help/pennfunc/#strdelete)
-- [linsert()](/reference/sharpmush-help/pennfunc/#linsert)
-- [strreplace()](/reference/sharpmush-help/pennfunc/#strreplace)
+**See Also:**
+- [strdelete()]
+- [linsert()]
+- [strreplace()]
 ## STRIPACCENTS()
 `stripaccents(<string>[, <smart>])`
 
@@ -5790,23 +5819,23 @@ My name
  If the second argument is true, it does more a intelligent conversion that might result in one character being turned into several. When it's false, or not given, one character in the input string corresponds to one character in the result.
 
 
-### See Also
-- [accent()](/reference/sharpmush-help/pennfunc/#accent)
-- [@nameaccent](/reference/sharpmush-help/penncmd/#nameaccent)
-- [accname()](/reference/sharpmush-help/pennfunc/#accname)
-- [stripansi()](/reference/sharpmush-help/pennfunc/#stripansi)
-- [render()](/reference/sharpmush-help/pennfunc/#render)
+**See Also:**
+- [accent()]
+- [@nameaccent]
+- [accname()]
+- [stripansi()]
+- [render()]
 ## STRIPANSI()
 `stripansi(<string>)`
 
   Returns the string with all ansi and HTML codes removed.
 
 
-### See Also
-- [stripaccents()](/reference/sharpmush-help/pennfunc/#stripaccents)
-- [ansi()](/reference/sharpmush-help/pennfunc/#ansi)
-- [tag()](/reference/sharpmush-help/pennpueb/#tag)
-- [render()](/reference/sharpmush-help/pennfunc/#render)
+**See Also:**
+- [stripaccents()]
+- [ansi()]
+- [tag()]
+- [render()]
 ## STRLEN()
 `strlen(<string>)`
 
@@ -5819,9 +5848,9 @@ You say, "6"
 ```
 
 
-### See Also
-- [words()](/reference/sharpmush-help/pennfunc/#words)
-- [strfirstof()](/reference/sharpmush-help/pennfunc/#strfirstof)
+**See Also:**
+- [words()]
+- [strfirstof()]
 ## STRMATCH()
 `strmatch(<string>, <pattern>[, <register list>])`
 
@@ -5848,12 +5877,12 @@ You say, "1"
     You say, "1/foo/bar/baz"
 
 
-### See Also
-- [comp()](/reference/sharpmush-help/pennfunc/#comp)
-- [match()](/reference/sharpmush-help/pennfunc/#match)
-- [setq()](/reference/sharpmush-help/pennfunc/#setq)
-- [r()](/reference/sharpmush-help/pennfunc/#r)
-- [WILDCARDS](/reference/sharpmush-help/penntop/#wildcards)
+**See Also:**
+- [comp()]
+- [match()]
+- [setq()]
+- [r()]
+- [WILDCARDS]
 ## STRREPLACE()
 `strreplace(<string>, <start>, <length>, <text>)`
 
@@ -5873,22 +5902,22 @@ You say, "abcdefgh"
     Fix the typo
 
 
-### See Also
-- [strdelete()](/reference/sharpmush-help/pennfunc/#strdelete)
-- [strinsert()](/reference/sharpmush-help/pennfunc/#strinsert)
-- [ldelete()](/reference/sharpmush-help/pennfunc/#ldelete)
-- [lreplace()](/reference/sharpmush-help/pennfunc/#lreplace)
+**See Also:**
+- [strdelete()]
+- [strinsert()]
+- [ldelete()]
+- [lreplace()]
 ## SUB()
 `sub(<number1>, <number>[, ... , <number>])`
 
   sub() subtracts `<number>` from `<number1>`. If more than one `<number>` argument is given, each is subtracted from the result of the previous subtraction in turn. The result of the final subtraction is returned.
 
 
-### See Also
-- [add()](/reference/sharpmush-help/pennfunc/#add)
-- [dec()](/reference/sharpmush-help/pennfunc/#dec)
-- [lmath()](/reference/sharpmush-help/pennfunc/#lmath)
-- [vsub()](/reference/sharpmush-help/pennfunc/#vsub)
+**See Also:**
+- [add()]
+- [dec()]
+- [lmath()]
+- [vsub()]
 ## SUBJ()
 ## %s
 `subj(<object>)`
@@ -5896,10 +5925,10 @@ You say, "abcdefgh"
   Returns the subjective pronoun - he/she/it - for an object. You can also use the %s substitution to get the subjective pronoun of the enactor.
 
 
-### See Also
-- [aposs()](/reference/sharpmush-help/pennfunc/#aposs)
-- [obj()](/reference/sharpmush-help/pennfunc/#obj)
-- [poss()](/reference/sharpmush-help/pennfunc/#poss)
+**See Also:**
+- [aposs()]
+- [obj()]
+- [poss()]
 ## RESWITCH()
 ## RESWITCHI()
 ## RESWITCHALL()
@@ -5918,11 +5947,11 @@ You say, "abcdefgh"
   The string "#$" in the `<list>`s will be replaced with the value of `<str>`, /before/ `<list>` is evaluated. You can also use $N in `<list>` to refer to the Nth subpattern which matched in `<re>`, with $0 being the entire matching string. Use $`<name>` (the '<>' are literal) to refer to named subpatterns.
 
 
-### See Also
-- [switch()](/reference/sharpmush-help/pennfunc/#switch)
-- [regmatch()](/reference/sharpmush-help/pennfunc/#regmatch)
-- [regedit()](/reference/sharpmush-help/pennfunc/#regedit)
-- [REGEXPS](/reference/sharpmush-help/penntop/#regexps)
+**See Also:**
+- [switch()]
+- [regmatch()]
+- [regedit()]
+- [REGEXPS]
 ## SWITCH()
 ## SWITCHALL()
 ## CASE()
@@ -5934,20 +5963,20 @@ You say, "abcdefgh"
 
   These functions match `<string>` against the `<expr>`essions, returning the corresponding `<list>`. If nothing is matched, the `<default>` is returned. switch() and case() return the `<str>` for the first matching `<expr>`, while switchall() and caseall() return the corresponding `<list>` for all `<expr>`s which match.
 
-  switch() and switchall() use wildcard and lt/gt `<expr>`s, as described in [switch wildcards](/reference/sharpmush-help/pennfunc/#switch-wildcards). case() and caseall() do a case-sensitive exact match, like member() or comp(). In this case, $0-$9 will be set to the text that the nth wildcard character met.
+  switch() and switchall() use wildcard and lt/gt `<expr>`s, as described in [switch wildcards]. case() and caseall() do a case-sensitive exact match, like member() or comp(). In this case, $0-$9 will be set to the text that the nth wildcard character met.
 
   If the string "#$" appears in the `<list>` to be evaluated, it will be replaced with the evaluated value of `<str>` /before/ evaluation of `<list>`. This is not done in case() and caseall(), for TinyMUSH 3 compatibility. Note that this replacement happens before evaluation, which makes it unsafe when `<str>` contains user input, and makes it unsuitable for use in nested switch()es. It is strongly recommended you use the %$`<n>` substitution or stext() function instead, which solves these problems.
 
-  See [switch2](/reference/sharpmush-help/pennfunc/#switch2) for examples.
+  See [switch2] for examples.
 
 
-### See Also
-- [reswitch()](/reference/sharpmush-help/pennfunc/#reswitch)
-- [stext()](/reference/sharpmush-help/pennfunc/#stext)
-- [slev()](/reference/sharpmush-help/pennfunc/#slev)
-- [if()](/reference/sharpmush-help/pennfunc/#if)
-- [cond()](/reference/sharpmush-help/pennfunc/#cond)
-- [firstof()](/reference/sharpmush-help/pennfunc/#firstof)
+**See Also:**
+- [reswitch()]
+- [stext()]
+- [slev()]
+- [if()]
+- [cond()]
+- [firstof()]
 ## SWITCH2
   Examples:
 ```
@@ -5985,8 +6014,8 @@ You say, "neat"
   If you need to have a leading `< or >` that's treated like a normal character in a wildcard match, use \\`< or \\>` (the \\ will turn into \ when the argument is evaluated, and then that single \ will stop the greater/less than check).
 
 
-### See Also
-- [WILDCARDS](/reference/sharpmush-help/penntop/#wildcards)
+**See Also:**
+- [WILDCARDS]
 ## STEXT()
 ## SLEV()
 ## %$
@@ -6007,23 +6036,23 @@ You say, "foo bar!"
 ```
 
 
-### See Also
-- [switch()](/reference/sharpmush-help/pennfunc/#switch)
-- [reswitch()](/reference/sharpmush-help/pennfunc/#reswitch)
-- [@switch](/reference/sharpmush-help/penncmd/#switch)
+**See Also:**
+- [switch()]
+- [reswitch()]
+- [@switch]
 ## T()
 `t(<expression>)`
 
-  Returns 1 if `<expression>` is a true boolean value, and 0 otherwise. The definitions of true and false vary depending on the value of the 'tiny_booleans' @config option. See [boolean values](/reference/sharpmush-help/penntop/#boolean-values) for details.
+  Returns 1 if `<expression>` is a true boolean value, and 0 otherwise. The definitions of true and false vary depending on the value of the 'tiny_booleans' @config option. See [boolean values] for details.
 
 
-### See Also
-- [not()](/reference/sharpmush-help/pennfunc/#not)
-- [if()](/reference/sharpmush-help/pennfunc/#if)
-- [cond()](/reference/sharpmush-help/pennfunc/#cond)
-- [@break](/reference/sharpmush-help/penncmd/#break)
-- [or()](/reference/sharpmush-help/pennfunc/#or)
-- [and()](/reference/sharpmush-help/pennfunc/#and)
+**See Also:**
+- [not()]
+- [if()]
+- [cond()]
+- [@break]
+- [or()]
+- [and()]
 ## TABLE()
 `table(<list>[, <field width>[, <line length>[, <delimiter>[, <osep>]]]])`
 
@@ -6042,29 +6071,29 @@ a          b          areallylon d
     brown     |fox
 
 
-### See Also
-- [align()](/reference/sharpmush-help/pennfunc/#align)
+**See Also:**
+- [align()]
 ## TAN()
 `tan(<angle>[, <angle type>])`
 
   Returns the tangent of `<angle>`, which should be expressed in the given angle type, or radians by default. See HELP ANGLES for more information.
 
 
-### See Also
-- [acos()](/reference/sharpmush-help/pennfunc/#acos)
-- [asin()](/reference/sharpmush-help/pennfunc/#asin)
-- [atan()](/reference/sharpmush-help/pennfunc/#atan)
-- [cos()](/reference/sharpmush-help/pennfunc/#cos)
-- [ctu()](/reference/sharpmush-help/pennfunc/#ctu)
-- [sin()](/reference/sharpmush-help/pennfunc/#sin)
+**See Also:**
+- [acos()]
+- [asin()]
+- [atan()]
+- [cos()]
+- [ctu()]
+- [sin()]
 ## TEL()
 `tel(<object>, <destination>[, <silent>[, <inside>]])`
 
   This function will teleport `<object>` to `<destination>`, exactly as @teleport `<object>`=`<destination>`. `<silent>` is an optional boolean that, if true, makes the function act like @teleport/silent. `<inside>` is an optional boolean that, if true, makes the function act like @teleport/inside.
 
 
-### See Also
-- [@teleport](/reference/sharpmush-help/penncmd/#teleport)
+**See Also:**
+- [@teleport]
 ## TERMINFO()
 `terminfo(<player|descriptor>)`
 
@@ -6075,23 +6104,23 @@ a          b          areallylon d
   telnet           present if the client understands the telnet protocol.
   gmcp             present if GMCP is negotiated via telnet; see help oob()
   ssl              present if the client is using an SSL/TLS connection.
-  prompt_newlines  see [prompt_newlines](/reference/sharpmush-help/penncmd/#promptnewlines)
+  prompt_newlines  see [prompt_newlines]
   stripaccents     client is receiving 7-bit ascii, no accented characters
 
-  One of the color styles shown in [colorstyle](/reference/sharpmush-help/penncmd/#colorstyle) will also be included.
+  One of the color styles shown in [colorstyle] will also be included.
 
   Other fields may be added in the future, if, for example, MXP support is ever added.
 
   You must have see_all, or use terminfo() on yourself, to see all information or use a `<descriptor>`. Mortals using terminfo() on another player will always receive "unknown" for the client name, and will not get telnet/gmcp/ssl/prompt_newlines in the output list.
 
 
-### See Also
-- [pueblo()](/reference/sharpmush-help/pennpueb/#pueblo)
-- [width()](/reference/sharpmush-help/pennfunc/#width)
-- [height()](/reference/sharpmush-help/pennfunc/#height)
-- [ssl()](/reference/sharpmush-help/pennfunc/#ssl)
-- [@sockset](/reference/sharpmush-help/penncmd/#sockset)
-- [oob()](/reference/sharpmush-help/pennfunc/#oob)
+**See Also:**
+- [pueblo()]
+- [width()]
+- [height()]
+- [ssl()]
+- [@sockset]
+- [oob()]
 ## JSON FUNCTIONS
   JSON functions are used to create and modify JSON objects.
 
@@ -6102,8 +6131,8 @@ a          b          areallylon d
 `wsjson()     oob()`
 
 
-### See Also
-- [JSON PATHS](/reference/sharpmush-help/pennfunc/#json-paths)
+**See Also:**
+- [JSON PATHS]
 ## OOB()
 ## GMCP
 `oob(<players>, <package>[, <message>])`
@@ -6121,9 +6150,9 @@ a          b          areallylon d
   Returns the number of descriptors the message was sent to on success, or a string starting with #-1 on error.
 
 
-### See Also
-- [json()](/reference/sharpmush-help/pennfunc/#json)
-- [wsjson()](/reference/sharpmush-help/pennpueb/#wsjson)
+**See Also:**
+- [json()]
+- [wsjson()]
 ## ISJSON()
 `isjson(<text>)`
 
@@ -6142,8 +6171,8 @@ think isjson("quoted")
 ```
 
 
-### See Also
-- [json()](/reference/sharpmush-help/pennfunc/#json)
+**See Also:**
+- [json()]
 ## JSON()
 `json(<type>[, <data>[, ..., <dataN>])`
 
@@ -6161,14 +6190,14 @@ think isjson("quoted")
 
   When `<type>` is "array" or "object", it's recommended that subsequent JSON arguments are created with nested calls to JSON().
 
-  See [json2](/reference/sharpmush-help/pennfunc/#json2) for examples.
+  See [json2] for examples.
 
-### See Also
-- [oob()](/reference/sharpmush-help/pennfunc/#oob)
-- [isjson()](/reference/sharpmush-help/pennfunc/#isjson)
-- [json_query()](/reference/sharpmush-help/pennfunc/#jsonquery)
-- [json_map()](/reference/sharpmush-help/pennfunc/#jsonmap)
-- [render()](/reference/sharpmush-help/pennfunc/#render)
+**See Also:**
+- [oob()]
+- [isjson()]
+- [json_query()]
+- [json_map()]
+- [render()]
 ## JSON2
   > think json(null)
   null
@@ -6177,7 +6206,7 @@ think isjson("quoted")
   "Look, it's \"JSON\"!"
 
   > think json(array, json(number, pi()), json(string, Pie), json(bool, true))
-  [3.141593, "Pie", true](/reference/sharpmush-help/pennconf/#3141593-pie-true)
+  [3.141593, "Pie", true]
 
   > &oneobject me=json(object, name, json(string, name(%0)), dbref, json(string, %0), created, json(number, csecs(%0)))
   > think u(oneobject, #1)
@@ -6198,11 +6227,11 @@ think isjson("quoted")
 
   `<osep>` defaults to a space.
 
-  See [json_map2](/reference/sharpmush-help/pennfunc/#jsonmap2) for examples.
+  See [json_map2] for examples.
 
-### See Also
-- [json()](/reference/sharpmush-help/pennfunc/#json)
-- [json_query()](/reference/sharpmush-help/pennfunc/#jsonquery)
+**See Also:**
+- [json()]
+- [json_query()]
 ## JSON_MAP2
   A very basic example:
 ```
@@ -6212,22 +6241,22 @@ think isjson("quoted")
   > think json_map(me/json, "foo")
   We got a string: foo
 
-  > think json_map(me/json, \["foo"\, 5\](/reference/sharpmush-help/pennconf/#foo-5), %r)
+  > think json_map(me/json, \["foo"\, 5\], %r)
   We got a string: foo
   We got a number: 5
 
-  > think json_map(me/json, \["foo"\, \["bar"\, 10\](/reference/sharpmush-help/pennconf/#foo-bar-10)\], %r)
+  > think json_map(me/json, \["foo"\, \["bar"\, 10\]\], %r)
   We got a string: foo
-  We got an array: ["bar",10](/reference/sharpmush-help/pennconf/#bar10)
+  We got an array: ["bar",10]
 
-  See [json_map3](/reference/sharpmush-help/pennfunc/#jsonmap3) for a more complex example.
+  See [json_map3] for a more complex example.
 ## JSON_MAP3
   A JSON pretty-printer, using nested calls to json_map() to handle nested
   JSON objects/arrays:
   > &pretty_json me=u(me/pretty_json_sub,,%0,,0,strmatch(%0,\\{*))
   > &pretty_json_sub me=repeat(%t,%3)[if(%4,json(string,%2):%b)][switch(%1,\{*,\{%r[json_map(%=,%1,\,%r,inc(%3),1)]%r[repeat(%t,%3)]\},\[*,\[%r[json_map(%=,%1,\,%r,inc(%3),0)]%r[repeat(%t,%3)]\],json(%0,%1))]
 
-  > &json me=[5, null, ["nested!", 999, {"foo":5, "bar":"\"Whee\""}](/reference/sharpmush-help/pennconf/#5-null-nested-999-foo5-barwhee), 7]
+  > &json me=[5, null, ["nested!", 999, {"foo":5, "bar":"\"Whee\""}], 7]
   > th u(me/pretty_json, v(json)
   [
       5,
@@ -6252,14 +6281,14 @@ think isjson("quoted")
   size         The size of `<json>`; this is 0 for null objects, 1 for strings/numbers/booleans, the number of array elements, or the number of key/value pairs for objects.
   exists       For arrays and objects, returns 1 if there is an object found by following the path specified in `<arg>`... and 0 if not. If the current arg is an integer and the current json element is an array, uses the `<arg>`th index of the array (Starting at 0) as the new current element. Otherwise, if the current json element is an object, treats the current `<arg>` as a key into the object and its value as the new current element.  Returns #-1 for other types.
   get          For arrays and objects, returns the json element found by following the path laid out in `<args>`... as described above. If no such element exists, returns an empty string. Returns #-1 for other JSON types.
-  extract      Like get, but takes a single combined path arg as described in [json paths](/reference/sharpmush-help/pennfunc/#json-paths). Some caveats: Returns 0 for false, 1 for true, and strings are unquoted.
+  extract      Like get, but takes a single combined path arg as described in [json paths]. Some caveats: Returns 0 for false, 1 for true, and strings are unquoted.
   unescape     Only valid for JSON strings; returns the unescaped form of `<json>`.
 
-  See [json_query2](/reference/sharpmush-help/pennfunc/#jsonquery2) for examples.
+  See [json_query2] for examples.
 
-### See Also
-- [json()](/reference/sharpmush-help/pennfunc/#json)
-- [json_map()](/reference/sharpmush-help/pennfunc/#jsonmap)
+**See Also:**
+- [json()]
+- [json_map()]
 ## JSON_QUERY2
   Examples:
 ```
@@ -6269,7 +6298,7 @@ think isjson("quoted")
 
     > @set me=json:[json(array, "abc", "def", "gh\\"i")]
     > say v(json)
-    You say, "["abc", "def", "gh\"i"]"
+    You say, "["abc", "def", "gh\"i"](/reference/sharpmush-help/pennconf/#abc-def-ghi)"
 
     > say json_query(v(json))
     You say, "array"
@@ -6283,14 +6312,14 @@ think isjson("quoted")
     You say, "gh"i"
 ```
 
- See [json_query3](/reference/sharpmush-help/pennfunc/#jsonquery3) for more examples.
+ See [json_query3] for more examples.
 ## JSON_QUERY3
  Examples:
 ```
 
     > @set me=json:[json(object, foo, "bar", baz, 12345, fnord, json(array, 1, 2, 3))]
     > say v(json)
-    You say, "{"foo": "bar", "baz": 12345, "fnord": [1,2,3]}"
+    You say, "{"foo": "bar", "baz": 12345, "fnord": [1,2,3](/reference/sharpmush-help/pennconf/#123)}"
     > say json_query(v(json), exists, foo)
     You say, "1"
     > say json_query(v(json), exists, bar)
@@ -6310,9 +6339,9 @@ think isjson("quoted")
   [N]    - the Nth element of a JSON array. Note that the brackets need to be escaped.
 
 
-### See Also
-- [json_mod()](/reference/sharpmush-help/pennfunc/#jsonmod)
-- [json_query()](/reference/sharpmush-help/pennfunc/#jsonquery)
+**See Also:**
+- [json_mod()]
+- [json_query()]
 ## JSON_MOD()
 `json_mod(<json>, <action>, <path>[, <json2>])`
 
@@ -6335,17 +6364,17 @@ think isjson("quoted")
 
     > @set me=json:[json(object, foo, "bar", baz, 12345, fnord, json(array, 1, 2, 3))]
     > say v(json)
-    You say, "{"foo": "bar", "baz": 12345, "fnord": [1,2,3]}"
+    You say, "{"foo": "bar", "baz": 12345, "fnord": [1,2,3](/reference/sharpmush-help/pennconf/#123)}"
     > say json_mod(v(json), set, $.foo, false)
-    You say, "{"foo:false,"baz":12345,"fnord":[1,2,3]}"
+    You say, "{"foo:false,"baz":12345,"fnord":[1,2,3](/reference/sharpmush-help/pennconf/#123)}"
     > say json_mod(v(json), insert, $.quux, 1)
-    You say, "{"foo:"bar","baz":12345,"fnord":[1,2,3],"quux":1}"
+    You say, "{"foo:"bar","baz":12345,"fnord":[1,2,3](/reference/sharpmush-help/pennconf/#123),"quux":1}"
     > say json_mod(v(json), replace, $.quux, 1)
-    You say, "{"foo:"bar","baz":12345,"fnord":[1,2,3]}"
+    You say, "{"foo:"bar","baz":12345,"fnord":[1,2,3](/reference/sharpmush-help/pennconf/#123)}"
     > say json_mod(v(json), remove, $.fnord)
     You say, "{"foo":"bar","baz":12345}"
     > say json_mod(json(array, json(object, id, 2), json(object, id, 1), sort, $.id)
-    You say, "[{"id":1},{"id":2}]
+    You say, "[{"id":1},{"id":2}](/reference/sharpmush-help/pennconf/#id1id2)
 ```
 ## TESTLOCK()
 `testlock(<key>, <victim>)`
@@ -6367,12 +6396,12 @@ think testlock(\\+FOO:BAR,*Walker)
 
 
 
-### See Also
-- [@lock](/reference/sharpmush-help/penncmd/#lock)
-- [lock()](/reference/sharpmush-help/pennfunc/#lock)
-- [elock()](/reference/sharpmush-help/pennfunc/#elock)
-- [lockfilter()](/reference/sharpmush-help/pennfunc/#lockfilter)
-- [locktypes](/reference/sharpmush-help/pennlock/#locktypes)
+**See Also:**
+- [@lock]
+- [lock()]
+- [elock()]
+- [lockfilter()]
+- [locktypes]
 ## TEXTFILE()
 ## TEXTENTRIES()
 ## TEXTSEARCH()
@@ -6402,12 +6431,12 @@ You say, "CWHO() LWHO() MWHO() NWHO() XWHO() ZWHO()"
       Returns the natural log of `<number>`.
 
 
-### See Also
-- [log()](/reference/sharpmush-help/pennfunc/#log)
+**See Also:**
+- [log()]
     "
 
-### See Also
-- [WILDCARDS](/reference/sharpmush-help/penntop/#wildcards)
+**See Also:**
+- [WILDCARDS]
 ## TIME()
 ## UTCTIME()
 `time()`
@@ -6416,7 +6445,7 @@ You say, "CWHO() LWHO() MWHO() NWHO() XWHO() ZWHO()"
 
   time() gives you the current time on the MUSH. By default this is the time on the server the MUSH is running on, and not the time of the caller.
 
-  With an argument, time() returns the time in the specified timezone, or in the timezone set in the specified object's TZ attribute; for more information, see [timezones](/reference/sharpmush-help/pennfunc/#timezones).
+  With an argument, time() returns the time in the specified timezone, or in the timezone set in the specified object's TZ attribute; for more information, see [timezones].
 
   utctime() is an alias for time(utc).
 
@@ -6436,12 +6465,12 @@ Continued in HELP TIME2
     Thu Mar 01 19:20:25 2012
 
 
-### See Also
-- [timefmt()](/reference/sharpmush-help/pennfunc/#timefmt)
-- [timestring()](/reference/sharpmush-help/pennfunc/#timestring)
-- [convsecs()](/reference/sharpmush-help/pennfunc/#convsecs)
-- [convtime()](/reference/sharpmush-help/pennfunc/#convtime)
-- [TIMEZONES](/reference/sharpmush-help/pennfunc/#timezones)
+**See Also:**
+- [timefmt()]
+- [timestring()]
+- [convsecs()]
+- [convtime()]
+- [TIMEZONES]
 ## TIMECALC()
 ## SECSCALC()
 `timecalc(<timestring>, <modifier>, ...)`
@@ -6850,10 +6879,10 @@ think etime(61, 5)
 ```
 
 
-### See Also
-- [etimefmt()](/reference/sharpmush-help/pennfunc/#etimefmt)
-- [timestring()](/reference/sharpmush-help/pennfunc/#timestring)
-- [stringsecs()](/reference/sharpmush-help/pennfunc/#stringsecs)
+**See Also:**
+- [etimefmt()]
+- [timestring()]
+- [stringsecs()]
 ## ETIMEFMT()
 `etimefmt(<format>, <secs>)`
 
@@ -6861,7 +6890,7 @@ think etime(61, 5)
 
   Escape codes in `<format>` are replaced by the proper values, and other characters are left unchanged.
 
-  A list of all codes is in [etimefmt2](/reference/sharpmush-help/pennfunc/#etimefmt2).
+  A list of all codes is in [etimefmt2].
 
   Examples:
 ```
@@ -6872,10 +6901,10 @@ think etimefmt($2mm $2ss, 500) - [timestring(500)]
 ```
 
 
-### See Also
-- [timestring()](/reference/sharpmush-help/pennfunc/#timestring)
-- [timefmt()](/reference/sharpmush-help/pennfunc/#timefmt)
-- [etime()](/reference/sharpmush-help/pennfunc/#etime)
+**See Also:**
+- [timestring()]
+- [timefmt()]
+- [etime()]
 ## ETIMEFMT2
   etimefmt()'s escape codes are similar to timefmt()'s. The time is broken up into days, hours, minutes, and seconds, and each value replaces the matching code.
 
@@ -6888,7 +6917,7 @@ think etimefmt($2mm $2ss, 500) - [timestring(500)]
 
  Normally, a particular time interval is shown using the remainder of the next largest interval - for example, $s with a time of 65 displays 5, not 65. The exception is $d, which only acts like this if $w or $y is also given. A 't' between the $ and code (But after a width) will print out the total seconds, minutes, etc. instead.
 
-  See [etimefmt3](/reference/sharpmush-help/pennfunc/#etimefmt3) for more examples.
+  See [etimefmt3] for more examples.
 ## ETIMEFMT3
   Examples:
 ```
@@ -6904,9 +6933,9 @@ think etimefmt($txs is $xm$xs, 75)
 ## TIMEFMT()
 `timefmt(<format>[, <secs>[, <timezone>]])`
 
-  This function returns the time and date, formatted according to `<format>`. `<secs>` is the time/date to format, as the number of seconds since the epoch (as returned by secs(), convtime(), etc). If no `<secs>` is given, the current date/time of the MUSH host is used. If no `<timezone>` is provided, the MUSH host's timezone is used; see [timezones](/reference/sharpmush-help/pennfunc/#timezones) for valid formats for `<timezone>`. Note: Using a fractional timezone offset from GMT may result in timefmt() showing the time zone name (if displayed) as GMT. Using a symbolic name on a server that supports them should show the name correctly.
+  This function returns the time and date, formatted according to `<format>`. `<secs>` is the time/date to format, as the number of seconds since the epoch (as returned by secs(), convtime(), etc). If no `<secs>` is given, the current date/time of the MUSH host is used. If no `<timezone>` is provided, the MUSH host's timezone is used; see [timezones] for valid formats for `<timezone>`. Note: Using a fractional timezone offset from GMT may result in timefmt() showing the time zone name (if displayed) as GMT. Using a symbolic name on a server that supports them should show the name correctly.
 
-  A list of all codes for `<format>` is in [timefmt2](/reference/sharpmush-help/pennfunc/#timefmt2).
+  A list of all codes for `<format>` is in [timefmt2].
 
   Example:
 ```
@@ -6915,10 +6944,10 @@ Monday, the 17th day of July.
 ```
 
 
-### See Also
-- [convsecs()](/reference/sharpmush-help/pennfunc/#convsecs)
-- [etimefmt()](/reference/sharpmush-help/pennfunc/#etimefmt)
-- [timezones](/reference/sharpmush-help/pennfunc/#timezones)
+**See Also:**
+- [convsecs()]
+- [etimefmt()]
+- [timezones]
 ## TIMEFMT2
   All escape codes start with a $. To get a literal $, use $$. Invalid codes will return #-1 INVALID ESCAPE CODE. Other text will be passed through unchanged.
 
@@ -6949,11 +6978,11 @@ You say, "00d 00h 05m 01s"
 ```
 
 
-### See Also
-- [stringsecs()](/reference/sharpmush-help/pennfunc/#stringsecs)
-- [convsecs()](/reference/sharpmush-help/pennfunc/#convsecs)
-- [etime()](/reference/sharpmush-help/pennfunc/#etime)
-- [etimefmt()](/reference/sharpmush-help/pennfunc/#etimefmt)
+**See Also:**
+- [stringsecs()]
+- [convsecs()]
+- [etime()]
+- [etimefmt()]
 ## STRINGSECS()
 `stringsecs(<timestring>)`
 
@@ -6969,11 +6998,11 @@ You say, "301"
     You say, "95232300"
 
 
-### See Also
-- [timestring()](/reference/sharpmush-help/pennfunc/#timestring)
-- [etimefmt()](/reference/sharpmush-help/pennfunc/#etimefmt)
-- [convtime()](/reference/sharpmush-help/pennfunc/#convtime)
-- [etime()](/reference/sharpmush-help/pennfunc/#etime)
+**See Also:**
+- [timestring()]
+- [etimefmt()]
+- [convtime()]
+- [etime()]
 ## TR()
 `tr(<string>, <find>, <replace>)`
 
@@ -6988,9 +7017,9 @@ You say, "hello"
 ```
 
 
-### See Also
-- [merge()](/reference/sharpmush-help/pennfunc/#merge)
-- [splice()](/reference/sharpmush-help/pennfunc/#splice)
+**See Also:**
+- [merge()]
+- [splice()]
 ## TRIM()
 ## TRIMPENN()
 ## TRIMTINY()
@@ -7019,9 +7048,9 @@ You say "Trim Test"
 ```
 
 
-### See Also
-- [squish()](/reference/sharpmush-help/pennfunc/#squish)
-- [edit()](/reference/sharpmush-help/pennfunc/#edit)
+**See Also:**
+- [squish()]
+- [edit()]
 ## TRUNC()
 ## VAL()
 `trunc(<string>)`
@@ -7039,12 +7068,12 @@ You say, "101"
   val() is an alias for trunc().
 
 
-### See Also
-- [ceil()](/reference/sharpmush-help/pennfunc/#ceil)
-- [floor()](/reference/sharpmush-help/pennfunc/#floor)
-- [bound()](/reference/sharpmush-help/pennfunc/#bound)
-- [round()](/reference/sharpmush-help/pennfunc/#round)
-- [left()](/reference/sharpmush-help/pennfunc/#left)
+**See Also:**
+- [ceil()]
+- [floor()]
+- [bound()]
+- [round()]
+- [left()]
 ## TYPE()
 `type(<object>)`
 
@@ -7062,9 +7091,9 @@ ROOM
 ```
 
 
-### See Also
-- [hastype()](/reference/sharpmush-help/pennfunc/#hastype)
-- [TYPES OF OBJECTS](/reference/sharpmush-help/penntop/#types-of-objects)
+**See Also:**
+- [hastype()]
+- [TYPES OF OBJECTS]
 ## PFUN()
 `pfun(<attribute>[, <arg0>[, ... , <arg29>]])`
 
@@ -7086,7 +7115,7 @@ think pfun(foo)
 ParentFoo
 ```
 
-  See [pfun2](/reference/sharpmush-help/pennfunc/#pfun2).
+  See [pfun2].
 ## PFUN2
   This function does not have the security problems of using
 
@@ -7096,15 +7125,15 @@ ParentFoo
 
   This function is particularly useful when you want to inherit an attribute tree from a parent, but add further branches.
 
-  See [pfun3](/reference/sharpmush-help/pennfunc/#pfun3) for an example.
+  See [pfun3] for an example.
 
 
-### See Also
-- [ufun()](/reference/sharpmush-help/pennfunc/#ufun)
-- [get()](/reference/sharpmush-help/pennfunc/#get)
-- [parent()](/reference/sharpmush-help/pennfunc/#parent)
-- [zfun()](/reference/sharpmush-help/pennfunc/#zfun)
-- [PARENTS](/reference/sharpmush-help/penntop/#parents)
+**See Also:**
+- [ufun()]
+- [get()]
+- [parent()]
+- [zfun()]
+- [PARENTS]
 ## PFUN3
   Example:
 
@@ -7133,16 +7162,16 @@ ParentFoo
 
   u() is an alias for ufun(), for TinyMUSH compatability.
 
-  ulambda() is the same, but accepts anonymous attributes. See [lambda](/reference/sharpmush-help/penntop/#lambda).
+  ulambda() is the same, but accepts anonymous attributes. See [lambda].
 
-  See [ufun2](/reference/sharpmush-help/pennfunc/#ufun2).
+  See [ufun2].
 ## U2
 ## UFUN2
   The attribute is evaluated by the object it's set on, with that object's priviledges, and NOT by the object using ufun(). Because of this, allowing arbitrary use of ufun() can be insecure.
 
   You must be able to examine an attribute to ufun() it. If the safer_ufun @config option is on, you must also have equal priviliges (in terms of mortal/Royalty/Wizard/God) to the object the attribute is on. However, attributes with the 'public' flag on can be evaluated by anyone. This is necessary for attributes like 'describe', but should not be set on attributes containing code unless you're sure it's safe for anyone to use them.
 
-  See [ufun3](/reference/sharpmush-help/pennfunc/#ufun3).
+  See [ufun3].
 ## U3
 ## UFUN3
   Example:
@@ -7157,15 +7186,15 @@ string
   A user-defined function may be as complex as you want it to be, subject to limits on recursion depth, number of function invocations, or cpu time that may be configured in the MUSH.
 
 
-### See Also
-- [anonymous attributes](/reference/sharpmush-help/penntop/#anonymous-attributes)
-- [udefault()](/reference/sharpmush-help/pennfunc/#udefault)
-- [get()](/reference/sharpmush-help/pennfunc/#get)
-- [ATTRIBUTES](/reference/sharpmush-help/penntop/#attributes)
-- [ulocal()](/reference/sharpmush-help/pennfunc/#ulocal)
-- [pfun()](/reference/sharpmush-help/pennfunc/#pfun)
-- [attribute flags](/reference/sharpmush-help/pennattr/#attribute-flags)
-- [@include](/reference/sharpmush-help/penncmd/#include)
+**See Also:**
+- [anonymous attributes]
+- [udefault()]
+- [get()]
+- [ATTRIBUTES]
+- [ulocal()]
+- [pfun()]
+- [attribute flags]
+- [@include]
 ## UCSTR()
 ## UCSTR2()
 `ucstr(<string>)`
@@ -7184,9 +7213,9 @@ You say, "GRÜSSEN
 ```
 
 
-### See Also
-- [lcstr()](/reference/sharpmush-help/pennfunc/#lcstr)
-- [capstr()](/reference/sharpmush-help/pennfunc/#capstr)
+**See Also:**
+- [lcstr()]
+- [capstr()]
 ## UDEFAULT()
 ## ULDEFAULT()
 `udefault([<object>/]<attribute>, <default case>[, <arg0>[, ... , <arg29>]])`
@@ -7209,20 +7238,20 @@ You say "-- BOOM --"
 ```
 
 
-### See Also
-- [get()](/reference/sharpmush-help/pennfunc/#get)
-- [eval()](/reference/sharpmush-help/pennfunc/#eval)
-- [ufun()](/reference/sharpmush-help/pennfunc/#ufun)
-- [default()](/reference/sharpmush-help/pennfunc/#default)
-- [edefault()](/reference/sharpmush-help/pennfunc/#edefault)
-- [ulocal()](/reference/sharpmush-help/pennfunc/#ulocal)
-- [localize()](/reference/sharpmush-help/pennfunc/#localize)
+**See Also:**
+- [get()]
+- [eval()]
+- [ufun()]
+- [default()]
+- [edefault()]
+- [ulocal()]
+- [localize()]
 ## ULOCAL()
 `ulocal([<object>/]<attribute>[, <arg0>[, ... , <arg29>]])`
 
   The ulocal() function is similar to ufun(); it evaluates `<attribute>` on `<object>` (or the caller, if no `<object>` is given), passing up to thirty `<arg>`s. However, before evaluating the attribute, ulocal() stores all the global q-registers (%q0-%q9, %qa-%qz), in the same way as the localize() function, and restores them after the attribute is evaluated. It's useful when you need to evaluate an attribute on an untrusted object which might alter the values of the registers.
 
-  See [ulocal2](/reference/sharpmush-help/pennfunc/#ulocal2) for examples.
+  See [ulocal2] for examples.
 ## ULOCAL2
   Examples:
 ```
@@ -7241,16 +7270,16 @@ You say "bananas are delicious!"
   In this second example, in SUB-FUNCTION, %q0 was set to "apples bananas oranges pears", so that when the u() "returned" and TOP-FUNCTION evaluated %q0, this is what was printed. In the first example, ulocal() reset the value of %q0 to its original "are delicious!"
 
 
-### See Also
-- [ufun()](/reference/sharpmush-help/pennfunc/#ufun)
-- [setq()](/reference/sharpmush-help/pennfunc/#setq)
-- [letq()](/reference/sharpmush-help/pennfunc/#letq)
-- [r()](/reference/sharpmush-help/pennfunc/#r)
-- [localize()](/reference/sharpmush-help/pennfunc/#localize)
+**See Also:**
+- [ufun()]
+- [setq()]
+- [letq()]
+- [r()]
+- [localize()]
 ## UNIQUE()
 `unique(<list>[, <sort type>[, <delim>[, <osep>]]])`
 
-  unique() returns a copy of `<list>` with consecutive duplicate items removed. It does not sort the list. The optional `<sort type>` describes what type of data is in the list; see [sorting](/reference/sharpmush-help/pennfunc/#sorting) for details. If no type is given, the elements are compared as strings. Elements of `<list>` are separated by `<delim>`, which defaults to a space. Each element of the output is separated by `<osep>`, which defaults to `<delim>`.
+  unique() returns a copy of `<list>` with consecutive duplicate items removed. It does not sort the list. The optional `<sort type>` describes what type of data is in the list; see [sorting] for details. If no type is given, the elements are compared as strings. Elements of `<list>` are separated by `<delim>`, which defaults to a space. Each element of the output is separated by `<osep>`, which defaults to `<delim>`.
 
   Examples:
 ```
@@ -7263,9 +7292,9 @@ think unique(1|2|3|3, n, |, _)
 ```
 
 
-### See Also
-- [setunion()](/reference/sharpmush-help/pennfunc/#setunion)
-- [sort()](/reference/sharpmush-help/pennfunc/#sort)
+**See Also:**
+- [setunion()]
+- [sort()]
 ## V()
 ## V-FUNCTION
 `v(<variable>)`
@@ -7283,13 +7312,13 @@ think unique(1|2|3|3, n, |, _)
   The final form of this function is equivilent to get(me/`<attribute>`), but is usually slightly more efficient.
 
 
-### See Also
-- [STACK](/reference/sharpmush-help/penntop/#stack)
-- [REGISTERS](/reference/sharpmush-help/penntop/#registers)
-- [SUBSTITUTIONS](/reference/sharpmush-help/penntop/#substitutions)
-- [get()](/reference/sharpmush-help/pennfunc/#get)
-- [r()](/reference/sharpmush-help/pennfunc/#r)
-- [ATTRIBUTES](/reference/sharpmush-help/penntop/#attributes)
+**See Also:**
+- [STACK]
+- [REGISTERS]
+- [SUBSTITUTIONS]
+- [get()]
+- [r()]
+- [ATTRIBUTES]
 ## VADD()
 `vadd(<vector1>, <vector2>[, <delimiter>])`
 
@@ -7301,8 +7330,8 @@ think unique(1|2|3|3, n, |, _)
   1|2|3
 
 
-### See Also
-- [VECTOR FUNCTIONS](/reference/sharpmush-help/pennfunc/#vector-functions)
+**See Also:**
+- [VECTOR FUNCTIONS]
 ## VALID()
 `valid(<category>, <string>[, <target>])`
 
@@ -7321,7 +7350,7 @@ think unique(1|2|3|3, n, |, _)
    colorname   Test for a valid color name for ansi()/colors().
    ansicodes   Test for a valid color code sequence for ansi(`<string>`, ...).
    channel     Test for a valid channel name. If `<target>` is given, check to see if channel `<target>` could be renamed to `<string>`.
-   timezone    Test for a valid timezone; see [timezones](/reference/sharpmush-help/pennfunc/#timezones)
+   timezone    Test for a valid timezone; see [timezones]
    locktype    Test for a valid locktype for @lock/`<string>` `<target>`. `<target>` defaults to the caller.
    lockkey     Test for a valid lockkey for @lock me=`<string>`
 
@@ -7329,11 +7358,11 @@ think unique(1|2|3|3, n, |, _)
 
   For "ansicodes", when not using new-style color names or hex codes, valid() always returns 1, and invalid codes are simply ignored, the same as when used in the ansi() function.
 
-  See [valid2](/reference/sharpmush-help/pennfunc/#valid2) for examples.
+  See [valid2] for examples.
 
-### See Also
-- [colors()](/reference/sharpmush-help/pennfunc/#colors)
-- [ansi()](/reference/sharpmush-help/pennfunc/#ansi)
+**See Also:**
+- [colors()]
+- [ansi()]
 ## valid2
 
   > think valid(name,Foobar)
@@ -7362,8 +7391,8 @@ think unique(1|2|3|3, n, |, _)
   -3 6 -3
 
 
-### See Also
-- [VECTOR FUNCTIONS](/reference/sharpmush-help/pennfunc/#vector-functions)
+**See Also:**
+- [VECTOR FUNCTIONS]
 ## VDIM()
 `vdim(<vector>[, <delimiter>])`
 
@@ -7373,8 +7402,8 @@ think unique(1|2|3|3, n, |, _)
   4
 
 
-### See Also
-- [VECTOR FUNCTIONS](/reference/sharpmush-help/pennfunc/#vector-functions)
+**See Also:**
+- [VECTOR FUNCTIONS]
 ## VDOT()
 `vdot(<vector1>, <vector2>[, <delimiter>])`
 
@@ -7384,8 +7413,8 @@ think unique(1|2|3|3, n, |, _)
   20
 
 
-### See Also
-- [VECTOR FUNCTIONS](/reference/sharpmush-help/pennfunc/#vector-functions)
+**See Also:**
+- [VECTOR FUNCTIONS]
 ## VMIN()
 `vmin(<vector1>, <vector2>[, <delimiter>])`
 
@@ -7395,8 +7424,8 @@ think unique(1|2|3|3, n, |, _)
   1 1 2
 
 
-### See Also
-- [VECTOR FUNCTIONS](/reference/sharpmush-help/pennfunc/#vector-functions)
+**See Also:**
+- [VECTOR FUNCTIONS]
 ## VMAX()
 `vmax(<vector1>, <vector2>[, <delimiter>])`
 
@@ -7406,8 +7435,8 @@ think unique(1|2|3|3, n, |, _)
   4 2 3
 
 
-### See Also
-- [VECTOR FUNCTIONS](/reference/sharpmush-help/pennfunc/#vector-functions)
+**See Also:**
+- [VECTOR FUNCTIONS]
 ## VERSION()
 ## NUMVERSION()
 `version()`
@@ -7429,8 +7458,8 @@ You say "1008001004"
     You say, "1008005007"
 
 
-### See Also
-- [@version](/reference/sharpmush-help/penncmd/#version)
+**See Also:**
+- [@version]
 ## VISIBLE()
 `visible(<object>, <victim>[/<attribute>])`
 
@@ -7439,9 +7468,9 @@ You say "1008001004"
   If `<object>`, `<victim>`, or `<attribute>` is invalid, the function returns 0.
 
 
-### See Also
-- [controls()](/reference/sharpmush-help/pennfunc/#controls)
-- [VISUAL](/reference/sharpmush-help/pennflag/#visual)
+**See Also:**
+- [controls()]
+- [VISUAL]
 ## VMAG()
 `vmag(<vector>[, <delimiter>])`
 
@@ -7451,8 +7480,8 @@ You say "1008001004"
   5
 
 
-### See Also
-- [VECTOR FUNCTIONS](/reference/sharpmush-help/pennfunc/#vector-functions)
+**See Also:**
+- [VECTOR FUNCTIONS]
 ## VMUL()
 `vmul(<vector1|number1>, <vector2|number2>[, <delimiter>])`
 
@@ -7464,8 +7493,8 @@ You say "1008001004"
   2 6 12
 
 
-### See Also
-- [VECTOR FUNCTIONS](/reference/sharpmush-help/pennfunc/#vector-functions)
+**See Also:**
+- [VECTOR FUNCTIONS]
 ## VSUB()
 `vsub(<vector1>, <vector2>[, <delimiter>])`
 
@@ -7475,8 +7504,8 @@ You say "1008001004"
   0 2 4
 
 
-### See Also
-- [VECTOR FUNCTIONS](/reference/sharpmush-help/pennfunc/#vector-functions)
+**See Also:**
+- [VECTOR FUNCTIONS]
 ## VUNIT()
 `vunit(<vector>[, <delimiter>])`
 
@@ -7488,8 +7517,8 @@ You say "1008001004"
   5 6 7
 
 
-### See Also
-- [VECTOR FUNCTIONS](/reference/sharpmush-help/pennfunc/#vector-functions)
+**See Also:**
+- [VECTOR FUNCTIONS]
 ## WIDTH()
 ## HEIGHT()
 ## SCREENWIDTH
@@ -7513,23 +7542,23 @@ You say "1008001004"
   will return the latter). A room's "real" location is always Nothing (the LOC() function will return its drop-to).
 
 
-### See Also
-- [room()](/reference/sharpmush-help/pennfunc/#room)
-- [loc()](/reference/sharpmush-help/pennfunc/#loc)
-- [rnum()](/reference/sharpmush-help/pennfunc/#rnum)
-- [locate()](/reference/sharpmush-help/pennfunc/#locate)
-- [home()](/reference/sharpmush-help/pennfunc/#home)
-- [@whereis](/reference/sharpmush-help/penncmd/#whereis)
+**See Also:**
+- [room()]
+- [loc()]
+- [rnum()]
+- [locate()]
+- [home()]
+- [@whereis]
 ## WIPE()
 `wipe(<object>[/<attribute pattern>])`
 
   This function is equivalent to @wipe, and attempts to wipe all the attributes on `<object>` whose names match `<attribute pattern>`, or "*" if no pattern is given. It returns nothing. Like @wipe, this function will destroy entire attribute trees; to safely remove a single attribute, use attrib_set() instead.
 
 
-### See Also
-- [@wipe](/reference/sharpmush-help/penncmd/#wipe)
-- [attrib_set()](/reference/sharpmush-help/pennfunc/#attribset)
-- [set()](/reference/sharpmush-help/pennfunc/#set)
+**See Also:**
+- [@wipe]
+- [attrib_set()]
+- [set()]
 ## WORDPOS()
 `wordpos(<list>, <number>[, <delimiter>])`
 
@@ -7542,9 +7571,9 @@ You say, "2"
 ```
 
 
-### See Also
-- [member()](/reference/sharpmush-help/pennfunc/#member)
-- [pos()](/reference/sharpmush-help/pennfunc/#pos)
+**See Also:**
+- [member()]
+- [pos()]
 ## WORDS()
 `words(<list>[, <delimiter>])`
 
@@ -7562,9 +7591,9 @@ think words(1 2%b%b3, %b)
     4
 
 
-### See Also
-- [strlen()](/reference/sharpmush-help/pennfunc/#strlen)
-- [items()](/reference/sharpmush-help/pennfunc/#items)
+**See Also:**
+- [strlen()]
+- [items()]
 ## WRAP()
 `wrap(<string>, <width>[, <first line width>[, <line separator>]])`
 
@@ -7595,24 +7624,24 @@ think words(1 2%b%b3, %b)
   xattrp() and regxattrp() will include attributes from parents. Do note that parent attributes are listed _after_ child attributes, not sorted alphabetically.
 
 
-### See Also
-- [nattr()](/reference/sharpmush-help/pennfunc/#nattr)
-- [lattr()](/reference/sharpmush-help/pennfunc/#lattr)
-- [WILDCARDS](/reference/sharpmush-help/penntop/#wildcards)
-- [REGEXPS](/reference/sharpmush-help/penntop/#regexps)
+**See Also:**
+- [nattr()]
+- [lattr()]
+- [WILDCARDS]
+- [REGEXPS]
 ## XOR()
 `xor(<boolean1>, <boolean2>[, ... , <booleanN>])`
 
   Takes two or more booleans and returns a 1 if one, and only one, of the inputs is equivalent to true(1).
 
 
-### See Also
-- [BOOLEAN VALUES](/reference/sharpmush-help/penntop/#boolean-values)
-- [and()](/reference/sharpmush-help/pennfunc/#and)
-- [or()](/reference/sharpmush-help/pennfunc/#or)
-- [not()](/reference/sharpmush-help/pennfunc/#not)
-- [nor()](/reference/sharpmush-help/pennfunc/#nor)
-- [lmath()](/reference/sharpmush-help/pennfunc/#lmath)
+**See Also:**
+- [BOOLEAN VALUES]
+- [and()]
+- [or()]
+- [not()]
+- [nor()]
+- [lmath()]
 ## XVCON()
 ## XCON()
 `xcon(<object>, <start>, <count>)`
@@ -7625,10 +7654,10 @@ think words(1 2%b%b3, %b)
   xvcon() is identical, but follows the restrictions of lvcon().
 
 
-### See Also
-- [ncon()](/reference/sharpmush-help/pennfunc/#ncon)
-- [lcon()](/reference/sharpmush-help/pennfunc/#lcon)
-- [lvcon()](/reference/sharpmush-help/pennfunc/#lvcon)
+**See Also:**
+- [ncon()]
+- [lcon()]
+- [lvcon()]
 ## XVEXITS()
 ## XEXITS()
 `xexits(<room>, <start>, <count>)`
@@ -7641,10 +7670,10 @@ think words(1 2%b%b3, %b)
   xvexits() is identical, but follows the restrictions of lvexits().
 
 
-### See Also
-- [nexits()](/reference/sharpmush-help/pennfunc/#nexits)
-- [lexits()](/reference/sharpmush-help/pennfunc/#lexits)
-- [lvexits()](/reference/sharpmush-help/pennfunc/#lvexits)
+**See Also:**
+- [nexits()]
+- [lexits()]
+- [lvexits()]
 ## XVPLAYERS()
 ## XPLAYERS()
 `xplayers(<object>, <start>, <count>)`
@@ -7657,12 +7686,12 @@ think words(1 2%b%b3, %b)
   xvplayers() is identical, but follows the restrictions of lvplayers().
 
 
-### See Also
-- [nplayers()](/reference/sharpmush-help/pennfunc/#nplayers)
-- [lplayers()](/reference/sharpmush-help/pennfunc/#lplayers)
-- [lvplayers()](/reference/sharpmush-help/pennfunc/#lvplayers)
-- [xthings()](/reference/sharpmush-help/pennfunc/#xthings)
-- [xexits()](/reference/sharpmush-help/pennfunc/#xexits)
+**See Also:**
+- [nplayers()]
+- [lplayers()]
+- [lvplayers()]
+- [xthings()]
+- [xexits()]
 ## XVTHINGS()
 ## XTHINGS()
 `xthings(<object>, <start>, <count>)`
@@ -7675,12 +7704,12 @@ think words(1 2%b%b3, %b)
   xvthings() is identical, except it follows the restrictions of lvthings().
 
 
-### See Also
-- [nthings()](/reference/sharpmush-help/pennfunc/#nthings)
-- [lthings()](/reference/sharpmush-help/pennfunc/#lthings)
-- [lvthings()](/reference/sharpmush-help/pennfunc/#lvthings)
-- [xplayers()](/reference/sharpmush-help/pennfunc/#xplayers)
-- [xexits()](/reference/sharpmush-help/pennfunc/#xexits)
+**See Also:**
+- [nthings()]
+- [lthings()]
+- [lvthings()]
+- [xplayers()]
+- [xexits()]
 ## XWHO()
 ## XWHOID()
 ## XMWHO()
@@ -7699,11 +7728,11 @@ think words(1 2%b%b3, %b)
   xwhoid() and xmwhoid() return objids instead of dbrefs.
 
 
-### See Also
-- [lwho()](/reference/sharpmush-help/pennfunc/#lwho)
-- [mwho()](/reference/sharpmush-help/pennfunc/#mwho)
-- [nwho()](/reference/sharpmush-help/pennfunc/#nwho)
-- [zwho()](/reference/sharpmush-help/pennfunc/#zwho)
+**See Also:**
+- [lwho()]
+- [mwho()]
+- [nwho()]
+- [zwho()]
 ## ZWHO()
 ## ZMWHO()
 `zwho(<object>[, <viewer>])`
@@ -7714,12 +7743,12 @@ think words(1 2%b%b3, %b)
   See_All players can pass a `<viewer>` argument to zwho() to get only those players that `<viewer>` can see is online.
 
 
-### See Also
-- [lwho()](/reference/sharpmush-help/pennfunc/#lwho)
-- [nwho()](/reference/sharpmush-help/pennfunc/#nwho)
-- [zone()](/reference/sharpmush-help/pennfunc/#zone)
-- [zfun()](/reference/sharpmush-help/pennfunc/#zfun)
-- [zemit()](/reference/sharpmush-help/pennfunc/#zemit)
+**See Also:**
+- [lwho()]
+- [nwho()]
+- [zone()]
+- [zfun()]
+- [zemit()]
 ## ZEMIT()
 ## NSZEMIT()
 `zemit(<zone>, <message>)`
@@ -7730,12 +7759,12 @@ think words(1 2%b%b3, %b)
   nszemit() works like @nszemit.
 
 
-### See Also
-- [@zemit](/reference/sharpmush-help/penncmd/#zemit)
-- [zone()](/reference/sharpmush-help/pennfunc/#zone)
-- [zfun()](/reference/sharpmush-help/pennfunc/#zfun)
-- [zwho()](/reference/sharpmush-help/pennfunc/#zwho)
-- [ZONES](/reference/sharpmush-help/penntop/#zones)
+**See Also:**
+- [@zemit]
+- [zone()]
+- [zfun()]
+- [zwho()]
+- [ZONES]
 ## ZFUN()
 `zfun(<attribute>[, <arg0>[, <arg1>[, ... , <arg29>]]])`
 
@@ -7744,13 +7773,13 @@ think words(1 2%b%b3, %b)
 `ufun(zone(me)/<attribute>[, <arg0>[, ... , <arg29>]])`
 
 
-### See Also
-- [ufun()](/reference/sharpmush-help/pennfunc/#ufun)
-- [get()](/reference/sharpmush-help/pennfunc/#get)
-- [zone()](/reference/sharpmush-help/pennfunc/#zone)
-- [zemit()](/reference/sharpmush-help/pennfunc/#zemit)
-- [zwho()](/reference/sharpmush-help/pennfunc/#zwho)
-- [ZONES](/reference/sharpmush-help/penntop/#zones)
+**See Also:**
+- [ufun()]
+- [get()]
+- [zone()]
+- [zemit()]
+- [zwho()]
+- [ZONES]
 ## ZONE()
 `zone(<object>[, <new zone>])`
 
@@ -7759,10 +7788,10 @@ think words(1 2%b%b3, %b)
   If a `<new zone>` is given, zone() attempts to change the zone of `<object>` to `<new zone>` first - see help @chzone for details.
 
 
-### See Also
-- [@chzone](/reference/sharpmush-help/penncmd/#chzone)
-- [zfun()](/reference/sharpmush-help/pennfunc/#zfun)
-- [zwho()](/reference/sharpmush-help/pennfunc/#zwho)
+**See Also:**
+- [@chzone]
+- [zfun()]
+- [zwho()]
 - [zemit() ZONES]
 ## UPTIME()
 `UPTIME([<type>])`
@@ -7778,20 +7807,20 @@ think words(1 2%b%b3, %b)
     warnings  - The time of the next automatic warnings check, or -1 if automated warnings are disabled.
 
 
-### See Also
-- [@uptime](/reference/sharpmush-help/penncmd/#uptime)
-- [secs()](/reference/sharpmush-help/pennfunc/#secs)
-- [convsecs()](/reference/sharpmush-help/pennfunc/#convsecs)
-- [time()](/reference/sharpmush-help/pennfunc/#time)
-- [starttime()](/reference/sharpmush-help/pennfunc/#starttime)
-- [restarttime()](/reference/sharpmush-help/pennfunc/#restarttime)
-- [restarts()](/reference/sharpmush-help/pennfunc/#restarts)
-- [@dbck](/reference/sharpmush-help/penncmd/#dbck)
-- [@purge](/reference/sharpmush-help/penncmd/#purge)
-- [@warnings](/reference/sharpmush-help/penncmd/#warnings)
-- [@config](/reference/sharpmush-help/penncmd/#config)
-- [@dump](/reference/sharpmush-help/penncmd/#dump)
-- [@shutdown](/reference/sharpmush-help/penncmd/#shutdown)
+**See Also:**
+- [@uptime]
+- [secs()]
+- [convsecs()]
+- [time()]
+- [starttime()]
+- [restarttime()]
+- [restarts()]
+- [@dbck]
+- [@purge]
+- [@warnings]
+- [@config]
+- [@dump]
+- [@shutdown]
 ## SUGGEST()
 `SUGGEST(<category>, <word>[, <seperator>[, <limit>]])`
 
@@ -7808,8 +7837,8 @@ AARDVARK AARDVARKS AARDVARK'S etc...
 ```
 
 
-### See Also
-- [@suggest](/reference/sharpmush-help/penncmd/#suggest)
+**See Also:**
+- [@suggest]
 ## CONNLOG()
 `CONNLOG(all|[not] logged in|<name>, <spec>...[, <osep>])`
 
@@ -7819,7 +7848,7 @@ AARDVARK AARDVARKS AARDVARK'S etc...
 
   This function must be enabled (by the use_connlog @config option); if disabled, it returns #-1.
 
-  See [connlog2](/reference/sharpmush-help/pennfunc/#connlog2).
+  See [connlog2].
 ## CONNLOG2
   `<spec>` is one or more of the following:
 
@@ -7837,11 +7866,11 @@ AARDVARK AARDVARKS AARDVARK'S etc...
   Others:
     * count - if given, instead of returning a list of connections, returns the total number of matching connections.
 
-  See [connlog3](/reference/sharpmush-help/pennfunc/#connlog3) for examples.
+  See [connlog3] for examples.
 
-### See Also
-- [addrlog()](/reference/sharpmush-help/pennfunc/#addrlog)
-- [connrecord()](/reference/sharpmush-help/pennfunc/#connrecord)
+**See Also:**
+- [addrlog()]
+- [connrecord()]
 ## CONNLOG3
   Examples:
 ```
@@ -7869,8 +7898,8 @@ shows all connections that were present during the last 15 minutes
   This function must be enabled (by the use_connlog @config option); if disabled, it returns #-1.
 
 
-### See Also
-- [connlog()](/reference/sharpmush-help/pennfunc/#connlog)
+**See Also:**
+- [connlog()]
 ## ADDRLOG()
 `ADDRLOG([count,], ip|hostname, <pattern>[, <osep>)`
 
@@ -7881,17 +7910,17 @@ shows all connections that were present during the last 15 minutes
   This function must be enabled (by the use_connlog @config option); if disabled, it returns #-1.
 
 
-### See Also
-- [connlog()](/reference/sharpmush-help/pennfunc/#connlog)
-- [connrecord()](/reference/sharpmush-help/pennfunc/#connrecord)
+**See Also:**
+- [connlog()]
+- [connrecord()]
 ## URLENCODE()
 `URLENCODE(<string>)`
 
   This function converts its argument to a URL-encoded string where everything but a-z, A-Z, 0-9, -, ., _, and ~ are converted into %NN where NN is a hex code for their character value.
 
 
-### See Also
-- [urldecode()](/reference/sharpmush-help/pennfunc/#urldecode)
+**See Also:**
+- [urldecode()]
 - [@http]
 ## URLDECODE()
 `URLDECODE(<string>)`
@@ -7899,8 +7928,8 @@ shows all connections that were present during the last 15 minutes
   This function takes a URL-encoded string and returns it in its decoded form. Unprintable characters are converted to question marks.
 
 
-### See Also
-- [urlencode()](/reference/sharpmush-help/pennfunc/#urlencode)
+**See Also:**
+- [urlencode()]
 - [@http]
 ## HMAC()
 `HMAC(<digest>, <key>, <text>[, <encoding>])`
@@ -7916,5 +7945,5 @@ lZj9lZYz8qZKfX6YWWZ3SqbzNLyALlszAXcuyO1u7Vo=
 ```
 
 
-### See Also
+**See Also:**
 - [digest()](/reference/sharpmush-help/pennfunc/#digest)

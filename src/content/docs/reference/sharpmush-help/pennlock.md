@@ -57,7 +57,7 @@ You can group together different sets of keys by enclosing each group in parenth
 allows non-players to pass, or players who do not have the "unregistered" flag set.
 
 
-### See Also
+**See Also:**
 - [- [@lock](/reference/sharpmush-help/pennlock/#lock)
 - [locktypes](/reference/sharpmush-help/pennlock/#locktypes)
 - [@clock](/reference/sharpmush-help/pennchat/#clock)
@@ -139,7 +139,7 @@ The difference between this and an attribute lock is that the *<attribute>* is t
 The person trying to pass the lock is %# and *<object>* is %! when the evaluation takes place. The evaluation is done with the powers of *<object>*. If you try to do something (like [get(%#/*<attribute>*)]) and *<object>* doesn't have permission to do that, the person will automatically fail to pass the lock.
 
 
-### See Also
+**See Also:**
 - [@lock-eval2](/reference/sharpmush-help/pennlock/#lock-eval2)
 
 ## @LOCK-EVAL2
@@ -157,7 +157,7 @@ Whenever someone tries to pass through the exit, the attribute "whichday" will b
 If you have an evaluation lock that just does [hasflag(%#,FLAGNAME)], you should probably use a bit lock instead.
 
 
-### See Also
+**See Also:**
 - [@lock-bit](/reference/sharpmush-help/pennlock/#lock-bit)
 
 ## @LOCK-NAME
@@ -244,7 +244,7 @@ For example:
 This locks *<object>* to players (and the objects of players) currently connected from the computer the MUSH is running on.
 
 
-### See Also
+**See Also:**
 - [- [ipaddr()]
 - [hostname()](/reference/sharpmush-help/pennfunc/#hostname)
 - [LASTSITE](/reference/sharpmush-help/penntop/#lastsite)
@@ -270,7 +270,7 @@ Standard Lock Types:
 - `@lock/user:<name>` - User-defined. No built-in function of this lock, but users can test it with elock()
 
 
-### See Also
+**See Also:**
 - [locktypes2](/reference/sharpmush-help/pennlock/#locktypes2)
 
 ## LOCK TYPES2
@@ -303,7 +303,7 @@ More standard lock types:
 - `@lock/chown` - Who can @chown this CHOWN_OK object?
 
 
-### See Also
+**See Also:**
 - [- [@lock](/reference/sharpmush-help/pennlock/#lock)
 - [@lset](/reference/sharpmush-help/penncmd/#lset)
 - [@clock](/reference/sharpmush-help/pennchat/#clock)
@@ -320,7 +320,7 @@ For players and things, it controls who can "get" the object.
 For rooms, it determines whether the @success or @failure verbs are triggered when someone "look"s at the room. However, even when the lock is failed, the "look" still occurs.
 
 
-### See Also
+**See Also:**
 - [- [@success](/reference/sharpmush-help/pennconf/#success)
 - [@failure](/reference/sharpmush-help/penncmd/#failure)
 - [goto](/reference/sharpmush-help/penncmd/#goto)
@@ -331,7 +331,7 @@ For rooms, it determines whether the @success or @failure verbs are triggered wh
 For players and things, the Enter lock controls who can "enter" an ENTER_OK object, as well as who can "empty" it. It has no meaning for exits or rooms.
 
 
-### See Also
+**See Also:**
 - [- [@enter](/reference/sharpmush-help/pennconf/#enter)
 - [@efail](/reference/sharpmush-help/penncmd/#efail)
 - [ENTER_OK](/reference/sharpmush-help/pennflag/#enterok)
@@ -342,7 +342,7 @@ For players and things, the Enter lock controls who can "enter" an ENTER_OK obje
 For players, things and rooms, the Leave lock controls who can leave the object, via "leave", "@teleport" or "goto". It has no meaning for exits.
 
 
-### See Also
+**See Also:**
 - [- [@leave](/reference/sharpmush-help/pennconf/#leave)
 - [@lfail](/reference/sharpmush-help/penncmd/#lfail)
 - [leave](/reference/sharpmush-help/penncmd/#leave)
@@ -351,7 +351,7 @@ For players, things and rooms, the Leave lock controls who can leave the object,
 For rooms, the Teleport lock controls who can "@teleport" into the room, if it has the JUMP_OK flag set. It has no meaning for players, things or exits.
 
 
-### See Also
+**See Also:**
 - [- [JUMP_OK](/reference/sharpmush-help/pennconf/#jumpok)
 - [@teleport](/reference/sharpmush-help/penncmd/#teleport)
 - [@lock](/reference/sharpmush-help/penncmd/#lock)
@@ -366,14 +366,14 @@ For rooms, the Teleport lock controls who can "@teleport" into the room, if it h
 For players and things, controls who may "follow" the object. Has no meaning for rooms or exits.
 
 
-### See Also
+**See Also:**
 - [FAILURE](/reference/sharpmush-help/penntop/#failure)
 
 ### Forward Lock
 For players, things and rooms, controls who can forward sound to an object, via @forwardlist or @debugforwardlist. Meaningless for exits.
 
 
-### See Also
+**See Also:**
 - [- [@forwardlist](/reference/sharpmush-help/pennconf/#forwardlist)
 - [@debugforwardlist](/reference/sharpmush-help/penncmd/#debugforwardlist)
 - [@lock/mailforward]
@@ -382,7 +382,7 @@ For players, things and rooms, controls who can forward sound to an object, via 
 For rooms, only objects which pass this lock will be sent to the rooms Drop-To. Has no meaning for players, things or exits.
 
 
-### See Also
+**See Also:**
 - [- [DROP-TOS](/reference/sharpmush-help/pennconf/#drop-tos)
 - [drop](/reference/sharpmush-help/penncmd/#drop)
 - [empty](/reference/sharpmush-help/penncmd/#empty)
@@ -398,7 +398,7 @@ For rooms, only objects which pass this lock will be sent to the rooms Drop-To. 
 For players, things and rooms, this lock controls who may "use" the object. You must also pass an object's Use lock to trigger $-commands or ^-listens on it (as well as the Command/Listen lock; see below). When an object is used as a Channel Mogrifier, only players who pass the object's Use lock will have their speech on the channel mogrified. Has no meaning for exits.
 
 
-### See Also
+**See Also:**
 - [- [@use](/reference/sharpmush-help/pennconf/#use)
 - [@ufail](/reference/sharpmush-help/penncmd/#ufail)
 - [use](/reference/sharpmush-help/penncmd/#use)
@@ -410,7 +410,7 @@ For players, things and rooms, this lock controls who may "use" the object. You 
 For players, things and rooms, you must pass this lock (as well as the Use lock) to trigger $-commands on the object. Meaningless for exits.
 
 
-### See Also
+**See Also:**
 - [- [$-commands]
 - [FAILURE](/reference/sharpmush-help/penntop/#failure)
 
@@ -418,7 +418,7 @@ For players, things and rooms, you must pass this lock (as well as the Use lock)
 For players, things and rooms, you must pass this lock (as well as the Use lock) to trigger ^-listen patterns on the object when it's set MONITOR. Meaningless for exits.
 
 
-### See Also
+**See Also:**
 - [^]
 
 ## @LOCK/PAGE
@@ -431,7 +431,7 @@ For players, things and rooms, you must pass this lock (as well as the Use lock)
 For players, things and rooms, you must pass this lock to page or @pemit to the object, or @remit inside it. Meaningless for exits.
 
 
-### See Also
+**See Also:**
 - [- [FAILURE](/reference/sharpmush-help/pennconf/#failure)
 - [@haven](/reference/sharpmush-help/penncmd/#haven)
 
@@ -439,14 +439,14 @@ For players, things and rooms, you must pass this lock to page or @pemit to the 
 Controls who can speak (via say, pose, @*emit or teach) inside an object. Meaningless for exits.
 
 
-### See Also
+**See Also:**
 - [FAILURE](/reference/sharpmush-help/penntop/#failure)
 
 ### Mail Lock
 Controls who can send @mail to this object.
 
 
-### See Also
+**See Also:**
 - [- [@mail](/reference/sharpmush-help/pennmail/#mail)
 - [FAILURE](/reference/sharpmush-help/penntop/#failure)
 
@@ -454,7 +454,7 @@ Controls who can send @mail to this object.
 Controls who can forward @mail to this object via @mailforward.
 
 
-### See Also
+**See Also:**
 - [- [@mail](/reference/sharpmush-help/pennmail/#mail)
 - [@mailforward](/reference/sharpmush-help/penncmd/#mailforward)
 - [@lock/forward]
@@ -474,7 +474,7 @@ Controls whose indirect speech you'll hear (from say, pose, channels, @emit, etc
 For players and things, controls who can drop the object. Has no meaning for exits. On rooms, has the same meaning as @lock/dropin.
 
 
-### See Also
+**See Also:**
 - [- [drop](/reference/sharpmush-help/pennconf/#drop)
 - [empty](/reference/sharpmush-help/penncmd/#empty)
 
@@ -497,7 +497,7 @@ Controls what may be given to this object.
 Controls who can take from this container.
 
 
-### See Also
+**See Also:**
 - [- [give](/reference/sharpmush-help/pennconf/#give)
 - [buy](/reference/sharpmush-help/penncmd/#buy)
 - [@lock/basic]
@@ -511,7 +511,7 @@ Controls who can take from this container.
 These are lock versions of @filter and @infilter, respectively. Anyone who fails to pass the lock will have their speech filtered. The sound being made is passed to evaluation locks as %0.
 
 
-### See Also
+**See Also:**
 - [- [@filter](/reference/sharpmush-help/pennconf/#filter)
 - [@infilter](/reference/sharpmush-help/penncmd/#infilter)
 
@@ -523,14 +523,14 @@ These are lock versions of @filter and @infilter, respectively. Anyone who fails
 Allows objects which would not normally control something to do so. Does not work for players.
 
 
-### See Also
+**See Also:**
 - [CONTROL](/reference/sharpmush-help/penntop/#control)
 
 ### Destroy Lock
 Limits who can @destroy a DESTROY_OK object.
 
 
-### See Also
+**See Also:**
 - [- [@destroy](/reference/sharpmush-help/pennconf/#destroy)
 - [DESTROY_OK](/reference/sharpmush-help/pennflag/#destroyok)
 
@@ -538,7 +538,7 @@ Limits who can @destroy a DESTROY_OK object.
 Limits who can examine a VISUAL object.
 
 
-### See Also
+**See Also:**
 - [- [examine](/reference/sharpmush-help/pennconf/#examine)
 - [VISUAL](/reference/sharpmush-help/pennflag/#visual)
 
@@ -553,7 +553,7 @@ Limits who can examine a VISUAL object.
 Objects which pass a SHARED player's @lock/zone control all the objects the shared player owns. If the zone_control_zmp_only @config option is off, anything passing the @lock/zone of other objects will control everything @chzoned to the object.
 
 
-### See Also
+**See Also:**
 - [- [@chzone](/reference/sharpmush-help/pennconf/#chzone)
 - [SHARED](/reference/sharpmush-help/pennflag/#shared)
 - [ZONES](/reference/sharpmush-help/penntop/#zones)
@@ -563,7 +563,7 @@ Objects which pass a SHARED player's @lock/zone control all the objects the shar
 If set, controls who can @chzone an object to this zone.
 
 
-### See Also
+**See Also:**
 - [- [@chzone](/reference/sharpmush-help/pennconf/#chzone)
 - [ZONES](/reference/sharpmush-help/penntop/#zones)
 
@@ -571,7 +571,7 @@ If set, controls who can @chzone an object to this zone.
 If set, controls who can change the owner of this CHOWN_OK object via @chown.
 
 
-### See Also
+**See Also:**
 - [- [CHOWN_OK](/reference/sharpmush-help/pennconf/#chownok)
 - [@chown](/reference/sharpmush-help/penncmd/#chown)
 
@@ -579,7 +579,7 @@ If set, controls who can change the owner of this CHOWN_OK object via @chown.
 Controls who can @parent something to this LINK_OK object.
 
 
-### See Also
+**See Also:**
 - [- [@parent](/reference/sharpmush-help/pennconf/#parent)
 - [LINK_OK](/reference/sharpmush-help/pennflag/#linkok)
 
@@ -587,7 +587,7 @@ Controls who can @parent something to this LINK_OK object.
 Controls who can @link this unlinked exit, or who can @link an exit to this LINK_OK room/thing.
 
 
-### See Also
+**See Also:**
 - [- [@link](/reference/sharpmush-help/pennconf/#link)
 - [LINK_OK](/reference/sharpmush-help/pennflag/#linkok)
 - [LINK_ANYWHERE POWER](/reference/sharpmush-help/pennconf/#linkanywhere-power)
@@ -596,7 +596,7 @@ Controls who can @link this unlinked exit, or who can @link an exit to this LINK
 Controls who can @open an exit from this OPEN_OK room.
 
 
-### See Also
+**See Also:**
 - [- [@open](/reference/sharpmush-help/pennconf/#open)
 - [@dig](/reference/sharpmush-help/penncmd/#dig)
 - [OPEN_OK](/reference/sharpmush-help/pennconf/#openok)
@@ -615,7 +615,7 @@ User-defined locks have no hardcoded meaning. They allow you to set locks for an
 and then test it with `elock(War Hammer/wield, %#)`.
 
 
-### See Also
+**See Also:**
 - [- [elock()]
 - [valid()](/reference/sharpmush-help/pennfunc/#valid)
 - [@lock](/reference/sharpmush-help/penncmd/#lock)

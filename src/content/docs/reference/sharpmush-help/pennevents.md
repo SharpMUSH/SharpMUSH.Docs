@@ -23,7 +23,7 @@ The enactor of an event is either:
 2. #-1 for system events without an executor.
 
 
-### See Also
+**See Also:**
 - [- [event list](/reference/sharpmush-help/pennevents/#event-list)
 - [event examples](/reference/sharpmush-help/pennevents/#event-examples)
 
@@ -49,7 +49,7 @@ Broadcast: [Event Handler]: On descriptor 3, from IP '127.0.0.1', a failed conne
 ```
 
 
-### See Also
+**See Also:**
 - [event examples2](/reference/sharpmush-help/pennevents/#event-examples2)
 
 ## EVENT EXAMPLES2

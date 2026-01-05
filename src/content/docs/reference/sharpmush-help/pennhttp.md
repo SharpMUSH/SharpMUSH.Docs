@@ -30,7 +30,7 @@ Anything sent to the HTTP Handler player during evaluation of this code is inclu
 To modify the response headers, use the command `@respond`
 
 
-### See Also
+**See Also:**
 - [http2]
 
 ## HTTP2
@@ -47,13 +47,13 @@ You will very likely want to set the http_handler option in your mush.cnf file t
 By default, SharpMUSH will respond with a **404 NOT FOUND**. You will need to use `@respond` to control what is sent to the client.
 
 
-### See Also
+**See Also:**
 - [- [http examples]
 - [http sitelock]
 - [event http]
 
 
-### See Also
+**See Also:**
 - [http3]
 
 ## HTTP3
@@ -66,7 +66,7 @@ Multiple header lines will be added to the same q-register name, but %r-delimite
 HTTP Responses are limited to BUFFER_LEN in response size. Anything sent to the HTTPHandler player, whether it uses think or is `@pemitted`, is added to the response buffer.
 
 
-### See Also
+**See Also:**
 - [- [@respond](/reference/sharpmush-help/pennconf/#respond)
 - [formdecode()](/reference/sharpmush-help/pennhttp/#formdecode)
 - [json_query()](/reference/sharpmush-help/pennfunc/#jsonquery)
@@ -96,7 +96,7 @@ If an attribute exists, Penn defaults to **200 OK**, and Content-Type **"text/pl
 If `@respond` is run outside of an HTTP Context, the enactor will see "(HTTP): ..." for debugging, but it isn't buffered for output as if it was an active http request.
 
 
-### See Also
+**See Also:**
 - [- [@respond2](/reference/sharpmush-help/pennconf/#respond2)
 - [@respond3](/reference/sharpmush-help/pennhttp/#respond3)
 
@@ -183,7 +183,7 @@ Examples all assume the following:
 ```
 
 
-### See Also
+**See Also:**
 - [- [http simple]
 - [http get]
 - [http post]

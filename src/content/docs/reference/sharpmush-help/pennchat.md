@@ -18,7 +18,7 @@ To speak on channels, use the `@chat` command.
 
 There are some aliases in place for players more familiar with the MUX comsys - see [muxcomsys](/reference/sharpmush-help/pennchat/#muxcomsys) for more details.
 
-### See Also
+**See Also:**
 - [@channel](/reference/sharpmush-help/pennchat/#channel)
 - [@chat](/reference/sharpmush-help/pennchat/#chat)
 - [@cemit](/reference/sharpmush-help/pennchat/#cemit)
@@ -37,7 +37,7 @@ The `@chat` command is used to speak on channels. Everyone on the channel will s
 
 `+<channel> <message>` is short-hand for the `@chat` command.
 
-### Example
+**Example**
 ```
 > @chat pub=Hello
 <Public> Mike says, "Hello"
@@ -45,7 +45,7 @@ The `@chat` command is used to speak on channels. Everyone on the channel will s
 <Public> Mike waves
 ```
 
-### See Also
+**See Also:**
 - [@channel](/reference/sharpmush-help/pennchat/#channel)
 - [@cemit](/reference/sharpmush-help/pennchat/#cemit)
 
@@ -70,7 +70,7 @@ The chatformat attribute is evaluated when an object receives a channel message.
 
 If the channel is NO_NAME, and the speaker either has no title or the channel is also set NO_TITLE, then %3 will be "Someone".
 
-### See Also
+**See Also:**
 - [@chat](/reference/sharpmush-help/pennchat/#chat)
 - [@pageformat](/reference/sharpmush-help/penncmd/#pageformat)
 - [@message](/reference/sharpmush-help/penncmd/#message)
@@ -79,7 +79,7 @@ If the channel is NO_NAME, and the speaker either has no title or the channel is
 
 ## @CHATFORMAT2
 
-### Examples
+**Examples**
 
 Walker's preferred @chatformat, which strips all ansi out, wraps every line to your width and prefixes them with <ChannelName>:
 
@@ -128,7 +128,7 @@ or
 
 Normally, when an object attempts to speak on the channel system with @chat, using an ambiguous channel name produces an error message. With this flag set, it will instead speak on the first channel whose name is a match. Other commands in the chat system are not affected by the flag.
 
-### See Also
+**See Also:**
 - [CHAT](/reference/sharpmush-help/pennchat/#chat)
 - [@chat](/reference/sharpmush-help/pennchat/#chat)
 - [@cemit](/reference/sharpmush-help/pennchat/#cemit)
@@ -153,7 +153,7 @@ cemit() and nscemit() work the same as @cemit/silent and @nscemit/silent, respec
 
 @cemit is intended for use in writing extended chat systems. 
 
-### See Also
+**See Also:**
 - [@chat](/reference/sharpmush-help/pennchat/#chat)
 
 ## @channel
@@ -166,7 +166,7 @@ Help for `@channel` is split into a number of topics. Please see [@channel <topi
 - **Other** - Setting channel titles, recalling previous chat messages
 - **Admin** - Adding, deleting and modifying channels
 
-### See Also
+**See Also:**
 - [CHAT](/reference/sharpmush-help/pennchat/#chat)
 - [@chat](/reference/sharpmush-help/pennchat/#chat)
 - [@cemit](/reference/sharpmush-help/pennchat/#cemit)
@@ -219,7 +219,7 @@ Connect and disconnect messages across all channels you have marked with `@chann
 
 For all four of these commands, you can specify a single channel to affect, or omit *<channel>* to affect all channels you're on. To undo the gag/mute/hide, either use `@channel/<switch> [<channel>]=no` or `@channel/un<switch> [<channel>]`.
 
-### See Also
+**See Also:**
 - [@channel/who]
 - [cstatus()](/reference/sharpmush-help/pennchat/#cstatus)
 - [cowner()](/reference/sharpmush-help/pennchat/#cowner)
@@ -242,7 +242,7 @@ For all four of these commands, you can specify a single channel to affect, or o
 
 `@channel/buffer` sets the recall buffer size for *<channel>* to *<size>*. Only channel admins can do this. A size of 0 disables the recall buffer.
 
-### See Also
+**See Also:**
 - [@channel/who]
 - [@channel/privs]
 
@@ -285,7 +285,7 @@ For all four of these commands, you can specify a single channel to affect, or o
 
 `@channel/clock` manages channel locks. Only channel admins can do this. See [@channel clock](/reference/sharpmush-help/pennchat/#channel-clock) for details.
 
-### See Also
+**See Also:**
 - [@channel/who]
 - [@channel/privs]
 - [@clock](/reference/sharpmush-help/pennchat/#clock)
@@ -312,7 +312,7 @@ The Lock column shows:
 - `H=<lock>` if there's a lock on hiding
 - `(DISABLED)` if the channel is disabled
 
-### See Also
+**See Also:**
 - [@channel/who]
 - [@channel/privs]
 - [@clock](/reference/sharpmush-help/pennchat/#clock)
@@ -331,13 +331,13 @@ Available privileges:
 - **loud**: Show channel prefix even on @cemit/silent
 - **disabled**: Channel cannot be used
 
-### Examples
+**Examples**
 ```
 @channel/privs Public=no_join no_speak
 @channel/privs Admin=join speak no_hide_ok
 ```
 
-### See Also
+**See Also:**
 - [@channel/who]
 - [@channel clock](/reference/sharpmush-help/pennchat/#channel-clock)
 - [@clock](/reference/sharpmush-help/pennchat/#clock)
@@ -362,14 +362,14 @@ Only channel admins can set locks. Players must pass:
 - The speak lock to speak on the channel (if the channel has the 'speak' priv)
 - The hide lock to hide on the channel (if the channel has the 'hide_ok' priv)
 
-### Examples
+**Examples**
 ```
 @channel/clock/on Public=WIZARD
 @channel/clock/add Admin=WIZARD
 @channel/clock/hide Secret=WIZARD
 ```
 
-### See Also
+**See Also:**
 - [@lock](/reference/sharpmush-help/penncmd/#lock)
 - [locks](/reference/sharpmush-help/penncmd/#locks)
 - [@channel privs](/reference/sharpmush-help/pennchat/#channel-privs)
@@ -412,7 +412,7 @@ These functions provide information about channels:
 
 - **cemit()** and **nscemit()**: Emit *<message>* on *<channel>*. See [@cemit](/reference/sharpmush-help/pennchat/#cemit).
 
-### Examples
+**Examples**
 ```
 > think channels(#123,on)
 Public Admin
@@ -426,7 +426,7 @@ COMBINE
 ON COMBINE
 ```
 
-### See Also
+**See Also:**
 - [@channel](/reference/sharpmush-help/pennchat/#channel)
 - [@chat](/reference/sharpmush-help/pennchat/#chat)
 - [@cemit](/reference/sharpmush-help/pennchat/#cemit)
@@ -445,7 +445,7 @@ SharpMUSH provides some aliases for players more familiar with the MUX comsys:
 
 Note that SharpMUSH does not actually support channel aliases - the above commands work by looking up the real channel name. You must use enough of the channel name to uniquely identify it.
 
-### See Also
+**See Also:**
 - [@channel](/reference/sharpmush-help/pennchat/#channel)
 - [@chat](/reference/sharpmush-help/pennchat/#chat)
 - [CHAN_USEFIRSTMATCH](/reference/sharpmush-help/pennchat/#chanusefirstmatch)

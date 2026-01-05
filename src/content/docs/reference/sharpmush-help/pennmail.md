@@ -29,7 +29,7 @@ A *<player-list>* is a space-separated list of recipients, which may be:
 * An alias name (see [@malias](/reference/sharpmush-help/pennmail/#malias))
 
 
-### See Also
+**See Also:**
 - [- [mail-sending](/reference/sharpmush-help/pennmail/#mail-sending)
 - [mail-reading](/reference/sharpmush-help/pennmail/#mail-reading)
 - [mail-folders](/reference/sharpmush-help/pennmail/#mail-folders)
@@ -149,7 +149,7 @@ The MUSH mail system allows each player 16 folders, numbered from 0 to 15. Mail 
 * This command moves all messages in *<msg-list>* from the current folder to a new folder, *<folder#>*.
 
 
-### See Also
+**See Also:**
 - [@mailfilter](/reference/sharpmush-help/pennmail/#mailfilter)
 
 ## MAIL-REVIEWING
@@ -195,7 +195,7 @@ Example: Filter urgent messages into folder 1
 ```
 
 
-### See Also
+**See Also:**
 - [mail-folders](/reference/sharpmush-help/pennmail/#mail-folders)
 
 ## @MAILSIGNATURE
@@ -211,7 +211,7 @@ Example:
 ```
 
 
-### See Also
+**See Also:**
 - [@mail](/reference/sharpmush-help/pennmail/#mail)
 - [mail-sending](/reference/sharpmush-help/pennmail/#mail-sending)
 
@@ -246,7 +246,7 @@ The @malias command is used to create, view, and manipulate @mail aliases, or li
 `@malias` with a single argument (the name of an alias) lists the members of that alias, if you're allowed to see them. Other forms of the same command are `@malias/members <alias>` or `@malias/who <alias>`
 
 
-### See Also
+**See Also:**
 - [@malias2](/reference/sharpmush-help/pennmail/#malias2)
 
 ## @MALIAS2
@@ -265,7 +265,7 @@ The first form above creates a new alias for the given list of players.
 `@malias/destroy` destroys the alias completely.
 
 
-### See Also
+**See Also:**
 - [@malias3](/reference/sharpmush-help/pennmail/#malias3)
 
 ## @MALIAS3
@@ -281,7 +281,7 @@ The first form above creates a new alias for the given list of players.
 `@malias/remove` removes players from the alias. If a player is on the alias more than once, a single remove will remove only one instance of that player.
 
 
-### See Also
+**See Also:**
 - [@malias4](/reference/sharpmush-help/pennmail/#malias4)
 
 ## @MALIAS4
@@ -298,7 +298,7 @@ An empty permission list allows any player. The permission list may also be a sp
 By default, the owner and alias members may see and use the alias, but only the owner may list the members. Note that admin may always list aliases and their members, regardless of these settings, but are treated like anyone else when trying to @mail with an alias.
 
 
-### See Also
+**See Also:**
 - [@malias5](/reference/sharpmush-help/pennmail/#malias5)
 
 ## @MALIAS5
@@ -344,7 +344,7 @@ Available functions:
 folderstats() returns the number of read, unread, and cleared messages in a specific folder, or, if none is given, the player's current folder. Only Wizards may use forms which get other players' mail information.
 
 
-### See Also
+**See Also:**
 - [mailstats](/reference/sharpmush-help/pennmail/#mailstats)
 
 ## MAIL()
@@ -365,7 +365,7 @@ Example:
 ```
 
 
-### See Also
+**See Also:**
 - [maillist](/reference/sharpmush-help/pennmail/#maillist)
 - [mailfrom](/reference/sharpmush-help/pennmail/#mailfrom)
 
@@ -386,7 +386,7 @@ Examples:
 ```
 
 
-### See Also
+**See Also:**
 - [mail](/reference/sharpmush-help/pennmail/#mail)
 - [mailfrom](/reference/sharpmush-help/pennmail/#mailfrom)
 
@@ -406,7 +406,7 @@ Examples:
 * mailstatus() returns the mail's status characters (as per @mail/list).
 
 
-### See Also
+**See Also:**
 - [mail](/reference/sharpmush-help/pennmail/#mail)
 - [maillist](/reference/sharpmush-help/pennmail/#maillist)
 
@@ -430,7 +430,7 @@ Example:
 ```
 
 
-### See Also
+**See Also:**
 - [folderstats](/reference/sharpmush-help/pennconf/#folderstats)
 
 ## MAILSEND()

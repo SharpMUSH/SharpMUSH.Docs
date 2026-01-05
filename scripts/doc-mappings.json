@@ -1,7 +1,8 @@
 {
   "_metadata": {
-    "generatedAt": "2025-10-21T20:04:17.972Z",
+    "generatedAt": "2026-01-05T19:59:42.262Z",
     "sourceFiles": [
+      "markdown.md",
       "pennattr.md",
       "pennchat.md",
       "penncmd.md",
@@ -16,38 +17,37 @@
       "pennpueb.md",
       "penntop.md"
     ],
-    "totalMappings": 1567
+    "totalMappings": 1566
   },
   "mappings": {
+    "RENDERMARKDOWN()": "markdown",
+    "RENDERMARKDOWNCUSTOM()": "markdown",
     "ATTRIBUTE FLAGS": "pennattr",
     "ATTRIBUTE FLAGS2": "pennattr",
     "ATTRIBUTE FLAGS3": "pennattr",
-    "SEE ALSO": "penntop",
     "ATTRIBUTE TREES": "pennattr",
     "ATTR TREES": "pennattr",
     "ATTRIB TREES": "pennattr",
     "ATTRIBUTE TREES2": "pennattr",
+    "\\`2": "pennattr",
     "ATTR TREES2": "pennattr",
     "ATTRIB TREES2": "pennattr",
-    "\\`2": "pennattr",
     "ATTRIBUTE TREES3": "pennattr",
+    "\\`3": "pennattr",
     "ATTR TREES3": "pennattr",
     "ATTRIB TREES3": "pennattr",
-    "\\`3": "pennattr",
     "ATTRIBUTE TREES4": "pennattr",
+    "\\`4": "pennattr",
     "ATTR TREES4": "pennattr",
     "ATTRIB TREES4": "pennattr",
-    "\\`4": "pennattr",
     "CHAT": "pennchat",
     "CHAT SYSTEM": "pennchat",
     "COMSYS": "pennchat",
     "CHANNELS": "pennchat",
     "@CHAT": "pennchat",
-    "EXAMPLE": "pennchat",
     "@CHATFORMAT": "pennchat",
     "REGISTERS": "penntop",
     "@CHATFORMAT2": "pennchat",
-    "EXAMPLES": "pennchat",
     "@CHATFORMAT3": "pennchat",
     "CHAN_USEFIRSTMATCH": "pennchat",
     "@CEMIT": "pennchat",
@@ -1588,6 +1588,16 @@
     "UNICODE": "penntop"
   },
   "index": {
+    "markdown": [
+      {
+        "original": "RENDERMARKDOWN()",
+        "normalized": "RENDERMARKDOWN()"
+      },
+      {
+        "original": "RENDERMARKDOWNCUSTOM()",
+        "normalized": "RENDERMARKDOWNCUSTOM()"
+      }
+    ],
     "pennattr": [
       {
         "original": "ATTRIBUTE FLAGS",
@@ -1600,10 +1610,6 @@
       {
         "original": "ATTRIBUTE FLAGS3",
         "normalized": "ATTRIBUTE FLAGS3"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "ATTRIBUTE TREES",
@@ -1622,6 +1628,10 @@
         "normalized": "ATTRIBUTE TREES2"
       },
       {
+        "original": "\\`2",
+        "normalized": "\\`2"
+      },
+      {
         "original": "ATTR TREES2",
         "normalized": "ATTR TREES2"
       },
@@ -1630,16 +1640,12 @@
         "normalized": "ATTRIB TREES2"
       },
       {
-        "original": "\\`2",
-        "normalized": "\\`2"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ATTRIBUTE TREES3",
         "normalized": "ATTRIBUTE TREES3"
+      },
+      {
+        "original": "\\`3",
+        "normalized": "\\`3"
       },
       {
         "original": "ATTR TREES3",
@@ -1650,12 +1656,12 @@
         "normalized": "ATTRIB TREES3"
       },
       {
-        "original": "\\`3",
-        "normalized": "\\`3"
-      },
-      {
         "original": "ATTRIBUTE TREES4",
         "normalized": "ATTRIBUTE TREES4"
+      },
+      {
+        "original": "\\`4",
+        "normalized": "\\`4"
       },
       {
         "original": "ATTR TREES4",
@@ -1664,10 +1670,6 @@
       {
         "original": "ATTRIB TREES4",
         "normalized": "ATTRIB TREES4"
-      },
-      {
-        "original": "\\`4",
-        "normalized": "\\`4"
       }
     ],
     "pennchat": [
@@ -1688,20 +1690,8 @@
         "normalized": "CHANNELS"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@chat",
         "normalized": "@CHAT"
-      },
-      {
-        "original": "Example",
-        "normalized": "EXAMPLE"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@CHATFORMAT",
@@ -1712,16 +1702,8 @@
         "normalized": "REGISTERS"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@CHATFORMAT2",
         "normalized": "@CHATFORMAT2"
-      },
-      {
-        "original": "Examples",
-        "normalized": "EXAMPLES"
       },
       {
         "original": "@CHATFORMAT3",
@@ -1730,10 +1712,6 @@
       {
         "original": "CHAN_USEFIRSTMATCH",
         "normalized": "CHAN_USEFIRSTMATCH"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@CEMIT",
@@ -1752,16 +1730,8 @@
         "normalized": "NSCEMIT()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@channel",
         "normalized": "@CHANNEL"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@CHANNEL JOINING",
@@ -1828,10 +1798,6 @@
         "normalized": "@CHANNEL/UNCOMBINE"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@CHANNEL OTHER",
         "normalized": "@CHANNEL OTHER"
       },
@@ -1846,10 +1812,6 @@
       {
         "original": "@channel/buffer",
         "normalized": "@CHANNEL/BUFFER"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@CHANNEL ADMIN",
@@ -1892,28 +1854,12 @@
         "normalized": "@CHANNEL/CLOCK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@CHANNEL LIST",
         "normalized": "@CHANNEL LIST"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@CHANNEL PRIVS",
         "normalized": "@CHANNEL PRIVS"
-      },
-      {
-        "original": "Examples",
-        "normalized": "EXAMPLES"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@CHANNEL CLOCK",
@@ -1922,14 +1868,6 @@
       {
         "original": "@clock",
         "normalized": "@CLOCK"
-      },
-      {
-        "original": "Examples",
-        "normalized": "EXAMPLES"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "CHANNEL FUNCTIONS",
@@ -1960,20 +1898,8 @@
         "normalized": "NSCEMIT()"
       },
       {
-        "original": "Examples",
-        "normalized": "EXAMPLES"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "MUXCOMSYS",
         "normalized": "MUXCOMSYS"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       }
     ],
     "penncmd": [
@@ -1984,10 +1910,6 @@
       {
         "original": "@-ATTRIBUTES",
         "normalized": "@-ATTRIBUTES"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@-BUILDING",
@@ -2002,48 +1924,24 @@
         "normalized": "@-WIZARD"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "]2",
         "normalized": "]2"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@@",
         "normalized": "@@"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@aclone",
         "normalized": "@ACLONE"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@aconnect",
         "normalized": "@ACONNECT"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@amail",
         "normalized": "@AMAIL"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@adescribe",
@@ -2054,24 +1952,12 @@
         "normalized": "@ODESCRIBE"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@adestroy",
         "normalized": "@ADESTROY"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@adisconnect",
         "normalized": "@ADISCONNECT"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@adrop",
@@ -2086,10 +1972,6 @@
         "normalized": "@DROP"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@aefail",
         "normalized": "@AEFAIL"
       },
@@ -2100,10 +1982,6 @@
       {
         "original": "@efail",
         "normalized": "@EFAIL"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@aufail",
@@ -2118,10 +1996,6 @@
         "normalized": "@UFAIL"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@afailure",
         "normalized": "@AFAILURE"
       },
@@ -2132,10 +2006,6 @@
       {
         "original": "@failure",
         "normalized": "@FAILURE"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@follow",
@@ -2150,10 +2020,6 @@
         "normalized": "@AFOLLOW"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@unfollow",
         "normalized": "@UNFOLLOW"
       },
@@ -2166,10 +2032,6 @@
         "normalized": "@AUNFOLLOW"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@ahear",
         "normalized": "@AHEAR"
       },
@@ -2180,10 +2042,6 @@
       {
         "original": "@aahear",
         "normalized": "@AAHEAR"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@leave",
@@ -2202,10 +2060,6 @@
         "normalized": "@ALEAVE"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@lfail",
         "normalized": "@LFAIL"
       },
@@ -2218,16 +2072,8 @@
         "normalized": "@ALFAIL"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@alias",
         "normalized": "@ALIAS"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@move",
@@ -2246,10 +2092,6 @@
         "normalized": "@AMOVE"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@aenter",
         "normalized": "@AENTER"
       },
@@ -2266,10 +2108,6 @@
         "normalized": "@OXENTER"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@apayment",
         "normalized": "@APAYMENT"
       },
@@ -2280,10 +2118,6 @@
       {
         "original": "@opayment",
         "normalized": "@OPAYMENT"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@atport",
@@ -2302,10 +2136,6 @@
         "normalized": "@OXTPORT"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@atrchown",
         "normalized": "@ATRCHOWN"
       },
@@ -2314,20 +2144,12 @@
         "normalized": "@ATTRCHOWN"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@atrlock",
         "normalized": "@ATRLOCK"
       },
       {
         "original": "@attrlock",
         "normalized": "@ATTRLOCK"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@asuccess",
@@ -2342,10 +2164,6 @@
         "normalized": "@OSUCCESS"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@attribute",
         "normalized": "@ATTRIBUTE"
       },
@@ -2356,10 +2174,6 @@
       {
         "original": "@attribute3",
         "normalized": "@ATTRIBUTE3"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@ause",
@@ -2374,24 +2188,12 @@
         "normalized": "@OUSE"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@away",
         "normalized": "@AWAY"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@boot",
         "normalized": "@BOOT"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@break",
@@ -2400,10 +2202,6 @@
       {
         "original": "@assert",
         "normalized": "@ASSERT"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@break2",
@@ -2422,10 +2220,6 @@
         "normalized": "@RUNOUT"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "charges2",
         "normalized": "CHARGES2"
       },
@@ -2438,16 +2232,8 @@
         "normalized": "@CHOWN"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@chownall",
         "normalized": "@CHOWNALL"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@chzone",
@@ -2458,24 +2244,12 @@
         "normalized": "@CHZONE2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@chzoneall",
         "normalized": "@CHZONEALL"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@clone",
         "normalized": "@CLONE"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@command",
@@ -2486,20 +2260,12 @@
         "normalized": "@COMMAND2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@command3",
         "normalized": "@COMMAND3"
       },
       {
         "original": "@comment",
         "normalized": "@COMMENT"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@config",
@@ -2510,10 +2276,6 @@
         "normalized": "@CONFORMAT"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@include",
         "normalized": "@INCLUDE"
       },
@@ -2522,56 +2284,28 @@
         "normalized": "@INCLUDE2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@invformat",
         "normalized": "@INVFORMAT"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@descformat",
         "normalized": "@DESCFORMAT"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@idescformat",
         "normalized": "@IDESCFORMAT"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@nameaccent",
         "normalized": "@NAMEACCENT"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@nameformat",
         "normalized": "@NAMEFORMAT"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@cost",
         "normalized": "@COST"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@cpattr",
@@ -2582,16 +2316,8 @@
         "normalized": "@MVATTR"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@create",
         "normalized": "@CREATE"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@dbck",
@@ -2610,20 +2336,12 @@
         "normalized": "@DECOMPILE3"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@describe",
         "normalized": "@DESCRIBE"
       },
       {
         "original": "@desc",
         "normalized": "@DESC"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@destroy",
@@ -2638,20 +2356,12 @@
         "normalized": "@NUKE"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@destroy2",
         "normalized": "@DESTROY2"
       },
       {
         "original": "DESTRUCTION",
         "normalized": "DESTRUCTION"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@undestroy",
@@ -2662,10 +2372,6 @@
         "normalized": "@UNRECYCLE"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@dig",
         "normalized": "@DIG"
       },
@@ -2674,16 +2380,8 @@
         "normalized": "@DIG2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@doing",
         "normalized": "@DOING"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@dolist",
@@ -2694,10 +2392,6 @@
         "normalized": "@DOLIST2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@dolist3",
         "normalized": "@DOLIST3"
       },
@@ -2706,16 +2400,8 @@
         "normalized": "@DRAIN"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@dump",
         "normalized": "@DUMP"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@ealias",
@@ -2724,10 +2410,6 @@
       {
         "original": "@lalias",
         "normalized": "@LALIAS"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@edit",
@@ -2742,10 +2424,6 @@
         "normalized": "@EDIT2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@elock",
         "normalized": "@ELOCK"
       },
@@ -2754,16 +2432,8 @@
         "normalized": "@EUNLOCK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@emit",
         "normalized": "@EMIT"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@enable",
@@ -2772,10 +2442,6 @@
       {
         "original": "@disable",
         "normalized": "@DISABLE"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@zenter",
@@ -2790,10 +2456,6 @@
         "normalized": "@AZENTER"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@zleave",
         "normalized": "@ZLEAVE"
       },
@@ -2806,48 +2468,24 @@
         "normalized": "@AZLEAVE"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@entrances",
         "normalized": "@ENTRANCES"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@exitformat",
         "normalized": "@EXITFORMAT"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@HTTP",
         "normalized": "@HTTP"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@firstexit",
         "normalized": "@FIRSTEXIT"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@filter",
         "normalized": "@FILTER"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@filter2",
@@ -2858,10 +2496,6 @@
         "normalized": "@FIND"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@forwardlist",
         "normalized": "@FORWARDLIST"
       },
@@ -2870,20 +2504,12 @@
         "normalized": "FORWARDLIST"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@debugforwardlist",
         "normalized": "@DEBUGFORWARDLIST"
       },
       {
         "original": "debugforwardlist",
         "normalized": "DEBUGFORWARDLIST"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@force",
@@ -2898,16 +2524,8 @@
         "normalized": "@FORCE3"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@flag",
         "normalized": "@FLAG"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@flag2",
@@ -2934,16 +2552,8 @@
         "normalized": "@FUNCTION4"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@grep",
         "normalized": "@GREP"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@halt",
@@ -2954,24 +2564,12 @@
         "normalized": "@ALLHALT"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@haven",
         "normalized": "@HAVEN"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@hide",
         "normalized": "@HIDE"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@idescribe",
@@ -2984,10 +2582,6 @@
       {
         "original": "@aidescribe",
         "normalized": "@AIDESCRIBE"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@hook",
@@ -3022,16 +2616,8 @@
         "normalized": "HUH_COMMAND"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@idle",
         "normalized": "@IDLE"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@if",
@@ -3046,10 +2632,6 @@
         "normalized": "@SKIP"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@if2",
         "normalized": "@IF2"
       },
@@ -3058,48 +2640,24 @@
         "normalized": "@INFILTER"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@inprefix",
         "normalized": "@INPREFIX"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@kick",
         "normalized": "@KICK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@lemit",
         "normalized": "@LEMIT"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@list",
         "normalized": "@LIST"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@link",
         "normalized": "@LINK"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@destination",
@@ -3114,20 +2672,12 @@
         "normalized": "VARIABLE EXITS"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@listen",
         "normalized": "@LISTEN"
       },
       {
         "original": "@listen2",
         "normalized": "@LISTEN2"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "LOCKING",
@@ -3142,40 +2692,20 @@
         "normalized": "@LOCK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@lset",
         "normalized": "@LSET"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@log",
         "normalized": "@LOG"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@logwipe",
         "normalized": "@LOGWIPE"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@message",
         "normalized": "@MESSAGE"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@message2",
@@ -3188,10 +2718,6 @@
       {
         "original": "@moniker",
         "normalized": "@MONIKER"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@motd",
@@ -3214,10 +2740,6 @@
         "normalized": "@NAME"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@ONAME",
         "normalized": "@ONAME"
       },
@@ -3226,16 +2748,8 @@
         "normalized": "@ANAME"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@newpassword",
         "normalized": "@NEWPASSWORD"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@notify",
@@ -3244,10 +2758,6 @@
       {
         "original": "@notify2",
         "normalized": "@NOTIFY2"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@nspemit",
@@ -3278,16 +2788,8 @@
         "normalized": "@NSPROMPT"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@oemit",
         "normalized": "@OEMIT"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@oemit2",
@@ -3298,24 +2800,12 @@
         "normalized": "@OPEN"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@parent",
         "normalized": "@PARENT"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@password",
         "normalized": "@PASSWORD"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@pageformat",
@@ -3324,10 +2814,6 @@
       {
         "original": "@outpageformat",
         "normalized": "@OUTPAGEFORMAT"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@pageformat2",
@@ -3350,10 +2836,6 @@
         "normalized": "@ARECEIVE"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@give",
         "normalized": "@GIVE"
       },
@@ -3366,32 +2848,16 @@
         "normalized": "@AGIVE"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@pcreate",
         "normalized": "@PCREATE"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@prompt",
         "normalized": "@PROMPT"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "PROMPT_NEWLINES",
         "normalized": "PROMPT_NEWLINES"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@pemit",
@@ -3402,32 +2868,16 @@
         "normalized": "@PEMIT2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@poll",
         "normalized": "@POLL"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@poor",
         "normalized": "@POOR"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@power",
         "normalized": "@POWER"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@power2",
@@ -3442,10 +2892,6 @@
         "normalized": "@PREFIX"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@ps",
         "normalized": "@PS"
       },
@@ -3454,16 +2900,8 @@
         "normalized": "@PS2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@purge",
         "normalized": "@PURGE"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@quota",
@@ -3482,32 +2920,16 @@
         "normalized": "@ALLQUOTA"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@readcache",
         "normalized": "@READCACHE"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@remit",
         "normalized": "@REMIT"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@retry",
         "normalized": "@RETRY"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@retry2",
@@ -3518,16 +2940,8 @@
         "normalized": "@RESTART"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@scan",
         "normalized": "@SCAN"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@search",
@@ -3546,20 +2960,12 @@
         "normalized": "@SEARCH4"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@search5",
         "normalized": "@SEARCH5"
       },
       {
         "original": "@set",
         "normalized": "@SET"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "ATTRIB_SET",
@@ -3570,16 +2976,8 @@
         "normalized": "@_"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@sex",
         "normalized": "@SEX"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@shutdown",
@@ -3588,10 +2986,6 @@
       {
         "original": "@sitelock",
         "normalized": "@SITELOCK"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@sitelock2",
@@ -3614,48 +3008,24 @@
         "normalized": "SOCKSET"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "COLORSTYLE",
         "normalized": "COLORSTYLE"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@SPEECHMOD",
         "normalized": "@SPEECHMOD"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@mapsql",
         "normalized": "@MAPSQL"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@sql",
         "normalized": "@SQL"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@startup",
         "normalized": "@STARTUP"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@stats",
@@ -3664,10 +3034,6 @@
       {
         "original": "@sweep",
         "normalized": "@SWEEP"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@switch",
@@ -3680,10 +3046,6 @@
       {
         "original": "@switch2",
         "normalized": "@SWITCH2"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@switch3",
@@ -3702,20 +3064,12 @@
         "normalized": "@TELEPORT2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@trigger",
         "normalized": "@TRIGGER"
       },
       {
         "original": "@trigger2",
         "normalized": "@TRIGGER2"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@trigger3",
@@ -3730,10 +3084,6 @@
         "normalized": "@UUNLOCK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@uptime",
         "normalized": "@UPTIME"
       },
@@ -3742,32 +3092,16 @@
         "normalized": "@UPTIME2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@unlink",
         "normalized": "@UNLINK"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@unlock",
         "normalized": "@UNLOCK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@version",
         "normalized": "@VERSION"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@verb",
@@ -3776,10 +3110,6 @@
       {
         "original": "@verb2",
         "normalized": "@VERB2"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@verb3",
@@ -3792,10 +3122,6 @@
       {
         "original": "@wait",
         "normalized": "@WAIT"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@wait2",
@@ -3818,16 +3144,8 @@
         "normalized": "@WIZWALL"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@warnings",
         "normalized": "@WARNINGS"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@warnings2",
@@ -3842,16 +3160,8 @@
         "normalized": "@WCHECK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@whereis",
         "normalized": "@WHEREIS"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@wipe",
@@ -3860,10 +3170,6 @@
       {
         "original": "@zemit",
         "normalized": "@ZEMIT"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "ahelp",
@@ -3878,10 +3184,6 @@
         "normalized": "BRIEF"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "cd",
         "normalized": "CD"
       },
@@ -3892,10 +3194,6 @@
       {
         "original": "cv",
         "normalized": "CV"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "OUTPUTPREFIX",
@@ -3910,24 +3208,12 @@
         "normalized": "IDLE"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "teach",
         "normalized": "TEACH"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "drop",
         "normalized": "DROP"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "enter",
@@ -3938,40 +3224,20 @@
         "normalized": "EXAMINE"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "follow",
         "normalized": "FOLLOW"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "dismiss",
         "normalized": "DISMISS"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "desert",
         "normalized": "DESERT"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "empty",
         "normalized": "EMPTY"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "get",
@@ -3980,10 +3246,6 @@
       {
         "original": "take",
         "normalized": "TAKE"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@buy",
@@ -3998,32 +3260,16 @@
         "normalized": "@OBUY"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@pricelist",
         "normalized": "@PRICELIST"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "buy",
         "normalized": "BUY"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "give",
         "normalized": "GIVE"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "go",
@@ -4038,32 +3284,16 @@
         "normalized": "MOVE"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "INFO",
         "normalized": "INFO"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "inventory",
         "normalized": "INVENTORY"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "leave",
         "normalized": "LEAVE"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "LOGOUT",
@@ -4082,10 +3312,6 @@
         "normalized": "LOOK2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "news",
         "normalized": "NEWS"
       },
@@ -4098,20 +3324,12 @@
         "normalized": "PAGE2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "pose",
         "normalized": "POSE"
       },
       {
         "original": "semipose",
         "normalized": "SEMIPOSE"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "pose2",
@@ -4122,24 +3340,12 @@
         "normalized": "SAY"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "score",
         "normalized": "SCORE"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "think",
         "normalized": "THINK"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "QUIT",
@@ -4150,40 +3356,20 @@
         "normalized": "UNFOLLOW"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "use",
         "normalized": "USE"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "WARN_ON_MISSING",
         "normalized": "WARN_ON_MISSING"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "UNIMPLEMENTED_COMMAND",
         "normalized": "UNIMPLEMENTED_COMMAND"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "whisper",
         "normalized": "WHISPER"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "WHO",
@@ -4198,24 +3384,12 @@
         "normalized": "WHO2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "SESSION",
         "normalized": "SESSION"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "with",
         "normalized": "WITH"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "socket commands",
@@ -4226,16 +3400,8 @@
         "normalized": "MSSP-REQUEST"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@SUGGEST",
         "normalized": "@SUGGEST"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       }
     ],
     "penncode": [
@@ -4364,16 +3530,8 @@
         "normalized": "EVENT"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "EVENT EXAMPLES",
         "normalized": "EVENT EXAMPLES"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "EVENT EXAMPLES2",
@@ -4430,10 +3588,6 @@
         "normalized": "FLAGS2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "FLAG LIST",
         "normalized": "FLAG LIST"
       },
@@ -4446,88 +3600,44 @@
         "normalized": "ABODE"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ANSI",
         "normalized": "ANSI"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "AUDIBLE",
         "normalized": "AUDIBLE"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "TRACK_MONEY",
         "normalized": "TRACK_MONEY"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "CHOWN_OK",
         "normalized": "CHOWN_OK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "CLOUDY",
         "normalized": "CLOUDY"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "COLOR",
         "normalized": "COLOR"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "XTERM256",
         "normalized": "XTERM256"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "CONNECTED",
         "normalized": "CONNECTED"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "DARK",
         "normalized": "DARK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "DEBUG",
         "normalized": "DEBUG"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "DEBUG2",
@@ -4538,24 +3648,12 @@
         "normalized": "DESTROY_OK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ENTER_OK",
         "normalized": "ENTER_OK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "FIXED",
         "normalized": "FIXED"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "FLOATING",
@@ -4566,32 +3664,16 @@
         "normalized": "GAGGED"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "GOING",
         "normalized": "GOING"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "HALTED",
         "normalized": "HALTED"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "HAVEN",
         "normalized": "HAVEN"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "INHERIT",
@@ -4602,10 +3684,6 @@
         "normalized": "JUMP_OK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "KEEPALIVE",
         "normalized": "KEEPALIVE"
       },
@@ -4614,24 +3692,12 @@
         "normalized": "LIGHT"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LINK_OK",
         "normalized": "LINK_OK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "MONITOR",
         "normalized": "MONITOR"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "MYOPIC",
@@ -4640,10 +3706,6 @@
       {
         "original": "NOSPOOF",
         "normalized": "NOSPOOF"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "OPAQUE",
@@ -4658,20 +3720,12 @@
         "normalized": "PUPPET"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "QUIET",
         "normalized": "QUIET"
       },
       {
         "original": "SAFE",
         "normalized": "SAFE"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "SHARED",
@@ -4686,16 +3740,8 @@
         "normalized": "TRANSPARENT"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "UNFINDABLE",
         "normalized": "UNFINDABLE"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "UNINSPECTED",
@@ -4706,24 +3752,12 @@
         "normalized": "VERBOSE"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "VISUAL",
         "normalized": "VISUAL"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "WIZARD",
         "normalized": "WIZARD"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       }
     ],
     "pennfunc": [
@@ -4740,10 +3774,6 @@
         "normalized": "FUNCTIONS2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "FUNCTION LIST",
         "normalized": "FUNCTION LIST"
       },
@@ -4756,10 +3786,6 @@
         "normalized": "ATTRIBUTE FUNCTIONS"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "Bitwise functions",
         "normalized": "BITWISE FUNCTIONS"
       },
@@ -4768,16 +3794,8 @@
         "normalized": "BOOLEAN FUNCTIONS"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "Communication functions",
         "normalized": "COMMUNICATION FUNCTIONS"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "Connection functions",
@@ -4788,48 +3806,24 @@
         "normalized": "DBREF FUNCTIONS"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "Information functions",
         "normalized": "INFORMATION FUNCTIONS"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "List functions",
         "normalized": "LIST FUNCTIONS"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "Math functions",
         "normalized": "MATH FUNCTIONS"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "Vector functions",
         "normalized": "VECTOR FUNCTIONS"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "Regular expression functions",
         "normalized": "REGULAR EXPRESSION FUNCTIONS"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "SQL functions",
@@ -4840,16 +3834,8 @@
         "normalized": "STRING FUNCTIONS"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "Time functions",
         "normalized": "TIME FUNCTIONS"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "Utility functions",
@@ -4864,24 +3850,12 @@
         "normalized": "NULL()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ABS()",
         "normalized": "ABS()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ACCENT()",
         "normalized": "ACCENT()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "ACCENTS",
@@ -4904,32 +3878,16 @@
         "normalized": "ACCNAME()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ACOS()",
         "normalized": "ACOS()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "ADD()",
         "normalized": "ADD()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "AFTER()",
         "normalized": "AFTER()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "ALIGN()",
@@ -4942,10 +3900,6 @@
       {
         "original": "ALIGN2",
         "normalized": "ALIGN2"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "ALIGN3",
@@ -4964,24 +3918,12 @@
         "normalized": "ALLOF()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ALPHAMAX()",
         "normalized": "ALPHAMAX()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ALPHAMIN()",
         "normalized": "ALPHAMIN()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "AND()",
@@ -4992,10 +3934,6 @@
         "normalized": "CAND()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ANDFLAGS()",
         "normalized": "ANDFLAGS()"
       },
@@ -5004,24 +3942,12 @@
         "normalized": "ANDLFLAGS()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ANDLPOWERS()",
         "normalized": "ANDLPOWERS()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ANSI()",
         "normalized": "ANSI()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "ANSI2",
@@ -5040,20 +3966,12 @@
         "normalized": "%A"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ART()",
         "normalized": "ART()"
       },
       {
         "original": "ASIN()",
         "normalized": "ASIN()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "ATAN()",
@@ -5064,32 +3982,16 @@
         "normalized": "ATAN2()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ATRLOCK()",
         "normalized": "ATRLOCK()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "ATTRIB_SET()",
         "normalized": "ATTRIB_SET()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "BAND()",
         "normalized": "BAND()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "BASECONV()",
@@ -5104,10 +4006,6 @@
         "normalized": "BEFORE()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "BENCHMARK()",
         "normalized": "BENCHMARK()"
       },
@@ -5120,48 +4018,24 @@
         "normalized": "BNAND()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "BNOT()",
         "normalized": "BNOT()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "BOR()",
         "normalized": "BOR()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "BOUND()",
         "normalized": "BOUND()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "BXOR()",
         "normalized": "BXOR()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "CAPSTR()",
         "normalized": "CAPSTR()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "CAT()",
@@ -5176,16 +4050,8 @@
         "normalized": "CENTER()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "CHECKPASS()",
         "normalized": "CHECKPASS()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "CHR()",
@@ -5200,40 +4066,20 @@
         "normalized": "CLONE()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "CMDS()",
         "normalized": "CMDS()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "SENT()",
         "normalized": "SENT()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "RECV()",
         "normalized": "RECV()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "COLORS()",
         "normalized": "COLORS()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "colors2",
@@ -5244,16 +4090,8 @@
         "normalized": "COMP()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "CON()",
         "normalized": "CON()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "COND()",
@@ -5272,10 +4110,6 @@
         "normalized": "NCONDALL()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "CONFIG()",
         "normalized": "CONFIG()"
       },
@@ -5284,16 +4118,8 @@
         "normalized": "CONN()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "CONTROLS()",
         "normalized": "CONTROLS()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "CONVSECS()",
@@ -5304,10 +4130,6 @@
         "normalized": "CONVUTCSECS()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "CONVTIME()",
         "normalized": "CONVTIME()"
       },
@@ -5316,32 +4138,16 @@
         "normalized": "CONVUTCTIME()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "COS()",
         "normalized": "COS()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "PCREATE()",
         "normalized": "PCREATE()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "CREATE()",
         "normalized": "CREATE()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "CTIME()",
@@ -5352,48 +4158,24 @@
         "normalized": "CSECS()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ANGLES",
         "normalized": "ANGLES"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "CTU()",
         "normalized": "CTU()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "DEC()",
         "normalized": "DEC()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "DECOMPOSE()",
         "normalized": "DECOMPOSE()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "DEFAULT()",
         "normalized": "DEFAULT()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "STRDELETE()",
@@ -5404,24 +4186,12 @@
         "normalized": "DELETE()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "DIE()",
         "normalized": "DIE()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "DIG()",
         "normalized": "DIG()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "DIGEST()",
@@ -5444,24 +4214,12 @@
         "normalized": "HASH"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "DIST2D()",
         "normalized": "DIST2D()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "DIST3D()",
         "normalized": "DIST3D()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "DIV()",
@@ -5476,16 +4234,8 @@
         "normalized": "FDIV()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "DOING()",
         "normalized": "DOING()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "E()",
@@ -5496,40 +4246,20 @@
         "normalized": "EXP()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "EDEFAULT()",
         "normalized": "EDEFAULT()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "EDIT()",
         "normalized": "EDIT()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ELEMENTS()",
         "normalized": "ELEMENTS()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ELOCK()",
         "normalized": "ELOCK()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "EMIT()",
@@ -5538,10 +4268,6 @@
       {
         "original": "NSEMIT()",
         "normalized": "NSEMIT()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "ENCODE64()",
@@ -5556,10 +4282,6 @@
         "normalized": "BASE64"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ENCRYPT()",
         "normalized": "ENCRYPT()"
       },
@@ -5568,32 +4290,16 @@
         "normalized": "DECRYPT()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ENTRANCES()",
         "normalized": "ENTRANCES()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "EQ()",
         "normalized": "EQ()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ESCAPE()",
         "normalized": "ESCAPE()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "EVAL()",
@@ -5604,24 +4310,12 @@
         "normalized": "GET_EVAL()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "EXIT()",
         "normalized": "EXIT()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "EXTRACT()",
         "normalized": "EXTRACT()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "FILTER()",
@@ -5632,48 +4326,24 @@
         "normalized": "FILTERBOOL()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "FINDABLE()",
         "normalized": "FINDABLE()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "FIRST()",
         "normalized": "FIRST()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "FIRSTOF()",
         "normalized": "FIRSTOF()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "FLAGS()",
         "normalized": "FLAGS()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LFLAGS()",
         "normalized": "LFLAGS()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "FLIP()",
@@ -5684,16 +4354,8 @@
         "normalized": "REVERSE()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "FMOD()",
         "normalized": "FMOD()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "FOLD()",
@@ -5704,24 +4366,12 @@
         "normalized": "FOLD2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "FOLLOWERS()",
         "normalized": "FOLLOWERS()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "FOLLOWING()",
         "normalized": "FOLLOWING()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "FOREACH()",
@@ -5732,10 +4382,6 @@
         "normalized": "FOREACH2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "FRACTION()",
         "normalized": "FRACTION()"
       },
@@ -5744,16 +4390,8 @@
         "normalized": "FULLNAME()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "FUNCTIONS()",
         "normalized": "FUNCTIONS()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "GET()",
@@ -5764,16 +4402,8 @@
         "normalized": "XGET()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "GETPIDS()",
         "normalized": "GETPIDS()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "GRAB()",
@@ -5788,10 +4418,6 @@
         "normalized": "REGRABI()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "GRABALL()",
         "normalized": "GRABALL()"
       },
@@ -5802,10 +4428,6 @@
       {
         "original": "REGRABALLI()",
         "normalized": "REGRABALLI()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "GREP()",
@@ -5836,24 +4458,12 @@
         "normalized": "PGREP()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "GT()",
         "normalized": "GT()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "GTE()",
         "normalized": "GTE()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "HASATTR()",
@@ -5872,48 +4482,24 @@
         "normalized": "HASATTRPVAL()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "HASFLAG()",
         "normalized": "HASFLAG()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "HASPOWER()",
         "normalized": "HASPOWER()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "HASTYPE()",
         "normalized": "HASTYPE()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "HIDDEN()",
         "normalized": "HIDDEN()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "HOME()",
         "normalized": "HOME()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "HOST()",
@@ -5924,20 +4510,12 @@
         "normalized": "HOSTNAME()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "IDLE()",
         "normalized": "IDLE()"
       },
       {
         "original": "IDLESECS()",
         "normalized": "IDLESECS()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "IF()",
@@ -5948,32 +4526,16 @@
         "normalized": "IFELSE()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "INAME()",
         "normalized": "INAME()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "INC()",
         "normalized": "INC()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "INDEX()",
         "normalized": "INDEX()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "INSERT()",
@@ -5984,16 +4546,8 @@
         "normalized": "LINSERT()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ISDAYLIGHT()",
         "normalized": "ISDAYLIGHT()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "ISDBREF()",
@@ -6004,32 +4558,16 @@
         "normalized": "ISOBJID()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ISINT()",
         "normalized": "ISINT()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "ISNUM()",
         "normalized": "ISNUM()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ISREGEXP()",
         "normalized": "ISREGEXP()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "ISWORD()",
@@ -6038,10 +4576,6 @@
       {
         "original": "ITEMS()",
         "normalized": "ITEMS()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "ITEMIZE()",
@@ -6060,20 +4594,12 @@
         "normalized": "PARSE()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ITER2",
         "normalized": "ITER2"
       },
       {
         "original": "IBREAK()",
         "normalized": "IBREAK()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "ILEV()",
@@ -6096,32 +4622,16 @@
         "normalized": "%I0"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ITEXT2",
         "normalized": "ITEXT2"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "IPADDR()",
         "normalized": "IPADDR()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LAST()",
         "normalized": "LAST()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "LATTR()",
@@ -6138,10 +4648,6 @@
       {
         "original": "REGLATTRP()",
         "normalized": "REGLATTRP()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "NATTR()",
@@ -6168,16 +4674,8 @@
         "normalized": "REGNATTRP()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LCON()",
         "normalized": "LCON()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "LCSTR()",
@@ -6188,24 +4686,12 @@
         "normalized": "LCSTR2()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LDELETE()",
         "normalized": "LDELETE()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LEFT()",
         "normalized": "LEFT()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "NSLEMIT()",
@@ -6216,56 +4702,28 @@
         "normalized": "LEMIT()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LETQ()",
         "normalized": "LETQ()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "LEXITS()",
         "normalized": "LEXITS()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LJUST()",
         "normalized": "LJUST()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "LINK()",
         "normalized": "LINK()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LIST()",
         "normalized": "LIST()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LIT()",
         "normalized": "LIT()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "LMATH()",
@@ -6276,10 +4734,6 @@
         "normalized": "LN()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LNUM()",
         "normalized": "LNUM()"
       },
@@ -6288,16 +4742,8 @@
         "normalized": "LOC()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LOCALIZE()",
         "normalized": "LOCALIZE()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "LOCATE()",
@@ -6308,20 +4754,12 @@
         "normalized": "LOCATE2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LOCATE3",
         "normalized": "LOCATE3"
       },
       {
         "original": "LOCK()",
         "normalized": "LOCK()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "LLOCKS()",
@@ -6332,88 +4770,44 @@
         "normalized": "LOCKS()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LOCKFILTER()",
         "normalized": "LOCKFILTER()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "LOCKFLAGS()",
         "normalized": "LOCKFLAGS()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LLOCKFLAGS()",
         "normalized": "LLOCKFLAGS()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "LOCKOWNER()",
         "normalized": "LOCKOWNER()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LSET()",
         "normalized": "LSET()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "LOG()",
         "normalized": "LOG()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LPARENT()",
         "normalized": "LPARENT()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "LPLAYERS()",
         "normalized": "LPLAYERS()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LTHINGS()",
         "normalized": "LTHINGS()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LPOS()",
         "normalized": "LPOS()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "LSEARCH()",
@@ -6452,10 +4846,6 @@
         "normalized": "SEARCH2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LSEARCH3",
         "normalized": "LSEARCH3"
       },
@@ -6472,56 +4862,28 @@
         "normalized": "STATS()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LT()",
         "normalized": "LT()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "LTE()",
         "normalized": "LTE()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LVCON()",
         "normalized": "LVCON()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "LVEXITS()",
         "normalized": "LVEXITS()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LVPLAYERS()",
         "normalized": "LVPLAYERS()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LVTHINGS()",
         "normalized": "LVTHINGS()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "LWHO()",
@@ -6532,16 +4894,8 @@
         "normalized": "LWHOID()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "MAP()",
         "normalized": "MAP()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "ELEMENT()",
@@ -6554,10 +4908,6 @@
       {
         "original": "MATCHALL()",
         "normalized": "MATCHALL()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "MATCH2",
@@ -6580,20 +4930,12 @@
         "normalized": "REGLMATCHALLI()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "REGLMATCH2",
         "normalized": "REGLMATCH2"
       },
       {
         "original": "MAX()",
         "normalized": "MAX()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "AVG()",
@@ -6604,56 +4946,28 @@
         "normalized": "MEAN()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "MEDIAN()",
         "normalized": "MEDIAN()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "MEMBER()",
         "normalized": "MEMBER()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "MERGE()",
         "normalized": "MERGE()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "MESSAGE()",
         "normalized": "MESSAGE()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "MID()",
         "normalized": "MID()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "MIN()",
         "normalized": "MIN()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "MIX()",
@@ -6662,10 +4976,6 @@
       {
         "original": "MIX2",
         "normalized": "MIX2"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "MOD()",
@@ -6684,16 +4994,8 @@
         "normalized": "REMAINDER()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "MONEY()",
         "normalized": "MONEY()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "MTIME()",
@@ -6704,10 +5006,6 @@
         "normalized": "MSECS()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "MUDNAME()",
         "normalized": "MUDNAME()"
       },
@@ -6716,16 +5014,8 @@
         "normalized": "MUDURL()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "MUL()",
         "normalized": "MUL()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "MUNGE()",
@@ -6740,20 +5030,12 @@
         "normalized": "MUNGE3"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "MWHO()",
         "normalized": "MWHO()"
       },
       {
         "original": "MWHOID()",
         "normalized": "MWHOID()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "ALIAS()",
@@ -6764,16 +5046,8 @@
         "normalized": "FULLALIAS()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "NAME()",
         "normalized": "NAME()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "MONIKER()",
@@ -6784,16 +5058,8 @@
         "normalized": "CNAME()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "NAMELIST()",
         "normalized": "NAMELIST()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "NAMEGRAB()",
@@ -6804,10 +5070,6 @@
         "normalized": "NAMEGRABALL()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "NAND()",
         "normalized": "NAND()"
       },
@@ -6816,40 +5078,20 @@
         "normalized": "NCAND()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "NEARBY()",
         "normalized": "NEARBY()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "NEQ()",
         "normalized": "NEQ()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "NEXT()",
         "normalized": "NEXT()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "NEXTDBREF()",
         "normalized": "NEXTDBREF()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "NOR()",
@@ -6860,24 +5102,12 @@
         "normalized": "NCOR()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "NOT()",
         "normalized": "NOT()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "NUM()",
         "normalized": "NUM()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "NVCON()",
@@ -6888,20 +5118,12 @@
         "normalized": "NCON()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "NVEXITS()",
         "normalized": "NVEXITS()"
       },
       {
         "original": "NEXITS()",
         "normalized": "NEXITS()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "NVPLAYERS()",
@@ -6912,20 +5134,12 @@
         "normalized": "NPLAYERS()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "NVTHINGS()",
         "normalized": "NVTHINGS()"
       },
       {
         "original": "NTHINGS()",
         "normalized": "NTHINGS()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "NMWHO()",
@@ -6936,10 +5150,6 @@
         "normalized": "NWHO()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "OBJ()",
         "normalized": "OBJ()"
       },
@@ -6948,32 +5158,16 @@
         "normalized": "%O"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "OBJEVAL()",
         "normalized": "OBJEVAL()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "OBJID()",
         "normalized": "OBJID()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "OBJMEM()",
         "normalized": "OBJMEM()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "OEMIT()",
@@ -6988,20 +5182,12 @@
         "normalized": "OPEN()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "OR()",
         "normalized": "OR()"
       },
       {
         "original": "COR()",
         "normalized": "COR()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "ORFLAGS()",
@@ -7012,32 +5198,16 @@
         "normalized": "ORLFLAGS()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ORLPOWERS()",
         "normalized": "ORLPOWERS()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "OWNER()",
         "normalized": "OWNER()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "PARENT()",
         "normalized": "PARENT()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "PEMIT()",
@@ -7056,10 +5226,6 @@
         "normalized": "NSPROMPT()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "PI()",
         "normalized": "PI()"
       },
@@ -7068,48 +5234,24 @@
         "normalized": "PIDINFO()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "PLAYERMEM()",
         "normalized": "PLAYERMEM()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "PLAYER()",
         "normalized": "PLAYER()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "PMATCH()",
         "normalized": "PMATCH()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "POLL()",
         "normalized": "POLL()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LPIDS()",
         "normalized": "LPIDS()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "LPORTS()",
@@ -7120,16 +5262,8 @@
         "normalized": "PORTS()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "POS()",
         "normalized": "POS()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "POSS()",
@@ -7140,32 +5274,16 @@
         "normalized": "%P"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "POWER()",
         "normalized": "POWER()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "POWERS()",
         "normalized": "POWERS()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "QUOTA()",
         "normalized": "QUOTA()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "R()",
@@ -7180,16 +5298,8 @@
         "normalized": "R-FUNCTION"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "RAND()",
         "normalized": "RAND()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "RANDWORD()",
@@ -7200,16 +5310,8 @@
         "normalized": "PICKRAND()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "RANDEXTRACT()",
         "normalized": "RANDEXTRACT()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "REGEDIT()",
@@ -7228,20 +5330,12 @@
         "normalized": "REGEDITALLI()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "REGMATCH()",
         "normalized": "REGMATCH()"
       },
       {
         "original": "REGMATCHI()",
         "normalized": "REGMATCHI()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "REGMATCH2",
@@ -7256,32 +5350,16 @@
         "normalized": "NSREMIT()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "REMOVE()",
         "normalized": "REMOVE()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "RENDER()",
         "normalized": "RENDER()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "REPEAT()",
         "normalized": "REPEAT()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "LREPLACE()",
@@ -7292,72 +5370,36 @@
         "normalized": "REPLACE()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "REST()",
         "normalized": "REST()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "REVWORDS()",
         "normalized": "REVWORDS()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "RIGHT()",
         "normalized": "RIGHT()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "RJUST()",
         "normalized": "RJUST()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "RLOC()",
         "normalized": "RLOC()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "RNUM()",
         "normalized": "RNUM()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ROOM()",
         "normalized": "ROOM()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ROOT()",
         "normalized": "ROOT()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "ROUND()",
@@ -7372,20 +5414,12 @@
         "normalized": "FLOOR()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "FN()",
         "normalized": "FN()"
       },
       {
         "original": "FN2",
         "normalized": "FN2"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "S()",
@@ -7396,72 +5430,36 @@
         "normalized": "S-FUNCTION"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "SCAN()",
         "normalized": "SCAN()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "SCRAMBLE()",
         "normalized": "SCRAMBLE()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "SECS()",
         "normalized": "SECS()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "SECURE()",
         "normalized": "SECURE()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "SET()",
         "normalized": "SET()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "SETDIFF()",
         "normalized": "SETDIFF()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "SETSYMDIFF()",
         "normalized": "SETSYMDIFF()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "SETINTER()",
         "normalized": "SETINTER()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "SETQ()",
@@ -7470,10 +5468,6 @@
       {
         "original": "SETR()",
         "normalized": "SETR()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "SETQ2",
@@ -7496,112 +5490,56 @@
         "normalized": "UNSETQ()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "REGISTERS()",
         "normalized": "REGISTERS()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "SETUNION()",
         "normalized": "SETUNION()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "SHA0()",
         "normalized": "SHA0()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "SHL()",
         "normalized": "SHL()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "SHR()",
         "normalized": "SHR()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "SHUFFLE()",
         "normalized": "SHUFFLE()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "SIGN()",
         "normalized": "SIGN()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "SIN()",
         "normalized": "SIN()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "SORT()",
         "normalized": "SORT()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "SORTBY()",
         "normalized": "SORTBY()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "SORTKEY()",
         "normalized": "SORTKEY()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "SORTING",
         "normalized": "SORTING"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "SOUNDEX()",
         "normalized": "SOUNDEX()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "SOUNDEX2",
@@ -7616,16 +5554,8 @@
         "normalized": "SOUNDSLIKE()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "SPACE()",
         "normalized": "SPACE()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "SPEAK()",
@@ -7664,40 +5594,20 @@
         "normalized": "SPELLNUM()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ORDINAL()",
         "normalized": "ORDINAL()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "SPLICE()",
         "normalized": "SPLICE()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "MAPSQL()",
         "normalized": "MAPSQL()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "SQL()",
         "normalized": "SQL()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "SQL Examples",
@@ -7708,24 +5618,12 @@
         "normalized": "SQLESCAPE()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "SQRT()",
         "normalized": "SQRT()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "SQUISH()",
         "normalized": "SQUISH()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "STARTTIME()",
@@ -7736,40 +5634,20 @@
         "normalized": "RESTARTTIME()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "RESTARTS()",
         "normalized": "RESTARTS()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "SSL()",
         "normalized": "SSL()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "STEP()",
         "normalized": "STEP()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "STDDEV()",
         "normalized": "STDDEV()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "STRFIRSTOF()",
@@ -7780,64 +5658,32 @@
         "normalized": "STRALLOF()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "STRINSERT()",
         "normalized": "STRINSERT()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "STRIPACCENTS()",
         "normalized": "STRIPACCENTS()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "STRIPANSI()",
         "normalized": "STRIPANSI()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "STRLEN()",
         "normalized": "STRLEN()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "STRMATCH()",
         "normalized": "STRMATCH()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "STRREPLACE()",
         "normalized": "STRREPLACE()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "SUB()",
         "normalized": "SUB()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "SUBJ()",
@@ -7846,10 +5692,6 @@
       {
         "original": "%s",
         "normalized": "%S"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "RESWITCH()",
@@ -7868,10 +5710,6 @@
         "normalized": "RESWITCHALLI()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "SWITCH()",
         "normalized": "SWITCH()"
       },
@@ -7888,20 +5726,12 @@
         "normalized": "CASEALL()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "SWITCH2",
         "normalized": "SWITCH2"
       },
       {
         "original": "SWITCH WILDCARDS",
         "normalized": "SWITCH WILDCARDS"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "STEXT()",
@@ -7920,56 +5750,28 @@
         "normalized": "%$0"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "T()",
         "normalized": "T()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "TABLE()",
         "normalized": "TABLE()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "TAN()",
         "normalized": "TAN()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "TEL()",
         "normalized": "TEL()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "TERMINFO()",
         "normalized": "TERMINFO()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "JSON FUNCTIONS",
         "normalized": "JSON FUNCTIONS"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "OOB()",
@@ -7980,24 +5782,12 @@
         "normalized": "GMCP"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ISJSON()",
         "normalized": "ISJSON()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "JSON()",
         "normalized": "JSON()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "JSON2",
@@ -8006,10 +5796,6 @@
       {
         "original": "JSON_MAP()",
         "normalized": "JSON_MAP()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "JSON_MAP2",
@@ -8024,10 +5810,6 @@
         "normalized": "JSON_QUERY()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "JSON_QUERY2",
         "normalized": "JSON_QUERY2"
       },
@@ -8040,10 +5822,6 @@
         "normalized": "JSON PATHS"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "JSON_MOD()",
         "normalized": "JSON_MOD()"
       },
@@ -8054,10 +5832,6 @@
       {
         "original": "TESTLOCK()",
         "normalized": "TESTLOCK()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "TEXTFILE()",
@@ -8076,14 +5850,6 @@
         "normalized": "DYNHELP()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "TIME()",
         "normalized": "TIME()"
       },
@@ -8094,10 +5860,6 @@
       {
         "original": "TIME2",
         "normalized": "TIME2"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "TIMECALC()",
@@ -8172,16 +5934,8 @@
         "normalized": "ETIME()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ETIMEFMT()",
         "normalized": "ETIMEFMT()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "ETIMEFMT2",
@@ -8196,10 +5950,6 @@
         "normalized": "TIMEFMT()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "TIMEFMT2",
         "normalized": "TIMEFMT2"
       },
@@ -8208,24 +5958,12 @@
         "normalized": "TIMESTRING()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "STRINGSECS()",
         "normalized": "STRINGSECS()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "TR()",
         "normalized": "TR()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "TRIM()",
@@ -8240,10 +5978,6 @@
         "normalized": "TRIMTINY()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "TRUNC()",
         "normalized": "TRUNC()"
       },
@@ -8252,16 +5986,8 @@
         "normalized": "VAL()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "TYPE()",
         "normalized": "TYPE()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "PFUN()",
@@ -8270,10 +5996,6 @@
       {
         "original": "PFUN2",
         "normalized": "PFUN2"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "PFUN3",
@@ -8308,20 +6030,12 @@
         "normalized": "UFUN3"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "UCSTR()",
         "normalized": "UCSTR()"
       },
       {
         "original": "UCSTR2()",
         "normalized": "UCSTR2()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "UDEFAULT()",
@@ -8332,10 +6046,6 @@
         "normalized": "ULDEFAULT()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ULOCAL()",
         "normalized": "ULOCAL()"
       },
@@ -8344,16 +6054,8 @@
         "normalized": "ULOCAL2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "UNIQUE()",
         "normalized": "UNIQUE()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "V()",
@@ -8364,24 +6066,12 @@
         "normalized": "V-FUNCTION"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "VADD()",
         "normalized": "VADD()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "VALID()",
         "normalized": "VALID()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "valid2",
@@ -8392,40 +6082,20 @@
         "normalized": "VCROSS()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "VDIM()",
         "normalized": "VDIM()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "VDOT()",
         "normalized": "VDOT()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "VMIN()",
         "normalized": "VMIN()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "VMAX()",
         "normalized": "VMAX()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "VERSION()",
@@ -8436,48 +6106,24 @@
         "normalized": "NUMVERSION()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "VISIBLE()",
         "normalized": "VISIBLE()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "VMAG()",
         "normalized": "VMAG()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "VMUL()",
         "normalized": "VMUL()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "VSUB()",
         "normalized": "VSUB()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "VUNIT()",
         "normalized": "VUNIT()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "WIDTH()",
@@ -8500,32 +6146,16 @@
         "normalized": "WHERE()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "WIPE()",
         "normalized": "WIPE()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "WORDPOS()",
         "normalized": "WORDPOS()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "WORDS()",
         "normalized": "WORDS()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "WRAP()",
@@ -8548,16 +6178,8 @@
         "normalized": "REGXATTRP()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "XOR()",
         "normalized": "XOR()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "XVCON()",
@@ -8568,20 +6190,12 @@
         "normalized": "XCON()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "XVEXITS()",
         "normalized": "XVEXITS()"
       },
       {
         "original": "XEXITS()",
         "normalized": "XEXITS()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "XVPLAYERS()",
@@ -8592,20 +6206,12 @@
         "normalized": "XPLAYERS()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "XVTHINGS()",
         "normalized": "XVTHINGS()"
       },
       {
         "original": "XTHINGS()",
         "normalized": "XTHINGS()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "XWHO()",
@@ -8624,20 +6230,12 @@
         "normalized": "XMWHOID()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ZWHO()",
         "normalized": "ZWHO()"
       },
       {
         "original": "ZMWHO()",
         "normalized": "ZMWHO()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "ZEMIT()",
@@ -8648,40 +6246,20 @@
         "normalized": "NSZEMIT()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ZFUN()",
         "normalized": "ZFUN()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "ZONE()",
         "normalized": "ZONE()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "UPTIME()",
         "normalized": "UPTIME()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "SUGGEST()",
         "normalized": "SUGGEST()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "CONNLOG()",
@@ -8692,10 +6270,6 @@
         "normalized": "CONNLOG2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "CONNLOG3",
         "normalized": "CONNLOG3"
       },
@@ -8704,40 +6278,20 @@
         "normalized": "CONNRECORD()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ADDRLOG()",
         "normalized": "ADDRLOG()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "URLENCODE()",
         "normalized": "URLENCODE()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "URLDECODE()",
         "normalized": "URLDECODE()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "HMAC()",
         "normalized": "HMAC()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       }
     ],
     "pennhttp": [
@@ -8762,28 +6316,12 @@
         "normalized": "@CONFIG HTTP_HANDLER"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "HTTP2",
         "normalized": "HTTP2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "HTTP3",
         "normalized": "HTTP3"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@RESPOND",
@@ -8796,10 +6334,6 @@
       {
         "original": "@RESPOND/HEADER",
         "normalized": "@RESPOND/HEADER"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@RESPOND2",
@@ -8816,10 +6350,6 @@
       {
         "original": "HTTP EXAMPLES",
         "normalized": "HTTP EXAMPLES"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "HTTP SIMPLE",
@@ -8850,10 +6380,6 @@
       {
         "original": "@LOCK-COMPLEX",
         "normalized": "@LOCK-COMPLEX"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@LOCK-SIMPLE",
@@ -8900,20 +6426,12 @@
         "normalized": "EVALUATION LOCK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@LOCK-EVAL2",
         "normalized": "@LOCK-EVAL2"
       },
       {
         "original": "@LOCK-EVALUATION2",
         "normalized": "@LOCK-EVALUATION2"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@LOCK-NAME",
@@ -8976,10 +6494,6 @@
         "normalized": "HOST LOCKS"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LOCKTYPES",
         "normalized": "LOCKTYPES"
       },
@@ -8996,20 +6510,12 @@
         "normalized": "LOCK LIST"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LOCK TYPES2",
         "normalized": "LOCK TYPES2"
       },
       {
         "original": "LOCKTYPES2",
         "normalized": "LOCKTYPES2"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@LOCK/BASIC",
@@ -9032,32 +6538,16 @@
         "normalized": "BASIC LOCK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "Enter Lock",
         "normalized": "ENTER LOCK"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "Leave Lock",
         "normalized": "LEAVE LOCK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "Teleport Lock",
         "normalized": "TELEPORT LOCK"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@LOCK/FOLLOW",
@@ -9076,24 +6566,12 @@
         "normalized": "FOLLOW LOCK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "Forward Lock",
         "normalized": "FORWARD LOCK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "Dropto Lock",
         "normalized": "DROPTO LOCK"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@LOCK/USE",
@@ -9112,24 +6590,12 @@
         "normalized": "USE LOCK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "Command Lock",
         "normalized": "COMMAND LOCK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "Listen Lock",
         "normalized": "LISTEN LOCK"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@LOCK/PAGE",
@@ -9156,32 +6622,16 @@
         "normalized": "PAGE LOCK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "Speech Lock",
         "normalized": "SPEECH LOCK"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "Mail Lock",
         "normalized": "MAIL LOCK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "Mailforward Lock",
         "normalized": "MAILFORWARD LOCK"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "Interact Lock",
@@ -9220,10 +6670,6 @@
         "normalized": "DROP LOCK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "Dropin Lock",
         "normalized": "DROPIN LOCK"
       },
@@ -9248,10 +6694,6 @@
         "normalized": "TAKE LOCK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@LOCK/FILTER",
         "normalized": "@LOCK/FILTER"
       },
@@ -9266,10 +6708,6 @@
       {
         "original": "Infilter Lock",
         "normalized": "INFILTER LOCK"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@LOCK/CONTROL",
@@ -9288,24 +6726,12 @@
         "normalized": "CONTROL LOCK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "Destroy Lock",
         "normalized": "DESTROY LOCK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "Examine Lock",
         "normalized": "EXAMINE LOCK"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@LOCK/ZONE",
@@ -9336,48 +6762,24 @@
         "normalized": "ZONE LOCK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "Chzone Lock",
         "normalized": "CHZONE LOCK"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "Chown Lock",
         "normalized": "CHOWN LOCK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "Parent Lock",
         "normalized": "PARENT LOCK"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "Link Lock",
         "normalized": "LINK LOCK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "Open Lock",
         "normalized": "OPEN LOCK"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@LOCK/USER",
@@ -9390,10 +6792,6 @@
       {
         "original": "User-defined Locks",
         "normalized": "USER-DEFINED LOCKS"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       }
     ],
     "pennmail": [
@@ -9404,10 +6802,6 @@
       {
         "original": "@MAIL",
         "normalized": "@MAIL"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "MAIL-READING",
@@ -9486,10 +6880,6 @@
         "normalized": "@MAIL/FILE"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "MAIL-REVIEWING",
         "normalized": "MAIL-REVIEWING"
       },
@@ -9514,20 +6904,12 @@
         "normalized": "MAILFILTER"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@MAILSIGNATURE",
         "normalized": "@MAILSIGNATURE"
       },
       {
         "original": "MAILSIGNATURE",
         "normalized": "MAILSIGNATURE"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "MAIL-ADMIN",
@@ -9538,32 +6920,16 @@
         "normalized": "@MALIAS"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@MALIAS2",
         "normalized": "@MALIAS2"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@MALIAS3",
         "normalized": "@MALIAS3"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "@MALIAS4",
         "normalized": "@MALIAS4"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@MALIAS5",
@@ -9578,24 +6944,12 @@
         "normalized": "FOLDERSTATS()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "MAIL()",
         "normalized": "MAIL()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "MAILLIST()",
         "normalized": "MAILLIST()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "MAILFROM()",
@@ -9614,10 +6968,6 @@
         "normalized": "MAILSUBJECT()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "MAILSTATS()",
         "normalized": "MAILSTATS()"
       },
@@ -9628,10 +6978,6 @@
       {
         "original": "MAILFSTATS()",
         "normalized": "MAILFSTATS()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "MAILSEND()",
@@ -9648,32 +6994,16 @@
         "normalized": "PUEBLO"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "PUEBLO2",
         "normalized": "PUEBLO2"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "HTML",
         "normalized": "HTML"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "PUEBLO()",
         "normalized": "PUEBLO()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "@VRML_URL",
@@ -9688,10 +7018,6 @@
         "normalized": "VRML"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "HTML FUNCTIONS",
         "normalized": "HTML FUNCTIONS"
       },
@@ -9700,40 +7026,20 @@
         "normalized": "HTML()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "TAG()",
         "normalized": "TAG()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "ENDTAG()",
         "normalized": "ENDTAG()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "TAGWRAP()",
         "normalized": "TAGWRAP()"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "WEBSOCKETS",
         "normalized": "WEBSOCKETS"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "WSHTML()",
@@ -9742,10 +7048,6 @@
       {
         "original": "WSJSON()",
         "normalized": "WSJSON()"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       }
     ],
     "penntop": [
@@ -9764,10 +7066,6 @@
       {
         "original": "helpfile",
         "normalized": "HELPFILE"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "helpfile2",
@@ -9790,10 +7088,6 @@
         "normalized": "NEWBIE3"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "Getting Started",
         "normalized": "GETTING STARTED"
       },
@@ -9814,20 +7108,12 @@
         "normalized": "GS MOVING2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "GS TALKING",
         "normalized": "GS TALKING"
       },
       {
         "original": "GS TALKING2",
         "normalized": "GS TALKING2"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "GS CHAT",
@@ -9842,20 +7128,12 @@
         "normalized": "GS CHAT2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "GS MAIL",
         "normalized": "GS MAIL"
       },
       {
         "original": "GS MAIL2",
         "normalized": "GS MAIL2"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "topics",
@@ -9870,24 +7148,12 @@
         "normalized": "ACTION LISTS"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ACTION2",
         "normalized": "ACTION2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ANCESTORS",
         "normalized": "ANCESTORS"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "ANONYMOUS ATTRIBUTES",
@@ -9950,10 +7216,6 @@
         "normalized": "ATTRIB-OWNERSHIP"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ATTRIBUTES",
         "normalized": "ATTRIBUTES"
       },
@@ -9978,10 +7240,6 @@
         "normalized": "ATTRIBUTES4"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "BOOLEAN VALUES",
         "normalized": "BOOLEAN VALUES"
       },
@@ -9994,10 +7252,6 @@
         "normalized": "BOOLEAN3"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "CLIENTS",
         "normalized": "CLIENTS"
       },
@@ -10006,24 +7260,12 @@
         "normalized": "CONTROL"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "COSTS",
         "normalized": "COSTS"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "CREDITS",
         "normalized": "CREDITS"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "DATABASE",
@@ -10046,10 +7288,6 @@
         "normalized": "DBREF2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "OBJIDS",
         "normalized": "OBJIDS"
       },
@@ -10058,20 +7296,12 @@
         "normalized": "OBJECT IDS"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "DROP-TOS",
         "normalized": "DROP-TOS"
       },
       {
         "original": "DROPTOS",
         "normalized": "DROPTOS"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "%#",
@@ -10098,20 +7328,12 @@
         "normalized": "ENACTOR"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "%!",
         "normalized": "%!"
       },
       {
         "original": "EXECUTOR",
         "normalized": "EXECUTOR"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "%@",
@@ -10122,10 +7344,6 @@
         "normalized": "CALLER"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "EVALUATION ORDER",
         "normalized": "EVALUATION ORDER"
       },
@@ -10134,16 +7352,8 @@
         "normalized": "EVALUATION2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "FAILURE",
         "normalized": "FAILURE"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "failure2",
@@ -10158,10 +7368,6 @@
         "normalized": "SEX"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "GLOBALS",
         "normalized": "GLOBALS"
       },
@@ -10170,16 +7376,8 @@
         "normalized": "GLOBAL COMMANDS"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "HERE",
         "normalized": "HERE"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "HOMES",
@@ -10190,10 +7388,6 @@
         "normalized": "HOME"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "INTERIORS",
         "normalized": "INTERIORS"
       },
@@ -10202,10 +7396,6 @@
         "normalized": "INTERIORS2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LAST",
         "normalized": "LAST"
       },
@@ -10220,10 +7410,6 @@
       {
         "original": "LASTLOGOUT",
         "normalized": "LASTLOGOUT"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "LASTSITE",
@@ -10234,16 +7420,8 @@
         "normalized": "LASTIP"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LINKING",
         "normalized": "LINKING"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "LISTENING",
@@ -10262,48 +7440,24 @@
         "normalized": "LISTENING3"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "LISTS",
         "normalized": "LISTS"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "LOOPING",
         "normalized": "LOOPING"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "MASTER ROOM",
         "normalized": "MASTER ROOM"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "ME",
         "normalized": "ME"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "MONEY",
         "normalized": "MONEY"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "MONIKERS",
@@ -10312,10 +7466,6 @@
       {
         "original": "MONIKERS2",
         "normalized": "MONIKERS2"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "MUSHCODE",
@@ -10332,10 +7482,6 @@
       {
         "original": "NON-STANDARD ATTRIBUTES",
         "normalized": "NON-STANDARD ATTRIBUTES"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "PARENT",
@@ -10366,20 +7512,12 @@
         "normalized": "PARENTS5"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "PUPPETS",
         "normalized": "PUPPETS"
       },
       {
         "original": "PUPPETS2",
         "normalized": "PUPPETS2"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "QUEUE",
@@ -10390,16 +7528,8 @@
         "normalized": "QUEUE2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "QUOTAS",
         "normalized": "QUOTAS"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "REGEXP",
@@ -10466,16 +7596,8 @@
         "normalized": "REGISTERS2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "RQUOTA",
         "normalized": "RQUOTA"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "SEMAPHORES",
@@ -10498,10 +7620,6 @@
         "normalized": "SEMAPHORES5"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "SEMAPHORES6",
         "normalized": "SEMAPHORES6"
       },
@@ -10514,32 +7632,16 @@
         "normalized": "SETTING ATTRIBUTES"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "SPOOFING",
         "normalized": "SPOOFING"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "STACK",
         "normalized": "STACK"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "STRINGS",
         "normalized": "STRINGS"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "%b",
@@ -10610,10 +7712,6 @@
         "normalized": "%+"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "SUBSTITUTIONS4",
         "normalized": "SUBSTITUTIONS4"
       },
@@ -10624,10 +7722,6 @@
       {
         "original": "SUCCESS",
         "normalized": "SUCCESS"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "SWITCHES",
@@ -10646,48 +7740,24 @@
         "normalized": "OBJECTS"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "PLAYERS",
         "normalized": "PLAYERS"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "ROOMS",
         "normalized": "ROOMS"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "THINGS",
         "normalized": "THINGS"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "EXITS",
         "normalized": "EXITS"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "GARBAGE",
         "normalized": "GARBAGE"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "$-COMMANDS",
@@ -10714,10 +7784,6 @@
         "normalized": "USER-DEFINED2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "VERBS",
         "normalized": "VERBS"
       },
@@ -10732,10 +7798,6 @@
       {
         "original": "NOSPACE",
         "normalized": "NOSPACE"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "WARNINGS",
@@ -10754,20 +7816,12 @@
         "normalized": "WILDCARDS"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "ZONE MASTER ROOMS",
         "normalized": "ZONE MASTER ROOMS"
       },
       {
         "original": "ZMRs",
         "normalized": "ZMRS"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "ZONE MASTERS",
@@ -10784,10 +7838,6 @@
       {
         "original": "SHARED PLAYERS2",
         "normalized": "SHARED PLAYERS2"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "ZONES",
@@ -10818,10 +7868,6 @@
         "normalized": "ZONES2"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "MATCHING",
         "normalized": "MATCHING"
       },
@@ -10842,20 +7888,12 @@
         "normalized": "RESTRICT3"
       },
       {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
-      },
-      {
         "original": "DESCRIPTOR",
         "normalized": "DESCRIPTOR"
       },
       {
         "original": "PORT",
         "normalized": "PORT"
-      },
-      {
-        "original": "See Also",
-        "normalized": "SEE ALSO"
       },
       {
         "original": "UNICODE",
