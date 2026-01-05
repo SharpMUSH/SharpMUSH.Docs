@@ -26,6 +26,23 @@ think add(1,2)
 
 </Card>
 
+<Card title="Forgiving Parenthesis">
+
+In PennMUSH, the following is legal, while is not in SharpMUSH:
+
+```lisp title="PennMUSH" frame="terminal" "> #1"
+lsearch(all,eval,\[strmatch(##,%#)\])
+> #1
+```
+
+Instead, complete the parenthesis.
+```lisp title="SharpMUSH" frame="terminal" "> #1"
+lsearch(all,eval,\[strmatch\(##\,%#\)\])
+> #1
+```
+
+</Card>
+
 <Card title="Full Recursion Parsing">
 
 In PennMUSH, TinyMUX, etc, you can do the following:
