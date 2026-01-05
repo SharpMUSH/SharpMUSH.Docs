@@ -6,43 +6,21 @@ description: "SharpMUSH documentation for Commands"
 ## COMMANDS
 Help is available for the following MUSH commands:
 
-- [ahelp](/reference/sharpmush-help/sharpcmd/#ahelp)
-- [anews](/reference/sharpmush-help/sharpcmd/#ahelp)
-- [brief](/reference/sharpmush-help/sharpcmd/#brief)
-- [DOING](/reference/sharpmush-help/sharpcmd/#who)
-- [drop](/reference/sharpmush-help/sharpcmd/#adrop)
-- [examine](/reference/sharpmush-help/sharpcmd/#examine)
-- [enter](/reference/sharpmush-help/sharpcmd/#aenter)
-- [events](/reference/sharpmush-help/sharpevents/#events)
-- [follow](/reference/sharpmush-help/sharpcmd/#follow)
-- [get](/reference/sharpmush-help/sharpcmd/#get)
-- [give](/reference/sharpmush-help/sharpcmd/#give)
-- [go]
-- [index](/reference/sharpmush-help/sharpconf/#index)
-- [leave](/reference/sharpmush-help/sharpcmd/#leave)
-- [LOGOUT](/reference/sharpmush-help/sharpcmd/#logout)
-- [look](/reference/sharpmush-help/sharpcmd/#look)
-- [move](/reference/sharpmush-help/sharpcmd/#go)
-- [news](/reference/sharpmush-help/sharpcmd/#news)
-- [page](/reference/sharpmush-help/sharpcmd/#page)
-- [pose](/reference/sharpmush-help/sharpcmd/#pose)
-- [QUIT](/reference/sharpmush-help/sharpcmd/#quit)
-- [read](/reference/sharpmush-help/sharpcmd/#look)
-- [rules](/reference/sharpmush-help/sharpconf/#rules)
-- [say](/reference/sharpmush-help/sharpcmd/#say)
-- [score](/reference/sharpmush-help/sharpcmd/#score)
-- [teach](/reference/sharpmush-help/sharpcmd/#teach)
-- [think](/reference/sharpmush-help/sharpcmd/#think)
-- [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow)
-- [use](/reference/sharpmush-help/sharpcmd/#ause)
-- [whisper](/reference/sharpmush-help/sharpcmd/#whisper)
-- [WHO](/reference/sharpmush-help/sharpcmd/#who)
-- [with](/reference/sharpmush-help/sharpcmd/#with)
-- ["]
-- [:]
-- [;]
-- [+]
-- [\]]
+|            |            |            |
+|------------|------------|------------|
+| [+]        | [:]        | ["]        |
+| [;]        | [\]]       | [ahelp](/reference/sharpmush-help/sharpcmd/#ahelp)    |
+| [anews](/reference/sharpmush-help/sharpcmd/#ahelp)    | [brief](/reference/sharpmush-help/sharpcmd/#brief)    | [DOING](/reference/sharpmush-help/sharpcmd/#who)    |
+| [drop](/reference/sharpmush-help/sharpcmd/#adrop)     | [enter](/reference/sharpmush-help/sharpcmd/#aenter)    | [events](/reference/sharpmush-help/sharpevents/#events)   |
+| [examine](/reference/sharpmush-help/sharpcmd/#examine)  | [follow](/reference/sharpmush-help/sharpcmd/#follow)   | [get](/reference/sharpmush-help/sharpcmd/#get)      |
+| [give](/reference/sharpmush-help/sharpcmd/#give)     | [go]       | [index](/reference/sharpmush-help/sharpconf/#index)    |
+| [leave](/reference/sharpmush-help/sharpcmd/#leave)    | [look](/reference/sharpmush-help/sharpcmd/#look)     | [LOGOUT](/reference/sharpmush-help/sharpcmd/#logout)   |
+| [move](/reference/sharpmush-help/sharpcmd/#go)     | [news](/reference/sharpmush-help/sharpcmd/#news)     | [page](/reference/sharpmush-help/sharpcmd/#page)     |
+| [pose](/reference/sharpmush-help/sharpcmd/#pose)     | [QUIT](/reference/sharpmush-help/sharpcmd/#quit)     | [read](/reference/sharpmush-help/sharpcmd/#look)     |
+| [rules](/reference/sharpmush-help/sharpconf/#rules)    | [say](/reference/sharpmush-help/sharpcmd/#say)      | [score](/reference/sharpmush-help/sharpcmd/#score)    |
+| [teach](/reference/sharpmush-help/sharpcmd/#teach)    | [think](/reference/sharpmush-help/sharpcmd/#think)    | [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow) |
+| [use](/reference/sharpmush-help/sharpcmd/#ause)      | [whisper](/reference/sharpmush-help/sharpcmd/#whisper)  | [WHO](/reference/sharpmush-help/sharpcmd/#who)      |
+| [with](/reference/sharpmush-help/sharpcmd/#with)     |            |            |
 
 In addition to these, there are several types of '@' commands. @-commands are usually commands which have permanent effects on the MUSH (such as creating a new object). Here are the help topics on @-commands:
 
@@ -55,60 +33,31 @@ Commands that can only be used by connected players are listed in HELP SOCKET CO
 ## @-ATTRIBUTES
 These '@' commands set standard message/action sets on objects. Each comes in 3 versions: `@<whatever>`, `@o<whatever>`, and `@a<whatever>`. Only the `@<whatever>` version is listed below, but help is available for each:
 
-- [@describe](/reference/sharpmush-help/sharpcmd/#describe)
-- [@drop](/reference/sharpmush-help/sharpcmd/#adrop)
-- [@efail](/reference/sharpmush-help/sharpcmd/#aefail)
-- [@enter](/reference/sharpmush-help/sharpcmd/#aenter)
-- [@failure](/reference/sharpmush-help/sharpcmd/#afailure)
-- [@follow](/reference/sharpmush-help/sharpcmd/#follow)
-- [@give](/reference/sharpmush-help/sharpcmd/#give)
-- [@idescribe](/reference/sharpmush-help/sharpcmd/#idescribe)
-- [@leave](/reference/sharpmush-help/sharpcmd/#leave)
-- [@lfail](/reference/sharpmush-help/sharpcmd/#lfail)
-- [@move](/reference/sharpmush-help/sharpcmd/#go)
-- [@payment](/reference/sharpmush-help/sharpcmd/#apayment)
-- [@receive](/reference/sharpmush-help/sharpcmd/#receive)
-- [@success](/reference/sharpmush-help/sharpcmd/#asuccess)
-- [@tport](/reference/sharpmush-help/sharpcmd/#atport)
-- [@ufail](/reference/sharpmush-help/sharpcmd/#aufail)
-- [@unfollow](/reference/sharpmush-help/sharpcmd/#unfollow)
-- [@use](/reference/sharpmush-help/sharpcmd/#ause)
-- [@zenter](/reference/sharpmush-help/sharpcmd/#zenter)
-- [@zleave](/reference/sharpmush-help/sharpcmd/#zleave)
+|              |              |            |
+|--------------|--------------|------------|
+| [@describe](/reference/sharpmush-help/sharpcmd/#describe)  | [@drop](/reference/sharpmush-help/sharpcmd/#adrop)      | [@efail](/reference/sharpmush-help/sharpcmd/#aefail)   |
+| [@enter](/reference/sharpmush-help/sharpcmd/#aenter)     | [@failure](/reference/sharpmush-help/sharpcmd/#afailure)   | [@follow](/reference/sharpmush-help/sharpcmd/#follow)  |
+| [@give](/reference/sharpmush-help/sharpcmd/#give)      | [@idescribe](/reference/sharpmush-help/sharpcmd/#idescribe) | [@leave](/reference/sharpmush-help/sharpcmd/#leave)   |
+| [@lfail](/reference/sharpmush-help/sharpcmd/#lfail)     | [@move](/reference/sharpmush-help/sharpcmd/#go)      | [@payment](/reference/sharpmush-help/sharpcmd/#apayment) |
+| [@receive](/reference/sharpmush-help/sharpcmd/#receive)   | [@success](/reference/sharpmush-help/sharpcmd/#asuccess)   | [@tport](/reference/sharpmush-help/sharpcmd/#atport)   |
+| [@ufail](/reference/sharpmush-help/sharpcmd/#aufail)     | [@unfollow](/reference/sharpmush-help/sharpcmd/#unfollow)  | [@use](/reference/sharpmush-help/sharpcmd/#ause)     |
+| [@zenter](/reference/sharpmush-help/sharpcmd/#zenter)    | [@zleave](/reference/sharpmush-help/sharpcmd/#zleave)    |            |
 
 These '@' command set other standard attributes on objects that don't follow the pattern above:
 
-- [@aahear](/reference/sharpmush-help/sharpcmd/#ahear)
-- [@aclone](/reference/sharpmush-help/sharpcmd/#aclone)
-- [@aconnect](/reference/sharpmush-help/sharpcmd/#aconnect)
-- [@adisconnect](/reference/sharpmush-help/sharpcmd/#adisconnect)
-- [@amail](/reference/sharpmush-help/sharpcmd/#amail)
-- [@amhear](/reference/sharpmush-help/sharpcmd/#ahear)
-- [@away](/reference/sharpmush-help/sharpcmd/#away)
-- [@charges](/reference/sharpmush-help/sharpcmd/#charges)
-- [@conformat](/reference/sharpmush-help/sharpcmd/#conformat)
-- [@cost](/reference/sharpmush-help/sharpcmd/#cost)
-- [@descformat](/reference/sharpmush-help/sharpcmd/#descformat)
-- [@ealias](/reference/sharpmush-help/sharpcmd/#ealias)
-- [@exitformat](/reference/sharpmush-help/sharpcmd/#exitformat)
-- [@filter](/reference/sharpmush-help/sharpcmd/#filter)
-- [@forwardlist](/reference/sharpmush-help/sharpcmd/#forwardlist)
-- [@haven](/reference/sharpmush-help/sharpcmd/#haven)
-- [@idescformat](/reference/sharpmush-help/sharpcmd/#idescformat)
-- [@idle](/reference/sharpmush-help/sharpcmd/#idle)
-- [@infilter](/reference/sharpmush-help/sharpcmd/#infilter)
-- [@inprefix](/reference/sharpmush-help/sharpcmd/#inprefix)
-- [@lalias](/reference/sharpmush-help/sharpcmd/#ealias)
-- [@listen](/reference/sharpmush-help/sharpcmd/#listen)
-- [@nameformat](/reference/sharpmush-help/sharpcmd/#nameformat)
-- [@oxenter](/reference/sharpmush-help/sharpcmd/#aenter)
-- [@oxleave](/reference/sharpmush-help/sharpcmd/#leave)
-- [@oxmove](/reference/sharpmush-help/sharpcmd/#move)
-- [@oxtport](/reference/sharpmush-help/sharpcmd/#atport)
-- [@prefix](/reference/sharpmush-help/sharpcmd/#prefix)
-- [@runout](/reference/sharpmush-help/sharpcmd/#charges)
-- [@sex](/reference/sharpmush-help/sharpcmd/#sex)
-- [@startup](/reference/sharpmush-help/sharpcmd/#startup)
+|                 |                 |                 |
+|-----------------|-----------------|-----------------|  
+| [@aahear](/reference/sharpmush-help/sharpcmd/#ahear)       | [@aclone](/reference/sharpmush-help/sharpcmd/#aclone)       | [@aconnect](/reference/sharpmush-help/sharpcmd/#aconnect)     |
+| [@adisconnect](/reference/sharpmush-help/sharpcmd/#adisconnect)  | [@amail](/reference/sharpmush-help/sharpcmd/#amail)        | [@amhear](/reference/sharpmush-help/sharpcmd/#ahear)       |
+| [@away](/reference/sharpmush-help/sharpcmd/#away)         | [@charges](/reference/sharpmush-help/sharpcmd/#charges)      | [@conformat](/reference/sharpmush-help/sharpcmd/#conformat)    |
+| [@cost](/reference/sharpmush-help/sharpcmd/#cost)         | [@descformat](/reference/sharpmush-help/sharpcmd/#descformat)   | [@ealias](/reference/sharpmush-help/sharpcmd/#ealias)       |
+| [@exitformat](/reference/sharpmush-help/sharpcmd/#exitformat)   | [@filter](/reference/sharpmush-help/sharpcmd/#filter)       | [@forwardlist](/reference/sharpmush-help/sharpcmd/#forwardlist)  |
+| [@haven](/reference/sharpmush-help/sharpcmd/#haven)        | [@idescformat](/reference/sharpmush-help/sharpcmd/#idescformat)  | [@idle](/reference/sharpmush-help/sharpcmd/#idle)         |
+| [@infilter](/reference/sharpmush-help/sharpcmd/#infilter)     | [@inprefix](/reference/sharpmush-help/sharpcmd/#inprefix)     | [@lalias](/reference/sharpmush-help/sharpcmd/#ealias)       |
+| [@listen](/reference/sharpmush-help/sharpcmd/#listen)       | [@nameformat](/reference/sharpmush-help/sharpcmd/#nameformat)   | [@oxenter](/reference/sharpmush-help/sharpcmd/#aenter)      |
+| [@oxleave](/reference/sharpmush-help/sharpcmd/#leave)      | [@oxmove](/reference/sharpmush-help/sharpcmd/#move)       | [@oxtport](/reference/sharpmush-help/sharpcmd/#atport)      |
+| [@prefix](/reference/sharpmush-help/sharpcmd/#prefix)       | [@runout](/reference/sharpmush-help/sharpcmd/#charges)       | [@sex](/reference/sharpmush-help/sharpcmd/#sex)          |
+| [@startup](/reference/sharpmush-help/sharpcmd/#startup)      |                 |                 |
 
 
 **See Also:**
@@ -118,134 +67,61 @@ These '@' command set other standard attributes on objects that don't follow the
 ## @-BUILDING
 These '@' commands are building-related (they create or modify objects):
 
-- [@atrlock](/reference/sharpmush-help/sharpcmd/#atrlock)
-- [@atrchown](/reference/sharpmush-help/sharpcmd/#atrchown)
-- [@chown](/reference/sharpmush-help/sharpcmd/#chown)
-- [@chzone](/reference/sharpmush-help/sharpcmd/#chzone)
-- [@clone](/reference/sharpmush-help/sharpcmd/#clone)
-- [@cpattr](/reference/sharpmush-help/sharpcmd/#cpattr)
-- [@create](/reference/sharpmush-help/sharpcmd/#create)
-- [@destroy](/reference/sharpmush-help/sharpcmd/#destroy)
-- [@dig](/reference/sharpmush-help/sharpcmd/#dig)
-- [@elock](/reference/sharpmush-help/sharpcmd/#elock)
-- [@eunlock](/reference/sharpmush-help/sharpcmd/#elock)
-- [@firstexit](/reference/sharpmush-help/sharpcmd/#firstexit)
-- [@link](/reference/sharpmush-help/sharpcmd/#link)
-- [@lock](/reference/sharpmush-help/sharpcmd/#locking)
-- [@moniker](/reference/sharpmush-help/sharpcmd/#moniker)
-- [@mvattr](/reference/sharpmush-help/sharpcmd/#cpattr)
-- [@name](/reference/sharpmush-help/sharpcmd/#name)
-- [@nuke](/reference/sharpmush-help/sharpcmd/#destroy)
-- [@open](/reference/sharpmush-help/sharpcmd/#open)
-- [@parent](/reference/sharpmush-help/sharpcmd/#parent)
-- [@recycle](/reference/sharpmush-help/sharpcmd/#destroy)
-- [@set](/reference/sharpmush-help/sharpcmd/#set)
-- [@undestroy](/reference/sharpmush-help/sharpcmd/#undestroy)
-- [@ulock](/reference/sharpmush-help/sharpcmd/#ulock)
-- [@unlink](/reference/sharpmush-help/sharpcmd/#unlink)
-- [@unlock](/reference/sharpmush-help/sharpcmd/#unlock)
-- [@uunlock](/reference/sharpmush-help/sharpcmd/#ulock)
-- [@wipe](/reference/sharpmush-help/sharpcmd/#wipe)
+|               |               |               |
+|---------------|---------------|---------------|
+| [@atrchown](/reference/sharpmush-help/sharpcmd/#atrchown)   | [@atrlock](/reference/sharpmush-help/sharpcmd/#atrlock)    | [@chown](/reference/sharpmush-help/sharpcmd/#chown)      |
+| [@chzone](/reference/sharpmush-help/sharpcmd/#chzone)     | [@clone](/reference/sharpmush-help/sharpcmd/#clone)      | [@cpattr](/reference/sharpmush-help/sharpcmd/#cpattr)     |
+| [@create](/reference/sharpmush-help/sharpcmd/#create)     | [@destroy](/reference/sharpmush-help/sharpcmd/#destroy)    | [@dig](/reference/sharpmush-help/sharpcmd/#dig)        |
+| [@elock](/reference/sharpmush-help/sharpcmd/#elock)      | [@eunlock](/reference/sharpmush-help/sharpcmd/#elock)    | [@firstexit](/reference/sharpmush-help/sharpcmd/#firstexit)  |
+| [@link](/reference/sharpmush-help/sharpcmd/#link)       | [@lock](/reference/sharpmush-help/sharpcmd/#locking)       | [@moniker](/reference/sharpmush-help/sharpcmd/#moniker)    |
+| [@mvattr](/reference/sharpmush-help/sharpcmd/#cpattr)     | [@name](/reference/sharpmush-help/sharpcmd/#name)       | [@nuke](/reference/sharpmush-help/sharpcmd/#destroy)       |
+| [@open](/reference/sharpmush-help/sharpcmd/#open)       | [@parent](/reference/sharpmush-help/sharpcmd/#parent)     | [@recycle](/reference/sharpmush-help/sharpcmd/#destroy)    |
+| [@set](/reference/sharpmush-help/sharpcmd/#set)        | [@undestroy](/reference/sharpmush-help/sharpcmd/#undestroy)  | [@ulock](/reference/sharpmush-help/sharpcmd/#ulock)      |
+| [@unlink](/reference/sharpmush-help/sharpcmd/#unlink)     | [@unlock](/reference/sharpmush-help/sharpcmd/#unlock)     | [@uunlock](/reference/sharpmush-help/sharpcmd/#ulock)    |
+| [@wipe](/reference/sharpmush-help/sharpcmd/#wipe)       |               |               |
 
 ## @-GENERAL
 These '@' commands are general utility and programming commands:
 
-- [@@](/reference/sharpmush-help/sharpcmd/)
-- [@alias](/reference/sharpmush-help/sharpcmd/#alias)
-- [@break](/reference/sharpmush-help/sharpcmd/#break)
-- [@channel](/reference/sharpmush-help/sharpchat/#channel)
-- [@chat](/reference/sharpmush-help/sharpchat/#chat)
-- [@cemit](/reference/sharpmush-help/sharpchat/#channel-functions)
-- [@command](/reference/sharpmush-help/sharpcmd/#command)
-- [@config](/reference/sharpmush-help/sharpcmd/#config)
-- [@decompile](/reference/sharpmush-help/sharpcmd/#decompile)
-- [@doing](/reference/sharpmush-help/sharpcmd/#who)
-- [@dolist](/reference/sharpmush-help/sharpcmd/#dolist)
-- [@drain](/reference/sharpmush-help/sharpcmd/#drain)
-- [@edit](/reference/sharpmush-help/sharpcmd/#edit)
-- [@emit](/reference/sharpmush-help/sharpcmd/#emit)
-- [@entrances](/reference/sharpmush-help/sharpcmd/#entrances)
-- [@find](/reference/sharpmush-help/sharpcmd/#find)
-- [@force](/reference/sharpmush-help/sharpcmd/#force)
-- [@function](/reference/sharpmush-help/sharpcmd/#functions)
-- [@gedit](/reference/sharpmush-help/sharpcmd/#edit)
-- [@grep](/reference/sharpmush-help/sharpcmd/#grep)
-- [@halt](/reference/sharpmush-help/sharpcmd/#halt)
-- [@if](/reference/sharpmush-help/sharpcmd/#if)
-- [@lemit](/reference/sharpmush-help/sharpcmd/#nslemit)
-- [@listmotd](/reference/sharpmush-help/sharpcmd/#motd)
-- [@mail](/reference/sharpmush-help/sharpmail/#mail)
-- [@notify](/reference/sharpmush-help/sharpcmd/#notify)
-- [@nsemit](/reference/sharpmush-help/sharpcmd/#emit)
-- [@nslemit](/reference/sharpmush-help/sharpcmd/#nspemit)
-- [@nsoemit](/reference/sharpmush-help/sharpcmd/#oemit)
-- [@nspemit](/reference/sharpmush-help/sharpcmd/#pemit)
-- [@nsprompt](/reference/sharpmush-help/sharpcmd/#pemit)
-- [@nsremit](/reference/sharpmush-help/sharpcmd/#remit)
-- [@nszemit](/reference/sharpmush-help/sharpcmd/#zemit)
-- [@oemit](/reference/sharpmush-help/sharpcmd/#oemit)
-- [@password](/reference/sharpmush-help/sharpcmd/#password)
-- [@pemit](/reference/sharpmush-help/sharpcmd/#pemit)
-- [@prompt](/reference/sharpmush-help/sharpcmd/#pemit)
-- [@ps](/reference/sharpmush-help/sharpcmd/#ps)
-- [@remit](/reference/sharpmush-help/sharpcmd/#remit)
-- [@restart](/reference/sharpmush-help/sharpcmd/#restart)
-- [@scan](/reference/sharpmush-help/sharpcmd/#scan)
-- [@search](/reference/sharpmush-help/sharpcmd/#lsearch)
-- [@select](/reference/sharpmush-help/sharpcmd/#switch)
-- [@stats](/reference/sharpmush-help/sharpcmd/#lstats)
-- [@sweep](/reference/sharpmush-help/sharpcmd/#sweep)
-- [@switch](/reference/sharpmush-help/sharpcmd/#switch)
-- [@teleport](/reference/sharpmush-help/sharpcmd/#teleport)
-- [@trigger](/reference/sharpmush-help/sharpcmd/#trigger)
-- [@verb](/reference/sharpmush-help/sharpcmd/#verb)
-- [@version](/reference/sharpmush-help/sharpcmd/#version)
-- [@wait](/reference/sharpmush-help/sharpcmd/#wait)
-- [@whereis](/reference/sharpmush-help/sharpcmd/#whereis)
-- [@zemit](/reference/sharpmush-help/sharpcmd/#zemit)
+|              |              |               |
+|--------------|--------------|---------------|
+| [@@](/reference/sharpmush-help/sharpcmd/)         | [@alias](/reference/sharpmush-help/sharpcmd/#alias)     | [@break](/reference/sharpmush-help/sharpcmd/#break)      |
+| [@cemit](/reference/sharpmush-help/sharpchat/#channel-functions)     | [@channel](/reference/sharpmush-help/sharpchat/#channel)   | [@chat](/reference/sharpmush-help/sharpchat/#chat)       |
+| [@command](/reference/sharpmush-help/sharpcmd/#command)   | [@config](/reference/sharpmush-help/sharpcmd/#config)    | [@decompile](/reference/sharpmush-help/sharpcmd/#decompile)  |
+| [@doing](/reference/sharpmush-help/sharpcmd/#who)     | [@dolist](/reference/sharpmush-help/sharpcmd/#dolist)    | [@drain](/reference/sharpmush-help/sharpcmd/#drain)      |
+| [@edit](/reference/sharpmush-help/sharpcmd/#edit)      | [@emit](/reference/sharpmush-help/sharpcmd/#emit)      | [@entrances](/reference/sharpmush-help/sharpcmd/#entrances)  |
+| [@find](/reference/sharpmush-help/sharpcmd/#find)      | [@force](/reference/sharpmush-help/sharpcmd/#force)     | [@function](/reference/sharpmush-help/sharpcmd/#functions)   |
+| [@gedit](/reference/sharpmush-help/sharpcmd/#edit)     | [@grep](/reference/sharpmush-help/sharpcmd/#grep)      | [@halt](/reference/sharpmush-help/sharpcmd/#halt)       |
+| [@if](/reference/sharpmush-help/sharpcmd/#if)        | [@lemit](/reference/sharpmush-help/sharpcmd/#nslemit)     | [@listmotd](/reference/sharpmush-help/sharpcmd/#motd)   |
+| [@mail](/reference/sharpmush-help/sharpmail/#mail)      | [@notify](/reference/sharpmush-help/sharpcmd/#notify)    | [@nsemit](/reference/sharpmush-help/sharpcmd/#emit)     |
+| [@nslemit](/reference/sharpmush-help/sharpcmd/#nspemit)   | [@nsoemit](/reference/sharpmush-help/sharpcmd/#oemit)   | [@nspemit](/reference/sharpmush-help/sharpcmd/#pemit)    |
+| [@nsprompt](/reference/sharpmush-help/sharpcmd/#pemit)  | [@nsremit](/reference/sharpmush-help/sharpcmd/#remit)   | [@nszemit](/reference/sharpmush-help/sharpcmd/#zemit)    |
+| [@oemit](/reference/sharpmush-help/sharpcmd/#oemit)     | [@password](/reference/sharpmush-help/sharpcmd/#password)  | [@pemit](/reference/sharpmush-help/sharpcmd/#pemit)      |
+| [@prompt](/reference/sharpmush-help/sharpcmd/#pemit)    | [@ps](/reference/sharpmush-help/sharpcmd/#ps)        | [@remit](/reference/sharpmush-help/sharpcmd/#remit)      |
+| [@restart](/reference/sharpmush-help/sharpcmd/#restart)   | [@scan](/reference/sharpmush-help/sharpcmd/#scan)      | [@search](/reference/sharpmush-help/sharpcmd/#lsearch)     |
+| [@select](/reference/sharpmush-help/sharpcmd/#switch)    | [@stats](/reference/sharpmush-help/sharpcmd/#lstats)     | [@sweep](/reference/sharpmush-help/sharpcmd/#sweep)      |
+| [@switch](/reference/sharpmush-help/sharpcmd/#switch)    | [@teleport](/reference/sharpmush-help/sharpcmd/#teleport)  | [@trigger](/reference/sharpmush-help/sharpcmd/#trigger)    |
+| [@verb](/reference/sharpmush-help/sharpcmd/#verb)      | [@version](/reference/sharpmush-help/sharpcmd/#version)   | [@wait](/reference/sharpmush-help/sharpcmd/#wait)       |
+| [@whereis](/reference/sharpmush-help/sharpcmd/#whereis)   | [@zemit](/reference/sharpmush-help/sharpcmd/#zemit)     |               |
 
 ## @-WIZARD
 These '@' commands are only usable by wizards or privileged players:
 
-- [@allhalt](/reference/sharpmush-help/sharpcmd/#halt)
-- [@allquota](/reference/sharpmush-help/sharpcmd/#quota2)
-- [@boot](/reference/sharpmush-help/sharpcmd/#boot)
-- [@chownall](/reference/sharpmush-help/sharpcmd/#chownall)
-- [@chzoneall](/reference/sharpmush-help/sharpcmd/#chzoneall)
-- [@comment](/reference/sharpmush-help/sharpcmd/#comment)
-- [@dbck](/reference/sharpmush-help/sharpcmd/#dbck)
-- [@disable](/reference/sharpmush-help/sharpcmd/#enable)
-- [@dump](/reference/sharpmush-help/sharpcmd/#dump)
-- [@enable](/reference/sharpmush-help/sharpcmd/#enable)
-- [@flag](/reference/sharpmush-help/sharpcmd/#flag)
-- [@hide](/reference/sharpmush-help/sharpcmd/#hide)
-- [@hook](/reference/sharpmush-help/sharpcmd/#hook)
-- [@http]
-- [@kick](/reference/sharpmush-help/sharpcmd/#kick)
-- [@log](/reference/sharpmush-help/sharpcmd/#log)
-- [@motd](/reference/sharpmush-help/sharpcmd/#motd)
-- [@newpassword](/reference/sharpmush-help/sharpcmd/#newpassword)
-- [@pcreate](/reference/sharpmush-help/sharpcmd/#pcreate)
-- [@poll](/reference/sharpmush-help/sharpcmd/#poll)
-- [@poor](/reference/sharpmush-help/sharpcmd/#poor)
-- [@power](/reference/sharpmush-help/sharpcmd/#power)
-- [@purge](/reference/sharpmush-help/sharpcmd/#purge)
-- [@quota](/reference/sharpmush-help/sharpcmd/#quota)
-- [@readcache](/reference/sharpmush-help/sharpcmd/#readcache)
-- [@respond](/reference/sharpmush-help/sharphttp/#respond)
-- [@rejectmotd](/reference/sharpmush-help/sharpcmd/#motd)
-- [@shutdown](/reference/sharpmush-help/sharpcmd/#shutdown)
-- [@sitelock](/reference/sharpmush-help/sharpcmd/#sitelock)
-- [@sql](/reference/sharpmush-help/sharpcmd/#sql)
-- [@squota](/reference/sharpmush-help/sharpcmd/#quota2)
-- [@suggest](/reference/sharpmush-help/sharpcmd/#suggest)
-- [@uptime](/reference/sharpmush-help/sharpcmd/#uptime)
-- [@wall](/reference/sharpmush-help/sharpcmd/#wall)
-- [@wizmotd](/reference/sharpmush-help/sharpcmd/#motd)
-- [@wizwall](/reference/sharpmush-help/sharpcmd/#wall)
-- [cd]
-- [ch]
-- [cv]
+|                |                |                 |
+|----------------|----------------|-----------------|  
+| [@allhalt](/reference/sharpmush-help/sharpcmd/#halt)     | [@allquota](/reference/sharpmush-help/sharpcmd/#quota2)    | [@boot](/reference/sharpmush-help/sharpcmd/#boot)         |
+| [@chownall](/reference/sharpmush-help/sharpcmd/#chownall)    | [@chzoneall](/reference/sharpmush-help/sharpcmd/#chzoneall)   | [@comment](/reference/sharpmush-help/sharpcmd/#comment)      |
+| [@dbck](/reference/sharpmush-help/sharpcmd/#dbck)        | [@disable](/reference/sharpmush-help/sharpcmd/#enable)     | [@dump](/reference/sharpmush-help/sharpcmd/#dump)         |
+| [@enable](/reference/sharpmush-help/sharpcmd/#enable)      | [@flag](/reference/sharpmush-help/sharpcmd/#flag)        | [@hide](/reference/sharpmush-help/sharpcmd/#hide)         |
+| [@hook](/reference/sharpmush-help/sharpcmd/#hook)        | [@http]        | [@kick](/reference/sharpmush-help/sharpcmd/#kick)         |
+| [@log](/reference/sharpmush-help/sharpcmd/#log)         | [@motd](/reference/sharpmush-help/sharpcmd/#motd)        | [@newpassword](/reference/sharpmush-help/sharpcmd/#newpassword)  |
+| [@pcreate](/reference/sharpmush-help/sharpcmd/#pcreate)     | [@poll](/reference/sharpmush-help/sharpcmd/#poll)        | [@poor](/reference/sharpmush-help/sharpcmd/#poor)         |
+| [@power](/reference/sharpmush-help/sharpcmd/#power)       | [@purge](/reference/sharpmush-help/sharpcmd/#purge)       | [@quota](/reference/sharpmush-help/sharpcmd/#quota)        |
+| [@readcache](/reference/sharpmush-help/sharpcmd/#readcache)   | [@rejectmotd](/reference/sharpmush-help/sharpcmd/#motd)  | [@respond](/reference/sharpmush-help/sharphttp/#respond)      |
+| [@shutdown](/reference/sharpmush-help/sharpcmd/#shutdown)    | [@sitelock](/reference/sharpmush-help/sharpcmd/#sitelock)    | [@sql](/reference/sharpmush-help/sharpcmd/#sql)          |
+| [@squota](/reference/sharpmush-help/sharpcmd/#quota2)      | [@suggest](/reference/sharpmush-help/sharpcmd/#suggest)     | [@uptime](/reference/sharpmush-help/sharpcmd/#uptime)       |
+| [@wall](/reference/sharpmush-help/sharpcmd/#wall)        | [@wizmotd](/reference/sharpmush-help/sharpcmd/#motd)     | [@wizwall](/reference/sharpmush-help/sharpcmd/#wall)      |
+| [cd]           | [ch]           | [cv]            |
 
 ## ]
 "]" is a special prefix which can be used before any command. It instructs the MUSH that it shouldn't evaluate the arguments to the command (similar to the "/noeval" switch available on some commands). For example:
