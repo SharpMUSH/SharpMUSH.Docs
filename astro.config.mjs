@@ -37,7 +37,8 @@ export default defineConfig({
                     { label: 'Features', slug: 'reference/features'},
                     { label: 'Compatibility', slug: 'reference/compatibility'},
                     { label: 'Comparison', slug: 'reference/comparison'},
-                    {label: 'SharpMUSH Helpfiles', autogenerate: { directory: 'reference/sharpmush-help' }}
+                    { label: 'SharpMUSH Helpfiles', autogenerate: { directory: 'reference/sharpmush-help', collapsed: true }},
+                    { label: 'Technical', slug: 'technical/architecture'},
                   ]
               },
           ],
