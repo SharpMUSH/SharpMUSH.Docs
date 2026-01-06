@@ -15,10 +15,10 @@
     "predev": "npm run convert-docs"
   },
   "dependencies": {
-    "@astrojs/netlify": "^6.2.4",
-    "@astrojs/starlight": "^0.32.5",
-    "@astrojs/starlight-markdoc": "^0.3.0",
-    "astro": "^5.5.3",
-    "sharp": "^0.32.5"
+    "@astrojs/netlify": "^6.6.3",
+    "@astrojs/starlight": "^0.37.1",
+    "@astrojs/starlight-markdoc": "^0.5.1",
+    "astro": "^5.16.6",
+    "sharp": "^0.34.5"
   }
 }

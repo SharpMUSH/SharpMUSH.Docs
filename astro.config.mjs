@@ -11,10 +11,18 @@ export default defineConfig({
           title: 'SharpMUSH',
           logo: { src : './src/assets/logo.svg' },
           customCss: ['./src/styles/colors.css'],
-          social: {
-              github: 'https://github.com/SharpMUSH/SharpMUSH',
-              discord: 'https://discord.com/invite/jYErRbqaC9',
-          },
+          social: [
+              {
+                  label: 'GitHub',
+                  icon: 'github',
+                  href: 'https://github.com/SharpMUSH/SharpMUSH',
+              },
+              {
+                  label: 'Discord',
+                  icon: 'discord',
+                  href: 'https://discord.com/invite/jYErRbqaC9',
+              },
+          ],
           sidebar: [
               {
                 label: 'About SharpMUSH',
