@@ -34,7 +34,7 @@ The `@chat` command is used to speak on channels. Everyone on the channel will s
 `+<channel> <message>` is short-hand for the `@chat` command.
 
 **Example**
-```
+```sharp
 > @chat pub=Hello
 <Public> Mike says, "Hello"
 > +pub :waves
@@ -79,7 +79,7 @@ If the channel is NO_NAME, and the speaker either has no title or the channel is
 
 Walker's preferred @chatformat, which strips all ansi out, wraps every line to your width and prefixes them with \<ChannelName\>:
 
-```
+```sharp
 @chatformat me=<%1> [switch(%0,@,%2,edit(wrap(speak(&[if(%4,%4%b)]%3,%0[stripansi(%2)],%6\\,),sub(width(%!),add(4,strlen(%1)))),%r,%r<%1>%b))]
 ```
 
@@ -87,7 +87,7 @@ If you're on a system with chat_strip_quote set to "no", you might want to chang
 
 Suppose you want it just like the old version, but anytime somebody says your name, you want it all in red:
 
-```
+```sharp
 @chatformat me=ansi(switch(%2,*[name(%!)]*,r,n),%5)
 ```
 
@@ -97,24 +97,24 @@ See [@chatformat3](/reference/sharpmush-help/sharpchat/#chatformat3) for more ex
 
 A popular feature in clients now available in SharpMUSH directly: Let's suppose you want "Public" channel chatter to all be green, "Softcode" to be blue and "Admin" to be cyan.
 
-```
+```sharp
 @chatformat me=ansi(switch(%1,Public,g,Softcode,b,Admin,c,n),%5)
 ```
 
 Maybe you dislike players who re-@name themselves a lot:
 
-```
+```sharp
 &playernames me=#6061:Walker #7:Javelin #6388:Cheetah
 @chatformat me=<%1> [switch(%0,@,%2,speak(&[if(%4,%4%b)][firstof(after(grab(v(playernames),%#:*),:),%3)],%2,%6\\,))]
 ```
 
 Or you're writing a loggerbot, and you want to convert all channel input to HTML:
 
-```
+```sharp
 @chatformat me=CHAT:%1:[edit(switch(%0,@,%2,speak(if(%4,%4%b)%3,%0%2,%6\\,)),&,&amp;,<,&lt;,>,&gt;,%r,<BR>,%b%b,%b&nbsp;)]
 ```
 or
-```
+```sharp
 @chatformat me=CHAT:%1:[render(switch(%0,@,%2,speak(if(%4,%4%b)%3,%0%2,%6\\,)),html)]
 ```
 
@@ -299,7 +299,7 @@ Available privileges:
 - **disabled**: Channel cannot be used
 
 **Examples**
-```
+```sharp
 @channel/privs Public=no_join no_speak
 @channel/privs Admin=join speak no_hide_ok
 ```
@@ -329,7 +329,7 @@ Only channel admins can set locks. Players must pass:
 - The hide lock to hide on the channel (if the channel has the 'hide_ok' priv)
 
 **Examples**
-```
+```sharp
 @channel/clock/on Public=WIZARD
 @channel/clock/add Admin=WIZARD
 @channel/clock/hide Secret=WIZARD
@@ -342,11 +342,11 @@ Only channel admins can set locks. Players must pass:
 
 ## CHANNEL FUNCTIONS
 
-`channels([<player>][,<type>])`
-`cowner(<channel>)`
-`cflags(<channel>[,<player>])`
-`cstatus([<player>][,<channel>])`
-`cemit(<channel>,<message>[,<noisy>])`
+`channels([<player>][,<type>])`<br>
+`cowner(<channel>)`<br>
+`cflags(<channel>[,<player>])`<br>
+`cstatus([<player>][,<channel>])`<br>
+`cemit(<channel>,<message>[,<noisy>])`<br>
 `nscemit(<channel>,<message>[,<noisy>])`
 
 These functions provide information about channels:
@@ -373,7 +373,7 @@ These functions provide information about channels:
 - **cemit()** and **nscemit()**: Emit *\<message\>* on *\<channel\>*. See [@cemit](/reference/sharpmush-help/sharpchat/#channel-functions).
 
 **Examples**
-```
+```sharp
 > think channels(#123,on)
 Public Admin
 > think cowner(Public)
