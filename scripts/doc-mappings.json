@@ -1,6 +1,6 @@
 {
   "_metadata": {
-    "generatedAt": "2026-01-06T00:03:00.927Z",
+    "generatedAt": "2026-03-04T02:32:54.812Z",
     "sourceFiles": [
       "markdown.md",
       "sharpattr.md",
@@ -17,7 +17,7 @@
       "sharppueb.md",
       "sharptop.md"
     ],
-    "totalMappings": 1519
+    "totalMappings": 1565
   },
   "mappings": {
     "RENDERMARKDOWN()": "markdown",
@@ -101,11 +101,13 @@
     "@-WIZARD": "sharpcmd",
     "]2": "sharpcmd",
     "@@": "sharpcmd",
+    "EXAMPLE": "sharppueb",
     "@ACLONE": "sharpcmd",
     "@ACONNECT": "sharpcmd",
     "@AMAIL": "sharpcmd",
     "@ADESCRIBE": "sharpcmd",
     "@ODESCRIBE": "sharpcmd",
+    "EXAMPLES": "sharppueb",
     "@ADESTROY": "sharpcmd",
     "@ADISCONNECT": "sharpcmd",
     "@ADROP": "sharpcmd",
@@ -352,6 +354,7 @@
     "@REMIT": "sharpcmd",
     "@RETRY": "sharpcmd",
     "@RETRY2": "sharpcmd",
+    "EXAMPLE: 'WHILE'": "sharpcmd",
     "@RESTART": "sharpcmd",
     "@SCAN": "sharpcmd",
     "@SEARCH": "sharpcmd",
@@ -1214,20 +1217,29 @@
     "@LOCK-OBJID": "sharplock",
     "@LOCK-OWNER": "sharplock",
     "@LOCK-CARRY": "sharplock",
+    "OWNER LOCK": "sharplock",
+    "CARRY LOCK": "sharplock",
     "@LOCK-ATTRIBUTE": "sharplock",
+    "ATTRIBUTE LOCKS": "sharplock",
     "@LOCK-EVALUATION": "sharplock",
+    "EVALUATION LOCK": "sharplock",
     "@LOCK-EVAL2": "sharplock",
     "@LOCK-EVALUATION2": "sharplock",
     "@LOCK-NAME": "sharplock",
+    "NAME LOCKS": "sharplock",
     "@LOCK-BIT": "sharplock",
     "@LOCK-FLAG": "sharplock",
     "@LOCK-TYPE": "sharplock",
     "@LOCK-POWER": "sharplock",
     "@LOCK-CHANNEL": "sharplock",
+    "BIT LOCKS": "sharplock",
     "@LOCK-DBREFLIST": "sharplock",
     "@LOCK-LIST": "sharplock",
+    "LIST LOCK": "sharplock",
     "@LOCK-INDIRECT": "sharplock",
+    "INDIRECT LOCKS": "sharplock",
     "@LOCK-HOST": "sharplock",
+    "HOST LOCKS": "sharplock",
     "LOCKTYPES": "sharplock",
     "LOCKLIST": "sharplock",
     "LOCK TYPES": "sharplock",
@@ -1238,17 +1250,32 @@
     "@LOCK/ENTER": "sharplock",
     "@LOCK/LEAVE": "sharplock",
     "@LOCK/TELEPORT": "sharplock",
+    "BASIC LOCK": "sharplock",
+    "ENTER LOCK": "sharplock",
+    "LEAVE LOCK": "sharplock",
+    "TELEPORT LOCK": "sharplock",
     "@LOCK/FOLLOW": "sharplock",
     "@LOCK/FORWARD": "sharplock",
     "@LOCK/DROPTO": "sharplock",
+    "FOLLOW LOCK": "sharplock",
+    "FORWARD LOCK": "sharplock",
+    "DROPTO LOCK": "sharplock",
     "@LOCK/USE": "sharplock",
     "@LOCK/COMMAND": "sharplock",
     "@LOCK/LISTEN": "sharplock",
+    "USE LOCK": "sharplock",
+    "COMMAND LOCK": "sharplock",
+    "LISTEN LOCK": "sharplock",
     "@LOCK/PAGE": "sharplock",
     "@LOCK/SPEECH": "sharplock",
     "@LOCK/MAIL": "sharplock",
     "@LOCK/MAILFORWARD": "sharplock",
     "@LOCK/INTERACT": "sharplock",
+    "PAGE LOCK": "sharplock",
+    "SPEECH LOCK": "sharplock",
+    "MAIL LOCK": "sharplock",
+    "MAILFORWARD LOCK": "sharplock",
+    "INTERACT LOCK": "sharplock",
     "@LOCK/DROP": "sharplock",
     "@LOCK/DROPIN": "sharplock",
     "@LOCK/GIVE": "sharplock",
@@ -1256,19 +1283,38 @@
     "@LOCK/PAY": "sharplock",
     "@LOCK/RECEIVE": "sharplock",
     "@LOCK/TAKE": "sharplock",
+    "DROP LOCK": "sharplock",
+    "DROPIN LOCK": "sharplock",
+    "GIVE LOCK": "sharplock",
+    "FROM LOCK": "sharplock",
+    "PAY LOCK": "sharplock",
+    "RECEIVE LOCK": "sharplock",
+    "TAKE LOCK": "sharplock",
     "@LOCK/FILTER": "sharplock",
     "@LOCK/INFILTER": "sharplock",
+    "FILTER LOCK": "sharplock",
+    "INFILTER LOCK": "sharplock",
     "@LOCK/CONTROL": "sharplock",
     "@LOCK/DESTROY": "sharplock",
     "@LOCK/EXAMINE": "sharplock",
+    "CONTROL LOCK": "sharplock",
+    "DESTROY LOCK": "sharplock",
+    "EXAMINE LOCK": "sharplock",
     "@LOCK/ZONE": "sharplock",
     "@LOCK/CHZONE": "sharplock",
     "@LOCK/CHOWN": "sharplock",
     "@LOCK/PARENT": "sharplock",
     "@LOCK/LINK": "sharplock",
     "@LOCK/OPEN": "sharplock",
+    "ZONE LOCK": "sharplock",
+    "CHZONE LOCK": "sharplock",
+    "CHOWN LOCK": "sharplock",
+    "PARENT LOCK": "sharplock",
+    "LINK LOCK": "sharplock",
+    "OPEN LOCK": "sharplock",
     "@LOCK/USER": "sharplock",
     "@LOCK/USER:<NAME>": "sharplock",
+    "USER-DEFINED LOCKS": "sharplock",
     "MAIL": "sharpmail",
     "@MAIL": "sharpmail",
     "MAIL-READING": "sharpmail",
@@ -1881,12 +1927,20 @@
         "normalized": "@@"
       },
       {
+        "original": "Example",
+        "normalized": "EXAMPLE"
+      },
+      {
         "original": "@aclone",
         "normalized": "@ACLONE"
       },
       {
         "original": "@aconnect",
         "normalized": "@ACONNECT"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       },
       {
         "original": "@amail",
@@ -1901,12 +1955,20 @@
         "normalized": "@ODESCRIBE"
       },
       {
+        "original": "Examples",
+        "normalized": "EXAMPLES"
+      },
+      {
         "original": "@adestroy",
         "normalized": "@ADESTROY"
       },
       {
         "original": "@adisconnect",
         "normalized": "@ADISCONNECT"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       },
       {
         "original": "@adrop",
@@ -1919,6 +1981,10 @@
       {
         "original": "@drop",
         "normalized": "@DROP"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       },
       {
         "original": "@aefail",
@@ -2041,6 +2107,10 @@
         "normalized": "@AMOVE"
       },
       {
+        "original": "Example",
+        "normalized": "EXAMPLE"
+      },
+      {
         "original": "@aenter",
         "normalized": "@AENTER"
       },
@@ -2057,6 +2127,10 @@
         "normalized": "@OXENTER"
       },
       {
+        "original": "Example",
+        "normalized": "EXAMPLE"
+      },
+      {
         "original": "@apayment",
         "normalized": "@APAYMENT"
       },
@@ -2067,6 +2141,10 @@
       {
         "original": "@opayment",
         "normalized": "@OPAYMENT"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       },
       {
         "original": "@atport",
@@ -2083,6 +2161,10 @@
       {
         "original": "@oxtport",
         "normalized": "@OXTPORT"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       },
       {
         "original": "@atrchown",
@@ -2113,6 +2195,10 @@
         "normalized": "@OSUCCESS"
       },
       {
+        "original": "Example",
+        "normalized": "EXAMPLE"
+      },
+      {
         "original": "@attribute",
         "normalized": "@ATTRIBUTE"
       },
@@ -2123,6 +2209,10 @@
       {
         "original": "@attribute3",
         "normalized": "@ATTRIBUTE3"
+      },
+      {
+        "original": "Examples",
+        "normalized": "EXAMPLES"
       },
       {
         "original": "@ause",
@@ -2137,8 +2227,16 @@
         "normalized": "@OUSE"
       },
       {
+        "original": "Example",
+        "normalized": "EXAMPLE"
+      },
+      {
         "original": "@away",
         "normalized": "@AWAY"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       },
       {
         "original": "@boot",
@@ -2161,6 +2259,10 @@
         "normalized": "@ASSERT2"
       },
       {
+        "original": "Examples",
+        "normalized": "EXAMPLES"
+      },
+      {
         "original": "@charges",
         "normalized": "@CHARGES"
       },
@@ -2177,8 +2279,16 @@
         "normalized": "RUNOUT2"
       },
       {
+        "original": "Example",
+        "normalized": "EXAMPLE"
+      },
+      {
         "original": "@chown",
         "normalized": "@CHOWN"
+      },
+      {
+        "original": "Examples",
+        "normalized": "EXAMPLES"
       },
       {
         "original": "@chownall",
@@ -2213,6 +2323,10 @@
         "normalized": "@COMMAND3"
       },
       {
+        "original": "Examples",
+        "normalized": "EXAMPLES"
+      },
+      {
         "original": "@comment",
         "normalized": "@COMMENT"
       },
@@ -2225,8 +2339,16 @@
         "normalized": "@CONFORMAT"
       },
       {
+        "original": "Examples",
+        "normalized": "EXAMPLES"
+      },
+      {
         "original": "@include",
         "normalized": "@INCLUDE"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       },
       {
         "original": "@include2",
@@ -2237,12 +2359,24 @@
         "normalized": "@INVFORMAT"
       },
       {
+        "original": "Example",
+        "normalized": "EXAMPLE"
+      },
+      {
         "original": "@descformat",
         "normalized": "@DESCFORMAT"
       },
       {
+        "original": "Example",
+        "normalized": "EXAMPLE"
+      },
+      {
         "original": "@idescformat",
         "normalized": "@IDESCFORMAT"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       },
       {
         "original": "@nameaccent",
@@ -2253,8 +2387,16 @@
         "normalized": "@NAMEFORMAT"
       },
       {
+        "original": "Example",
+        "normalized": "EXAMPLE"
+      },
+      {
         "original": "@cost",
         "normalized": "@COST"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       },
       {
         "original": "@cpattr",
@@ -2263,6 +2405,10 @@
       {
         "original": "@mvattr",
         "normalized": "@MVATTR"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       },
       {
         "original": "@create",
@@ -2329,6 +2475,10 @@
         "normalized": "@DIG2"
       },
       {
+        "original": "Examples",
+        "normalized": "EXAMPLES"
+      },
+      {
         "original": "@doing",
         "normalized": "@DOING"
       },
@@ -2343,6 +2493,10 @@
       {
         "original": "@dolist3",
         "normalized": "@DOLIST3"
+      },
+      {
+        "original": "Examples",
+        "normalized": "EXAMPLES"
       },
       {
         "original": "@drain",
@@ -2361,6 +2515,10 @@
         "normalized": "@LALIAS"
       },
       {
+        "original": "Example",
+        "normalized": "EXAMPLE"
+      },
+      {
         "original": "@edit",
         "normalized": "@EDIT"
       },
@@ -2371,6 +2529,10 @@
       {
         "original": "@edit2",
         "normalized": "@EDIT2"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       },
       {
         "original": "@elock",
@@ -2425,6 +2587,10 @@
         "normalized": "@EXITFORMAT"
       },
       {
+        "original": "Example",
+        "normalized": "EXAMPLE"
+      },
+      {
         "original": "@HTTP",
         "normalized": "@HTTP"
       },
@@ -2433,12 +2599,20 @@
         "normalized": "@FIRSTEXIT"
       },
       {
+        "original": "Example",
+        "normalized": "EXAMPLE"
+      },
+      {
         "original": "@filter",
         "normalized": "@FILTER"
       },
       {
         "original": "@filter2",
         "normalized": "@FILTER2"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       },
       {
         "original": "@find",
@@ -2469,8 +2643,16 @@
         "normalized": "@FORCE2"
       },
       {
+        "original": "Examples",
+        "normalized": "EXAMPLES"
+      },
+      {
         "original": "@force3",
         "normalized": "@FORCE3"
+      },
+      {
+        "original": "Examples",
+        "normalized": "EXAMPLES"
       },
       {
         "original": "@flag",
@@ -2493,12 +2675,20 @@
         "normalized": "@FUNCTION2"
       },
       {
+        "original": "Example",
+        "normalized": "EXAMPLE"
+      },
+      {
         "original": "@function3",
         "normalized": "@FUNCTION3"
       },
       {
         "original": "@function4",
         "normalized": "@FUNCTION4"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       },
       {
         "original": "@grep",
@@ -2515,6 +2705,10 @@
       {
         "original": "@haven",
         "normalized": "@HAVEN"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       },
       {
         "original": "@hide",
@@ -2565,8 +2759,16 @@
         "normalized": "HUH_COMMAND"
       },
       {
+        "original": "Examples",
+        "normalized": "EXAMPLES"
+      },
+      {
         "original": "@idle",
         "normalized": "@IDLE"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       },
       {
         "original": "@if",
@@ -2585,12 +2787,20 @@
         "normalized": "@IF2"
       },
       {
+        "original": "Examples",
+        "normalized": "EXAMPLES"
+      },
+      {
         "original": "@infilter",
         "normalized": "@INFILTER"
       },
       {
         "original": "@inprefix",
         "normalized": "@INPREFIX"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       },
       {
         "original": "@kick",
@@ -2619,6 +2829,10 @@
       {
         "original": "Variable Exits",
         "normalized": "VARIABLE EXITS"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       },
       {
         "original": "@listen",
@@ -2661,12 +2875,20 @@
         "normalized": "@MESSAGE2"
       },
       {
+        "original": "Example",
+        "normalized": "EXAMPLE"
+      },
+      {
         "original": "@message3",
         "normalized": "@MESSAGE3"
       },
       {
         "original": "@moniker",
         "normalized": "@MONIKER"
+      },
+      {
+        "original": "Examples",
+        "normalized": "EXAMPLES"
       },
       {
         "original": "@motd",
@@ -2689,12 +2911,20 @@
         "normalized": "@NAME"
       },
       {
+        "original": "Examples",
+        "normalized": "EXAMPLES"
+      },
+      {
         "original": "@ONAME",
         "normalized": "@ONAME"
       },
       {
         "original": "@ANAME",
         "normalized": "@ANAME"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       },
       {
         "original": "@newpassword",
@@ -2707,6 +2937,10 @@
       {
         "original": "@notify2",
         "normalized": "@NOTIFY2"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       },
       {
         "original": "@nspemit",
@@ -2745,8 +2979,16 @@
         "normalized": "@OEMIT2"
       },
       {
+        "original": "Examples",
+        "normalized": "EXAMPLES"
+      },
+      {
         "original": "@open",
         "normalized": "@OPEN"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       },
       {
         "original": "@parent",
@@ -2885,6 +3127,10 @@
         "normalized": "@RETRY2"
       },
       {
+        "original": "Example: 'while'",
+        "normalized": "EXAMPLE: 'WHILE'"
+      },
+      {
         "original": "@restart",
         "normalized": "@RESTART"
       },
@@ -2913,6 +3159,10 @@
         "normalized": "@SEARCH5"
       },
       {
+        "original": "Examples",
+        "normalized": "EXAMPLES"
+      },
+      {
         "original": "@set",
         "normalized": "@SET"
       },
@@ -2927,6 +3177,10 @@
       {
         "original": "@sex",
         "normalized": "@SEX"
+      },
+      {
+        "original": "Examples",
+        "normalized": "EXAMPLES"
       },
       {
         "original": "@shutdown",
@@ -2965,12 +3219,24 @@
         "normalized": "@SPEECHMOD"
       },
       {
+        "original": "Example",
+        "normalized": "EXAMPLE"
+      },
+      {
         "original": "@mapsql",
         "normalized": "@MAPSQL"
       },
       {
+        "original": "Examples",
+        "normalized": "EXAMPLES"
+      },
+      {
         "original": "@sql",
         "normalized": "@SQL"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       },
       {
         "original": "@startup",
@@ -3001,8 +3267,16 @@
         "normalized": "@SWITCH3"
       },
       {
+        "original": "Examples",
+        "normalized": "EXAMPLES"
+      },
+      {
         "original": "@switch4",
         "normalized": "@SWITCH4"
+      },
+      {
+        "original": "Examples",
+        "normalized": "EXAMPLES"
       },
       {
         "original": "@teleport",
@@ -3023,6 +3297,10 @@
       {
         "original": "@trigger3",
         "normalized": "@TRIGGER3"
+      },
+      {
+        "original": "Examples",
+        "normalized": "EXAMPLES"
       },
       {
         "original": "@ulock",
@@ -3063,6 +3341,10 @@
       {
         "original": "@verb3",
         "normalized": "@VERB3"
+      },
+      {
+        "original": "Examples",
+        "normalized": "EXAMPLES"
       },
       {
         "original": "@verb4",
@@ -3111,6 +3393,10 @@
       {
         "original": "@whereis",
         "normalized": "@WHEREIS"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       },
       {
         "original": "@wipe",
@@ -3209,12 +3495,24 @@
         "normalized": "@OBUY"
       },
       {
+        "original": "Example",
+        "normalized": "EXAMPLE"
+      },
+      {
         "original": "@pricelist",
         "normalized": "@PRICELIST"
       },
       {
+        "original": "Example",
+        "normalized": "EXAMPLE"
+      },
+      {
         "original": "buy",
         "normalized": "BUY"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       },
       {
         "original": "give",
@@ -3269,6 +3567,10 @@
         "normalized": "PAGE"
       },
       {
+        "original": "Examples",
+        "normalized": "EXAMPLES"
+      },
+      {
         "original": "page2",
         "normalized": "PAGE2"
       },
@@ -3283,6 +3585,10 @@
       {
         "original": "pose2",
         "normalized": "POSE2"
+      },
+      {
+        "original": "Examples",
+        "normalized": "EXAMPLES"
       },
       {
         "original": "say",
@@ -3311,6 +3617,10 @@
       {
         "original": "WARN_ON_MISSING",
         "normalized": "WARN_ON_MISSING"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       },
       {
         "original": "UNIMPLEMENTED_COMMAND",
@@ -3351,6 +3661,10 @@
       {
         "original": "@SUGGEST",
         "normalized": "@SUGGEST"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       }
     ],
     "sharpcode": [
@@ -3505,6 +3819,10 @@
       {
         "original": "EVENT OBJECT",
         "normalized": "EVENT OBJECT"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       },
       {
         "original": "EVENT SQL",
@@ -6297,6 +6615,10 @@
         "normalized": "FORMDECODE()"
       },
       {
+        "original": "Examples",
+        "normalized": "EXAMPLES"
+      },
+      {
         "original": "HTTP EXAMPLES",
         "normalized": "HTTP EXAMPLES"
       },
@@ -6315,6 +6637,10 @@
       {
         "original": "HTTP SITELOCK",
         "normalized": "HTTP SITELOCK"
+      },
+      {
+        "original": "Examples",
+        "normalized": "EXAMPLES"
       }
     ],
     "sharplock": [
@@ -6347,12 +6673,28 @@
         "normalized": "@LOCK-CARRY"
       },
       {
+        "original": "OWNER LOCK",
+        "normalized": "OWNER LOCK"
+      },
+      {
+        "original": "CARRY LOCK",
+        "normalized": "CARRY LOCK"
+      },
+      {
         "original": "@LOCK-ATTRIBUTE",
         "normalized": "@LOCK-ATTRIBUTE"
       },
       {
+        "original": "ATTRIBUTE LOCKS",
+        "normalized": "ATTRIBUTE LOCKS"
+      },
+      {
         "original": "@LOCK-EVALUATION",
         "normalized": "@LOCK-EVALUATION"
+      },
+      {
+        "original": "EVALUATION LOCK",
+        "normalized": "EVALUATION LOCK"
       },
       {
         "original": "@LOCK-EVAL2",
@@ -6363,8 +6705,16 @@
         "normalized": "@LOCK-EVALUATION2"
       },
       {
+        "original": "Example",
+        "normalized": "EXAMPLE"
+      },
+      {
         "original": "@LOCK-NAME",
         "normalized": "@LOCK-NAME"
+      },
+      {
+        "original": "NAME LOCKS",
+        "normalized": "NAME LOCKS"
       },
       {
         "original": "@LOCK-BIT",
@@ -6387,6 +6737,10 @@
         "normalized": "@LOCK-CHANNEL"
       },
       {
+        "original": "BIT LOCKS",
+        "normalized": "BIT LOCKS"
+      },
+      {
         "original": "@LOCK-DBREFLIST",
         "normalized": "@LOCK-DBREFLIST"
       },
@@ -6395,12 +6749,24 @@
         "normalized": "@LOCK-LIST"
       },
       {
+        "original": "LIST LOCK",
+        "normalized": "LIST LOCK"
+      },
+      {
         "original": "@LOCK-INDIRECT",
         "normalized": "@LOCK-INDIRECT"
       },
       {
+        "original": "INDIRECT LOCKS",
+        "normalized": "INDIRECT LOCKS"
+      },
+      {
         "original": "@LOCK-HOST",
         "normalized": "@LOCK-HOST"
+      },
+      {
+        "original": "HOST LOCKS",
+        "normalized": "HOST LOCKS"
       },
       {
         "original": "LOCKTYPES",
@@ -6443,6 +6809,22 @@
         "normalized": "@LOCK/TELEPORT"
       },
       {
+        "original": "Basic Lock",
+        "normalized": "BASIC LOCK"
+      },
+      {
+        "original": "Enter Lock",
+        "normalized": "ENTER LOCK"
+      },
+      {
+        "original": "Leave Lock",
+        "normalized": "LEAVE LOCK"
+      },
+      {
+        "original": "Teleport Lock",
+        "normalized": "TELEPORT LOCK"
+      },
+      {
         "original": "@LOCK/FOLLOW",
         "normalized": "@LOCK/FOLLOW"
       },
@@ -6455,6 +6837,18 @@
         "normalized": "@LOCK/DROPTO"
       },
       {
+        "original": "Follow Lock",
+        "normalized": "FOLLOW LOCK"
+      },
+      {
+        "original": "Forward Lock",
+        "normalized": "FORWARD LOCK"
+      },
+      {
+        "original": "Dropto Lock",
+        "normalized": "DROPTO LOCK"
+      },
+      {
         "original": "@LOCK/USE",
         "normalized": "@LOCK/USE"
       },
@@ -6465,6 +6859,18 @@
       {
         "original": "@LOCK/LISTEN",
         "normalized": "@LOCK/LISTEN"
+      },
+      {
+        "original": "Use Lock",
+        "normalized": "USE LOCK"
+      },
+      {
+        "original": "Command Lock",
+        "normalized": "COMMAND LOCK"
+      },
+      {
+        "original": "Listen Lock",
+        "normalized": "LISTEN LOCK"
       },
       {
         "original": "@LOCK/PAGE",
@@ -6485,6 +6891,26 @@
       {
         "original": "@LOCK/INTERACT",
         "normalized": "@LOCK/INTERACT"
+      },
+      {
+        "original": "Page Lock",
+        "normalized": "PAGE LOCK"
+      },
+      {
+        "original": "Speech Lock",
+        "normalized": "SPEECH LOCK"
+      },
+      {
+        "original": "Mail Lock",
+        "normalized": "MAIL LOCK"
+      },
+      {
+        "original": "Mailforward Lock",
+        "normalized": "MAILFORWARD LOCK"
+      },
+      {
+        "original": "Interact Lock",
+        "normalized": "INTERACT LOCK"
       },
       {
         "original": "@LOCK/DROP",
@@ -6515,12 +6941,48 @@
         "normalized": "@LOCK/TAKE"
       },
       {
+        "original": "Drop Lock",
+        "normalized": "DROP LOCK"
+      },
+      {
+        "original": "Dropin Lock",
+        "normalized": "DROPIN LOCK"
+      },
+      {
+        "original": "Give Lock",
+        "normalized": "GIVE LOCK"
+      },
+      {
+        "original": "From Lock",
+        "normalized": "FROM LOCK"
+      },
+      {
+        "original": "Pay Lock",
+        "normalized": "PAY LOCK"
+      },
+      {
+        "original": "Receive Lock",
+        "normalized": "RECEIVE LOCK"
+      },
+      {
+        "original": "Take Lock",
+        "normalized": "TAKE LOCK"
+      },
+      {
         "original": "@LOCK/FILTER",
         "normalized": "@LOCK/FILTER"
       },
       {
         "original": "@LOCK/INFILTER",
         "normalized": "@LOCK/INFILTER"
+      },
+      {
+        "original": "Filter Lock",
+        "normalized": "FILTER LOCK"
+      },
+      {
+        "original": "Infilter Lock",
+        "normalized": "INFILTER LOCK"
       },
       {
         "original": "@LOCK/CONTROL",
@@ -6533,6 +6995,18 @@
       {
         "original": "@LOCK/EXAMINE",
         "normalized": "@LOCK/EXAMINE"
+      },
+      {
+        "original": "Control Lock",
+        "normalized": "CONTROL LOCK"
+      },
+      {
+        "original": "Destroy Lock",
+        "normalized": "DESTROY LOCK"
+      },
+      {
+        "original": "Examine Lock",
+        "normalized": "EXAMINE LOCK"
       },
       {
         "original": "@LOCK/ZONE",
@@ -6559,12 +7033,40 @@
         "normalized": "@LOCK/OPEN"
       },
       {
+        "original": "Zone Lock",
+        "normalized": "ZONE LOCK"
+      },
+      {
+        "original": "Chzone Lock",
+        "normalized": "CHZONE LOCK"
+      },
+      {
+        "original": "Chown Lock",
+        "normalized": "CHOWN LOCK"
+      },
+      {
+        "original": "Parent Lock",
+        "normalized": "PARENT LOCK"
+      },
+      {
+        "original": "Link Lock",
+        "normalized": "LINK LOCK"
+      },
+      {
+        "original": "Open Lock",
+        "normalized": "OPEN LOCK"
+      },
+      {
         "original": "@LOCK/USER",
         "normalized": "@LOCK/USER"
       },
       {
         "original": "@LOCK/USER:<NAME>",
         "normalized": "@LOCK/USER:<NAME>"
+      },
+      {
+        "original": "User-defined Locks",
+        "normalized": "USER-DEFINED LOCKS"
       }
     ],
     "sharpmail": [
@@ -6637,6 +7139,10 @@
         "normalized": "@MAIL/STATUS"
       },
       {
+        "original": "Example",
+        "normalized": "EXAMPLE"
+      },
+      {
         "original": "MAIL-FOLDERS",
         "normalized": "MAIL-FOLDERS"
       },
@@ -6669,6 +7175,10 @@
         "normalized": "@MAILQUOTA"
       },
       {
+        "original": "Example",
+        "normalized": "EXAMPLE"
+      },
+      {
         "original": "@MAILFILTER",
         "normalized": "@MAILFILTER"
       },
@@ -6677,12 +7187,20 @@
         "normalized": "MAILFILTER"
       },
       {
+        "original": "Example",
+        "normalized": "EXAMPLE"
+      },
+      {
         "original": "@MAILSIGNATURE",
         "normalized": "@MAILSIGNATURE"
       },
       {
         "original": "MAILSIGNATURE",
         "normalized": "MAILSIGNATURE"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       },
       {
         "original": "MAIL-ADMIN",
@@ -6721,8 +7239,16 @@
         "normalized": "MAIL()"
       },
       {
+        "original": "Example",
+        "normalized": "EXAMPLE"
+      },
+      {
         "original": "MAILLIST()",
         "normalized": "MAILLIST()"
+      },
+      {
+        "original": "Examples",
+        "normalized": "EXAMPLES"
       },
       {
         "original": "MAILFROM()",
@@ -6751,6 +7277,10 @@
       {
         "original": "MAILFSTATS()",
         "normalized": "MAILFSTATS()"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       },
       {
         "original": "MAILSEND()",
@@ -6783,20 +7313,40 @@
         "normalized": "HTML FUNCTIONS"
       },
       {
+        "original": "Examples",
+        "normalized": "EXAMPLES"
+      },
+      {
         "original": "HTML()",
         "normalized": "HTML()"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       },
       {
         "original": "TAG()",
         "normalized": "TAG()"
       },
       {
+        "original": "Example",
+        "normalized": "EXAMPLE"
+      },
+      {
         "original": "ENDTAG()",
         "normalized": "ENDTAG()"
       },
       {
+        "original": "Example",
+        "normalized": "EXAMPLE"
+      },
+      {
         "original": "TAGWRAP()",
         "normalized": "TAGWRAP()"
+      },
+      {
+        "original": "Example",
+        "normalized": "EXAMPLE"
       },
       {
         "original": "WEBSOCKETS",
