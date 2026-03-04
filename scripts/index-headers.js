@@ -14,8 +14,8 @@ async function extractHeaders(filePath) {
   const content = await fs.readFile(filePath, 'utf-8');
   const headers = [];
   
-  // Extract all headers (# and ##)
-  const headerPattern = /^#+\s+(.+)$/gm;
+  // Extract only top-level headers (exactly one #)
+  const headerPattern = /^# (.+)$/gm;
   let match;
   
   while ((match = headerPattern.exec(content)) !== null) {
