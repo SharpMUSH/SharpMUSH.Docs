@@ -67,3 +67,23 @@ SharpMUSH introduces `callfn()` and `@callcmd` to replace this loss, which ensur
 
 </Card>
 
+<Card title="## Double-Evaluation">
+
+In PennMUSH, `##` inside `iter()` performs double-evaluation, meaning the substitution result is evaluated again as MUSHcode:
+
+```lisp title="PennMUSH" frame="terminal" "> red"
+iter(\[if(true\,red\,white)\],##,)
+> red
+```
+
+In SharpMUSH, `##` is substituted as `%iL` (a literal reference), so the result is returned as-is without further evaluation:
+
+```lisp title="SharpMUSH" frame="terminal" "> [if(true,red,white)]"
+iter(\[if(true\,red\,white)\],##,)
+> [if(true,red,white)]
+```
+
+If double-evaluation is needed, use `s()` or `objeval()` to explicitly evaluate the result.
+
+</Card>
+
