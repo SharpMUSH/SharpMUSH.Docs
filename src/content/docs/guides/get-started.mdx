@@ -1,23 +1,50 @@
 ---
 title: Get Started
-description: A guide in my new Starlight docs site.
+description: Pick the way of running SharpMUSH that fits what you want to do.
 ---
 
 import { LinkCard } from '@astrojs/starlight/components';
 
 SharpMUSH can easily be installed locally, or on a remote server, thanks to Docker.
-It is a simple, yet powerful, web application that can be used to create and manage your own MUSH.
+It is a MUSH server with a web portal attached, so installing it gets you both a telnet game and a
+website for it.
 
 To get started, pick the option that best aligns to your needs:
 
 <LinkCard
-  title="Full Development (Recommended)"
+  title="Try it first"
+  href="https://mush.sharpmush.com"
+  description="Our live example game runs the current build. Have a look around before installing anything."
+/>
+
+<LinkCard
+  title="Run with Docker (Recommended)"
+  href="/guides/docker-quickstart"
+  description="The best option if you want to run a game. One Compose file brings up the server, the database, and the web portal."
+/>
+
+<LinkCard
+  title="Full Development"
   href="/guides/local-install"
   description="The best option if you want to do any kind of modifications of the hardcode itself, or wish to contribute to the SharpMUSH project."
 />
 
+## Once it is running
+
 <LinkCard
-  title="Run Locally (Coming Soon)"
-  href="/guides/local-preview"
-  description="This is the best option if you want to preview SharpMUSH locally."
+  title="The Web Portal"
+  href="/guides/web-portal"
+  description="First-run setup, the admin panel, the wiki, and the in-browser terminal."
+/>
+
+<LinkCard
+  title="Softcode Packages"
+  href="/guides/packages"
+  description="Install and upgrade global softcode from a repository, instead of pasting in .mush files."
+/>
+
+<LinkCard
+  title="Writing Plugins"
+  href="/guides/plugins"
+  description="Extend the server with compiled C#, without forking it."
 />

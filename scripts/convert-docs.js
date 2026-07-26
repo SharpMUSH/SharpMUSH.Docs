@@ -32,6 +32,7 @@ const FILE_TITLES = {
   'sharplock.md': 'Locks',
   'sharpmail.md': 'Mail System',
   'sharppueb.md': 'Pueblo Client',
+  'sharpwiki.md': 'Wiki',
   'markdown.md': 'Markdown',
 };
 

@@ -1,0 +1,137 @@
+---
+title: The Web Portal
+description: A tour of the SharpMUSH web portal and its admin panel.
+---
+
+import { Aside, LinkCard, CardGrid, Card } from '@astrojs/starlight/components';
+
+Every SharpMUSH server serves a web portal from the same origin as the game. It is not an optional
+add-on or a separate deployment: the Blazor portal is baked into the server image, so if the game is
+running, the website is running.
+
+This is where most administration happens. There is no `mush.cnf` to edit and no `@config` incantation
+to remember for the common cases — you change a setting in a form and it takes effect.
+
+<Aside type="tip">
+The [live example game](https://mush.sharpmush.com) is the portal. Clicking around it is the fastest
+way to get the shape of this page.
+</Aside>
+
+## First run
+
+A fresh install has no accounts. The first visitor to **`/setup`** claims the admin account and
+creates the God character, then the route closes.
+
+<Aside type="danger">
+Until someone completes `/setup`, anyone who reaches it takes ownership of the game. Deploy and
+claim in the same sitting.
+</Aside>
+
+## Accounts and characters
+
+SharpMUSH separates the **account** you log in with from the **characters** you play. One account can
+own several characters.
+
+| Page | What it is for |
+|---|---|
+| `/register`, `/login` | Account signup and login |
+| `/characters` | The characters this account owns |
+| `/characters/new` | Character creation |
+| `/character/{name}` | A public character profile |
+| `/account`, `/settings` | Account details, per-character settings, theme |
+
+Because the login is an account rather than a character, switching characters does not mean
+disconnecting and reconnecting, and a lost password is an email recovery rather than a staff ticket.
+Guest access upgrades into a real character without losing the session.
+
+## Playing in the browser
+
+**`/play`** is a full terminal in the page — telnet-equivalent access with no MU\* client installed.
+It connects over a WebSocket served by the connection server, and out-of-band data from the game
+drives the live side panes.
+
+The terminal's **Server URI** must point at the connection server's `/ws` endpoint. On a deployment
+behind the supplied proxy config that is `wss://<your-domain>/ws`; see
+[Run with Docker](/guides/docker-quickstart#point-the-browser-terminal-at-the-right-place) for why
+this is its own hostname and path.
+
+## For players
+
+<CardGrid>
+	<Card title="Wiki" icon="open-book">
+		`/wiki` — namespaced, categorised pages with full edit history and diffs. Staff control who may
+		edit what.
+	</Card>
+	<Card title="Mail" icon="email">
+		`/mail` — read and compose in-game `@mail` from the web.
+	</Card>
+	<Card title="Scenes" icon="comment">
+		`/scenes` — browse logged scenes, and watch running ones at `/scenes/active` as poses land.
+	</Card>
+	<Card title="Help" icon="information">
+		`/help` — the server's own helpfiles, searchable, with working cross-links.
+	</Card>
+</CardGrid>
+
+Games can also publish **Dynamic Applications** at `/apps/{slug}` — forms such as chargen or job
+requests, defined by admins as a softcode schema rather than written as web code.
+
+## The admin panel
+
+`/admin` is the staff dashboard. What a given staffer sees is governed by roles, not by a single
+wizard bit.
+
+### Configuration
+
+- **`/admin/config`** — the server's configuration, grouped into categories and rendered as typed
+  form fields, including array and dictionary values as editable lists.
+- **`/admin/config/restrictions`** — command and function restrictions.
+- **`/admin/config/sitelock`** — sitelock rules.
+- **`/admin/config/bannednames`** — disallowed character names.
+- **`/admin/config/import`** and **`/admin/database/import`** — bring a PennMUSH configuration and
+  database across. See [Compatibility](/reference/compatibility).
+
+### People
+
+- **`/admin/players`** — the player list, with a detail view per player.
+- **`/admin/accounts`** and **`/admin/characters`** — the account and character sides of the same
+  people.
+- **`/admin/moderation`** — the moderation queue.
+- **`/admin/roles`** — define what staff roles may do.
+- **`/admin/suggestions`** — player suggestions.
+
+### Content
+
+- **`/admin/wiki`** and **`/admin/wiki/assets`** — wiki administration and uploaded assets.
+- **`/admin/media`** — the image library.
+- **`/admin/profiles`** — character profile templates and fields.
+- **`/admin/layout`** — the portal's own layout: which widgets appear on which pages, edited per
+  scope in a layout editor.
+
+### Extensions
+
+- **`/admin/packages`** — installed softcode packages, plus `browse`, `remotes`, `review` and
+  `author` views. See [Softcode Packages](/guides/packages).
+- **`/admin/applications`** — the Dynamic Applications published at `/apps/{slug}`.
+- **`/admin/server`** — server status and control.
+
+## The softcode editor
+
+**`/softcode`** is a Monaco-based editor for attribute code, with multi-tab editing, syntax
+highlighting, hover help drawn from the helpfiles, and signature help for functions. It shares its
+analysis engine with the [language server](/reference/features#lsp-support), so the diagnostics it
+shows are the real parser's, not an approximation.
+
+## Next steps
+
+<LinkCard
+  title="Softcode Packages"
+  href="/guides/packages"
+  description="Install and upgrade global softcode from a repository."
+/>
+
+<LinkCard
+  title="Writing Plugins"
+  href="/guides/plugins"
+  description="Add compiled C# commands, functions and services without forking the server."
+/>

@@ -9,7 +9,7 @@ import { Aside } from '@astrojs/starlight/components';
 
 <Card title="Advantages">
 
-* A database layer that allows the use of other databases to store, access and maintain its data - such as [ArangoDB](https://arangodb.com/) - as well as expanding upon its capabilities. Database Transactions ensure no more data loss and greatly diminish the chance of database corruption.
+* A database layer that allows the use of real databases to store, access and maintain its data - [ArangoDB](https://arangodb.com/), [SurrealDB](https://surrealdb.com/) and [Memgraph](https://memgraph.com/) all ship as backends - as well as expanding upon its capabilities. Database Transactions ensure no more data loss and greatly diminish the chance of database corruption.
 * Full Unicode support, as well as both Websocket and Telnet negotiation and communication.
 * A buffer size that does not get in the way, allowing for better integration with modern web applications, use cases, and avoids user confusion.
 * Written in [C#](https://dotnet.microsoft.com/en-us/languages/csharp), allowing memory safety and easier community maintenance and improvements with support for all Operating Systems.
@@ -17,6 +17,9 @@ import { Aside } from '@astrojs/starlight/components';
 * Uses [Docker](https://www.docker.com/) to make Installation as easy as possible.
 * Attribute Flags to enable syntax highlighting for Functions and Commands in examine output, as well as syntax error detection.
 * A strict parser to make errors easier to find and fix.
+* A [web portal](/guides/web-portal) with an admin panel, wiki, mail, scene logs and an in-browser terminal - configuration is edited in a form, not a `mush.cnf` file, and takes effect without a restart.
+* A [package manager](/guides/packages) for softcode, so global code is installed and upgraded from a repository instead of pasted in from a `.mush` file.
+* [C# plugins](/guides/plugins) loaded at runtime, letting you add compiled commands, functions and services without forking the server.
 
 </Card>
 

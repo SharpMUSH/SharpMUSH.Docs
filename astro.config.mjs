@@ -28,7 +28,8 @@ export default defineConfig({
                 label: 'About SharpMUSH',
                 items: [
                     { label: 'What is SharpMUSH',slug: 'about/what-is' },
-                    { label: 'Design Premise',slug: 'about/design-premise' }
+                    { label: 'Design Premise',slug: 'about/design-premise' },
+                    { label: 'Live Example Game', link: 'https://mush.sharpmush.com', attrs: { target: '_blank', rel: 'noopener' } }
                 ]
               },
               {
@@ -36,7 +37,11 @@ export default defineConfig({
                   items: [
                       // Each item here is one entry in the navigation menu.
                       { label: 'Get Started', slug: 'guides/get-started' },
-                      { label: 'Install for Development', slug: 'guides/local-install' }
+                      { label: 'Run with Docker', slug: 'guides/docker-quickstart' },
+                      { label: 'Install for Development', slug: 'guides/local-install' },
+                      { label: 'The Web Portal', slug: 'guides/web-portal' },
+                      { label: 'Softcode Packages', slug: 'guides/packages' },
+                      { label: 'Writing Plugins', slug: 'guides/plugins' }
                   ],
               },
               {

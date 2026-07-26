@@ -4,17 +4,17 @@ description: "SharpMUSH documentation for HTTP Features"
 ---
 
 ## HTTP
-If http_handler `@config` is a dbref of a valid player, SharpMUSH will support HTTP requests reaching its mush port. It is very low level, and a little tricky to understand.
+Unlike PennMUSH, **SharpMUSH pre-populates the HTTP handler**: a new database is seeded with an **HTTP Handler object (#8)**, the "http_handler" config already points at it, and the default verb attributes (`&GET`, `&POST`, `&PUT`, `&DELETE`, `&PATCH`, `&HEAD`) are already installed on it — see [http routing]. You extend the API by adding routed sub-attributes, not by creating a handler. This is low level, and a little tricky to understand.
 
-If an HTTP Handler isn't set, or a given method attribute doesn't exist on the http handler object, Penn will default to responding with mud_url or an error page.
+If the HTTP Handler is unset, or no matching method/route attribute exists on the handler object, SharpMUSH responds with a plain `404 Not Found`.
 
-`@config http_per_second` must also be a postive number to enable HTTP commands, and they will be limited by that amount.
+`@config http_per_second` must also be a positive number to enable HTTP commands, and they will be limited by that amount. On a fresh instance both "http_handler" and "http_per_second" are set for you; change them only to move or disable the HTTP surface.
 
-When an HTTP request hits the SharpMUSH port, SharpMUSH invisibly logs in to the HTTP Handler player (`@config http_handler`), and executes an `@include me/<method>`. e.g: \`@include me/get\`.
+The HTTP surface is served under a dedicated **`/http/`** path (so it can't shadow the web portal's own routes). When a request to `http://<mush>/http/<path>` arrives, SharpMUSH invisibly runs the HTTP Handler object (`@config http_handler`), executing an `@include me/<method>`. e.g: \`@include me/get\`.
 
 Immediately when the `@include` finishes, the http request is complete. Any queued entries (such as `@wait`, `$-commands`, etc) are not going to be sent to the HTTP client - you'll need to code using `@include`, `/inline` switches, and the like.
 
-- *%0* will be the pathname, e.g: "/", "/path/to", "/foo?bar=baz", etc.
+- *%0* will be the pathname **with the `/http` prefix stripped** — a request to `/http/path/to?foo=bar` arrives as *%0* = "/path/to?foo=bar". So *%0* is "/", "/path/to", "/foo?bar=baz", etc.
 - *%1* will be the body of the request. If it's json, use json_query to deal with it. If it's form-encoded, look at [formdecode()](/reference/sharpmush-help/sharphttp/#formdecode)
 
 Anything sent to the HTTP Handler player during evaluation of this code is included in the body sent to the HTTP Client. There is a maximum size of BUFFER_LEN for the body of the response.
@@ -160,10 +160,87 @@ You say, "potato^cheese"
 You say, "name,hobby,like,like"
 ```
 
+**See Also:**
+- [formq()](/reference/sharpmush-help/sharphttp/#formq)
+
+## FORMQ()
+`formq(<string>[, <prefix>])`
+
+formq() decodes form-encoded data — an HTTP query string or a form-urlencoded body — and sets one **Q-register per parameter**, so HTTP handler softcode can read named parameters directly instead of calling [formdecode()](/reference/sharpmush-help/sharphttp/#formdecode) per field. This is a SharpMUSH extension; there is no PennMUSH equivalent.
+
+Each parameter becomes the register *<prefix><NAME>* (default prefix `FORM.`), so `?name=Joe` is readable as *%q<form.name>*. Names are normalized the same way HTTP header registers are (uppercased; anything outside `A-Z 0-9 _ . -` becomes `_`).
+
+Array parameters collapse into one %r-separated register, whichever way the client spells them: repeated names (`like=a&like=b`) and bracket arrays (`like[]=a&like[]=b`) both produce *%q<form.like>* containing `a%rb` — the same convention as duplicate HTTP headers in *%q<hdr.*>*. Bare tokens (`?debug` with no `=`) become registers with an empty value.
+
+formq() returns the space-separated list of normalized parameter names (without the prefix), mirroring *%q<headers>*.
+
+### Examples
+
+```sharp
+> think [setq(n,formq(name=Joe+Smith&like=a&like=b))]%q<n> / %q<form.name> / %q<form.like>
+NAME LIKE / Joe Smith / a
+b
+
+> think [null(formq(a=1,arg.))]%q<arg.a>
+1
+```
+
+The default HTTP verb handlers (see [http examples]) call formq() on the query string for you, so route sub-attributes can read *%q<form.*>* immediately.
+
+**See Also:**
+- [formdecode()](/reference/sharpmush-help/sharphttp/#formdecode)
+- [setq()](/reference/sharpmush-help/sharpfunc/#setq)
+
+## HTTP ROUTING
+SharpMUSH seeds default verb attributes (`&GET`, `&POST`, `&PUT`, `&DELETE`, `&PATCH`, `&HEAD`) onto the http_handler (#8) at first startup. They are seeded once and **never overwritten** — edit them freely.
+
+Each default verb attribute routes by URL path to a backtick-namespaced sub-attribute. (Paths below are as the handler sees them — i.e. the browser URL `/http/api/users` with the `/http` mount prefix already stripped.)
+
+```sharp
+GET /api/users?name=Joe+Smith   =>   @include me/GET`API`USERS=<body>
+```
+
+Before dispatching, the router sets:
+- *%q<attrpath>* — the path mapped to attribute form: leading slash and query stripped, remaining slashes become backticks (`api`users`)
+- *%q<fields>* — the [formq()](/reference/sharpmush-help/sharphttp/#formq)-decoded query parameter name list; each parameter is readable as *%q<form.*>*
+
+The sub-attribute receives *%0* = the raw request body. The body is left raw on purpose — check *%q<hdr.content-type>* and use [formq()](/reference/sharpmush-help/sharphttp/#formq) or [json_query()](/reference/sharpmush-help/sharpfunc/#jsonquery) on *%0* as appropriate. The raw query string remains available as `after(%0,?)` only at the verb level; sub-attributes read the decoded *%q<form.*>* registers instead.
+
+To serve `GET /api/users`:
+
+```sharp
+> &GET`API`USERS #8=@respond/type application/json ; think json(object,hello,json(string,%q<form.name>))
+```
+
+The router guards the dispatch with `@assert`: a request whose path maps to no sub-attribute — including the bare root `/` — answers **404 API NOT FOUND** and stops. The seeded router for each verb is:
+
+```sharp
+think setq(fields,formq(after(%0,?)))
+@assert cand(t(setr(attrpath,edit(before(rest(%0,/),?),/,`))),hasattr(me,GET`%q<attrpath>))=@respond 404 API NOT FOUND
+@include me/GET`%q<attrpath>=%1
+```
+
+### Stock routes
+
+SharpMUSH also seeds these routed sub-attributes (used by the web portal; edit freely — seeded once, never overwritten):
+
+- `GET /http/characters` (`&GET`CHARACTERS`) — the **roster**: a JSON array of listed players, `[{name, objid, created, category}, ...](/reference/sharpmush-help/sharpconf/#name-objid-created-category)`. It says who *exists*, not who is connected — for that see `/http/online`. Built with `json_array(iter(filter(me/FN`CHARVIS, lsearch(all,type,player)), u(me/FN`CHARROW,%i0), , %r), %r)`. `category` comes from `&FN`CHARCAT` — by default flag-based, first match wins: `Wizard` (WIZARD flag), `Royalty` (ROYALTY flag), `Guest` (the Guest power); everyone else is blank. Who is listed at all comes from `&FN`CHARVIS` (1 to list, 0 to hide) — the default hides the `Guest` category and the `package_manager` principal, which is seeded as a real player (it owns softcode-package objects) but is nobody's character. Both are MUSH-side policy: redefine them freely; the portal hard-codes nothing — it lists exactly what comes back, grouping by label (alphabetically) and pooling blanks in an untitled section at the bottom.
+- `GET /http/online` (`&GET`ONLINE`) — the **connection list**, same row shape as `/http/characters`. Built on `lwho()`, the same registry `WHO` reads, so an object that never binds a connection cannot appear here however it is flagged. Visibility comes from `&FN`ONLINEVIS`, which by default applies the `&FN`CHARVIS` rules plus hiding DARK players — note `lwho()` evaluates `CanSee()` against the *caller*, and the handler is wizard-flagged, so DARK players would otherwise be listed to anonymous web visitors. Redefine it to suit your game's policy.
+
+  Both routes pass `%r` as the `json_array()` separator rather than taking the default. `json_array()` splits its input *before* parsing each element, and rows embed player names, which routinely contain spaces — with the default separator a name like `Package Manager` is shredded into fragments that are no longer valid JSON. Keep the separator to something your rows cannot contain if you rewrite these.
+- `GET /http/profile/schema` (`&GET`PROFILE`SCHEMA`) — the profile field/section schema.
+- `GET /http/profile?objid=#1:123` (`&GET`PROFILE`) — one character's public profile. Characters are addressed by **objid** (stable across renames, safe against dbref recycling); an unknown objid answers `404 NO SUCH CHARACTER`. Profile values live in `PROFILE`<key>` attributes on the character.
+
+**See Also:**
+- [http]
+- [formq()](/reference/sharpmush-help/sharphttp/#formq)
+
 ## HTTP EXAMPLES
 There are a number of HTTP Examples.
 
-Examples all assume the following:
+These examples show the **simple, direct-verb** style: the whole `&GET`/`&POST` attribute answers the request itself. Note this *replaces* the seeded verb routers, so the examples set up their own dedicated handler to avoid clobbering the pre-populated #8 routers. For a real game you would usually keep the seeded routers on #8 and add routed sub-attributes instead (see [http routing]).
+
+Examples all assume the following dedicated handler:
 
 ```sharp
 > @pcreate HTTPHandler=digest(md5,rand())
@@ -203,7 +280,7 @@ Return a JSON array of users to any GET request:
 > &GET *HTTPHandler=@respond/type application/json ; think u(names)
 ```
 
-Check: http://yourmush:port/dbrefs
+Check: http://yourmush:port/http/dbrefs
 
 As above, but if path is "who". If it's "dbrefs", no names:
 
@@ -214,8 +291,8 @@ As above, but if path is "who". If it's "dbrefs", no names:
 ```
 
 Check:
-- http://yourmush:port/dbrefs
-- http://yourmush:port/who
+- http://yourmush:port/http/dbrefs
+- http://yourmush:port/http/who
 
 Look at something, whose name is passed by ?name=... value:
 
@@ -223,7 +300,7 @@ Look at something, whose name is passed by ?name=... value:
 > &GET *HTTPHandler=look [formdecode(after(%0,?),name)]
 ```
 
-Check: http://yourmush:port/look?name=here
+Check: http://yourmush:port/http/look?name=here
 
 ## HTTP POST
 Suppose you want a web hook for notifications from an external system.<br>
@@ -233,7 +310,7 @@ HTTP via POST is ideal for that:
 > &POST *HTTPHandler=@chat [formdecode(%1,channel)]=[formdecode(%1,msg)]
 ```
 
-Check: Use a language or form to POST to http://yourmush:port/ with values "channel" and "msg"
+Check: Use a language or form to POST to http://yourmush:port/http/ with values "channel" and "msg"
 
 POST is often a good way to get a JSON blob as well:
 

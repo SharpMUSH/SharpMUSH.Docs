@@ -1,0 +1,166 @@
+---
+title: Writing Plugins
+description: Extending SharpMUSH with compiled C#, without forking the server.
+---
+
+import { Aside, LinkCard, Steps } from '@astrojs/starlight/components';
+
+SharpMUSH can be extended at **three layers**. Picking the right one is most of the work, so start
+here rather than at the code.
+
+| Layer | What it is | Reach for it when |
+|---|---|---|
+| **Softcode packages** | YAML + MUSHcode, installed at runtime | The extension is game **policy** — permissions, formatting, capture rules — that a game owner should be able to read, fork and edit live. |
+| **C# plugins** | A compiled `net10.0` assembly, loaded at runtime | You need real C# — new storage, services, performance-sensitive logic, .NET library integration — but it should not live in the core engine. |
+| **In-tree engine** | `SharpMUSH.Implementation`, compiled in | You are changing always-on core behaviour. Means recompiling the server. |
+
+The guiding split is **mechanism versus policy**. C# ships mechanism — primitives, storage, wiring.
+Softcode owns policy — the rules a particular game chooses.
+
+<Aside type="tip">
+If you are not sure you need C# at all, you probably do not. Read
+[Softcode Packages](/guides/packages) first.
+</Aside>
+
+## What a plugin can contribute
+
+A plugin is an ordinary .NET assembly dropped into the server's `plugins/` directory (or distributed
+by the package manager). Authoring is **identical to writing in-tree engine code** — the same
+`[SharpCommand]` and `[SharpFunction]` attributes, discovered by the same source generator.
+
+Beyond commands and functions, a plugin may also contribute:
+
+- **DI services**, registered into the host container before it is built
+- **Database migrations**, tagged per provider — implement only the backends you support
+- **Engine flags**, seeded into whichever database is active alongside the built-ins
+- **NATS bridge subscriptions**, forwarding your own subjects to SignalR groups
+- **Extension hooks** — the compiled-C# analog of softcode `@hook`
+
+You implement an interface; the host wires it. There is no registration call to remember.
+
+<Aside type="note" title="What can be unloaded">
+Plugins that only contribute commands, functions and hooks can be **hot-unloaded**. Plugins that
+touch the DI container, the database or the message bridge are **load-once** — they need a restart to
+go away.
+</Aside>
+
+## A minimal plugin
+
+<Steps>
+
+1. **Scaffold it.**
+
+   ```bash
+   dotnet new install SharpMUSH.Templates
+   dotnet new sharpmush-plugin -n MyPlugin
+   ```
+
+   Or start from the [extension starter repository](https://github.com/SharpMUSH/SharpMUSH.Template),
+   which carries a working example of all three layers side by side — keep the folder you want and
+   delete the rest.
+
+2. **Write the entry type.** Exactly one type per assembly is marked `[SharpPlugin]`. Deriving from
+   `PluginBase` inherits the default command and function discovery, so you override only identity:
+
+   ```csharp
+   using SharpMUSH.Library.Attributes;
+   using SharpMUSH.Library.Plugins;
+
+   [SharpPlugin]
+   public sealed class MyPlugin : PluginBase
+   {
+       public override string Id => "myplugin";
+       public override string Version => "1.0.0";
+   }
+   ```
+
+3. **Add commands and functions.** Exactly as in-tree code — resolve engine services at call time
+   from `parser.ServiceProvider`:
+
+   ```csharp
+   [SharpCommand(Name = "+PING", MinArgs = 0, MaxArgs = 1)]
+   public static async ValueTask<Option<CallState>> Ping(
+       IMUSHCodeParser parser, SharpCommandAttribute _)
+   {
+       var mediator = parser.ServiceProvider.GetRequiredService<IMediator>();
+       var notify = parser.ServiceProvider.GetRequiredService<INotifyService>();
+
+       var executor = await parser.CurrentState.KnownExecutorObject(mediator);
+       await notify.Notify(executor, "Pong from the plugin!", executor);
+
+       return new CallState("Pong from the plugin!");
+   }
+   ```
+
+   Plugin commands register as system commands, so `+PING` lands in the command trie and abbreviates
+   (`+pi`) like any built-in.
+
+4. **Add the manifest.** A `plugin.json` beside the built DLL drives discovery order and
+   compatibility:
+
+   ```json
+   {
+     "id": "myplugin",
+     "version": "1.0.0",
+     "dependencies": [],
+     "priority": 0,
+     "minServerVersion": null
+   }
+   ```
+
+5. **Build and deploy.**
+
+   ```bash
+   dotnet build MyPlugin.csproj -c Release
+   ```
+
+   Drop the DLL and its `plugin.json` into the server's `plugins/` directory, either at the top level
+   or in a per-plugin subfolder. On boot the server discovers, orders, loads and registers it.
+
+</Steps>
+
+## Load order and collisions
+
+Load order is resolved from declared dependencies: list another plugin's `id` in your `dependencies`
+to guarantee you load after it. Cycles are detected and skipped. `priority` breaks ties between
+plugins with no dependency relationship, lower first.
+
+A plugin command or function whose name collides with an existing engine entry — or with an
+earlier-loaded plugin — is **logged and skipped**. The existing definition wins.
+
+A failing plugin is logged and skipped. It never aborts server boot.
+
+## The worked example: Scene
+
+The scene system is the reference case, because it deliberately spans two layers:
+
+- **As a C# plugin**, it contributes the wizard `@SCENE` command, the `scene…()` functions, the scene
+  database migration, the `SCENE_ROOM` flag, and its realtime bridge leg. That is the *mechanism* —
+  store a pose, broadcast an event, gate the command.
+- **As a softcode package**, it ships the policy: the hook that captures poses, the `+scene/*` player
+  verbs, temp-room orchestration, and the permission rules — all editable by the game owner. That is
+  *when* a pose is captured and *who* may start a scene.
+
+The same scene test suite passes whether it runs in-tree or as a loaded plugin.
+
+## Reference
+
+The docs below live in the server repository and track the code:
+
+<LinkCard
+  title="Extensibility Overview"
+  href="https://github.com/SharpMUSH/SharpMUSH/blob/main/docs/design/extensibility-overview.md"
+  description="Which layer fits, in more depth than the table above."
+/>
+
+<LinkCard
+  title="Writing a Plugin"
+  href="https://github.com/SharpMUSH/SharpMUSH/blob/main/docs/guides/writing-a-plugin.md"
+  description="The full worked guide: project file, contribution interfaces, hooks."
+/>
+
+<LinkCard
+  title="Plugin System Design"
+  href="https://github.com/SharpMUSH/SharpMUSH/blob/main/docs/design/plugin-system.md"
+  description="Architecture, registration, and load-order semantics."
+/>

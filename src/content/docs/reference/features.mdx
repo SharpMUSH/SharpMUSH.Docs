@@ -5,14 +5,109 @@ description: "Features of SharpMUSH"
 
 import { Aside } from '@astrojs/starlight/components';
 
-# LSP Support
-SharpMUSH supports the Language Server Protocol (LSP) for syntax highlighting, code completion, and other features.
+SharpMUSH is still pre-release, and this page tracks what is in `main` today. Everything below is
+implemented; visit the [live example game](https://mush.sharpmush.com) if you would rather poke at
+it than read about it.
+
+## Web Portal
+
+Every SharpMUSH server ships a web portal alongside the telnet game. Players get a wiki, mail,
+character profiles and scene logs; staff get an admin panel covering configuration, moderation,
+roles, and site restrictions. There is an in-browser terminal, so a player can connect without a
+MU\* client at all.
+
+See [The Web Portal](/guides/web-portal) for a tour.
+
+## Accounts, separate from characters
+
+Logins are **accounts**, and an account can own several characters. That makes it possible to switch
+characters without reconnecting, to recover a login by email rather than by asking staff, and to run
+guest access that upgrades cleanly into a real character. A first-run setup wizard creates the first
+account and the God character.
+
+## Softcode Package Manager
+
+Global softcode is installed from a **package repository** rather than pasted in from `.mush` files.
+Packages are declarative YAML — the objects, attributes, flags, locks and parents that should exist —
+and installing one runs a plan/apply cycle: the server computes a changeset against the live
+database, you review it, and only then is anything written. Upgrades three-way-merge against a
+stored baseline, so local edits survive, and every apply is a revision that can be rolled back.
+
+See [Softcode Packages](/guides/packages).
+
+## C# Plugins
+
+Compiled `net10.0` assemblies can contribute commands, functions, DI services, database migrations,
+engine flags and hooks without forking the server. Authoring uses the same `[SharpCommand]` and
+`[SharpFunction]` attributes as in-tree code. Command-, function- and hook-only plugins can be
+hot-unloaded; plugins that touch the DI container, the database or the message bridge are load-once.
+
+See [Writing Plugins](/guides/plugins).
+
+## Dynamic Applications
+
+Applications — chargen, job requests, whatever your game needs — are declared as a schema in
+softcode and rendered by the portal as a real form, with validation and a submit route. No Blazor
+and no rebuild: an admin defines the schema, and the page appears.
+
+## Scene Logging
+
+Scenes can be started, joined and captured in-game, then read back on the web, with live scenes
+streaming to the portal as they happen. The scene system is also the reference example of
+SharpMUSH's extensibility split — a C# plugin ships the mechanism, a softcode package ships the
+policy — so any part of it a game dislikes can be replaced.
+
+## HTTP Endpoints
+
+A game can serve HTTP directly. Requests to `/http/<path>` run the HTTP Handler object's verb
+attribute (`&GET`, `&POST`, and so on) with the path in `%0` and the body in `%1`, and `@respond`
+sets the status and headers. A new database is seeded with a working handler at `#8`, so there is no
+setup ceremony — you extend the API by adding routed sub-attributes.
+
+See [HTTP Features](/reference/sharpmush-help/sharphttp/).
+
+## Events
+
+An event system dispatches to softcode handlers when things happen in the world, with each handler
+running under its own permissions rather than the triggering player's. As with HTTP, a fresh
+database is pre-populated with a handler object, so events work out of the box.
+
+See [Events](/reference/sharpmush-help/sharpevents/).
+
+## Modern Connections
+
+Telnet with full negotiation, WebSocket, and full Unicode throughout. Sessions survive a
+disconnect: a reconnecting client replays what it missed from the message bus, and a detached
+session stays pinned for hours, so a phone moving from WiFi to cellular does not lose the scene.
+Out-of-band data drives live portal panes.
+
+## LSP Support
+
+SharpMUSH supports the Language Server Protocol (LSP) for syntax highlighting, code completion, hover
+help and diagnostics.
 This is supported by the [SharpMUSH Language Server](https://github.com/SharpMUSH/SharpMUSH/tree/main/SharpMUSH.LanguageServer) project.
+The portal's built-in softcode editor uses the same analysis engine.
 
-# Web Interface
-SharpMUSH has a web interface that allows you to manage the server, view logs, and more.
+## MCP Endpoint
 
-# Markdown Support
+The server can host an authenticated [Model Context Protocol](https://modelcontextprotocol.io)
+endpoint, letting AI tooling validate softcode against the **real parser** and the running world's
+registered functions and commands. It is disabled by default outside development, and authenticates
+with a game character's own name and password.
+
+<Aside type="caution">
+The MCP endpoint uses HTTP Basic authentication, which sends the password on every request. Only
+expose it over TLS.
+</Aside>
+
+## Markdown Support
+
 SharpMUSH supports Markdown for all text-based files.
 It additionally allows for ANSI rendering of Markdown, and HTML rendering of Markdown.
 It includes a custom SharpMUSH function that allows for custom rendering of Markdown, with ANSI colors and styles. See [Guides/markdown](/reference/sharpmush-help/markdown) for more details.
+
+## Choice of Database
+
+ArangoDB, SurrealDB and Memgraph all ship as backends. SurrealDB can run **embedded** — a directory
+on disk, with no separate database server — which is what makes the single-small-VM deployment in
+the [Docker guide](/guides/docker-quickstart) practical.
