@@ -1,0 +1,199 @@
+---
+title: Run with Docker
+description: Bring up a SharpMUSH game with Docker Compose, from a laptop trial to a public server.
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+SharpMUSH runs as a small set of containers: the **game server** (which also serves the web portal),
+the **connection server** (telnet and the browser WebSocket), **NATS** for messaging, and a
+database. Docker Compose brings the whole thing up together.
+
+The stack is deliberately modest. It runs comfortably on a €4–6/month VPS, or free on Oracle Cloud's
+Always Free ARM tier. **Kubernetes is not needed at this scale.**
+
+<Aside type="tip">
+Want to see it before you build it? The [live example game](https://mush.sharpmush.com) runs this
+exact stack.
+</Aside>
+
+## Deploy a game
+
+The maintained deployment lives in [`deploy/`](https://github.com/SharpMUSH/SharpMUSH/tree/main/deploy)
+in the SharpMUSH repository. It uses **SurrealDB embedded** — a RocksDB directory on disk, with no
+separate database server to run or back up separately.
+
+Pick your entry point based on how you terminate TLS:
+
+| File | Use it when |
+|------|-------------|
+| `docker-compose.prod.yml` | The box faces the internet directly. **Caddy** gets you automatic HTTPS. |
+| `docker-compose.cloudflare.yml` | You would rather open no inbound web ports. A **Cloudflare Tunnel** dials out instead, hiding the origin IP. |
+
+<Steps>
+
+1. Get the files onto the host.
+
+   ```bash
+   git clone https://github.com/SharpMUSH/SharpMUSH.git
+   cd SharpMUSH/deploy
+   cp .env.example .env
+   ```
+
+2. Edit `.env` and set your domain.
+
+   ```bash
+   SHARPMUSH_DOMAIN=mush.example.com
+   ```
+
+   Backups are opt-in and off by default — leave that section commented out for now.
+   If you chose the Cloudflare variant, also set `CLOUDFLARE_TUNNEL_TOKEN` here.
+
+3. Bring the stack up.
+
+   ```bash
+   docker compose -f docker-compose.prod.yml up -d --build
+   ```
+
+   The portal comes up on `https://<your-domain>`, and telnet on port **4201**.
+
+4. Claim the admin account.
+
+   Visit `https://<your-domain>/setup`. The first visitor after a fresh install claims the admin
+   account and creates the God character. Do this **immediately** after deploying — the setup route
+   is open until someone completes it.
+
+</Steps>
+
+<Aside type="danger" title="Complete setup right away">
+A freshly deployed server with an unclaimed `/setup` page will hand the game to whoever reaches it
+first. Deploy and claim in one sitting.
+</Aside>
+
+### Point the browser terminal at the right place
+
+This is the one piece of configuration that catches people out.
+
+The portal's in-browser terminal talks to a **WebSocket** endpoint at `/ws`, which is served by the
+**connection server** (`:4202`) — *not* by the main server. The supplied `Caddyfile` already routes
+`https://<your-domain>/ws` to the connection server, so in the portal set the terminal's
+**Server URI** to:
+
+```
+wss://<your-domain>/ws
+```
+
+Same origin, so no mixed-content or CORS problems. The default `ws://localhost:4202/ws` is for local
+development only — over HTTPS, browsers refuse a plaintext `ws://` connection.
+
+If you are **not** using the supplied Caddy config (say you terminate TLS at a load balancer), you
+must publish `4202` yourself or add an equivalent `/ws` proxy route, in addition to publishing the
+server's HTTP port.
+
+### Ports
+
+| Port | Service | Exposed to the internet? |
+|------|---------|--------------------------|
+| 80 / 443 | Caddy — portal, SignalR, and `/ws` → connection server | yes |
+| 4201 | Telnet | yes |
+| 8080 | ASP.NET server (HTTP) | no — internal, behind the proxy |
+| 4202 | Connection server HTTP / `/ws` WebSocket | no — internal, reached via the `/ws` route |
+| 4222 / 8222 | NATS client / monitoring | no — internal only |
+
+<Aside type="note" title="Telnet and Cloudflare">
+Cloudflare's proxy carries HTTP, HTTPS and WebSockets — **not raw TCP**. If you use the Cloudflare
+Tunnel variant, telnet does not go through the tunnel. Give it a separate, **DNS-only (grey cloud)**
+`A` record pointing at the host and open TCP 4201 on the firewall. Be aware that this record reveals
+the server's real IP; hiding it too requires Cloudflare Spectrum, which is a paid product.
+</Aside>
+
+## Keeping it running
+
+**Updates are automatic.** Every merge to `main` runs the full test suite and publishes
+`sharpmush/sharpmush-server:dev` and `sharpmush/sharpmush-connectionserver:dev` to Docker Hub. A
+`watchtower` service polls every five minutes and recreates those two services when the tag moves,
+pruning superseded images. Nothing on the box ever builds, and no inbound access is required.
+
+There is no separate client image — the Blazor portal is baked into the server image at build time.
+
+To update everything else (NATS, `cloudflared`, the backup sidecar), or to force an app update
+rather than waiting for the poll:
+
+```bash
+git pull
+docker compose pull
+docker compose up -d
+```
+
+The `app-data` volume persists across updates, so the world is untouched. Migrations are recorded in
+the database and re-applied only when new, so unattended restarts are safe.
+
+### Starting on boot
+
+`restart: unless-stopped` brings containers back after a reboot, but it replays the **last** state
+rather than the **declared** one — a `docker compose down` or an edited compose file survives the
+reboot, and the box quietly drifts from what `deploy/` says it should be.
+
+The supplied `sharpmush.service` unit closes that gap by running `docker compose up -d` on boot:
+
+```bash
+# as root, on the host
+ln -s /opt/SharpMUSH/deploy/sharpmush.service /etc/systemd/system/sharpmush.service
+systemctl daemon-reload
+systemctl enable --now sharpmush.service
+```
+
+Edit `WorkingDirectory` and the compose filename in the unit if your checkout is not at
+`/opt/SharpMUSH`.
+
+### Backups
+
+Backups are **opt-in and off by default**: the `backup` service sits behind a Compose profile, so an
+unconfigured box gets no backup container rather than one crash-looping against a repository that
+does not exist.
+
+Fill in the restic settings in `.env`, uncomment `COMPOSE_PROFILES=backup`, and initialise the
+repository once:
+
+```bash
+docker compose run --rm backup restic init
+```
+
+From then on it snapshots the `app-data` volume — the SurrealDB store and wiki assets, i.e. the
+entire game — to your bucket nightly, keeping 7 daily and 4 weekly snapshots. The volume is mounted
+read-only, so a backup run can never corrupt live data.
+
+<Aside type="caution">
+Generate `RESTIC_PASSWORD` once (`openssl rand -base64 32`) and store it somewhere safe. Losing it
+makes the backups permanently unrecoverable.
+</Aside>
+
+Full details, including restore procedure and the Cloudflare Tunnel walkthrough, are in
+[`deploy/README.md`](https://github.com/SharpMUSH/SharpMUSH/blob/main/deploy/README.md).
+
+## Running the development stack
+
+The Compose files at the repository root are a different thing: they **build from source** and are
+aimed at hardcode development rather than at hosting a game. They use ArangoDB and expose the
+metrics endpoints, and they expect the .NET toolchain described in
+[Install for Development](/guides/local-install).
+
+<LinkCard
+  title="Install for Development"
+  href="/guides/local-install"
+  description="Building SharpMUSH from source, with or without an IDE."
+/>
+
+## Next steps
+
+<LinkCard
+  title="The Web Portal"
+  href="/guides/web-portal"
+  description="What to do once the server is up: setup, configuration, moderation, and the wiki."
+/>
+
+<LinkCard
+  title="Softcode Packages"
+  href="/guides/packages"
+  description="Install the global softcode your game needs from a package repository."
+/>

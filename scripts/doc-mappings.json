@@ -1,6 +1,6 @@
 {
   "_metadata": {
-    "generatedAt": "2026-03-04T02:38:03.866Z",
+    "generatedAt": "2026-07-26T17:51:08.746Z",
     "sourceFiles": [
       "markdown.md",
       "sharpattr.md",
@@ -15,9 +15,10 @@
       "sharplock.md",
       "sharpmail.md",
       "sharppueb.md",
-      "sharptop.md"
+      "sharptop.md",
+      "sharpwiki.md"
     ],
-    "totalMappings": 1519
+    "totalMappings": 1554
   },
   "mappings": {
     "RENDERMARKDOWN()": "markdown",
@@ -189,6 +190,8 @@
     "@CONFORMAT": "sharpcmd",
     "@INCLUDE": "sharpcmd",
     "@INCLUDE2": "sharpcmd",
+    "@INCLUDE3": "sharpcmd",
+    "@INCLUDE/CHAIN": "sharpcmd",
     "@INVFORMAT": "sharpcmd",
     "@DESCFORMAT": "sharpcmd",
     "@IDESCFORMAT": "sharpcmd",
@@ -319,6 +322,7 @@
     "@OEMIT2": "sharpcmd",
     "@OPEN": "sharpcmd",
     "@PARENT": "sharpcmd",
+    "@PACKAGE": "sharpcmd",
     "@PASSWORD": "sharpcmd",
     "@PAGEFORMAT": "sharpcmd",
     "@OUTPAGEFORMAT": "sharpcmd",
@@ -576,6 +580,7 @@
     "STRING FUNCTIONS": "sharpfunc",
     "TIME FUNCTIONS": "sharpfunc",
     "UTILITY FUNCTIONS": "sharpfunc",
+    "WIKI FUNCTIONS": "sharpfunc",
     "@@()": "sharpfunc",
     "NULL()": "sharpfunc",
     "ABS()": "sharpfunc",
@@ -628,6 +633,7 @@
     "CAT()": "sharpfunc",
     "STRCAT()": "sharpfunc",
     "CENTER()": "sharpfunc",
+    "CHAIN()": "sharpfunc",
     "CHECKPASS()": "sharpfunc",
     "CHR()": "sharpfunc",
     "ORD()": "sharpfunc",
@@ -676,6 +682,8 @@
     "FDIV()": "sharpfunc",
     "DOING()": "sharpfunc",
     "E()": "sharpfunc",
+    "EVERY()": "sharpfunc",
+    "SOME()": "sharpfunc",
     "EXP()": "sharpfunc",
     "EDEFAULT()": "sharpfunc",
     "EDIT()": "sharpfunc",
@@ -697,6 +705,7 @@
     "EXTRACT()": "sharpfunc",
     "FILTER()": "sharpfunc",
     "FILTERBOOL()": "sharpfunc",
+    "FILTERQ()": "sharpfunc",
     "FINDABLE()": "sharpfunc",
     "FIRST()": "sharpfunc",
     "FIRSTOF()": "sharpfunc",
@@ -773,6 +782,7 @@
     "%I0": "sharpfunc",
     "ITEXT2": "sharpfunc",
     "IPADDR()": "sharpfunc",
+    "JITER()": "sharpfunc",
     "LAST()": "sharpfunc",
     "LATTR()": "sharpfunc",
     "LATTRP()": "sharpfunc",
@@ -1064,6 +1074,9 @@
     "ISJSON()": "sharpfunc",
     "JSON()": "sharpfunc",
     "JSON2": "sharpfunc",
+    "JSON_ARRAY()": "sharpfunc",
+    "JSON_ARRAY2": "sharpfunc",
+    "JSON_GROUP_BY()": "sharpfunc",
     "JSON_MAP()": "sharpfunc",
     "JSON_MAP2": "sharpfunc",
     "JSON_MAP3": "sharpfunc",
@@ -1202,6 +1215,8 @@
     "@RESPOND2": "sharphttp",
     "@RESPOND3": "sharphttp",
     "FORMDECODE()": "sharphttp",
+    "FORMQ()": "sharphttp",
+    "HTTP ROUTING": "sharphttp",
     "HTTP EXAMPLES": "sharphttp",
     "HTTP SIMPLE": "sharphttp",
     "HTTP GET": "sharphttp",
@@ -1492,6 +1507,7 @@
     "%?": "sharptop",
     "%=": "sharptop",
     "%+": "sharptop",
+    "%D": "sharptop",
     "SUBSTITUTIONS4": "sharptop",
     "%4": "sharptop",
     "SUCCESS": "sharptop",
@@ -1538,7 +1554,27 @@
     "RESTRICT3": "sharptop",
     "DESCRIPTOR": "sharptop",
     "PORT": "sharptop",
-    "UNICODE": "sharptop"
+    "UNICODE": "sharptop",
+    "WIKI": "sharpwiki",
+    "@WIKI": "sharpwiki",
+    "WIKI-EDITING": "sharpwiki",
+    "@WIKI/CREATE": "sharpwiki",
+    "@WIKI/EDIT": "sharpwiki",
+    "@WIKI/APPEND": "sharpwiki",
+    "@WIKI/ROLLBACK": "sharpwiki",
+    "WIKI-ADMIN": "sharpwiki",
+    "@WIKI/DELETE": "sharpwiki",
+    "@WIKI/PROTECT": "sharpwiki",
+    "@WIKI/UNPROTECT": "sharpwiki",
+    "@WIKI/PUBLISH": "sharpwiki",
+    "@WIKI/UNPUBLISH": "sharpwiki",
+    "@WIKI/CATEGORY": "sharpwiki",
+    "@WIKI/TAG": "sharpwiki",
+    "@WIKI/HISTORY": "sharpwiki",
+    "WIKI()": "sharpwiki",
+    "WIKILIST()": "sharpwiki",
+    "WIKISEARCH()": "sharpwiki",
+    "WIKIRECENT()": "sharpwiki"
   },
   "index": {
     "markdown": [
@@ -2233,6 +2269,14 @@
         "normalized": "@INCLUDE2"
       },
       {
+        "original": "@include3",
+        "normalized": "@INCLUDE3"
+      },
+      {
+        "original": "@include/chain",
+        "normalized": "@INCLUDE/CHAIN"
+      },
+      {
         "original": "@invformat",
         "normalized": "@INVFORMAT"
       },
@@ -2751,6 +2795,10 @@
       {
         "original": "@parent",
         "normalized": "@PARENT"
+      },
+      {
+        "original": "@package",
+        "normalized": "@PACKAGE"
       },
       {
         "original": "@password",
@@ -3791,6 +3839,10 @@
         "normalized": "UTILITY FUNCTIONS"
       },
       {
+        "original": "Wiki functions",
+        "normalized": "WIKI FUNCTIONS"
+      },
+      {
         "original": "@@()",
         "normalized": "@@()"
       },
@@ -3999,6 +4051,10 @@
         "normalized": "CENTER()"
       },
       {
+        "original": "CHAIN()",
+        "normalized": "CHAIN()"
+      },
+      {
         "original": "CHECKPASS()",
         "normalized": "CHECKPASS()"
       },
@@ -4191,6 +4247,14 @@
         "normalized": "E()"
       },
       {
+        "original": "EVERY()",
+        "normalized": "EVERY()"
+      },
+      {
+        "original": "SOME()",
+        "normalized": "SOME()"
+      },
+      {
         "original": "EXP()",
         "normalized": "EXP()"
       },
@@ -4273,6 +4337,10 @@
       {
         "original": "FILTERBOOL()",
         "normalized": "FILTERBOOL()"
+      },
+      {
+        "original": "FILTERQ()",
+        "normalized": "FILTERQ()"
       },
       {
         "original": "FINDABLE()",
@@ -4577,6 +4645,10 @@
       {
         "original": "IPADDR()",
         "normalized": "IPADDR()"
+      },
+      {
+        "original": "JITER()",
+        "normalized": "JITER()"
       },
       {
         "original": "LAST()",
@@ -5743,6 +5815,18 @@
         "normalized": "JSON2"
       },
       {
+        "original": "JSON_ARRAY()",
+        "normalized": "JSON_ARRAY()"
+      },
+      {
+        "original": "JSON_ARRAY2",
+        "normalized": "JSON_ARRAY2"
+      },
+      {
+        "original": "JSON_GROUP_BY()",
+        "normalized": "JSON_GROUP_BY()"
+      },
+      {
         "original": "JSON_MAP()",
         "normalized": "JSON_MAP()"
       },
@@ -6295,6 +6379,14 @@
       {
         "original": "FORMDECODE()",
         "normalized": "FORMDECODE()"
+      },
+      {
+        "original": "FORMQ()",
+        "normalized": "FORMQ()"
+      },
+      {
+        "original": "HTTP ROUTING",
+        "normalized": "HTTP ROUTING"
       },
       {
         "original": "HTTP EXAMPLES",
@@ -7473,6 +7565,10 @@
         "normalized": "%+"
       },
       {
+        "original": "%d",
+        "normalized": "%D"
+      },
+      {
         "original": "SUBSTITUTIONS4",
         "normalized": "SUBSTITUTIONS4"
       },
@@ -7659,6 +7755,88 @@
       {
         "original": "UNICODE",
         "normalized": "UNICODE"
+      }
+    ],
+    "sharpwiki": [
+      {
+        "original": "WIKI",
+        "normalized": "WIKI"
+      },
+      {
+        "original": "@WIKI",
+        "normalized": "@WIKI"
+      },
+      {
+        "original": "WIKI-EDITING",
+        "normalized": "WIKI-EDITING"
+      },
+      {
+        "original": "@WIKI/CREATE",
+        "normalized": "@WIKI/CREATE"
+      },
+      {
+        "original": "@WIKI/EDIT",
+        "normalized": "@WIKI/EDIT"
+      },
+      {
+        "original": "@WIKI/APPEND",
+        "normalized": "@WIKI/APPEND"
+      },
+      {
+        "original": "@WIKI/ROLLBACK",
+        "normalized": "@WIKI/ROLLBACK"
+      },
+      {
+        "original": "WIKI-ADMIN",
+        "normalized": "WIKI-ADMIN"
+      },
+      {
+        "original": "@WIKI/DELETE",
+        "normalized": "@WIKI/DELETE"
+      },
+      {
+        "original": "@WIKI/PROTECT",
+        "normalized": "@WIKI/PROTECT"
+      },
+      {
+        "original": "@WIKI/UNPROTECT",
+        "normalized": "@WIKI/UNPROTECT"
+      },
+      {
+        "original": "@WIKI/PUBLISH",
+        "normalized": "@WIKI/PUBLISH"
+      },
+      {
+        "original": "@WIKI/UNPUBLISH",
+        "normalized": "@WIKI/UNPUBLISH"
+      },
+      {
+        "original": "@WIKI/CATEGORY",
+        "normalized": "@WIKI/CATEGORY"
+      },
+      {
+        "original": "@WIKI/TAG",
+        "normalized": "@WIKI/TAG"
+      },
+      {
+        "original": "@WIKI/HISTORY",
+        "normalized": "@WIKI/HISTORY"
+      },
+      {
+        "original": "WIKI()",
+        "normalized": "WIKI()"
+      },
+      {
+        "original": "WIKILIST()",
+        "normalized": "WIKILIST()"
+      },
+      {
+        "original": "WIKISEARCH()",
+        "normalized": "WIKISEARCH()"
+      },
+      {
+        "original": "WIKIRECENT()",
+        "normalized": "WIKIRECENT()"
       }
     ]
   }

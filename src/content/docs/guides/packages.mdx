@@ -1,0 +1,155 @@
+---
+title: Softcode Packages
+description: Installing, upgrading and authoring SharpMUSH softcode packages.
+---
+
+import { Aside, Steps, LinkCard } from '@astrojs/starlight/components';
+
+Global softcode has traditionally been distributed as a `.mush` file you paste into a client and
+hope for the best: the dbrefs have to line up, there is no record of what was installed, and there is
+no way to upgrade without clobbering local edits.
+
+SharpMUSH replaces that with **packages**. A package is a declarative description of softcode — the
+objects that should exist, and the attributes, flags, locks and parents they carry — installed
+through the admin panel at `/admin/packages`.
+
+## How installing works
+
+Packages are **desired state**, not a script. There is no ordering, no `@create` lines, and
+crucially **no dbrefs**: object identity is symbolic and resolved to real dbrefs at install time.
+
+That makes a plan/apply model possible:
+
+<Steps>
+
+1. **Plan.** The server compares the manifest against your live database and computes a changeset.
+
+2. **Review.** A wizard shows you exactly what will be created, changed or removed. Nothing has been
+   written yet.
+
+3. **Apply.** Only now does anything change, and the result is recorded as a revision.
+
+</Steps>
+
+Because every apply is a revision, an install can be **rolled back**. And because upgrades
+**three-way-merge** against the baseline stored at install time, the local customizations you made
+to a package's attributes survive an upgrade instead of being overwritten.
+
+Dependencies are resolved against your installed packages, and version constraints are checked
+before anything is planned.
+
+## Getting packages
+
+Add a repository under **Admin → Packages → Remotes**. The official one is:
+
+```
+https://github.com/SharpMUSH/SharpMUSH-Packages
+```
+
+Then browse, pick a package and a version, review the changeset, and apply.
+
+Releases are **git tags** named `<package-dir>/v<version>` — `who-where/v1.2.0`, for example. The
+version list in the admin panel is the tag list, installing a version checks out its tag, and `main`
+is the development channel. Release tags are immutable: installers record the exact commit they
+applied and warn loudly if a tag later points somewhere else.
+
+The official repository also carries a curated **community directory**, so games can discover
+third-party package repos from the admin panel along with their trust tier.
+
+<Aside type="note">
+Some packages are bundled with the server and installed automatically at boot — `http-handler`,
+`profile-handler`, `common-functions` and `scene`. These are why a fresh database already has a
+working HTTP handler and a functioning scene system.
+</Aside>
+
+## Authoring a package
+
+### From objects you already built
+
+If the code already exists in your game, export it rather than writing YAML by hand:
+
+```
+@package/scan <objects>
+```
+
+is a read-only report — it shows the manifest that would be produced, including anything it cannot
+resolve, without touching the database. When the report looks right:
+
+```
+@package <objects>=<package-id>[,<version>[,<description>]]
+```
+
+writes the package out. The `/admin/packages/author` page covers the same ground in the portal.
+
+### The manifest
+
+A package is a directory containing a `package.yaml`:
+
+```yaml
+format: 1
+package: myrddins-bbs
+version: 2.4.1
+authors: [Myrddin]
+description: "Bulletin Board"
+license: MIT
+
+depends:
+  - who-where: ">=1.0 <2.0"
+
+configure:
+  board_name:
+    label: "Board display name"
+    type: string
+    default: "Community Board"
+
+objects:
+  - ref: bbs_global
+    type: thing
+    name: BBS Global Object
+    flags: [no_command]
+    attributes:
+      CMD_+BBREAD:
+        value: |-
+          $+bbread *:@pemit %#=[u({{bbs_parent}}/FN_READ,%0)]
+        flags: []
+
+  - ref: bbs_parent
+    type: thing
+    name: BBS Parent Object
+```
+
+`ref` names are intra-package identifiers; `{{token}}` references are resolved to real dbrefs when
+the package is applied. `configure` declares typed parameters the installer is asked for, so a
+package can adapt to a game without being forked.
+
+<Aside type="caution" title="Always use block scalars for MUSHcode">
+YAML mangles raw softcode. Double quotes process backslash escapes, and unquoted values are worse —
+a leading `&CMD` is silently read as a YAML anchor, and a mid-value ` #` starts a comment. Write
+attribute values as block scalars (`|-`), as above.
+</Aside>
+
+The complete format reference, with validated examples ranging from a one-object `hello-world` to a
+dependency-carrying `bbs-lite`, lives in
+[`examples/packages/`](https://github.com/SharpMUSH/SharpMUSH/tree/main/examples/packages) in the
+server repository. Every manifest there is parsed by the test suite, so the examples cannot drift
+from the parser.
+
+`SharpMUSH.PackageTool` validates a manifest locally, before you push.
+
+## Beyond softcode
+
+Packages come in kinds. `kind: softcode` is the default described above; `kind: application`
+registers a [Dynamic Application](/guides/web-portal#for-players) — a portal page backed by a
+softcode schema — and managed packages distribute compiled C#.
+
+<LinkCard
+  title="Writing Plugins"
+  href="/guides/plugins"
+  description="When softcode is not enough: compiled C# commands, functions and services."
+/>
+
+<LinkCard
+  title="Extension Starter Repository"
+  href="https://github.com/SharpMUSH/SharpMUSH.Template"
+  description="A 'Use this template' repo with a working example of all three extension layers."
+/>

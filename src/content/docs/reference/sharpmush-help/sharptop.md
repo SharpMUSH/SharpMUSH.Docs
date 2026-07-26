@@ -1716,6 +1716,7 @@ See [queue2](/reference/sharpmush-help/sharptop/#queue2)
     %@ = the caller's dbref number. Initially same as %#, changes when something like `ufun()` is called.<br>
     %! = the dbref number of the object the command is on (the EXECUTOR)<br>
     %L = the dbref of the ENACTOR's location<br>
+    %d = the DESCRIPTOR (port) the command was entered from<br>
     %c = text of the last command, _before_ evaluation<br>
     %u = text of the last command, after evaluation, available to locks/hooks<br>
     %? = The current function invocation and depth counts<br>
@@ -2168,9 +2169,9 @@ This is the AHELP index.
 
   Several commands and functions take a descriptor as an argument, or return the descriptor(s) associated with a player's connection.
 
-
 **See Also:**
 - [WHO](/reference/sharpmush-help/sharpcmd/#who)
+- [SUBSTITUTIONS](/reference/sharpmush-help/sharptop/#substitutions)
 - [ports()](/reference/sharpmush-help/sharpfunc/#lports)
 - [lports()](/reference/sharpmush-help/sharpfunc/#lports)
 - [player()](/reference/sharpmush-help/sharpfunc/#player)

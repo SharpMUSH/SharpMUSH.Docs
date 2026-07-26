@@ -10,6 +10,10 @@ hero:
     - text: Documentation
       link: /guides/get-started/
       icon: right-arrow
+    - text: Play the Live Demo
+      link: https://mush.sharpmush.com
+      icon: external
+      variant: minimal
     - text: Contribute on GitHub
       link: https://github.com/SharpMUSH/SharpMUSH
       icon: external
@@ -33,14 +37,24 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 		See our [Compatibility](/reference/compatibility/) and [Comparison](/reference/comparison/) Guides for details.
 	</Card>
 	<Card title="Runs on Docker" icon="seti:docker">
-		[Getting Started](/guides/get-started/) with SharpMUSH is as easy as booting up a Docker image! Host it on Kubernetes or any other container orchestration system. 
-		
+		Booting up a game is a single [Docker Compose command](/guides/docker-quickstart/).
+		The same stack scales down to a €5/month VPS and up to Kubernetes.
+	</Card>
+	<Card title="See it running" icon="rocket">
+		Our [live example game](https://mush.sharpmush.com) runs the current build.
+		Create a character, or look around as a guest — no install required.
 	</Card>
 	<Card title="Configure your new MUSH" icon="setting">
-		Use our admin panel to configure your new MUSH.
+		Configure, moderate and extend your game from the [web portal](/guides/web-portal/) —
+		no config-file editing and no server restarts.
+	</Card>
+	<Card title="Extend it your way" icon="puzzle">
+		Install [softcode packages](/guides/packages/) from a repository, or ship compiled
+		[C# plugins](/guides/plugins/) without forking the engine.
 	</Card>
 	<Card title="Read the docs" icon="open-book">
 		Learn more in our [SharpMUSH docs](/guides/get-started). 
-		Looking for a specific feature? Check out our [API Reference](/reference/sharpmush-help/sharptop/).
+		Looking for a specific command or function? Check out the [Helpfile Reference](/reference/sharpmush-help/sharptop/),
+		generated from the server's own help topics.
 	</Card>
 </CardGrid>
