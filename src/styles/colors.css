@@ -3,6 +3,10 @@
 	--sl-color-accent-low: #002c1e;
 	--sl-color-accent: #00f5b7;
 	--sl-color-accent-high: #00fAbA;
+	/* Gradient stops for the hero call-to-action. Both are light enough to carry
+	   --sl-color-black (#17181c) as label text at 8:1 or better. */
+	--sm-cta-from: #00fAbA;
+	--sm-cta-to: #00c894;
 	--sl-color-white: #ffffff;
 	--sl-color-gray-1: #eceef2;
 	--sl-color-gray-2: #c0c2c7;
@@ -26,6 +30,45 @@
 	--sl-color-gray-6: #eceef2;
 	--sl-color-gray-7: #f5f6f8;
 	--sl-color-black: #ffffff;
+	/* Light mode inverts --sl-color-black to white, so these stops run dark
+	   instead: 5.5:1 and 8.8:1 against white label text. */
+	--sm-cta-from: #007757;
+	--sm-cta-to: #00553d;
+}
+
+/* Hero call-to-action for the live example game. Deliberately louder than the
+   flat accent fill Starlight gives `variant: primary`, so the demo reads as the
+   thing to click. Unlayered, so it wins over starlight.components. */
+.sl-link-button.hero-demo-cta {
+	background: linear-gradient(135deg, var(--sm-cta-from), var(--sm-cta-to));
+	border-color: transparent;
+	color: var(--sl-color-black);
+	font-weight: 600;
+	box-shadow: 0 2px 14px -4px color-mix(in oklab, var(--sl-color-accent) 70%, transparent);
+	transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.sl-link-button.hero-demo-cta:hover {
+	color: var(--sl-color-black);
+	box-shadow: 0 8px 24px -6px color-mix(in oklab, var(--sl-color-accent) 85%, transparent);
+	transform: translateY(-2px);
+}
+
+.sl-link-button.hero-demo-cta:active {
+	transform: translateY(0);
+}
+
+.sl-link-button.hero-demo-cta:focus-visible {
+	outline: 2px solid var(--sl-color-accent-high);
+	outline-offset: 0.25rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.sl-link-button.hero-demo-cta,
+	.sl-link-button.hero-demo-cta:hover {
+		transition: none;
+		transform: none;
+	}
 }
 
 /* Table styling for flexible full-width tables */
