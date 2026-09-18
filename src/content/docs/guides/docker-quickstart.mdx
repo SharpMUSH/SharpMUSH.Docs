@@ -20,8 +20,8 @@ exact stack.
 ## Deploy a game
 
 The maintained deployment lives in [`deploy/`](https://github.com/SharpMUSH/SharpMUSH/tree/main/deploy)
-in the SharpMUSH repository. It uses **SurrealDB embedded** — a RocksDB directory on disk, with no
-separate database server to run or back up separately.
+in the SharpMUSH repository. It uses **LMDB embedded** — one directory on disk, with no separate
+database server to run or back up separately.
 
 Pick your entry point based on how you terminate TLS:
 
@@ -159,7 +159,7 @@ repository once:
 docker compose run --rm backup restic init
 ```
 
-From then on it snapshots the `app-data` volume — the SurrealDB store and wiki assets, i.e. the
+From then on it snapshots the `app-data` volume — the LMDB store and wiki assets, i.e. the
 entire game — to your bucket nightly, keeping 7 daily and 4 weekly snapshots. The volume is mounted
 read-only, so a backup run can never corrupt live data.
 
@@ -174,8 +174,8 @@ Full details, including restore procedure and the Cloudflare Tunnel walkthrough,
 ## Running the development stack
 
 The Compose files at the repository root are a different thing: they **build from source** and are
-aimed at hardcode development rather than at hosting a game. They use ArangoDB and expose the
-metrics endpoints, and they expect the .NET toolchain described in
+aimed at hardcode development rather than at hosting a game. They use the same embedded LMDB store
+and additionally expose the metrics endpoints, and they expect the .NET toolchain described in
 [Install for Development](/guides/local-install).
 
 <LinkCard

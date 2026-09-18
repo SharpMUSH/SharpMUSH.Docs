@@ -108,6 +108,10 @@ It includes a custom SharpMUSH function that allows for custom rendering of Mark
 
 ## Choice of Database
 
-ArangoDB, SurrealDB and Memgraph all ship as backends. SurrealDB can run **embedded** — a directory
-on disk, with no separate database server — which is what makes the single-small-VM deployment in
-the [Docker guide](/guides/docker-quickstart) practical.
+SharpMUSH stores the game in **LMDB**, embedded in the server process — one directory on disk, with
+no separate database server to run, tune or back up. That is what makes the single-small-VM deployment
+in the [Docker guide](/guides/docker-quickstart) practical.
+
+Because the store is in-process, a copy is taken with LMDB's own copy routine rather than by stopping
+the game: `@backup` writes a consistent, point-in-time copy of the live world while players stay
+connected.
