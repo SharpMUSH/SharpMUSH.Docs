@@ -31,8 +31,8 @@ by the package manager). Authoring is **identical to writing in-tree engine code
 Beyond commands and functions, a plugin may also contribute:
 
 - **DI services**, registered into the host container before it is built
-- **Database migrations**, tagged per provider — implement only the backends you support
-- **Engine flags**, seeded into whichever database is active alongside the built-ins
+- **Database migrations**, applied once each and tracked by id
+- **Engine flags**, seeded into the world alongside the built-ins
 - **NATS bridge subscriptions**, forwarding your own subjects to SignalR groups
 - **Extension hooks** — the compiled-C# analog of softcode `@hook`
 
@@ -135,7 +135,7 @@ A failing plugin is logged and skipped. It never aborts server boot.
 The scene system is the reference case, because it deliberately spans two layers:
 
 - **As a C# plugin**, it contributes the wizard `@SCENE` command, the `scene…()` functions, the scene
-  database migration, the `SCENE_ROOM` flag, and its realtime bridge leg. That is the *mechanism* —
+  storage, the `SCENE_ROOM` flag, and its realtime bridge leg. That is the *mechanism* —
   store a pose, broadcast an event, gate the command.
 - **As a softcode package**, it ships the policy: the hook that captures poses, the `+scene/*` player
   verbs, temp-room orchestration, and the permission rules — all editable by the game owner. That is

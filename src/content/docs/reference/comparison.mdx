@@ -9,7 +9,7 @@ import { Aside } from '@astrojs/starlight/components';
 
 <Card title="Advantages">
 
-* A database layer that allows the use of real databases to store, access and maintain its data - [ArangoDB](https://arangodb.com/), [SurrealDB](https://surrealdb.com/) and [Memgraph](https://memgraph.com/) all ship as backends - as well as expanding upon its capabilities. Database Transactions ensure no more data loss and greatly diminish the chance of database corruption.
+* A real database layer to store, access and maintain its data, built on [LMDB](http://www.lmdb.tech/doc/) embedded in the server process - as well as expanding upon its capabilities. Database transactions make every update atomic and greatly diminish the chance of database corruption.
 * Full Unicode support, as well as both Websocket and Telnet negotiation and communication.
 * A buffer size that does not get in the way, allowing for better integration with modern web applications, use cases, and avoids user confusion.
 * Written in [C#](https://dotnet.microsoft.com/en-us/languages/csharp), allowing memory safety and easier community maintenance and improvements with support for all Operating Systems.
