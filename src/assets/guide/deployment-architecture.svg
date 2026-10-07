@@ -7,7 +7,7 @@
     <style>
       .canvas{fill:#e9eef4}.lane{fill:#f8fafc;stroke:#c7d2df;stroke-width:2;rx:18}.lane-title{font:700 22px system-ui,sans-serif;fill:#263746;letter-spacing:.04em}
       .service{fill:#fff;stroke:#47647b;stroke-width:2.5;rx:14}.client{fill:#eef8f1;stroke:#38724a;stroke-width:2.5;rx:14}.state{fill:#fff7e7;stroke:#986b28;stroke-width:2.5;rx:14}.ops{fill:#f3effb;stroke:#7457a6;stroke-width:2.5;rx:14}
-      .name{font:700 20px system-ui,sans-serif;fill:#172532}.detail{font:16px system-ui,sans-serif;fill:#4a5c6d}.edge{fill:none;stroke:#47647b;stroke-width:3;marker-end:url(#arrow)}.edge-green{fill:none;stroke:#38724a;stroke-width:3;marker-end:url(#arrow-green)}.observe{fill:none;stroke:#7457a6;stroke-width:2.5;stroke-dasharray:8 7}.edge-label{font:600 15px system-ui,sans-serif;fill:#405568}.legend{font:15px system-ui,sans-serif;fill:#526575}
+      .name{font:700 20px system-ui,sans-serif;fill:#172532}.detail{font:16px system-ui,sans-serif;fill:#4a5c6d}.edge{fill:none;stroke:#47647b;stroke-width:3;marker-end:url(#arrow)}.edge-green{fill:none;stroke:#38724a;stroke-width:3;marker-end:url(#arrow-green)}.observe{fill:none;stroke:#7457a6;stroke-width:2.5;stroke-dasharray:8 7}.edge-label{font:600 15px system-ui,sans-serif;fill:#405568;paint-order:stroke fill;stroke:#f8fafc;stroke-width:9;stroke-linejoin:round}.gap-label{stroke:#e9eef4}.legend{font:15px system-ui,sans-serif;fill:#526575}
     </style>
   </defs>
 
@@ -57,7 +57,7 @@
   <text x="586" y="780" text-anchor="middle" class="name">Restic</text><text x="586" y="808" text-anchor="middle" class="detail">read-only sources</text>
   <rect x="816" y="746" width="240" height="88" class="state"/>
   <text x="936" y="780" text-anchor="middle" class="name">Off-host storage</text><text x="936" y="808" text-anchor="middle" class="detail">encrypted snapshots</text>
-  <path d="M775 632 V650 C775 662 241 662 241 746" class="edge"/><text x="500" y="652" text-anchor="middle" class="edge-label">server-created copy</text>
+  <path d="M775 632 V650 C775 662 241 662 241 746" class="edge"/><text x="500" y="652" text-anchor="middle" class="edge-label gap-label">server-created copy</text>
   <path d="M356 790 H486" class="edge"/><path d="M686 790 H816" class="edge"/>
   <path d="M1025 632 V650 C1025 680 640 680 640 746" class="edge"/><text x="850" y="679" text-anchor="middle" class="edge-label">wiki assets</text>
 
