@@ -15,14 +15,16 @@
   <rect x="550" y="55" width="220" height="80" class="box"/><text x="660" y="87" text-anchor="middle" class="t">SharpMUSH.Server</text><text x="660" y="112" text-anchor="middle" class="s">engine · portal · API</text>
   <rect x="550" y="210" width="220" height="80" class="box"/><text x="660" y="242" text-anchor="middle" class="t">SocketServer</text><text x="660" y="267" text-anchor="middle" class="s">owns public sockets</text>
   <rect x="900" y="210" width="220" height="80" class="box"/><text x="1010" y="242" text-anchor="middle" class="t">RenderingWorker</text><text x="1010" y="267" text-anchor="middle" class="s">HTTP/2 · Unix socket</text>
-  <rect x="550" y="365" width="220" height="80" class="state"/><text x="660" y="397" text-anchor="middle" class="t">NATS + JetStream</text><text x="660" y="422" text-anchor="middle" class="s">messages · bounded replay</text>
+  <rect x="550" y="365" width="220" height="80" class="state"/><text x="660" y="397" text-anchor="middle" class="t">NATS + JetStream</text><text x="660" y="422" text-anchor="middle" class="s">bidirectional · replay</text>
   <rect x="860" y="365" width="150" height="80" class="state"/><text x="935" y="397" text-anchor="middle" class="t">LMDB world</text><text x="935" y="422" text-anchor="middle" class="s">authoritative</text>
   <rect x="1030" y="365" width="130" height="80" class="state"/><text x="1095" y="397" text-anchor="middle" class="t">Wiki assets</text><text x="1095" y="422" text-anchor="middle" class="s">uploaded files</text>
   <rect x="860" y="540" width="150" height="80" class="state"/><text x="935" y="572" text-anchor="middle" class="t">World copies</text><text x="935" y="597" text-anchor="middle" class="s">point in time</text>
   <rect x="610" y="540" width="150" height="80" class="box"/><text x="685" y="572" text-anchor="middle" class="t">Restic</text><text x="685" y="597" text-anchor="middle" class="s">read-only source</text>
   <rect x="350" y="540" width="170" height="80" class="state"/><text x="435" y="572" text-anchor="middle" class="t">Off-host storage</text><text x="435" y="597" text-anchor="middle" class="s">encrypted snapshots</text>
+  <rect x="300" y="365" width="180" height="80" class="box"/><text x="390" y="397" text-anchor="middle" class="t">Observation</text><text x="390" y="422" text-anchor="middle" class="s">health · Prometheus</text>
   <path d="M220 127 H290" class="line"/><path d="M480 110 H550" class="line"/><path d="M480 145 C520 155 510 250 550 250" class="line"/><path d="M220 277 H550" class="line"/>
-  <path d="M770 250 H900" class="line"/><path d="M660 135 V365" class="line"/><path d="M650 290 V365" class="line"/><path d="M770 95 C830 95 820 405 860 405" class="line"/><path d="M770 115 C900 130 980 340 1030 390" class="line"/>
+  <path d="M770 250 H900" class="line"/><path d="M645 135 V365" class="line"/><path d="M675 365 V135" class="line"/><path d="M635 290 V365" class="line"/><path d="M685 365 V290" class="line"/><path d="M770 95 C830 95 820 405 860 405" class="line"/><path d="M770 115 C900 130 980 340 1030 390" class="line"/>
+  <path d="M480 390 C520 350 520 130 550 110" class="line dash"/><path d="M480 410 C520 400 520 280 550 270" class="line dash"/><path d="M480 425 H550" class="line dash"/>
   <path d="M935 445 V540" class="line"/><path d="M860 580 H760" class="line dash"/><path d="M1030 420 C830 470 830 560 760 580" class="line dash"/><path d="M610 580 H520" class="line dash"/>
   <text x="820" y="236" text-anchor="middle" class="s">render request</text><text x="780" y="392" text-anchor="middle" class="s">LMDB transactions</text><text x="780" y="570" text-anchor="middle" class="s">backup flow</text>
 </svg>

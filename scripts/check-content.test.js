@@ -32,6 +32,11 @@ test('catches broken internal routes and image assets', () => {
   assert.match(failures, /missing image/);
 });
 
+test('catches a broken LinkCard component route', () => {
+  const root = fixture('<LinkCard title="Missing" href="/guides/nope" />');
+  assert.match(validateContent({ root, requiredRoutes: ['guides/test'] }).join('\n'), /missing component route/);
+});
+
 test('catches generic repeated screenshot text', () => {
   const root = fixture('![Git Clone](./shot.png)');
   fs.writeFileSync(path.join(root, 'src/content/docs/guides/shot.png'), 'png');

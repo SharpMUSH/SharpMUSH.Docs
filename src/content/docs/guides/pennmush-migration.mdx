@@ -5,9 +5,10 @@ description: Rehearse, validate, cut over, and roll back a PennMUSH world safely
 
 import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
 
-SharpMUSH directly imports a **PennMUSH flatfile** and, optionally, its `mush.cnf`. That path preserves
-dbrefs so softcode can continue to refer to the same objects. RhostMUSH and TinyMUX do not have a
-direct supported importer.
+SharpMUSH directly imports a **PennMUSH flatfile** and, optionally, its `mush.cnf`, mail database
+(`maildb`), and chat database (`chatdb`). The flatfile path preserves dbrefs so softcode can continue
+to refer to the same objects. The ancillary databases carry mail aliases/messages and channels.
+RhostMUSH and TinyMUX do not have a direct supported importer.
 
 <Aside type="danger" title="Plan this as a one-way migration">
 SharpMUSH does not export a PennMUSH flatfile. Keep the original PennMUSH installation and an immutable
@@ -20,20 +21,21 @@ pre-cutover backup until the new game has passed its observation period.
 
 1. **Inventory and preserve the source.** Record object counts and known dbrefs, configuration,
    restrictions, handlers, packages, custom flags and powers, channels, mail, integrations, and a
-   risk-ranked softcode test list. Freeze and checksum a current flatfile plus the complete
-   configuration tree.
+   risk-ranked softcode test list. Freeze and checksum a matching flatfile, `maildb`, and `chatdb`
+   plus the complete configuration tree. Omitting the optional ancillary files imports no mail
+   aliases or channels from those stores.
 
-2. **Rehearse on a disposable host.** Claim `/setup`, upload `mush.cnf` with the database, read every
-   skipped-setting warning, and let SharpMUSH build a separate staging world. A rehearsal never
-   becomes authoritative just because conversion succeeded.
+2. **Rehearse on a disposable host.** Claim `/setup`, upload the flatfile with its matching optional
+   `mush.cnf`, `maildb`, and `chatdb`, read every skipped-setting warning, and let SharpMUSH build a
+   separate staging world. A rehearsal never becomes authoritative just because conversion succeeded.
 
 3. **Validate the game, not just the import.** Test administrator and player passwords, object counts
    and dbrefs, attributes and locks, flags and powers, channels and mail, handlers and packages,
    representative softcode, telnet/WebSocket login, portal login, and every external integration.
 
 4. **Cut over from a new final export.** Freeze PennMUSH, drain queued work, create and checksum the
-   final flatfile, repeat the rehearsed import, run the go/no-go suite, then change endpoints. Keep
-   PennMUSH stopped but recoverable throughout the observation window.
+   final flatfile, `maildb`, and `chatdb`, repeat the rehearsed import, run the go/no-go suite, then
+   change endpoints. Keep PennMUSH stopped but recoverable throughout the observation window.
 
 5. **Roll back at a declared boundary.** Return traffic to the preserved PennMUSH world if acceptance
    fails. Player changes made after SharpMUSH opened are not automatically transferable. A

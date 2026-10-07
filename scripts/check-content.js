@@ -38,6 +38,12 @@ export function validateContent({ root = process.cwd(), requiredRoutes = ['guide
         failures.push(`${path.relative(root, file)} has missing link: ${target}`);
       }
     }
+    for (const match of text.matchAll(/\bhref=["']([^"']+)["']/g)) {
+      const target = match[1].split('#', 1)[0];
+      if (target.startsWith('/') && !routeCandidates(docsRoot, target).some(fs.existsSync)) {
+        failures.push(`${path.relative(root, file)} has missing component route: ${target}`);
+      }
+    }
   }
 
   for (const relative of ['src/content/docs/guides/local-install.mdx', 'src/content/docs/guides/plugins.mdx']) {
