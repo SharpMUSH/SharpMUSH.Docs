@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">SharpMUSH single-host deployment architecture</title>
+  <desc id="desc">Browser and telnet clients enter through the proxy and SocketServer. Server and SocketServer exchange messages through NATS; SocketServer uses the rendering worker. Server owns the LMDB world and wiki assets, with point-in-time copies sent through Restic to off-host storage.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#53738c"/></marker>
+    <style>
+      .box{fill:#f5f8fb;stroke:#53738c;stroke-width:2;rx:12}.state{fill:#fff7e8;stroke:#9a6b22;stroke-width:2;rx:12}
+      .client{fill:#eef8f0;stroke:#417a4b;stroke-width:2;rx:12}.t{font:600 18px system-ui,sans-serif;fill:#18212b}.s{font:14px system-ui,sans-serif;fill:#405064}
+      .line{fill:none;stroke:#53738c;stroke-width:2;marker-end:url(#arrow)}.dash{stroke-dasharray:7 6}
+    </style>
+  </defs>
+  <rect x="40" y="90" width="180" height="75" class="client"/><text x="130" y="120" text-anchor="middle" class="t">Browser</text><text x="130" y="145" text-anchor="middle" class="s">REST · SignalR · WSS</text>
+  <rect x="40" y="240" width="180" height="75" class="client"/><text x="130" y="270" text-anchor="middle" class="t">MU* client</text><text x="130" y="295" text-anchor="middle" class="s">Telnet :4201</text>
+  <rect x="290" y="90" width="190" height="75" class="box"/><text x="385" y="120" text-anchor="middle" class="t">Web ingress</text><text x="385" y="145" text-anchor="middle" class="s">Caddy or Cloudflare</text>
+  <rect x="550" y="55" width="220" height="80" class="box"/><text x="660" y="87" text-anchor="middle" class="t">SharpMUSH.Server</text><text x="660" y="112" text-anchor="middle" class="s">engine · portal · API</text>
+  <rect x="550" y="210" width="220" height="80" class="box"/><text x="660" y="242" text-anchor="middle" class="t">SocketServer</text><text x="660" y="267" text-anchor="middle" class="s">owns public sockets</text>
+  <rect x="900" y="210" width="220" height="80" class="box"/><text x="1010" y="242" text-anchor="middle" class="t">RenderingWorker</text><text x="1010" y="267" text-anchor="middle" class="s">HTTP/2 · Unix socket</text>
+  <rect x="550" y="365" width="220" height="80" class="state"/><text x="660" y="397" text-anchor="middle" class="t">NATS + JetStream</text><text x="660" y="422" text-anchor="middle" class="s">messages · bounded replay</text>
+  <rect x="860" y="365" width="150" height="80" class="state"/><text x="935" y="397" text-anchor="middle" class="t">LMDB world</text><text x="935" y="422" text-anchor="middle" class="s">authoritative</text>
+  <rect x="1030" y="365" width="130" height="80" class="state"/><text x="1095" y="397" text-anchor="middle" class="t">Wiki assets</text><text x="1095" y="422" text-anchor="middle" class="s">uploaded files</text>
+  <rect x="860" y="540" width="150" height="80" class="state"/><text x="935" y="572" text-anchor="middle" class="t">World copies</text><text x="935" y="597" text-anchor="middle" class="s">point in time</text>
+  <rect x="610" y="540" width="150" height="80" class="box"/><text x="685" y="572" text-anchor="middle" class="t">Restic</text><text x="685" y="597" text-anchor="middle" class="s">read-only source</text>
+  <rect x="350" y="540" width="170" height="80" class="state"/><text x="435" y="572" text-anchor="middle" class="t">Off-host storage</text><text x="435" y="597" text-anchor="middle" class="s">encrypted snapshots</text>
+  <path d="M220 127 H290" class="line"/><path d="M480 110 H550" class="line"/><path d="M480 145 C520 155 510 250 550 250" class="line"/><path d="M220 277 H550" class="line"/>
+  <path d="M770 250 H900" class="line"/><path d="M660 135 V365" class="line"/><path d="M650 290 V365" class="line"/><path d="M770 95 C830 95 820 405 860 405" class="line"/><path d="M770 115 C900 130 980 340 1030 390" class="line"/>
+  <path d="M935 445 V540" class="line"/><path d="M860 580 H760" class="line dash"/><path d="M1030 420 C830 470 830 560 760 580" class="line dash"/><path d="M610 580 H520" class="line dash"/>
+  <text x="820" y="236" text-anchor="middle" class="s">render request</text><text x="780" y="392" text-anchor="middle" class="s">LMDB transactions</text><text x="780" y="570" text-anchor="middle" class="s">backup flow</text>
+</svg>
