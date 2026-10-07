@@ -1,0 +1,77 @@
+---
+title: Operator Handbook
+description: The production checklist for backups, upgrades, health, and recovery.
+---
+
+import { Steps, Aside, LinkCard, Card, CardGrid } from '@astrojs/starlight/components';
+
+This page is the short operator route through the maintained single-host Compose deployment. Use the
+repository runbook for exact commands and paths; run them from `deploy/` with the same Compose file
+that created the stack.
+
+## First claim
+
+<Aside type="danger">
+Protect `/setup` from untrusted visitors, then claim it immediately. The first visitor owns the
+pre-generated administrator account linked to `#1`.
+</Aside>
+
+After claim, verify a fresh administrator login, an ordinary telnet login, the portal terminal over
+`wss://your-domain/ws`, readiness, logs, private metrics, and wizard-only `@storage` output.
+
+## What recovery actually covers
+
+<CardGrid>
+  <Card title="World copies" icon="database">
+    `@backup` asks LMDB for a point-in-time world copy. Never let a file backup read live `data.mdb`.
+  </Card>
+  <Card title="Wiki assets" icon="open-book">
+    Uploaded files live outside the LMDB world and must be included separately in Restic snapshots.
+  </Card>
+  <Card title="NATS state" icon="setting">
+    JetStream persistence supports bounded replay and WebSocket recovery; it is not a world backup.
+  </Card>
+  <Card title="Plugins and config" icon="puzzle">
+    Preserve plugin files and deployment config. Keep `.env` values in a separate secrets system.
+  </Card>
+</CardGrid>
+
+## Restore rehearsal
+
+<Steps>
+1. Restore a dated Restic snapshot to an isolated directory or host, never over the live volume.
+2. Start a non-public stack with test-only secrets and no production DNS, mail, bots, or automation.
+3. Check known dbrefs, administrator and player login, core softcode, mail/channels, wiki assets,
+   plugins, telnet, and the browser terminal.
+4. Record the snapshot id, recovery time, recovered scope, evidence, failures, and corrections.
+</Steps>
+
+## Upgrade and incident rules
+
+Keep the deployment's documented image and automatic-update policy. Before deliberate change, record
+current image digests, take a fresh world copy, confirm storage headroom, and read the connection
+impact. Replacing the engine or renderer can preserve game sockets; replacing SocketServer closes
+them. Deployment rollback restores binaries/configuration. Data recovery restores persistent state.
+Do not substitute one for the other.
+
+Start incidents with readiness, bounded logs, metrics, `@storage`, service restart history, image
+digests, and the affected connection path. Never publish `.env`, passwords, cookies, bearer/resume
+tokens, Restic credentials, or connection strings in diagnostics.
+
+<LinkCard
+  title="Full operator runbook"
+  href="https://github.com/SharpMUSH/SharpMUSH/blob/main/docs/guides/operator-handbook.md"
+  description="State-by-state backup coverage, exact checks, rollback distinctions, and incident triage."
+/>
+
+<LinkCard
+  title="Deployment commands"
+  href="https://github.com/SharpMUSH/SharpMUSH/blob/main/deploy/README.md"
+  description="Compose files, ports, backups, storage planning, restore commands, and Cloudflare setup."
+/>
+
+<LinkCard
+  title="Deployment architecture"
+  href="/technical/architecture"
+  description="Service ownership, protocols, persisted state, and restart boundaries."
+/>

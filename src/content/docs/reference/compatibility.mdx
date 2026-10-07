@@ -7,6 +7,10 @@ import { Card } from '@astrojs/starlight/components';
 import { Aside } from '@astrojs/starlight/components';
 import { Code } from '@astrojs/starlight/components';
 
+Planning to move a live game? Compatibility findings are inputs to a rehearsal, not proof that an
+import is ready for players. Use the [PennMUSH migration runbook](/guides/pennmush-migration) to test
+your own identities, data, softcode, connection paths, portal, and integrations.
+
 SharpMUSH does away with some of the more unique aspects of PennMUSH parser curiosities.
 
 <Card title="Unbalanced Parenthesis">
@@ -86,4 +90,3 @@ iter(\[if(true\,red\,white)\],##,)
 If double-evaluation is needed, use `s()` or `objeval()` to explicitly evaluate the result.
 
 </Card>
-

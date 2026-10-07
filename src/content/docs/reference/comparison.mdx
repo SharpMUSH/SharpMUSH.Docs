@@ -27,8 +27,7 @@ import { Aside } from '@astrojs/starlight/components';
 
 * A less mature code base.
 * Dropped support for non-standard Pueblo items, such as Panes.
-* One way database transfers - SharpMUSH provides a tool to take a PennMUSH database and stores it in its own. It does not provide a way to go back beyond decompiling.
+* [One-way database transfers](/guides/pennmush-migration) - SharpMUSH imports a PennMUSH flatfile into its own store but does not export a PennMUSH flatfile. A safe move therefore keeps the original world and rehearses rollback before cutover.
 * No support for the more esoteric features of PennMUSH, such as full recursion parsing. See our [Compatibility](/reference/compatibility) for more details.
 
 </Card>
-
