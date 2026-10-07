@@ -20,6 +20,19 @@ test('accepts a navigated page with valid links and images', () => {
   assert.deepEqual(validateContent({ root, requiredRoutes: ['guides/test'] }), []);
 });
 
+test('accepts extensionless relative documentation links', () => {
+  const root = fixture('[Other](./other)');
+  fs.writeFileSync(path.join(root, 'src/content/docs/guides/other.mdx'), 'Other');
+  assert.deepEqual(validateContent({ root, requiredRoutes: ['guides/test'] }), []);
+});
+
+test('accepts root-relative images from the public directory', () => {
+  const root = fixture('![Setup claim form](/images/setup.png)');
+  fs.mkdirSync(path.join(root, 'public/images'), { recursive: true });
+  fs.writeFileSync(path.join(root, 'public/images/setup.png'), 'png');
+  assert.deepEqual(validateContent({ root, requiredRoutes: ['guides/test'] }), []);
+});
+
 test('catches a page omitted from site navigation', () => {
   const root = fixture();
   assert.match(validateContent({ root, requiredRoutes: ['guides/missing'] }).join('\n'), /Navigation is missing/);
@@ -30,6 +43,11 @@ test('catches broken internal routes and image assets', () => {
   const failures = validateContent({ root, requiredRoutes: ['guides/test'] }).join('\n');
   assert.match(failures, /missing route/);
   assert.match(failures, /missing image/);
+});
+
+test('catches a missing root-relative image asset', () => {
+  const root = fixture('![Setup claim form](/images/nope.png)');
+  assert.match(validateContent({ root, requiredRoutes: ['guides/test'] }).join('\n'), /missing image/);
 });
 
 test('catches a broken LinkCard component route', () => {
@@ -46,5 +64,12 @@ test('catches generic repeated screenshot text', () => {
 test('catches stale SDK claims on maintained adoption pages', () => {
   const root = fixture();
   fs.writeFileSync(path.join(root, 'src/content/docs/guides/local-install.mdx'), '.NET 10 SDK');
+  assert.match(validateContent({ root, requiredRoutes: ['guides/test'] }).join('\n'), /stale \.NET 10 SDK/);
+});
+
+test('catches stale SDK claims on the feature overview', () => {
+  const root = fixture();
+  fs.mkdirSync(path.join(root, 'src/content/docs/reference'), { recursive: true });
+  fs.writeFileSync(path.join(root, 'src/content/docs/reference/features.mdx'), 'Compiled net10.0 assemblies');
   assert.match(validateContent({ root, requiredRoutes: ['guides/test'] }).join('\n'), /stale \.NET 10 SDK/);
 });

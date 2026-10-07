@@ -42,6 +42,7 @@ export default defineConfig({
                       { label: 'Operator Handbook', slug: 'guides/operator-handbook' },
                       { label: 'Install for Development', slug: 'guides/local-install' },
                       { label: 'The Web Portal', slug: 'guides/web-portal' },
+                      { label: 'Visual Layouts and Themes', slug: 'guides/visual-layouts' },
                       { label: 'Softcode Packages', slug: 'guides/packages' },
                       { label: 'Writing Plugins', slug: 'guides/plugins' }
                   ],

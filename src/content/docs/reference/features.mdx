@@ -37,7 +37,7 @@ See [Softcode Packages](/guides/packages).
 
 ## C# Plugins
 
-Compiled `net10.0` assemblies can contribute commands, functions, DI services, database migrations,
+Compiled `net11.0` assemblies can contribute commands, functions, DI services, database migrations,
 engine flags and hooks without forking the server. Authoring uses the same `[SharpCommand]` and
 `[SharpFunction]` attributes as in-tree code. Command-, function- and hook-only plugins can be
 hot-unloaded; plugins that touch the DI container, the database or the message bridge are load-once.
@@ -49,6 +49,20 @@ See [Writing Plugins](/guides/plugins).
 Applications — chargen, job requests, whatever your game needs — are declared as a schema in
 softcode and rendered by the portal as a real form, with validation and a submit route. No Blazor
 and no rebuild: an admin defines the schema, and the page appears.
+
+## Adaptive layouts, themes, and images
+
+Softcode can describe a display with semantic layout functions—boxes, rules, responsive columns,
+labelled fields, trees, tables, gauges, lists, and figures—instead of hard-coding one grid of spaces.
+The same display becomes Unicode or ASCII terminal art, responsive portal structure, or clean
+screen-reader reading order.
+
+Games can establish a shared visual language with borders and layout themes. Players can choose an
+`@theme` for their own MU\* client, while explicitly themed displays retain their intended identity.
+Images carry descriptions and can provide terminal art, so a visual presentation does not discard
+the experience for text-only clients or screen readers.
+
+See [Visual Layouts, Themes, and Images](/guides/visual-layouts).
 
 ## Scene Logging
 
