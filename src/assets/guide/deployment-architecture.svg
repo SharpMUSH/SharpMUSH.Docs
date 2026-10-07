@@ -7,7 +7,7 @@
     <style>
       .canvas{fill:#e9eef4}.lane{fill:#f8fafc;stroke:#c7d2df;stroke-width:2;rx:18}.lane-title{font:700 22px system-ui,sans-serif;fill:#263746;letter-spacing:.04em}
       .service{fill:#fff;stroke:#47647b;stroke-width:2.5;rx:14}.client{fill:#eef8f1;stroke:#38724a;stroke-width:2.5;rx:14}.state{fill:#fff7e7;stroke:#986b28;stroke-width:2.5;rx:14}.ops{fill:#f3effb;stroke:#7457a6;stroke-width:2.5;rx:14}
-      .name{font:700 20px system-ui,sans-serif;fill:#172532}.detail{font:16px system-ui,sans-serif;fill:#4a5c6d}.edge{fill:none;stroke:#47647b;stroke-width:3;marker-end:url(#arrow)}.edge-green{fill:none;stroke:#38724a;stroke-width:3;marker-end:url(#arrow-green)}.observe{fill:none;stroke:#7457a6;stroke-width:2.5;stroke-dasharray:8 7}.edge-label{font:600 15px system-ui,sans-serif;fill:#405568;paint-order:stroke fill;stroke:#f8fafc;stroke-width:9;stroke-linejoin:round}.gap-label{stroke:#e9eef4}.legend{font:15px system-ui,sans-serif;fill:#526575}
+      .name{font:700 20px system-ui,sans-serif;fill:#172532}.detail{font:16px system-ui,sans-serif;fill:#4a5c6d}.edge{fill:none;stroke:#47647b;stroke-width:3;marker-end:url(#arrow)}.edge-green{fill:none;stroke:#38724a;stroke-width:3;marker-end:url(#arrow-green)}.observe{fill:none;stroke:#7457a6;stroke-width:2.5;stroke-dasharray:8 7}.label-box{fill:#f8fafc;stroke:#c7d2df;stroke-width:1;rx:6}.edge-label{font:600 15px system-ui,sans-serif;fill:#405568;paint-order:stroke fill;stroke:#f8fafc;stroke-width:9;stroke-linejoin:round}.gap-label{stroke:#e9eef4}.legend{font:15px system-ui,sans-serif;fill:#526575}
     </style>
   </defs>
 
@@ -27,7 +27,7 @@
   <text x="157" y="300" text-anchor="middle" class="name">MU* client</text><text x="157" y="330" text-anchor="middle" class="detail">Telnet :4201</text>
   <path d="M252 144 H322" class="edge-green"/><text x="287" y="132" text-anchor="middle" class="edge-label">web</text>
   <path d="M532 124 H612" class="edge"/><text x="572" y="112" text-anchor="middle" class="edge-label">HTTP</text>
-  <path d="M532 164 C650 220 790 220 902 164" class="edge"/><text x="717" y="218" text-anchor="middle" class="edge-label">/ws</text>
+  <path d="M532 164 C650 220 790 220 902 164" class="edge"/><rect x="692" y="199" width="50" height="27" class="label-box"/><text x="717" y="218" text-anchor="middle" class="edge-label">/ws</text>
   <path d="M252 310 H860 C885 310 885 176 902 176" class="edge-green"/><text x="474" y="298" text-anchor="middle" class="edge-label">direct TCP</text>
 
   <rect x="24" y="382" width="1152" height="262" class="lane"/>
@@ -44,7 +44,7 @@
   <text x="1025" y="612" text-anchor="middle" class="name">Wiki assets</text>
   <path d="M727 194 V330 C727 360 485 360 485 464" class="edge"/><text x="605" y="344" text-anchor="middle" class="edge-label">commands + output</text>
   <path d="M1017 194 V350 C1017 372 515 372 515 464" class="edge"/>
-  <path d="M1017 194 V430 C1017 446 900 446 900 472" class="edge"/><text x="960" y="430" text-anchor="middle" class="edge-label">HTTP/2</text>
+  <path d="M1017 194 V430 C1017 446 900 446 900 472" class="edge"/><rect x="923" y="411" width="74" height="27" class="label-box"/><text x="960" y="430" text-anchor="middle" class="edge-label">HTTP/2</text>
   <path d="M700 194 V430 H640 V605 H680" class="edge"/><text x="630" y="594" text-anchor="end" class="edge-label">transactions</text>
   <path d="M750 194 V585 C750 558 930 558 930 590" class="edge"/><text x="905" y="548" text-anchor="middle" class="edge-label">uploads</text>
   <path d="M290 496 H365" class="observe"/><path d="M180 464 V438 H790 V450" class="observe"/><path d="M180 464 V438 H727 V194" class="observe"/><path d="M180 464 V424 H1017 V194" class="observe"/>
