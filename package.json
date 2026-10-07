@@ -6,6 +6,7 @@
     "dev": "npm run convert-docs && astro dev",
     "start": "npm run convert-docs && astro dev",
     "build": "npm run convert-docs && astro build",
+    "test": "node --test scripts/*.test.js",
     "preview": "astro preview",
     "astro": "astro",
     "convert-docs": "node scripts/convert-docs.js",
