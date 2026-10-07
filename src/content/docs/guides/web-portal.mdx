@@ -89,7 +89,8 @@ wizard bit.
 - **`/admin/config/sitelock`** — sitelock rules.
 - **`/admin/config/bannednames`** — disallowed character names.
 - **`/admin/config/import`** and **`/admin/database/import`** — bring a PennMUSH configuration and
-  database across. See [Compatibility](/reference/compatibility).
+  database across. This is a staged, one-way operation; use the [migration runbook](/guides/pennmush-migration),
+  not the upload form alone, to plan rehearsal, validation, cutover, and rollback.
 
 ### People
 
@@ -123,6 +124,12 @@ analysis engine with the [language server](/reference/features#lsp-support), so 
 shows are the real parser's, not an approximation.
 
 ## Next steps
+
+<LinkCard
+  title="Migrate from PennMUSH"
+  href="/guides/pennmush-migration"
+  description="Import through the portal as one step in a rehearsed, validated cutover."
+/>
 
 <LinkCard
   title="Softcode Packages"

@@ -1,0 +1,63 @@
+---
+title: Migrate from PennMUSH
+description: Rehearse, validate, cut over, and roll back a PennMUSH world safely.
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+SharpMUSH directly imports a **PennMUSH flatfile** and, optionally, its `mush.cnf`. That path preserves
+dbrefs so softcode can continue to refer to the same objects. RhostMUSH and TinyMUX do not have a
+direct supported importer.
+
+<Aside type="danger" title="Plan this as a one-way migration">
+SharpMUSH does not export a PennMUSH flatfile. Keep the original PennMUSH installation and an immutable
+pre-cutover backup until the new game has passed its observation period.
+</Aside>
+
+## The safe path
+
+<Steps>
+
+1. **Inventory and preserve the source.** Record object counts and known dbrefs, configuration,
+   restrictions, handlers, packages, custom flags and powers, channels, mail, integrations, and a
+   risk-ranked softcode test list. Freeze and checksum a current flatfile plus the complete
+   configuration tree.
+
+2. **Rehearse on a disposable host.** Claim `/setup`, upload `mush.cnf` with the database, read every
+   skipped-setting warning, and let SharpMUSH build a separate staging world. A rehearsal never
+   becomes authoritative just because conversion succeeded.
+
+3. **Validate the game, not just the import.** Test administrator and player passwords, object counts
+   and dbrefs, attributes and locks, flags and powers, channels and mail, handlers and packages,
+   representative softcode, telnet/WebSocket login, portal login, and every external integration.
+
+4. **Cut over from a new final export.** Freeze PennMUSH, drain queued work, create and checksum the
+   final flatfile, repeat the rehearsed import, run the go/no-go suite, then change endpoints. Keep
+   PennMUSH stopped but recoverable throughout the observation window.
+
+5. **Roll back at a declared boundary.** Return traffic to the preserved PennMUSH world if acceptance
+   fails. Player changes made after SharpMUSH opened are not automatically transferable. A
+   `<world>.previous` directory is the SharpMUSH world displaced during staging promotion; it is not
+   the original PennMUSH world.
+
+</Steps>
+
+<LinkCard
+  title="Full migration runbook"
+  href="https://github.com/SharpMUSH/SharpMUSH/blob/main/docs/guides/pennmush-migration.md"
+  description="Preparation inventory, validation matrix, cutover evidence, and both rollback paths."
+/>
+
+## Before you announce a date
+
+- Complete at least one production-sized rehearsal on the intended SharpMUSH version.
+- Name the person who makes the go/no-go and rollback decision.
+- Prove both telnet and browser access through the production proxy shape.
+- Establish storage headroom for the live, staging, and displaced worlds.
+- Record the observation window and the exact conditions that send the game back to PennMUSH.
+
+<LinkCard
+  title="Operate SharpMUSH"
+  href="/guides/operator-handbook"
+  description="Backups, restore drills, upgrades, health checks, and incident entry points."
+/>

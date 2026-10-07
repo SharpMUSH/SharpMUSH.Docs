@@ -38,6 +38,8 @@ export default defineConfig({
                       // Each item here is one entry in the navigation menu.
                       { label: 'Get Started', slug: 'guides/get-started' },
                       { label: 'Run with Docker', slug: 'guides/docker-quickstart' },
+                      { label: 'Migrate from PennMUSH', slug: 'guides/pennmush-migration' },
+                      { label: 'Operator Handbook', slug: 'guides/operator-handbook' },
                       { label: 'Install for Development', slug: 'guides/local-install' },
                       { label: 'The Web Portal', slug: 'guides/web-portal' },
                       { label: 'Softcode Packages', slug: 'guides/packages' },

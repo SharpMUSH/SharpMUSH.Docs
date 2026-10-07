@@ -5,9 +5,32 @@ description: The architecture of SharpMUSH.
 
 import { LinkCard } from '@astrojs/starlight/components';
 
-This page details the technical architecture of SharpMUSH, as a C# application.
-It does not cover softcode itself. As such, this document is intended for developers who want to understand the technical details of SharpMUSH, or wish to modify the hardcode or the server.
+SharpMUSH separates the engine from the process that owns player sockets and the worker that renders
+output. That lets routine engine and renderer updates preserve telnet and WebSocket connections. The
+supplied production shape is a single host with embedded LMDB and NATS; it is not a multi-host HA
+design.
 
-# Full Architecture Diagram
-[Deep Wiki](https://deepwiki.com/SharpMUSH/SharpMUSH) has a full architecture diagram of SharpMUSH. It automatically updates as the architecture changes.
+![SharpMUSH deployment services, protocols, state, and backup flow](../../../assets/guide/deployment-architecture.svg)
 
+## Boundaries that matter to operators
+
+| Component | Responsibility | Restart effect |
+|---|---|---|
+| `SharpMUSH.Server` | Engine, REST/SignalR, portal, account decisions, LMDB and wiki assets | Browser HTTP/SignalR restarts; SocketServer can retain game sockets. |
+| `SharpMUSH.SocketServer` | Public telnet/WebSocket kernel sockets | Sockets close. WebSocket recovery is bounded; ordinary telnet reconnects. |
+| `SharpMUSH.RenderingWorker` | Client-specific rendering over a private Unix socket | Sockets remain; output waits or retries while the worker returns. |
+| NATS + JetStream | Inter-service messages and bounded replay/resume state | Coordination and recovery degrade; it does not contain the world. |
+| Lightning/LMDB | Authoritative MUSH world | Back up only through server-created point-in-time copies. |
+| Wiki assets | Uploaded binary files outside LMDB | Must be included separately in the Restic source set. |
+
+<LinkCard
+  title="Full deployment architecture"
+  href="https://github.com/SharpMUSH/SharpMUSH/blob/main/docs/design/deployment-architecture.md"
+  description="Protocols, ownership, health signals, persistence, and backup coverage for every component."
+/>
+
+<LinkCard
+  title="Operator Handbook"
+  href="/guides/operator-handbook"
+  description="Use these boundaries when planning backups, upgrades, monitoring, and incident response."
+/>

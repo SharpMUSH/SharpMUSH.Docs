@@ -11,7 +11,9 @@ the hardcode or contribute to the project. If you only want to *run* a game, the
 
 # Install from Source
 ## Prerequisites
-- [.NET 10 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) to build and test the application.
+- The .NET SDK version pinned in [`global.json`](https://github.com/SharpMUSH/SharpMUSH/blob/main/global.json).
+  The repository currently uses the .NET 11 prerelease band and permits roll-forward only within
+  the matching 11.0.1xx band, so an older preview or an earlier major SDK will not load the solution.
 - [Docker](https://www.docker.com/products/docker-desktop/) to run the database and messaging containers the server depends on.
 - [Visual Studio](https://visualstudio.microsoft.com/vs/) or [Jetbrains Rider](https://www.jetbrains.com/rider/) to build the application.
 
@@ -19,7 +21,7 @@ the hardcode or contribute to the project. If you only want to *run* a game, the
 <Steps>
 1. Clone the repository from [GitHub](https://github.com/SharpMUSH/SharpMUSH).
 
-    ![Git Clone](../../../assets/guide/download-sharpmush.png)
+    ![SharpMUSH repository download menu](../../../assets/guide/download-sharpmush.png)
 
     Open with Visual Studio, or if you have git installed:
 
@@ -29,12 +31,12 @@ the hardcode or contribute to the project. If you only want to *run* a game, the
 
 2. Open the SharpMUSH solution.
 
-    ![Git Clone](../../../assets/guide/choose-solution.png)
+    ![SharpMUSH solution selected in the IDE](../../../assets/guide/choose-solution.png)
 
 3. Build the Solution.
 
     Ensure that the SharpMUSH.Server project is selected as the startup project.
-    ![Git Clone](../../../assets/guide/select-server.png)
+    ![SharpMUSH.Server selected as the startup project](../../../assets/guide/select-server.png)
 
     Press F6 to build the solution.
 

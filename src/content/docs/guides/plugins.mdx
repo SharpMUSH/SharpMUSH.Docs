@@ -11,7 +11,7 @@ here rather than at the code.
 | Layer | What it is | Reach for it when |
 |---|---|---|
 | **Softcode packages** | YAML + MUSHcode, installed at runtime | The extension is game **policy** — permissions, formatting, capture rules — that a game owner should be able to read, fork and edit live. |
-| **C# plugins** | A compiled `net10.0` assembly, loaded at runtime | You need real C# — new storage, services, performance-sensitive logic, .NET library integration — but it should not live in the core engine. |
+| **C# plugins** | A compiled `net11.0` assembly, loaded at runtime | You need real C# — new storage, services, performance-sensitive logic, .NET library integration — but it should not live in the core engine. |
 | **In-tree engine** | `SharpMUSH.Implementation`, compiled in | You are changing always-on core behaviour. Means recompiling the server. |
 
 The guiding split is **mechanism versus policy**. C# ships mechanism — primitives, storage, wiring.
