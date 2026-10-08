@@ -41,7 +41,7 @@ export default defineConfig({
                       { label: 'Migrate from PennMUSH', slug: 'guides/pennmush-migration' },
                       { label: 'Operator Handbook', slug: 'guides/operator-handbook' },
                       { label: 'Deployment Reference', slug: 'guides/deployment' },
-                      { label: 'Install for Development', slug: 'guides/local-install' },
+                      { label: 'Develop SharpMUSH', slug: 'guides/local-install' },
                       { label: 'The Web Portal', slug: 'guides/web-portal' },
                       { label: 'Portal Applications', slug: 'guides/applications' },
                       { label: 'Visual Layouts and Themes', slug: 'guides/visual-layouts' },

@@ -179,15 +179,16 @@ Full details, including the restore steps and the Cloudflare Tunnel walkthrough,
 
 ## Running the development stack
 
-The Compose files at the repository root are a different thing: they **build from source** and are
-aimed at hardcode development rather than at hosting a game. They use the same embedded LMDB store
-and additionally expose the metrics endpoints, and they expect the .NET toolchain described in
-[Install for Development](/guides/local-install).
+The Compose files at the repository root are a different thing. `docker-compose.yml` builds the
+images from your checkout and `docker-compose-hub.yml` pulls the latest build of `main`; both run the
+stack on your own machine (portal at `http://localhost:8080`, telnet on 4201) to check a change, with
+no proxy, no backups and no automatic updates. They are covered in
+[Develop SharpMUSH](/guides/local-install#run-the-whole-stack-in-docker).
 
 <LinkCard
-  title="Install for Development"
+  title="Develop SharpMUSH"
   href="/guides/local-install"
-  description="Building SharpMUSH from source, with or without an IDE."
+  description="Build from source, run each process on your machine, and run the tests."
 />
 
 ## Next steps

@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1190 440" width="1190" height="440" role="img" aria-labelledby="t d">
+  <title id="t">What runs on your machine during development</title>
+  <desc id="d">Your browser loads the portal from the portal dev server and calls the game server's API. The browser terminal and MU* clients connect to the connection server, which formats output through the rendering worker. The connection server and game server talk through NATS, which runs in Docker. Only the game server reads and writes the world folder.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+    <style>
+      .box text { font-family: system-ui, sans-serif; fill: #0f172a; text-anchor: middle; }
+      .name { font-size: 16px; font-weight: 600; }
+      .sub { font-size: 13px; }
+      .code { font-size: 12px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; fill: #334155; }
+      .lbl { font-family: system-ui, sans-serif; font-size: 12px; fill: #334155; }
+      .ln { stroke: #475569; stroke-width: 1.6; fill: none; }
+      .proc { fill: #e0e7ff; stroke: #4f46e5; stroke-width: 1.5; }
+      .ext { fill: #f1f5f9; stroke: #64748b; stroke-width: 1.5; }
+      .nats { fill: #fef3c7; stroke: #d97706; stroke-width: 1.5; }
+      .data { fill: #dcfce7; stroke: #16a34a; stroke-width: 1.5; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1190" height="440" rx="12" fill="#f8fafc"/>
+
+  <!-- Row 1 -->
+  <g class="box"><rect class="ext" x="20" y="60" width="220" height="70" rx="8"/>
+    <text class="name" x="130" y="100">Your browser</text></g>
+  <g class="box"><rect class="proc" x="330" y="60" width="220" height="70" rx="8"/>
+    <text class="name" x="440" y="83">Portal dev server</text>
+    <text class="sub" x="440" y="101">SharpMUSH.Client</text>
+    <text class="code" x="440" y="119">https://localhost:7102</text></g>
+  <g class="box"><rect class="proc" x="640" y="60" width="220" height="70" rx="8"/>
+    <text class="name" x="750" y="83">Game server</text>
+    <text class="sub" x="750" y="101">SharpMUSH.Server</text>
+    <text class="code" x="750" y="119">https://localhost:8081</text></g>
+  <g class="box"><rect class="data" x="950" y="60" width="220" height="70" rx="8"/>
+    <text class="name" x="1060" y="91">The world</text>
+    <text class="code" x="1060" y="111">lightning-data/</text></g>
+
+  <!-- Row 2 -->
+  <g class="box"><rect class="ext" x="20" y="200" width="220" height="70" rx="8"/>
+    <text class="name" x="130" y="231">MU* client</text>
+    <text class="sub" x="130" y="251">Mudlet, MUSHclient, telnet</text></g>
+  <g class="box"><rect class="proc" x="330" y="200" width="220" height="70" rx="8"/>
+    <text class="name" x="440" y="223">Connection server</text>
+    <text class="sub" x="440" y="241">SharpMUSH.SocketServer</text>
+    <text class="code" x="440" y="259">telnet 4201, /ws on 4202</text></g>
+  <g class="box"><rect class="nats" x="640" y="200" width="220" height="70" rx="8"/>
+    <text class="name" x="750" y="223">NATS</text>
+    <text class="sub" x="750" y="241">in Docker</text>
+    <text class="code" x="750" y="259">nats://localhost:4222</text></g>
+
+  <!-- Row 3 -->
+  <g class="box"><rect class="proc" x="330" y="340" width="220" height="70" rx="8"/>
+    <text class="name" x="440" y="370">Rendering worker</text>
+    <text class="sub" x="440" y="390">SharpMUSH.RenderingWorker</text></g>
+
+  <!-- Arrows -->
+  <path class="ln" d="M240,95 H326" marker-end="url(#a)"/>
+  <text class="lbl" x="285" y="87" text-anchor="middle">pages</text>
+
+  <path class="ln" d="M130,60 V28 H750 V56" marker-end="url(#a)"/>
+  <text class="lbl" x="440" y="20" text-anchor="middle">API and live updates</text>
+
+  <path class="ln" d="M860,95 H946" marker-end="url(#a)"/>
+  <text class="lbl" x="905" y="87" text-anchor="middle">only writer</text>
+
+  <path class="ln" d="M200,130 L352,198" marker-end="url(#a)"/>
+  <text class="lbl" x="296" y="152">terminal</text>
+
+  <path class="ln" d="M240,235 H326" marker-end="url(#a)"/>
+  <text class="lbl" x="285" y="227" text-anchor="middle">telnet</text>
+
+  <path class="ln" d="M554,235 H636" marker-start="url(#a)" marker-end="url(#a)"/>
+  <path class="ln" d="M750,134 V196" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text class="lbl" x="760" y="169">commands and output</text>
+
+  <path class="ln" d="M440,270 V336" marker-end="url(#a)"/>
+  <text class="lbl" x="450" y="308">Unix socket</text>
+
+  <!-- Legend -->
+  <g class="box"><rect class="proc" x="640" y="350" width="18" height="14" rx="3"/></g>
+  <text class="lbl" x="666" y="362">started with dotnet run</text>
+  <g class="box"><rect class="nats" x="640" y="378" width="18" height="14" rx="3"/></g>
+  <text class="lbl" x="666" y="390">started with docker compose</text>
+</svg>
