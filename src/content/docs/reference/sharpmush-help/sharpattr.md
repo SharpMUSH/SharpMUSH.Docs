@@ -3,135 +3,34 @@ title: "Attributes"
 description: "SharpMUSH documentation for Attributes"
 ---
 
-## ATTRIBUTE FLAGS
+<!-- This aggregate has been migrated to semantic article files in this directory.
+See docs/guides/help-migration.json for the old-to-new lookup map. -->
 
-Attribute flags are set on an object's attributes using `@set`, or applied to attributes globally using `@attribute`. Their names (and, when applicable, the character used in examine as shorthand for the flag) are shown below.
+## IMAGE
 
-These attribute flags restrict access, and are inherited down attribute trees (if FOO is no_command, FOO\`BAR is automatically no_command too):
+SharpMUSH seeds four standard attributes that name a picture for an object. The engine never reads them; the web portal and the bundled softcode do -- a player's portrait on `look`, a room's banner on the Play page, the preview of where an exit leads, a thing's thumbnail -- and any game that wants a picture somewhere reads the same four names rather than inventing its own.
 
-- `no_command ($)`    Attribute won't be checked for $-commands or ^-listen patterns.
-- `no_inherit (i)`    Attribute will not be inherited by the children of this object.
-- `no_clone (c)`      Attribute will not be copied if the object is `@clone`'d.
-- `mortal_dark (m)`   Attribute cannot be seen by mortals. This flag can only be set by royalty and wizards. "hidden" is a synonym.
-- `wizard (w)`        Attribute can only be set by wizards. This flag can only be set by royalty and wizards.
-- `veiled (V)`        Attribute value won't be shown on default examine, but is still otherwise accessible (for spammy attribs).
-- `nearby (n)`        Even if the attribute is visual, it can only be retrieved if you're near the object (see **[nearby()](/reference/sharpmush-help/sharpfunc/#nearby)**).
-- `locked (+)`        Attribute is locked with `@atrlock`.
-- `safe (S)`          Attribute can't be modified without unsetting this flag.
+- `IMAGE`             A URL. Character portrait, room banner, exit-destination preview, thing thumbnail.
+- ``IMAGE`BANNER``     A URL for wide art: a character's profile banner, a room's Play-page banner. A room without one falls back to `IMAGE`; a character's profile does not, since its `IMAGE` is the avatar drawn beside the banner.
+- ``IMAGE`ALT``        The alternative text a screen reader or a text client gets. Softcode falls back to the object's name.
+- ``IMAGE`FOCAL``      `x y`, each 0 to 1, the point that stays in view when the picture is cropped (`0.5 0.5` is the centre). Optional.
 
-See [attribute flags2](/reference/sharpmush-help/sharpattr/#attribute-flags2)
-
-## ATTRIBUTE FLAGS2
-
-These attribute flags grant access. They are not inherited down attribute trees, and must be set on a branch attribute as well as a leaf to take effect (to make FOO\`BAR visual, FOO must be visual too):
-
-- `visual (v)`        Attribute can be seen by anyone via examine, get(), eval(), ufun(), zfun(), and similar functions.
-- `public (p)`        This attribute can be evaluated by any object, even if safer_ufun is in use. **DANGEROUS! AVOID!**
-
-These attribute flags alter the way attributes are used in commands and ^-listens. They always only affect the attribute they're set on, regardless of attribute trees:
-
-- `debug (b)`         Start showing debug output while this attr is evaluated.
-- `no_debug (B)`      Stop showing debug output when this attr is evaluated
-- `regexp (R)`        Match $-commands and ^-listens using regular expressions. See **[regexps](/reference/sharpmush-help/sharptop/#regexp)**
-- `case (C)`          Match $-commands and ^-listens case sensitively.
-- `nospace (s)`       Attribute won't add a space after the object name in @o-* messages. See **[verbs](/reference/sharpmush-help/sharptop/#verbs)**
-- `noname (N)`        Attribute won't show name in @o-* messages.
-
-See [attribute flags3](/reference/sharpmush-help/sharpattr/#attribute-flags3)
-
-## ATTRIBUTE FLAGS3
-
-- `aahear (A)`        ^-listens on this attribute match like `@aahear`
-- `amhear (M)`        ^-listens on this attribute match like `@amhear`
-- `prefixmatch`       When set with `@<attrib>`, this attribute will be matched down to its unique prefixes. This flag is primarily used internally, but also useful in `@attribute/access`.
-- `quiet (Q)`         When altering the attribute's value or flags, don't show the usual confirmation message
-
-These attribute flags are only used internally. They cannot be set, but seen on 'examine' and flags()/lflags(), tested for with hasflag(), etc:
-- `branch (\`)`        This attribute is a branch. See: [ATTRIBUTE TREES](/reference/sharpmush-help/sharpattr/#attribute-trees)
-
-**See Also:**
-- [@set](/reference/sharpmush-help/sharpcmd/#set)
-- [@attribute](/reference/sharpmush-help/sharpcmd/#attribute)
-- [ATTRIBUTE TREES](/reference/sharpmush-help/sharpattr/#attribute-trees)
-
-## ATTRIBUTE TREES
-
-Attributes can be arranged in a hierarchical tree; these are called "attribute trees", and a conceptually similar to the way that files and directories/folders are organized on computer filesystems. Attribute trees can be used to reduce spam when examining and to provide organized control over permissions for related attributes.
-
-Attribute trees use the backtick (\`) character to separate their components (much as filesystems use / or \\). For example, the following attribute name would be a couple levels down in its tree:
-
-```
-CHAR`SKILLS`PHYSICAL
-```
-
-Attribute names may not start or end with the backtick, and may not contain two backticks in a row.
-
-All attributes are either branch attributes or leaf attributes. A branch attribute is an attribute that has other branches or leaves beneath it; a leaf attribute is one that does not. Any attribute may act as a branch. If you try to create an unsupported leaf, branch attributes will be created as needed to support it.
-
-See [attribute trees2](/reference/sharpmush-help/sharpattr/#attribute-trees2) for more information and examples.
-
-## ATTRIBUTE TREES2
-
-Attribute trees provide two immediate benefits. First, they reduce spam when examining objects. The usual * and ? wildcards for attributes do not match the \` character; the new ** wildcard does. Some examples of using examine:
+All four are seeded `no_command`, `visual`, `prefixmatch` and `public`, so the owner sets them with `&` and anyone may `get()` them:
 
 ```sharp
-examine obj              displays top-level attributes (plus object header)
-examine obj/*            displays top-level attributes
-examine obj/BRANCH`      displays only attributes immediately under BRANCH
-examine obj/BRANCH`*     displays only attributes immediately under BRANCH
-examine obj/BRANCH`**    displays entire tree under BRANCH
-examine obj/**           displays all attributes of object
+> &IMAGE me=/assets/chars/tomas.jpg
+> &IMAGE`ALT me=Tomas Reyes, at the harbour rail
+> &IMAGE`BANNER here=/assets/rooms/lower-docks-wide.jpg
+> &IMAGE`FOCAL here=0.5 0.6
 ```
 
-The same principles apply to lattr(). `@decompile obj` is a special case, and displays all attributes.
+There are no width or height attributes: every portal surface that shows a picture is a fixed-size box the picture is cropped into, so dimensions never affect layout. Only site-relative (`/...`) and `https:` URLs are rendered; anything else falls back to the no-image tile.
 
-Branch attributes will be displayed with a \` in the attribute flags on examine. 
+For players the portal's gallery will keep `IMAGE`, ``IMAGE`BANNER`` and ``IMAGE`ALT`` in step with its avatar and banner entries (set from the gallery, or with Change avatar and Change banner on the profile page), so a hand-set value on a player will be overwritten by the next gallery change. Rooms, things and exits are only ever set by hand.
 
-See [attribute trees3](/reference/sharpmush-help/sharpattr/#attribute-trees3) for more information and examples.
+The default flags apply when an attribute is created. An `IMAGE` a game set before these entries existed keeps the flags it was created with -- clear it and set it again to pick up `visual` and `public`. The bundled room-contents and profile-handler packages publish an image attribute only while it is `visual`, so clearing that flag (`@set me/IMAGE=!visual`) keeps a picture off the portal.
 
-**See Also:**
-- [WILDCARDS](/reference/sharpmush-help/sharptop/#wildcards)
+::: seealso
+- [attribute flags access and matching](/reference/sharpmush-help/sharpattr/#attribute-flags-access-and-matching)
+:::
 
-## ATTRIBUTE TREES3
-
-The second benefit of attributes trees is convenient access control. Attribute flags that restrict attribute access or execution (no_inherit, no_command, mortal_dark, wizard) propagate down attribute trees, so if a branch is set mortal_dark, mortals can not read any of its leaves or subbranches either.
-
-Attribute flags that grant access (e.g. visual) do NOT propagate down trees.
-
-These properties make attribute trees ideal for data attributes:
-```sharp
-> &DATA bank = Data for each depositor is stored here, by dbref
-> @set bank/DATA = no_command
-> &DATA`#30 bank = $2000 savings:$1000 loan @ 5%
-```
-etc.
-
-They're also handy for things like character attributes:
-```sharp
-> @attribute/access CHAR = wizard mortal_dark no_clone no_inherit
-> &CHAR #30 = Character data
-> &CHAR`SKILLS #30 = coding:3 documentation:1 obfuscation:5
-```
-etc.
-
-See [attribute trees4](/reference/sharpmush-help/sharpattr/#attribute-trees4) for information about `@parent` and attribute trees.
-
-## ATTRIBUTE TREES4
-
-Attribute trees interact with `@parent` in several ways.
-
-As usual, children inherit attributes from their parent unless the child has its own overriding attribute. However, children that wish to override a leaf attribute must also have their own (overriding) copy of all branches leading to that leaf. This means that when you do:
-
-```sharp
-> &BRANCH parent = a branch
-> &BRANCH`LEAF parent = a leaf
-> &BRANCH`LEAF child = a new leaf
-```
-
-In this case, a new BRANCH attribute will be created on the child, so '-[get(child/BRANCH)]-' will return '--'. This may not be what you actually want. In these cases, the pfun() function can be useful:
-
-```sharp
-> &BRANCH child=pfun(BRANCH)
-```
-
-If a branch on the parent is set no_inherit, it will not be inherited, regardless of any other flags that may be present. If a branch is inherited, the child object can not loosen any access restrictions to inherited attributes that are set by the parent (although it may loosen access restrictions to its own attributes on the same branch). The child object may impose stricter restrictions, however, and these may prevent access to inherited parent data.

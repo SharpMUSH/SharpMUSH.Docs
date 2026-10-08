@@ -3,7 +3,7 @@ title: "Mail System"
 description: "SharpMUSH documentation for Mail System"
 ---
 
-## MAIL
+## Mail
 
 - `@mail[/<switches>] [<msg-list>[=<target>]]`
 - `@mail[/<switches>] <player-list>=[<subject>/]<message>`
@@ -25,21 +25,22 @@ A *<player-list>* is a space-separated list of recipients, which may be:
 * Player names
 * Player dbref #'s
 * Message #'s, in which case you send to the sender of that message
-* An alias name (see [@malias](/reference/sharpmush-help/sharpmail/#malias))
+* An alias name (see [@malias](/reference/sharpmush-help/malias-command/#malias))
 
 
-**See Also:**
-- [- [mail-sending](/reference/sharpmush-help/sharpmail/#mail-sending)
-- [mail-reading](/reference/sharpmush-help/sharpmail/#mail-reading)
-- [mail-folders](/reference/sharpmush-help/sharpmail/#mail-folders)
+::: seealso
+- [MAIL-SENDING](/reference/sharpmush-help/sharpmail/#sending-mail)
+- [MAIL-READING](/reference/sharpmush-help/sharpmail/#reading-mail)
+- [MAIL-FOLDERS](/reference/sharpmush-help/sharpmail/#mail-folders)
 - [mail-forward](/reference/sharpmush-help/sharpmail/#mail-forward)
-- [mail-other](/reference/sharpmush-help/sharpmail/#mail-other)
-- [mail-admin](/reference/sharpmush-help/sharpmail/#mail-admin)
-- [@malias](/reference/sharpmush-help/sharpmail/#malias)
-- [mail-reviewing](/reference/sharpmush-help/sharpmail/#mail-reviewing)
-- [@mailquota](/reference/sharpmush-help/sharpmail/#mailquota)
+- [MAIL-OTHER](/reference/sharpmush-help/sharpmail/#other-mail-commands)
+- [MAIL-ADMIN](/reference/sharpmush-help/sharpmail/#mail-administration)
+- [@malias](/reference/sharpmush-help/malias-command/#malias)
+- [MAIL-REVIEWING](/reference/sharpmush-help/sharpmail/#reviewing-mail)
+- [@MAILQUOTA](/reference/sharpmush-help/sharpmail/#mailquota)
+:::
 
-## MAIL-READING
+## Reading Mail
 
 - `@mail <msg #>`
 - `@mail/read <msg-list>`
@@ -60,7 +61,7 @@ A *<player-list>* is a space-separated list of recipients, which may be:
 `@mail/cstats`
 * Shows how many messages you have, in the same format as the automatic mail check when you connect.
 
-## MAIL-SENDING
+## Sending Mail
 
 - `@mail[/switch] <player-list>=[<subject>]/<msg>`
 * This sends the message *<msg>* to all players in *<player-list>*.
@@ -78,7 +79,7 @@ If you have an @mailsignature attribute set on yourself, its contents will be ev
 - `@mail/fwd <msg-list>=<player-list>`
 * This sends a copy of all the messages in *<msg-list>* to all the players in *<player-list>*. The copy will appear to have been sent by you (not the original sender), and its status will be "Forwarded".
 
-## MAIL-OTHER
+## Other Mail Commands
 
 - `@mail/clear [<msg-list> | all]`
 - `@mail/unclear [<msg-list> | all]`
@@ -113,7 +114,7 @@ To clear all mail from Paul and Chani:
 * *<status>* can be one of: tagged, untagged, cleared, uncleared, read, unread, urgent or unurgent.
 * Read marks a new message as read without reading it, urgent/unurgent toggle the urgent flag, and the others are equivalent to @mail/tag, @mail/untag, @mail/clear, @mail/unclear and @mail/unread respectively.
 
-## MAIL-FOLDERS
+## Mail Folders
 
 The MUSH mail system allows each player 16 folders, numbered from 0 to 15. Mail can only be in 1 folder at a time. Folder 0 is the "inbox" where new mail is received. Most @mail commands operate on only the current folder.
 
@@ -129,14 +130,16 @@ The MUSH mail system allows each player 16 folders, numbered from 0 to 15. Mail 
 - `@mail/unfolder <folder#|foldername>`
 * This command removes a folder's name
 
-- `@mail/file <msg-list>=<folder#>`
+- `@mail/file <msg-list>=<folder#|foldername>`
 * This command moves all messages in *<msg-list>* from the current folder to a new folder, *<folder#>*.
+* A name none of your folders has yet makes a new folder of that name, with the lowest folder number not in use.
 
 
-**See Also:**
-- [@mailfilter](/reference/sharpmush-help/sharpmail/#mailfilter)
+::: seealso
+- [@MAILFILTER](/reference/sharpmush-help/sharpmail/#mailfilter)
+:::
 
-## MAIL-REVIEWING
+## Reviewing Mail
 
 - `@mail/review [<player>]`
 * Reviews the messages you have sent to *<player>*, or all messages you've sent if no *<player>* is specified.
@@ -147,7 +150,7 @@ The MUSH mail system allows each player 16 folders, numbered from 0 to 15. Mail 
 - `@mail/retract <player>=<msglist>`
 * Retracts (deletes) unread messages you have sent to *<player>*.
 
-## @MAILQUOTA
+## @mailquota
 
 - `@mailquota <player>[=<limit>]`
 
@@ -160,7 +163,7 @@ This attribute allows wizards to change the maximum number of messages a player 
 > @wall Please @mail any and all problems to Complaints_Department.
 ```
 
-## @MAILFILTER
+## @mailfilter
 
 The @mailfilter attribute specifies automatic filing of incoming @mail messages into folders. When an @mail message is received, the contents of @mailfilter are evaluated, with the following arguments passed:
 * `%0` - dbref of message sender
@@ -177,10 +180,11 @@ Filter urgent messages into folder 1
 ```
 
 
-**See Also:**
-- [mail-folders](/reference/sharpmush-help/sharpmail/#mail-folders)
+::: seealso
+- [MAIL-FOLDERS](/reference/sharpmush-help/sharpmail/#mail-folders)
+:::
 
-## @MAILSIGNATURE
+## @mailsignature
 
 - `@mailsignature <object>[=<signature>]`
 
@@ -192,11 +196,12 @@ When set, this attribute is evaluated and appended to any @mail messages sent by
 ```
 
 
-**See Also:**
-- [@mail](/reference/sharpmush-help/sharpmail/#mail)
-- [mail-sending](/reference/sharpmush-help/sharpmail/#mail-sending)
+::: seealso
+- [MAIL](/reference/sharpmush-help/sharpmail/#mail)
+- [MAIL-SENDING](/reference/sharpmush-help/sharpmail/#sending-mail)
+:::
 
-## MAIL-ADMIN
+## Mail Administration
 
 The @mail command can also take the following switches:
 
@@ -216,106 +221,25 @@ The /debug switch does sanity checking on the mail database, and may only be use
 
 The /nuke switch destroys the post office, erasing all @mail everywhere. It may only be used by God.
 
-## @MALIAS
-
-- `@malias [<alias>]`
-
-The @malias command is used to create, view, and manipulate @mail aliases, or lists. An alias is a shorthand way of specifying a list of players for @mail. Aliases begin with the '+' (plus) prefix, and represent a list of dbrefs; aliases may not include other aliases.
-
-`@malias` with no arguments lists aliases available for your use, and is equivalent to `@malias/list`
-
-`@malias` with a single argument (the name of an alias) lists the members of that alias, if you're allowed to see them. Other forms of the same command are `@malias/members <alias>` or `@malias/who <alias>`
-
-
-**See Also:**
-- [@malias2](/reference/sharpmush-help/sharpmail/#malias2)
-
-## @MALIAS2
-
-- `@malias[/create] <alias>=<player list>`
-- `@malias/desc <alias>=<description>`
-- `@malias/rename <alias>=<newalias>`
-- `@malias/destroy <alias>`
-
-The first form above creates a new alias for the given list of players.
-
-`@malias/desc` sets the alias's description, which is shown when aliases are listed.
-
-`@malias/rename` renames an alias.
-
-`@malias/destroy` destroys the alias completely.
-
-
-**See Also:**
-- [@malias3](/reference/sharpmush-help/sharpmail/#malias3)
-
-## @MALIAS3
-
-- `@malias/set <alias>=<player list>`
-- `@malias/add <alias>=<player list>`
-- `@malias/remove <alias>=<player list>`
-
-`@malias/set` resets the list of players on the alias to *<player list>*.
-
-`@malias/add` adds players to the alias. Note that the same player may be on an alias multiple times.
-
-`@malias/remove` removes players from the alias. If a player is on the alias more than once, a single remove will remove only one instance of that player.
-
-
-**See Also:**
-- [@malias4](/reference/sharpmush-help/sharpmail/#malias4)
-
-## @MALIAS4
-
-- `@malias/use <alias>=<perm list>`
-- `@malias/see <alias>=<perm list>`
-
-`@malias/use` controls who may use an alias. Players who may use an alias will see it in their @malias list, and can @mail to the alias.
-
-`@malias/see` controls who may list the members of an alias.
-
-An empty permission list allows any player. The permission list may also be a space-separated list of one or more of "owner", "members" (of the alias), and "admin".
-
-By default, the owner and alias members may see and use the alias, but only the owner may list the members. Note that admin may always list aliases and their members, regardless of these settings, but are treated like anyone else when trying to @mail with an alias.
-
-
-**See Also:**
-- [@malias5](/reference/sharpmush-help/sharpmail/#malias5)
-
-## @MALIAS5
-
-- `@malias/all`
-- `@malias/stat`
-- `@malias/chown <alias>=<player>`
-- `@malias/nuke`
-
-`@malias/all` is an admin-only command that lists all aliases in the MUSH.
-
-`@malias/stat` is an admin-only command that displays statistics about the number of aliases and members of aliases in use.
-
-`@malias/chown` is a wizard-only command that changes the owner of an alias.
-
-`@malias/nuke` is a God-only command that destroys all aliases.
-
 ## Mail Functions
 
 Mail functions work with @mail.
 
 Available functions:
 * [folderstats](/reference/sharpmush-help/sharpconf/#folderstats)
-* [mail](/reference/sharpmush-help/sharpmail/#mail)
+* [MAIL](/reference/sharpmush-help/sharpmail/#mail)
 * [maildstats](/reference/sharpmush-help/sharpmail/#mailstats)
 * [mailfrom](/reference/sharpmush-help/sharpmail/#mailfrom)
 * [mailfstats](/reference/sharpmush-help/sharpmail/#mailstats)
-* [maillist](/reference/sharpmush-help/sharpmail/#mail-reading)
-* [mailsend](/reference/sharpmush-help/sharpmail/#mail-sending)
+* [maillist](/reference/sharpmush-help/sharpmail/#reading-mail)
+* [mailsend](/reference/sharpmush-help/sharpmail/#sending-mail)
 * [mailstats](/reference/sharpmush-help/sharpmail/#mailstats)
 * [mailstatus](/reference/sharpmush-help/sharpmail/#mailfrom)
 * [mailsubject](/reference/sharpmush-help/sharpmail/#mailfrom)
 * [mailtime](/reference/sharpmush-help/sharpmail/#mailfrom)
 * [malias](/reference/sharpmush-help/sharpconf/#malias)
 
-## FOLDERSTATS()
+## folderstats()
 
 - `folderstats()`
 - `folderstats(<folder #>)`
@@ -325,10 +249,11 @@ Available functions:
 folderstats() returns the number of read, unread, and cleared messages in a specific folder, or, if none is given, the player's current folder. Only Wizards may use forms which get other players' mail information.
 
 
-**See Also:**
+::: seealso
 - [mailstats](/reference/sharpmush-help/sharpmail/#mailstats)
+:::
 
-## MAIL()
+## mail()
 
 - `mail()`
 - `mail(<player name>)`
@@ -346,15 +271,16 @@ When given numeric arguments, mail() returns the text of the corresponding messa
 ```
 
 
-**See Also:**
-- [maillist](/reference/sharpmush-help/sharpmail/#mail-reading)
+::: seealso
+- [maillist](/reference/sharpmush-help/sharpmail/#reading-mail)
 - [mailfrom](/reference/sharpmush-help/sharpmail/#mailfrom)
+:::
 
-## MAILLIST()
+## maillist()
 
 - `maillist([<player>, ]<message-list>)`
 
-maillist() returns a list of all *<player>*'s @mail messages which match the given *<message-list>* (the same as @mail/list *<message-list>*). If no *<player>* is given, the executor's mail is matched. The *<message-list>* argument is described in [mail](/reference/sharpmush-help/sharpmail/#mail).
+maillist() returns a list of all *<player>*'s @mail messages which match the given *<message-list>* (the same as @mail/list *<message-list>*). If no *<player>* is given, the executor's mail is matched. The *<message-list>* argument is described in [MAIL](/reference/sharpmush-help/sharpmail/#mail).
 
 ### Examples
 ```sharp
@@ -367,11 +293,12 @@ maillist() returns a list of all *<player>*'s @mail messages which match the giv
 ```
 
 
-**See Also:**
-- [mail](/reference/sharpmush-help/sharpmail/#mail)
+::: seealso
+- [MAIL](/reference/sharpmush-help/sharpmail/#mail)
 - [mailfrom](/reference/sharpmush-help/sharpmail/#mailfrom)
+:::
 
-## MAILFROM()
+## mailfrom()
 
 - `mailfrom([<player>, ][<folder #>:]<mail message #>)`
 - `mailtime([<player>, ][<folder #>:]<mail message #>)`
@@ -384,11 +311,12 @@ maillist() returns a list of all *<player>*'s @mail messages which match the giv
 * mailstatus() returns the mail's status characters (as per @mail/list).
 
 
-**See Also:**
-- [mail](/reference/sharpmush-help/sharpmail/#mail)
-- [maillist](/reference/sharpmush-help/sharpmail/#mail-reading)
+::: seealso
+- [MAIL](/reference/sharpmush-help/sharpmail/#mail)
+- [maillist](/reference/sharpmush-help/sharpmail/#reading-mail)
+:::
 
-## MAILSTATS()
+## mailstats()
 
 - `mailstats([<player>])`
 - `maildstats([<player>])`
@@ -406,16 +334,17 @@ The mail*stats() functions return data like @mail/*stats does. You either must u
 ```
 
 
-**See Also:**
+::: seealso
 - [folderstats](/reference/sharpmush-help/sharpconf/#folderstats)
+:::
 
-## MAILSEND()
+## mailsend()
 
 - `mailsend(<player>,[<subject>/]<message>)`
 
 This function sends a message to a player, just like @mail/send. It returns nothing if successful, or an error message.
 
-## MALIAS()
+## malias()
 
 - `malias([<delimiter>])`
 - `malias(<malias name>)`

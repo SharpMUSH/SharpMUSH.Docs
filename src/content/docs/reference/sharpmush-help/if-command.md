@@ -1,0 +1,74 @@
+---
+title: "@if"
+description: "SharpMUSH documentation for @if"
+---
+
+<!-- help-article
+{
+  "corpus": "help",
+  "id": "if-command",
+  "lookup": "@if",
+  "aliases": [
+    "@ifelse",
+    "@skip"
+  ](/reference/sharpmush-help/sharpconf/#ifelse-skip),
+  "sections": [
+    {
+      "id": "conditional-examples",
+      "heading": "Conditional examples",
+      "lookup": "@if conditional examples"
+    }
+  ](/reference/sharpmush-help/sharpconf/#id-conditional-examples-heading-conditional-examples-lookup-if-conditional-examples),
+  "redirects": {
+    "@if2": "@if conditional examples"
+  }
+}
+-->
+## @if
+
+`@if <boolean>=<true>[, <false>]`<br>
+`@skip <boolean>=<false>`
+
+If `<boolean>` is true, the action list `<true>` is run, otherwise the action list `<false>` is run. The action list is not queued, it is run immediately, in the same action list as @if.
+
+Output: the output of the last command run. See [command output](/reference/sharpmush-help/command-output/#command-output).
+
+For RhostMUSH compatability, @skip runs the action list `<false>` when `<boolean>` is false, and does nothing for true values.
+
+@ifelse and `@skip/ifelse` are aliases for @if.
+
+::: seealso
+- [@break](/reference/sharpmush-help/break-command/#break)
+- [@switch](/reference/sharpmush-help/switch-command/#switch)
+- [IF()](/reference/sharpmush-help/sharpfunc/#if)
+- [boolean values](/reference/sharpmush-help/boolean-values/#boolean-values)
+:::
+
+### Conditional examples
+
+```sharp
+> @if 1=say Yes, say No
+You say, "Yes"
+```
+
+```sharp
+> @if 0=say Yes, say No
+You say, "No"
+```
+
+```sharp
+> &foo me=$foo *: say Checking... ; @if %0=say Yes, {say No ; say Sorry!}
+```
+
+```sharp
+> foo 1
+You say, "Checking..."
+You say, "Yes"
+```
+
+```sharp
+> foo 0
+You say, "Checking..."
+You say, "No"
+You say, "Sorry!"
+```
