@@ -40,15 +40,7 @@ each reader's reported width rather than assuming an 80-column terminal.
 ### Example: a character sheet
 
 ```sharp
-think box(
-  fields({{"cols":2}},
-    Name,Mannaz Byron,
-    Species,Human,
-    Calling,Dark Warrior,
-    Status,Ready),
-  Character,60,
-  {{"theme":"fantasy","border":"rounded"}}
-)
+think box(fields({{"cols":2}},Name,Mannaz Byron,Species,Human,Calling,Dark Warrior,Status,Ready),Character,60,{{"theme":"fantasy","border":"rounded"}})
 ```
 
 A Unicode terminal receives a rounded, themed character card. A client without Unicode receives an
@@ -86,8 +78,9 @@ The web portal has its own visual themes. A player's `@theme` changes server-ren
 MU\* clients; it does not override the portal shell.
 
 <Aside type="note" title="Light and dark preferences">
-Use `@theme/light` or `@theme/dark` to generate the player's theme for that background. SharpMUSH
-adjusts generated colours to preserve contrast while keeping the same layout and content.
+Use `@theme/light` or `@theme/dark` to make the player's theme for that background. A theme made
+from one colour, which includes the genre themes, is made again with colours that stand out on that
+background. A well-known scheme such as `nord` stays as it is.
 </Aside>
 
 ## Draw pictures without losing the text
@@ -97,16 +90,7 @@ can show a real image in capable clients, text art in a terminal, descriptive te
 available, and content flowing beside it.
 
 ```sharp
-think box(
-  figure(
-    https://images.example.org/mannaz.png,
-    Mannaz Byron wearing dark armour,
-    /|_/|%r=^.^=%r%b> <,
-    left,
-    fields(,Species,Human,Calling,Dark Warrior)
-  ),
-  Mannaz Byron,44
-)
+think box(figure(https://images.example.org/mannaz.png,Mannaz Byron wearing dark armour,/|_/|%r=^.^=%r%b> <,left,fields(,Species,Human,Calling,Dark Warrior)),Mannaz Byron,44)
 ```
 
 The description is not optional polish. It gives a screen reader the image's meaning and remains
@@ -142,7 +126,7 @@ provide a description and a useful text fallback.
 
 <LinkCard
   title="Complete layout-function reference"
-  href="https://github.com/SharpMUSH/SharpMUSH/blob/main/SharpMUSH.Documentation/Helpfiles/SharpMUSH/layout-functions.md"
+  href="/reference/sharpmush-help/layout-functions/"
   description="Every layout function, border option, theme form, accessibility behavior, and worked example."
 />
 

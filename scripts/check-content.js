@@ -33,7 +33,8 @@ export function validateContent({ root = process.cwd(), requiredRoutes = ['guide
       const [, alt, target] = match;
       if (!alt.trim() || /^(image|screenshot|git clone)$/i.test(alt.trim())) failures.push(`${path.relative(root, file)} has non-descriptive image text: ${alt || '(empty)'}`);
       if (!/^(https?:|data:)/.test(target)) {
-        const asset = target.startsWith('/') ? path.join(root, 'public', safeDecode(target)) : path.resolve(path.dirname(file), safeDecode(target));
+        const assetPath = safeDecode(target.split(/[?#]/, 1)[0]);
+        const asset = target.startsWith('/') ? path.join(root, 'public', assetPath) : path.resolve(path.dirname(file), assetPath);
         if (!fs.existsSync(asset)) failures.push(`${path.relative(root, file)} has missing image: ${target}`);
       }
     }

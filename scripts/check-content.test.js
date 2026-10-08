@@ -45,6 +45,13 @@ test('catches broken internal routes and image assets', () => {
   assert.match(failures, /missing image/);
 });
 
+test('accepts an image address with a query string or fragment', () => {
+  const root = fixture('![Setup claim form](/images/setup.png?v=1) ![Setup claim form](/images/setup.png#top)');
+  fs.mkdirSync(path.join(root, 'public/images'), { recursive: true });
+  fs.writeFileSync(path.join(root, 'public/images/setup.png'), 'png');
+  assert.deepEqual(validateContent({ root, requiredRoutes: ['guides/test'] }), []);
+});
+
 test('catches a missing root-relative image asset', () => {
   const root = fixture('![Setup claim form](/images/nope.png)');
   assert.match(validateContent({ root, requiredRoutes: ['guides/test'] }).join('\n'), /missing image/);
