@@ -216,7 +216,8 @@ the [Deployment Reference](/guides/deployment).
 ## Run the tests
 
 The test framework is [TUnit](https://tunit.dev/). Keep Docker running: the main suite starts its own
-NATS and MySQL containers, separate from the NATS you started above.
+NATS container, separate from the one you started above, and a MySQL container that the `sql()` and
+`@sql` tests query as an external database.
 
 ```bash
 # The main suite: engine, commands, functions, server

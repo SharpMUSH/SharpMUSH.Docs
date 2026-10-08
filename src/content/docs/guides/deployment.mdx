@@ -79,11 +79,10 @@ telnet connections.
 
 The world is stored at `/app/data/lightning` on the `app-data` volume: one `data.mdb` file plus a
 small `lock.mdb` file, both written by the game server itself. There is nothing else to run, tune or
-connect to. Three settings on `sharpmush-server` matter:
+connect to. Two settings on `sharpmush-server` matter:
 
 | Variable | Set to | Why |
 |---|---|---|
-| `SHARPMUSH_DATABASE_PROVIDER` | `lightning` | The only accepted value. Anything else stops the server from starting. |
 | `SHARPMUSH_LIGHTNING_PATH` | `data/lightning` | Relative to `/app`, so the world lands on the volume. |
 | `SHARPMUSH_LIGHTNING_SYNC` | `periodic` | Write to disk once a second instead of after every change. A power cut loses at most that second, and the file stays consistent. `full` writes after every change, at about 5 ms each. |
 
@@ -101,26 +100,6 @@ container's `RESTIC_BACKUP_SOURCES` too.
 Nothing outside the game server should read `data.mdb` while the game runs. To get a copy that is
 safe to read, have the server make one: see [Backups](#backups).
 </Aside>
-
-#### A machine that ran SurrealDB
-
-SurrealDB is no longer supported, and the server will not start with
-`SHARPMUSH_DATABASE_PROVIDER=surrealdb`. There is no way to carry an old SurrealDB world across: the
-world starts fresh (or from a [PennMUSH import](/guides/pennmush-migration)), and the first visitor
-to `/setup` claims the administrator account again. Uploaded wiki files are on the same volume and
-are kept. Once the game runs on the new database, delete the old store:
-
-```bash
-cd deploy
-export COMPOSE_FILE=docker-compose.cloudflare.yml   # or docker-compose.prod.yml
-git pull                                            # brings in the Compose change
-docker compose stop sharpmush-server
-docker run --rm -v deploy_app-data:/data alpine rm -rf /data/surreal   # the old store
-docker compose up -d                                # starts the server on the new database
-```
-
-`deploy_app-data` is the volume's name when the stack was started from the `deploy` folder. Check
-with `docker volume ls` if you started it from somewhere else.
 
 ### The browser terminal address
 
