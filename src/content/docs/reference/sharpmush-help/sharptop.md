@@ -6,336 +6,46 @@ description: "SharpMUSH documentation for Top-Level Topics"
 ## help
 This is the index to the MUSH online help files.
 
-  For an explanation of the help system, type:    help [newbie](/reference/sharpmush-help/sharptop/#newbie)<br>
-  For a walkthrough of SharpMUSH systems, type:   help [getting started](/reference/sharpmush-help/sharptop/#getting-started)<br>
-  For help finding the helpfile you want:         help [helpfile](/reference/sharpmush-help/sharptop/#help-search)
+  For an explanation of the help system, type:    help [newbie](/reference/sharpmush-help/newbie/#newbie)<br>
+  For a walkthrough of SharpMUSH systems, type:   help [Getting Started](/reference/sharpmush-help/sharptop/#getting-started)<br>
+  For help finding the helpfile you want:         help [search](/reference/sharpmush-help/sharpconf/#search)(/reference/sharpmush-help/sharpconf/#search)
 
-  For the list of MUSH commands, type:            help [commands](/reference/sharpmush-help/sharpcmd/#commands)<br>
-  For the list of MUSH topics, type:              help [topics](/reference/sharpmush-help/sharptop/#topics)<br>
-  For an alphabetical list of all help entries:   help [entries](/reference/sharpmush-help/sharpconf/#entries)<br>
-  For information about SharpMUSH:                help [code](/reference/sharpmush-help/sharpcode/#code)
+  For the list of MUSH commands, type:            help [COMMANDS](/reference/sharpmush-help/sharpcmd/#commands)<br>
+  For the list of MUSH topics, type:              help [topics](/reference/sharpmush-help/topics/#topics)<br>
+  For an alphabetical list of all help entries:   help [search](/reference/sharpmush-help/sharpconf/#search)(/reference/sharpmush-help/sharpconf/#search)<br>
+  For what SharpMUSH adds to PennMUSH:            help [sharpmush features](/reference/sharpmush-help/sharpmush-features/#sharpmush-features)<br>
+  For information about SharpMUSH:                help [code](/reference/sharpmush-help/sharpcode/#contact)
 
-  For a list of flags:                            help [flag list](/reference/sharpmush-help/sharpflag/#flag-list)<br>
-  For a list of functions:                        help [function list](/reference/sharpmush-help/sharpfunc/#function-list)<br>
-  For a list of attributes:                       help [attribute list](/reference/sharpmush-help/sharptop/#attributes)<br>
+  For a list of flags:                            help [FLAG LIST](/reference/sharpmush-help/sharpflag/#flag-list)<br>
+  For a list of functions:                        help [FUNCTION LIST](/reference/sharpmush-help/sharpfunc/#function-list)<br>
+  For a list of attributes:                       help [attributes](/reference/sharpmush-help/attributes/#attributes)<br>
   To see the configuration of this MUSH:          `@config`
 
   On many MUSHes, list local commands with:       `+help`
 
   If there are any errors in the help text, please notify a wizard in the game, or file an issue at https://github.com/SharpMUSH/SharpMUSH/issues, which is the bug-tracking site for SharpMUSH (and its distributed help files) but probably has no relation to this MUSH in particular.
 
-## help search
-  `help <textname>`<br>
-  `help <namepattern>`<br>
-  `help/search <pattern>`<br>
-  `help/query[/brief] <sqlite3query>`<br>
-
-  These commands and switches also work with other things using our helpfile setup: news, ahelp, and any others added.
-
-  help `<textname>` is how to see a help file.
-```sharp
-  > help helpfile
-  > help @search
-```
-
-  help `<namepattern>` is a good way to read long helpfilenames or find a pattern you're looking for. If `<namepattern>` matches multiple entries, it will show you their names.
-```sharp
-  > help @tri*2
-  > help sort*()
-```
-
-  If you want to find helpfiles that _contain_ a pattern, use "help/search". For example:
-```sharp
-  > help/search @trigger
-  > help/search @switch
-```
-
-  help/query is a more advanced and complex way to search our helpfiles, see [helpfile2](/reference/sharpmush-help/sharptop/#helpfile2) for more.
-
-  To add more categories and commands (like 'news'), read "game/txt/README"
-
-
-**See Also:**
-- [textfile()](/reference/sharpmush-help/sharpfunc/#textfile)
-- [textentries()](/reference/sharpmush-help/sharpfunc/#textfile)
-- [textsearch()](/reference/sharpmush-help/sharpfunc/#textfile)
-
-## helpfile2
-  Displays help entries that match `<pattern>` using an advanced full text search. If the /brief switch is given, only shows the names of matching entries. Without it, also shows a fragment of the entry with matches underlined.
-
-  The pattern is one or more phrases, where each phrase is one or more words (enclosed with quote marks if there's more than one word, or searching for a word with characters like @ or +). A * at the end treats the phrase as a prefix. Phrases can be combined with AND (The default), OR and NOT. The function NEAR(phrase phrase...) matches entries where two or more phrases are near each other. An optional second argument controls how close the matching is. All these operators must appear in upper case. For full details, see https://www.sqlite.org/fts5.html#full_text_query_syntax
-
-
-  Examples:
-```
-  help/query cosine OR tangent
-  help/query "treated as"
-  help/query NEAR(player wizard, 20)
-  help/query "@attrib"*
-```
-
-## newbie
-  If you are new to MUSHing, the help files may seem confusing. Most of them are written in a specific style, however, and once you understand it the files are extremely helpful.
-
-  The first line of a help file on a command or function will normally be the syntax of the command. "Syntax" means the way the command needs to be typed in. In the help files, when the syntax of a command is described, square brackets [] mean that that part of the command is optional and doesn't have to be typed in. Also, pointy brackets <> mean that that part of the command needs to be replaced with a specific piece of information.
-
-  You should not type the [] or <> brackets when entering a command.
-
-  See [newbie2](/reference/sharpmush-help/sharptop/#newbie2)
-
-## newbie2
-  For example, the syntax of the help command is:
-
-  `help [<topic>]`
-
-  What this means is that to get help, you would type first the word "help" and then you could optionally type the name of a more specific topic in order to get help on that topic. Just typing "help" will work too (that's why the `<topic>` part is optional).
-
-  Some common commands that you should look at help for are:
-
-    look   say    go    page    pose    get     give    home
-
-  Just type help `<command>` for help. Example: help page
-
-  See [newbie3](/reference/sharpmush-help/sharptop/#newbie3)
-
-## newbie3
-  There is help available on every standard MUSH command. If you see a command or someone mentions one to you that you want to know more about, try just typing: help `<command name>` -- that will most likely bring up the help file on it.
-
-  Please note that just because there is help available on a command does not necessarily mean that the command can be used on this MUSH. The siteadmin of the MUSH can choose to turn off some commands. If there's something that you would like available, and it isn't, please ask a wizard why not.
-
-**See Also:**
-- [Getting Started](/reference/sharpmush-help/sharptop/#getting-started)
+## +help
+  `help` is the server's own help, the same on every SharpMUSH game. `+help` is this game's: the topics its installed systems carry, such as `+scene` and `+request`, and whatever its staff have written down. Type `+help` for its index and `+help <topic>` for a topic.
 
 ## Getting Started
-  This helpfile is a quick walkthrough of some of SharpMUSH's standard systems. It uses the same syntax as the other helpfiles; if you're not familiar with the syntax of the SharpMUSH helpfiles, please read [newbie](/reference/sharpmush-help/sharptop/#newbie) first, as it's explained there.
+  This helpfile is a quick walkthrough of some of SharpMUSH's standard systems. It uses the same syntax as the other helpfiles; if you're not familiar with the syntax of the SharpMUSH helpfiles, please read [newbie](/reference/sharpmush-help/newbie/#newbie) first, as it's explained there.
 
-  For help with getting around, please see [gs moving](/reference/sharpmush-help/sharptop/#gs-moving).
+  For help with getting around, please see [gs moving](/reference/sharpmush-help/sharpconf/#gs-moving).
 
-  To talk to people in the room with you, see [gs talking](/reference/sharpmush-help/sharptop/#gs-talking).
+  To talk to people in the room with you, see [gs talking](/reference/sharpmush-help/sharpconf/#gs-talking).
 
-  For a brief guide to the SharpMUSH chat system, see [gs chat](/reference/sharpmush-help/sharptop/#gs-chat).
+  For a brief guide to the SharpMUSH chat system, see [gs chat](/reference/sharpmush-help/sharpchat/#gs-chat).
 
-  For information on how to send and read mail using SharpMUSH's built-in mail system, `@mail`, please type 'help gs mail'.
+  For information on how to send and read mail using SharpMUSH's built-in mail system, `@mail`, see [gs mail](/reference/sharpmush-help/sharpmail/#gs-mail).
 
-## GS MOVING
-  To see the room you're in, type 'look'. You'll probably see something similar to this (though some MUSHes customize the appearance of rooms):
+  If the game has a web portal, you can [register](/reference/sharpmush-help/sharpcmd/#register) an account there or at the login screen, then [make](/reference/sharpmush-help/sharpcmd/#make) characters and [play](/reference/sharpmush-help/sharpcmd/#play) them. The portal also serves the game's [wiki](/reference/sharpmush-help/wiki/#wiki).
 
-    Example Room<br>
-    This is an example room. It has a rather boring description.<br>
-    Contents:<br>
-    Bob<br>
-    Sports car<br>
-    Obvious exits:<br>
-    Next Room and Out
+  To have the server address you in another language, see [@locale](/reference/sharpmush-help/sharpcmd/#internationalization).
 
-  The first line is the name of the room you're in, followed by the room's description, a list of other people (and objects) in the room, and finally a list of exits to other rooms.
+  For the other things SharpMUSH can do, see [sharpmush features](/reference/sharpmush-help/sharpmush-features/#sharpmush-features).
 
-  To move through one of the exits, you can simply type its name (Out), or you can use the "goto" command (goto Out).
-
-  See [gs moving2](/reference/sharpmush-help/sharptop/#gs-moving2)
-
-## GS MOVING2
-  All players on a MUSH have a "home", which is usually the room you started in. You can go back to your home by just typing 'home', or 'goto home'. Some MUSHes may also allow you to change your home to somewhere else; you can do that by typing '`@link` me=here' when you're in the room.
-
-  There may be some objects on the game that you can go inside (wagons or cars, for instance). You can do that by typing 'enter `<object>`', and can leave again by typing 'leave'. For instance, 'enter sports car'.
-
-  It's also sometimes possible to teleport from one room to another, using the '`@teleport`' command. However, most new players on a game probably won't be able to do that - it's mentioned here only for completeness.
-
-**See Also:**
-- [goto](/reference/sharpmush-help/sharpcmd/#go)
-- [home](/reference/sharpmush-help/sharptop/#homes)
-- [enter](/reference/sharpmush-help/sharpcmd/#aenter)
-- [leave](/reference/sharpmush-help/sharpcmd/#leave)
-- [@teleport](/reference/sharpmush-help/sharpcmd/#teleport)
-- [@link](/reference/sharpmush-help/sharpcmd/#link)
-
-## GS TALKING
-  You can talk to others in the room with you (those listed in the 'Contents' of the room) in a number of ways. The easiest is to use the 'say' command.
-
-  For example, when you type:
-  ```sharp
-    say Hello!
-  ```
-  you'll see:<br>
-    You say, "Hello!"<br>
-  and everyone else in the room will see:<br>
-    Lisa says, "Hello!"
-
-  You can abbreviate the command to just:
-  ```sharp
-    "Hello!
-  ```
-  if you wish; it works exactly the same.
-
-  See [gs talking2](/reference/sharpmush-help/sharptop/#gs-talking2)
-
-## GS TALKING2
-  You can also perform actions, using the 'pose' command, or ':' for short.<br>
-  For example:<br>
-    pose waves!   or<br>
-    :waves!<br>
-  will both show:<br>
-    Lisa waves!<br>
-  to everyone in the room (including yourself). If you don't want a space after your name, use 'semipose' (or ';') instead:<br>
-    ;'s waving!<br>
-  will show:<br>
-    Lisa's waving!
-
-  If you don't want your name to be added at all, you can use the '`@emit`' command, or '\' for short:<br>
-    `@emit` Smiling, Lisa waves, "Hello!"<br>
-  will show everyone in the room:<br>
-    Smiling, Lisa waves, "Hello!"
-
-  However, make sure you include your name somewhere, so people know who's talking.
-
-
-**See Also:**
-- [GS CHAT](/reference/sharpmush-help/sharptop/#gs-chat)
-- [say](/reference/sharpmush-help/sharpcmd/#say)
-- [pose](/reference/sharpmush-help/sharpcmd/#pose)
-- [semipose](/reference/sharpmush-help/sharpcmd/#semipose)
-- [@emit](/reference/sharpmush-help/sharpcmd/#emit)
-
-## GS CHAT
-  SharpMUSH has a built-in channel system, which allows you to talk with players who are on the same channels as you, even if you're in different rooms.
-
-  Most games have a number of different channels, either for discussing different subjects, or for different groups/factions of players to chat on.
-
-  To see a list of channels, type '`@channel`/list'. This shows the names of all the channels, whether or not you're on the channel, and some other information (the rest is explained in [channel-list](/reference/sharpmush-help/sharpchat/#channel-list)).
-
-  To join a channel, type '`@channel`/on `<channel>`'. To leave it again, use '`@channel`/leave `<channel>`'. If you want to stop hearing a channel for a while without leaving it totally, use '`@channel`/gag `<channel>`'.
-
-  See [gs chat2](/reference/sharpmush-help/sharptop/#gs-chat2)
-
-## GS CHAT2
-  When you've joined a channel, you can chat on it in two ways:
-
-    +`<channel>` `<message>`<br>
-    `@chat` `<channel>`=`<message>`
-
-  You don't need to type the entire channel name, just enough letters to make it distinct from other channels. For instance, '`+pub` Hello'.
-
-  When you talk on a channel, everyone who is on the channel will see the channel name in '<>' angle brackets, then your name and the message.<br>
-  For example, '`+pub` Hello' will show everyone<br>
-    `<Public>` Skye says, "Hello"<br>
-  If the `<message>` starts with a ':' or ';' it will be posed or semiposed, respectively. For example, '`+pub` :waves' shows<br>
-    `<Public>` Skye waves.
-
-  Some games customize the appearance of channels a little (for instance, adding color or using '[]' square brackets instead of angle brackets), so it may look a little different.
-
-  There's much more you can do with the channel system - see [`@channel`] for the other commands.
-
-**See Also:**
-- [GS TALKING](/reference/sharpmush-help/sharptop/#gs-talking)
-- [@channel](/reference/sharpmush-help/sharpchat/#channel)
-- [@chat](/reference/sharpmush-help/sharpchat/#chat)
-
-## GS MAIL
-  SharpMUSH has a built-in mail system that lets you send messages to players, even if they aren't online. You can keep mail you receive for as long as you like, and re-read it any time.
-
-  To list all the messages you've received, type '`@mail`'. You'll see something like:
-```
--------------------------  MAIL (folder  0)  ----------------------------
-[-----]  0:1    One           Welcome!                   Wed Dec 08 09:57
-[-----]  0:2   *Mike          Example Mail               Sat Dec 11 07:55
--------------------------------------------------------------------------
-```
-  The number after the ':' is the message number; to read that message, type '`@mail` `<number>`'.
-
-  See [gs mail2](/reference/sharpmush-help/sharptop/#gs-mail2)
-
-## GS MAIL2
-  To send mail to someone, type:<br>
-    `@mail` `<recipients>`=[`<subject>`/]`<message>`
-
-  You can send a message to more than one person at a time, just include the names of all the people you want to send to in `<recipients>`. The `<subject>` is optional. For example:
-
-    ```sharp
-    @mail qa'toq anne=Test/Hi! This is a test message!
-    ```
-
-  You can do other, slightly more complex things with the mail system, too, like filing your messages into different folders. See [`@mail`] for more information.
-
-
-**See Also:**
-- [@mail](/reference/sharpmush-help/sharpmail/#mail)
-
-## topics
-Help is available on the following topics:
-
-  ACTION LISTS             ANCESTORS                ANONYMOUS ATTRIBUTES<br>
-  ATTRIB-OWNERSHIP         ATTRIBUTES               BOOLEAN VALUES<br>
-  CHAT                     CLIENTS                  CONTROL<br>
-  COPYRIGHT                COSTS                    CREDITS<br>
-  DBREFS                   DROP-TO                  ENACTOR<br>
-  EVALUATION               EXECUTOR                 EXITS<br>
-  FAILURE                  FLAGS                    FUNCTIONS<br>
-  GENDER                   GLOBALS                  HERE<br>
-  HOMES                    INTERIORS                LINKING<br>
-  LISTENING                LISTS                    LOOPING<br>
-  MASTER ROOM              MATCHING                 ME
-
-  See [topics2](/reference/sharpmush-help/sharptop/#topics2)
-
-## topics2
-  MONEY                    MUSHCODE                 NON-STANDARD ATTRIBUTES<br>
-  PARENTS                  POWERS                   PUPPETS<br>
-  QUEUE                    REGEXPS                  REGISTERS<br>
-  SEMAPHORES               SETTING-ATTRIBUTES       SPOOFING<br>
-  STACK                    STRINGS                  SUBSTITUTIONS<br>
-  SUCCESS                  SWITCHES                 TYPES OF OBJECTS<br>
-  USER-DEFINED COMMANDS    VERBS                    WARNINGS<br>
-  WILDCARDS                ZONE MASTER ROOMS        ZONE MASTERS<br>
-  ZONES
-
-Type 'help `<topic name>`' for help.<br>
-For a list of all topics, see [entries](/reference/sharpmush-help/sharpconf/#entries).
-
-## ACTION LISTS
-  An "action list" is simply a list of MUSH commands which are run together, one after the other. Each command in the list is separated by a semicolon. Action lists appear in many places: in user-defined commands, triggered in `@a`-attributes by the MUSH, and even as arguments to other commands, like `@switch` and `@dolist`.
-
-  If part of the command (such as the text in an `@emit`, for example) contains a semi-colon, you may need to enclose that part in curly braces {}. You can also nest action lists inside each other by enclosing each action list in braces {}.
-
-  Substitution will be performed on the contents of action lists before they are executed.
-
-  See [action2](/reference/sharpmush-help/sharptop/#action2)
-
-**See Also:**
-- [@-ATTRIBUTES](/reference/sharpmush-help/sharpcmd/#attributes)
-- [VERBS](/reference/sharpmush-help/sharptop/#verbs)
-- [$-COMMANDS]
-
-## ACTION2
-  Example 1:
-```sharp
-    > @asuccess Gift=@pemit %#={The box pops open; surprise!} ; @name me=New Toy ; @desc me=A shiny new toy, just for %n!
-    > take gift
-    The box pops open; surprise!
-    > look new toy
-    New Toy
-    A shiny new toy, just for Cyclonus!
-```
-
-  Example 2:
-```sharp
-    > &TEST me=$test:@emit {Testing; testing; one, two.} ; @dolist 1 2 3={think Test %i0, success.}
-    > test
-    Testing; testing; one, two.
-    Test 1, success.
-    Test 2, success.
-    Test 3, success.
-```
-
-
-**See Also:**
-- [ATTRIBUTES](/reference/sharpmush-help/sharptop/#attributes)
-- [SUBSTITUTION](/reference/sharpmush-help/sharpconf/#substitution)
-- [@asuccess](/reference/sharpmush-help/sharpcmd/#asuccess)
-- [@dolist](/reference/sharpmush-help/sharpcmd/#dolist)
-
-## ANCESTORS
-  ANCESTORS
-
+## Ancestors
   Objects can inherit attributes and locks from other objects through the use of parents. An object's parent, its parent's parent, its parent's parent's parent, etc. constitute the object's "parent chain" and lookups work the way up the chain until an inheritance occurs.
 
   Ancestors are "virtual parents" that are assumed to be last on every parent chain. There is one ancestor for each object type (room, exit, thing, player), and `@config` lists the dbref of each ancestor object (`@config` ancestor_room, etc). Under normal circumstances, if an attribute/lock can't be retrieved from an object or any of its explicit parents, the attribute will be looked for on the appropriate ancestor. The ORPHAN flag may be set on an object to cause lookups on that object to ignore ancestors (like the pre-ancestor behavior).
@@ -345,209 +55,26 @@ For a list of all topics, see [entries](/reference/sharpmush-help/sharpconf/#ent
   Note that the choice of which ancestor to look up is based on the type of the *child* object, as is the check of the ORPHAN flag. Also note that ancestors are *not* checked for `$-commands` or ^-commands; you should use the master room for global commands, instead.
 
 
-**See Also:**
-- [PARENTS](/reference/sharpmush-help/sharptop/#parent)
+::: seealso
+- [parent](/reference/sharpmush-help/sharpconf/#parent)
 - [ORPHAN](/reference/sharpmush-help/sharpflag/#orphan)
+:::
 
-## ANONYMOUS ATTRIBUTES
-  In many cases where a function expects a object/attribute pair that refers to an attribute to evaluate, you can use the form
-
-  `#lambda/\<code\>`
-
-  instead, and the code will be treated as an attribute's body. The code will normally be parsed twice, so special characters should be escaped where needed.
-
-  If the #lambda just calls one other function, the form
-
-  `#apply[\<number of arguments\>]/<function name>`
-
-  can be used instead. If the argument count is left out, it defaults to 1.
-
-  These anonymous attributes should be used for short and simple pieces of code. Anything long or complicated should go in an actual attribute, for readability and maintainability.
-
-  See [ANONYMOUS2](/reference/sharpmush-help/sharptop/#anonymous2)
-
-## ANONYMOUS2
-  A typical usage of anonymous attributes would be to convert a list of dbrefs to names, as so:
-
-```sharp
-  > say map(#lambda/name(\%0), #3 #12 #23)
-  You say, "Joe Robert Sally"
-```
-
-  The following version uses `#apply` instead:
-
-```sharp
-  > say map(#apply/name, #3 #12 #23)
-```
-
-  Because the code is parsed twice, you can actually build parts of it in place, which is very convenient. Consider this implementation of a lattrval function, which is like `lattr()` but it only returns non-empty attributes:
-
-```sharp
-  > &lattrval me=filter(#lambda/hasattrval([decompose(before(%0, /))], \%0), lattr(%0))
-```
-
-  The first time '#lambda/hasattrval([decompose(before(%0, /))], \%0)' is parsed in a call like 'u(lattrval, #1234)', it is turned into '#lambda/hasattrval(#1234, %0)', thus avoiding the need for a `setq()` or the like to store the top-level %0 for use in a real attribute called by `filter()`. However, this can lead to problems with evaluating un-trusted code. Use `decompose()` where neccessary.
-
-  See [ANONYMOUS3](/reference/sharpmush-help/sharptop/#anonymous3)
-
-## ANONYMOUS3
-  You can also use `lit()` to avoid having the code evaluated twice, if needed. For example, this code, which returns all unlinked exits in a room:
-
-  &lunlinked me=filter(lit(#lambda/strmatch(loc(%0), #-1)), lexits(%0))
-
-  This approach is useful both for security in making it harder to evaluate a string that shouldn't be, and for making the code look nicer by not having to escape percent signs, brackets, and other special characters. However, it also makes it harder to build the code string on the fly. Use what's most appropriate.
-
-  Finally, a multiple argument example of #apply, which requires less escaping than #lambda for cases where you're just calling another function:
-
-```sharp
-  > think mix(#apply2/ansi, r g b, foo bar baz)
-```
-
-  See [ANONYMOUS4](/reference/sharpmush-help/sharptop/#anonymous4)
-
-## ANONYMOUS4
-  The following functions support anonymous attributes:
-
-  - [filter()](/reference/sharpmush-help/sharpfunc/#filter)
-  - [filterbool()](/reference/sharpmush-help/sharpfunc/#filter)
-  - [fold()](/reference/sharpmush-help/sharpfunc/#fold)
-  - [foreach()](/reference/sharpmush-help/sharpfunc/#foreach)
-  - [map()](/reference/sharpmush-help/sharpfunc/#map)
-  - [mapsql()](/reference/sharpmush-help/sharpfunc/#mapsql)
-  - [mix()](/reference/sharpmush-help/sharpfunc/#mix)
-  - [munge()](/reference/sharpmush-help/sharpfunc/#munge)
-  - [namelist()](/reference/sharpmush-help/sharpfunc/#namelist)
-  - [sortby()](/reference/sharpmush-help/sharpfunc/#sortby)
-  - [sortkey()](/reference/sharpmush-help/sharpfunc/#sortkey)
-  - [speak()](/reference/sharpmush-help/sharpfunc/#speak)
-  - [step()](/reference/sharpmush-help/sharpfunc/#step)
-
-## ATTRIB-OWNERSHIP
-  ATTRIBUTE OWNERSHIP
-
+## Attribute Ownership
   The latest person to set an attribute on an object is the owner of that attribute. If you lock an attribute, using the `@atrlock` command, only the person who owns the attribute will be able to alter the attribute. This allows you to create standard commands on objects and then `@chown` them to others without letting them alter them.
 
   Attribute ownership is NOT changed when the object itself is `@chown`'ed. To change attribute ownership, you must use the `@atrchown` command.
 
   You must control an object in order to set attributes on it.
 
-**See Also:**
+::: seealso
 - [@atrlock](/reference/sharpmush-help/sharpcmd/#atrlock)
 - [@atrchown](/reference/sharpmush-help/sharpcmd/#atrchown)
-- [owner()](/reference/sharpmush-help/sharpfunc/#owner)
-- [ATTRIBUTES](/reference/sharpmush-help/sharptop/#attributes)
+- [OWNER()](/reference/sharpmush-help/sharpfunc/#owner)
+- [attributes](/reference/sharpmush-help/attributes/#attributes)
+:::
 
-## ATTRIBUTES
-  Attributes with (*) after them are special, cannot be set by players, and may only be visible to wizards or admin. For those attributes, there is no @-command, so you can just type 'help `<attribute name>`' for help. For all other attributes, type 'help @`<attribute name>`' for help.
-
-Standard Attributes: (see `@list/attribs` for the complete list)<br>
-  AAHEAR        ACLONE        ACONNECT      ADESCRIBE     ADISCONNECT<br>
-  ADROP         AEFAIL        AENTER        AFAILURE      AHEAR<br>
-  ALEAVE        ALFAIL        AMHEAR        AMOVE         APAYMENT<br>
-  ASUCCESS      AWAY          CHARGES       COST          DESCRIBE<br>
-  DROP          EALIAS        EFAIL         ENTER         FAILURE<br>
-  FORWARDLIST   HAVEN         IDESCRIBE     IDLE          LALIAS<br>
-  LAST (*)      LASTIP (*)    LASTLOGOUT(*) LASTSITE (*)  LEAVE<br>
-  LFAIL         LISTEN        MOVE          ODESCRIBE     ODROP<br>
-  OEFAIL        OENTER        OFAILURE      OLEAVE        OLFAIL<br>
-  OMOVE         OPAYMENT      OSUCCESS      OXENTER       OXLEAVE<br>
-  OXMOVE        PAYMENT       QUEUE (*)     RQUOTA (*)    RUNOUT<br>
-  SEX           STARTUP       SUCCESS       TFPREFIX
-
-  See [attributes2](/reference/sharpmush-help/sharptop/#attributes2)
-
-## ATTRIBUTES2
-  An attribute is part of the code on an object that makes it unique. An attribute can contain any sort of text -- from a single word, to a long paragraph, to a piece of MUSHcode. Some attributes are standard in SharpMUSH. That means that their effects are pre-set.
-
-  Standard attributes can be set using one of the following commands:<br>
-    @`<attribute name>` `<object>`=`<content>`<br>
-    `@set` `<object>`=`<attribute name>`:`<content>`<br>
-    &`<attribute name>` `<object>`=`<content>`
-
-  It is also possible to have non-standard attributes, which can be named anything you like. Please see [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/sharptop/#non-standard-attributes) for more information on those.
-
-  See [attributes3](/reference/sharpmush-help/sharptop/#attributes3)
-
-## ATTRIBUTES3
-  Any attribute name can be shortened, but a shorter forms run the risk of conflicting with other attribute names. This could result in you setting an unwanted attribute.
-
-  For example:
-  ```sharp
-    @adesc me=think %n looks at you.
-  ```
-  will set your ADESCRIBE attribute just as
-  ```sharp
-    @adescribe`me=think %n looks at you.
-  ```
-  would.
-
-  To see the attributes that are set on you or on any of the objects you own, you should use the "examine" command. See [examine](/reference/sharpmush-help/sharpcmd/#examine).
-
-  See [attributes4](/reference/sharpmush-help/sharptop/#attributes4)
-
-## ATTRIBUTES4
-  Attributes can be owned by someone other than the object they are set on. This allows the person to change the content of just that attribute while not the rest of the object. Attributes can also be locked, which prevents them from being changed by anyone.
-
-  In addition to the standard attributes with pre-set effects, there are some special attributes that date from the days before you could set non-standard attributes with any name you wanted. These are the attributes VA-VZ, WA-WZ, XA-XZ. These attributes have no pre-set effects, and were just to allow players to store any text or MUSHcode that they wished in those attributes. Now that non-standard attributes are available, it is highly recommended that you instead use them, since you can use longer and descriptive names for attributes, which makes it much easier to examine and work on objects.
-
-**See Also:**
-- [ATTRIB-OWNERSHIP](/reference/sharpmush-help/sharptop/#attrib-ownership)
-- [@set](/reference/sharpmush-help/sharpcmd/#set)
-- [examine](/reference/sharpmush-help/sharpcmd/#examine)
-- [@atrchown](/reference/sharpmush-help/sharpcmd/#atrchown)
-- [@atrlock](/reference/sharpmush-help/sharpcmd/#atrlock)
-- [hasattr()](/reference/sharpmush-help/sharpfunc/#hasattr)
-- [get()](/reference/sharpmush-help/sharpfunc/#get)
-- [v()](/reference/sharpmush-help/sharpfunc/#substitutions2)
-- [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/sharptop/#non-standard-attributes)
-- [SETTING-ATTRIBUTES](/reference/sharpmush-help/sharptop/#setting-attributes)
-- [ATTRIBUTE TREES](/reference/sharpmush-help/sharpattr/#attribute-trees)
-
-## BOOLEAN VALUES
-  A boolean variable, for those of you not familiar with programming, is a variable that is either true or false. Normally, a value of 1 is considered "true" and a value of 0 is considered "false". Many MUSH functions return either 1 if they are true or 0 if false. For example, the `hasflag()` function tests to see if an object has a certain flag set on it. If hasflag(`<object>`,`<flag name>`) is true (the object has the flag), it will return 1. If it is false, it will return 0.
-
-  Other functions expect to operate on boolean values. What they consider "true" or "false", however, depends on the setting of the "tiny_booleans" config option (`@config` tiny will show this).
-
-  See [boolean2](/reference/sharpmush-help/sharptop/#boolean2)
-
-## BOOLEAN2
-  If tiny_booleans is...<br>
-  no                       FALSE: null string, 0, any negative db<br>
-                           TRUE:  everything else<br>
-  yes                      TRUE:  numbers other than 0, strings beginning with numbers other than 0<br>
-                           FALSE: everything else
-
-  Or, put another way:<br>
-  Value                 tiny_booleans=no        tiny_booleans=yes  Gotcha<br>
-  0                     FALSE                   FALSE<br>
-  non-zero number       TRUE                    TRUE
-  #<non-negative>       TRUE                    FALSE               *
-  #<negative>           FALSE                   FALSE
-
-  null string           FALSE                   FALSE<br>
-  0<non-numbers..>      TRUE                    FALSE               *<br>
-  <non-numbers...>      TRUE                    FALSE               *
-
-  See [boolean3](/reference/sharpmush-help/sharptop/#boolean3)
-
-## BOOLEAN3
-  Examples (assuming tiny_booleans is "no"):<br>
-    not(foo) = 0<br>
-    not(`<null string>`) = 1<br>
-    not(-66) = 0<br>
-    not(0) = 1<br>
-    not(#-1) = 1<br>
-    not(#12) = 0<br>
-  And so on...<br>
-  (note: These rules only apply when a function expects a Boolean value, not for strings that expect other values.)
-
-
-**See Also:**
-- [BOOLEAN FUNCTIONS](/reference/sharpmush-help/sharpfunc/#boolean-functions)
-- [not()](/reference/sharpmush-help/sharpfunc/#not)
-- [t()](/reference/sharpmush-help/sharpfunc/#t)
-
-## CLIENTS
+## Clients
   Clients are special software programs that you can use to connect to MUSHes. They are usually much nicer to use than raw telnet and give you many additional features, such as larger text buffers (so you can type more), backscroll, history of previous commands, macros, and so on.
 
   Here is a list of common clients and the web sites where they can be found.  Please note that the below sites are subject to change. The below are listed solely for your information and possible benefit. The developers of SharpMUSH have nothing to do with the clients. Except for Potato, which is made by Mike. Not that this is a shameless plug. Noooo. Carry on.
@@ -565,7 +92,7 @@ Standard Attributes: (see `@list/attribs` for the complete list)<br>
   |                  | Potato      | http://www.potatomushclient.com       |
   |                  | Unix clients will also run on OS X. |               |
 
-## CONTROL
+## Control
   Controlling an object basically means that you have the power to change the object's characteristics such as flags and attributes. It may also mean that you have the ability to destroy it.
 
   These checks are performed, from top to bottom, to see if object O controls object V:
@@ -576,7 +103,7 @@ Standard Attributes: (see `@list/attribs` for the complete list)<br>
    5. If V is a Wizard, O does not control V
    6. If V is Royalty and O is not, O does not control V
    7. If O is MISTRUST, O does not control V
-   8. If O and V are owned by the same player, and either:
+   8. If O and V are owned by the same player, and either:<br>
        a. V is not set TRUST, or<br>
        b. O is set TRUST<br>
       then O controls V
@@ -587,14 +114,15 @@ Standard Attributes: (see `@list/attribs` for the complete list)<br>
   13. O does not control V
 
 
-**See Also:**
-- [controls()](/reference/sharpmush-help/sharpfunc/#controls)
+::: seealso
+- [CONTROLS()](/reference/sharpmush-help/sharpfunc/#controls)
 - [TRUST](/reference/sharpmush-help/sharpconf/#trust)
 - [MISTRUST](/reference/sharpmush-help/sharpconf/#mistrust)
-- [ZONES](/reference/sharpmush-help/sharptop/#zones)
-- [SHARED PLAYERS](/reference/sharpmush-help/sharptop/#zone-masters)
+- [zones](/reference/sharpmush-help/zones/#zones)
+- [zone masters](/reference/sharpmush-help/zone-masters/#zone-masters)
+:::
 
-## COSTS
+## Costs
   Some things on the MUSH cost pennies. The default costs are shown below:
 
     `@dig`: 10 pennies<br>
@@ -606,50 +134,23 @@ Standard Attributes: (see `@list/attribs` for the complete list)<br>
   Type '`@config`/list costs' to get the costs for the MUSH you are on.
 
 
-**See Also:**
+::: seealso
 - [MONEY](/reference/sharpmush-help/sharptop/#money)
-- [money()](/reference/sharpmush-help/sharpfunc/#money)
+- [MONEY()](/reference/sharpmush-help/sharpfunc/#money)
 - [score](/reference/sharpmush-help/sharpcmd/#score)
+:::
 
-## CREDITS
+## Credits
   Developers: Mercutio (Harry Cordewener)
 
   Big thanks to the developers of PennMUSH and all of the history it is derived from, as well as most of these helpfiles.
 
-**See Also:**
-- [code](/reference/sharpmush-help/sharpcode/#code)
-- [license](/reference/sharpmush-help/sharpcode/#copyright)
+::: seealso
+- [code](/reference/sharpmush-help/sharpcode/#contact)
+- [copyright](/reference/sharpmush-help/sharpcode/#copyright)
+:::
 
-## DATABASE
-  You will find the term "dbref" or "dbref number" used frequently in these help files and in MUSHcode. It is an abbreviation of "database reference number".
-
-  The database is the part of MUSH that stores all the information about this particular MUSH. Players, things, rooms, and exits are all objects in the database. Each object in the database has a unique dbref number that is set when the object is created. You can use the dbref number to refer to an object that is not in your current location, and it is especially important for global code.
-
-  Using DBREFs is also faster than using names, even if the object is in your location. This is because whenever you try to do something with an object (such as look at it, take it, etc.), the MUSH first has to locate the object. Since the dbref is unique, it can immediately find the object rather than checking through all the contents of your area to see if one matches the name.
-
-  See [dbref2](/reference/sharpmush-help/sharptop/#dbref2)
-
-## DBREF2
-  If you own or control an object, you will see its dbref number listed right after its name when you look at it (unless you are set MYOPIC).
-
-
-  Example:
-```sharp
-    > look me
-    Cyclonus(#3PWenAMc)
-    A very short desc.
-```
-  
-  The dbref number is indicated by the number/pound sign (#). Cyclonus's dbref is #3. The letters following the dbref are the abbreviations of the flags set on the object. NOTE: the abbreviation of the OPAQUE flag is 'O' (o), which looks like '0' (zero) on some clients. Make sure you have the right number before using it in your code!
-
-**See Also:**
-- [MYOPIC](/reference/sharpmush-help/sharpflag/#myopic)
-- [OPAQUE](/reference/sharpmush-help/sharpflag/#opaque)
-- [MUSHCODE](/reference/sharpmush-help/sharptop/#mushcode)
-- [MATCHING](/reference/sharpmush-help/sharptop/#matching)
-- [OBJIDS](/reference/sharpmush-help/sharptop/#objids)
-
-## OBJIDS
+## Object IDs
   When an object is destroyed, its dbref number will eventually be recycled and given to a newly created object. This can cause problems in code, particularly in database code which stores members of a group, as code which was meant to refer to the old object ends up referring to the new one by mistake.
 
   To avoid this problem, you can use the "object id", or objid, instead of the dbref. An object id consists of the object's dbref, a colon, and then the object's creation time. Objids can be used anywhere dbrefs can and, because the creation time is different each time the dbref is recycled, the objid is totally unique to each object.
@@ -657,12 +158,13 @@ Standard Attributes: (see `@list/attribs` for the complete list)<br>
   The `objid()` function returns the object id of an object, and the %: substitution evaluates to the objid of the enactor.
 
 
-**See Also:**
-- [objid()](/reference/sharpmush-help/sharpfunc/#objid)
-- [@lock-objid](/reference/sharpmush-help/sharplock/#lock-simple)
-- [DBREFS](/reference/sharpmush-help/sharptop/#database)
+::: seealso
+- [OBJID()](/reference/sharpmush-help/sharpfunc/#objid)
+- [@LOCK-SIMPLE](/reference/sharpmush-help/sharplock/#lock-simple)
+- [database](/reference/sharpmush-help/database/#database)
+:::
 
-## DROP-TOS
+## Drop-tos
   When you use the `@link` command on a room, it sets another room or object as the DROP-TO location. By default, any non-STICKY object that someone drops in the room will automatically be transported to the drop-to location, rather than staying in the room. Any STICKY object dropped in the room will go to its home.
 
   If the room is set STICKY, objects will stay in the room until the last player leaves or disconnects, at which point they will be transported as described above.
@@ -671,13 +173,14 @@ Standard Attributes: (see `@list/attribs` for the complete list)<br>
 
   If the room has a `@lock/dropto` set on it, only objects that pass the lock will be transported (either immediately or when the last player leaves if the room is STICKY). This can be used to prevent the dropto from acting on, say, objects containing connected players.
 
-**See Also:**
+::: seealso
 - [@link](/reference/sharpmush-help/sharpcmd/#link)
 - [STICKY](/reference/sharpmush-help/sharpflag/#sticky)
 - [LINK_OK](/reference/sharpmush-help/sharpflag/#linkok)
-- [@lock](/reference/sharpmush-help/sharpcmd/#locking)
+- [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
+:::
 
-## %#
+## Enactor
   The enactor is the object which causes something to happen. This is an important concept in MUSH, because the way many commands work will depend on who enters the command (ie, who the enactor is). Note that while the enactor is the object which -caused- code/a command to run, it is not necessarily the object which is running the code (that's the executor). Any type of object can be an enactor.
 
   There are eight %-substitutions that involve the enactor:<br>
@@ -686,17 +189,18 @@ Standard Attributes: (see `@list/attribs` for the complete list)<br>
     %~ = the enactor's accented name<br>
     %k = the enactor's name, colored by their `@moniker` (if any)<br>
     %: = the enactor's unique identifier, like `objid(%#)`<br>
-    %a, %o, %p, %s = pronoun substitutions, by default based on the enactor's `@sex`. See [gender](/reference/sharpmush-help/sharptop/#gender) for more information.
+    %a, %o, %p, %s = pronoun substitutions, by default based on the enactor's `@sex`. See [GENDER](/reference/sharpmush-help/sharptop/#gender) for more information.
 
   If, for example, you have an `@osuccess` on an object that includes the %n subtitution, whenever someone picks up the object, that %n will evaluate to the name of the enactor (the person who typed 'get `<object>`' in this case).
 
-**See Also:**
-- [EXECUTOR](/reference/sharpmush-help/sharptop/#executor)
-- [CALLER](/reference/sharpmush-help/sharptop/#caller)
-- [SUBSTITUTIONS](/reference/sharpmush-help/sharptop/#substitutions)
-- [DBREF](/reference/sharpmush-help/sharpconf/#database)
+::: seealso
+- [%!]
+- [%@]
+- [%]
+- [database](/reference/sharpmush-help/database/#database)
+:::
 
-## %!
+## Executor
   The executor of a command is the object actually carrying out the command or running the code. This differs from the enactor, because the enactor is the object that sets off the command. In some cases, the enactor and the executor will be the same. The substitution %! evaluates to the dbref of the executor of the code.
 
   For example:
@@ -712,12 +216,13 @@ Standard Attributes: (see `@list/attribs` for the complete list)<br>
 
   In the first case, Cyclonus directly entered the command and was therefore both the enactor and the executor. In the second, Cyclonus set off the command on the box, so Cyclonus was still the enactor, but the box was the object that was actually doing the `@emit`, and was thus the executor.
 
-**See Also:**
-- [ENACTOR](/reference/sharpmush-help/sharptop/#enactor)
-- [CALLER](/reference/sharpmush-help/sharptop/#caller)
-- [SUBSTITUTIONS](/reference/sharpmush-help/sharptop/#substitutions)
+::: seealso
+- [%#]
+- [%@]
+- [%]
+:::
 
-## %@
+## Caller
   The caller is the object which causes an attribute to be evaluated (for instance, by using `ufun()` or a similar function). The substitution %@ evaluates to the caller's dbref. It's particularly useful for functions with side-effects, to check that the object evaluating the function has permission.
 
   Example:
@@ -732,120 +237,45 @@ Standard Attributes: (see `@list/attribs` for the complete list)<br>
     > &wizfun Foo=if(hasflag(%@, Wizard), ufun(wizfun2), #-1 Sorry)
 ```
 
-**See Also:**
-- [ENACTOR](/reference/sharpmush-help/sharptop/#enactor)
-- [EXECUTOR](/reference/sharpmush-help/sharptop/#executor)
+::: seealso
+- [%#]
+- [%!]
+:::
 
-## EVALUATION ORDER
-  Whenever some text is entered by an object, the MUSH attempts to match it against a valid game command in the following order of possible commands:
-
-    Socket commands (*): QUIT, SCREENWIDTH, etc<br>
-    Single-token commands: ", :, ;, +, \, #<br>
-    MUX-style channel aliases, if enabled (see [muxcomm](/reference/sharpmush-help/sharpconf/#muxcomm))<br>
-    Exits in the room<br>
-    &attribute setting<br>
-    Regular game commands: get, inventory, `@emit`, etc<br>
-    `@attribute` setting<br>
-    Enter aliases<br>
-    Leave aliases<br>
-    User-defined commands on nearby objects. All such `$-commands` are matched and executed.<br>
-    If there are no user-defined commands nearby:<br>
-      If the zone of the player's location is a zone master room,<br>
-        Zone master room exits<br>
-        Zone master room user-defined commands<br>
-      Else<br>
-        User-defined commands on the zone of the player's location
-
-  (*) Socket commands are only matched when the command is entered by a player directly from their client.
-
-  See [evaluation2](/reference/sharpmush-help/sharptop/#evaluation2)
-
-## EVALUATION2
-    If still nothing is matched:<br>
-      User-defined commands on the player's personal zone<br>
-    If nothing, including zone commands, has been matched:<br>
-      Global exits<br>
-      Global user-defined commands: all `$-commands` in the Master Room are matched. Local commands are always checked first and ALWAYS negate global commands.<br>
-    If still nothing has matched, run huh_command to show a Huh? message
-
-  Because local `$-commands` overrule global `$-commands`, you can easily prevent a global `$-command` from working in a specific room by setting a copy of the global `$-command` in that room. Alternatively, if a global `$-command` is oddly not working in a room, you should check for copies of the command word in the room (using `@scan`). Wizards who want to ensure a global `$-command` always takes precedence over a local one should use `@command`/add and `@hook`/override, to make the command run as a regular game command instead of a softcoded global.
-
-**See Also:**
-- [@command](/reference/sharpmush-help/sharpcmd/#command)
-- [@hook](/reference/sharpmush-help/sharpcmd/#hook)
-- [$-commands]
-- [huh_command](/reference/sharpmush-help/sharpcmd/#huhcommand)
-
-## FAILURE
-  FAILURE
-
-  A "failure" usually occurs when you try to do something that is governed by an `@lock` and you don't pass the lock. If you try to take a player or thing, or pass through an exit, and you don't pass its Basic `@lock`, you will set off their `@failure`/`@ofailure`/`@afailure` attributes. A few failures have special attributes, while others use `<locktype>`_LOCK`FAILURE, `<locktype>`_LOCK`OFAILURE and `<locktype>`_LOCK`AFAILURE attributes.
-
-  See [failure2](/reference/sharpmush-help/sharptop/#failure2)
-
-  See [@lock](/reference/sharpmush-help/sharpcmd/#locking)
-
-
-**See Also:**
-- [verbs](/reference/sharpmush-help/sharptop/#verbs)
-- [@lock](/reference/sharpmush-help/sharpcmd/#locking)
-- [@failure](/reference/sharpmush-help/sharpcmd/#afailure)
-- [@efail](/reference/sharpmush-help/sharpcmd/#aefail)
-- [@lfail](/reference/sharpmush-help/sharpcmd/#lfail)
-
-## failure2
-  The following failures are defined in SharpMUSH:
-
-  Failure to...                                | Lock    | Attribute<br>
-  -------------------------------------------- | ------- | --------------------<br>
-  "get" a player/thing, pass through an exit, or "look" in a room | Basic   | `@failure`<br>
-  run an `$-command` on an object              | Command* | COMMAND_LOCK`FAILURE<br>
-  use `zwho()`                                 | Zone     | ZONE_LOCK`FAILURE<br>
-  leave your current location                  | Leave    | `@lfail`<br>
-  "take" from an object                        | Take     | TAKE_LOCK`FAILURE<br>
-  "drop" a thing, or drop something in a room  | Drop     | DROP_LOCK`FAILURE<br>
-   enter an object                             | Enter    | `@efail`<br>
-  "follow" an object                           | Follow   | FOLLOW_LOCK`FAILURE<br>
-  "give" an object away                        | Give     | GIVE_LOCK`FAILURE<br>
-  "give" money to or "buy" from an object      | Pay      | PAY_LOCK`FAILURE<br>
-  "`@chzone`" something to a zone              | Chzone   | CHZONE_LOCK`FAILURE<br>
-  "use" an object                              | Use      | `@ufail`<br>
-  speak via say/pose/@*emit/teach in a room    | Speech   | SPEECH_LOCK`FAILURE<br>
-  "page" or "`@pemit`" to an object            | Page     | PAGE_LOCK`FAILURE**<br>
-  "`@mail`" a player                           | Mail     | MAIL_LOCK`FAILURE
-
-  `*` The Use lock can also prevent you from running an `$-command`, but it will still trigger COMMAND_LOCK`FAILURE.<br>
-  `**` `@haven` or `@away` will also be shown on failure to "page", if set
-
-## GENDER
+## Gender
   Gender on a MUSH is entirely up to you. You can set yourself (or any of your objects) to be male, female, neuter, or plural. If whatever is in the SEX attribute is not recognizable, the MUSH will assume the object is neuter. Setting a gender attribute will enable pronoun substitution by the MUSH. The SEX attribute is visual to anyone who wants to see it.
 
   The `obj()`, `subj()`, `poss()` and `aposs()` functions return different pronouns for an object based on its `@sex`, and the %o, %s, %p and %a substitutions return the same pronouns for the enactor.
 
-**See Also:**
+::: seealso
 - [@sex](/reference/sharpmush-help/sharpcmd/#gender)
-- [SUBSTITUTION](/reference/sharpmush-help/sharpconf/#substitution)
+- [%]
+:::
 
-## GLOBALS
+## Globals
   A command is "global" if it can be used anywhere in the world of the MUSH. The standard/built-in MUSH commands are all global, so this term is usually used to refer to user-defined commands on objects in the Master Room of the MUSH. Global commands very greatly from MUSH to MUSH, but you can usually find MUSH-specific help on them by typing "`+help`".
 
-**See Also:**
+::: seealso
 - [MASTER ROOM](/reference/sharpmush-help/sharptop/#master-room)
-- [USER-DEFINED COMMANDS](/reference/sharpmush-help/sharptop/#commands)
-- [EVALUATION ORDER](/reference/sharpmush-help/sharptop/#evaluation-order)
+- [$-commands]
+- [evaluation order](/reference/sharpmush-help/evaluation-order/#evaluation-order)
+:::
 
-## HERE
+## here
   The word 'here' refers to the room you are in. For example, to rename the room you're in (if you control it), you could use:
 
 ```sharp
     > @name here=<new name>
 ```
 
-**See Also:**
+::: seealso
 - [MATCHING](/reference/sharpmush-help/sharptop/#matching)
+:::
 
-## HOMES
+## Homes
   Every thing or player has a home, which is usually the room where it was created. You can reset your home or the home of any object you own with the `@link` command: `@link` [me | `<object>`]=`<location>`. You must also control `<location>`, unless that location (room or thing) is set ABODE or LINK_OK.
+
+  The 'home' command outputs the dbref of the room you arrive in (see [command output](/reference/sharpmush-help/command-output/#command-output)).
 
   When a player types 'home', she is sent back to the home room. When a thing with the STICKY flag set on it is dropped, it also goes to its home location. Note that if the FIXED flag is set on a player, she cannot use the 'home' command.
 
@@ -860,136 +290,46 @@ Standard Attributes: (see `@list/attribs` for the complete list)<br>
 
   The home of a room is its drop-to.
 
-**See Also:**
+::: seealso
 - [DROP-TOS](/reference/sharpmush-help/sharptop/#drop-tos)
 - [@link](/reference/sharpmush-help/sharpcmd/#link)
 - [STICKY](/reference/sharpmush-help/sharpflag/#sticky)
 - [LINK_OK](/reference/sharpmush-help/sharpflag/#linkok)
 - [FIXED](/reference/sharpmush-help/sharpflag/#fixed)
 - [EXITS](/reference/sharpmush-help/sharptop/#exits)
-- [home()](/reference/sharpmush-help/sharpfunc/#homes)
-- [loc()](/reference/sharpmush-help/sharpfunc/#loc)
-
-## INTERIORS
-  Here's a quick description of how to make things that can be entered:
-
-  `@create` Car<br>
-  `@desc` Car=A shiny red car.<br>
-  `@idesc` car=You are sitting inside a luxurious sportscar.<br>
-  `@set` Car=enter_ok<br>
-  `@oxleave` car=climbs out of the car.   { The 'ox' messages are shown to<br>
-  `@oxenter` car=climbs into the car.     { those OUTSIDE the object.<br>
-  `@oenter` car=joins you inside the car. { The 'o' messages are shown to<br>
-  `@oleave` car=gets out of the car.      { those INSIDE the object<br>
-  `@enter` car=You get into the car.      { The plain messages are shown to<br>
-  `@leave` car=You get out of the car.    { the one entering or leaving
-
-  See [interiors2](/reference/sharpmush-help/sharptop/#interiors2)
-
-## INTERIORS2
-  Now, if you want people inside to be able to hear and communicate with the outside, you also need to do the following.
-
-  `@set` car=audible  (lets people outside hear what's being said in the car.<br>
-  `@listen` car=*     (lets people inside hear what's being said outside.<br>
-  `@prefix` car=From inside the car,<br>
-  `@inprefix` car=From outside,<br>
-  `@filter` car=* has arrived.,* has left.,joins you inside the car., gets out of the car.<br>
-  `@infilter` car=* has arrived.,* has left.,* climbs out of the car., * climbs into the car.
-
-  (The filters will keep people on the outside from seeing the 'o' messages and people on the inside from seeing the 'ox' messages which is a good thing.)
-
-
-**See Also:**
-- [enter](/reference/sharpmush-help/sharpcmd/#aenter)
-- [leave](/reference/sharpmush-help/sharpcmd/#leave)
-- [@prefix](/reference/sharpmush-help/sharpcmd/#prefix)
-- [@filter](/reference/sharpmush-help/sharpcmd/#filter)
-- [AUDIBLE](/reference/sharpmush-help/sharpflag/#audible)
-- [@listen](/reference/sharpmush-help/sharpcmd/#listen)
+- [HOME()](/reference/sharpmush-help/sharpfunc/#homes)
+- [LOC()](/reference/sharpmush-help/sharpfunc/#loc)
+:::
 
 ## LAST
   LAST and LASTLOGOUT
 
   These attributes show the last times you connected and disconnected from the MUSH.
 
-**See Also:**
+::: seealso
 - [LASTSITE](/reference/sharpmush-help/sharptop/#lastsite)
+:::
 
 ## LASTSITE
   LASTSITE and LASTIP
 
   The LASTSITE attribute gives the name of the site you last connected from. The LASTIP attribute gives the IP address you last connected from. Mortals cannot set them.
 
-**See Also:**
+::: seealso
 - [LAST](/reference/sharpmush-help/sharptop/#last)
+:::
 
-## LINKING
+## Linking
 
   You can link to a room if you control it, or if it is set LINK_OK or ABODE. Being able to link means you can set the homes of objects or yourself to that room if it is set ABODE, and can set the destination of exits to that room if it is LINK_OK.
 
-**See Also:**
+::: seealso
 - [LINK_OK](/reference/sharpmush-help/sharpflag/#linkok)
 - [ABODE](/reference/sharpmush-help/sharpflag/#abode)
 - [@link](/reference/sharpmush-help/sharpcmd/#link)
+:::
 
-## LISTENING
-
-  There are two basic ways to trigger action on the MUSH. The basic way is to type in commands such as 'look' or '`@emit`'. These commands are not seen or heard by other players, although the results of the commands may be.
-
-  The other way is to "listen" for something said/emitted in your hearing. There are two ways to listen for something in a room. The easiest way is to use a combination of `@listen` and `@ahear`/`@aahear`/`@amhear`.
-
-  For example:
-```sharp
-    > @listen Welcome Mat=* has arrived.
-    > @ahear Welcome Mat="Welcome, %n!
-    Breaker has arrived.
-    Welcome Mat says, "Welcome, Breaker!"
-```
-
-  To trigger an object's `@listen`, you must pass its `@lock`/listen.
-
-  See [listening2](/reference/sharpmush-help/sharptop/#listening2)
-
-## ^
-  If you need an object to "listen" for more than one pattern, you can also use ^-patterns. These work similar to user-defined commands, using ^ instead of $. An object must be set MONITOR to have ^-patterns activated.
-
-  Syntax:  &`<attribute>` `<object>` = ^`<pattern>`:`<action list>`
-
-  For example:
-```sharp
-    > @set Welcome Mat = MONITOR
-    > &greet Welcome Mat=^* has arrived.:"Welcome, %n!
-    > &goodbye Welcome Mat=^* has left.:POSE says as %n leaves, "Bye!"
-    Grimlock has arrived.
-    Welcome Mat says, "Welcome, Grimlock!"
-    Grimlock has left.
-    Welcome Mat says as Grimlock leaves, "Bye!"
-```
-
-  Such attributes can also be `@triggered` as if the ^`<pattern>`: did not exist.
-
-  In order to trigger an object's ^-listen patterns, you must pass BOTH its `@lock`/use and its `@lock`/listen.
-
-  See [listening3](/reference/sharpmush-help/sharptop/#listening3)
-
-## LISTENING3
-  By default, ^-patterns work like `@ahear`. To have them work like `@amhear`, set the AMHEAR attribute flag on the attribute; to have them work like `@aahear`, set the AAHEAR attribute flag on the attribute (Note that the triggering object is whatever happens to be %#, so, for example, when you `@set` an object MONITOR, you are %# with regard to the "Object is now listening" message, and this message can be picked up with an ^-pattern.)
-
-  Additionally, unlike `$-commands`, ^-patterns are NOT inherited via `@parent`, unless the LISTEN_PARENT flag is set on the listener. `@listen` is never inherited.
-
-  Listen patterns are checked after the object's normal `@listen` attribute.
-
-**See Also:**
-- [@listen](/reference/sharpmush-help/sharpcmd/#listen)
-- [@ahear](/reference/sharpmush-help/sharpcmd/#ahear)
-- [@amhear](/reference/sharpmush-help/sharpcmd/#ahear)
-- [@aahear](/reference/sharpmush-help/sharpcmd/#ahear)
-- [MONITOR](/reference/sharpmush-help/sharpflag/#monitor)
-- [LISTEN_PARENT](/reference/sharpmush-help/sharpconf/#listenparent)
-- [USER-DEFINED COMMANDS](/reference/sharpmush-help/sharptop/#commands)
-- [INTERIORS](/reference/sharpmush-help/sharptop/#interiors)
-
-## LISTS
+## Lists
   The word "list" is used in the help files to refer to a string that is a series of smaller strings separated by one or more spaces. A list can also have its elements separated by some other kind of character -- the separating character is called the "delimiter". For example, the following are all lists:
 
     #6 #10 #14 #12
@@ -1001,12 +341,13 @@ Standard Attributes: (see `@list/attribs` for the complete list)<br>
   list is made up of similar items (so the fourth list in the example<br>
   is NOT a typical one).
 
-**See Also:**
+::: seealso
 - [STRINGS](/reference/sharpmush-help/sharptop/#strings)
-- [List Functions](/reference/sharpmush-help/sharpfunc/#list-functions)
-- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
+- [List functions](/reference/sharpmush-help/sharpfunc/#list-functions)
+- [action lists](/reference/sharpmush-help/action-lists/#action-lists)
+:::
 
-## LOOPING
+## Looping
   Looping in an object can have its good parts and its bad parts. The good part is when you activate part of a program multiple times to exhaustively perform an operation. This can be done like this:
 
   ```sharp
@@ -1017,37 +358,40 @@ Standard Attributes: (see `@list/attribs` for the complete list)<br>
 
   The `@retry` and `@include` commands, and %= substitution, can also be useful for building code which needs to loop.
 
-**See Also:**
-- [@ps](/reference/sharpmush-help/sharpcmd/#ps)
-- [HALT](/reference/sharpmush-help/sharpconf/#halt)
+::: seealso
+- [@ps](/reference/sharpmush-help/ps-command/#ps)
+- [HALTED](/reference/sharpmush-help/sharpflag/#halted)
 - [COSTS](/reference/sharpmush-help/sharptop/#costs)
-- [@trigger](/reference/sharpmush-help/sharpcmd/#trigger)
-- [@retry](/reference/sharpmush-help/sharpcmd/#retry)
-- [SUBSTITUTIONS3](/reference/sharpmush-help/sharptop/#substitutions3)
+- [@trigger](/reference/sharpmush-help/trigger-command/#trigger)
+- [@retry](/reference/sharpmush-help/retry-command/#retry)
+- [% substitution reference](/reference/sharpmush-help/sharpconf/#substitution-reference)
+:::
 
-## MASTER ROOM
+## Master Room
 
   The Master Room enables global commands and exits. Exits in the Master Room may be used from any location on the MUSH. All objects left in the Master Room are checked for user-defined `$-commands`. Those `$-commands` are considered global, meaning that they can be used anywhere on the MUSH. Normally, only wizards will have access to the Master Room; if you have a global command that you would like to see enabled for the MUSH, speak to a wizard.
 
-**See Also:**
-- [EVALUATION](/reference/sharpmush-help/sharpconf/#evaluation)
-- [GLOBAL COMMANDS](/reference/sharpmush-help/sharptop/#globals)
+::: seealso
+- [evaluation order](/reference/sharpmush-help/evaluation-order/#evaluation-order)
+- [GLOBALS](/reference/sharpmush-help/sharptop/#globals)
+:::
 
-## ME
+## me
   The word 'me' refers to yourself. Some things to do when starting out:<br>
   1) give yourself a description:       `@desc` me=`<description>`<br>
   2) check your desc.:                  look me<br>
   3) lock yourself:                     `@lock` me==me<br>
   4) set your gender:                   `@sex` me=`<male|female|neuter|plural>`
 
-**See Also:**
-- [NEWBIE](/reference/sharpmush-help/sharptop/#newbie)
-- [@lock](/reference/sharpmush-help/sharpcmd/#locking)
+::: seealso
+- [newbie](/reference/sharpmush-help/newbie/#newbie)
+- [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
 - [@describe](/reference/sharpmush-help/sharpcmd/#describe)
 - [@sex](/reference/sharpmush-help/sharpcmd/#gender)
 - [MATCHING](/reference/sharpmush-help/sharptop/#matching)
+:::
 
-## MONEY
+## Money
   The MUSH has a built-in money system, which gives a starting amount of money to new players and hands out a daily allowance thereafter. MUSH money (the default name is "pennies", but this may be different depending on the particular MUSH) is spent on some MUSH commands that are computationally expensive or alter the database. In addition, every time you "queue" a command, it costs you a certain amount of money -- this prevents looping from getting out of control, since when all your money is spent, you can't queue any more commands.
 
   The money system can also be used on player-created objects by setting `@cost`/`@payment`/`@opayment`/`@apayment` attributes and using the "give" command to give pennies, or by setting `@pricelist`/`@buy`/`@obuy`/`@abuy` attributes and buying items with the "buy" command. The Pay `@lock` on an object controls who can give it pennies.
@@ -1055,78 +399,19 @@ Standard Attributes: (see `@list/attribs` for the complete list)<br>
   The "score" command tells you how many pennies you have.
 
 
-**See Also:**
+::: seealso
 - [COSTS](/reference/sharpmush-help/sharptop/#costs)
 - [give](/reference/sharpmush-help/sharpcmd/#give)
 - [@cost](/reference/sharpmush-help/sharpcmd/#cost)
-- [@payment](/reference/sharpmush-help/sharpcmd/#apayment)
-- [@lock](/reference/sharpmush-help/sharpcmd/#locking)
+- [@apayment](/reference/sharpmush-help/sharpcmd/#apayment)
+- [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
 - [buy](/reference/sharpmush-help/sharpcmd/#buy)
 - [@buy](/reference/sharpmush-help/sharpcmd/#buy)
 - [score](/reference/sharpmush-help/sharpcmd/#score)
-- [money()](/reference/sharpmush-help/sharpfunc/#money)
+- [MONEY()](/reference/sharpmush-help/sharpfunc/#money)
+:::
 
-## MONIKERS
-  Monikers are ansi templates which allow objects to have colored names. They can be set via the `@moniker` command, and can always be viewed via the `moniker()` function and %k substitution. Monikers may also be used automatically by MUSH commands, depending on how the "monikers" `@config` option is set.
-
-  By default, anyone can use the `@moniker` command to set a moniker for themselves or their objects. However, where monikers are displayed - and for what types of objects - is controlled via the "monikers" `@config` option.
-
-  See [monikers2](/reference/sharpmush-help/sharptop/#monikers2)
-
-## MONIKERS2
-  The "monikers" `@config` option should be a list of one or more of these:
-
-  chat - In `@chat` messages<br>
-            say - Non-channel speech (say, pose, page, `@wall`, etc)<br>
-       movement - Movement messages (Joe has arrived., exit `@osucc`/`@odrop`, etc)<br>
-           look - "look" - contents/exit lists, when looking at an object, etc<br>
-        unparse - In "examine", and other places which show Name(#123flags)<br>
-            who - In WHO, DOING and SESSION<br>
-         system - All other messages generated by the MUSH with player names.<br>
-  announcements - Connection messages and "GAME: *" announcements.<br>
-     everywhere - All of the above.
-
-  You can also limit the types of objects which monikers are used for with 'players', 'things', 'rooms', and/or 'exits'. Use 'alltypes' for all.
-
-  Objects with the MONIKER flag set will always be monikered (though still only in the places specified), even if their type is excluded from the "monikers" option; if no types are included, only objects set MONIKER will be monikered.
-
-  Setting the option empty disables all automatic displaying of monikers, and they will only be available via softcode (`moniker()` and %k).
-
-  You can use !`<value>` to remove something, so 'everywhere !who' shows monikers everywhere except in WHO, '!everywhere !alltypes' will disable them entirely, etc.
-
-**See Also:**
-- [@moniker](/reference/sharpmush-help/sharpcmd/#moniker)
-- [moniker()](/reference/sharpmush-help/sharpfunc/#moniker)
-- [MONIKER](/reference/sharpmush-help/sharpconf/#moniker)
-
-## MUSHCODE
-  MUSHcode is the programming language available within the MUSH itself with which you can create user-defined commands and macros. It is sometimes called "softcode" to distinguish it from "hardcode", which is the language that the source code for the MUSH server is written in. (Incidentally, hardcode is written in the C programming language.)
-
-  At its most basic, writing MUSHcode is just stringing together a series of commands that you would otherwise just type in one at a time. You can store MUSHcode in attributes on any type of object you own or control (including yourself!). The series of commands can be triggered by using a user-defined command or by using `@trigger`.
-
-  See [mushcode2](/reference/sharpmush-help/sharptop/#mushcode2)
-
-## MUSHCODE2
-
-  If you would like to learn more about MUSHcoding and how to create `$-commands` for yourself, the following help files may be useful. You may also find it useful to download a copy of Amberyl's MUSH manual and follow the examples described there. However, the manual is quite old now, and some parts may no longer be relevant or entirely accurate. 
-  
-  Related Help Topics (in no particular order)<br>
-  -------------------
-  - [ATTRIBUTES](/reference/sharpmush-help/sharptop/#attributes)
-  - [SUBSTITUTION](/reference/sharpmush-help/sharpconf/#substitution)
-  - [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/sharptop/#non-standard-attributes)
-  - [ENACTOR](/reference/sharpmush-help/sharptop/#enactor)
-  - [EXECUTOR](/reference/sharpmush-help/sharptop/#executor)
-  - [USER-DEFINED COMMANDS](/reference/sharpmush-help/sharptop/#commands)
-  - [DBREFS](/reference/sharpmush-help/sharptop/#database)
-  - [EVALUATION](/reference/sharpmush-help/sharpconf/#evaluation)
-  - [TYPES OF OBJECTS](/reference/sharpmush-help/sharptop/#types-of-objects)
-  - [WILDCARDS](/reference/sharpmush-help/sharptop/#wildcards)
-  - [STRINGS](/reference/sharpmush-help/sharptop/#strings)
-  - [LISTS](/reference/sharpmush-help/sharptop/#lists)
-  - [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
-
-## NON-STANDARD ATTRIBUTES
+## Non-standard Attributes
   While there are many standard attributes in MUSH, objects can also have an enormous number of attributes, with any name you wish to use. In the past, you were limited to attributes named VA-VZ, WA-WZ, XA-XZ; these are still available as standard attributes. However, it is strongly recommended that you use non-standard attributes and meaningful names in order to make maintaining your MUSHCode easier.
 
   To set a non-standard attribute, you can use these formats:<br>
@@ -1137,157 +422,15 @@ Standard Attributes: (see `@list/attribs` for the complete list)<br>
   You can get the value of attributes using the functions `v()`, `get()`, and `xget()`. You can evaluate attributes using `u()`, `eval()`, and `get_eval()`. All attributes can be used in attribute locks and can be 'owned' independent of object ownership.
 
 
-**See Also:**
-- [ATTRIBUTES](/reference/sharpmush-help/sharptop/#attributes)
-- [ATTRIB-OWNERSHIP](/reference/sharpmush-help/sharptop/#attrib-ownership)
-- [Attribute Functions](/reference/sharpmush-help/sharpfunc/#attribute-functions)
-- [ATTRIBUTE TREES](/reference/sharpmush-help/sharpattr/#attribute-trees)
-- [ATTRIBUTE FLAGS](/reference/sharpmush-help/sharpattr/#attribute-flags)
+::: seealso
+- [attributes](/reference/sharpmush-help/attributes/#attributes)
+- [ATTRIB-OWNERSHIP](/reference/sharpmush-help/sharptop/#attribute-ownership)
+- [Attribute functions](/reference/sharpmush-help/sharpfunc/#attribute-functions)
+- [attribute trees](/reference/sharpmush-help/attribute-trees/#attribute-trees)
+- [attribute flags](/reference/sharpmush-help/attribute-flags/#attribute-flags)
+:::
 
-## PARENT
-
-  Objects may have "parent" objects, from which they can inherit attributes. Once an object is given a parent, it may use the attributes on the parent just as if the attributes were on the object itself, including checking for `$-commands`. Use the `@parent` command to change the parent of an object.
-
-  Objects may have multiple levels of parents - thus, if #100 is the parent of #101, which is the parent of #102, object #102 checks itself, #101, and #100 for attributes. Attributes are checked on the object itself first, followed by its parent, followed by that parent's parent, and so on. There is a (configurable) maximum length of the parent chain for an object; the default is 10.
-
-  After the parent chain is exhausted, the type-specific ancestor is also checked in similar fashion. See [ANCESTORS](/reference/sharpmush-help/sharptop/#ancestors) for more about ancestors.
-
-  See [parents2](/reference/sharpmush-help/sharptop/#parents2)
-
-## PARENTS2
-
-  Note that the only properties inherited are attributes and locks. In particular, flags and exits are NOT inherited from the parent object. Also, commands which walk the attribute list (such as "examine", the `LATTR()` function, the `HASATTR()` function, `@set`, and `@edit`) only affect attributes that are on the object itself, although there are variants which also check parents (examine/parent, `lattrp()`, `hasattrp()`, etc).
-
-  There are some limitations to the use of `@parent`. The most important is that ^-pattern checking is not done on the parent of an object, unless the object is set LISTEN_PARENT. For the purposes of automated game checks, the following attributes are not inherited:<br>
-    CHARGES, EALIAS, LALIAS, LAST, LASTSITE, LISTEN, QUEUE, RQUOTA, SEMAPHORE, and STARTUP.
-
-  See [parents3](/reference/sharpmush-help/sharptop/#parents3)
-
-## PARENTS3
-  If a child and its parent both have the same attribute set, the attribute on the child will always be used first. However, a child can use the `pfun()` function to get the value of an attribute from its parent, even when it has an attribute with the same name.
-
-  For example:
-```sharp
-    > &TEST Bar=$test:@emit I'm the parent ([name(me)])
-    > &TEST Foo=$check:@emit I'm the child ([name(me)])
-    > @parent Foo=Bar
-    > test
-    Huh?  (Type "help" for help.)
-    > check
-    I'm the child (Foo)
-```
-
-  See [parents4](/reference/sharpmush-help/sharptop/#parents4)
-
-## PARENTS4
-  If a parent has the same `$-command` name in a different attribute, however, BOTH the parent and child commands will execute:
-
-  (continued from previous example)
-```sharp
-    > &CHECK Bar=$check:@emit No, I'm the parent! ([name(me)])
-```
-
-```
-    > check
-    I'm the child (Foo)
-    No, I'm the parent! (Foo)
-```
-
-  The attributes inherited from the parent are treated just like its own attributes by the child. Thus, when a `$-command` or `@trigger` is executed, "me", for example, refers to the child, not the parent, and the `$-command`'s associated actions are performed by the child.
-
-  `@parent` is most useful when several objects use common attributes.
-
-  See [parents5](/reference/sharpmush-help/sharptop/#parents5)
-
-## PARENTS5
-
-  While ancestors are checked for attributes at the end of the parent chain, they are NOT checked for `$-commands` or ^-listens.
-
-  If you are "mass-marketing" your objects, you can create blank copies, and `@parent` those copies to a template object. You can then customize necessary attributes on the copy. When a buyer `@chowns` his copy, the parent does not change, so unless you're putting data into the parent that you want to make impossible to read, it's safe to allow the purchasers of your object to `@chown` their copy.
-
-  Locks can also be inherited, but are flagged no-inherit by default. Use `@lset` to change that on a per-lock basis.
-
-
-**See Also:**
-- [@parent](/reference/sharpmush-help/sharpcmd/#parent)
-- [$-COMMANDS]
-- [ATTRIBUTES](/reference/sharpmush-help/sharptop/#attributes)
-- [ANCESTORS](/reference/sharpmush-help/sharptop/#ancestors)
-- [ORPHAN](/reference/sharpmush-help/sharpflag/#orphan)
-- [pfun()](/reference/sharpmush-help/sharpfunc/#pfun)
-
-## PUPPETS
-  A thing is turned into a puppet by setting the PUPPET flag on it. A puppet object is an extension of its owner and relays everything it sees and hears to its owner, except if it is in the same room as the owner (a puppet with the VERBOSE flag will relay even if it's in the same room). Things relayed by the puppet will be prefixed by the name of the puppet.
-
-  Puppets are useful for keeping track of what is going on in two rooms at once, as extensions of a player (such as a pet, for example), or for testing code.
-
-  You can control your puppets using the `@force` command. It is important to remember the DBREF numbers of your puppets so you can control them even if they are not in the same room with you. You can also have your puppets follow you by using the 'follow' command.
-
-  See [puppets2](/reference/sharpmush-help/sharptop/#puppets2)
-
-## PUPPETS2
-  An example of a puppet:
-
-```sharp
-  > @create Punch
-  Created: Object #18.
-  > drop Punch
-  Dropped.
-  > @set punch=puppet
-  Punch is now listening.
-  Punch - PUPPET set.
-  > @force punch=go north
-  Punch has left.
-  Punch> The Finishing Place
-  Punch>
-  Punch> Obvious exits:
-  Punch> Door \<S\>
-  > @force #18=:waves hello
-  Punch> Punch waves hello
-  > #18 say Hello.
-  Punch> You say, "Hello."
-```
-
-  To have an object relay things it hears to players other than its owner, use `@forwardlist`.
-
-**See Also:**
-- [PUPPET](/reference/sharpmush-help/sharpflag/#puppet)
-- [@force](/reference/sharpmush-help/sharpcmd/#force)
-- [DBREF](/reference/sharpmush-help/sharpconf/#database)
-
-## QUEUE
-  QUEUE
-
-  The queue is the waiting line for action lists to be executed by the MUSH.  Each time you enter an action list, it goes into the queue and stays there until its turn comes up, at which time the MUSH processes the commands and you see the results. The MUSH can execute thousands of commands every second, so normally you see results right away.
-
-  There are actually two distinct queues:
-  * Incoming socket commands. These are run immediately, so a "look" or "`@ps`" will happen before any other softcode that is waiting to run. A socket may 'burst' up to 100 commands, then 1 per second after that.
-  * Command queue. These enter the queue via `@trigger`, `@force`, or many other ways.
-
-  There is also a Wait queue, where commands queued via the `@wait` command go, and a Semaphore queue, where semaphore `@waits` go. These commands are moved to the command queue at the appropriate time, either when the `@wait` time elapses, or when the semaphore is `@notified`.
-
-  You can see which commands are currently queued with the `@ps` command, and with the `getpids()`, `lpids()` and `pidinfo()` functions. Queued commands can be cancelled with `@halt` and/or `@drain`.
-
-See [queue2](/reference/sharpmush-help/sharptop/#queue2)
-
-## QUEUE2
-  There are several `@config` options which affect queueing.
-
-  The option 'player_queue_limit' controls how many action lists can be queued by one object at any given time. Wizards and objects with the Queue `@power` can queue more commands (equal to the player_queue_limit plus the current number of objects in the database, including garbage).
-
-  Normally each object has its own queue count, but if the 'owner_queues' option is enabled, objects share a queue count with their owner.
-
-  'queue_chunk' controls how many commands SharpMUSH runs before checking again for incoming socket commands or connections.
-
-  It costs a certain number of pennies to queue an action list; the exact amount is set in the 'queue_cost' `@config` option. These pennies are returned after the action list is run. Sometimes, you'll lose a penny when queueing a command; the chance of this happening is controlled by the 'queue_loss' option.
-
-
-**See Also:**
-- [@ps](/reference/sharpmush-help/sharpcmd/#ps)
-- [LOOPING](/reference/sharpmush-help/sharptop/#looping)
-- [ACTION LISTS](/reference/sharpmush-help/sharptop/#action-lists)
-
-## QUOTAS
+## Quotas
   The Quota system controls how many objects a player may own. It is only used of the 'use_quota' `@config` option is set to Yes.
 
   Each object created normally costs one quota (though this can be altered with the 'quota_cost' `@config` option), and every player starts with a fixed amount of quota, controlled with the 'starting_quota' `@config` option. Whenever you create an object of any type, your remaining quota, stored in the RQUOTA attribute, is decreased by the quota_cost.
@@ -1297,170 +440,14 @@ See [queue2](/reference/sharpmush-help/sharptop/#queue2)
   You can view your current quota with the `@quota` command. Wizards can adjust a specific player's quota qith the `@squota` command, and God can see or alter all players' quotas with `@allquota`.
 
 
-**See Also:**
-- [@quota](/reference/sharpmush-help/sharpcmd/#quota)
-- [quota()](/reference/sharpmush-help/sharpfunc/#quota)
-- [Quotas Power](/reference/sharpmush-help/sharpconf/#quotas-power)
-- [No_Quota Power](/reference/sharpmush-help/sharpconf/#noquota-power)
+::: seealso
+- [@quota](/reference/sharpmush-help/quota-command/#quota)
+- [QUOTA()](/reference/sharpmush-help/sharpfunc/#quota)
+- [@power](/reference/sharpmush-help/power-command/#power)
+- [@power](/reference/sharpmush-help/power-command/#power)
+:::
 
-## REGEXP
-  (This help text is largely from TinyMUSH 2.2.4, with permission)
-
-  The majority of matching in MUSH is done with wildcard ("globbing") patterns. There is a second type of matching, using regular expressions, that is available in certain circumstances.
-
-  For attributes that are `$-commands` or ^-listen-patterns, setting that attribute "regexp" (with '`@set` `<object>`/`<attribute>`=regexp') causes patterns to be matched using regular expressions rather than globbing. In addition, the function `regmatch()` performs regular expression matching.
-
-  In a regular expression match, the substring of the string which matched the regexp pattern is %0; %1 through %9 are the substrings of the string which matched parenthesized expressions within the regexp pattern.
-
-  See [regexps2](/reference/sharpmush-help/sharptop/#regexps2)
-
-## REGEXPS2
-  Regular expressions are extremely useful when you want to enforce a data type. For example, if you have a command where you want a player to enter a string and a number ('`+setnum` `<player>`=`<number>`', for example), you might do it like this:
-
-```sharp
-    > &DO_NUM Command Object=$^\+setnum (.+)=([0-9]+)$: @va me=Data: %1 = %2
-    > @set Command Object/DO_NUM=regexp
-```
-
-  Then, '`+setnum` cookies=30' would set VA to "Data: cookies = 30". This eliminates your having to check to see if the player entered a number, since the regular expression matches only numbers. Furthermore, the '+' guarantees that there needs to be at least one character there, so a player can't enter '`+setnum` cookies=' or '`+setnum` =10' or similarly malformed input.
-
-  The '+' sign in the command has to be escaped out, or it is taken as a regexp token. Furthermore, the pattern-match has to be anchored with ^ and $, or something like 'try `+setnum` cookies=30 now' would also match.
-
-  However, keep in mind that players who attempt to use the command and give invalid input (such as "`+setnum` cookies=thirty") will receive the normal, non-descriptive Huh? message. Using a broader match and validating the input in softcode, so you can give more descriptive error messages, may be desirable.
-
-  Regular expression syntax is explained in [regexp syntax](/reference/sharpmush-help/sharptop/#regexp-syntax).
-
-## REGEXP SYNTAX
-  SharpMUSH uses PCRE for its regular expression engine. PCRE is an open source library of functions to support regular expressions whose syntax and semantics are as close as possible to those of the Perl 5 language. The text below is excerpted from its man page. PCRE was written by Philip Hazel <ph10@cam.ac.uk>, and is Copyright (c) 1997-1999 University of Cambridge, England. You can find it at ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/
-
-  (Note that in SharpMUSH, if the regular expression is in an eval'd context (like an argument to regmatch), you'll have to do a lot of escaping to make things work right. One way to escape an argument like %0 is: regeditall(%0,\\W,\\$0) or similar).
-
-  Regular expression matching in SharpMUSH can be used on user-defined command or listen patterns. In this usage, regular expressions are matched case-insensitively unless the attribute has the CASE flag set. Regular expressions can also be matched in MUSHcode using `regmatch()`, `regrab()`, regedit, etc. function families, which usually come in case-sensitive and case-insensitive versions.
-
-  See [regexp syntax2](/reference/sharpmush-help/sharptop/#regexp-syntax2)
-
-## regexp syntax2
-  A regular expression is a pattern that is matched against a subject string from left to right. Most characters stand for themselves in a pattern, and match the corresponding characters in the subject.
-
-  There are two different sets of meta-characters: those that are recognized anywhere in the pattern except within square brackets, and those that are recognized in square brackets.  Outside square brackets, the meta-characters are as follows:
-
-       \      general escape character with several uses<br>
-       ^      assert start of subject<br>
-       $      assert end of subject<br>
-       .      match any character except newline<br>
-       [      start character class definition
-       |      start of alternative branch ("or")
-       (      start subpattern<br>
-       )      end subpattern<br>
-       ?      0 or 1 quantifier (after a unit to quantify) or, minimal match (after a quantifier) or, extends the meaning of ( after a (
-       *      0 or more quantifier
-       +      1 or more quantifier
-
-  Continued in '"help regexp syntax3'.
-
-## regexp syntax3
-  Part of a pattern that is in square brackets is called a "character class". It matches any character listed in the class. In a character class, the only metacharacters are:
-
-       \      general escape character<br>
-       ^      negate the class, if the first character in the class
-       -      indicates character range (e.g. A-Z, 0-4)
-   [:NAME:]   A symbol for a group of characters that can vary according to the language the mush is using. See [regexp classes](/reference/sharpmush-help/sharptop/#regexp-classes) for more information.<br>
-       ]      terminates the character class
-
-  A backslash will escape most metacharacters, and can turn some normal characters into generic character types:
-
-       \d     any decimal digit<br>
-       \D     any character that is not a decimal digit<br>
-       \s     any whitespace character<br>
-       \S     any character that is not a whitespace character<br>
-       \w     any "word" character (letter, digit, or underscore)<br>
-       \W     any "non-word" character
-
-  Continued in '"help regexp syntax4'.
-
-## regexp syntax4
-  A backlash can also be used for two useful assertions -- conditions that must be met at a particular point in a match:
-
-       \b     word boundary<br>
-       \B     not a word boundary
-
-  A word boundary is a position in the subject string where the current character and the previous character do not both match \w or \W (i.e. one matches \w and  the  other  matches \W), or the start<br>
-  or end of the string if the first or last character matches \w, respectively.
-
-  Continued in '"help regexp syntax5'.
-
-## regexp syntax5
-  Quantifiers specify repetition of characters. Four are available:
-       *    match 0 or more of whatever came before
-       +    match 1 or more of whatever came before<br>
-       ?    match 0 or 1 of whatever came before<br>
-	 {m,n}  match between 'm' and 'n' of whatever came before. if 'm' is omitted, it matches between 0 and 'n'. if 'n' is omitted, matches at least 'm'. Note the MUSH parser often requires escaping the braces and the comma.
-
-  Quantifiers are usually greedy -- they match as much as possible. Adding a ? after a quantifier causes it to match as little as possible instead.
-
-  Continued in '"help regexp syntax6'.
-
-## regexp syntax6
-  Outside a character class, a backslash followed by a digit greater than 0 (and possibly further digits) is a back reference to a capturing subpattern earlier (i.e. to its left) in the pattern, provided there have been that many previous capturing left parentheses. A back reference matches whatever actually matched the capturing subpattern in the current subject string, rather than anything matching the subpattern itself. So the pattern
-
-    (sens|respons)e and \1ibility
-
-  matches "sense and sensibility" and "response and responsibility", but not "sense and responsibility".
-
-  You can give names to subpatterns and refer to them that way instead of using numbers.
-
-   (?P`<NAME>`subexpr) (Note: Literal <>'s) is a named capture, and (?P=NAME) refers back to it. The above pattern might be written:
-
-   (?P`<word>`sens|respons)e and (?P=word)ibility
-
-  In a `$-command`, the value of the named pattern can be accessed via the r(`<name>`, args). Softcode functions which work with regexps allow you to access the named subpatterns via $`<NAME>` (the <> are literal here).
-
-  Continued in '"help regexp syntax7'.
-
-## regexp syntax7
-  An assertion is a test on the characters following or preceding the current matching point that does not actually consume any characters. There are two kinds: those that look ahead of the current position in the subject string, and those that look behind it.
-
-  An assertion subpattern is matched in the normal way, except that it does not cause the current matching position to be changed. Lookahead assertions start with (?= for positive assertions and (?! for negative assertions. For example, Lookbehind assertions start with (?<= for positive assertions and (?<! for negative assertions.
-
-  Assertion subpatterns are not capturing subpatterns, and may not be repeated, because it makes no sense to assert the same thing several times. If an assertion contains capturing subpatterns within it, these are always counted for the purposes of numbering the capturing subpatterns in the whole pattern.
-
-  Continued in '"help regexp syntax8'.
-
-## regexp syntax8
-  PCRE's engine can also do conditional subpattern matching, embedded comments in regexps, and a bunch of other things. See a regexp book for details.
-
-## REGEXP CLASSES
-  In a character class, you can use a number of additional keywords that match certain types of characters. The keywords are enclosed in [: and :](/reference/sharpmush-help/sharpconf/#and), within the character class, so the whole thing looks like [[:NAME:](/reference/sharpmush-help/sharpconf/#name)].
-
-  These keywords can be mixed with other things in the character class, like [ab[:digit:](/reference/sharpmush-help/sharpconf/#abdigit)], which will match 'a, 'b', or a digit. [:^NAME:](/reference/sharpmush-help/sharpconf/#name) reverses the meaning of NAME - it expands to everything but characters that would match [:NAME:](/reference/sharpmush-help/sharpconf/#name).
-
-  Some recognized NAMEs:<br>
-   digit, for numbers. [[:digit:](/reference/sharpmush-help/sharpconf/#digit)] is the same as \d. [[:^digit:](/reference/sharpmush-help/sharpconf/#digit)] is the same as \D.<br>
-   alpha, for letters.<br>
-   alnum, for numbers and letters.<br>
-   lower, for lower-case letters.<br>
-   upper, for upper-case letters.<br>
-   word, for word characters. [[:word:](/reference/sharpmush-help/sharpconf/#word)] is the same as \w. [[:^word:](/reference/sharpmush-help/sharpconf/#word)] is the same as \W.<br>
-   space, for whitespace characters. [[:space:](/reference/sharpmush-help/sharpconf/#space)] is the same as \s. [[:^space:](/reference/sharpmush-help/sharpconf/#space)] is the same as \S.
-
-  See [regexp classes2](/reference/sharpmush-help/sharptop/#regexp-classes2)
-
-## REGEXP CLASSES2
-  These keywords (Or the corresponding \codes) should be used instead of explicit ranges where possible to improve portability. For example, [A-Za-z](/reference/sharpmush-help/sharpconf/#a-za-z) and [[:alpha:](/reference/sharpmush-help/sharpconf/#alpha)] are not the same thing in languages with accented characters.
-
-
-  Examples:
-```sharp
-    > say regmatch(foo_bar, lit(^[[:word:]]+$))
-    You say "1"
-    > say regmatch(foo bar, lit(^[[:word:]]+$))
-    You say "0"
-```
-```
-  Other, less useful, character class keywords include ascii, cntrl, graph, print, punct, and xdigit.
-```
-
-## REGEXP EXAMPLES
+## Regexp Examples
   The regexp pattern '.' is equivalent to the wildcard '?'; it matches one and only one of an arbitrary character.
 
   The regexp pattern '.*' is equivalent to the wildcard '*'; it matches zero or more arbitrary characters. To match one or more arbitrary characters, the regexp pattern is '.+'.
@@ -1468,154 +455,18 @@ See [queue2](/reference/sharpmush-help/sharptop/#queue2)
   To match a string of numbers, use:       [0-9](/reference/sharpmush-help/sharpconf/#0-9)+    or \d+<br>
   To match a string of letters only, use:  [A-Za-z](/reference/sharpmush-help/sharpconf/#a-za-z)+ or \w+
 
-  See [regexp syntax](/reference/sharpmush-help/sharptop/#regexp-syntax)
-
-## REGISTERS
-  A register is essentially a little reserved piece of computer memory that can hold some variable information that you want to pass on to another command. There are thirty registers on the MUSH available via the %0-%9 substitutions and v(0)-v(9) and r(0,args) to r(29,args). There are also many setq registers available via %q- substitution (%q0 - %q9, %qA - %qZ and arbitrary names), or the `r()` function.
-
-  The basic registers are filled with information that matches the wildcard pattern of the command trigger. (Before you say "Huh?", here's an example.)
-
-```sharp
-    > &COMMAND me=$command *=*:@emit %0 is in register 0 and %1 is in register 1.
-    > command whee=blert foo
-    whee is in register 0 and blert foo is in register 1.
-```
-
-  See [registers2](/reference/sharpmush-help/sharptop/#registers2)
-
-## REGISTERS2
-  As you can see from the above example, the command trigger had two wildcards separated by a "=" sign. When the user types in the command with some words taking the place of the wildcards, the first register (register 0) is filled with whatever part of the command replaces the first wildcard (in this case, "whee") and the second register is filled with whatever replaces the second ("blert foo").
-
-  They can also be filled with information that is passed by an `@trigger` command:
-
-```sharp
-    > &SOMECODE me=@emit %0 is in register 0 and %1 is in register 1.
-    > @trigger me/somecode=whee,foo bar
-  whee is in register 0 and foo bar is in register 1.
-```
-
-  Please see [`setq()`] for more information about the setq registers.
-
-
-**See Also:**
-- [SUBSTITUTIONS](/reference/sharpmush-help/sharptop/#substitutions)
-- [@trigger](/reference/sharpmush-help/sharpcmd/#trigger)
-- [USER-DEFINED COMMANDS](/reference/sharpmush-help/sharptop/#commands)
-- [WILDCARDS](/reference/sharpmush-help/sharptop/#wildcards)
-- [setq()](/reference/sharpmush-help/sharpfunc/#setq)
-- [v()](/reference/sharpmush-help/sharpfunc/#substitutions2)
-- [r()](/reference/sharpmush-help/sharpfunc/#r)
-- [registers()](/reference/sharpmush-help/sharpfunc/#registers)
-- [listq()](/reference/sharpmush-help/sharpfunc/#listq)
-- [letq()](/reference/sharpmush-help/sharpfunc/#letq)
-- [unsetq()](/reference/sharpmush-help/sharpfunc/#listq)
-- [strmatch()](/reference/sharpmush-help/sharpfunc/#strmatch)
+  See [regexp syntax](/reference/sharpmush-help/sharpconf/#regexp-syntax)
 
 ## RQUOTA
-  RQUOTA
-
   This attribute tracks remaining building quota if it is implemented. It is settable in-game only by a wizard, and is only visible to wizards.
 
 
-**See Also:**
-- [@quota](/reference/sharpmush-help/sharpcmd/#quota)
-- [@squota](/reference/sharpmush-help/sharpcmd/#quota2)
+::: seealso
+- [@quota](/reference/sharpmush-help/quota-command/#quota)
+- [@quota administrative quota changes](/reference/sharpmush-help/sharpcmd/#quota-administrative-quota-changes)
+:::
 
-## SEMAPHORES
-  The most complicated thing about semaphores is their name. Before you try to use semaphores, you should first be familiar with the "`@wait`" command. If you are, then you know that normally, you type:
-
-    `@wait` `<number of seconds>`=`<action>`
-
-  and the action takes place after that number of seconds has passed. With a semaphore, you instead type:
-
-    `@wait` `<object>`=`<action>`<br>
-    `@wait` `<object>`/`<number of seconds before timeout>`=`<action>`
-
-  and the action takes place after the object has been "notified" that its time for it to happen. You can also set a timeout -- if the object hasn't been notified by the time that number of seconds has passed, the action will take place. Any object (player, thing, exit, room) that you control or that is set LINK_OK can be used to wait actions on.
-
-  See [semaphores2](/reference/sharpmush-help/sharptop/#semaphores2)
-
-## SEMAPHORES2
-
-  An object is notified using the "`@notify`" command. When you type "`@wait` `<object>`=`<action>`", you are adding one to the SEMAPHORE attribute on the object. When you type "`@notify` `<object>`", you are decreasing the SEMAPHORE attribute on the object by one. Whenever the attribute decreases, one of the actions waiting on the object takes place. The actions occur in the order they were added.
-
-  You can make the semaphore attribute of an object negative by `@notify`-ing it more times than things have been `@wait`-ed on it. If you do so, anything `@wait`-ed on the object will add one to the SEMAPHORE attribute and the action will take place immediately. You can also make all the actions waiting on an object take place right away by using "`@notify`/all", or wipe all the commands out and clear the SEMAPHORE attribute by using "`@drain`". Please note that all SEMAPHORE attributes are cleared out whenever the MUSH is restarted.
-
-  Semaphores can be used to make sure that events occur in the right order, or to make sure that two players can't use the same object at the same time.
-
-  See [semaphores3](/reference/sharpmush-help/sharptop/#semaphores3)
-
-## SEMAPHORES3
-
-  It's important to remember that the actions will be carried out NOT by the object that they are being `@waited` on, but by whichever object entered the `@wait`.
-
-
-  Examples:
-```sharp
-    > @wait semaphore=:tests.
-    > @notify semaphore
-    Wizard tests.
-```
-```sharp
-    > @wait timer/30=:waits 30 seconds.
-    [ 30 seconds passes. ]
-    Wizard waits 30 seconds.
-```
-  See [semaphores4](/reference/sharpmush-help/sharptop/#semaphores4)
-
-## SEMAPHORES4
-  Semaphores can be used to enforce mutual exclusion - to prevent the same object from being used simultaneously by two players. The basic strategy is to ensure that the object always has a SEMAPHORE of -1, to enclose commands in an `@wait`, and to conclude the set of commands with an `@notify` me:
-
-```sharp
-    > &doit obj=$doit: @wait me={&doer me = %n; @trigger me/report}
-    > &report obj=say [v(doer)] did it!; @notify me
-    > @startup obj=@drain me; @notify me
-    > @notify obj
-    > ex obj/SEMAPHORE
-    SEMAPHORE [#1ic+]: -1
-    > doit
-    obj says, "Talek did it!
-    > ex obj/SEMAPHORE
-    SEMAPHORE [#1ic+]: -1
-```
-
-  If a second player types doit as well, the second player's command is put on the semaphore queue and not run until the `@notify` me at the end of the REPORT attribute. Note the STARTUP attribute - because semaphores are cleared when the MUSH starts up, you must insure that the object gets `@notify`'d once when it starts up.
-
-  See [semaphores5](/reference/sharpmush-help/sharptop/#semaphores5)
-
-## SEMAPHORES5
-  Normally, semaphores use the SEMAPHORE attribute. However, other attributes can be used, as long as they follow a few simple rules: If the attribute is already set, it has to have the same owner (God) and flags as the SEMAPHORE attribute would (typically no_inherit, no_clone, and locked - see [`@set`] and '`@atrlock`'), and have a numeric or empty value. If it's not set, it can't be one of the built in attributes (See `@list` attribs) unless, naturally, it is SEMAPHORE.
-
-  See the help on `@wait`, `@notify` and `@drain` for details, but, briefly, you can use named semaphores with `<object>`/`<attribute>` where you would normally just use `<object>` in those commands. This means you can't have an untimed semaphore on an attribute with a numeric name.
-
-  See [semaphores6](/reference/sharpmush-help/sharptop/#semaphores6)
-
-
-**See Also:**
-- [@wait](/reference/sharpmush-help/sharpcmd/#wait)
-- [@drain](/reference/sharpmush-help/sharpcmd/#drain)
-- [@notify](/reference/sharpmush-help/sharpcmd/#notify)
-
-## SEMAPHORES6
-  An example:
-
-```sharp
-  > @wait me/semtest=think blah
-  > ex me/semtest
-  SEMTEST [#1ic+]: 1
-  > @ps
-  ...
-  Semaphore Queue:
-  [#8/SEMTEST]Raevnos(#8P):think blah
-  ...
-  > @notify me/semtest
-  Notified.
-  blah
-```
-
-  This allows you to use one object to control many different things -- for example, fights in a turn-based combat sytem.
-
-## SETTING-ATTRIBUTES
+## Setting Attributes
   Standard attributes are set using @`<attrib>` `<obj>`=`<value>`<br>
   Nonstandard attributes are set using &`<attrib>` `<obj>`=`<value>`<br>
   Attributes may also be set using `@set` `<obj>`=`<attrib>`:`<value>` or the `attrib_set()` or `set()` functions.
@@ -1629,17 +480,18 @@ See [queue2](/reference/sharpmush-help/sharptop/#queue2)
   Empty attributes retain their flags and atrlock status. Wiped attributes are gone forever.
 
 
-**See Also:**
-- [ATTRIBUTES](/reference/sharpmush-help/sharptop/#attributes)
+::: seealso
+- [attributes](/reference/sharpmush-help/attributes/#attributes)
 - [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/sharptop/#non-standard-attributes)
 - [@set](/reference/sharpmush-help/sharpcmd/#set)
 - [@wipe](/reference/sharpmush-help/sharpcmd/#wipe)
-- [attrib_set()](/reference/sharpmush-help/sharpfunc/#attribset)
-- [set()](/reference/sharpmush-help/sharpfunc/#set)
-- [wipe()](/reference/sharpmush-help/sharpfunc/#wipe)
-- [ATTRIBUTE FLAGS](/reference/sharpmush-help/sharpattr/#attribute-flags)
+- [ATTRIB_SET()](/reference/sharpmush-help/sharpfunc/#attribset)
+- [SET()](/reference/sharpmush-help/sharpfunc/#set)
+- [WIPE()](/reference/sharpmush-help/sharpfunc/#wipe)
+- [attribute flags](/reference/sharpmush-help/attribute-flags/#attribute-flags)
+:::
 
-## SPOOFING
+## Spoofing
   Spoofing is the act of making other characters think that a person said or did something that they did not. This is very easy to accomplish, and has some good effects, which is why it is allowed. However, abusing it is very twinkish and will most likely get you in hot water with your wizards. Note that if you are being spoofed and want to know who is doing it, you can set yourself NOSPOOF and you will be notified who is making the `@emits`.
 
   Most @*emit commands have a wizard-only `@ns`*emit version, which does not show nospoof information. These are useful for writing global commands.
@@ -1647,132 +499,54 @@ See [queue2](/reference/sharpmush-help/sharptop/#queue2)
   Some @*emit commands also take a /spoof switch, which causes nospoof information to show that sound originated from the enactor (%#) instead of the executor (%!). This switch allows staff to write global `$-commands` for speech which show more helpful nospoof tags.
 
 
-**See Also:**
+::: seealso
 - [@emit](/reference/sharpmush-help/sharpcmd/#emit)
-- [@pemit](/reference/sharpmush-help/sharpcmd/#pemit)
+- [@pemit](/reference/sharpmush-help/pemit-command/#pemit)
 - [@remit](/reference/sharpmush-help/sharpcmd/#remit)
-- [@oemit](/reference/sharpmush-help/sharpcmd/#oemit)
+- [@oemit](/reference/sharpmush-help/oemit-command/#oemit)
 - [NOSPOOF](/reference/sharpmush-help/sharpflag/#nospoof)
 - [PARANOID](/reference/sharpmush-help/sharpconf/#paranoid)
+:::
 
-## STACK
+## Stack
   For those unfamiliar with the term stack, it refers to a programming data structure that follows a LIFO (Last-In-First-Out) principle. The stack in MUSH holds the REGISTERS. The first ten registers can be accessed via the %0-%9 %-substitutions and v(0)-v(29), while all 30 registers can be accessed via the `r()` function (r(0, args) up to v(29,args)).
 
   When using regexp `$-commands` with named subpatterns, the named arguments can be accessed via r(`<name>`, args).
 
 
-**See Also:**
-- [REGISTERS](/reference/sharpmush-help/sharptop/#registers)
-- [r()](/reference/sharpmush-help/sharpfunc/#r)
-- [v()](/reference/sharpmush-help/sharpfunc/#substitutions2)
+::: seealso
+- [registers](/reference/sharpmush-help/registers/#registers)
+- [R()](/reference/sharpmush-help/sharpfunc/#r)
+- [V()](/reference/sharpmush-help/sharpfunc/#v)
+:::
 
-## STRINGS
+## Strings
   A string is simply a bunch of characters. A word is a string that begins and ends with the space character. A sentence is a string made up of smaller substrings that are words. Please note that a "word" or "sentence" in this technical sense does not have to make sense in English (or in any other language, for that matter). As far as mush functions and commands are concerned, this is a perfectly good sentence:
 
         Foozle 09blert bar baz foo.
 
 
-**See Also:**
-- [string functions](/reference/sharpmush-help/sharpfunc/#string-functions)
+::: seealso
+- [String functions](/reference/sharpmush-help/sharpfunc/#string-functions)
+:::
 
-## %
-  The % symbol is used in MUSH commands to indicate a substitution -- some other character(s) or words are substituted for whatever follows the % symbol. Some common substitutions are:
-
-     %b = a single space (just like [space(1)])<br>
-     %r = a blank line<br>
-     %t = A tab. Note that this may not look right on some screens.<br>
-     %# = dbref of the ENACTOR (object that set off the command)<br>
-     %n = the ENACTOR's name<br>
-     %N = the ENACTOR's name, first letter capitalized<br>
-     %~ = the ENACTOR's accented name, like accname(%#)<br>
-     %: = the ENACTOR's unique identifier, like objid(%#)<br>
-     %k = the ENACTOR's name, colored by `@moniker`, like moniker(%#)<br>
-     %% = a literal %
-
-  Case makes a difference in all substitutions; capitalizing the first letter after the % will capitalize the first letter of the resulting substitution.
-
-  See [substitutions2](/reference/sharpmush-help/sharptop/#substitutions2)
-
-## SUBSTITUTIONS2
-  If the ENACTOR's gender is set, you can use these substitutions to get the<br>
-  right pronoun for him/her:<br>
-     %s = subjective pronoun: he, she, it, they. Same as subj(%#)<br>
-     %o = objective pronoun: him, her, it, them. Same as obj(%#)<br>
-     %p = possessive pronoun: his, her, its, their. Same as poss(%#).<br>
-     %a = absolute possessive: his, hers, its, theirs. Same as aposs(%#).
-
-    Case makes a difference: %S will return He, She, It, They.
-
-  Some attributes can be retrieved via substitutions:<br>
-     %va-%vz = the contents of the object's VA-VZ attributes, respectively<br>
-     %wa-%wz, %xa-%xz = as above, for WA-WZ and XA-XZ<br>
-  These are the equivilent of get(me/`<attribute>`).
-
-  See [substitutions3](/reference/sharpmush-help/sharptop/#substitutions3)
-
-## SUBSTITUTIONS3
-  Other substitutions:<br>
-    %0-%9   = the contents of the REGISTERS 0-9, respectively<br>
-    %@ = the caller's dbref number. Initially same as %#, changes when something like `ufun()` is called.<br>
-    %! = the dbref number of the object the command is on (the EXECUTOR)<br>
-    %L = the dbref of the ENACTOR's location<br>
-    %d = the DESCRIPTOR (port) the command was entered from<br>
-    %c = text of the last command, _before_ evaluation<br>
-    %u = text of the last command, after evaluation, available to locks/hooks<br>
-    %? = The current function invocation and depth counts<br>
-    %= = The dbref/attribute currently being evaluated<br>
-    %+ = The number of arguments passed to the current ufun.<br>
-    %qN = the equivalent of r(N) for registers 0-9 and A-Z set by the `setq()` function<br>
-    %q`\<N\>` = the equivalent of r(N) for a named register set by the `setq()` function<br>
-    %iN = equivalent of itext(N), the list element for `iter()`/`@dolist`.<br>
-    %`$N` = equivalent of stext(N), the `<string>` in `switch()`/`@switch`.
-
-  See [substitutions4](/reference/sharpmush-help/sharptop/#substitutions4)
-
-**See Also:**
-- [EVALUATION](/reference/sharpmush-help/sharpconf/#evaluation)
-- [ENACTOR](/reference/sharpmush-help/sharptop/#enactor)
-- [EXECUTOR](/reference/sharpmush-help/sharptop/#executor)
-- [DBREFS](/reference/sharpmush-help/sharptop/#database)
-- [REGISTERS](/reference/sharpmush-help/sharptop/#registers)
-- [v()](/reference/sharpmush-help/sharpfunc/#substitutions2)
-
-## SUBSTITUTIONS4
-
-  Example:
-```sharp
-  > @sex me=male
-  > @drop box=%n just dropped %p box.
-  > drop box
-  Cyclonus just dropped his box.
-```
-```
-  Let's say that Cyclonus's dbref number is #10 and the box's dbref number is #11. The dbref of the room Cyclonus is standing in is #13. When Cyclonus dropped the box above, these were the values of the following %-subs:
-```
-```sharp
-  %n = Cyclonus
-  %# = #10
-  %@ = #10
-  %! = #11
-  %L = #13
-```
-
-## SUCCESS
+## Success
   A "success" normally occurs when you attempt to do something that is restricted by an `@lock` and you pass the `@lock`. (Note that if no lock is set, you automatically pass it.) For example, the "basic" lock restricts who can pick up a player/thing or who can go through an exit. Whenever you successfully do either of these things, you will set off the basic success messages on the object whose lock you have just successfully passed.
 
   Many other actions can also be locked - see `@lock` and locktypes for more information. Many of these actions have standard attributes that you can set messages in for when someone succeeds.
 
 
-**See Also:**
-- [FAILURE](/reference/sharpmush-help/sharptop/#afailure)
-- [@lock](/reference/sharpmush-help/sharpcmd/#locking)
-- [VERBS](/reference/sharpmush-help/sharptop/#verbs)
-- [ATTRIBUTES](/reference/sharpmush-help/sharptop/#attributes)
-- [@success](/reference/sharpmush-help/sharpcmd/#asuccess)
+::: seealso
+- [failure](/reference/sharpmush-help/failure/#afailure)
+- [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
+- [verbs](/reference/sharpmush-help/verbs/#verbs)
+- [attributes](/reference/sharpmush-help/attributes/#attributes)
 - [@asuccess](/reference/sharpmush-help/sharpcmd/#asuccess)
-- [@osuccess](/reference/sharpmush-help/sharpcmd/#asuccess)
+- [@asuccess](/reference/sharpmush-help/sharpcmd/#asuccess)
+- [@asuccess](/reference/sharpmush-help/sharpcmd/#asuccess)
+:::
 
-## SWITCHES
+## Switches
 
   Commands can have "switches" which modify the behavior of the command. Switches are attached after the end of a command. For example, most people are familiar with the command
 
@@ -1789,7 +563,7 @@ See [queue2](/reference/sharpmush-help/sharptop/#queue2)
   Help on the switches available for a command is available in the help file for that command.<br>
   (If you are looking for information on `@switch`, see [`@switch`].)
 
-## TYPES OF OBJECTS
+## Types of Objects
   Everything on a MUSH is an object in the MUSH database. There are four main types of objects: players, things (once called 'objects'), rooms and exits. You can see the type of an object when you 'examine' it, or with the `type()` function.
 
   There is also a 'garbage' type, used for objects which have been created and then `@destroyed`. Garbage objects cannot be used in any way, and their dbrefs will be recycled (with a new objid) when something new is created.
@@ -1799,48 +573,52 @@ See [queue2](/reference/sharpmush-help/sharptop/#queue2)
   The `@stats` command lists how many objects of each type currently exits in the database.
 
 
-**See Also:**
-- [type()](/reference/sharpmush-help/sharpfunc/#type)
-- [hastype()](/reference/sharpmush-help/sharpfunc/#hastype)
+::: seealso
+- [TYPE()](/reference/sharpmush-help/sharpfunc/#type)
+- [HASTYPE()](/reference/sharpmush-help/sharpfunc/#hastype)
+:::
 
-## PLAYERS
+## Players
   Players can be created at the login screen (or with `@pcreate`) and connected to. They can also receive `@mail`, and have a number of attributes set on them by the MUSH automatically, including LAST, LASTSITE, etc. They can have multiple `@aliases`, and are checked for `$-commands` and ^-listens.
 
   `@linking` a player sets their home.
 
 
-**See Also:**
+::: seealso
 - [TYPES OF OBJECTS](/reference/sharpmush-help/sharptop/#types-of-objects)
-- [type()](/reference/sharpmush-help/sharpfunc/#type)
-- [hastype()](/reference/sharpmush-help/sharpfunc/#hastype)
+- [TYPE()](/reference/sharpmush-help/sharpfunc/#type)
+- [HASTYPE()](/reference/sharpmush-help/sharpfunc/#hastype)
 - [@pcreate](/reference/sharpmush-help/sharpcmd/#pcreate)
+:::
 
-## ROOMS
+## Rooms
   Rooms are outermost-containers: they cannot be moved. They are created with `@dig`. Rooms can contain exits. They are checked for `$-commands` and ^-listens. Rooms do not have aliases.
 
   `@linking` a room creates a drop-to. Rooms have no location; `loc()` on a room returns its drop-to (as does `home()`).
 
 
-**See Also:**
+::: seealso
 - [TYPES OF OBJECTS](/reference/sharpmush-help/sharptop/#types-of-objects)
-- [type()](/reference/sharpmush-help/sharpfunc/#type)
-- [hastype()](/reference/sharpmush-help/sharpfunc/#hastype)
-- [@dig](/reference/sharpmush-help/sharpcmd/#dig)
+- [TYPE()](/reference/sharpmush-help/sharpfunc/#type)
+- [HASTYPE()](/reference/sharpmush-help/sharpfunc/#hastype)
+- [@dig](/reference/sharpmush-help/dig-command/#dig)
 - [DROP-TOS](/reference/sharpmush-help/sharptop/#drop-tos)
+:::
 
-## THINGS
+## Things
   Things are created with `@create`. They can move around the MUSH, be entered and carried. They are checked for `$-commands` and ^-listens. Things do not have aliases.
 
   `@linking` a thing sets its home.
 
 
-**See Also:**
+::: seealso
 - [TYPES OF OBJECTS](/reference/sharpmush-help/sharptop/#types-of-objects)
-- [type()](/reference/sharpmush-help/sharpfunc/#type)
-- [hastype()](/reference/sharpmush-help/sharpfunc/#hastype)
+- [TYPE()](/reference/sharpmush-help/sharpfunc/#type)
+- [HASTYPE()](/reference/sharpmush-help/sharpfunc/#hastype)
 - [@create](/reference/sharpmush-help/sharpcmd/#create)
+:::
 
-## EXITS
+## Exits
   Exits are created with `@open`. They link rooms together, and can be used by players and things to move from one room to another with the GOTO command. Exits cannot move (though they can be `@teleported` to another room). They can have multiple aliases in their `@alias`. They are NOT checked for `$-commands` or ^-listens. Exits can have variable destinations; see [`@destination`] for more information.
 
   You can change the destination of an exit with the `@link` command. `home()` returns the source room of an exit, and `loc()` returns its destination.
@@ -1850,138 +628,35 @@ See [queue2](/reference/sharpmush-help/sharptop/#queue2)
   Sound is propagated through exits which are set AUDIBLE, as long as their source room (home) is also set AUDIBLE.
 
 
-**See Also:**
+::: seealso
 - [TYPES OF OBJECTS](/reference/sharpmush-help/sharptop/#types-of-objects)
-- [type()](/reference/sharpmush-help/sharpfunc/#type)
-- [hastype()](/reference/sharpmush-help/sharpfunc/#hastype)
+- [TYPE()](/reference/sharpmush-help/sharpfunc/#type)
+- [HASTYPE()](/reference/sharpmush-help/sharpfunc/#hastype)
 - [@open](/reference/sharpmush-help/sharpcmd/#open)
 - [@link](/reference/sharpmush-help/sharpcmd/#link)
 - [@destination](/reference/sharpmush-help/sharpcmd/#destination)
 - [AUDIBLE](/reference/sharpmush-help/sharpflag/#audible)
+:::
 
-## GARBAGE
+## Garbage
   Garbage objects previously existed as one of the four main types (player, thing, exit or room) but were destroyed with `@destroy`/`@nuke`. They exist only as placeholders in the database; you can do nothing with them. The dbrefs of garbage objects will be reused when new objects are created (but with a different creation time/object id).
 
   The total number of garbage objects, and the next garbage object to be recycled, is shown in `@stats`. You can use lsearch(all,type,garbage) to get a list of all garbage dbrefs.
 
 
-**See Also:**
-- [@destroy](/reference/sharpmush-help/sharpcmd/#destroy)
+::: seealso
+- [@destroy](/reference/sharpmush-help/destroy-command/#destroy)
 - [@stats](/reference/sharpmush-help/sharpcmd/#lstats)
+:::
 
-## $-COMMANDS
-  User-defined commands can be created by setting `$-commands` on players, things, and rooms. Exits are not checked for `$-commands`. To set a `$-command`:
-
-    &`<attribute>` `<object>`=$`<command pattern>`:`<action list>`
-
-  Whenever someone in the same room as the object types the command name, the action list is carried out by the object, as long as:
-
-  - the person typing the command is not set GAGGED, passes the object's `@lock`/use and `@lock`/command
-  - the object is not set NO_COMMAND or HALT
-
-  `$-commands` can be run by players, things, and exits.
-
-  Such attributes can also be `@triggered` as if the $`<command name>`: did not exist.
-
-  It is recommended that `<command pattern>` not begin with "@", as many of SharpMUSH's built-in commands start with "@". Conventionally, global `$-commands` are often named with the "+" prefix, and local `$-commands` commonly have a "+" or "." prefix.
-
-  See [user-defined2](/reference/sharpmush-help/sharptop/#commands2)
-
-## $-COMMANDS2
-  Any number of wildcards, * and ?, may be in present in `<command pattern>`. A * matches any number of characters (including none), and ? matches exactly one character. When the action list is executed, the values on the stack in %0-%9 and v(10)-v(29) are the portions of what the user types that match the first 30 *'s or ?'s. You can also match a regular expression rather than wildcards by setting the REGEXP attribute flag on `<attribute>`; see [regexps](/reference/sharpmush-help/sharptop/#regexp) for details. When using named regexp captures, the named arguments can be accessed via r(`<name>`, args).
-
-  For example, to make a 'wave' command, you could do the following:
-```sharp
-    > &DO_WAVE me=$wave *: pose waves to %0.
-  You could then type:
-    > wave Guest
-    Rhyanna waves to Guest.
-```
-
-  If a command would match, but the enactor can't pass the lock, the object may define generic failure behavior by setting the COMMAND_LOCK`FAILURE, COMMAND_LOCK`OFAILURE, and/or COMMAND_LOCK`AFAILURE attributes. These are triggered on all objects with matching commands and failing locks, but only if no command successfully matched, and take the place of the usual "Huh?" message.
-
-  *BE SURE TO `@LOCK`/USE ME==ME IF YOU SET `$-COMMANDS` ON YOURSELF!*
-
-
-**See Also:**
-- [GLOBAL COMMANDS](/reference/sharpmush-help/sharptop/#globals)
-- [EVALUATION ORDER](/reference/sharpmush-help/sharptop/#evaluation-order)
-- [STACK](/reference/sharpmush-help/sharptop/#stack)
-- [SUBSTITUTIONS](/reference/sharpmush-help/sharptop/#substitutions)
-- [WILDCARDS](/reference/sharpmush-help/sharptop/#wildcards)
-- [@lock](/reference/sharpmush-help/sharpcmd/#locking)
-
-## VERBS
-  Verb attributes are ones which are shown (or triggered) when you use a particular command, or perform a certain action. There are normally three: the 'verb' attribute (shown to the enactor), the 'overb' attribute (shown to others in the enactor's location), and the 'averb' attribute (an action list which is triggered). One example is `@use`, `@ouse`, and `@ause`, which are shown/triggered when the 'use' command is run on an object.
-
-  Some verbs which involve movement have a fourth attribute, 'oxverb', shown in the enactor's old location (for example, `@oxmove`), while some verbs have less (for example, `@oname`/`@aname` are shown when an object's name changes, but there is no `@name` attribute).
-
-  You can create your own verbs for softcoded commands/actions with the `@verb` command.
-
-  See [verbs2](/reference/sharpmush-help/sharptop/#verbs2)
-
-## VERBS2
-  Normally, the enactor's name and a space are prepended to the 'overb' and 'oxverb' attributes automatically. The NOSPACE attribute flag prevents a space being placed between the name and attribute value, and the NONAME attribute flag stops the name being added at all.
-
-
-  Example:
-```sharp
-    > @ouse Foo=has used Foo!
-    > use Foo
-    Sketch has used Foo!
-```
-```sharp
-    > @ouse Foo='s used Foo!
-    > @set Foo/ouse=nospace
-    > use Foo
-    Sketch's used Foo!
-```
-```sharp
-    > @ouse Foo=Foo has been used by %n!
-    > @set Foo/ouse=noname
-    > use Foo
-    Foo has been used by Sketch!
-```
-
-**See Also:**
-- [@verb](/reference/sharpmush-help/sharpcmd/#verb)
-- [attribute flags](/reference/sharpmush-help/sharpattr/#attribute-flags)
-
-## WARNINGS
+## Warnings
 
   If the MUSH is configured to do so, players may receive regular warnings about potential building problems on objects that they own. The interval is set in the 'warn_interval' `@config` option; if set to 0, automatic warnings are disabled. You can also check warnings, either for a specific object or all objects you own, with `@wcheck`.
 
   For more information, see the following help topics:<br>
     `@warnings`        `@wcheck`         NO_WARN         WARNINGS LIST
 
-## WARNINGS LIST
-  The building warning system supports the following types of warnings:
-
-  exit-unlinked         Warn on unlinked exits<br>
-  exit-oneway           Warn on exits with no return exit<br>
-  exit-multiple         Warn on multiple exits from A to B<br>
-  exit-msgs             Warn on missing succ/osucc/odrop/fail<br>
-  exit-desc             Warn on missing description<br>
-  room-desc             Warn on missing description<br>
-  thing-msgs            Warn on missing succ/osucc/odrop/fail<br>
-  thing-desc            Warn on missing description<br>
-  my-desc               Warn on missing player description<br>
-  lock-checks           Warn on `@lock` problems
-
-  See [warnings list2](/reference/sharpmush-help/sharptop/#warnings-list2)
-
-## WARNINGS LIST2
-  These warnings combine the functionality of multiple warnings above:
-
-  serious      exit-unlinked, thing-desc, room-desc, my-desc, lock-checks<br>
-  normal       serious, exit-oneway, exit-multiple, exit-msgs<br>
-  extra        normal, thing-msgs<br>
-  all          all of the above
-
-  The warning "none" indicates no warnings.<br>
-  You can exclude warnings from a larger list by using !`<warning>` after the larger list. For example: `@warnings` me=all !exit-oneway
-
-## WILDCARDS
+## Wildcards
   SharpMUSH has two standard wildcards, which can be used in `$-commands`, as well as a number of softcode functions: an asterisk (*) matches zero or more of any characters, and a question mark (?) matches exactly one character. The most common use of wildcards is to allow people to pass arguments to `$-commands`. For example, let's say you want to have a 'wave' command which allows you to wave to a specific person:
 
 ```sharp
@@ -2007,73 +682,32 @@ See [queue2](/reference/sharpmush-help/sharptop/#queue2)
   1
 ```
 
-  The "**" wildcard is also available for matching attribute names - see HELP ATTRIBUTE TREES2 for more information.
+  The "**" wildcard is also available for matching attribute names - see HELP attribute trees browsing for more information.
 
-  It's also possible to use regular expressions, rather than wildcards, for matching strings. Regexps allow a lot more control over what is matched, but are therefore somewhat more complex. See [regexp](/reference/sharpmush-help/sharptop/#regexp) for details.
+  It's also possible to use regular expressions, rather than wildcards, for matching strings. Regexps allow a lot more control over what is matched, but are therefore somewhat more complex. See [regexp](/reference/sharpmush-help/sharpconf/#regexp) for details.
 
 
-**See Also:**
-- [USER-DEFINED COMMANDS](/reference/sharpmush-help/sharptop/#commands)
-- [REGEXP](/reference/sharpmush-help/sharptop/#regexp)
+::: seealso
+- [$-commands]
+- [regexp](/reference/sharpmush-help/sharpconf/#regexp)
 - [STACK](/reference/sharpmush-help/sharptop/#stack)
-- [REGISTERS](/reference/sharpmush-help/sharptop/#registers)
+- [registers](/reference/sharpmush-help/registers/#registers)
+:::
 
-## ZONE MASTER ROOMS
+## Zone Master Rooms
 
   Zone Master Rooms are a subset of zones. If a room is used as a zone, it is called a Zone Master Room (ZMR). ZMRs are like local "master" rooms; exits in the ZMR are global to that zone, and `$-commands` on objects in the ZMR are global to that zone (`$-commands` on the ZMR itself, like `$-commands` on the master room, are ignored). If a ZMR is a player's personal zone, objects in the ZMR are checked for commands that the player can use anywhere (but exits are not checked unless the player is in a zoned room).
 
   Zone Master Rooms are useful either if you need global exits for the zone, or if the zone has a lot of `$-commands` which need to be restricted to different groups, as they can go on separate use-locked objects.
 
 
-**See Also:**
-- [ZONES](/reference/sharpmush-help/sharptop/#zones)
+::: seealso
+- [zones](/reference/sharpmush-help/zones/#zones)
 - [MASTER ROOM](/reference/sharpmush-help/sharptop/#master-room)
-- [EVALUATION](/reference/sharpmush-help/sharpconf/#evaluation)
+- [evaluation order](/reference/sharpmush-help/evaluation-order/#evaluation-order)
+:::
 
-## ZONE MASTERS
-  SHARED PLAYERS
-
-  Shared players are player objects which are used to mediate shared control of objects. A shared player is an object of type PLAYER which has the SHARED flag set. They are created like ordinary players, and can connect, build, etc. The only difference is that objects owned by a shared player are controlled by anything that passes the `@lock`/zone of the shared player.
-
-  Anyone who passes the `@lock`/zone of the shared player can `@chown` objects to it. This, however, does not refund the original creator's money or quota, as does normal.
-
-  Shared players used to be known as Zone Masters. The term was changed to emphasize the fact that they are not related to Zone Master Objects, which are used to allow area-specific `$-commands`.
-
-  See [SHARED PLAYERS2](/reference/sharpmush-help/sharptop/#shared-players2)
-
-## SHARED PLAYERS2
-  Some suggested uses of shared players:
-
-  1. If you are working on a building project with several people, it may be useful to create a shared player and `@lock`/zone it to all of you. That way, all of the players working on the project will be able to modify the building, as long as the shared player owns all the objects being built.
-
-  2. If local wizards are desired, a shared player may be created and zone locked to the local wizards. Players building within that zone should be `@chowning` to the shared player, or logged in as it while creating objects. The local wizard will then be able to control anything within that domain as long as the object in question is owned by the shared player.
-
-
-**See Also:**
-- [SHARED](/reference/sharpmush-help/sharpflag/#shared)
-- [@lock](/reference/sharpmush-help/sharpcmd/#locking)
-- [ZMO](/reference/sharpmush-help/sharpconf/#zmo)
-
-## ZONES
-  Zones are areas of the MUSH that can have the same user-defined commands without having to `@parent` every object in the zone or make the commands MUSH-wide globals.
-
-  The default zone is NOTHING. Any building done by a player defaults to belonging to the same zone that the player belongs to. Every zone is defined by a Zone Master Object (ZMO). The ZMO is an ordinary MUSH object owned by some player. A wizard may change the zone of an object or player to a ZMO.
-
-  If the ZMO is a room, it is called a "Zone Master Room." Most of the statements about ZMOs also apply to zone master rooms; for details, see [Zone Master Rooms](/reference/sharpmush-help/sharptop/#zone-master-rooms).
-
-  See [zones2](/reference/sharpmush-help/sharptop/#zones2)
-
-## ZONES2
-  `$-commands` on a ZMO are treated as global within that zone. The game attempts to match `$-commands` for the ZMO of the player's location, as well as `$-commands` for the player's own zone.
-
-  If you want restricted global commands defined over only a small area, you can define that area to be part of a zone, and place the desired `$-commands` upon the ZMO. If you want players to be able to use special commands for a culture they belong to, the `$-commands` should go on the ZMO, and the players `@chzoned` to it so they can use the commands anywhere.
-
-
-**See Also:**
-- [@chzone](/reference/sharpmush-help/sharpcmd/#chzone)
-- [SHARED PLAYERS](/reference/sharpmush-help/sharptop/#zone-masters)
-
-## MATCHING
+## Matching
   Matching is the process the MUSH uses to determine which object you mean when you try to do something with an object. Different commands and functions do matching in different ways, but most will allow you to specify an object as:
     * its dbref (#7) or objid (#7:123456789)
     * the string "me" (yourself)
@@ -2096,99 +730,33 @@ See [queue2](/reference/sharpmush-help/sharptop/#queue2)
 ## &HELP
 This is the AHELP index.
 
-## RESTRICT
-
-  Commands, functions and attributes can have their permission levels controlled in the mush config files, or by wizards from the game via `@command`, `@function` and `@attribute`.
-
-  In the config file, the syntax is:<br>
-    restrict_command `<command-name>` `<restriction>` [" `<error message>`]<br>
-    restrict_function `<function-name>` `<restriction>`<br>
-    restrict_attribute `<attribute-name>` `<restriction>`
-
-  From the game:<br>
-    `@command`/restrict `<command-name>`=`<restriction>` [" `<error message>`]<br>
-    `@function`/restrict `<function-name>`=`<restriction>`<br>
-    `@attribute`/access `<attribute-name>`=`<restriction>`
-
-  For commands, if `<error message>` is given, that message is sent to the player who runs it instead of a generic, unhelpful error message.
-
-  See [restrict2](/reference/sharpmush-help/sharptop/#restrict2)
-
-## RESTRICT2
-
-  For commands, `<restriction>` should be an `@lock`-style boolexp (though, for backwards compatability, the restrictions below can be used, and will be converted into an `@lock` automatically). For functions, `<restriction>` should be any combination of the phrases below. For attributes, `<restriction>` is a list of attribute flags, or "none" to create a standard attribute with no restrictions (see [attribute flags](/reference/sharpmush-help/sharpattr/#attribute-flags)).
-
-    god        Command or function is usable only by God.<br>
-    wizard     Usable only by wizards.<br>
-    admin      Usable only by Wiz/Roy.<br>
-    nogagged   Usable only by non-GAGGED objects.<br>
-    nofixed    Usable only by non-FIXED objects.<br>
-    noguest    Usable only by non-guest `@powered` objects.<br>
-    nobody     Nothing can use it. Same as the /disable switch to `@command` or `@function`.<br>
-    logname    When used, log cmd/fun name, and who is using it<br>
-    logargs    When used, log cmd/fun name and args, and who is using it
-
-  Functions only:<br>
-    noparse    Function arguments are not evaluated. Only applies to `@functions`.<br>
-    localize   %q-registers are saved/restored when evaluating, as if the `@function` were wrapped in `localize()`.<br>
-    userfn     Function can only be called from within an `@function`.<br>
-    nosidefx   Don't allow side-effects for this function. See also the function_side_effects `@config` option.<br>
-    deprecated This function should no longer be used. Warns the executor's owner whenever someone uses the function.
-
-  Commands only:<br>
-     noplayer   Cannot be used by players.<br>
-  Commands can also give any flag, power or type, to restrict to objects with one of those flags or powers, or of one of those types.
-
-  See [restrict3](/reference/sharpmush-help/sharptop/#restrict3)
-
-## RESTRICT3
-  In cases where there are a function and command that do the same thing (like `pemit()` and `@pemit`), the command's restrictions are also checked when the function is called, so to use `pemit()` you must also be able to use `@pemit`. However, a function's restrictions are not checked when a command is called, to allow disabling side-effect functions.
-
-  Some functions (like `name()`) have non-side-effect and side-effect versions depending on how many arguments they're called with. The side-effect version can be disabled while keeping the safe non-side-effect form with the 'nosidefx' restriction. This can also be used to disable pure side-effect functions.
-
-
-  Examples:
-```sharp
-  Only allow admin to use ansi():
-    > @function/restrict ansi=admin
-```
-```sharp
-  Don't let anyone set SUSPECT or GAGGED use @emit, and log the name of anyone who uses it.
-    > @command/restrict @emit=logname
-    > @command/restrict @emit=!flag^suspect&!flag^gagged
-```
-
-**See Also:**
-- [@command](/reference/sharpmush-help/sharpcmd/#command)
-- [@function](/reference/sharpmush-help/sharpcmd/#functions)
-- [@attribute](/reference/sharpmush-help/sharpcmd/#attribute)
-- [@lock](/reference/sharpmush-help/sharpcmd/#locking)
-
-## DESCRIPTOR
+## Descriptor
   A descriptor (also called a port or socket descriptor) is a unique (though reusable) number assigned to each connection to the MUSH. The descriptor for each connection is shown on the Wizard WHO in the 'Des' column.
 
   Several commands and functions take a descriptor as an argument, or return the descriptor(s) associated with a player's connection.
 
-**See Also:**
-- [WHO](/reference/sharpmush-help/sharpcmd/#who)
-- [SUBSTITUTIONS](/reference/sharpmush-help/sharptop/#substitutions)
-- [ports()](/reference/sharpmush-help/sharpfunc/#lports)
-- [lports()](/reference/sharpmush-help/sharpfunc/#lports)
-- [player()](/reference/sharpmush-help/sharpfunc/#player)
+::: seealso
+- [who](/reference/sharpmush-help/who/#who)
+- [%]
+- [LPORTS()](/reference/sharpmush-help/sharpfunc/#lports)
+- [LPORTS()](/reference/sharpmush-help/sharpfunc/#lports)
+- [PLAYER()](/reference/sharpmush-help/sharpfunc/#player)
 - [@boot](/reference/sharpmush-help/sharpcmd/#boot)
-- [CONNECTION FUNCTIONS](/reference/sharpmush-help/sharpfunc/#connection-functions)
+- [Connection functions](/reference/sharpmush-help/sharpfunc/#connection-functions)
+:::
 
-## UNICODE
+## Unicode
 
 At the moment, SharpMUSH has very minimal support for Unicode. Almost all text is treated internally as being in the Latin-1 character set. Clients that support telnet character set negotiation can send and receive UTF-8, but only characters in the Basic Latin and Latin-1 Supplement blocks are accepted (Others are replaced with question marks).
 
 A few functions support Unicode-aware text transformations:
 
-- [stripaccents()](/reference/sharpmush-help/sharpfunc/#stripaccents)
+- [STRIPACCENTS()](/reference/sharpmush-help/sharpfunc/#stripaccents)
 
 When the MUSH is compiled with the ICU library (See `@config` compile), additional functions support Unicode-aware text transformations:
 
-- [lcstr2()](/reference/sharpmush-help/sharpfunc/#lcstr)
-- [ucstr2()](/reference/sharpmush-help/sharpfunc/#ucstr)
+- [LCSTR()](/reference/sharpmush-help/sharpfunc/#lcstr)
+- [UCSTR()](/reference/sharpmush-help/sharpfunc/#ucstr)
 
 When using these functions, do not assume that they return the same number of characters as their argument.
+

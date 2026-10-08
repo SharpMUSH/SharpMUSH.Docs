@@ -3,7 +3,7 @@ title: "Coding and Programming"
 description: "SharpMUSH documentation for Coding and Programming"
 ---
 
-## code
+## Contact
 SharpMUSH is developed by a team of developers whose names are listed in [changes](/reference/sharpmush-help/sharpconf/#changes). Suggestions, comments, and bug reports are welcome.
 
 The main SharpMUSH web page is at http://sharpmush.com
@@ -13,25 +13,56 @@ Report bugs and make suggestions at https://github.com/SharpMUSH/SharpMUSH/issue
 The SharpMUSH Discord is at https://discord.com/invite/jYErRbqaC9
 
 For information about downloading SharpMUSH, see [download](/reference/sharpmush-help/sharpcode/#download).<br>
-For information about changes in versions of the code, see [changes](/reference/sharpmush-help/sharpconf/#changes).
+For information about changes in versions of the code, see [changes](/reference/sharpmush-help/sharpconf/#changes).<br>
+For what SharpMUSH adds to PennMUSH, see [sharpmush features](/reference/sharpmush-help/sharpmush-features/#sharpmush-features).
 
-## download
+## Download
 The latest version of this MUSH code is available from https://github.com/SharpMUSH/SharpMUSH/releases. 
 
-## i18n
-Internationalization support in SharpMUSH includes:
-* Support for (8-bit) locale-based character sets, including translation of iso-8859-1 accented characters to html entities for Pueblo, the `accent()` and `stripaccents()` functions, and the NOACCENTS flag.
-* Support for UTF-8 and UTF-16
-* Support for locale-based date/time formats
-* Support for locale-based message sets for translations of server messages. There are active translation teams (and you can join!) and several languages have practically complete translation files available.
-* Some support for locale-based string collation
-* The ability to alias command and function names, so you can generate a set of translated commands/functions.
+## Exception
+When an internal error escapes a command, SharpMUSH does **not** stay silent. The
+command returns, and you are notified with:
 
-Most of these features get enabled by setting an appropriate environment variable in the SharpMUSH config.
+```sharp
+  #-1 EXCEPTION: {"id":"7ac09f1a5b6f","command":"@switch","type":"KeyNotFoundException"}
+```
 
-Unicode is not currently supported.
+The payload is a single-line JSON object. Everyone sees three fields:
 
-## copyright
+* `id`: a correlation id. The full error, including its stack trace, is in the
+  server log under this same id. Quote it when you report the bug; a wizard can
+  find the entry from it without you having to reproduce anything.
+* `command`: the command word that failed.
+* `type`: the class of error.
+
+A wizard or royalty additionally sees `message` (the error text) and `inner` (the
+chain of underlying errors). Those are withheld from everyone else because an
+error message can quote a file path or a database connection string. Stack traces
+are never sent to anyone in-game; they stay in the log, reachable by `id`.
+
+This is a real error return, so softcode can test for it: `#-1 EXCEPTION:` is
+always the prefix, and the rest is always valid JSON.
+
+::: seealso
+- [pennmush compatibility](/reference/sharpmush-help/pennmush-compatibility/#pennmush-compatibility)
+:::
+
+## Internationalization
+SharpMUSH supports Unicode: server strings use UTF-16 internally, and network
+text supports UTF-8. The `accent()` and `stripaccents()` functions and the
+NOACCENTS flag provide compatibility with older clients.
+
+Server messages use the existing locale-based resource system. The portal has
+its own translated resources and language picker. Help translations use
+locale-specific corpus directories, falling back to the neutral help source
+when a translated lookup is unavailable. Command and function aliases can
+provide translated names without duplicating their implementation.
+
+Date/time formatting and string collation use the applicable locale facilities.
+Choose a locale through the existing player and portal preferences; do not assume
+that setting a process environment variable translates every presentation.
+
+## Copyright
 Copyright, License, and Credits for SharpMUSH 1.x.
 
 I. Copyrights

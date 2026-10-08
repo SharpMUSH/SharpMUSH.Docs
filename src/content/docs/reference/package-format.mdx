@@ -1,0 +1,524 @@
+---
+title: Package Format
+description: The complete package.yaml reference for SharpMUSH softcode, application and managed packages.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+This is the full reference for `package.yaml`, the file that describes a SharpMUSH package. For what
+packages are and how to install them, start with [Softcode Packages](/guides/packages).
+
+A package is a folder with a `package.yaml` in it. The file describes **the result you want**, not a
+script: there is no ordering, no `@create` lines, and **no dbrefs**. Objects are named with
+`{{ref}}` tokens, which the installer turns into real dbrefs when the package is applied. The server
+compares that description with the live game, a wizard reviews the changes, and only then is anything
+written. Upgrades merge with your local edits, every apply is recorded, and an install can be rolled
+back.
+
+## A complete example
+
+```yaml
+format: 1                       # format version (omit = 1; 1.2 adds roles, 1.3 settings)
+package: myrddins-bbs           # required: lowercase letters, digits and hyphens, up to 64 characters
+version: 2.4.1                  # required: a version number (see Versions below)
+authors: [Myrddin]              # optional: a list, or one string
+description: "Bulletin Board"   # optional
+license: MIT                    # optional: an SPDX licence name is recommended
+homepage: https://example.com   # optional
+keywords: [bbs, boards]         # optional: up to 5, used for browsing and searching
+convention_prefix: BBS_         # optional: the attribute name prefix you use; advisory, not enforced
+requires_server: ">=0.1"        # optional: which SharpMUSH versions it needs
+
+depends:                        # optional: other packages this one needs
+  - volund-core: ">=1.0"        # short form: id and version range
+  - some-util                   # just an id: any released version
+  - package: who-where          # full form: adds where to find it (see Source hints)
+    version: ">=1.0 <2.0"
+    source:
+      repo: https://github.com/SharpMUSH/SharpMUSH-Packages
+      path: who-where/
+      branch: main
+
+conflicts:                      # optional: can't be installed alongside these
+  - legacy-bbs: "<2.0"
+
+replaces: myrddins-board        # optional: the id this package used to have
+
+configure:                      # optional: questions the installer is asked
+  bbs_storage:
+    label: "Object that stores posts"
+    type: dbref                 # dbref (default) | string | number | boolean
+  board_name:
+    label: "Board display name"
+    type: string
+    default: "Community Board"  # defaults are allowed for every type except dbref
+
+objects:                        # required: at least one object
+  - ref: bbs_global             # required: a name for this object, unique in the package (lowercase)
+    type: thing                 # required: thing | room | exit | player
+    name: BBS Global Object     # required: its name in the game
+    parent: "{{bbs_parent}}"    # optional: one ref
+    location: "{{?bbs_storage}}"  # optional for things; required for exits
+    previous_refs: [bbs_main]   # optional: names this object had before (for renames)
+    flags: [no_command]         # optional: object flags
+    locks:                      # optional: locks by lock type
+      use: "{{bbs_parent}}"
+    attributes:                 # optional: attributes to set
+      CMD_+BBREAD:              # full form: a value and attribute flags
+        value: |-
+          $+bbread *:@pemit %#=[u({{bbs_parent}}/FN_READ,%0)]
+        flags: []
+      FN_HEADER: "[repeat(=,78)]"   # short form: quoted one-liners only
+
+  - ref: bbs_parent
+    type: thing
+    name: BBS Parent Object
+```
+
+## Writing softcode in YAML
+
+<Aside type="caution" title="Always use block scalars for code">
+YAML changes code written the obvious way. Double quotes treat `\` as an escape (or fail on ones they
+don't know). Unquoted values are worse: a leading `&CMD` silently becomes a YAML anchor, a ` #` in
+the middle starts a comment and cuts the line short (`think #123` becomes `think`), and values
+starting with `@ % [ { * ! | -` fail outright.
+</Aside>
+
+**Write every softcode value as a block scalar (`|-`).** A block scalar keeps backslashes, brackets,
+`$patterns`, `%` substitutions and ` #dbrefs` exactly as written. Single quotes are fine for trivial
+one-liners (double any `'` inside). Never use unquoted or double-quoted values for code. Indent block
+scalars with spaces (tabs are a YAML error), and use `|-` unless you want a newline at the end.
+
+### Literal brackets and parentheses
+
+The escaping rules are softcode's own, not the package format's: write `%[` `%]` `%(` `%)` for
+literal brackets and parentheses. `[[]x[]]` is not an escape for anything, and an empty `[]` is
+refused, sometimes without saying so. Two places this catches people in a package:
+
+- A bare `(` inside `header(...)`, `footer(...)` or `line(...)` ends the call early, so the title is
+  cut short and the `)` appears after the line.
+- A `+help` topic is evaluated before it is shown, so `+help/list [<source>]` loses its brackets.
+  Write `%[<source>%]` or `\[<source>\]`.
+
+## Refs: `{{...}}` tokens, never dbrefs
+
+| Syntax | Kind | What it points at |
+|---|---|---|
+| `{{name}}` | internal | Another object in this package |
+| `{{pkg/name}}` | cross-package | An object from package `pkg`, which must be listed under `depends:` |
+| `{{$name}}` | well-known | A server setting: `room_zero`, `master_room`, `player_start`, `god`, `package_manager` (a server may add more) |
+| `{{?name}}` | configure | The installer's answer to a `configure:` question |
+
+Refs go in `parent:`, `location:` and `destination:` (exactly one token, in quotes, because a bare
+`{` confuses YAML), and anywhere inside attribute and lock values.
+
+**What installed code looks like.** Installed code never contains raw dbrefs. In attribute values,
+each token becomes `` [v(PM`REFS`NAME)] ``, and the installer keeps a `` PM`REFS`NAME `` attribute on
+every object whose code uses that ref, holding the object it points at (or the configure answer).
+Refs to another package are grouped under its id (`` PM`REFS`WHO-WHERE`WW_FUNCTIONS ``). That keeps
+installed code readable and lets an admin point a ref somewhere else by editing one attribute; that
+local change survives upgrades. `parent:`, `location:`, `destination:` and lock strings are not
+evaluated as code, so they get the dbref directly.
+
+The `` PM` `` attribute tree is reserved: a package may not define attributes under it. Ref names must
+also be unique across kinds within a package, so an object `storage` and a configure question
+`storage` would clash.
+
+These rules are checked when the manifest is read:
+
+- Ref names ignore case (`{{BBS_PARENT}}` is `{{bbs_parent}}`); write them in lowercase.
+- **Every `{{...}}` token must be a valid ref that resolves.** A malformed token, an internal ref to
+  an object that isn't in the package, an unknown well-known name, a `{{?ref}}` with no `configure:`
+  entry, or a `{{pkg/...}}` ref to a package not in `depends:` is an error.
+- To write a literal `{{` in code, double it: `{{{{` gives `{{`. Ordinary softcode brace groups such
+  as `@switch x={{a},{b}}` are fine as they are; only exactly-double braces around a simple name are
+  read as refs.
+- Only **dbref** configure answers can be used in `parent:`, `location:` and `destination:`.
+
+## Where objects go
+
+- **Exits** need `location:` (the room they leave from) and `destination:`.
+- **Rooms** may not have `location:`, and only exits have `destination:`.
+- **Things and players** may have `location:`; without one they start in the Package Manager
+  wizard's inventory.
+
+## Managing attributes on an object you didn't create
+
+Some packages need to manage softcode on a core object they don't own, such as the HTTP handler or
+the master room. An entry with `target:` is an **attach** entry: the package manages only the
+attributes it lists, and never creates, changes or destroys the object.
+
+```yaml
+objects:
+  - ref: handler
+    target: "{{$http_handler}}"   # an existing object to manage attributes on
+    attributes:
+      GET: |-
+        think routed
+```
+
+- Only `ref`, `target` and `attributes` are allowed: no `type`, `name`, `parent`, `location`,
+  `destination`, `flags` or `locks`.
+- The target must already exist. It can be a `{{$well_known}}` object, a `{{?configure}}` answer, or
+  `{{dependency/ref}}`: an object **another package provides**, which must be listed under
+  `depends:`. A ref to this same package is not allowed; put those attributes on the object directly.
+- The package records the attributes it manages (so upgrades merge them and uninstalling removes
+  them), but not the object, so uninstalling leaves it in place.
+- **A package can't be uninstalled while another is attached to it.** If package B attaches to an
+  object package A created, A can't be uninstalled until B is removed (or the uninstall is forced).
+  `http-handler` and `profile-handler` are the standard example: `profile-handler` adds its routes
+  under `http-handler`'s attributes and depends on it.
+
+## Versions and ranges
+
+Versions are `MAJOR[.MINOR[.PATCH]][-prerelease]`: `2.4.1`, `1.0`, `3.0.0-beta.1`. Prerelease
+ordering follows SemVer 2.0.0 exactly:
+`alpha < alpha.1 < alpha.beta < beta < beta.2 < beta.11 < rc.1 < release`. Build metadata (`+...`)
+is not supported.
+
+Ranges use `>=`, `>`, `<=`, `<`, `=` and bare versions (an exact match). Clauses separated by spaces
+or commas must all hold. `^1.2` and `~1.2` are **not** supported; write `>=1.2 <2.0`.
+
+**Prereleases are never picked unless you ask for one.** `>=1.0` does not match `2.0.0-beta`. A
+prerelease only matches when a clause names a prerelease of the same `major.minor.patch`
+(`>=1.2.3-alpha` matches `1.2.3-beta` but not `1.3.0-beta`).
+
+A package can't depend on itself, ids can't repeat, and an id can't be in both `depends:` and
+`conflicts:`. `provides:`, `recommends:` and `suggests:` are reserved for a future format version.
+
+### Source hints
+
+A dependency can say where to find it, so a missing dependency becomes "requires who-where >=1.0,
+fetch it from this repository?" instead of a dead end. Use the full form (a `package:` key marks it,
+which is also why `package` can't be a dependency's id):
+
+```yaml
+depends:
+  - package: who-where
+    version: ">=1.0 <2.0"       # optional; leave out for any released version
+    source:                     # optional
+      repo: https://github.com/SharpMUSH/SharpMUSH-Packages
+      path: who-where/          # optional: the package's folder in a repository of several
+      branch: main              # optional: defaults to the repository's default branch
+```
+
+`source:` can also be just a repository address. The hint is only advice: the installer shows it
+(with the usual warning for repositories that aren't configured remotes), and the admin decides
+whether to fetch it. It never overrides a remote already configured for the same package.
+
+## Renames
+
+For objects, list their old ref names in `previous_refs:`. An upgrade then treats the change as a
+rename (same dbref) instead of destroying and recreating the object, which would break everything
+pointing at the old dbref. For packages, `replaces: old-id` carries the install history across a
+package rename.
+
+## Errors and warnings
+
+The manifest is checked as a whole, and **every** problem is reported with its exact place
+(for example `objects[2].attributes.FN_READ`). `SharpMUSH.PackageTool` runs the same checks on your
+own machine.
+
+**Errors** (the manifest is refused): a missing or invalid `package`, `version` or `objects`; invalid
+ids, ref names or object types; repeated refs, attributes or dependency ids; any invalid or
+unresolvable `{{token}}`; parent loops; exits without a location or destination (or a location on a
+room, or a destination on anything but an exit); configure type mistakes (a default for a dbref, a
+non-dbref answer in a placement field); a package depending on itself, or the same id in both
+`depends:` and `conflicts:`; an invalid `kind`; an application package without an `application:`
+block or with `objects:` (and the reverse for a softcode package); an invalid application slug, type,
+role or zone; a format version whose major number is newer than the server supports.
+
+**Warnings** (the manifest is accepted): unknown keys (likely typos); reserved keys (`provides`,
+`recommends`, `suggests`, configure `pattern`); configure questions nothing uses; more than 5
+keywords; a format version whose minor number is newer than the server supports.
+
+## Roles and permissions (format 1.2)
+
+A package can bring the roles and custom permissions its softcode checks, and the categories they
+belong to. Declare them beside `objects:` and set `format: 1.2`; an older server warns and ignores
+these blocks.
+
+```yaml
+format: 1.2
+package: requests
+version: 1.0.0
+
+categories:                     # each list optional; every category needs a description
+  roles:
+    - name: Requests
+      description: Roles for working the request queue.
+  permissions:
+    - name: Requests
+      description: Permissions for the request queue.
+
+permissions:                    # custom permissions only, checked with permission() or PERM^ locks
+  - name: requests.handle
+    category: Requests          # declared above, or already in the game
+    description: Work on any request.
+
+roles:
+  - slug: handler               # what roles() lists and hasrole() takes
+    name: Request Handler       # optional display name (defaults to the slug)
+    category: Requests
+    color: "#4fc3c8"            # optional
+    priority: 11                # optional, 1-29: always below the wizard role
+    permissions:                # custom permissions only: allow | deny
+      requests.handle: allow
+```
+
+A role may allow or deny only custom permissions. Built-in ones (`wiki.admin`, `game.wizard` and so
+on) are the game's to hand out with `@role`, so installing a package never grants staff powers. A
+package can't declare a system role, and a managed package can't declare any of these blocks.
+
+- **Install.** Anything the game doesn't have yet is created and belongs to the package. Anything the
+  game already has (a `Staff` category, a `helper` role) is used as it is; the package never changes
+  or removes it. A role or permission another installed package owns stops the install, as does a
+  role naming a category or permission that neither the package nor the game has.
+- **Upgrade.** Each item is compared field by field with what the previous version declared: a field
+  the new version changes takes the new value, and every other field keeps what the game has. So
+  renaming the package's role, or denying one of its permissions on it, survives an upgrade that
+  doesn't touch that field.
+- **Removed items and uninstall.** A role nobody holds, a permission no remaining role uses, and an
+  empty category are removed. Anything the game still relies on (a role someone holds, a permission a
+  role still uses, a category with something in it) is kept and stops belonging to the package, so a
+  later reinstall treats it as the game's own. Removing a permission also clears every account and
+  object override of it.
+- **Rollback** restores objects and attributes only; roles, permissions and categories stay as they
+  are.
+
+## Configuration options (format 1.3)
+
+A package can set configuration options, the same ones `@config/set` sets. Declare them under
+`settings:` and set `format: 1.3`; an older server warns and ignores the block.
+
+```yaml
+format: 1.3
+package: messages
+version: 1.0.0
+
+objects:
+  - ref: messages
+    type: thing
+    name: Messages
+
+settings:                       # the option name as @config lists it: its value
+  messages_object: "{{messages}}"   # a dbref option may name one object ref
+  noisy_whisper: "yes"          # otherwise, a value @config/set would accept
+```
+
+The option must exist and be one `@config/set` can change (not a file path, a list with its own
+command, or one of God's options), and a value must be one the option accepts; otherwise the
+manifest is refused. A ref is only allowed for a dbref option, and must be the whole value. When the
+package is planned, each value is also checked against the live game: a value out of range, or one
+the game refuses, stops the plan instead of being adjusted. A managed package can't declare
+`settings:`.
+
+The review screen lists each option with its current and new value, and asks for confirmation before
+applying a package that changes one.
+
+- **Install.** Each option is set, and the value it replaced is recorded. An option another installed
+  package sets stops the install: uninstall that package first.
+- **Upgrade.** A value the new version changes is set again. A value it leaves alone keeps whatever
+  the game has now, so an administrator's `@config/set` survives.
+- **Removed options and uninstall.** The option goes back to the value the package replaced, unless
+  the game has changed it since; then it is left alone.
+- **Rollback** leaves configuration options as they are.
+
+## Application packages
+
+Most packages are **softcode** packages (`kind: softcode`, the default): they create objects and
+manage attributes. An **application** package (`kind: application`) adds a
+[portal application](/guides/applications) instead. It owns **no objects**; it depends on the
+softcode package that provides the HTTP routes the application reads and submits to.
+
+```yaml
+format: 1.1
+package: chargen-app
+kind: application                 # softcode (default) | application
+version: 1.0.0
+depends:
+  - chargen: ">=1.0 <2.0"         # the softcode package providing the routes
+
+configure:
+  access:                         # an application setting can be an installer question
+    label: "Minimum role"
+    type: string
+    default: player
+
+application:                      # required for kind: application, not allowed otherwise
+  slug: chargen                   # its address: /apps/chargen (defaults to the package id)
+  display_name: Character Application
+  icon: assignment_ind            # optional Material icon name
+  type: page                      # page | widget
+  schema_url: http/chargen/schema # GET: the form or view description
+  data_url: http/chargen          # optional GET: data to show, or to fill the form with
+  submit_route: http/chargen      # optional POST base for actions
+  minimum_role: "{{?access}}"     # guest|player|builder|royalty|wizard|god, or a {{?configure}} ref
+  nav_placement: Play             # optional menu section (pages): Play, World, Build, Manage, or a new name
+  nav_url: http/chargen/nav       # optional GET: the app's own sidebar links (pages in a section of their own)
+  zones: [MainContent]            # optional layout zones (widgets)
+  scope: play                     # optional page a widget belongs to (for example play)
+  oob_package: chargen.status     # optional: show the latest push of this OOB package as the widget's data
+  permission: chargen.review      # optional permission the viewer must also hold
+  order: 50                       # optional sort order
+```
+
+`permission` limits the application further than `minimum_role`: its menu entry is hidden and
+`/apps/{slug}` shows a no-access card unless the viewer holds that permission (built-in, or custom
+from `@role`). Like `minimum_role`, this is only the portal's check; the softcode routes still make
+their own decisions.
+
+`nav_url` gives a page in a menu section of its own (a `nav_placement` other than Play, World, Build
+or Manage) its own sidebar. The portal asks the route on every visit to the section, for that viewer,
+and shows its links instead of the app's single link:
+
+```json
+{ "groups": [
+  { "label": "", "items": [
+    { "label": "Needs attention", "path": "/apps/jobs", "icon": "inbox", "count": 3 },
+    { "label": "Closed", "path": "/apps/jobs?filter=old", "icon": "inventory_2" } ] },
+  { "label": "Buckets", "items": [ … ] } ] }
+```
+
+`path` must be a portal address (starting with a single `/`), `icon` is a Material icon name, and
+`count` is optional. A link is highlighted when both its path and its query match the current
+address. No groups, or a route that fails, leaves the single link.
+
+`scope` names the page a widget belongs to: the Play page lists the `play` widgets for its right-hand
+area and sidebar. `oob_package` replaces `data_url` for live data: the widget still loads its
+description from `schema_url`, but shows the latest data the game pushed under that OOB package
+(a `{ "fields": { … } }` document), and updates on every new push. Missing or broken data shows the
+widget's empty state.
+
+The text fields (`display_name`, `icon`, `schema_url`, `data_url`, `submit_route`, `minimum_role`,
+`nav_placement`, `nav_url`, `scope`, `oob_package`, `permission`, `zones`) accept the same
+`{{?configure}}`, `{{$well_known}}` and `{{dependency/ref}}` refs as attribute values, so one published
+application package adapts its role, placement and routes to each game. Applying the package
+registers the application (the same record **Admin → Applications** creates by hand), and
+uninstalling removes it. An application package must **not** declare `objects:`; keep the softcode in
+a separate package and depend on it.
+
+## Managed packages
+
+A **managed** package (`kind: managed`) distributes a compiled C# plugin instead of softcode. It
+carries no `objects:`, `application:`, roles, permissions or settings, only the plugin's files and
+their checksums. See [Publishing a plugin as a package](/guides/plugins#publishing-a-plugin-as-a-package).
+
+## Repositories, discovery and releases
+
+A git repository holds one or more packages. Its root may have an `index.yaml` so browsing is fast;
+without one, the repository is searched for `package.yaml` files. Index entries may carry
+`package`, `version` and `description`, so the portal can list packages without reading every
+manifest (an id may appear only once):
+
+```yaml
+name: SharpMUSH Packages
+description: Official softcode packages.
+packages:
+  - path: who-where/
+    package: who-where
+    version: 1.2.0
+    description: +who and +where commands
+```
+
+**Releases are git tags** named `<package-folder>/v<version>`, for example `who-where/v1.2.0`. The
+version list in the portal is the tag list, installing a version uses its tag, and the latest commit
+is the development channel. Never move or delete a release tag; publish a fix as a new version. The
+installer records the commit it applied and warns loudly if a tag it installed from later points
+somewhere else.
+
+### The bundled catalogue
+
+Some packages are built into the server and appear in the portal under the reserved remote name
+**`bundled`**, with no download and no configured remote. Two separate things can be true of them:
+
+- **Shipped**: the package is in the server and can be installed from the catalogue at any time.
+- **Installed on first start**: a new game gets it without being asked. `http-handler`,
+  `profile-handler`, `room-contents`, `comm-feed`, `common-functions`, `plus-help` and `scene` are;
+  `wiki-reader` is shipped but not installed, because it puts a `+wiki` object in the master room.
+
+A bundled package may only depend on other bundled packages, so installing it never needs the
+network. Anything installed from the catalogue records `bundled:sharpmush` as its source, and is
+upgraded in place when a newer server ships a newer version.
+
+## Who owns installed objects
+
+Installed objects belong to the **Package Manager wizard** (`#3`, set by the `package_manager`
+option). The game records which package created each object and manages each attribute, including
+each attribute's value as installed. That is what makes upgrades a real three-way merge: the original,
+your live edits and the new version. Every apply is recorded with the manifest, your configure
+answers and the previous values of everything it changed, so an install or upgrade can be rolled
+back, and upgrades never ask configure questions you have already answered.
+
+## Example packages
+
+These examples are checked against the format by SharpMUSH's own tests, so they always match what
+the installer accepts. They are published in the official package repository,
+[SharpMUSH-Packages](https://github.com/SharpMUSH/SharpMUSH-Packages), which you can add as a remote
+under **Admin → Packages → Remotes**.
+
+| Package | What it shows |
+|---|---|
+| `hello-world` | The smallest package: one object, one command, and a `+help` topic |
+| `who-where` | Several objects, internal refs, parents, flags and an attribute prefix |
+| `starter-area` | Rooms and exits (`location:` and `destination:`) |
+| `bbs-lite` | Dependencies with source hints, typed configure questions, cross-package refs, conflicts, locks and prerelease versions |
+| `http-handler`, `profile-handler` | Attach entries on the HTTP handler, and one package attaching to another |
+| `chargen` + `chargen-app` | A portal application: the softcode routes in one package, the application registered by another, with a configurable role |
+| `jobs` + `jobs-app` | A complete system: commands added with `@command/add` and `@hook/override/inline`, roles and permissions declared by the package, per-object hooks, `+help` topics, and a portal application driven by the same code |
+| `messages` | Configuration options set by a package (format 1.3) |
+| `hello-ui` | A managed package: a compiled plugin that adds a portal page |
+
+`hello-world`, slightly shortened:
+
+```yaml
+format: 1
+package: hello-world
+version: 1.0.0
+authors: [SharpMUSH]
+description: "Minimal example package: one object, one command."
+license: MIT
+keywords: [example, greeting]
+
+depends:
+  - package: plus-help
+    version: ">=1.0 <2.0"
+
+objects:
+  - ref: hello_global
+    type: thing
+    name: Hello World Object
+    attributes:
+      CMD_+HELLO: |-
+        $+hello:@pemit %#=Hello, [name(%#)]!
+
+  # +help in its smallest form: a HELP root describing the set, one leaf per topic,
+  # and one attach entry telling the +help librarian where to look.
+  - ref: hello_help
+    type: thing
+    name: Hello Help
+    attributes:
+      HELP: |-
+        The example package.
+      HELP`HELLO: |-
+        `+hello` says hello. That is the entire package.
+
+  - ref: hello_help_registration
+    target: "{{plus-help/librarian}}"
+    attributes:
+      SRC`HELLO-WORLD: |-
+        {{hello_help}}
+```
+
+After installing it, players get a `+hello` command that greets them by name.
+
+## Authoring tips
+
+- Write substitutions bare: `%0`, `%q<name>`. Brackets are for function calls only.
+- Prefer `firstof()` to nested `if()` calls for "first one that works" choices.
+- Pick a `convention_prefix` and use it on attribute names; it is advice, not a rule.
+- Keep function objects `no_command`, and put `$command` patterns on a separate global object (see
+  `who-where`).
+- Never hardcode a dbref. Use `{{?configure}}` for objects that differ between games and
+  `{{$well_known}}` for ones every game has.
+- Quote fields that are only a ref (`parent: "{{x}}"`); a bare leading `{` is YAML syntax.

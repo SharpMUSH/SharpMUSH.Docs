@@ -9,10 +9,15 @@ const markdownFiles = (root) => fs.readdirSync(root, { recursive: true, withFile
 
 const routeCandidates = (docsRoot, route) => {
   const clean = route.replace(/^\//, '').replace(/\/$/, '');
-  return [path.join(docsRoot, `${clean}.mdx`), path.join(docsRoot, `${clean}.md`), path.join(docsRoot, clean, 'index.mdx')];
+  return [path.join(docsRoot, `${clean}.mdx`), path.join(docsRoot, `${clean}.md`), path.join(docsRoot, clean, 'index.mdx'), path.join(docsRoot, clean, 'index.md')];
 };
 
-export function validateContent({ root = process.cwd(), requiredRoutes = ['guides/pennmush-migration', 'guides/operator-handbook', 'technical/architecture'] } = {}) {
+const relativeLinkCandidates = (directory, target) => {
+  const resolved = path.resolve(directory, safeDecode(target));
+  return [resolved, `${resolved}.mdx`, `${resolved}.md`, path.join(resolved, 'index.mdx'), path.join(resolved, 'index.md')];
+};
+
+export function validateContent({ root = process.cwd(), requiredRoutes = ['guides/pennmush-migration', 'guides/operator-handbook', 'guides/deployment', 'guides/visual-layouts', 'technical/architecture', 'technical/connections', 'technical/plugin-system', 'reference/package-format'] } = {}) {
   const docsRoot = path.join(root, 'src/content/docs');
   const config = fs.readFileSync(path.join(root, 'astro.config.mjs'), 'utf8');
   const failures = [];
@@ -27,16 +32,23 @@ export function validateContent({ root = process.cwd(), requiredRoutes = ['guide
     for (const match of text.matchAll(/!\[([^\]]*)\]\(([^)]+)\)/g)) {
       const [, alt, target] = match;
       if (!alt.trim() || /^(image|screenshot|git clone)$/i.test(alt.trim())) failures.push(`${path.relative(root, file)} has non-descriptive image text: ${alt || '(empty)'}`);
-      if (!/^(https?:|data:|\/)/.test(target) && !fs.existsSync(path.resolve(path.dirname(file), target))) failures.push(`${path.relative(root, file)} has missing image: ${target}`);
+      if (!/^(https?:|data:)/.test(target)) {
+        const assetPath = safeDecode(target.split(/[?#]/, 1)[0]);
+        const asset = target.startsWith('/') ? path.join(root, 'public', assetPath) : path.resolve(path.dirname(file), assetPath);
+        if (!fs.existsSync(asset)) failures.push(`${path.relative(root, file)} has missing image: ${target}`);
+      }
     }
     for (const match of text.matchAll(/(?<!!)\[[^\]]+\]\(([^)\s]+)(?:\s+['\"][^)]*['\"])?\)/g)) {
       const target = match[1].split('#', 1)[0];
       if (!target || /^(https?:|mailto:|#)/.test(target)) continue;
       if (target.startsWith('/')) {
         if (!routeCandidates(docsRoot, target).some(fs.existsSync)) failures.push(`${path.relative(root, file)} has missing route: ${target}`);
-      } else if (!fs.existsSync(path.resolve(path.dirname(file), safeDecode(target)))) {
+      } else if (!relativeLinkCandidates(path.dirname(file), target).some(fs.existsSync)) {
         failures.push(`${path.relative(root, file)} has missing link: ${target}`);
       }
+    }
+    for (const match of text.matchAll(/https?:\/\/github\.com\/SharpMUSH\/SharpMUSH\/(?:blob|tree)\/[^\s)"'>]*/gi)) {
+      failures.push(`${path.relative(root, file)} sends readers to GitHub for documentation: ${match[0]} (bring the content onto this site)`);
     }
     for (const match of text.matchAll(/\bhref=["']([^"']+)["']/g)) {
       const target = match[1].split('#', 1)[0];
@@ -46,7 +58,7 @@ export function validateContent({ root = process.cwd(), requiredRoutes = ['guide
     }
   }
 
-  for (const relative of ['src/content/docs/guides/local-install.mdx', 'src/content/docs/guides/plugins.mdx']) {
+  for (const relative of ['src/content/docs/guides/local-install.mdx', 'src/content/docs/guides/plugins.mdx', 'src/content/docs/reference/features.mdx']) {
     const file = path.join(root, relative);
     if (fs.existsSync(file) && /(?:\.NET\s*10|net10\.0)/i.test(fs.readFileSync(file, 'utf8'))) failures.push(`${relative} refers to the stale .NET 10 SDK`);
   }

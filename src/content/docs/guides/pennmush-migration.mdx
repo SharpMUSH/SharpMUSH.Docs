@@ -6,60 +6,158 @@ description: Rehearse, validate, cut over, and roll back a PennMUSH world safely
 import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
 
 SharpMUSH directly imports a **PennMUSH flatfile** and, optionally, its `mush.cnf`, mail database
-(`maildb`), and chat database (`chatdb`). The flatfile path preserves dbrefs so softcode can continue
-to refer to the same objects. The ancillary databases carry mail aliases/messages and channels.
-RhostMUSH and TinyMUX do not have a direct supported importer.
+(`maildb`), and chat database (`chatdb`). The flatfile keeps every object's dbref, so softcode can
+keep referring to the same objects. The mail and chat databases bring mail aliases, messages and
+channels. RhostMUSH and TinyMUX have no direct importer; moving one of those worlds means converting
+it to a PennMUSH export first and checking that conversion on its own.
 
-<Aside type="danger" title="Plan this as a one-way migration">
-SharpMUSH does not export a PennMUSH flatfile. Keep the original PennMUSH installation and an immutable
-pre-cutover backup until the new game has passed its observation period.
+<Aside type="danger" title="Plan this as a one-way move">
+SharpMUSH does not export a PennMUSH flatfile. Keep the original PennMUSH installation and a backup
+nobody can change until the new game has passed its observation period. A successful upload is not
+proof the game is ready for players.
 </Aside>
 
-## The safe path
+## 1. Take stock of the source game
+
+Before changing either server, write down:
+
+- the PennMUSH version, flatfile format, database size, highest dbref and object count;
+- custom flags, powers, attributes, locks, command and function restrictions, and any files
+  `mush.cnf` includes;
+- channels, mail, mail aliases, player passwords, guests and login rules (mail and channels live in
+  the separate `maildb` and `chatdb` files);
+- globals, master room objects, HTTP and event handlers, startup attributes and scheduled jobs;
+- packages and the important softcode commands players and staff use;
+- DNS, telnet and browser addresses, bots, monitoring, outgoing mail and other connected services;
+- uploaded files and anything plugins or maintenance scripts use.
+
+Make a flatfile, `maildb` and `chatdb` while the game is quiet, and record a checksum of each. Copy
+them, the whole configuration folder, help and text files, and anything else the game relies on, to
+storage the SharpMUSH machine cannot overwrite.
+
+The importer takes one `mush.cnf` and does **not** follow its `include` lines, so list the included
+files and carry their settings across yourself. The mail and chat files are optional, but leaving
+them out means no mail aliases or channels are imported.
+
+Check the new machine with `@storage`. An import needs room for the live world, the world being
+imported, and the world it replaces (see [Disk space](/guides/deployment#disk-space)). Do the first
+full-size rehearsal on a throwaway, private SharpMUSH installation with the same version and storage
+settings you plan to use for real.
+
+## 2. Rehearse the import
 
 <Steps>
 
-1. **Inventory and preserve the source.** Record object counts and known dbrefs, configuration,
-   restrictions, handlers, packages, custom flags and powers, channels, mail, integrations, and a
-   risk-ranked softcode test list. Freeze and checksum a matching flatfile, `maildb`, and `chatdb`
-   plus the complete configuration tree. Omitting the optional ancillary files imports no mail
-   aliases or channels from those stores.
+1. Start a clean SharpMUSH stack, keep `/setup` away from untrusted visitors, and claim the
+   administrator account linked to `#1`.
 
-2. **Rehearse on a disposable host.** Claim `/setup`, upload the flatfile with its matching optional
-   `mush.cnf`, `maildb`, and `chatdb`, read every skipped-setting warning, and let SharpMUSH build a
-   separate staging world. A rehearsal never becomes authoritative just because conversion succeeded.
+2. In setup, open **Import PennMUSH**. Upload the flatfile together with the matching `mush.cnf`,
+   `maildb` and `chatdb`. Settings from `mush.cnf` (including the objects it names and its
+   restrictions) are applied before objects are converted; mail aliases, messages, channels,
+   members and history come from the mail and chat files.
 
-3. **Validate the game, not just the import.** Test administrator and player passwords, object counts
-   and dbrefs, attributes and locks, flags and powers, channels and mail, handlers and packages,
-   representative softcode, telnet/WebSocket login, portal login, and every external integration.
+3. Read every warning about a setting that was skipped. Recreate the ones SharpMUSH supports, and
+   write down the ones you are deliberately leaving behind.
 
-4. **Cut over from a new final export.** Freeze PennMUSH, drain queued work, create and checksum the
-   final flatfile, `maildb`, and `chatdb`, repeat the rehearsed import, run the go/no-go suite, then
-   change endpoints. Keep PennMUSH stopped but recoverable throughout the observation window.
+4. Let the conversion finish. SharpMUSH builds the imported world separately, in a
+   `<world>.staging-*` folder, so a failed conversion never half-replaces the live world.
 
-5. **Roll back at a declared boundary.** Return traffic to the preserved PennMUSH world if acceptance
-   fails. Player changes made after SharpMUSH opened are not automatically transferable. A
-   `<world>.previous` directory is the SharpMUSH world displaced during staging promotion; it is not
-   the original PennMUSH world.
+5. Read the import report before accepting it. Accepting moves the old live world to
+   `<world>.previous` and puts the imported world in its place in one step.
+
+6. Go back to setup to choose HTTP and event handlers and bundled packages. An imported world may
+   already have its own handlers; understand which attributes a setup choice moves or removes before
+   you add a second one.
 
 </Steps>
 
-<LinkCard
-  title="Full migration runbook"
-  href="https://github.com/SharpMUSH/SharpMUSH/blob/main/docs/guides/pennmush-migration.md"
-  description="Preparation inventory, validation matrix, cutover evidence, and both rollback paths."
-/>
+A rehearsal is evidence, not the real thing. Don't open it to players, don't accept their changes,
+and don't quietly turn it into the production game. Repeat the import from a fresh flatfile when you
+cut over.
+
+SharpMUSH's developers compare its behaviour with PennMUSH's automatically, by replaying the same
+scripted sessions against both and reporting every difference. Those comparisons show how compatible
+the engine is, but they don't replace testing your own game's code. The
+[Compatibility](/reference/compatibility) page and the
+[PennMUSH compatibility](/reference/sharpmush-help/pennmush-compatibility) help topic list the known
+differences.
+
+## 3. Check the rehearsed world
+
+For every row, record pass or fail, the command or screen you used, and any difference you accepted.
+
+| Area | At least check |
+|---|---|
+| Logins and passwords | God, a wizard, an ordinary player, a guest, aliases, a failed login, a password reset, and linking a character to a web account. Replace imported password hashes with new passwords over time. |
+| Objects and dbrefs | Object counts and the highest dbref look right; known rooms, exits, things and players keep the dbrefs softcode uses. |
+| Attributes and locks | Inherited, private, wizard-only, visual and large attributes; representative lock types and their failure messages. |
+| Flags and powers | Custom and built-in ones exist, permissions are right, and sample objects kept theirs. |
+| Channels and mail | The right `maildb` and `chatdb` were used. Check membership, aliases, history, mail folders, sending, reading, deleting and privacy with separate accounts. |
+| Settings | `mush.cnf` settings, command and function restrictions, names, limits, login rules and named objects match your notes. |
+| Handlers and packages | HTTP and event handlers, globals, master room code, startup behaviour and each package have one deliberate owner. |
+| Softcode | A list of player commands, building commands, queues, loops, regular expressions, locks, stored data and error cases, most important first. |
+| Connections | Log in over telnet and the portal terminal; check colour, client negotiation, disconnecting and reconnecting. |
+| Web portal | Claiming, logging in, linking characters, the wiki, permissions, the terminal and the admin pages work for each role. |
+| Connected services | DNS, proxy routes, bots, outgoing web requests, mail, monitoring, metrics and backups work from the private copy. |
+
+When something differs, find out why instead of adjusting the test until it passes. Whether the data
+imported correctly and whether the engine behaves the same are separate questions.
+
+## 4. Cut over
+
+Agree the go/no-go checklist, and who decides on rolling back, before the maintenance window.
+
+<Steps>
+
+1. Announce the freeze, and stop logins or put PennMUSH into maintenance mode.
+
+2. Let queued work finish, make the final flatfile with its matching `maildb` and `chatdb`, archive
+   the configuration and anything else the game relies on, and record checksums and counts for every
+   file.
+
+3. Repeat the rehearsed import on the real SharpMUSH machine. Don't reuse a rehearsal world that has
+   been changed.
+
+4. Run the short acceptance list: administrator and player login, known dbrefs, core softcode, sample
+   mail and channels, telnet, the portal terminal, connected services, backup, storage, health, logs
+   and metrics.
+
+5. Change DNS, proxy and client addresses only after the named person signs off. Keep PennMUSH stopped
+   but ready to start again.
+
+6. Watch errors, queues, storage, logins, connection drops and player reports through the agreed
+   period. Keep the import report and a log of the cutover.
+
+</Steps>
+
+## 5. Roll back safely
+
+Decide in advance what sends the game back: logins failing, data widely wrong, important softcode
+not working, unsafe storage behaviour, or a connected service that can't be fixed.
+
+To go back to PennMUSH: stop accepting changes in SharpMUSH, point the addresses back, and start the
+preserved PennMUSH world from its state before the cutover. Changes players made after SharpMUSH
+opened do not carry back automatically; say so when you announce the rollback.
+
+`<world>.previous` is something else: it is the **SharpMUSH** world that was replaced when the import
+was accepted. It can undo a just-accepted import on the SharpMUSH side; it is not a copy of PennMUSH.
+Stop the SharpMUSH stack before moving world folders, and never copy or read a live `data.mdb`. For
+ongoing SharpMUSH recovery, restore a copy made by `@backup`, or a restic snapshot holding one,
+following the [restore steps](/guides/deployment#restoring-for-real).
+
+Keep the source archive and `<world>.previous` until acceptance and the observation period are over.
+Delete old data only after the decision is written down and a separate, working backup is confirmed.
 
 ## Before you announce a date
 
-- Complete at least one production-sized rehearsal on the intended SharpMUSH version.
-- Name the person who makes the go/no-go and rollback decision.
-- Prove both telnet and browser access through the production proxy shape.
-- Establish storage headroom for the live, staging, and displaced worlds.
-- Record the observation window and the exact conditions that send the game back to PennMUSH.
+- Complete at least one full-size rehearsal on the SharpMUSH version you will use.
+- Name the person who decides go/no-go and rollback.
+- Prove both telnet and browser access through the real proxy setup.
+- Make sure there is disk room for the live, imported and replaced worlds.
+- Write down the observation period and exactly what sends the game back to PennMUSH.
 
 <LinkCard
   title="Operate SharpMUSH"
   href="/guides/operator-handbook"
-  description="Backups, restore drills, upgrades, health checks, and incident entry points."
+  description="Backups, restore drills, upgrades, health checks, and what to do when something goes wrong."
 />

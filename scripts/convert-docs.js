@@ -63,13 +63,14 @@ function createSlugFromTitle(title) {
     .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
 }
 
-function convertInternalLinks(content) {
+export function convertInternalLinks(content) {
   // Split content into sections, preserving code blocks
   const sections = [];
   let currentIndex = 0;
   
-  // Find all code blocks (``` fenced blocks and single backticks)
-  const codeBlockPattern = /```[\s\S]*?```|`[^`\n]*`/g;
+  // Find all code: fenced blocks, then inline spans of any backtick run length (``a`b``),
+  // skipping an escaped backtick (socket\`connect), which opens no span.
+  const codeBlockPattern = /^[ \t]*```[\s\S]*?^[ \t]*```[^\n]*$|(?<![\\`])(`+)(?!`)[^\n]*?[^`\n]\1(?!`)/gm;
   let match;
   
   while ((match = codeBlockPattern.exec(content)) !== null) {
@@ -135,7 +136,7 @@ function convertInternalLinks(content) {
       }
       
       // Skip patterns that contain special characters that suggest they're not help topics
-      if (topic.includes('/') || topic.includes('#') || topic.includes('$') || topic.includes('&')) {
+      if (topic.includes('/') || topic.includes('#') || topic.includes('$') || topic.includes('&') || topic.includes('*')) {
         return match;
       }
       
@@ -231,8 +232,12 @@ function convertHeadingLevels(content) {
 }
 
 function addFrontmatter(content, filename) {
-  // Use filename-based title instead of extracting from headers
-  let title = FILE_TITLES[filename] || filename.replace('.md', '');
+  // A topic collection keeps its known title; a single-topic file is named by its first heading
+  // (already lowered to ##), so the sidebar reads "Layout Functions" rather than "layout-functions".
+  const firstHeading = content.match(/^## (.+)/m)?.[1].replace(/\r$/, '');
+  let title = FILE_TITLES[filename] || firstHeading || filename.replace('.md', '');
+  // A single topic that shares its name with a collection ("Functions") is that topic's overview.
+  if (!FILE_TITLES[filename] && Object.values(FILE_TITLES).includes(title)) title = `${title} Overview`;
   
   // Clean and escape title for YAML
   title = title
@@ -410,4 +415,6 @@ async function convertAllDocs() {
 }
 
 // Run the conversion
-convertAllDocs();
+if (process.argv[1] === __filename) {
+  convertAllDocs();
+}

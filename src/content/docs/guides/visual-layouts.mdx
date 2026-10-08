@@ -1,0 +1,137 @@
+---
+title: Visual Layouts, Themes, and Images
+description: Give a SharpMUSH a consistent visual language without locking every player into the same experience.
+---
+
+import { Aside, Card, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+SharpMUSH softcode can describe a display once and let each reader receive the form that works for
+them. A terminal gets carefully aligned text and box-drawing characters. The web portal gets
+responsive page structure and real images. A screen reader gets the same information in reading
+order, without decorative borders getting in the way.
+
+That makes layouts useful for more than decoration: they give a game a recognisable visual language
+while keeping the content adaptable.
+
+## Build from layout primitives
+
+<CardGrid>
+  <Card title="Structure" icon="setting">
+    `box()` and `rule()` create titled boundaries. `flex()` and `item()` place related sections
+    together and stack them when space is tight.
+  </Card>
+  <Card title="Information" icon="open-book">
+    `fields()`, `tree()`, `bullets()`, `grid()`, `datatable()`, and `datacolumns()` express the
+    meaning of a display instead of baking it into spaces.
+  </Card>
+  <Card title="Status" icon="information">
+    `gauge()`, `badge()`, and `gradient()` add visible state while retaining text and numeric meaning.
+  </Card>
+  <Card title="Images" icon="puzzle">
+    `image()` sends a picture with a description. `figure()` pairs that picture with terminal art,
+    surrounding content, and an accessible description.
+  </Card>
+</CardGrid>
+
+Layouts can nest. A `fields()` or `flex()` on a line of its own inside `box()` becomes structured
+content inside that box; a `rule()` becomes a real divider. Use an empty width or `auto` to draw for
+each reader's reported width rather than assuming an 80-column terminal.
+
+### Example: a character sheet
+
+```sharp
+think box(fields({{"cols":2}},Name,Mannaz Byron,Species,Human,Calling,Dark Warrior,Status,Ready),Character,60,{{"theme":"fantasy","border":"rounded"}})
+```
+
+A Unicode terminal receives a rounded, themed character card. A client without Unicode receives an
+ASCII border. In the portal, the fields become responsive page structure. For a screen reader, the
+border disappears and the content is read as `Name: Mannaz Byron`, `Species: Human`, and so on.
+
+<Aside type="tip" title="Prefer meaning over manual spacing">
+If the content is a set of labels and values, use `fields()` rather than padding strings yourself.
+If it is hierarchical, use `tree()`. SharpMUSH can only adapt a display when the structure is
+present in the softcode.
+</Aside>
+
+## Give the game a visual language
+
+A layout theme controls borders, titles, headings, field labels, bullets, tree guides, gauges, and
+the quieter separators between them. Themes can be:
+
+- a built-in name from `themes()`;
+- generated from a seed colour and a colour harmony;
+- based on a game's MSSP genre;
+- written as JSON when staff want exact colours and border pieces.
+
+Set `layout_theme` for the game's default look. Name a theme in a layout's `"theme"` option when a
+specific display needs its own identity—for example, red warnings or a faction-specific sheet.
+Nothing essential should depend on colour alone: the text, values, and structure remain present.
+
+## Let players make it theirs
+
+Players can use `@theme me=<theme>` to choose how layouts are drawn for their own telnet or MU\*
+client. Their choice sits above the game's default but below a theme explicitly requested by the
+softcode. This preserves authorial intent for a special display while allowing the rest of the game
+to match an individual's palette and contrast preferences.
+
+The web portal has its own visual themes. A player's `@theme` changes server-rendered layouts sent to
+MU\* clients; it does not override the portal shell.
+
+<Aside type="note" title="Light and dark preferences">
+Use `@theme/light` or `@theme/dark` to make the player's theme for that background. A theme made
+from one colour, which includes the genre themes, is made again with colours that stand out on that
+background. A well-known scheme such as `nord` stays as it is.
+</Aside>
+
+## Draw pictures without losing the text
+
+`image()` is appropriate for a standalone picture. `figure()` is the richer layout primitive: it
+can show a real image in capable clients, text art in a terminal, descriptive text when neither is
+available, and content flowing beside it.
+
+```sharp
+think box(figure(https://images.example.org/mannaz.png,Mannaz Byron wearing dark armour,/|_/|%r=^.^=%r%b> <,left,fields(,Species,Human,Calling,Dark Warrior)),Mannaz Byron,44)
+```
+
+The description is not optional polish. It gives a screen reader the image's meaning and remains
+the fallback when a client can show neither the picture nor terminal art. Terminal art is a
+presentation fallback, not alternative text; keep the description useful even when the art is
+removed.
+
+Markdown images follow the same model:
+
+```markdown
+![A street map showing the market north of the station](https://images.example.org/city-map.png)
+```
+
+Capable clients receive the picture. Text readers receive the description. An image alone in its
+paragraph is treated as a figure; an image inside a sentence stays inline.
+
+<Aside type="caution" title="Image delivery is permission- and host-gated">
+Images are sent only when the caller may send out-of-band media and the address is allowed by the
+game's `image_hosts` policy. `figure()` and rendered Markdown do not bypass those controls. Always
+provide a description and a useful text fallback.
+</Aside>
+
+## A practical design sequence
+
+<Steps>
+1. Identify the information and reading order before choosing colours or borders.
+2. Express that structure with `fields()`, `flex()`, `tree()`, tables, or another layout primitive.
+3. Wrap related content with `box()` and `rule()` to establish the game's repeated visual language.
+4. Apply a game theme, reserving explicit per-layout themes for displays that intentionally differ.
+5. Add images with meaningful descriptions and terminal fallbacks.
+6. Test a narrow terminal, an ASCII-only client, the portal, and screen-reader mode.
+</Steps>
+
+<LinkCard
+  title="Complete layout-function reference"
+  href="/reference/sharpmush-help/layout-functions/"
+  description="Every layout function, border option, theme form, accessibility behavior, and worked example."
+/>
+
+<LinkCard
+  title="Image and Pueblo functions"
+  href="/reference/sharpmush-help/sharppueb/#image"
+  description="The image() function, permissions, host policy, and client behavior."
+/>

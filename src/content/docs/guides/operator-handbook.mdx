@@ -5,73 +5,150 @@ description: The production checklist for backups, upgrades, health, and recover
 
 import { Steps, Aside, LinkCard, Card, CardGrid } from '@astrojs/starlight/components';
 
-This page is the short operator route through the maintained single-host Compose deployment. Use the
-repository runbook for exact commands and paths; run them from `deploy/` with the same Compose file
-that created the stack.
+This handbook is the checklist for running a game on the supported single-machine Compose stack. The
+exact commands and settings are in the [Deployment Reference](/guides/deployment), and what each kind
+of update does to players' connections is in [Connections During Updates](/technical/connections).
+Run every command from the `deploy/` folder, with the same Compose file that created the stack.
 
-## First claim
+## First claim and deployment
+
+Choose how the web side reaches the internet:
+
+- `docker-compose.prod.yml` includes Caddy. Open web ports 80 and 443 and the telnet port you intend
+  to use; keep the game server, NATS, metrics and connection-server web ports private.
+- `docker-compose.cloudflare.yml` uses a Cloudflare Tunnel for the web side and hides the machine's
+  address. Telnet still needs its own, deliberate public route.
+
+Create `.env` from `.env.example`, set unique secrets, restrict who can read the file, and keep it out
+of source control and anything you share for troubleshooting. Set up restic only if you turn backups
+on, then start the stack.
 
 <Aside type="danger">
 Protect `/setup` from untrusted visitors, then claim it immediately. The first visitor owns the
 pre-generated administrator account linked to `#1`.
 </Aside>
 
-After claim, verify a fresh administrator login, an ordinary telnet login, the portal terminal over
-`wss://your-domain/ws`, readiness, logs, private metrics, and wizard-only `@storage` output.
+Right after the claim:
+
+<Steps>
+
+1. Log in as the administrator in a fresh browser, log in a disposable test character over plaintext
+   telnet (never reuse a production password for this check), and log in through the portal terminal
+   at `wss://your-domain/ws`.
+2. Confirm `/ws` reaches the connection server and the health and readiness checks are green.
+3. Read the container logs for database, NATS, renderer, login and proxy errors, without sharing
+   tokens or `.env` values.
+4. Scrape the private Prometheus metrics, and set alerts for availability, disk headroom, queue
+   pressure and repeated failed logins.
+5. Run `@storage` as a wizard and write down the map limit, live data, disk allocated, what a backup
+   needs at its peak, free space, and any leftover worlds.
+
+</Steps>
 
 ## What recovery actually covers
 
 <CardGrid>
   <Card title="World copies" icon="database">
-    `@backup` asks LMDB for a point-in-time world copy. Never let a file backup read live `data.mdb`.
+    `@backup` makes a point-in-time copy of the world. Never let a file backup read the live
+    `data.mdb`.
   </Card>
-  <Card title="Wiki assets" icon="open-book">
-    Uploaded files live outside the LMDB world and must be included separately in Restic snapshots.
+  <Card title="Wiki files" icon="open-book">
+    Uploaded files live outside the world and must be included separately in restic snapshots.
   </Card>
-  <Card title="NATS state" icon="setting">
-    JetStream persistence supports bounded replay and WebSocket recovery; it is not a world backup.
+  <Card title="NATS data" icon="setting">
+    NATS's stored data lets browsers recover after a restart. It is not a backup of the world.
   </Card>
-  <Card title="Plugins and config" icon="puzzle">
-    Preserve plugin files and deployment config. Keep `.env` values in a separate secrets system.
+  <Card title="Plugins and settings" icon="puzzle">
+    Keep plugin files and deployment settings. Keep `.env` values in a separate secrets store.
   </Card>
 </CardGrid>
 
-## Restore rehearsal
+These are not interchangeable:
+
+| What | Where it lives | How to protect it |
+|---|---|---|
+| The world | `sharpmush-server`'s `app-data` volume | Use `@backup` to make a point-in-time copy. Never let restic or another tool read the live `data.mdb`. |
+| Wiki files | `app-data` volume, outside the world | Include them directly in restic snapshots. A world copy does not contain uploads. |
+| NATS data | The `nats-data` volume | Keep it so browser sessions can recover across restarts, and back it up if that matters to you. Losing it never means losing the world. |
+| Plugins and settings | The deployment folder or a mounted plugin folder | Keep them in version control or snapshots, with `.env` values in a separate secrets store. |
+| The restic repository | Off-machine storage | Protect its password separately, watch the nightly results, and test restores. It holds safe world copies and the other files you chose, not a live snapshot of the running database. |
+
+Keeping backups is not the same as knowing they work. Check the nightly results and `@backup/list`,
+and also run a restore drill on a schedule.
+
+## Restore drill
 
 <Steps>
-1. Restore a dated Restic snapshot to an isolated directory or host, never over the live volume.
-2. Start a non-public stack with test-only secrets and no production DNS, mail, bots, or automation.
-3. Check known dbrefs, administrator and player login, core softcode, mail/channels, wiki assets,
-   plugins, telnet, and the browser terminal.
-4. Record the snapshot id, recovery time, recovered scope, evidence, failures, and corrections.
+
+1. Pick a dated restic snapshot and restore it to a separate folder or machine. Never overwrite the
+   live volume during a drill.
+2. Check the restored set has a finished world copy, the wiki files, the plugins you need and your
+   deployment settings. Don't treat `lock.mdb` as data.
+3. Start a private stack on the restored files with new, test-only secrets, and no production DNS,
+   mail, bots or outgoing automation.
+4. Check the world is the right one: known dbrefs, administrator and ordinary player login, important
+   softcode, mail and channels, wiki pages and files, plugins, telnet, and the browser terminal.
+5. Write down the snapshot id, date, who ran the drill, how long it took, what was recovered, the
+   checks, any failures and what was done about them. A drill is finished only when the record names
+   a recovery point that works.
+
 </Steps>
 
-## Upgrade and incident rules
+The restore commands are in the [Deployment Reference](/guides/deployment#restoring-for-real).
 
-Keep the deployment's documented image and automatic-update policy. Before deliberate change, record
-current image digests, take a fresh world copy, confirm storage headroom, and read the connection
-impact. Replacing the engine or renderer can preserve game sockets; replacing SocketServer closes
-them. Deployment rollback restores binaries/configuration. Data recovery restores persistent state.
-Do not substitute one for the other.
+## Routine checks
 
-Start incidents with readiness, bounded logs, metrics, `@storage`, service restart history, image
-digests, and the affected connection path. Never publish `.env`, passwords, cookies, bearer/resume
-tokens, Restic credentials, or connection strings in diagnostics.
+- Readiness, container restart counts, recent warnings and errors, metrics alerts, free disk space,
+  and `@storage`.
+- Backups finished, and the off-machine copies are being kept as intended.
+- Leftover `.previous`, `.precompact`, `.staging-*` and unfinished backup folders. Remove them only
+  after whatever replaced them is checked (see [Earlier worlds](/guides/deployment#earlier-worlds)).
+- Certificate expiry, proxy routes, that telnet answers, and a real portal login (a page loading is
+  not enough).
+- Changes to accounts, bans, site locks and administrators. Replace any exposed secret and sign out
+  affected sessions promptly.
+
+## Upgrade and rollback
+
+Keep the image tags and automatic updates the deployment already uses. Before a deliberate upgrade:
+read the release notes and [Connections During Updates](/technical/connections), check there is disk
+room, make and check a fresh world copy, and write down the current image digests and Compose
+settings. Then pull the images, replace only the services you meant to, and repeat the readiness,
+logs, metrics, storage, login, command, portal and integration checks.
+
+Replacing the game server or the renderer keeps players connected. Replacing the connection server
+closes every connection: logged-in browsers can recover within their recovery window, and telnet
+players reconnect. Losing the machine, its disk or NATS's data has wider effects. Schedule
+accordingly.
+
+**Rolling back a deployment** means going back to the previous image and Compose settings, when the
+data still works with them. **Restoring data** means stopping changes and replacing the stored world
+from a checked recovery point. Neither replaces the other. Don't start an older version against a
+world a newer version has already upgraded, unless that downgrade is stated to be supported.
+
+## When something goes wrong
+
+| Symptom | Check first | Protect first |
+|---|---|---|
+| `MDB_MAP_FULL`, low disk, or a fast-growing world | `@storage`, free disk, leftover worlds, what a backup needs | Stop unnecessary changes, and never delete the only recovery copy. Raise the map limit before trying again. |
+| NATS down, or browser recovery failing | NATS health and logs, its volume, retention and message size limits | Keep its volume. Expect coordination between the parts of the game, and recovery, to suffer. |
+| Output delayed, but players still connected | Renderer health and the permissions on its socket | Keep the connection server running and replace only the renderer. |
+| Every telnet and browser connection drops | The connection server's history, the machine and network, the proxy and recent deployments | Stop recreating it over and over; find out whether browsers can recover or players must log in again. |
+| Portal login or setup fails | Server readiness, the proxy's host and HTTPS headers, sessions, site locks, bans | Keep `/setup` protected, and don't turn off login protections to diagnose. |
+| Suspected break-in | Account and audit records, exposed secrets, sessions, images and machine access | Cut off public access if needed, keep the logs, replace secrets, sign out sessions, and restore only from data you trust. |
+
+When collecting information to share, include times, image digests, service state, relevant health and
+metrics readings, and short log excerpts. Remove passwords, restic credentials, cookies, tokens,
+connection strings and the contents of `.env`.
 
 <LinkCard
-  title="Full operator runbook"
-  href="https://github.com/SharpMUSH/SharpMUSH/blob/main/docs/guides/operator-handbook.md"
-  description="State-by-state backup coverage, exact checks, rollback distinctions, and incident triage."
-/>
-
-<LinkCard
-  title="Deployment commands"
-  href="https://github.com/SharpMUSH/SharpMUSH/blob/main/deploy/README.md"
-  description="Compose files, ports, backups, storage planning, restore commands, and Cloudflare setup."
+  title="Deployment Reference"
+  href="/guides/deployment"
+  description="Compose files, ports, backups, disk space, restore commands, and Cloudflare setup."
 />
 
 <LinkCard
   title="Deployment architecture"
   href="/technical/architecture"
-  description="Service ownership, protocols, persisted state, and restart boundaries."
+  description="What each part of the game owns, how they talk, and what a restart of each one does."
 />
