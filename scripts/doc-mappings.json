@@ -1,6 +1,6 @@
 {
   "_metadata": {
-    "generatedAt": "2026-10-08T14:24:52.253Z",
+    "generatedAt": "2026-10-08T17:19:46.338Z",
     "sourceFiles": [
       "accent-function.md",
       "accents.md",
@@ -183,7 +183,7 @@
       "zone-masters.md",
       "zones.md"
     ],
-    "totalMappings": 1333
+    "totalMappings": 1338
   },
   "mappings": {
     "ACCENT()": "accent-function",
@@ -271,6 +271,11 @@
     "THEME()": "layout-functions",
     "SWATCH()": "layout-functions",
     "@THEME": "layout-functions",
+    "@THEME/LIST": "layout-functions",
+    "@THEME/ADD": "layout-functions",
+    "@THEME/REMOVE": "layout-functions",
+    "@THEME/DISABLE": "layout-functions",
+    "@THEME/ENABLE": "layout-functions",
     "BOX()": "layout-functions",
     "RULE()": "layout-functions",
     "FLEX()": "layout-functions",
@@ -2017,6 +2022,26 @@
       {
         "original": "@theme",
         "normalized": "@THEME"
+      },
+      {
+        "original": "@theme/list",
+        "normalized": "@THEME/LIST"
+      },
+      {
+        "original": "@theme/add",
+        "normalized": "@THEME/ADD"
+      },
+      {
+        "original": "@theme/remove",
+        "normalized": "@THEME/REMOVE"
+      },
+      {
+        "original": "@theme/disable",
+        "normalized": "@THEME/DISABLE"
+      },
+      {
+        "original": "@theme/enable",
+        "normalized": "@THEME/ENABLE"
       },
       {
         "original": "box()",
