@@ -27,7 +27,8 @@ account and the God character.
 
 ## Softcode Package Manager
 
-Global softcode is installed from a **package repository** rather than pasted in from `.mush` files.
+Global softcode can be installed from a **package repository**. Pasting in a `.mush` file still works
+as it does on any MUSH, but a package is safer and much easier to upgrade and maintain.
 Packages are declarative YAML — the objects, attributes, flags, locks and parents that should exist —
 and installing one runs a plan/apply cycle: the server computes a changeset against the live
 database, you review it, and only then is anything written. Upgrades three-way-merge against a

@@ -9,7 +9,8 @@ Global softcode has traditionally been distributed as a `.mush` file you paste i
 hope for the best: the dbrefs have to line up, there is no record of what was installed, and there is
 no way to upgrade without clobbering local edits.
 
-SharpMUSH replaces that with **packages**. A package is a declarative description of softcode — the
+SharpMUSH still accepts `.mush` files: paste one in as you would on any other MUSH. It also offers
+**packages**, which are safer and much easier to upgrade and maintain. A package is a declarative description of softcode — the
 objects that should exist, and the attributes, flags, locks and parents they carry — installed
 through the admin panel at `/admin/packages`.
 
