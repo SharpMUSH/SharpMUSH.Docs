@@ -82,7 +82,7 @@ description: "SharpMUSH documentation for Functions"
 |                       |                       |                       |                       |
 |-----------------------|-----------------------|-----------------------|-----------------------|
 | [CEMIT()](/reference/sharpmush-help/sharpchat/#cemit)             | [EMIT()](/reference/sharpmush-help/sharpfunc/#emit)              | [LEMIT()](/reference/sharpmush-help/sharpfunc/#nslemit)             | [MESSAGE()](/reference/sharpmush-help/sharpfunc/#message)           |
-| [NSEMIT()](/reference/sharpmush-help/sharpfunc/#emit)            | [NSLEMIT()](/reference/sharpmush-help/sharpfunc/#nspemit)           | [NSOEMIT()](/reference/sharpmush-help/sharpfunc/#oemit)           | [NSPEMIT()](/reference/sharpmush-help/sharpfunc/#pemit)           |
+| [NSEMIT()](/reference/sharpmush-help/sharpfunc/#emit)            | [NSLEMIT()](/reference/sharpmush-help/sharpfunc/#nslemit)           | [NSOEMIT()](/reference/sharpmush-help/sharpfunc/#oemit)           | [NSPEMIT()](/reference/sharpmush-help/sharpfunc/#pemit)           |
 | [NSPROMPT()](/reference/sharpmush-help/sharpfunc/#pemit)          | [NSREMIT()](/reference/sharpmush-help/sharpfunc/#remit)           | [NSZEMIT()](/reference/sharpmush-help/sharpfunc/#zemit)           | [OEMIT()](/reference/sharpmush-help/sharpfunc/#oemit)             |
 | [PAGECONVERSATIONS()](/reference/sharpmush-help/sharpfunc/#pageconversations) | [PAGERECALL()](/reference/sharpmush-help/sharpfunc/#pagerecall)        | [PEMIT()](/reference/sharpmush-help/sharpfunc/#pemit)             | [PROMPT()](/reference/sharpmush-help/sharpfunc/#pemit)            |
 | [REMIT()](/reference/sharpmush-help/sharpfunc/#remit)             | [ZEMIT()](/reference/sharpmush-help/sharpfunc/#zemit)             |                       |                       |
@@ -112,7 +112,7 @@ description: "SharpMUSH documentation for Functions"
 |               |               |               |               |
 |---------------|---------------|---------------|---------------|
 | [CHILDREN()](/reference/sharpmush-help/sharpfunc/#children)  | [CON()](/reference/sharpmush-help/sharpfunc/#con)       | [ENTRANCES()](/reference/sharpmush-help/sharpfunc/#entrances) | [EXIT()](/reference/sharpmush-help/sharpfunc/#exit)      |
-| [FOLLOWERS()](/reference/sharpmush-help/sharpfunc/#followers) | [FOLLOWING()](/reference/sharpmush-help/sharpfunc/#following) | [HOME()](/reference/sharpmush-help/sharpfunc/#homes)      | [LCON()](/reference/sharpmush-help/sharpfunc/#lcon)      |
+| [FOLLOWERS()](/reference/sharpmush-help/sharpfunc/#followers) | [FOLLOWING()](/reference/sharpmush-help/sharpfunc/#following) | [HOME()](/reference/sharpmush-help/sharpfunc/#home)      | [LCON()](/reference/sharpmush-help/sharpfunc/#lcon)      |
 | [LEXITS()](/reference/sharpmush-help/sharpfunc/#lexits)    | [LOC()](/reference/sharpmush-help/sharpfunc/#loc)       | [LOCATE()](/reference/sharpmush-help/locate-function/#locate)    | [LPARENT()](/reference/sharpmush-help/sharpfunc/#lparent)   |
 | [LPLAYERS()](/reference/sharpmush-help/sharpfunc/#lplayers)  | [LSEARCH()](/reference/sharpmush-help/lsearch-function/#lsearch)   | [LTHINGS()](/reference/sharpmush-help/sharpfunc/#lthings)   | [LVCON()](/reference/sharpmush-help/sharpfunc/#lvcon)     |
 | [LVEXITS()](/reference/sharpmush-help/sharpfunc/#lvexits)   | [LVPLAYERS()](/reference/sharpmush-help/sharpfunc/#lvplayers) | [LVTHINGS()](/reference/sharpmush-help/sharpfunc/#lvthings)  | [NAMELIST()](/reference/sharpmush-help/sharpfunc/#namelist)  |
@@ -135,7 +135,7 @@ description: "SharpMUSH documentation for Functions"
 | [FLAGS()](/reference/sharpmush-help/sharpfunc/#flags)      | [FULLALIAS()](/reference/sharpmush-help/sharpfunc/#alias)  | [FULLMOTD()](/reference/sharpmush-help/sharpfunc/#motd)   | [FULLNAME()](/reference/sharpmush-help/sharpfunc/#fullname)   |
 | [GETPIDS()](/reference/sharpmush-help/sharpfunc/#getpids)    | [HASATTR()](/reference/sharpmush-help/sharpfunc/#hasattr)    | [HASATTRP()](/reference/sharpmush-help/sharpfunc/#hasattr)   | [HASFLAG()](/reference/sharpmush-help/sharpfunc/#hasflag)    |
 | [HASPOWER()](/reference/sharpmush-help/sharpfunc/#haspower)   | [HASROLE()](/reference/sharpmush-help/sharpfunc/#hasrole)    | [HASTYPE()](/reference/sharpmush-help/sharpfunc/#hastype)    | [INAME()](/reference/sharpmush-help/sharpfunc/#iname)      |
-| [ISAPPROVED()](/reference/sharpmush-help/sharpfunc/#isapproved) | [LFLAGS()](/reference/sharpmush-help/sharpfunc/#lflags)     | [LOCK()](/reference/sharpmush-help/sharpfunc/#locking)       | [LOCKFLAGS()](/reference/sharpmush-help/sharpfunc/#lockflags)  |
+| [ISAPPROVED()](/reference/sharpmush-help/sharpfunc/#isapproved) | [LFLAGS()](/reference/sharpmush-help/sharpfunc/#lflags)     | [LOCK()](/reference/sharpmush-help/sharpfunc/#lock)       | [LOCKFLAGS()](/reference/sharpmush-help/sharpfunc/#lockflags)  |
 | [LOCKOWNER()](/reference/sharpmush-help/sharpfunc/#lockowner)  | [LOCKS()](/reference/sharpmush-help/sharpfunc/#llocks)      | [LPIDS()](/reference/sharpmush-help/sharpfunc/#lpids)      | [LSTATS()](/reference/sharpmush-help/sharpfunc/#lstats)     |
 | [MONEY()](/reference/sharpmush-help/sharpfunc/#money)      | [MONIKER()](/reference/sharpmush-help/sharpfunc/#moniker)    | [MOTD()](/reference/sharpmush-help/sharpfunc/#motd)       | [MSECS()](/reference/sharpmush-help/sharpfunc/#mtime)      |
 | [MTIME()](/reference/sharpmush-help/sharpfunc/#mtime)      | [MUDNAME()](/reference/sharpmush-help/sharpfunc/#mudname)    | [MUDURL()](/reference/sharpmush-help/sharpfunc/#mudname)     | [NAME()](/reference/sharpmush-help/sharpfunc/#name)       |
@@ -297,13 +297,13 @@ Boxes, titled rules, columns, labelled fields, trees, pictures, gauges, lists an
 | [BEEP()](/reference/sharpmush-help/sharpfunc/#beep)           | [BENCHMARK()](/reference/sharpmush-help/sharpfunc/#benchmark)      | [CHECKPASS()](/reference/sharpmush-help/sharpfunc/#checkpass)      | [CLONE()](/reference/sharpmush-help/sharpfunc/#clone)          |
 | [CMDLINK()](/reference/sharpmush-help/sharppueb/#cmdlink)        | [CREATE()](/reference/sharpmush-help/sharpfunc/#create)         | [DIE()](/reference/sharpmush-help/sharpfunc/#die)            | [DIG()](/reference/sharpmush-help/sharpfunc/#dig)            |
 | [ENDTAG()](/reference/sharpmush-help/sharppueb/#endtag)         | [FIRSTOF()](/reference/sharpmush-help/sharpfunc/#firstof)        | [FN()](/reference/sharpmush-help/fn-function/#fn)             | [FUNCTIONS()](/reference/sharpmush-help/sharpfunc/#functions)      |
-| [HTML()](/reference/sharpmush-help/sharppueb/#html)           | [IBREAK()](/reference/sharpmush-help/sharpfunc/#ibreak)         | [ILEV()](/reference/sharpmush-help/ilev-function/#ilev)           | [INUM()](/reference/sharpmush-help/sharpfunc/#inum)           |
+| [HTML()](/reference/sharpmush-help/sharppueb/#html-1)           | [IBREAK()](/reference/sharpmush-help/sharpfunc/#ibreak)         | [ILEV()](/reference/sharpmush-help/ilev-function/#ilev)           | [INUM()](/reference/sharpmush-help/sharpfunc/#inum)           |
 | [ISDBREF()](/reference/sharpmush-help/sharpfunc/#isdbref)        | [ISINT()](/reference/sharpmush-help/sharpfunc/#isint)          | [ISNUM()](/reference/sharpmush-help/sharpfunc/#isnum)          | [ISOBJID()](/reference/sharpmush-help/sharpfunc/#isdbref)        |
 | [ISREGEXP()](/reference/sharpmush-help/sharpfunc/#isregexp)       | [ISWORD()](/reference/sharpmush-help/sharpfunc/#isword)         | [ITEXT()](/reference/sharpmush-help/sharpfunc/#itext)          | [LETQ()](/reference/sharpmush-help/sharpfunc/#letq)           |
 | [LINK()](/reference/sharpmush-help/sharpfunc/#link)           | [LIST()](/reference/sharpmush-help/sharpfunc/#list)           | [LISTQ()](/reference/sharpmush-help/sharpfunc/#listq)          | [LNUM()](/reference/sharpmush-help/sharpfunc/#lnum)           |
 | [LOCALIZE()](/reference/sharpmush-help/sharpfunc/#localize)       | [LSET()](/reference/sharpmush-help/sharpfunc/#lset)           | [NULL()](/reference/sharpmush-help/sharpfunc/#null)           | [NUMVERSION()](/reference/sharpmush-help/sharpfunc/#version)     |
 | [OBJEVAL()](/reference/sharpmush-help/sharpfunc/#objeval)        | [OPEN()](/reference/sharpmush-help/sharpfunc/#open)           | [PCREATE()](/reference/sharpmush-help/sharpfunc/#pcreate)        | [R()](/reference/sharpmush-help/sharpfunc/#r)              |
-| [RAND()](/reference/sharpmush-help/sharpfunc/#rand)           | [RESTRICTEDEXPR()](/reference/sharpmush-help/restrictedexpr/#restrictedexpr) | [S()](/reference/sharpmush-help/sharpfunc/#subj)              | [SCAN()](/reference/sharpmush-help/sharpfunc/#scan)           |
+| [RAND()](/reference/sharpmush-help/sharpfunc/#rand)           | [RESTRICTEDEXPR()](/reference/sharpmush-help/restrictedexpr/#restrictedexpr) | [S()](/reference/sharpmush-help/sharpfunc/#s)              | [SCAN()](/reference/sharpmush-help/sharpfunc/#scan)           |
 | [SET()](/reference/sharpmush-help/sharpfunc/#set)            | [SETQ()](/reference/sharpmush-help/setq-function/#setq)           | [SETR()](/reference/sharpmush-help/sharpfunc/#setr)           | [SLEV()](/reference/sharpmush-help/sharpfunc/#stext)           |
 | [SOUNDEX()](/reference/sharpmush-help/soundex-function/#soundex)        | [SOUNDSLIKE()](/reference/sharpmush-help/sharpfunc/#soundlike)     | [SPEAK()](/reference/sharpmush-help/speak/#speak)          | [STEXT()](/reference/sharpmush-help/sharpfunc/#stext)          |
 | [SUGGEST()](/reference/sharpmush-help/sharpfunc/#suggest)        | [TAG()](/reference/sharpmush-help/sharppueb/#tag)            | [TAGWRAP()](/reference/sharpmush-help/sharppueb/#tagwrap)        | [TEL()](/reference/sharpmush-help/sharpfunc/#tel)            |
@@ -331,7 +331,7 @@ Boxes, titled rules, columns, labelled fields, trees, pictures, gauges, lists an
   The null() function is similar, but does evaluate its argument(s), so side-effects can occur within a null(). Useful for eating the output of functions when you don't use that output.
 
 ::: seealso
-- [@@](/reference/sharpmush-help/sharpcmd/)
+- [@@](/reference/sharpmush-help/sharpcmd/#-1)
 :::
 
 ## abs()
@@ -1572,7 +1572,7 @@ think elock(Dancing Slippers/drop, Princess)
 ::: seealso
 - [PEMIT()](/reference/sharpmush-help/sharpfunc/#pemit)
 - [REMIT()](/reference/sharpmush-help/sharpfunc/#remit)
-- [NSLEMIT()](/reference/sharpmush-help/sharpfunc/#nspemit)
+- [NSLEMIT()](/reference/sharpmush-help/sharpfunc/#nslemit)
 - [OEMIT()](/reference/sharpmush-help/sharpfunc/#oemit)
 - [ZEMIT()](/reference/sharpmush-help/sharpfunc/#zemit)
 :::
@@ -1902,8 +1902,8 @@ think fmod(6.1,2.5)
 
 ::: seealso
 - [FOLLOWING()](/reference/sharpmush-help/sharpfunc/#following)
-- [follow](/reference/sharpmush-help/sharpcmd/#follow)
-- [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow)
+- [follow](/reference/sharpmush-help/sharpcmd/#follow-1)
+- [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow-1)
 :::
 ## following()
 `following(<object>)`
@@ -1913,8 +1913,8 @@ think fmod(6.1,2.5)
 
 ::: seealso
 - [FOLLOWERS()](/reference/sharpmush-help/sharpfunc/#followers)
-- [follow](/reference/sharpmush-help/sharpcmd/#follow)
-- [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow)
+- [follow](/reference/sharpmush-help/sharpcmd/#follow-1)
+- [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow-1)
 :::
 ## fraction()
 `fraction(<number>[, <whole>])`
@@ -2706,7 +2706,7 @@ You say, "foo ~ bar ~ boing"
 
 
 ::: seealso
-- [@lemit](/reference/sharpmush-help/sharpcmd/#nslemit)
+- [@lemit](/reference/sharpmush-help/sharpcmd/#lemit)
 - [REMIT()](/reference/sharpmush-help/sharpfunc/#remit)
 :::
 ## letq()
@@ -2895,7 +2895,7 @@ think lmath(add, 1|2|3, |)
 ::: seealso
 - [locate()](/reference/sharpmush-help/locate-function/#locate)
 - [RLOC()](/reference/sharpmush-help/sharpfunc/#rloc)
-- [HOME()](/reference/sharpmush-help/sharpfunc/#homes)
+- [HOME()](/reference/sharpmush-help/sharpfunc/#home)
 - [WHERE()](/reference/sharpmush-help/sharpfunc/#where)
 - [RNUM()](/reference/sharpmush-help/sharpfunc/#rnum)
 - [ROOM()](/reference/sharpmush-help/sharpfunc/#room)
@@ -2968,7 +2968,7 @@ Basic USER:ITSME Use
 
 
 ::: seealso
-- [LOCK()](/reference/sharpmush-help/sharpfunc/#locking)
+- [LOCK()](/reference/sharpmush-help/sharpfunc/#lock)
 - [LSET()](/reference/sharpmush-help/sharpfunc/#lset)
 - [LOCKFLAGS()](/reference/sharpmush-help/sharpfunc/#lockflags)
 - [LLOCKFLAGS()](/reference/sharpmush-help/sharpfunc/#llockflags)
@@ -3006,7 +3006,7 @@ Walker WalkerBot Wilco
 
 ::: seealso
 - [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
-- [LOCK()](/reference/sharpmush-help/sharpfunc/#locking)
+- [LOCK()](/reference/sharpmush-help/sharpfunc/#lock)
 - [ELOCK()](/reference/sharpmush-help/sharpfunc/#elock)
 - [lock keys](/reference/sharpmush-help/lock-keys/#lock-keys)
 - [FILTER()](/reference/sharpmush-help/sharpfunc/#filter)
@@ -3024,7 +3024,7 @@ Walker WalkerBot Wilco
 ::: seealso
 - [LLOCKFLAGS()](/reference/sharpmush-help/sharpfunc/#llockflags)
 - [LSET()](/reference/sharpmush-help/sharpfunc/#lset)
-- [LOCK()](/reference/sharpmush-help/sharpfunc/#locking)
+- [LOCK()](/reference/sharpmush-help/sharpfunc/#lock)
 - [LLOCKS()](/reference/sharpmush-help/sharpfunc/#llocks)
 - [LOCKOWNER()](/reference/sharpmush-help/sharpfunc/#lockowner)
 :::
@@ -3040,7 +3040,7 @@ Walker WalkerBot Wilco
 ::: seealso
 - [LOCKFLAGS()](/reference/sharpmush-help/sharpfunc/#lockflags)
 - [LSET()](/reference/sharpmush-help/sharpfunc/#lset)
-- [LOCK()](/reference/sharpmush-help/sharpfunc/#locking)
+- [LOCK()](/reference/sharpmush-help/sharpfunc/#lock)
 - [LLOCKS()](/reference/sharpmush-help/sharpfunc/#llocks)
 - [LOCKOWNER()](/reference/sharpmush-help/sharpfunc/#lockowner)
 :::
@@ -3054,7 +3054,7 @@ Walker WalkerBot Wilco
 - [LOCKFLAGS()](/reference/sharpmush-help/sharpfunc/#lockflags)
 - [LLOCKFLAGS()](/reference/sharpmush-help/sharpfunc/#llockflags)
 - [LSET()](/reference/sharpmush-help/sharpfunc/#lset)
-- [LOCK()](/reference/sharpmush-help/sharpfunc/#locking)
+- [LOCK()](/reference/sharpmush-help/sharpfunc/#lock)
 - [LLOCKS()](/reference/sharpmush-help/sharpfunc/#llocks)
 :::
 ## listset()
@@ -3079,7 +3079,7 @@ Walker WalkerBot Wilco
 ::: seealso
 - [LOCKFLAGS()](/reference/sharpmush-help/sharpfunc/#lockflags)
 - [LLOCKFLAGS()](/reference/sharpmush-help/sharpfunc/#llockflags)
-- [LOCK()](/reference/sharpmush-help/sharpfunc/#locking)
+- [LOCK()](/reference/sharpmush-help/sharpfunc/#lock)
 - [LOCKOWNER()](/reference/sharpmush-help/sharpfunc/#lockowner)
 :::
 ## log()
@@ -3677,7 +3677,7 @@ You say, "#1 #7 #56 #-1"
 
 
 ::: seealso
-- [@stats](/reference/sharpmush-help/sharpcmd/#lstats)
+- [@stats](/reference/sharpmush-help/sharpcmd/#stats)
 - [LSTATS()](/reference/sharpmush-help/sharpfunc/#lstats)
 :::
 ## nor()
@@ -3815,7 +3815,7 @@ You say, "#1 #7 #56 #-1"
 
 
 ::: seealso
-- [S()](/reference/sharpmush-help/sharpfunc/#subj)
+- [S()](/reference/sharpmush-help/sharpfunc/#s)
 :::
 ## objid()
 `objid(<object>)`
@@ -3967,8 +3967,8 @@ You say, "#1 #7 #56 #-1"
 
 
 ::: seealso
-- [@prompt](/reference/sharpmush-help/sharpcmd/#pemit)
-- [@nspemit](/reference/sharpmush-help/sharpcmd/#pemit)
+- [@prompt](/reference/sharpmush-help/sharpcmd/#prompt)
+- [@nspemit](/reference/sharpmush-help/sharpcmd/#nspemit)
 - [PROMPT_NEWLINES](/reference/sharpmush-help/sharpcmd/#promptnewlines)
 :::
 ## permission()
@@ -4317,7 +4317,7 @@ You say "this Trash is the Brash string"
 ::: seealso
 - [@remit](/reference/sharpmush-help/sharpcmd/#remit)
 - [PEMIT()](/reference/sharpmush-help/sharpfunc/#pemit)
-- [NSLEMIT()](/reference/sharpmush-help/sharpfunc/#nspemit)
+- [NSLEMIT()](/reference/sharpmush-help/sharpfunc/#nslemit)
 :::
 ## remove()
 `remove(<list>, <words>[, <delimiter>])`
@@ -5843,7 +5843,7 @@ think testlock(\\+FOO:BAR,*Walker)
 
 ::: seealso
 - [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
-- [LOCK()](/reference/sharpmush-help/sharpfunc/#locking)
+- [LOCK()](/reference/sharpmush-help/sharpfunc/#lock)
 - [ELOCK()](/reference/sharpmush-help/sharpfunc/#elock)
 - [LOCKFILTER()](/reference/sharpmush-help/sharpfunc/#lockfilter)
 - [locktypes](/reference/sharpmush-help/sharplock/#locktypes)
@@ -6330,7 +6330,7 @@ You say "1008001004"
 - [LOC()](/reference/sharpmush-help/sharpfunc/#loc)
 - [RNUM()](/reference/sharpmush-help/sharpfunc/#rnum)
 - [locate()](/reference/sharpmush-help/locate-function/#locate)
-- [HOME()](/reference/sharpmush-help/sharpfunc/#homes)
+- [HOME()](/reference/sharpmush-help/sharpfunc/#home)
 - [@whereis](/reference/sharpmush-help/sharpcmd/#whereis)
 :::
 ## wipe()

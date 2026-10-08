@@ -23,7 +23,7 @@ description: "SharpMUSH documentation for @ps"
 -->
 ## @ps
 
-See [@ps/history] for recent outcomes and [@profile](/reference/sharpmush-help/sharpcmd/#profile) for temporary invocation timing.<br>
+See [@ps/history](/reference/sharpmush-help/sharpcmd/#pshistory) for recent outcomes and [@profile](/reference/sharpmush-help/sharpcmd/#profile) for temporary invocation timing.<br>
 `@ps[/<switch>] [<player>]`<br>
 `@ps[/debug] <pid>`
 

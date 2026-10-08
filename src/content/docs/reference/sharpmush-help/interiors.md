@@ -51,8 +51,8 @@ Now, if you want people inside to be able to hear and communicate with the outsi
 
 
 ::: seealso
-- [enter](/reference/sharpmush-help/sharpcmd/#aenter)
-- [leave](/reference/sharpmush-help/sharpcmd/#leave)
+- [enter](/reference/sharpmush-help/sharpcmd/#enter)
+- [leave](/reference/sharpmush-help/sharpcmd/#leave-1)
 - [@prefix](/reference/sharpmush-help/sharpcmd/#prefix)
 - [@filter](/reference/sharpmush-help/filter-command/#filter)
 - [AUDIBLE](/reference/sharpmush-help/sharpflag/#audible)

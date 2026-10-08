@@ -231,8 +231,8 @@ Available functions:
 * [maildstats](/reference/sharpmush-help/sharpmail/#mailstats)
 * [mailfrom](/reference/sharpmush-help/sharpmail/#mailfrom)
 * [mailfstats](/reference/sharpmush-help/sharpmail/#mailstats)
-* [maillist](/reference/sharpmush-help/sharpmail/#reading-mail)
-* [mailsend](/reference/sharpmush-help/sharpmail/#sending-mail)
+* [maillist](/reference/sharpmush-help/sharpmail/#maillist)
+* [mailsend](/reference/sharpmush-help/sharpmail/#mailsend)
 * [mailstats](/reference/sharpmush-help/sharpmail/#mailstats)
 * [mailstatus](/reference/sharpmush-help/sharpmail/#mailfrom)
 * [mailsubject](/reference/sharpmush-help/sharpmail/#mailfrom)
@@ -272,7 +272,7 @@ When given numeric arguments, mail() returns the text of the corresponding messa
 
 
 ::: seealso
-- [maillist](/reference/sharpmush-help/sharpmail/#reading-mail)
+- [maillist](/reference/sharpmush-help/sharpmail/#maillist)
 - [mailfrom](/reference/sharpmush-help/sharpmail/#mailfrom)
 :::
 
@@ -313,7 +313,7 @@ maillist() returns a list of all *<player>*'s @mail messages which match the giv
 
 ::: seealso
 - [MAIL](/reference/sharpmush-help/sharpmail/#mail)
-- [maillist](/reference/sharpmush-help/sharpmail/#reading-mail)
+- [maillist](/reference/sharpmush-help/sharpmail/#maillist)
 :::
 
 ## mailstats()

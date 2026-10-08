@@ -201,7 +201,7 @@ ON COMBINE
 
 ::: seealso
 - [@channel](/reference/sharpmush-help/sharpchat/#channel)
-- [@chat](/reference/sharpmush-help/sharpchat/#chat)
+- [@chat](/reference/sharpmush-help/sharpchat/#chat-1)
 - [@CEMIT](/reference/sharpmush-help/sharpchat/#cemit)
 - [@CHANNEL CLOCK](/reference/sharpmush-help/sharpchat/#channel-clock)
 :::

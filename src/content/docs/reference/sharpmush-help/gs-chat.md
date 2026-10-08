@@ -55,5 +55,5 @@ There's much more you can do with the channel system - see [@channel](/reference
 ::: seealso
 - [gs talking](/reference/sharpmush-help/sharpconf/#gs-talking)
 - [@channel](/reference/sharpmush-help/sharpchat/#channel)
-- [@chat](/reference/sharpmush-help/sharpchat/#chat)
+- [@chat](/reference/sharpmush-help/sharpchat/#chat-1)
 :::

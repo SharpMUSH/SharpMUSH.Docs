@@ -53,6 +53,53 @@ async function loadDocMappings() {
   }
 }
 
+// The id each topic heading gets on its page, by page and topic: a heading whose slug an earlier
+// heading on the same page already took gets -1, -2, ..., as the site's own heading ids do, so
+// @THEME after THEME() on one page links to its own heading. Aliases share their topic's id.
+let TOPIC_ANCHORS = {};
+
+export function topicAnchors(pages) {
+  const anchors = {};
+  for (const [doc, content] of Object.entries(pages)) {
+    const occurrences = new Map();
+    const idFor = (text) => {
+      const slug = createSlugFromTitle(text);
+      let id = slug;
+      while (occurrences.has(id)) {
+        occurrences.set(slug, occurrences.get(slug) + 1);
+        id = `${slug}-${occurrences.get(slug)}`;
+      }
+      occurrences.set(id, 0);
+      return id;
+    };
+    const topics = (anchors[doc] = {});
+    let fenced = false;
+    let topic = null;
+    for (const raw of content.split('\n')) {
+      const line = raw.replace(/\r$/, '');
+      if (/^[ \t]*```/.test(line)) fenced = !fenced;
+      if (fenced) { topic = null; continue; }
+      const heading = line.match(/^(#{1,6}) (.+)/);
+      if (!heading) { topic = null; continue; }
+      const text = heading[2].trim();
+      if (heading[1] === '#' && topic) {
+        // An alias right under its topic, removed when the page is converted.
+        topics[text.toUpperCase()] ??= topic;
+        continue;
+      }
+      const id = idFor(text);
+      topic = heading[1] === '#' ? id : null;
+      if (topic) topics[text.toUpperCase()] ??= id;
+    }
+  }
+  return anchors;
+}
+
+export function useLinkData({ mappings = DOC_MAPPINGS, anchors = TOPIC_ANCHORS } = {}) {
+  DOC_MAPPINGS = mappings;
+  TOPIC_ANCHORS = anchors;
+}
+
 function createSlugFromTitle(title) {
   return title.toLowerCase()
     .replace(/[()]/g, '') // Remove parentheses
@@ -136,6 +183,10 @@ export function convertInternalLinks(content) {
       }
       
       // Skip patterns that contain special characters that suggest they're not help topics
+      // A known topic with a switch, such as [@THEME/LIST], is still a link.
+      if (topic.includes('/') && DOC_MAPPINGS[topic.toUpperCase().trim()]) {
+        return convertTopicToLink(topic, topic);
+      }
       if (topic.includes('/') || topic.includes('#') || topic.includes('$') || topic.includes('&') || topic.includes('*')) {
         return match;
       }
@@ -191,7 +242,7 @@ function convertTopicToLink(topic, displayText) {
     }
   }
   
-  const slug = createSlugFromTitle(topic);
+  const slug = TOPIC_ANCHORS[targetDoc]?.[topicUpper] ?? createSlugFromTitle(topic);
   const link = `/reference/sharpmush-help/${targetDoc}/${slug ? '#' + slug : ''}`;
   
   return `[${displayText}](${link})`;
@@ -298,12 +349,13 @@ async function buildAliasMap() {
   const files = await fs.readdir(SUBMODULE_DOCS_PATH);
   const markdownFiles = files.filter(file => file.endsWith('.md'));
   
-  const aliasMap = {}; // Maps "alias-slug" -> "main-topic-slug"
+  const aliasMap = {}; // Maps page -> "alias-slug" -> "main-topic-slug"; an alias is only an alias on its own page
   
   for (const file of markdownFiles) {
     const filePath = path.join(SUBMODULE_DOCS_PATH, file);
     const content = await fs.readFile(filePath, 'utf-8');
     const lines = content.split('\n');
+    const aliases = (aliasMap[file.replace(/\.md$/, '')] = {});
     
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i];
@@ -321,7 +373,7 @@ async function buildAliasMap() {
           const aliasSlug = createSlugFromTitle(aliasTopic);
           
           // Map alias to main topic
-          aliasMap[aliasSlug] = mainSlug;
+          aliases[aliasSlug] = mainSlug;
           
           j++;
         }
@@ -344,8 +396,12 @@ async function fixAliasLinksInFile(filePath, aliasMap) {
   
   const newContent = content.replace(linkPattern, (match, linkText, filename, anchor) => {
     // Check if this anchor is an alias that should be replaced
-    if (aliasMap[anchor]) {
-      const newAnchor = aliasMap[anchor];
+    const page = filename.replace(/\/$/, '');
+    const aliases = aliasMap[page] ?? {};
+    // An anchor that is a topic's own heading on that page stays, even when an alias elsewhere on it slugs the same.
+    const headings = new Set(Object.values(TOPIC_ANCHORS[page] ?? {}));
+    if (Object.hasOwn(aliases, anchor) && !headings.has(anchor)) {
+      const newAnchor = aliases[anchor];
       return `[${linkText}](/reference/sharpmush-help/${filename}#${newAnchor})`;
     }
     return match;
@@ -377,6 +433,11 @@ async function convertAllDocs() {
     // Get list of markdown files in source directory
     const files = await fs.readdir(SUBMODULE_DOCS_PATH);
     const markdownFiles = files.filter(file => file.endsWith('.md'));
+    const pages = {};
+    for (const file of markdownFiles) {
+      pages[file.replace(/\.md$/, '')] = await fs.readFile(path.join(SUBMODULE_DOCS_PATH, file), 'utf-8');
+    }
+    TOPIC_ANCHORS = topicAnchors(pages);
     
     if (markdownFiles.length === 0) {
       console.warn('No markdown files found in source directory');
@@ -398,7 +459,7 @@ async function convertAllDocs() {
     // Fix links that point to removed aliases
     console.log('\nFixing links to removed aliases...');
     const aliasMap = await buildAliasMap();
-    console.log(`Found ${Object.keys(aliasMap).length} aliases to check`);
+    console.log(`Found ${Object.values(aliasMap).reduce((n, aliases) => n + Object.keys(aliases).length, 0)} aliases to check`);
     
     for (const file of markdownFiles) {
       const targetFile = path.join(OUTPUT_DOCS_PATH, file);

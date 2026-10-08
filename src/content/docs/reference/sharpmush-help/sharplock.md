@@ -185,7 +185,7 @@ For players and things, the Enter lock controls who can "enter" an ENTER_OK obje
 - [@aenter](/reference/sharpmush-help/sharpcmd/#aenter)
 - [@aefail](/reference/sharpmush-help/sharpcmd/#aefail)
 - [ENTER_OK](/reference/sharpmush-help/sharpflag/#enterok)
-- [enter](/reference/sharpmush-help/sharpcmd/#aenter)
+- [enter](/reference/sharpmush-help/sharpcmd/#enter)
 - [empty](/reference/sharpmush-help/sharpcmd/#empty)
 :::
 
@@ -196,7 +196,7 @@ For players, things and rooms, the Leave lock controls who can leave the object,
 ::: seealso
 - [@leave](/reference/sharpmush-help/sharpcmd/#leave)
 - [@lfail](/reference/sharpmush-help/sharpcmd/#lfail)
-- [leave](/reference/sharpmush-help/sharpcmd/#leave)
+- [leave](/reference/sharpmush-help/sharpcmd/#leave-1)
 :::
 
 ### Teleport Lock
@@ -218,7 +218,7 @@ For players and things, controls who may "follow" the object. Has no meaning for
 
 
 ::: seealso
-- [failure](/reference/sharpmush-help/failure/#afailure)
+- [failure](/reference/sharpmush-help/failure/#failure)
 :::
 
 ### Forward Lock
@@ -228,7 +228,7 @@ For players, things and rooms, controls who can forward sound to an object, via 
 ::: seealso
 - [@forwardlist](/reference/sharpmush-help/sharpcmd/#forwardlist)
 - [@debugforwardlist](/reference/sharpmush-help/sharpcmd/#debugforwardlist)
-- [@LOCK/PAGE]
+- [@LOCK/PAGE](/reference/sharpmush-help/sharplock/#lockpage)
 :::
 
 ### Dropto Lock
@@ -237,7 +237,7 @@ For rooms, only objects which pass this lock will be sent to the rooms Drop-To. 
 
 ::: seealso
 - [DROP-TOS](/reference/sharpmush-help/sharptop/#drop-tos)
-- [drop](/reference/sharpmush-help/sharpcmd/#adrop)
+- [drop](/reference/sharpmush-help/sharpcmd/#drop)
 - [empty](/reference/sharpmush-help/sharpcmd/#empty)
 - [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
 - [locktypes](/reference/sharpmush-help/sharplock/#locktypes)
@@ -253,7 +253,7 @@ For players, things and rooms, this lock controls who may "use" the object. You 
 ::: seealso
 - [@ause](/reference/sharpmush-help/sharpcmd/#ause)
 - [@aufail](/reference/sharpmush-help/sharpcmd/#aufail)
-- [use](/reference/sharpmush-help/sharpcmd/#ause)
+- [use](/reference/sharpmush-help/sharpcmd/#use)
 - [$-commands]
 - [listening listen patterns](/reference/sharpmush-help/sharpconf/#listening-listen-patterns)
 - [@CHANNEL ADMIN](/reference/sharpmush-help/sharpchat/#channel-admin)
@@ -265,7 +265,7 @@ For players, things and rooms, you must pass this lock (as well as the Use lock)
 
 ::: seealso
 - [$-commands]
-- [failure](/reference/sharpmush-help/failure/#afailure)
+- [failure](/reference/sharpmush-help/failure/#failure)
 :::
 
 ### Listen Lock
@@ -283,7 +283,7 @@ For players, things and rooms, you must pass this lock to page or @pemit to the 
 
 
 ::: seealso
-- [failure](/reference/sharpmush-help/failure/#afailure)
+- [failure](/reference/sharpmush-help/failure/#failure)
 - [@haven](/reference/sharpmush-help/sharpcmd/#haven)
 :::
 
@@ -292,7 +292,7 @@ Controls who can speak (via say, pose, @*emit or teach) inside an object. Meanin
 
 
 ::: seealso
-- [failure](/reference/sharpmush-help/failure/#afailure)
+- [failure](/reference/sharpmush-help/failure/#failure)
 :::
 
 ### Mail Lock
@@ -301,7 +301,7 @@ Controls who can send @mail to this object.
 
 ::: seealso
 - [MAIL](/reference/sharpmush-help/sharpmail/#mail)
-- [failure](/reference/sharpmush-help/failure/#afailure)
+- [failure](/reference/sharpmush-help/failure/#failure)
 :::
 
 ### Mailforward Lock
@@ -311,7 +311,7 @@ Controls who can forward @mail to this object via @mailforward.
 ::: seealso
 - [MAIL](/reference/sharpmush-help/sharpmail/#mail)
 - [@mailforward](/reference/sharpmush-help/sharpcmd/#mailforward)
-- [@LOCK/FOLLOW]
+- [@LOCK/FOLLOW](/reference/sharpmush-help/sharplock/#lockfollow)
 :::
 
 ### Interact Lock
@@ -324,7 +324,7 @@ For players and things, controls who can drop the object. Has no meaning for exi
 
 
 ::: seealso
-- [drop](/reference/sharpmush-help/sharpcmd/#adrop)
+- [drop](/reference/sharpmush-help/sharpcmd/#drop)
 - [empty](/reference/sharpmush-help/sharpcmd/#empty)
 :::
 
@@ -348,10 +348,10 @@ Controls who can take from this container.
 
 
 ::: seealso
-- [give](/reference/sharpmush-help/sharpcmd/#give)
-- [buy](/reference/sharpmush-help/sharpcmd/#buy)
-- [@LOCK/BASIC]
-- [@LOCK/BASIC]
+- [give](/reference/sharpmush-help/sharpcmd/#give-1)
+- [buy](/reference/sharpmush-help/sharpcmd/#buy-1)
+- [@LOCK/BASIC](/reference/sharpmush-help/sharplock/#lockbasic)
+- [@LOCK/BASIC](/reference/sharpmush-help/sharplock/#lockbasic)
 :::
 
 ## @lock/filter

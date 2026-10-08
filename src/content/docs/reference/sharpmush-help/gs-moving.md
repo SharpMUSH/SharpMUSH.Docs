@@ -49,8 +49,8 @@ It's also sometimes possible to teleport from one room to another, using the '`@
 - [look](/reference/sharpmush-help/look/#look)
 - [go]
 - [HOMES](/reference/sharpmush-help/sharptop/#homes)
-- [enter](/reference/sharpmush-help/sharpcmd/#aenter)
-- [leave](/reference/sharpmush-help/sharpcmd/#leave)
+- [enter](/reference/sharpmush-help/sharpcmd/#enter)
+- [leave](/reference/sharpmush-help/sharpcmd/#leave-1)
 - [@teleport](/reference/sharpmush-help/teleport-command/#teleport)
 - [@link](/reference/sharpmush-help/sharpcmd/#link)
 :::

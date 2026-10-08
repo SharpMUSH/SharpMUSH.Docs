@@ -83,6 +83,6 @@ These are all your OWN settings on a channel. There is no command for muting or 
 - [cstatus()](/reference/sharpmush-help/sharpfunc/#cstatus)
 - [cowner()](/reference/sharpmush-help/sharpfunc/#cowner)
 - [cflags()](/reference/sharpmush-help/sharpfunc/#cflags)
-- [channels()](/reference/sharpmush-help/sharpfunc/#chat)
+- [channels()](/reference/sharpmush-help/sharpfunc/#channels)
 - [@CHANNEL ADMIN](/reference/sharpmush-help/sharpchat/#channel-admin)
 :::
