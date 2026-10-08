@@ -17,8 +17,10 @@ back.
 
 ## A complete example
 
+Every top-level key a softcode package can use, with the format version that added it:
+
 ```yaml
-format: 1                       # format version (omit = 1; 1.2 adds roles, 1.3 settings)
+format: 1.3                     # format version (omit = 1; 1.2 adds roles and permissions, 1.3 settings)
 package: myrddins-bbs           # required: lowercase letters, digits and hyphens, up to 64 characters
 version: 2.4.1                  # required: a version number (see Versions below)
 authors: [Myrddin]              # optional: a list, or one string
@@ -32,6 +34,7 @@ requires_server: ">=0.1"        # optional: which SharpMUSH versions it needs
 depends:                        # optional: other packages this one needs
   - volund-core: ">=1.0"        # short form: id and version range
   - some-util                   # just an id: any released version
+  - http-handler: ">=1.0 <2.0"  # provides the GET router bbs_routes adds a route to
   - package: who-where          # full form: adds where to find it (see Source hints)
     version: ">=1.0 <2.0"
     source:
@@ -61,6 +64,7 @@ objects:                        # required: at least one object
     location: "{{?bbs_storage}}"  # optional for things; required for exits
     previous_refs: [bbs_main]   # optional: names this object had before (for renames)
     flags: [no_command]         # optional: object flags
+    powers: [Send_OOB]          # optional: object powers
     locks:                      # optional: locks by lock type
       use: "{{bbs_parent}}"
     attributes:                 # optional: attributes to set
@@ -69,11 +73,48 @@ objects:                        # required: at least one object
           $+bbread *:@pemit %#=[u({{bbs_parent}}/FN_READ,%0)]
         flags: []
       FN_HEADER: "[repeat(=,78)]"   # short form: quoted one-liners only
+      DATA_TITLE: |-
+        {{?board_name}}
 
   - ref: bbs_parent
     type: thing
     name: BBS Parent Object
+
+  - ref: bbs_routes             # an attach entry: manages attributes on an object it didn't create
+    target: "{{$http_handler}}"
+    attributes:
+      GET`BBS: |-
+        @respond/type application/json; think [u({{bbs_parent}}/FN_JSON)]
+
+categories:                     # optional (1.2): categories for the roles and permissions below
+  roles:
+    - name: Boards
+      description: Roles for the people who run the boards.
+  permissions:
+    - name: Boards
+      description: Moderating the bulletin boards.
+
+permissions:                    # optional (1.2): custom permissions the softcode checks
+  - name: bbs.moderate
+    category: Boards            # declared above, or already in the game
+    description: Edit or remove anyone's post.
+
+roles:                          # optional (1.2): roles that set custom permissions only
+  - slug: bbs-moderator
+    name: Board Moderator
+    category: Boards
+    color: "#4fc3c8"
+    priority: 11
+    permissions:
+      bbs.moderate: allow
+
+settings:                       # optional (1.3): configuration options, as @config/set takes them
+  noisy_whisper: "yes"
 ```
+
+The sections below cover each block. `kind:` and `application:` are under
+[Application packages](#application-packages), and `binaries:` under
+[Managed packages](#managed-packages).
 
 ## Writing softcode in YAML
 
@@ -106,7 +147,7 @@ refused, sometimes without saying so. Two places this catches people in a packag
 |---|---|---|
 | `{{name}}` | internal | Another object in this package |
 | `{{pkg/name}}` | cross-package | An object from package `pkg`, which must be listed under `depends:` |
-| `{{$name}}` | well-known | A server setting: `room_zero`, `master_room`, `player_start`, `god`, `package_manager` (a server may add more) |
+| `{{$name}}` | well-known | A server setting: `room_zero`, `master_room`, `player_start`, `god`, `package_manager`, `http_handler`, `event_handler` (a server may add more) |
 | `{{?name}}` | configure | The installer's answer to a `configure:` question |
 
 Refs go in `parent:`, `location:` and `destination:` (exactly one token, in quotes, because a bare
@@ -141,6 +182,30 @@ These rules are checked when the manifest is read:
 - **Rooms** may not have `location:`, and only exits have `destination:`.
 - **Things and players** may have `location:`; without one they start in the Package Manager
   wizard's inventory.
+
+## Flags, powers and locks
+
+`flags:` and `powers:` are lists of names, as `@set` and `@power` take them; `locks:` maps a lock
+type to its key. An object that needs a power for its work declares it, rather than leaving an
+administrator to grant it by hand. `plus-help`'s librarian, for example, reads `HELP` trees on objects
+it doesn't own and writes command links. Here it is with a flag and a lock added to show those keys
+too:
+
+```yaml
+objects:
+  - ref: librarian
+    type: thing
+    name: Help Librarian
+    location: "{{$master_room}}"
+    flags: [no_command]
+    powers: [See_All, Send_OOB]
+    locks:
+      use: "=me"
+```
+
+Flags, powers and attribute flags merge on upgrade the way attributes do. One the new version adds
+is set, one it drops is cleared, and one an administrator cleared by hand stays cleared while the
+package still declares it. Flags and powers the package never declared are left alone.
 
 ## Managing attributes on an object you didn't create
 
@@ -226,11 +291,17 @@ room, or a destination on anything but an exit); configure type mistakes (a defa
 non-dbref answer in a placement field); a package depending on itself, or the same id in both
 `depends:` and `conflicts:`; an invalid `kind`; an application package without an `application:`
 block or with `objects:` (and the reverse for a softcode package); an invalid application slug, type,
-role or zone; a format version whose major number is newer than the server supports.
+role or zone; a format version whose major number is newer than the server supports. In the format
+1.2 and 1.3 blocks: an invalid category, permission or role name; a built-in permission or a system
+role; a role priority outside 1-29 or a colour that isn't `#rrggbb`; a role permission other than
+`allow` or `deny`; a configuration option that doesn't exist or that a package can't set, a value it
+doesn't take, or a ref for an option that isn't a dbref; any of these blocks in a managed package.
 
 **Warnings** (the manifest is accepted): unknown keys (likely typos); reserved keys (`provides`,
 `recommends`, `suggests`, configure `pattern`); configure questions nothing uses; more than 5
-keywords; a format version whose minor number is newer than the server supports.
+keywords; a format version whose minor number is newer than the server supports; a permission or
+role naming a category the package doesn't declare, or a role allowing a permission the package
+doesn't declare (the game must already have it, or the install stops).
 
 ## Roles and permissions (format 1.2)
 
@@ -242,6 +313,11 @@ these blocks.
 format: 1.2
 package: requests
 version: 1.0.0
+
+objects:
+  - ref: requests
+    type: thing
+    name: Requests
 
 categories:                     # each list optional; every category needs a description
   roles:
@@ -401,24 +477,47 @@ a separate package and depend on it.
 ## Managed packages
 
 A **managed** package (`kind: managed`) distributes a compiled C# plugin instead of softcode. It
-carries no `objects:`, `application:`, roles, permissions or settings, only the plugin's files and
-their checksums. See [Publishing a plugin as a package](/guides/plugins#publishing-a-plugin-as-a-package).
+carries no `objects:`, `application:`, `categories:`, `permissions:`, `roles:` or `settings:`, only
+the plugin's files and their checksums:
+
+```yaml
+format: 1
+package: hello-ui
+kind: managed
+version: 1.0.0
+
+binaries:                         # required for kind: managed, not allowed otherwise
+  min_server_version: ">=1.0"     # the plugin contract version the files were built against
+  files:                          # at least one; each sits beside package.yaml
+    - file: HelloUiPlugin.dll     # a plain file name, no folders
+      sha256: "a3a25a87d7d35612e175961657f2aa94e87c93c22f513bd424c52ebbc6975623"
+    - file: plugin.json
+      sha256: "5b0c85e13578c170502bd61ff14fc0d10795b1f48451dd686a0e8980dc909758"
+```
+
+Installing checks every file against its SHA-256 and refuses a server older than
+`min_server_version`. The files are copied into `plugins/<package id>/` only once the server's
+operator has allowed managed code, and the plugin loads on the next restart. A plugin that needs
+roles, permissions or settings declares them in a softcode package it depends on. See
+[Publishing a plugin as a package](/guides/plugins#publishing-a-plugin-as-a-package).
 
 ## Repositories, discovery and releases
 
 A git repository holds one or more packages. Its root may have an `index.yaml` so browsing is fast;
-without one, the repository is searched for `package.yaml` files. Index entries may carry
-`package`, `version` and `description`, so the portal can list packages without reading every
-manifest (an id may appear only once):
+without one, the repository is searched for `package.yaml` files. An entry is a folder path, or a
+mapping with `path` and optionally `name`, `package`, `version` and `description`, so the portal can
+list packages without reading every manifest (an id may appear only once):
 
 ```yaml
 name: SharpMUSH Packages
 description: Official softcode packages.
 packages:
   - path: who-where/
+    name: Who/Where
     package: who-where
     version: 1.2.0
     description: +who and +where commands
+  - starter-area/
 ```
 
 **Releases are git tags** named `<package-folder>/v<version>`, for example `who-where/v1.2.0`. The
@@ -434,8 +533,11 @@ Some packages are built into the server and appear in the portal under the reser
 
 - **Shipped**: the package is in the server and can be installed from the catalogue at any time.
 - **Installed on first start**: a new game gets it without being asked. `http-handler`,
-  `profile-handler`, `room-contents`, `comm-feed`, `common-functions`, `plus-help` and `scene` are;
-  `wiki-reader` is shipped but not installed, because it puts a `+wiki` object in the master room.
+  `profile-handler`, `room-contents`, `comm-feed`, `common-functions`, `plus-help` and `scene` are.
+  `wiki-reader`, `jobs`, `jobs-app` and `messages` are shipped but not installed: `+wiki` puts an
+  object in the master room, the job queue adds commands a game may not want, and a new game reads its
+  connect screen and MOTDs from stored text until an administrator chooses the Messages object (in the
+  setup wizard or on the package's page).
 
 A bundled package may only depend on other bundled packages, so installing it never needs the
 network. Anything installed from the catalogue records `bundled:sharpmush` as its source, and is
@@ -462,11 +564,13 @@ under **Admin → Packages → Remotes**.
 | `hello-world` | The smallest package: one object, one command, and a `+help` topic |
 | `who-where` | Several objects, internal refs, parents, flags and an attribute prefix |
 | `starter-area` | Rooms and exits (`location:` and `destination:`) |
+| `plus-help` | Object powers (`See_All`, `Send_OOB`), and the librarian other packages attach their `+help` topics to |
+| `scene` | A custom permission (`scene.close`) placed in the game's own `Staff` category |
 | `bbs-lite` | Dependencies with source hints, typed configure questions, cross-package refs, conflicts, locks and prerelease versions |
 | `http-handler`, `profile-handler` | Attach entries on the HTTP handler, and one package attaching to another |
 | `chargen` + `chargen-app` | A portal application: the softcode routes in one package, the application registered by another, with a configurable role |
-| `jobs` + `jobs-app` | A complete system: commands added with `@command/add` and `@hook/override/inline`, roles and permissions declared by the package, per-object hooks, `+help` topics, and a portal application driven by the same code |
-| `messages` | Configuration options set by a package (format 1.3) |
+| `jobs` + `jobs-app` | A complete system: commands added with `@command/add` and `@hook/override/inline`, a role and permission category, eight permissions and eight roles declared by the package, per-object hooks, `+help` topics, and a portal application driven by the same code |
+| `messages` | A configuration option (`messages_object`) pointed at the package's own object (format 1.3) |
 | `hello-ui` | A managed package: a compiled plugin that adds a portal page |
 
 `hello-world`, slightly shortened:

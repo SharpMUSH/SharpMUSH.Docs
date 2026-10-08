@@ -9,7 +9,8 @@ Global softcode has traditionally been distributed as a `.mush` file you paste i
 hope for the best: the dbrefs have to line up, there is no record of what was installed, and there is
 no way to upgrade without clobbering local edits.
 
-SharpMUSH replaces that with **packages**. A package is a declarative description of softcode — the
+SharpMUSH still accepts `.mush` files: paste one in as you would on any other MUSH. It also offers
+**packages**, which are safer and much easier to upgrade and maintain. A package is a declarative description of softcode — the
 objects that should exist, and the attributes, flags, locks and parents they carry — installed
 through the admin panel at `/admin/packages`.
 
@@ -87,7 +88,7 @@ writes the package out. The `/admin/packages/author` page covers the same ground
 A package is a directory containing a `package.yaml`:
 
 ```yaml
-format: 1
+format: 1.2
 package: myrddins-bbs
 version: 2.4.1
 authors: [Myrddin]
@@ -113,15 +114,32 @@ objects:
         value: |-
           $+bbread *:@pemit %#=[u({{bbs_parent}}/FN_READ,%0)]
         flags: []
+      DATA_TITLE: |-
+        {{?board_name}}
 
   - ref: bbs_parent
     type: thing
     name: BBS Parent Object
+
+permissions:
+  - name: bbs.moderate
+    category: Staff
+    description: Edit or remove anyone's post.
+
+roles:
+  - slug: bbs-moderator
+    name: Board Moderator
+    category: Staff
+    permissions:
+      bbs.moderate: allow
 ```
 
 `ref` names are intra-package identifiers; `{{token}}` references are resolved to real dbrefs when
 the package is applied. `configure` declares typed parameters the installer is asked for, so a
-package can adapt to a game without being forked.
+package can adapt to a game without being forked. `permissions` and `roles` bring the custom
+permission the board's softcode checks with `permission()`, and a role that holds it, so a game
+hands out moderation with `@role` instead of editing code. A package can also bring its own
+categories and set configuration options.
 
 <Aside type="caution" title="Always use block scalars for MUSHcode">
 YAML mangles raw softcode. Double quotes process backslash escapes, and unquoted values are worse —
