@@ -63,7 +63,7 @@ as the front page or the play screen.
 
 - Type into the boxes and pick from the lists. A box marked with `*` must be filled in.
 - A form with several steps shows *Step 1 of 3* at the top, with **Next** and **Back**
-  buttons. Nothing is sent until you press **Submit** on the last step.
+  buttons. The form is not submitted until you press **Submit** on the last step.
 - Some forms change as you go. Picking a class, for example, can add questions that only
   that class needs.
 
@@ -130,8 +130,10 @@ You need to be a wizard, or to hold the `applications.admin` permission.
 | **Order** | Where the link sits in its group. Lower numbers come first. | `40` |
 
 Press **Save**. Before it saves, the website asks your game for the page description. If
-the game does not answer with one, you see an error and nothing is saved; see
-[When something goes wrong](#when-something-goes-wrong).
+the game does not answer, or answers with something that isn't JSON, you see an error and
+nothing is saved; see [When something goes wrong](#when-something-goes-wrong). The check
+stops there: JSON that isn't a page description still saves, so open the application
+afterwards to make sure it looks right.
 
 ### Who can open it
 
@@ -166,6 +168,7 @@ up to the softcode, which knows who is looking.
 | What you see | Why it usually happens | What to do |
 |---|---|---|
 | An error when you press **Save** | The softcode isn't installed, the Schema URL has a typo, or the softcode has a mistake in it. | Check the softcode is on your HTTP handler and the Schema URL matches the route's attribute name. |
+| The page opens empty or shows an error | The route answers, but not with a page description. | Open the Schema URL's route in your browser (`/http/...`) and compare what it sends with the examples below. |
 | A player can't see the link | Their role is below the minimum role, they lack the permission, or Nav placement is empty. | Check those three boxes. |
 | The page shows *Nothing to display* | The softcode sent no information that this person is allowed to see. | That can be on purpose. If not, check the Data URL route. |
 | **Submit** does nothing, or shows an error | The route the button sends to is missing or has a mistake. | Check the route named in the page description exists on the HTTP handler. |
@@ -327,7 +330,7 @@ second route, the **Data URL**, which answers like this:
   "fields": {
     "name":    { "value": "Ada" },
     "concept": { "value": "Sky pirate with a secret" },
-    "notes":   { "value": "Owes the guild money", "visible": false }
+    "notes":   { "value": "Owes the guild money" }
   }
 }
 ```
@@ -346,8 +349,10 @@ The page description lists what to show, in order, using the same keys:
 }
 ```
 
-A value marked `"visible": false`, or left out entirely, is not shown. That is how one
-page can show staff notes to staff and hide them from everyone else.
+A value that is left out, or marked `"visible": false`, is not shown. To show staff notes
+only to staff, leave `notes` out of the answer for everyone else. Don't send it with
+`"visible": false` instead: that only stops the page from showing it, and anyone can still
+read it in what their browser received.
 
 On a form, the Data URL fills in boxes before the player starts typing, which is useful
 for an "edit your profile" page.
