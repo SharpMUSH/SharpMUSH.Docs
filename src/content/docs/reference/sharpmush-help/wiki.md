@@ -322,8 +322,11 @@ Each is described in [wiki editing](/reference/sharpmush-help/sharpconf/#wiki-ed
 
 Creating a page needs `wiki.create`, and editing one `wiki.edit`, along with
 whatever the page's namespace, categories and the page itself require (see
-[wiki permissions](/reference/sharpmush-help/sharpconf/#wiki-permissions)); translations count as edits. Each page records its author
-and last editor by dbref.
+[wiki permissions](/reference/sharpmush-help/sharpconf/#wiki-permissions)); translations count as edits. A character's own biography
+is no exception: writing it needs `wiki.create`, and editing it or changing its
+gallery on the portal needs `wiki.edit`, as for any other page. A new game gives both permissions to the
+`approved` role and, through `wiki.admin`, to staff (see [roles](/reference/sharpmush-help/roles/#roles)). Each page
+records its author and last editor by dbref.
 
 ### Creating and editing
 
