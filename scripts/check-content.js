@@ -17,7 +17,7 @@ const relativeLinkCandidates = (directory, target) => {
   return [resolved, `${resolved}.mdx`, `${resolved}.md`, path.join(resolved, 'index.mdx'), path.join(resolved, 'index.md')];
 };
 
-export function validateContent({ root = process.cwd(), requiredRoutes = ['guides/pennmush-migration', 'guides/operator-handbook', 'guides/visual-layouts', 'technical/architecture'] } = {}) {
+export function validateContent({ root = process.cwd(), requiredRoutes = ['guides/pennmush-migration', 'guides/operator-handbook', 'guides/deployment', 'guides/visual-layouts', 'technical/architecture', 'technical/connections', 'technical/plugin-system', 'reference/package-format'] } = {}) {
   const docsRoot = path.join(root, 'src/content/docs');
   const config = fs.readFileSync(path.join(root, 'astro.config.mjs'), 'utf8');
   const failures = [];
@@ -46,6 +46,9 @@ export function validateContent({ root = process.cwd(), requiredRoutes = ['guide
       } else if (!relativeLinkCandidates(path.dirname(file), target).some(fs.existsSync)) {
         failures.push(`${path.relative(root, file)} has missing link: ${target}`);
       }
+    }
+    for (const match of text.matchAll(/https?:\/\/github\.com\/SharpMUSH\/SharpMUSH\/(?:blob|tree)\/[^\s)"'>]*/gi)) {
+      failures.push(`${path.relative(root, file)} sends readers to GitHub for documentation: ${match[0]} (bring the content onto this site)`);
     }
     for (const match of text.matchAll(/\bhref=["']([^"']+)["']/g)) {
       const target = match[1].split('#', 1)[0];

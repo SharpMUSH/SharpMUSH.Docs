@@ -1,0 +1,135 @@
+---
+title: Connections During Updates
+description: What players see when each part of SharpMUSH is restarted, and how far a session can recover.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+SharpMUSH splits the game into parts so that most updates don't disconnect anyone. This page explains
+which updates keep players connected, what they see while it happens, and the limits of recovery.
+The [Deployment Reference](/guides/deployment#updating) has the update commands.
+
+## Which updates disconnect players
+
+| What is replaced | Players' connections | Their session |
+|---|---|---|
+| Game server (`sharpmush-server`) | Kept by the connection server | Picked up again when the game server returns |
+| Renderer (`renderer`) | Kept | Kept; output waits until the renderer is back |
+| Connection server (`connectionserver`) | **Closed** | A logged-in browser can reconnect and carry on within its recovery window; telnet players reconnect and log in again |
+| The machine, its disk, or NATS's stored data | Not guaranteed | Limited to what was stored |
+
+The **connection server** holds every telnet and browser connection. The **renderer** formats output
+for each kind of client and talks to the connection server over a private socket on the same machine.
+The **game server** talks to both through NATS, never through a player's connection. So keep NATS and
+the connection server running while the game server or renderer is updated.
+
+<Aside type="note" title="About the names">
+The Compose service is still called `connectionserver` so existing proxy routes keep working; it runs
+the `sharpmush/sharpmush-socketserver` image. The `renderer` service runs the
+`sharpmush/sharpmush-connectionserver` image. The image names are older than the current project
+names and are kept on purpose: renaming an image would make an existing Compose file pull a different
+program under the same tag. `ConnectionServer__*` settings configure the connection server.
+</Aside>
+
+## What players see
+
+When the game server shuts down cleanly (including when Watchtower replaces it), every connected
+player gets a restart notice. Once the game server is back and ready to take commands, they get a
+ready notice. Both work on telnet and in the browser.
+
+The notices need a clean shutdown. A killed process, a crashed machine or an unreachable NATS can't
+send one. Each slow client gets a limited wait; other players are not held up by it.
+
+Commands typed while only the game server is down are held by NATS and run when it returns (as long
+as NATS still has them). If a command can't be handed on at all, the player keeps their connection
+and is told delivery is uncertain when possible. It is not retried automatically, because a command
+that did arrive could otherwise run twice.
+
+## Keeping updates from disconnecting players
+
+The supplied Compose files tell Watchtower to update the game server and renderer automatically, and
+to leave the connection server alone (`com.centurylinklabs.watchtower.enable=false`). Replace the
+connection server yourself, during an announced window:
+
+```bash
+docker compose -f docker-compose.cloudflare.yml pull connectionserver
+docker compose -f docker-compose.cloudflare.yml up -d connectionserver
+```
+
+If you set that label to `true`, a routine image update will disconnect every player without warning:
+the game server's restart notice arrives, and then the connection drops when Watchtower reaches the
+connection server in the same round.
+
+Watchtower waits up to 60 seconds for a container to stop (`WATCHTOWER_TIMEOUT=60s`), and Compose gives
+the game server, connection server and renderer the same 60 seconds (`stop_grace_period`).
+Watchtower's [stop timeout](https://containrrr.dev/watchtower/arguments/#stop-timeout) controls when it
+force-stops a container; its [lifecycle hooks](https://containrrr.dev/watchtower/lifecycle-hooks/) can
+add countdowns, but a container starting is not the same as the game being ready.
+
+Each SharpMUSH pull request is checked for **deployment impact**: the check reports which images the
+change affects and answers plainly whether the connection server must restart (and so whether players
+will be disconnected). Changes to rendering alone can be deployed without closing any connection.
+
+## Browser session recovery
+
+Replacing the connection server closes every connection. A logged-in browser reconnects with a
+one-time recovery token and carries on where it left off:
+
+- Tokens are random (256 bits), stored only as a hash, and each works once. A failed attempt because
+  the game is briefly unavailable leaves the token usable for the next try; an attempt refused by the
+  game's rules needs a fresh login.
+- The game checks a recovering session against current state, exactly as it would a login: the
+  account and character, login and guest rules, site locks, session expiry and connection security.
+  A disabled account, revoked session, expired token or changed security rule needs a fresh login.
+  Recovering does not count as a second login.
+- While a browser stays connected, its token is renewed every 12 hours (half the recovery window), so
+  a long session keeps the ability to recover. The old token stays valid until it expires, because the
+  game can't be sure the browser received the new one.
+- Logging out, or switching to another character, ends recovery for that connection. The connection
+  keeps working, but to be able to recover again the player opens a fresh connection.
+
+Output a player missed while disconnected is replayed in order, in batches of 500 messages. If the stored
+output expired while it was being read, the player needs a fresh session. Recovery tokens and stored
+output last **24 hours**; these are limited recovery windows, not permanent credentials or unlimited
+history.
+
+The portal's other live connections (everything outside the terminal) belong to the game server, so
+they restart when it does. Terminal recovery does not cover them.
+
+## What protects connection state
+
+- A new connection's details are saved before the game is told about it, with up to five retries
+  within 30 seconds. If that fails, only the new connection is closed.
+- If NATS hiccups, the connection server keeps retrying; its connections stay open.
+- Changes to who is logged in on which connection are checked against the stored version, so a stale
+  change can never overwrite a newer one.
+- The connection server refreshes each live connection's record every minute, keeping it inside its
+  24-hour lifetime.
+- If stored connection state can't be read at startup, the connection server stops rather than treat
+  the game as having no one connected.
+
+Connection numbers are never reused, so delayed output can never reach a later player on the same
+number. That depends on NATS's stored data: keep the NATS `/data` volume persistent, and don't reset
+its `connection_descriptors` store.
+
+<Aside type="caution" title="One connection server">
+Run exactly one connection server against a game's NATS data. Running several, or spreading the game
+across machines, would need coordination the supplied single-machine stack doesn't provide. No saved
+state can bring back a connection whose process ended: the network connection itself is gone.
+</Aside>
+
+## The cost of a separate renderer
+
+Formatting output in a separate process adds a small delay. A measured run in September 2026 (Intel
+Core Ultra 7 265F, CachyOS, debug builds) compared formatting the same coloured text in the
+connection server itself and through the renderer:
+
+| Text size | In-process | Through the renderer | Renderer requests per second, one at a time |
+|---|---|---|---|
+| 256 bytes | 1.37 µs | 156 µs | 5,783–7,143 |
+| 4 KiB | 2.95 µs | 189 µs | 4,792–5,594 |
+
+So the renderer adds roughly 0.15–0.19 ms per piece of output, in exchange for being able to replace
+it without disconnecting anyone. This was a warmed-up measurement of a simple case, not a guarantee:
+it leaves out the rest of a command, NATS, players' own network delay and heavy load. Output sent to
+many players is formatted once for each group of clients that share the same settings.

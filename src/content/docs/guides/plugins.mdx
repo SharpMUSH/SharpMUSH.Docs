@@ -40,8 +40,8 @@ You implement an interface; the host wires it. There is no registration call to 
 
 <Aside type="note" title="What can be unloaded">
 Plugins that only contribute commands, functions and hooks can be **hot-unloaded**. Plugins that
-touch the DI container, the database or the message bridge are **load-once** — they need a restart to
-go away.
+touch the DI container, the database, the message bridge, web endpoints or portal pages are
+**load-once**: they need a restart to go away.
 </Aside>
 
 ## A minimal plugin
@@ -59,7 +59,33 @@ go away.
    which carries a working example of all three layers side by side — keep the folder you want and
    delete the rest.
 
-2. **Write the entry type.** Exactly one type per assembly is marked `[SharpPlugin]`. Deriving from
+2. **Check the project file.** A plugin targets `net11.0`, turns on
+   dynamic loading, references `SharpMUSH.Library` without copying it into the plugin's output (so the
+   server's own copy is used), and runs the SharpMUSH source generator as an analyzer:
+
+   ```xml
+   <Project Sdk="Microsoft.NET.Sdk">
+     <PropertyGroup>
+       <TargetFramework>net11.0</TargetFramework>
+       <Nullable>enable</Nullable>
+       <EnableDynamicLoading>true</EnableDynamicLoading>
+     </PropertyGroup>
+     <ItemGroup>
+       <ProjectReference Include="path/to/SharpMUSH.Library/SharpMUSH.Library.csproj">
+         <Private>false</Private>
+         <ExcludeAssets>runtime</ExcludeAssets>
+       </ProjectReference>
+       <ProjectReference Include="path/to/SharpMUSH.Implementation.Generated/SharpMUSH.Implementation.Generated.csproj"
+           OutputItemType="Analyzer"
+           ReferenceOutputAssembly="false" />
+     </ItemGroup>
+   </Project>
+   ```
+
+   The generator turns your `[SharpCommand]` and `[SharpFunction]` methods into command and function
+   tables inside your own assembly, exactly as it does for the engine.
+
+3. **Write the entry type.** Exactly one type per assembly is marked `[SharpPlugin]`. Deriving from
    `PluginBase` inherits the default command and function discovery, so you override only identity:
 
    ```csharp
@@ -74,7 +100,7 @@ go away.
    }
    ```
 
-3. **Add commands and functions.** Exactly as in-tree code — resolve engine services at call time
+4. **Add commands and functions.** Exactly as in-tree code — resolve engine services at call time
    from `parser.ServiceProvider`:
 
    ```csharp
@@ -95,7 +121,7 @@ go away.
    Plugin commands register as system commands, so `+PING` lands in the command trie and abbreviates
    (`+pi`) like any built-in.
 
-4. **Add the manifest.** A `plugin.json` beside the built DLL drives discovery order and
+5. **Add the manifest.** A `plugin.json` beside the built DLL drives discovery order and
    compatibility:
 
    ```json
@@ -108,14 +134,15 @@ go away.
    }
    ```
 
-5. **Build and deploy.**
+6. **Build and deploy.**
 
    ```bash
    dotnet build MyPlugin.csproj -c Release
    ```
 
    Drop the DLL and its `plugin.json` into the server's `plugins/` directory, either at the top level
-   or in a per-plugin subfolder. On boot the server discovers, orders, loads and registers it.
+   (`plugins/MyPlugin.dll`) or in a per-plugin subfolder (`plugins/myplugin/MyPlugin.dll`, with
+   `plugin.json` beside it). On boot the server discovers, orders, loads and registers it.
 
 </Steps>
 
@@ -143,24 +170,214 @@ The scene system is the reference case, because it deliberately spans two layers
 
 The same scene test suite passes whether it runs in-tree or as a loaded plugin.
 
+## Contributing services, flags, migrations and live updates
+
+The `[SharpPlugin]` type may also implement any of these interfaces from `SharpMUSH.Library.Plugins`.
+Implement only the ones you need; the server finds them when it loads the plugin.
+
+```csharp
+using Microsoft.Extensions.DependencyInjection;
+using SharpMUSH.Library.Plugins;
+
+[SharpPlugin]
+public sealed class MyPlugin : PluginBase,
+    IServiceRegistrar, IFlagSource, IMigrationSource, IBridgeSubscriptionSource
+{
+    public override string Id => "myplugin";
+
+    // Services, added to the server's container before it is built, so the engine can use them
+    // from the start. In commands, still resolve services at call time from parser.ServiceProvider.
+    public void RegisterServices(IServiceCollection services)
+        => services.AddSingleton<MyPluginService>();
+
+    // Flags, created alongside the built-in flags. Safe to run again: they are matched by name.
+    public IEnumerable<PluginFlag> Flags =>
+    [
+        new PluginFlag(
+            Name: "MYFLAG", Symbol: "y", Aliases: [],
+            SetPermissions: ["wizard"], UnsetPermissions: ["wizard"],
+            TypeRestrictions: ["ROOM", "PLAYER", "EXIT", "THING"])
+    ];
+
+    // Database migration steps, run after the built-in ones. Each runs once, recorded by its Id;
+    // changing the Id runs it again.
+    public IEnumerable<LightningMigrationStep> LightningSteps =>
+    [
+        new LightningMigrationStep("myplugin:seed_v1", accessor => ValueTask.CompletedTask)
+    ];
+
+    // A NATS subscription forwarded to SignalR groups, run beside the built-in ones. The parameters
+    // are plain objects so the contract needs no SignalR reference; cast them.
+    public async Task RunAsync(object natsConnection, object hubContext, CancellationToken ct)
+    {
+        var nats = (NATS.Client.Core.NatsConnection)natsConnection;
+        await foreach (var msg in nats.SubscribeAsync<MyMessage>("game.myplugin.*", cancellationToken: ct))
+        {
+            // forward to a SignalR group...
+        }
+    }
+}
+```
+
+- A plugin flag can be queried as soon as the server has started.
+- A subscription should loop until `ct` is cancelled. One that throws is logged and stopped without
+  affecting the others.
+
+## Hooks: the C# `@hook`
+
+Hooks let a plugin step into command execution and react to connections and objects coming and
+going. They work alongside softcode `@hook` and never replace it, and a server with no hook plugins
+runs exactly as before.
+
+```csharp
+[SharpPlugin]
+public sealed class MyPlugin : PluginBase,
+    ICommandInterceptor, IConnectionHook, IObjectLifecycleHook
+{
+    public override string Id => "myplugin";
+
+    // Runs beside softcode @hook/before. Returning false vetoes the command.
+    public ValueTask<bool> BeforeAsync(IMUSHCodeParser parser, string command)
+        => ValueTask.FromResult(!command.StartsWith("@danger", StringComparison.OrdinalIgnoreCase));
+
+    // Returning a result instead of null replaces the built-in command.
+    public ValueTask<Option<CallState>?> TryOverrideAsync(IMUSHCodeParser parser, string command)
+        => ValueTask.FromResult<Option<CallState>?>(null);
+
+    // Sees the finished command; its result is ignored.
+    public ValueTask AfterAsync(IMUSHCodeParser parser, string command) => ValueTask.CompletedTask;
+
+    // Connections. OnConnectAsync is also available.
+    public ValueTask OnLoginAsync(long handle, DBRef player)      => ValueTask.CompletedTask;
+    public ValueTask OnDisconnectAsync(long handle, DBRef? player) => ValueTask.CompletedTask;
+
+    // Objects. OnCreatedAsync fires beside the softcode OBJECT`CREATE event; OnDestroyingAsync fires
+    // before the object is destroyed, while it can still be read.
+    public ValueTask OnCreatedAsync(DBRef obj, DBRef creator) => ValueTask.CompletedTask;
+    public ValueTask OnDestroyingAsync(DBRef obj)            => ValueTask.CompletedTask;
+}
+```
+
+- Every callback has an empty default, so override only the ones you want.
+- A veto works like a softcode `IGNORE` that returns false: the command body is skipped and the after
+  hooks still run. An override works like a softcode `OVERRIDE`.
+- A hook that throws is logged and never stops the command.
+- Hooks run in plugin load order, and the first plugin to veto or override wins.
+
+## Adding web endpoints
+
+A plugin can add controllers, SignalR hubs and endpoints to the server:
+
+```csharp
+public sealed class Plugin : PluginBase, IServiceRegistrar, IEndpointContributor
+{
+    public void RegisterServices(IServiceCollection services)
+    {
+        services.AddControllers().AddApplicationPart(typeof(Plugin).Assembly); // finds your [ApiController]s
+        services.AddSignalR();                                                 // only if you map a hub
+        services.AddSingleton<MyService>();
+    }
+
+    // Called after the server maps its own controllers and hubs.
+    public void MapEndpoints(IEndpointRouteBuilder endpoints)
+    {
+        endpoints.MapHub<MyHub>("/hubs/mine");
+        endpoints.MapGet("/api/myplugin/ping", () => "pong");
+    }
+}
+```
+
+**Keep your types inside the plugin.** Your data types, service interfaces and messages belong in the
+plugin assembly, not in a shared assembly the server or portal references: the server can't be
+compiled against a plugin it loads at runtime. The only meeting points are the interfaces above, which
+name no plugin type, and what goes over the wire as JSON. For a push to the browser, send a payload
+over your hub and let the client define its own matching type.
+
+**Use a plain `Hub`**, not `Hub<TClient>`. SignalR's typed client can't refer to a plugin's types
+(it would stop the plugin from being unloadable), so use `IHubContext<MyHub>` with
+`SendAsync("MethodName", payload)`.
+
+## Adding portal pages
+
+A plugin can add pages and menu entries to the portal without shipping any browser code, by
+describing a [portal application](/guides/applications) and serving its schema and data from its own
+controller:
+
+```csharp
+public sealed class Plugin : PluginBase, IServiceRegistrar, IEndpointContributor, IApplicationSource
+{
+    public IEnumerable<RegisteredApplication> GetApplications() =>
+    [
+        new RegisteredApplication(
+            Slug: "myplugin",
+            DisplayName: "My Plugin",
+            Icon: null,
+            Kind: "Page",                       // Page: a /apps/{slug} route; Widget: a layout tile
+            SchemaUrl: "/api/myplugin/schema",  // served by your controller
+            DataUrl: "/api/myplugin/data",
+            SubmitRoute: null,
+            MinimumRole: "Player",
+            NavPlacement: "World",              // a built-in section, or a new name for your own
+            Zones: [],
+            Order: 100)
+    ];
+}
+```
+
+The application appears in the portal while the plugin is loaded, at `/apps/myplugin`, in the menu
+section you named, for players of at least `MinimumRole`. Nothing is saved in the database; remove
+the plugin and restart, and it is gone. A plugin that adds pages or endpoints is load-once. Custom compiled Blazor components are not supported, only these described pages.
+
+## Publishing a plugin as a package
+
+Instead of asking operators to copy your DLL into `plugins/`, ship it through the package manager as a
+**managed** package. A managed package is a folder in a git repository, like a softcode package, whose
+`package.yaml` lists the plugin's files and their SHA-256 checksums:
+
+```yaml
+package: my-plugin            # also the plugins/<id>/ folder name
+version: "1.0.0"
+authors: [You]
+description: "What it does"
+kind: managed
+binaries:
+  min_server_version: ">=1.1"   # the plugin contract version your DLL was built against
+  files:
+    - file: MyPlugin.dll
+      sha256: <64-hex SHA-256 of MyPlugin.dll>
+    - file: MyPlugin.deps.json   # lets the loader find your private dependencies
+      sha256: <64-hex SHA-256>
+    - file: plugin.json          # your load-order metadata
+      sha256: <64-hex SHA-256>
+```
+
+File names are plain names with no folders; they go straight into `plugins/<id>/`. Compute each
+checksum from the built file (`sha256sum MyPlugin.dll`), and commit `package.yaml` and the files
+together. Releases are tagged like softcode packages (`<package-folder>/v<version>`), and the
+installer reads the files from that exact commit, so a moved tag can't slip in different bytes.
+
+<Aside type="caution" title="A managed package runs with full server trust">
+Compiled C# is not sandboxed, exactly as with a DLL copied in by hand. So an operator has to do two
+things before one installs: add the package id to the server's `ManagedPackages:AllowList` (or set
+`ManagedPackages:AllowAll` on a single-operator or development server), and confirm the install with
+the explicit managed-code opt-in. By default a server installs no managed packages.
+</Aside>
+
+The installer then checks every file's checksum, refuses a package built for a newer contract version
+than the server provides, and puts the files in `plugins/<id>/`. **The plugin loads the next time the
+server starts**; it is not loaded into the running game. Uninstalling removes `plugins/<id>/`, and
+unloads the plugin first if it only contributes commands, functions and hooks.
+
 ## Reference
 
-The docs below live in the server repository and track the code:
-
 <LinkCard
-  title="Extensibility Overview"
-  href="https://github.com/SharpMUSH/SharpMUSH/blob/main/docs/design/extensibility-overview.md"
-  description="Which layer fits, in more depth than the table above."
+  title="How Plugins Load"
+  href="/technical/plugin-system"
+  description="Discovery, load order, what can be unloaded, and the trust model for managed packages."
 />
 
 <LinkCard
-  title="Writing a Plugin"
-  href="https://github.com/SharpMUSH/SharpMUSH/blob/main/docs/guides/writing-a-plugin.md"
-  description="The full worked guide: project file, contribution interfaces, hooks."
-/>
-
-<LinkCard
-  title="Plugin System Design"
-  href="https://github.com/SharpMUSH/SharpMUSH/blob/main/docs/design/plugin-system.md"
-  description="Architecture, registration, and load-order semantics."
+  title="Package Format"
+  href="/reference/package-format"
+  description="The complete package.yaml reference, including managed packages."
 />

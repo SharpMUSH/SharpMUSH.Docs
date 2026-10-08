@@ -40,12 +40,14 @@ export default defineConfig({
                       { label: 'Run with Docker', slug: 'guides/docker-quickstart' },
                       { label: 'Migrate from PennMUSH', slug: 'guides/pennmush-migration' },
                       { label: 'Operator Handbook', slug: 'guides/operator-handbook' },
+                      { label: 'Deployment Reference', slug: 'guides/deployment' },
                       { label: 'Install for Development', slug: 'guides/local-install' },
                       { label: 'The Web Portal', slug: 'guides/web-portal' },
                       { label: 'Portal Applications', slug: 'guides/applications' },
                       { label: 'Visual Layouts and Themes', slug: 'guides/visual-layouts' },
                       { label: 'Softcode Packages', slug: 'guides/packages' },
-                      { label: 'Writing Plugins', slug: 'guides/plugins' }
+                      { label: 'Writing Plugins', slug: 'guides/plugins' },
+                      { label: 'Softcode in Your Editor', slug: 'guides/editor-support' }
                   ],
               },
               {
@@ -54,8 +56,16 @@ export default defineConfig({
                     { label: 'Features', slug: 'reference/features'},
                     { label: 'Compatibility', slug: 'reference/compatibility'},
                     { label: 'Comparison', slug: 'reference/comparison'},
+                    { label: 'Package Format', slug: 'reference/package-format'},
                     { label: 'SharpMUSH Helpfiles', autogenerate: { directory: 'reference/sharpmush-help', collapsed: true }},
-                    { label: 'Technical', slug: 'technical/architecture'},
+                    {
+                      label: 'Technical',
+                      items: [
+                        { label: 'Architecture', slug: 'technical/architecture' },
+                        { label: 'Connections During Updates', slug: 'technical/connections' },
+                        { label: 'How Plugins Load', slug: 'technical/plugin-system' },
+                      ]
+                    },
                   ]
               },
           ],

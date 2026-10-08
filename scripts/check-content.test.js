@@ -80,3 +80,15 @@ test('catches stale SDK claims on the feature overview', () => {
   fs.writeFileSync(path.join(root, 'src/content/docs/reference/features.mdx'), 'Compiled net10.0 assemblies');
   assert.match(validateContent({ root, requiredRoutes: ['guides/test'] }).join('\n'), /stale \.NET 10 SDK/);
 });
+
+test('catches links to documentation files in the SharpMUSH repository', () => {
+  const root = fixture('[Runbook](https://github.com/SharpMUSH/SharpMUSH/blob/main/deploy/README.md)\n<LinkCard href="https://github.com/SharpMUSH/SharpMUSH/tree/main/examples/packages" />');
+  const failures = validateContent({ root, requiredRoutes: ['guides/test'] }).join('\n');
+  assert.match(failures, /deploy\/README\.md/);
+  assert.match(failures, /examples\/packages/);
+});
+
+test('accepts links to the SharpMUSH repository itself, its issues and other repositories', () => {
+  const root = fixture('[Source](https://github.com/SharpMUSH/SharpMUSH) [Issue](https://github.com/SharpMUSH/SharpMUSH/issues/743) [Template](https://github.com/SharpMUSH/SharpMUSH.Template)');
+  assert.deepEqual(validateContent({ root, requiredRoutes: ['guides/test'] }), []);
+});

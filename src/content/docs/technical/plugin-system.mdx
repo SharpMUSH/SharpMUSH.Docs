@@ -1,0 +1,189 @@
+---
+title: How Plugins Load
+description: How SharpMUSH discovers, orders, loads and unloads compiled C# plugins, and the trust model for managed packages.
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+This page explains what the server does with a compiled C# plugin. To write one, start with
+[Writing Plugins](/guides/plugins).
+
+The engine's own commands and functions are found when the server is compiled: a source generator
+reads every `[SharpCommand]` and `[SharpFunction]` method and writes command and function tables. A
+DLL built separately can't join that step, so the server has a second path that finds and registers
+plugins when it starts.
+
+## Isolation and shared types
+
+Each plugin is loaded into its own isolated context, using
+[McMaster.NETCore.Plugins](https://github.com/natemcmaster/DotNetCorePlugins). Every context is
+created so that it *can* be unloaded later; one that is never unloaded costs nothing extra.
+
+The server names a set of **shared types** that must be the same on both sides of that boundary, so
+a command definition built inside a plugin is the exact type the server expects. The server's copy
+always wins, whatever the plugin's project file does. The set covers the plugin contract
+(`IPlugin`, `[SharpPlugin]`, `PluginBase`, `PluginManifest`), command and function definitions and
+their attributes, the parser interface and `CallState`, and the contribution interfaces
+(`IServiceRegistrar`, `IFlagSource`, `IMigrationSource`, `IBridgeSubscriptionSource`, `PluginFlag`).
+The hook interfaces live in `SharpMUSH.Library`, which plugins reference without copying, so they
+line up automatically.
+
+<Aside type="note">
+The loader resolves `SharpMUSH.Library`'s dependencies against the server's own files, so a server
+that loads plugins must ship all of its dependencies beside its binary. Don't trim it.
+</Aside>
+
+## The contract
+
+The contract lives in `SharpMUSH.Library`, which every plugin references:
+
+- **`IPlugin`**: the plugin's `Id`, `Version`, `Dependencies` (other plugin ids it must load after),
+  `Priority` (a tie-break), and `Initialize(IServiceProvider)` for one-time setup.
+- **`[SharpPlugin]`** marks the one entry type in each assembly, so the server never has to scan
+  blindly.
+- **`ICommandSource`** and **`IFunctionSource`** hand over the plugin's commands and functions.
+- **`PluginManifest`**, read from `plugin.json` beside the DLL: id, version, dependencies, priority
+  and the minimum server version.
+- **`PluginBase`** implements all of the above. It reads the command and function tables the source
+  generator wrote into the plugin's own assembly, so an author only writes ordinary
+  `[SharpCommand]` and `[SharpFunction]` methods and one `[SharpPlugin]` class that sets `Id`.
+
+Plugin commands and functions register as **system** entries, the same tier as built-ins (only
+softcode `@function` is not). That puts plugin commands in the command trie, so they can be
+abbreviated like built-ins, and makes `@command` and `functions()` report them as built-in. A name
+that is already taken (the engine loads first) is logged and skipped; the existing one wins.
+
+## Discovery, ordering and loading
+
+The server loads each DLL exactly once, in a single pass:
+
+1. **Discovery.** It looks in `plugins/` beside the server for `*.dll` files, at the top level and one
+   folder down (`plugins/<id>/*.dll`), and reads each one's `plugin.json` if there is one.
+2. **Ordering.** Every plugin loads after the plugins it depends on. Plugins with no dependency on
+   each other are ordered by `Priority`, then `Id`. Dependency loops are found and logged, and the
+   plugins in the loop are skipped; the rest still load. A missing dependency is logged and the
+   plugin that needs it still loads.
+3. **Loading.** Each plugin is loaded, its `[SharpPlugin]` type found and created. A plugin that
+   fails is logged and skipped. **One bad DLL never stops the server from starting.**
+
+This happens **before** the server's services are put together, because services, database
+migrations and flags are all set up while that happens. At that point the server:
+
+- adds each plugin's services (`IServiceRegistrar`) to the container,
+- passes plugin flags (`IFlagSource`) and migration steps (`IMigrationSource`) to the database, which
+  applies them with the built-in ones,
+- hands NATS subscriptions (`IBridgeSubscriptionSource`) to the service that forwards messages to
+  browsers, where each runs beside the built-in ones and one that fails can't stop the others.
+
+Once the server is built, each plugin is initialized and its commands and functions are registered.
+That happens before bundled packages are installed and before `@STARTUP` runs, so softcode can use
+plugin commands from the very first moment.
+
+## What can be unloaded
+
+A plugin that only adds commands, functions and hooks can be **unloaded or reloaded** while the game
+runs. Anything else is load-once, because what it added can't be taken back without a restart:
+
+| The plugin adds… | Held by… | Can unload? |
+|---|---|---|
+| Commands, functions, hooks only | The command and function tables | **Yes** |
+| Services | The built service container | No |
+| Migrations | The database | No |
+| Flags | The database | No |
+| NATS subscriptions | The long-running message forwarder | No |
+| Web endpoints or portal applications | The web server's routes | No |
+
+The server records exactly which command and function names each plugin added (names it skipped
+because they were taken are not recorded), so unloading never removes a built-in or another plugin's
+entry. Unloading removes those entries and releases the plugin's isolated context. The command trie is
+rebuilt from the live tables for every command, so nothing else needs undoing. Reloading unloads the
+plugin, then reads the DLL from disk again, so it picks up a new build. Asking to unload a load-once
+plugin is refused with a message naming what it contributed, and asking you to restart.
+
+SharpMUSH's tests check that an unloaded plugin's context is really freed from memory, not just
+marked as unloaded.
+
+## Hooks
+
+| Interface | Callbacks | Where the engine calls it |
+|---|---|---|
+| `ICommandInterceptor` | `BeforeAsync` (return `false` to veto), `TryOverrideAsync` (return a result to replace the command), `AfterAsync` (observe) | At the same point as softcode `@hook`: before runs after the softcode before hook, override after the softcode override hook, after next to the softcode after hook. |
+| `IConnectionHook` | `OnConnectAsync`, `OnLoginAsync`, `OnDisconnectAsync` | Whenever a connection registers, logs in or disconnects. |
+| `IObjectLifecycleHook` | `OnCreatedAsync`, `OnDestroyingAsync` | `@create` calls the first beside the softcode `OBJECT`CREATE` event; `@destroy`, `@recycle` and `@nuke` call the second before the object is marked as going, so it can still be read. |
+
+Every call into a hook is wrapped so a hook that throws is logged and never stops the command. When
+no plugin has a command hook, command handling skips the hook step entirely, so a game without hook
+plugins runs exactly as it would without plugin support. Connection hooks run in the background so
+they never hold up a connection.
+
+## Plugin-owned storage, endpoints and pages
+
+A plugin can own its own data, web endpoints and portal pages:
+
+- **Storage.** `ILightningStorageAccessor` gives a plugin the database environment and basic helpers,
+  without naming anything specific to a plugin, so the plugin opens its own tables. A plugin that
+  needs one of the server's other assemblies lists it under `sharedAssemblies` in its manifest.
+- **Endpoints.** `IServiceRegistrar` can add the plugin's controllers (`AddApplicationPart`) and
+  SignalR, and `IEndpointContributor.MapEndpoints` maps hubs and routes after the server maps its
+  own. Use a plain `Hub`: SignalR's typed hubs create a proxy that would keep the plugin from being
+  unloadable.
+- **Portal pages.** `IApplicationSource` adds [portal applications](/guides/applications) while the
+  plugin is loaded. They are not saved in the database: they show up in `/api/applications` and the
+  menu alongside the game's own, and are gone once the plugin is removed and the server restarts. If
+  a game's own application has the same slug, the game's wins and the plugin's is skipped with a
+  warning.
+
+**A plugin's types stay inside the plugin.** The server and portal reference no plugin type at all;
+otherwise adding a plugin would mean recompiling them. They meet a plugin only through the generic
+interfaces above and through JSON over HTTP and SignalR, with the portal defining its own copy of any
+message shape it reads. Tests for a plugin's internals belong in a project that references the plugin
+directly; the server's own tests only check what goes over the wire.
+
+## The scene system as a plugin
+
+The scene system is a full plugin, `SharpMUSH.Plugins.Scene`, built into `plugins/scene/`:
+
+| What | How it is added |
+|---|---|
+| The `@SCENE` command | `PluginBase` command table |
+| The `scene…()` functions | `PluginBase` function table |
+| Scene storage | Its own tables through `ILightningStorageAccessor` |
+| The `SCENE_ROOM` flag | `IFlagSource` |
+| Live scene updates to browsers | `IBridgeSubscriptionSource` |
+| The REST API and `/hubs/scene` | Controllers and `IEndpointContributor` |
+
+Because it adds services, a flag and a subscription, it is load-once. The bundled `scene` softcode
+package uses `@scene` and the `scene…()` functions, which is why plugins register before packages
+install. The scene test suite passes unchanged with the scene system running as a plugin, which shows
+the plugin interfaces cover everything it needs.
+
+## Managed packages
+
+A managed package (`kind: managed`) carries a plugin's files and their SHA-256 checksums in its
+`package.yaml` (see [Publishing a plugin as a package](/guides/plugins#publishing-a-plugin-as-a-package)).
+Installing one:
+
+1. **Trust check, in two parts, both required.** The operator confirms this install with the
+   managed-code opt-in, *and* the package id is on the server's allow-list (`ManagedPackages:AllowList`,
+   or `ManagedPackages:AllowAll`). A package can never declare itself trusted.
+2. **Version check.** A package built for a newer plugin contract than the server provides is refused.
+3. **Checksums.** Every file is read from the exact commit the manifest came from and compared with its
+   checksum. A missing file or any mismatch stops the install with nothing written.
+4. **Install.** The checked files are written into `plugins/<id>/`, replacing any earlier copy, and
+   their names are recorded with the installed package.
+5. **Uninstall** unloads the plugin first if it can be unloaded, then deletes `plugins/<id>/` so the
+   next start doesn't load it.
+
+A newly installed managed plugin loads **the next time the server starts**.
+
+<Aside type="caution" title="Checksums are not trust">
+A managed package runs arbitrary compiled C# with full server trust; there is no sandbox, exactly as
+with a DLL copied into `plugins/` by hand. Checksums prove the files are the ones the manifest named.
+Whether to run them is the operator's decision, which is why the default is to install none.
+</Aside>
+
+<LinkCard
+  title="Writing Plugins"
+  href="/guides/plugins"
+  description="Scaffold a plugin, add commands and hooks, and publish it as a package."
+/>

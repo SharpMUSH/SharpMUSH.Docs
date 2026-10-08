@@ -19,9 +19,9 @@ exact stack.
 
 ## Deploy a game
 
-The maintained deployment lives in [`deploy/`](https://github.com/SharpMUSH/SharpMUSH/tree/main/deploy)
-in the SharpMUSH repository. It uses **LMDB embedded** — one directory on disk, with no separate
-database server to run or back up separately.
+The maintained deployment lives in the `deploy/` folder of the SharpMUSH repository, and the
+[Deployment Reference](/guides/deployment) covers every file and setting in it. It uses **LMDB
+embedded** — one directory on disk, with no separate database server to run or back up separately.
 
 Pick your entry point based on how you terminate TLS:
 
@@ -168,8 +168,8 @@ Generate `RESTIC_PASSWORD` once (`openssl rand -base64 32`) and store it somewhe
 makes the backups permanently unrecoverable.
 </Aside>
 
-Full details, including restore procedure and the Cloudflare Tunnel walkthrough, are in
-[`deploy/README.md`](https://github.com/SharpMUSH/SharpMUSH/blob/main/deploy/README.md).
+Full details, including the restore steps and the Cloudflare Tunnel walkthrough, are in the
+[Deployment Reference](/guides/deployment).
 
 <LinkCard
   title="Operator Handbook"

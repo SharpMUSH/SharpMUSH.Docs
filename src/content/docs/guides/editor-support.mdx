@@ -1,0 +1,190 @@
+---
+title: Softcode in Your Editor
+description: Use the SharpMUSH Language Server for error checking, completion and highlighting of softcode in VS Code, Neovim or Emacs.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+If you write softcode in files rather than straight into the game, the **SharpMUSH Language Server**
+gives your editor the same understanding of softcode the game has. It works with any editor that
+supports the Language Server Protocol (LSP), including VS Code, Neovim and Emacs. The portal's
+built-in softcode editor uses the same analysis.
+
+It only reads your code. It never connects to a game, needs no database, and changes nothing.
+
+## What it does
+
+- **Error checking as you type**, with the exact place and a message.
+- **Completion** for function names (with their arguments), command names (with their switches),
+  substitutions such as `%#`, `%!` and `%N`, and q- and v-registers.
+- **Hover help**: a function's arguments, a command's switches and locks, and what a substitution
+  means.
+- **Argument hints** while you type a function call, marking which arguments are optional, and the
+  names of arguments shown inline.
+- **Go to definition** for attributes set with `&attribute` or `@set`, and **find all uses** of an
+  attribute, function or object.
+- **Quick fixes**, such as closing a parenthesis or correcting a misspelled function name.
+- **An outline** of the attributes, function calls and commands in a file, and a search across all
+  your files.
+- **Renaming** an attribute everywhere it is used.
+- **Formatting**: trailing spaces removed, spacing around operators and after commands made
+  consistent.
+- **Highlighting** that knows the difference between built-in and custom functions, object
+  references, substitutions, registers and commands.
+
+It works on files ending in `.mush` or `.mu`.
+
+## Getting the language server
+
+The language server is part of the SharpMUSH source code. Follow
+[Install from Source](/guides/local-install) to get the code and the .NET SDK, then build it:
+
+```bash
+dotnet build SharpMUSH.LanguageServer/SharpMUSH.LanguageServer.csproj
+```
+
+Your editor starts it for you. It talks to the editor over standard input and output, so you never run
+it by hand except to test it:
+
+```bash
+dotnet run --project SharpMUSH.LanguageServer/SharpMUSH.LanguageServer.csproj
+```
+
+It writes a log file each day, named `lsp-server` followed by the date, in `~/.local/share/SharpMUSH/`
+on Linux, `~/Library/Application Support/SharpMUSH/` on macOS, or `%LOCALAPPDATA%\SharpMUSH\` on
+Windows. Look there first if your editor shows no errors or completions.
+
+## VS Code
+
+VS Code needs a small extension that starts the server. The SharpMUSH source includes a working
+example in `SharpMUSH.LanguageServer/vscode-extension-example`. The parts that matter:
+
+<Steps>
+
+1. **Declare the language** in the extension's `package.json`, so `.mush` and `.mu` files are
+   recognised:
+
+   ```json
+   {
+     "name": "sharpmush",
+     "displayName": "SharpMUSH Language Support",
+     "engines": { "vscode": "^1.75.0" },
+     "activationEvents": ["onLanguage:mush"],
+     "main": "./client/out/extension",
+     "contributes": {
+       "languages": [{
+         "id": "mush",
+         "extensions": [".mush", ".mu"],
+         "aliases": ["MUSH", "mush"]
+       }]
+     },
+     "dependencies": { "vscode-languageclient": "^8.1.0" }
+   }
+   ```
+
+2. **Start the server** from the extension, pointing at the built
+   `SharpMUSH.LanguageServer.dll` (here copied or linked into a `server` folder in the extension):
+
+   ```typescript
+   import * as path from 'path';
+   import { workspace, ExtensionContext } from 'vscode';
+   import { LanguageClient, LanguageClientOptions, ServerOptions } from 'vscode-languageclient/node';
+
+   let client: LanguageClient;
+
+   export function activate(context: ExtensionContext) {
+     const serverPath = context.asAbsolutePath(path.join('server', 'SharpMUSH.LanguageServer.dll'));
+     const serverOptions: ServerOptions = {
+       run: { command: 'dotnet', args: [serverPath] },
+       debug: { command: 'dotnet', args: [serverPath] }
+     };
+     const clientOptions: LanguageClientOptions = {
+       documentSelector: [{ scheme: 'file', language: 'mush' }],
+       synchronize: { fileEvents: workspace.createFileSystemWatcher('**/*.{mush,mu}') }
+     };
+     client = new LanguageClient('sharpmush', 'SharpMUSH Language Server', serverOptions, clientOptions);
+     client.start();
+   }
+
+   export function deactivate() {
+     return client?.stop();
+   }
+   ```
+
+3. **Build and install it.** In the extension's folder, with Node.js installed:
+
+   ```bash
+   npm install
+   npm run compile
+   npm run package
+   ```
+
+   This makes a `.vsix` file. In VS Code, open the Extensions view, choose **Install from VSIX…** from
+   its `…` menu, and pick the file.
+
+</Steps>
+
+## Neovim
+
+With `nvim-lspconfig`, define the server once and turn it on for `.mush` and `.mu` files:
+
+```lua
+local lspconfig = require('lspconfig')
+local configs = require('lspconfig.configs')
+
+if not configs.sharpmush then
+  configs.sharpmush = {
+    default_config = {
+      cmd = { 'dotnet', 'run', '--project', '/path/to/SharpMUSH.LanguageServer/SharpMUSH.LanguageServer.csproj' },
+      filetypes = { 'mush' },
+      root_dir = function(fname)
+        return lspconfig.util.find_git_ancestor(fname) or vim.fn.getcwd()
+      end,
+      settings = {},
+    },
+  }
+end
+
+lspconfig.sharpmush.setup{}
+
+vim.filetype.add({
+  extension = {
+    mush = 'mush',
+    mu = 'mush',
+  },
+})
+```
+
+## Emacs
+
+With `lsp-mode`:
+
+```elisp
+(require 'lsp-mode)
+
+(add-to-list 'lsp-language-id-configuration '(mush-mode . "mush"))
+
+(lsp-register-client
+ (make-lsp-client :new-connection (lsp-stdio-connection
+                                   '("dotnet" "run" "--project"
+                                     "/path/to/SharpMUSH.LanguageServer/SharpMUSH.LanguageServer.csproj"))
+                  :major-modes '(mush-mode)
+                  :server-id 'sharpmush-ls))
+
+(add-to-list 'auto-mode-alist '("\\.mush\\'" . mush-mode))
+(add-to-list 'auto-mode-alist '("\\.mu\\'" . mush-mode))
+```
+
+<Aside type="tip">
+Replace `/path/to/` with where your copy of the SharpMUSH source is. Starting the server with
+`dotnet run` rebuilds it if needed, which is slower to start; pointing `dotnet` at the built
+`SharpMUSH.LanguageServer.dll` instead starts faster.
+</Aside>
+
+## For other editors
+
+Any LSP client can use it: start `dotnet` with the built `SharpMUSH.LanguageServer.dll` (or
+`dotnet run --project …`) as a standard input/output server for `.mush` and `.mu` files. It supports
+these LSP requests: document open, change, close and save; diagnostics; semantic tokens (whole file
+and range); completion; hover; definition; references; code actions; signature help; document
+symbols; rename; formatting; workspace symbols; and inlay hints.

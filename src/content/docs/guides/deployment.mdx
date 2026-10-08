@@ -1,0 +1,619 @@
+---
+title: Deployment Reference
+description: Compose files, ports, Cloudflare, backups, disk space, history retention and updates for a single-host SharpMUSH game.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+This is the full reference for the supported way to run a SharpMUSH game: one small server running
+everything under Docker Compose. The [Run with Docker](/guides/docker-quickstart) guide is the short
+version; this page has every setting, port and command behind it.
+
+The whole game fits on one small virtual machine (about €4–6 a month on a budget host such as Hetzner
+CX22/CAX11, or free on Oracle Cloud's Always Free ARM tier). It uses:
+
+- **LMDB**, an embedded database: the world is one directory on disk, with no database server to run.
+- **NATS**, a message bus that carries commands and output between the parts of the game.
+- **restic**, an optional backup container that sends encrypted nightly backups off the machine.
+
+Kubernetes is not needed at this scale.
+
+## What is in the `deploy/` folder
+
+The deployment files live in the `deploy/` folder of the SharpMUSH repository. There are two ways to
+run the stack. Pick one, based on how you want HTTPS handled:
+
+| File | What it is for |
+|---|---|
+| `docker-compose.prod.yml` | The stack (NATS, the connection server, the game server, the optional backup container) plus **Caddy**, which gets and renews HTTPS certificates for you. Use this when the machine faces the internet directly. |
+| `docker-compose.cloudflare.yml` | The same stack, reached through a **Cloudflare Tunnel** instead of Caddy: no open web ports, and your server's address stays hidden. See [Fronting with Cloudflare](#fronting-with-cloudflare). |
+| `Caddyfile` | Caddy's settings, used by `docker-compose.prod.yml`. |
+| `sharpmush.service` | An optional systemd unit that starts the stack from the Compose file when the machine boots. |
+| `.env.example` | A template for your secrets and settings. Copy it to `.env` and fill it in. |
+| `.gitignore` | Keeps your real `.env` out of git. |
+| `../nats.conf` | The NATS settings, shared with the development stack. It raises the largest message to 6 MB and gives NATS's stored messages a 6 GB budget. Both Compose files use it. |
+
+## First-time setup
+
+```bash
+cd deploy
+cp .env.example .env
+# Edit .env: set your domain.
+
+# OPTIONAL: backups. Skip this whole block and the stack runs fine without them.
+# Set the restic and storage-bucket credentials in .env, uncomment COMPOSE_PROFILES=backup,
+# then create the encrypted backup repository once:
+#   openssl rand -base64 32   # makes a RESTIC_PASSWORD. Keep it safe: without it the backups cannot be read.
+docker compose -f docker-compose.prod.yml run --rm backup restic init
+
+# Build and start everything:
+docker compose -f docker-compose.prod.yml up -d --build
+```
+
+The web portal comes up at `https://<your-domain>` and telnet on port `4201`.
+
+<Aside type="danger">
+Open `https://<your-domain>/setup` straight away. The first visitor to that page claims the
+administrator account linked to `#1`.
+</Aside>
+
+### The socket and rendering containers
+
+The connection server (which holds every player's connection) and the renderer (which formats output
+for each kind of client) run as user and group `1654:1654`. A new `render-socket` volume gets that
+ownership automatically. If you are upgrading an older stack whose socket volume belongs to root, stop
+both services and change its owner before starting the new images. This disconnects players:
+
+```bash
+docker compose -f docker-compose.prod.yml stop connectionserver renderer
+docker compose -f docker-compose.prod.yml run --rm --no-deps --user 0:0 --entrypoint chown renderer -R 1654:1654 /run/sharpmush
+docker compose -f docker-compose.prod.yml up -d connectionserver renderer
+```
+
+Use your own Compose file for all three commands. The connection server waits for the renderer to
+answer before it starts. It accepts up to 10,000 browser (WebSocket) connections at once by default;
+set `ConnectionServer__MaxConcurrentUpgradedConnections` to change that. The limit does not apply to
+telnet connections.
+
+### The database
+
+The world is stored at `/app/data/lightning` on the `app-data` volume: one `data.mdb` file plus a
+small `lock.mdb` file, both written by the game server itself. There is nothing else to run, tune or
+connect to. Three settings on `sharpmush-server` matter:
+
+| Variable | Set to | Why |
+|---|---|---|
+| `SHARPMUSH_DATABASE_PROVIDER` | `lightning` | The only accepted value. Anything else stops the server from starting. |
+| `SHARPMUSH_LIGHTNING_PATH` | `data/lightning` | Relative to `/app`, so the world lands on the volume. |
+| `SHARPMUSH_LIGHTNING_SYNC` | `periodic` | Write to disk once a second instead of after every change. A power cut loses at most that second, and the file stays consistent. `full` writes after every change, at about 5 ms each. |
+
+`SHARPMUSH_LIGHTNING_MAPSIZE` (in bytes, 64 GiB by default) is the largest the world file may grow. It
+is a ceiling, not memory or disk set aside: the file only grows as the world does. Raise it before the
+world reaches it. When the world is full the server refuses new changes with `MDB_MAP_FULL` rather
+than damage anything.
+
+The keys the web server signs cookies and forms with are kept beside the world, at
+`/app/data/lightning.dataprotection-keys`, so they survive a recreated container.
+`SHARPMUSH_DATAPROTECTION_PATH` moves them. If you move them, add the new path to the backup
+container's `RESTIC_BACKUP_SOURCES` too.
+
+<Aside type="caution">
+Nothing outside the game server should read `data.mdb` while the game runs. To get a copy that is
+safe to read, have the server make one: see [Backups](#backups).
+</Aside>
+
+#### A machine that ran SurrealDB
+
+SurrealDB is no longer supported, and the server will not start with
+`SHARPMUSH_DATABASE_PROVIDER=surrealdb`. There is no way to carry an old SurrealDB world across: the
+world starts fresh (or from a [PennMUSH import](/guides/pennmush-migration)), and the first visitor
+to `/setup` claims the administrator account again. Uploaded wiki files are on the same volume and
+are kept. Once the game runs on the new database, delete the old store:
+
+```bash
+cd deploy
+export COMPOSE_FILE=docker-compose.cloudflare.yml   # or docker-compose.prod.yml
+git pull                                            # brings in the Compose change
+docker compose stop sharpmush-server
+docker run --rm -v deploy_app-data:/data alpine rm -rf /data/surreal   # the old store
+docker compose up -d                                # starts the server on the new database
+```
+
+`deploy_app-data` is the volume's name when the stack was started from the `deploy` folder. Check
+with `docker volume ls` if you started it from somewhere else.
+
+### The browser terminal address
+
+The portal's terminal connects to `/ws`, which is served by the **connection server** on port `4202`,
+not by the game server. The `Caddyfile` already sends `https://<your-domain>/ws` there, so in the
+portal set the terminal's **Server URI** to:
+
+```
+wss://<your-domain>/ws
+```
+
+The default `ws://localhost:4202/ws` is for local development only. A browser on an HTTPS page will
+refuse a plain `ws://` connection.
+
+### Passkeys
+
+Players can add passkeys to their accounts and sign in with them. A passkey belongs to the address
+the portal was on when it was made, so nothing needs setting up as long as the portal has one stable
+HTTPS address and the proxy passes the browser's `Host` header through (the `Caddyfile` does). Two
+server settings change that:
+
+- `Passkeys__RelyingPartyId=example.com` makes passkeys work on every subdomain of `example.com`
+  (`play.example.com`, `www.example.com`). Set it before players make passkeys: changing it later
+  makes existing passkeys stop working, and their owners have to sign in with a password and add new
+  ones.
+- `Passkeys__Origins__0=https://portal.example.com` names a portal served from a different address
+  than the server, or behind a proxy that rewrites `Host`. Without it, `Cors__AllowedOrigins` is used.
+
+## Ports
+
+| Port | Service | Open to the internet? |
+|---|---|---|
+| 80 / 443 (TCP), 443 (UDP) | Caddy: the web portal, live updates, and `/ws` to the connection server. UDP 443 is HTTP/3. | Yes. Open UDP 443 on the firewall too, or browsers stay on HTTP/2. |
+| 4201 | Telnet, **unencrypted** | Yes |
+| 4203 | Telnet over TLS: *configured but not built yet* | Not yet |
+| 8080 | The game server's web port | No. Reached through Caddy. |
+| 4202 | The connection server's web port and `/ws` | No. Reached through Caddy's `/ws` route. |
+| 9092 | The game server's metrics for Prometheus (`Metrics:Port`; `0` turns it off) | No. Published on the machine's own loopback address (`127.0.0.1:9092`) only, for a scraper on the machine or an ssh tunnel. Needs Docker Engine 28.3.3 or later; older versions could expose loopback-published ports to the local network. |
+| 9091 | The connection server's metrics (`ConnectionServer:MetricsPort`) | No. Scrape it from inside the Compose network. |
+| 4222 / 8222 | NATS | No. Internal only. |
+
+<Aside type="caution" title="Telnet is unencrypted today">
+Everything a player types on port `4201`, including their password when they log in, crosses the
+network as plain text. The portal is HTTPS, but MU\* clients connect straight to `4201` and bypass it.
+
+Nothing listens on `ssl_port` (4203) yet. [Issue #743](https://github.com/SharpMUSH/SharpMUSH/issues/743)
+tracks the work. Until then, if you need encrypted player connections, put TLS in front of `4201`
+yourself (stunnel, or a TCP proxy). The cost: the game sees every player as connecting from the
+proxy, so site locks, bans and connection logs lose the real address.
+</Aside>
+
+If you **don't** use Caddy (for example, a load balancer handles HTTPS), remember that `/ws` lives on
+the connection server (`4202`), not the game server. Publish `4202` or add an equivalent `/ws` route,
+as well as publishing `8080`.
+
+## Fronting with Cloudflare
+
+`docker-compose.cloudflare.yml` replaces Caddy with a **Cloudflare Tunnel**. A small `cloudflared`
+container connects *out* to Cloudflare, and Cloudflare sends visitors back down that connection. So:
+
+- you open **no web ports** on the machine,
+- you manage **no certificate** (Cloudflare handles HTTPS),
+- your server's **address stays hidden** behind Cloudflare.
+
+### There are two separate front doors
+
+Players reach SharpMUSH two ways, and Cloudflare only handles one of them:
+
+| Traffic | Protocol | Path | Through Cloudflare? |
+|---|---|---|---|
+| Web portal and browser terminal | HTTPS and WebSockets | Tunnel to `sharpmush-server:8080` | **Yes** |
+| Telnet (MU\* clients) | Raw TCP | Client straight to the machine's address on `:4201` | **No** |
+
+Cloudflare's normal proxy only carries web traffic. Telnet cannot go through it on the free or
+standard plans; that needs Cloudflare's paid Spectrum product. So the tunnel steps below apply only
+to the web side, and telnet gets a plain DNS record pointing at the machine.
+
+### Part A: the web side
+
+<Steps>
+
+1. **Create the tunnel.** In the Cloudflare dashboard go to
+   **Zero Trust → Networks → Tunnels → Create a tunnel**, choose **Cloudflared**, and name it
+   (for example `sharpmush`).
+
+2. **Copy the token.** Cloudflare shows an install command with a long token after `--token`. Copy
+   just the token into `.env`:
+
+   ```
+   CLOUDFLARE_TUNNEL_TOKEN=eyJh...   # the token, nothing else
+   ```
+
+   You do not need to run the install command; the `cloudflared` container runs the tunnel.
+
+3. **Add your portal address.** On the tunnel's **Public Hostname** tab, add a route:
+   - **Subdomain/domain:** `mush.example.com`
+   - **Service type:** `HTTP`
+   - **URL:** `sharpmush-server:8080`
+
+   Cloudflare creates the DNS record for you. `HTTP` is correct here: that hop is inside the private
+   Docker network, and visitors still use HTTPS.
+
+4. **Add the terminal route.** The browser terminal's `/ws` is served by the connection server, so it
+   needs its own route, placed **above** the one from step 3 (Cloudflare checks them top to bottom):
+   - **Subdomain/domain:** `mush.example.com`
+   - **Path:** `ws`
+   - **Service type:** `HTTP`
+   - **URL:** `connectionserver:4202`
+
+   Then set the portal terminal's **Server URI** to `wss://mush.example.com/ws`.
+
+   Instead of a path, you can give the terminal its own address: `ws.mush.example.com` →
+   `HTTP` → `connectionserver:4202`, with the Server URI `wss://ws.mush.example.com/ws`. The path
+   route keeps everything on one address.
+
+</Steps>
+
+### Part B: the telnet side
+
+Telnet does not use the tunnel. Give players an address that points straight at the machine:
+
+<Steps>
+
+1. In Cloudflare's normal **DNS** page (not Zero Trust), add an `A` (or `AAAA`) record, for example
+   `telnet.mush.example.com` → your machine's public address.
+2. Set the record to **DNS only** (grey cloud), not proxied. A proxied record would try to send telnet
+   through the web proxy, which does not work.
+3. Allow inbound **TCP 4201** on the machine's firewall. Players connect their MU\* client to
+   `telnet.mush.example.com 4201`.
+
+</Steps>
+
+Because that record is DNS only, the telnet address reveals your machine's real address. The portal
+stays hidden; only the telnet address is exposed. Hiding it too needs Cloudflare Spectrum or another
+TCP proxy.
+
+### Part C: start it
+
+```bash
+cd deploy
+cp .env.example .env      # fill in CLOUDFLARE_TUNNEL_TOKEN and your domain
+docker compose -f docker-compose.cloudflare.yml run --rm backup restic init   # optional, once, for backups
+docker compose -f docker-compose.cloudflare.yml up -d --build
+```
+
+Check the tunnel with `docker compose -f docker-compose.cloudflare.yml logs -f cloudflared` (you want
+to see it register a connection), then load `https://mush.example.com`.
+
+### Ports with Cloudflare
+
+| Port | Service | Open on the firewall? |
+|---|---|---|
+| 4201 | Telnet | **Yes** (Part B) |
+| 80 / 443 | — | **No.** The tunnel only connects outward. |
+| 8080 | The game server's web port | No. Reached through the tunnel. |
+| 4222 / 8222 | NATS | No. Internal only. |
+
+## Starting on boot
+
+The containers' `restart: unless-stopped` setting brings them back after a reboot, which is enough
+for most machines. But it restores whatever was running when the machine went down, not what the
+Compose file says. A `docker compose down`, a container stopped by hand, or an edited Compose file
+carries over the reboot, and the machine quietly drifts from its configuration.
+
+`sharpmush.service` fixes that by running `docker compose up -d` at boot:
+
+```bash
+# as root, on the host
+ln -s /opt/SharpMUSH/deploy/sharpmush.service /etc/systemd/system/sharpmush.service
+systemctl daemon-reload
+systemctl enable --now sharpmush.service
+```
+
+It pulls images first, so a boot also picks up an image the machine missed while it was off, and it
+still starts the game if the image registry is down. Edit `WorkingDirectory` and the Compose file name
+in the unit if your copy is not at `/opt/SharpMUSH` or you use the Caddy stack.
+
+This does not replace Watchtower, which handles updates while the machine is running (see
+[Updating](#updating)).
+
+## Backups
+
+**Backups are optional and off by default.** The `backup` container only exists once you turn it on,
+so a machine without backup settings doesn't get a container that keeps failing. To turn it on, fill
+in the restic settings in `.env` and uncomment:
+
+```bash
+COMPOSE_PROFILES=backup
+```
+
+Once on, the backup container sends `/data/backup`, `/data/wiki-assets` and
+`/data/lightning.dataprotection-keys` to your storage bucket every night at 03:30, keeping 7 daily
+and 4 weekly snapshots. It reads the volume **read-only**, so a backup can never damage live data.
+
+**It backs up copies, never the live world.** Reading `data.mdb` from start to end while the game
+keeps writing does not produce a file that can be trusted to open. So the server makes its own copies
+with LMDB's built-in copy routine. Each one is a complete world, written into
+`/app/data/backup/<timestamp>` while the game keeps running, with `latest` pointing at the newest.
+`SHARPMUSH_BACKUP_INTERVAL=6h` on `sharpmush-server` makes one every six hours, so the 03:30 run
+always finds a recent one. The live world at `/data/lightning` is deliberately left out of
+`RESTIC_BACKUP_SOURCES`.
+
+| Setting on `sharpmush-server` | Default | What it does |
+|---|---|---|
+| `SHARPMUSH_BACKUP_INTERVAL` | unset (no scheduled copies) | How often a copy is made: `6h`, `90m`, `1h30m`, or a number of seconds. |
+| `SHARPMUSH_BACKUP_KEEP` | `2` | How many copies stay on disk. Each is a whole world, so this is a disk-space decision. |
+| `SHARPMUSH_BACKUP_PACKAGE_KEEP` | `2` | How many of the copies made before a portal package install, rollback or uninstall stay on disk. They are kept in `pre-package/`, counted separately, so they never push out the copies above. `0` turns them off. |
+| `SHARPMUSH_BACKUP_PATH` | `<world>.backups` | Where copies go. Both stacks set it to `data/backup`. |
+| `SHARPMUSH_LIGHTNING_BACKUP_COMPACT` | on | Leave out unused space: smaller copies that take longer to make. `false` turns it off. |
+
+A wizard can make a copy at any time in the game with `@backup`, and list the copies on disk with
+`@backup/list`.
+
+The portal makes a copy into `pre-package/<timestamp>` before every package install, rollback or
+uninstall, and refuses to go ahead if that copy fails. It is the way back if the operation is
+interrupted. It copies the world only: a compiled plugin package's `plugins/<id>/` folder is not in it.
+
+The commands below work whether or not backups are turned on. They leave out `-f` by setting
+`COMPOSE_FILE` once per shell to whichever stack you run:
+
+```bash
+export COMPOSE_FILE=docker-compose.prod.yml        # or docker-compose.cloudflare.yml
+```
+
+```bash
+# List snapshots:
+docker compose run --rm backup restic snapshots
+
+# Back up right now:
+docker compose run --rm backup backup
+
+# Restore the latest snapshot into a scratch volume to look at it:
+docker compose run --rm -v restore:/restore backup \
+  restic restore latest --target /restore
+```
+
+### Restoring for real
+
+Stop the game, then put the snapshot's contents back into the `app-data` volume: one of the
+`backup/<timestamp>` copies becomes `lightning`, and `wiki-assets` and
+`lightning.dataprotection-keys` go back as they are. The game reads whatever is in the volume when it
+starts.
+
+```bash
+docker compose stop sharpmush-server connectionserver
+
+# 1. Restore into a scratch volume. The -v keeps the files after the container exits;
+#    without it restic writes into the container itself and they are lost.
+docker compose run --rm -v restore:/restore backup \
+  restic restore latest --target /restore
+
+# 2. See which copies the snapshot holds, and pick one.
+docker compose run --rm --no-deps -v restore:/restore --entrypoint sh sharpmush-server \
+  -c 'ls /restore/data/backup'
+
+# 3. Put it in place. The game server's image can write to app-data; the backup container cannot.
+docker compose run --rm --no-deps -v restore:/restore --entrypoint sh sharpmush-server -c '
+  rm -rf /app/data/lightning &&
+  cp -a /restore/data/backup/<timestamp> /app/data/lightning &&
+  cp -a /restore/data/wiki-assets/. /app/data/wiki-assets/ &&
+  if [ -d /restore/data/lightning.dataprotection-keys ]; then
+    rm -rf /app/data/lightning.dataprotection-keys &&
+    cp -a /restore/data/lightning.dataprotection-keys /app/data/lightning.dataprotection-keys
+  fi'
+
+docker compose start connectionserver sharpmush-server
+docker volume rm restore    # once the game is up and you are satisfied
+```
+
+A restored copy has no `lock.mdb` (LMDB makes a new one when it opens) and no `lightning.previous`,
+which is an older world left over from a PennMUSH import and never part of a copy. See
+[Earlier worlds](#earlier-worlds).
+
+The game does not need to stop for the nightly backup: restic only reads finished copies. A copy
+still being written is named `.incoming-*` and is skipped until it is complete.
+
+## Disk space
+
+The world's disk use is easy to misread. Four numbers describe it, and the wizard command `@storage`
+reports each one:
+
+| Figure | What it is | Metric |
+|---|---|---|
+| **Map limit** | `SHARPMUSH_LIGHTNING_MAPSIZE`, the most `data.mdb` may ever grow to. A ceiling that costs no disk or memory until it is used. | `sharpmush_storage_bytes{kind="map"}` |
+| **File length** | How far `data.mdb` has grown, which is what `ls -l` shows. | `kind="file"` |
+| **Allocated on disk** | What the disk actually holds for it, which is what `du` shows. It can be smaller than the length. | `kind="allocated"` |
+| **Live data** | Space holding records now. The rest of the file is free space that later changes reuse. | `kind="live"`, `kind="free_pages"` |
+
+Three things follow from this:
+
+- **Deleting things never shrinks the file.** The freed space is reused by later changes, so the file
+  stops growing but stays the same size. The only way to give the space back to the disk is to
+  replace the file with a compacted copy (see [Compacting the world](#compacting-the-world)).
+- **A backup makes the file grow for a while.** While a copy is being made, the database cannot reuse
+  space the copy might still read, so changes made during the copy go to new space. That space is
+  reused afterwards, not returned to the disk.
+- **A crashed reader holds space until it is cleared.** A process that dies while reading the world
+  leaves a marker in `lock.mdb` that holds space the same way. The server clears these when it opens
+  the world and every five minutes after, and logs a warning when it clears one. `@storage` and
+  `sharpmush_storage_stale_readers_cleared_total` count them. This only happens when another program
+  had the live world open, such as `mdb_stat`.
+
+### What a backup run needs
+
+A backup writes its new copy **beside** the ones it keeps, and deletes the oldest only after the new
+one is complete. So at its busiest the volume holds:
+
+```
+the live world (data.mdb at its file length)
++ SHARPMUSH_BACKUP_KEEP finished copies
++ the copy being written (.incoming-*)
++ <world>.previous, if an import was ever promoted
++ any <world>.staging-* left by an import that never finished
+```
+
+With the shipped settings (two copies kept, compacted) that is the world's file plus three copies of
+its live data. `@storage` prints the backup folder's peak and the free space a run needs, and says
+when the backups share a disk with the world.
+
+Before writing anything, a backup checks the disk has room for the new copy plus a margin (a tenth of
+the copy, and at least 16 MiB). If not, it does not start: `@backup` says why, a scheduled run logs it,
+and `sharpmush_storage_backup_fits` drops to 0. If the disk fills during a copy anyway, the partial
+copy is deleted and the kept copies are left alone.
+
+Suggested alerts on the game server's metrics (scrape `sharpmush-server:9092`):
+
+```
+sharpmush_storage_backup_fits == 0                                     # the next backup will not start
+sharpmush_storage_bytes{kind="map_headroom"} < ignoring(kind) 2 * sharpmush_storage_bytes{kind="live"}   # raise MAPSIZE
+sharpmush_storage_bytes{kind="world_disk_free"} < ignoring(kind) sharpmush_storage_bytes{kind="backup_required_free"}
+sharpmush_storage_bytes{kind="leftover_worlds"} > 0                    # a .previous or .precompact world to clean up
+```
+
+A PennMUSH import is checked the same way before it starts. It is refused with
+`507 Insufficient Storage` when the disk or the map limit clearly cannot hold three times the size of
+the uploaded files. Nothing is written in that case.
+
+### Earlier worlds
+
+Finishing a PennMUSH import moves the world it replaces to `<world>.previous`. That world is **never
+deleted automatically**, because it is the way back if the import turns out wrong. Delete it once the
+new world is checked. `@storage` lists it, along with any `.staging-*` world an unfinished import left
+and any `.incoming-*` copy an interrupted backup left:
+
+```bash
+docker compose run --rm --no-deps --entrypoint sh sharpmush-server -c 'du -sh /app/data/*'
+docker compose run --rm --no-deps --entrypoint sh sharpmush-server -c 'rm -rf /app/data/lightning.previous'
+```
+
+The rest of the volume holds uploaded wiki files (`/app/data/wiki-assets`), the signing keys
+(`/app/data/lightning.dataprotection-keys`) and the backup folder. NATS keeps its own data in the
+`nats-data` volume, which is short-lived but on the same disk:
+
+```bash
+docker system df -v | grep -E 'app-data|nats-data'
+```
+
+### Compacting the world
+
+To give back the space that deleted records freed, have the server replace the world's file with a
+compacted copy when it starts. Nothing else has the file open at that moment, so nothing can change
+between the copy and the swap:
+
+```bash
+# 1. Check there is room: the copy needs about the live data (see @storage) plus a margin.
+# 2. Set SHARPMUSH_LIGHTNING_COMPACT_ON_START=true on sharpmush-server, then restart it:
+docker compose up -d sharpmush-server
+# 3. Check the log, then @storage in the game, and play-test.
+docker compose logs sharpmush-server | grep -i compact
+# 4. Remove SHARPMUSH_LIGHTNING_COMPACT_ON_START and restart, then delete the original:
+docker compose run --rm --no-deps --entrypoint sh sharpmush-server -c 'rm -rf /app/data/lightning.precompact'
+```
+
+On each start with the setting on, the server:
+
+<Steps>
+
+1. Copies the world, compacting it, into `lightning.compacting`.
+2. Opens the copy and checks every table holds as many records as the original.
+3. Moves the original to `lightning.precompact` and the copy into its place.
+
+</Steps>
+
+If something goes wrong:
+
+- A failure or crash during the copy leaves the world untouched. The next start deletes the partial
+  copy.
+- A crash between the two moves leaves no world, but the next start moves the original back.
+- If `lightning.precompact` already exists, compaction is refused and the server starts on the world
+  as it is, because an earlier original is never deleted automatically.
+- If there is not enough disk, compaction is refused the same way.
+
+<Aside type="caution">
+The `mdb_copy` and `mdb_stat` tools from Linux distributions are LMDB 0.9. The server runs LMDB 1.0,
+whose file format they cannot read. Do not use them on the world.
+</Aside>
+
+### Container logs
+
+Both Compose files rotate container logs (3 files of 10 MB per container). Without rotation, Docker
+keeps every line forever on the same disk as the world. If you run the images some other way, set the
+same in `/etc/docker/daemon.json`:
+
+```json
+{ "log-driver": "json-file", "log-opts": { "max-size": "10m", "max-file": "3" } }
+```
+
+## History retention
+
+Some things are kept after the game stops showing them:
+
+- **Wiki revisions.** Every edit of every page and translation keeps the version before it, so history
+  and rollback work.
+- **Scene pose edits.** Every version of every pose is kept, so undo and redo work.
+- **Deleted poses.** Deleting a pose hides it. Its text and edit history stay stored.
+- **The audit log.** Every staff action, from the portal or the game, is one entry.
+
+All four grow forever by default. Each makes the world, and so every backup, larger.
+`@storage/history` counts them.
+
+**By default nothing is ever removed.** Three different things can happen to a record:
+
+| | The game shows it | In the live world | In older backups |
+|---|---|---|---|
+| **Soft delete** (deleting a pose) | No, except struck through to its owner in the portal | Yes | Yes |
+| **Archive** (a purge with `SHARPMUSH_HISTORY_ARCHIVE_PATH` set) | No | No; it is in the archive file | Yes |
+| **Removal** (a purge) | No | No | Yes |
+
+A purge frees space inside the file for reuse. It does not shrink the file (see
+[Disk space](#disk-space)).
+
+| Setting on `sharpmush-server` | Default | What it does |
+|---|---|---|
+| `SHARPMUSH_HISTORY_WIKI_KEEP` | unset | Keep at least this many of the newest revisions of each page and translation. |
+| `SHARPMUSH_HISTORY_WIKI_MAX_AGE` | unset | Remove revisions older than this, for example `365d`. |
+| `SHARPMUSH_HISTORY_SCENE_EDITS_KEEP` | unset | Keep at least this many of the newest versions of each pose. |
+| `SHARPMUSH_HISTORY_SCENE_EDITS_MAX_AGE` | unset | Remove pose versions older than this. |
+| `SHARPMUSH_HISTORY_SCENE_DELETED_MAX_AGE` | unset | Remove a deleted pose (its text and every version) once it has been deleted this long. |
+| `SHARPMUSH_HISTORY_AUDIT_MAX_AGE` | unset | Remove audit log entries older than this. The audit log has no `_KEEP`. |
+| `SHARPMUSH_HISTORY_INTERVAL` | unset (no scheduled pass) | How often a pass runs, for example `1d`. `@storage/purge` runs one at any time. |
+| `SHARPMUSH_HISTORY_BATCH` | `256` | The most records removed in one step. |
+| `SHARPMUSH_HISTORY_ARCHIVE_PATH` | unset (no archive) | Removed records are first written here, as `<kind>-<date>.jsonl`. |
+
+When a kind has both a count and an age, a version is removed only when it is outside the newest
+*N* **and** older than the age. A setting the server cannot read is logged and treated as unset, so a
+typo keeps more, never less. A purge never removes:
+
+- the revision a wiki page or translation shows now,
+- anything on a protected wiki page,
+- the version a pose shows now, or any later version that redo can still reach.
+
+Undo stops at the oldest version that is left, and a wiki rollback can only go back to a revision that
+is left. Revision numbers are never reused.
+
+A pass works in small slices, so the game keeps running between them. Each record is checked again
+just before it is removed, so an edit or undo made in the meantime is respected. If the archive cannot
+be written, the pass stops before removing anything that was not archived.
+
+**Mail** has no retention setting. A message stays until its recipient deletes and purges it.
+`mail_limit` (and a player's `MAILQUOTA`) limits the folder new mail arrives in; mail moved into other
+folders does not count toward it.
+
+## Updating
+
+**The Cloudflare stack updates itself.** Every change merged into SharpMUSH runs the full test suite
+and then publishes new images to Docker Hub: `sharpmush/sharpmush-server:dev` for the game server,
+`sharpmush/sharpmush-connectionserver:dev` for the renderer, and
+`sharpmush/sharpmush-socketserver:dev` for the connection server. The `watchtower` container checks
+every 5 minutes and replaces the **game server and renderer** when their images change. Neither
+replacement disconnects anyone: players see a restart notice and carry on.
+
+The **connection server is not updated automatically**, because it holds every player's connection
+and replacing it disconnects everyone. Update it on purpose, when you are willing to drop players:
+
+```bash
+docker compose -f docker-compose.cloudflare.yml pull connectionserver
+docker compose -f docker-compose.cloudflare.yml up -d connectionserver
+```
+
+Nothing is built on the machine, and it needs no inbound access. The web portal is built into the
+game server image.
+
+To update the other containers (NATS, cloudflared, backup, which Watchtower leaves alone), or to
+update the game now instead of waiting for Watchtower:
+
+```bash
+git pull
+docker compose pull
+docker compose up -d
+```
+
+The `app-data` volume is kept across updates, so the world is untouched. Database upgrades are
+recorded in the database and run only once, so unattended restarts are safe.
+
+What players see during each kind of update, and how far a browser session can recover, is on
+[Connections During Updates](/technical/connections).

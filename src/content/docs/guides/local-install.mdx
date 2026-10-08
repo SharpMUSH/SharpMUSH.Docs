@@ -11,9 +11,16 @@ the hardcode or contribute to the project. If you only want to *run* a game, the
 
 # Install from Source
 ## Prerequisites
-- The .NET SDK version pinned in [`global.json`](https://github.com/SharpMUSH/SharpMUSH/blob/main/global.json).
-  The repository currently uses the .NET 11 prerelease band and permits roll-forward only within
-  the matching 11.0.1xx band, so an older preview or an earlier major SDK will not load the solution.
+- The .NET 11 SDK, version **11.0.100-rc.1** or a later 11.0.1xx release. The repository's
+  `global.json` pins this version, so an older preview or an earlier major SDK will not load the
+  solution. To install it:
+
+  ```bash
+  curl -sSL https://dot.net/v1/dotnet-install.sh | bash -s -- --version 11.0.100-rc.1.26425.128
+  ```
+
+  On Windows, use the [dotnet-install script](https://learn.microsoft.com/dotnet/core/tools/dotnet-install-script)
+  (`dotnet-install.ps1 -Version 11.0.100-rc.1.26425.128`).
 - [Docker](https://www.docker.com/products/docker-desktop/) to run the database and messaging containers the server depends on.
 - [Visual Studio](https://visualstudio.microsoft.com/vs/) or [Jetbrains Rider](https://www.jetbrains.com/rider/) to build the application.
 
