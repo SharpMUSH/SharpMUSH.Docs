@@ -263,8 +263,8 @@ ENTER_OK is often used in conjunction with AUDIBLE on vehicles and buildings.
 
 
 ::: seealso
-- [enter](/reference/sharpmush-help/sharpcmd/#aenter)
-- [give](/reference/sharpmush-help/sharpcmd/#give)
+- [enter](/reference/sharpmush-help/sharpcmd/#enter)
+- [give](/reference/sharpmush-help/sharpcmd/#give-1)
 - [@tel](/reference/sharpmush-help/sharpcmd/#tel)
 - [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
 :::

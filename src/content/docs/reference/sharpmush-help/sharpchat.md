@@ -17,7 +17,7 @@ There are some aliases in place for players more familiar with the MUX comsys - 
 
 ::: seealso
 - [@channel](/reference/sharpmush-help/sharpchat/#channel)
-- [@chat](/reference/sharpmush-help/sharpchat/#chat)
+- [@chat](/reference/sharpmush-help/sharpchat/#chat-1)
 - [@CEMIT](/reference/sharpmush-help/sharpchat/#cemit)
 - [channel functions](/reference/sharpmush-help/channel-functions/#channel-functions)
 - [CHAN_USEFIRSTMATCH](/reference/sharpmush-help/sharpchat/#chanusefirstmatch)
@@ -55,7 +55,7 @@ Normally, when an object attempts to speak on the channel system with @chat, usi
 
 ::: seealso
 - [CHAT](/reference/sharpmush-help/sharpchat/#chat)
-- [@chat](/reference/sharpmush-help/sharpchat/#chat)
+- [@chat](/reference/sharpmush-help/sharpchat/#chat-1)
 - [@CEMIT](/reference/sharpmush-help/sharpchat/#cemit)
 :::
 
@@ -77,7 +77,7 @@ cemit() and nscemit() work the same as @cemit/silent and @nscemit/silent, respec
 @cemit is intended for use in writing extended chat systems. 
 
 ::: seealso
-- [@chat](/reference/sharpmush-help/sharpchat/#chat)
+- [@chat](/reference/sharpmush-help/sharpchat/#chat-1)
 :::
 
 ## @channel
@@ -92,7 +92,7 @@ Help for `@channel` is split into a number of topics. Please see [@channel \<top
 
 ::: seealso
 - [CHAT](/reference/sharpmush-help/sharpchat/#chat)
-- [@chat](/reference/sharpmush-help/sharpchat/#chat)
+- [@chat](/reference/sharpmush-help/sharpchat/#chat-1)
 - [@CEMIT](/reference/sharpmush-help/sharpchat/#cemit)
 - [channel functions](/reference/sharpmush-help/channel-functions/#channel-functions)
 :::
@@ -279,6 +279,6 @@ Aliases are stored on you as `` CHANALIAS`<alias> `` attributes, so they survive
 
 ::: seealso
 - [@channel](/reference/sharpmush-help/sharpchat/#channel)
-- [@chat](/reference/sharpmush-help/sharpchat/#chat)
+- [@chat](/reference/sharpmush-help/sharpchat/#chat-1)
 - [CHAN_USEFIRSTMATCH](/reference/sharpmush-help/sharpchat/#chanusefirstmatch)
 :::

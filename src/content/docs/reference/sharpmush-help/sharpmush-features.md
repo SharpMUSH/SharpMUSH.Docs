@@ -54,7 +54,7 @@ line names the help topic that explains it. For where SharpMUSH still differs fr
 - Players can hold a web-portal account with several characters linked to it. At the login
   screen, [register](/reference/sharpmush-help/sharpcmd/#register) and [login](/reference/sharpmush-help/sharpcmd/#login) reach the account, and [make](/reference/sharpmush-help/sharpcmd/#make) and [play](/reference/sharpmush-help/sharpcmd/#play) create and connect its
   characters. Wizards manage accounts with [@account](/reference/sharpmush-help/sharpcmd/#account).
-- [@locale](/reference/sharpmush-help/sharpcmd/#internationalization) sets the language the server addresses you in.
+- [@locale](/reference/sharpmush-help/sharpcmd/#locale) sets the language the server addresses you in.
 
 ### Roles and permissions
 
@@ -99,7 +99,7 @@ line names the help topic that explains it. For where SharpMUSH still differs fr
   to others.
 - [@backup](/reference/sharpmush-help/sharpcmd/#backup) copies the live world, [@storage](/reference/sharpmush-help/sharpcmd/#storage) reports its disk use, and [@package](/reference/sharpmush-help/sharpcmd/#package) turns objects
   into installable softcode packages.
-- [@profile](/reference/sharpmush-help/sharpcmd/#profile) records which functions and commands run, and [@ps/history] lists recent queue
+- [@profile](/reference/sharpmush-help/sharpcmd/#profile) records which functions and commands run, and [@ps/history](/reference/sharpmush-help/sharpcmd/#pshistory) lists recent queue
   outcomes.
 - An internal error is reported as an [exception](/reference/sharpmush-help/sharpcode/#exception) with an id the server log can be searched for.
 

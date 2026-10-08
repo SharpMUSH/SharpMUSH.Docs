@@ -72,7 +72,7 @@ To talk to someone who isn't in the room with you, use `page`: `page Lisa=Hi the
 
 ::: seealso
 - [gs chat](/reference/sharpmush-help/sharpchat/#gs-chat)
-- [say](/reference/sharpmush-help/sharpcmd/#say)
+- [say](/reference/sharpmush-help/sharpcmd/#-4)
 - [pose](/reference/sharpmush-help/sharpconf/#pose)
 - [@emit](/reference/sharpmush-help/sharpcmd/#emit)
 - [page](/reference/sharpmush-help/page/#page)

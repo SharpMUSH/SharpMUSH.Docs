@@ -10,7 +10,7 @@ description: "SharpMUSH documentation for page"
   "lookup": "page",
   "aliases": [
     "p"
-  ](/reference/sharpmush-help/sharpconf/#poss),
+  ](/reference/sharpmush-help/sharpconf/#p),
   "sections": [
     {
       "id": "recipient-matching-and-poses",

@@ -249,7 +249,7 @@ sitemap. To publish or unpublish a page, see [wiki administration](/reference/sh
 - `@wiki/translate <page>/<lang>=<markdown>` - write the `<lang>` translation (see [wiki editing](/reference/sharpmush-help/sharpconf/#wiki-editing))
 
 @wiki reads pages in your locale, the one you set with `@locale` (see
-[@locale](/reference/sharpmush-help/sharpcmd/#internationalization)). When a page has no translation in your locale you get the fallback
+[@locale](/reference/sharpmush-help/sharpcmd/#locale)). When a page has no translation in your locale you get the fallback
 version, and its locale appears in brackets next to the revision number on the
 header line.
 

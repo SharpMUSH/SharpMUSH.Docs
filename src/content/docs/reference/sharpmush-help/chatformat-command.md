@@ -49,7 +49,7 @@ The chatformat attribute is evaluated when an object receives a channel message.
 If the channel is NO_NAME, and the speaker either has no title or the channel is also set NO_TITLE, then %3 will be "Someone".
 
 ::: seealso
-- [@chat](/reference/sharpmush-help/sharpchat/#chat)
+- [@chat](/reference/sharpmush-help/sharpchat/#chat-1)
 - [@pageformat](/reference/sharpmush-help/pageformat-command/#pageformat)
 - [@message](/reference/sharpmush-help/message-command/#message)
 - [speak()](/reference/sharpmush-help/speak/#speak)

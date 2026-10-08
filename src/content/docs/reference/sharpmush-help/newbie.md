@@ -43,7 +43,7 @@ For example, the syntax of the help command is:
 
 What this means is that to get help, you would type first the word "help" and then you could optionally type the name of a more specific topic in order to get help on that topic. Just typing "help" will work too (that's why the `<topic>` part is optional).
 
-Some common commands that you should look at help for are [look](/reference/sharpmush-help/look/#look), [say](/reference/sharpmush-help/sharpcmd/#say), [go], [page](/reference/sharpmush-help/page/#page), [pose](/reference/sharpmush-help/sharpconf/#pose), [get](/reference/sharpmush-help/sharpcmd/#get), [give](/reference/sharpmush-help/sharpcmd/#give) and [home](/reference/sharpmush-help/sharptop/#homes).
+Some common commands that you should look at help for are [look](/reference/sharpmush-help/look/#look), [say](/reference/sharpmush-help/sharpcmd/#-4), [go], [page](/reference/sharpmush-help/page/#page), [pose](/reference/sharpmush-help/sharpconf/#pose), [get](/reference/sharpmush-help/sharpcmd/#get), [give](/reference/sharpmush-help/sharpcmd/#give-1) and [home](/reference/sharpmush-help/sharptop/#homes).
 
 Just type help `<command>` for help. Example: help page
 

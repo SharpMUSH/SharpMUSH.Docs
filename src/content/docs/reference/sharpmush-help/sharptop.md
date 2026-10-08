@@ -41,7 +41,7 @@ This is the index to the MUSH online help files.
 
   If the game has a web portal, you can [register](/reference/sharpmush-help/sharpcmd/#register) an account there or at the login screen, then [make](/reference/sharpmush-help/sharpcmd/#make) characters and [play](/reference/sharpmush-help/sharpcmd/#play) them. The portal also serves the game's [wiki](/reference/sharpmush-help/wiki/#wiki).
 
-  To have the server address you in another language, see [@locale](/reference/sharpmush-help/sharpcmd/#internationalization).
+  To have the server address you in another language, see [@locale](/reference/sharpmush-help/sharpcmd/#locale).
 
   For the other things SharpMUSH can do, see [sharpmush features](/reference/sharpmush-help/sharpmush-features/#sharpmush-features).
 
@@ -248,7 +248,7 @@ This is the index to the MUSH online help files.
   The `obj()`, `subj()`, `poss()` and `aposs()` functions return different pronouns for an object based on its `@sex`, and the %o, %s, %p and %a substitutions return the same pronouns for the enactor.
 
 ::: seealso
-- [@sex](/reference/sharpmush-help/sharpcmd/#gender)
+- [@sex](/reference/sharpmush-help/sharpcmd/#sex)
 - [%]
 :::
 
@@ -297,7 +297,7 @@ This is the index to the MUSH online help files.
 - [LINK_OK](/reference/sharpmush-help/sharpflag/#linkok)
 - [FIXED](/reference/sharpmush-help/sharpflag/#fixed)
 - [EXITS](/reference/sharpmush-help/sharptop/#exits)
-- [HOME()](/reference/sharpmush-help/sharpfunc/#homes)
+- [HOME()](/reference/sharpmush-help/sharpfunc/#home)
 - [LOC()](/reference/sharpmush-help/sharpfunc/#loc)
 :::
 
@@ -387,7 +387,7 @@ This is the index to the MUSH online help files.
 - [newbie](/reference/sharpmush-help/newbie/#newbie)
 - [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
 - [@describe](/reference/sharpmush-help/sharpcmd/#describe)
-- [@sex](/reference/sharpmush-help/sharpcmd/#gender)
+- [@sex](/reference/sharpmush-help/sharpcmd/#sex)
 - [MATCHING](/reference/sharpmush-help/sharptop/#matching)
 :::
 
@@ -401,11 +401,11 @@ This is the index to the MUSH online help files.
 
 ::: seealso
 - [COSTS](/reference/sharpmush-help/sharptop/#costs)
-- [give](/reference/sharpmush-help/sharpcmd/#give)
+- [give](/reference/sharpmush-help/sharpcmd/#give-1)
 - [@cost](/reference/sharpmush-help/sharpcmd/#cost)
 - [@apayment](/reference/sharpmush-help/sharpcmd/#apayment)
 - [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
-- [buy](/reference/sharpmush-help/sharpcmd/#buy)
+- [buy](/reference/sharpmush-help/sharpcmd/#buy-1)
 - [@buy](/reference/sharpmush-help/sharpcmd/#buy)
 - [score](/reference/sharpmush-help/sharpcmd/#score)
 - [MONEY()](/reference/sharpmush-help/sharpfunc/#money)
@@ -537,7 +537,7 @@ This is the index to the MUSH online help files.
 
 
 ::: seealso
-- [failure](/reference/sharpmush-help/failure/#afailure)
+- [failure](/reference/sharpmush-help/failure/#failure)
 - [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
 - [attributes](/reference/sharpmush-help/attributes/#attributes)
@@ -646,7 +646,7 @@ This is the index to the MUSH online help files.
 
 ::: seealso
 - [@destroy](/reference/sharpmush-help/destroy-command/#destroy)
-- [@stats](/reference/sharpmush-help/sharpcmd/#lstats)
+- [@stats](/reference/sharpmush-help/sharpcmd/#stats)
 :::
 
 ## Warnings

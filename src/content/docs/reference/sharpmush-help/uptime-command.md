@@ -34,6 +34,6 @@ Output: the time the game started, in seconds, as `uptime()` returns it.
 Wizard output includes the process ID, current and peak working-set memory, and current and peak paged memory. These figures come from the server's .NET process information and depend on the host operating system. They describe the SharpMUSH process; they are not the host machine's shell uptime or a database-dump countdown.
 
 ::: seealso
-- [@stats](/reference/sharpmush-help/sharpcmd/#lstats)
+- [@stats](/reference/sharpmush-help/sharpcmd/#stats)
 - [@list](/reference/sharpmush-help/sharpcmd/#list)
 :::

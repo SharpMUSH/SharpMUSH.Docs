@@ -81,5 +81,5 @@ More standard lock types:
 - [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
 - [@lset](/reference/sharpmush-help/sharpcmd/#lset)
 - [@CHANNEL CLOCK](/reference/sharpmush-help/sharpchat/#channel-clock)
-- [failure](/reference/sharpmush-help/failure/#afailure)
+- [failure](/reference/sharpmush-help/failure/#failure)
 :::

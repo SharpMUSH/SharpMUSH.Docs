@@ -386,7 +386,7 @@ A theme made once can be used again without making it each time. [THEME()](/refe
 
 ### Using themes
 
-Written straight into options, a theme object goes inside them as it is: `box(Hi,,30,{{"theme":{"seed":"#d08770"}}})`. Each player can also pick a theme of their own for every layout they read with [@THEME](/reference/sharpmush-help/layout-functions/#theme). [THEME()](/reference/sharpmush-help/layout-functions/#theme) writes any theme out in full, to keep in an attribute, and [SWATCH()](/reference/sharpmush-help/layout-functions/#swatch) shows one's colours and how well each stands out.
+Written straight into options, a theme object goes inside them as it is: `box(Hi,,30,{{"theme":{"seed":"#d08770"}}})`. Each player can also pick a theme of their own for every layout they read with [@THEME](/reference/sharpmush-help/layout-functions/#theme-1). [THEME()](/reference/sharpmush-help/layout-functions/#theme) writes any theme out in full, to keep in an attribute, and [SWATCH()](/reference/sharpmush-help/layout-functions/#swatch) shows one's colours and how well each stands out.
 
 ::: seealso
 - [THEMES()](/reference/sharpmush-help/layout-functions/#themes)
@@ -400,7 +400,7 @@ Written straight into options, a theme object goes inside them as it is: `box(Hi
 
 `themes()`
 
-The names of the themes the game offers, for the `"theme"` layout option, [@THEME](/reference/sharpmush-help/layout-functions/#theme) and the `layout_theme` game option: the built-in ones staff have not disabled, then those staff added (see [@THEME/LIST]).
+The names of the themes the game offers, for the `"theme"` layout option, [@THEME](/reference/sharpmush-help/layout-functions/#theme-1) and the `layout_theme` game option: the built-in ones staff have not disabled, then those staff added (see [@THEME/LIST](/reference/sharpmush-help/layout-functions/#themelist)).
 
 The built-in ones are `terminal`, which uses the sixteen standard colours each client draws in its own palette; one for each genre a game can name in its MSSP settings, each with its own border, title ornaments, bullet and gauge as well as colours (see [LAYOUT THEMES](/reference/sharpmush-help/layout-functions/#layout-themes)): `fantasy historical horror modern mystery romance science-fiction spiritual`; and well-known colour schemes: `catppuccin-mocha catppuccin-latte dracula gruvbox-dark nord solarized-dark solarized-light tokyo-night`.
 
@@ -414,7 +414,7 @@ terminal
 - [THEME()](/reference/sharpmush-help/layout-functions/#theme)
 - [SWATCH()](/reference/sharpmush-help/layout-functions/#swatch)
 - [LAYOUT THEMES](/reference/sharpmush-help/layout-functions/#layout-themes)
-- [@THEME/LIST]
+- [@THEME/LIST](/reference/sharpmush-help/layout-functions/#themelist)
 :::
 
 ## theme()
@@ -486,7 +486,7 @@ Output: none.
 
 ### Light and dark
 
-`/light` makes the theme for a client with a light background, and `/dark` for a dark one. A theme made from one colour, which includes the genre themes, is made again for that background; a well-known scheme such as `nord` stays as it is. Code given with `/light` or `/dark` is worked out first, and the theme it gives is kept, not the code.
+`/light` makes the theme for a client with a light background, and `/dark` for a dark one. A theme made from one colour, which includes the genre themes, is made again for that background; a well-known scheme such as `nord` stays as it is. Code given with `/light` or `/dark` is worked out first, and the theme it gives is kept, not the code. Code that works out to nothing is refused with them, since there is no theme to keep.
 
 ### Parents and the player ancestor
 
@@ -500,7 +500,7 @@ The theme is kept in the `THEME` attribute, and a player without one of their ow
 @theme #4=[if(strmatch(get(%#/FACTION),Rebel),horror,nord)]
 ```
 
-The theme is worked out when the player connects, when `@theme` sets it, and when someone runs `@theme/refresh <player>`. Softcode that changes the value can run `@theme/refresh %#` after it. `/refresh` with no player refreshes your own, and says the theme in use. `@theme` works a theme out for *<object>* itself before it is kept, and refuses one that does not read.
+The theme is worked out when the player connects, when `@theme` sets it, and when someone runs `@theme/refresh <player>`. Softcode that changes the value can run `@theme/refresh %#` after it. `/refresh` with no player refreshes your own, and says the theme in use. `@theme` works a theme out for *<object>* itself before it is kept, and refuses one that does not read. Code that works out to nothing is kept: for whoever it works out to nothing for, layouts use the game's theme.
 
 ### Which theme wins
 
@@ -528,7 +528,7 @@ A theme made from one colour, with every colour made to stand out a little more 
 Theme set.
 ```
 
-A scheme copied from an editor theme, as sixteen base16 colours. A theme added with `@theme/add` (see [@THEME/LIST]) saves typing them, and the `\[ \]`, in each `THEME`:
+A scheme copied from an editor theme, as sixteen base16 colours. A theme added with `@theme/add` (see [@THEME/LIST](/reference/sharpmush-help/layout-functions/#themelist)) saves typing them, and the `\[ \]`, in each `THEME`:
 
 ```sharp
 > @theme me={{"base16":\["#1d1f21","#282a2e","#373b41","#969896","#b4b7b4","#c5c8c6","#e0e0e0","#ffffff","#cc6666","#de935f","#f0c674","#b5bd68","#8abeb7","#81a2be","#b294bb","#a3685a"\]}}
@@ -562,10 +562,10 @@ A theme it cannot read is refused, and the old one stays. Clearing it goes back 
 Theme cleared.
 ```
 
-Try a theme on one layout with its `"theme"` option, and check its colours with [SWATCH()](/reference/sharpmush-help/layout-functions/#swatch), before making it yours. A wizard sets the game's own with `@config/set layout_theme=<name>`, and staff choose which themes there are with [@THEME/LIST].
+Try a theme on one layout with its `"theme"` option, and check its colours with [SWATCH()](/reference/sharpmush-help/layout-functions/#swatch), before making it yours. A wizard sets the game's own with `@config/set layout_theme=<name>`, and staff choose which themes there are with [@THEME/LIST](/reference/sharpmush-help/layout-functions/#themelist).
 
 ::: seealso
-- [@THEME/LIST]
+- [@THEME/LIST](/reference/sharpmush-help/layout-functions/#themelist)
 - [LAYOUT THEMES](/reference/sharpmush-help/layout-functions/#layout-themes)
 - [THEMES()](/reference/sharpmush-help/layout-functions/#themes)
 - [SWATCH()](/reference/sharpmush-help/layout-functions/#swatch)
@@ -580,7 +580,7 @@ Try a theme on one layout with its `"theme"` option, and check its colours with 
 - `@theme/disable <name>`
 - `@theme/enable <name>`
 
-The themes a game offers: the built-in ones, less those staff disabled, and those staff added. Every place a theme is named reads this list: [@THEME](/reference/sharpmush-help/layout-functions/#theme), the `"theme"` layout option, [THEME()](/reference/sharpmush-help/layout-functions/#theme), [SWATCH()](/reference/sharpmush-help/layout-functions/#swatch), [THEMES()](/reference/sharpmush-help/layout-functions/#themes) and the `layout_theme` game option.
+The themes a game offers: the built-in ones, less those staff disabled, and those staff added. Every place a theme is named reads this list: [@THEME](/reference/sharpmush-help/layout-functions/#theme-1), the `"theme"` layout option, [THEME()](/reference/sharpmush-help/layout-functions/#theme), [SWATCH()](/reference/sharpmush-help/layout-functions/#swatch), [THEMES()](/reference/sharpmush-help/layout-functions/#themes) and the `layout_theme` game option.
 
 `/list` shows every theme, built-in and added, and whether it is offered. Anyone may use it.
 
@@ -610,7 +610,7 @@ Theme set.
 ```
 
 ::: seealso
-- [@THEME](/reference/sharpmush-help/layout-functions/#theme)
+- [@THEME](/reference/sharpmush-help/layout-functions/#theme-1)
 - [LAYOUT THEMES](/reference/sharpmush-help/layout-functions/#layout-themes)
 - [THEMES()](/reference/sharpmush-help/layout-functions/#themes)
 :::

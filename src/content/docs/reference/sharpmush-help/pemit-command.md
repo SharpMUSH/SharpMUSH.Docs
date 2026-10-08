@@ -48,7 +48,7 @@ You cannot @pemit to objects set HAVEN, or objects whose @lock/page you do not p
 
 ::: seealso
 - [@emit](/reference/sharpmush-help/sharpcmd/#emit)
-- [@nspemit](/reference/sharpmush-help/sharpcmd/#pemit)
+- [@nspemit](/reference/sharpmush-help/sharpcmd/#nspemit)
 - [@oemit](/reference/sharpmush-help/oemit-command/#oemit)
 - [@remit](/reference/sharpmush-help/sharpcmd/#remit)
 - [NOSPOOF](/reference/sharpmush-help/sharpflag/#nospoof)

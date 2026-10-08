@@ -17,7 +17,7 @@ Pueblo and MXP are different dialects, not one extending the other. Most formatt
 ::: seealso
 - [HTML FUNCTIONS](/reference/sharpmush-help/sharppueb/#html-functions)
 - [pueblo](/reference/sharpmush-help/pueblo/#pueblo)
-- [HTML()](/reference/sharpmush-help/sharppueb/#html)
+- [HTML()](/reference/sharpmush-help/sharppueb/#html-1)
 :::
 
 ## pueblo()
@@ -33,7 +33,7 @@ When used with a *<player>* argument, the most recently active connection is use
 
 ::: seealso
 - [TERMINFO()](/reference/sharpmush-help/sharpfunc/#terminfo)
-- [HTML()](/reference/sharpmush-help/sharppueb/#html)
+- [HTML()](/reference/sharpmush-help/sharppueb/#html-1)
 - [pueblo](/reference/sharpmush-help/pueblo/#pueblo)
 :::
 
@@ -86,7 +86,7 @@ In PennMUSH this outputs an opening HTML/Pueblo tag. SharpMUSH's markup is a spa
 ::: seealso
 - [ENDTAG()](/reference/sharpmush-help/sharppueb/#endtag)
 - [TAGWRAP()](/reference/sharpmush-help/sharppueb/#tagwrap)
-- [HTML()](/reference/sharpmush-help/sharppueb/#html)
+- [HTML()](/reference/sharpmush-help/sharppueb/#html-1)
 :::
 
 ## endtag()
@@ -99,7 +99,7 @@ In PennMUSH this outputs a closing HTML/Pueblo tag. As with [TAG()](/reference/s
 ::: seealso
 - [TAG()](/reference/sharpmush-help/sharppueb/#tag)
 - [TAGWRAP()](/reference/sharpmush-help/sharppueb/#tagwrap)
-- [HTML()](/reference/sharpmush-help/sharppueb/#html)
+- [HTML()](/reference/sharpmush-help/sharppueb/#html-1)
 :::
 
 ## tagwrap()
@@ -131,7 +131,7 @@ A particularly important use of this function is `tagwrap(pre, <string>)`. Becau
 - [CMDLINK()](/reference/sharpmush-help/sharppueb/#cmdlink)
 - [TAG()](/reference/sharpmush-help/sharppueb/#tag)
 - [ENDTAG()](/reference/sharpmush-help/sharppueb/#endtag)
-- [HTML()](/reference/sharpmush-help/sharppueb/#html)
+- [HTML()](/reference/sharpmush-help/sharppueb/#html-1)
 :::
 
 ## cmdlink()
@@ -317,7 +317,7 @@ You can also send data encapsulated in a JSON object.
 See [json()](/reference/sharpmush-help/json-function/#json) for information about formatting data into JSON object strings.<br>
 See [OOB()](/reference/sharpmush-help/sharpfunc/#oob) for sending a JSON object to a WebSocket client as a JavaScript object, or to a telnet client over GMCP.
 
-See [@prompt](/reference/sharpmush-help/sharpcmd/#pemit) for information about sending telnet GOAHEAD prompts. Support for prompts depends on the WebSocket client. The example client above shows prompts on their own line, separating the input and output windows, but requires PROMPT_NEWLINES to be turned off.
+See [@prompt](/reference/sharpmush-help/sharpcmd/#prompt) for information about sending telnet GOAHEAD prompts. Support for prompts depends on the WebSocket client. The example client above shows prompts on their own line, separating the input and output windows, but requires PROMPT_NEWLINES to be turned off.
 
 
 ::: seealso

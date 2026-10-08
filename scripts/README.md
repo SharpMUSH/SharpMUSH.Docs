@@ -38,7 +38,8 @@ The converter intelligently excludes certain patterns from conversion:
 
 - **Code blocks**: Content inside ``` fenced blocks and `backticks` is preserved
 - **Function calls**: `[get(obj/attr)]`, `[function(arg1,arg2)]` are not converted
-- **Paths and URLs**: Links containing `/`, `#`, `$`, `&` are skipped
+- **Paths and URLs**: Links containing `/`, `#`, `$`, `&` are skipped, except a known topic with a switch such as `[@THEME/LIST]`
+- **Anchors**: a topic links to the id its heading gets on its page, so `@THEME` after `THEME()` on one page links to `#theme-1`; an alias links to its topic
 - **Short patterns**: Single characters or very short strings (unless starting with @ or &)
 - **Numbers**: Pure numeric content like `[123]` is ignored
 - **Existing markdown**: Already converted links with `](` are skipped

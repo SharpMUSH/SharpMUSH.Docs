@@ -35,7 +35,7 @@ When the CHARGES attribute is present and AUSE is triggered, the value of the CH
 
 
 ::: seealso
-- [use](/reference/sharpmush-help/sharpcmd/#ause)
+- [use](/reference/sharpmush-help/sharpcmd/#use)
 - [@ause](/reference/sharpmush-help/sharpcmd/#ause)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 :::

@@ -35,7 +35,7 @@ The `/spoof` switch causes nospoof notifications to show the enactor's dbref ins
 ::: seealso
 - [@emit](/reference/sharpmush-help/sharpcmd/#emit)
 - [@pemit](/reference/sharpmush-help/pemit-command/#pemit)
-- [@nspemit](/reference/sharpmush-help/sharpcmd/#pemit)
+- [@nspemit](/reference/sharpmush-help/sharpcmd/#nspemit)
 - [OEMIT()](/reference/sharpmush-help/sharpfunc/#oemit)
 - [OEMIT()](/reference/sharpmush-help/sharpfunc/#oemit)
 - [NOSPOOF](/reference/sharpmush-help/sharpflag/#nospoof)

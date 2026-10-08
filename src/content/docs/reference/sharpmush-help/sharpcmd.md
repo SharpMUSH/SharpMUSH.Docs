@@ -8,12 +8,12 @@ Help is available for the following MUSH commands:
 
 |            |            |            |            |            |
 |------------|------------|------------|------------|------------|
-| [ahelp](/reference/sharpmush-help/sharpcmd/#ahelp)    | [anews](/reference/sharpmush-help/sharpcmd/#ahelp)    | [brief](/reference/sharpmush-help/sharpcmd/#brief)    | [DOING](/reference/sharpmush-help/sharpconf/#doing)    | [drop](/reference/sharpmush-help/sharpcmd/#adrop)     |
-| [enter](/reference/sharpmush-help/sharpcmd/#aenter)    | [events](/reference/sharpmush-help/sharpevents/#events)   | [examine](/reference/sharpmush-help/sharpcmd/#examine)  | [follow](/reference/sharpmush-help/sharpcmd/#follow)   | [get](/reference/sharpmush-help/sharpcmd/#get)      |
-| [give](/reference/sharpmush-help/sharpcmd/#give)     | [go]       | [leave](/reference/sharpmush-help/sharpcmd/#leave)    | [LOGOUT](/reference/sharpmush-help/sharpcmd/#logout)   | [look](/reference/sharpmush-help/look/#look)     |
+| [ahelp](/reference/sharpmush-help/sharpcmd/#ahelp)    | [anews](/reference/sharpmush-help/sharpcmd/#ahelp)    | [brief](/reference/sharpmush-help/sharpcmd/#brief)    | [DOING](/reference/sharpmush-help/sharpconf/#doing)    | [drop](/reference/sharpmush-help/sharpcmd/#drop)     |
+| [enter](/reference/sharpmush-help/sharpcmd/#enter)    | [events](/reference/sharpmush-help/sharpevents/#events)   | [examine](/reference/sharpmush-help/sharpcmd/#examine)  | [follow](/reference/sharpmush-help/sharpcmd/#follow-1)   | [get](/reference/sharpmush-help/sharpcmd/#get)      |
+| [give](/reference/sharpmush-help/sharpcmd/#give-1)     | [go]       | [leave](/reference/sharpmush-help/sharpcmd/#leave-1)    | [LOGOUT](/reference/sharpmush-help/sharpcmd/#logout)   | [look](/reference/sharpmush-help/look/#look)     |
 | [move](/reference/sharpmush-help/sharpcmd/#go)     | [news](/reference/sharpmush-help/sharpcmd/#news)     | [page](/reference/sharpmush-help/page/#page)     | [pose](/reference/sharpmush-help/sharpconf/#pose)     | [QUIT](/reference/sharpmush-help/sharpcmd/#quit)     |
-| [read](/reference/sharpmush-help/sharpconf/#read)     | [say](/reference/sharpmush-help/sharpcmd/#say)      | [score](/reference/sharpmush-help/sharpcmd/#score)    | [teach](/reference/sharpmush-help/sharpcmd/#teach)    | [think](/reference/sharpmush-help/sharpcmd/#think)    |
-| [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow) | [use](/reference/sharpmush-help/sharpcmd/#ause)      | [whisper](/reference/sharpmush-help/sharpcmd/#whisper)  | [WHO](/reference/sharpmush-help/who/#who)      | [with](/reference/sharpmush-help/sharpcmd/#with)     |
+| [read](/reference/sharpmush-help/sharpconf/#read)     | [say](/reference/sharpmush-help/sharpcmd/#-4)      | [score](/reference/sharpmush-help/sharpcmd/#score)    | [teach](/reference/sharpmush-help/sharpcmd/#teach)    | [think](/reference/sharpmush-help/sharpcmd/#think)    |
+| [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow-1) | [use](/reference/sharpmush-help/sharpcmd/#use)      | [whisper](/reference/sharpmush-help/sharpcmd/#whisper)  | [WHO](/reference/sharpmush-help/who/#who)      | [with](/reference/sharpmush-help/sharpcmd/#with)     |
 | ["]        | [:]        | [;]        | [+]        | [&]        |
 | [~]        | [}]        |            |            |            |
 
@@ -37,7 +37,7 @@ These '@' commands set standard message/action sets on objects. Each comes in 3 
 |--------------|--------------|--------------|--------------|--------------|
 | [@describe](/reference/sharpmush-help/sharpcmd/#describe)  | [@drop](/reference/sharpmush-help/sharpcmd/#adrop)      | [@efail](/reference/sharpmush-help/sharpcmd/#aefail)     | [@enter](/reference/sharpmush-help/sharpcmd/#aenter)     | [@failure](/reference/sharpmush-help/sharpcmd/#afailure)   |
 | [@follow](/reference/sharpmush-help/sharpcmd/#follow)    | [@give](/reference/sharpmush-help/sharpcmd/#give)      | [@idescribe](/reference/sharpmush-help/sharpcmd/#idescribe) | [@leave](/reference/sharpmush-help/sharpcmd/#leave)     | [@lfail](/reference/sharpmush-help/sharpcmd/#lfail)     |
-| [@move](/reference/sharpmush-help/sharpcmd/#go)      | [@payment](/reference/sharpmush-help/sharpcmd/#apayment)   | [@receive](/reference/sharpmush-help/sharpcmd/#receive)   | [@success](/reference/sharpmush-help/sharpcmd/#asuccess)   | [@tport](/reference/sharpmush-help/sharpcmd/#atport)     |
+| [@move](/reference/sharpmush-help/sharpcmd/#move)      | [@payment](/reference/sharpmush-help/sharpcmd/#apayment)   | [@receive](/reference/sharpmush-help/sharpcmd/#receive)   | [@success](/reference/sharpmush-help/sharpcmd/#asuccess)   | [@tport](/reference/sharpmush-help/sharpcmd/#atport)     |
 | [@ufail](/reference/sharpmush-help/sharpcmd/#aufail)     | [@unfollow](/reference/sharpmush-help/sharpcmd/#unfollow)  | [@use](/reference/sharpmush-help/sharpcmd/#ause)       | [@zenter](/reference/sharpmush-help/sharpcmd/#zenter)    | [@zleave](/reference/sharpmush-help/sharpcmd/#zleave)    |
 
 
@@ -51,7 +51,7 @@ These '@' command set other standard attributes on objects that don't follow the
 | [@forwardlist](/reference/sharpmush-help/sharpcmd/#forwardlist) | [@haven](/reference/sharpmush-help/sharpcmd/#haven)       | [@idescformat](/reference/sharpmush-help/sharpcmd/#idescformat) | [@idle](/reference/sharpmush-help/sharpcmd/#idle)        | [@infilter](/reference/sharpmush-help/sharpcmd/#infilter)    |
 | [@inprefix](/reference/sharpmush-help/sharpcmd/#inprefix)    | [@lalias](/reference/sharpmush-help/sharpcmd/#ealias)      | [@listen](/reference/sharpmush-help/listen-command/#listen)      | [@nameformat](/reference/sharpmush-help/sharpcmd/#nameformat)  | [@oxenter](/reference/sharpmush-help/sharpcmd/#aenter)     |
 | [@oxleave](/reference/sharpmush-help/sharpcmd/#leave)     | [@oxmove](/reference/sharpmush-help/sharpcmd/#move)      | [@oxtport](/reference/sharpmush-help/sharpcmd/#atport)     | [@pageformat](/reference/sharpmush-help/pageformat-command/#pageformat)  | [@prefix](/reference/sharpmush-help/sharpcmd/#prefix)      |
-| [@runout](/reference/sharpmush-help/sharpcmd/#runout)      | [@sex](/reference/sharpmush-help/sharpcmd/#gender)         | [@startup](/reference/sharpmush-help/sharpcmd/#startup)     |                |                |
+| [@runout](/reference/sharpmush-help/sharpcmd/#runout)      | [@sex](/reference/sharpmush-help/sharpcmd/#sex)         | [@startup](/reference/sharpmush-help/sharpcmd/#startup)     |                |                |
 
 
 ::: seealso
@@ -76,16 +76,16 @@ These '@' commands are general utility and programming commands:
 
 |              |              |              |              |              |
 |--------------|--------------|--------------|--------------|--------------|
-| [@@](/reference/sharpmush-help/sharpcmd/)         | [@alias](/reference/sharpmush-help/sharpcmd/#alias)     | [@break](/reference/sharpmush-help/break-command/#break)     | [@cemit](/reference/sharpmush-help/sharpchat/#cemit)     | [@channel](/reference/sharpmush-help/sharpchat/#channel)   |
-| [@chat](/reference/sharpmush-help/sharpchat/#chat)      | [@command](/reference/sharpmush-help/command/#command)   | [@config](/reference/sharpmush-help/sharpcmd/#config)    | [@decompile](/reference/sharpmush-help/decompile-command/#decompile) | [@doing](/reference/sharpmush-help/sharpcmd/#doing)     |
+| [@@](/reference/sharpmush-help/sharpcmd/#-1)         | [@alias](/reference/sharpmush-help/sharpcmd/#alias)     | [@break](/reference/sharpmush-help/break-command/#break)     | [@cemit](/reference/sharpmush-help/sharpchat/#cemit)     | [@channel](/reference/sharpmush-help/sharpchat/#channel)   |
+| [@chat](/reference/sharpmush-help/sharpchat/#chat-1)      | [@command](/reference/sharpmush-help/command/#command)   | [@config](/reference/sharpmush-help/sharpcmd/#config)    | [@decompile](/reference/sharpmush-help/decompile-command/#decompile) | [@doing](/reference/sharpmush-help/sharpcmd/#doing)     |
 | [@dolist](/reference/sharpmush-help/dolist-command/#dolist)    | [@drain](/reference/sharpmush-help/sharpcmd/#drain)     | [@edit](/reference/sharpmush-help/edit-command/#edit)      | [@emit](/reference/sharpmush-help/sharpcmd/#emit)      | [@entrances](/reference/sharpmush-help/sharpcmd/#entrances) |
 | [@find](/reference/sharpmush-help/sharpcmd/#find)      | [@force](/reference/sharpmush-help/force-command/#force)     | [@function](/reference/sharpmush-help/function-command/#function)  | [@gedit](/reference/sharpmush-help/sharpcmd/#gedit)     | [@grep](/reference/sharpmush-help/sharpcmd/#grep)      |
-| [@halt](/reference/sharpmush-help/sharpcmd/#halt)      | [@if](/reference/sharpmush-help/if-command/#if)        | [@input](/reference/sharpmush-help/sharpcmd/#input)     | [@job](/reference/sharpmush-help/sharpcmd/#job)       | [@lemit](/reference/sharpmush-help/sharpcmd/#nslemit)     |
-| [@listmotd](/reference/sharpmush-help/sharpcmd/#motd)  | [@locale](/reference/sharpmush-help/sharpcmd/#internationalization)    | [@mail](/reference/sharpmush-help/sharpmail/#mail)      | [@map](/reference/sharpmush-help/sharpcmd/#map)       | [@notify](/reference/sharpmush-help/notify-command/#notify)    |
-| [@nsemit](/reference/sharpmush-help/sharpcmd/#emit)    | [@nslemit](/reference/sharpmush-help/sharpcmd/#nspemit)   | [@nsoemit](/reference/sharpmush-help/sharpcmd/#oemit)   | [@nspemit](/reference/sharpmush-help/sharpcmd/#pemit)   | [@nsprompt](/reference/sharpmush-help/sharpcmd/#pemit)  |
-| [@nsremit](/reference/sharpmush-help/sharpcmd/#remit)   | [@nszemit](/reference/sharpmush-help/sharpcmd/#zemit)   | [@oemit](/reference/sharpmush-help/oemit-command/#oemit)     | [@password](/reference/sharpmush-help/sharpcmd/#password)  | [@pemit](/reference/sharpmush-help/pemit-command/#pemit)     |
-| [@profile](/reference/sharpmush-help/sharpcmd/#profile)   | [@prompt](/reference/sharpmush-help/sharpcmd/#pemit)    | [@ps](/reference/sharpmush-help/ps-command/#ps)        | [@queue](/reference/sharpmush-help/queuecontrol/#queue)     | [@remit](/reference/sharpmush-help/sharpcmd/#remit)     |
-| [@restart](/reference/sharpmush-help/sharpcmd/#restart)   | [@scan](/reference/sharpmush-help/sharpcmd/#scan)      | [@search](/reference/sharpmush-help/search-command/#search)    | [@select](/reference/sharpmush-help/sharpcmd/#select)    | [@stats](/reference/sharpmush-help/sharpcmd/#lstats)     |
+| [@halt](/reference/sharpmush-help/sharpcmd/#halt)      | [@if](/reference/sharpmush-help/if-command/#if)        | [@input](/reference/sharpmush-help/sharpcmd/#input)     | [@job](/reference/sharpmush-help/sharpcmd/#job)       | [@lemit](/reference/sharpmush-help/sharpcmd/#lemit)     |
+| [@listmotd](/reference/sharpmush-help/sharpcmd/#motd)  | [@locale](/reference/sharpmush-help/sharpcmd/#locale)    | [@mail](/reference/sharpmush-help/sharpmail/#mail)      | [@map](/reference/sharpmush-help/sharpcmd/#map)       | [@notify](/reference/sharpmush-help/notify-command/#notify)    |
+| [@nsemit](/reference/sharpmush-help/sharpcmd/#nspemit)    | [@nslemit](/reference/sharpmush-help/sharpcmd/#nspemit)   | [@nsoemit](/reference/sharpmush-help/sharpcmd/#nspemit)   | [@nspemit](/reference/sharpmush-help/sharpcmd/#nspemit)   | [@nsprompt](/reference/sharpmush-help/sharpcmd/#nspemit)  |
+| [@nsremit](/reference/sharpmush-help/sharpcmd/#nspemit)   | [@nszemit](/reference/sharpmush-help/sharpcmd/#nspemit)   | [@oemit](/reference/sharpmush-help/oemit-command/#oemit)     | [@password](/reference/sharpmush-help/sharpcmd/#password)  | [@pemit](/reference/sharpmush-help/pemit-command/#pemit)     |
+| [@profile](/reference/sharpmush-help/sharpcmd/#profile)   | [@prompt](/reference/sharpmush-help/sharpcmd/#prompt)    | [@ps](/reference/sharpmush-help/ps-command/#ps)        | [@queue](/reference/sharpmush-help/queuecontrol/#queue)     | [@remit](/reference/sharpmush-help/sharpcmd/#remit)     |
+| [@restart](/reference/sharpmush-help/sharpcmd/#restart)   | [@scan](/reference/sharpmush-help/sharpcmd/#scan)      | [@search](/reference/sharpmush-help/search-command/#search)    | [@select](/reference/sharpmush-help/sharpcmd/#select)    | [@stats](/reference/sharpmush-help/sharpcmd/#stats)     |
 | [@sweep](/reference/sharpmush-help/sharpcmd/#sweep)     | [@switch](/reference/sharpmush-help/switch-command/#switch)    | [@teleport](/reference/sharpmush-help/teleport-command/#teleport)  | [@trigger](/reference/sharpmush-help/trigger-command/#trigger)   | [@verb](/reference/sharpmush-help/verb-command/#verb)      |
 | [@version](/reference/sharpmush-help/sharpcmd/#version)   | [@wait](/reference/sharpmush-help/wait-command/#wait)      | [@whereis](/reference/sharpmush-help/sharpcmd/#whereis)   | [@wiki](/reference/sharpmush-help/sharpcmd/#wiki)      | [@zemit](/reference/sharpmush-help/sharpcmd/#zemit)     |
 
@@ -250,7 +250,7 @@ When `<object>` is an exit, @drop is shown to objects going through `<object>`, 
 ```
 
 ::: seealso
-- [drop](/reference/sharpmush-help/sharpcmd/#adrop)
+- [drop](/reference/sharpmush-help/sharpcmd/#drop)
 - [empty](/reference/sharpmush-help/sharpcmd/#empty)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
@@ -265,9 +265,9 @@ These attributes contain the message shown to someone who fails to enter `<objec
 
 
 ::: seealso
-- [enter](/reference/sharpmush-help/sharpcmd/#aenter)
+- [enter](/reference/sharpmush-help/sharpcmd/#enter)
 - [@aenter](/reference/sharpmush-help/sharpcmd/#aenter)
-- [failure](/reference/sharpmush-help/failure/#afailure)
+- [failure](/reference/sharpmush-help/failure/#failure)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
 :::
@@ -280,12 +280,12 @@ Sets the message shown to a player who fails to use an object via the 'use' comm
 
 Note that these attributes are @ufail, NOT @ufailure, for TinyMUSH compatibility.
 
-Although the Use @lock also restricts who can trigger $-commands or ^-listens on an object, these attributes will not be triggered for those failures. Instead, the COMMAND_LOCK`* and LISTEN_LOCK`* attributes are triggered. See [failure](/reference/sharpmush-help/failure/#afailure) for more information.
+Although the Use @lock also restricts who can trigger $-commands or ^-listens on an object, these attributes will not be triggered for those failures. Instead, the COMMAND_LOCK`* and LISTEN_LOCK`* attributes are triggered. See [failure](/reference/sharpmush-help/failure/#failure) for more information.
 
 ::: seealso
-- [use](/reference/sharpmush-help/sharpcmd/#ause)
+- [use](/reference/sharpmush-help/sharpcmd/#use)
 - [@ause](/reference/sharpmush-help/sharpcmd/#ause)
-- [failure](/reference/sharpmush-help/failure/#afailure)
+- [failure](/reference/sharpmush-help/failure/#failure)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
 :::
@@ -315,8 +315,8 @@ For players and things, this means failure to get/take. For exits, it means fail
 Sets the message shown to someone who begins following `<object>`, the message shown to others in the room, and the actions to be taken by `<object>` when someone begins following it, respectively. The name of the person following `<object>` is automatically prepended to the @ofollow message.
 
 ::: seealso
-- [follow](/reference/sharpmush-help/sharpcmd/#follow)
-- [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow)
+- [follow](/reference/sharpmush-help/sharpcmd/#follow-1)
+- [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow-1)
 - [@unfollow](/reference/sharpmush-help/sharpcmd/#unfollow)
 - [FOLLOWERS()](/reference/sharpmush-help/sharpfunc/#followers)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
@@ -330,8 +330,8 @@ Sets the message shown to someone who begins following `<object>`, the message s
 Sets the message shown to someone who stops following `<object>`, the message shown to others in the room, and the actions to be taken by `<object>` when someone stops following it, respectively. The name of the person stopping following `<object>` is automatically prepended to the @ounfollow message.
 
 ::: seealso
-- [follow](/reference/sharpmush-help/sharpcmd/#follow)
-- [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow)
+- [follow](/reference/sharpmush-help/sharpcmd/#follow-1)
+- [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow-1)
 - [@follow](/reference/sharpmush-help/sharpcmd/#follow)
 - [FOLLOWERS()](/reference/sharpmush-help/sharpfunc/#followers)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
@@ -362,7 +362,7 @@ The leaver's new location is passed in %0, if `<object>` has permission to see i
 
 
 ::: seealso
-- [leave](/reference/sharpmush-help/sharpcmd/#leave)
+- [leave](/reference/sharpmush-help/sharpcmd/#leave-1)
 - [@leave](/reference/sharpmush-help/sharpcmd/#leave)
 - [@lfail](/reference/sharpmush-help/sharpcmd/#lfail)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
@@ -379,7 +379,7 @@ Such a failure usually occurs because `<object>` is set NO_LEAVE, or because the
 
 
 ::: seealso
-- [leave](/reference/sharpmush-help/sharpcmd/#leave)
+- [leave](/reference/sharpmush-help/sharpcmd/#leave-1)
 - [@leave](/reference/sharpmush-help/sharpcmd/#leave)
 - [NO_LEAVE](/reference/sharpmush-help/sharpconf/#noleave)
 - [locktypes](/reference/sharpmush-help/sharplock/#locktypes)
@@ -426,7 +426,7 @@ The `<object>`'s new location is in %0 and the old location it moved from in %1.
 
 ::: seealso
 - [go]
-- [@move](/reference/sharpmush-help/sharpcmd/#go)
+- [@move](/reference/sharpmush-help/sharpcmd/#move)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
 :::
@@ -450,9 +450,9 @@ The old location of the entering object is passed in %0, if `<object>` had permi
 
 
 ::: seealso
-- [enter](/reference/sharpmush-help/sharpcmd/#aenter)
+- [enter](/reference/sharpmush-help/sharpcmd/#enter)
 - [@ealias](/reference/sharpmush-help/sharpcmd/#ealias)
-- [leave](/reference/sharpmush-help/sharpcmd/#leave)
+- [leave](/reference/sharpmush-help/sharpcmd/#leave-1)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
 :::
@@ -472,9 +472,9 @@ These attributes contain the messages shown to someone who pays `<object>` penni
 
 
 ::: seealso
-- [give](/reference/sharpmush-help/sharpcmd/#give)
+- [give](/reference/sharpmush-help/sharpcmd/#give-1)
 - [@cost](/reference/sharpmush-help/sharpcmd/#cost)
-- [buy](/reference/sharpmush-help/sharpcmd/#buy)
+- [buy](/reference/sharpmush-help/sharpcmd/#buy-1)
 - [MONEY](/reference/sharpmush-help/sharptop/#money)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
@@ -559,8 +559,8 @@ In all cases, %0 is the dbref of the moving object's original location.
 - [get](/reference/sharpmush-help/sharpcmd/#get)
 - [go]
 - [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
-- [SUCCESS](/reference/sharpmush-help/sharptop/#asuccess)
-- [failure](/reference/sharpmush-help/failure/#afailure)
+- [SUCCESS](/reference/sharpmush-help/sharptop/#success)
+- [failure](/reference/sharpmush-help/failure/#failure)
 - [@adrop](/reference/sharpmush-help/sharpcmd/#adrop)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
@@ -584,7 +584,7 @@ Note that, if `<object>` has a CHARGES attribute set and it does not contain a n
 
 
 ::: seealso
-- [use](/reference/sharpmush-help/sharpcmd/#ause)
+- [use](/reference/sharpmush-help/sharpcmd/#use)
 - [@charges](/reference/sharpmush-help/charges-command/#charges)
 - [@charges](/reference/sharpmush-help/charges-command/#charges)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
@@ -736,7 +736,7 @@ This is a wizard-only command which sets a COMMENT attribute on `<object>`. The 
 
 
 ::: seealso
-- [@@](/reference/sharpmush-help/sharpcmd/)
+- [@@](/reference/sharpmush-help/sharpcmd/#-1)
 - [@@()]
 :::
 ## @config
@@ -815,7 +815,7 @@ Show just the object names (with no ansi) in a table:
   Read the answer later with `` get(me/DATA`ANSWER) ``. Evaluating player-supplied text is an explicit application choice; ordinary storage and substitution preserve it as data.
 
 ::: seealso
-- [@prompt](/reference/sharpmush-help/sharpcmd/#pemit)
+- [@prompt](/reference/sharpmush-help/sharpcmd/#prompt)
 - [@trigger](/reference/sharpmush-help/trigger-command/#trigger)
 - [@include](/reference/sharpmush-help/include-command/#include)
 :::
@@ -959,11 +959,11 @@ Your exit has been created.
 
 
 ::: seealso
-- [give](/reference/sharpmush-help/sharpcmd/#give)
+- [give](/reference/sharpmush-help/sharpcmd/#give-1)
 - [MONEY](/reference/sharpmush-help/sharptop/#money)
 - [@payment](/reference/sharpmush-help/sharpcmd/#apayment)
 - [MONEY()](/reference/sharpmush-help/sharpfunc/#money)
-- [buy](/reference/sharpmush-help/sharpcmd/#buy)
+- [buy](/reference/sharpmush-help/sharpcmd/#buy-1)
 :::
 ## @cpattr
 `@cpattr[/noflagcopy] <obj>/<attr>=<obj1>[/<attr1>][, ..., <objN>[/<attrN>]]`<br>
@@ -1004,7 +1004,7 @@ Wizards and objects with the pick_dbref power can also specify the `<dbref>` of 
 
 
 ::: seealso
-- [give](/reference/sharpmush-help/sharpcmd/#give)
+- [give](/reference/sharpmush-help/sharpcmd/#give-1)
 - [@quota](/reference/sharpmush-help/quota-command/#quota)
 - [MONEY](/reference/sharpmush-help/sharptop/#money)
 - [@clone](/reference/sharpmush-help/sharpcmd/#clone)
@@ -1132,8 +1132,8 @@ These attributes only have meaning for players and things (as rooms/exits cannot
 
 
 ::: seealso
-- [enter](/reference/sharpmush-help/sharpcmd/#aenter)
-- [leave](/reference/sharpmush-help/sharpcmd/#leave)
+- [enter](/reference/sharpmush-help/sharpcmd/#enter)
+- [leave](/reference/sharpmush-help/sharpcmd/#leave-1)
 - [go]
 - [ENTER_OK](/reference/sharpmush-help/sharpflag/#enterok)
 :::
@@ -1152,7 +1152,7 @@ and<br>
 ::: seealso
 - [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
 - [locktypes](/reference/sharpmush-help/sharplock/#locktypes)
-- [enter](/reference/sharpmush-help/sharpcmd/#aenter)
+- [enter](/reference/sharpmush-help/sharpcmd/#enter)
 - [ENTER_OK](/reference/sharpmush-help/sharpflag/#enterok)
 :::
 ## @emit
@@ -1167,12 +1167,12 @@ The `/noeval` switch prevents the MUSH from evaluating `<message>`. The `/spoof`
 
 
 ::: seealso
-- [@nspemit](/reference/sharpmush-help/sharpcmd/#pemit)
+- [@nspemit](/reference/sharpmush-help/sharpcmd/#nspemit)
 - [EMIT()](/reference/sharpmush-help/sharpfunc/#emit)
 - [@pemit](/reference/sharpmush-help/pemit-command/#pemit)
 - [@remit](/reference/sharpmush-help/sharpcmd/#remit)
 - [@oemit](/reference/sharpmush-help/oemit-command/#oemit)
-- [@lemit](/reference/sharpmush-help/sharpcmd/#nslemit)
+- [@lemit](/reference/sharpmush-help/sharpcmd/#lemit)
 - [@zemit](/reference/sharpmush-help/sharpcmd/#zemit)
 - [@CEMIT](/reference/sharpmush-help/sharpchat/#cemit)
 - [@SPEECHMOD](/reference/sharpmush-help/sharpcmd/#speechmod)
@@ -1481,7 +1481,7 @@ If there is no IDESCRIBE set for an object, those who enter or look inside it wi
 
 
 ::: seealso
-- [enter](/reference/sharpmush-help/sharpcmd/#aenter)
+- [enter](/reference/sharpmush-help/sharpcmd/#enter)
 - [@aenter](/reference/sharpmush-help/sharpcmd/#aenter)
 - [ENTER_OK](/reference/sharpmush-help/sharpflag/#enterok)
 - [@describe](/reference/sharpmush-help/sharpcmd/#describe)
@@ -1600,7 +1600,7 @@ The `/spoof` switch causes nospoof notifications to show the enactor's dbref ins
 
 ::: seealso
 - [@remit](/reference/sharpmush-help/sharpcmd/#remit)
-- [@nspemit](/reference/sharpmush-help/sharpcmd/#pemit)
+- [@nspemit](/reference/sharpmush-help/sharpcmd/#nspemit)
 :::
 ## @list
 `@list/<switch>`<br>
@@ -1630,7 +1630,7 @@ By default, information is shown in upper-case. Add the `/lowercase` switch to s
 - [@config](/reference/sharpmush-help/sharpcmd/#config)
 - [CONFIG()](/reference/sharpmush-help/sharpfunc/#config)
 - [FUNCTIONS()](/reference/sharpmush-help/sharpfunc/#functions)
-- [@stats](/reference/sharpmush-help/sharpcmd/#lstats)
+- [@stats](/reference/sharpmush-help/sharpcmd/#stats)
 - [@command](/reference/sharpmush-help/command/#command)
 - [@function](/reference/sharpmush-help/function-command/#function)
 - [@flag](/reference/sharpmush-help/flag-command/#flag)
@@ -1694,7 +1694,7 @@ Note that, unlike most attributes, @destination cannot be abbreviated and must b
 
 This command "locks" the object, specifying a key which determines who or what can do certain things with the object. There are many different types of locks, all of which are described in [locktypes](/reference/sharpmush-help/sharplock/#locktypes) and which are designated by the switch. The "basic" lock determines, for players and things, who can pick them up. For exits, it determines who can go through the exit. All other locks can be set the same way as the basic lock.
 
-Whenever you "pass" the basic lock, you succeed in doing something with the object. This triggers the @success/@osuccess/@asuccess messages and actions. If you fail to pass the basic lock, you trigger the @failure/@ofailure/@afailure messages and actions. Other locktypes may also have such success/failure messages: see [failure](/reference/sharpmush-help/failure/#afailure) for info.
+Whenever you "pass" the basic lock, you succeed in doing something with the object. This triggers the @success/@osuccess/@asuccess messages and actions. If you fail to pass the basic lock, you trigger the @failure/@ofailure/@afailure messages and actions. Other locktypes may also have such success/failure messages: see [failure](/reference/sharpmush-help/failure/#failure) for info.
 
 Just like attributes, locks can be inherited from parents. By default, locks are set no_inherit, but this flag can be cleared using @lset. More details and a list of flags can be found in [@lset](/reference/sharpmush-help/sharpcmd/#lset).
 
@@ -1706,17 +1706,17 @@ A listing of lock types, such as pagelocks, look at [locktypes](/reference/sharp
 - [locktypes](/reference/sharpmush-help/sharplock/#locktypes)
 - [lock keys](/reference/sharpmush-help/lock-keys/#lock-keys)
 - [@CHANNEL CLOCK](/reference/sharpmush-help/sharpchat/#channel-clock)
-- [failure](/reference/sharpmush-help/failure/#afailure)
-- [SUCCESS](/reference/sharpmush-help/sharptop/#asuccess)
+- [failure](/reference/sharpmush-help/failure/#failure)
+- [SUCCESS](/reference/sharpmush-help/sharptop/#success)
 - [ELOCK()](/reference/sharpmush-help/sharpfunc/#elock)
-- [LOCK()](/reference/sharpmush-help/sharpfunc/#locking)
+- [LOCK()](/reference/sharpmush-help/sharpfunc/#lock)
 - [@lset](/reference/sharpmush-help/sharpcmd/#lset)
 - [@CHANNEL CLOCK](/reference/sharpmush-help/sharpchat/#channel-clock)
 - [TESTLOCK()](/reference/sharpmush-help/sharpfunc/#testlock)
 - [LLOCKS()](/reference/sharpmush-help/sharpfunc/#llocks)
 - [LOCKFLAGS()](/reference/sharpmush-help/sharpfunc/#lockflags)
 - [LOCKOWNER()](/reference/sharpmush-help/sharpfunc/#lockowner)
-- [clock()](/reference/sharpmush-help/sharpfunc/#channel-clock)
+- [clock()](/reference/sharpmush-help/sharpfunc/#clock)
 - [LLOCKS()](/reference/sharpmush-help/sharpfunc/#llocks)
 :::
 ## @lset
@@ -1890,14 +1890,14 @@ These commands work like @emit, @lemit, @pemit, @prompt, @remit, @oemit, and @ze
 
 ::: seealso
 - [@emit](/reference/sharpmush-help/sharpcmd/#emit)
-- [@lemit](/reference/sharpmush-help/sharpcmd/#nslemit)
+- [@lemit](/reference/sharpmush-help/sharpcmd/#lemit)
 - [@pemit](/reference/sharpmush-help/pemit-command/#pemit)
-- [@prompt](/reference/sharpmush-help/sharpcmd/#pemit)
+- [@prompt](/reference/sharpmush-help/sharpcmd/#prompt)
 - [@remit](/reference/sharpmush-help/sharpcmd/#remit)
 - [@oemit](/reference/sharpmush-help/oemit-command/#oemit)
 - [@zemit](/reference/sharpmush-help/sharpcmd/#zemit)
 - [EMIT()](/reference/sharpmush-help/sharpfunc/#emit)
-- [NSLEMIT()](/reference/sharpmush-help/sharpfunc/#nspemit)
+- [NSLEMIT()](/reference/sharpmush-help/sharpfunc/#nslemit)
 - [PEMIT()](/reference/sharpmush-help/sharpfunc/#pemit)
 - [PEMIT()](/reference/sharpmush-help/sharpfunc/#pemit)
 - [REMIT()](/reference/sharpmush-help/sharpfunc/#remit)
@@ -1984,7 +1984,7 @@ In all cases, %0 is the dbref of the object received. If the object was 'give'n,
 
 
 ::: seealso
-- [give](/reference/sharpmush-help/sharpcmd/#give)
+- [give](/reference/sharpmush-help/sharpcmd/#give-1)
 - [get](/reference/sharpmush-help/sharpcmd/#get)
 - [@give](/reference/sharpmush-help/sharpcmd/#give)
 - [@asuccess](/reference/sharpmush-help/sharpcmd/#asuccess)
@@ -2002,7 +2002,7 @@ In all cases, %0 is the dbref of the object being given, and %1 is the dbref of 
 
 
 ::: seealso
-- [give](/reference/sharpmush-help/sharpcmd/#give)
+- [give](/reference/sharpmush-help/sharpcmd/#give-1)
 - [@receive](/reference/sharpmush-help/sharpcmd/#receive)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
@@ -2030,7 +2030,7 @@ If `<message>` is omitted, an empty prompt is sent.
 
 ::: seealso
 - [@pemit](/reference/sharpmush-help/pemit-command/#pemit)
-- [@nspemit](/reference/sharpmush-help/sharpcmd/#pemit)
+- [@nspemit](/reference/sharpmush-help/sharpcmd/#nspemit)
 - [PEMIT()](/reference/sharpmush-help/sharpfunc/#pemit)
 - [PEMIT()](/reference/sharpmush-help/sharpfunc/#pemit)
 - [PROMPT_NEWLINES](/reference/sharpmush-help/sharpcmd/#promptnewlines)
@@ -2044,7 +2044,7 @@ Some clients, like TinyFugue, are smart enough to interpret GOAHEAD and treat pr
 
 
 ::: seealso
-- [@prompt](/reference/sharpmush-help/sharpcmd/#pemit)
+- [@prompt](/reference/sharpmush-help/sharpcmd/#prompt)
 - [PEMIT()](/reference/sharpmush-help/sharpfunc/#pemit)
 - [TERMINFO()](/reference/sharpmush-help/sharpfunc/#terminfo)
 - [@SOCKSET](/reference/sharpmush-help/sharpcmd/#sockset)
@@ -2070,7 +2070,7 @@ This command sets the pennies of every player on the MUSH to `<value>`. It can o
 
 ::: seealso
 - [MONEY](/reference/sharpmush-help/sharptop/#money)
-- [give](/reference/sharpmush-help/sharpcmd/#give)
+- [give](/reference/sharpmush-help/sharpcmd/#give-1)
 :::
 ## @prefix
 `@prefix <object>[=<message>]`
@@ -2182,12 +2182,12 @@ Runs `<command>` with strict argument parsing. SharpMUSH normally splits a comma
 
 This is narrower than it sounds, and it is **not** what makes a malformed expression an error; that happens anyway. `think [add(1,2)` answers `#-1 PARSER FAILURE` with or without `~`, because an argument whose split reported errors is re-parsed strictly before it is evaluated. What `~` changes is the split itself, so a command whose argument structure only survived by error recovery fails instead of running on a best-effort reading of what you typed.
 
-Nesting is limited by the `max_depth` configuration option, as it is for [@@](/reference/sharpmush-help/sharpcmd/) and the other command modifiers.
+Nesting is limited by the `max_depth` configuration option, as it is for [@@](/reference/sharpmush-help/sharpcmd/#-1) and the other command modifiers.
 
 
 ::: seealso
 - [&]
-- [@@](/reference/sharpmush-help/sharpcmd/)
+- [@@](/reference/sharpmush-help/sharpcmd/#-1)
 - [restrictedexpr](/reference/sharpmush-help/sharpconf/#restrictedexpr)
 :::
 ## @set
@@ -2311,7 +2311,7 @@ Note that changing 'telnet' or 'pueblo' may stop your client from parsing or dis
 - [HYPERLINKS](/reference/sharpmush-help/sharpcmd/#hyperlinks)
 - [GRAPHICS](/reference/sharpmush-help/sharpcmd/#graphics)
 - [TERMINAL](/reference/sharpmush-help/sharpcmd/#terminal)
-- [@prompt](/reference/sharpmush-help/sharpcmd/#pemit)
+- [@prompt](/reference/sharpmush-help/sharpcmd/#prompt)
 :::
 ## colorstyle
 `SOCKSET colorstyle=<value>`<br>
@@ -2620,7 +2620,7 @@ Undo stops at the oldest version that survives. A wiki rollback can only go back
 
 ::: seealso
 - [@backup](/reference/sharpmush-help/sharpcmd/#backup)
-- [@stats](/reference/sharpmush-help/sharpcmd/#lstats)
+- [@stats](/reference/sharpmush-help/sharpcmd/#stats)
 :::
 ## @sweep
 `@sweep [connected | here | inventory | exits ]`
@@ -2652,7 +2652,7 @@ Example: if I want everyone but Bob to be able to use my toy, I would "`@lock/us
 
 ::: seealso
 - [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
-- [use](/reference/sharpmush-help/sharpcmd/#ause)
+- [use](/reference/sharpmush-help/sharpcmd/#use)
 - [locktypes](/reference/sharpmush-help/sharplock/#locktypes)
 :::
 ## @unlink
@@ -2821,7 +2821,7 @@ The `/silent` switch suppresses the confirmation message, and `/noisy` causes it
 
 
 ::: seealso
-- [@nspemit](/reference/sharpmush-help/sharpcmd/#pemit)
+- [@nspemit](/reference/sharpmush-help/sharpcmd/#nspemit)
 - [ZEMIT()](/reference/sharpmush-help/sharpfunc/#zemit)
 - [ZONE()](/reference/sharpmush-help/sharpfunc/#zone)
 - [ZWHO()](/reference/sharpmush-help/sharpfunc/#zwho)
@@ -2935,7 +2935,7 @@ Output: the dbref of the object you enter.
 
 Insides of objects are best used for vehicles, or storage spaces when you don't have a home. You can describe the interior of an object differently from its exterior by using @idescribe.
 
-See: [@aenter](/reference/sharpmush-help/sharpcmd/#aenter), [@aefail](/reference/sharpmush-help/sharpcmd/#aefail), [@ealias](/reference/sharpmush-help/sharpcmd/#ealias), [leave](/reference/sharpmush-help/sharpcmd/#leave), [LOCKING](/reference/sharpmush-help/sharpcmd/#locking), [@idescribe](/reference/sharpmush-help/sharpcmd/#idescribe), [interiors](/reference/sharpmush-help/interiors/#interiors)
+See: [@aenter](/reference/sharpmush-help/sharpcmd/#aenter), [@aefail](/reference/sharpmush-help/sharpcmd/#aefail), [@ealias](/reference/sharpmush-help/sharpcmd/#ealias), [leave](/reference/sharpmush-help/sharpcmd/#leave-1), [LOCKING](/reference/sharpmush-help/sharpcmd/#locking), [@idescribe](/reference/sharpmush-help/sharpcmd/#idescribe), [interiors](/reference/sharpmush-help/interiors/#interiors)
 ## examine
 `examine[/<switches>] <object>[/<attribute>]`
 
@@ -2968,7 +2968,7 @@ If you pass the object's follow lock, you begin following it. As the object move
 
 
 ::: seealso
-- [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow)
+- [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow-1)
 - [dismiss](/reference/sharpmush-help/sharpcmd/#dismiss)
 - [desert](/reference/sharpmush-help/sharpcmd/#desert)
 - [FOLLOWERS()](/reference/sharpmush-help/sharpfunc/#followers)
@@ -2985,8 +2985,8 @@ The dismiss command stops `<object>` from following you. If no object is given, 
 
 
 ::: seealso
-- [follow](/reference/sharpmush-help/sharpcmd/#follow)
-- [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow)
+- [follow](/reference/sharpmush-help/sharpcmd/#follow-1)
+- [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow-1)
 - [desert](/reference/sharpmush-help/sharpcmd/#desert)
 - [FOLLOWERS()](/reference/sharpmush-help/sharpfunc/#followers)
 :::
@@ -2998,8 +2998,8 @@ The desert command stops `<object>` from following you and stops you from follow
 
 
 ::: seealso
-- [follow](/reference/sharpmush-help/sharpcmd/#follow)
-- [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow)
+- [follow](/reference/sharpmush-help/sharpcmd/#follow-1)
+- [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow-1)
 - [dismiss](/reference/sharpmush-help/sharpcmd/#dismiss)
 - [FOLLOWERS()](/reference/sharpmush-help/sharpfunc/#followers)
 - [FOLLOWING()](/reference/sharpmush-help/sharpfunc/#following)
@@ -3014,7 +3014,7 @@ The empty command assumes that all `<object>`'s items pass through the hands of 
 
 ::: seealso
 - [get](/reference/sharpmush-help/sharpcmd/#get)
-- [drop](/reference/sharpmush-help/sharpcmd/#adrop)
+- [drop](/reference/sharpmush-help/sharpcmd/#drop)
 :::
 ## get
 `get <object>`<br>
@@ -3032,8 +3032,8 @@ To get an object from someone else's inventory, the possessive_get @config optio
 ::: seealso
 - [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
 - [ENTER_OK](/reference/sharpmush-help/sharpflag/#enterok)
-- [give](/reference/sharpmush-help/sharpcmd/#give)
-- [drop](/reference/sharpmush-help/sharpcmd/#adrop)
+- [give](/reference/sharpmush-help/sharpcmd/#give-1)
+- [drop](/reference/sharpmush-help/sharpcmd/#drop)
 - [@asuccess](/reference/sharpmush-help/sharpcmd/#asuccess)
 - [inventory](/reference/sharpmush-help/sharpcmd/#inventory)
 :::
@@ -3053,13 +3053,13 @@ These attributes contain the message shown to a player who successfully buys som
 
 
 ::: seealso
-- [buy](/reference/sharpmush-help/sharpcmd/#buy)
+- [buy](/reference/sharpmush-help/sharpcmd/#buy-1)
 - [@pricelist](/reference/sharpmush-help/sharpcmd/#pricelist)
 - [MONEY](/reference/sharpmush-help/sharptop/#money)
 - [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
 - [@cost](/reference/sharpmush-help/sharpcmd/#cost)
-- [give](/reference/sharpmush-help/sharpcmd/#give)
+- [give](/reference/sharpmush-help/sharpcmd/#give-1)
 :::
 ## @pricelist
 `@pricelist <object>=<item1>:<price1>[,<price2>][ <item2>:...]`
@@ -3079,11 +3079,11 @@ A player must pass `<object>`'s @lock/pay in order to purchase from it.
 
 
 ::: seealso
-- [buy](/reference/sharpmush-help/sharpcmd/#buy)
+- [buy](/reference/sharpmush-help/sharpcmd/#buy-1)
 - [@buy](/reference/sharpmush-help/sharpcmd/#buy)
 - [MONEY](/reference/sharpmush-help/sharptop/#money)
 - [@cost](/reference/sharpmush-help/sharpcmd/#cost)
-- [give](/reference/sharpmush-help/sharpcmd/#give)
+- [give](/reference/sharpmush-help/sharpcmd/#give-1)
 - [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
 :::
 ## buy
@@ -3107,7 +3107,7 @@ You enjoy a delicious coke.
 ::: seealso
 - [@buy](/reference/sharpmush-help/sharpcmd/#buy)
 - [@pricelist](/reference/sharpmush-help/sharpcmd/#pricelist)
-- [give](/reference/sharpmush-help/sharpcmd/#give)
+- [give](/reference/sharpmush-help/sharpcmd/#give-1)
 - [@cost](/reference/sharpmush-help/sharpcmd/#cost)
 :::
 ## give
@@ -3128,7 +3128,7 @@ The last two forms of this command give an `<object>` from your inventory to `<r
 - [inventory](/reference/sharpmush-help/sharpcmd/#inventory)
 - [@receive](/reference/sharpmush-help/sharpcmd/#receive)
 - [@give](/reference/sharpmush-help/sharpcmd/#give)
-- [buy](/reference/sharpmush-help/sharpcmd/#buy)
+- [buy](/reference/sharpmush-help/sharpcmd/#buy-1)
 - [@asuccess](/reference/sharpmush-help/sharpcmd/#asuccess)
 :::
 ## go
@@ -3180,8 +3180,8 @@ silent move; a TERSE player sees the room's name and contents but not its descri
 ::: seealso
 - [go]
 - [@teleport](/reference/sharpmush-help/teleport-command/#teleport)
-- [enter](/reference/sharpmush-help/sharpcmd/#aenter)
-- [leave](/reference/sharpmush-help/sharpcmd/#leave)
+- [enter](/reference/sharpmush-help/sharpcmd/#enter)
+- [leave](/reference/sharpmush-help/sharpcmd/#leave-1)
 - [HOMES](/reference/sharpmush-help/sharptop/#homes)
 - [TERSE](/reference/sharpmush-help/sharpconf/#terse)
 - [@listen](/reference/sharpmush-help/listen-command/#listen)
@@ -3208,7 +3208,7 @@ Note that on some MUSHes it is possible to take things that are in someone else'
 ::: seealso
 - [score](/reference/sharpmush-help/sharpcmd/#score)
 - [get](/reference/sharpmush-help/sharpcmd/#get)
-- [drop](/reference/sharpmush-help/sharpcmd/#adrop)
+- [drop](/reference/sharpmush-help/sharpcmd/#drop)
 - [OPAQUE](/reference/sharpmush-help/sharpflag/#opaque)
 - [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
 - [@invformat](/reference/sharpmush-help/sharpcmd/#invformat)
@@ -3224,7 +3224,7 @@ The NO_LEAVE flag may be enabled on some MUSHes. Objects set with this flag cann
 
 
 ::: seealso
-- [enter](/reference/sharpmush-help/sharpcmd/#aenter)
+- [enter](/reference/sharpmush-help/sharpcmd/#enter)
 - [@leave](/reference/sharpmush-help/sharpcmd/#leave)
 - [@lfail](/reference/sharpmush-help/sharpcmd/#lfail)
 - [@ealias](/reference/sharpmush-help/sharpcmd/#ealias)
@@ -3282,7 +3282,7 @@ One possible use: `@adesc me=think %n just looked at you.`
 
 ::: seealso
 - [@pemit](/reference/sharpmush-help/pemit-command/#pemit)
-- [@@](/reference/sharpmush-help/sharpcmd/)
+- [@@](/reference/sharpmush-help/sharpcmd/#-1)
 :::
 ## connect
 `connect <player> [<password>]`<br>
@@ -3397,7 +3397,7 @@ This command stops you from following an object that you were formerly following
 
 
 ::: seealso
-- [follow](/reference/sharpmush-help/sharpcmd/#follow)
+- [follow](/reference/sharpmush-help/sharpcmd/#follow-1)
 - [dismiss](/reference/sharpmush-help/sharpcmd/#dismiss)
 - [desert](/reference/sharpmush-help/sharpcmd/#desert)
 - [FOLLOWERS()](/reference/sharpmush-help/sharpfunc/#followers)
