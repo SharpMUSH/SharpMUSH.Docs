@@ -343,6 +343,49 @@ Nothing you type in the reader runs as a command. To page someone or pose, leave
 | `?` | List the keys. |
 | `q` | Leave the reader. |
 
+## In the portal
+
+When your game has installed `bboards-app`, the portal has a **Boards** page under
+**Community**. It shows the same boards, posts and comments as the `+bb` commands, with the
+same numbers, and it obeys the same locks: a board you can't read in the game isn't on the
+page either.
+
+The side menu has **What's new**, with a count of everything you haven't read, **All
+boards**, **New post**, and every board you follow with its own count.
+
+![The Public board in the portal: New post, Mark all read and Leave board buttons, its two sub-boards with a "1 new" badge, and its posts in a table with Pinned posts above the rest](../../../assets/guide/bboards-portal-board.webp)
+
+A board's page lists its sub-boards and then its posts, pinned posts first. Its buttons
+do what the commands do:
+
+| Button | Same as |
+|---|---|
+| New post | `+bbpost` |
+| Mark all read | `+bbcatchup <board>` |
+| Follow board or Leave board | `+bbjoin` or `+bbleave` |
+
+A moderator also sees up and down arrows on pinned posts. They change the order the pins
+are shown in, for everyone.
+
+![A post with its buttons above it, and its comments as conversations: a reply sits indented under the comment it answers, and "3 more replies" links to the rest](../../../assets/guide/bboards-portal-post.webp)
+
+A post's page shows its text and its comments, a few conversations to a page. Replies sit under the
+comment they answer, as in [One conversation](#one-conversation). When a conversation is
+long, "more replies" opens all of it. **Reply** under a comment opens it so you can answer;
+the box at the bottom of the page comments on the post. "Written in" picks Markdown or
+SharpMUSH text, as `/md` and `/mush` do.
+
+Above the post are the buttons you are allowed to use: **Follow**, **Edit** and
+**Remove** for your own post, and for a moderator **Edit**, **Remove**, **Pin** and
+**Close to comments** on any post.
+
+Editing in the portal replaces the whole text, like `+bbedit/all`. When a moderator edits a
+comment or post someone else wrote as SharpMUSH text, the box starts empty: the author's
+code is never copied in, so saving can't run it as the moderator.
+
+Every page shows the command it matches, such as `+bbread 5/5`, so you can do the same
+thing in the game.
+
 ## Moderating
 
 A board's moderators are the people who pass its **moderate** lock (see
@@ -374,7 +417,9 @@ BBoards ships with the server but is not installed on a new game. An administrat
 installs it from the portal:
 
 1. Open **Packages** in the admin area and choose **Browse**.
-2. Install `bboards`. It needs `plus-help`, which a new game already has.
+2. Install `bboards`. It needs `plus-help` and `http-handler`, which a new game already has.
+3. To show the boards in the portal as well, install `bboards-app`. See
+   [In the portal](#in-the-portal).
 
 See [Softcode Packages](/guides/packages) for how installing, upgrading and rolling back
 work.
