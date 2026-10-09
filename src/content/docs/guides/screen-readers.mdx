@@ -86,7 +86,18 @@ A MU\* client can tell the game it is a screen reader through MTTS, the standard
 themselves. Look in your client's accessibility settings for an option to tell the game you use a screen
 reader.
 
-When it does, the game sends that connection:
+If your client has no such option, tell the game yourself. Type this at the login screen, or after you
+log in:
+
+```
+SCREENREADER
+```
+
+The game answers `Screen reader set to 'on'`. The setting lasts until you disconnect, so add `SCREENREADER`
+to the commands your client sends when it connects. `SCREENREADER off` turns it off, even if your client
+said it is a screen reader, and `SCREENREADER auto` goes back to what your client said.
+
+When the game knows, it sends that connection:
 
 - no colour codes, which some screen readers read aloud
 - no clickable links, unless you turn them back on with `SOCKSET commandlinks=on`
