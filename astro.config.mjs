@@ -51,6 +51,7 @@ export default defineConfig({
                       { label: 'Scene Pose Types', slug: 'guides/scene-pose-types' },
                       { label: 'Screen Readers', slug: 'guides/screen-readers' },
                       { label: 'Softcode Packages', slug: 'guides/packages' },
+                      { label: 'Bulletin Boards', slug: 'guides/bboards' },
                       { label: 'Writing Plugins', slug: 'guides/plugins' },
                       { label: 'Softcode in Your Editor', slug: 'guides/editor-support' }
                   ],

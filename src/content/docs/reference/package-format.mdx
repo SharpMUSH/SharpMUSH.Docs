@@ -534,10 +534,10 @@ Some packages are built into the server and appear in the portal under the reser
 - **Shipped**: the package is in the server and can be installed from the catalogue at any time.
 - **Installed on first start**: a new game gets it without being asked. `http-handler`,
   `profile-handler`, `room-contents`, `comm-feed`, `common-functions`, `plus-help` and `scene` are.
-  `wiki-reader`, `jobs`, `jobs-app` and `messages` are shipped but not installed: `+wiki` puts an
-  object in the master room, the job queue adds commands a game may not want, and a new game reads its
-  connect screen and MOTDs from stored text until an administrator chooses the Messages object (in the
-  setup wizard or on the package's page).
+  `wiki-reader`, `jobs`, `jobs-app`, `messages` and `bboards` are shipped but not installed: `+wiki`
+  puts an object in the master room, the job queue and the [bulletin boards](/guides/bboards) add
+  commands a game may not want, and a new game reads its connect screen and MOTDs from stored text until
+  an administrator chooses the Messages object (in the setup wizard or on the package's page).
 
 A bundled package may only depend on other bundled packages, so installing it never needs the
 network. Anything installed from the catalogue records `bundled:sharpmush` as its source, and is
