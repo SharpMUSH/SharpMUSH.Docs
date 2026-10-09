@@ -1,0 +1,146 @@
+---
+title: Screen Readers
+description: Playing a SharpMUSH game with a screen reader, in the web portal or a MU* client, and writing softcode that reads well aloud.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+The web portal works with screen readers such as NVDA, JAWS, VoiceOver and TalkBack. What other players say
+is read out as it arrives, every control has a name, and the keyboard reaches everything. This page covers
+the portal, what a MU\* client gets, and how game builders can help.
+
+## Turn on Screen reader mode
+
+Browsers do not tell a web page that a screen reader is running, so the portal asks you once.
+
+<Steps>
+
+1. Open **Play**.
+
+2. Open **Terminal settings**, the button above the terminal on the right.
+
+3. Tick **Screen reader mode**.
+
+</Steps>
+
+The choice is kept in this browser, for every character you play in it, guests included. It does these things:
+
+- **The exit letter keys are turned off.** Normally pressing a letter such as `n` while focus is on a button
+  takes that exit. With a screen reader, letters are how you move around the page, so a stray one could walk
+  your character out of the room. With the mode on, only the exit buttons and the command box move you.
+- **Your own commands are not read back.** You just typed them, so only what the game sends is read.
+- **Recent lines can be heard again** with Alt and a number, while you stay in the command box. See
+  [Hearing a line again](#hearing-a-line-again).
+- **Lines are read as words, not drawings.** A picture is read as its description, a scene's divider as its
+  title (for example "God posed"), and a line of dashes or box characters is skipped. A box of fields is read
+  one field at a time, for example "Mannaz Byron. Sex: Male. Species: Human."
+- **The game is told.** Games can use this to describe something in words instead of drawing it with
+  characters. See [For game builders](#for-game-builders).
+
+## Getting around
+
+- The first two links on every page are **Skip to main content** and **Skip to the text box**. The second
+  puts you straight in the box you type into.
+- Each page has one main heading, which focus moves to when the page changes. On Play it names the room, for
+  example "Play: Room Zero". The cards beside the terminal, such as **Here** and **Exits**, are headings too,
+  so your screen reader's heading keys jump between them.
+- The menus and the bottom bar on a phone are labelled landmarks.
+- On a phone, the tabs above the room sheet (Here, Exits and the rest) move with the arrow keys, and Home and
+  End go to the first and last.
+
+## Reading the game
+
+The terminal has two parts:
+
+- **Game command** is the box you type into. Enter sends what you typed.
+- **Game output** is everything the game sends you. New lines are read out as they arrive, without moving
+  your focus, so you can keep typing while someone talks. To go back over earlier lines, Tab to Game output
+  and read it with your screen reader's reading keys, or scroll it with the arrow keys.
+
+### Hearing a line again
+
+With Screen reader mode on, hold Alt and press a number in the command box to hear a recent line again. Alt+1
+reads the newest line, Alt+2 the one before it, and so on up to Alt+0 for the tenth. Your own commands are
+not counted. What you have typed stays in the box. On a Mac, use Option.
+
+To go further back, use Game output as described above.
+
+When you open a channel or a conversation from the sidebar, each new line is read with who said it, for
+example "Kestrel: anyone at the docks?". When you close it, focus goes back to the command box, so you are
+never left at the top of the page.
+
+The **Story** view of a scene works the same way: each new pose is read as it lands. A deleted pose starts
+with "Deleted:".
+
+If a button you were on disappears, for example the exit you just took, focus goes back to the command box
+too.
+
+<Aside type="tip">
+Unread counts are read as words, for example "Public, 3 unread", and a person in **Here** is read with their
+status, for example "Mira · idle".
+</Aside>
+
+## In a MU\* client
+
+A MU\* client can tell the game it is a screen reader through MTTS, the standard way clients describe
+themselves. Look in your client's accessibility settings for an option to tell the game you use a screen
+reader.
+
+When it does, the game sends that connection:
+
+- no colour codes, which some screen readers read aloud
+- no clickable links, unless you turn them back on with `SOCKSET commandlinks=on`
+- the description of a picture instead of the picture
+- the boxes and tables in reading order, one item after another, instead of side by side
+
+## For game builders
+
+The function `terminfo()` lists what a connection can do. With Screen reader mode on in the portal, it looks
+like this:
+
+```
+think terminfo(me)
+```
+
+Output: `SHARPMUSH-PORTAL screenreader websocket commandlinks truecolor`
+
+The word `screenreader` is the part to check. Anyone's softcode can see it, as it can see `pueblo`, so a room
+description or a connect screen can use it.
+
+A map drawn with characters reads aloud as a run of punctuation. This room shows the drawing to most players
+and a sentence to a screen reader:
+
+```
+&MAP here=%b%b%b%b%bPier%r%b%b%b%b%b%b|%rGate --- You
+&MAP`SAID here=The pier is north of you. The gate is west.
+@desc here=A cobbled square by the water.%r[if(member(terminfo(%#),screenreader),v(MAP`SAID),u(MAP))]
+```
+
+Someone without a screen reader who types `look` sees:
+
+```
+A cobbled square by the water.
+     Pier
+      |
+Gate --- You
+```
+
+With Screen reader mode on, they hear:
+
+```
+A cobbled square by the water.
+The pier is north of you. The gate is west.
+```
+
+You often do not need `terminfo()` at all:
+
+- **Pictures:** `figure()` takes a description, and every screen reader gets the description. The connect
+  screen in the Messages package draws its logo this way.
+- **Layouts:** `box()`, `fields()`, `datatable()` and the other layout functions are read in order, as a table or
+  a list, in the portal and in a MU\* client.
+- **Command links:** `cmdlink()` makes a real button in the portal, which a screen reader can reach and press.
+
+<Aside type="caution">
+Colour alone does not reach a screen reader. If red means "out of character", say so in words too, for
+example `[ansi(r,OOC)]`.
+</Aside>
