@@ -473,6 +473,7 @@
     "@INPUT/START": "sharpcmd",
     "@INPUT/PROMPT": "sharpcmd",
     "@INPUT/CANCEL": "sharpcmd",
+    "@INPUT/RESCUE": "sharpcmd",
     "@INVFORMAT": "sharpcmd",
     "@DESCFORMAT": "sharpcmd",
     "@IDESCFORMAT": "sharpcmd",
