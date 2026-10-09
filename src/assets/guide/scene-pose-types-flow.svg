@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" width="960" height="360" role="img" aria-labelledby="t d">
+  <title id="t">How a pose type decides how a line looks</title>
+  <desc id="d">A player's out-of-character line is recorded with the type ooc. The type lives on the Scene Logger as two attributes: TYPE`OOC, which tells the portal to draw a band in the theme's secondary colour, and TYPE`OOC`FORMAT, softcode that draws the line for a terminal. A terminal reader sees "&lt;OOC&gt; Wren: brb, tea" in their theme's muted colour; a portal reader sees the line in a tinted band marked OOC.</desc>
+  <rect x="0" y="0" width="960" height="360" rx="12" fill="#f8fafc"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <g font-family="system-ui, sans-serif" fill="#0f172a">
+    <!-- the line -->
+    <rect x="24" y="130" width="210" height="100" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="129" y="158" text-anchor="middle" font-size="15" font-weight="600">A line in the scene</text>
+    <text x="129" y="186" text-anchor="middle" font-size="14" font-family="ui-monospace, monospace">+scene/ooc 12=brb, tea</text>
+    <text x="129" y="212" text-anchor="middle" font-size="13" fill="#475569">recorded as type ooc</text>
+
+    <line x1="234" y1="180" x2="296" y2="180" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- the type -->
+    <rect x="300" y="40" width="300" height="280" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="450" y="68" text-anchor="middle" font-size="15" font-weight="600">Type ooc, on the Scene Logger</text>
+    <rect x="318" y="88" width="264" height="96" rx="8" fill="#eef2ff" stroke="#c7d2fe"/>
+    <text x="330" y="110" font-size="13" font-weight="600">TYPE`OOC</text>
+    <text x="330" y="132" font-size="12.5" font-family="ui-monospace, monospace">label: Out of character</text>
+    <text x="330" y="152" font-size="12.5" font-family="ui-monospace, monospace">presentation: band</text>
+    <text x="330" y="172" font-size="12.5" font-family="ui-monospace, monospace">tone: secondary</text>
+    <rect x="318" y="198" width="264" height="104" rx="8" fill="#f0fdf4" stroke="#bbf7d0"/>
+    <text x="330" y="220" font-size="13" font-weight="600">TYPE`OOC`FORMAT</text>
+    <text x="330" y="244" font-size="12.5" font-family="ui-monospace, monospace">[tone(muted,&lt;OOC&gt; %2)]</text>
+    <text x="330" y="270" font-size="12.5" fill="#475569">softcode, run once</text>
+    <text x="330" y="288" font-size="12.5" fill="#475569">for each reader</text>
+
+    <line x1="582" y1="250" x2="660" y2="250" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="582" y1="136" x2="660" y2="110" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- portal -->
+    <text x="664" y="58" font-size="15" font-weight="600">In the portal</text>
+    <rect x="664" y="72" width="272" height="76" rx="10" fill="#ede9fe" stroke="#a78bfa"/>
+    <rect x="676" y="86" width="44" height="44" rx="10" fill="#c4b5fd"/>
+    <text x="698" y="113" text-anchor="middle" font-size="12" font-weight="700" fill="#3b0764">OOC</text>
+    <text x="732" y="104" font-size="14" font-weight="700" fill="#5b21b6">Wren</text>
+    <text x="732" y="126" font-size="14" fill="#1e1b4b">brb, tea</text>
+
+    <!-- terminal -->
+    <text x="664" y="208" font-size="15" font-weight="600">In a MU* client</text>
+    <rect x="664" y="222" width="272" height="56" rx="8" fill="#0f172a"/>
+    <text x="680" y="256" font-size="14" font-family="ui-monospace, monospace" fill="#94a3b8">&lt;OOC&gt; Wren: brb, tea</text>
+    <text x="664" y="304" font-size="12.5" fill="#475569">in the reader's own muted colour</text>
+  </g>
+</svg>
