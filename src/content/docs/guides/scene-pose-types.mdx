@@ -42,14 +42,15 @@ note under the recall says how many lines it left out:
 ```text
 > +scene/hide ooc
 [SCENE] Done: Out of character lines are hidden from your recall and log. +scene/show ooc shows them again.
-> +scene/recall 8
-═╡ Wren · pose 18 ╞═══════════════════════════════════════════════════════════
+> +scene/recall 5=10
+═╡ Wren · pose 32 ╞═══════════════════════════════════════════════╡ Scene 5 ╞═
 Wren pulls her hood up and squints at the breakwater. "That's no fishing boat."
-═╡ Tomas · pose 19 ╞══════════════════════════════════════════════════════════
+═╡ Tomas · pose 33 ╞══════════════════════════════════════════════╡ Scene 5 ╞═
 Tomas sets down the crate and follows her gaze, one hand on the rail.
-═╡ Tomas · pose 21 ╞══════════════════════════════════════════════════════════
-[Harbour Watch] Tomas: Tower, we have an unlit vessel off the north mole.
-═╡ Wren · pose 24 ╞═══════════════════════════════════════════════════════════
+<RADIO · 5> [Harbour Watch] Tomas: Tower, we have an unlit vessel off the north mole.
+═╡ Wren · pose 37 ╞═══════════════════════════════════════════════╡ Scene 5 ╞═
+Out past the mole, the fog bell begins to ring.
+═╡ Wren · pose 38 ╞═══════════════════════════════════════════════╡ Scene 5 ╞═
 Wren is already moving, boots loud on the wet boards.
 [SCENE] 2 lines of ooc hidden. +scene/show <type> shows them.
 > +scene/show ooc
@@ -70,15 +71,33 @@ Both follow the reader's theme.
 
 ### In a MU\* client
 
-A line of a type is drawn by a short piece of softcode on the Scene Logger, the type's **format**.
+A pose, and narration, comes under a rule naming who wrote it and the pose's number on the left and
+the scene on the right. Out-of-character lines and radio calls have no rule. Each is one line,
+tagged with its type and the scene, so a quick aside does not get a rule of its own:
+
+```text
+<OOC · 5> Tomas: Brb, door.
+═╡ Tomas · pose 40 ╞══════════════════════════════════════════════╡ Scene 5 ╞═
+Tomas lifts the handset again, thumb on the key.
+```
+
+On a narrow screen the scene is dropped from the rule first, so the name and pose number stay.
+
+Which types get a rule follows their portal layout, described below: a `prose` or `aside` type has
+one, and a `band`, `message` or `notice` type does not.
+
+The line itself is drawn by a short piece of softcode on the Scene Logger, the type's **format**.
 The game runs it once for each reader, so each can see the line differently. The shipped formats are:
 
 | Type | Format | What a reader sees |
 |---|---|---|
 | `ic` | `%2` | the line as written |
-| `ooc` | `[tone(muted,<OOC> %2)]` | `<OOC>` and the line, in the reader's muted colour |
+| `ooc` | `[tone(muted,<OOC[if(strlen(%3),%b[chr(183)] %3)]> %2)]` | `<OOC · 5>` and the line, in the reader's muted colour |
 | `narration` | `[tone(secondary,%2)]` | the line, in the reader's secondary colour |
-| `radio` | `[tone(info,%2)]` | the call, in the reader's info colour |
+| `radio` | `[tone(info,<RADIO[if(strlen(%3),%b[chr(183)] %3)]> %2)]` | `<RADIO · 5>` and the call, in the reader's info colour |
+
+`chr(183)` is the middle dot. The `if()` leaves the scene out where there is none, such as the
+sample `+scene/types` shows.
 
 `tone()` colours by a theme colour's name rather than by a colour, so each player sees it in the
 theme they chose with `@theme`. A player whose theme makes `muted` paler sees every out-of-character
@@ -141,11 +160,21 @@ The format a MU\* client sees is softcode that runs as the Scene Logger, which i
 only a wizard changes it:
 
 ```text
-&TYPE`OOC`FORMAT <Scene Logger>=[tone(muted,(OOC) %2)]
+> &TYPE`OOC`FORMAT <Scene Logger>=[tone(muted,<OOC %3> %2)]
+Scene Logger/TYPE`OOC`FORMAT - Set.
+> +scene/recall 5=1
+<OOC 5> Tomas: Brb, door.
 ```
 
-It is given the pose's number as `%0`, the reader as `%1` and the line as `%2`. Whatever it returns
-is what that reader sees; nothing at all hides the line from them.
+It is given the pose's number as `%0`, the reader as `%1`, the line as `%2` and the scene's number
+as `%3`. Whatever it returns is what that reader sees; nothing at all hides the line from them, rule
+and all.
+
+<Aside type="caution">
+A `)` inside `tone()` ends it. `[tone(muted,(OOC %3) %2)]` shows `(OOC 5 Tomas: Brb, door.)`, with
+the line outside the colour. Write `\(` and `\)` for brackets that are part of the text:
+`[tone(muted,\(OOC %3\) %2)]` shows `(OOC 5) Tomas: Brb, door.`
+</Aside>
 
 ## Adding a type
 
@@ -167,8 +196,12 @@ is what that reader sees; nothing at all hides the line from them.
    [SCENE] Done: Pose type dice: icon set.
    ```
 
-3. Have a wizard give it a format for MU\* clients, or leave it without one: a line of a type with no
-   format is shown as `<DICE>` and the line.
+3. Have a wizard give it a format for MU\* clients, or leave it without one. A `notice` type with no
+   format is one line, tagged with its type and the scene:
+
+   ```text
+   <DICE · 5> Tomas rolls Perception: 4, 6, 2 = 12 (success)
+   ```
 
 4. Record lines as that type. The command that records a pose names its type, so this is the code
    behind your dice roller, not something players type:
