@@ -48,6 +48,7 @@ export default defineConfig({
                       { label: 'Layout Themes', slug: 'guides/layout-themes' },
                       { label: 'Portal Themes', slug: 'guides/portal-themes' },
                       { label: 'Colour Vision', slug: 'guides/colour-vision' },
+                      { label: 'Screen Readers', slug: 'guides/screen-readers' },
                       { label: 'Softcode Packages', slug: 'guides/packages' },
                       { label: 'Writing Plugins', slug: 'guides/plugins' },
                       { label: 'Softcode in Your Editor', slug: 'guides/editor-support' }
