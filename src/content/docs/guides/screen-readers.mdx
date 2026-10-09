@@ -23,11 +23,17 @@ Browsers do not tell a web page that a screen reader is running, so the portal a
 
 </Steps>
 
-The choice is kept in this browser, for every character you play in it, guests included. It does two things:
+The choice is kept in this browser, for every character you play in it, guests included. It does these things:
 
 - **The exit letter keys are turned off.** Normally pressing a letter such as `n` while focus is on a button
   takes that exit. With a screen reader, letters are how you move around the page, so a stray one could walk
   your character out of the room. With the mode on, only the exit buttons and the command box move you.
+- **Your own commands are not read back.** You just typed them, so only what the game sends is read.
+- **Recent lines can be heard again** with Alt and a number, while you stay in the command box. See
+  [Hearing a line again](#hearing-a-line-again).
+- **Lines are read as words, not drawings.** A picture is read as its description, a scene's divider as its
+  title (for example "God posed"), and a line of dashes or box characters is skipped. A box of fields is read
+  one field at a time, for example "Mannaz Byron. Sex: Male. Species: Human."
 - **The game is told.** Games can use this to describe something in words instead of drawing it with
   characters. See [For game builders](#for-game-builders).
 
@@ -50,6 +56,14 @@ The terminal has two parts:
 - **Game output** is everything the game sends you. New lines are read out as they arrive, without moving
   your focus, so you can keep typing while someone talks. To go back over earlier lines, Tab to Game output
   and read it with your screen reader's reading keys, or scroll it with the arrow keys.
+
+### Hearing a line again
+
+With Screen reader mode on, hold Alt and press a number in the command box to hear a recent line again. Alt+1
+reads the newest line, Alt+2 the one before it, and so on up to Alt+0 for the tenth. Your own commands are
+not counted. What you have typed stays in the box. On a Mac, use Option.
+
+To go further back, use Game output as described above.
 
 When you open a channel or a conversation from the sidebar, each new line is read with who said it, for
 example "Kestrel: anyone at the docks?". When you close it, focus goes back to the command box, so you are
