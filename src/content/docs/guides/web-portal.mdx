@@ -68,15 +68,17 @@ session ends, whether you finish it, cancel it, it times out, or you disconnect;
 empties. A one-off prompt from `prompt()` or `@prompt` goes as soon as you send a line.
 
 ```
-&CMD`ASK Greeter=$+ask:@input/start me/INPUT`ASK=What is your name? (q to skip),q
-&INPUT`ASK Greeter=@break strmatch(%1,exit)=@pemit %#=Maybe later.; @pemit %#=Hello, %0.; @input/cancel
+&CMD`ASK Greeter=$+ask:@input/start What is your name? (q to skip)=q,SKIP`ASK,*,INPUT`ASK
+&INPUT`ASK Greeter=@pemit %#=Hello, %0.; @input/cancel
+&SKIP`ASK Greeter=@pemit %#=Maybe later.
 ```
 
 Output: after `+ask`, the row above the input box reads `What is your name? (q to skip)`. Answer
 `Alice` and the output shows the question, then `Alice`, then `Hello, Alice.`, and the row empties
-because the callback ended the session. Answer `q` instead and the session ends on that line, the
-callback says `Maybe later.`, and the row empties the same way. Every `@input/start` names a line
-like `q` that ends the session, so a player always has a way out.
+because `` INPUT`ASK `` ended the session. Answer `q` instead and the session ends on that line,
+`` SKIP`ASK `` runs and says `Maybe later.`, and the row empties the same way. After the prompt,
+`@input/start` takes pairs of a line and the attribute it runs. The first pair is required and ends
+the session, so a player always has a way out; `*` stands for any other line.
 
 For anyone writing their own WebSocket client: the connection server marks a prompt frame as
 `{"type":"markup","data":…,"prompt":true,"session":"<id>"}`, and when an `@input` session ends it
