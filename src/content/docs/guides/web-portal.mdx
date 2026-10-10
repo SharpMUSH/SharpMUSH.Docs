@@ -55,6 +55,34 @@ behind the supplied proxy config that is `wss://<your-domain>/ws`; see
 [Run with Docker](/guides/docker-quickstart#point-the-browser-terminal-at-the-right-place) for why
 this is its own hostname and path.
 
+### Prompts
+
+A prompt is the line a game shows while it waits for an answer: a reader's `bb: [n]ext [q]uit`,
+or the question an `@input` session asks. On telnet it is simply the last line. In the browser it
+sits in its own row just above the input box, so it stays in view however much output arrives, and
+any links in it (made with `cmdlink()`) can be clicked or reached with Tab and Enter.
+
+When you send a line, the prompt is copied into the output above what you typed, so a saved log
+reads the same as a telnet session. A prompt from an `@input` session stays in its row until the
+session ends, whether you finish it, cancel it, it times out, or you disconnect; then the row
+empties. A one-off prompt from `prompt()` or `@prompt` goes as soon as you send a line.
+
+```
+&CMD`ASK Greeter=$+ask:@input/start me/INPUT`ASK=What is your name?
+&INPUT`ASK Greeter=@pemit %#=Hello, %0.; @input/cancel
+```
+
+Output: after `+ask`, the row above the input box reads `What is your name?`. Answer `Alice` and
+the output shows the question, then `Alice`, then `Hello, Alice.`, and the row empties because the
+callback ended the session.
+
+For anyone writing their own WebSocket client: the connection server marks a prompt frame as
+`{"type":"markup","data":…,"prompt":true,"session":"<id>"}`, and when an `@input` session ends it
+sends `{"type":"prompt","clear":true,"session":"<id>"}` naming the same id. Take the prompt down
+only when the clear names the prompt's session, or names none (sent after a reconnect when no
+session is waiting). A one-off prompt has no `session`. A client that ignores these fields shows
+each prompt as an ordinary line.
+
 ## For players
 
 <CardGrid>
