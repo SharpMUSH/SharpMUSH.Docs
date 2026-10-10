@@ -68,15 +68,15 @@ session ends, whether you finish it, cancel it, it times out, or you disconnect;
 empties. A one-off prompt from `prompt()` or `@prompt` goes as soon as you send a line.
 
 ```
-&CMD`ASK Greeter=$+ask:@input/start What is your name? (q to skip)=q,SKIP`ASK,*,INPUT`ASK
-&INPUT`ASK Greeter=@pemit %#=Hello, %0.; @input/cancel
-&SKIP`ASK Greeter=@pemit %#=Maybe later.
+&CMD`ASK Greeter=$+ask:@input/start What is your name? (q to skip)=q,INPUT`ASK`SKIP,*,INPUT`ASK`ANSWER
+&INPUT`ASK`ANSWER Greeter=@pemit %#=Hello, %0.; @input/cancel
+&INPUT`ASK`SKIP Greeter=@pemit %#=Maybe later.
 ```
 
 Output: after `+ask`, the row above the input box reads `What is your name? (q to skip)`. Answer
 `Alice` and the output shows the question, then `Alice`, then `Hello, Alice.`, and the row empties
-because `` INPUT`ASK `` ended the session. Answer `q` instead and the session ends on that line,
-`` SKIP`ASK `` runs and says `Maybe later.`, and the row empties the same way. After the prompt,
+because `` INPUT`ASK`ANSWER `` ended the session. Answer `q` instead and the session ends on that line,
+`` INPUT`ASK`SKIP `` runs and says `Maybe later.`, and the row empties the same way. After the prompt,
 `@input/start` takes pairs of a line and the attribute it runs. The first pair is required and ends
 the session, so a player always has a way out; `*` stands for any other line.
 
