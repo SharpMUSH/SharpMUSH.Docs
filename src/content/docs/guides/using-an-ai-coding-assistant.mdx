@@ -24,6 +24,14 @@ For another coding assistant, make that same skill and the relevant reference fi
 
 Prefer documentation matching your server release or commit. The latest `main` branch can describe behavior your deployed game does not yet have. Ask the assistant to record both versions and call out any mismatch. For an uncertain command, check `help <topic>` on the target development game and inspect the corresponding official server helpfile or implementation.
 
+## Connect live code intelligence (optional)
+
+SharpMUSH also has two code-analysis surfaces. The in-game MCP endpoint uses Streamable HTTP and analyzes softcode with the running world's parser and registered commands and functions. The standalone `SharpMUSH.LanguageServer` is an offline editor process using stdio. See [Softcode in Your Editor](/guides/editor-support/) for the editor workflow.
+
+For an MCP-aware assistant, first check that your target release supports MCP and that an administrator has enabled the endpoint. It is disabled by default outside the Development configuration. The documented default path is `/mcp`, and each request uses a game character's HTTP Basic authentication. Use localhost or TLS and your client's supported private credential configuration. Never put real credentials in examples, assistant prompts, committed configuration, shell history, or screenshots. Follow the [official MCP setup guide](https://raw.githubusercontent.com/SharpMUSH/SharpMUSH/c3fa0c736f8c45c465a89477a159a5b08cd42f9d/docs/guides/mcp-server.md) for your release; this optional section was source-checked against server revision `c3fa0c736f8c45c465a89477a159a5b08cd42f9d`.
+
+Ask the assistant to use `validate` with the appropriate parse mode (`commandsperline` for a terminal setup file), then explain the returned diagnostics. MCP and LSP analysis can help catch syntax problems; neither establishes gameplay behavior, reachability, or permission boundaries. Complete the development-game tests even when analysis reports no errors.
+
 ## Keep a small project folder
 
 A useful starting layout is:
