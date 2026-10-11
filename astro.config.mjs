@@ -50,6 +50,8 @@ export default defineConfig({
                       { label: 'Colour Vision', slug: 'guides/colour-vision' },
                       { label: 'Scene Pose Types', slug: 'guides/scene-pose-types' },
                       { label: 'Screen Readers', slug: 'guides/screen-readers' },
+                      { label: 'Your first softcode command', slug: 'guides/your-first-softcode-command' },
+                      { label: 'Using an AI coding assistant', slug: 'guides/using-an-ai-coding-assistant' },
                       { label: 'Softcode Packages', slug: 'guides/packages' },
                       { label: 'Named Arguments', slug: 'guides/named-arguments' },
                       { label: 'Bulletin Boards', slug: 'guides/bboards' },
