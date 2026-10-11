@@ -207,14 +207,28 @@ gets none of the pairs.
 
 Some code is called by the game rather than by softcode, and the game passes it named arguments:
 
+- **Events**: every argument, beside its position. ``&OBJECT`MOVE #9=...`` reads the
+  destination as `%<destination>` or `%1`. `help event list` gives each event's names.
+- **Feed tie-ins and taps**: `%<id>`, `%<key>`, `%<speaker>`, `%<style>`, `%<text>`,
+  `%<name>` and the others in `help @feed tie-ins`. A name means the same value in ROUTE,
+  DELIVER, FORMAT and a tap, whatever its position in each.
+- **The HTTP handler**: `%<path>` and `%<body>` (also `%0` and `%1`), `%<viewer>`,
+  `%<headers>` and one `%<hdr.<name>>` per request header.
+- **Formats and filters**: `CHATFORMAT`, `PAGEFORMAT` and `OUTPAGEFORMAT`, `SPEECHMOD`,
+  `MAILFILTER`, the channel mogrifier's `MOGRIFY` attributes, `NAMEFORMAT`, `DESCFORMAT`,
+  `CONFORMAT` and `EXITFORMAT`, and the Markdown templates. A `CHATFORMAT` reads the message as
+  `%<message>` or `%2`; each attribute's help gives its names.
 - **`@hook` attributes**: `ARGS`, `LS`, `RS`, `EQUALS`, `SWITCHES`, `LSAC` and `LSA1`, `LSA2`, ....
 - **`@http` callbacks**: `%<status>` and `%<content-type>`, with the response body in `%0`.
 - **`@input` callbacks**: `%<reason>`, which is `exit`, `input` or `timeout`.
 - **Regular-expression `$`-commands**: each named capture in the pattern.
 - **`mapsql()`**: each column, by its name.
 
+An event handler written for PennMUSH keeps working: the positions are unchanged, and the names
+come on top of them.
+
 <Aside>
 A database imported from PennMUSH turns on the `http_qregisters` option, so `@http` callbacks there
-also set the `STATUS` and `CONTENT-TYPE` q-registers that PennMUSH code expects. A new game leaves
-it off.
+also set the `STATUS` and `CONTENT-TYPE` q-registers, and the HTTP handler the `HDR.<name>` and
+`HEADERS` q-registers, that PennMUSH code expects. A new game leaves it off.
 </Aside>

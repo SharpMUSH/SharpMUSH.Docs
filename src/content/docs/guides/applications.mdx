@@ -359,11 +359,15 @@ for an "edit your profile" page.
 
 ### Knowing who is looking
 
-Every route can tell who is using the website: `%q<viewer>` holds the objid of the
+Every route can tell who is using the website: `%<viewer>` holds the objid of the
 character the person is signed in as, or is empty for a visitor who is not signed in. So
-`name(%q<viewer>)` is their character's name. Use it to decide what each person sees,
+`name(%<viewer>)` is their character's name. Use it to decide what each person sees,
 and to check they are allowed to do what a button asks. The minimum role only hides the
 link; your softcode is what actually protects your data.
+
+`%<viewer>` is a [named argument](/guides/named-arguments): `@include` passes it on to
+the route's steps, but a `u()` function does not see it, so hand it to one as an argument,
+as in ``u(me/FN`CAN`EDIT,%<viewer>)``.
 
 ### Reference
 
