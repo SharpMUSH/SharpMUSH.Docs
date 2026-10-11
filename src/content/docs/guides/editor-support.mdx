@@ -18,7 +18,7 @@ The optional remote LSP plugin offers diagnostics, completion, hover and signatu
 
 Remote LSP does not offer the broader offline feature list below: formatting, rename, definitions and references are outside its initial scope. It does not synchronize attributes, execute code or read the server filesystem. Connections do not resume documents automatically. Overload can explicitly close a connection when synchronization diagnostics cannot be admitted. After a restart or explicit close, reconnect, initialize a fresh session and reopen documents.
 
-See [Remote MCP and LSP Analysis](/guides/mcp) for operator enablement, exact endpoint/subprotocol, bridge invocation, credential handling and limits. MCP serves AI analysis clients; LSP serves editors. The remote contract is still under implementation and validation. No production or real-socket bridge verification is claimed.
+See [Remote MCP and LSP Analysis](/guides/mcp) for operator enablement, exact endpoint/subprotocol, bridge invocation, credential handling and limits. MCP serves AI analysis clients; LSP serves editors. The remote contract has passed local automated checks; publication and review remain pending. No production or real-socket bridge verification is claimed.
 
 ## Offline server
 
