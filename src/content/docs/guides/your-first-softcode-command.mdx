@@ -1,0 +1,187 @@
+---
+title: Your first softcode command
+description: Create, change, and review a small softcode command as a game administrator.
+---
+
+This guide is for a new game administrator learning to write and maintain softcode. You will create one small code object, give it a `+hello` command, change it, and test it as both staff and an ordinary player.
+
+**Review draft.** Syntax and behavior have been checked against current official documentation and source on 11 October 2026. The examples have not yet been run on a development game. Record your server version and complete the test checklist before publishing this as a tested tutorial.
+
+## Start with a safe place to work
+
+Use your own development game or an approved staff sandbox. You need a character allowed to create a thing and edit its attributes, with enough building quota and currency for your game's configuration. A player account or access to the editor alone does not establish those permissions. If creation is refused, have an administrator check your effective roles and command restrictions before continuing. Do not change permissions on a public demonstration game to follow this guide. See the official [roles reference](/reference/sharpmush-help/roles/), [command restrictions](https://sharpmush.com/reference/sharpmush-help/command/), and [object creation reference](https://github.com/SharpMUSH/SharpMUSH.Guide/blob/main/Command%20Documentation/@create.md).
+
+You do not need to build a room. The first command will live on a thing you carry. In SharpMUSH, a carried object's commands are available to its carrier; placing it in a room makes them available to people in that room. Keep this experiment out of the Master Room, where commands can become game-wide. See [command reachability](https://github.com/SharpMUSH/SharpMUSH.Guide/blob/main/skills/writing-sharpmush-softcode/SKILL.md#reachability--a-correct-command-that-never-fires).
+
+Keep a plain-text file beside the game for your code and test notes. Record the server release or commit, character, and object dbref. A dbref such as `#123` identifies one object in this database; it is not a portable identifier between games.
+
+## Create the object
+
+Enter this as one command in your game's terminal:
+
+```sharp
+@create Hello Tutorial
+```
+
+Creation reports a dbref, for example `Created: Object #123.` The thing goes into the creating character's inventory. Write down the number you actually received. [Creation implementation](https://raw.githubusercontent.com/SharpMUSH/SharpMUSH/e40ed91276d695544e9800c330785cbebfa4ff72/SharpMUSH.Implementation/Common/BuildingHelpers.cs)
+
+In every example below, replace `<hello>` with that complete dbref, including `#`. `<hello>` is a placeholder, not SharpMUSH syntax. Never substitute an unrelated object's number.
+
+```sharp
+examine <hello>
+```
+
+Check that the name, owner, and location describe the thing you just created. [Examine reference](https://github.com/SharpMUSH/SharpMUSH.Guide/blob/main/Command%20Documentation/examine.md)
+
+## Write and run the command
+
+Enter each of these lines separately:
+
+```sharp
+&CMD`HELLO <hello>=$+hello:@pemit/silent %#=Hello, %n!
+@set <hello>/CMD`HELLO=cmdsyntax
+```
+
+Now type:
+
+```sharp
++hello
+```
+
+If your character is named Alice, the greeting should be:
+
+```text
+Hello, Alice!
+```
+
+Here is what you wrote:
+
+- ``&CMD`HELLO`` stores an attribute named ``CMD`HELLO``. The backtick groups related attribute names into a tree.
+- `$+hello:` matches the command `+hello`. The part after the colon is its action list.
+- `@pemit/silent` sends a private message without a separate sender confirmation.
+- `%#` is the enactor, the character who used the command. `%n` is that character's name.
+- `cmdsyntax` tells the tools how to display the attribute. It does not enable the command or grant any permission.
+
+These behaviors are documented in the official [softcode guidance](https://github.com/SharpMUSH/SharpMUSH.Guide/blob/main/skills/writing-sharpmush-softcode/SKILL.md), [substitution reference](/reference/sharpmush-help/substitutions/), and [pemit reference](/reference/sharpmush-help/pemit-command/).
+
+**Store code with `&` when typing it at the terminal.** It preserves the code for later execution. The attribute-setting form of `@set` evaluates its value first. Also, the rules differ when `&` itself runs inside stored code, so keep this lesson's setup lines as direct terminal commands. [Evaluation guidance](https://github.com/SharpMUSH/SharpMUSH.Guide/blob/main/skills/writing-sharpmush-softcode/SKILL.md#evaluation)
+
+## Make one change and check it
+
+Replace the same attribute:
+
+```sharp
+&CMD`HELLO <hello>=$+hello:@pemit/silent %#=Hello, %n! Your first softcode command is working.
+examine <hello>/CMD`HELLO
++hello
+```
+
+Expected greeting for Alice:
+
+```text
+Hello, Alice! Your first softcode command is working.
+```
+
+You can make this edit in the existing portal editor at `/softcode` instead. Select the object and ``CMD`HELLO`` attribute, edit its value, and save. In the attribute editor, the value starts with `$+hello:`; do not paste the terminal's ``&CMD`HELLO <hello>=`` wrapper into the value. Then run `+hello` in the terminal. Saving an attribute is a live database change. The current editor already uses Monaco and provides object, attribute, save, and console controls. [Editor source](https://raw.githubusercontent.com/SharpMUSH/SharpMUSH/e40ed91276d695544e9800c330785cbebfa4ff72/SharpMUSH.Client/Pages/SoftcodeEditor.razor)
+
+## Understand who is running the code
+
+There are three different identities to keep straight:
+
+- **Owner:** who owns the code object.
+- **Executor:** the object running this command, available as `%!` or `me` inside this action list.
+- **Enactor:** the character who typed `+hello`, available as `%#`.
+
+An object does not inherit its owner's roles. Creating it while logged in as an administrator does not by itself make the object an administrator. Ownership and control still matter, so review both permissions and ownership when code later starts changing data. [Roles](/reference/sharpmush-help/roles/) · [Substitutions](/reference/sharpmush-help/substitutions/)
+
+This greeting needs no privileged role on the object. If a later command performs a staff action, check the enactor's relevant permission before doing the work. A check of `permission(me,...)` asks about the code object, not the player requesting the action. See [permission checks in softcode](https://github.com/SharpMUSH/SharpMUSH.Guide/blob/main/skills/writing-sharpmush-softcode/SKILL.md#roles-and-permissions).
+
+## Add a small input contract
+
+Let people choose between two greeting styles. Keep the original `+hello` command and add a separate attribute for the form with an argument:
+
+```sharp
+&CMD`HELLOSTYLE <hello>=$+hello *:@assert member(friendly formal,lcstr(trim(%0)))=@pemit/silent %#=Choose a style: +hello friendly or +hello formal.; @pemit/silent %#=if(strmatch(lcstr(trim(%0)),formal),Good day %n.,Hello %n!)
+@set <hello>/CMD`HELLOSTYLE=cmdsyntax
+```
+
+The long attribute-setting line is one terminal command. Visual wrapping is fine; do not insert a newline in the middle when pasting it.
+
+The `*` captures the argument into `%0`. `trim()` removes surrounding spaces, `lcstr()` normalizes case, and `member()` permits exactly one of the two listed styles. If the check fails, `@assert` prints the usage message and stops the action list. No greeting follows the error. On success, `if()` chooses the response. The semicolon separates the two stored commands. [Wildcard guidance](https://sharpmush.com/reference/sharpmush-help/sharptop/#wildcards) · [member](https://github.com/SharpMUSH/SharpMUSH.Guide/blob/main/Function%20Documentation/MEMBER%28%29.md) · [trim](https://github.com/SharpMUSH/SharpMUSH.Guide/blob/main/Function%20Documentation/TRIM%28%29.md) · [lcstr](https://github.com/SharpMUSH/SharpMUSH.Guide/blob/main/Function%20Documentation/LCSTR%28%29.md) · [strmatch](https://github.com/SharpMUSH/SharpMUSH.Guide/blob/main/Function%20Documentation/STRMATCH%28%29.md) · [assert](/reference/sharpmush-help/break-command/)
+
+Treat captured input as data. Do not add `s()`, evaluate player-written attributes with `u()`, or otherwise evaluate the input again. Player input has already passed through the initial command evaluation. See [safe reads and evaluation](https://github.com/SharpMUSH/SharpMUSH.Guide/blob/main/skills/writing-sharpmush-softcode/SKILL.md#core-tools).
+
+## Test the behavior you promised
+
+Run these tests after your last edit. The expected messages below assume Alice is the character using the command.
+
+| Input | Expected result |
+| --- | --- |
+| `+hello` | `Hello, Alice! Your first softcode command is working.` |
+| `+hello friendly` | `Hello Alice!` |
+| `+hello FORMAL` | `Good day Alice.` |
+| `+hello pineapple` | The usage message, with no greeting |
+| `+hello formal extra` | The usage message, with no greeting |
+| `+hello 0` | The usage message, with no greeting |
+| `+hello formal; @emit SHOULD_NOT_RUN` | The usage message; no room-wide `SHOULD_NOT_RUN` message |
+
+For the last test, use a terminal without a client-side semicolon macro. SharpMUSH treats a player-typed line as one command; the semicolon should remain part of the invalid style argument. Semicolons in a stored action list have a different role. [Evaluation guidance](https://github.com/SharpMUSH/SharpMUSH.Guide/blob/main/skills/writing-sharpmush-softcode/SKILL.md#evaluation)
+
+Then test with an ordinary player on a **separate non-staff account**. Another character on your admin account may inherit that account's roles. Check the test player's effective roles first. [Account and character roles](/reference/sharpmush-help/roles/)
+
+1. With the thing still in your inventory, the other player should not reach this object's `+hello`.
+2. In an approved test room, put the thing on the floor with `drop <hello>` and verify its location. Use a room without an automatic DROP-TO, and respect its drop and take locks. The player should now be able to run both greeting forms, using their own name in the response.
+3. Repeat the invalid-input tests as that player. Check that nearby observers do not receive the greetings.
+4. Return the thing to your inventory with `get <hello>` and confirm that the other player can no longer reach its command.
+
+This checks reachability and actual player behavior, which a successful admin test alone cannot establish. A game with another matching `+hello` may produce additional output; isolate the tutorial or choose a unique command name if needed. [Reachability and multiple matching patterns](https://github.com/SharpMUSH/SharpMUSH.Guide/blob/main/skills/writing-sharpmush-softcode/SKILL.md#reachability--a-correct-command-that-never-fires) · [Drop](https://github.com/SharpMUSH/SharpMUSH.Guide/blob/main/Command%20Documentation/drop.md) · [Get](https://github.com/SharpMUSH/SharpMUSH.Guide/blob/main/Command%20Documentation/get.md)
+
+## Diagnose a missing response
+
+Check these in order before changing privileges:
+
+1. Did ``examine <hello>/CMD`HELLO`` show the attribute you intended to save?
+2. Is the thing still in your inventory or in the same room?
+3. Does it have `HALT` or `NO_COMMAND` set?
+4. Can the enactor pass its use and command locks?
+5. Is another command matching the same input?
+6. Does the recipient's page lock or `HAVEN` setting prevent the private message?
+
+A failed command lock may produce the ordinary unrecognized-command response. If code is running but no player sees the result, remember that `think` inside object code sends to the executor; this guide uses `@pemit %#` to reach the enactor. Do not make the object a wizard to hide a matching, lock, or recipient problem. [Reachability](https://github.com/SharpMUSH/SharpMUSH.Guide/blob/main/skills/writing-sharpmush-softcode/SKILL.md#reachability--a-correct-command-that-never-fires) · [Output and executor](https://github.com/SharpMUSH/SharpMUSH.Guide/blob/main/skills/writing-sharpmush-softcode/SKILL.md#the-break-early-shape) · [Pemit restrictions](/reference/sharpmush-help/pemit-command/)
+
+## Save your work and stop cleanly
+
+Export a readable copy before cleanup:
+
+```sharp
+@decompile <hello>
+```
+
+Save the output with your version and test notes. Review its references before replaying it elsewhere; a decompile is a reconstruction script, not a cross-game identity guarantee. [Decompile reference](/reference/sharpmush-help/decompile-command/)
+
+For a later reusable package, start with the read-only scan:
+
+```sharp
+@package/scan <hello>
+```
+
+Package export needs the relevant administrative permission (`packages.admin`). Review unresolved external references before exporting with `@package` or using `/admin/packages/author`. The existing package workflow provides symbolic references and plan/review/apply; use it when you are ready to distribute the feature. [Package export](https://github.com/SharpMUSH/SharpMUSH.Guide/blob/main/Command%20Documentation/@package.md) · [Permission scope](/reference/sharpmush-help/roles/) · [Package guide](https://sharpmush.com/guides/packages/)
+
+To keep the object but remove just this lesson's commands:
+
+```sharp
+&CMD`HELLO <hello>
+&CMD`HELLOSTYLE <hello>
+```
+
+There is deliberately no equals sign. Omitting it clears an attribute regardless of the `empty_attrs` setting. Examine the object again and verify the commands are gone. If you are done with the entire disposable object, first confirm its dbref and saved export, then follow your game's `help @destroy`; destruction can become permanent, and repeating `@destroy` on an already marked object destroys it immediately. [Clearing attributes](https://github.com/SharpMUSH/SharpMUSH.Guide/blob/main/skills/writing-sharpmush-softcode/SKILL.md#evaluation) · [Destruction lifecycle](/reference/sharpmush-help/destroy-command/)
+
+Your first command is complete when you can explain its scope, identify who runs it, show its valid and invalid outputs, and reproduce it from saved source. Build the next feature with the same loop: one change, explicit behavior, ordinary-player tests, and an export you can review.
+
+## Continue learning
+
+Use [Using an AI coding assistant](/guides/using-an-ai-coding-assistant/) to review small changes with official references and a repeatable test record.
+
+## Source review record
+
+Source-checked on 11 October 2026 against server revision [`e40ed912`](https://github.com/SharpMUSH/SharpMUSH/commit/e40ed91276d695544e9800c330785cbebfa4ff72) and Guide revision [`ed6d08d4`](https://github.com/SharpMUSH/SharpMUSH.Guide/commit/ed6d08d4cb46b227f6b4e583f5eca6fb87fa9a43). The command lines, visible messages, page-lock behavior, and cross-account tests have not been executed on a development game. Run the listed tests against the chosen server release and record actual outputs and identities before treating this lesson as tested.

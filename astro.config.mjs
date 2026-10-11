@@ -85,6 +85,8 @@ export default defineConfig({
               {
                   label: 'Write Softcode',
                   items: [
+                      { label: 'Your first softcode command', slug: 'guides/your-first-softcode-command' },
+                      { label: 'Using an AI coding assistant', slug: 'guides/using-an-ai-coding-assistant' },
                       { label: 'Softcode Packages', slug: 'guides/packages' },
                       { label: 'Versioning Packages', slug: 'guides/versioning' },
                       { label: 'Game Settings with +config', slug: 'guides/config' },
