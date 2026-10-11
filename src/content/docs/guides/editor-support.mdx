@@ -10,9 +10,19 @@ gives your editor the same understanding of softcode the game has. It works with
 supports the Language Server Protocol (LSP), including VS Code, Neovim and Emacs. The portal's
 built-in softcode editor uses the same analysis.
 
-It only reads your code. It never connects to a game, needs no database, and changes nothing.
+The **offline stdio server** described in the local setup sections below only reads your code. It never connects to a game, needs no database, and changes nothing.
 
-## What it does
+## Optional remote mode
+
+The optional remote LSP plugin offers diagnostics, completion, hover and signature help using metadata filtered for your authenticated character. An ordinary editor launches `SharpMUSH.LspBridge` over stdio; the bridge connects to the game's authenticated WebSocket endpoint. Remote analysis supports `.mush` and `.mu` (commands per line), `.mushfn` and `.fun` (function), and `.mushcmd` (command list). Positions use UTF-16.
+
+Remote LSP does not offer the broader offline feature list below: formatting, rename, definitions and references are outside its initial scope. It does not synchronize attributes, execute code or read the server filesystem. Connections do not resume documents automatically; after a restart the client initializes and reopens them.
+
+See [Remote MCP and LSP Analysis](/guides/mcp) for operator enablement, exact endpoint/subprotocol, bridge invocation, credential handling and limits. MCP serves AI analysis clients; LSP serves editors. The remote contract is still under implementation and validation. No production or real-socket bridge verification is claimed.
+
+## Offline server
+
+## What the offline server does
 
 - **Error checking as you type**, with the exact place and a message.
 - **Completion** for function names (with their arguments), command names (with their switches),

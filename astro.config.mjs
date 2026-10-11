@@ -54,7 +54,8 @@ export default defineConfig({
                       { label: 'Named Arguments', slug: 'guides/named-arguments' },
                       { label: 'Bulletin Boards', slug: 'guides/bboards' },
                       { label: 'Writing Plugins', slug: 'guides/plugins' },
-                      { label: 'Softcode in Your Editor', slug: 'guides/editor-support' }
+                      { label: 'Softcode in Your Editor', slug: 'guides/editor-support' },
+                      { label: 'Remote MCP and LSP Analysis', slug: 'guides/mcp' }
                   ],
               },
               {
