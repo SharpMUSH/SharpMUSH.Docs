@@ -381,3 +381,7 @@ unloads the plugin first if it only contributes commands, functions and hooks.
   href="/reference/package-format"
   description="The complete package.yaml reference, including managed packages."
 />
+
+## Optional analysis transports
+
+The boot-time MCP and LSP plugins are independently optional and disabled by default. Their authentication and rate limiting belong to the host. See [Remote MCP and LSP Analysis](/guides/mcp) for setup, editor usage, isolation and resource limits. Local validation and remaining real-network checks are documented there.

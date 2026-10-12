@@ -152,3 +152,7 @@ connection strings and the contents of `.env`.
   href="/technical/architecture"
   description="What each part of the game owns, how they talk, and what a restart of each one does."
 />
+
+## Optional analysis transports
+
+The boot-time MCP and LSP plugins are independently optional and disabled by default. Their authentication and rate limiting belong to the host. See [Remote MCP and LSP Analysis](/guides/mcp) for setup, editor usage, isolation and resource limits. Local validation and remaining real-network checks are documented there.
