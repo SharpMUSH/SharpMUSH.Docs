@@ -72,14 +72,17 @@ A visitor signed in to the portal can report an image they think breaks the game
 keeps no reports of its own. It hands each one to the game's [event
 handler](/reference/sharpmush-help/sharpevents/), and the game decides what a report does.
 
-![A visitor signed in to the portal chooses Report and writes a reason. The server checks that the event handler has a GALLERY`REPORT attribute and runs it as the reporter. The bundled jobs package's attribute files a job in the Staff bucket; a game can write its own instead. With no attribute, the portal shows no Report button.](../../../assets/guide/gallery-report-flow.svg)
+![A visitor signed in to the portal chooses Report and writes a reason. The server checks that the event handler answers GALLERY`REPORT, with that attribute or a package's attribute under it, and runs them as the reporter. The jobs package's GALLERY`REPORT`JOBS files a job in the Staff bucket; a game can write its own instead. With neither, the portal shows no Report button.](../../../assets/guide/gallery-report-flow.svg)
 
-The portal shows a **Report** button only while the event handler has a ``GALLERY`REPORT``
-attribute. A game without one takes no reports, and nobody is offered a button that does nothing.
+The portal shows a **Report** button only while the event handler answers the event: it has a
+``GALLERY`REPORT`` attribute, or a package has added one under it, such as ``GALLERY`REPORT`JOBS``.
+The event handler runs the event's own attribute and then each one under it, so several packages can
+answer one event. A game with neither takes no reports, and nobody is offered a button that does
+nothing.
 
 ### With the jobs package
 
-The bundled jobs package sets ``GALLERY`REPORT`` when it is installed. Each report becomes a job in
+The bundled jobs package sets ``GALLERY`REPORT`JOBS`` when it is installed. Each report becomes a job in
 the Staff bucket, filed by the reporter, with the image's address, its caption and the reason. Staff
 answer it like any other job:
 
