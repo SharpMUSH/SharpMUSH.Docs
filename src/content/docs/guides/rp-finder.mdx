@@ -1,22 +1,24 @@
 ---
 title: RP Finder
-description: Saying you are looking for roleplay, posting open calls anyone may answer, and hearing when the people you play with connect.
+description: Saying you are looking for roleplay, showing it in +who, and hearing when the people you play with connect.
 ---
 
 import { Aside } from '@astrojs/starlight/components';
 
-**RP Finder** helps players find someone to play with. It has three parts:
+**RP Finder** helps players find someone to play with. It has two parts:
 
-- `+lfrp` says what you would like to play, and lists who else is looking.
-- **Open calls** are requests anyone may answer: a scene you want to run, a character you
-  want to meet, a plot hook.
+- `+lfrp` says what you would like to play. It shows in `+who` and in a list of who is
+  looking.
 - The **watch list** tells you when the people you follow connect and leave.
+
+How a game uses the status beyond that, such as pointing to a board or a channel for
+longer requests, is up to the game and its other packages.
 
 | You are | You want to | Read |
 |---|---|---|
 | A player | find a scene | [Looking for RP](#looking-for-rp) to [The watch list](#the-watch-list) |
 | A player | keep others from tracking you | [Privacy](#privacy) |
-| A moderator | tidy calls and statuses | [Moderating](#moderating) |
+| A moderator | clear a status | [Moderating](#moderating) |
 | Staff | install it and change its settings | [Running the finder](#running-the-finder) |
 
 In the game, `+help rp` has the same commands in short form.
@@ -83,80 +85,26 @@ Idle:        0s
 The list shows only players you could see in `WHO`, so a hidden player's status stays
 hidden from you.
 
-## Open calls
+### In +who
 
-An open call stays up for a week, or until its poster closes it. Anyone may answer.
-
-### Posting
-
-```
-> +call/post The mill burned last winter. Anyone who saw it happen, page me; it's a mystery plot.
-[RP] Done: Your open call is up as number 1. It stays up 7 days or until you close it with +call/close 1.
-```
-
-You may have three calls open at once. Close one with `+call/close <number>` to make
-room.
-
-### Reading and answering
-
-`+calls` lists every open call, newest first, and `+call <number>` reads one:
+While you are looking, your line shows in the Status column of `+who`, cut to 40
+characters. The column is there only while someone has a status.
 
 ```
-> +calls
-================================< Open calls >================================
-#  From  Posted  Answers  Call
-1  Mira      0s        0  The mill burned last winter. Anyone who saw it
-                          happen, page me; it's a mystery plot.
-==========< +call <number> reads one · +calls/on sends you new ones >=========
-> +call/answer 1=Ilse sells lamp oil on Lantern Street and was up all night. She saw a cart.
-[RP] Done: You answered Mira's call 1.
+> +who
++==============================< Who's Online >==============================+
+| Name   Idle  Connected  Status                                             |
+| ----------------------------------------------------------------           |
+| God      0s         1s                                                     |
+| Mira     0s         0s  Stacking wood by the mill, glad of co...           |
+| Tomas    0s         0s  Looking for a smuggler to hire on the...           |
+| Ilse     0s         0s                                                     |
++============================================================================+
+| 4 connected                                                                |
++============================================================================+
 ```
 
-Answers are private. The poster reads every answer to their call. Everyone else sees only
-their own answer when they read it. Answering again replaces your answer.
-
-### Hearing about calls
-
-`+calls/on` sends you each new call as it is posted, and `+calls/off` stops them:
-
-```
-> +calls/on
-[RP] Done: New open calls reach you as they are posted. +calls/off stops them.
-[RP] Mira posted open call 1: The mill burned last winter. Anyone who saw it happen, page me; it's a mystery plot. · +call/answer 1=<text> answers it
-```
-
-### Your own calls
-
-When someone answers your call while you are connected, you hear it at once:
-
-```
-[RP] Ilse answered your open call 1: Ilse sells lamp oil on Lantern Street and was up all night. She saw a cart.
-```
-
-If you were away, you hear about it when you next log in, and `+calls/mine` counts the
-answers you have not read:
-
-```
-[RP] Your open call 1 has new answers. +call <number> reads them.
-> +calls/mine
-==============================< Your open calls >=============================
-#  From  Posted    Answers  Call
-1  Mira      0s  1 (1 new)  Anyone who saw the mill burn, page me.
-=====================< +call <number> reads its answers >=====================
-> +call 1
-================================< Open call 1 >===============================
-From:    Mira
-Posted:  0s ago
-Answers: 1
-
-Anyone who saw the mill burn, page me.
-
-===============================< Ilse · 0s ago >==============================
-Ilse saw a cart that night.
-==========================< +call/close 1 closes it >=========================
-```
-
-Reading a call marks its answers read.
+On a narrow screen the Status column is the first to go.
 
 ## The watch list
 
@@ -237,16 +185,13 @@ on and how to see the next: add the page number as the last switch.
 | Type | To see |
 |---|---|
 | `+lfrp/2` | the second page of who is looking |
-| `+calls/3` | the third page of open calls |
-| `+calls/mine/2` | the second page of your own calls |
+| `+watch/2` | the second page of the people you watch who are on |
 | `+watch/list/2` | the second page of everyone you watch |
 
 ## Moderating
 
 Players with the RP Moderator role look after the finder:
 
-- `+call <number>` shows them every answer to any call.
-- `+call/close <number>` closes anyone's call.
 - `+lfrp/off <name>` clears someone's status. The player is told who cleared it.
 
 ```
@@ -260,12 +205,8 @@ Ilse hears:
 [RP] Tomas cleared your +lfrp status.
 ```
 
-Anyone else who tries is refused:
-
-```
-> +call/close 1
-[RP] Error: Only its poster or an RP moderator can close call 1.
-```
+Anyone else who tries is refused with `Only an RP moderator can clear someone else's
+status.`
 
 ## Running the finder
 
@@ -275,9 +216,11 @@ RP Finder ships with the server but is not installed on a new game. An administr
 installs it from the portal:
 
 1. Open **Packages** in the admin area and choose **Browse**.
-2. Install `rp-finder`. It needs `plus-help`, which a new game already has.
+2. Install `who-where`, which gives `+who` and `+where`.
+3. Install `rp-finder`. It needs `who-where` and `plus-help`; a new game already has
+   `plus-help`.
 
-It adds the commands `+lfrp`, `+call`, `+calls`, `+watch` and `+friend` for everyone.
+It adds the commands `+lfrp`, `+watch` and `+friend` for everyone.
 They are game commands, which are matched before softcode `$`-commands, so a `+watch` or
 `+friend` your game already has in softcode stops running once the package is in.
 
@@ -307,7 +250,8 @@ number with `@find`:
 #15 #16 #17
 ```
 
-The first is the RP Finder. The other two are its store and its help. Then set the
+The first is the RP Finder. The other two are its store and its help. The numbers on your
+game will differ. Then set the
 attribute on it:
 
 ```
@@ -317,20 +261,33 @@ RP Finder/DATA`LFRP`HOURS
 
 | Attribute | What it is | Default |
 |---|---|---|
-| ``DATA`LFRP`HOURS`` | How many hours a status lasts. | 4 |
+| ``DATA`LFRP`HOURS`` | How many hours a status lasts from when it is set. | 4 |
 | ``DATA`LFRP`LENGTH`IC`` | The longest `+lfrp` line, in characters. | 100 |
 | ``DATA`LFRP`LENGTH`NOTE`` | The longest note. | 400 |
 | ``DATA`LFRP`LENGTH`PLACE`` | The longest place. | 60 |
 | ``DATA`LFRP`MORE`` | A line shown under `+lfrp`. | unset |
-| ``DATA`CALL`DAYS`` | How many days a call stays up. | 7 |
-| ``DATA`CALL`MAX`` | How many calls one player may have open. | 3 |
-| ``DATA`CALL`LENGTH`` | The longest call or answer, in characters. | 1000 |
 | ``DATA`WATCH`MAX`` | How many people one player may watch. | 100 |
 | ``DATA`WATCH`QUIET`` | Seconds before a player's connect is announced again. | 300 |
 
-A new length or number of days takes effect at once for the commands. The feed that
-carries new calls picks up ``DATA`CALL`DAYS`` and ``DATA`CALL`LENGTH`` at the next
-restart.
+A change takes effect at once. A new ``DATA`LFRP`HOURS`` applies to statuses set after
+the change.
+
+### Other statuses in +who
+
+Any package can add to the Status column. It puts an attribute named
+``FILTER`WHO`STATUS`<name>`` on the Who-Where Function Object. For each player, `+who`
+runs every such filter in name order. Each gets the status so far as `%0`, empty to begin
+with, and the player as `%1`, and returns the status to show. RP Finder's own filter is
+``FILTER`WHO`STATUS`LFRP``: it shows the player's `+lfrp` line, or passes `%0` on.
+
+For example, to show "Staff" for wizards who are not looking for RP, name the filter so it
+runs before RP Finder's:
+
+```
+&FILTER`WHO`STATUS`AASTAFF <Who-Where Function Object>=if(hasrole(%1,wizard),Staff,%0)
+```
+
+`+help who filters` in the game says the same.
 
 ### Pointing to a board
 
@@ -350,7 +307,7 @@ Longer requests: +bbread public/looking
 ```
 
 <Aside>
-Statuses, calls, answers and watch lists are all kept on the RP Finder Store, not on the
+Statuses and watch lists are all kept on the RP Finder Store, not on the
 players. Nobody can change someone else's list, and uninstalling the package removes
 them all.
 </Aside>
