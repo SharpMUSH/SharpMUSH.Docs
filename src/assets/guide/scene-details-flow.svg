@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" width="960" height="380" role="img" aria-labelledby="t d">
   <title id="t">Where a scene's details come from and where they show</title>
-  <desc id="d">A scene's owner types +scene/set verse=Marvel. The value is kept on the scene itself, beside its title and pitch, and softcode reads it as scene(id,verse). The Scene Logger's DETAIL`VERSE attribute names the detail, says what goes in it, and marks it as listed. The value then shows in four places: as a row on the scene's card from +scene id, after the title in +scene/list, at the top of +scene/log, and on the scene's page and card in the portal.</desc>
+  <desc id="d">A scene's owner types +scene/set verse=Marvel. The value is kept on the scene itself, beside its title and pitch, and softcode reads it as scene(id,verse). The scene-verse package's DETAIL`VERSE attribute on the Scene Logger names the detail, says what goes in it, and marks it as listed; without it the detail still shows, by its key. The value then shows in four places: as a row on the scene's card from +scene id, after the title in +scene/list, at the top of +scene/log, and on the scene's page and card in the portal.</desc>
   <rect x="0" y="0" width="960" height="380" rx="12" fill="#f8fafc"/>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
@@ -16,7 +16,7 @@
 
     <!-- the catalogue -->
     <rect x="24" y="190" width="250" height="160" rx="10" fill="#ffffff" stroke="#94a3b8"/>
-    <text x="149" y="218" text-anchor="middle" font-size="15" font-weight="600">On the Scene Logger</text>
+    <text x="149" y="218" text-anchor="middle" font-size="15" font-weight="600">scene-verse, on the Logger</text>
     <rect x="40" y="234" width="218" height="102" rx="8" fill="#eef2ff" stroke="#c7d2fe"/>
     <text x="52" y="256" font-size="13" font-weight="600">DETAIL`VERSE</text>
     <text x="52" y="278" font-size="12.5" font-family="ui-monospace, monospace">label: Verse</text>

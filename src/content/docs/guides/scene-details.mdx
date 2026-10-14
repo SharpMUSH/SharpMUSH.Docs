@@ -1,33 +1,129 @@
 ---
 title: Scene Details
-description: Say which verse a scene is set in, what canon it draws on and what a reader should know before joining, show it wherever the scene appears, and find scenes by it.
+description: Note a scene's verse, canon, content warning or anything else, show it wherever the scene appears, find scenes by it, and change what +scene shows from a package of your own.
 ---
 
 import { Aside } from '@astrojs/starlight/components';
 
-A scene has a title and a pitch. Many games want to say more: which **verse** or setting it takes
-place in, which **canon** it draws on, whether it carries a **content warning**. These are a scene's
-**details**. The scene's owner sets them, and they show on the scene's card, beside its title in
-lists, at the top of its log and on its page in the portal. Players can list scenes by them.
+A scene has a title and a pitch. Players often want to say more: which **verse** or setting it takes
+place in, which **canon** it draws on, whether it carries a **content warning**, which era it is set
+in. These are a scene's **details**. The scene's owner sets them, they show on the scene's card, at
+the top of its log and on its page in the portal, and players can list scenes by them.
+
+The `scene` package keeps any detail an owner names. A game can also list the details it uses, with a
+name and a hint for each. The `scene-verse` package lists three, a verse, a canon and a content
+warning, and shows them more prominently.
 
 A single pose can carry something of its own too, such as being a flashback. That is a **mark**,
-covered at the end of this page.
+covered further down.
 
-Details come with the `scene` package, which a new game installs during setup. It ships three:
+![The scene's owner types +scene/set verse=Marvel, or uses the portal's Edit form. The value is kept on the scene beside its title, and softcode reads it as scene(1,verse). A DETAIL VERSE attribute on the Scene Logger, which scene-verse adds, names the detail. The value then shows on the scene's card, after its title in lists, at the top of its log, and in the portal.](../../../assets/guide/scene-details-flow.svg)
+
+## Setting a scene's details
+
+`+scene/set <detail>=<value>` sets a detail on your focused scene. The detail is any word you choose:
+
+```text
+> +scene/create Salt Market at Dusk
+[SCENE] Done: Scene 1 created and focused (status: active).
+> +scene/set verse=Marvel
+[SCENE] Done: Scene 1: Verse is now Marvel.
+> +scene/set canon=Marvel|X-Men
+[SCENE] Done: Scene 1: Canon is now Marvel · X-Men.
+> +scene/set era=1980s
+[SCENE] Done: Scene 1: Era is now 1980s.
+```
+
+- `+scene/set <id>/<detail>=<value>` sets one on a scene you own without focusing it.
+- `+scene/set <detail>=` with nothing after the `=` clears it.
+- `|` splits several values.
+
+Only the scene's owner, or staff, can set its details, as with its title and pitch. A detail's name is
+a word of letters, digits, `-` and `_`, and it can't be one of the things a scene already has:
+
+```text
+> +scene/set title=Oops
+[SCENE] Warning: 'title' is a scene field already, so it can't be a detail
+```
+
+Use `+scene/title` and `+scene/pitch` for those.
+
+`+scene/details` says which details your game lists. With only the `scene` package installed, it
+lists none:
+
+```text
+> +scene/details
+[SCENE] Warning: This game lists no scene details. You can still set your own: +scene/set <name>=<value>.
+```
+
+### Where details show
+
+The scene's card, from `+scene <id>`, has a Details section between the pitch and the players. Details
+the game does not list go by name:
+
+```text
+> +scene 1
+=======================< Scene 1: Salt Market at Dusk >=======================
+Status:    active
+Owner:     Ilsa
+Where:     Lower Docks
+Created:   Oct 14 11:06PM
+Scheduled: -
+Watchers:  Anyone
+===================================< Pitch >==================================
+Lanterns, rumours and a missing ledger.
+==================================< Details >=================================
+Canon  Marvel · X-Men
+Era    1980s
+Verse  Marvel
+==================================< Players >=================================
+Status  Name                                                             Poses
+Owner   Ilsa                                                                 1
+==============================================================================
+```
+
+`+scene/log` puts every detail on the line under the scene's title:
+
+```text
+> +scene/log
+=< Scene 1: Salt Market at Dusk >=============================================
+Canon: Marvel · X-Men · Era: 1980s · Verse: Marvel
+=< Ilsa · pose 1 >================================================< Scene 1 >=
+Ilsa sets her lantern down on the crate.
+```
+
+In the portal, the scene's page lists them under Details beside the log.
+
+### Finding scenes by detail
+
+Give a detail and a value after `+scene/list`, `+scene/old` or `+scene/mine`. Case does not matter,
+and `*` matches anything, so `canon=*x-men*` finds every scene whose canon mentions X-Men:
+
+```text
+> +scene/list canon=*x-men*
+======================< Scenes: active · canon=*x-men* >======================
+ID  Title                                            Where        Cast  Status
+ 1  Salt Market at Dusk                              Lower Docks     1  active
+==============================================================================
+1 scene
+```
+
+A page number goes before the detail: `+scene/old/2 verse=Marvel`. Bare `+scene` takes no detail,
+because `+scene <id>` shows a scene's card; use `+scene/list` instead.
+
+In the portal, the search box on a character's Scenes page matches details as well as titles, pitches
+and rooms.
+
+## Verse, canon and content warnings
+
+The `scene-verse` package comes with SharpMUSH but is not installed on a new game. Install it from
+the admin panel's Packages page. It lists three details:
 
 | Detail | Name | What goes in it |
 |---|---|---|
 | `verse` | Verse | The setting or universe the scene takes place in |
 | `canon` | Canon | The source works the scene draws on; several are allowed |
 | `warning` | Content warning | What a reader may want to know before joining; several are allowed |
-
-A game can change these, remove them or add its own. See [Changing the details](#changing-the-details).
-
-![The scene's owner types +scene/set verse=Marvel, or uses the portal's Edit form. The value is kept on the scene beside its title, and softcode reads it as scene(1,verse). The DETAIL VERSE attribute on the Scene Logger names the detail. The value then shows on the scene's card, after its title in lists, at the top of its log, and in the portal.](../../../assets/guide/scene-details-flow.svg)
-
-## For players
-
-`+scene/details` lists the details your game uses, what goes in each, and what each takes:
 
 ```text
 > +scene/details
@@ -48,73 +144,18 @@ warning  Content warning  What a reader may want  any text, several split by |
 You can set other details too: +scene/set <name>=<value>.
 ```
 
-### Setting a scene's details
+Players still set any other detail they like. With the package installed:
 
-`+scene/set <detail>=<value>` sets a detail on your focused scene. A detail that takes several values
-splits them with `|`:
+- The verse and the content warning follow the title in `+scene`, `+scene/old` and `+scene/mine`, and
+  show as tags on the portal's scene cards.
+- The three show first on the card, in that order. The content warning is in the reader's warning
+  colour wherever it appears.
+- Whoever joins a scene with a content warning is told it as they join.
+- `+scene/verses` lists the verses of the scenes running now.
 
 ```text
-> +scene/create Salt Market at Dusk
-[SCENE] Done: Scene 1 created and focused (status: active).
-> +scene/set verse=Marvel
-[SCENE] Done: Scene 1: Verse is now Marvel.
-> +scene/set canon=Marvel|X-Men
-[SCENE] Done: Scene 1: Canon is now Marvel · X-Men.
 > +scene/set warning=Violence
 [SCENE] Done: Scene 1: Content warning is now Violence.
-```
-
-- `+scene/set <id>/<detail>=<value>` sets one on a scene you own without focusing it.
-- `+scene/set <detail>=` with nothing after the `=` clears it.
-
-Only the scene's owner, or staff, can set its details, as with its title and pitch.
-
-Most games also let you set a detail the game does not list. It shows under the name you gave it:
-
-```text
-> +scene/set era=1980s
-[SCENE] Done: Scene 1: Era is now 1980s.
-```
-
-A detail's name is a word, and it can't be one of the things a scene already has, such as its title:
-
-```text
-> +scene/set title=Oops
-[SCENE] Warning: 'title' is a scene field already, so it can't be a detail
-```
-
-Use `+scene/title` and `+scene/pitch` for those.
-
-### Where details show
-
-The scene's card, from `+scene <id>`, has a Details section between the pitch and the players:
-
-```text
-> +scene 1
-=======================< Scene 1: Salt Market at Dusk >=======================
-Status:    active
-Owner:     Ilsa
-Where:     Lower Docks
-Created:   Oct 14 10:26PM
-Scheduled: -
-Watchers:  Anyone
-===================================< Pitch >==================================
-Lanterns, rumours and a missing ledger.
-==================================< Details >=================================
-Verse            Marvel
-Canon            Marvel · X-Men
-Content warning  Violence
-Era              1980s
-==================================< Players >=================================
-Status  Name                                                             Poses
-Owner   Ilsa                                                                 1
-==============================================================================
-```
-
-In `+scene`, `+scene/old` and `+scene/mine`, the details the game marks as listed follow the title.
-The verse and the content warning are listed as shipped:
-
-```text
 > +scene/list
 ==============================< Scenes: active >==============================
 ID  Title                                            Where        Cast  Status
@@ -123,34 +164,29 @@ ID  Title                                            Where        Cast  Status
 1 scene
 ```
 
-`+scene/log` puts every detail on the line under the scene's title. In the portal, the scene's page
-lists them under Details beside the log, and scene cards show the listed ones as tags.
-
-### Finding scenes by detail
-
-Give a detail and a value after `+scene/list`, `+scene/old` or `+scene/mine`. Case does not matter,
-and `*` matches anything, so `canon=*x-men*` finds every scene whose canon mentions X-Men:
+Another player joining sees the warning:
 
 ```text
-> +scene/list canon=*x-men*
-======================< Scenes: active · canon=*x-men* >======================
-ID  Title                                            Where        Cast  Status
- 1  Salt Market at Dusk · Marvel · Violence          Lower Docks     1  active
+> +scene/join 1
+[SCENE] Done: Joined and focused on scene 1.
+[SCENE] Content warning: Violence
+> +scene/verses
+=============================< Verses played now >============================
+Verse                                                                   Scenes
+Marvel                                                                       1
 ==============================================================================
-1 scene
++scene/list verse=<verse> lists a verse's scenes.
 ```
 
-A page number goes before the detail: `+scene/old/2 verse=Marvel`. Bare `+scene` takes no detail,
-because `+scene <id>` shows a scene's card; use `+scene/list` instead.
-
-In the portal, the search box on a character's Scenes page matches details as well as titles, pitches and rooms.
+Uninstalling the package stops listing the three. Scenes keep the values they were given, and those
+then show by name, like any other detail.
 
 ### In the portal
 
 The scene's owner sets details from the **Edit** button on the scene's page. Each detail the game
 lists has its own field, with its hint underneath. A detail with choices is a drop-down, and one that
-takes several lets the owner tick more than one. Saving runs `+scene/set` as the owner's character,
-so a value the game refuses is refused here too, with the same message.
+takes several lets the owner tick more than one. Saving runs `+scene/set` as the owner's character, so
+a value the game refuses is refused here too, with the same message.
 
 ## Marking a pose
 
@@ -163,7 +199,7 @@ pose a mark, and `+scene/unmark` takes it off. The pose's author or the scene's 
 Ilsa sets her lantern down on the crate.
 > +scene/mark 1=flashback
 [SCENE] Done: Pose 1 marked flashback.
-> +scene/recall 1
+> +scene/recall 1=1
 =< Ilsa · pose 1 >====================================< Scene 1 · flashback >=
 Ilsa sets her lantern down on the crate.
 > +scene/unmark 1=flashback
@@ -173,7 +209,7 @@ Ilsa sets her lantern down on the crate.
 A mark is one word. A pose can have several. In the portal, the scene's page offers a chip for each
 mark used in the scene, and picking one shows only the poses that have it.
 
-## Changing the details
+## Listing details
 
 Staff holding the `layout.admin` permission decide which details the game lists. Each is one
 attribute on the Scene Logger, `` DETAIL`<KEY> ``, holding JSON:
@@ -189,7 +225,7 @@ attribute on the Scene Logger, `` DETAIL`<KEY> ``, holding JSON:
 
 The commands write the JSON for you and refuse anything that would not read:
 
-- `+scene/detail/add <detail>=<name>` adds one.
+- `+scene/detail/add <detail>=<name>` lists a new one.
 - `+scene/detail/set <detail>/<field>=<value>` changes one field. `choices` takes the values split
   by `|`; `many` and `listed` take `yes` or `no`.
 - `+scene/detail <detail>` shows one in full.
@@ -234,9 +270,78 @@ not list. It is `1` as shipped. Set it to `0` to keep them to the list:
 &DATA`OPEN_DETAILS <Scene Logger>=0
 ```
 
+## Changing what +scene shows
+
+A package can change what `+scene` shows without editing the `scene` package. It adds a **filter** to
+the Scene Logger: an attribute named `` FILTER`<point>`<name> ``. Where `+scene` draws that point, it
+passes what it would show through every filter on the point with `chain()`, in name order. Each filter
+gets what would be shown as `%0` and returns what is shown instead, and the next filter gets that.
+
+| Point | `%0` | Also given |
+|---|---|---|
+| `CARD` | The body of the card from `+scene <id>`, between its title and its last rule | `%1` the scene |
+| `` LIST`TITLE `` | A scene's title in `+scene`, `+scene/old` and `+scene/mine`, with its listed details | `%1` the scene |
+| `` LOG`HEAD `` | The lines over `+scene/log` | `%1` the scene |
+| `` POSE`RULE `` | The right side of the line over a pose, as plain text | `%1` the scene, `%2` the pose |
+| `` DETAIL`SHOW `` | A scene's value for a detail, everywhere it is shown | `%1` the scene, `%2` the detail |
+| `JOIN` | What a player is told when they join | `%1` the scene, `%2` the player |
+
+A filter runs as the Scene Logger, with `%#` the player reading. For example, these two filters show
+every verse in capitals and put a scene's era at the top of its card:
+
+```text
+&FILTER`DETAIL`SHOW`CAPS <Scene Logger>=if(strmatch(%2,verse),ucstr(%0),%0)
+&FILTER`CARD`ERA <Scene Logger>=if(strlen(scene(%1,era)),Set in the [scene(%1,era)].%r)%0
+```
+
+```text
+> +scene/set verse=Marvel
+[SCENE] Done: Scene 1: Verse is now MARVEL.
+> +scene 1
+=======================< Scene 1: Salt Market at Dusk >=======================
+Set in the 1980s.
+Status:    active
+Owner:     Ilsa
+Where:     Lower Docks
+Created:   Oct 14 11:06PM
+Scheduled: -
+Watchers:  Anyone
+===================================< Pitch >==================================
+Lanterns, rumours and a missing ledger.
+==================================< Details >=================================
+Verse            MARVEL
+Canon            Marvel · X-Men
+Content warning  Violence
+Mood             Tense
+Era              1980s
+==================================< Players >=================================
+Status       Name                                                        Poses
+Owner        Ilsa                                                            1
+Participant  Ann                                                             0
+==============================================================================
+```
+
+The `scene-verse` package works this way. Its two filters colour the content warning and tell a joiner
+about it:
+
+```yaml
+objects:
+  - ref: verse
+    target: "{{scene/logger}}"
+    attributes:
+      FILTER`DETAIL`SHOW`VERSE: |-
+        if(strmatch(%2,warning),tone(warning,%0),%0)
+      FILTER`JOIN`VERSE: |-
+        %0[if(strlen(scene(%1,warning)),%r[notice(SCENE,Content warning: [u(%!/FUN`DETAIL`SHOW,%1,warning)])])]
+```
+
+Because the package attaches its attributes to the `scene` package's Scene Logger, uninstalling it
+takes its filters and its `DETAIL` attributes away again. See [Managing attributes on an object you didn't create](/reference/package-format#managing-attributes-on-an-object-you-didnt-create)
+for how attaching works.
+
 <Aside>
-A package can ship details of its own by putting `DETAIL` attributes on the Scene Logger, as the
-`radio-scene` package does for pose types. Uninstalling the package takes them away.
+Name a filter after your package, as `` FILTER`JOIN`VERSE `` is, so two packages never write the same
+attribute. Filters on one point run in the order of their names.
 </Aside>
 
 ## In softcode
@@ -247,13 +352,13 @@ A detail is a key of the scene, so `scene()` reads it. A listed detail reads emp
 > think scene(1,verse)
 Marvel
 > think scene(1,details)
-verse canon warning era
+canon era verse
 ```
 
 | Function | Returns |
 |---|---|
 | `scene(<id>,<detail>)` | The scene's value for a detail; several are split by `\|` |
-| `scene(<id>,details)` | The details the scene has a value for: the game's in order, then the rest by name |
+| `scene(<id>,details)` | The details the scene has a value for: the listed ones in order, then the rest by name |
 | `scenedetails()` | The details the game lists, in order |
 | `scenedetail(<detail>[,<field>])` | One field of a listed detail: `label` (the default), `hint`, `choices`, `many`, `listed` or `order` |
 | `scenedetailvalue(<detail>,<value>)` | The value as the detail would keep it, or `#-1` and why it would be refused |
