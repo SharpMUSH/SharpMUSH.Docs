@@ -52,6 +52,7 @@ export default defineConfig({
                       { label: 'Screen Readers', slug: 'guides/screen-readers' },
                       { label: 'Softcode Packages', slug: 'guides/packages' },
                       { label: 'Named Arguments', slug: 'guides/named-arguments' },
+                      { label: 'Chat Cards', slug: 'guides/chat-cards' },
                       { label: 'Bulletin Boards', slug: 'guides/bboards' },
                       { label: 'Writing Plugins', slug: 'guides/plugins' },
                       { label: 'Softcode in Your Editor', slug: 'guides/editor-support' },

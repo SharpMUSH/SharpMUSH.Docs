@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 975 310" width="975" height="310" role="img" aria-labelledby="t d">
+  <title id="t">How a click on a chat card reaches the game</title>
+  <desc id="d">The invitation desk sends Raya a card. Raya clicks +invite/accept 1, and her client sends that line as if she had typed it. Mannaz types the same line. Both reach the same command, which checks that invitation 1 exists and is addressed to whoever sent the line. Raya's passes and the invitation is accepted; Mannaz's is refused.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: system-ui, sans-serif; font-size: 15px; fill: #0f172a; }
+    .small { font-size: 13px; fill: #334155; }
+    .code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; }
+    .box { fill: #ffffff; stroke: #94a3b8; stroke-width: 1.5; }
+    .check { fill: #eff6ff; stroke: #60a5fa; stroke-width: 1.5; }
+    .ok { fill: #f0fdf4; stroke: #4ade80; stroke-width: 1.5; }
+    .no { fill: #fef2f2; stroke: #f87171; stroke-width: 1.5; }
+    .line { stroke: #64748b; stroke-width: 2; fill: none; }
+  </style>
+  <rect x="0" y="0" width="975" height="310" rx="12" fill="#f8fafc"/>
+
+  <rect class="box" x="20" y="30" width="140" height="56" rx="8"/>
+  <text x="90" y="63" text-anchor="middle">Invite Desk</text>
+  <path class="line" d="M160 58 H218" marker-end="url(#arrow)"/>
+  <text class="small" x="189" y="48" text-anchor="middle">card</text>
+
+  <rect class="box" x="222" y="30" width="180" height="56" rx="8"/>
+  <text x="312" y="53" text-anchor="middle">Raya's client</text>
+  <text class="small" x="312" y="73" text-anchor="middle">Raya clicks Accept</text>
+
+  <rect class="box" x="222" y="224" width="180" height="56" rx="8"/>
+  <text x="312" y="247" text-anchor="middle">Mannaz's client</text>
+  <text class="small" x="312" y="267" text-anchor="middle">Mannaz types the line</text>
+
+  <path class="line" d="M402 58 H565 V140 H593" marker-end="url(#arrow)"/>
+  <path class="line" d="M402 252 H565 V176 H593" marker-end="url(#arrow)"/>
+  <text class="code" x="482" y="48" text-anchor="middle">+invite/accept 1</text>
+  <text class="code" x="482" y="242" text-anchor="middle">+invite/accept 1</text>
+
+  <rect class="check" x="597" y="104" width="200" height="104" rx="8"/>
+  <text x="697" y="129" text-anchor="middle">The command checks</text>
+  <text class="small" x="697" y="151" text-anchor="middle">invitation 1 exists</text>
+  <text class="small" x="697" y="170" text-anchor="middle">and was sent to %#,</text>
+  <text class="small" x="697" y="189" text-anchor="middle">whoever sent the line</text>
+
+  <path class="line" d="M797 140 H811 V68 H825" marker-end="url(#arrow)"/>
+  <path class="line" d="M797 176 H811 V248 H825" marker-end="url(#arrow)"/>
+  <rect class="ok" x="829" y="37" width="130" height="62" rx="8"/>
+  <text x="894" y="62" text-anchor="middle">Accepted</text>
+  <text class="small" x="894" y="83" text-anchor="middle">Wren is told</text>
+  <rect class="no" x="829" y="217" width="130" height="62" rx="8"/>
+  <text x="894" y="242" text-anchor="middle">Refused</text>
+  <text class="small" x="894" y="263" text-anchor="middle">sent to Raya</text>
+</svg>
