@@ -1,0 +1,174 @@
+---
+title: Character Galleries
+description: How players keep a gallery of pictures on a character's portal profile, how content warnings and tags work, and how a game takes reports about images.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Every character has a **gallery** of pictures on their web portal profile. The player adds images,
+puts them in order, and gives each one a caption, tags and, when it needs one, a content warning. One
+image is the character's avatar and one can be the banner across the top of the profile.
+
+This page covers what players do with a gallery, what staff can change, and how a game decides what
+happens when someone reports an image. The examples were run on a SharpMUSH server, and the output
+shown is what it printed.
+
+## What players do
+
+The profile's Gallery card shows the avatar and two more images. **View all** opens the gallery page,
+at `/character/<name>/gallery`, with every image in the player's order. Clicking an image opens it
+large, with its caption and tags under it.
+
+Whoever may edit the character's biography may edit the gallery: the account that owns the character,
+and staff who control it. In the large view they can:
+
+- move the image earlier or later in the gallery;
+- make it the avatar or the banner;
+- edit its caption, tags and content warning;
+- delete it.
+
+The portal takes PNG, JPEG, GIF and WebP files up to 10 MB. It reads the start of each file to check
+what it is, so a file renamed to `.png` is refused.
+
+## Content warnings
+
+A content warning is a few words, such as `blood` or `spiders`. A warned image is covered by its
+warning everywhere the portal shows it: on the profile, on the gallery page and in the large view. The
+picture is not even downloaded until the viewer chooses **Show image**.
+
+Because the avatar and the banner show without a click, a warned image is never either of them. Warning the current avatar moves the avatar to the
+first image without a warning.
+
+## Tags
+
+Tags are short words or phrases, up to ten per image, such as `portrait`, `docks` or `night`. The
+portal stores them in lower case. The gallery page shows one button per tag; choosing one keeps only
+the images that carry it. Moving an image while a tag is chosen moves it past its neighbour among the
+images shown.
+
+## Limits
+
+| What | Limit |
+| --- | --- |
+| Images in one gallery | `max_gallery_images`, 50 unless the game changes it |
+| Caption | 300 characters |
+| Content warning | 100 characters |
+| Tags | 10 per image, 32 characters each |
+| File | 10 MB; PNG, JPEG, GIF or WebP |
+
+`max_gallery_images` is in the Players group of `@config`. Set it in `mush.cnf`
+(`max_gallery_images 80`), or in the game:
+
+```sharp
+> @config/set max_gallery_images=80
+Option set.
+> think config(max_gallery_images)
+80
+```
+
+## Reports
+
+A visitor signed in to the portal can report an image they think breaks the game's rules. SharpMUSH
+keeps no reports of its own. It hands each one to the game's [event
+handler](/reference/sharpmush-help/sharpevents/), and the game decides what a report does.
+
+![A visitor signed in to the portal chooses Report and writes a reason. The server checks that the event handler has a GALLERY`REPORT attribute and runs it as the reporter. The bundled jobs package's attribute files a job in the Staff bucket; a game can write its own instead. With no attribute, the portal shows no Report button.](../../../assets/guide/gallery-report-flow.svg)
+
+The portal shows a **Report** button only while the event handler has a ``GALLERY`REPORT``
+attribute. A game without one takes no reports, and nobody is offered a button that does nothing.
+
+### With the jobs package
+
+The bundled jobs package sets ``GALLERY`REPORT`` when it is installed. Each report becomes a job in
+the Staff bucket, filed by the reporter, with the image's address, its caption and the reason. Staff
+answer it like any other job:
+
+```sharp
+> +job 2
+...
+Image: /api/wiki-assets/8016be6a9711472482bddf7f9cdafe92/rail.png
+
+Caption: At the harbour rail
+
+Reason: Not my character
+```
+
+To send reports to another bucket, change ``DATA`GALLERY`BUCKET`` on the package's Jobs object
+(`#15` here; use your game's dbref):
+
+```sharp
+> &DATA`GALLERY`BUCKET #15=Feedback
+Jobs/DATA`GALLERY`BUCKET - Set.
+```
+
+### Writing your own
+
+A game without the jobs package, or one that wants something else, sets the attribute itself. The
+event's named arguments are:
+
+| Argument | What it holds |
+| --- | --- |
+| `%#` | The reporter's character |
+| `%<objid>` | The character whose gallery holds the image |
+| `%<asset>` | The stored file's id |
+| `%<url>` | The image's address on the site |
+| `%<reason>` | What the reporter wrote |
+| `%<caption>` | The image's caption, empty when it has none |
+
+This tells connected wizards about every report:
+
+```sharp
+> &GALLERY`REPORT #9=@wizwall/emit [name(%#)] reported an image of [name(%<objid>)]: %<reason> (%<url>)
+```
+
+<Aside type="caution">
+`%<reason>` is the reporter's own text. Use it as text, as above, and never pass it to `s()` or
+`objeval()`: brackets in a reason stay as they were typed.
+</Aside>
+
+## New images
+
+The ``GALLERY`ADD`` event runs after an image is uploaded. `%#` is the character who uploaded it,
+`%<objid>` the character whose gallery it is, `%<asset>` and `%<url>` the stored file, and `%<use>`
+one of `gallery`, `avatar` or `banner`: what it was uploaded as.
+
+This tells connected wizards about every new picture:
+
+```sharp
+> &GALLERY`ADD #9=@wizwall/emit New picture for [name(%<objid>)]: %<url> as %<use>
+Event Handler/GALLERY`ADD - Set.
+```
+
+After the next upload:
+
+```
+New picture for God: /api/wiki-assets/7ee8f545d88f41a8b4b3055adeec442c/lantern.png as gallery
+```
+
+## Reading a gallery in softcode
+
+The gallery is kept as JSON in the character's ``PROFILE`GALLERY`` attribute, one object per image in
+display order. Each object has:
+
+- `AssetId`, `FileName`, `Url`: the stored file and its address on the site;
+- `Caption` and `Warning`: text, or null;
+- `Tags`: a list of words, or null;
+- `Order`: its place, counting from 0;
+- `IsIcon` and `IsBanner`: whether it is the avatar or the banner.
+
+Counting the images and reading the first one's caption:
+
+```sharp
+> think json_query(get(me/PROFILE`GALLERY),size)
+4
+> think json_query(get(me/PROFILE`GALLERY),extract,$\[0\].Caption)
+At the harbour rail
+```
+
+The avatar is also copied into `IMAGE`, the banner into ``IMAGE`BANNER`` and the avatar's caption
+into ``IMAGE`ALT`` every time the gallery changes, so code that only wants the avatar reads `IMAGE`.
+
+<Aside>
+Change the gallery from the portal. A value set by hand in ``PROFILE`GALLERY`` is replaced the next
+time the gallery changes there.
+</Aside>
