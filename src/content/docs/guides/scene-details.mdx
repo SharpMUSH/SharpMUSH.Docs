@@ -1,0 +1,265 @@
+---
+title: Scene Details
+description: Say which verse a scene is set in, what canon it draws on and what a reader should know before joining, show it wherever the scene appears, and find scenes by it.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+A scene has a title and a pitch. Many games want to say more: which **verse** or setting it takes
+place in, which **canon** it draws on, whether it carries a **content warning**. These are a scene's
+**details**. The scene's owner sets them, and they show on the scene's card, beside its title in
+lists, at the top of its log and on its page in the portal. Players can list scenes by them.
+
+A single pose can carry something of its own too, such as being a flashback. That is a **mark**,
+covered at the end of this page.
+
+Details come with the `scene` package, which a new game installs during setup. It ships three:
+
+| Detail | Name | What goes in it |
+|---|---|---|
+| `verse` | Verse | The setting or universe the scene takes place in |
+| `canon` | Canon | The source works the scene draws on; several are allowed |
+| `warning` | Content warning | What a reader may want to know before joining; several are allowed |
+
+A game can change these, remove them or add its own. See [Changing the details](#changing-the-details).
+
+![The scene's owner types +scene/set verse=Marvel, or uses the portal's Edit form. The value is kept on the scene beside its title, and softcode reads it as scene(1,verse). The DETAIL VERSE attribute on the Scene Logger names the detail. The value then shows on the scene's card, after its title in lists, at the top of its log, and in the portal.](../../../assets/guide/scene-details-flow.svg)
+
+## For players
+
+`+scene/details` lists the details your game uses, what goes in each, and what each takes:
+
+```text
+> +scene/details
+===============================< Scene details >==============================
+Detail   Name             What goes in it         Takes
+verse    Verse            The setting or          any text
+                          universe the scene
+                          takes place in.
+canon    Canon            The source works the    any text, several split by |
+                          scene draws on. Split
+                          several with |.
+warning  Content warning  What a reader may want  any text, several split by |
+                          to know before
+                          joining, such as
+                          violence. Split
+                          several with |.
+==============================================================================
+You can set other details too: +scene/set <name>=<value>.
+```
+
+### Setting a scene's details
+
+`+scene/set <detail>=<value>` sets a detail on your focused scene. A detail that takes several values
+splits them with `|`:
+
+```text
+> +scene/create Salt Market at Dusk
+[SCENE] Done: Scene 1 created and focused (status: active).
+> +scene/set verse=Marvel
+[SCENE] Done: Scene 1: Verse is now Marvel.
+> +scene/set canon=Marvel|X-Men
+[SCENE] Done: Scene 1: Canon is now Marvel · X-Men.
+> +scene/set warning=Violence
+[SCENE] Done: Scene 1: Content warning is now Violence.
+```
+
+- `+scene/set <id>/<detail>=<value>` sets one on a scene you own without focusing it.
+- `+scene/set <detail>=` with nothing after the `=` clears it.
+
+Only the scene's owner, or staff, can set its details, as with its title and pitch.
+
+Most games also let you set a detail the game does not list. It shows under the name you gave it:
+
+```text
+> +scene/set era=1980s
+[SCENE] Done: Scene 1: Era is now 1980s.
+```
+
+A detail's name is a word, and it can't be one of the things a scene already has, such as its title:
+
+```text
+> +scene/set title=Oops
+[SCENE] Warning: 'title' is a scene field already, so it can't be a detail
+```
+
+Use `+scene/title` and `+scene/pitch` for those.
+
+### Where details show
+
+The scene's card, from `+scene <id>`, has a Details section between the pitch and the players:
+
+```text
+> +scene 1
+=======================< Scene 1: Salt Market at Dusk >=======================
+Status:    active
+Owner:     Ilsa
+Where:     Lower Docks
+Created:   Oct 14 10:26PM
+Scheduled: -
+Watchers:  Anyone
+===================================< Pitch >==================================
+Lanterns, rumours and a missing ledger.
+==================================< Details >=================================
+Verse            Marvel
+Canon            Marvel · X-Men
+Content warning  Violence
+Era              1980s
+==================================< Players >=================================
+Status  Name                                                             Poses
+Owner   Ilsa                                                                 1
+==============================================================================
+```
+
+In `+scene`, `+scene/old` and `+scene/mine`, the details the game marks as listed follow the title.
+The verse and the content warning are listed as shipped:
+
+```text
+> +scene/list
+==============================< Scenes: active >==============================
+ID  Title                                            Where        Cast  Status
+ 1  Salt Market at Dusk · Marvel · Violence          Lower Docks     1  active
+==============================================================================
+1 scene
+```
+
+`+scene/log` puts every detail on the line under the scene's title. In the portal, the scene's page
+lists them under Details beside the log, and scene cards show the listed ones as tags.
+
+### Finding scenes by detail
+
+Give a detail and a value after `+scene/list`, `+scene/old` or `+scene/mine`. Case does not matter,
+and `*` matches anything, so `canon=*x-men*` finds every scene whose canon mentions X-Men:
+
+```text
+> +scene/list canon=*x-men*
+======================< Scenes: active · canon=*x-men* >======================
+ID  Title                                            Where        Cast  Status
+ 1  Salt Market at Dusk · Marvel · Violence          Lower Docks     1  active
+==============================================================================
+1 scene
+```
+
+A page number goes before the detail: `+scene/old/2 verse=Marvel`. Bare `+scene` takes no detail,
+because `+scene <id>` shows a scene's card; use `+scene/list` instead.
+
+In the portal, the search box on a character's Scenes page matches details as well as titles, pitches and rooms.
+
+### In the portal
+
+The scene's owner sets details from the **Edit** button on the scene's page. Each detail the game
+lists has its own field, with its hint underneath. A detail with choices is a drop-down, and one that
+takes several lets the owner tick more than one. Saving runs `+scene/set` as the owner's character,
+so a value the game refuses is refused here too, with the same message.
+
+## Marking a pose
+
+Some poses are not like the rest of the scene: a flashback, a dream, a vision. `+scene/mark` gives one
+pose a mark, and `+scene/unmark` takes it off. The pose's author or the scene's owner can mark it.
+
+```text
+> pose sets her lantern down on the crate.
+=< Ilsa · pose 1 >================================================< Scene 1 >=
+Ilsa sets her lantern down on the crate.
+> +scene/mark 1=flashback
+[SCENE] Done: Pose 1 marked flashback.
+> +scene/recall 1
+=< Ilsa · pose 1 >====================================< Scene 1 · flashback >=
+Ilsa sets her lantern down on the crate.
+> +scene/unmark 1=flashback
+[SCENE] Done: Pose 1 is no longer marked flashback.
+```
+
+A mark is one word. A pose can have several. In the portal, the scene's page offers a chip for each
+mark used in the scene, and picking one shows only the poses that have it.
+
+## Changing the details
+
+Staff holding the `layout.admin` permission decide which details the game lists. Each is one
+attribute on the Scene Logger, `` DETAIL`<KEY> ``, holding JSON:
+
+| Field | What it does |
+|---|---|
+| `label` | Its name, as players read it |
+| `hint` | One line saying what goes in it, shown by `+scene/details` and under the portal's field |
+| `choices` | The values it allows; without it, any text |
+| `many` | `true` when a scene may give several values, split by `\|` |
+| `listed` | `true` to show it after the title in lists and as a tag on the portal's scene cards |
+| `order` | Its place, lowest first |
+
+The commands write the JSON for you and refuse anything that would not read:
+
+- `+scene/detail/add <detail>=<name>` adds one.
+- `+scene/detail/set <detail>/<field>=<value>` changes one field. `choices` takes the values split
+  by `|`; `many` and `listed` take `yes` or `no`.
+- `+scene/detail <detail>` shows one in full.
+- `+scene/detail/remove <detail>` stops listing it. Scenes keep the values they had.
+
+For example, a game with a fixed set of moods:
+
+```text
+> +scene/detail/add mood=Mood
+[SCENE] Done: Added scene detail mood. +scene/detail/set mood/<field>=<value> changes it.
+> +scene/detail/set mood/choices=Light|Tense|Dark
+[SCENE] Done: Scene detail mood: choices set.
+> +scene/detail/set mood/listed=yes
+[SCENE] Done: Scene detail mood: listed set.
+> +scene/detail/set mood/hint=How the scene feels.
+[SCENE] Done: Scene detail mood: hint set.
+> +scene/detail mood
+=============================< Scene detail mood >============================
+Detail:          mood
+Name:            Mood
+What goes in it: How the scene feels.
+Takes:           Light, Tense, or Dark
+In lists:        yes
+Order:           50
+==============================================================================
+```
+
+A player who gives a value that is not a choice is told which ones there are. One that differs only
+in case is kept the way the choice is written:
+
+```text
+> +scene/set mood=gloomy
+[SCENE] Warning: Mood can be Light, Tense, Dark
+> +scene/set mood=tense
+[SCENE] Done: Scene 1: Mood is now Tense.
+```
+
+`` DATA`OPEN_DETAILS `` on the Scene Logger decides whether players may set details the game does
+not list. It is `1` as shipped. Set it to `0` to keep them to the list:
+
+```text
+&DATA`OPEN_DETAILS <Scene Logger>=0
+```
+
+<Aside>
+A package can ship details of its own by putting `DETAIL` attributes on the Scene Logger, as the
+`radio-scene` package does for pose types. Uninstalling the package takes them away.
+</Aside>
+
+## In softcode
+
+A detail is a key of the scene, so `scene()` reads it. A listed detail reads empty until it is set.
+
+```text
+> think scene(1,verse)
+Marvel
+> think scene(1,details)
+verse canon warning era
+```
+
+| Function | Returns |
+|---|---|
+| `scene(<id>,<detail>)` | The scene's value for a detail; several are split by `\|` |
+| `scene(<id>,details)` | The details the scene has a value for: the game's in order, then the rest by name |
+| `scenedetails()` | The details the game lists, in order |
+| `scenedetail(<detail>[,<field>])` | One field of a listed detail: `label` (the default), `hint`, `choices`, `many`, `listed` or `order` |
+| `scenedetailvalue(<detail>,<value>)` | The value as the detail would keep it, or `#-1` and why it would be refused |
+| `scenedetailcheck(<detail>,<json>)` | Empty when the JSON reads as a detail, or `#-1` and why not |
+
+A pose's marks are its tags: `scenepose(<scene>,<pose>,tags)`.
+
+Writing a detail from softcode goes through `@scene/set <id>/<detail>=<value>`, which only the Scene
+Logger and wizards can run. Players use `+scene/set`, which checks that they own the scene first.

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" width="960" height="380" role="img" aria-labelledby="t d">
+  <title id="t">Where a scene's details come from and where they show</title>
+  <desc id="d">A scene's owner types +scene/set verse=Marvel. The value is kept on the scene itself, beside its title and pitch, and softcode reads it as scene(id,verse). The Scene Logger's DETAIL`VERSE attribute names the detail, says what goes in it, and marks it as listed. The value then shows in four places: as a row on the scene's card from +scene id, after the title in +scene/list, at the top of +scene/log, and on the scene's page and card in the portal.</desc>
+  <rect x="0" y="0" width="960" height="380" rx="12" fill="#f8fafc"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <g font-family="system-ui, sans-serif" fill="#0f172a">
+    <!-- the command -->
+    <rect x="24" y="40" width="250" height="96" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="149" y="68" text-anchor="middle" font-size="15" font-weight="600">The scene's owner</text>
+    <text x="149" y="96" text-anchor="middle" font-size="14" font-family="ui-monospace, monospace">+scene/set verse=Marvel</text>
+    <text x="149" y="120" text-anchor="middle" font-size="13" fill="#475569">or the portal's Edit form</text>
+
+    <!-- the catalogue -->
+    <rect x="24" y="190" width="250" height="160" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="149" y="218" text-anchor="middle" font-size="15" font-weight="600">On the Scene Logger</text>
+    <rect x="40" y="234" width="218" height="102" rx="8" fill="#eef2ff" stroke="#c7d2fe"/>
+    <text x="52" y="256" font-size="13" font-weight="600">DETAIL`VERSE</text>
+    <text x="52" y="278" font-size="12.5" font-family="ui-monospace, monospace">label: Verse</text>
+    <text x="52" y="298" font-size="12.5" font-family="ui-monospace, monospace">hint: The setting ...</text>
+    <text x="52" y="318" font-size="12.5" font-family="ui-monospace, monospace">listed: true</text>
+
+    <line x1="274" y1="88" x2="346" y2="150" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="274" y1="246" x2="346" y2="214" stroke="#475569" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+    <text x="318" y="262" text-anchor="middle" font-size="12" fill="#475569">names it</text>
+
+    <!-- the scene -->
+    <rect x="350" y="110" width="250" height="140" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="475" y="138" text-anchor="middle" font-size="15" font-weight="600">Scene 1</text>
+    <text x="370" y="166" font-size="13" font-family="ui-monospace, monospace">title  Salt Market at Dusk</text>
+    <text x="370" y="188" font-size="13" font-family="ui-monospace, monospace">verse  Marvel</text>
+    <text x="370" y="210" font-size="13" font-family="ui-monospace, monospace">canon  Marvel|X-Men</text>
+    <text x="475" y="236" text-anchor="middle" font-size="12.5" fill="#475569">read with scene(1,verse)</text>
+
+    <!-- where it shows -->
+    <line x1="600" y1="180" x2="652" y2="180" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="656" y="30" width="280" height="320" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="796" y="58" text-anchor="middle" font-size="15" font-weight="600">Where it shows</text>
+    <rect x="672" y="74" width="248" height="56" rx="8" fill="#f0fdf4" stroke="#bbf7d0"/>
+    <text x="684" y="96" font-size="13" font-weight="600">+scene 1</text>
+    <text x="684" y="118" font-size="12.5" fill="#334155">a Details row on the card</text>
+    <rect x="672" y="140" width="248" height="56" rx="8" fill="#f0fdf4" stroke="#bbf7d0"/>
+    <text x="684" y="162" font-size="13" font-weight="600">+scene/list verse=Marvel</text>
+    <text x="684" y="184" font-size="12.5" fill="#334155">after the title; filters the list</text>
+    <rect x="672" y="206" width="248" height="56" rx="8" fill="#f0fdf4" stroke="#bbf7d0"/>
+    <text x="684" y="228" font-size="13" font-weight="600">+scene/log</text>
+    <text x="684" y="250" font-size="12.5" fill="#334155">a line under the title</text>
+    <rect x="672" y="272" width="248" height="62" rx="8" fill="#fff7ed" stroke="#fed7aa"/>
+    <text x="684" y="294" font-size="13" font-weight="600">The portal</text>
+    <text x="684" y="316" font-size="12.5" fill="#334155">scene page, cards and search</text>
+  </g>
+</svg>
