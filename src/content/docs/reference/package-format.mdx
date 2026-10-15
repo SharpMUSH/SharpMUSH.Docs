@@ -20,7 +20,7 @@ back.
 Every top-level key a softcode package can use, with the format version that added it:
 
 ```yaml
-format: 1.6                     # format version (omit = 1; 1.2 adds roles and permissions, 1.3 settings, 1.5 attribute entries, 1.6 the engine range)
+format: 1.7                     # format version (omit = 1; 1.2 adds roles and permissions, 1.3 settings, 1.5 attribute entries, 1.6 the engine range, 1.7 plugins)
 package: myrddins-bbs           # required: lowercase letters, digits and hyphens, up to 64 characters
 version: 2.4.1                  # required: a version number (see Versions below)
 authors: [Myrddin]              # optional: a list, or one string
@@ -32,6 +32,7 @@ convention_prefix: BBS_         # optional: the attribute name prefix you use; a
 requires_server: ">=2.0"        # optional: the lowest SharpMUSH version it runs on
 verified_server: "2.4"          # optional: the newest SharpMUSH version it was tested on (1.6)
 maximum_server: "2"             # optional, only for a known break: the newest it runs on (1.6)
+plugins: [scene]                # optional (1.7): plugins its code calls, by plugin id (see Plugins a package calls)
 
 depends:                        # optional: other packages this one needs
   - volund-core: ">=1.0"        # short form: id and version range
@@ -308,12 +309,13 @@ doesn't take, or a ref for an option that isn't a dbref; any of these blocks in 
 In the format 1.5 `attributes:` block: a name `@attribute` would refuse, a flag that isn't an
 attribute flag, a `limit` that doesn't compile, both a `limit` and an `enum`, an empty `enum`, a
 `delimiter` longer than one character or a choice that contains it, a `retroactive` other than true
-or false, or the block in a manifest whose `format` is below 1.5.
+or false, or the block in a manifest whose `format` is below 1.5. In format 1.7: a `plugins:` entry
+that isn't a valid plugin id.
 
 **Warnings** (the manifest is accepted): unknown keys (likely typos); reserved keys (`provides`,
 `recommends`, `suggests`, configure `pattern`); configure questions nothing uses; more than 5
 keywords; a format version whose minor number is newer than the server supports; a `verified_server`
-below `requires_server` or above `maximum_server`; a permission or
+below `requires_server` or above `maximum_server`; a plugin listed twice in `plugins:`; a permission or
 role naming a category the package doesn't declare, or a role allowing a permission the package
 doesn't declare (the game must already have it, or the install stops).
 
@@ -505,6 +507,41 @@ server clears the mark.
 Leave `maximum_server` out unless a SharpMUSH version is known to break the package.
 [Versioning Packages](/guides/versioning) explains why, and what counts as a breaking change.
 
+## Plugins a package calls (format 1.7)
+
+Some commands and functions come from a [plugin](/guides/plugins), not from the engine: `+scene`,
+`scenewhere()` and the other `scene…()` functions are the Scene plugin's. A plugin can be turned off,
+fail to load, or not be installed at all, and then those names are not there. A package whose code
+calls them names the plugins under `plugins:`, by plugin id (the `id` in its `plugin.json`):
+
+```yaml
+format: 1.7
+package: scene-verse
+version: 1.1.0
+plugins: [scene]
+
+depends:
+  - scene: ">=1.6"
+```
+
+- **Install and upgrade.** The plan is blocked while any plugin it names is not running. The review
+  screen and `@package` say which one: `needs the scene plugin, which is not running`.
+- **Turning a plugin off** (the Plugins tab or `@plugin/disable`) uninstalls, after a backup and your
+  confirmation, every package that names it, and the packages that depend on those.
+- **Rollback.** Rolling a package back puts back the plugins that revision named. A rollback to a
+  revision whose plugin is not running is refused: `revision 1 needs the scene plugin, which is not running`.
+- **The bundled catalogue** does not offer a package whose plugin is not running, and a new game does
+  not install it.
+
+![The review of the scene package on a server without the Scene plugin: a red line reads "Needs the scene plugin, which is not running on this server." and Apply is greyed out](../../../assets/guide/package-review-needs-plugin.webp)
+
+![The setup wizard's package list: Scene System is greyed out with "Not available on this server: the plugin it runs on is not installed."](../../../assets/guide/setup-package-needs-plugin.webp)
+
+Name a plugin here only when the package cannot work without it. Code that only reads a plugin when it
+is there, and checks first, needs no entry. The bundled `room-contents` package does this: it asks
+`scenewhere()` for the room's scene and treats any `#-1` answer, including the one for a function that
+does not exist, as no scene.
+
 ## Application packages
 
 Most packages are **softcode** packages (`kind: softcode`, the default): they create objects and
@@ -639,9 +676,10 @@ Some packages are built into the server and appear in the portal under the reser
 - **Shipped**: the package is in the server and can be installed from the catalogue at any time.
 - **Installed on first start**: a new game gets it without being asked. `http-handler`,
   `profile-handler`, `room-contents`, `comm-feed`, `plus-help` and `scene` are.
-  `wiki-reader`, `jobs`, `jobs-app`, `messages`, `bboards`, `who-where`, `status`, `watch`, `finger` and
-  `scene-verse` are shipped but not installed: `+wiki` puts an object in the master room, the job queue, the
-  [bulletin boards](/guides/bboards), `+who`, [`+status`](/guides/status), the [watch list](/guides/watch) and [`+finger`](/guides/finger) add commands a game
+  `wiki-reader`, `jobs`, `jobs-app`, `messages`, `bboards`, `who-where`, `status`, `watch`, `finger`,
+  `notifications`, `notifications-app` and `scene-verse` are shipped but not installed: `+wiki` puts an object in the master room, the job queue, the
+  [bulletin boards](/guides/bboards), `+who`, [`+status`](/guides/status), the [watch list](/guides/watch), [`+finger`](/guides/finger)
+  and [`+notify`](/guides/notifications) add commands a game
   may not want, a game chooses whether it wants a [verse and content warnings](/guides/scene-details#verse-canon-and-content-warnings)
   named on its scenes, and a new game reads its connect screen and MOTDs from stored text until
   an administrator chooses the Messages object (in the setup wizard or on the package's page).
