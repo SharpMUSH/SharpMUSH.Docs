@@ -25,7 +25,7 @@
   <text x="60" y="326">5. They have not typed <tspan font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+watch/mute</tspan>.</text>
   <text x="60" y="354">6. Mira's page lock lets them through.</text>
   <text x="560" y="314" fill="#15803d">All pass: they hear</text>
-  <text x="560" y="334" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" fill="#15803d" font-size="13">[RP] Mira has</text>
+  <text x="560" y="334" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" fill="#15803d" font-size="13">[WATCH] Mira has</text>
   <text x="560" y="352" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" fill="#15803d" font-size="13">connected.</text>
 
   <line x1="390" y1="60" x2="390" y2="104" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
