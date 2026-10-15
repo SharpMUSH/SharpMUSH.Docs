@@ -20,7 +20,7 @@ back.
 Every top-level key a softcode package can use, with the format version that added it:
 
 ```yaml
-format: 1.3                     # format version (omit = 1; 1.2 adds roles and permissions, 1.3 settings)
+format: 1.6                     # format version (omit = 1; 1.2 adds roles and permissions, 1.3 settings, 1.6 the engine range)
 package: myrddins-bbs           # required: lowercase letters, digits and hyphens, up to 64 characters
 version: 2.4.1                  # required: a version number (see Versions below)
 authors: [Myrddin]              # optional: a list, or one string
@@ -29,14 +29,16 @@ license: MIT                    # optional: an SPDX licence name is recommended
 homepage: https://example.com   # optional
 keywords: [bbs, boards]         # optional: up to 5, used for browsing and searching
 convention_prefix: BBS_         # optional: the attribute name prefix you use; advisory, not enforced
-requires_server: ">=0.1"        # optional: which SharpMUSH versions it needs
+requires_server: ">=2.0"        # optional: the lowest SharpMUSH version it runs on
+verified_server: "2.4"          # optional: the newest SharpMUSH version it was tested on (1.6)
+maximum_server: "2"             # optional, only for a known break: the newest it runs on (1.6)
 
 depends:                        # optional: other packages this one needs
   - volund-core: ">=1.0"        # short form: id and version range
   - some-util                   # just an id: any released version
-  - http-handler: ">=1.0 <2.0"  # provides the GET router bbs_routes adds a route to
+  - http-handler: ">=1.0"       # provides the GET router bbs_routes adds a route to
   - package: who-where          # full form: adds where to find it (see Source hints)
-    version: ">=1.0 <2.0"
+    version: ">=1.0"
     source:
       repo: https://github.com/SharpMUSH/SharpMUSH-Packages
       path: who-where/
@@ -242,7 +244,8 @@ ordering follows SemVer 2.0.0 exactly:
 is not supported.
 
 Ranges use `>=`, `>`, `<=`, `<`, `=` and bare versions (an exact match). Clauses separated by spaces
-or commas must all hold. `^1.2` and `~1.2` are **not** supported; write `>=1.2 <2.0`.
+or commas must all hold. `^1.2` and `~1.2` are **not** supported; write `>=1.2`, and add `<2.0` only
+once you know 2.0 breaks your package ([Versioning Packages](/guides/versioning#ranges-on-dependencies)).
 
 **Prereleases are never picked unless you ask for one.** `>=1.0` does not match `2.0.0-beta`. A
 prerelease only matches when a clause names a prerelease of the same `major.minor.patch`
@@ -260,7 +263,7 @@ which is also why `package` can't be a dependency's id):
 ```yaml
 depends:
   - package: who-where
-    version: ">=1.0 <2.0"       # optional; leave out for any released version
+    version: ">=1.0"            # optional; leave out for any released version
     source:                     # optional
       repo: https://github.com/SharpMUSH/SharpMUSH-Packages
       path: who-where/          # optional: the package's folder in a repository of several
@@ -291,7 +294,9 @@ room, or a destination on anything but an exit); configure type mistakes (a defa
 non-dbref answer in a placement field); a package depending on itself, or the same id in both
 `depends:` and `conflicts:`; an invalid `kind`; an application package without an `application:`
 block or with `objects:` (and the reverse for a softcode package); an invalid application slug, type,
-role or zone; a format version whose major number is newer than the server supports. In the format
+role or zone; a format version whose major number is newer than the server supports; an upper bound
+or exact version in `requires_server`, a `verified_server` that is not a version, a `maximum_server`
+that is not one to three numbers, or a `maximum_server` below `requires_server`. In the format
 1.2 and 1.3 blocks: an invalid category, permission or role name; a built-in permission or a system
 role; a role priority outside 1-29 or a colour that isn't `#rrggbb`; a role permission other than
 `allow` or `deny`; a configuration option that doesn't exist or that a package can't set, a value it
@@ -299,7 +304,8 @@ doesn't take, or a ref for an option that isn't a dbref; any of these blocks in 
 
 **Warnings** (the manifest is accepted): unknown keys (likely typos); reserved keys (`provides`,
 `recommends`, `suggests`, configure `pattern`); configure questions nothing uses; more than 5
-keywords; a format version whose minor number is newer than the server supports; a permission or
+keywords; a format version whose minor number is newer than the server supports; a `verified_server`
+below `requires_server` or above `maximum_server`; a permission or
 role naming a category the package doesn't declare, or a role allowing a permission the package
 doesn't declare (the game must already have it, or the install stops).
 
@@ -400,6 +406,32 @@ applying a package that changes one.
   the game has changed it since; then it is left alone.
 - **Rollback** leaves configuration options as they are.
 
+## Engine version range (format 1.6)
+
+Three keys say which SharpMUSH versions a package runs on. `verified_server` and `maximum_server`
+need `format: 1.6`; an older server warns and ignores them.
+
+```yaml
+format: 1.6
+requires_server: ">=2.0"    # the lowest version, with >= or >
+verified_server: "2.4"      # the newest version the author tested on
+maximum_server: "2"         # the newest version it runs on: every 2.x
+```
+
+| Key | Written as | On a server outside it |
+|---|---|---|
+| `requires_server` | `>=` or `>` clauses | Refused: the review screen shows why and **Apply** stays off |
+| `verified_server` | a version | A newer *major* version warns; the install goes ahead |
+| `maximum_server` | one to three numbers | Warns, and **Apply** waits for **Install it anyway** |
+
+In `maximum_server`, the numbers left out match anything: `2` is every 2.x, `2.4` every 2.4.x,
+`2.4.1` that version alone. A package installed past its maximum is marked **Past maximum** on the
+Packages page, and the audit log records `package.past-maximum`. Installing a version that fits the
+server clears the mark.
+
+Leave `maximum_server` out unless a SharpMUSH version is known to break the package.
+[Versioning Packages](/guides/versioning) explains why, and what counts as a breaking change.
+
 ## Application packages
 
 Most packages are **softcode** packages (`kind: softcode`, the default): they create objects and
@@ -413,7 +445,7 @@ package: chargen-app
 kind: application                 # softcode (default) | application
 version: 1.0.0
 depends:
-  - chargen: ">=1.0 <2.0"         # the softcode package providing the routes
+  - chargen: ">=1.0"              # the softcode package providing the routes
 
 configure:
   access:                         # an application setting can be an installer question
@@ -589,7 +621,7 @@ keywords: [example, greeting]
 
 depends:
   - package: plus-help
-    version: ">=1.0 <2.0"
+    version: ">=1.0"
 
 objects:
   - ref: hello_global
