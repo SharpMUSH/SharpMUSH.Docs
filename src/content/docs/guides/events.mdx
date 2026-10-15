@@ -151,45 +151,56 @@ The bundled `comm-feed` and `room-contents` packages are built this way: `comm-f
 
 ## PennMUSH events
 
-PennMUSH raises some events about things a new SharpMUSH game does not do: saving the database
-every so often, checking it, disconnecting idle players, and its SQL connection. SharpMUSH writes
-every change to disk as it happens, so a new game has no use for them and they are off.
+SharpMUSH raises every PennMUSH event, so a handler written for PennMUSH keeps working.
 
-The `compatibility_events` setting turns them on. Importing a PennMUSH database turns it on for you,
-so a handler written for PennMUSH keeps working. With it on, the game saves every `dump_interval`,
-warns everyone before each save, and raises the dump events around it; `@dump` saves at once:
+A SharpMUSH game writes every change to disk as it happens, so its dump is a backup. `@dump` and
+`@backup` both take one, show everyone the dump messages, and raise the dump events. `@dbck` reads
+the newest backup through and raises ``DB`DBCK`` when it passes:
 
 ```sharp
-> @dump
-Dump command does nothing for SharpMUSH. Consider using @backup.
-> @config/set compatibility_events=yes
-Option set.
-> &DUMP`COMPLETE #9=@pemit #1=Heard dump`complete: %<message> (forking %<forking>)
+> &DUMP`COMPLETE #9=@pemit #1=dump`complete enactor %# message %0 forking %1
 Event Handler/DUMP`COMPLETE - Set.
+> &DB`DBCK #9=@pemit #1=db`dbck enactor %#
+Event Handler/DB`DBCK - Set.
+> @dbck
+Check failed: there is no backup to check yet; run @backup first
 > @dump
-Dumping...
+Copying the world. The game keeps running; this may take a while.
 GAME: Saving database. Game may freeze for a few moments.
 GAME: Save complete.
-Dump complete.
-Heard dump`complete: GAME: Save complete. (forking 0)
+Backup 20261015-022454-530 written (1.5 MB). Keeping 2.
+dump`complete enactor #1 message GAME: Save complete. forking 0
+> @dbck
+Backup 20261015-022454-530 checked: 91 tables, 1886 entries read.
+db`dbck enactor #1
 ```
 
-It also raises ``LOG`HUH`` when a player types a command the game does not understand somewhere they
-do not control:
+When the server's `SHARPMUSH_BACKUP_INTERVAL` is set, it also takes a backup on that schedule. It
+warns everyone five minutes and one minute before each one, with ``DUMP`5MIN`` and ``DUMP`1MIN``;
+a warning is given only when the interval is longer than it. With the interval at `2m` and
+``&DUMP`1MIN #9=@pemit #1=dump`1min enactor %# message %0`` set, `#1` sees:
+
+```
+GAME: Database save in 1 minute.
+dump`1min enactor #1 message GAME: Database save in 1 minute.
+```
+
+A player who types a command the game does not understand, somewhere they do not control, raises
+``LOG`HUH``:
 
 ```sharp
-> &LOG`HUH #9=@pemit #1=Heard log`huh: %<message>
+> &LOG`HUH #9=@pemit #1=log`huh %0
 Event Handler/LOG`HUH - Set.
 ```
 
 Bob, standing in Room Zero, types `zzfrobnicate`, and `#1` sees:
 
 ```
-Heard log`huh: HUH: Bob(#15) in Room Zero(#0) [God]: zzfrobnicate
+log`huh HUH: Bob(#15) in Room Zero(#0) [God]: zzfrobnicate
 ```
 
-The rest are ``DB`DBCK`` every `dbck_interval`, ``PLAYER`INACTIVITY`` after players idle past
-`idle_timeout` are disconnected (`idle_timeout` is 0, nobody, unless you set it), the SQL events,
-``SIGNAL`USR1`` and ``SIGNAL`USR2`` in place of a restart and a save when the server is sent those
-signals, and ``HTTP`FAIL`` for an HTTP request the server cannot read. The
+The rest are ``PLAYER`INACTIVITY`` after players idle past `idle_timeout` are disconnected
+(`idle_timeout` is 0, nobody, unless you set it), the SQL events, ``SIGNAL`USR1`` and
+``SIGNAL`USR2`` in place of a restart and a backup when the server is sent those signals, and
+``HTTP`FAIL`` for an HTTP request the server cannot read. The
 [event list](/reference/sharpmush-help/sharpevents/) describes each one.

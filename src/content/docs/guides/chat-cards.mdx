@@ -1,0 +1,224 @@
+---
+title: Chat Cards
+description: Send a player a small panel with clickable commands, such as an invitation they can accept or decline, and check who may run each command.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+A **chat card** is a short message drawn as a small panel, with one or more commands the reader can
+click. Dice results with a button to apply the damage, a scene invitation with Accept and Decline, a
+staff request with Approve: each is a chat card. SharpMUSH has no card feature of its own. A card is
+two things the game already has, put together:
+
+- a [layout](/reference/sharpmush-help/layout-functions/#box) such as `box()` and `fields()`, which
+  each client draws in its own way;
+- a [command link](/reference/sharpmush-help/sharppueb/#cmdlink), made with `cmdlink()`, which the
+  reader clicks to run a command.
+
+This page builds an invitation card, from the panel to the commands behind its links. Most of the work
+is in those commands, because **a link runs as whoever clicks it**. The card is shown to one player,
+but the command it names can be typed by anyone, so each command checks who is running it.
+
+The example on this page was run on a SharpMUSH server, and the output shown is what it printed.
+
+## What the reader sees
+
+On a telnet client, the card Raya receives looks like this:
+
+```
++=< Invitation 1 >===========================================================+
+| From: Wren                                                                 |
+| For:  Tea at the Lantern, nine tonight                                     |
++============================================================================+
+| +invite/accept 1   +invite/decline 1                                       |
++============================================================================+
+```
+
+What each client makes of it:
+
+| Client | The panel | The links |
+| --- | --- | --- |
+| Telnet with UTF-8 | Box lines in the game's border style | Clickable when the client supports MSLP, MXP or Pueblo |
+| Telnet without UTF-8 | The ASCII box above | The same |
+| The web portal | A card | Clickable |
+| A screen reader | The text alone, in reading order | Read out as their text |
+
+A client that cannot click a link shows its text. That is why the text of each link here is the
+command itself: a player on a plain client can read `+invite/accept 1` and type it.
+
+## How a click works
+
+![The invitation desk sends Raya a card. Raya clicks +invite/accept 1, and her client sends that line as if she had typed it; Mannaz types the same line. Both reach the same command, which checks that invitation 1 exists and was sent to whoever sent the line. Raya's is accepted and Wren is told; Mannaz's is refused.](../../../assets/guide/chat-cards-click.svg)
+
+Clicking a link sends its command to the game exactly as if the reader had typed it. Nothing about
+the click tells the game which card it came from, or that it came from a card at all. So:
+
+- **The reader is the enactor.** In the command, `%#` is whoever clicked, not the player the card
+  was sent to.
+- **Anyone can type the command.** Another player who guesses `+invite/accept 1` sends the same line.
+  Sending the card to one player does not limit who runs the command.
+- **A card can be clicked late.** The reader may click it an hour later, or twice. The command finds
+  the invitation still waiting, or says it is gone.
+- **The link names an id, not a name or text.** The command looks everything else up from that id,
+  so it reads what is true now, not what was true when the card was drawn.
+
+## Build it
+
+The invitation desk is an object in the Master Room, so its commands work everywhere. Build it where
+you are, set it up, and move it to the Master Room last.
+
+### The object
+
+```sharp
+@create Invite Desk
+@set Invite Desk=!no_command
+@power Invite Desk=Send_OOB
+&DATA Invite Desk=Invitations, one branch per invitation number.
+@set Invite Desk/DATA=no_command
+```
+
+- A new thing is created `NO_COMMAND`, which stops its `$`-commands from being found. The second
+  line clears it.
+- `cmdlink()` needs a Wizard or the `Send_OOB` power, and checks the object running the code: here,
+  the desk. A Wizard grants `Send_OOB`. Without it, every link is `#-1 PERMISSION DENIED`.
+- Each invitation is a branch under `DATA`: `` DATA`1`FROM ``, `` DATA`1`TO ``, `` DATA`1`WHAT ``.
+  `no_command` on `DATA` stops anything stored there from being taken for a command.
+
+### Sending the card
+
+```sharp
+&CMD`INVITE Invite Desk=$+invite *=*:@assert isdbref(setr(to,pmatch(%0)))=@pemit %#=notice(INVITE,There is no player called %0.,warn);think setq(id,inc(get(me/DATA`NEXT)));&DATA`NEXT me=%q<id>;&DATA`%q<id>`FROM me=%:;&DATA`%q<id>`TO me=objid(%q<to>);&DATA`%q<id>`WHAT me=%1;@pemit %q<to>=u(FUN`DISPLAY`CARD,%q<id>);@pemit %#=notice(INVITE,Invitation %q<id> is on its way to [name(%q<to>)]. [cmdlink(+invite/cancel %q<id>,+invite/cancel %q<id>,Cancel the invitation)] takes it back.,ok)
+```
+
+`+invite <player>=<what>` stores the invitation under the next number, sends the card to the player
+and tells the sender. The sender and the player are stored as objids (`%:` and `objid()`), so a
+recycled dbref can never match.
+
+```sharp
+&FUN`DISPLAY`CARD Invite Desk=box(fields(,From,name(get(me/DATA`%0`FROM)),For,get(me/DATA`%0`WHAT))%r[rule()]%r[cmdlink(+invite/accept %0,+invite/accept %0,Accept the invitation)]%b%b%b[cmdlink(+invite/decline %0,+invite/decline %0,Decline the invitation)],Invitation %0,,{{"title":"left"}})
+```
+
+`` FUN`DISPLAY`CARD `` draws invitation `%0`:
+
+- `box()` is the panel, titled with the invitation's number. Its width is left empty, so each reader
+  gets it at their own width.
+- `fields()` lays out who sent it and what it is for.
+- `rule()` on a line of its own divides the box above the links.
+- `cmdlink(<text>, <command>, <hint>)` is a link. The hint is the tooltip in clients that show one.
+
+The card reads the invitation from the desk each time it is drawn. The invitation's text came from
+the sender, and `get()` returns it as it was stored, without evaluating it again.
+
+### The checks
+
+```sharp
+&INC`IS`INVITE Invite Desk=@assert cand(isint(%0),hasattr(me,DATA`%0`TO))=@pemit %#=notice(INVITE,There is no invitation %0.,warn)
+&INC`CAN`ANSWER Invite Desk=@assert strmatch(get(me/DATA`%0`TO),%:)=@pemit %#=notice(INVITE,Invitation %0 is not addressed to you.,error)
+@permission/define invite.manage=Staff/Cancel anyone's invitation
+&INC`CAN`CANCEL Invite Desk=@assert cor(strmatch(get(me/DATA`%0`FROM),%:),permission(%#,invite.manage))=@pemit %#=notice(INVITE,Only the sender or staff can cancel invitation %0.,error)
+```
+
+Each check is its own attribute, so every command that needs it uses the same one:
+
+- `` INC`IS`INVITE `` asks whether the invitation is still there. `isint()` comes first, so the number
+  must be digits before it becomes part of an attribute name: `` +invite/accept 1`TO `` is refused,
+  not read as some other attribute.
+- `` INC`CAN`ANSWER `` asks whether the enactor is the player the invitation was sent to. This is the
+  check that stops anyone else from accepting it.
+- `` INC`CAN`CANCEL `` lets the sender cancel, and anyone holding the `invite.manage` permission.
+  Staff are given the permission through a role, so the code never names who the staff are; see
+  [Roles](/reference/sharpmush-help/roles).
+
+### The commands behind the links
+
+```sharp
+&CMD`ACCEPT Invite Desk=$+invite/accept *:@include/chain me/INC`IS`INVITE me/INC`CAN`ANSWER=%0;@pemit %#=notice(INVITE,You accept invitation %0.,ok);@pemit get(me/DATA`%0`FROM)=notice(INVITE,name(%#) accepts invitation %0.,ok);@wipe me/DATA`%0
+&CMD`DECLINE Invite Desk=$+invite/decline *:@include/chain me/INC`IS`INVITE me/INC`CAN`ANSWER=%0;@pemit %#=notice(INVITE,You decline invitation %0.,ok);@pemit get(me/DATA`%0`FROM)=notice(INVITE,name(%#) declines invitation %0.);@wipe me/DATA`%0
+&CMD`CANCEL Invite Desk=$+invite/cancel *:@include/chain me/INC`IS`INVITE me/INC`CAN`CANCEL=%0;@pemit get(me/DATA`%0`TO)=notice(INVITE,Invitation %0 was cancelled.);@pemit %#=notice(INVITE,Invitation %0 is cancelled.,ok);@wipe me/DATA`%0
+@tel Invite Desk=#2
+```
+
+Each command runs its checks with `@include/chain`, which stops at the first one that fails, and only
+then does its work. The last step, `@wipe`, removes the whole `` DATA`<number> `` branch, so a second
+click finds nothing to answer. The last line moves the desk into the Master Room.
+
+## Try it
+
+Wren, Raya and Mannaz are three ordinary players.
+
+Wren sends an invitation:
+
+```
+> +invite Raya=Tea at the Lantern, nine tonight
+[INVITE] Done: Invitation 1 is on its way to Raya. +invite/cancel 1 takes it back.
+```
+
+Raya receives the card shown at the top of this page.
+
+Mannaz tries to answer it, then to cancel it, then to reach one of its attributes:
+
+```
+> +invite/accept 1
+[INVITE] Error: Invitation 1 is not addressed to you.
+> +invite/cancel 1
+[INVITE] Error: Only the sender or staff can cancel invitation 1.
+> +invite/accept 1`TO
+[INVITE] Warning: There is no invitation 1`TO.
+```
+
+Raya clicks Accept. Clicking sends `+invite/accept 1` as Raya:
+
+```
+> +invite/accept 1
+[INVITE] Done: You accept invitation 1.
+```
+
+Wren is told:
+
+```
+[INVITE] Done: Raya accepts invitation 1.
+```
+
+Raya clicks Accept a second time:
+
+```
+> +invite/accept 1
+[INVITE] Warning: There is no invitation 1.
+```
+
+A staff member cancels someone else's invitation. A Wizard gives Mannaz the permission, then Wren
+sends Raya invitation 2:
+
+```
+> @permission/allow Mannaz=invite.manage
+Mannaz: allows invite.manage.
+```
+
+```
+> +invite/cancel 2
+[INVITE] Done: Invitation 2 is cancelled.
+```
+
+Raya is told `[INVITE] Invitation 2 was cancelled.`
+
+<Aside type="tip" title="Give the permission to a role">
+`@permission/allow` gives a permission to one character. To give it to every member of a staff
+role, use `@role/allow <role>=invite.manage`. The code does not change either way.
+</Aside>
+
+## Cards for a whole room
+
+A card sent with `@remit` reaches everyone in the room, and anyone there can click it. That suits a
+card everyone may answer, such as Join on a scene starting here. When only some readers may act,
+the command checks, as `` INC`CAN`CANCEL `` does above. Hiding a link from some readers is not a
+check: they can still type the command.
+
+## Checklist
+
+- The object that draws the card has `Send_OOB`, or `cmdlink()` refuses.
+- Each link names an id the command can look up, never a name or player text.
+- Each command checks, with `%#`, that the clicker may do this, and that the thing it names still
+  exists and is still waiting.
+- Each command does its work once: after acting, it removes or marks what it acted on.
+- The link text is the command, so a reader who cannot click can type it.
+- Messages back go through `notice()`, so every reader sees which system is talking.
