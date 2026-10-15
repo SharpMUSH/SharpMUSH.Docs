@@ -34,11 +34,13 @@ SharpMUSH server, with the receiving programs on the same computer (see
 ```
 > @webhook/create relay=https://bot.example.com/game
 Webhook relay created. It hears no events yet: set them with @webhook/events relay=<pattern> ...
-Its signing secret is whsec_WmFQV5gWnsULTq6uFqftD3dqy4HCcgWRf2Hg5SPEIy0=
+Its signing secret is whsec_6vhcRUsya8jVpPNWHfNyZiPIRWou34Sn3mrnp0ZLS3I=
+Copy it now: it is not shown again. @webhook/rotate makes a new one.
 ```
 
 Copy the secret into your program now. It is how your program tells a real delivery from a forged one.
-`@webhook/secret relay` shows it again later.
+The game shows it this once. It keeps it in its secret store, encrypted, as `webhook.relay.signing`,
+where `@secret` lists it but never shows it. If you lose it, [change the secret](#change-the-secret).
 
 A new webhook hears nothing. Tell it which events to send:
 
@@ -236,6 +238,7 @@ Sent WEBHOOK`TEST to webhook relay as msg_01a13cd836d976e18a803586a72be70b. @web
 │ Address:      http://127.0.0.1:9901/game                                   │
 │ Events:       CHANNEL`MESSAGE                                              │
 │ Sent:         every event it hears                                         │
+│ Secret:       webhook.relay.signing                                        │
 │ Created:      2026-10-14 23:55:44 by #1:1792022092690                      │
 │ Delivered:    5, last 2026-10-14 23:56:15                                  │
 │ Failed tries: 2, last 2026-10-14 23:55:57                                  │
@@ -256,6 +259,7 @@ Sent WEBHOOK`TEST to webhook relay as msg_01a13cd836d976e18a803586a72be70b. @web
 ```
 
 - **Sent**: which events it may be sent (see [Which events a webhook may be sent](#which-events-a-webhook-may-be-sent)).
+- **Secret**: the name its signing secret is kept under (see [Change the secret](#change-the-secret)).
 - **Delivered**: tries your program answered with a 2xx status.
 - **Failed tries**: tries that got another status, no answer in time, or no connection.
 - **Dropped**: deliveries the game gave up on.
@@ -323,7 +327,8 @@ its events, so it is sent object events (see
 ```
 > @webhook/create watcher
 Webhook watcher created. It hears no events yet: set them with @webhook/events watcher=<pattern> ...
-Its signing secret is whsec_a1mLmPVl20kXhgQFkzXrbOWH9UAouzn1iAJMjKnV/lA=
+Its signing secret is whsec_xXp6II5U8fvRWuLcGAC6ASWejYYR99p3IX7kjoYGtAA=
+Copy it now: it is not shown again. @webhook/rotate makes a new one.
 > @webhook/events watcher=object`*
 Webhook watcher now hears: OBJECT`*
 ```
@@ -366,12 +371,13 @@ again. A program that reads too slowly loses its oldest events.
 
 ## Change the secret
 
-If a secret leaks, give the webhook a new one:
+If a secret leaks, or you lost it, give the webhook a new one:
 
 ```
 > @webhook/rotate watcher
-Webhook watcher has a new signing secret: whsec_U7hyh4S7G47ZF8Lyw0vy74XGCcvyYWNaKE9LsnXbJbw=
-The old one no longer verifies.
+Webhook watcher's old signing secret no longer verifies.
+Its signing secret is whsec_stSyg8+vV+NdYcPey03k81OI8kfgr99XXVtLNIONn1I=
+Copy it now: it is not shown again. @webhook/rotate makes a new one.
 ```
 
 The old secret stops working at once, including for deliveries still waiting to be retried. Any
@@ -382,6 +388,18 @@ closed 1008 webhook deleted or secret rotated
 ```
 
 Put the new secret in your program and start it again.
+
+### Set the secret outside the game
+
+A webhook's secret is a secret like any other the game keeps (see `help @secret`), so the server's
+operator can set it outside the game instead: the environment variable
+`SHARPMUSH_SECRET_WEBHOOK_RELAY_SIGNING` for the webhook `relay`, or a file named
+`webhook.relay.signing` in the secrets directory. The value is `whsec_` followed by a key in base64.
+The game then signs with that value, and `@webhook/create` and `@webhook/rotate` say which variable or
+file sets it instead of showing a secret.
+
+A webhook whose secret is missing, cleared with `@secret/clear`, or not a key fails each try with a
+message saying so, shown by `@webhook <name>`, until `@webhook/rotate` makes a new one.
 
 ## Settings
 
