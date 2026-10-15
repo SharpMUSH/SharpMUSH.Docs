@@ -37,7 +37,7 @@ command makes still applies. The palette never lets a player do something they c
 
 ## Adding a command
 
-A palette entry is an attribute `PALETTE`<name>` on the object that holds the command. Its value is a
+A palette entry is an attribute ``PALETTE`<name>`` on the object that holds the command. Its value is a
 JSON object: at least a `label`, what the row says, and a `line`, what it sends. `attr` names the
 `$`-command the line runs, so the entry is offered only while that command exists.
 
@@ -80,7 +80,7 @@ its `lock`, if it has one, passes for them. Things start `NO_COMMAND`, which is 
 | `urgent` | `true` puts it under Now while its contexts are there. |
 | `always` | `true` lists it under Always. |
 | `info` | One line shown under the row. |
-| `lock` | A lock the player must pass, such as `FUN`CAN`FIGHT/1`. |
+| `lock` | A lock the player must pass, such as ``FUN`CAN`FIGHT/1``. |
 | `action` | `insert` puts the line into the terminal for the player to finish, instead of running it. |
 
 The value is data. Only `lock` is ever evaluated.
