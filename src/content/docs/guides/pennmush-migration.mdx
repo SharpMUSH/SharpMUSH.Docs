@@ -129,18 +129,41 @@ SharpMUSH does not, so output that relied on it may show extra spaces.
 
 When the import ends, the import page lists every attribute whose softcode it rewrote under
 **Rewritten softcode**, one line each, apart from the other warnings. Each line names the object, the
-attribute and what changed. A line that says **check by hand** names code the rewrite could not carry
-over exactly, with the reason, for example colour stored in a register.
+attribute and what changed. Click a line to see the attribute's code before and after the rewrite. A
+line that says **check by hand** names code the rewrite could not carry over exactly, with the reason,
+for example colour stored in a register.
 
-![The import page after a RhostMUSH import, listing four rewritten attributes above the warnings](../../../assets/guide/import-rewritten-softcode.webp)
+![The import page after a RhostMUSH import, with two rewritten attributes opened to show their code before and after](../../../assets/guide/import-rewritten-softcode.webp)
 
-Output: four attributes are listed. `#9/DESCRIBE` had its colour codes written as `ansi()` and its
-`%<065>` written as `A`. `#10/DESCRIBE` says check by hand twice, so that attribute needs a person to
-read it.
+Output: four attributes are listed and the first two are open. In `#9/DESCRIBE`, `%xbBlue text%xn`
+became `[ansi(b,Blue text)]` and `%<065>` became `A`. `#10/DESCRIBE` says check by hand twice, so that
+attribute needs a person to read it.
 
-A start-up import writes the same list, every line of it, to the server log, after a warning that
-gives the count. Test each listed attribute on the rehearsed world, and fix the check-by-hand ones
-before players connect.
+Test each listed attribute on the rehearsed world, and fix the check-by-hand ones before players
+connect.
+
+### Keep the import log
+
+The **Download import log** button at the bottom of the import page saves the whole report as a text
+file named `sharpmush-import-<date>-<time>.log`: the counts, every error and warning, and each
+rewritten attribute with its code before and after. Keep it with your cutover notes, or attach it
+when you ask for help with an import.
+
+```text
+Rewritten softcode (4)
+
+#9/DESCRIBE: %c/%x colour written as ansi(); %<065> written as A
+  Before:
+    A shiny widget%r%xbBlue text%xn and %<065>.
+  After:
+    A shiny widget%r[ansi(b,Blue text)]%band A.
+```
+
+Output: one rewritten attribute from the log, with its code before and after.
+
+An import started with `PENNMUSH_DATABASE_PATH` writes the same file into the directory that holds
+the imported database, and the server log names it. The server log also lists every rewritten
+attribute, one line each, after a warning that gives the count.
 
 ## 3. Check the rehearsed world
 
