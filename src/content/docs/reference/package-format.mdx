@@ -469,8 +469,8 @@ The review screen lists each entry with what the apply does to it, and how many 
   `limit` or `enum` differs from the manifest's, the install stops and says why; different default
   flags are only noted. An entry another installed package owns stops the install.
 - **Retroactive.** Default flags reach new copies of the attribute only. With `retroactive: true`,
-  every copy already on an object gets exactly the entry's flags too, whenever the apply writes them;
-  owners are left alone. The review screen shows how many copies change and asks for confirmation
+  every copy already on an object gets exactly the entry's flags too, whenever the apply writes them
+  or a new version turns `retroactive` on; owners are left alone. The review screen shows how many copies change and asks for confirmation
   before applying.
 - **Upgrade.** A field the new version changes (the flags, or the limit or enum) takes the new value.
   A field it leaves alone keeps whatever the game has now, so an administrator's `@attribute/access`
