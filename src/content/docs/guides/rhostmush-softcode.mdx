@@ -1,0 +1,99 @@
+---
+title: RhostMUSH Softcode
+description: The RhostMUSH softcode features SharpMUSH understands, the @dolist element %d and bang notation, and where the connection handle moved.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+SharpMUSH reads PennMUSH softcode first, but it also understands two pieces of RhostMUSH softcode that
+games use a lot: the `@dolist` element `%d`, and bang notation on function calls. Both ideas come from
+RhostMUSH; SharpMUSH's versions are written from how RhostMUSH behaves, not from its code.
+
+This page covers:
+
+- `%d` and `%dL`, the element of an `@dolist`;
+- bang notation, `!` and `!!` before a function call;
+- `%j`, the connection a command came in on, which used to be `%d`.
+
+The examples are in the game's help (`help @dolist`, `help bang notation`), and SharpMUSH's test suite
+runs them on every change.
+
+## The @dolist element
+
+`%d0` is the element of the `@dolist` you are in. `%d1` is the element of the `@dolist` around it, and
+`%dL` is the outermost one's.
+
+`%i0` is the element too, but `%i` counts every loop, `iter()` included. Inside an `iter()` in the action
+list, `%i0` is the `iter()` element and `%d0` is still the `@dolist` element:
+
+```sharp
+@dolist a b=think iter(x y,%d0:%i0)
+```
+
+Output:
+
+```
+a:x a:y
+b:x b:y
+```
+
+`%d` works in a queued `@dolist` and in `@dolist/inline`. Outside any `@dolist`, `%d0` gives
+`#-1 REGISTER OUT OF RANGE`, the same as `%i0` outside a loop. The element is never evaluated again:
+an element written `[add(1,1)]` is that text, not `2`.
+
+A bare `%d`, with no number after it, is just the letter `d`, as in PennMUSH.
+
+## Bang notation
+
+Put `!` or `!!` before a function's name and the call gives 1 or 0 about its result instead of the
+result:
+
+| Written | Gives 1 when the result |
+| --- | --- |
+| `!name(...)` | starts with 0, or with no number |
+| `!!name(...)` | starts with a number that is not 0 |
+| `!$name(...)` | is empty |
+| `!!$name(...)` | is not empty |
+| `!^name(...)` | is false, as `t()` reads it |
+| `!!^name(...)` | is true, as `t()` reads it |
+
+```sharp
+think [!strlen(abc)] [!!strlen(abc)] [!strlen()]
+```
+
+Output: `0 1 1`
+
+A bang counts only where a function call is recognised: at the start of an argument or a command's
+text, or right after `[`. It works on any function, global functions made with `@function` included.
+Anywhere else the `!` is plain text, and so is a bang before a name that is not a function:
+
+```sharp
+think ![strlen(abc)] x!strlen(abc)
+```
+
+Output: `!3 x!strlen(abc)`
+
+The same bangs work on a register, an iteration element and an `@dolist` element: `%q<!!$name>` is 1
+when the register holds something, `%i!0` is 1 when the iteration's element is 0, and `%d!!0` is 1
+when the `@dolist` element is a number other than 0.
+
+```sharp
+think [setq(name,)][if(%q<!$name>,No name.,Hello %q<name>.)]
+```
+
+Output: `No name.`
+
+<Aside>
+PennMUSH has no bangs. There, `!strlen(abc)` at the start of an argument is plain text, and
+`[!strlen(abc)]` is an unknown function. Code that relies on either is rare; if a game prints a line
+that starts with `!` and a real function call, escape the `!` (`\!`).
+</Aside>
+
+## The connection handle is %j
+
+`%j` is the connection the command was typed on, the number `@pemit/port` takes. It used to be `%d`;
+no other MUSH server uses `%j`, so the letter is free for this.
+
+```sharp
+@pemit/port %j=Only this connection sees this line.
+```
