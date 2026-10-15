@@ -94,7 +94,9 @@ than damage anything.
 The keys the web server signs cookies and forms with are kept beside the world, at
 `/app/data/lightning.dataprotection-keys`, so they survive a recreated container.
 `SHARPMUSH_DATAPROTECTION_PATH` moves them. If you move them, add the new path to the backup
-container's `RESTIC_BACKUP_SOURCES` too.
+container's `RESTIC_BACKUP_SOURCES` too. The same keys decrypt the game's stored
+[secrets](/guides/secrets), such as the SQL password: a world restored without them cannot read its
+secrets until they are set again.
 
 <Aside type="caution">
 Nothing outside the game server should read `data.mdb` while the game runs. To get a copy that is
