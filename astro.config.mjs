@@ -80,6 +80,7 @@ export default defineConfig({
                       { label: 'Finger Profiles', slug: 'guides/finger' },
                       { label: 'Relationships', slug: 'guides/relationships' },
                       { label: 'Character Roster', slug: 'guides/roster' },
+                      { label: 'Alts', slug: 'guides/alts' },
                       { label: 'Time and Time Zones', slug: 'guides/time' },
                       { label: 'Info Files and Journals', slug: 'guides/info' },
                       { label: 'IC Dates and Timelines', slug: 'guides/timeline' },
