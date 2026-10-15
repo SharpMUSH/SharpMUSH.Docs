@@ -53,6 +53,7 @@ export default defineConfig({
                       { label: 'Scene Details', slug: 'guides/scene-details' },
                       { label: 'Screen Readers', slug: 'guides/screen-readers' },
                       { label: 'Softcode Packages', slug: 'guides/packages' },
+                      { label: 'Versioning Packages', slug: 'guides/versioning' },
                       { label: 'Named Arguments', slug: 'guides/named-arguments' },
                       { label: 'Calling Web Services', slug: 'guides/web-requests' },
                       { label: 'RhostMUSH Softcode', slug: 'guides/rhostmush-softcode' },

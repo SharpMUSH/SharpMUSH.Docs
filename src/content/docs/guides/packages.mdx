@@ -37,7 +37,10 @@ Because every apply is a revision, an install can be **rolled back**. And becaus
 to a package's attributes survive an upgrade instead of being overwritten.
 
 Dependencies are resolved against your installed packages, and version constraints are checked
-before anything is planned.
+before anything is planned. A package can also say which SharpMUSH versions it runs on: the review
+screen refuses one that needs a newer server, and warns about one that has not been tested on yours.
+[Versioning Packages](/guides/versioning) covers what each warning means and how to set the range
+when you write a package.
 
 ## Getting packages
 
@@ -137,7 +140,7 @@ description: "Bulletin Board"
 license: MIT
 
 depends:
-  - who-where: ">=1.0 <2.0"
+  - who-where: ">=1.0"
 
 configure:
   board_name:
