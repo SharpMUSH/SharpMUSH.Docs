@@ -118,6 +118,15 @@ think u(me/WHERE)
 
 Output, for a player who is `#3`: `#3/WHERE`
 
+Inside a `#lambda`, `%=` is `#LAMBDA/` followed by the lambda's code, as in PennMUSH, so a lambda can
+call itself:
+
+```sharp
+think ulambda(lit(#lambda/[if(lte(%0,1),1,mul(%0,ulambda(%=,dec(%0))))]),5)
+```
+
+Output: `120`
+
 <Aside>
 PennMUSH prints `m` for `%m`, and reads `%=` as the name of the attribute being evaluated, so
 `%=<greeting>` there is that name followed by `<greeting>`. Importing a PennMUSH database lists every
