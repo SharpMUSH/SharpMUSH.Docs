@@ -11,15 +11,16 @@ statuses:
 - `lfrp`: looking for roleplay now.
 - `rp_ok`: not looking, but glad to be asked.
 
-A status shows in the Status column of `+who` and in a list of everyone who has one. A game
-can add its own statuses, change these two, or take them away.
+A status shows in the Status column of `+who` and in a list of everyone who has one. Staff
+can change how long each lasts, add statuses of their own, or take them away, with
+[`+status/options`](#changing-the-statuses).
 
 | You are | You want to | Read |
 |---|---|---|
 | A player | say you are up for a scene | [Setting a status](#setting-a-status) |
 | A player | find someone to play with | [Who has a status](#who-has-a-status) |
 | A moderator | clear a status | [Moderating](#moderating) |
-| Staff | install it, add statuses, change its settings | [Running Status](#running-status) |
+| Staff | install it, change how long a status lasts, add statuses | [Running Status](#running-status) |
 
 In the game, `+help status` has the same commands in short form. To hear when the people you
 play with connect, see the [watch list](/guides/watch).
@@ -77,7 +78,8 @@ another status clears both.
 
 `lfrp` lasts four hours from the last time you changed it, and ends when you log off.
 Changing your line, note or place starts the four hours again. `rp_ok` lasts until you change
-it, even across logins. `+status/off` clears either one.
+it, even across logins. `+status/off` clears either one. These are a new game's defaults:
+`+status` shows how long each lasts on yours.
 
 ## Who has a status
 
@@ -187,10 +189,72 @@ Tomas now holds status-moderator.
 To let one player moderate without the role, allow them the permission instead:
 `@permission/allow *Tomas=softcode.status.moderate`.
 
-### Adding a status
+### Changing the statuses
 
-The statuses live on the **Status Store**, inside the Status object in the master room. Find
-both with `@find`:
+Staff who can change the game's configuration (the `config.admin` permission) choose the
+statuses on offer with `+status` itself. `+status` shows them a line saying so under the
+list.
+
+| Type | To |
+|---|---|
+| `+status/options <name>/hours=<hours>` | set how long it lasts from when it is set; `0` lasts until it is changed |
+| `+status/options <name>/logoff=on` | end it at logoff; `=off` keeps it |
+| `+status/options <name>/tag=<text>` | set what `+who` and the list show, up to 20 characters |
+| `+status/options <name>/means=<text>` | set what `+status` says it means |
+| `+status/add <name>=<what it means>` | add a status, lasting until it is changed |
+| `+status/remove <name>` | take a status away, and from everyone who has it |
+
+A name is one word of up to 20 letters, digits and `_`, and a player types it in any case.
+
+For example, to make `lfrp` last six hours, keep `rp_ok` only until logoff, and add a status
+for a scene others may join that lasts two hours:
+
+```
+> +status/options lfrp/hours=6
+[STATUS] Done: lfrp: It lasts 6 hours or until you log off. A status set before now keeps the time it had.
+> +status/options rp_ok/logoff=on
+[STATUS] Done: rp_ok: It lasts until you log off.
+> +status/add scene=In a scene, but come and join.
+[STATUS] Done: Added scene. It lasts until it is changed. +status/options scene/hours=<hours> changes that.
+> +status/options scene/hours=2
+[STATUS] Done: scene: It lasts 2 hours. A status set before now keeps the time it had.
+> +status/options scene/tag=Open scene
+[STATUS] Done: scene shows as Open scene.
+> +status
+[STATUS] You have no status.
+═════════════════════════════════╡ Statuses ╞═════════════════════════════════
+Name   Means                                                      Lasts
+lfrp   Looking for roleplay now.                                  6h or logoff
+rp_ok  Not looking, but glad to be asked.                         until logoff
+scene  In a scene, but come and join.                             2h
+══════════════════════╡ +status <name>=<line> sets one ╞══════════════════════
+Staff: +status/options <name>/hours=<hours> changes how long one lasts. +help status staff has the rest.
+```
+
+A player then picks it like any other:
+
+```
+> +status scene=Card game at the Harbour inn
+[STATUS] Done: Your status: Open scene: Card game at the Harbour inn
+It lasts 2 hours. +status/note adds an OOC note, +status/place where to find you, and +status/off ends it.
+```
+
+![Changing how long lfrp lasts and adding a status, then choosing it](../../../assets/guide/status-custom.webp)
+
+Anyone else is refused with `Only staff who change the game's configuration can change the
+statuses on offer.` Removing a status clears it from everyone who has it:
+
+```
+> +status/remove scene
+[STATUS] Done: Removed scene, and cleared it from 1 player.
+```
+
+The statuses are kept on the **Status Store**, inside the Status object in the master room, as
+``STATUS`<NAME>`` with `TAG`, `HOURS` and `LOGOFF` beneath it.
+
+### Settings
+
+Each setting is an attribute on the **Status** object. Find its number with `@find`:
 
 ```
 > @find Status
@@ -200,47 +264,7 @@ Status Help(#20T)
 *** 3 objects found ***
 ```
 
-The numbers on your game will differ. Each status is an attribute on the store named
-``STATUS`<NAME>``, holding what it means, with three attributes beneath it:
-
-| Attribute | What it is |
-|---|---|
-| ``STATUS`<NAME>`TAG`` | What `+who` and the list show, such as `LFRP`. |
-| ``STATUS`<NAME>`HOURS`` | How many hours it lasts from when it is set. `0` lasts until it is changed. |
-| ``STATUS`<NAME>`LOGOFF`` | `1` when logging off ends it. |
-
-`<NAME>` is what a player types, in any case. It is one word: letters, digits and `_`.
-
-For example, a status for a scene others may join, which lasts two hours or until logoff:
-
-```
-> &STATUS`SCENE #19=In a scene, but come and join.
-Status Store/STATUS`SCENE - Set.
-> &STATUS`SCENE`TAG #19=Open scene
-Status Store/STATUS`SCENE`TAG - Set.
-> &STATUS`SCENE`HOURS #19=2
-Status Store/STATUS`SCENE`HOURS - Set.
-> &STATUS`SCENE`LOGOFF #19=1
-Status Store/STATUS`SCENE`LOGOFF - Set.
-> +status
-[STATUS] You have no status.
-═════════════════════════════════╡ Statuses ╞═════════════════════════════════
-Name   Means                                                     Lasts
-lfrp   Looking for roleplay now.                                 4h or logoff
-rp_ok  Not looking, but glad to be asked.                        until changed
-scene  In a scene, but come and join.                            2h or logoff
-══════════════════════╡ +status <name>=<line> sets one ╞══════════════════════
-> +status scene=Card game at the Harbour inn
-[STATUS] Done: Your status: Open scene: Card game at the Harbour inn
-It lasts 2 hours or until you log off. +status/note adds an OOC note, +status/place where to find you, and +status/off ends it.
-```
-
-A change takes effect at once. A new ``HOURS`` applies to statuses set after the change.
-`@wipe #19/STATUS`SCENE` takes a status away, and with it the status of everyone who had it.
-
-### Settings
-
-Each setting is an attribute on the **Status** object:
+The numbers on your game will differ.
 
 | Attribute | What it is | Default |
 |---|---|---|
