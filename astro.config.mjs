@@ -51,6 +51,7 @@ export default defineConfig({
                       { label: 'Colour Vision', slug: 'guides/colour-vision' },
                       { label: 'Scene Pose Types', slug: 'guides/scene-pose-types' },
                       { label: 'Scene Details', slug: 'guides/scene-details' },
+                      { label: 'Scene Safety', slug: 'guides/scene-safety' },
                       { label: 'Screen Readers', slug: 'guides/screen-readers' },
                       { label: 'Softcode Packages', slug: 'guides/packages' },
                       { label: 'Game Settings with +config', slug: 'guides/config' },
