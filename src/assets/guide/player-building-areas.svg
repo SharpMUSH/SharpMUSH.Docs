@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 330" width="860" height="330" role="img" aria-labelledby="t d">
+<title id="t">A player's area joined to the grid</title>
+<desc id="d">Market Square is on the grid, owned by staff. Mira's area, Clockmaker's Workshop and Back Garden, is joined by exits Mira opened with @dig. Staff open the two exits between Market Square and the workshop once the Building job is approved.</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#334155"/></marker>
+<marker id="arrow-staff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#b45309"/></marker>
+</defs>
+<rect x="0" y="0" width="860" height="330" rx="12" fill="#f8fafc"/>
+<g font-family="system-ui, sans-serif" fill="#0f172a">
+<rect x="20" y="40" width="220" height="250" rx="10" fill="#e2e8f0" stroke="#94a3b8"/>
+<text x="130" y="28" text-anchor="middle" font-size="15" font-weight="600">The grid (staff own it)</text>
+<rect x="45" y="130" width="170" height="64" rx="8" fill="#ffffff" stroke="#475569"/>
+<text x="130" y="158" text-anchor="middle" font-size="15" font-weight="600">Market Square</text>
+<text x="130" y="178" text-anchor="middle" font-size="13" fill="#475569">#30</text>
+<rect x="450" y="40" width="390" height="250" rx="10" fill="#e0f2fe" stroke="#7dd3fc"/>
+<text x="645" y="28" text-anchor="middle" font-size="15" font-weight="600">Mira's area (her quota)</text>
+<rect x="470" y="130" width="190" height="64" rx="8" fill="#ffffff" stroke="#0369a1"/>
+<text x="565" y="158" text-anchor="middle" font-size="15" font-weight="600">Clockmaker's Workshop</text>
+<text x="565" y="178" text-anchor="middle" font-size="13" fill="#475569">#31</text>
+<rect x="695" y="130" width="130" height="64" rx="8" fill="#ffffff" stroke="#0369a1"/>
+<text x="760" y="158" text-anchor="middle" font-size="15" font-weight="600">Back Garden</text>
+<text x="760" y="178" text-anchor="middle" font-size="13" fill="#475569">#32</text>
+<line x1="662" y1="150" x2="691" y2="150" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="693" y1="176" x2="664" y2="176" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="678" y="228" text-anchor="middle" font-size="13">Garden &lt;G&gt; and Workshop &lt;W&gt;,</text>
+<text x="678" y="246" text-anchor="middle" font-size="13">opened by Mira's @dig</text>
+<line x1="218" y1="150" x2="466" y2="150" stroke="#b45309" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow-staff)"/>
+<line x1="466" y1="176" x2="220" y2="176" stroke="#b45309" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow-staff)"/>
+<text x="343" y="140" text-anchor="middle" font-size="13" fill="#b45309">Clockmaker's Workshop &lt;C&gt;</text>
+<text x="343" y="200" text-anchor="middle" font-size="13" fill="#b45309">Market Square &lt;M&gt;</text>
+<text x="430" y="315" text-anchor="middle" font-size="13" fill="#b45309">Dashed: opened by staff once the Building job is done</text>
+</g>
+</svg>
