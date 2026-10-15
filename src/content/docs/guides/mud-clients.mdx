@@ -35,8 +35,8 @@ shown is what it sent.
 - **The socket server** agrees to GMCP with each telnet client and keeps the list of modules the client
   asked for. It sends `Client.Media.Default` when the game has a `media_base_url`.
 - **The engine** keeps that list for [`gmcpsupports()`](#gmcpsupports), raises events such as
-  ``OBJECT`MOVE``, ``ATTRIBUTE`CHANGE`` and ``SOCKET`GMCP``, and sends whatever softcode hands to
-  [`oob()`](#oob-with-supported).
+  ``OBJECT`MOVE`` and ``SOCKET`GMCP``, runs the handlers of [watched attributes](#watched-attributes)
+  when one changes, and sends whatever softcode hands to [`oob()`](#oob-with-supported).
 - **The packages** hear those events on the event handler, shape the game's data into the standard
   GMCP messages, and send them with `oob(..., supported)`, which skips a client that did not ask for
   them. Mudlet's `Client.GUI` and `Client.Map` are the exception: see
@@ -307,7 +307,6 @@ Settings, `+config gmcp-char`:
 | `vitals` | `HP MAXHP MP MAXMP` | the player attributes sent as `Char.Vitals` |
 | `status` | none | the player attributes sent as `Char.Status`, such as `LEVEL CLASS` |
 | `fullname` | `FULLNAME` | the player attribute holding the name shown in full |
-| `watch-new` | on | whether every new copy of a vitals or status attribute is made watched, with `@attribute/access` |
 
 The package sends a change the moment it happens, without checking anyone's attributes over and over.
 That is what [watched attributes](#watched-attributes) are for.
@@ -383,34 +382,86 @@ Mudlet never lists `Client`. The Discord messages are sent only to a client that
 ## Watched attributes
 
 A gauge has to change the moment the health behind it does. Rather than read every player's attributes
-over and over, the game says when one changes, but only for an attribute flagged **`watched`**, so
+over and over, the game can run code whenever an attribute changes. Staff choose which attributes, so
 attributes nobody watches cost nothing.
 
-- `@set <object>/<attribute>=watched` watches one attribute on one object.
-- `@attribute/access <attribute>=watched` makes every copy of a standard attribute created from then on
-  watched. Copies that already exist keep their own flags. This replaces the attribute's default flags,
-  so a game whose attribute already has default flags names them too.
+`@attribute/watch <attribute>` watches a standard attribute: every time a copy of it is set, cleared or
+wiped, on any object and by any command or function, the event handler runs its attributes named
+``WATCH`<attribute>`` and ``WATCH`<attribute>`*``. Each package keeps a handler of its own one level
+below, such as ``WATCH`HP`GAUGE``, so packages do not edit each other's. A handler gets the object as
+`%0` or `%<objid>`, the attribute's full name as `%1` or `%<attribute>`, the old and new values as `%2`
+and `%3` (`%<old>` and `%<new>`), and whoever changed it as `%4` or `%<enactor>`.
 
-Each change to a watched attribute raises the ``ATTRIBUTE`CHANGE`` event on the event handler, with
-`objid`, `attribute` (its full name in upper case), `old`, `new` and `enactor`. See the
-[event list](/reference/sharpmush-help/sharpevents/).
+The attribute has to be in the attribute table first; `@attribute/access <attribute>=none` adds it.
+`@attribute/watch <attribute>=` stops watching it, and `attrwatch(<attribute>)` tells softcode what it
+is watched with. Only staff with `config.admin` can watch an attribute. See
+[`@attribute`](/reference/sharpmush-help/attribute-command/).
 
-gmcp-char watches the attributes its `vitals` and `status` settings name, for you:
+```
+> @attribute/access HP=none
+HP -- Attribute permissions now: 
+> &HP me=20
+God/HP - Set.
+> @attribute/watch HP
+HP is watched: every change to it runs the event handler's WATCH`HP WATCH`HP`*.
+> &WATCH`HP`LOG #9=@pemit %<objid>=HP went from %<old> to %<new>.
+Event Handler/WATCH`HP`LOG - Set.
+> &HP me=15
+God/HP - Set.
+HP went from 20 to 15.
+```
 
-- on every player who already has one, when it is installed and whenever those settings change;
-- on each player as they connect, which catches a copy made before it was watched;
-- with `@attribute/access`, on every new copy, while `watch-new` is on. Turning `watch-new` off, or
-  dropping an attribute from `vitals` or `status`, puts the default the package gave back to none.
+### What gmcp-char does
+
+For each attribute its `vitals` and `status` settings name, gmcp-char sets this up for you when it is
+installed, and again whenever `+config` changes those settings:
+
+- it adds the attribute to the attribute table, but only if it is not there already, so an attribute
+  the game already has keeps its flags;
+- it watches the attribute, if nothing watches it yet;
+- it puts its handler, ``WATCH`<attribute>`GMCPCHAR``, on the event handler.
+
+```
+> think attrwatch(HP)
+WATCH`HP WATCH`HP`*
+> think lattr(#9/WATCH`HP`*)
+WATCH`HP`GMCPCHAR
+```
+
+If someone else already watches an attribute in another way, gmcp-char leaves it alone and does not
+send its changes. Whoever changed the setting is told:
+
+```
+> @attribute/watch LEVEL=WATCH`LEVEL`STAFF
+LEVEL is watched: every change to it runs the event handler's WATCH`LEVEL`STAFF.
+> +config gmcp-char/status=LEVEL
+[CONFIG] Done: gmcp-char/status is now LEVEL, was none.
+GMCP Char: LEVEL is already watched with WATCH`LEVEL`STAFF, so it is left as it is and its changes are not sent.
+```
+
+When an attribute is taken out of the settings, gmcp-char removes its handler. It stops watching the
+attribute only if no other handler for it is left, so another package's gauge keeps working:
+
+```
+> +config gmcp-char/vitals=HP MAXHP
+[CONFIG] Done: gmcp-char/vitals is now HP, MAXHP, was HP, MAXHP, MP, MAXMP.
+> think iter(HP MAXHP MP MAXMP,%i0=[attrwatch(%i0)],,|)
+HP=WATCH`HP WATCH`HP`*|MAXHP=WATCH`MAXHP WATCH`MAXHP`*|MP=|MAXMP=
+```
+
+Uninstalling runs no code, so the handlers stay behind for a while. The next time a watched attribute
+changes, its handler sees that gmcp-char is gone, removes itself, and stops the watch the same way.
+Table entries gmcp-char added stay in the table.
 
 So a staff member or a combat system only sets the attribute, and the player's client is told:
 
 ```
-> &MAXHP *Alice=50
-Alice/MAXHP - Set.
-Alice << Char.Vitals {"maxhp":50}
-> &HP *Alice=35
-Alice/HP - Set.
-Alice << Char.Vitals {"hp":35,"maxhp":50}
+> &MAXHP me=40
+God/MAXHP - Set.
+God << Char.Vitals {"maxhp":40}
+> &HP me=25
+God/HP - Set.
+God << Char.Vitals {"hp":25,"maxhp":40}
 ```
 
 Each message carries the whole gauge, not only the attribute that changed.
@@ -606,7 +657,7 @@ Garden in the area `Town`, with terrain `garden` and coordinates 3, 4, 0.
    Tam  << Comm.Channel.List []
    ```
 
-5. **Wren is hurt and goes up a level.** Both are watched, so her gauges and status change at once:
+5. **Wren is hurt and goes up a level.** gmcp-char watches both, so her gauges and status change at once:
 
    ```
    > &HP *Wren=20
