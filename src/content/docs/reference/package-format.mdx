@@ -427,6 +427,10 @@ depends:
 - **The bundled catalogue** does not offer a package whose plugin is not running, and a new game does
   not install it.
 
+![The review of the scene package on a server without the Scene plugin: a red line reads "Needs the scene plugin, which is not running on this server." and Apply is greyed out](../../../assets/guide/package-review-needs-plugin.webp)
+
+![The setup wizard's package list: Scene System is greyed out with "Not available on this server: the plugin it runs on is not installed."](../../../assets/guide/setup-package-needs-plugin.webp)
+
 Name a plugin here only when the package cannot work without it. Code that only reads a plugin when it
 is there, and checks first, needs no entry. The bundled `room-contents` package does this: it asks
 `scenewhere()` for the room's scene and treats any `#-1` answer, including the one for a function that
