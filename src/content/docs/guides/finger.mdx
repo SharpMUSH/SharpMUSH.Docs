@@ -223,7 +223,7 @@ The finger package ships with the server but is not installed on a new game. An 
 installs it from the portal:
 
 1. Open **Packages** in the admin area and choose **Browse**.
-2. Install `finger`. It needs `plus-help`, which a new game already has.
+2. Install `finger`. It needs `plus-help` and `plus-config`, which a new game already has.
 
 It adds the commands `+finger` and `+oocfinger` for everyone. They are game commands, which are
 matched before softcode `$`-commands, so a `+finger` your game already has in softcode stops
@@ -331,20 +331,22 @@ on the Finger object, and they go away when that package is uninstalled.
 
 ### Settings
 
-Each setting is an attribute on the Finger object:
+`+config finger` lists the settings and `+config finger/<setting>=<value>` changes one, with the
+`config.admin` permission. See [Game Settings with +config](/guides/config).
 
-| Attribute | What it is | Default |
+| Setting | What it is | Default |
 |---|---|---|
-| ``DATA`SECTIONS`` | Keys shown under the rest, each below a line with its label, for text longer than a line. | `QUOTE RPPREFS` |
-| ``DATA`LOCKED`` | Keys only staff set. | none |
-| ``DATA`COLUMNS`` | How many columns the other fields are dealt into. | 2 |
-| ``DATA`LENGTH`` | The longest value, in characters. | 1000 |
+| `sections` | Keys shown under the rest, each below a line with its label, for text longer than a line. | `QUOTE RPPREFS` |
+| `locked` | Keys only staff set. | none |
+| `columns` | How many columns the other fields are dealt into, 1 to 4. | 2 |
+| `length` | The longest value, in characters. | 1000 |
 
-For example, to let only staff set Occupation:
+`sections` and `locked` take only keys the game has fields for. For example, to let only staff
+set Occupation:
 
 ```
-> &DATA`LOCKED #15=occupation
-Finger/DATA`LOCKED - Set.
+> +config/add finger/locked=occupation
+[CONFIG] Done: finger/locked is now occupation, was none.
 ```
 
 A player who tries is told so:

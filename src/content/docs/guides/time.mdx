@@ -245,18 +245,18 @@ The time package ships with the server but is not installed on a new game. An ad
 installs it from the portal:
 
 1. Open **Packages** in the admin area and choose **Browse**.
-2. Install `time`. It needs `plus-help`, which a new game already has.
+2. Install `time`. It needs `plus-help` and `plus-config`, which a new game already has.
 
 It adds the commands `+time` and `+timezone` for everyone. They are game commands, which are
 matched before softcode `$`-commands, so a `+time` your game already has in softcode stops running
 once the package is in.
 
 It makes two objects in the master room: **Time**, which runs the commands, and **Clock**, inside
-it, which holds the settings. Find the Clock's number with `@find`:
+it, which holds the settings and the short names for zones. Find the Clock's number with `@find`:
 
 ```
 > @find Clock
-Clock(#16TVn)
+Clock(#26TVn)
 *** 1 objects found ***
 ```
 
@@ -264,20 +264,22 @@ The number on your game will differ.
 
 ### Settings
 
-Each setting is an attribute on the Clock:
+`+config time` lists the settings and `+config time/<setting>=<value>` changes one, with the
+`config.admin` permission. See [Game Settings with +config](/guides/config).
 
-| Attribute | What it is | Default |
+| Setting | What it is | Default |
 |---|---|---|
-| ``DATA`ZONE`` | The game's zone, the one `+time` calls game time. | `UTC` |
-| ``DATA`FORMAT`` | How a time is written, in [`timefmt()`](/reference/sharpmush-help/timefmt-function/)'s codes. | `$a $d $b $Y, $H:$M` |
-| ``ALIAS`<name>`` | A short name players may type for a zone, one attribute each. | the table above |
+| `zone` | The game's zone, the one `+time` calls game time. | `UTC` |
+| `format` | How a time is written, in [`timefmt()`](/reference/sharpmush-help/timefmt-function/)'s codes. | `$a $d $b $Y, $H:$M` |
 
-For example, to keep the game on New York time and let players type `irish`:
+The short names players may type for a zone are attributes on the Clock, ``ALIAS`<name>``, one
+each, its value the zone. For example, to keep the game on New York time and let players type
+`irish`:
 
 ```
-> &DATA`ZONE #16=America/New_York
-Clock/DATA`ZONE - Set.
-> &ALIAS`IRISH #16=Europe/Dublin
+> +config time/zone=America/New_York
+[CONFIG] Done: time/zone is now America/New_York, was UTC.
+> &ALIAS`IRISH #26=Europe/Dublin
 Clock/ALIAS`IRISH - Set.
 ```
 
@@ -285,21 +287,22 @@ A short name wins over a zone of the same name, which is how `est` comes to mean
 
 ### The IC date
 
-The IC date comes from these attributes on the Clock:
+The IC date comes from these settings:
 
-| Attribute | What it is | Default |
+| Setting | What it is | Default |
 |---|---|---|
-| ``DATA`IC`ANCHOR`` | A moment, in seconds since 1970, when the IC clock reads the same as the real one. | `1767225600`, 1 January 2026 at midnight UTC |
-| ``DATA`IC`RATIO`` | How many IC seconds pass each real second. `2` makes an IC day pass in twelve real hours. | `1` |
-| ``DATA`IC`DAYS`` | Days added to the IC date; below 0 goes back. | `0` |
-| ``DATA`IC`YEARS`` | Years added to the year shown. | `0` |
-| ``DATA`IC`MONTHS`` | Twelve month names, January's first, split by `\|`. | the real ones |
-| ``DATA`IC`WEEKDAYS`` | Seven weekday names, Sunday's first, split by `\|`. | the real ones |
-| ``DATA`IC`SHOW`` | `0` takes the IC date off `+time`. | `1` |
-| ``FORMAT`IC`` | How the date is written. | `%<weekday>, %<day> %<monthname> %<year>, %<hour>:%<minute>` |
+| `ic-anchor` | A moment, in seconds since 1970, when the IC clock reads the same as the real one. | `1767225600`, 1 January 2026 at midnight UTC |
+| `ic-ratio` | How many IC seconds pass each real second. `2` makes an IC day pass in twelve real hours. | `1` |
+| `ic-days` | Days added to the IC date; below 0 goes back. | `0` |
+| `ic-years` | Years added to the year shown. | `0` |
+| `ic-months` | Twelve month names, January's first, split by `\|`. | the real ones |
+| `ic-weekdays` | Seven weekday names, Sunday's first, split by `\|`. | the real ones |
+| `ic-show` | `no` takes the IC date off `+time`. | `yes` |
 
-``FORMAT`IC`` is evaluated with `%<year>`, `%<month>` (1 to 12), `%<monthname>`, `%<day>`,
-`%<weekday>` (its name), `%<hour>`, `%<minute>` and `%<second>`.
+How the date is written is ``FORMAT`IC`` on the Clock, which is code rather than a setting. Its
+default is `%<weekday>, %<day> %<monthname> %<year>, %<hour>:%<minute>`, and it is evaluated with
+`%<year>`, `%<month>` (1 to 12), `%<monthname>`, `%<day>`, `%<weekday>` (its name), `%<hour>`,
+`%<minute>` and `%<second>`.
 
 For example, a game set three hundred years on, whose IC days run twice as fast from 1 March
 2026, with months of its own. `convtime()` turns the starting date into seconds:
@@ -307,24 +310,24 @@ For example, a game set three hundred years on, whose IC days run twice as fast 
 ```
 > think convtime(2026-03-01T00:00:00Z)
 1772323200
-> &DATA`IC`ANCHOR #16=1772323200
-Clock/DATA`IC`ANCHOR - Set.
-> &DATA`IC`RATIO #16=2
-Clock/DATA`IC`RATIO - Set.
-> &DATA`IC`YEARS #16=300
-Clock/DATA`IC`YEARS - Set.
-> &DATA`IC`MONTHS #16=Deepwinter|Thaw|Seedtime|Rains|Bloom|Highsun|Hay|Harvest|Leafall|Mist|Frost|Longnight
-Clock/DATA`IC`MONTHS - Set.
-> &FORMAT`IC #16=%<day> %<monthname>, year %<year> of the Crossing, %<hour>:%<minute>
+> +config time/ic-anchor=1772323200
+[CONFIG] Done: time/ic-anchor is now 1772323200, was 1767225600.
+> +config time/ic-ratio=2
+[CONFIG] Done: time/ic-ratio is now 2, was 1.
+> +config time/ic-years=300
+[CONFIG] Done: time/ic-years is now 300, was 0.
+> +config time/ic-months=Deepwinter|Thaw|Seedtime|Rains|Bloom|Highsun|Hay|Harvest|Leafall|Mist|Frost|Longnight
+[CONFIG] Done: time/ic-months is now Deepwinter, Thaw, Seedtime, Rains, Bloom, Highsun, Hay, Harvest, Leafall, Mist, Frost, Longnight, was none.
+> &FORMAT`IC #26=%<day> %<monthname>, year %<year> of the Crossing, %<hour>:%<minute>
 Clock/FORMAT`IC - Set.
 > +time
-===================================< Time >===================================
-Game time: Thu 15 Oct 2026, 01:08 * America/New_York (UTC-04:00)
-Your time: Thu 15 Oct 2026, 06:08 * Europe/London (UTC+01:00)
-IC date:   31 Bloom, year 2327 of the Crossing, 10:16
-==============================================================================
-+time <time> converts a time * +timezone <zone> sets yours
-==============================================================================
+═══════════════════════════════════╡ Time ╞═══════════════════════════════════
+Game time: Thu 15 Oct 2026, 03:00 · America/New_York (UTC-04:00)
+Your time: Thu 15 Oct 2026, 08:00 · Europe/London (UTC+01:00)
+IC date:   31 Bloom, year 2327 of the Crossing, 14:00
+══════════════════════════════════════════════════════════════════════════════
++time <time> converts a time · +timezone <zone> sets yours
+══════════════════════════════════════════════════════════════════════════════
 ```
 
 Seven and a half real months at double speed is fifteen IC months, so the IC date is already
@@ -356,9 +359,9 @@ Every function that takes a moment takes it as an argument, so code that shows a
 such as when a scene is scheduled, shows it to each reader in their own zone:
 
 ```
-> think u(#16/FUN`OOC`FOR,1792551600,*Tomas)
+> think u(#26/FUN`OOC`FOR,1792551600,*Tomas)
 Tue 20 Oct 2026, 22:00
-> think u(#16/FUN`IC`DATE,1772323200)
+> think u(#26/FUN`IC`DATE,1772323200)
 1 Seedtime, year 2326 of the Crossing, 00:00
 ```
 
