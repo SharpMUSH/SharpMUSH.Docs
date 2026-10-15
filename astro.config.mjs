@@ -70,6 +70,7 @@ export default defineConfig({
                       { label: 'Letting Your Players Build', slug: 'guides/player-building' },
                       { label: 'Finger Profiles', slug: 'guides/finger' },
                       { label: 'Time and Time Zones', slug: 'guides/time' },
+                      { label: 'Info Files and Journals', slug: 'guides/info' },
                       { label: 'IC Dates and Timelines', slug: 'guides/timeline' },
                       { label: 'Discord', slug: 'guides/discord' },
                       { label: 'Writing Plugins', slug: 'guides/plugins' },
