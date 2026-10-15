@@ -174,7 +174,9 @@ the event handler:
 ```
 
 The scene package's "About the scene here" entry waits for `scene_here` and has a `<scene>` slot, so
-walking into the Tavern puts it at the top with the scene filled in.
+walking into the Tavern puts it at the top with the scene filled in. The scene package keeps `scene_here`
+up to date for players already in the room, so it appears when a scene starts there and goes when the
+scene pauses or finishes.
 
 ### Names are shared
 
@@ -183,7 +185,7 @@ depending on the package that pushes it. These are the names the shipped package
 
 | Name | Pushed by | Values | Means |
 |---|---|---|---|
-| `scene_here` | scene-here | `scene` | A scene is running in the player's room. |
+| `scene_here` | scene-here, scene | `scene` | A scene is running in the player's room. |
 | `scene_focus` | scene | `scene` | The player has joined or created a scene and not left it. |
 | a package id | the engine | | The player typed one of that package's commands. |
 
@@ -226,7 +228,7 @@ A pin out of reach where the player is now is hidden, not removed.
 |---|---|
 | who-where | Who is on, Where is everyone (Always) |
 | scene | Scenes running now (Always); About the scene here and Join the scene here on `scene_here`; Pose order, Recent poses and Leave the scene on `scene_focus` |
-| scene-here | none of its own; it pushes `scene_here` |
+| scene-here | none of its own; it pushes `scene_here` as players move |
 | bboards | Next new post, What's new on the boards, Read a board or post, Post to a board, Open the reader; the reader's keys |
 
 A player who may examine an object sees, under the empty palette, which of its entries are not valid
