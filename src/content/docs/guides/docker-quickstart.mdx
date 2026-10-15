@@ -6,8 +6,7 @@ description: Bring up a SharpMUSH game with Docker Compose, from a laptop trial 
 import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
 
 SharpMUSH runs as a small set of containers: the **game server** (which also serves the web portal),
-the **connection server** (telnet and the browser WebSocket), **NATS** for messaging, and a
-database. Docker Compose brings the whole thing up together.
+the **connection server** (telnet and the browser WebSocket), **NATS** for messaging, a separate rendering worker, and an embedded LMDB database. Docker Compose brings the whole thing up together.
 
 The stack is deliberately modest. It runs comfortably on a €4–6/month VPS, or free on Oracle Cloud's
 Always Free ARM tier. **Kubernetes is not needed at this scale.**
@@ -109,21 +108,16 @@ the server's real IP; hiding it too requires Cloudflare Spectrum, which is a pai
 
 ## Keeping it running
 
-**Updates are automatic.** Every merge to `main` runs the full test suite and publishes
-`sharpmush/sharpmush-server:dev` and `sharpmush/sharpmush-connectionserver:dev` to Docker Hub. A
-`watchtower` service polls every five minutes and recreates those two services when the tag moves,
-pruning superseded images. Nothing on the box ever builds, and no inbound access is required.
-
-There is no separate client image — the Blazor portal is baked into the server image at build time.
-
-To update everything else (NATS, `cloudflared`, the backup sidecar), or to force an app update
-rather than waiting for the poll:
+The Caddy production stack uses `:latest` image names and has local `build:` definitions. It has **no Watchtower service**: updates are an operator action. From `SharpMUSH/deploy`, review the new source and recreate using the same Compose files:
 
 ```bash
 git pull
-docker compose pull
-docker compose up -d
+docker compose -f docker-compose.prod.yml up -d --build
 ```
+
+This can recreate the connection server and disconnect players, so schedule it deliberately. The Cloudflare stack instead uses `:dev` images and includes Watchtower for the engine and renderer; the socket-owning connection server is excluded. See [Deployment Reference](/guides/deployment#updating). If analysis is enabled, include its overlay too, as shown in the [Administrator walkthrough](/guides/mcp#administrator-walkthrough).
+
+The web portal is built into the server image; there is no separate client image.
 
 The `app-data` volume persists across updates, so the world is untouched. Migrations are recorded in
 the database and re-applied only when new, so unattended restarts are safe.
@@ -131,10 +125,10 @@ the database and re-applied only when new, so unattended restarts are safe.
 ### Starting on boot
 
 `restart: unless-stopped` brings containers back after a reboot, but it replays the **last** state
-rather than the **declared** one — a `docker compose down` or an edited compose file survives the
+rather than the **declared** one — a `docker compose -f docker-compose.prod.yml down` or an edited compose file survives the
 reboot, and the box quietly drifts from what `deploy/` says it should be.
 
-The supplied `sharpmush.service` unit closes that gap by running `docker compose up -d` on boot:
+The supplied `sharpmush.service` unit runs the Cloudflare Compose file by default. Before enabling it on a Caddy host, change **all** `ExecStartPre`, `ExecStart` and `ExecStop` filenames to `docker-compose.prod.yml`, and include the analysis overlay when used:
 
 ```bash
 # as root, on the host
@@ -156,11 +150,11 @@ Fill in the restic settings in `.env`, uncomment `COMPOSE_PROFILES=backup`, and 
 repository once:
 
 ```bash
-docker compose run --rm backup restic init
+docker compose -f docker-compose.prod.yml run --rm backup restic init
 ```
 
-From then on it snapshots the `app-data` volume — the LMDB store and wiki assets, i.e. the
-entire game — to your bucket nightly, keeping 7 daily and 4 weekly snapshots. The volume is mounted
+From then on it snapshots completed hot world copies and selected persisted auxiliary directories
+from `app-data` to your bucket nightly, keeping 7 daily and 4 weekly snapshots. The volume is mounted
 read-only, so a backup run can never corrupt live data.
 
 <Aside type="caution">
@@ -190,6 +184,10 @@ no proxy, no backups and no automatic updates. They are covered in
   href="/guides/local-install"
   description="Build from source, run each process on your machine, and run the tests."
 />
+
+## Editor and AI analysis
+
+Once the HTTPS game and an existing character are ready, follow [Administrator walkthrough](/guides/mcp#administrator-walkthrough) to enable the optional transports and verify diagnostics/MCP requests.
 
 ## Next steps
 

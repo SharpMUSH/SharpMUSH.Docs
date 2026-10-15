@@ -263,10 +263,10 @@ to see it register a connection), then load `https://mush.example.com`.
 
 The containers' `restart: unless-stopped` setting brings them back after a reboot, which is enough
 for most machines. But it restores whatever was running when the machine went down, not what the
-Compose file says. A `docker compose down`, a container stopped by hand, or an edited Compose file
+Compose file says. A `docker compose -f docker-compose.prod.yml down`, a container stopped by hand, or an edited Compose file
 carries over the reboot, and the machine quietly drifts from its configuration.
 
-`sharpmush.service` fixes that by running `docker compose up -d` at boot:
+`sharpmush.service` reconciles Compose at boot. Its checked-in `Exec*` commands use `docker-compose.cloudflare.yml`; change all three to `docker-compose.prod.yml` for Caddy, and include the analysis overlay if enabled:
 
 ```bash
 # as root, on the host
@@ -279,7 +279,7 @@ It pulls images first, so a boot also picks up an image the machine missed while
 still starts the game if the image registry is down. Edit `WorkingDirectory` and the Compose file name
 in the unit if your copy is not at `/opt/SharpMUSH` or you use the Caddy stack.
 
-This does not replace Watchtower, which handles updates while the machine is running (see
+In the Cloudflare variant this complements Watchtower, which handles updates while the machine is running (see
 [Updating](#updating)).
 
 ## Backups
@@ -319,22 +319,17 @@ The portal makes a copy into `pre-package/<timestamp>` before every package inst
 uninstall, and refuses to go ahead if that copy fails. It is the way back if the operation is
 interrupted. It copies the world only: a compiled plugin package's `plugins/<id>/` folder is not in it.
 
-The commands below work whether or not backups are turned on. They leave out `-f` by setting
-`COMPOSE_FILE` once per shell to whichever stack you run:
-
-```bash
-export COMPOSE_FILE=docker-compose.prod.yml        # or docker-compose.cloudflare.yml
-```
+The backup/restore commands below work whether or not the backup profile is enabled and explicitly select the Caddy production file from `deploy/`. For Cloudflare, replace **every** `-f docker-compose.prod.yml` with `-f docker-compose.cloudflare.yml`. Add enabled overlays after the base file in every invocation (for example, `-f docker-compose.prod.yml -f docker-compose.analysis.yml`). Explicit `-f` arguments override `COMPOSE_FILE`, so setting it does not add missing overlays.
 
 ```bash
 # List snapshots:
-docker compose run --rm backup restic snapshots
+docker compose -f docker-compose.prod.yml run --rm backup restic snapshots
 
 # Back up right now:
-docker compose run --rm backup backup
+docker compose -f docker-compose.prod.yml run --rm backup backup
 
 # Restore the latest snapshot into a scratch volume to look at it:
-docker compose run --rm -v restore:/restore backup \
+docker compose -f docker-compose.prod.yml run --rm -v restore:/restore backup \
   restic restore latest --target /restore
 ```
 
@@ -346,19 +341,19 @@ Stop the game, then put the snapshot's contents back into the `app-data` volume:
 starts.
 
 ```bash
-docker compose stop sharpmush-server connectionserver
+docker compose -f docker-compose.prod.yml stop sharpmush-server connectionserver
 
 # 1. Restore into a scratch volume. The -v keeps the files after the container exits;
 #    without it restic writes into the container itself and they are lost.
-docker compose run --rm -v restore:/restore backup \
+docker compose -f docker-compose.prod.yml run --rm -v restore:/restore backup \
   restic restore latest --target /restore
 
 # 2. See which copies the snapshot holds, and pick one.
-docker compose run --rm --no-deps -v restore:/restore --entrypoint sh sharpmush-server \
+docker compose -f docker-compose.prod.yml run --rm --no-deps -v restore:/restore --entrypoint sh sharpmush-server \
   -c 'ls /restore/data/backup'
 
 # 3. Put it in place. The game server's image can write to app-data; the backup container cannot.
-docker compose run --rm --no-deps -v restore:/restore --entrypoint sh sharpmush-server -c '
+docker compose -f docker-compose.prod.yml run --rm --no-deps -v restore:/restore --entrypoint sh sharpmush-server -c '
   rm -rf /app/data/lightning &&
   cp -a /restore/data/backup/<timestamp> /app/data/lightning &&
   cp -a /restore/data/wiki-assets/. /app/data/wiki-assets/ &&
@@ -367,7 +362,7 @@ docker compose run --rm --no-deps -v restore:/restore --entrypoint sh sharpmush-
     cp -a /restore/data/lightning.dataprotection-keys /app/data/lightning.dataprotection-keys
   fi'
 
-docker compose start connectionserver sharpmush-server
+docker compose -f docker-compose.prod.yml start connectionserver sharpmush-server
 docker volume rm restore    # once the game is up and you are satisfied
 ```
 
@@ -379,6 +374,8 @@ The game does not need to stop for the nightly backup: restic only reads finishe
 still being written is named `.incoming-*` and is skipped until it is complete.
 
 ## Disk space
+
+Every Compose inspection, cleanup, compaction and restart command in this section explicitly selects the Caddy production file. For a Cloudflare deployment, replace each `-f docker-compose.prod.yml` with `-f docker-compose.cloudflare.yml`. Include enabled overlays after the base file in every invocation; `COMPOSE_FILE` cannot supply overlays omitted from explicit `-f` arguments.
 
 The world's disk use is easy to misread. Four numbers describe it, and the wizard command `@storage`
 reports each one:
@@ -441,14 +438,16 @@ the uploaded files. Nothing is written in that case.
 
 ### Earlier worlds
 
+Use your deployed base file and all enabled overlays for the cleanup commands below; the shown commands are Caddy examples.
+
 Finishing a PennMUSH import moves the world it replaces to `<world>.previous`. That world is **never
 deleted automatically**, because it is the way back if the import turns out wrong. Delete it once the
 new world is checked. `@storage` lists it, along with any `.staging-*` world an unfinished import left
 and any `.incoming-*` copy an interrupted backup left:
 
 ```bash
-docker compose run --rm --no-deps --entrypoint sh sharpmush-server -c 'du -sh /app/data/*'
-docker compose run --rm --no-deps --entrypoint sh sharpmush-server -c 'rm -rf /app/data/lightning.previous'
+docker compose -f docker-compose.prod.yml run --rm --no-deps --entrypoint sh sharpmush-server -c 'du -sh /app/data/*'
+docker compose -f docker-compose.prod.yml run --rm --no-deps --entrypoint sh sharpmush-server -c 'rm -rf /app/data/lightning.previous'
 ```
 
 The rest of the volume holds uploaded wiki files (`/app/data/wiki-assets`), the signing keys
@@ -461,6 +460,8 @@ docker system df -v | grep -E 'app-data|nats-data'
 
 ### Compacting the world
 
+Before copying the commands below, select your deployed base file: Caddy uses `docker-compose.prod.yml`, Cloudflare uses `docker-compose.cloudflare.yml`. Append all enabled overlays to each command, including restart and log inspection.
+
 To give back the space that deleted records freed, have the server replace the world's file with a
 compacted copy when it starts. Nothing else has the file open at that moment, so nothing can change
 between the copy and the swap:
@@ -468,11 +469,11 @@ between the copy and the swap:
 ```bash
 # 1. Check there is room: the copy needs about the live data (see @storage) plus a margin.
 # 2. Set SHARPMUSH_LIGHTNING_COMPACT_ON_START=true on sharpmush-server, then restart it:
-docker compose up -d sharpmush-server
+docker compose -f docker-compose.prod.yml up -d sharpmush-server
 # 3. Check the log, then @storage in the game, and play-test.
-docker compose logs sharpmush-server | grep -i compact
+docker compose -f docker-compose.prod.yml logs sharpmush-server | grep -i compact
 # 4. Remove SHARPMUSH_LIGHTNING_COMPACT_ON_START and restart, then delete the original:
-docker compose run --rm --no-deps --entrypoint sh sharpmush-server -c 'rm -rf /app/data/lightning.precompact'
+docker compose -f docker-compose.prod.yml run --rm --no-deps --entrypoint sh sharpmush-server -c 'rm -rf /app/data/lightning.precompact'
 ```
 
 On each start with the setting on, the server:
@@ -566,6 +567,9 @@ folders does not count toward it.
 
 ## Updating
 
+The Caddy `docker-compose.prod.yml` uses `:latest` image names, includes local build definitions and does not run Watchtower. From `deploy/`, a reviewed source update uses `docker compose -f docker-compose.prod.yml up -d --build`; schedule it because recreating the socket owner disconnects players. Labels alone do not install Watchtower. Include any analysis overlay in recreations. The Cloudflare behavior below applies only to `docker-compose.cloudflare.yml`.
+
+
 **The Cloudflare stack updates itself.** Every change merged into SharpMUSH runs the full test suite
 and then publishes new images to Docker Hub: `sharpmush/sharpmush-server:dev` for the game server,
 `sharpmush/sharpmush-connectionserver:dev` for the renderer, and
@@ -589,8 +593,8 @@ update the game now instead of waiting for Watchtower:
 
 ```bash
 git pull
-docker compose pull
-docker compose up -d
+docker compose -f docker-compose.cloudflare.yml pull
+docker compose -f docker-compose.cloudflare.yml up -d
 ```
 
 The `app-data` volume is kept across updates, so the world is untouched. Database upgrades are
