@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" width="760" height="300" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="14">
+  <title id="t">How +config finds and changes a setting</title>
+  <desc id="d">The Config Registry holds one attribute per system, naming the object that system keeps its settings on. +config looks the system up there, reads the setting's type and limits from that object, checks the new value, and writes it back to the same object, where the system's own code reads it.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="760" height="300" rx="12" fill="#f8fafc"/>
+
+  <rect x="24" y="24" width="200" height="64" rx="8" fill="#dcfce7" stroke="#15803d"/>
+  <text x="124" y="50" text-anchor="middle" font-weight="600" fill="#14532d">Staff</text>
+  <text x="124" y="72" text-anchor="middle" fill="#14532d" font-family="ui-monospace, monospace" font-size="12">+config time/zone=UTC</text>
+
+  <rect x="24" y="200" width="200" height="76" rx="8" fill="#e0f2fe" stroke="#0369a1"/>
+  <text x="124" y="226" text-anchor="middle" font-weight="600" fill="#0c4a6e">Config Registry</text>
+  <text x="124" y="248" text-anchor="middle" fill="#0c4a6e" font-family="ui-monospace, monospace" font-size="12">SYSTEM`TIME = Clock</text>
+  <text x="124" y="266" text-anchor="middle" fill="#0c4a6e" font-family="ui-monospace, monospace" font-size="12">SYSTEM`STATUS = Status</text>
+
+  <rect x="300" y="24" width="190" height="64" rx="8" fill="#fef3c7" stroke="#b45309"/>
+  <text x="395" y="50" text-anchor="middle" font-weight="600" fill="#78350f">+config</text>
+  <text x="395" y="72" text-anchor="middle" fill="#78350f" font-size="12">finds, checks, writes</text>
+
+  <rect x="540" y="130" width="196" height="146" rx="8" fill="#f1f5f9" stroke="#334155"/>
+  <text x="638" y="156" text-anchor="middle" font-weight="600" fill="#0f172a">Clock (the system's object)</text>
+  <text x="556" y="184" fill="#0f172a" font-family="ui-monospace, monospace" font-size="12">DATA`CONFIG`ZONE</text>
+  <text x="572" y="204" fill="#0f172a" font-family="ui-monospace, monospace" font-size="12">`TYPE = timezone</text>
+  <text x="572" y="224" fill="#0f172a" font-family="ui-monospace, monospace" font-size="12">`DEFAULT = UTC</text>
+  <text x="572" y="244" fill="#0f172a" font-family="ui-monospace, monospace" font-size="12">`DESCRIPTION</text>
+  <text x="556" y="264" fill="#475569" font-size="12">its own code reads it with v()</text>
+
+  <path d="M226 56 L298 56" stroke="#475569" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <path d="M340 90 L340 120 L170 120 L170 198" stroke="#475569" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <text x="250" y="112" text-anchor="middle" fill="#475569" font-size="12">1. which object?</text>
+  <path d="M430 90 L430 170 L538 170" stroke="#475569" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <text x="420" y="165" text-anchor="end" fill="#475569" font-size="12">2. type and limits</text>
+  <path d="M460 90 L460 235 L538 235" stroke="#475569" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <text x="450" y="230" text-anchor="end" fill="#475569" font-size="12">3. writes the checked value</text>
+</svg>

@@ -238,11 +238,15 @@ attribute on the Scene Logger, `` DETAIL`<KEY> ``, holding JSON:
 | `listed` | `true` to show it after the title in lists, on the portal's scene cards and in the scene list's sidebar |
 | `tone` | The theme colour its values show in, in `+scene` and the portal; without it, the text's own colour |
 | `order` | Its place, lowest first |
+| `hidden` | `true` to keep it for code: it never shows, on a card, in `+scene` or the sidebar, and a search never reads it |
+| `sort` | Another detail's key whose number orders scenes by this one, earliest first, as the timeline package's `icdate` sorts by `icsecs` |
 
 The tone is one of the theme colours `tone()` takes, as for [pose types](/guides/scene-pose-types#in-the-portal):
 `foreground`, `primary`, `secondary`, `tertiary`, `muted`, `success`, `warning`, `error` or `info`.
 
-The commands write the JSON for you and refuse anything that would not read:
+`hidden` and `sort` are for packages, which set them in their manifest; see
+[IC Dates and Timelines](/guides/timeline/#for-coders). The commands write the JSON for you and refuse
+anything that would not read:
 
 - `+scene/detail/add <detail>=<name>` lists a new one.
 - `+scene/detail/set <detail>/<field>=<value>` changes one field. `choices` takes the values split
@@ -283,11 +287,13 @@ in case is kept the way the choice is written:
 [SCENE] Done: Scene 1: Mood is now Tense.
 ```
 
-`` DATA`OPEN_DETAILS `` on the Scene Logger decides whether players may set details the game does
-not list. It is `1` as shipped. Set it to `0` to keep them to the list:
+The `open-details` setting decides whether players may set details the game does not list. It is
+`yes` as shipped. Turn it off to keep them to the list (see
+[Game Settings with +config](/guides/config)):
 
-```text
-&DATA`OPEN_DETAILS <Scene Logger>=0
+```
+> +config scene/open-details=no
+[CONFIG] Done: scene/open-details is now no, was yes.
 ```
 
 ## Changing what +scene shows
@@ -380,7 +386,7 @@ canon era verse
 | `scene(<id>,<detail>)` | The scene's value for a detail; several are split by `\|` |
 | `scene(<id>,details)` | The details the scene has a value for: the listed ones in order, then the rest by name |
 | `scenedetails()` | The details the game lists, in order |
-| `scenedetail(<detail>[,<field>])` | One field of a listed detail: `label` (the default), `hint`, `choices`, `many`, `listed`, `tone` or `order` |
+| `scenedetail(<detail>[,<field>])` | One field of a listed detail: `label` (the default), `hint`, `choices`, `many`, `listed`, `tone`, `order`, `hidden` or `sort` |
 | `scenedetailvalue(<detail>,<value>)` | The value as the detail would keep it, or `#-1` and why it would be refused |
 | `scenedetailcheck(<detail>,<json>)` | Empty when the JSON reads as a detail, or `#-1` and why not |
 
