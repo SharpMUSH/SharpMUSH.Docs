@@ -82,6 +82,7 @@ export default defineConfig({
                       { label: 'Info Files and Journals', slug: 'guides/info' },
                       { label: 'IC Dates and Timelines', slug: 'guides/timeline' },
                       { label: 'Game Health', slug: 'guides/health' },
+                      { label: 'Attribute Indexes', slug: 'guides/attribute-indexes' },
                       { label: 'Discord', slug: 'guides/discord' },
                       { label: 'Writing Plugins', slug: 'guides/plugins' },
                       { label: 'Softcode in Your Editor', slug: 'guides/editor-support' },
