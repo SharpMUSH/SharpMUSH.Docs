@@ -183,6 +183,11 @@ and an **Attach a scene log** box for the player and staff.
 
 ![Job 8 in the portal: the job's fields, then its checklist with two steps done and one to do](../../../assets/guide/jobs-checklist-portal.webp)
 
+The player sees the same page without the staff buttons: the steps, the **Update** line, the
+bucket's first reply with how soon it usually answers, and the scene log box.
+
+![Job 16 as its player sees it in the portal: the Update line, the checklist, the bucket's first reply, and the Reply and Attach a scene log boxes](../../../assets/guide/jobs-player-portal.webp)
+
 <Aside>
 Scene logs need the Scene plugin. On a game without it, `scene:` steps are left out of every
 checklist and `+job/scene` is refused, so the same bucket settings work on both.
@@ -226,6 +231,12 @@ for staff as usual. With no audit lock, everyone's job is approved at once.
 > +bucket/lock Building/audit=perm^softcode.jobs.admin|role^approved
 [JOBS] Building audit lock: PERM^softcode.jobs.admin|ROLE^approved
 ```
+
+A Job Admin can set all three of a bucket's locks on its settings page in the portal too:
+**Who may file**, **Who works it** and **Approve at once for**. A key that is not a lock is
+refused, and so is an empty **Who works it**.
+
+![A bucket's settings in the portal with its three lock fields, after saving](../../../assets/guide/jobs-locks-portal.webp)
 
 ### Checking approvals
 
