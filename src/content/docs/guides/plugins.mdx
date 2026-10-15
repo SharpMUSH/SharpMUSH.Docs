@@ -170,6 +170,19 @@ The scene system is the reference case, because it deliberately spans two layers
 
 The same scene test suite passes whether it runs in-tree or as a loaded plugin.
 
+The package names the plugin it calls (`plugins: [scene]` in its `package.yaml`), and so do the
+packages built on it, `scene-verse` and `radio-scene`. Without the Scene plugin running none of them
+installs, and turning the plugin off uninstalls them. The portal shows scene pages, widgets and links
+only while the game has the Scene System on, and asks nothing of `api/scenes` or `/hubs/scene`
+otherwise; a request to a route no running plugin serves answers 404.
+
+## Packages that call your plugin
+
+A softcode package that calls your plugin's commands or functions should list the plugin under
+`plugins:` (see [Plugins a package calls](/reference/package-format#plugins-a-package-calls-format-15)).
+The package manager then refuses it while the plugin is not running, and removes it when an
+administrator turns the plugin off, instead of leaving commands that call names that are not there.
+
 ## Contributing services, flags, migrations and live updates
 
 The `[SharpPlugin]` type may also implement any of these interfaces from `SharpMUSH.Library.Plugins`.

@@ -14,7 +14,7 @@ below are what God saw with seven players connected.
 
 ## +who
 
-`+who` lists everyone by name. The columns are the ones most who lists on other games share:
+`+who` lists everyone, by name unless staff set `who-order` to `idle`. The columns are the ones most who lists on other games share:
 name, alias, idle time, time connected, the first letter of the player's `@sex` (`?` when it is
 not set), and location.
 
@@ -74,23 +74,29 @@ the players in each.
 
 ```
 > +where
-+==================================< Where >=================================+
-+=< Harbour Watch >=============================================< 1 player >=+
-| Bram                                                                       |
-+=< Market Square >============================================< 3 players >=+
-| Ash     Sorrel  Tomas                                                      |
-+=< Room Zero >=================================================< 1 player >=+
-| God                                                                        |
-+=< The Old Mill >=============================================< 2 players >=+
-| Elin  Mira                                                                 |
-+=< Unfindable >================================================< 1 player >=+
-| Kit                                                                        |
-+============================================================================+
-| 8 connected in 4 locations                                                 |
-+============================================================================+
+===================================< Where >==================================
+=< Harbour Watch >===============================================< 1 player >=
+Bram
+=< Market Square >==============================================< 3 players >=
+Ash     Sorrel  Tomas
+=< Room Zero >===================================================< 1 player >=
+God
+=< The Old Mill >===============================================< 2 players >=
+Elin  Mira
+=< Unfindable >==================================================< 1 player >=
+Kit
+==============================================================================
+8 connected in 4 locations
 ```
 
+In a terminal that shows UTF-8 the lines are drawn with box characters:
+
+![+where in a terminal: a heading, then a line for each location with its players under it, then the count](../../../assets/guide/who-where-terminal.webp)
+
 Two rooms with the same name get a line each.
+
+Every `+who` and `+where` screen is sent in parts, 250 players or 100 locations at a time, so it
+keeps working with thousands of players connected, each in a room of their own.
 
 ### One player per line
 
