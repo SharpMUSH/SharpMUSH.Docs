@@ -1,6 +1,6 @@
 ---
 title: Calling Web Services
-description: Send HTTP requests from softcode with @http, set their headers, log in to a site, and read the reply.
+description: Send HTTP requests from softcode with @http, set their headers, log in to a site with a stored secret, and read the reply.
 ---
 
 import { Aside } from '@astrojs/starlight/components';
@@ -32,6 +32,7 @@ The action list receives the reply as named arguments:
 | `%0` | the body of the reply |
 | `%<status>` | the HTTP status, such as `200` |
 | `%<content-type>` | the reply's Content-Type header |
+| `%<headers>` | every header of the reply, as a JSON object |
 | `%<http-overflow>` | `1` if the body was too long for one value and was cut short, otherwise `0` |
 
 A body is cut at the most one value can hold (5 MiB). When that happens, the object holding the
@@ -44,29 +45,57 @@ attribute is also told `Too much HTTP data received; excess truncated.`
 
 Output: `Reply complete.`
 
+In `%<headers>` each header name is in lower case. Its value is a string, or a list of strings when
+the site sent that header more than once. `json_query()` reads one; `get` returns it as a JSON
+string, quotes and all, and `unescape` turns that back into text:
+
+```sharp
+&SHOW me=think [json_query(json_query(%<headers>,get,content-type),unescape)]
+@http me/SHOW=https://postman-echo.com/get
+```
+
+Output: `application/json; charset=utf-8`
+
 ## Sending data and headers
 
-`<data>` is the body of the request. `<headers>` is a list of `Name:value` lines with `%r` between
-them. A GET has no body, so its headers come straight after the URL.
+`<data>` is the body of the request. `<headers>` is a JSON object: each member is a header name, and
+its value is a string, a [stored secret](#logging-in-with-a-stored-secret), or a list of those to send
+that header once for each. `json()` builds one.
+A GET has no body, so its headers come straight after the URL.
 
 ```sharp
 &SHOW me=think %<status> [json_query(%0,extract,$.json.bar)] [json_query(%0,extract,$.headers.game)]
-@http/post me/SHOW=https://postman-echo.com/post,json(object,bar,"baz"),Content-Type:application/json%rGame:MyMUSH
+@http/post me/SHOW=https://postman-echo.com/post,json(object,bar,"baz"),json(object,Content-Type,"application/json",Game,"MyMUSH")
 ```
 
 Output: `200 baz MyMUSH`
 
 How the headers are used:
 
-- A **Content-Type** line sets the type of `<data>`. Without one, data is sent as
+- **Content-Type** sets the type of `<data>`. Without it, data is sent as
   `application/x-www-form-urlencoded`, the type of an HTML form.
 - The data is encoded in the charset its type names (`text/plain; charset=ISO-8859-1`), or UTF-8
   when it names none.
-- A **User-Agent** line replaces SharpMUSH's own.
-- Every other line is sent as written.
+- **User-Agent** replaces SharpMUSH's own.
+- Every other header is sent as given.
 
-`@http` refuses the whole request, with `Header value has a bad key:value set. Aborting.`, when a line
-has no colon, a header name has a space in it, or a line sets Content-Length (the data sets that).
+`@http` refuses the whole request when `<headers>` is not an object, a value is not a string, a
+secret or a list of those, a header name has a space in it, or it sets Content-Length (the data sets
+that). It says:
+
+```
+Headers must be a JSON object of header names and values. Aborting.
+```
+
+A JSON object typed into the command needs a second pair of braces, because the outer pair only
+groups the argument and is removed:
+
+```sharp
+&SHOW me=think %<status> [json_query(%0,extract,$.headers.game)]
+@http me/SHOW=https://postman-echo.com/get,{{"Game":"MyMUSH"}}
+```
+
+Output: `200 MyMUSH`
 
 <Aside>
 Commas separate the arguments, so a comma inside the URL or the data needs escaping. A comma
@@ -80,16 +109,61 @@ Send an `Authorization` header. For HTTP Basic, the value is `Basic` followed by
 
 ```sharp
 &SHOW me=think %<status> %0
-@http me/SHOW=https://postman-echo.com/basic-auth,Authorization:Basic [encode64(postman:password)]
+@http me/SHOW=https://postman-echo.com/basic-auth,json(object,Authorization,"Basic [encode64(postman:password)]")
 ```
 
 Output: `200 {"authenticated":true}`
 
-A site that issues API tokens takes them the same way, as `Authorization:Bearer <token>`.
+A site that issues API tokens takes them the same way, as `json(object,Authorization,"Bearer <token>")`.
+
+## Logging in with a stored secret
+
+A password or token written into softcode can be read by anyone who can read that attribute, and it
+is in every copy of the world. Store it as a [secret](/guides/secrets) instead. Softcode then names
+the secret, and the server puts the value into the header as the request leaves. No softcode ever
+holds the value.
+
+A wizard stores the secret and names the hosts it may go to:
+
+```
+> @secret http.postman.login=postman:password
+http.postman.login is set. Its value is never shown again.
+> @secret/host http.postman.login=postman-echo.com
+@http may send http.postman.login to: postman-echo.com
+```
+
+In the headers, a secret is an object with `secret`, its name, and an optional `scheme`:
+
+```sharp
+&SHOW me=think %<status> %0
+@http me/SHOW=https://postman-echo.com/basic-auth,json(object,Authorization,json(object,secret,"http.postman.login",scheme,"Basic"))
+```
+
+Output: `200 {"authenticated":true}`
+
+The `scheme` decides how the value is written:
+
+| `scheme` | The header carries |
+| --- | --- |
+| none | the value alone |
+| `Basic` | `Basic ` and the value, `<user>:<password>`, base64-encoded |
+| anything else, such as `Bearer` | the scheme, a space, and the value |
+
+`@http` sends a secret only when all of these hold, and otherwise refuses the whole request with
+`A secret in the headers may not be sent to that URL. Aborting.`:
+
+- The secret's name starts with `http.`. Secrets the server keeps for itself, such as
+  `sql.password`, can never be sent.
+- The URL is `https`.
+- The URL's host is one `@secret/host` named for that secret. `*.example.com` covers every host under
+  `example.com`, but not `example.com` itself.
+
+A request that carries a secret does not follow redirects, so a site cannot pass the secret on to
+another host. The action list gets the redirect reply itself, with its `Location` in `%<headers>`.
 
 <Aside type="caution">
-Keep a password or token in an attribute only a wizard can read, and fetch it with `get()` inside
-the command, so it never appears in a command anyone else can see.
+A site that echoes the request back, as postman-echo.com does, puts the secret's value in `%0`, where
+softcode can read it. Name only the hosts that need the secret.
 </Aside>
 
 ## Games imported from PennMUSH
@@ -114,4 +188,5 @@ PennMUSH waits for the site to ask for a login before it sends `userpass`. Sharp
 Basic at once, so a site that accepts only Digest logins cannot be reached this way.
 
 The headers argument comes from a PennMUSH pull request that is not yet part of a PennMUSH release.
-In PennMUSH with that change, `<headers>` replaces `%q<content-type>`, and SharpMUSH does the same.
+That change takes the headers as `Name:value` lines, where SharpMUSH takes a JSON object. In both,
+`<headers>` replaces `%q<content-type>`.
