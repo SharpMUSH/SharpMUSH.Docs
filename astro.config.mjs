@@ -52,6 +52,7 @@ export default defineConfig({
                       { label: 'Colour Vision', slug: 'guides/colour-vision' },
                       { label: 'Scene Pose Types', slug: 'guides/scene-pose-types' },
                       { label: 'Scene Details', slug: 'guides/scene-details' },
+                      { label: 'Scene Availability', slug: 'guides/scene-availability' },
                       { label: 'Scene Safety', slug: 'guides/scene-safety' },
                       { label: 'Scenes on a Phone', slug: 'guides/scenes-on-a-phone' },
                       { label: 'Screen Readers', slug: 'guides/screen-readers' },
