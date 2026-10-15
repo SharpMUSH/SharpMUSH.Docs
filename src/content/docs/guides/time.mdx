@@ -20,6 +20,7 @@ sit centuries away, and name its months and weekdays.
 |---|---|---|
 | A player | see the time | [The time now](#the-time-now) |
 | A player | set your zone | [Setting your zone](#setting-your-zone) |
+| A player | keep your zone to yourself | [Hiding your zone](#hiding-your-zone) |
 | A player | plan a scene across zones | [Converting a time](#converting-a-time) |
 | Staff | set the game's zone | [Settings](#settings) |
 | Staff | set the IC date | [The IC date](#the-ic-date) |
@@ -112,8 +113,22 @@ A zone the server does not know is refused:
 [TIME] Done: Your time zone is cleared. Times are shown in the game's.
 ```
 
+### Hiding your zone
+
+`+timezone/hide` keeps your zone to you and staff. Your own `+time` still uses it, but anyone
+else who asks is told you keep it to yourself, and other packages read nothing:
+
+```
+> +timezone/hide
+[TIME] Done: Only you and staff see your time zone now. +time <your name> tells others you keep it to yourself.
+> +time Wren
+[TIME] Warning: Wren keeps their time zone to themselves.
+```
+
+`+timezone/unhide` shows it again. A zone you hide stays hidden when you change it.
+
 Your zone is your `TZ` attribute, the one PennMUSH keeps it in, so `time(*<name>)` reads it too.
-Everyone can read it.
+Hiding it clears the attribute's `visual` flag, so `@set me/TZ=!visual` does the same.
 
 ## Converting a time
 
