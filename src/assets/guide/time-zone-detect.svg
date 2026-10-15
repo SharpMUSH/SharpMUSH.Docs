@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 300" width="880" height="300" font-family="system-ui,sans-serif" font-size="15">
+  <rect x="0" y="0" width="880" height="300" rx="12" fill="#f8fafc"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666"/></marker>
+  </defs>
+  <g fill="#e0ecff" stroke="#5b7fc7">
+    <rect x="20" y="30" width="200" height="56" rx="8"/>
+    <rect x="20" y="122" width="200" height="56" rx="8"/>
+    <rect x="20" y="214" width="200" height="56" rx="8"/>
+  </g>
+  <g fill="#000" text-anchor="middle">
+    <text x="120" y="54">Web portal</text>
+    <text x="120" y="74" font-size="13" fill="#444">the browser's zone</text>
+    <text x="120" y="146">BSD telnet, PuTTY</text>
+    <text x="120" y="166" font-size="13" fill="#444">TZ through NEW-ENVIRON</text>
+    <text x="120" y="238">Mudlet, MUSHclient …</text>
+    <text x="120" y="258" font-size="13" fill="#444">nothing</text>
+  </g>
+  <rect x="300" y="76" width="210" height="96" rx="8" fill="#fff4d6" stroke="#c49a2c"/>
+  <g text-anchor="middle">
+    <text x="405" y="106">The game records it</text>
+    <text x="405" y="128" font-size="13" fill="#444">if it names a zone it knows</text>
+    <text x="405" y="150" font-size="13" fill="#444">clientzone() · @sockset</text>
+  </g>
+  <rect x="590" y="76" width="270" height="96" rx="8" fill="#ddf3e4" stroke="#3d9a5f"/>
+  <g text-anchor="middle">
+    <text x="725" y="106">time package</text>
+    <text x="725" y="128" font-size="13" fill="#444">fills an empty TZ, hidden</text>
+    <text x="725" y="150" font-size="13" fill="#444">never replaces one you set</text>
+  </g>
+  <rect x="300" y="214" width="560" height="56" rx="8" fill="#ffffff" stroke="#999"/>
+  <text x="580" y="247" text-anchor="middle">You type it: +timezone/match 8:15pm or +timezone &lt;zone&gt;</text>
+  <g stroke="#666" stroke-width="1.5" fill="none" marker-end="url(#a)">
+    <path d="M220 58 L298 100"/>
+    <path d="M220 150 L298 140"/>
+    <path d="M510 124 L588 124"/>
+    <path d="M220 242 L298 242"/>
+  </g>
+</svg>
