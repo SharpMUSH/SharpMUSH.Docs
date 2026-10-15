@@ -52,6 +52,7 @@ export default defineConfig({
                       { label: 'Screen Readers', slug: 'guides/screen-readers' },
                       { label: 'Softcode Packages', slug: 'guides/packages' },
                       { label: 'Named Arguments', slug: 'guides/named-arguments' },
+                      { label: 'Calling Web Services', slug: 'guides/web-requests' },
                       { label: 'RhostMUSH Softcode', slug: 'guides/rhostmush-softcode' },
                       { label: 'Chat Cards', slug: 'guides/chat-cards' },
                       { label: 'Bulletin Boards', slug: 'guides/bboards' },
