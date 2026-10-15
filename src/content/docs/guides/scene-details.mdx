@@ -283,11 +283,13 @@ in case is kept the way the choice is written:
 [SCENE] Done: Scene 1: Mood is now Tense.
 ```
 
-`` DATA`OPEN_DETAILS `` on the Scene Logger decides whether players may set details the game does
-not list. It is `1` as shipped. Set it to `0` to keep them to the list:
+The `open-details` setting decides whether players may set details the game does not list. It is
+`yes` as shipped. Turn it off to keep them to the list (see
+[Game Settings with +config](/guides/config)):
 
-```text
-&DATA`OPEN_DETAILS <Scene Logger>=0
+```
+> +config scene/open-details=no
+[CONFIG] Done: scene/open-details is now no, was yes.
 ```
 
 ## Changing what +scene shows
