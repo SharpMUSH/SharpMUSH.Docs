@@ -38,8 +38,7 @@ command makes still applies. The palette never lets a player do something they c
 ## Adding a command
 
 A palette entry is an attribute ``PALETTE`<name>`` on the object that holds the command. Its value is a
-JSON object: at least a `label`, what the row says, and a `line`, what it sends. `attr` names the
-`$`-command the line runs, so the entry is offered only while that command exists.
+JSON object: at least a `label`, what the row says, and a `line`, what it sends.
 
 This Arena holds three commands for a fight:
 
@@ -56,11 +55,11 @@ Arena/CMD`ATTACK - Set.
 Arena/CMD`DEFEND - Set.
 > &CMD`FLEE Arena=$+flee:@pemit %#=You run for the exit.
 Arena/CMD`FLEE - Set.
-> &PALETTE`ATTACK Arena={"label":"Attack","line":"+attack <target>","attr":"CMD`ATTACK","when":["combat"],"icon":"Bolt","info":"Swing at whoever you are fighting."}
+> &PALETTE`ATTACK Arena={"label":"Attack","line":"+attack <target>","when":["combat"],"icon":"Bolt","info":"Swing at whoever you are fighting."}
 Arena/PALETTE`ATTACK - Set.
-> &PALETTE`DEFEND Arena={"label":"Defend","line":"+defend","attr":"CMD`DEFEND","when":["my_turn"],"urgent":true,"icon":"Shield"}
+> &PALETTE`DEFEND Arena={"label":"Defend","line":"+defend","when":["my_turn"],"urgent":true,"icon":"Shield"}
 Arena/PALETTE`DEFEND - Set.
-> &PALETTE`FLEE Arena={"label":"Flee","line":"+flee","attr":"CMD`FLEE","when":["combat"],"icon":"DirectionsRun"}
+> &PALETTE`FLEE Arena={"label":"Flee","line":"+flee","when":["combat"],"icon":"DirectionsRun"}
 Arena/PALETTE`FLEE - Set.
 ```
 
@@ -75,7 +74,6 @@ its `lock`, if it has one, passes for them. Things start `NO_COMMAND`, which is 
 |---|---|
 | `label` | What the row says. |
 | `line` | What it sends. A `<word>` in it is a **slot** the player fills in. |
-| `attr` | The `$`-command attribute the line runs. |
 | `when` | The contexts the entry waits for. |
 | `urgent` | `true` puts it under Now while its contexts are there. |
 | `always` | `true` lists it under Always. |
