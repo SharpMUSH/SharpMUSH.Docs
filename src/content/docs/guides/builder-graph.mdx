@@ -1,6 +1,6 @@
 ---
 title: Mapping Your Rooms
-description: The Builder Graph portal page draws a set of rooms on a grid from their coordinates, lists what @wcheck would say about them, and saves them as a file you can keep and compare.
+description: The Builder Graph portal page draws a set of rooms on a grid from their coordinates, lists what @wcheck would say about them, saves them as a file you can keep and compare, and builds what you change in that file.
 ---
 
 import { Aside } from '@astrojs/starlight/components';
@@ -9,7 +9,8 @@ The Builder Graph is a portal page for builders. Give it a set of rooms and it d
 room as a circle, each exit as an arrow to where it leads. Rooms with coordinates sit on a grid,
 north up, one level at a time. Beside the map is a list of things to fix, such as a room with no
 description or an exit with no way back. **Export** saves the rooms as a file you can keep with the
-rest of your notes and compare against a later copy.
+rest of your notes and compare against a later copy, and **Import** builds what you change in that
+file. You can also drag a room to a new place on the grid.
 
 This page covers:
 
@@ -17,6 +18,8 @@ This page covers:
 - [Giving rooms coordinates](#giving-rooms-coordinates)
 - [The checks](#the-checks)
 - [Exporting rooms](#exporting-rooms)
+- [Moving rooms](#moving-rooms)
+- [Importing changes](#importing-changes)
 
 The examples use a small workshop: Gate (`#18`), Yard (`#19`), Forge (`#20`), Store (`#21`), Loft
 (`#22`) above the Forge, and Cellar (`#23`) under the Store.
@@ -143,4 +146,76 @@ time.
 <Aside>
 Reading the map never runs any softcode. A `variable` exit's destination is not worked out, and
 nothing on the page is evaluated.
+</Aside>
+
+## Moving rooms
+
+Drag a room to another cell of the grid. The room moves on the page only, with a dashed blue
+outline, and **Save positions** appears with the number of rooms moved. **Discard** puts them back.
+
+![Gate dragged one cell west. Its outline is dashed, the selection reads "moved, not saved", and Save positions (1) and Discard are in the toolbar.](../../../assets/guide/builder-graph-moved.webp)
+
+**Save positions** writes the new X, Y and Z of each moved room, after you confirm, in the same way
+as an import.
+
+## Importing changes
+
+**Import** reads a room file, works out what it would change, and shows the list above the page.
+Nothing changes until you press **Make N changes**; **Cancel** leaves everything as it was.
+
+The page cannot make or skip this confirmation: the portal draws it, outside the page. Each change
+is made as the character you are playing, with `@dig`, `@open`, `@name`, `@link` and `@unlink`, so
+the game's quota, locks and link rules apply, as they would if you typed the commands.
+
+A file only has to list what it changes. This one adds a well house north of the Yard, with exits
+both ways, and lengthens the Store's description:
+
+```json
+{
+  "format": "sharpmush-rooms",
+  "version": 1,
+  "coordinates": ["X", "Y", "Z"],
+  "rooms": [
+    {"id": "#19", "exits": [{"id": "to-well", "name": "North;n", "to": "well"}]},
+    {"id": "well", "name": "Well house", "description": "A low stone hut over the well.", "coordinates": [0, 2, 0],
+     "exits": [{"id": "from-well", "name": "South;s", "to": "#19"}]},
+    {"id": "#21", "description": "Shelves of iron stock and offcuts, sorted by length."}
+  ]
+}
+```
+
+![The confirmation above the page: dig Well house, describe it, place it at 0, 2, 0, describe the Store, and open the two exits. Below the list, the Yard's other three exits are not in the file and are left as they are.](../../../assets/guide/builder-graph-confirm.webp)
+
+Once the changes are made, the page says what each new room and exit became:
+
+```
+Made 6 changes. well is #39, to-well is #40, from-well is #41; export again before editing the file further.
+```
+
+How a file is read:
+
+| In the file | Means |
+|---|---|
+| An `id` that is a dbref, `#19` | A room or exit that is there now |
+| An `id` of your own, `well` | A new room or exit, dug or opened by the import |
+| A field left out | Left as it is |
+| `"description": ""` | Clear the description |
+| `"coordinates": []` | Remove the coordinates |
+| `"to"` | A dbref, `home`, `unlinked`, or the `id` of a new room in the same file. `variable`, `hidden` and `non-room` leave the link as it is |
+
+An import never destroys anything. A room or exit the file leaves out stays, and the confirmation
+lists any exit of a listed room that the file does not mention. An exit stays in the room it is in.
+You need to control each room and exit the import changes, and to be able to see each room an exit
+is linked to.
+
+An import that lists problems, such as a destination that is not there or a room you do not control,
+makes no changes at all. If the rooms change between the confirmation and the import, for example
+because another builder renamed one, the import is refused and you are asked to look again. When the
+game refuses one change, such as a `@dig` over your quota, the import stops there; the changes before
+it stay made and the page lists them.
+
+<Aside>
+New rooms are not on the page until you add their dbrefs to the application's `rooms`. Export again
+after an import, so the file has the new dbrefs instead of your own names: importing the same file a
+second time would dig the rooms again.
 </Aside>
