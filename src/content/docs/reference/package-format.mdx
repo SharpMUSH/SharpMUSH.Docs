@@ -20,7 +20,7 @@ back.
 Every top-level key a softcode package can use, with the format version that added it:
 
 ```yaml
-format: 1.6                     # format version (omit = 1; 1.2 adds roles and permissions, 1.3 settings, 1.6 the engine range)
+format: 1.6                     # format version (omit = 1; 1.2 adds roles and permissions, 1.3 settings, 1.5 attribute entries, 1.6 the engine range)
 package: myrddins-bbs           # required: lowercase letters, digits and hyphens, up to 64 characters
 version: 2.4.1                  # required: a version number (see Versions below)
 authors: [Myrddin]              # optional: a list, or one string
@@ -112,6 +112,10 @@ roles:                          # optional (1.2): roles that set custom permissi
 
 settings:                       # optional (1.3): configuration options, as @config/set takes them
   noisy_whisper: "yes"
+
+attributes:                     # optional (1.5): attribute entries, as @attribute makes them
+  BBS`READ:
+    flags: [no_command, wizard]
 ```
 
 The sections below cover each block. `kind:` and `application:` are under
@@ -301,6 +305,10 @@ that is not one to three numbers, or a `maximum_server` below `requires_server`.
 role; a role priority outside 1-29 or a colour that isn't `#rrggbb`; a role permission other than
 `allow` or `deny`; a configuration option that doesn't exist or that a package can't set, a value it
 doesn't take, or a ref for an option that isn't a dbref; any of these blocks in a managed package.
+In the format 1.5 `attributes:` block: a name `@attribute` would refuse, a flag that isn't an
+attribute flag, a `limit` that doesn't compile, both a `limit` and an `enum`, an empty `enum`, a
+`delimiter` longer than one character or a choice that contains it, a `retroactive` other than true
+or false, or the block in a manifest whose `format` is below 1.5.
 
 **Warnings** (the manifest is accepted): unknown keys (likely typos); reserved keys (`provides`,
 `recommends`, `suggests`, configure `pattern`); configure questions nothing uses; more than 5
@@ -405,6 +413,69 @@ applying a package that changes one.
 - **Removed options and uninstall.** The option goes back to the value the package replaced, unless
   the game has changed it since; then it is left alone.
 - **Rollback** leaves configuration options as they are.
+
+## Attribute entries (format 1.5)
+
+A package can add standard attributes to the game's attribute table, the one `@attribute` manages:
+the flags every new copy of an attribute gets, and a `limit` or an `enum` its values must meet.
+Declare them under `attributes:` and set `format: 1.5`; an older server warns and ignores the block.
+
+```yaml
+format: 1.5
+package: jobs
+version: 2.0.0
+
+attributes:                     # attribute name: the entry @attribute would make
+  JOB`STATUS:
+    enum: [new, staff, player, held, closed]   # as @attribute/enum: a value must be one of these
+  JOB`TITLE:
+    limit: '^.{1,60}$'          # as @attribute/limit: a regular expression, any case
+  JOB`DUE:
+    enum: [this week, next week, someday]
+    delimiter: '|'              # choices with spaces need another delimiter
+  JOB`NOTES:
+    flags: [wizard, no_command] # default flags, as @attribute/access takes them
+    retroactive: true           # also give these flags to every copy already on an object
+```
+
+A name is written as `@attribute` takes it, with `` ` `` only between branches. Each flag must be an
+attribute flag (`help attribute flags` lists them; `branch` can't be a default). An entry takes a `limit` or an
+`enum`, not both, because each replaces the other. A managed package can't declare `attributes:`.
+
+After installing `jobs` above, ``@attribute JOB`STATUS`` shows the entry:
+
+```
+@attribute: Information for 'JOB`STATUS'
+  Default flags: none
+  Enum values: new staff player held closed
+```
+
+Output: the entry's name, its default flags (none here) and the values it accepts. Setting another
+value is refused:
+
+```
+&JOB`STATUS me=bogus
+```
+
+Output: ``Value for JOB`STATUS needs to be one of: new staff player held closed``.
+
+The review screen lists each entry with what the apply does to it, and how many existing copies a
+`retroactive` entry changes.
+
+- **Install.** An entry the game doesn't have is created and becomes the package's. An entry the game
+  already has is the game's: the package uses it as it is and never changes or removes it. If its
+  `limit` or `enum` differs from the manifest's, the install stops and says why; different default
+  flags are only noted. An entry another installed package owns stops the install.
+- **Retroactive.** Default flags reach new copies of the attribute only. With `retroactive: true`,
+  every copy already on an object gets exactly the entry's flags too, whenever the apply writes them;
+  owners are left alone. The review screen shows how many copies change and asks for confirmation
+  before applying.
+- **Upgrade.** A field the new version changes (the flags, or the limit or enum) takes the new value.
+  A field it leaves alone keeps whatever the game has now, so an administrator's `@attribute/access`
+  survives.
+- **Removed entries and uninstall.** The entry is deleted from the table. Values already stored on
+  objects stay as they are.
+- **Rollback** leaves attribute entries as they are.
 
 ## Engine version range (format 1.6)
 
@@ -606,6 +677,7 @@ under **Admin → Packages → Remotes**.
 | `chargen` + `chargen-app` | A portal application: the softcode routes in one package, the application registered by another, with a configurable role |
 | `jobs` + `jobs-app` | A complete system: commands added with `@command/add` and `@hook/override/inline`, a role and permission category, eight permissions and eight roles declared by the package, per-object hooks, `+help` topics, and a portal application driven by the same code |
 | `messages` | A configuration option (`messages_object`) pointed at the package's own object (format 1.3) |
+| `bboards` | An attribute entry (`BBOARD`, wizard and no_command by default) declared in the manifest (format 1.5) |
 | `hello-ui` | A managed package: a compiled plugin that adds a portal page |
 
 `hello-world`, slightly shortened:
