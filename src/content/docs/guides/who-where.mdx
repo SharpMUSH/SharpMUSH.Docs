@@ -74,23 +74,29 @@ the players in each.
 
 ```
 > +where
-+==================================< Where >=================================+
-+=< Harbour Watch >=============================================< 1 player >=+
-| Bram                                                                       |
-+=< Market Square >============================================< 3 players >=+
-| Ash     Sorrel  Tomas                                                      |
-+=< Room Zero >=================================================< 1 player >=+
-| God                                                                        |
-+=< The Old Mill >=============================================< 2 players >=+
-| Elin  Mira                                                                 |
-+=< Unfindable >================================================< 1 player >=+
-| Kit                                                                        |
-+============================================================================+
-| 8 connected in 4 locations                                                 |
-+============================================================================+
+===================================< Where >==================================
+=< Harbour Watch >===============================================< 1 player >=
+Bram
+=< Market Square >==============================================< 3 players >=
+Ash     Sorrel  Tomas
+=< Room Zero >===================================================< 1 player >=
+God
+=< The Old Mill >===============================================< 2 players >=
+Elin  Mira
+=< Unfindable >==================================================< 1 player >=
+Kit
+==============================================================================
+8 connected in 4 locations
 ```
 
+In a terminal that shows UTF-8 the lines are drawn with box characters:
+
+![+where in a terminal: a heading, then a line for each location with its players under it, then the count](../../../assets/guide/who-where-terminal.webp)
+
 Two rooms with the same name get a line each.
+
+`+where` sends the locations in up to 20 parts, then the count, so it keeps working with thousands
+of players connected, each in a room of their own.
 
 ### One player per line
 
