@@ -1,0 +1,311 @@
+---
+title: Time and Time Zones
+description: Showing the game's time and each player's own with +time, converting a time between zones, and setting an IC date and clock.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The **time** package answers the question every game with players in several countries gets
+asked: what time is that for me?
+
+- `+time` shows the game's time, your own, and the IC date.
+- `+time 8pm pacific` turns a time in one zone into the game's and yours, and gives a line you
+  can paste into Discord so everyone there sees it in their own time.
+- `+timezone` sets your zone.
+
+The IC date is a clock the game sets: it can start on any day, run faster than the real one,
+sit centuries away, and name its months and weekdays.
+
+| You are | You want to | Read |
+|---|---|---|
+| A player | see the time | [The time now](#the-time-now) |
+| A player | set your zone | [Setting your zone](#setting-your-zone) |
+| A player | plan a scene across zones | [Converting a time](#converting-a-time) |
+| Staff | set the game's zone | [Settings](#settings) |
+| Staff | set the IC date | [The IC date](#the-ic-date) |
+| A coder | read the time in your own code | [For coders](#for-coders) |
+
+In the game, `+help time` and `+help timezone` have the same commands in short form.
+
+## The time now
+
+`+time` shows the game's time, yours, and the IC date:
+
+```
+> +time
+===================================< Time >===================================
+Game time: Thu 15 Oct 2026, 05:07 * UTC
+Your time: Thu 15 Oct 2026, 06:07 * Europe/London (UTC+01:00)
+IC date:   Thursday, 15 October 2026, 05:07
+==============================================================================
++time <time> converts a time * +timezone <zone> sets yours
+==============================================================================
+```
+
+Until you set your zone, *Your time* says `not set`.
+
+`+time <name>` shows the time where another player is, and how far apart you are:
+
+```
+> +time Tomas
+==============================< Time for Tomas >==============================
+Tomas:      Thu 15 Oct 2026, 00:07 * America/Chicago (UTC-05:00)
+You:        Thu 15 Oct 2026, 06:07 * Europe/London (UTC+01:00)
+Difference: Tomas is 6 hours behind you
+==============================================================================
+```
+
+A player who has not set a zone has no time to show:
+
+```
+> +time Ash
+[TIME] Warning: Ash has not set a time zone.
+```
+
+The portal shows the same screens as cards:
+
+![+time, +time Tomas and +time 2026-10-20 8pm pacific in the portal's Play page: each a bordered card with labels on the left and the time and its zone on the right](../../../assets/guide/time-portal.webp)
+
+## Setting your zone
+
+`+timezone <zone>` sets your zone:
+
+```
+> +timezone uk
+[TIME] Done: Your time zone is Europe/London (UTC+01:00). It is Thu 15 Oct 2026, 06:07 for you.
+```
+
+A zone is named the way the tz database names it: a region and a city, such as
+`America/Chicago`, `Europe/Berlin` or `Australia/Perth`, or `UTC`. You need not type the capitals:
+`america/new_york` works. Short names work too:
+
+| Type | For |
+|---|---|
+| `eastern`, `est`, `edt` | America/New_York |
+| `central`, `cst`, `cdt` | America/Chicago |
+| `mountain`, `mst`, `mdt` | America/Denver |
+| `arizona` | America/Phoenix |
+| `pacific`, `pst`, `pdt` | America/Los_Angeles |
+| `alaska` | America/Anchorage |
+| `hawaii` | Pacific/Honolulu |
+| `uk`, `gmt`, `bst` | Europe/London |
+| `cet`, `cest` | Europe/Paris |
+| `eet` | Europe/Athens |
+| `jst` | Asia/Tokyo |
+| `aest`, `aedt` | Australia/Sydney |
+| `nzst`, `nzdt` | Pacific/Auckland |
+
+`est` is New York's time, which moves to summer time and back. It is not a clock fixed five hours
+behind UTC, which is what `EST` means to a computer.
+
+A zone the server does not know is refused:
+
+```
+> +timezone Atlantis
+[TIME] Warning: There is no time zone called 'Atlantis'. +help timezone says how they are named.
+```
+
+`+timezone` on its own shows yours, and `+timezone/clear` clears it:
+
+```
+> +timezone/clear
+[TIME] Done: Your time zone is cleared. Times are shown in the game's.
+```
+
+Your zone is your `TZ` attribute, the one PennMUSH keeps it in, so `time(*<name>)` reads it too.
+Everyone can read it.
+
+## Converting a time
+
+`+time <time>` reads a time in your zone and shows it in the game's. Write it as `20:00`, `8pm`
+or `8:30 am`:
+
+```
+> +time 8pm
+============================< 20:00 on Thu 15 Oct >===========================
+Europe/London: Thu 15 Oct 2026, 20:00 * UTC+01:00
+Game time:     Thu 15 Oct 2026, 19:00 * UTC
+When:          in 13h
+Discord:       <t:1792090800:F>
+==============================================================================
+Paste the Discord line into Discord: each reader sees it in their own time.
+==============================================================================
+```
+
+Put a zone after the time to read it there, and a date before it, year first, for another day:
+
+```
+> +time 2026-10-20 8pm pacific
+============================< 20:00 on Tue 20 Oct >===========================
+America/Los_Angeles: Tue 20 Oct 2026, 20:00 * UTC-07:00
+Game time:           Wed 21 Oct 2026, 03:00 * UTC
+Your time:           Wed 21 Oct 2026, 04:00 * Europe/London (UTC+01:00)
+When:                in 5d
+Discord:             <t:1792551600:F>
+==============================================================================
+Paste the Discord line into Discord: each reader sees it in their own time.
+==============================================================================
+```
+
+A time on a date in summer gets summer time's offset, and one in winter gets winter's, whatever
+the date is today.
+
+The **Discord** line is a Discord timestamp. Paste it into a Discord message and Discord shows it
+to each reader as a date and time in their own zone, so nobody has to work it out.
+
+A time that cannot be read says why:
+
+```
+> +time 25:00
+[TIME] Warning: '25:00' is not a time. Write 20:00, 8pm or 8:30 am.
+> +time 8pm Atlantis
+[TIME] Warning: There is no time zone called 'Atlantis'. +help timezone says how they are named.
+```
+
+## Running the package
+
+### Installing
+
+The time package ships with the server but is not installed on a new game. An administrator
+installs it from the portal:
+
+1. Open **Packages** in the admin area and choose **Browse**.
+2. Install `time`. It needs `plus-help`, which a new game already has.
+
+It adds the commands `+time` and `+timezone` for everyone. They are game commands, which are
+matched before softcode `$`-commands, so a `+time` your game already has in softcode stops running
+once the package is in.
+
+It makes two objects in the master room: **Time**, which runs the commands, and **Clock**, inside
+it, which holds the settings. Find the Clock's number with `@find`:
+
+```
+> @find Clock
+Clock(#16TVn)
+*** 1 objects found ***
+```
+
+The number on your game will differ.
+
+### Settings
+
+Each setting is an attribute on the Clock:
+
+| Attribute | What it is | Default |
+|---|---|---|
+| ``DATA`ZONE`` | The game's zone, the one `+time` calls game time. | `UTC` |
+| ``DATA`FORMAT`` | How a time is written, in [`timefmt()`](/reference/sharpmush-help/timefmt-function/)'s codes. | `$a $d $b $Y, $H:$M` |
+| ``ALIAS`<name>`` | A short name players may type for a zone, one attribute each. | the table above |
+
+For example, to keep the game on New York time and let players type `irish`:
+
+```
+> &DATA`ZONE #16=America/New_York
+Clock/DATA`ZONE - Set.
+> &ALIAS`IRISH #16=Europe/Dublin
+Clock/ALIAS`IRISH - Set.
+```
+
+A short name wins over a zone of the same name, which is how `est` comes to mean New York.
+
+### The IC date
+
+The IC date comes from these attributes on the Clock:
+
+| Attribute | What it is | Default |
+|---|---|---|
+| ``DATA`IC`ANCHOR`` | A moment, in seconds since 1970, when the IC clock reads the same as the real one. | `1767225600`, 1 January 2026 at midnight UTC |
+| ``DATA`IC`RATIO`` | How many IC seconds pass each real second. `2` makes an IC day pass in twelve real hours. | `1` |
+| ``DATA`IC`DAYS`` | Days added to the IC date; below 0 goes back. | `0` |
+| ``DATA`IC`YEARS`` | Years added to the year shown. | `0` |
+| ``DATA`IC`MONTHS`` | Twelve month names, January's first, split by `\|`. | the real ones |
+| ``DATA`IC`WEEKDAYS`` | Seven weekday names, Sunday's first, split by `\|`. | the real ones |
+| ``DATA`IC`SHOW`` | `0` takes the IC date off `+time`. | `1` |
+| ``FORMAT`IC`` | How the date is written. | `%<weekday>, %<day> %<monthname> %<year>, %<hour>:%<minute>` |
+
+``FORMAT`IC`` is evaluated with `%<year>`, `%<month>` (1 to 12), `%<monthname>`, `%<day>`,
+`%<weekday>` (its name), `%<hour>`, `%<minute>` and `%<second>`.
+
+For example, a game set three hundred years on, whose IC days run twice as fast from 1 March
+2026, with months of its own. `convtime()` turns the starting date into seconds:
+
+```
+> think convtime(2026-03-01T00:00:00Z)
+1772323200
+> &DATA`IC`ANCHOR #16=1772323200
+Clock/DATA`IC`ANCHOR - Set.
+> &DATA`IC`RATIO #16=2
+Clock/DATA`IC`RATIO - Set.
+> &DATA`IC`YEARS #16=300
+Clock/DATA`IC`YEARS - Set.
+> &DATA`IC`MONTHS #16=Deepwinter|Thaw|Seedtime|Rains|Bloom|Highsun|Hay|Harvest|Leafall|Mist|Frost|Longnight
+Clock/DATA`IC`MONTHS - Set.
+> &FORMAT`IC #16=%<day> %<monthname>, year %<year> of the Crossing, %<hour>:%<minute>
+Clock/FORMAT`IC - Set.
+> +time
+===================================< Time >===================================
+Game time: Thu 15 Oct 2026, 01:08 * America/New_York (UTC-04:00)
+Your time: Thu 15 Oct 2026, 06:08 * Europe/London (UTC+01:00)
+IC date:   31 Bloom, year 2327 of the Crossing, 10:16
+==============================================================================
++time <time> converts a time * +timezone <zone> sets yours
+==============================================================================
+```
+
+Seven and a half real months at double speed is fifteen IC months, so the IC date is already
+into the next year.
+
+<Aside>
+The IC calendar is the real one's: twelve months of the real lengths, so a month named Bloom
+still has May's 31 days. A calendar of its own, with other month lengths, is a game's own code
+in ``FORMAT`IC``, which is given the real calendar's parts to work from.
+</Aside>
+
+## For coders
+
+Other code reads the time through functions on the Clock, with `u()`. The Clock is a plain
+VISUAL object, so any object may call them, a player's included.
+
+| Call | Gives |
+|---|---|
+| ``u(<Clock>/FUN`IC`DATE)`` | The IC date now, as ``FORMAT`IC`` writes it. Add a moment in seconds for another time. |
+| ``u(<Clock>/FUN`IC`SECS,<seconds>)`` | The IC clock's moment, in seconds, before the years are added. |
+| ``u(<Clock>/FUN`OOC`FOR,<seconds>,<player>)`` | That moment in the player's zone, or the game's when they set none. |
+| ``u(<Clock>/FUN`OOC`SHOW,<seconds>,<zone>)`` | That moment in a zone; the game's when it is left empty. |
+| ``u(<Clock>/FUN`ZONE`OF,<player>)`` | The player's zone, or nothing. |
+| ``u(<Clock>/FUN`ZONE`GAME)`` | The game's zone. |
+| ``u(<Clock>/FUN`ZONE`FIND,<text>)`` | The zone a player's text names, short names included, or nothing. |
+| ``u(<Clock>/FUN`DATE`INSTANT,<date>,<hour>,<minute>,<zone>)`` | A date such as `2026-10-20` at that hour and minute in that zone, in seconds. |
+
+Every function that takes a moment takes it as an argument, so code that shows a stored time,
+such as when a scene is scheduled, shows it to each reader in their own zone:
+
+```
+> think u(#16/FUN`OOC`FOR,1792551600,*Tomas)
+Tue 20 Oct 2026, 22:00
+> think u(#16/FUN`IC`DATE,1772323200)
+1 Seedtime, year 2326 of the Crossing, 00:00
+```
+
+### Adding to +time
+
+Another package adds lines to the `+time` screen with a filter on the **Time** object: an
+attribute named ``FILTER`TIME`SCREEN`<name>``. Filters run in name order with `chain()`. Each is
+given the screen so far as `%0`, the player reading as `%1` and the moment as `%2`, and returns
+the screen with its own lines added:
+
+```
+> &FILTER`TIME`SCREEN`WEATHER #15=%0%r[fields(,Weather,Light rain)]
+Time/FILTER`TIME`SCREEN`WEATHER - Set.
+> +time
+===================================< Time >===================================
+Game time: Thu 15 Oct 2026, 01:11 * America/New_York (UTC-04:00)
+Your time: Thu 15 Oct 2026, 06:11 * Europe/London (UTC+01:00)
+IC date:   31 Bloom, year 2327 of the Crossing, 10:23
+Weather: Light rain
+==============================================================================
++time <time> converts a time * +timezone <zone> sets yours
+==============================================================================
+```
+
+A filter a package attaches to the Time object goes away when that package is uninstalled.
