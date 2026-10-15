@@ -15,11 +15,13 @@ command, a tap on another feed, or an event.
 | see how a line gets to Discord | [How it works](#how-it-works) |
 | make the bot and connect it | [Setting up the bot](#setting-up-the-bot) |
 | link a channel | [Linking a channel](#linking-a-channel) |
+| link a member's Discord account to their game account | [Linking members](#linking-members) |
 | post from softcode | [Sending lines](#sending-lines) |
 | fix a link that stopped | [When a link stops](#when-a-link-stops) |
 
-Everything here needs the `discord.admin` permission. Wizards hold it, and
-`@role/allow <role>=discord.admin` hands it to a staff role.
+Setting up the bot and linking channels need the `discord.admin` permission. Wizards hold it,
+and `@role/allow <role>=discord.admin` hands it to a staff role. Members link their own
+accounts.
 
 ## How it works
 
@@ -104,6 +106,35 @@ cannot be linked.
 `@discord` lists every link with its server, its id and its state. `@discord/unlink <id>`
 stops posting, deletes the channel's webhook and forgets its token. The feed and its lines
 stay in the game.
+
+## Linking members
+
+Each member links their Discord account to their game account once. In the game's Discord
+server they type `/link`. The bot answers with a link that only they can see, which works
+once, for ten minutes. They open it while signed in to the game's website and confirm:
+
+![The Link Discord page: the Discord user grave.dev, the time the link stops working, and a Link this Discord account button](../../../assets/guide/discord-link-confirm.webp)
+
+The link starts with the game's web address, the `mud_url` setting. Until `mud_url` is set,
+`/link` tells the member to ask staff instead.
+
+Once it is linked, the Discord section of the account page shows the Discord account, with
+an Unlink button:
+
+![The account page's Discord section: linked as grave.dev since 10/15/2026, with an Unlink button](../../../assets/guide/discord-account-linked.webp)
+
+- A game account links to one Discord account, and a Discord account to one game account.
+- Only an active account can link. A disabled or banned one cannot.
+- A Discord account unlinked from one game account waits a week before it can link a
+  different one, so a Discord role tied to a game role cannot be handed around. It can link
+  the same account again at once.
+- `/unlink` in Discord, or Unlink on the account page, drops the link.
+
+The bot makes a role named **Linked** in each server it is in. It gives the role to every
+linked member and takes it from everyone else, and checks every member each time it
+connects. Renaming the role is fine, since the bot knows it by its id. If the role is
+deleted, the bot makes a new one the next time it connects. This needs the Manage Roles
+permission the invite asks for.
 
 ## Sending lines
 
