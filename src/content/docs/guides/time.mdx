@@ -179,6 +179,29 @@ whenever you ask:
 A game may only tell you what your client reported and leave setting it to you, or ignore it:
 see `detect` under [Settings](#settings).
 
+### Your zone from where you connect
+
+A game can also look your zone up from where you connect from, when you have set none and your
+client reports none. It is off unless the game turns it on, and when it is on, your address goes to
+a zone service on the internet, such as ipinfo.io. The guess is often wrong behind a VPN or on a
+mobile network. A zone found this way is hidden too:
+
+```
+connect Ida Ida-pass-1
+...
+[TIME] Done: Your time zone is now Europe/London (UTC+01:00), guessed from where you connect. Only you and staff see it: +timezone/unhide shares it, and +timezone <zone> changes it.
+```
+
+A game set to `offer` tells you instead, and `+timezone/detect` looks it up when you ask:
+
+```
+connect Ide Ide-pass-1
+...
+[TIME] Where you connect from suggests your time zone is Europe/London. +timezone/detect sets it.
+> +timezone/detect
+[TIME] Done: Your time zone is Europe/London (UTC+01:00), guessed from where you connect. It is Thu 15 Oct 2026, 16:32 for you.
+```
+
 ### Finding your zone by the time
 
 If your client reports nothing and you are not sure what your zone is called, type the time on
@@ -340,6 +363,9 @@ The number on your game will differ.
 | `zone` | The game's zone, the one `+time` calls game time. | `UTC` |
 | `format` | How a time is written, in [`timefmt()`](/reference/sharpmush-help/timefmt-function/)'s codes. | `$a $d $b $Y, $H:$M` |
 | `detect` | What a zone a player's client reports does when they set none. `set` fills it in, hidden, and tells them; `offer` tells them at login, and `+timezone/detect` sets it; `off` does nothing. | `set` |
+| `detect-ip` | What to do for a player who set no zone and whose client reports none. `set` and `offer` look the zone up from the player's address at login, through `ip-service`, then work as for `detect`; `off` sends nothing. | `off` |
+| `ip-service` | The zone service: an https address with `<ip>` where the address goes, answering in JSON. | `https://ipinfo.io/<ip>/json` |
+| `ip-field` | Where the zone is in the service's reply, as a JSON path. | `timezone` |
 | `match-zones` | The zones `+timezone/match` offers, in the order it lists them. Each must be a zone the server knows. | about fifty, at least one for each offset most players live in |
 
 To tell players what their client says without setting anything:
@@ -367,6 +393,38 @@ Clock/ALIAS`IRISH - Set.
 ```
 
 A short name wins over a zone of the same name, which is how `est` comes to mean New York.
+
+#### Looking zones up by address
+
+`detect-ip` sends the address of every player who logs in with no zone, and no zone from their
+client, to the zone service. Say so in your game's privacy policy before you turn it on. An address
+a service cannot place (loopback, a private network, link-local) is never sent, so a player on the
+same network as the game gets nothing. `offer` suits it better than `set`, since an address is often
+in the wrong place:
+
+```
+> +config time/detect-ip=offer
+[CONFIG] Done: time/detect-ip is now offer, was off.
+```
+
+ipinfo.io, the default, needs no account, though it limits how many lookups it answers; check its
+terms for a busy game. Any service that takes
+the address in its URL and answers in JSON works; give the path to the zone in its reply too. For
+ipwho.is:
+
+```
+> +config time/ip-service=https://ipwho.is/<ip>
+[CONFIG] Done: time/ip-service is now https://ipwho.is/<ip>, was https://ipinfo.io/<ip>/json.
+> +config time/ip-field=timezone.id
+[CONFIG] Done: time/ip-field is now timezone.id, was timezone.
+```
+
+Only an https address is taken:
+
+```
+> +config time/ip-service=http://ip-api.com/json/<ip>
+[CONFIG] Warning: time/ip-service: Give an https address with <ip> where the address goes, such as https://ipinfo.io/<ip>/json.
+```
 
 ### The IC date
 
