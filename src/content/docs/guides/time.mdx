@@ -24,6 +24,7 @@ sit centuries away, and name its months and weekdays.
 | A player | let your client set your zone | [Your zone from your client](#your-zone-from-your-client) |
 | A player | find your zone without knowing its name | [Finding your zone by the time](#finding-your-zone-by-the-time) |
 | A player | plan a scene across zones | [Converting a time](#converting-a-time) |
+| A player | read scene times in your zone | [Scenes in your time](#scenes-in-your-time) |
 | Staff | set the game's zone | [Settings](#settings) |
 | Staff | set the IC date | [The IC date](#the-ic-date) |
 | A coder | read the time in your own code | [For coders](#for-coders) |
@@ -242,6 +243,65 @@ A time that cannot be read says why:
 > +time 8pm Atlantis
 [TIME] Warning: There is no time zone called 'Atlantis'. +help timezone says how they are named.
 ```
+
+## Scenes in your time
+
+The scene package reads your zone too. A date and time you give `+scene/schedule`,
+`+scene/reschedule` or `+scene/pause` is read in your zone, and `+scenes`, a scene's card and every
+message about a time show it in your zone, with the zone named. Ann, in New York, moves a scene:
+
+```
+> +scene/reschedule 4=2026-10-30 20:00
+[SCENE] Done: Rescheduled scene 4 for Fri Oct 30 20:00:00 2026 (America/New_York).
+```
+
+Ann and Bob, in London, read the same schedule:
+
+```
+> +scenes
+=============================< Scheduled Scenes >=============================
+Day         Time   ID  Title                                   Status     RSVP
+Thu Oct 15  19:00   3  Lighthouse keeper                       scheduled     1
+Sat Oct 17  13:00   1  Harbour market                          scheduled     3
+Thu Oct 22  15:30   2  Lighthouse keeper                       scheduled     3
+Fri Oct 30  20:00   4  Night market                            scheduled     1
+==============================================================================
+4 in the next 30 days * times in America/New_York
+```
+
+```
+> +scenes
+=============================< Scheduled Scenes >=============================
+Day         Time   ID  Title                                   Status     RSVP
+Fri Oct 16  00:00   3  Lighthouse keeper                       scheduled     1
+Sat Oct 17  18:00   1  Harbour market                          scheduled     3
+Thu Oct 22  20:30   2  Lighthouse keeper                       scheduled     3
+Sat Oct 31  00:00   4  Night market                            scheduled     1
+==============================================================================
+4 in the next 30 days * times in Europe/London
+```
+
+![+scenes for a player in New York and one in London: the same four scenes, the first list at New York's times and the second at London's, each saying whose times they are](../../../assets/guide/scene-times-zones.webp)
+
+Bob sees the scene's card at his time:
+
+```
+> +scene 4
+===========================< Scene 4: Night market >==========================
+Status:    scheduled
+Owner:     Ann
+Where:     No room yet
+Created:   Oct 15 07:23AM
+Scheduled: Oct 31 12:00AM (Europe/London)
+Watchers:  Anyone
+```
+
+A player who has not set a zone sees the game's time, and the schedule says so:
+`4 in the next 30 days * game time`. A time written in seconds, or from now such as `+3d`, is the
+same for everyone.
+
+Scenes use only your own zone, so a zone you keep hidden is never shown to anyone. The scene
+package does not need this one: without it, `&TZ me=America/New_York` does the same.
 
 ## Running the package
 

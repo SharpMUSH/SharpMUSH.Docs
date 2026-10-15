@@ -13,7 +13,7 @@ statuses:
 
 A status shows in the Status column of `+who` and in a list of everyone who has one. Staff
 can change how long each lasts, add statuses of their own, or take them away, with
-[`+status/options`](#changing-the-statuses).
+[`+config status/statuses`](#changing-the-statuses).
 
 | You are | You want to | Read |
 |---|---|---|
@@ -191,18 +191,20 @@ To let one player moderate without the role, allow them the permission instead:
 
 ### Changing the statuses
 
-Staff who can change the game's configuration (the `config.admin` permission) choose the
-statuses on offer with `+status` itself. `+status` shows them a line saying so under the
-list.
+The statuses on offer are a [table](/guides/config#tables) setting, `statuses`. Staff who can change
+the game's configuration (the `config.admin` permission) change them with `+config`. `+status` shows
+them a line saying so under the list.
 
 | Type | To |
 |---|---|
-| `+status/options <name>/hours=<hours>` | set how long it lasts from when it is set; `0` lasts until it is changed |
-| `+status/options <name>/logoff=on` | end it at logoff; `=off` keeps it |
-| `+status/options <name>/tag=<text>` | set what `+who` and the list show, up to 20 characters |
-| `+status/options <name>/means=<text>` | set what `+status` says it means |
-| `+status/add <name>=<what it means>` | add a status, lasting until it is changed |
-| `+status/remove <name>` | take a status away, and from everyone who has it |
+| `+config status/statuses` | list the statuses and their fields |
+| `+config status/statuses/<name>` | show one status in full |
+| `+config status/statuses/<name>/lasts=<time>` | set how long it lasts from when it is set, such as `4h`; `0` lasts until it is changed, and a week is the most |
+| `+config status/statuses/<name>/logoff=on` | end it at logoff; `=off` keeps it |
+| `+config status/statuses/<name>/tag=<text>` | set what `+who` and the list show, up to 20 characters |
+| `+config status/statuses/<name>/means=<text>` | set what `+status` says it means |
+| `+config/add status/statuses/<name>=<what it means>` | add a status, lasting until it is changed |
+| `+config/remove status/statuses/<name>` | take a status away, and from everyone who has it |
 
 A name is one word of up to 20 letters, digits and `_`, and a player types it in any case.
 
@@ -210,16 +212,16 @@ For example, to make `lfrp` last six hours, keep `rp_ok` only until logoff, and 
 for a scene others may join that lasts two hours:
 
 ```
-> +status/options lfrp/hours=6
-[STATUS] Done: lfrp: It lasts 6 hours or until you log off. A status set before now keeps the time it had.
-> +status/options rp_ok/logoff=on
-[STATUS] Done: rp_ok: It lasts until you log off.
-> +status/add scene=In a scene, but come and join.
-[STATUS] Done: Added scene. It lasts until it is changed. +status/options scene/hours=<hours> changes that.
-> +status/options scene/hours=2
-[STATUS] Done: scene: It lasts 2 hours. A status set before now keeps the time it had.
-> +status/options scene/tag=Open scene
-[STATUS] Done: scene shows as Open scene.
+> +config status/statuses/lfrp/lasts=6h
+[CONFIG] Done: status/statuses/lfrp/lasts is now 6h, was 4h.
+> +config status/statuses/rp_ok/logoff=on
+[CONFIG] Done: status/statuses/rp_ok/logoff is now yes, was no.
+> +config/add status/statuses/scene=In a scene, but come and join.
+[CONFIG] Done: Added status/statuses/scene. +config status/statuses/scene shows it.
+> +config status/statuses/scene/lasts=2h
+[CONFIG] Done: status/statuses/scene/lasts is now 2h, was 0s.
+> +config status/statuses/scene/tag=Open scene
+[CONFIG] Done: status/statuses/scene/tag is now Open scene, was none.
 > +status
 [STATUS] You have no status.
 ═════════════════════════════════╡ Statuses ╞═════════════════════════════════
@@ -228,29 +230,33 @@ lfrp   Looking for roleplay now.                                  6h or logoff
 rp_ok  Not looking, but glad to be asked.                         until logoff
 scene  In a scene, but come and join.                             2h
 ══════════════════════╡ +status <name>=<line> sets one ╞══════════════════════
-Staff: +status/options <name>/hours=<hours> changes how long one lasts. +help status staff has the rest.
+Staff: +config status/statuses changes them. +help status staff has the rest.
 ```
 
-A player then picks it like any other:
+![The statuses listed, three fields changed, a status added, and the new status shown in full](../../../assets/guide/status-table.webp)
+
+A player then picks it like any other. Anyone else who tries to change the statuses is refused, and
+removing a status clears it from everyone who has it:
 
 ```
 > +status scene=Card game at the Harbour inn
 [STATUS] Done: Your status: Open scene: Card game at the Harbour inn
 It lasts 2 hours. +status/note adds an OOC note, +status/place where to find you, and +status/off ends it.
+> +config status/statuses/scene/lasts=1h
+[CONFIG] Error: Changing status/statuses needs the config.admin permission.
 ```
 
-![Changing how long lfrp lasts and adding a status, then choosing it](../../../assets/guide/status-custom.webp)
-
-Anyone else is refused with `Only staff who change the game's configuration can change the
-statuses on offer.` Removing a status clears it from everyone who has it:
-
 ```
-> +status/remove scene
-[STATUS] Done: Removed scene, and cleared it from 1 player.
+> +config/remove status/statuses/scene
+[CONFIG] Done: Removed status/statuses/scene.
+[STATUS] Done: Cleared scene from 1 player.
 ```
 
-The statuses are kept on the **Status Store**, inside the Status object in the master room, as
-``STATUS`<NAME>`` with `TAG`, `HOURS` and `LOGOFF` beneath it.
+![A player choosing the new status and refused when changing it, then staff removing it](../../../assets/guide/status-custom.webp)
+
+`/reset` on a field puts back what a new status gets (`lasts` 0, `logoff` off), not the value the
+package installed. The statuses are kept on the **Status Store**, inside the Status object in the
+master room, as ``STATUS`<NAME>`` with `TAG`, `LASTS` (in seconds) and `LOGOFF` beneath it.
 
 ### Settings
 
@@ -277,8 +283,6 @@ Mortal  LFRP: Card game at the Harbour inn                    -             0s
 ═════════════════════╡ +status/show <name> shows a note ╞═════════════════════
 Longer requests: +bbread public/looking
 ```
-
-![Adding a status, setting it, and the list with a line under it](../../../assets/guide/status-custom.webp)
 
 ### Other statuses in +who
 
