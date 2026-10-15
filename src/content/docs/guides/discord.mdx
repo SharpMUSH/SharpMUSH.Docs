@@ -23,6 +23,7 @@ back the other way, as a line on the feed spoken by the character they chose.
 | give members Discord roles from their game roles | [Mapping roles](#mapping-roles) |
 | do all of this from the portal | [The Discord page](#the-discord-page) |
 | ban a member on Discord when they are banned in the game | [Game bans](#game-bans) |
+| list the game's events in Discord's Events tab | [Scheduled events](#scheduled-events) |
 | fix a link that stopped | [When a link stops](#when-a-link-stops) |
 
 Setting up the bot and linking channels need the `discord.admin` permission. Wizards hold it,
@@ -78,10 +79,7 @@ and a link. Open it, pick the server, and keep every permission it asks for:
 | Manage Webhooks | make each linked channel's webhook |
 | Manage Messages | replace a member's message with the game's version of it |
 | Manage Roles | give linked members the Linked role, and let only that role post in linked channels |
-| Create Events | publish scenes as Discord events |
-
-Create Events is for a part of the link still being built. Asking for it now saves adding
-the bot again later.
+| Create Events | publish the game's events, such as scenes, as Discord events |
 
 <Aside>
 The token can also be given from outside the game, as the environment variable
@@ -343,6 +341,39 @@ The bot needs the Ban Members permission for this. The invite link asks for it w
 mirroring is on, and the setup checklist names any server where the bot lacks it.
 
 ![The Connection card with Mirror game bans to Discord switched on, and a Ban Members step added to the checklist.](../../../assets/guide/discord-admin-bans.webp)
+
+## Scheduled events
+
+`@discord/event` puts a game event in the server's Events tab, where members can mark
+themselves interested. It is one way: the game says what the event is, and an edit made to it
+on Discord lasts only until the game publishes it again. Each event has a key the game picks,
+such as a scene's id, and later changes name the same key.
+
+```
+> @discord/event 12=[json(object,name,json(string,Harbour Night),start,add(secs(),86400),location,json(string,https://game.example/scenes/12))]
+```
+
+The part after `=` is a JSON object. Build it with `json()`: typed straight into a command, its
+braces would be taken as grouping and dropped.
+
+| Field | What it is |
+|---|---|
+| `name` | the event's name, up to 100 characters (required) |
+| `start` | when it starts, in seconds since 1970 UTC, as `secs()` gives it (required; still to come) |
+| `end` | when it ends; three hours after the start if left out |
+| `location` | where it happens, up to 100 characters, such as the scene's page on the game's website (required) |
+| `description` | up to 1000 characters |
+| `server` | the server's id; needed only when the bot is in more than one |
+
+- Publishing the same key again updates the event. Once it has started, its start stays as it
+  is; once it has ended or was cancelled, publishing makes a new one.
+- `@discord/event/start <key>` shows the event as happening now.
+- `@discord/event/end <key>` ends an event that started and cancels one that has not.
+- `@discord/event` lists the events the game has published.
+
+Each command answers at once with the key, then says how it went when Discord replies:
+
+![@discord/event lists nothing published; publishing event 12 while the bot is not connected says so; a start that has passed and text that is not JSON are refused; /start 12 says the bot is not connected; /end with no key asks for one.](../../../assets/guide/discord-events.webp)
 
 ## The Discord page
 
