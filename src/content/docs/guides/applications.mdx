@@ -163,6 +163,13 @@ up to the softcode, which knows who is looking.
 | **Page** | A page of its own at `/apps/<slug>`, with a link in the sidebar if you set a nav placement. |
 | **Widget** | A panel you place on other pages. Open **Layout** in the admin area, find it in the list of widgets, and drag it where you want it. **Allowed zones** limits where it may go: the top bar, either sidebar, the main column or the footer. |
 
+A widget can also name a **scope**, the kind of page it belongs to. It then joins every page of
+that kind without a layout change, below the widgets placed there, in the first of its allowed
+zones that the page has. Placing it from **Layout** puts it where you drop it instead. A widget
+of the `card` scope shows on the name card that opens over a character's name. The
+[Relationships](/guides/relationships#in-the-portal) packages use both: one for the profile
+page and one for the card.
+
 ### When something goes wrong
 
 | What you see | Why it usually happens | What to do |
@@ -407,7 +414,8 @@ A `field` can also have:
 | `markdown` | Formatted text, written in Markdown: bold, lists, links and headings. | `value`: the text. |
 | `image` | A picture. | `src_field`: the data key holding the picture's address; `alt`: a description of it. |
 | `table` | A table. | `rows_field`: the data key holding the rows; `columns`: a list of `{ "key": "...", "label": "..." }`. |
-| `keyvalue` | A list of names and values. | `fields`: the data keys to show. |
+| `keyvalue` | A list of names and values. A value sent as `{ "text": "...", "link": "..." }` shows as a link. | `fields`: the data keys to show. |
+| `graph` | People or things joined by labelled lines, drawn around one in the middle. | `src_field`: the data key holding `{ "nodes": [...], "edges": [...] }`. A node has an `id`, a `label`, an optional `image`, and `focus` on the one in the middle. An edge has `from`, `to`, a `label`, a `tone` for its colour, and `directed` for an arrow. `link` makes each node a link, with `{label}` or any other node key filled in; `empty` is shown when there are no edges. |
 | `timeline` | A list of dated entries, like comments on a job. | `rows_field`: the data key holding the entries. |
 | `divider` | A line across the section. | Nothing. |
 | `button` | A button. | `label`: its text; `action`: the action it runs. `confirm` asks a question first. |
