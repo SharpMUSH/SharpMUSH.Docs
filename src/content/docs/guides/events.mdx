@@ -17,7 +17,8 @@ This page covers:
 - hearing an event;
 - letting several packages hear the same event;
 - stopping an event, for the few events that allow it;
-- hearing an event from a package.
+- hearing an event from a package;
+- PennMUSH's events, for a game moved from PennMUSH.
 
 The full list of events and their arguments is in the [event list](/reference/sharpmush-help/sharpevents/).
 
@@ -147,3 +148,48 @@ objects:
 The bundled `comm-feed` and `room-contents` packages are built this way: `comm-feed` hears pages as
 ``PAGE`MESSAGE`COMMFEED``, and `room-contents` hears room changes as ``ROOM`CONTENTS`ROOMCONTENTS``. See
 [Softcode Packages](/guides/packages/) and the [package format](/reference/package-format/).
+
+## PennMUSH events
+
+PennMUSH raises some events about things a new SharpMUSH game does not do: saving the database
+every so often, checking it, disconnecting idle players, and its SQL connection. SharpMUSH writes
+every change to disk as it happens, so a new game has no use for them and they are off.
+
+The `compatibility_events` setting turns them on. Importing a PennMUSH database turns it on for you,
+so a handler written for PennMUSH keeps working. With it on, the game saves every `dump_interval`,
+warns everyone before each save, and raises the dump events around it; `@dump` saves at once:
+
+```sharp
+> @dump
+Dump command does nothing for SharpMUSH. Consider using @backup.
+> @config/set compatibility_events=yes
+Option set.
+> &DUMP`COMPLETE #9=@pemit #1=Heard dump`complete: %<message> (forking %<forking>)
+Event Handler/DUMP`COMPLETE - Set.
+> @dump
+Dumping...
+GAME: Saving database. Game may freeze for a few moments.
+GAME: Save complete.
+Dump complete.
+Heard dump`complete: GAME: Save complete. (forking 0)
+```
+
+It also raises ``LOG`HUH`` when a player types a command the game does not understand somewhere they
+do not control:
+
+```sharp
+> &LOG`HUH #9=@pemit #1=Heard log`huh: %<message>
+Event Handler/LOG`HUH - Set.
+```
+
+Bob, standing in Room Zero, types `zzfrobnicate`, and `#1` sees:
+
+```
+Heard log`huh: HUH: Bob(#15) in Room Zero(#0) [God]: zzfrobnicate
+```
+
+The rest are ``DB`DBCK`` every `dbck_interval`, ``PLAYER`INACTIVITY`` after players idle past
+`idle_timeout` are disconnected (`idle_timeout` is 0, nobody, unless you set it), the SQL events,
+``SIGNAL`USR1`` and ``SIGNAL`USR2`` in place of a restart and a save when the server is sent those
+signals, and ``HTTP`FAIL`` for an HTTP request the server cannot read. The
+[event list](/reference/sharpmush-help/sharpevents/) describes each one.
