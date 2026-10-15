@@ -67,6 +67,7 @@ export default defineConfig({
                       { label: 'Who and Where', slug: 'guides/who-where' },
                       { label: 'Letting Your Players Build', slug: 'guides/player-building' },
                       { label: 'Finger Profiles', slug: 'guides/finger' },
+                      { label: 'Time and Time Zones', slug: 'guides/time' },
                       { label: 'Discord', slug: 'guides/discord' },
                       { label: 'Writing Plugins', slug: 'guides/plugins' },
                       { label: 'Softcode in Your Editor', slug: 'guides/editor-support' },
