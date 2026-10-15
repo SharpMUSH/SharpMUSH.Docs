@@ -12,9 +12,10 @@ for data, or read from a site's API.
 ```sharp
 @http <obj>/<attr>=<URL>[,<headers>]
 @http/<verb> <obj>/<attr>=<URL>[,<data>[,<headers>]]
+@http[/<verb>]/jsonheaders <obj>/<attr>=<URL>[,<data>],<json headers>
 ```
 
-Without a switch the request is a GET. The other verbs are switches: `/post`, `/put`, `/delete`,
+Without a verb switch the request is a GET. The other verbs are switches: `/post`, `/put`, `/delete`,
 `/patch`, `/head`, `/options`, `/trace` and `/connect`.
 
 Only Wizards and objects with the `Can_HTTP` power may use `@http`.
@@ -72,6 +73,32 @@ has no colon, a header name has a space in it, or a line sets Content-Length (th
 Commas separate the arguments, so a comma inside the URL or the data needs escaping. A comma
 inside a function call, such as `json(object,bar,"baz")`, is fine.
 </Aside>
+
+## Headers as JSON
+
+With `/jsonheaders`, `<headers>` is a JSON object instead of lines. Each member is a header name, and
+its value is a string, or a list of strings to send that header once for each. `json()` builds one:
+
+```sharp
+@http/post/jsonheaders me/SHOW=https://postman-echo.com/post,json(object,bar,"baz"),json(object,Content-Type,"application/json",Game,"MyMUSH")
+```
+
+Output: `200 baz MyMUSH`
+
+This form suits headers you already hold as JSON, such as a set kept in an attribute.
+
+A JSON literal typed into the command needs a second pair of braces, because the outer pair only
+groups the argument and is removed:
+
+```sharp
+&SHOW me=think %<status> [json_query(%0,extract,$.headers.game)]
+@http/jsonheaders me/SHOW=https://postman-echo.com/get,{{"Game":"MyMUSH"}}
+```
+
+Output: `200 MyMUSH`
+
+The same rules apply as for lines. Anything that is not an object of names and strings refuses the
+request with `Headers must be a JSON object of names and string values. Aborting.`
 
 ## Logging in to a site
 
