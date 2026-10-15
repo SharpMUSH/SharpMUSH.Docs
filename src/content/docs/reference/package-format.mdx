@@ -455,6 +455,8 @@ depends:
   screen and `@package` say which one: `needs the scene plugin, which is not running`.
 - **Turning a plugin off** (the Plugins tab or `@plugin/disable`) uninstalls, after a backup and your
   confirmation, every package that names it, and the packages that depend on those.
+- **Rollback.** Rolling a package back puts back the plugins that revision named. A rollback to a
+  revision whose plugin is not running is refused: `revision 1 needs the scene plugin, which is not running`.
 - **The bundled catalogue** does not offer a package whose plugin is not running, and a new game does
   not install it.
 
