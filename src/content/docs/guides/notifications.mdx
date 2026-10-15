@@ -141,8 +141,12 @@ every device has to turn notifications on again: **Your devices** marks the old 
 - `push_idle_seconds` (300) is how long a player goes without typing before they count as away.
 - `push_limit` (10) is how many notifications one character is sent in a minute. Past it, the rest
   are dropped.
+- `push_devices` (10) is how many phones and computers one account may turn notifications on in.
+  Each `@push` sends one request per device. When an account is full, **Turn on** asks the player
+  to remove one under **Your devices** first. A device the push service no longer knows is removed
+  by itself.
 
-`@config limit` lists both, and `@config/set` changes them.
+`@config limit` lists all three, and `@config/set` changes them.
 
 ## Sending notifications from softcode
 
