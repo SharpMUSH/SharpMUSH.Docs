@@ -1,10 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 300" width="780" height="300" role="img" aria-labelledby="t d">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="600" height="300" role="img" aria-labelledby="t d">
 <title id="t">Who reads what</title>
-<desc id="d">Four kinds of writing and who reads each. An +info file: everyone. A +pinfo file: the character and staff. A journal entry: the character and staff, plus the players it is shared with, or everyone once shared with all. A notebook: everyone in it and staff. Info files, private files and journal entries live on the character; notebooks live on the Notebook Store.</desc>
-<rect width="780" height="300" rx="12" fill="#f8fafc"/>
+<desc id="d">Three kinds of writing and who reads each. An +info file: everyone. A +pinfo file: the character and staff. A journal entry: the character and staff, plus the players it is shared with, or everyone once shared with all. All three live on the character.</desc>
+<rect width="600" height="300" rx="12" fill="#f8fafc"/>
 <g font-family="ui-sans-serif,system-ui,sans-serif" font-size="14" fill="#1e293b">
   <text x="40" y="44" font-size="15" font-weight="600">On the character</text>
-  <text x="590" y="44" font-size="15" font-weight="600">On the Notebook Store</text>
 
   <rect x="40" y="60" width="160" height="70" rx="8" fill="#dcfce7" stroke="#15803d"/>
   <text x="120" y="88" text-anchor="middle" font-weight="600" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+info</text>
@@ -18,9 +17,6 @@
   <text x="480" y="88" text-anchor="middle" font-weight="600" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+journal</text>
   <text x="480" y="112" text-anchor="middle">an entry</text>
 
-  <rect x="590" y="60" width="160" height="70" rx="8" fill="#dbeafe" stroke="#1d4ed8"/>
-  <text x="670" y="88" text-anchor="middle" font-weight="600" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+notebook</text>
-  <text x="670" y="112" text-anchor="middle">a shared notebook</text>
 
   <text x="40" y="170" font-size="15" font-weight="600">Who reads it</text>
   <rect x="40" y="182" width="160" height="90" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
@@ -35,8 +31,5 @@
   <text x="480" y="230" text-anchor="middle">and staff, and whoever</text>
   <text x="480" y="250" text-anchor="middle">it is shared with</text>
 
-  <rect x="590" y="182" width="160" height="90" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
-  <text x="670" y="222" text-anchor="middle">Everyone in it,</text>
-  <text x="670" y="244" text-anchor="middle">and staff</text>
 </g>
 </svg>

@@ -1,33 +1,27 @@
 ---
-title: Info Files, Journals and Notebooks
-description: Keeping notes about a character with +info and +pinfo, a journal shared one entry at a time with +journal, and plot notebooks a group writes together with +notebook.
+title: Info Files and Journals
+description: Keeping notes about a character with +info and +pinfo, and a journal shared one entry at a time with +journal.
 ---
 
-import { Aside } from '@astrojs/starlight/components';
-
-The **info** package gives players four places to write things down:
+The **info** package gives players three places to write things down:
 
 - `+info` keeps files about a character that anyone can read: a background, contacts, what
   they own.
 - `+pinfo` keeps private files, which only the character and staff read.
 - `+journal` is a character's own journal. An entry stays private until the player shares it,
   with a few people or with everyone.
-- `+notebook` is a notebook a group shares, for a plot or a project. Everyone in it reads and
-  writes entries.
 
-![Who reads what: an +info file everyone; a +pinfo file the character and staff; a journal entry the character, staff and whoever it is shared with; a notebook everyone in it and staff](../../../assets/guide/info-readers.svg)
+![Who reads what: an +info file everyone; a +pinfo file the character and staff; and a journal entry the character, staff and whoever it is shared with](../../../assets/guide/info-readers.svg)
 
 | You are | You want to | Read |
 |---|---|---|
 | A player | keep files about your character | [Info files](#info-files) |
 | A player | write something long | [Writing a line at a time](#writing-a-line-at-a-time) |
 | A player | keep a journal | [Journals](#journals) |
-| A player | share notes with a plot group | [Notebooks](#notebooks) |
 | Staff | read and lock players' files | [Staff](#staff) |
 | Staff | install it and change its settings | [Running the package](#running-the-package) |
 
-In the game, `+help info`, `+help journal` and `+help notebook` have the same commands in short
-form.
+In the game, `+help info` and `+help journal` have the same commands in short form.
 
 ## Info files
 
@@ -114,11 +108,10 @@ line between paragraphs. See the next section for writing more than one line.
 ## Writing a line at a time
 
 A command is one line, so a long text with paragraphs or a list is written with `/write`. It works
-for all four commands:
+for all three commands:
 
 - `+info/write <file>` and `+pinfo/write <file>`
 - `+journal/write <title>`
-- `+notebook/write <notebook>/<title>`
 
 Each line you type is added to the text, and nothing you type runs as a command until you finish.
 
@@ -224,72 +217,6 @@ entry. You see only `you` or `everyone` in the Read by column, never who else it
 - `+journal/title <number>=<title>` renames it.
 - `+journal/delete <number>` deletes it. The other entries keep their numbers.
 
-## Notebooks
-
-A notebook belongs to a group. Whoever starts it keeps it and brings the others in:
-
-```
-> +notebook/create Harbour Plot
-[INFO] Done: Notebook Harbour Plot is made. +notebook/invite Harbour Plot=<names> brings others in.
-> +notebook/invite Harbour Plot=Tobin
-[INFO] Done: Tobin is in Harbour Plot now.
-```
-
-Tobin hears, if he is connected:
-
-```
-[INFO] Mara brought you into the notebook Harbour Plot: +notebook Harbour Plot
-```
-
-Notebook names are unique across the game. `+notebook` lists the ones you are in.
-
-### Writing in a notebook
-
-`+notebook <notebook>/<title>=<text>` adds an entry, and tells everyone else in the notebook:
-
-```
-> +notebook Harbour/Tide office=The tide office is locked at night, but the clerk's window does not latch.
-[INFO] Done: Entry 2 of Harbour Plot, Tide office, is written.
-```
-
-Mara hears:
-
-```
-[INFO] Tobin wrote in Harbour Plot: +notebook Harbour Plot/2
-```
-
-`+notebook <notebook>` shows who is in it and its entries, newest first, and
-`+notebook <notebook>/<number>` reads one. The start of the notebook's name is enough:
-
-![Tobin reads the Harbour Plot notebook, its second entry, and the one journal entry Mara shared with him](../../../assets/guide/info-notebook.webp)
-
-Whoever wrote an entry, whoever keeps the notebook, and staff change it:
-
-- `+notebook/edit <notebook>/<number>=<text>` replaces its text.
-- `+notebook/get <notebook>/<number>` shows the `/edit` command with the text exactly as stored.
-- `+notebook/title <notebook>/<number>=<title>` renames it.
-- `+notebook/delete <notebook>/<number>` deletes it.
-
-Anyone else is refused:
-
-```
-> +notebook/edit Harbour/1=Changed
-[INFO] Error: Only whoever wrote an entry, whoever keeps the notebook, or staff change it.
-```
-
-### Keeping a notebook
-
-Only its keeper and staff do these:
-
-- `+notebook/invite <notebook>=<names>` brings players in, and `+notebook/remove <notebook>=<names>`
-  takes them out. Both tell the players.
-- `+notebook/owner <notebook>=<name>` hands it to someone else. The old keeper stays in it.
-- `+notebook/rename <notebook>=<new name>` renames it.
-- `+notebook/destroy <notebook>` says how many entries it holds, and
-  `+notebook/destroy <notebook>=yes` throws it away for good.
-
-Anyone but the keeper leaves with `+notebook/leave <notebook>`.
-
 ## Long lists
 
 A list longer than your screen comes in pages. Ask for a page with its number as the last switch,
@@ -297,8 +224,6 @@ and the last line of each page names the command for the next:
 
 - `+info/2` is the second page of your files, `+info/2 Mara` of Mara's.
 - `+journal/2` is the second page of your journal.
-- `+notebook/2` is the second page of your notebooks, and `+notebook/2 Harbour Plot` of that
-  notebook's entries.
 
 A page past the end says how many there are:
 
@@ -325,8 +250,6 @@ They can:
 - change anyone's `+info` and `+pinfo` files with `+info <name>/<file>=<text>`, `/write`, `/rename`
   and `/delete`. The player is told.
 - read every journal entry: `+journal <name>` lists them all, shared or not.
-- list every notebook with `+notebook/all`, read any of them, and manage any of them as its keeper
-  does.
 
 ### Locking a file
 
@@ -361,14 +284,14 @@ To leave every file of an approved character to staff, turn on the `approval-loc
 
 ### Installing
 
-The info package ships with the server but is not installed on a new game, because `+info`,
-`+journal` and `+notebook` are names a game may already use. An administrator installs it from the
+The info package ships with the server but is not installed on a new game, because `+info` and
+`+journal` are names a game may already use. An administrator installs it from the
 portal:
 
 1. Open **Packages** in the admin area and choose **Browse**.
 2. Install `info`. It needs `plus-help` and `plus-config`, which a new game already has.
 
-It adds `+info`, `+pinfo`, `+journal` and `+notebook` for everyone. They are game commands, which
+It adds `+info`, `+pinfo` and `+journal` for everyone. They are game commands, which
 are matched before softcode `$`-commands, so a `+info` your game already has in softcode stops
 running once the package is in.
 
@@ -381,7 +304,7 @@ See [Softcode Packages](/guides/packages) for how installing, upgrading and roll
 
 | Setting | What it is | Default |
 |---|---|---|
-| `name-length` | The longest name of a file or notebook, or title of an entry, in characters, 1 to 60. | 30 |
+| `name-length` | The longest name of a file or title of an entry, in characters, 1 to 60. | 30 |
 | `length` | The longest text of a file or entry, in characters. | 8000 |
 | `approval-lock` | Once a character is approved, only staff add, change or delete their `+info` and `+pinfo` files. | no |
 | `markdown` | Show the text of files and entries as Markdown. Off shows it as typed. | yes |
@@ -413,10 +336,4 @@ character's first file:
 Mara grew up above her mother's net shop on the Shale Coast, and ran cargo for the harbour guild until the guild ran out of work.
 ```
 
-Notebooks are on the **Notebook Store** object, inside the Info Files object in the master room, as
-``BOOK`<n>`` trees with ``ENTRY`<n>`` branches.
-
-<Aside type="caution">
-Uninstalling the package leaves the files and journal entries on the characters, but the notebooks
-go with the Notebook Store. Take a backup with `@backup` first if a game wants to keep them.
-</Aside>
+Uninstalling the package leaves the files and journal entries on the characters.
