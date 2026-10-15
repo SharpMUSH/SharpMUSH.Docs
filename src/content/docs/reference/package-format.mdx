@@ -20,7 +20,7 @@ back.
 Every top-level key a softcode package can use, with the format version that added it:
 
 ```yaml
-format: 1.8                     # format version (omit = 1; 1.2 adds roles and permissions, 1.3 settings, 1.5 attribute entries, 1.6 the engine range, 1.7 plugins, 1.8 attribute indexes)
+format: "1.10"                  # format version (omit = 1; 1.2 adds roles and permissions, 1.3 settings, 1.5 attribute entries, 1.6 the engine range, 1.7 plugins, 1.8 attribute indexes, 1.10 category)
 package: myrddins-bbs           # required: lowercase letters, digits and hyphens, up to 64 characters
 version: 2.4.1                  # required: a version number (see Versions below)
 authors: [Myrddin]              # optional: a list, or one string
@@ -28,6 +28,7 @@ description: "Bulletin Board"   # optional
 license: MIT                    # optional: an SPDX licence name is recommended
 homepage: https://example.com   # optional
 keywords: [bbs, boards]         # optional: up to 5, used for browsing and searching
+category: Community             # optional (1.10): the group the setup wizard lists it under (see Category)
 convention_prefix: BBS_         # optional: the attribute name prefix you use; advisory, not enforced
 requires_server: ">=2.0"        # optional: the lowest SharpMUSH version it runs on
 verified_server: "2.4"          # optional: the newest SharpMUSH version it was tested on (1.6)
@@ -312,13 +313,15 @@ attribute flag, a `limit` that doesn't compile, both a `limit` and an `enum`, an
 `delimiter` longer than one character or a choice that contains it, a `retroactive` other than true
 or false, or the block in a manifest whose `format` is below 1.5. In format 1.7: a `plugins:` entry
 that isn't a valid plugin id. In format 1.8: an `index:` that isn't `true`, `false` or the options
-`@attribute/index` takes, or one on an entry with `internal` in its flags.
+`@attribute/index` takes, or one on an entry with `internal` in its flags. In format 1.10: a `category:` longer
+than 40 characters.
 
 **Warnings** (the manifest is accepted): unknown keys (likely typos); reserved keys (`provides`,
 `recommends`, `suggests`, configure `pattern`); configure questions nothing uses; more than 5
 keywords; a format version whose minor number is newer than the server supports; a `verified_server`
 below `requires_server` or above `maximum_server`; a plugin listed twice in `plugins:`; an `index:` in a
-manifest whose `format` is below 1.8, which is ignored; a permission or
+manifest whose `format` is below 1.8, which is ignored; a `category:` in a manifest whose `format`
+is below 1.10, which is ignored; a permission or
 role naming a category the package doesn't declare, or a role allowing a permission the package
 doesn't declare (the game must already have it, or the install stops).
 
@@ -579,6 +582,38 @@ attributes:
 - **Upgrade.** The index is merged like the entry's other fields: a version that changes `index:`
   changes the index, and one that leaves it alone keeps whatever the game has now.
 - **Removed entries and uninstall.** The entry is deleted with its index.
+
+## Category (format 1.10)
+
+`category:` names the group a package belongs with, in the words people read. The setup wizard lists
+the bundled packages under their categories, so a game picks its scene packages together and its staff
+tools together. Set `format: "1.10"`, quoted so that YAML tools do not read it as 1.1. In an older
+manifest `category:` is ignored with a warning.
+
+```yaml
+format: "1.10"
+package: jobs-app
+version: 1.0.3
+category: Staff
+```
+
+A category is one name of up to 40 characters, and runs of spaces in it become one. Packages that
+share a category, ignoring case, are listed together, and one with no category is listed under
+**Other**, last. Within a category, a package that needs another package of the same category is
+listed under it: `jobs-app` comes under `jobs`.
+
+![The setup wizard's Staff group, 0 of 4 chosen: Jobs with Jobs in the portal listed under it, and health with health-jobs listed under it](../../../assets/guide/setup-packages-addons.webp)
+
+The bundled packages use these categories:
+
+| Category | Packages |
+|---|---|
+| Essentials | `softcode-editor`, `plus-help`, `plus-config`, `messages` |
+| Web portal | `http-handler`, `profile-handler`, `room-contents`, `comm-feed` |
+| Scenes | `scene`, `scene-here`, `radio-scene`, `scene-verse`, `scene-safety`, `highlights`, `highlights-app`, `time`, `timeline`, `scene-availability`, `summary` |
+| Community | `wiki-reader`, `radio`, `bboards`, `bboards-app`, `who-where`, `status`, `watch`, `discord`, `notifications`, `notifications-app` |
+| Staff | `jobs`, `jobs-app`, `health`, `health-jobs` |
+| Characters | `chargen`, `chargen-app`, `finger`, `info`, `roster`, `roster-jobs`, `relationships`, `relationships-scene`, `relationships-app`, `relationships-card`, `alts` |
 
 ## Application packages
 
