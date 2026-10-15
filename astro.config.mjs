@@ -56,6 +56,7 @@ export default defineConfig({
                       { label: 'Scene Safety', slug: 'guides/scene-safety' },
                       { label: 'Scenes on a Phone', slug: 'guides/scenes-on-a-phone' },
                       { label: 'Screen Readers', slug: 'guides/screen-readers' },
+                      { label: 'Supporting MUD Clients', slug: 'guides/mud-clients' },
                       { label: 'Softcode Packages', slug: 'guides/packages' },
                       { label: 'Game Settings with +config', slug: 'guides/config' },
                       { label: 'Versioning Packages', slug: 'guides/versioning' },
