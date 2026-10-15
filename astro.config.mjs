@@ -42,6 +42,7 @@ export default defineConfig({
                       { label: 'Operator Handbook', slug: 'guides/operator-handbook' },
                       { label: 'Deployment Reference', slug: 'guides/deployment' },
                       { label: 'Secrets', slug: 'guides/secrets' },
+                      { label: 'Listing Your Game', slug: 'guides/mssp' },
                       { label: 'Develop SharpMUSH', slug: 'guides/local-install' },
                       { label: 'The Web Portal', slug: 'guides/web-portal' },
                       { label: 'Portal Applications', slug: 'guides/applications' },
