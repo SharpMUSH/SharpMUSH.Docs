@@ -55,6 +55,7 @@ export default defineConfig({
                       { label: 'Chat Cards', slug: 'guides/chat-cards' },
                       { label: 'Bulletin Boards', slug: 'guides/bboards' },
                       { label: 'Character Galleries', slug: 'guides/galleries' },
+                      { label: 'RP Finder', slug: 'guides/rp-finder' },
                       { label: 'Writing Plugins', slug: 'guides/plugins' },
                       { label: 'Softcode in Your Editor', slug: 'guides/editor-support' },
                       { label: 'Remote MCP and LSP Analysis', slug: 'guides/mcp' }
