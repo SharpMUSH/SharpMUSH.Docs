@@ -63,6 +63,44 @@ Some packages are bundled with the server and installed automatically when a new
 See [the bundled catalogue](/reference/package-format#the-bundled-catalogue).
 </Aside>
 
+## Reading a package's README
+
+A package can carry a `README.md` beside its `package.yaml`. The Packages page shows it: each row
+under **Installed**, and each plugin under **Plugins** that came from a package, has a README button
+that opens it in a dialog, rendered from Markdown. **Browse** shows the same file before you install.
+
+The README you see on the Packages page is the one the installed version came with. It is read from
+the same commit, upload or bundled copy as the manifest, and kept with the revision the install
+records, so it needs no network and doesn't change when the repository does:
+
+- an upgrade replaces it with the new version's README, or removes it if the new version has none;
+- a rollback brings back the README of the revision it restores;
+- uninstalling the package removes it.
+
+A bundled package without a README of its own shows one written from its manifest: its description,
+whether a new game gets it, what it requires and what it creates.
+
+A README is written for the package's folder, so links and pictures that point into that folder
+(`../profile-handler/`, `docs/setup.md`, `screenshot.png`) are not served by the game. The dialog
+shows such a link as plain text and such a picture as its description. Web links (`https://…`),
+links to a heading on the same page (`#usage`) and wiki links (`[[Main:home]]`) still work. Raw HTML
+is removed, as on wiki pages.
+
+For example, this `README.md` in a package folder:
+
+```markdown
+# coast-guide
+
+Travel notes for the coast road. Install it, then read [[Main:coast-road]].
+
+See [the page format](docs/format.md) and [SharpMUSH](https://sharpmush.com).
+```
+
+shows a heading, a wiki link to the installed page, the words "the page format" without a link, and
+a working link to sharpmush.com.
+
+A README larger than 256 KB, or one that is not UTF-8 text, is left out; the package still installs.
+
 ## Authoring a package
 
 ### From objects you already built
