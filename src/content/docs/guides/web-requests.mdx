@@ -12,10 +12,9 @@ for data, or read from a site's API.
 ```sharp
 @http <obj>/<attr>=<URL>[,<headers>]
 @http/<verb> <obj>/<attr>=<URL>[,<data>[,<headers>]]
-@http[/<verb>]/jsonheaders <obj>/<attr>=<URL>[,<data>],<json headers>
 ```
 
-Without a verb switch the request is a GET. The other verbs are switches: `/post`, `/put`, `/delete`,
+Without a switch the request is a GET. The other verbs are switches: `/post`, `/put`, `/delete`,
 `/patch`, `/head`, `/options`, `/trace` and `/connect`.
 
 Only Wizards and objects with the `Can_HTTP` power may use `@http`.
@@ -47,58 +46,47 @@ Output: `Reply complete.`
 
 ## Sending data and headers
 
-`<data>` is the body of the request. `<headers>` is a list of `Name:value` lines with `%r` between
-them. A GET has no body, so its headers come straight after the URL.
+`<data>` is the body of the request. `<headers>` is a JSON object: each member is a header name, and
+its value is a string, or a list of strings to send that header once for each. `json()` builds one.
+A GET has no body, so its headers come straight after the URL.
 
 ```sharp
 &SHOW me=think %<status> [json_query(%0,extract,$.json.bar)] [json_query(%0,extract,$.headers.game)]
-@http/post me/SHOW=https://postman-echo.com/post,json(object,bar,"baz"),Content-Type:application/json%rGame:MyMUSH
+@http/post me/SHOW=https://postman-echo.com/post,json(object,bar,"baz"),json(object,Content-Type,"application/json",Game,"MyMUSH")
 ```
 
 Output: `200 baz MyMUSH`
 
 How the headers are used:
 
-- A **Content-Type** line sets the type of `<data>`. Without one, data is sent as
+- **Content-Type** sets the type of `<data>`. Without it, data is sent as
   `application/x-www-form-urlencoded`, the type of an HTML form.
 - The data is encoded in the charset its type names (`text/plain; charset=ISO-8859-1`), or UTF-8
   when it names none.
-- A **User-Agent** line replaces SharpMUSH's own.
-- Every other line is sent as written.
+- **User-Agent** replaces SharpMUSH's own.
+- Every other header is sent as given.
 
-`@http` refuses the whole request, with `Header value has a bad key:value set. Aborting.`, when a line
-has no colon, a header name has a space in it, or a line sets Content-Length (the data sets that).
+`@http` refuses the whole request when `<headers>` is not an object of names and strings, a header
+name has a space in it, or it sets Content-Length (the data sets that). It says:
+
+```
+Headers must be a JSON object of names and string values. Aborting.
+```
+
+A JSON object typed into the command needs a second pair of braces, because the outer pair only
+groups the argument and is removed:
+
+```sharp
+&SHOW me=think %<status> [json_query(%0,extract,$.headers.game)]
+@http me/SHOW=https://postman-echo.com/get,{{"Game":"MyMUSH"}}
+```
+
+Output: `200 MyMUSH`
 
 <Aside>
 Commas separate the arguments, so a comma inside the URL or the data needs escaping. A comma
 inside a function call, such as `json(object,bar,"baz")`, is fine.
 </Aside>
-
-## Headers as JSON
-
-With `/jsonheaders`, `<headers>` is a JSON object instead of lines. Each member is a header name, and
-its value is a string, or a list of strings to send that header once for each. `json()` builds one:
-
-```sharp
-@http/post/jsonheaders me/SHOW=https://postman-echo.com/post,json(object,bar,"baz"),json(object,Content-Type,"application/json",Game,"MyMUSH")
-```
-
-Output: `200 baz MyMUSH`
-
-This form suits headers you already hold as JSON, such as a set kept in an attribute.
-
-A JSON literal typed into the command needs a second pair of braces, because the outer pair only
-groups the argument and is removed:
-
-```sharp
-&SHOW me=think %<status> [json_query(%0,extract,$.headers.game)]
-@http/jsonheaders me/SHOW=https://postman-echo.com/get,{{"Game":"MyMUSH"}}
-```
-
-Output: `200 MyMUSH`
-
-The same rules apply as for lines. Anything that is not an object of names and strings refuses the
-request with `Headers must be a JSON object of names and string values. Aborting.`
 
 ## Logging in to a site
 
@@ -107,12 +95,12 @@ Send an `Authorization` header. For HTTP Basic, the value is `Basic` followed by
 
 ```sharp
 &SHOW me=think %<status> %0
-@http me/SHOW=https://postman-echo.com/basic-auth,Authorization:Basic [encode64(postman:password)]
+@http me/SHOW=https://postman-echo.com/basic-auth,json(object,Authorization,"Basic [encode64(postman:password)]")
 ```
 
 Output: `200 {"authenticated":true}`
 
-A site that issues API tokens takes them the same way, as `Authorization:Bearer <token>`.
+A site that issues API tokens takes them the same way, as `json(object,Authorization,"Bearer <token>")`.
 
 <Aside type="caution">
 Keep a password or token in an attribute only a wizard can read, and fetch it with `get()` inside
@@ -141,4 +129,5 @@ PennMUSH waits for the site to ask for a login before it sends `userpass`. Sharp
 Basic at once, so a site that accepts only Digest logins cannot be reached this way.
 
 The headers argument comes from a PennMUSH pull request that is not yet part of a PennMUSH release.
-In PennMUSH with that change, `<headers>` replaces `%q<content-type>`, and SharpMUSH does the same.
+That change takes the headers as `Name:value` lines, where SharpMUSH takes a JSON object. In both,
+`<headers>` replaces `%q<content-type>`.
