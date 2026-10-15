@@ -1,0 +1,117 @@
+---
+title: Who and Where
+description: Seeing who is connected with +who, and where they are with +where, grouped by location or sorted by location or name.
+---
+
+The **who-where** package gives a game two commands:
+
+- `+who` lists everyone connected, how long each has been idle and how long they have been on.
+- `+where` shows where everyone connected is standing.
+
+In the game, `+help who` and `+help where` have the same commands in short form.
+
+## +where
+
+`+where` has three views. The examples below are what Mira saw with seven others connected.
+
+### By location
+
+`+where` on its own lists each location once, with how many players are there and who they are.
+Locations are sorted by name, and so are the players in each.
+
+```
+> +where
+╔══════════════════════════════════╡ Where ╞═════════════════════════════════╗
+║ Location       Players  Who                                                ║
+║ -------------------------------------------------------------------------- ║
+║ Harbour Watch        1  Bram                                               ║
+║ Market Square        3  Ash, Sorrel, Tomas                                 ║
+║ Room Zero            1  God                                                ║
+║ The Old Mill         2  Elin, Mira                                         ║
+║ -                    1  Kit                                                ║
+╠════════════════════════════════════════════════════════════════════════════╣
+║ 8 connected                                                                ║
+╚════════════════════════════════════════════════════════════════════════════╝
+```
+
+Two rooms with the same name get a row each.
+
+### One player per line
+
+`+where/room` lists one player per line, sorted by location and then by name:
+
+```
+> +where/room
+╔════════════════════════════╡ Where by location ╞═══════════════════════════╗
+║ Name    Location                                                           ║
+║ -------------------------------------------------------------------------- ║
+║ Bram    Harbour Watch                                                      ║
+║ Ash     Market Square                                                      ║
+║ Sorrel  Market Square                                                      ║
+║ Tomas   Market Square                                                      ║
+║ God     Room Zero                                                          ║
+║ Elin    The Old Mill                                                       ║
+║ Mira    The Old Mill                                                       ║
+║ Kit     -                                                                  ║
+╠════════════════════════════════════════════════════════════════════════════╣
+║ 8 connected                                                                ║
+╚════════════════════════════════════════════════════════════════════════════╝
+```
+
+`+where/name` lists the same, sorted by name:
+
+```
+> +where/name
+╔══════════════════════════════╡ Where by name ╞═════════════════════════════╗
+║ Name    Location                                                           ║
+║ -------------------------------------------------------------------------- ║
+║ Ash     Market Square                                                      ║
+║ Bram    Harbour Watch                                                      ║
+║ Elin    The Old Mill                                                       ║
+║ God     Room Zero                                                          ║
+║ Kit     -                                                                  ║
+║ Mira    The Old Mill                                                       ║
+║ Sorrel  Market Square                                                      ║
+║ Tomas   Market Square                                                      ║
+╠════════════════════════════════════════════════════════════════════════════╣
+║ 8 connected                                                                ║
+╚════════════════════════════════════════════════════════════════════════════╝
+```
+
+Any other switch is refused:
+
+```
+> +where/bogus
+[WHERE] Warning: +where has no /bogus switch. +where/room lists by location, +where/name by name.
+```
+
+### Unfindable players
+
+A player who is unfindable, or who stands in an unfindable room, is listed at `-` rather than
+left out. In the examples, Kit is in Smugglers' Cove, which is set `UNFINDABLE`. This holds for
+staff too: `+where` looks players up as its own object, not as the reader.
+
+### In the portal and on a phone
+
+Each view is a table, so it fits the reader's screen. In the portal it is drawn as a card:
+
+![The three +where views in the portal terminal: locations with their players, then the same players one per line by location, then by name](../../../assets/guide/who-where-portal.webp)
+
+On a narrow screen the Players count is dropped first, and a long list of names wraps inside its
+column:
+
+![The same three views on a phone, the grouped view without its Players column](../../../assets/guide/who-where-phone.webp)
+
+## +who
+
+`+who` lists everyone connected, with their idle and connected times. A Status column appears
+when another package gives some player a status, such as `+lfrp` from
+[RP Finder](/guides/rp-finder). How a package adds one is in `+help who filters`.
+
+## Installing
+
+who-where ships with the server but is not installed on a new game. An administrator installs
+it from the portal: open **Packages** in the admin area, choose **Browse**, and install
+`who-where`. It needs `plus-help`, which a new game already has.
+
+See [Softcode Packages](/guides/packages) for how installing, upgrading and rolling back work.
