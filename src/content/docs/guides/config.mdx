@@ -137,6 +137,10 @@ command with `@command/restrict` or `@lock/command`.
 | `scene` | `default-status` | What `+scene/create` makes: `active` logs at once, `new` or `scheduled` waits for `+scene/start`. | `active` |
 | | `open-details` | Whether an owner may set scene details the game does not list. | `yes` |
 | | `recall-rounds` | How many rounds of poses a bare `+scene/recall` shows, 1 to 20. | `2` |
+| `safety` | `topics` | The topics `+safety/topics` suggests, split by `\|`. | 14 common ones |
+| | `warning-detail` | The scene detail that holds content warnings. | `warning` |
+| | `topic-length`, `note-length` | The longest line or veil, and the longest note on a pause or skip. | `40`, `200` |
+| | `signal-wait` | How long a player waits between one pause or skip and the next. | `1m` |
 
 A list of entries that each carry several fields, such as the statuses on offer and how long
 each lasts, keeps its own command (`+status/options`); `+config` is for single values and lists.
