@@ -1,0 +1,117 @@
+---
+title: Calling Web Services
+description: Send HTTP requests from softcode with @http, set their headers, log in to a site, and read the reply.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+`@http` sends an HTTP request from softcode. When the reply arrives, the game queues an action list
+of your choosing and hands it the reply. Use it to post to a webhook, ask a dice or weather service
+for data, or read from a site's API.
+
+```sharp
+@http <obj>/<attr>=<URL>[,<headers>]
+@http/<verb> <obj>/<attr>=<URL>[,<data>[,<headers>]]
+```
+
+Without a switch the request is a GET. The other verbs are switches: `/post`, `/put`, `/delete`,
+`/patch`, `/head`, `/options`, `/trace` and `/connect`.
+
+Only Wizards and objects with the `Can_HTTP` power may use `@http`.
+
+The examples on this page use postman-echo.com, which answers with the request it received, so the
+reply shows what `@http` sent. SharpMUSH's test suite runs them against that site, so the output shown
+is what the game prints.
+
+## Reading the reply
+
+The action list receives the reply as named arguments:
+
+| Argument | Holds |
+| --- | --- |
+| `%0` | the body of the reply |
+| `%<status>` | the HTTP status, such as `200` |
+| `%<content-type>` | the reply's Content-Type header |
+| `%<http-overflow>` | `1` if the body was too long for one value and was cut short, otherwise `0` |
+
+A body is cut at the most one value can hold (5 MiB). When that happens, the object holding the
+attribute is also told `Too much HTTP data received; excess truncated.`
+
+```sharp
+&SHOW me=think [if(%<http-overflow>,Reply too long.,Reply complete.)]
+@http me/SHOW=https://postman-echo.com/get
+```
+
+Output: `Reply complete.`
+
+## Sending data and headers
+
+`<data>` is the body of the request. `<headers>` is a list of `Name:value` lines with `%r` between
+them. A GET has no body, so its headers come straight after the URL.
+
+```sharp
+&SHOW me=think %<status> [json_query(%0,extract,$.json.bar)] [json_query(%0,extract,$.headers.game)]
+@http/post me/SHOW=https://postman-echo.com/post,json(object,bar,"baz"),Content-Type:application/json%rGame:MyMUSH
+```
+
+Output: `200 baz MyMUSH`
+
+How the headers are used:
+
+- A **Content-Type** line sets the type of `<data>`. Without one, data is sent as
+  `application/x-www-form-urlencoded`, the type of an HTML form.
+- The data is encoded in the charset its type names (`text/plain; charset=ISO-8859-1`), or UTF-8
+  when it names none.
+- A **User-Agent** line replaces SharpMUSH's own.
+- Every other line is sent as written.
+
+`@http` refuses the whole request, with `Header value has a bad key:value set. Aborting.`, when a line
+has no colon, a header name has a space in it, or a line sets Content-Length (the data sets that).
+
+<Aside>
+Commas separate the arguments, so a comma inside the URL or the data needs escaping. A comma
+inside a function call, such as `json(object,bar,"baz")`, is fine.
+</Aside>
+
+## Logging in to a site
+
+Send an `Authorization` header. For HTTP Basic, the value is `Basic` followed by
+`encode64(<user>:<password>)`:
+
+```sharp
+&SHOW me=think %<status> %0
+@http me/SHOW=https://postman-echo.com/basic-auth,Authorization:Basic [encode64(postman:password)]
+```
+
+Output: `200 {"authenticated":true}`
+
+A site that issues API tokens takes them the same way, as `Authorization:Bearer <token>`.
+
+<Aside type="caution">
+Keep a password or token in an attribute only a wizard can read, and fetch it with `get()` inside
+the command, so it never appears in a command anyone else can see.
+</Aside>
+
+## Games imported from PennMUSH
+
+PennMUSH hands softcode q-registers instead of named arguments. A game imported from PennMUSH has
+the `http_qregisters` option on, and then `@http` also:
+
+- sets `%q<status>`, `%q<content-type>` and `%q<http-overflow>` for the action list;
+- reads `%q<content-type>` as the type of `<data>` when no `<headers>` are given;
+- reads `%q<userpass>`, of the form `<user>:<password>`, and sends it as an HTTP Basic login.
+
+So imported code such as this keeps working:
+
+```sharp
+@http me/SHOW=[setq(userpass,postman:password)]https://postman-echo.com/basic-auth
+```
+
+Without that option, `@http` reads no q-register. A q-register lasts until the end of the queue
+entry, so one left over from other code could otherwise decide where a password is sent.
+
+PennMUSH waits for the site to ask for a login before it sends `userpass`. SharpMUSH sends it as HTTP
+Basic at once, so a site that accepts only Digest logins cannot be reached this way.
+
+The headers argument comes from a PennMUSH pull request that is not yet part of a PennMUSH release.
+In PennMUSH with that change, `<headers>` replaces `%q<content-type>`, and SharpMUSH does the same.
