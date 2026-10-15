@@ -108,6 +108,16 @@ think %=<greeting>
 
 Output: `hello`
 
+`%=` on its own works as it does in PennMUSH. It is the attribute being evaluated, written as the
+object's dbref and the attribute's name, and it is empty outside an attribute:
+
+```sharp
+&WHERE me=%=
+think u(me/WHERE)
+```
+
+Output, for a player who is `#3`: `#3/WHERE`
+
 <Aside>
 PennMUSH prints `m` for `%m`, and reads `%=` as the name of the attribute being evaluated, so
 `%=<greeting>` there is that name followed by `<greeting>`. Importing a PennMUSH database lists every
