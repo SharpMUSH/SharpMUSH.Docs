@@ -83,6 +83,7 @@ export default defineConfig({
                       { label: 'Alts', slug: 'guides/alts' },
                       { label: 'Time and Time Zones', slug: 'guides/time' },
                       { label: 'Info Files and Journals', slug: 'guides/info' },
+                      { label: 'Pose Summaries', slug: 'guides/summary' },
                       { label: 'IC Dates and Timelines', slug: 'guides/timeline' },
                       { label: 'Game Health', slug: 'guides/health' },
                       { label: 'Attribute Indexes', slug: 'guides/attribute-indexes' },
