@@ -1,6 +1,6 @@
 ---
-title: Migrate from PennMUSH
-description: Rehearse, validate, cut over, and roll back a PennMUSH world safely.
+title: Migrate from PennMUSH, RhostMUSH or TinyMUX
+description: Rehearse, validate, cut over, and roll back a PennMUSH, RhostMUSH or TinyMUX world safely.
 ---
 
 import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
@@ -8,8 +8,10 @@ import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
 SharpMUSH directly imports a **PennMUSH flatfile** and, optionally, its `mush.cnf`, mail database
 (`maildb`), and chat database (`chatdb`). The flatfile keeps every object's dbref, so softcode can
 keep referring to the same objects. The mail and chat databases bring mail aliases, messages and
-channels. RhostMUSH and TinyMUX have no direct importer; moving one of those worlds means converting
-it to a PennMUSH export first and checking that conversion on its own.
+channels. It also imports a **RhostMUSH flatfile** with its mail dumps, and a **TinyMUX flatfile**
+with its `mail.db` and `comsys.db`; [Importing from RhostMUSH or TinyMUX](#importing-from-rhostmush-or-tinymux)
+says what those imports carry over and what they leave behind. Everything else on this page applies
+to all three. Where it names a PennMUSH file, use the matching file from your server.
 
 <Aside type="danger" title="Plan this as a one-way move">
 SharpMUSH does not export a PennMUSH flatfile. Keep the original PennMUSH installation and a backup
@@ -51,7 +53,9 @@ settings you plan to use for real.
 1. Start a clean SharpMUSH stack, keep `/setup` away from untrusted visitors, and claim the
    administrator account linked to `#1`.
 
-2. In setup, open **Import PennMUSH**. Upload the flatfile together with the matching `mush.cnf`,
+2. In setup, open **Import a PennMUSH, RhostMUSH or TinyMUX database** (later, **Database import**
+   under Build & manage). Leave the format on **Tell from the file** unless the import picks the wrong
+   one. Upload the flatfile together with the matching `mush.cnf`,
    `maildb` and `chatdb`. Settings from `mush.cnf` (including the objects it names and its
    restrictions) are applied before objects are converted; mail aliases, messages, channels,
    members and history come from the mail and chat files.
@@ -82,6 +86,62 @@ the engine is, but they don't replace testing your own game's code. The
 [PennMUSH compatibility](/reference/sharpmush-help/pennmush-compatibility) help topic list the known
 differences.
 
+## Importing from RhostMUSH or TinyMUX
+
+The import tells the three formats apart from the file's first lines: a TinyMUX flatfile starts `+X`,
+and a PennMUSH database and a RhostMUSH flatfile both start `+V` and differ in the line after it. If it
+guesses wrong, choose the format on the import page. A start-up import reads
+`PENNMUSH_DATABASE_FORMAT` (`auto`, `pennmush`, `rhostmush` or `tinymux`) beside
+`PENNMUSH_DATABASE_PATH`.
+
+| Format | Database | Mail | Channels |
+|---|---|---|---|
+| PennMUSH | the flatfile | `maildb` | `chatdb` |
+| RhostMUSH | the flatfile `@dump/flat` writes | `.dump.mail` from `wmail/unload`, with `.dump.folder` in the mail folders slot | none, see below |
+| TinyMUX | the flatfile (versions 1 to 5) | `mail.db` | `comsys.db` in the chat slot |
+
+The `mush.cnf` slot reads only PennMUSH's configuration file. Set the options from a RhostMUSH or
+TinyMUX configuration file yourself.
+
+**What comes across.** Objects keep their numbers, names, owners, parents, zones, locks, attributes
+and creation times. Flags and powers become SharpMUSH's where one matches: a wizard gets the `wizard`
+role, a RhostMUSH councilor the `royalty` role and an architect the `builder` role, and a TinyMUX power
+such as `control_all` becomes the permission it stands for. A flag or power with no match is kept as
+a custom flag or power, so `hasflag()` still sees it. Passwords keep working: each form these servers
+store is checked at login and replaced with SharpMUSH's own the first time the player connects. Mail
+comes across, in RhostMUSH's folders when the folder dump is given. TinyMUX channels come across with
+their members, and each player's comsys aliases become `CHANALIAS` attributes.
+
+**What the import changes in softcode.** Colour written as `%c` or `%x` codes, such as
+`%crRed%cn`, becomes `ansi()`, here `ansi(r,Red)`, because in SharpMUSH `%c` is the last command and
+`%x` an attribute. A RhostMUSH import also rewrites its character codes (`%<065>` becomes `A`) and
+literal `timefmt()` formats. The import also turns on the compatibility options the old server's
+softcode expects, and lists them in its report.
+
+**What is left behind.** Destroyed objects, money, flags and toggles SharpMUSH has nothing for, and
+attribute numbers the flatfile does not name. RhostMUSH exits that lead HOME are left unlinked, as a
+PennMUSH import leaves them. RhostMUSH channels are not imported: a stock RhostMUSH runs them in
+softcode, which comes across with the objects that hold it. A bcrypt password cannot be checked, so
+those players need a new password from a wizard. TinyMUX squeezes runs of spaces in evaluated text and
+SharpMUSH does not, so output that relied on it may show extra spaces.
+
+### Check the rewritten softcode
+
+When the import ends, the import page lists every attribute whose softcode it rewrote under
+**Rewritten softcode**, one line each, apart from the other warnings. Each line names the object, the
+attribute and what changed. A line that says **check by hand** names code the rewrite could not carry
+over exactly, with the reason, for example colour stored in a register.
+
+![The import page after a RhostMUSH import, listing four rewritten attributes above the warnings](../../../assets/guide/import-rewritten-softcode.webp)
+
+Output: four attributes are listed. `#9/DESCRIBE` had its colour codes written as `ansi()` and its
+`%<065>` written as `A`. `#10/DESCRIBE` says check by hand twice, so that attribute needs a person to
+read it.
+
+A start-up import writes the same list, every line of it, to the server log, after a warning that
+gives the count. Test each listed attribute on the rehearsed world, and fix the check-by-hand ones
+before players connect.
+
 ## 3. Check the rehearsed world
 
 For every row, record pass or fail, the command or screen you used, and any difference you accepted.
@@ -95,7 +155,7 @@ For every row, record pass or fail, the command or screen you used, and any diff
 | Channels and mail | The right `maildb` and `chatdb` were used. Check membership, aliases, history, mail folders, sending, reading, deleting and privacy with separate accounts. |
 | Settings | `mush.cnf` settings, command and function restrictions, names, limits, login rules and named objects match your notes. |
 | Handlers and packages | HTTP and event handlers, globals, master room code, startup behaviour and each package have one deliberate owner. |
-| Softcode | A list of player commands, building commands, queues, loops, regular expressions, locks, stored data and error cases, most important first. |
+| Softcode | Every attribute under **Rewritten softcode**, then a list of player commands, building commands, queues, loops, regular expressions, locks, stored data and error cases, most important first. |
 | Connections | Log in over telnet and the portal terminal; check colour, client negotiation, disconnecting and reconnecting. |
 | Web portal | Claiming, logging in, linking characters, the wiki, permissions, the terminal and the admin pages work for each role. |
 | Connected services | DNS, proxy routes, bots, outgoing web requests, mail, monitoring, metrics and backups work from the private copy. |
