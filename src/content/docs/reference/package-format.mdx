@@ -20,7 +20,7 @@ back.
 Every top-level key a softcode package can use, with the format version that added it:
 
 ```yaml
-format: 1.7                     # format version (omit = 1; 1.2 adds roles and permissions, 1.3 settings, 1.5 attribute entries, 1.6 the engine range, 1.7 plugins)
+format: 1.7                     # format version (omit = 1; 1.2 adds roles and permissions, 1.3 settings, 1.5 attribute entries, 1.6 the engine range, 1.7 plugins, 1.8 attribute indexes)
 package: myrddins-bbs           # required: lowercase letters, digits and hyphens, up to 64 characters
 version: 2.4.1                  # required: a version number (see Versions below)
 authors: [Myrddin]              # optional: a list, or one string
@@ -117,6 +117,7 @@ settings:                       # optional (1.3): configuration options, as @con
 attributes:                     # optional (1.5): attribute entries, as @attribute makes them
   BBS`READ:
     flags: [no_command, wizard]
+    index: true                 # optional (1.8): an index, as @attribute/index makes it
 ```
 
 The sections below cover each block. `kind:` and `application:` are under
@@ -310,12 +311,14 @@ In the format 1.5 `attributes:` block: a name `@attribute` would refuse, a flag 
 attribute flag, a `limit` that doesn't compile, both a `limit` and an `enum`, an empty `enum`, a
 `delimiter` longer than one character or a choice that contains it, a `retroactive` other than true
 or false, or the block in a manifest whose `format` is below 1.5. In format 1.7: a `plugins:` entry
-that isn't a valid plugin id.
+that isn't a valid plugin id. In format 1.8: an `index:` that isn't `true`, `false` or the options
+`@attribute/index` takes, or one on an entry with `internal` in its flags.
 
 **Warnings** (the manifest is accepted): unknown keys (likely typos); reserved keys (`provides`,
 `recommends`, `suggests`, configure `pattern`); configure questions nothing uses; more than 5
 keywords; a format version whose minor number is newer than the server supports; a `verified_server`
-below `requires_server` or above `maximum_server`; a plugin listed twice in `plugins:`; a permission or
+below `requires_server` or above `maximum_server`; a plugin listed twice in `plugins:`; an `index:` in a
+manifest whose `format` is below 1.8, which is ignored; a permission or
 role naming a category the package doesn't declare, or a role allowing a permission the package
 doesn't declare (the game must already have it, or the install stops).
 
@@ -541,6 +544,41 @@ Name a plugin here only when the package cannot work without it. Code that only 
 is there, and checks first, needs no entry. The bundled `room-contents` package does this: it asks
 `scenewhere()` for the room's scene and treats any `#-1` answer, including the one for a function that
 does not exist, as no scene.
+
+## Attribute indexes (format 1.8)
+
+An attribute entry can carry an `index:`, so the package's code can find objects by the attribute's
+value with `indexed()` or `lsearch()`'s `INDEX` class instead of searching every object.
+[Attribute Indexes](/guides/attribute-indexes) explains what an index does. Set `format: 1.8`; in an
+older manifest `index:` is ignored with a warning.
+
+```yaml
+format: 1.8
+package: casebook
+version: 1.0.0
+
+attributes:
+  CASE`STATUS:
+    enum: [open, held, closed]
+    index: true                 # text without case, whole values, every object
+  CASE`LEVEL:
+    index: numeric type:thing   # the option words, as @attribute/index takes them
+  CASE`TAGS:
+    index: [exact, "split:|"]   # or the same words as a list
+```
+
+`index: false` is the same as no `index:`. The options are `exact`, `numeric`, `split` or
+`split:<delimiter>`, and `type:<type>`.
+
+![The review screen's Attribute entries card: CASE`STATUS is created and builds an index, text without case, on 3 objects; CASE`LEVEL is created and builds an index, numbers then text without case, things only, on 2 objects](../../../assets/guide/attribute-index-casebook-card.webp)
+
+- **Install.** The review screen says how many objects each index builds over. The index is built in
+  the background after the apply; until it is ready, `indexed()` answers `#-1 INDEX BUILDING`. If the
+  game already has the attribute, it must already have the same index, or the install stops and names
+  the `@attribute/index` line that fixes it.
+- **Upgrade.** The index is merged like the entry's other fields: a version that changes `index:`
+  changes the index, and one that leaves it alone keeps whatever the game has now.
+- **Removed entries and uninstall.** The entry is deleted with its index.
 
 ## Application packages
 
