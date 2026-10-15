@@ -272,7 +272,7 @@ outside every free time the player gave.
 ### Installing
 
 The package ships with the server but is not installed on a new game. It needs the **scene**,
-**time** and **plus-help** packages, and the Scene plugin that scene runs on. An administrator
+**time**, **plus-help** and **plus-config** packages, and the Scene plugin that scene runs on. An administrator
 installs it from the portal:
 
 1. Open **Packages** in the admin area and choose **Browse**.
@@ -288,25 +288,26 @@ Availability object's number. It is `#27` in the examples below; the number on y
 
 ### Settings
 
-Each setting is an attribute on the Availability object, with what it means beside it in
-``DATA`CONFIG`<NAME>`DESCRIPTION``:
+`+config avail` lists the settings, and `+config avail/<setting>=<value>` changes one. Changing them
+takes the `config.admin` permission. Lengths take `2h`, `90m` or a number of seconds.
+[Game Settings with +config](/guides/config) covers the command.
 
-| Attribute | What it is | Default |
+| Setting | What it is | Default |
 |---|---|---|
-| ``DATA`CONFIG`SLOT`` | Minutes in one step free time is counted in: 15, 20, 30 or 60. | `30` |
-| ``DATA`CONFIG`FIND-DAYS`` | How many days ahead `+avail/find` looks, 1 to 28. | `7` |
-| ``DATA`CONFIG`FIND-LENGTH`` | The length `+avail/find` looks for when none is given, in seconds. | `7200` |
-| ``DATA`CONFIG`FIND-RESULTS`` | How many times it lists at most. | `10` |
-| ``DATA`CONFIG`FIND-PLAYERS`` | How many players it takes at once, the one asking included. | `12` |
-| ``DATA`CONFIG`SCENE-LENGTH`` | How long a scene is taken to last on its card, in seconds. | `7200` |
-| ``DATA`CONFIG`ENTRIES`` | How many entries one character may keep. | `30` |
-| ``DATA`CONFIG`NOTE-LENGTH`` | How long a note may be. | `60` |
+| `slot` | Minutes in one step free time is counted in: 15, 20, 30 or 60. | `30` |
+| `find-days` | How many days ahead `+avail/find` looks, 1 to 28. | `7` |
+| `find-length` | The length `+avail/find` looks for when none is given. | two hours |
+| `find-results` | How many times it lists at most. | `10` |
+| `find-players` | How many players it takes at once, the one asking included. | `12` |
+| `scene-length` | How long a scene is taken to last on its card. | two hours |
+| `entries` | How many entries one character may keep. | `30` |
+| `note-length` | How long a note may be. | `60` |
 
 For example, to look two weeks ahead:
 
 ```
-> &DATA`CONFIG`FIND-DAYS #27=14
-Availability/DATA`CONFIG`FIND-DAYS - Set.
+> +config avail/find-days=14
+[CONFIG] Done: avail/find-days is now 14, was 7.
 ```
 
 A longer look ahead, a shorter step or more players makes `+avail/find` slower: it lays every
