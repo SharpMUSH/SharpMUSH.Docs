@@ -56,6 +56,7 @@ export default defineConfig({
                       { label: 'Named Arguments', slug: 'guides/named-arguments' },
                       { label: 'Calling Web Services', slug: 'guides/web-requests' },
                       { label: 'RhostMUSH Softcode', slug: 'guides/rhostmush-softcode' },
+                      { label: 'TinyMUX Softcode', slug: 'guides/tinymux-softcode' },
                       { label: 'Chat Cards', slug: 'guides/chat-cards' },
                       { label: 'Events', slug: 'guides/events' },
                       { label: 'Bulletin Boards', slug: 'guides/bboards' },
