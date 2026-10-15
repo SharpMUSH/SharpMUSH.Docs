@@ -1,6 +1,6 @@
 ---
 title: TinyMUX Softcode
-description: The TinyMUX softcode SharpMUSH runs as it is, the four mux_ settings for the functions that answer differently, and what still needs rewriting.
+description: The TinyMUX softcode SharpMUSH runs as it is, the settings for the functions that answer differently, and what still needs rewriting.
 ---
 
 import { Aside } from '@astrojs/starlight/components';
@@ -11,18 +11,19 @@ TinyMUX code that uses them runs unchanged, and PennMUSH code that works is not 
 
 Where TinyMUX and PennMUSH both give a working answer and the answers differ, SharpMUSH keeps
 PennMUSH's by default. Four settings switch those functions to TinyMUX's answer, for a game whose
-code was written for TinyMUX.
+code was written for TinyMUX: three `mux_` settings, and `rhost_list`, which TinyMUX's `list()` shares
+with RhostMUSH.
 
 This page covers:
 
 - the TinyMUX forms of shared functions, which work on every game;
 - `%m` and `%=<name>`, two TinyMUX substitutions;
-- the `mux_logic`, `mux_justify`, `mux_collation` and `mux_list` settings;
+- the `mux_logic`, `mux_justify`, `mux_collation` and `rhost_list` settings;
 - what still has to be rewritten by hand.
 
 Every example below is in the game's help (`help compatibility arguments`, `help compatibility
 config`, `help compatibility parser`), and SharpMUSH's test suite runs them, with TinyMUX 2.14's own
-answers as the expected output.
+answers as the expected output. The `rhost_list` section shows the call's form only.
 
 ## TinyMUX forms of shared functions
 
@@ -124,7 +125,7 @@ PennMUSH prints `m` for `%m`, and reads `%=` as the name of the attribute being 
 attribute that uses `%m` or `%=<`, so a game can check them.
 </Aside>
 
-## The mux_ settings
+## The settings
 
 Each of these is off by default. Turn one on with `@config/set`, for example
 `@config/set mux_logic=yes`, or on the web portal's configuration page. They take effect on the next
@@ -164,25 +165,23 @@ think [sort(b A a B)]|[comp(a,B)]
 
 Output with `mux_collation` off: `A a b B|1`. With it on: `a A b B|-1`.
 
-### mux_list
+### rhost_list
 
 PennMUSH's `list()` names the game's functions, commands, flags and so on. TinyMUX's
 `list(<list>, <action>[, <delimiter>])` is a loop like `iter()` that tells you each result instead of
-returning it. With `mux_list` on, `list()` is TinyMUX's.
+returning it. With `rhost_list` on, `list()` is that loop.
 
-```sharp
-think list(a b,x%i0)
-```
-
-Output with `mux_list` on:
-
-```
-xa
-xb
-```
+The setting is named for RhostMUSH because RhostMUSH's `list()` is the same loop with two more
+arguments: `list(<list>, <action>[, <delimiter>][, <header>][, <target>])`, where `<header>` is a
+line told before the results and `<target>` is an object you control to tell them to, instead of you.
+TinyMUX's three-argument form is the start of that one, so `rhost_list` runs `list()` calls written
+for either server. With it on, `@list` still names the game's functions, commands and flags.
 
 ## What still needs rewriting
 
 - `trim()` takes its arguments in TinyMUX's order when `tiny_trim_fun` is on; `trimtiny()` always does.
 - TinyMUX's four-argument set functions, described above.
-- Functions only TinyMUX has, such as `columns()`, are not there.
+- `columns()` is RhostMUSH's, `columns(<text>, <width>, <columns>, ...)`, which takes the number of
+  columns as its third argument. TinyMUX's `columns(<list>, <width>[, <delimiter>[, <indent>]])` is a
+  different function, so calls to it have to be rewritten, for example with `table()` or `align()`.
+- Some functions only TinyMUX has are not there.
