@@ -1,0 +1,417 @@
+---
+title: Webhooks
+description: Send the game's events to a website, a Discord bot or a logger, signed so the receiver knows they came from the game, or let a program with no public address listen over a WebSocket.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+A **webhook** sends the game's events to a program outside the game. When something happens that the
+webhook listens for (a player connects, someone speaks on a channel, an object is created), the game
+server sends the event to the program straight away. The program does not log in as a character and
+does not ask the game for news over and over.
+
+This is how a Discord bot relays a channel, how a website shows who is online, or how a logger keeps a
+record. The events are the ones the event handler already gets (`help event list` in the game), so
+anything an event handler can react to, a webhook can pass on.
+
+![The game server sends each event to every webhook that hears it. A program with an address gets a signed POST and is sent it again later if it does not answer with a 2xx status. A program with no address connects to the game with the webhook's secret and gets each event down that connection.](../../../assets/guide/webhooks-flow.svg)
+
+There are two ways to hear a webhook:
+
+- **The game posts to your program.** Give the webhook an `https://` address. Each event arrives
+  there as a signed `POST`, and the game tries again if the program does not answer.
+- **Your program connects to the game.** A bot on a home computer has no address the game can reach,
+  so it opens a WebSocket to the game and receives the events down it.
+
+A webhook can do both at once.
+
+Webhooks need the `config.admin` permission, which wizards have. Every example below was run on a
+SharpMUSH server, with the receiving programs on the same computer (see
+[Testing on one computer](#settings)). Your secrets and ids will differ.
+
+## Create a webhook
+
+```
+> @webhook/create relay=https://bot.example.com/game
+Webhook relay created. It hears no events yet: set them with @webhook/events relay=<pattern> ...
+Its signing secret is whsec_WmFQV5gWnsULTq6uFqftD3dqy4HCcgWRf2Hg5SPEIy0=
+```
+
+Copy the secret into your program now. It is how your program tells a real delivery from a forged one.
+`@webhook/secret relay` shows it again later.
+
+A new webhook hears nothing. Tell it which events to send:
+
+```
+> @webhook/events relay=channel`message
+Webhook relay now hears: CHANNEL`MESSAGE
+```
+
+Each word is an event name, and `*` matches anything: ``OBJECT`*`` is every object event, and `*`
+alone is every event. Setting the events again replaces the list.
+
+`@webhook` lists every webhook:
+
+```
+> @webhook
+╭────────────────────────────────┤ Webhooks ├────────────────────────────────╮
+│ Name   State  Events           Address                                     │
+│ ───────────────────────────────────────────────────────────                │
+│ relay  on     CHANNEL`MESSAGE  https://bot.example.com/game                │
+╰────────────────────────────────────────────────────────────────────────────╯
+```
+
+### Which events a webhook may be sent
+
+Some events show things not every player may see. A webhook is sent only the events that whoever
+last set its events may be told about:
+
+| Events | Examples | Needed |
+| --- | --- | --- |
+| Public | database saves, backups | nothing more |
+| Staff: they show hidden or dark objects | ``PLAYER`CONNECT``, ``OBJECT`CREATE`` | `game.see_all` (the See_All power) |
+| Private: they carry what players wrote to each other, or their addresses | ``CHANNEL`MESSAGE``, ``PAGE`MESSAGE``, ``PLAYER`DISCONNECT``, the ``LOG`` events | `game.see_all` and `players.moderate` |
+
+The wizard role allows both. An event a plugin raises that the game's event list does not include
+counts as private. Ada here holds `config.admin` and nothing more, so Ada's webhook `watcher` is
+sent public events only:
+
+```
+> @webhook/events watcher=object`* channel`message
+Webhook watcher now hears: OBJECT`* CHANNEL`MESSAGE
+It is sent public events only: you may not see staff or private ones.
+```
+
+`@webhook watcher` shows the same on its **Sent** line. Once a wizard sets the events again, the
+webhook takes the wizard's reach and is sent everything it hears.
+
+The game refuses addresses that are not `https://`, and addresses on a private network such as
+`10.0.0.5` or `localhost`, so a webhook cannot be used to reach the game's own machine. See
+[Settings](#settings) to allow them while you test on one computer.
+
+## What your program receives
+
+Someone speaks on the Public channel:
+
+```
+> +public Is anyone around?
+<Public> God says, "Is anyone around?"
+```
+
+and the webhook's address receives a `POST` with this body:
+
+```json
+{
+  "type": "CHANNEL`MESSAGE",
+  "timestamp": "2026-10-14T23:23:41.293Z",
+  "data": {
+    "enactor": { "dbref": "#1", "objid": "#1:1792019912160", "name": "God" },
+    "arguments": {
+      "channel": "Public",
+      "speaker": "#1:1792019912160",
+      "style": "say",
+      "name": "God",
+      "message": "Is anyone around?",
+      "recipients": "#1:1792019912160",
+      "time": "1792020221278",
+      "id": "1792020221278325"
+    },
+    "positional": ["Public", "#1:1792019912160", "say", "God", "Is anyone around?",
+                   "#1:1792019912160", "1792020221278", "1792020221278325"]
+  }
+}
+```
+
+- `type` is the event's name.
+- `enactor` is whoever caused the event. It is `null` for an event the server raised on its own, such
+  as a database save.
+- `arguments` holds the event's values under the names `help event list` gives them.
+- `positional` holds the same values in order, the way an event handler gets them as `%0`-`%9`.
+
+Three headers come with every delivery:
+
+```
+webhook-id: msg_01a13cba8d6d7fb38daaa73ec9016cb4
+webhook-timestamp: 1792020221
+webhook-signature: v1,aheNfmH6QPqhihZ0Rt3fj/+ECvQVrMYeEG6AT+N2uR8=
+```
+
+`webhook-id` stays the same if the game has to send the event again, so a program that keeps the ids
+it has handled can skip a repeat.
+
+## Check the signature
+
+Anyone who learns your program's address can post to it. The signature proves the game sent the
+event: only the game and your program know the secret.
+
+The game signs deliveries the way the Standard Webhooks specification describes, so most languages
+have a library that checks one in a single call. By hand, it takes three steps:
+
+1. Join the `webhook-id` header, the `webhook-timestamp` header and the raw body, with a `.` between
+   each.
+2. Take the secret, remove `whsec_` from the front, and decode the rest from base64. That is the key.
+   Compute the HMAC-SHA256 of the joined text with that key.
+3. Encode the result in base64 and put `v1,` in front. It must match the `webhook-signature` header.
+
+Also refuse a timestamp more than a few minutes away from your own clock, so that a delivery someone
+recorded cannot be sent to you again later.
+
+This program does all of that and prints each channel line. It needs Node.js 22 or later and nothing
+else:
+
+```js
+// receiver.mjs: prints each channel line the game sends. Run: node receiver.mjs
+import { createServer } from "node:http";
+import { createHmac, timingSafeEqual } from "node:crypto";
+
+const secret = process.env.WEBHOOK_SECRET; // whsec_...
+const key = Buffer.from(secret.replace(/^whsec_/, ""), "base64");
+
+function signedByGame(headers, body) {
+  const id = headers["webhook-id"];
+  const timestamp = headers["webhook-timestamp"];
+  if (Math.abs(Date.now() / 1000 - Number(timestamp)) > 300) return false;
+  const expected = createHmac("sha256", key).update(`${id}.${timestamp}.${body}`).digest();
+  return headers["webhook-signature"].split(" ").some((signature) => {
+    const given = Buffer.from(signature.replace(/^v1,/, ""), "base64");
+    return given.length === expected.length && timingSafeEqual(given, expected);
+  });
+}
+
+createServer((request, response) => {
+  let body = "";
+  request.on("data", (chunk) => (body += chunk));
+  request.on("end", () => {
+    if (!signedByGame(request.headers, body)) {
+      response.writeHead(401).end();
+      return;
+    }
+    const event = JSON.parse(body);
+    if (event.type === "CHANNEL`MESSAGE") {
+      const line = event.data.arguments;
+      console.log(`[${line.channel}] ${line.name}: ${line.message}`);
+    }
+    response.writeHead(204).end();
+  });
+}).listen(9901);
+```
+
+Point the webhook at it:
+
+```
+> @webhook/url relay=http://127.0.0.1:9901/game
+Webhook relay now posts to http://127.0.0.1:9901/game.
+```
+
+Then a player connecting, speaking and leaving prints:
+
+```
+[Public] God: God has connected.
+[Public] God: Is anyone around?
+[Public] God: God has disconnected.
+```
+
+The connect and leave lines are channel lines too; their `style` argument is `presence` rather than
+`say`, if your program wants to skip them.
+
+Answer quickly. The game waits 10 seconds for an answer, then counts the try as failed. A program
+with slow work to do should answer first and do the work after.
+
+## Test and check a webhook
+
+`@webhook/test` sends a ``WEBHOOK`TEST`` event at once, whatever events the webhook hears and even
+while it is off. It is tried only once.
+
+```
+> @webhook/test relay
+Sent WEBHOOK`TEST to webhook relay as msg_01a13cd836d976e18a803586a72be70b. @webhook relay shows how it went.
+```
+
+`@webhook <name>` shows one webhook, with what happened to its most recent deliveries:
+
+```
+> @webhook relay
+╭──────────────────────────────┤ Webhook relay ├─────────────────────────────╮
+│ State:        on                                                           │
+│ Address:      http://127.0.0.1:9901/game                                   │
+│ Events:       CHANNEL`MESSAGE                                              │
+│ Sent:         every event it hears                                         │
+│ Created:      2026-10-14 23:55:44 by #1:1792022092690                      │
+│ Delivered:    5, last 2026-10-14 23:56:15                                  │
+│ Failed tries: 2, last 2026-10-14 23:55:57                                  │
+│ Dropped:      0                                                            │
+│ Waiting:      1                                                            │
+│ Streams:      0                                                            │
+├──────────────────────────────┤ Recent tries ├──────────────────────────────┤
+│ Time                 Event            Try  Result                          │
+│ ─────────────────────────────────────────────────────────────────────────  │
+│ 2026-10-14 23:56:15  CHANNEL`MESSAGE    1  delivered, 204, 5ms             │
+│ 2026-10-14 23:56:06  CHANNEL`MESSAGE    1  delivered, 204, 2ms             │
+│ 2026-10-14 23:56:05  WEBHOOK`TEST       1  delivered, 204, 3ms             │
+│ 2026-10-14 23:56:03  CHANNEL`MESSAGE    1  delivered, 204, 3ms             │
+│ 2026-10-14 23:56:01  CHANNEL`MESSAGE    1  delivered, 204, 12ms            │
+│ 2026-10-14 23:55:57  CHANNEL`MESSAGE    2  Connection refused; will retry  │
+│ 2026-10-14 23:55:52  CHANNEL`MESSAGE    1  Connection refused; will retry  │
+╰────────────────────────────────────────────────────────────────────────────╯
+```
+
+- **Sent**: which events it may be sent (see [Which events a webhook may be sent](#which-events-a-webhook-may-be-sent)).
+- **Delivered**: tries your program answered with a 2xx status.
+- **Failed tries**: tries that got another status, no answer in time, or no connection.
+- **Dropped**: deliveries the game gave up on.
+- **Waiting**: deliveries waiting for their next try.
+- **Streams**: programs connected to the event stream right now.
+
+The same view is on the web portal, under **Admin**, then **Webhooks**. Creating a webhook, changing
+it and deleting it are written to the audit log.
+
+## When your program is down
+
+A delivery that fails is sent again: after 5 seconds, then 25 seconds, then about 2 minutes, 10
+minutes and 52 minutes, then every 2 hours, until 9 tries have failed. Then it is dropped. While your
+program is down, nothing is lost for the first few hours, as long as the game itself keeps running.
+
+In this run the receiving program was not started yet. The first tries were refused, and once it
+started, the next try of each event got through:
+
+```
+│ 2026-10-14 23:20:38  OBJECT`CREATE        4  delivered, 200, 3ms           │
+│ 2026-10-14 23:20:35  PLAYER`CONNECT       4  delivered, 200, 3ms           │
+│ ...                                                                        │
+│ 2026-10-14 23:19:38  OBJECT`CREATE        2  Connection refused; will      │
+│                                              retry                         │
+│ 2026-10-14 23:19:36  OBJECT`CREATE        1  Connection refused; will      │
+│                                              retry                         │
+```
+
+Retries do not keep the order of events: a later event can arrive before an earlier one that is still
+being retried. Use the `timestamp` in the body to put them back in order.
+
+Some limits:
+
+- A webhook keeps at most 1000 deliveries waiting. Past that, new events for it are dropped until
+  your program catches up.
+- Waiting deliveries are kept in the game server's memory, so a restart of the game server drops
+  them.
+- A program that answers `410 Gone` is saying it never wants another delivery. The game turns the
+  webhook off:
+
+  ```
+  │ State:        off: the endpoint answered 410 Gone                          │
+  ```
+
+  `@webhook/enable relay` turns it back on.
+
+`@webhook/disable relay` turns a webhook off yourself, and `@webhook/delete relay` removes it.
+
+## Listen without a public address
+
+A program that runs where the game cannot reach it, such as a bot on a home computer, connects to
+the game instead. It opens a WebSocket to:
+
+```
+wss://<your game's web address>/api/webhooks/<name>/stream
+```
+
+and sends the header `Authorization: Bearer <secret>`. Each event then arrives as one message: the
+same JSON a delivery's body has, plus the delivery's id as `id`.
+
+A webhook that only feeds a stream needs no address at all. Ada created this one; a wizard then set
+its events, so it is sent object events (see
+[Which events a webhook may be sent](#which-events-a-webhook-may-be-sent)):
+
+```
+> @webhook/create watcher
+Webhook watcher created. It hears no events yet: set them with @webhook/events watcher=<pattern> ...
+Its signing secret is whsec_a1mLmPVl20kXhgQFkzXrbOWH9UAouzn1iAJMjKnV/lA=
+> @webhook/events watcher=object`*
+Webhook watcher now hears: OBJECT`*
+```
+
+This Node.js 22 program prints what the stream sends:
+
+```js
+// stream.mjs: prints every event a webhook hears. Run: node stream.mjs
+const address = process.env.GAME_STREAM; // wss://mush.example.com/api/webhooks/watcher/stream
+const secret = process.env.WEBHOOK_SECRET;
+
+const socket = new WebSocket(address, { headers: { Authorization: `Bearer ${secret}` } });
+socket.addEventListener("open", () => console.log("listening"));
+socket.addEventListener("message", (message) => {
+  const event = JSON.parse(message.data);
+  console.log(event.type, JSON.stringify(event.data.arguments));
+});
+socket.addEventListener("close", (closed) => console.log("closed", closed.code, closed.reason));
+```
+
+While it runs, a builder makes an object and renames it:
+
+```
+> @create Lamp
+Created: Object #18.
+> @name Lamp=Brass Lamp
+Name set.
+```
+
+and the program prints:
+
+```
+listening
+OBJECT`CREATE {"objid":"#18:1792022227640","clone":""}
+OBJECT`RENAME {"objid":"#18:1792022227640","name":"Brass Lamp","oldname":"Lamp"}
+```
+
+The stream is live only. Nothing is kept for a program that is not connected, and nothing is sent
+again. A program that reads too slowly loses its oldest events.
+
+## Change the secret
+
+If a secret leaks, give the webhook a new one:
+
+```
+> @webhook/rotate watcher
+Webhook watcher has a new signing secret: whsec_U7hyh4S7G47ZF8Lyw0vy74XGCcvyYWNaKE9LsnXbJbw=
+The old one no longer verifies.
+```
+
+The old secret stops working at once, including for deliveries still waiting to be retried. Any
+program connected to the stream is disconnected; the stream program above printed:
+
+```
+closed 1008 webhook deleted or secret rotated
+```
+
+Put the new secret in your program and start it again.
+
+## Settings
+
+The server's operator sets these in the `Webhooks` section of the game server's settings, or as
+environment variables on the game server.
+
+| Variable | What it does | Default |
+| --- | --- | --- |
+| `Webhooks__MaxAttempts` | Tries before a delivery is dropped | `9` |
+| `Webhooks__FirstRetryDelay` | Wait before the second try; each later wait is five times longer | `00:00:05` |
+| `Webhooks__MaxRetryDelay` | The longest wait between tries | `02:00:00` |
+| `Webhooks__Timeout` | How long one try waits for an answer | `00:00:10` |
+| `Webhooks__MaxConcurrency` | How many tries are in flight at once, across all webhooks | `4` |
+| `Webhooks__MaxPendingPerSubscription` | Deliveries one webhook may have waiting | `1000` |
+| `Webhooks__RecentAttempts` | Tries `@webhook <name>` remembers | `20` |
+| `Webhooks__StreamBuffer` | Events a slow stream program may fall behind by before the oldest are lost | `256` |
+| `Webhooks__AllowHttp` | Allow plain `http://` addresses | `false` |
+| `Webhooks__AllowPrivateNetworks` | Allow `localhost` and private-network addresses | `false` |
+
+<Aside type="caution" title="Testing on one computer">
+To try webhooks with the game and your program on the same machine, start the game server with
+`Webhooks__AllowHttp=true` and `Webhooks__AllowPrivateNetworks=true`, and point the webhook at
+`http://127.0.0.1:<port>/`. That is how the examples on this page were run. Leave both off on a
+public game: with them on, anyone who can create a webhook can make the game server send requests
+to machines on its own network.
+</Aside>
+
+Deliveries are counted in the game server's metrics, at `/metrics` on its metrics port (see the
+[Deployment Reference](/guides/deployment)):
+
+- `sharpmush_webhook_attempts_total`: tries, by webhook (`subscription`) and by `outcome`
+  (`delivered`, `retrying` or `dropped`).
+- `sharpmush_webhook_duration_seconds`: how long each try took, by webhook.

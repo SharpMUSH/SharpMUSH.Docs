@@ -55,7 +55,8 @@ export default defineConfig({
                       { label: 'Bulletin Boards', slug: 'guides/bboards' },
                       { label: 'Writing Plugins', slug: 'guides/plugins' },
                       { label: 'Softcode in Your Editor', slug: 'guides/editor-support' },
-                      { label: 'Remote MCP and LSP Analysis', slug: 'guides/mcp' }
+                      { label: 'Remote MCP and LSP Analysis', slug: 'guides/mcp' },
+                      { label: 'Webhooks', slug: 'guides/webhooks' }
                   ],
               },
               {

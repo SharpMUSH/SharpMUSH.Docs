@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 400" width="780" height="400" role="img" aria-labelledby="t d">
+<title id="t">Two ways a program hears the game's events</title>
+<desc id="d">An event happens in the game, such as a channel line. The game server checks every webhook. For a webhook with an address, it posts the event, signed with the webhook's secret, to that address, and tries again later if the program does not answer with a 2xx status. For a program with no public address, the program connects to the game server's event stream with the secret, and the server sends the event down that connection.</desc>
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+  </marker>
+</defs>
+<rect width="780" height="400" rx="12" fill="#f8fafc"/>
+<g font-family="ui-sans-serif,system-ui,sans-serif" font-size="14" fill="#1e293b">
+  <!-- the game -->
+  <rect x="24" y="130" width="220" height="140" rx="10" fill="#e0e7ff" stroke="#6366f1"/>
+  <text x="134" y="160" text-anchor="middle" font-weight="700">The game server</text>
+  <text x="134" y="190" text-anchor="middle">An event happens:</text>
+  <text x="134" y="212" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" fill="#1d4ed8">CHANNEL`MESSAGE</text>
+  <text x="134" y="242" text-anchor="middle">Each webhook that hears</text>
+  <text x="134" y="260" text-anchor="middle">it gets a copy</text>
+
+  <!-- webhook with an address -->
+  <rect x="520" y="40" width="236" height="120" rx="10" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="638" y="70" text-anchor="middle" font-weight="700">A program with an address</text>
+  <text x="638" y="96" text-anchor="middle">a website, a bot on a server</text>
+  <text x="638" y="122" text-anchor="middle">checks the signature,</text>
+  <text x="638" y="142" text-anchor="middle">answers 2xx</text>
+
+  <path d="M244,165 C380,110 400,95 518,95" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <text x="300" y="98" font-weight="600">POST, signed</text>
+  <path d="M518,128 C420,134 330,160 248,186" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#a)"/>
+  <text x="372" y="182" fill="#475569">no 2xx: sent again later</text>
+
+  <!-- stream -->
+  <rect x="520" y="250" width="236" height="120" rx="10" fill="#fef3c7" stroke="#d97706"/>
+  <text x="638" y="280" text-anchor="middle" font-weight="700">A program with no address</text>
+  <text x="638" y="306" text-anchor="middle">a bot on a home computer</text>
+  <text x="638" y="332" text-anchor="middle">connects to the game</text>
+  <text x="638" y="352" text-anchor="middle">and keeps the connection open</text>
+
+  <path d="M518,285 C420,280 380,262 246,240" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <text x="300" y="248" font-weight="600">1. connect with the secret</text>
+  <path d="M244,258 C380,300 410,318 518,322" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <text x="262" y="330" font-weight="600">2. each event, as it happens</text>
+</g>
+</svg>
