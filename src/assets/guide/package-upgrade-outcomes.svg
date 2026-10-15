@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" width="760" height="300" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="14">
+  <title id="t">What an upgrade does with each attribute</title>
+  <desc id="d">An upgrade compares three values for each attribute: what the package installed, what the game has now, and what the new version ships. If only the package changed it, the new value is written. If only the game changed it, the game's value is kept. If both changed it on different lines, the lines are merged. If both changed the same lines, or a one-line value, the review page asks, with Keep mine chosen.</desc>
+  <rect x="0" y="0" width="760" height="300" rx="12" fill="#f8fafc"/>
+  <text x="24" y="36" font-weight="600" fill="#0f172a">Who changed it since the package installed it?</text>
+
+  <rect x="24" y="60" width="164" height="96" rx="8" fill="#e0f2fe" stroke="#0369a1"/>
+  <text x="106" y="88" text-anchor="middle" font-weight="600" fill="#0c4a6e">Only the package</text>
+  <text x="106" y="112" text-anchor="middle" fill="#0c4a6e" font-size="13">New value written</text>
+  <text x="106" y="132" text-anchor="middle" fill="#0c4a6e" font-size="12">AutoUpgrade</text>
+
+  <rect x="204" y="60" width="164" height="96" rx="8" fill="#dcfce7" stroke="#15803d"/>
+  <text x="286" y="88" text-anchor="middle" font-weight="600" fill="#14532d">Only the game</text>
+  <text x="286" y="112" text-anchor="middle" fill="#14532d" font-size="13">Game's value kept</text>
+  <text x="286" y="132" text-anchor="middle" fill="#14532d" font-size="12">KeepLocal</text>
+
+  <rect x="384" y="60" width="164" height="96" rx="8" fill="#dcfce7" stroke="#15803d"/>
+  <text x="466" y="84" text-anchor="middle" font-weight="600" fill="#14532d">Both, on</text>
+  <text x="466" y="102" text-anchor="middle" font-weight="600" fill="#14532d">different lines</text>
+  <text x="466" y="124" text-anchor="middle" fill="#14532d" font-size="13">Lines merged</text>
+  <text x="466" y="144" text-anchor="middle" fill="#14532d" font-size="12">Merge</text>
+
+  <rect x="564" y="60" width="172" height="96" rx="8" fill="#fef3c7" stroke="#b45309"/>
+  <text x="650" y="84" text-anchor="middle" font-weight="600" fill="#78350f">Both, on the</text>
+  <text x="650" y="102" text-anchor="middle" font-weight="600" fill="#78350f">same lines</text>
+  <text x="650" y="124" text-anchor="middle" fill="#78350f" font-size="13">You choose</text>
+  <text x="650" y="144" text-anchor="middle" fill="#78350f" font-size="12">Keep mine is preselected</text>
+
+  <text x="24" y="196" fill="#334155" font-size="13">The last three are listed under "Changed by this game" on the review page.</text>
+  <text x="24" y="220" fill="#334155" font-size="13">A one-line value both sides changed always counts as the same lines. Locks follow the same rules.</text>
+  <text x="24" y="244" fill="#334155" font-size="13">Whatever is chosen, the package's new value becomes the base for the next upgrade,</text>
+  <text x="24" y="264" fill="#334155" font-size="13">so a kept edit stays the game's own and is not asked about again until the package changes it again.</text>
+</svg>
