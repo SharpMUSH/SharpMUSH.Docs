@@ -62,6 +62,7 @@ export default defineConfig({
                       { label: 'Bulletin Boards', slug: 'guides/bboards' },
                       { label: 'Character Galleries', slug: 'guides/galleries' },
                       { label: 'RP Finder', slug: 'guides/rp-finder' },
+                      { label: 'Letting Your Players Build', slug: 'guides/player-building' },
                       { label: 'Finger Profiles', slug: 'guides/finger' },
                       { label: 'Writing Plugins', slug: 'guides/plugins' },
                       { label: 'Softcode in Your Editor', slug: 'guides/editor-support' },
