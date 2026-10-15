@@ -19,6 +19,7 @@ back the other way, as a line on the feed spoken by the character they chose.
 | link a member's Discord account to their game account | [Linking members](#linking-members) |
 | speak in the game from Discord | [Speaking from Discord](#speaking-from-discord) |
 | post from softcode | [Sending lines](#sending-lines) |
+| join a game channel to a Discord channel | [Joining a game channel](#joining-a-game-channel) |
 | fix a link that stopped | [When a link stops](#when-a-link-stops) |
 
 Setting up the bot and linking channels need the `discord.admin` permission. Wizards hold it,
@@ -226,6 +227,42 @@ Some lines are not posted:
   chat reads worse than a gap. Past 200 waiting lines, the oldest are dropped too.
 
 A line longer than one Discord message is split at spaces into up to three posts.
+
+## Joining a game channel
+
+The **discord-channels** package joins a game channel to a linked Discord channel, both
+ways. What is said on the game channel is posted in Discord, and what members post in
+Discord comes back onto the game channel as the character they speak as. Install it from
+the Packages page; it needs the discord package.
+
+```
+> +discord/channel Public=1234567890123456789
+```
+
+![+discord/channel joins Public to a Discord channel and +discord/channels lists it. God says "Hello from the game." and waves on Public, and a member's Discord message arrives on Public as God says "Evening! Anyone up for a scene at the docks?"](../../../assets/guide/discord-channels.webp)
+
+- `+discord/channels` lists the game channels that go to Discord.
+- `+discord/channel <channel>=<Discord channel id>` joins them. `@discord` lists the linked
+  Discord channels with their ids.
+- `+discord/channel/remove <channel>` takes them apart.
+
+Only the channel's owner, or staff with `chat.admin`, joins or parts a channel. Each game
+channel goes to one Discord channel, and each Discord channel to one game channel.
+
+- **A private channel needs `/confirm`.** A channel with a see or join lock is refused at
+  first, because everyone who can read the Discord channel reads what is said on it.
+  `+discord/channel/confirm <channel>=<id>` joins it anyway.
+- **Speakers must pass the feed's send lock.** A game line reaches Discord only if its speaker
+  may send on the Discord channel's feed.
+- **Connect and disconnect lines stay in the game.** An `@cemit` line, which names no
+  speaker, is posted under the channel's name.
+- **A line from Discord reads like any other** on the game channel: `God says, "..."`.
+- **Renaming the game channel parts it** from Discord. Join it again under its new name.
+
+A line goes one way only, so nothing comes back round: a line from Discord is not sent
+there again. Softcode can tell the two apart the same way. A tap on the `discord` kind gets
+`%<origin>`, which is `discord/<message id>` for a line a member posted and empty for a line
+sent in the game.
 
 ## When a link stops
 
