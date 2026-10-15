@@ -155,20 +155,23 @@ with the `config.admin` permission. See [Game Settings with +config](/guides/con
 
 ```
 > +config who-where
-╔═══════════════════════════╡ Settings: who-where ╞══════════════════════════╗
+╔═════════════════════════╡ Settings: Who and Where ╞════════════════════════╗
 ║ What +who and +where show.                                                 ║
 ║                                                                            ║
 ║ Setting     Value    Allowed                     What it does              ║
 ║ -------------------------------------------------------------------------- ║
-║ idle-after  1h       A length of time, at least  How long a player is idle ║
-║                      1m                          before +who draws their   ║
-║                                                  name muted.               ║
-║ where-view  grouped  Grouped, room, or name      What +where shows:        ║
-║                                                  players under a line per  ║
+║ idle-after  1h       A length of time, at least  Idle after. How long a    ║
+║                      1m                          player is idle before     ║
+║                                                  +who draws their name     ║
+║                                                  muted.                    ║
+║ where-view  grouped  Grouped, room, or name      Bare +where view. What    ║
+║                                                  +where shows: players     ║
+║                                                  under a line per          ║
 ║                                                  location, or one per line ║
 ║                                                  by room or by name.       ║
-║ who-order   name     Name or idle                The order +who lists      ║
-║                                                  players in. +who/name and ║
+║ who-order   name     Name or idle                Bare +who order. The      ║
+║                                                  order +who lists players  ║
+║                                                  in. +who/name and         ║
 ║                                                  +who/idle pick one.       ║
 ╠════════════════════════════════════════════════════════════════════════════╣
 ║ +config who-where/<setting>=<value> changes one.                           ║

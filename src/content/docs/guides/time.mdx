@@ -196,7 +196,7 @@ it, which holds the settings and the short names for zones. Find the Clock's num
 
 ```
 > @find Clock
-Clock(#18TVn)
+Clock(#26TVn)
 *** 1 objects found ***
 ```
 
@@ -219,7 +219,7 @@ each, its value the zone. For example, to keep the game on New York time and let
 ```
 > +config time/zone=America/New_York
 [CONFIG] Done: time/zone is now America/New_York, was UTC.
-> &ALIAS`IRISH #18=Europe/Dublin
+> &ALIAS`IRISH #26=Europe/Dublin
 Clock/ALIAS`IRISH - Set.
 ```
 
@@ -258,13 +258,13 @@ For example, a game set three hundred years on, whose IC days run twice as fast 
 [CONFIG] Done: time/ic-years is now 300, was 0.
 > +config time/ic-months=Deepwinter|Thaw|Seedtime|Rains|Bloom|Highsun|Hay|Harvest|Leafall|Mist|Frost|Longnight
 [CONFIG] Done: time/ic-months is now Deepwinter, Thaw, Seedtime, Rains, Bloom, Highsun, Hay, Harvest, Leafall, Mist, Frost, Longnight, was none.
-> &FORMAT`IC #18=%<day> %<monthname>, year %<year> of the Crossing, %<hour>:%<minute>
+> &FORMAT`IC #26=%<day> %<monthname>, year %<year> of the Crossing, %<hour>:%<minute>
 Clock/FORMAT`IC - Set.
 > +time
 ═══════════════════════════════════╡ Time ╞═══════════════════════════════════
-Game time: Thu 15 Oct 2026, 02:23 · America/New_York (UTC-04:00)
-Your time: Thu 15 Oct 2026, 07:23 · Europe/London (UTC+01:00)
-IC date:   31 Bloom, year 2327 of the Crossing, 12:46
+Game time: Thu 15 Oct 2026, 03:00 · America/New_York (UTC-04:00)
+Your time: Thu 15 Oct 2026, 08:00 · Europe/London (UTC+01:00)
+IC date:   31 Bloom, year 2327 of the Crossing, 14:00
 ══════════════════════════════════════════════════════════════════════════════
 +time <time> converts a time · +timezone <zone> sets yours
 ══════════════════════════════════════════════════════════════════════════════
@@ -299,9 +299,9 @@ Every function that takes a moment takes it as an argument, so code that shows a
 such as when a scene is scheduled, shows it to each reader in their own zone:
 
 ```
-> think u(#18/FUN`OOC`FOR,1792551600,*Tomas)
+> think u(#26/FUN`OOC`FOR,1792551600,*Tomas)
 Tue 20 Oct 2026, 22:00
-> think u(#18/FUN`IC`DATE,1772323200)
+> think u(#26/FUN`IC`DATE,1772323200)
 1 Seedtime, year 2326 of the Crossing, 00:00
 ```
 

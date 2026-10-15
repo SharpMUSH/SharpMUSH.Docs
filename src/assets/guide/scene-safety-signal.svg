@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" width="960" height="300" role="img" aria-labelledby="t d">
+  <title id="t">How a pause reaches a scene's owner</title>
+  <desc id="d">A player in the scene types +safety/pause. The Scene Safety object, not the player, sends the message with @scene/notice. The scene's owner reads it in their terminal and as a banner on the scene's live page in the portal. The other players in the scene are told nothing, and the owner is not told who sent it.</desc>
+  <rect x="0" y="0" width="960" height="300" rx="12" fill="#f8fafc"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <g font-family="system-ui, sans-serif" fill="#0f172a">
+    <rect x="24" y="96" width="230" height="96" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="139" y="124" text-anchor="middle" font-size="15" font-weight="600">A player in the scene</text>
+    <text x="139" y="152" text-anchor="middle" font-size="14" font-family="ui-monospace, monospace">+safety/pause</text>
+    <text x="139" y="176" text-anchor="middle" font-size="13" fill="#475569">or +safety/skip</text>
+
+    <line x1="254" y1="144" x2="326" y2="144" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <rect x="330" y="96" width="260" height="96" rx="10" fill="#eef2ff" stroke="#c7d2fe"/>
+    <text x="460" y="124" text-anchor="middle" font-size="15" font-weight="600">The Scene Safety object</text>
+    <text x="460" y="152" text-anchor="middle" font-size="14" font-family="ui-monospace, monospace">@scene/notice</text>
+    <text x="460" y="176" text-anchor="middle" font-size="13" fill="#475569">sends it under its own name</text>
+
+    <line x1="590" y1="126" x2="662" y2="84" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="590" y1="162" x2="662" y2="204" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <rect x="666" y="34" width="270" height="96" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="801" y="62" text-anchor="middle" font-size="15" font-weight="600">The scene's owner</text>
+    <text x="801" y="88" text-anchor="middle" font-size="13" fill="#475569">in their terminal, and as a banner</text>
+    <text x="801" y="108" text-anchor="middle" font-size="13" fill="#475569">on the scene's live page</text>
+
+    <rect x="666" y="160" width="270" height="96" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-dasharray="6 4"/>
+    <text x="801" y="188" text-anchor="middle" font-size="15" font-weight="600" fill="#64748b">Everyone else in the scene</text>
+    <text x="801" y="214" text-anchor="middle" font-size="13" fill="#64748b">is told nothing</text>
+  </g>
+</svg>
