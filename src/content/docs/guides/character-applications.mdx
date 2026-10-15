@@ -52,6 +52,16 @@ field.
 `+app/write <field>` lets you type as many lines as you like; send `.done` on a line by itself to
 save it.
 
+Each answer is an attribute on your character, named for the field. Only `+app` changes it, so
+staff see every change in the next round:
+
+```
+> examine me/CONCEPT
+CONCEPT [w #1]: A lighthouse keeper who hears the sea talk back.
+> &CONCEPT me=A sailor
+#-1 NO PERMISSION TO SET ATTRIBUTE
+```
+
 When every required field is filled in, `+app/submit` sends it to staff and tells you where you
 are in the queue:
 
@@ -215,10 +225,11 @@ one back to its default.
 | `max` | The most characters: 200 for text and 4000 for long by default. |
 | `order` | Where it comes in its section. |
 | `help` | A line shown under an empty field. |
+| `attribute` | The attribute on the character that holds the answer: the key by default. |
 
 `+apps/section/order <key>=<number>` moves a section; lower comes first.
-`+apps/field/remove <key>` and `+apps/section/remove <key>` take things out. What applications
-already said stays with them.
+`+apps/field/remove <key>` and `+apps/section/remove <key>` take things out. Answers already given
+stay on the characters, and a new `attribute` does not move them.
 
 ## Running applications
 
@@ -277,6 +288,6 @@ After the next approval, the character is there:
 ```
 
 <Aside>
-Applications are kept on the Chargen Store, not on the characters. A character cannot change
-its own state or round, and uninstalling `chargen` removes every application.
+The answers stay on the characters. The state, rounds and comments are kept on the Chargen Store,
+so a character cannot change its own, and uninstalling `chargen` removes them.
 </Aside>
