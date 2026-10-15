@@ -351,6 +351,11 @@ binaries:
       sha256: <64-hex SHA-256>
 ```
 
+Put a `README.md` beside `package.yaml` to say what the plugin adds and how to set it up. The
+Packages page shows it from the plugin's row (see
+[Reading a package's README](/guides/packages#reading-a-packages-readme)); a `.zip` uploaded from the
+portal carries it the same way, at the top of the archive.
+
 File names are plain names with no folders; they go straight into `plugins/<id>/`. Compute each
 checksum from the built file (`sha256sum MyPlugin.dll`), and commit `package.yaml` and the files
 together. Releases are tagged like softcode packages (`<package-folder>/v<version>`), and the

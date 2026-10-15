@@ -63,6 +63,7 @@ export default defineConfig({
                       { label: 'Character Galleries', slug: 'guides/galleries' },
                       { label: 'RP Finder', slug: 'guides/rp-finder' },
                       { label: 'Who and Where', slug: 'guides/who-where' },
+                      { label: 'Finger Profiles', slug: 'guides/finger' },
                       { label: 'Writing Plugins', slug: 'guides/plugins' },
                       { label: 'Softcode in Your Editor', slug: 'guides/editor-support' },
                       { label: 'Remote MCP and LSP Analysis', slug: 'guides/mcp' }
