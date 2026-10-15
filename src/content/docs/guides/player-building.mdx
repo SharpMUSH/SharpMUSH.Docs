@@ -213,8 +213,9 @@ Doing nothing is a fine answer for one player's home. A shop or a ship that seve
 after is better with a shared player.
 
 <Aside type="caution" title="A room is halted after it changes hands">
-`@chown` sets HALT on what it moves, as it does in PennMUSH, and a halted room shows its own
-formatting code instead of its name and description. Whoever owns it now clears that straight away:
+`@chown` sets HALT on what it moves, as it does in PennMUSH. A halted room runs none of its code:
+`look` shows its name and description plainly, without the game's styling, and its `@aenter` and other
+actions do nothing. Once the new owner has checked the room, they clear HALT:
 
 ```
 > @set here=!HALT
