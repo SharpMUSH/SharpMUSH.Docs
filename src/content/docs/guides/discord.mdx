@@ -30,6 +30,11 @@ Setting up the bot and linking channels need the `discord.admin` permission. Wiz
 and `@role/allow <role>=discord.admin` hands it to a staff role. Members link their own
 accounts and choose their own characters.
 
+In the game, `help @discord` covers every switch, and `help @discord/<switch>` goes straight
+to one. The help is there only while the plugin is loaded.
+
+![help @discord lists its topics, from setting up the bot to scheduled events, and help @discord/event shows the switches, a json() example and the event's fields.](../../../assets/guide/discord-help.webp)
+
 ## How it works
 
 ![Softcode sends a line on the feed discord/1234567890. Members of the feed see it in the game as usual, and the Discord plugin posts it through the channel's webhook into #ooc, under the speaker's name. The webhook's token is kept in the secret store.](../../../assets/guide/discord-link-flow.svg)
