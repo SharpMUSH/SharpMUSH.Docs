@@ -22,6 +22,7 @@ back the other way, as a line on the feed spoken by the character they chose.
 | join a game channel to a Discord channel | [Joining a game channel](#joining-a-game-channel) |
 | give members Discord roles from their game roles | [Mapping roles](#mapping-roles) |
 | do all of this from the portal | [The Discord page](#the-discord-page) |
+| ban a member on Discord when they are banned in the game | [Game bans](#game-bans) |
 | fix a link that stopped | [When a link stops](#when-a-link-stops) |
 
 Setting up the bot and linking channels need the `discord.admin` permission. Wizards hold it,
@@ -141,11 +142,15 @@ an Unlink button:
 - A Discord account unlinked from one game account waits a week before it can link a
   different one, so a Discord role tied to a game role cannot be handed around. It can link
   the same account again at once.
+- While a game account's ban stands, the Discord account that was linked to it cannot link
+  a different game account.
 - `/unlink` in Discord, or Unlink on the account page, drops the link.
 
 The bot makes a role named **Linked** in each server it is in. It gives the role to every
-linked member and takes it from everyone else, and checks every member each time it
-connects. Renaming the role is fine, since the bot knows it by its id. If the role is
+member linked to an active game account and takes it from everyone else, and checks every
+member each time it connects. A member whose game account is banned, disabled or closed
+loses the role, so they cannot post in linked channels, and gets it back when the account
+is active again. Renaming the role is fine, since the bot knows it by its id. If the role is
 deleted, the bot makes a new one the next time it connects. This needs the Manage Roles
 permission the invite asks for.
 
@@ -313,13 +318,40 @@ A member who has not linked their account is never given a mapped role. If they 
 the bot lists it as a change made by hand rather than taking it, unless the role is
 enforced.
 
+## Game bans
+
+A game ban always takes the Linked role and every mapped role, and the member's messages
+stop reaching the game. The bot can also ban them on Discord. This is off until staff turn
+it on:
+
+```
+> @discord/bans on
+```
+
+![@discord/bans says game bans are not mirrored and the bot has banned nobody; @discord/bans maybe is refused; @discord/bans on turns mirroring on and says the bot needs Ban Members; @discord/bans then says a game ban bans the member in every server the bot is in.](../../../assets/guide/discord-bans.webp)
+
+- With mirroring on, banning a game account bans its linked Discord member in every server
+  the bot is in. Turning mirroring on also bans the members of accounts banned already.
+- When the game ban is lifted or runs out, the bot lifts the Discord bans it made. A Discord
+  ban staff made themselves is left alone, and so is one staff lifted by hand.
+- `@discord/bans off` stops new bans. Bans the bot already made are still lifted when their
+  game bans end.
+- A disabled or closed account is not banned on Discord; only a ban is mirrored.
+- `@discord/bans` says whether mirroring is on and lists the members the bot banned.
+
+The bot needs the Ban Members permission for this. The invite link asks for it while
+mirroring is on, and the setup checklist names any server where the bot lacks it.
+
+![The Connection card with Mirror game bans to Discord switched on, and a Ban Members step added to the checklist.](../../../assets/guide/discord-admin-bans.webp)
+
 ## The Discord page
 
 Staff with the `discord.admin` permission find a **Discord** page in the portal, under
 Build & manage, Server. It does what the `@discord` commands do:
 
 - **Connection** shows what setting up the bot still needs, with a link to set its token,
-  the invite link once the bot is ready, and a Reconnect button.
+  the invite link once the bot is ready, a Reconnect button, and the switch that mirrors
+  game bans.
 - **Linked channels** lists each link with its feed and state. A stopped link shows the
   reason and a Resume button. Pick a channel the bot can see to link a new one.
 - **Role mappings** maps a game role to a Discord role, sets whether a change made by hand
