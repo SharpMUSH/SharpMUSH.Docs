@@ -1,22 +1,36 @@
 ---
 title: RhostMUSH Softcode
-description: The RhostMUSH softcode features SharpMUSH understands, the @dolist element %d and bang notation, and where the connection handle moved.
+description: The RhostMUSH softcode SharpMUSH runs as it is, the rhost_ settings for the code that answers differently, and what is deliberately different.
 ---
 
 import { Aside } from '@astrojs/starlight/components';
 
-SharpMUSH reads PennMUSH softcode first, but it also understands two pieces of RhostMUSH softcode that
-games use a lot: the `@dolist` element `%d`, and bang notation on function calls. Both ideas come from
-RhostMUSH; SharpMUSH's versions are written from how RhostMUSH behaves, not from its code.
+SharpMUSH reads PennMUSH softcode first. It also understands much of RhostMUSH's softcode: where
+RhostMUSH has something that PennMUSH treats as an error, an unknown function or plain text, SharpMUSH
+does what RhostMUSH does, so RhostMUSH code that uses it runs unchanged and PennMUSH code is not
+affected. Where RhostMUSH gives the same code a different meaning from PennMUSH, SharpMUSH keeps
+PennMUSH's meaning, and a setting switches to RhostMUSH's for a game whose code was written for it.
+
+These ideas come from RhostMUSH; SharpMUSH's versions are written from how RhostMUSH behaves, not
+from its code.
 
 This page covers:
 
 - `%d` and `%dL`, the element of an `@dolist`;
 - bang notation, `!` and `!!` before a function call;
-- `%j`, the connection a command came in on, which used to be `%d`.
+- register labels, a second name for a q-register;
+- `%i_<n>`, `%i_L`, `%il` and `%-<n>`, more substitutions for loops and arguments;
+- the functions that come from RhostMUSH;
+- RhostMUSH's spellings of `@switch`, `@dolist` and `@lock` switches;
+- extra arguments to `map()`, and the one-argument `search()`;
+- the `rhost_edit`, `rhost_lattr`, `rhost_printf`, `rhost_map_args`, `rhost_list` and `sidefx_flag`
+  settings;
+- `%j`, the connection a command came in on;
+- what is deliberately different from RhostMUSH.
 
-The examples are in the game's help (`help @dolist`, `help bang notation`), and SharpMUSH's test suite
-runs them on every change.
+Every example below was run on SharpMUSH. Most are in the game's help (`help @dolist`, `help bang
+notation`, `help setq`, `help compatibility config` and each function's own entry), where SharpMUSH's
+test suite runs them on every change. The `rhost_list` section shows the call's form only.
 
 ## The @dolist element
 
@@ -73,9 +87,10 @@ think ![strlen(abc)] x!strlen(abc)
 
 Output: `!3 x!strlen(abc)`
 
-The same bangs work on a register, an iteration element and an `@dolist` element: `%q<!!$name>` is 1
-when the register holds something, `%i!0` is 1 when the iteration's element is 0, and `%d!!0` is 1
-when the `@dolist` element is a number other than 0.
+The same bangs work on a register, an iteration element or position, an argument and an `@dolist`
+element: `%q<!!$name>` is 1 when the register holds something, `%i!0` is 1 when the iteration's element
+is 0, and `%d!!0` is 1 when the `@dolist` element is a number other than 0. `%i_!0` and `%-!0` work the
+same way on the substitutions described below.
 
 ```sharp
 think [setq(name,)][if(%q<!$name>,No name.,Hello %q<name>.)]
@@ -89,11 +104,325 @@ PennMUSH has no bangs. There, `!strlen(abc)` at the start of an argument is plai
 that starts with `!` and a real function call, escape the `!` (`\!`).
 </Aside>
 
+## Register labels
+
+A q-register can carry a label, a second name for it. `setq()` and `setr()` with exactly three
+arguments set the register and give it the third as its label. From then on `%q<label>`, `r(label)`
+and `setq(label, ...)` read and write that same register:
+
+```sharp
+think [setq(0, 15, damage)]%q<damage> %q0
+```
+
+Output: `15 15`
+
+The register may be `+`, which picks the register the label already names, or else the first of 0-9
+and A-Z with no label and no value. `!` picks the same way but may take a register that holds a value.
+`nameq()` reads, sets and searches labels; with a number other than 0 as its third argument it gives
+the register a label belongs to:
+
+```sharp
+think [setq(+, north, exit)][nameq(exit, , 1)]: %q<exit>
+```
+
+Output: `0: north`
+
+`setqm()` and `setrm()`, which set registers in order, take `<register>><label>` as a name:
+
+```sharp
+think [setqm(0>total, 5, total, add(%q<total>, 1))]%q0
+```
+
+Output: `6`
+
+A label is at least two characters long, is not a number and has no `>` in it. A three-argument
+`setq()` whose third argument cannot be a label is PennMUSH's odd-argument error, as before. Labels
+are saved and restored with the registers by `localize()`, `ulocal()` and the `/localize` switches.
+
+## Loop positions and arguments
+
+| Substitution | Is |
+| --- | --- |
+| `%i_<n>` | the position of the element `%i<n>` names, the same as `inum(<n>)` |
+| `%i_L` | the position of the outermost loop's element |
+| `%il` | `%iL`, the outermost loop's element, in either case |
+| `%-<n>` | argument `<n>`, from 0 to 999, the same as `%<n>`: `%-12` is the thirteenth argument |
+
+```sharp
+think iter(a b c,%i_0:%i0)
+```
+
+Output: `1:a 2:b 3:c`
+
+```sharp
+think iter(a b,iter(x y,%il-%i_L:%i0))
+```
+
+Output: `a-1:x a-1:y b-2:x b-2:y`
+
+```sharp
+&FIRST_LAST me=%-0 and %-12
+think u(me/FIRST_LAST,a,b,c,d,e,f,g,h,i,j,k,l,m)
+```
+
+Output: `a and m`
+
+## Functions from RhostMUSH
+
+These functions take the same arguments as on RhostMUSH. Each has its own help entry.
+
+### Loops
+
+`nsiter()` is `iter()` with nothing between the results. `citer()` loops over the characters of a
+string, spaces included. In both, `##` is the element and `#@` its position.
+
+```sharp
+think nsiter(a b c, ##-#@)
+```
+
+Output: `a-1b-2c-3`
+
+```sharp
+think citer(boo!, ##-#@)
+```
+
+Output: `b-1 o-2 o-3 !-4`
+
+`inf()` is `iter()` that can count without end: a list written `:<start>:>:` counts up from `<start>`,
+and `:<start>:<:` counts down. The pattern calls `ibreak()` to stop. A count that never stops is still
+cut off by the game's function invocation, output and time limits.
+
+```sharp
+think inf(:5:>:, [if(gt(##, 8), ibreak())]##)
+```
+
+Output: `5 6 7 8 9`
+
+`while()` is `map()` that stops part way through the list: after each item it runs a second attribute
+on the item, and stops once that gives exactly the stop value. The item that stopped it keeps its
+result.
+
+```sharp
+&EVAL_FN me=[reverse(%0)]
+&COND_FN me=[strlen(%0)]
+think while(EVAL_FN, COND_FN, foo bar meep flibble baz, 4)
+```
+
+Output: `oof rab peem`
+
+### u2() and privatize()
+
+`u2()` evaluates an attribute the way `u()` does, but runs it as the object calling `u2()`: inside it,
+`me`, `%!` and `%@` are the caller. `u2local()`, `u2default()` and `u2ldefault()` are the same change
+to `ulocal()`, `udefault()` and `uldefault()`.
+
+```sharp
+@create Widget
+&RUNS_AS Widget=[strmatch(num(me),%#)]
+think u(Widget/RUNS_AS) [u2(Widget/RUNS_AS)]
+```
+
+Output: `0 1`
+
+`localize()`, `ulocal()` and the rest start their code with a copy of the caller's registers.
+`privatize(1)` makes them start with no registers for the rest of the evaluation, and
+`privatize(<on>, <code>[, <registers>[, <omit>[, <multi>]]])` evaluates `<code>` that way, for all
+registers or only the ones named:
+
+```sharp
+&PAIR me=[setr(0,ONE)]:[r(1)]
+think [setr(0,TWO)]:[setr(1,CHEESE)], [privatize(1,u(me/PAIR))], %q0:%q1
+```
+
+Output: `TWO:CHEESE, ONE:, TWO:CHEESE`
+
+### Lists and characters
+
+`listdiff()`, `listinter()` and `listunion()` are `setdiff()`, `setinter()` and `setunion()` without the
+sorting: the result keeps the order the items had. `elementpos()` picks characters out of a string by
+position, as `elements()` picks words.
+
+| Call | Gives |
+| --- | --- |
+| `listdiff(foo baz gleep bar foo foo, bar moof gleep)` | `foo baz` |
+| `listinter(foo baz gleep bar foo bar, bar moof gleep)` | `gleep bar` |
+| `listunion(foo baz gleep bar foo bar, bar moof gleep)` | `foo baz gleep bar moof` |
+| `elementpos(abcdefg, 1 4)` | `a d` |
+
+`ladd()`, `lsub()`, `lmul()`, `ldiv()`, `lavg()`, `lmax()` and `lmin()` do arithmetic on a whole list,
+and `land()`, `lor()`, `lxor()`, `lnor()` and `lxnor()` combine a list of true and false values. Each
+item counts as the number it starts with, so they never refuse an item.
+
+| Call | Gives |
+| --- | --- |
+| `ladd(1 2 3 4)` | `10` |
+| `lsub(10 2 3 1)` | `4` |
+| `lmul(2\|2\|2\|2, \|)` | `16` |
+| `ldiv(20 2 0 2)` | `5` (a zero divisor is passed over) |
+| `lavg(2 4 6 8 10)` | `6` |
+| `lmax(1 10 2 4 6)` | `10` |
+| `land(1 1 0)` | `0` |
+| `lor(0 0 2)` | `1` |
+| `lxnor(1 0 1)` | `0` |
+
+### columns()
+
+`columns(<text>, <width>, <columns>, ...)` sets the words of `<text>` out in columns of a fixed width,
+running down the first column, then the next. Further arguments set the justification, cropping, the
+text before, between and after the columns, the order, the delimiter and the filler.
+
+```sharp
+think columns(this is a test of columns, 10, 3)
+```
+
+Output:
+
+```
+this      a         of
+is        test      columns
+```
+
+## Command switches
+
+| Written | Is |
+| --- | --- |
+| `@switch/regall` | `@switch/all/regexp` |
+| `@switch/regfirst` | `@switch/first/regexp` |
+| `@switch/clearreg`, `@dolist/clearreg` | `/clearregs` |
+| `@dolist/space` | the default, a space-separated list |
+| `@lock/<type>lock`, `@unlock/<type>lock` | `@lock/<type>`: `@lock/enterlock` is `@lock/enter`, `@lock/tportlock` is `@lock/teleport`, `@lock/defaultlock` is `@lock/basic` |
+
+The `<type>lock` spellings work for every lock type SharpMUSH has. A user-defined lock whose name ends
+in "lock" keeps its own name.
+
+`@dolist/inline` with `/localize` saves the registers before each run of the action list and restores
+them after, and `/clearregs` empties them before each run. A queued `@dolist` gives each run its own
+copy of the registers, so those switches change nothing there.
+
+## map() and search()
+
+`map()` passes any arguments after its output separator to the attribute as `%1`, `%2` and so on:
+
+```sharp
+&TAG_ARGS me=<%0:%1:%2>
+think map(TAG_ARGS,a b,,,x,y)
+```
+
+Output: `<a:x:y> <b:x:y>`
+
+With no extra arguments, `%1` is the item's position, as in PennMUSH, unless `rhost_map_args` is on.
+
+`search()`, `lsearch()` and `nsearch()` also take RhostMUSH's one-argument form,
+`search([<player>] <class>=<restriction>[, <low>[, <high>]])`, such as `search(type=player)` or
+`search(me th=lamp)`. A class may be shortened to the start of its name. `help lsearch` lists the
+classes.
+
+## The rhost_ settings
+
+Each of these is off by default. Turn one on with `@config/set`, for example
+`@config/set rhost_printf=yes`, or on the web portal's configuration page, where they are in the
+group "RhostMUSH Compatibility". They take effect on the next call.
+
+### rhost_edit
+
+With `rhost_edit` off, `edit()` reads the arguments after the string as from/to pairs, as PennMUSH
+does. With it on, a fourth and fifth argument are RhostMUSH's mode arguments: a fourth that starts with
+a number other than 0 replaces only the first match.
+
+```sharp
+think edit(abcabc,b,X,1)
+```
+
+Output with `rhost_edit` on: `aXcabc`
+
+### rhost_lattr
+
+With `rhost_lattr` on, `lattr()` and `lattrp()` take RhostMUSH's arguments,
+`lattr(<object>[/<pattern>][, <target>[, <type>[, <flags>[, <regexp>[, <tree>]]]]])`, instead of
+PennMUSH's output delimiter. `<type>` narrows or counts the list: `$` keeps attributes holding a
+$-command, `^` those holding a listen pattern, and `l` answers the number of names and of pages.
+`help compatibility config` describes every type.
+
+### rhost_printf
+
+With `rhost_printf` on, `printf()` reads RhostMUSH's `$` fields instead of SharpMUSH's `%` directives.
+
+```sharp
+think printf(|$-5s|$5s|,ab,cd)
+```
+
+Output with `rhost_printf` on: `|ab   |   cd|`
+
+### rhost_map_args
+
+With `rhost_map_args` on, `%1` in a `map()` with no extra arguments is empty, as on RhostMUSH, rather
+than the item's position.
+
+```sharp
+&MAP_TAG me=<%0|%1>
+think map(me/MAP_TAG,a b)
+```
+
+Output with `rhost_map_args` on: `<a|> <b|>`
+
+### rhost_list
+
+PennMUSH's `list()` names the game's functions, commands, flags and so on. RhostMUSH's
+`list(<list>, <eval>[, <delimiter>][, <header>][, <target>])` evaluates `<eval>` for each element, as
+`iter()` does, and tells you each result as its own line instead of returning it. `<header>` is a
+line told before the results, and `<target>` is an object you control to tell them to, instead of
+you. With `rhost_list` on, `list()` is RhostMUSH's, and `@list` still names the game's functions,
+commands and flags. TinyMUX's three-argument `list()` is the same
+call, so the one setting serves code from either server.
+
+### sidefx_flag
+
+With `sidefx_flag` off, side-effect functions such as `pemit()`, `set()`, `attrib_set()` and
+`create()` work for anyone, subject to `function_side_effects` and their own permission checks, as in
+PennMUSH. With it on, they work only for an object that has the SIDEFX flag or holds the
+`softcode.sidefx` permission; anything else gets `#-1 FUNCTION DISABLED`. Anyone may set SIDEFX on
+what they control. The flag has no letter. A function's reading form, such as `name()` with one
+argument, is never affected.
+
+The wizard role allows `softcode.sidefx`, so a wizard needs no flag:
+
+```sharp
+think hasflag(me,SIDEFX) [permission(me,softcode.sidefx)]
+```
+
+Output for a wizard, with `sidefx_flag` on: `0 1`
+
 ## The connection handle is %j
 
-`%j` is the connection the command was typed on, the number `@pemit/port` takes. It used to be `%d`;
-no other MUSH server uses `%j`, so the letter is free for this.
+`%j` is the connection the command was typed on, the number `@pemit/port` takes. `%d` is the
+`@dolist` element, as in RhostMUSH, and no other MUSH server uses `%j`, so the letter is free for this.
 
 ```sharp
 @pemit/port %j=Only this connection sees this line.
 ```
+
+## What is deliberately different
+
+A few RhostMUSH forms are not taken up, or work differently, because following RhostMUSH would change
+what PennMUSH code prints or how SharpMUSH's permissions work:
+
+- `%+!` is not RhostMUSH's. `%+` is the number of arguments, as in PennMUSH, so `%+!` is that number
+  followed by `!`.
+- A bare `%-`, with no number after it, is just `-`. RhostMUSH gives `%-` followed by a letter other
+  meanings; only `%-<n>` is taken up.
+- `edit()` with four or five arguments is RhostMUSH's only under `rhost_edit`, since PennMUSH reads
+  those arguments as further from/to pairs.
+- An object whose SEX is unset or not recognised is "they" and "them", where RhostMUSH and PennMUSH
+  say "it". Only the first letter of SEX counts: m, f or w, and p or t.
+- Wizards hold `softcode.sidefx` through the wizard role, so they need no SIDEFX flag; on RhostMUSH a
+  wizard needs the flag as well.
+- A label names one register: giving it to a second register takes it from the first. RhostMUSH lets
+  two registers carry the same label.
+- `setqm()` splits a `<register>><label>` name after evaluating it, so a `>` that a function in the
+  name returns marks a label too.
+- `nameq()` with an empty first argument is an error rather than a count of registers, since
+  registers here are named freely.
+- `u()` runs the attribute as the object it is on, as RhostMUSH's usual build does; use `u2()` for the
+  other behaviour.
+- RhostMUSH lock types that SharpMUSH does not have, such as `teloutlock` or `darklock`, are unknown
+  lock types.
