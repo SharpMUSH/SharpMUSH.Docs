@@ -1,6 +1,6 @@
 ---
 title: Discord
-description: Setting up the game's Discord bot and linking Discord channels, so lines sent on a feed are posted there.
+description: Setting up the game's Discord bot and linking Discord channels, so lines on a feed are posted there and members' messages come into the game.
 ---
 
 import { Aside } from '@astrojs/starlight/components';
@@ -8,7 +8,8 @@ import { Aside } from '@astrojs/starlight/components';
 The **Discord plugin** links channels on a Discord server to the game. Each linked channel
 is a feed, `discord/<channel id>`, and every line sent on that feed is posted in the
 channel under the speaker's name. What goes on the feed is up to the game's softcode: a
-command, a tap on another feed, or an event.
+command, a tap on another feed, or an event. A linked member's message in the channel comes
+back the other way, as a line on the feed spoken by the character they chose.
 
 | You want to | Read |
 |---|---|
@@ -16,12 +17,13 @@ command, a tap on another feed, or an event.
 | make the bot and connect it | [Setting up the bot](#setting-up-the-bot) |
 | link a channel | [Linking a channel](#linking-a-channel) |
 | link a member's Discord account to their game account | [Linking members](#linking-members) |
+| speak in the game from Discord | [Speaking from Discord](#speaking-from-discord) |
 | post from softcode | [Sending lines](#sending-lines) |
 | fix a link that stopped | [When a link stops](#when-a-link-stops) |
 
 Setting up the bot and linking channels need the `discord.admin` permission. Wizards hold it,
 and `@role/allow <role>=discord.admin` hands it to a staff role. Members link their own
-accounts.
+accounts and choose their own characters.
 
 ## How it works
 
@@ -71,11 +73,11 @@ and a link. Open it, pick the server, and keep every permission it asks for:
 | Send Messages, Send Messages in Threads | post in them |
 | Manage Webhooks | make each linked channel's webhook |
 | Manage Messages | replace a member's message with the game's version of it |
-| Manage Roles | give members the roles their game account holds |
+| Manage Roles | give linked members the Linked role, and let only that role post in linked channels |
 | Create Events | publish scenes as Discord events |
 
-Manage Roles and Create Events are for parts of the link still being built. Asking for them
-now saves adding the bot again later.
+Create Events is for a part of the link still being built. Asking for it now saves adding
+the bot again later.
 
 <Aside>
 The token can also be given from outside the game, as the environment variable
@@ -97,11 +99,19 @@ on **Developer Mode**. Right-click the channel and choose **Copy Channel ID**.
 ```
 
 The command returns at once, and tells you how it went when Discord answers:
-`Linked #ooc in My Game. Lines sent on the feed discord/1234567890123456789 are posted there.`
+`Linked #ooc in My Game. Lines sent on the feed discord/1234567890123456789 are posted there.
+Only linked members may post there.`
 
 The bot needs View Channel, Manage Webhooks and Manage Messages in that channel. A channel
 that takes them away from the bot's role is refused, with the missing ones named. Threads
 cannot be linked.
+
+Linking also changes the channel's permissions, so that only members holding the **Linked**
+role (see [Linking members](#linking-members)) may send messages: `@everyone` is denied
+Send Messages there and the Linked role allowed it. The channel's other permissions stay as
+they were. If the bot cannot make that change, the link still works and the answer says
+why. `@discord` shows any channel that others can still post in, and
+`@discord/gate <id>` makes the change again once the cause is fixed.
 
 `@discord` lists every link with its server, its id and its state. `@discord/unlink <id>`
 stops posting, deletes the channel's webhook and forgets its token. The feed and its lines
@@ -135,6 +145,55 @@ linked member and takes it from everyone else, and checks every member each time
 connects. Renaming the role is fine, since the bot knows it by its id. If the role is
 deleted, the bot makes a new one the next time it connects. This needs the Manage Roles
 permission the invite asks for.
+
+## Speaking from Discord
+
+A linked member chooses which of their characters speaks for them in each linked channel.
+In the game, as that character, they type `@discord/speak` and the channel's id:
+
+```
+> @discord/speak 1234567890123456789
+```
+
+From then on, each message they post in the channel comes into the game as a line on its
+feed, spoken by that character. The member's own message is deleted and the game's version
+posted in its place, so the channel shows what actually arrived in the game.
+
+![@discord/speak refused for a channel that is not linked, then chosen for #rp-general. Two messages posted in Discord arrive on the feed as God says "Hello from Discord, @Bob! Has anyone seen the map? :wave:" and God waves from across the bridge. @discord/speak/off then stops it.](../../../assets/guide/discord-speak.webp)
+
+- **One character per channel.** Choosing another replaces the first.
+  `@discord/speak/off <id>`, as the character, stops it. Unlinking the Discord account drops
+  every choice.
+- **It is not private.** Anyone who reads both the game and the Discord channel can tell
+  which Discord member plays the character. The command says so when it is used.
+- **The character must be allowed to send on the feed**, by the feed's send lock (`help
+  @feed`). A character that is gagged, or no longer on the account, or an account that is
+  disabled or banned, speaks nothing. The bot sends the member a direct message saying why,
+  and their message stays in Discord.
+- **A member with no character chosen** in the channel gets one direct message saying how to
+  choose one. Their messages stay in Discord and do not reach the game.
+- **A member who is not linked** cannot post there at all, because of the Linked role. If a
+  channel lets them anyway, the bot deletes the message and sends them one direct message
+  saying how to link.
+
+How a message reads in the game:
+
+| In Discord | In the game |
+|---|---|
+| `**bold**`, `*italic*`, `__underline__`, `~~strike~~` | the game's own bold, italic, underline and strikethrough |
+| `:waves.` or `;'s here.` at the start | a pose or a semipose |
+| a mention of a member | `@` and the name of the character they speak as in that channel, or their Discord name |
+| a mention of a channel or role | `#channel` or `@role` |
+| a custom emoji | `:name:` |
+| a masked link `[text](https://...)` | a link |
+| a file | a link to it, named for the file |
+| a reply | `(replying to Name)` before the text |
+| code, spoilers, game code such as `[pemit(me,hi)]` | the text as typed; nothing is ever run |
+
+When a moderator deletes one of the game's posts in Discord, the line leaves the feed's
+recall (what `feedrecall()` and `feedmsg()` read), and the audit log records it as
+`feed.line.delete`. Players who already saw the line still have it on their screens. The bot
+remembers which line each post carries for 90 days; deleting an older post leaves its line.
 
 ## Sending lines
 
