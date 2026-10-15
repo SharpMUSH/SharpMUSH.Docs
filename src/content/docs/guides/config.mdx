@@ -29,31 +29,34 @@ Anyone may read the settings. `+config` alone lists every system that has some:
 ╔════════════════════════════════╡ Settings ╞════════════════════════════════╗
 ║ System     Settings  About                                                 ║
 ║ -------------------------------------------------------------------------- ║
-║ finger            4  What +finger and +oocfinger show, and who sets which  ║
-║                      field.                                                ║
-║ scene             3  What a new scene starts as, which details players may ║
-║                      set, and how much +scene/recall shows.                ║
-║ status            4  How long a status line, note and place may be, and    ║
-║                      what +status/list says under the list.                ║
-║ time              9  The game's time zone, how times are written, and the  ║
-║                      IC clock.                                             ║
-║ who-where         3  What +who and +where show.                            ║
+║ finger            4  Finger profiles. What +finger and +oocfinger show,    ║
+║                      and who sets which field.                             ║
+║ scene             3  Scenes. What a new scene starts as, which details     ║
+║                      players may set, and how much +scene/recall shows.    ║
+║ status            4  Status. How long a status line, note and place may    ║
+║                      be, and what +status/list says under the list.        ║
+║ time              9  Time and the IC clock. The game's time zone, how      ║
+║                      times are written, and the IC clock.                  ║
+║ who-where         3  Who and Where. What +who and +where show.             ║
 ╠════════════════════════════════════════════════════════════════════════════╣
 ║ +config <system> lists one system's settings.                              ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 ```
 
-A system shows up once its package is installed. `+config <system>` lists its settings with the
-value each has, what it accepts, and what it changes. A `*` after a name marks a value changed
+A system shows up once its package is installed. The About column gives its display name, then what
+it covers. `+config <system>` lists its settings with the value each has, what it accepts, and its
+display name and what it changes. A `*` after a name marks a value changed
 from its default:
 
 ![+config time: each setting with its value, what it accepts and what it does, two of them marked as changed](../../../assets/guide/config-system.webp)
 
-`+config <system>/<setting>` shows one setting with its default and who may change it:
+`+config <system>/<setting>` shows one setting with its display name, its default, an example when
+the system gives one, and who may change it:
 
 ```
 > +config time/ic-months
 ╔═════════════════════════════╡ time/ic-months ╞═════════════════════════════╗
+║ Name:         IC month names                                               ║
 ║ Value:        Deepwinter, Thaw, Seedtime, Rains, Bloom, Highsun, Hay,      ║
 ║               Harvest, Leafall, Mist, Frost, Longnight                     ║
 ║ Default:      none                                                         ║
@@ -147,13 +150,16 @@ and writes a value back to it only once the value passes:
 ![The Config Registry names the object each system keeps its settings on. +config looks the system up there, reads the setting's type and limits from that object, and writes the checked value back to it.](../../../assets/guide/config-flow.svg)
 
 For example, a weather report that changes every half hour, picks from a list of skies and
-follows a season. Each setting is one attribute holding the value, with leaves under it:
+follows a season. Each setting is one attribute holding the value, with leaves under it.
+``DATA`CONFIG`` holds what the system covers and ``DATA`CONFIG`LABEL`` its display name:
 
 ```
 > @create Weather
 Created: Object #28.
 > &DATA`CONFIG Weather=How the weather report behaves.
 Weather/DATA`CONFIG - Set.
+> &DATA`CONFIG`LABEL Weather=Weather report
+Weather/DATA`CONFIG`LABEL - Set.
 > &DATA`CONFIG`SEASON Weather=spring
 Weather/DATA`CONFIG`SEASON - Set.
 > &DATA`CONFIG`SEASON`TYPE Weather=choice
@@ -162,6 +168,8 @@ Weather/DATA`CONFIG`SEASON`TYPE - Set.
 Weather/DATA`CONFIG`SEASON`CHOICES - Set.
 > &DATA`CONFIG`SEASON`DEFAULT Weather=spring
 Weather/DATA`CONFIG`SEASON`DEFAULT - Set.
+> &DATA`CONFIG`SEASON`LABEL Weather=Season
+Weather/DATA`CONFIG`SEASON`LABEL - Set.
 > &DATA`CONFIG`SEASON`DESCRIPTION Weather=The season the weather follows.
 Weather/DATA`CONFIG`SEASON`DESCRIPTION - Set.
 > &DATA`CONFIG`EVERY Weather=1800
@@ -172,6 +180,10 @@ Weather/DATA`CONFIG`EVERY`TYPE - Set.
 Weather/DATA`CONFIG`EVERY`DEFAULT - Set.
 > &DATA`CONFIG`EVERY`MIN Weather=300
 Weather/DATA`CONFIG`EVERY`MIN - Set.
+> &DATA`CONFIG`EVERY`LABEL Weather=Change every
+Weather/DATA`CONFIG`EVERY`LABEL - Set.
+> &DATA`CONFIG`EVERY`EXAMPLE Weather=45m
+Weather/DATA`CONFIG`EVERY`EXAMPLE - Set.
 > &DATA`CONFIG`EVERY`DESCRIPTION Weather=How often the weather changes.
 Weather/DATA`CONFIG`EVERY`DESCRIPTION - Set.
 > &DATA`CONFIG`SKIES Weather=clear|light rain
@@ -184,24 +196,44 @@ Weather/DATA`CONFIG`SKIES`DELIMITER - Set.
 Weather/DATA`CONFIG`SKIES`DEFAULT - Set.
 > &DATA`CONFIG`SKIES`MIN Weather=1
 Weather/DATA`CONFIG`SKIES`MIN - Set.
+> &DATA`CONFIG`SKIES`LABEL Weather=Skies
+Weather/DATA`CONFIG`SKIES`LABEL - Set.
 > &DATA`CONFIG`SKIES`DESCRIPTION Weather=The skies the report picks from.
 Weather/DATA`CONFIG`SKIES`DESCRIPTION - Set.
 > +config/register weather=Weather
 [CONFIG] Done: weather is Weather's settings. +config weather lists them.
 > +config weather
-╔════════════════════════════╡ Settings: weather ╞═══════════════════════════╗
+╔════════════════════════╡ Settings: Weather report ╞════════════════════════╗
 ║ How the weather report behaves.                                            ║
 ║                                                                            ║
 ║ Setting  Value              Allowed                 What it does           ║
 ║ -------------------------------------------------------------------------- ║
-║ every    30m                A length of time, at    How often the weather  ║
-║                             least 5m                changes.               ║
-║ season   spring             Spring, summer,         The season the weather ║
-║                             autumn, or winter       follows.               ║
-║ skies    clear, light rain  Items separated by |,   The skies the report   ║
-║                             at least 1 item         picks from.            ║
+║ every    30m                A length of time, at    Change every. How      ║
+║                             least 5m                often the weather      ║
+║                                                     changes.               ║
+║ season   spring             Spring, summer,         Season. The season the ║
+║                             autumn, or winter       weather follows.       ║
+║ skies    clear, light rain  Items separated by |,   Skies. The skies the   ║
+║                             at least 1 item         report picks from.     ║
 ╠════════════════════════════════════════════════════════════════════════════╣
 ║ +config weather/<setting>=<value> changes one.                             ║
+╚════════════════════════════════════════════════════════════════════════════╝
+```
+
+An `EXAMPLE` leaf, written as staff would type the value, is shown as a whole `+config` line:
+
+```
+> +config weather/every
+╔══════════════════════════════╡ weather/every ╞═════════════════════════════╗
+║ Name:         Change every                                                 ║
+║ Value:        30m                                                          ║
+║ Default:      30m                                                          ║
+║ Allowed:      A length of time, at least 5m                                ║
+║ Example:      +config weather/every=45m                                    ║
+║ What it does: How often the weather changes.                               ║
+║ Changed by:   The config.admin permission                                  ║
+╠════════════════════════════════════════════════════════════════════════════╣
+║ +config weather/every=<value> sets it, /reset goes back to the default.    ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 ```
 
@@ -245,6 +277,8 @@ object or `get()` from elsewhere, and needs nothing from `plus-config` to do so:
 | `TYPE` | Required. One of the types above. |
 | `DEFAULT` | What `/reset` writes, in stored form. |
 | `DESCRIPTION` | One line: what the setting changes. |
+| `LABEL` | Its display name, such as `Change every`, shown before the description and at the top of its screen. |
+| `EXAMPLE` | A value written as staff would type it, shown as a whole `+config` line. |
 | `MIN`, `MAX` | Bounds: a number's value, a duration in seconds, a text's length, a list's number of items. |
 | `CHOICES` | The words a `choice` takes, or the items a `list` may hold. |
 | `PATTERN` | A regular expression a `text`, or each item of a `list`, must match. |
@@ -252,6 +286,9 @@ object or `get()` from elsewhere, and needs nothing from `plus-config` to do so:
 | `OBJECTTYPE` | For `object`: any of `ROOM PLAYER THING EXIT`. |
 | `CHECK` | The name of an attribute on the same object. It gets the value as stored in `%0` and the setting in `%1`, and returns nothing when the value is fine, or the reason it is not. |
 | `PERMISSION` | The permission that changes this setting, in place of `config.admin`. |
+
+``DATA`CONFIG`LABEL``, beside the settings, is the system's display name, so no setting may be called
+`label`.
 
 A `CHECK` covers anything a type cannot say. The time package's month names are a list of at most
 twelve, and its `CHECK` refuses any number but twelve or none:
@@ -305,8 +342,14 @@ objects:
         1800
       DATA`CONFIG`EVERY`MIN: |-
         300
+      DATA`CONFIG`LABEL: |-
+        Weather report
       DATA`CONFIG`EVERY`DESCRIPTION: |-
         How often the weather changes.
+      DATA`CONFIG`EVERY`LABEL: |-
+        Change every
+      DATA`CONFIG`EVERY`EXAMPLE: |-
+        45m
 
   - ref: config_registration
     target: "{{plus-config/registry}}"
