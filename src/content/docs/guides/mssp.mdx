@@ -1,0 +1,52 @@
+---
+title: Listing Your Game
+description: What your game tells MU* directories and crawlers through MSSP, and how to fill in the parts only you know.
+---
+
+MU\* directories find out about a game by asking it. They connect and request its **MSSP** report
+(the MUD Server Status Protocol), a list of named values such as its name, genre and how many
+players are on. SharpMUSH answers on every telnet connection that asks, and to anyone who types
+`MSSP-REQUEST` at the login screen.
+
+This page covers:
+
+- [Filling in your game's details](#filling-in-your-games-details)
+- [What the server reports itself](#what-the-server-reports-itself)
+- [Seeing the report](#seeing-the-report)
+
+## Filling in your game's details
+
+Open **Admin**, then **Configuration**, then **MSSP** under Server. The page lists every variable
+the MSSP specification defines, in its groups. Fill in the ones that describe your game, such as
+**Genre**, **Contact** and **Discord**, and press **Save**. **Other variables** at the bottom takes
+any name the list does not have, though a directory only reads names it knows.
+
+You need the `config.admin` permission. Importing a PennMUSH `mush.cnf` carries over its
+`mssp name/value` lines.
+
+## What the server reports itself
+
+Greyed rows are values the server fills in, and you cannot type over them. Each says where it comes
+from:
+
+- **From an option**, such as **Name** from `mud_name` or **Website** from `mud_url`. The link
+  beside it opens the page where that option is set.
+- **Counted by the server when asked**, such as **Players**, the number connected now.
+- **Reported by SharpMUSH**, such as the codebase and the protocols it speaks.
+
+## Seeing the report
+
+The **Report** panel on the right of the MSSP page shows what the game sends right now. From any
+MUD client, type `MSSP-REQUEST` at the login screen:
+
+```
+> MSSP-REQUEST
+MSSP-REPLY-START
+NAME	SharpMUSH
+PLAYERS	1
+...
+MSSP-REPLY-END
+```
+
+Each line is a name, a tab, and a value. A variable with several values repeats its name on one
+line per value.
