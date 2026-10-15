@@ -20,7 +20,7 @@ back.
 Every top-level key a softcode package can use, with the format version that added it:
 
 ```yaml
-format: 1.3                     # format version (omit = 1; 1.2 adds roles and permissions, 1.3 settings)
+format: 1.5                     # format version (omit = 1; 1.2 adds roles and permissions, 1.3 settings, 1.5 plugins)
 package: myrddins-bbs           # required: lowercase letters, digits and hyphens, up to 64 characters
 version: 2.4.1                  # required: a version number (see Versions below)
 authors: [Myrddin]              # optional: a list, or one string
@@ -30,6 +30,7 @@ homepage: https://example.com   # optional
 keywords: [bbs, boards]         # optional: up to 5, used for browsing and searching
 convention_prefix: BBS_         # optional: the attribute name prefix you use; advisory, not enforced
 requires_server: ">=0.1"        # optional: which SharpMUSH versions it needs
+plugins: [scene]                # optional (1.5): plugins its code calls, by plugin id (see Plugins a package calls)
 
 depends:                        # optional: other packages this one needs
   - volund-core: ">=1.0"        # short form: id and version range
@@ -295,11 +296,13 @@ role or zone; a format version whose major number is newer than the server suppo
 1.2 and 1.3 blocks: an invalid category, permission or role name; a built-in permission or a system
 role; a role priority outside 1-29 or a colour that isn't `#rrggbb`; a role permission other than
 `allow` or `deny`; a configuration option that doesn't exist or that a package can't set, a value it
-doesn't take, or a ref for an option that isn't a dbref; any of these blocks in a managed package.
+doesn't take, or a ref for an option that isn't a dbref; any of these blocks in a managed package. In
+format 1.5: a `plugins:` entry that isn't a valid plugin id.
 
 **Warnings** (the manifest is accepted): unknown keys (likely typos); reserved keys (`provides`,
 `recommends`, `suggests`, configure `pattern`); configure questions nothing uses; more than 5
-keywords; a format version whose minor number is newer than the server supports; a permission or
+keywords; a format version whose minor number is newer than the server supports; a plugin listed twice
+in `plugins:`; a permission or
 role naming a category the package doesn't declare, or a role allowing a permission the package
 doesn't declare (the game must already have it, or the install stops).
 
@@ -399,6 +402,35 @@ applying a package that changes one.
 - **Removed options and uninstall.** The option goes back to the value the package replaced, unless
   the game has changed it since; then it is left alone.
 - **Rollback** leaves configuration options as they are.
+
+## Plugins a package calls (format 1.5)
+
+Some commands and functions come from a [plugin](/guides/plugins), not from the engine: `+scene`,
+`scenewhere()` and the other `scene…()` functions are the Scene plugin's. A plugin can be turned off,
+fail to load, or not be installed at all, and then those names are not there. A package whose code
+calls them names the plugins under `plugins:`, by plugin id (the `id` in its `plugin.json`):
+
+```yaml
+format: 1.5
+package: scene-verse
+version: 1.1.0
+plugins: [scene]
+
+depends:
+  - scene: ">=1.6"
+```
+
+- **Install and upgrade.** The plan is blocked while any plugin it names is not running. The review
+  screen and `@package` say which one: `needs the scene plugin, which is not running`.
+- **Turning a plugin off** (the Plugins tab or `@plugin/disable`) uninstalls, after a backup and your
+  confirmation, every package that names it, and the packages that depend on those.
+- **The bundled catalogue** does not offer a package whose plugin is not running, and a new game does
+  not install it.
+
+Name a plugin here only when the package cannot work without it. Code that only reads a plugin when it
+is there, and checks first, needs no entry. The bundled `room-contents` package does this: it asks
+`scenewhere()` for the room's scene and treats any `#-1` answer, including the one for a function that
+does not exist, as no scene.
 
 ## Application packages
 
