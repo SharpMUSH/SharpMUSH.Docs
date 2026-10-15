@@ -69,6 +69,7 @@ export default defineConfig({
                       { label: 'Letting Your Players Build', slug: 'guides/player-building' },
                       { label: 'Finger Profiles', slug: 'guides/finger' },
                       { label: 'Character Roster', slug: 'guides/roster' },
+                      { label: 'Alts', slug: 'guides/alts' },
                       { label: 'Time and Time Zones', slug: 'guides/time' },
                       { label: 'Discord', slug: 'guides/discord' },
                       { label: 'Writing Plugins', slug: 'guides/plugins' },
