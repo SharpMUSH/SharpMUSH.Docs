@@ -38,7 +38,9 @@ shown is what it sent.
   ``OBJECT`MOVE``, ``ATTRIBUTE`CHANGE`` and ``SOCKET`GMCP``, and sends whatever softcode hands to
   [`oob()`](#oob-with-supported).
 - **The packages** hear those events on the event handler, shape the game's data into the standard
-  GMCP messages, and send them with `oob(..., supported)`.
+  GMCP messages, and send them with `oob(..., supported)`, which skips a client that did not ask for
+  them. Mudlet's `Client.GUI` and `Client.Map` are the exception: see
+  [When Mudlet does not list a module](#when-mudlet-does-not-list-a-module).
 - **The rendering worker** turns `sound()`, `music()` and `stopsound()` in a line into
   `Client.Media` messages, which the socket server sends just before the line.
 
@@ -59,7 +61,7 @@ What each client sends:
 
 | Client | `Core.Supports` | What the MUD kit sends it |
 |---|---|---|
-| **Mudlet** | `Char 1`, `Char.Skills 1`, `Char.Items 1`, `Room 1`, `IRE.Rift 1`, `IRE.Composer 1`, `External.Discord 1`, `Client.Media 1` | Room, Char, Char.Items, External.Discord and Client.Media. Not Comm or Client, which Mudlet does not list: see [below](#when-mudlet-does-not-list-a-module) |
+| **Mudlet** | `Char 1`, `Char.Skills 1`, `Char.Items 1`, `Room 1`, `IRE.Rift 1`, `IRE.Composer 1`, `External.Discord 1`, `Client.Media 1` | Room, Char, Char.Items, External.Discord, Client.Media, and Client.GUI and Client.Map. Not Comm, which Mudlet does not list: see [below](#when-mudlet-does-not-list-a-module) |
 | **Blightmud**, **TinTin++**, **MUSHclient** | none, unless a script sends one | everything |
 | **The web portal** | not used | everything sent with `oob()` |
 
@@ -68,25 +70,28 @@ nothing is sent everything. A client that sent a list is sent only what is on it
 
 ### When Mudlet does not list a module
 
-Stock Mudlet does not list `Comm` or `Client`, so it is not sent channel lines (`Comm.Channel.Text`),
-its channel list, the game's interface package (`Client.GUI`) or its map (`Client.Map`). A Mudlet
-script adds them:
+Stock Mudlet does not list `Comm`, so it is not sent channel lines (`Comm.Channel.Text`) or its
+channel list. A Mudlet script adds the module, and the game's own Mudlet interface package is the place
+for it:
 
 ```lua
-sendGMCP([[Core.Supports.Add ["Comm.Channel 1", "Client 1"] ]])
+sendGMCP([[Core.Supports.Add ["Comm.Channel 1"] ]])
 ```
 
-A game's own Mudlet interface package can carry that line. For the very first offer, before any
-interface is installed, a player can send it themselves and then type `+gui on`:
-
 ```
->> Core.Supports.Add ["Comm.Channel 1", "Client 1"]
-> +gui on
-<< Client.GUI {"version":"1.0","url":"https://example.org/game.mpackage"}
-[GUI] Done: Your client will be offered the game's interface when you connect. It was offered it just now.
+>> Core.Supports.Add ["Comm.Channel 1"]
+> think gmcpsupports(me, Comm.Channel)
+1
+> @chat Market=Anyone about now?
+<Market> Wren says, "Anyone about now?"
+<< Comm.Channel.Text {"channel":"Market","talker":"Wren","text":"\u003CMarket\u003E Wren says, \u0022Anyone about now?\u0022"}
 ```
 
 Here `>>` is a GMCP message the client sent, `<<` one the game sent, and `>` a command typed in the game.
+
+Mudlet does not list `Client` either, but the interface package (`Client.GUI`) and the map
+(`Client.Map`) are sent to every connection that agreed to GMCP, because the script that would add
+`Client` lives in the very interface being offered. A client that does not know them ignores them.
 
 ## Installing the MUD kit
 
@@ -197,12 +202,12 @@ Garden/Z - Set.
 
 ```
 Comm.Channel.List [{"name":"MudKit","caption":"MudKit","command":"+mudkit"}]
-Comm.Channel.Text {"channel":"MudKit","talker":"Alice","text":"<MudKit> Alice says, "Hello, Bob.""}
+Comm.Channel.Text {"channel":"MudKit","talker":"Alice","text":"\u003CMudKit\u003E Alice says, \u0022Hello, Bob.\u0022"}
 Comm.Channel.Text {"channel":"page","talker":"Alice","text":"Alice pages: Over here."}
-Comm.Channel.Text {"channel":"page","talker":"Alice","text":"You paged Bob with 'Over here.'"}
+Comm.Channel.Text {"channel":"page","talker":"Alice","text":"You paged Bob with \u0027Over here.\u0027"}
 ```
 
-The `<` and `"` are JSON's way of writing `<` and `"`; a client reads them as those characters.
+The `\u003C`, `\u0022` and `\u0027` are JSON's way of writing `<`, `"` and `'`; a client reads them as those characters.
 
 `Comm.Channel.Text`:
 
@@ -318,9 +323,9 @@ That is what [watched attributes](#watched-attributes) are for.
 
 ```
 Client.Map {"url":"https://example.org/map.xml"}
-Client.GUI {"version":"2.1","url":"https://example.org/game.mpackage"}
+Client.GUI {"version":"1.0","url":"https://example.org/game.mpackage"}
 External.Discord.Info {"inviteurl":"https://discord.gg/example"}
-External.Discord.Status {"game":"SharpMUSH","details":"Playing Wren","starttime":1792050984}
+External.Discord.Status {"game":"SharpMUSH","details":"Playing Wren","starttime":1792059569}
 ```
 
 | Message | Field | What |
@@ -371,8 +376,9 @@ Players choose whether they are offered the interface:
 ╚════════════════════════════════════════════════════════════════════════════╝
 ```
 
-Stock Mudlet does not list `Client`, so it is sent neither `Client.GUI` nor `Client.Map` until a script
-adds it: see [When Mudlet does not list a module](#when-mudlet-does-not-list-a-module).
+`Client.GUI` and `Client.Map` go to every connection that agreed to GMCP, whatever it listed, because
+Mudlet never lists `Client`. The Discord messages are sent only to a client that listed
+`External.Discord`, as Mudlet does, or listed nothing.
 
 ## Watched attributes
 
@@ -515,7 +521,7 @@ Wren's stock Mudlet did not list `Comm`:
 1
 ```
 
-Every MUD kit package sends with `supported`. Use it for your own packages too, rather than testing
+The MUD kit sends with `supported`, except `Client.GUI` and `Client.Map`. Use it for your own packages too, rather than testing
 `gmcpsupports()` first. Sending to anyone but yourself needs a wizard or the `Send_OOB` power. A
 descriptor number sends to that one connection, even before anyone has logged in on it, which is how a
 ``SOCKET`GMCP`` handler answers what a client asked.
@@ -560,6 +566,7 @@ Garden in the area `Town`, with terrain `garden` and coordinates 3, 4, 0.
    << Client.Media.Default {"url":"https://example.org/sounds/"}
    >> Core.Hello {"client": "Mudlet", "version": "4.19.1"}
    >> Core.Supports.Set ["Char 1", "Char.Skills 1", "Char.Items 1", "Room 1", "IRE.Rift 1", "IRE.Composer 1", "External.Discord 1", "Client.Media 1"]
+   << Client.Map {"url":"https://example.org/map.xml"}
    << Char.Name {"name":"Wren","fullname":"Wren of the Marsh"}
    << Char.Vitals {"hp":25,"maxhp":40}
    << Char.Status {"name":"Wren","fullname":"Wren of the Marsh","level":3}
@@ -567,24 +574,26 @@ Garden in the area `Town`, with terrain `garden` and coordinates 3, 4, 0.
    << Char.Items.List {"location":"room","items":[]}
    << Room.Info {"num":0,"name":"Room Zero","area":"","environment":"","exits":{"north":26}}
    << Room.Players [{"name":"Wren","fullname":"Wren of the Marsh"}]
-   << External.Discord.Status {"game":"SharpMUSH","details":"Playing Wren","starttime":1792050985}
+   << Client.GUI {"version":"1.0","url":"https://example.org/game.mpackage"}
+   << External.Discord.Status {"game":"SharpMUSH","details":"Playing Wren","starttime":1792059570}
    ```
 
-   Mudlet listed neither `Client` nor `Comm`, so there is no `Client.Map`, no `Client.GUI` and no
-   `Comm.Channel.List`.
+   Mudlet is offered the map as soon as it says hello, and the game's interface once Wren has logged in.
+   It did not list `Comm`, so there is no `Comm.Channel.List`.
 
 2. **Wren speaks on a channel** with `@chat Market=Anyone about?`. The line shows in her main window
    only: no `Comm.Channel.Text` is sent.
 
-3. **A script adds Comm and Client.** After `Core.Supports.Add ["Comm.Channel 1", "Client 1"]`, the
-   next channel line also goes to Mudlet's chat window, and `+gui on` offers the interface:
+3. **A script adds Comm.** After `Core.Supports.Add ["Comm.Channel 1"]`, the next channel line also
+   goes to Mudlet's chat window. `+gui on` offers the interface again at once:
 
    ```
-   >> Core.Supports.Add ["Comm.Channel 1", "Client 1"]
+   >> Core.Supports.Add ["Comm.Channel 1"]
    > @chat Market=Anyone about now?
-   << Comm.Channel.Text {"channel":"Market","talker":"Wren","text":"<Market> Wren says, "Anyone about now?""}
+   << Comm.Channel.Text {"channel":"Market","talker":"Wren","text":"\u003CMarket\u003E Wren says, \u0022Anyone about now?\u0022"}
    > +gui on
    << Client.GUI {"version":"1.0","url":"https://example.org/game.mpackage"}
+   [GUI] Done: Your client will be offered the game's interface when you connect. It was offered just now.
    ```
 
 4. **Tam connects** in the same room. Tam's client listed nothing, so it is sent every package, and Wren
@@ -615,7 +624,7 @@ Garden in the area `Town`, with terrain `garden` and coordinates 3, 4, 0.
    ```
    Wren >> External.Discord.Hello {"user": "wren", "private": false}
    Wren << External.Discord.Info {"inviteurl":"https://discord.gg/example"}
-   Wren << External.Discord.Status {"game":"SharpMUSH","details":"Playing Wren","starttime":1792050984}
+   Wren << External.Discord.Status {"game":"SharpMUSH","details":"Playing Wren","starttime":1792059569}
    Wren << Char.Items.List {"location":"room","items":[]}
    Wren << Room.Info {"num":26,"name":"Garden","area":"Town","environment":"garden","exits":{"south":0},"coords":"3,4,0"}
    Wren << Room.Players [{"name":"Wren","fullname":"Wren of the Marsh"}]
@@ -628,7 +637,7 @@ The whole session, as the two clients saw it:
 
 ![Transcript of the session: God's setup commands, Wren's stock Mudlet connecting and listing its modules, gmcpsupports(), exitmap() and oob() with and without supported, a channel line sent to the chat window only after Comm is added, Tam's client that lists nothing being sent every package, Char.Vitals and Char.Status after HP and LEVEL change, Client.Media.Play and Stop for Wren but not Tam, Client.Media.Default sent again when media_base_url changes, and Room.Info for the Garden with its area and coordinates](../../../assets/guide/mud-clients-session.webp)
 
-A second session, two Mudlet clients that both listed `Comm` and `Client`: Alice and Bob connect, join a
+A second session, two Mudlet clients whose scripts added `Comm` and `Client` to their lists: Alice and Bob connect, join a
 channel, talk, page, and Alice is handed a lantern, drops it and walks north. Only the MUD kit's messages
 are shown:
 
