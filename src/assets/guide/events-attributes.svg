@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" width="960" height="380" role="img" aria-labelledby="t d">
+  <title id="t">Which attributes an event runs</title>
+  <desc id="d">Renaming an object raises OBJECT`RENAME. The Event Handler, #9, runs its attribute named OBJECT`RENAME first, then each attribute one level below it in name order: OBJECT`RENAME`AUDIT, then OBJECT`RENAME`ZLOG. OBJECT`RENAME`AUDIT`HELPER is two levels below the event and does not run.</desc>
+  <rect x="0" y="0" width="960" height="380" rx="12" fill="#f8fafc"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <g font-family="system-ui, sans-serif" fill="#0f172a">
+    <rect x="24" y="140" width="220" height="100" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="134" y="170" text-anchor="middle" font-size="15" font-weight="600">Something happens</text>
+    <text x="134" y="198" text-anchor="middle" font-size="14" font-family="ui-monospace, monospace">@name Lamp=Brass Lamp</text>
+    <text x="134" y="224" text-anchor="middle" font-size="13" fill="#475569">raises OBJECT`RENAME</text>
+
+    <line x1="244" y1="190" x2="306" y2="190" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <rect x="310" y="140" width="200" height="100" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="410" y="176" text-anchor="middle" font-size="15" font-weight="600">Event Handler</text>
+    <text x="410" y="202" text-anchor="middle" font-size="14" font-family="ui-monospace, monospace">#9</text>
+
+    <line x1="510" y1="170" x2="572" y2="60" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="510" y1="185" x2="572" y2="140" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="510" y1="200" x2="572" y2="220" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <rect x="576" y="30" width="360" height="60" rx="10" fill="#ecfdf5" stroke="#10b981"/>
+    <text x="596" y="56" font-size="14" font-weight="600">1</text>
+    <text x="620" y="56" font-size="14" font-family="ui-monospace, monospace">OBJECT`RENAME</text>
+    <text x="620" y="78" font-size="13" fill="#475569">the event's own attribute</text>
+
+    <rect x="576" y="110" width="360" height="60" rx="10" fill="#ecfdf5" stroke="#10b981"/>
+    <text x="596" y="136" font-size="14" font-weight="600">2</text>
+    <text x="620" y="136" font-size="14" font-family="ui-monospace, monospace">OBJECT`RENAME`AUDIT</text>
+    <text x="620" y="158" font-size="13" fill="#475569">one level below, in name order</text>
+
+    <rect x="576" y="190" width="360" height="60" rx="10" fill="#ecfdf5" stroke="#10b981"/>
+    <text x="596" y="216" font-size="14" font-weight="600">3</text>
+    <text x="620" y="216" font-size="14" font-family="ui-monospace, monospace">OBJECT`RENAME`ZLOG</text>
+    <text x="620" y="238" font-size="13" fill="#475569">one level below, in name order</text>
+
+    <rect x="576" y="290" width="360" height="60" rx="10" fill="#f1f5f9" stroke="#cbd5e1" stroke-dasharray="6 4"/>
+    <text x="620" y="316" font-size="14" font-family="ui-monospace, monospace" fill="#64748b">OBJECT`RENAME`AUDIT`HELPER</text>
+    <text x="620" y="338" font-size="13" fill="#64748b">two levels below: not run</text>
+  </g>
+</svg>

@@ -57,6 +57,7 @@ export default defineConfig({
                       { label: 'Calling Web Services', slug: 'guides/web-requests' },
                       { label: 'RhostMUSH Softcode', slug: 'guides/rhostmush-softcode' },
                       { label: 'Chat Cards', slug: 'guides/chat-cards' },
+                      { label: 'Events', slug: 'guides/events' },
                       { label: 'Bulletin Boards', slug: 'guides/bboards' },
                       { label: 'Character Galleries', slug: 'guides/galleries' },
                       { label: 'RP Finder', slug: 'guides/rp-finder' },
