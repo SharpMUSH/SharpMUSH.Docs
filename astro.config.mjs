@@ -77,6 +77,7 @@ export default defineConfig({
                       { label: 'Notifications', slug: 'guides/notifications' },
                       { label: 'Who and Where', slug: 'guides/who-where' },
                       { label: 'Letting Your Players Build', slug: 'guides/player-building' },
+                      { label: 'Mapping Your Rooms', slug: 'guides/builder-graph' },
                       { label: 'Finger Profiles', slug: 'guides/finger' },
                       { label: 'Relationships', slug: 'guides/relationships' },
                       { label: 'Character Roster', slug: 'guides/roster' },
