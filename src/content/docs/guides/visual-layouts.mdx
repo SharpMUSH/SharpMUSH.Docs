@@ -73,7 +73,31 @@ In the web portal the table, the row from `lflex()` and the tree from `ltree()` 
 The cells of each row are still split by `|`; the rows are split by `^`, the last argument. Pick a
 row delimiter that never appears in the content. A list of layouts, such as nodes for `ltree()`,
 needs one that never appears in their drawn text either: borders and tree guides contain `|` and
-spaces.
+spaces. A marked delimiter, as in the next example, can't collide with either.
+
+### Example: delimiters for text a player typed
+
+Any delimiter you pick by hand can turn up in what a player types. A motto of `Dark|Light` splits
+into two cells. Mark the delimiter instead: `%*<|>` is a `|` that list and layout functions split
+on only where it is marked, so a `|` a player typed stays inside its cell.
+
+```sharp
+&MOTTO`MANNAZ me=Dark|Light
+&MOTTO`RAYA me=Bard^Poet
+think ldatatable({{"width":30,"delim":"%*<|>"}},Name%*<|>Motto,iter(lattr(me/MOTTO`*),[after(##,`)]%*<|>[unmark(v(##))],%b,%*<^>),%*<^>)
+```
+
+```text
+Name    Motto
+------------------
+MANNAZ  Dark|Light
+RAYA    Bard^Poet
+```
+
+`%*<|>` separates the cells and `%*<^>` the rows. Write the cell delimiter into the options as it
+is; `json()` builds plain text and would drop the mark. A player can type `%*<|>` too, so put text
+a player typed through `unmark()` before it goes into a list. It keeps the colour and takes the mark
+off. `secure()` and `escape()` take it off as well.
 
 <Aside type="tip" title="Prefer meaning over manual spacing">
 If the content is a set of labels and values, use `fields()` rather than padding strings yourself.
