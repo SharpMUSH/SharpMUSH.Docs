@@ -88,6 +88,16 @@ Whatever you choose, the new version's value becomes the base for the next upgra
 you kept is listed as the game's own and is not asked about again until a later version changes
 it too. Wiki pages a package ships merge the same way.
 
+### What runs after the apply
+
+A package can carry an `AINSTALL` attribute, which runs after a first install, and an `AUPDATE`
+attribute, which runs after an upgrade. The last card on the review page, **Runs after the
+apply**, shows that code for each object as it will read once the apply has written it. When you
+change a choice above, the card shows the code that choice leaves. It also lists any hook the
+game put on one of the package's objects itself, since the apply runs that too.
+
+![The Runs after the apply card for lore-notes 1.1.0. notes/AUPDATE holds @trigger me/STARTUP.](../../../assets/guide/package-upgrade-hooks.webp)
+
 ## Getting packages
 
 Add a repository under **Admin → Packages → Remotes**. The official one is:
