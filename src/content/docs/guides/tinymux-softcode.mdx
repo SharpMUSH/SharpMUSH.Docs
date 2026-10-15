@@ -1,0 +1,178 @@
+---
+title: TinyMUX Softcode
+description: The TinyMUX softcode SharpMUSH runs as it is, the four mux_ settings for the functions that answer differently, and what still needs rewriting.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+SharpMUSH reads PennMUSH softcode first. TinyMUX softcode is close to it, and most of the places where
+the two disagree are calls PennMUSH refuses. SharpMUSH answers those calls the way TinyMUX does, so
+TinyMUX code that uses them runs unchanged, and PennMUSH code that works is not affected.
+
+Where TinyMUX and PennMUSH both give a working answer and the answers differ, SharpMUSH keeps
+PennMUSH's by default. Four settings switch those functions to TinyMUX's answer, for a game whose
+code was written for TinyMUX.
+
+This page covers:
+
+- the TinyMUX forms of shared functions, which work on every game;
+- `%m` and `%=<name>`, two TinyMUX substitutions;
+- the `mux_logic`, `mux_justify`, `mux_collation` and `mux_list` settings;
+- what still has to be rewritten by hand.
+
+Every example below is in the game's help (`help compatibility arguments`, `help compatibility
+config`, `help compatibility parser`), and SharpMUSH's test suite runs them, with TinyMUX 2.14's own
+answers as the expected output.
+
+## TinyMUX forms of shared functions
+
+These work on every game, with no setting:
+
+| Call | Gives | PennMUSH gives |
+| --- | --- | --- |
+| `switch(x,default)` | `default` | an argument-count error |
+| `add(5)`, `mul(3)` | `5`, `3` | an argument-count error |
+| `and(1)`, `or(0)`, `xor(1)` | `1`, `0`, `1` | an argument-count error |
+| `itext()` | the innermost loop's element, as `itext(0)` | an error |
+| `lnum()` | nothing | an error |
+
+```sharp
+think [switch(x,default)]|[add(5)]|[and(1)]|[lnum()]|[iter(a b,itext())]
+```
+
+Output: `default|5|1||a b`
+
+An empty call such as `add()` or `and()` is still PennMUSH's argument-count error.
+
+### TinyMUX's wrap()
+
+TinyMUX's `wrap()` pads every line to the width and justifies it:
+
+```
+wrap(<text>, <width>, <justify>, <left>, <right>, <hanging>, <osep>, <first width>)
+```
+
+SharpMUSH uses this form when a call has more than four arguments, or when its third argument starts
+with a letter (`left`, `right`, `center`, or just `l`, `r`, `c`). A third argument that is a number,
+or empty, is PennMUSH's first line width, as before.
+
+```sharp
+think wrap(aaa bbb ccc,7,center,<,>,2)
+```
+
+Output:
+
+```
+<aaa bbb>
+  <  ccc  >
+```
+
+`<left>` and `<right>` frame each line, lines after the first start with `<hanging>` spaces, `<osep>`
+goes between lines (a line break by default, `@@` for nothing), and `<first width>` is the width of
+the first line.
+
+### The set functions' order
+
+`setunion()`, `setinter()`, `setdiff()` and `setsymdiff()` take the output separator before the sort
+type in TinyMUX, and after it in PennMUSH. With five arguments, SharpMUSH reads TinyMUX's order when
+the fourth argument is not a sort type and the fifth is:
+
+```sharp
+think setunion(B a c,b, ,|,a)
+```
+
+Output: `B|a|b|c`
+
+With four arguments the two servers disagree in a way no rule can settle: TinyMUX reads the fourth as
+the separator and PennMUSH as the sort type. SharpMUSH reads it as PennMUSH does, so a TinyMUX
+`setunion(<list1>,<list2>,<delimiter>,<osep>)` has to become
+`setunion(<list1>,<list2>,<delimiter>,,<osep>)`.
+
+## %m and %=&lt;name&gt;
+
+`%m` is TinyMUX's name for the command being run, which is `%c` in PennMUSH and SharpMUSH. Both work.
+
+```sharp
+think %m|%c
+```
+
+Output: `think %m|%c|think %m|%c`
+
+`%=<name>` is the attribute `<name>` on the object running the code, the same as `v(<name>)`. When
+`<name>` is a number, it is that argument, so `%=<12>` reaches past `%9` the way `%<12>` does.
+
+```sharp
+&GREETING me=hello
+think %=<greeting>
+```
+
+Output: `hello`
+
+<Aside>
+PennMUSH prints `m` for `%m`, and reads `%=` as the name of the attribute being evaluated, so
+`%=<greeting>` there is that name followed by `<greeting>`. Importing a PennMUSH database lists every
+attribute that uses `%m` or `%=<`, so a game can check them.
+</Aside>
+
+## The mux_ settings
+
+Each of these is off by default. Turn one on with `@config/set`, for example
+`@config/set mux_logic=yes`, or on the web portal's configuration page. They take effect on the next
+call.
+
+### mux_logic
+
+`and()`, `or()`, `xor()`, `cand()` and `cor()` test each argument by the number it starts with, as
+TinyMUX does, so `abc` is false. `xor()` is true when an odd number of arguments are true, not only
+when exactly one is. `t()`, `if()` and the rest keep the game's usual rule.
+
+```sharp
+think [and(1,abc)]|[or(0,abc)]|[xor(1,1,1)]
+```
+
+Output with `mux_logic` off: `1|1|0`. With it on: `0|0|1`.
+
+### mux_justify
+
+`ljust()`, `rjust()` and `center()` cut text that is longer than the width, as TinyMUX does. A fourth
+argument of `0` to `ljust()` or `rjust()` still keeps the whole text.
+
+```sharp
+think [ljust(abcdef,3)]|[center(abcdefg,3)]
+```
+
+Output with `mux_justify` off: `abcdef|abcdefg`. With it on: `abc|abc`.
+
+### mux_collation
+
+`sort()` with no sort type, and `comp()` with no type, put text in TinyMUX's order: by letter first,
+then lower case before upper case. A sort type or a `comp()` type in the call is not affected.
+
+```sharp
+think [sort(b A a B)]|[comp(a,B)]
+```
+
+Output with `mux_collation` off: `A a b B|1`. With it on: `a A b B|-1`.
+
+### mux_list
+
+PennMUSH's `list()` names the game's functions, commands, flags and so on. TinyMUX's
+`list(<list>, <action>[, <delimiter>])` is a loop like `iter()` that tells you each result instead of
+returning it. With `mux_list` on, `list()` is TinyMUX's.
+
+```sharp
+think list(a b,x%i0)
+```
+
+Output with `mux_list` on:
+
+```
+xa
+xb
+```
+
+## What still needs rewriting
+
+- `trim()` takes its arguments in TinyMUX's order when `tiny_trim_fun` is on; `trimtiny()` always does.
+- TinyMUX's four-argument set functions, described above.
+- Functions only TinyMUX has, such as `columns()`, are not there.
