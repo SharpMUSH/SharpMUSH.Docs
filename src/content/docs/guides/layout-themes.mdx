@@ -19,51 +19,39 @@ This page covers four jobs:
 - giving a group of players, such as a faction, a theme of its own.
 
 Themes apply to telnet and other MU\* clients. The web portal has its own themes, which staff
-manage in the portal's admin area: see [Portal Themes](/guides/portal-themes).
+manage in the portal's admin area: see [Portal Themes](/guides/portal-themes). Each portal theme also
+exists here under the same name and colours, so `@theme me=cyberpunk` matches a portal set to
+Cyberpunk. The portal's own play terminal draws layouts in the portal theme chosen there, not in the
+player's `@theme`.
 
 ## See what is available
 
 `@theme/list` shows every theme the game knows and whether players can use it. Anyone can run it.
-It is drawn to fit the client's width; this is a client 60 columns wide:
 
-```text
-> @theme/list
-╭─────────────────────┤ Layout themes ├────────────────────╮
-│ Theme             Kind      Status                       │
-│ ───────────────────────────────────                      │
-│ terminal          built-in  offered                      │
-│ fantasy           built-in  offered                      │
-│ historical        built-in  offered                      │
-│ horror            built-in  offered                      │
-│ modern            built-in  offered                      │
-│ mystery           built-in  offered                      │
-│ romance           built-in  offered                      │
-│ science-fiction   built-in  offered                      │
-│ spiritual         built-in  offered                      │
-│ catppuccin-mocha  built-in  offered                      │
-│ catppuccin-latte  built-in  offered                      │
-│ dracula           built-in  offered                      │
-│ gruvbox-dark      built-in  offered                      │
-│ nord              built-in  offered                      │
-│ solarized-dark    built-in  offered                      │
-│ solarized-light   built-in  offered                      │
-│ tokyo-night       built-in  offered                      │
-╰──────────────────────────────────────────────────────────╯
-```
+The built-in themes come in groups:
 
-The first nine are made for game genres. The rest are well-known colour schemes from code editors
-and terminals. The `themes()` function gives the names a player can choose, as a list softcode can use:
+- `sharpmush`, the portal's teal on black, the game's own look;
+- the web portal's themes, under the names the portal gives them, such as `phosphor`, `daylight`,
+  `cyberpunk` and `starship-console`;
+- a dark and a light theme for each kind of colour blindness, such as `deutan-dark` and `deutan-light`;
+- `terminal`, which uses the sixteen standard colours each client draws in its own palette;
+- one for each genre a game can name in its MSSP settings: `fantasy`, `historical`, `horror`, `modern`,
+  `mystery`, `romance`, `science-fiction` and `spiritual`;
+- well-known colour schemes from code editors and terminals: `catppuccin-mocha`, `catppuccin-latte`,
+  `dracula`, `gruvbox-dark`, `nord`, `solarized-dark`, `solarized-light` and `tokyo-night`.
+
+The `themes()` function gives the names a player can choose, as a list softcode can use, in that order:
 
 ```sharp
-> think themes()
-terminal fantasy historical horror modern mystery romance science-fiction spiritual catppuccin-mocha catppuccin-latte dracula gruvbox-dark nord solarized-dark solarized-light tokyo-night
+> think first(themes())
+sharpmush
 ```
 
 To see a theme's colours, and whether each one is easy to read against the background, use
 `swatch()`. The second argument is the width; leave it out to fit the reader's client:
 
 ```sharp
-> think swatch(nord,62)
+> think swatch(nord,64)
 Role        Sample  Colour   16-colour       Contrast
 --------------------------------------------------------------
 background  -       #2e3440  0 black         -
@@ -71,12 +59,23 @@ surface     Sample  #3b4252  8 bright black  -
 foreground  Sample  #e5e9f0  7 white         10.3:1
 primary     Sample  #81a1c1  4 blue          4.6:1
 secondary   Sample  #b48ead  5 magenta       4.4:1 (needs 4.5)
-tertiary    Sample  #88c0d0  6 cyan          6.2:1
+tertiary    Sample  #d08770  3 yellow        4.4:1 (needs 4.5)
 muted       Sample  #4c566a  8 bright black  1.7:1 (needs 3)
 success     Sample  #a3be8c  2 green         6.1:1
 warning     Sample  #ebcb8b  3 yellow        8.0:1
 error       Sample  #bf616a  1 red           3.1:1 (needs 4.5)
 info        Sample  #88c0d0  6 cyan          6.2:1
+subtle      Sample  #4d5668  8 bright black  1.7:1 (needs 3)
+link        Sample  #81a1c1  4 blue          4.6:1
+highlight   Sample  #434c5e  8 bright black  -
+red         Sample  #bf616a  1 red           3.1:1 (needs 4.5)
+orange      Sample  #d08770  3 yellow        4.4:1 (needs 4.5)
+yellow      Sample  #ebcb8b  3 yellow        8.0:1
+green       Sample  #a3be8c  2 green         6.1:1
+cyan        Sample  #88c0d0  6 cyan          6.2:1
+blue        Sample  #81a1c1  4 blue          4.6:1
+purple      Sample  #b48ead  5 magenta       4.4:1 (needs 4.5)
+pink        Sample  #bb7793  5 magenta       3.7:1 (needs 4.5)
 ```
 
 In a client the Sample column is drawn in each colour. The 16-colour column is what a client with
@@ -94,8 +93,9 @@ Option set.
 nord
 ```
 
-With `layout_theme` empty, layouts have no colour. The `terminal` theme uses only the sixteen
-standard colours, so each player sees it in the colours their own client is set to.
+Unset, `layout_theme` is `sharpmush`, the portal's teal on black. Set it to `none` for no colour. The
+`terminal` theme uses only the sixteen standard colours, so each player sees it in the colours their
+own client is set to.
 
 ## Players choose their own
 
@@ -191,8 +191,9 @@ are told `Permission denied.`
 | Key | What it does | Example |
 |---|---|---|
 | `"preset"` | The theme to start from. | `"preset":"nord"` |
-| `"colors"` | Replaces single colours, by the roles `swatch()` lists: `primary` (borders, rules, gauge bars, table headings), `secondary` (titles and field labels), `tertiary` (bullets), `muted` (separators and tree lines), and `success`, `warning`, `error` and `info` for badges and notices. | `"colors":{"primary":"#bf616a"}` |
+| `"colors"` | Replaces single colours, by the roles `swatch()` lists: `primary` (borders, rules, gauge bars, table headings), `secondary` (titles and field labels), `tertiary` (bullets), `muted` (separators and tree lines), and `success`, `warning`, `error` and `info` for badges and notices, and also `subtle`, `link`, `highlight`, `surface` and the hues `red` to `pink`. | `"colors":{"primary":"#bf616a"}` |
 | `"seed"` | Makes a whole theme from one colour. | `"seed":"#d08770"` |
+| `"base16"` | Makes a theme from a base16 scheme: a list of sixteen colours, written `\[ \]`. | `"base16":\["#1d1f21", ...\]` |
 | `"harmony"` | With `"seed"`, how the other colours are picked: `monochrome`, `analogous` (the default), `complementary`, `split`, `triadic` or `tetradic`. | `"harmony":"triadic"` |
 | `"contrast"` | With `"seed"`, from 0 to 1: how much more each colour stands out than it must. | `"contrast":0.5` |
 | `"mode"` | `"light"` or `"dark"`: which background the colours are chosen for. | `"mode":"light"` |
@@ -328,9 +329,10 @@ see the game's theme and are told why.
 
 ## Reference
 
-- [@theme](/reference/sharpmush-help/layout-functions/#theme-1): the full command.
+- [@theme](/reference/sharpmush-help/layout-functions/#light-and-dark): light and dark, parents,
+  code in a theme, which theme wins, and examples.
 - [@theme/list](/reference/sharpmush-help/layout-functions/#themelist): adding, removing,
   disabling and enabling themes.
 - [Layout themes](/reference/sharpmush-help/layout-functions/#layout-themes): every key a theme
   can have.
-- [Visual Layouts and Themes](/guides/visual-layouts/): the layout functions themes apply to.
+- [Visual Layouts and Images](/guides/visual-layouts/): the layout functions themes apply to.

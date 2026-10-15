@@ -51,6 +51,8 @@ Applications — chargen, job requests, whatever your game needs — are declare
 softcode and rendered by the portal as a real form, with validation and a submit route. No Blazor
 and no rebuild: an admin defines the schema, and the page appears.
 
+See [Portal Applications](/guides/applications).
+
 ## Adaptive layouts, themes, and images
 
 Softcode can describe a display with semantic layout functions—boxes, rules, responsive columns,
@@ -63,7 +65,7 @@ Games can establish a shared visual language with borders and layout themes. Pla
 Images carry descriptions and can provide terminal art, so a visual presentation does not discard
 the experience for text-only clients or screen readers.
 
-See [Visual Layouts, Themes, and Images](/guides/visual-layouts).
+See [Visual Layouts and Images](/guides/visual-layouts).
 
 ## Scene Logging
 
@@ -109,8 +111,9 @@ The portal's built-in softcode editor uses the same analysis engine.
 
 The server can host an authenticated [Model Context Protocol](https://modelcontextprotocol.io)
 endpoint, letting AI tooling validate softcode against the **real parser** and the running world's
-registered functions and commands. It is disabled by default outside development, and authenticates
-with a game character's own name and password.
+registered functions and commands. It ships as an optional plugin, disabled by default outside
+development, and authenticates with a game character's own name and password. A remote LSP endpoint
+ships beside it. See [Remote MCP and LSP Analysis](/guides/mcp).
 
 <Aside type="caution">
 The MCP endpoint uses HTTP Basic authentication, which sends the password on every request. Only
@@ -121,9 +124,9 @@ expose it over TLS.
 
 SharpMUSH supports Markdown for all text-based files.
 It additionally allows for ANSI rendering of Markdown, and HTML rendering of Markdown.
-It includes a custom SharpMUSH function that allows for custom rendering of Markdown, with ANSI colors and styles. See [Guides/markdown](/reference/sharpmush-help/markdown) for more details.
+It includes a custom SharpMUSH function that allows for custom rendering of Markdown, with ANSI colors and styles. See [the Markdown help](/reference/sharpmush-help/markdown) for more details.
 
-## Choice of Database
+## Embedded Database
 
 SharpMUSH stores the game in **LMDB**, embedded in the server process — one directory on disk, with
 no separate database server to run, tune or back up. That is what makes the single-small-VM deployment

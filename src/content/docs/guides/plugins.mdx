@@ -25,7 +25,7 @@ If you are not sure you need C# at all, you probably do not. Read
 ## What a plugin can contribute
 
 A plugin is an ordinary .NET assembly dropped into the server's `plugins/` directory (or distributed
-by the package manager). Authoring is **identical to writing in-tree engine code** — the same
+by the package manager as a plugin package). Authoring is **identical to writing in-tree engine code** — the same
 `[SharpCommand]` and `[SharpFunction]` attributes, discovered by the same source generator.
 
 Beyond commands and functions, a plugin may also contribute:
@@ -134,6 +134,10 @@ touch the DI container, the database, the message bridge, web endpoints or porta
    }
    ```
 
+   `name` and `description` are optional labels for the Plugins tab, `entry` names the plugin's DLL
+   when its folder holds more than one, and `sharedAssemblies` lists server assemblies the plugin
+   needs to share with the server.
+
 6. **Build and deploy.**
 
    ```bash
@@ -161,7 +165,7 @@ A failing plugin is logged and skipped. It never aborts server boot.
 
 The scene system is the reference case, because it deliberately spans two layers:
 
-- **As a C# plugin**, it contributes the wizard `@SCENE` command, the `scene…()` functions, the scene
+- **As a C# plugin**, it contributes the wizard `@SCENE` command, the `OOC` command, the `scene…()` functions, the scene
   storage, the `SCENE_ROOM` flag, and its realtime bridge leg. That is the *mechanism* —
   store a pose, broadcast an event, gate the command.
 - **As a softcode package**, it ships the policy: the hook that captures poses, the `+scene/*` player
@@ -171,7 +175,7 @@ The scene system is the reference case, because it deliberately spans two layers
 The same scene test suite passes whether it runs in-tree or as a loaded plugin.
 
 The package names the plugin it calls (`plugins: [scene]` in its `package.yaml`), and so do the
-packages built on it, `scene-verse` and `radio-scene`. Without the Scene plugin running none of them
+packages built on it, such as `scene-verse`, `scene-safety`, `radio-scene`, `highlights` and `timeline`. Without the Scene plugin running none of them
 installs, and turning the plugin off uninstalls them. The portal shows scene pages, widgets and links
 only while the game has the Scene System on, and asks nothing of `api/scenes` or `/hubs/scene`
 otherwise; a request to a route no running plugin serves answers 404.
@@ -179,7 +183,7 @@ otherwise; a request to a route no running plugin serves answers 404.
 ## Packages that call your plugin
 
 A softcode package that calls your plugin's commands or functions should list the plugin under
-`plugins:` (see [Plugins a package calls](/reference/package-format#plugins-a-package-calls-format-15)).
+`plugins:` (see [Plugins a package calls](/reference/package-declarations#plugins-a-package-calls-format-17)).
 The package manager then refuses it while the plugin is not running, and removes it when an
 administrator turns the plugin off, instead of leaving commands that call names that are not there.
 
@@ -325,13 +329,13 @@ public sealed class Plugin : PluginBase, IServiceRegistrar, IEndpointContributor
             Slug: "myplugin",
             DisplayName: "My Plugin",
             Icon: null,
-            Kind: "Page",                       // Page: a /apps/{slug} route; Widget: a layout tile
+            Kind: ApplicationKind.Page,         // Page: a /apps/{slug} route; Widget: a layout tile
             SchemaUrl: "/api/myplugin/schema",  // served by your controller
             DataUrl: "/api/myplugin/data",
             SubmitRoute: null,
-            MinimumRole: "Player",
+            MinimumRole: PortalRole.Player,
             NavPlacement: "World",              // a built-in section, or a new name for your own
-            Zones: [],
+            Zones: null,
             Order: 100)
     ];
 }
@@ -339,28 +343,30 @@ public sealed class Plugin : PluginBase, IServiceRegistrar, IEndpointContributor
 
 The application appears in the portal while the plugin is loaded, at `/apps/myplugin`, in the menu
 section you named, for players of at least `MinimumRole`. Nothing is saved in the database; remove
-the plugin and restart, and it is gone. A plugin that adds pages or endpoints is load-once. Custom compiled Blazor components are not supported, only these described pages.
+the plugin and restart, and it is gone. A plugin that adds pages or endpoints is load-once. A plugin may also ship a compiled Blazor
+component (`RenderKind: "Component"`, with `ComponentAssemblyUrl` and `ComponentTypeName`), which the
+portal loads only while the `allow_browser_code` option is on.
 
 ## Publishing a plugin as a package
 
 Instead of asking operators to copy your DLL into `plugins/`, ship it through the package manager as a
-**managed** package. A managed package is a folder in a git repository, like a softcode package, whose
+**plugin package**. A plugin package is a folder in a git repository, like a softcode package, whose
 `package.yaml` lists the plugin's files and their SHA-256 checksums:
 
 ```yaml
-package: my-plugin            # also the plugins/<id>/ folder name
+package: my-plugin            # also the plugin's folder name
 version: "1.0.0"
 authors: [You]
 description: "What it does"
-kind: managed
+kind: plugin
 binaries:
-  min_server_version: ">=1.1"   # the plugin contract version your DLL was built against
+  min_server_version: ">=2.0"   # the plugin contract version your DLL was built against
   files:
     - file: MyPlugin.dll
       sha256: <64-hex SHA-256 of MyPlugin.dll>
     - file: MyPlugin.deps.json   # lets the loader find your private dependencies
       sha256: <64-hex SHA-256>
-    - file: plugin.json          # your load-order metadata
+    - file: plugin.json          # your load-order metadata, with the package's id
       sha256: <64-hex SHA-256>
 ```
 
@@ -369,37 +375,32 @@ Packages page shows it from the plugin's row (see
 [Reading a package's README](/guides/packages#reading-a-packages-readme)); a `.zip` uploaded from the
 portal carries it the same way, at the top of the archive.
 
-File names are plain names with no folders; they go straight into `plugins/<id>/`. Compute each
-checksum from the built file (`sha256sum MyPlugin.dll`), and commit `package.yaml` and the files
-together. Releases are tagged like softcode packages (`<package-folder>/v<version>`), and the
-installer reads the files from that exact commit, so a moved tag can't slip in different bytes.
+File names are plain names with no folders. Compute each checksum from the built file
+(`sha256sum MyPlugin.dll`), and commit `package.yaml` and the files together. Releases are tagged like
+softcode packages (`<package-folder>/v<version>`), and the installer reads the files from that exact
+commit, so a moved tag can't slip in different bytes.
 
-<Aside type="caution" title="A managed package runs with full server trust">
-Compiled C# is not sandboxed, exactly as with a DLL copied in by hand. So an operator has to do two
-things before one installs: add the package id to the server's `ManagedPackages:AllowList` (or set
-`ManagedPackages:AllowAll` on a single-operator or development server), and confirm the install with
-the explicit managed-code opt-in. By default a server installs no managed packages.
+<Aside type="caution" title="A plugin package runs with full server trust">
+Compiled C# is not sandboxed, exactly as with a DLL copied in by hand. [Plugin packages](/technical/plugin-system#plugin-packages)
+says what the administrator confirms before one installs, where its files go, and when it loads.
 </Aside>
-
-The installer then checks every file's checksum, refuses a package built for a newer contract version
-than the server provides, and puts the files in `plugins/<id>/`. **The plugin loads the next time the
-server starts**; it is not loaded into the running game. Uninstalling removes `plugins/<id>/`, and
-unloads the plugin first if it only contributes commands, functions and hooks.
 
 ## Reference
 
 <LinkCard
   title="How Plugins Load"
   href="/technical/plugin-system"
-  description="Discovery, load order, what can be unloaded, and the trust model for managed packages."
+  description="Discovery, load order, what can be unloaded, and the trust model for plugin packages."
 />
 
 <LinkCard
   title="Package Format"
   href="/reference/package-format"
-  description="The complete package.yaml reference, including managed packages."
+  description="The package.yaml reference, with Application, Plugin and UI Packages for plugin packages."
 />
 
-## Optional analysis transports
-
-The boot-time MCP and LSP plugins are independently optional and disabled by default. Their authentication and rate limiting belong to the host. See [Remote MCP and LSP Analysis](/guides/mcp) for setup, editor usage, isolation and resource limits. Local validation and remaining real-network checks are documented there.
+<LinkCard
+  title="Remote MCP and LSP Analysis"
+  href="/guides/mcp"
+  description="The optional MCP and remote LSP plugins the server ships."
+/>

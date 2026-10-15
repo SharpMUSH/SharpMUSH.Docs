@@ -1,5 +1,5 @@
 ---
-title: Visual Layouts, Themes, and Images
+title: Visual Layouts and Images
 description: Give a SharpMUSH a consistent visual language without locking every player into the same experience.
 ---
 
@@ -108,37 +108,12 @@ present in the softcode.
 
 ## Give the game a visual language
 
-A layout theme controls borders, titles, headings, field labels, bullets, tree guides, gauges, and
-the quieter separators between them. Themes can be:
-
-- a built-in name from `themes()`;
-- generated from a seed colour and a colour harmony;
-- based on a game's MSSP genre;
-- written as JSON when staff want exact colours and border pieces.
-
-Set `layout_theme` for the game's default look. Name a theme in a layout's `"theme"` option when a
-specific display needs its own identity—for example, red warnings or a faction-specific sheet.
-Nothing essential should depend on colour alone: the text, values, and structure remain present.
-
-## Let players make it theirs
-
-Players can use `@theme me=<theme>` to choose how layouts are drawn for their own telnet or MU\*
-client. Their choice sits above the game's default but below a theme explicitly requested by the
-softcode. This preserves authorial intent for a special display while allowing the rest of the game
-to match an individual's palette and contrast preferences.
-
-The web portal has its own visual themes. A player's `@theme` changes server-rendered layouts sent to
-MU\* clients; it does not override the portal shell.
-
-Staff can add themes of their own and turn off built-in ones, and a theme set on a parent object
-reaches every player parented to it. [Layout Themes](/guides/layout-themes/) walks through all of
-it with examples.
-
-<Aside type="note" title="Light and dark preferences">
-Use `@theme/light` or `@theme/dark` to make the player's theme for that background. A theme made
-from one colour, which includes the genre themes, is made again with colours that stand out on that
-background. A well-known scheme such as `nord` stays as it is.
-</Aside>
+Every layout is drawn in a layout theme: the game's `layout_theme`, a player's own `@theme`, or one a
+layout names with its `"theme"` option. A theme controls borders, titles, headings, field labels,
+bullets, tree guides, gauges, and the quieter separators between them. Nothing essential should
+depend on colour alone: the text, values, and structure remain present. A player's `@theme` changes
+layouts sent to MU\* clients; it does not override the portal's own theme.
+[Layout Themes](/guides/layout-themes/) covers choosing, adding and inheriting themes.
 
 ## Draw pictures without losing the text
 
