@@ -1,6 +1,6 @@
 ---
 title: Character Galleries
-description: How players keep a gallery of pictures on a character's portal profile, how content warnings and tags work, and how a game takes reports about images.
+description: How players keep a gallery of pictures on a character's portal profile, how the shared image library and its locks work, how content warnings and tags work, and how a game takes reports about images.
 ---
 
 import { Aside } from '@astrojs/starlight/components';
@@ -25,7 +25,11 @@ and staff who control it. In the large view they can:
 - move the image earlier or later in the gallery;
 - make it the avatar or the banner;
 - edit its caption, tags and content warning;
+- share it in the [image library](#the-image-library);
 - delete it.
+
+**Add image** under the Gallery card, and **Change avatar** and **Change banner** on the profile, each
+offer two ways in: upload a new file, or choose one from the image library.
 
 The portal takes PNG, JPEG, GIF and WebP files up to 10 MB. It reads the start of each file to check
 what it is, so a file renamed to `.png` is refused.
@@ -45,6 +49,47 @@ Tags are short words or phrases, up to ten per image, such as `portrait`, `docks
 portal stores them in lower case. The gallery page shows one button per tag; choosing one keeps only
 the images that carry it. Moving an image while a tag is chosen moves it past its neighbour among the
 images shown.
+
+## The image library
+
+The image library holds the pictures a game has already stored, so a map on the wiki or a picture in
+one gallery can be used again without uploading the same file twice. Anyone signed in to the portal
+can choose from it:
+
+- in the wiki editor, with the image button in the toolbar, which inserts the picture into the page;
+- in **Add image**, **Change avatar** and **Change banner**, which add it to the gallery without making
+  a copy.
+
+The library has a search box that narrows it by file name. A gallery takes only PNG, JPEG, GIF and
+WebP, so drawings in SVG appear only in the wiki editor.
+
+### What is in it
+
+A file uploaded in the wiki editor or on the staff **Image Library** page (`/admin/media`) is in the
+library straight away.
+
+A file uploaded to a gallery belongs to that gallery until the player shares it: **Edit details** has
+**Share in the image library**. Until then nobody else finds it in the library, and deleting it from the
+gallery deletes the file. Sharing cannot be undone, because a wiki page or another gallery may already
+show the picture; once shared, deleting it from the gallery keeps the file, and the form says so.
+
+An image with a content warning cannot be shared. The warning belongs to the gallery, and the library
+would show the picture uncovered.
+
+### Locks
+
+A file can be locked to a permission, such as `wiki.admin` or one the game defined with
+[`@permission`](/reference/sharpmush-help/permission-command/). Only holders of that permission find it in the
+library; its uploader and anyone with `media.admin` always do, and see a lock beside its name.
+
+Staff set a lock on the **Image Library** page: the lock button on a file opens **Library sharing**,
+with **Lock to a permission**. Leaving the field empty takes the lock off. The **Library** column shows
+`One gallery`, `Everyone` or `Locked:` and the permission.
+
+<Aside type="caution">
+A lock hides a file from the library, not from the pages that already show it. Its address still
+serves the picture to anyone who has it.
+</Aside>
 
 ## Limits
 
