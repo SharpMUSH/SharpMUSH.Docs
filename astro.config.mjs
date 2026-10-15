@@ -53,6 +53,7 @@ export default defineConfig({
                       { label: 'Softcode Packages', slug: 'guides/packages' },
                       { label: 'Named Arguments', slug: 'guides/named-arguments' },
                       { label: 'RhostMUSH Softcode', slug: 'guides/rhostmush-softcode' },
+                      { label: 'Chat Cards', slug: 'guides/chat-cards' },
                       { label: 'Bulletin Boards', slug: 'guides/bboards' },
                       { label: 'Writing Plugins', slug: 'guides/plugins' },
                       { label: 'Softcode in Your Editor', slug: 'guides/editor-support' },
