@@ -133,10 +133,12 @@ file compare shows only what changed. An exit's name carries its aliases after `
 | `home` | The exit is linked to HOME |
 | `variable` | Where it leads is worked out each time someone uses it |
 | `unlinked` | It leads nowhere |
+| `non-room` | It leads to a player or thing, not a room |
 | `hidden` | It leads somewhere you may not see |
 
 Descriptions are each room's and exit's own `DESCRIBE`, as plain text. Rooms with more than 500
-exits between them are too many for one export; export fewer at a time.
+exits between them, or a file of more than 2 MiB, are too much for one export; export fewer at a
+time.
 
 <Aside>
 Reading the map never runs any softcode. A `variable` exit's destination is not worked out, and
