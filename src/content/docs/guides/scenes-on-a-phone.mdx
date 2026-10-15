@@ -1,0 +1,136 @@
+---
+title: Scenes on a Phone
+description: Play a live scene from a phone in the web portal, pick up an unsent pose on another device, and put the scene schedule in a calendar app.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The web portal's live scene page works on a phone as well as on a desktop. This page covers:
+
+- how a live scene looks on a phone;
+- how an unsent pose follows you from one device to another;
+- adding the scene schedule to a calendar app.
+
+All of it comes with the Scene plugin. On a game without it, the portal shows no Scenes section at all.
+
+## A live scene on a phone
+
+Open a running scene from **Scenes**, then **Live now**. On a screen narrower than a tablet, each pose
+is a card: the portrait, name and time sit above the text, so the text uses the whole width.
+Out-of-character lines keep their own colour band.
+
+The box you write in is a sheet at the bottom of the screen. The IC and OOC buttons and the format
+menu sit in a row along its top, and the field sits beside a round Send button.
+
+![A live scene on a phone: each pose is a card with the name above the full-width text, and the composer is a sheet with IC and OOC along the top and a round Send button beside the field.](../../../assets/guide/scene-phone-draft.webp)
+
+### Typing with the on-screen keyboard
+
+When the keyboard opens, the page shrinks to the part of the screen the keyboard leaves. The
+scene's name stays at the top, the poses scroll in the middle, and the compose sheet sits directly
+on the keyboard. Nothing jumps when the keyboard opens or closes, so you do not lose your place in
+the scene.
+
+![The live scene page on a phone with the keyboard open (simulated in this picture): the scene's title in one line at the top, the last pose, and the compose sheet resting on the keyboard.](../../../assets/guide/scene-phone-keyboard.webp)
+
+## Your draft follows you
+
+What you type into a live scene is saved as you type, both in the browser and on the server. Open
+the same scene on another device, as the same character, and the field holds the same text. You can
+start a pose on your phone on the bus and finish it at your desk.
+
+The icon beside the format menu shows where the draft is:
+
+| Icon | Means |
+| --- | --- |
+| Cloud with a tick | Saved. Your other devices open this draft. |
+| Cloud with an arrow | Saving. You typed in the last moment. |
+| Cloud crossed out | Kept on this device only. The server could not be reached; the draft is sent when it can be. |
+
+A screen reader announces the same words: "Draft saved", "Saving draft" and "Draft on this device
+only".
+
+When you send the pose, the draft empties on every device. A device that was open in the
+background empties the next time you switch back to it.
+
+![The phone after the pose was sent from the desktop: the new pose is the last card in the scene, and the field is empty again.](../../../assets/guide/scene-phone-sent.webp)
+
+![The same scene on a desktop browser, opened after typing on the phone: the field holds the pose that was started on the phone.](../../../assets/guide/scene-desktop-draft.webp)
+
+Each character has its own draft for each scene. A guest, or a character who cannot see the scene,
+keeps the draft in the browser only.
+
+<Aside>
+If two devices type at the same moment, the one that saved last wins. Switch back to a device and
+it shows the newer draft.
+</Aside>
+
+## Scenes in your calendar
+
+The **Scheduled** list under **Scenes** has an **Add to calendar** button. It opens a card with
+calendar addresses. Paste an address into a calendar app (Google Calendar, Apple Calendar, Outlook
+and Thunderbird all accept one), or press **Subscribe** to hand it to the calendar app on your
+device.
+
+Each scene appears at your own local time. The feed gives every start time in UTC, and the
+calendar app converts it to the zone your device is set to, so two players in different countries
+both see the right time. Scenes have no end time, so each event lasts two hours. The calendar app
+checks for changes every hour.
+
+![The Add to calendar card on a phone: the public address with Copy and Subscribe buttons, and a private link section that says when the link was made, with Make a new link and Turn it off buttons.](../../../assets/guide/scene-calendar-phone.webp)
+
+![The private link section on a phone just after the link was made: a checkbox for Only scenes I run or joined, the address with Copy and Subscribe, and a note that the address is shown only now.](../../../assets/guide/scene-calendar-phone-link.webp)
+
+![The Add to calendar card on a desktop browser, above the scheduled scenes: the public address and a private link, each with Copy and Subscribe.](../../../assets/guide/scene-calendar-desktop.webp)
+
+### The public feed
+
+The first address lists every public scene on the schedule. Anyone can use it, without signing in,
+so a game can also put it on its website.
+
+```text
+https://<your game>/api/scenes/calendar.ics
+```
+
+It lists the scenes that were given a start time: those still to come, those running, and those that started in
+the last 14 days. A scene started on the spot, with no time set, does not appear.
+
+### Your private link
+
+A private link adds the private scenes your character can see. Press **Make my private link**, then
+copy the address before you leave the page: the server keeps only a fingerprint of it, so it cannot
+show it to you again.
+
+Tick **Only scenes I run or joined** before you copy it to leave out the scenes you have nothing to
+do with. That adds `?scope=mine` to the address.
+
+Anyone who has the address can read the feed, so keep it to yourself. If it gets out, press **Make
+a new link**: the old address stops working at once. **Turn it off** removes the link without
+making a new one.
+
+The link belongs to the character you are playing in that browser tab. Switch characters to make a
+link for another one.
+
+### What an event holds
+
+This is a scene from a test server's public feed, as a calendar app reads it:
+
+```text
+BEGIN:VEVENT
+UID:scene-2@localhost
+DTSTAMP:20261015T065628Z
+LAST-MODIFIED:20261015T061529Z
+DTSTART:20261017T061525Z
+DTEND:20261017T081525Z
+SUMMARY:The Northern Road
+DESCRIPTION:The caravan leaves at dawn\; who rides with it?\n\nRun by God\n
+ \nhttps://localhost:8081/scenes/2
+URL:https://localhost:8081/scenes/2
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+```
+
+The title is the scene's title. The description holds its pitch, who runs it, and a link to the
+scene in the portal. A scene that has a room also gives the room's name as the event's location.
+The event is marked as free time, so it does not block your calendar.
