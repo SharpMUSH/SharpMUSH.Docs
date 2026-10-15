@@ -63,6 +63,7 @@ export default defineConfig({
                       { label: 'RhostMUSH Softcode', slug: 'guides/rhostmush-softcode' },
                       { label: 'TinyMUX Softcode', slug: 'guides/tinymux-softcode' },
                       { label: 'Chat Cards', slug: 'guides/chat-cards' },
+                      { label: 'The Command Palette', slug: 'guides/command-palette' },
                       { label: 'Events', slug: 'guides/events' },
                       { label: 'Bulletin Boards', slug: 'guides/bboards' },
                       { label: 'Character Galleries', slug: 'guides/galleries' },
