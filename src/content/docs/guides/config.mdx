@@ -129,6 +129,7 @@ command with `@command/restrict` or `@lock/command`.
 | | `length` | The longest value, in characters. | `1000` |
 | `status` | `line-length`, `note-length`, `place-length` | The longest status line, note and place. | `100`, `400`, `60` |
 | | `list-footer` | A line shown under `+status/list`. | none |
+| | `statuses` | The statuses a player may choose, a [table](#tables): what each means, its tag, how long it lasts, and whether logging off ends it. | `lfrp`, `rp_ok` |
 | `time` | `zone` | The game's time zone. | `UTC` |
 | | `format` | How a time is written, in `timefmt()`'s codes. | `$a $d $b $Y, $H:$M` |
 | | `ic-anchor`, `ic-ratio`, `ic-days`, `ic-years` | Where the IC clock starts, how fast it runs, and days and years added. | `1767225600`, `1`, `0`, `0` |
@@ -137,10 +138,12 @@ command with `@command/restrict` or `@lock/command`.
 | `scene` | `default-status` | What `+scene/create` makes: `active` logs at once, `new` or `scheduled` waits for `+scene/start`. | `active` |
 | | `open-details` | Whether an owner may set scene details the game does not list. | `yes` |
 | | `recall-rounds` | How many rounds of poses a bare `+scene/recall` shows, 1 to 20. | `2` |
+| `safety` | `topics` | The topics `+safety/topics` suggests, split by `\|`. | 14 common ones |
+| | `warning-detail` | The scene detail that holds content warnings. | `warning` |
+| | `topic-length`, `note-length` | The longest line or veil, and the longest note on a pause or skip. | `40`, `200` |
+| | `signal-wait` | How long a player waits between one pause or skip and the next. | `1m` |
 | `jobs` | `wait-sample` | How many of a bucket's latest jobs its [first-answer and closing times](/guides/jobs-automation#how-soon-a-bucket-answers) are measured over, 3 to 200. Installed with the jobs package. | `25` |
 
-A list of entries that each carry several fields, such as the statuses on offer and how long
-each lasts, keeps its own command (`+status/options`); `+config` is for single values and lists.
 
 ## Giving your code settings
 
@@ -270,6 +273,7 @@ object or `get()` from elsewhere, and needs nothing from `plus-config` to do so:
 | `pattern` | a regular expression | as typed |
 | `object` | a name or dbref the person setting it can find | objid |
 | `timezone` | a zone such as `Europe/London` | as typed |
+| `table` | named entries, each with the fields it declares | on another object; see [Tables](#tables) |
 
 ### Leaves
 
@@ -285,7 +289,7 @@ object or `get()` from elsewhere, and needs nothing from `plus-config` to do so:
 | `PATTERN` | A regular expression a `text`, or each item of a `list`, must match. |
 | `DELIMITER` | What splits a `list`'s items, such as `\|` for items with spaces in them. |
 | `OBJECTTYPE` | For `object`: any of `ROOM PLAYER THING EXIT`. |
-| `CHECK` | The name of an attribute on the same object. It gets the value as stored in `%0` and the setting in `%1`, and returns nothing when the value is fine, or the reason it is not. |
+| `CHECK` | The name of an attribute on the same object. It gets the value as stored in `%0` and the setting in `%1` (for a table's field, also the entry in `%2` and the field in `%3`), and returns nothing when the value is fine, or the reason it is not. |
 | `PERMISSION` | The permission that changes this setting, in place of `config.admin`. |
 
 ``DATA`CONFIG`LABEL``, beside the settings, is the system's display name, so no setting may be called
@@ -299,10 +303,85 @@ twelve, and its `CHECK` refuses any number but twelve or none:
 [CONFIG] Warning: time/ic-months: Give all 12 names, or none for the real ones.
 ```
 
+### Tables
+
+A `table` is a set of named entries that each have the same fields. The statuses a player may
+choose are one: each has what it means, a tag, how long it lasts and whether logging off ends it.
+`+config` changes one field of one entry at a time, and `/add` and `/remove` add and take away
+entries:
+
+| Type | To |
+|---|---|
+| `+config <system>/<table>` | list the entries, each with its fields on one line |
+| `+config <system>/<table>/<entry>` | show one entry: each field, its value, what it takes |
+| `+config <system>/<table>/<entry>/<field>=<value>` | change one field |
+| `+config/add <system>/<table>/<entry>=<value>` | add an entry; the value is its main field |
+| `+config/remove <system>/<table>/<entry>` | take an entry away |
+| `+config/reset <system>/<table>/<entry>/<field>` | put a field back to what a new entry gets |
+
+The entries are not kept in the setting. They stay on the object the system's code already reads
+them from, its `STORE`, under the attribute branch `PATH`: ``<PATH>`<ENTRY>`` holds the entry's main
+field, its `ENTRY`, and each other field is an attribute beneath it, ``<PATH>`<ENTRY>`<FIELD>``.
+Each field is declared like a setting, under ``FIELD`<field>``, with its own `TYPE`, `DEFAULT`,
+`LABEL`, `DESCRIPTION`, bounds and `CHECK`. For example, a map's regions, each with a name and a
+danger level from 1 to 5, kept on a Region Store:
+
+```
+> @create Regions
+Created: Object #30.
+> @create Region Store
+Created: Object #31.
+> @set Region Store=NO_COMMAND
+Region Store - NO_COMMAND (already) set.
+> &DATA`CONFIG`REGIONS`TYPE Regions=table
+> &DATA`CONFIG`REGIONS`LABEL Regions=Regions
+> &DATA`CONFIG`REGIONS`DESCRIPTION Regions=The regions of the map.
+> &DATA`CONFIG`REGIONS`STORE Regions=[num(Region Store)]
+> &DATA`CONFIG`REGIONS`PATH Regions=REGION
+> &DATA`CONFIG`REGIONS`ENTRY Regions=name
+> &DATA`CONFIG`REGIONS`FIELDS Regions=name danger
+> &DATA`CONFIG`REGIONS`FIELD`NAME`TYPE Regions=text
+> &DATA`CONFIG`REGIONS`FIELD`DANGER`TYPE Regions=integer
+> &DATA`CONFIG`REGIONS`FIELD`DANGER`DEFAULT Regions=1
+> &DATA`CONFIG`REGIONS`FIELD`DANGER`MAX Regions=5
+> +config/register regions=Regions
+[CONFIG] Done: regions is Regions's settings. +config regions lists them.
+> +config/add regions/regions/coast=The Salt Coast
+[CONFIG] Done: Added regions/regions/coast. +config regions/regions/coast shows it.
+> +config regions/regions/coast/danger=3
+[CONFIG] Done: regions/regions/coast/danger is now 3, was 1.
+> +config regions/regions/coast/danger=9
+[CONFIG] Warning: regions/regions/coast/danger: It must be at most 5.
+> think lattr(Region Store/**)
+REGION REGION`COAST REGION`COAST`DANGER
+```
+
+The `Set.` reply to each `&` line is left out above. `REGION`COAST` holds `The Salt Coast`
+and `REGION`COAST`DANGER` holds `3`, where the Regions code reads them with `get()`.
+
+| Leaf | What it says |
+|---|---|
+| `STORE` | The object the entries are on; the system's own object when it has none. |
+| `PATH` | Required. The attribute branch the entries are under, such as `STATUS`. |
+| `ENTRY` | The field kept in the entry's own attribute, which `/add <entry>=<value>` sets. Without it, the entry's attribute holds its name and `/add` takes no value. |
+| `FIELDS` | The fields, in the order they are shown. |
+| ``FIELD`<field>`<leaf>`` | One field, with any leaf a setting takes. |
+| `KEYPATTERN` | A regular expression a new entry's name must match, besides being letters, digits, `-` and `_`. |
+| `FIXED` | `1` when staff may change the fields but not add or take away entries. |
+
+`+config` writes to a store only when it has the same owner as the system's object, and only when
+nothing written there can run as a command: the store needs the `NO_COMMAND` flag, or its `PATH`
+attribute the `no_command` attribute flag. A new entry gets each field's `DEFAULT`.
+
+![The statuses listed, three fields changed, a status added, and the new status shown in full](../../../assets/guide/status-table.webp)
+
 ### Reacting to a change
 
 After a value changes, `+config` triggers the object's `ACONFIG` attribute, if it has one, with
-`%<setting>`, `%<value>` (stored form), `%<previous>` and `%<by>` (who changed it, as an objid):
+`%<setting>`, `%<value>` (stored form), `%<previous>` and `%<by>` (who changed it, as an objid).
+`%<action>` is `set`; a table's change also gives `%<entry>` and `%<field>`, and `%<action>` is
+`add` or `remove` when an entry comes or goes. A removal is where a system tidies up after the
+entry: status clears the status from everyone who had it.
 
 ```
 > &ACONFIG Weather=@pemit %<by>=The weather now follows %<value>, not %<previous>.

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 290" width="780" height="290" role="img" aria-labelledby="t d">
+<title id="t">How a page reaches a phone</title>
+<desc id="d">Tobin pages Mira. The game raises the page event, and the notifications package's handler on the event object hears it. The package checks Mira's choices: whether pages notify her, and whether the text may show. It runs @push, which sends nothing while Mira is at the game or past push_limit. Otherwise the server encrypts and signs the notification and hands it to the push service of each device Mira turned notifications on in: Apple, Google, Mozilla or Microsoft. The push service delivers it to her phone.</desc>
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#475569"/></marker>
+</defs>
+<rect width="780" height="290" rx="12" fill="#f8fafc"/>
+<g font-family="ui-sans-serif,system-ui,sans-serif" font-size="14" fill="#1e293b">
+  <text x="24" y="36" font-size="15" font-weight="600">In the game</text>
+  <text x="24" y="172" font-size="15" font-weight="600">Outside it</text>
+
+  <rect x="24" y="52" width="220" height="80" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="38" y="78" font-weight="600">Tobin pages Mira</text>
+  <text x="38" y="102" font-size="12" fill="#475569">the game raises the page</text>
+  <text x="38" y="118" font-size="12" fill="#475569">event on the event object</text>
+
+  <rect x="292" y="52" width="220" height="80" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="306" y="78" font-weight="600">Notifications package</text>
+  <text x="306" y="102" font-size="12" fill="#475569">do pages notify Mira?</text>
+  <text x="306" y="118" font-size="12" fill="#475569">may the text show?</text>
+
+  <rect x="560" y="52" width="196" height="80" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="574" y="78" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13" font-weight="600">@push</text>
+  <text x="574" y="102" font-size="12" fill="#475569">nothing while Mira is at the</text>
+  <text x="574" y="118" font-size="12" fill="#475569">game; encrypts and signs</text>
+
+  <line x1="244" y1="92" x2="288" y2="92" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="512" y1="92" x2="556" y2="92" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+
+  <rect x="560" y="188" width="196" height="80" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="574" y="214" font-weight="600">Push service</text>
+  <text x="574" y="238" font-size="12" fill="#475569">Apple, Google, Mozilla</text>
+  <text x="574" y="254" font-size="12" fill="#475569">or Microsoft</text>
+
+  <rect x="292" y="188" width="220" height="80" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="306" y="214" font-weight="600">Mira's phone</text>
+  <text x="306" y="238" font-size="12" fill="#475569">"Page from Tobin"; a tap</text>
+  <text x="306" y="254" font-size="12" fill="#475569">opens the portal as Mira</text>
+
+  <line x1="658" y1="132" x2="658" y2="184" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="560" y1="228" x2="516" y2="228" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+</g>
+</svg>
