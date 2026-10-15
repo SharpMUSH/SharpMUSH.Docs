@@ -52,6 +52,7 @@ export default defineConfig({
                       { label: 'Scene Pose Types', slug: 'guides/scene-pose-types' },
                       { label: 'Scene Details', slug: 'guides/scene-details' },
                       { label: 'Screen Readers', slug: 'guides/screen-readers' },
+                      { label: 'Supporting MUD Clients', slug: 'guides/mud-clients' },
                       { label: 'Softcode Packages', slug: 'guides/packages' },
                       { label: 'Versioning Packages', slug: 'guides/versioning' },
                       { label: 'Named Arguments', slug: 'guides/named-arguments' },
