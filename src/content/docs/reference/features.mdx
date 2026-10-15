@@ -85,9 +85,11 @@ See [HTTP Features](/reference/sharpmush-help/sharphttp/).
 
 An event system dispatches to softcode handlers when things happen in the world, with each handler
 running under its own permissions rather than the triggering player's. As with HTTP, a fresh
-database is pre-populated with a handler object, so events work out of the box.
+database is pre-populated with a handler object, so events work out of the box. Several packages can
+hear the same event, each with an attribute of its own below the event's, and a stoppable event lets
+one of them stop the rest.
 
-See [Events](/reference/sharpmush-help/sharpevents/).
+See the [Events guide](/guides/events/) and the [event list](/reference/sharpmush-help/sharpevents/).
 
 ## Modern Connections
 

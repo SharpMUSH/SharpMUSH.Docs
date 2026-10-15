@@ -1,0 +1,149 @@
+---
+title: Events
+description: Run softcode when something happens in the game, such as a rename, a page or a login, and let several packages hear the same event without touching each other's code.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+An **event** is something the game reports to softcode: an object was renamed, a player connected,
+someone paged someone. Each event has a name such as ``OBJECT`RENAME`` and a set of arguments, such
+as the old and new name.
+
+Events go to one object, the **Event Handler**. A new game already has one, `#9`, and the
+`event_handler` setting points at it. To hear an event, set an attribute on `#9` named after it.
+
+This page covers:
+
+- hearing an event;
+- letting several packages hear the same event;
+- stopping an event, for the few events that allow it;
+- hearing an event from a package.
+
+The full list of events and their arguments is in the [event list](/reference/sharpmush-help/sharpevents/).
+
+## Hearing an event
+
+Set an attribute on `#9` named after the event. Its code runs every time the event happens:
+
+```sharp
+> &OBJECT`RENAME #9=@pemit #1=%<oldname> is now %<name>.
+Event Handler/OBJECT`RENAME - Set.
+> @create Lamp
+Created: Object #16.
+> @name Lamp=Brass Lamp
+Name set.
+Lamp is now Brass Lamp.
+```
+
+The code gets the event's arguments by name, as `%<oldname>` and `%<name>` here, and by position,
+as `%0`, `%1` and so on (see [Named Arguments](/guides/named-arguments/)). `%#` is whoever caused
+the event. When nobody did, such as a scheduled check, `%#` is `#1`.
+
+The code runs as `#9`, which is a wizard object, so it may do anything a wizard may. It runs after
+the command that caused it, in a queue entry of its own: the rename is done and shown before the
+event's code starts, and a slow or broken handler never holds the command up.
+
+## Several attributes on one event
+
+A game rarely has one thing that wants to hear an event. The scene package, a jobs package and a
+logging package might all want to hear pages. If they shared one attribute, each would have to edit
+the others' code.
+
+So `#9` runs the attribute named after the event, then **every attribute one level below it**, in
+name order. Each package adds an attribute below the event, named after itself, and never touches
+anyone else's:
+
+```sharp
+> &OBJECT`RENAME`ZLOG #9=@pemit #1=Logged: %<name>
+Event Handler/OBJECT`RENAME`ZLOG - Set.
+> &OBJECT`RENAME`AUDIT #9=@pemit #1=Audit: %<name>
+Event Handler/OBJECT`RENAME`AUDIT - Set.
+> &OBJECT`RENAME`AUDIT`HELPER #9=@pemit #1=Helper ran.
+Event Handler/OBJECT`RENAME`AUDIT`HELPER - Set.
+> @name Brass Lamp=Lamp
+Name set.
+Brass Lamp is now Lamp.
+Audit: Lamp
+Logged: Lamp
+```
+
+![Renaming an object raises OBJECT`RENAME. The Event Handler runs OBJECT`RENAME first, then OBJECT`RENAME`AUDIT, then OBJECT`RENAME`ZLOG. OBJECT`RENAME`AUDIT`HELPER is two levels below the event and does not run.](../../../assets/guide/events-attributes.svg)
+
+Three rules decide what runs:
+
+- **Only one level below the event.** ``OBJECT`RENAME`AUDIT`HELPER`` did not run. A package keeps its
+  helper code below its own attribute, where the event will not run it by mistake.
+- **Name order.** `AUDIT` ran before `ZLOG`. The event's own attribute, when it has one, runs
+  first.
+- **An empty attribute runs nothing.** Empty one package's attribute to silence it and leave the
+  others running:
+
+```sharp
+> &OBJECT`RENAME`AUDIT #9=
+Event Handler/OBJECT`RENAME`AUDIT - Set.
+> @name Lamp=Old Lamp
+Name set.
+Lamp is now Old Lamp.
+Logged: Old Lamp
+```
+
+Each attribute runs in a queue entry of its own, as if it had been started with `@trigger`. One that
+fails, or runs out of time, does not stop the others.
+
+<Aside>
+The event's own attribute may be empty and only hold the ones below it. A game whose pages are heard
+only by packages has an empty ``PAGE`MESSAGE`` with ``PAGE`MESSAGE`COMMFEED`` and the others below it.
+</Aside>
+
+## Stopping an event
+
+A few events are **stoppable**: the event list marks them. On a stoppable event, the attributes run
+one after another in a single queue entry, as if they had been started with `@include`, so an
+earlier one can claim the event. It calls `stopevent()`, finishes, and the ones after it do not run.
+
+``SOCKET`GMCP`` is stoppable. It happens when a client sends a GMCP message, such as Mudlet saying
+hello when it connects:
+
+```sharp
+> &SOCKET`GMCP`A #9=think [if(strmatch(%<package>,Core.Hello),stopevent())]
+Event Handler/SOCKET`GMCP`A - Set.
+> &SOCKET`GMCP`B #9=@pemit #1=GMCP: %<package>
+Event Handler/SOCKET`GMCP`B - Set.
+```
+
+A client that sends `Core.Hello` and then `Char.Login` shows only the second to `#1`:
+
+```
+GMCP: Char.Login
+```
+
+``SOCKET`GMCP`A`` ran first, saw `Core.Hello` and stopped the event, so ``SOCKET`GMCP`B`` never heard
+it. `Char.Login` reached both.
+
+`stopevent()` anywhere else, including in an event that is not stoppable, stops nothing and returns
+an error:
+
+```sharp
+> think stopevent()
+#-1 NOT HEARING A STOPPABLE EVENT
+```
+
+## Hearing an event from a package
+
+A package adds its attributes to the Event Handler the same way, in its `package.yaml`.
+`{{$event_handler}}` is whatever object the game's `event_handler` setting names, so the package
+works on a game that moved its handler off `#9`. Name the attribute after the event and then after
+the package:
+
+```yaml
+objects:
+  - ref: handler
+    target: "{{$event_handler}}"
+    attributes:
+      PAGE`MESSAGE`TALLY: |-
+        &PAGES me=[add(get(me/PAGES),1)]
+```
+
+The bundled `comm-feed` and `room-contents` packages are built this way: `comm-feed` hears pages as
+``PAGE`MESSAGE`COMMFEED``, and `room-contents` hears room changes as ``ROOM`CONTENTS`ROOMCONTENTS``. See
+[Softcode Packages](/guides/packages/) and the [package format](/reference/package-format/).
