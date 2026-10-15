@@ -20,6 +20,7 @@ back the other way, as a line on the feed spoken by the character they chose.
 | speak in the game from Discord | [Speaking from Discord](#speaking-from-discord) |
 | post from softcode | [Sending lines](#sending-lines) |
 | join a game channel to a Discord channel | [Joining a game channel](#joining-a-game-channel) |
+| give members Discord roles from their game roles | [Mapping roles](#mapping-roles) |
 | fix a link that stopped | [When a link stops](#when-a-link-stops) |
 
 Setting up the bot and linking channels need the `discord.admin` permission. Wizards hold it,
@@ -263,6 +264,53 @@ A line goes one way only, so nothing comes back round: a line from Discord is no
 there again. Softcode can tell the two apart the same way. A tap on the `discord` kind gets
 `%<origin>`, which is `discord/<message id>` for a line a member posted and empty for a line
 sent in the game.
+
+## Mapping roles
+
+`@discord/map` ties a Discord role to a game role. A linked member holds the Discord role
+while their game account, or one of its characters, holds the game role, and loses it when
+they no longer do. A member whose account is disabled, banned or closed holds no mapped role.
+
+```
+> @discord/map builder=@Builders
+```
+
+![@discord/map wizard=Staff is refused until /confirm is given, @discord/map lists the Approved, Builders and Staff roles with their game roles, and @discord/drift shows that bob.k was given Approved by hand without approved in the game, and wren was stripped of it while holding approved.](../../../assets/guide/discord-roles.webp)
+
+- `@discord/map` lists the mapped roles. The State column says whether the bot can manage
+  each one, and how many members were changed by hand.
+- `@discord/map <game role>=<Discord role>` maps one. Name the Discord role, with or without
+  the `@`, or give its id.
+- `@discord/unmap <Discord role>` stops mapping it. Members keep the role as it is.
+
+The bot checks every member when it connects, once a day, and whenever an account's roles
+change in the game. It needs the Manage Roles permission, and its own role must sit above
+each mapped role in the server's role list. `@discord/map` says when either is missing.
+
+Some mappings are refused:
+
+- **`everyone`, `player` and `god`,** which the game hands out itself.
+- **A role that allows `administrator`,** and a role not below your own highest role.
+- **`wizard` and `royalty` until confirmed,** since the Discord role shows everyone who
+  your staff are. `@discord/map/confirm wizard=Staff` maps it anyway.
+- **On the Discord side,** `@everyone`, a role Discord manages for a bot or a boost, the
+  Linked role, and a role already mapped.
+
+### Changes made by hand
+
+Someone with Manage Roles can still give or take a mapped role in Discord. The bot does not
+undo that at first. It records the change, and `@discord/drift` lists it until staff decide:
+
+- `@discord/drift/apply` puts back the game's answer for every role changed by hand.
+  `@discord/drift/apply <Discord role>` does it for one role.
+- `@discord/unmap <Discord role>` keeps Discord's version instead.
+
+`@discord/map/enforce <Discord role>` makes the bot put a change back at once, and still list
+it. `@discord/map/report <Discord role>` goes back to listing only.
+
+A member who has not linked their account is never given a mapped role. If they hold one,
+the bot lists it as a change made by hand rather than taking it, unless the role is
+enforced.
 
 ## When a link stops
 
