@@ -137,6 +137,7 @@ command with `@command/restrict` or `@lock/command`.
 | `scene` | `default-status` | What `+scene/create` makes: `active` logs at once, `new` or `scheduled` waits for `+scene/start`. | `active` |
 | | `open-details` | Whether an owner may set scene details the game does not list. | `yes` |
 | | `recall-rounds` | How many rounds of poses a bare `+scene/recall` shows, 1 to 20. | `2` |
+| `jobs` | `wait-sample` | How many of a bucket's latest jobs its [first-answer and closing times](/guides/jobs-automation#how-soon-a-bucket-answers) are measured over, 3 to 200. Installed with the jobs package. | `25` |
 
 A list of entries that each carry several fields, such as the statuses on offer and how long
 each lasts, keeps its own command (`+status/options`); `+config` is for single values and lists.

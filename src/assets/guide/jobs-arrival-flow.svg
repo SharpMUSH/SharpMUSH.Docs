@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" font-family="system-ui, sans-serif" font-size="14">
+  <title>What happens when a job is filed</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0L10 5L0 10z" fill="#5b6770"/>
+    </marker>
+  </defs>
+  <style>
+    .box { fill: #f4f6f8; stroke: #8a96a0; stroke-width: 1.5; }
+    .ask { fill: #fff8e6; stroke: #c9a227; stroke-width: 1.5; }
+    .end { fill: #e8f5ec; stroke: #3f8f5a; stroke-width: 1.5; }
+    .t { fill: #1f2933; }
+    .s { fill: #52606d; font-size: 12px; }
+    .l { stroke: #5b6770; stroke-width: 1.5; fill: none; marker-end: url(#a); }
+    @media (prefers-color-scheme: dark) {
+      .box { fill: #1f2933; stroke: #7b8794; }
+      .ask { fill: #3a3218; stroke: #c9a227; }
+      .end { fill: #1c3326; stroke: #57b077; }
+      .t { fill: #e4e7eb; }
+      .s { fill: #9aa5b1; }
+    }
+  </style>
+  <rect class="box" x="20" y="120" width="130" height="56" rx="8"/>
+  <text class="t" x="85" y="145" text-anchor="middle">Player files</text>
+  <text class="s" x="85" y="163" text-anchor="middle">+request</text>
+
+  <rect class="ask" x="200" y="112" width="160" height="72" rx="8"/>
+  <text class="t" x="280" y="140" text-anchor="middle">Bucket has audit on,</text>
+  <text class="t" x="280" y="158" text-anchor="middle">and the filer passes</text>
+  <text class="t" x="280" y="176" text-anchor="middle">its audit lock?</text>
+
+  <rect class="end" x="430" y="30" width="270" height="76" rx="8"/>
+  <text class="t" x="565" y="56" text-anchor="middle">Approved at once, by the bucket</text>
+  <text class="s" x="565" y="76" text-anchor="middle">ON`APPROVE runs; staff keep or revert it</text>
+  <text class="s" x="565" y="94" text-anchor="middle">later from +jobs/audit</text>
+
+  <rect class="end" x="430" y="190" width="270" height="76" rx="8"/>
+  <text class="t" x="565" y="216" text-anchor="middle">First reply, from the bucket</text>
+  <text class="s" x="565" y="236" text-anchor="middle">its acknowledge text, then how soon</text>
+  <text class="s" x="565" y="254" text-anchor="middle">it usually answers; staff take it from there</text>
+
+  <path class="l" d="M150 148H196"/>
+  <path class="l" d="M360 130C395 110 400 70 426 68"/>
+  <text class="s" x="384" y="88">yes</text>
+  <path class="l" d="M360 166C395 186 400 228 426 228"/>
+  <text class="s" x="384" y="214">no</text>
+</svg>

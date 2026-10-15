@@ -62,6 +62,7 @@ export default defineConfig({
                       { label: 'Chat Cards', slug: 'guides/chat-cards' },
                       { label: 'Events', slug: 'guides/events' },
                       { label: 'Bulletin Boards', slug: 'guides/bboards' },
+                      { label: 'Jobs That Run Themselves', slug: 'guides/jobs-automation' },
                       { label: 'Character Galleries', slug: 'guides/galleries' },
                       { label: 'Status', slug: 'guides/status' },
                       { label: 'Watch List', slug: 'guides/watch' },
