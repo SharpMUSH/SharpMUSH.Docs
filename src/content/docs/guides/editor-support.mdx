@@ -10,17 +10,7 @@ gives your editor the same understanding of softcode the game has. It works with
 supports the Language Server Protocol (LSP), including VS Code, Neovim and Emacs. The portal's
 built-in softcode editor uses the same analysis.
 
-The **offline stdio server** described in the local setup sections below only reads your code. It never connects to a game, needs no database, and changes nothing.
-
-## Optional remote mode
-
-The optional remote LSP plugin offers diagnostics, completion, hover and signature help using metadata filtered for your authenticated character. An ordinary editor launches `SharpMUSH.LspBridge` over stdio; the bridge connects to the game's authenticated WebSocket endpoint. Remote analysis supports `.mush` and `.mu` (commands per line), `.mushfn` and `.fun` (function), and `.mushcmd` (command list). Positions use UTF-16.
-
-Remote LSP does not offer the broader offline feature list below: formatting, rename, definitions and references are outside its initial scope. It does not synchronize attributes, execute code or read the server filesystem. Connections do not resume documents automatically. Overload can explicitly close a connection when synchronization diagnostics cannot be admitted. After a restart or explicit close, reconnect, initialize a fresh session and reopen documents. An analysis deadline instead produces an `analysis-timeout` warning, preserves the session/document and retries on the next edit.
-
-See [Remote MCP and LSP Analysis](/guides/mcp) for operator enablement, exact endpoint/subprotocol, bridge invocation, credential handling and limits. MCP serves AI analysis clients; LSP serves editors. The remote contract has passed local automated checks; the implementation is under review in [SharpMUSH PR #1800](https://github.com/SharpMUSH/SharpMUSH/pull/1800). No production or real-socket bridge verification is claimed.
-
-## Offline server
+The **offline stdio server** described below only reads your code. It never connects to a game, needs no database, and changes nothing. [Remote mode](#remote-mode), at the end, connects to a game instead.
 
 ## What the offline server does
 
@@ -42,7 +32,8 @@ See [Remote MCP and LSP Analysis](/guides/mcp) for operator enablement, exact en
 - **Highlighting** that knows the difference between built-in and custom functions, object
   references, substitutions, registers and commands.
 
-It works on files ending in `.mush` or `.mu`.
+It works on files ending in `.mush` or `.mu` (commands, one per line), `.mushfn` or `.fun` (a
+function) and `.mushcmd` (a command list).
 
 ## Getting the language server
 
@@ -80,11 +71,11 @@ example in `SharpMUSH.LanguageServer/vscode-extension-example`. The parts that m
      "displayName": "SharpMUSH Language Support",
      "engines": { "vscode": "^1.75.0" },
      "activationEvents": ["onLanguage:mush"],
-     "main": "./client/out/extension",
+     "main": "./out/extension.js",
      "contributes": {
        "languages": [{
          "id": "mush",
-         "extensions": [".mush", ".mu"],
+         "extensions": [".mush", ".mu", ".mushfn", ".fun", ".mushcmd"],
          "aliases": ["MUSH", "mush"]
        }]
      },
@@ -110,7 +101,7 @@ example in `SharpMUSH.LanguageServer/vscode-extension-example`. The parts that m
      };
      const clientOptions: LanguageClientOptions = {
        documentSelector: [{ scheme: 'file', language: 'mush' }],
-       synchronize: { fileEvents: workspace.createFileSystemWatcher('**/*.{mush,mu}') }
+       synchronize: { fileEvents: workspace.createFileSystemWatcher('**/*.{mush,mu,mushfn,fun,mushcmd}') }
      };
      client = new LanguageClient('sharpmush', 'SharpMUSH Language Server', serverOptions, clientOptions);
      client.start();
@@ -194,7 +185,39 @@ Replace `/path/to/` with where your copy of the SharpMUSH source is. Starting th
 ## For other editors
 
 Any LSP client can use it: start `dotnet` with the built `SharpMUSH.LanguageServer.dll` (or
-`dotnet run --project …`) as a standard input/output server for `.mush` and `.mu` files. It supports
+`dotnet run --project …`) as a standard input/output server for `.mush`, `.mu`, `.mushfn`, `.fun` and `.mushcmd` files. It supports
 these LSP requests: document open, change, close and save; diagnostics; semantic tokens (whole file
 and range); completion; hover; definition; references; code actions; signature help; document
 symbols; rename; formatting; workspace symbols; and inlay hints.
+
+## Remote mode
+
+The optional remote LSP plugin offers diagnostics, completion, hover and signature help using metadata filtered for your authenticated character. An ordinary editor launches `SharpMUSH.LspBridge` over stdio; the bridge connects to the game's authenticated WebSocket endpoint. Remote analysis supports `.mush` and `.mu` (commands per line), `.mushfn` and `.fun` (function), and `.mushcmd` (command list). Positions use UTF-16.
+
+Remote LSP does not offer the broader offline feature list below: formatting, rename, definitions and references are outside its initial scope. It does not synchronize attributes, execute code or read the server filesystem. Connections do not resume documents automatically. Overload can explicitly close a connection when synchronization diagnostics cannot be admitted. After a restart or explicit close, reconnect, initialize a fresh session and reopen documents. An analysis deadline instead produces an `analysis-timeout` warning, preserves the session/document and retries on the next edit.
+
+See [Remote MCP and LSP Analysis](/guides/mcp) for turning the remote LSP on, its endpoint and protocol, and its limits. MCP serves AI analysis clients; LSP serves editors.
+
+Build the bridge with the same .NET 11 SDK as the server:
+
+```sh
+dotnet build SharpMUSH.LspBridge/SharpMUSH.LspBridge.csproj
+```
+
+Publish `SharpMUSH.LspBridge` for your client environment if distributing it separately. Configure your editor to launch the bridge rather than the offline server:
+
+```sh
+dotnet /path/to/SharpMUSH.LspBridge.dll --endpoint wss://game.example/lsp
+```
+
+Provide the character's name and password through the child environment variables
+`SHARPMUSH_LSP_CHARACTER` and `SHARPMUSH_LSP_PASSWORD`, preferably injected from editor SecretStorage.
+Do not put passwords in settings JSON, URLs, arguments, logs or committed files. The bridge accepts
+only WSS endpoints without userinfo/query/fragment and verifies TLS normally; there is no insecure
+certificate bypass. It uses Content-Length framed UTF-8 LSP on stdio, translating to the WS protocol.
+Logging is stderr only. Bridge/connection loss exits; client restart opens a fresh authenticated
+session and must initialize/reopen documents. The bridge needs the .NET 11 runtime. Browser WebSocket clients
+cannot supply arbitrary Basic headers; no browser-ticket/query-token mechanism is provided.
+
+The VS Code desktop example has explicit offline/remote modes, all five
+extensions, endpoint-bound SecretStorage-driven remote launch and a strict tsconfig. Packaging it needs Node 22 or newer. The portal's built-in editor does not use the remote LSP.

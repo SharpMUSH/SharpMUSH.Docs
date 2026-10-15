@@ -16,8 +16,9 @@ back the other way, as a line on the feed spoken by the character they chose.
 | see how a line gets to Discord | [How it works](#how-it-works) |
 | make the bot and connect it | [Setting up the bot](#setting-up-the-bot) |
 | link a channel | [Linking a channel](#linking-a-channel) |
-| link a member's Discord account to their game account | [Linking members](#linking-members) |
-| speak in the game from Discord | [Speaking from Discord](#speaking-from-discord) |
+| link a member's Discord account to their game account | [Discord for Players](/guides/discord-players/) |
+| speak in the game from Discord | [Discord for Players](/guides/discord-players/#speaking-from-discord) |
+| know what the Linked role does | [The Linked role](#the-linked-role) |
 | post from softcode | [Sending lines](#sending-lines) |
 | join a game channel to a Discord channel | [Joining a game channel](#joining-a-game-channel) |
 | give members Discord roles from their game roles | [Mapping roles](#mapping-roles) |
@@ -51,6 +52,10 @@ speaker's name instead of its own. The webhook's token is a secret too, named
 Each linked channel has its own queue, so a slow or broken channel holds up no other.
 
 ## Setting up the bot
+
+First install the **discord** package from the portal's Packages page. It is bundled with
+the game but not installed until you choose it. It adds the `discord.admin` permission, the
+Discord Admin role, the `discord` feed kind and the Discord Bridge object that owns it.
 
 Discord has no way for a program to make an application, so the first steps happen in
 Discord's developer portal.
@@ -96,11 +101,7 @@ directory. See [Secrets](/guides/secrets/#giving-a-secret-from-outside-the-game)
 
 ## Linking a channel
 
-First install the **discord** package from the portal's Packages page. It is bundled with
-the game but not installed until you choose it. It adds the `discord` feed kind and the
-Discord Bridge object that owns it.
-
-Then find the channel's id. In Discord, open **User Settings**, then **Advanced**, and turn
+Find the channel's id. In Discord, open **User Settings**, then **Advanced**, and turn
 on **Developer Mode**. Right-click the channel and choose **Copy Channel ID**.
 
 ```
@@ -116,7 +117,7 @@ that takes them away from the bot's role is refused, with the missing ones named
 cannot be linked.
 
 Linking also changes the channel's permissions, so that only members holding the **Linked**
-role (see [Linking members](#linking-members)) may send messages: `@everyone` is denied
+role (see [The Linked role](#the-linked-role)) may send messages: `@everyone` is denied
 Send Messages there and the Linked role allowed it. The channel's other permissions stay as
 they were. If the bot cannot make that change, the link still works and the answer says
 why. `@discord` shows any channel that others can still post in, and
@@ -126,30 +127,10 @@ why. `@discord` shows any channel that others can still post in, and
 stops posting, deletes the channel's webhook and forgets its token. The feed and its lines
 stay in the game.
 
-## Linking members
+## The Linked role
 
-Each member links their Discord account to their game account once. In the game's Discord
-server they type `/link`. The bot answers with a link that only they can see, which works
-once, for ten minutes. They open it while signed in to the game's website and confirm:
-
-![The Link Discord page: the Discord user grave.dev, the time the link stops working, and a Link this Discord account button](../../../assets/guide/discord-link-confirm.webp)
-
-The link starts with the game's web address, the `mud_url` setting. Until `mud_url` is set,
-`/link` tells the member to ask staff instead.
-
-Once it is linked, the Discord section of the account page shows the Discord account, with
-an Unlink button:
-
-![The account page's Discord section: linked as grave.dev since 10/15/2026, with an Unlink button](../../../assets/guide/discord-account-linked.webp)
-
-- A game account links to one Discord account, and a Discord account to one game account.
-- Only an active account can link. A disabled or banned one cannot.
-- A Discord account unlinked from one game account waits a week before it can link a
-  different one, so a Discord role tied to a game role cannot be handed around. It can link
-  the same account again at once.
-- While a game account's ban stands, the Discord account that was linked to it cannot link
-  a different game account.
-- `/unlink` in Discord, or Unlink on the account page, drops the link.
+Members link their own Discord accounts and choose the character that speaks for them: see
+[Discord for Players](/guides/discord-players/).
 
 The bot makes a role named **Linked** in each server it is in. It gives the role to every
 member linked to an active game account and takes it from everyone else, and checks every
@@ -158,55 +139,6 @@ loses the role, so they cannot post in linked channels, and gets it back when th
 is active again. Renaming the role is fine, since the bot knows it by its id. If the role is
 deleted, the bot makes a new one the next time it connects. This needs the Manage Roles
 permission the invite asks for.
-
-## Speaking from Discord
-
-A linked member chooses which of their characters speaks for them in each linked channel.
-In the game, as that character, they type `@discord/speak` and the channel's id:
-
-```
-> @discord/speak 1234567890123456789
-```
-
-From then on, each message they post in the channel comes into the game as a line on its
-feed, spoken by that character. The member's own message is deleted and the game's version
-posted in its place, so the channel shows what actually arrived in the game.
-
-![@discord/speak refused for a channel that is not linked, then chosen for #rp-general. Two messages posted in Discord arrive on the feed as God says "Hello from Discord, @Bob! Has anyone seen the map? :wave:" and God waves from across the bridge. @discord/speak/off then stops it.](../../../assets/guide/discord-speak.webp)
-
-- **One character per channel.** Choosing another replaces the first.
-  `@discord/speak/off <id>`, as the character, stops it. Unlinking the Discord account drops
-  every choice.
-- **It is not private.** Anyone who reads both the game and the Discord channel can tell
-  which Discord member plays the character. The command says so when it is used.
-- **The character must be allowed to send on the feed**, by the feed's send lock (`help
-  @feed`). A character that is gagged, or no longer on the account, or an account that is
-  disabled or banned, speaks nothing. The bot sends the member a direct message saying why,
-  and their message stays in Discord.
-- **A member with no character chosen** in the channel gets one direct message saying how to
-  choose one. Their messages stay in Discord and do not reach the game.
-- **A member who is not linked** cannot post there at all, because of the Linked role. If a
-  channel lets them anyway, the bot deletes the message and sends them one direct message
-  saying how to link.
-
-How a message reads in the game:
-
-| In Discord | In the game |
-|---|---|
-| `**bold**`, `*italic*`, `__underline__`, `~~strike~~` | the game's own bold, italic, underline and strikethrough |
-| `:waves.` or `;'s here.` at the start | a pose or a semipose |
-| a mention of a member | `@` and the name of the character they speak as in that channel, or their Discord name |
-| a mention of a channel or role | `#channel` or `@role` |
-| a custom emoji | `:name:` |
-| a masked link `[text](https://...)` | a link |
-| a file | a link to it, named for the file |
-| a reply | `(replying to Name)` before the text |
-| code, spoilers, game code such as `[pemit(me,hi)]` | the text as typed; nothing is ever run |
-
-When a moderator deletes one of the game's posts in Discord, the line leaves the feed's
-recall (what `feedrecall()` and `feedmsg()` read), and the audit log records it as
-`feed.line.delete`. Players who already saw the line still have it on their screens. The bot
-remembers which line each post carries for 90 days; deleting an older post leaves its line.
 
 ## Sending lines
 
@@ -240,12 +172,17 @@ Some lines are not posted:
 
 A line longer than one Discord message is split at spaces into up to three posts.
 
+When a moderator deletes one of the game's posts in Discord, the line leaves the feed's
+recall (what `feedrecall()` and `feedmsg()` read), and the audit log records it as
+`feed.line.delete`. Players who already saw the line still have it on their screens. The bot
+remembers which line each post carries for 90 days; deleting an older post leaves its line.
+
 ## Joining a game channel
 
 The **discord-channels** package joins a game channel to a linked Discord channel, both
 ways. What is said on the game channel is posted in Discord, and what members post in
 Discord comes back onto the game channel as the character they speak as. Install it from
-the Packages page; it needs the discord package.
+the Packages page; it needs the discord package and the event handler chosen in first-run setup.
 
 ```
 > +discord/channel Public=1234567890123456789
@@ -386,12 +323,8 @@ Each command answers at once with the key, then says how it went when Discord re
 ### Scheduled scenes
 
 The `discord-scenes` package publishes the game's scheduled scenes this way, so nobody has to
-type `@discord/event`. It needs the Scene plugin as well as the Discord plugin. Install it from
-the Packages page, or:
-
-```
-> @package/install discord-scenes
-```
+type `@discord/event`. It needs the Scene plugin as well as the Discord plugin, and the event handler chosen in
+first-run setup. Install it from the Packages page.
 
 Its Discord Scenes object does the publishing, and gives itself the Discord Admin role to do it.
 

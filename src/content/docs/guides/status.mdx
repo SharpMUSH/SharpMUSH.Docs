@@ -286,20 +286,8 @@ Longer requests: +bbread public/looking
 
 ### Other statuses in +who
 
-Any package can add to the Status column. It puts an attribute named
-``FILTER`WHO`STATUS`<name>`` on the Who-Where Function Object. For each player, `+who`
-runs every such filter in name order. Each gets the status so far as `%0`, empty to begin
-with, and the player as `%1`, and returns the status to show. This package's own filter is
-``FILTER`WHO`STATUS`STATUS``: it shows the player's status, or passes `%0` on.
-
-For example, to show "Staff" for wizards who have no status, name the filter so it runs
-before this one:
-
-```
-&FILTER`WHO`STATUS`AASTAFF <Who-Where Function Object>=if(hasrole(%1,wizard),Staff,%0)
-```
-
-`+help who filters` in the game says the same.
+Status adds its own filter, ``FILTER`WHO`STATUS`STATUS``, which shows the player's status or
+passes `%0` on; see [Adding to the Status column](/guides/who-where#adding-to-the-status-column).
 
 <Aside>
 The statuses and everyone's status are kept on the Status Store, not on the players.

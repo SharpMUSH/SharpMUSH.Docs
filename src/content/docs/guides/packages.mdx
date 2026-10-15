@@ -3,7 +3,7 @@ title: Softcode Packages
 description: Installing, upgrading and authoring SharpMUSH softcode packages.
 ---
 
-import { Aside, Steps, LinkCard } from '@astrojs/starlight/components';
+import { Steps, LinkCard } from '@astrojs/starlight/components';
 
 Global softcode has traditionally been distributed as a `.mush` file you paste into a client and
 hope for the best: the dbrefs have to line up, there is no record of what was installed, and there is
@@ -108,26 +108,75 @@ https://github.com/SharpMUSH/SharpMUSH-Packages
 
 Then browse, pick a package and a version, review the changeset, and apply.
 
-Releases are **git tags** named `<package-dir>/v<version>` — `who-where/v1.2.0`, for example. The
-version list in the admin panel is the tag list, installing a version checks out its tag, and `main`
-is the development channel. Release tags are immutable: installers record the exact commit they
-applied and warn loudly if a tag later points somewhere else.
+A git repository holds one or more packages. Its root may have an `index.yaml` so browsing is fast;
+without one, the repository is searched for `package.yaml` files. An entry is a folder path, or a
+mapping with `path` and optionally `name`, `package`, `version` and `description`, so the portal can
+list packages without reading every manifest (an id may appear only once):
+
+```yaml
+name: SharpMUSH Packages
+description: Official softcode packages.
+packages:
+  - path: who-where/
+    name: Who/Where
+    package: who-where
+    version: 1.2.0
+    description: +who and +where commands
+  - starter-area/
+```
+
+**Releases are git tags** named `<package-folder>/v<version>`, for example `who-where/v1.2.0`. The
+version list in the portal is the tag list, installing a version uses its tag, and the latest commit
+is the development channel. Never move or delete a release tag; publish a fix as a new version. The
+installer records the commit it applied and warns loudly if a tag it installed from later points
+somewhere else.
 
 The official repository also carries a curated **community directory**, so games can discover
 third-party package repos from the admin panel along with their trust tier.
 
-<Aside type="note">
-Some packages are bundled with the server and installed automatically when a new game first starts:
-`http-handler`, `profile-handler`, `room-contents`, `comm-feed`, `plus-help` and `scene`. These are why a fresh game already has a working HTTP handler, `+help` and a scene system.
-See [the bundled catalogue](/reference/package-format#the-bundled-catalogue).
-</Aside>
+### The bundled catalogue
+
+Some packages are built into the server and appear in the portal under the reserved remote name
+**`bundled`**, with no download and no configured remote. Two separate things can be true of them:
+
+- **Shipped**: the package is in the server and can be installed from the catalogue at any time.
+- **Installed on first start**: a new game gets it without being asked. `http-handler`,
+  `profile-handler`, `room-contents`, `comm-feed`, `plus-help`, `plus-config`, `scene` and
+  `scene-here` are. They are why a fresh game already has a working HTTP handler, `+help`, `+config`
+  and a scene system. Every other bundled package is shipped but not installed: the
+  [bulletin boards](/guides/bboards), `+who`, [`+status`](/guides/status), the [watch list](/guides/watch), [`+finger`](/guides/finger)
+  and [`+notify`](/guides/notifications), for example, add commands a game
+  may not want, a game chooses whether it wants a [verse and content warnings](/guides/scene-details#verse-canon-and-content-warnings)
+  named on its scenes, and a new game reads its connect screen and MOTDs from stored text until
+  an administrator chooses the Messages object (in the setup wizard or on the package's page).
+
+A bundled package may only depend on other bundled packages, so installing it never needs the
+network. Anything installed from the catalogue records `bundled:sharpmush` as its source, and is
+upgraded in place when a newer server ships a newer version.
 
 The setup wizard offers every bundled package in its last step, grouped by what the packages are
-for: Essentials, Web portal, Scenes, Community, Staff and Characters. Each group says how many of its
+for: Essentials, Web portal, Scenes, Community, Staff, Characters and MUD clients, with any package
+that names no category last, under Uncategorized. Each group says how many of its
 packages are ticked. A package that builds on another one in its group, such as a portal page for a
 package's commands, is listed under that package. What a ticked package needs is ticked with it.
 
 ![Step 4 of 4, Choose your packages: the Essentials group, 2 of 4 chosen, lists softcode-editor, +help with +config under it, and Messages object; the Web portal group follows](../../../assets/guide/setup-packages-groups.webp)
+
+The bundled packages use these categories (a package's `category:`, described in
+[Package Declarations](/reference/package-declarations#category-format-110)):
+
+| Category | Packages |
+|---|---|
+| Essentials | `softcode-editor`, `plus-help`, `plus-config`, `messages` |
+| Web portal | `http-handler`, `profile-handler`, `room-contents`, `comm-feed` |
+| Scenes | `scene`, `scene-here`, `radio-scene`, `scene-verse`, `scene-safety`, `highlights`, `highlights-app`, `time`, `timeline`, `scene-availability`, `summary` |
+| Community | `wiki-reader`, `radio`, `bboards`, `bboards-app`, `who-where`, `status`, `watch`, `discord`, `notifications`, `notifications-app` |
+| Staff | `jobs`, `jobs-app`, `health`, `health-jobs` |
+| Characters | `chargen`, `chargen-app`, `finger`, `info`, `roster`, `roster-jobs`, `relationships`, `relationships-scene`, `relationships-app`, `relationships-card`, `alts` |
+| MUD clients | `gmcp-room`, `gmcp-comm`, `gmcp-items`, `gmcp-char`, `mudlet-client`, `mud-kit` |
+| Uncategorized | `discord-channels`, `discord-scenes` |
+
+![The setup wizard's Staff group, 0 of 4 chosen: Jobs with Jobs in the portal listed under it, and health with health-jobs listed under it](../../../assets/guide/setup-packages-addons.webp)
 
 ## Reading a package's README
 
@@ -248,23 +297,23 @@ permission the board's softcode checks with `permission()`, and a role that hold
 hands out moderation with `@role` instead of editing code. A package can also bring its own
 categories and set configuration options.
 
-<Aside type="caution" title="Always use block scalars for MUSHcode">
-YAML mangles raw softcode. Double quotes process backslash escapes, and unquoted values are worse —
-a leading `&CMD` is silently read as a YAML anchor, and a mid-value ` #` starts a comment. Write
-attribute values as block scalars (`|-`), as above.
-</Aside>
+Write attribute values as block scalars (`|-`), as above; [Writing softcode in YAML](/reference/package-format#writing-softcode-in-yaml)
+says why.
 
 The [Package Format](/reference/package-format) reference covers every field, the rules for refs
-and versions, roles and settings a package can bring, and a set of example packages ranging from a
+and versions, and a set of example packages ranging from a
 one-object `hello-world` to a dependency-carrying `bbs-lite`.
+[Package Declarations](/reference/package-declarations) covers the roles, settings and other blocks a
+package can bring.
 
 `SharpMUSH.PackageTool` validates a manifest locally, before you push.
 
 ## Beyond softcode
 
 Packages come in kinds. `kind: softcode` is the default described above; `kind: application`
-registers a [Dynamic Application](/guides/web-portal#for-players) — a portal page backed by a
-softcode schema — and managed packages distribute compiled C#.
+registers a [Dynamic Application](/guides/applications) — a portal page backed by a
+softcode schema — `kind: plugin` distributes a compiled C# plugin, and `kind: ui` a hosted HTML and
+JavaScript page. See [Application, Plugin and UI Packages](/reference/package-kinds).
 
 <LinkCard
   title="Writing Plugins"

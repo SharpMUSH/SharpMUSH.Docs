@@ -24,11 +24,10 @@ The **game server** talks to both through NATS, never through a player's connect
 the connection server running while the game server or renderer is updated.
 
 <Aside type="note" title="About the names">
-The Compose service is still called `connectionserver` so existing proxy routes keep working; it runs
-the `sharpmush/sharpmush-socketserver` image. The `renderer` service runs the
-`sharpmush/sharpmush-connectionserver` image. The image names are older than the current project
-names and are kept on purpose: renaming an image would make an existing Compose file pull a different
-program under the same tag. `ConnectionServer__*` settings configure the connection server.
+The `connectionserver` service runs the connection server (`SharpMUSH.SocketServer`, image
+`sharpmush/sharpmush-socketserver`). The `renderer` service runs the rendering worker
+(`SharpMUSH.RenderingWorker`, image `sharpmush/sharpmush-connectionserver`). `ConnectionServer__*`
+settings configure the connection server.
 </Aside>
 
 ## What players see
@@ -47,9 +46,11 @@ that did arrive could otherwise run twice.
 
 ## Keeping updates from disconnecting players
 
-The supplied Compose files tell Watchtower to update the game server and renderer automatically, and
-to leave the connection server alone (`com.centurylinklabs.watchtower.enable=false`). Replace the
-connection server yourself, during an announced window:
+The Cloudflare Compose file runs Watchtower, which updates the game server and renderer
+automatically and leaves the connection server alone (`com.centurylinklabs.watchtower.enable=false`).
+The Caddy file runs no Watchtower; update it by hand, as in the
+[Deployment Reference](/guides/deployment#updating). Replace the connection server yourself, during an
+announced window:
 
 ```bash
 docker compose -f docker-compose.cloudflare.yml pull connectionserver

@@ -1,0 +1,133 @@
+---
+title: Sounds and GMCP Softcode
+description: Play sounds and music in Mudlet over GMCP, set where the game keeps its sounds, and send GMCP messages of your own from softcode.
+---
+
+Sounds and music reach a MUD client over GMCP beside the game's text, and softcode can send GMCP messages of
+its own. [Supporting MUD Clients](/guides/mud-clients/) explains GMCP and the MUD kit built on these.
+
+## Sounds and music
+
+`sound()`, `music()` and `stopsound()` already play in MXP and Pueblo clients and in the web portal. A
+client that lists `Client.Media` in `Core.Supports`, as Mudlet does, is sent a GMCP message for each,
+just before the line they ride in:
+
+```
+> @pemit/list [pmatch(Wren)] [pmatch(Tam)]=[sound(door.wav,80)]The door creaks open.
+Wren << Client.Media.Play {"name":"door.wav","type":"sound","volume":80}
+Wren << The door creaks open.
+Tam  << The door creaks open.
+> @pemit *Wren=[music(theme.ogg,50,-1)]Music starts.
+Wren << Client.Media.Play {"name":"theme.ogg","type":"music","volume":50,"loops":-1,"continue":false,"key":"music"}
+> @pemit *Wren=[sound(https://cdn.example.org/fx/bell.wav)]A bell rings.
+Wren << Client.Media.Play {"name":"bell.wav","url":"https://cdn.example.org/fx/","type":"sound"}
+> @pemit *Wren=[stopsound(music)]The music stops.
+Wren << Client.Media.Stop {"type":"music"}
+> @pemit *Wren=[stopsound()]Silence.
+Wren << Client.Media.Stop {}
+```
+
+Tam's client listed nothing, so it was sent the line and no sound.
+
+`Client.Media.Play`:
+
+| Field | What |
+|---|---|
+| `name` | the file to play |
+| `url` | for a full web address, the directory it is in; left out for a file name, which the client fetches from `Client.Media.Default` |
+| `type` | `sound`, or `music` for `music()` |
+| `volume` | 0 to 100, when given |
+| `loops` | how many times to play, when given; `-1` plays until stopped |
+| `continue`, `key` | music only: `key` is `music`, so a new piece replaces the one playing |
+
+`Client.Media.Stop` has `type` `sound` or `music` for `stopsound(effects)` or `stopsound(music)`, and no
+fields for `stopsound()`, which stops everything.
+
+`sound()`, `music()` and `stopsound()` need a wizard or the `Send_OOB` power.
+
+### media_base_url
+
+When `sound()` names a file rather than a full address, the client needs to know where the game keeps
+its sounds. Set `media_base_url`:
+
+```
+> @config/set media_base_url=https://example.org/sounds
+Option set.
+```
+
+Every client that agrees to GMCP is then sent `Client.Media.Default` as it connects, before the login
+screen, and again whenever the setting changes. A `/` is added when the address does not end in one:
+
+```
+<< Client.Media.Default {"url":"https://example.org/sounds/"}
+```
+
+Empty sends nothing, and the game's sounds then need full addresses. An imported PennMUSH `mush.cnf` that names it sets it too.
+
+## Functions for GMCP softcode
+
+The MUD kit is ordinary softcode, built on three functions. Use them to send packages of your own.
+
+### gmcpsupports()
+
+`gmcpsupports(<descriptor|player>[, <package>])` returns the list a client sent in `Core.Supports`, or,
+given a package, `1` when the client listed it or a module it belongs to and `0` otherwise. Names match
+without regard to case.
+
+```
+> think gmcpsupports(me)
+Char 1 Char.Skills 1 Char.Items 1 Room 1 IRE.Rift 1 IRE.Composer 1 External.Discord 1 Client.Media 1
+> think gmcpsupports(me, Room.Info)
+1
+> think gmcpsupports(me, Comm.Channel)
+0
+```
+
+A client that listed nothing returns an empty list, and `0` for every package:
+
+```
+> think strlen(gmcpsupports(me))
+0
+> think gmcpsupports(me, Room.Info)
+0
+```
+
+A player name reads that player's least idle connection. Reading anyone else's connections needs a
+wizard or the `Send_OOB` power.
+
+### oob() with supported
+
+`oob(<players>, <package>[, <message>[, supported]])` sends a GMCP message and returns how many
+connections took it. With the fourth argument `supported`, a telnet client is sent the message only
+when it listed the package or a module it belongs to, or listed nothing at all. Without it, every client
+that agreed to GMCP is sent it. A portal connection always is.
+
+Wren's stock Mudlet did not list `Comm`:
+
+```
+> think oob(me, Comm.Channel.Text, json(object, channel, json(string, test)), supported)
+0
+> think oob(me, Comm.Channel.Text, json(object, channel, json(string, test)))
+<< Comm.Channel.Text {"channel":"test"}
+1
+```
+
+The MUD kit sends with `supported`, except `Client.GUI` and `Client.Map`. Use it for your own packages too, rather than testing
+`gmcpsupports()` first. Sending to anyone but yourself needs a wizard or the `Send_OOB` power. A
+descriptor number sends to that one connection, even before anyone has logged in on it, which is how a
+``SOCKET`GMCP`` handler answers what a client asked.
+
+### exitmap()
+
+`exitmap(<room>[, <viewer>])` returns the exits in a room as a JSON object, each exit's name to the
+number of the room it leads to: the `exits` of `Room.Info`.
+
+```
+> think exitmap(here)
+{"north":26}
+```
+
+Only the exits the viewer can see are listed, the ones `look` would show them. Each is named up to its
+first `;`, so `north;n` is `north`; when two exits share a name, the first is kept. An exit to HOME leads
+to the viewer's own home, a variable exit is `-2`, and an unlinked exit is `-1`. You may map a room you
+can examine or are standing in.
