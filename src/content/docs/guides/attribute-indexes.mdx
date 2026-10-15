@@ -7,8 +7,8 @@ import { Aside } from '@astrojs/starlight/components';
 
 An **attribute index** lets softcode find the objects that hold a value in an attribute without
 looking at every object in the game. `lsearch()` with an `EVAL` class reads each object in turn,
-which gets slow on a big game. `indexed()` reads the attribute's index instead, so it takes about
-the same time on a game of 100 objects as on one of 100,000.
+which gets slow on a big game. `indexed()` reads the attribute's index instead, so its time grows
+with the number of objects it finds, not with the number of objects in the game.
 
 | You are | You want to | Read |
 |---|---|---|
@@ -35,7 +35,8 @@ Output: the first line says how the index compares values. The second says it is
 many copies of STATUS it found among how many objects.
 
 Only those with the `config.admin` permission can add or remove an index. An attribute whose
-default flags include `internal` cannot be indexed.
+default flags include `internal` cannot be indexed, and nor can one whose name is longer than 110
+bytes.
 
 ### Options
 
@@ -63,6 +64,8 @@ the index starts empty and fills as values are set.
 
 - Only an object's own copy of the attribute. A value it inherits from a parent is not listed.
 - An empty value is never listed, and nor is a copy flagged `internal`.
+- The index keeps the first 400 bytes of a value. A longer value is still found and compared in
+  full, but values that share their first 400 bytes come back in dbref order among themselves.
 - Every write keeps the index up to date as it happens: setting, changing or clearing the
   attribute, and destroying the object.
 
@@ -173,6 +176,7 @@ A package can ship an index with its attribute entries. Add `index:` to the entr
 format: 1.8
 package: casebook
 version: 1.0.0
+# objects: and the rest of the manifest as usual
 
 attributes:
   CASE`STATUS:
@@ -202,8 +206,10 @@ In a manifest older than 1.8, `index:` is ignored with a warning.
 
 ## Storage
 
-Each index takes room in the world's file: about 50 bytes for each indexed copy. `@storage` lists
-every index with its rows, its pages, its size and whether it is still building:
+Each index takes room in the world's file: one row for each indexed copy, or for each element of
+a copy in a `split` index. A row takes about 50 bytes for a short value and more for a long one,
+since the index keeps up to 400 bytes of each value, in two places. `@storage` lists every index with its rows, its pages, its size and whether it is still
+building:
 
 ![@storage in the portal terminal: the Attribute indexes section lists LEVEL (numeric type:thing) with 3 rows, 2 pages, 32.0 KB, ready, and STATUS with 3 rows, 1 page, 16.0 KB, ready](../../../assets/guide/attribute-index-storage.webp)
 
