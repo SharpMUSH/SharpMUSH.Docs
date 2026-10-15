@@ -370,8 +370,9 @@ braces would be taken as grouping and dropped.
 | `description` | up to 1000 characters |
 | `server` | the server's id; needed only when the bot is in more than one |
 
-- Publishing the same key again updates the event. Once it has started, its start stays as it
-  is; once it has ended or was cancelled, publishing makes a new one.
+- Publishing the same key again updates the event while it is still to come. Once it has
+  started, ended or been cancelled, publishing ends it and makes a new one, since the start
+  given is still to come: a scene that was paused and moved to another day.
 - `@discord/event/start <key>` shows the event as happening now.
 - `@discord/event/end <key>` ends an event that started and cancels one that has not.
 - `@discord/event` lists the events the game has published.
@@ -379,6 +380,47 @@ braces would be taken as grouping and dropped.
 Each command answers at once with the key, then says how it went when Discord replies:
 
 ![@discord/event lists nothing published; publishing event 12 while the bot is not connected says so; a start that has passed and text that is not JSON are refused; /start 12 says the bot is not connected; /end with no key asks for one.](../../../assets/guide/discord-events.webp)
+
+### Scheduled scenes
+
+The `discord-scenes` package publishes the game's scheduled scenes this way, so nobody has to
+type `@discord/event`. It needs the Scene plugin as well as the Discord plugin. Install it from
+the Packages page, or:
+
+```
+> @package/install discord-scenes
+```
+
+A scene scheduled with `+scene/schedule` then shows in the Events tab, under the scene's title,
+with its summary as the description and its page on the game's website as the place. When the
+game has no website address (`mud_url`), the place is the game's name and the scene's room.
+After that the event follows the scene:
+
+| In the game | On Discord |
+|---|---|
+| `+scene/reschedule`, `+scene/title` | the event moves or is renamed |
+| `+scene/start` | the event shows as happening now |
+| `+scene/finish` | the event ends |
+| `+scene/cancel` | the event is cancelled |
+| `+scene/pause` with a new time | a new event at that time |
+| `+scene/pause` with no time, or the scene made members-only | the event is taken down |
+
+Only scenes anyone may watch are published. Three settings change that, through `+config`:
+
+| Setting | As shipped | What it does |
+|---|---|---|
+| `discord-scenes/publish` | yes | `no` stops publishing; events already up stay until their scenes finish |
+| `discord-scenes/private` | no | `yes` publishes members-only scenes too, and everyone in the server sees their titles and times |
+| `discord-scenes/length` | 3h | how long an event lasts from its start; a scene that runs longer ends when it finishes |
+
+![+scene/schedule schedules Harbour Night for a day from now; +config discord-scenes lists length 3h, private no and publish yes; +config discord-scenes/length=4h changes the length.](../../../assets/guide/discord-scenes.webp)
+
+Each scene is published under the key `scene-<id>`, so `@discord/event` lists them beside any
+the game published by hand. `+help discord scenes` covers the same ground in the game.
+
+The package is built on two events the Scene plugin raises: ``SCENE`STATUS`` when a scene is made
+or its status changes, and ``SCENE`CHANGE`` when its time, title or another of its keys does
+(`help event scene`). A game that wants other rules can write its own handler on them instead.
 
 ## The Discord page
 
