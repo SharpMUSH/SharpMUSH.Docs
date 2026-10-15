@@ -26,8 +26,10 @@ back the other way, as a line on the feed spoken by the character they chose.
 | list the game's events in Discord's Events tab | [Scheduled events](#scheduled-events) |
 | fix a link that stopped | [When a link stops](#when-a-link-stops) |
 
-Setting up the bot and linking channels need the `discord.admin` permission. Wizards hold it,
-and `@role/allow <role>=discord.admin` hands it to a staff role. Members link their own
+Setting up the bot and linking channels need the `discord.admin` permission. Nobody holds it
+until it is given, wizards included: `@role/assign <player>=discord-admin` gives the Discord
+Admin role, which allows it, and `@role/allow <role>=discord.admin` hands it to a staff role
+the game already has. Members link their own
 accounts and choose their own characters.
 
 In the game, `help @discord` covers every switch, and `help @discord/<switch>` goes straight
@@ -390,6 +392,8 @@ the Packages page, or:
 ```
 > @package/install discord-scenes
 ```
+
+Its Discord Scenes object does the publishing, and gives itself the Discord Admin role to do it.
 
 A scene scheduled with `+scene/schedule` then shows in the Events tab, under the scene's title,
 with its summary as the description and its page on the game's website as the place. When the
