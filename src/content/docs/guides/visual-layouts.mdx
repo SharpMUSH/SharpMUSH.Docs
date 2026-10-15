@@ -47,6 +47,30 @@ A Unicode terminal receives a rounded, themed character card. A client without U
 ASCII border. In the portal, the fields become responsive page structure. For a screen reader, the
 border disappears and the content is read as `Name: Mannaz Byron`, `Species: Human`, and so on.
 
+### Example: a row for each record
+
+`datatable()`, `flex()`, `tree()` and `node()` take one argument per row, item or child. When the
+code only learns how many there are as it runs, use the list form: `ldatatable()`, `lflex()`,
+`ltree()` or `lnode()` take them as one list and a delimiter, so a single `iter()` builds the whole
+display.
+
+```sharp
+think ldatatable({{"width":40,"nowrap":"2"}},Name|>Level|Class,iter(Mannaz:12:Dark Warrior^Raya:9:Bard^Wren:4:Sky Pirate,edit(##,:,|),^,^),^)
+```
+
+```text
+Name    Level  Class
+---------------------------
+Mannaz     12  Dark Warrior
+Raya        9  Bard
+Wren        4  Sky Pirate
+```
+
+The cells of each row are still split by `|`; the rows are split by `^`, the last argument. Pick a
+row delimiter that never appears in the content. A list of layouts, such as nodes for `ltree()`,
+needs one that never appears in their drawn text either: borders and tree guides contain `|` and
+spaces.
+
 <Aside type="tip" title="Prefer meaning over manual spacing">
 If the content is a set of labels and values, use `fields()` rather than padding strings yourself.
 If it is hierarchical, use `tree()`. SharpMUSH can only adapt a display when the structure is
