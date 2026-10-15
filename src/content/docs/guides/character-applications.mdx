@@ -34,8 +34,8 @@ In the game, `+help app` has the same commands in short form.
   the game sets a cap.
 - **Retired**: the character stopped playing and gave up its place.
 
-Every submission is kept as a **round**. Staff see what changed since the round before, field by
-field.
+Every submission is kept as a **round**, on the character. Staff see what changed since the round
+before, field by field.
 
 ## Applying
 
@@ -288,6 +288,7 @@ After the next approval, the character is there:
 ```
 
 <Aside>
-The answers stay on the characters. The state, rounds and comments are kept on the Chargen Store,
-so a character cannot change its own, and uninstalling `chargen` removes them.
+The answers and the rounds are kept on the character: each field's attribute, and
+``CHARGEN`ROUND`<n>`` with ``CHARGEN`ROUND`<n>`<field>`` for each submission. Only `+app` writes
+them. The state and comments are kept on the Chargen Store, and uninstalling `chargen` removes those.
 </Aside>
