@@ -92,7 +92,8 @@ Canon: Marvel · X-Men · Era: 1980s · Verse: Marvel
 Ilsa sets her lantern down on the crate.
 ```
 
-In the portal, the scene's page lists them under Details beside the log.
+In the portal, the scene's page lists them under Details beside the log. Each value there is a link
+to every scene that gives the detail the same value.
 
 ### Finding scenes by detail
 
@@ -112,7 +113,21 @@ A page number goes before the detail: `+scene/old/2 verse=Marvel`. Bare `+scene`
 because `+scene <id>` shows a scene's card; use `+scene/list` instead.
 
 In the portal, the search box on a character's Scenes page matches details as well as titles, pitches
-and rooms.
+and rooms. On the scene list, clicking a detail's value shows only the scenes with that value, such as
+every scene whose verse is Marvel. A line over the list says what it is narrowed to, with a button back
+to every scene. The address is `/scenes?detail=verse&value=Marvel`, so it can be shared.
+
+The scene list's sidebar has a section for each detail the game lists: the values scenes give it, the
+ones most scenes give first, with how many scenes give each. A value is counted once per scene, and a
+scene you can't open is not counted.
+
+### On the portal's scene cards
+
+A scene's card in the portal's scene list shows the details the game lists (`listed`) on a line under
+its pitch, each with its name: `Content warning Violence, Blood   Verse Marvel`. They come in the
+game's order. A detail with a [tone](#listing-details) shows its values in that theme colour, so a
+content warning stands out. The line over the card keeps only the scene's state: live, paused or
+private.
 
 ## Verse, canon and content warnings
 
@@ -121,24 +136,24 @@ the admin panel's Packages page. It lists three details:
 
 | Detail | Name | What goes in it |
 |---|---|---|
+| `warning` | Content warning | What a reader may want to know before joining; several are allowed |
 | `verse` | Verse | The setting or universe the scene takes place in |
 | `canon` | Canon | The source works the scene draws on; several are allowed |
-| `warning` | Content warning | What a reader may want to know before joining; several are allowed |
 
 ```text
 > +scene/details
 ===============================< Scene details >==============================
 Detail   Name             What goes in it         Takes
+warning  Content warning  What a reader may want  any text, several split by |
+                          to know before
+                          joining, such as
+                          violence. Split
+                          several with |.
 verse    Verse            The setting or          any text
                           universe the scene
                           takes place in.
 canon    Canon            The source works the    any text, several split by |
                           scene draws on. Split
-                          several with |.
-warning  Content warning  What a reader may want  any text, several split by |
-                          to know before
-                          joining, such as
-                          violence. Split
                           several with |.
 ==============================================================================
 You can set other details too: +scene/set <name>=<value>.
@@ -146,10 +161,10 @@ You can set other details too: +scene/set <name>=<value>.
 
 Players still set any other detail they like. With the package installed:
 
-- The verse and the content warning follow the title in `+scene`, `+scene/old` and `+scene/mine`, and
-  show as tags on the portal's scene cards.
-- The three show first on the card, in that order. The content warning is in the reader's warning
-  colour wherever it appears.
+- The content warning and the verse follow the title in `+scene`, `+scene/old` and `+scene/mine`, and
+  show on the portal's scene cards.
+- The three show first on the card, in the order of the table above, so the content warning is read
+  first. Its tone is `warning`, so it is in the reader's warning colour wherever it appears.
 - Whoever joins a scene with a content warning is told it as they join.
 - `+scene/verses` lists the verses of the scenes running now.
 
@@ -159,7 +174,7 @@ Players still set any other detail they like. With the package installed:
 > +scene/list
 ==============================< Scenes: active >==============================
 ID  Title                                            Where        Cast  Status
- 1  Salt Market at Dusk · Marvel · Violence          Lower Docks     1  active
+ 1  Salt Market at Dusk · Violence · Marvel          Lower Docks     1  active
 ==============================================================================
 1 scene
 ```
@@ -220,14 +235,18 @@ attribute on the Scene Logger, `` DETAIL`<KEY> ``, holding JSON:
 | `hint` | One line saying what goes in it, shown by `+scene/details` and under the portal's field |
 | `choices` | The values it allows; without it, any text |
 | `many` | `true` when a scene may give several values, split by `\|` |
-| `listed` | `true` to show it after the title in lists and as a tag on the portal's scene cards |
+| `listed` | `true` to show it after the title in lists, on the portal's scene cards and in the scene list's sidebar |
+| `tone` | The theme colour its values show in, in `+scene` and the portal; without it, the text's own colour |
 | `order` | Its place, lowest first |
+
+The tone is one of the theme colours `tone()` takes, as for [pose types](/guides/scene-pose-types#in-the-portal):
+`foreground`, `primary`, `secondary`, `tertiary`, `muted`, `success`, `warning`, `error` or `info`.
 
 The commands write the JSON for you and refuse anything that would not read:
 
 - `+scene/detail/add <detail>=<name>` lists a new one.
 - `+scene/detail/set <detail>/<field>=<value>` changes one field. `choices` takes the values split
-  by `|`; `many` and `listed` take `yes` or `no`.
+  by `|`; `many` and `listed` take `yes` or `no`; `tone` takes a theme colour, or nothing to clear it.
 - `+scene/detail <detail>` shows one in full.
 - `+scene/detail/remove <detail>` stops listing it. Scenes keep the values they had.
 
@@ -249,6 +268,7 @@ Name:            Mood
 What goes in it: How the scene feels.
 Takes:           Light, Tense, or Dark
 In lists:        yes
+Tone:            -
 Order:           50
 ==============================================================================
 ```
@@ -309,9 +329,9 @@ Watchers:  Anyone
 ===================================< Pitch >==================================
 Lanterns, rumours and a missing ledger.
 ==================================< Details >=================================
+Content warning  Violence
 Verse            MARVEL
 Canon            Marvel · X-Men
-Content warning  Violence
 Mood             Tense
 Era              1980s
 ==================================< Players >=================================
@@ -321,16 +341,16 @@ Participant  Ann                                                             0
 ==============================================================================
 ```
 
-The `scene-verse` package works this way. Its two filters colour the content warning and tell a joiner
-about it:
+The `scene-verse` package works this way. Its content warning takes its colour from its `tone`, and
+one filter tells a joiner about it:
 
 ```yaml
 objects:
   - ref: verse
     target: "{{scene/logger}}"
     attributes:
-      FILTER`DETAIL`SHOW`VERSE: |-
-        if(strmatch(%2,warning),tone(warning,%0),%0)
+      DETAIL`WARNING: |-
+        {"label":"Content warning","hint":"What a reader may want to know before joining, such as violence. Split several with |.","many":true,"listed":true,"tone":"warning","order":5}
       FILTER`JOIN`VERSE: |-
         %0[if(strlen(scene(%1,warning)),%r[notice(SCENE,Content warning: [u(%!/FUN`DETAIL`SHOW,%1,warning)])])]
 ```
@@ -360,7 +380,7 @@ canon era verse
 | `scene(<id>,<detail>)` | The scene's value for a detail; several are split by `\|` |
 | `scene(<id>,details)` | The details the scene has a value for: the listed ones in order, then the rest by name |
 | `scenedetails()` | The details the game lists, in order |
-| `scenedetail(<detail>[,<field>])` | One field of a listed detail: `label` (the default), `hint`, `choices`, `many`, `listed` or `order` |
+| `scenedetail(<detail>[,<field>])` | One field of a listed detail: `label` (the default), `hint`, `choices`, `many`, `listed`, `tone` or `order` |
 | `scenedetailvalue(<detail>,<value>)` | The value as the detail would keep it, or `#-1` and why it would be refused |
 | `scenedetailcheck(<detail>,<json>)` | Empty when the JSON reads as a detail, or `#-1` and why not |
 
