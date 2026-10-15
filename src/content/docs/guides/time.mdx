@@ -21,6 +21,8 @@ sit centuries away, and name its months and weekdays.
 | A player | see the time | [The time now](#the-time-now) |
 | A player | set your zone | [Setting your zone](#setting-your-zone) |
 | A player | keep your zone to yourself | [Hiding your zone](#hiding-your-zone) |
+| A player | let your client set your zone | [Your zone from your client](#your-zone-from-your-client) |
+| A player | find your zone without knowing its name | [Finding your zone by the time](#finding-your-zone-by-the-time) |
 | A player | plan a scene across zones | [Converting a time](#converting-a-time) |
 | A player | read scene times in your zone | [Scenes in your time](#scenes-in-your-time) |
 | Staff | set the game's zone | [Settings](#settings) |
@@ -130,6 +132,93 @@ else who asks is told you keep it to yourself, and other packages read nothing:
 
 Your zone is your `TZ` attribute, the one PennMUSH keeps it in, so `time(*<name>)` reads it too.
 Hiding it clears the attribute's `visual` flag, so `@set me/TZ=!visual` does the same.
+
+### Your zone from your client
+
+Some clients tell the game which zone they are in. When you have not set one, the game fills it
+in from your client the moment you log in:
+
+![The web portal, the telnet programs that send TZ, and the clients that send nothing: the first two reach the game, which hands the zone to the time package; for the rest you type it](../../../assets/guide/time-zone-detect.svg)
+
+- **The web portal** always reports your browser's zone.
+- **BSD telnet and inetutils telnet** report it when you tell them to, at the `telnet>` prompt,
+  before you open the game:
+
+  ```
+  telnet> environ define TZ Europe/Paris
+  telnet> environ export TZ
+  telnet> open mygame.example.com 4201
+  ```
+
+  `environ export TZ` on its own sends the `TZ` your shell already has, if it holds a zone name.
+- **PuTTY** reports it when you add `TZ`, with your zone as its value, under **Connection** →
+  **Data** → **Environment variables**.
+- **Mudlet, TinTin++, MUSHclient** and most other MUD clients report nothing. Use
+  [`+timezone/match`](#finding-your-zone-by-the-time) or `+timezone <zone>`.
+
+A zone set this way is hidden, since you never chose to share where you are:
+
+```
+connect Tess Tess-pass-1
+Welcome back, Tess!
+...
+[TIME] Done: Your time zone is now Europe/Paris (UTC+02:00), from your client. Only you and staff see it: +timezone/unhide shares it, and +timezone <zone> changes it.
+```
+
+![Wren logging in from the web portal in Chicago: the last lines of the terminal say the time zone is now America/Chicago, from the client](../../../assets/guide/time-zone-portal.webp)
+
+`+timezone/unhide` shares it, and `+timezone <zone>` changes it. A zone you set yourself is never
+replaced, whatever your client says later. `+timezone/detect` sets the zone your client reported
+whenever you ask:
+
+```
+> +timezone/detect
+[TIME] Done: Your time zone is Asia/Tokyo (UTC+09:00), from your client. It is Thu 15 Oct 2026, 16:50 for you.
+```
+
+A game may only tell you what your client reported and leave setting it to you, or ignore it:
+see `detect` under [Settings](#settings).
+
+### Your zone from where you connect
+
+A game can also look your zone up from where you connect from, when you have set none and your
+client reports none. It is off unless the game turns it on, and when it is on, your address goes to
+a zone service on the internet, such as ipinfo.io. The guess is often wrong behind a VPN or on a
+mobile network. A zone found this way is hidden too:
+
+```
+connect Ida Ida-pass-1
+...
+[TIME] Done: Your time zone is now Europe/London (UTC+01:00), guessed from where you connect. Only you and staff see it: +timezone/unhide shares it, and +timezone <zone> changes it.
+```
+
+A game set to `offer` tells you instead, and `+timezone/detect` looks it up when you ask:
+
+```
+connect Ide Ide-pass-1
+...
+[TIME] Where you connect from suggests your time zone is Europe/London. +timezone/detect sets it.
+> +timezone/detect
+[TIME] Done: Your time zone is Europe/London (UTC+01:00), guessed from where you connect. It is Thu 15 Oct 2026, 16:32 for you.
+```
+
+### Finding your zone by the time
+
+If your client reports nothing and you are not sure what your zone is called, type the time on
+your clock. `+timezone/match` lists the zones where it is that time now, each a link that sets it:
+
+```
+> +timezone/match 4:44pm
+[TIME] It is 16:45 now in these zones. Choose yours:
+• +timezone Asia/Seoul · UTC+09:00
+• +timezone Asia/Tokyo · UTC+09:00
+```
+
+Round the time as you like: the nearest zones within half an hour count. Zones with the same
+offset come together, since the clock cannot tell them apart; pick the one you live in, as its
+summer time may differ.
+
+![+timezone/match in the portal: two links, +timezone America/Chicago and +timezone America/Bogota, each followed by UTC-05:00](../../../assets/guide/time-zone-match.webp)
 
 ## Converting a time
 
@@ -245,7 +334,9 @@ The time package ships with the server but is not installed on a new game. An ad
 installs it from the portal:
 
 1. Open **Packages** in the admin area and choose **Browse**.
-2. Install `time`. It needs `plus-help` and `plus-config`, which a new game already has.
+2. Install `time`. It needs `plus-help` and `plus-config`, which a new game already has, and it
+   adds two attributes to the event handler: ``PLAYER`CONNECT`TIME`` and
+   ``SOCKET`TIMEZONE`TIME``, which hand it the zone a client reports.
 
 It adds the commands `+time` and `+timezone` for everyone. They are game commands, which are
 matched before softcode `$`-commands, so a `+time` your game already has in softcode stops running
@@ -271,6 +362,24 @@ The number on your game will differ.
 |---|---|---|
 | `zone` | The game's zone, the one `+time` calls game time. | `UTC` |
 | `format` | How a time is written, in [`timefmt()`](/reference/sharpmush-help/timefmt-function/)'s codes. | `$a $d $b $Y, $H:$M` |
+| `detect` | What a zone a player's client reports does when they set none. `set` fills it in, hidden, and tells them; `offer` tells them at login, and `+timezone/detect` sets it; `off` does nothing. | `set` |
+| `detect-ip` | What to do for a player who set no zone and whose client reports none. `set` and `offer` look the zone up from the player's address at login, through `ip-service`, then work as for `detect`; `off` sends nothing. | `off` |
+| `ip-service` | The zone service: an https address with `<ip>` where the address goes, answering in JSON. | `https://ipinfo.io/<ip>/json` |
+| `ip-field` | Where the zone is in the service's reply, as a JSON path. | `timezone` |
+| `match-zones` | The zones `+timezone/match` offers, in the order it lists them. Each must be a zone the server knows. | about fifty, at least one for each offset most players live in |
+
+To tell players what their client says without setting anything:
+
+```
+> +config time/detect=offer
+[CONFIG] Done: time/detect is now offer, was set.
+```
+
+A player then sees this at login, until they set a zone:
+
+```
+[TIME] Your client says your time zone is Asia/Tokyo. +timezone/detect sets it.
+```
 
 The short names players may type for a zone are attributes on the Clock, ``ALIAS`<name>``, one
 each, its value the zone. For example, to keep the game on New York time and let players type
@@ -284,6 +393,38 @@ Clock/ALIAS`IRISH - Set.
 ```
 
 A short name wins over a zone of the same name, which is how `est` comes to mean New York.
+
+#### Looking zones up by address
+
+`detect-ip` sends the address of every player who logs in with no zone, and no zone from their
+client, to the zone service. Say so in your game's privacy policy before you turn it on. An address
+a service cannot place (loopback, a private network, link-local) is never sent, so a player on the
+same network as the game gets nothing. `offer` suits it better than `set`, since an address is often
+in the wrong place:
+
+```
+> +config time/detect-ip=offer
+[CONFIG] Done: time/detect-ip is now offer, was off.
+```
+
+ipinfo.io, the default, needs no account, though it limits how many lookups it answers; check its
+terms for a busy game. Any service that takes
+the address in its URL and answers in JSON works; give the path to the zone in its reply too. For
+ipwho.is:
+
+```
+> +config time/ip-service=https://ipwho.is/<ip>
+[CONFIG] Done: time/ip-service is now https://ipwho.is/<ip>, was https://ipinfo.io/<ip>/json.
+> +config time/ip-field=timezone.id
+[CONFIG] Done: time/ip-field is now timezone.id, was timezone.
+```
+
+Only an https address is taken:
+
+```
+> +config time/ip-service=http://ip-api.com/json/<ip>
+[CONFIG] Warning: time/ip-service: Give an https address with <ip> where the address goes, such as https://ipinfo.io/<ip>/json.
+```
 
 ### The IC date
 
@@ -364,6 +505,22 @@ Tue 20 Oct 2026, 22:00
 > think u(#26/FUN`IC`DATE,1772323200)
 1 Seedtime, year 2326 of the Crossing, 00:00
 ```
+
+### The zone a client reports
+
+`clientzone(<player|descriptor>)` gives the zone a connection's client reported, such as
+`Europe/Paris`, or nothing. It is only what the client said; the engine never changes `TZ` on its
+own. The game drops anything that is not a zone it knows, so code can trust the name.
+
+```
+> think clientzone(me)
+Europe/Paris
+```
+
+The ``socket`timezone`` event (*descriptor*, *zone*, *player*) fires once for each zone a
+connection reports, usually before login, when *player* is empty. Code that acts at login reads
+``clientzone(%<descriptor>)`` from ``player`connect`` instead, which is what the time package does.
+See [Events](/guides/events) for adding to an event.
 
 ### Adding to +time
 
