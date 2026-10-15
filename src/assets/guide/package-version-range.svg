@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 250" width="760" height="250" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="14">
+  <title id="t">What an administrator sees for each SharpMUSH version</title>
+  <desc id="d">A package states requires_server >=2.0, verified_server 2.4 and maximum_server 3. On SharpMUSH 1.x it is refused. On any 2.x it installs with no warning. On 3.x the review screen warns that nobody has tested it there. On 4.0 and later the review screen warns that it is past its maximum and the administrator must confirm before installing.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="760" height="250" rx="12" fill="#f8fafc"/>
+
+  <text x="24" y="36" font-weight="600" fill="#0f172a">requires_server: "&gt;=2.0"   verified_server: "2.4"   maximum_server: "3"</text>
+
+  <rect x="24" y="64" width="160" height="80" rx="8" fill="#fee2e2" stroke="#b91c1c"/>
+  <text x="104" y="92" text-anchor="middle" font-weight="600" fill="#7f1d1d">1.x</text>
+  <text x="104" y="114" text-anchor="middle" fill="#7f1d1d" font-size="13">Refused</text>
+  <text x="104" y="132" text-anchor="middle" fill="#7f1d1d" font-size="12">below requires_server</text>
+
+  <rect x="200" y="64" width="170" height="80" rx="8" fill="#dcfce7" stroke="#15803d"/>
+  <text x="285" y="92" text-anchor="middle" font-weight="600" fill="#14532d">2.0 to 2.x</text>
+  <text x="285" y="114" text-anchor="middle" fill="#14532d" font-size="13">Installs</text>
+  <text x="285" y="132" text-anchor="middle" fill="#14532d" font-size="12">no warning</text>
+
+  <rect x="386" y="64" width="170" height="80" rx="8" fill="#fef3c7" stroke="#b45309"/>
+  <text x="471" y="92" text-anchor="middle" font-weight="600" fill="#78350f">3.x</text>
+  <text x="471" y="114" text-anchor="middle" fill="#78350f" font-size="13">Installs, with a warning</text>
+  <text x="471" y="132" text-anchor="middle" fill="#78350f" font-size="12">newer major than verified</text>
+
+  <rect x="572" y="64" width="164" height="80" rx="8" fill="#ffedd5" stroke="#c2410c"/>
+  <text x="654" y="92" text-anchor="middle" font-weight="600" fill="#7c2d12">4.0 and later</text>
+  <text x="654" y="114" text-anchor="middle" fill="#7c2d12" font-size="13">Asks to confirm</text>
+  <text x="654" y="132" text-anchor="middle" fill="#7c2d12" font-size="12">past maximum_server</text>
+
+  <path d="M24 176 L736 176" stroke="#475569" stroke-width="1.5" fill="none" marker-end="url(#a)"/>
+  <text x="736" y="200" text-anchor="end" fill="#475569" font-size="12">newer SharpMUSH</text>
+  <path d="M192 168 L192 184" stroke="#475569" stroke-width="1.5"/>
+  <text x="192" y="200" text-anchor="middle" fill="#475569" font-size="12">2.0</text>
+  <path d="M564 168 L564 184" stroke="#475569" stroke-width="1.5"/>
+  <text x="564" y="200" text-anchor="middle" fill="#475569" font-size="12">4.0</text>
+
+  <text x="24" y="232" fill="#475569" font-size="12">A confirmed install past the maximum is marked on the Packages page and written to the audit log.</text>
+</svg>

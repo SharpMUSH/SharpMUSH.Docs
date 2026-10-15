@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 250" width="780" height="250" role="img" aria-labelledby="t d">
+<title id="t">How a line reaches a linked Discord channel</title>
+<desc id="d">Softcode sends a line on the feed discord/1234567890. The feed delivers it in the game as usual, and the Discord plugin hears it. The plugin turns it into Discord text and posts it through the channel's webhook, under the speaker's name, into the linked channel #ooc. The webhook's token is kept in the secret store as discord.webhook.1234567890.</desc>
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#475569"/></marker>
+</defs>
+<rect width="780" height="250" rx="12" fill="#f8fafc"/>
+<g font-family="ui-sans-serif,system-ui,sans-serif" font-size="14" fill="#1e293b">
+  <text x="24" y="36" font-size="15" font-weight="600">In the game</text>
+  <text x="560" y="36" font-size="15" font-weight="600">In Discord</text>
+
+  <rect x="24" y="56" width="220" height="72" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="38" y="82" font-weight="600">Softcode</text>
+  <text x="38" y="108" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#1d4ed8">@feed/send discord/123…</text>
+
+  <rect x="292" y="56" width="220" height="72" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="306" y="82" font-weight="600">Discord plugin</text>
+  <text x="306" y="106" font-size="12" fill="#475569">hears the feed's lines,</text>
+  <text x="306" y="122" font-size="12" fill="#475569">one queue per channel</text>
+
+  <rect x="560" y="56" width="196" height="72" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="574" y="82" font-weight="600">#ooc</text>
+  <text x="574" y="106" font-size="12" fill="#475569">posted through its webhook,</text>
+  <text x="574" y="122" font-size="12" fill="#475569">under the speaker's name</text>
+
+  <line x1="244" y1="92" x2="288" y2="92" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="512" y1="92" x2="556" y2="92" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+
+  <rect x="24" y="168" width="220" height="56" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="38" y="192" font-weight="600">Members of the feed</text>
+  <text x="38" y="212" font-size="12" fill="#475569">see it in the game, as usual</text>
+  <line x1="134" y1="128" x2="134" y2="164" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+
+  <rect x="292" y="168" width="220" height="56" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="306" y="192" font-weight="600">Secret store</text>
+  <text x="306" y="212" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12">discord.webhook.123…</text>
+  <line x1="402" y1="164" x2="402" y2="132" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+</g>
+</svg>
