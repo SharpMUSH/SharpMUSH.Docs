@@ -53,7 +53,10 @@ export default defineConfig({
                       { label: 'Screen Readers', slug: 'guides/screen-readers' },
                       { label: 'Softcode Packages', slug: 'guides/packages' },
                       { label: 'Named Arguments', slug: 'guides/named-arguments' },
+                      { label: 'RhostMUSH Softcode', slug: 'guides/rhostmush-softcode' },
+                      { label: 'Chat Cards', slug: 'guides/chat-cards' },
                       { label: 'Bulletin Boards', slug: 'guides/bboards' },
+                      { label: 'RP Finder', slug: 'guides/rp-finder' },
                       { label: 'Writing Plugins', slug: 'guides/plugins' },
                       { label: 'Softcode in Your Editor', slug: 'guides/editor-support' },
                       { label: 'Remote MCP and LSP Analysis', slug: 'guides/mcp' }
