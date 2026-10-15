@@ -71,8 +71,8 @@ A line or veil touches a warning when either contains the other as whole words. 
 
 ![Two players join a scene whose warnings touch their lines and veils](../../../assets/guide/scene-safety-join.webp)
 
-The warnings are the scene's `warning` detail, which the `scene-verse` package adds. See
-[Scene Details](/guides/scene-details).
+By default the warnings are the scene's `warning` detail, which the `scene-verse` package adds;
+the `warning-detail` [setting](#settings) names another. See [Scene Details](/guides/scene-details).
 
 ## Pause and skip
 
@@ -92,8 +92,8 @@ The owner is told this, and nobody else in the scene is told anything:
 
 ![A pause travels from the player to the Scene Safety object, which tells the scene's owner. Everyone else in the scene is told nothing.](../../../assets/guide/scene-safety-signal.svg)
 
-The message comes from the Scene Safety object, so nothing in it names you. A player can send one
-every minute:
+The message comes from the Scene Safety object, so nothing in it names you. By default a player can
+send one every minute; the `signal-wait` [setting](#settings) changes that:
 
 ```
 > +safety/pause
