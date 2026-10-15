@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 360" width="780" height="360" role="img" aria-labelledby="t d">
+<title id="t">How a character application moves</title>
+<desc id="d">An application starts as a Draft. Submit sends it to staff as Submitted, and Withdraw takes it back to Draft. From Submitted, staff ask for changes, which makes it Needs changes; the applicant submits again, which starts a new round. Staff approve a Submitted application. With a cap reached, approval puts it on the Waitlist, and it becomes Approved when a place opens. Retiring an Approved character makes it Retired and frees the place.</desc>
+<rect width="780" height="360" rx="12" fill="#f8fafc"/>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+  </marker>
+</defs>
+<g font-family="ui-sans-serif,system-ui,sans-serif" font-size="14" fill="#1e293b">
+  <rect x="30" y="60" width="130" height="44" rx="8" fill="#e2e8f0" stroke="#475569"/>
+  <text x="95" y="87" text-anchor="middle" font-weight="600">Draft</text>
+  <rect x="300" y="60" width="150" height="44" rx="8" fill="#dbeafe" stroke="#1d4ed8"/>
+  <text x="375" y="87" text-anchor="middle" font-weight="600">Submitted</text>
+  <rect x="300" y="230" width="150" height="44" rx="8" fill="#fef3c7" stroke="#b45309"/>
+  <text x="375" y="257" text-anchor="middle" font-weight="600">Needs changes</text>
+  <rect x="600" y="60" width="150" height="44" rx="8" fill="#dcfce7" stroke="#15803d"/>
+  <text x="675" y="87" text-anchor="middle" font-weight="600">Approved</text>
+  <rect x="600" y="160" width="150" height="44" rx="8" fill="#ede9fe" stroke="#6d28d9"/>
+  <text x="675" y="187" text-anchor="middle" font-weight="600">Waitlist</text>
+  <rect x="600" y="270" width="150" height="44" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="675" y="297" text-anchor="middle" font-weight="600">Retired</text>
+
+  <line x1="160" y1="74" x2="296" y2="74" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="228" y="66" text-anchor="middle" font-size="13">submit</text>
+  <line x1="300" y1="92" x2="164" y2="92" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="228" y="114" text-anchor="middle" font-size="13">withdraw</text>
+
+  <line x1="350" y1="104" x2="350" y2="226" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="342" y="170" text-anchor="end" font-size="13">ask for changes</text>
+  <line x1="400" y1="230" x2="400" y2="108" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="408" y="162" font-size="13">submit again:</text>
+  <text x="408" y="180" font-size="13">a new round</text>
+
+  <line x1="450" y1="82" x2="596" y2="82" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="523" y="74" text-anchor="middle" font-size="13">approve</text>
+  <path d="M450,98 C520,98 530,182 596,182" fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text x="468" y="206" font-size="13">approve, every</text>
+  <text x="468" y="222" font-size="13">place taken</text>
+  <line x1="675" y1="160" x2="675" y2="108" stroke="#64748b" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text x="684" y="138" font-size="13">a place opens</text>
+  <path d="M750,82 C775,82 775,292 754,292" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="600" y="236" font-size="13">retire: the place goes</text>
+  <text x="600" y="252" font-size="13">to the waitlist</text>
+
+  <text x="30" y="340" fill="#475569" font-size="13">Dashed paths happen only when the game sets a cap on active characters.</text>
+</g>
+</svg>

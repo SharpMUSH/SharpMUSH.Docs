@@ -64,6 +64,7 @@ export default defineConfig({
                       { label: 'Character Galleries', slug: 'guides/galleries' },
                       { label: 'Status', slug: 'guides/status' },
                       { label: 'Watch List', slug: 'guides/watch' },
+                      { label: 'Character Applications', slug: 'guides/character-applications' },
                       { label: 'Notifications', slug: 'guides/notifications' },
                       { label: 'Who and Where', slug: 'guides/who-where' },
                       { label: 'Letting Your Players Build', slug: 'guides/player-building' },
