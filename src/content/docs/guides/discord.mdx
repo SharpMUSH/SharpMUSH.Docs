@@ -1,0 +1,156 @@
+---
+title: Discord
+description: Setting up the game's Discord bot and linking Discord channels, so lines sent on a feed are posted there.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The **Discord plugin** links channels on a Discord server to the game. Each linked channel
+is a feed, `discord/<channel id>`, and every line sent on that feed is posted in the
+channel under the speaker's name. What goes on the feed is up to the game's softcode: a
+command, a tap on another feed, or an event.
+
+| You want to | Read |
+|---|---|
+| see how a line gets to Discord | [How it works](#how-it-works) |
+| make the bot and connect it | [Setting up the bot](#setting-up-the-bot) |
+| link a channel | [Linking a channel](#linking-a-channel) |
+| post from softcode | [Sending lines](#sending-lines) |
+| fix a link that stopped | [When a link stops](#when-a-link-stops) |
+
+Everything here needs the `discord.admin` permission. Wizards hold it, and
+`@role/allow <role>=discord.admin` hands it to a staff role.
+
+## How it works
+
+![Softcode sends a line on the feed discord/1234567890. Members of the feed see it in the game as usual, and the Discord plugin posts it through the channel's webhook into #ooc, under the speaker's name. The webhook's token is kept in the secret store.](../../../assets/guide/discord-link-flow.svg)
+
+Each game runs its own bot, from a Discord application the game's administrator makes. The
+bot's token is a [secret](/guides/secrets/), stored encrypted and never shown again.
+
+Linking a channel makes a **webhook** in it, which is how the bot posts under each
+speaker's name instead of its own. The webhook's token is a secret too, named
+`discord.webhook.<channel id>`.
+
+Each linked channel has its own queue, so a slow or broken channel holds up no other.
+
+## Setting up the bot
+
+Discord has no way for a program to make an application, so the first steps happen in
+Discord's developer portal.
+
+1. Open the [Discord developer portal](https://discord.com/developers/applications) and
+   choose **New Application**. Its name is the name players see on the bot.
+2. On the application's **Bot** page:
+   - choose **Reset Token** and copy the token;
+   - untick **Public Bot**, so nobody else can add it to their server;
+   - under **Privileged Gateway Intents**, turn on **Server Members Intent** and
+     **Message Content Intent**.
+3. In the game, store the token and connect:
+
+```
+> @secret discord.token=<the token>
+discord.token is set. Its value is never shown again.
+> @discord/connect
+[DISCORD] Done: Connecting to Discord. @discord shows how it went.
+```
+
+`@discord` shows where the connection stands. When something is wrong it says what to do
+next, and `@discord/connect` tries again once it is done:
+
+![@discord before a token is set, a channel name refused because it is not an id, a link refused while the bot is not connected, a token Discord refused, and a player without discord.admin refused](../../../assets/guide/discord-command.webp)
+
+Once Discord accepts the token, `@discord` ends with a line starting `Add the bot to a server:`
+and a link. Open it, pick the server, and keep every permission it asks for:
+
+| Permission | Why |
+|---|---|
+| View Channels, Read Message History | see the linked channels |
+| Send Messages, Send Messages in Threads | post in them |
+| Manage Webhooks | make each linked channel's webhook |
+| Manage Messages | replace a member's message with the game's version of it |
+| Manage Roles | give members the roles their game account holds |
+| Create Events | publish scenes as Discord events |
+
+Manage Roles and Create Events are for parts of the link still being built. Asking for them
+now saves adding the bot again later.
+
+<Aside>
+The token can also be given from outside the game, as the environment variable
+`SHARPMUSH_SECRET_DISCORD_TOKEN` or a file named `discord.token` in the secrets
+directory. See [Secrets](/guides/secrets/#giving-a-secret-from-outside-the-game).
+</Aside>
+
+## Linking a channel
+
+First install the **discord** package from the portal's Packages page. It is bundled with
+the game but not installed until you choose it. It adds the `discord` feed kind and the
+Discord Bridge object that owns it.
+
+Then find the channel's id. In Discord, open **User Settings**, then **Advanced**, and turn
+on **Developer Mode**. Right-click the channel and choose **Copy Channel ID**.
+
+```
+> @discord/link 1234567890123456789
+```
+
+The command returns at once, and tells you how it went when Discord answers:
+`Linked #ooc in My Game. Lines sent on the feed discord/1234567890123456789 are posted there.`
+
+The bot needs View Channel, Manage Webhooks and Manage Messages in that channel. A channel
+that takes them away from the bot's role is refused, with the missing ones named. Threads
+cannot be linked.
+
+`@discord` lists every link with its server, its id and its state. `@discord/unlink <id>`
+stops posting, deletes the channel's webhook and forgets its token. The feed and its lines
+stay in the game.
+
+## Sending lines
+
+A linked channel's feed is an ordinary feed (`help @feed` in the game), so anything that
+sends a line on it posts in Discord:
+
+```
+@feed/send discord/1234567890123456789=Server restart in ten minutes.
+```
+
+The line goes out under the name of the enactor, the player the code speaks for. How it
+reads in Discord:
+
+| Sent as | Posted as |
+|---|---|
+| `say` (the default) | the text, under the speaker's name |
+| `pose` (`:waves.`) | `*Ann waves.*` in italics |
+| `semipose` (`;'s back.`) | `*Ann's back.*` |
+| `/as Ghost/...` | the text, under the name Ghost |
+
+Colour and other markup become Discord's own formatting where it has one, and are dropped
+where it doesn't. Characters Discord treats as formatting, such as `*` and `_`, are posted
+as typed. A line never pings anyone, even when it names `@everyone` or a role.
+
+Some lines are not posted:
+
+- a line sent to only some members with `@feed/send/to`, since everyone in the Discord
+  channel would see it;
+- a line still waiting after a minute, because Discord was down or slow. A flood of old
+  chat reads worse than a gap. Past 200 waiting lines, the oldest are dropped too.
+
+A line longer than one Discord message is split at spaces into up to three posts.
+
+## When a link stops
+
+When Discord refuses a channel's posts for a reason a retry won't fix, the link stops. Its
+lines are not posted, and `@discord` shows the reason in the State column. Fix the cause,
+then `@discord/resume <id>` posts again.
+
+The common causes:
+
+- **The webhook was deleted** in Discord's channel settings. The bot makes a new one by
+  itself and carries on. If it was deleted again within ten minutes, the link stops, since
+  someone is removing it on purpose.
+- **The bot lost a permission** in the channel. Give it back, then resume.
+- **Discord refused five posts within a minute.** That points at a bug, and the server log
+  has the details.
+
+Posts go through each channel's webhook, not the bot's connection, so links keep posting
+while the bot is disconnected. Only making a new webhook needs the bot connected.
