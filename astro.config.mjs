@@ -66,6 +66,7 @@ export default defineConfig({
                       { label: 'The Command Palette', slug: 'guides/command-palette' },
                       { label: 'Events', slug: 'guides/events' },
                       { label: 'Bulletin Boards', slug: 'guides/bboards' },
+                      { label: 'Jobs That Run Themselves', slug: 'guides/jobs-automation' },
                       { label: 'Character Galleries', slug: 'guides/galleries' },
                       { label: 'Status', slug: 'guides/status' },
                       { label: 'Watch List', slug: 'guides/watch' },
