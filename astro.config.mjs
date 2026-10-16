@@ -46,6 +46,7 @@ export default defineConfig({
                       { label: 'Develop SharpMUSH', slug: 'guides/local-install' },
                       { label: 'The Web Portal', slug: 'guides/web-portal' },
                       { label: 'Portal Applications', slug: 'guides/applications' },
+                      { label: 'Apps That Act for You', slug: 'guides/connected-apps' },
                       { label: 'Visual Layouts and Themes', slug: 'guides/visual-layouts' },
                       { label: 'Layout Themes', slug: 'guides/layout-themes' },
                       { label: 'Portal Themes', slug: 'guides/portal-themes' },
