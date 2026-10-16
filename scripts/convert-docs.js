@@ -100,7 +100,9 @@ export function helpLookups(pages) {
       const heading = ids.find((h) => h.level > 1 && h.text === section.heading);
       add([section.lookup, ...(section.aliases ?? [])], heading?.id);
     }
-    for (const [from, to] of Object.entries(article.redirects ?? {})) redirects.push([from, to]);
+    for (const [from, to] of Object.entries(article.redirects ?? {})) {
+      if (typeof to === 'string') redirects.push([from, to]);
+    }
   }
   for (const [from, to] of redirects) {
     const target = lookups[to.toUpperCase().trim()];

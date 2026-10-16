@@ -12,7 +12,7 @@ Converts markdown files from the SharpMUSH submodule into Starlight-compatible d
 - **Frontmatter generation**: Adds Starlight-compatible YAML frontmatter with title and description
 - **Heading level adjustment**: Converts H1 (`#`) to H2 (`##`) and H2 (`##`) to H3 (`###`) for better integration with Starlight navigation
 - **Link conversion**: Converts SharpMUSH-style internal links (`[help TOPIC|DISPLAY]`) to Starlight navigation links
-- **Links by lookup**: A link goes to the page and heading whose `help-article` block names the topic as its lookup, an alias or a redirect, as the game finds it. Topics on a page without that block fall back to `doc-mappings.json`
+- **Links by lookup**: A link goes to the page and heading whose `help-article` block names the topic as its lookup, an alias or a redirect, as the game finds it. Every page's `#` headings are lookups too, after the blocks; only a topic none of them names falls back to `doc-mappings.json`
 
 ### `index-headers.js`
 
