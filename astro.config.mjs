@@ -95,9 +95,17 @@ export default defineConfig({
                   label: 'Packages',
                   items: [
                       {
+                          label: 'Essentials',
+                          collapsed: true,
+                          items: [
+                              { label: 'Game Help with +help', slug: 'guides/game-help' },
+                          ],
+                      },
+                      {
                           label: 'Scenes',
                           collapsed: true,
                           items: [
+                              { label: 'Scenes', slug: 'guides/scenes' },
                               { label: 'Scene Pose Types', slug: 'guides/scene-pose-types' },
                               { label: 'Scene Details', slug: 'guides/scene-details' },
                               { label: 'Scene Availability', slug: 'guides/scene-availability' },

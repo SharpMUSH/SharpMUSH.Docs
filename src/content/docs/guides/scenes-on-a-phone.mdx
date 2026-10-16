@@ -1,15 +1,13 @@
 ---
 title: Scenes on a Phone
-description: Play a live scene from a phone in the web portal, pick up an unsent pose on another device, and put the scene schedule in a calendar app.
+description: Play a live scene from a phone in the web portal, and pick up an unsent pose on another device.
 ---
 
 import { Aside } from '@astrojs/starlight/components';
 
-The web portal's live scene page works on a phone as well as on a desktop. This page covers:
-
-- how a live scene looks on a phone;
-- how an unsent pose follows you from one device to another;
-- adding the scene schedule to a calendar app.
+The web portal's live scene page works on a phone as well as on a desktop. This page covers how a
+live scene looks on a phone, and how an unsent pose follows you from one device to another. To put
+the scene schedule in a calendar app, see [Scenes in your calendar](/guides/scenes/#scenes-in-your-calendar).
 
 All of it comes with the Scene plugin. On a game without it, the portal shows no Scenes section at all.
 
@@ -64,73 +62,3 @@ keeps the draft in the browser only.
 If two devices type at the same moment, the one that saved last wins. Switch back to a device and
 it shows the newer draft.
 </Aside>
-
-## Scenes in your calendar
-
-The **Scheduled** list under **Scenes** has an **Add to calendar** button. It opens a card with
-calendar addresses. Paste an address into a calendar app (Google Calendar, Apple Calendar, Outlook
-and Thunderbird all accept one), or press **Subscribe** to hand it to the calendar app on your
-device.
-
-Each scene appears at your own local time. The feed gives every start time in UTC, and the
-calendar app converts it to the zone your device is set to, so two players in different countries
-both see the right time. Scenes have no end time, so each event lasts two hours. The calendar app
-checks for changes every hour.
-
-![The Add to calendar card on a phone: the public address with Copy and Subscribe buttons, and a private link section that says when the link was made, with Make a new link and Turn it off buttons.](../../../assets/guide/scene-calendar-phone.webp)
-
-![The private link section on a phone just after the link was made: a checkbox for Only scenes I run or joined, the address with Copy and Subscribe, and a note that the address is shown only now.](../../../assets/guide/scene-calendar-phone-link.webp)
-
-![The Add to calendar card on a desktop browser, above the scheduled scenes: the public address and a private link, each with Copy and Subscribe.](../../../assets/guide/scene-calendar-desktop.webp)
-
-### The public feed
-
-The first address lists every public scene on the schedule. Anyone can use it, without signing in,
-so a game can also put it on its website.
-
-```text
-https://<your game>/api/scenes/calendar.ics
-```
-
-It lists the scenes that were given a start time: those still to come, those running, and those that started in
-the last 14 days. A scene started on the spot, with no time set, does not appear.
-
-### Your private link
-
-A private link adds the private scenes your character can see. Press **Make my private link**, then
-copy the address before you leave the page: the server keeps only a fingerprint of it, so it cannot
-show it to you again.
-
-Tick **Only scenes I run or joined** before you copy it to leave out the scenes you have nothing to
-do with. That adds `?scope=mine` to the address.
-
-Anyone who has the address can read the feed, so keep it to yourself. If it gets out, press **Make
-a new link**: the old address stops working at once. **Turn it off** removes the link without
-making a new one.
-
-The link belongs to the character you are playing in that browser tab. Switch characters to make a
-link for another one.
-
-### What an event holds
-
-This is a scene from a test server's public feed, as a calendar app reads it:
-
-```text
-BEGIN:VEVENT
-UID:scene-2@localhost
-DTSTAMP:20261015T065628Z
-LAST-MODIFIED:20261015T061529Z
-DTSTART:20261017T061525Z
-DTEND:20261017T081525Z
-SUMMARY:The Northern Road
-DESCRIPTION:The caravan leaves at dawn\; who rides with it?\n\nRun by God\n
- \nhttps://localhost:8081/scenes/2
-URL:https://localhost:8081/scenes/2
-STATUS:CONFIRMED
-TRANSP:TRANSPARENT
-END:VEVENT
-```
-
-The title is the scene's title. The description holds its pitch, who runs it, and a link to the
-scene in the portal. A scene that has a room also gives the room's name as the event's location.
-The event is marked as free time, so it does not block your calendar.
