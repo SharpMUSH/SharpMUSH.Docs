@@ -187,6 +187,5 @@ entry, so one left over from other code could otherwise decide where a password 
 PennMUSH waits for the site to ask for a login before it sends `userpass`. SharpMUSH sends it as HTTP
 Basic at once, so a site that accepts only Digest logins cannot be reached this way.
 
-The headers argument comes from a PennMUSH pull request that is not yet part of a PennMUSH release.
-That change takes the headers as `Name:value` lines, where SharpMUSH takes a JSON object. In both,
-`<headers>` replaces `%q<content-type>`.
+A PennMUSH build with a headers argument takes it as `Name:value` lines, where SharpMUSH takes a JSON
+object. In both, `<headers>` replaces `%q<content-type>`.

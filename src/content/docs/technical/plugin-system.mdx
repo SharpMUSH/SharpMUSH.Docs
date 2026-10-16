@@ -1,6 +1,6 @@
 ---
 title: How Plugins Load
-description: How SharpMUSH discovers, orders, loads and unloads compiled C# plugins, and the trust model for managed packages.
+description: How SharpMUSH discovers, orders, loads and unloads compiled C# plugins, and the trust model for plugin packages.
 ---
 
 import { Aside, LinkCard } from '@astrojs/starlight/components';
@@ -57,8 +57,11 @@ that is already taken (the engine loads first) is logged and skipped; the existi
 
 The server loads each DLL exactly once, in a single pass:
 
-1. **Discovery.** It looks in `plugins/` beside the server for `*.dll` files, at the top level and one
-   folder down (`plugins/<id>/*.dll`), and reads each one's `plugin.json` if there is one.
+1. **Discovery.** It looks for `*.dll` files in two places, at the top level and one folder down
+   (`<folder>/<id>/*.dll`), and reads each one's `plugin.json` if there is one: `plugins/` beside the
+   server, which holds the plugins the server ships, and the installed-plugins directory, which holds
+   the plugins [plugin packages](#plugin-packages) installed. A plugin an administrator turned off, on
+   the Plugins tab or with `@plugin/disable`, is recorded in `plugins.state.json` there and not loaded.
 2. **Ordering.** Every plugin loads after the plugins it depends on. Plugins with no dependency on
    each other are ordered by `Priority`, then `Id`. Dependency loops are found and logged, and the
    plugins in the loop are skipped; the rest still load. A missing dependency is logged and the
@@ -81,8 +84,8 @@ plugin commands from the very first moment.
 
 ## What can be unloaded
 
-A plugin that only adds commands, functions and hooks can be **unloaded or reloaded** while the game
-runs. Anything else is load-once, because what it added can't be taken back without a restart:
+A plugin that only adds commands, functions and hooks can be **unloaded** while the game runs: turning
+it off on the Plugins tab or with `@plugin/disable` unloads it at once. Anything else is load-once, because what it added can't be taken back without a restart:
 
 | The plugin adds… | Held by… | Can unload? |
 |---|---|---|
@@ -96,9 +99,8 @@ runs. Anything else is load-once, because what it added can't be taken back with
 The server records exactly which command and function names each plugin added (names it skipped
 because they were taken are not recorded), so unloading never removes a built-in or another plugin's
 entry. Unloading removes those entries and releases the plugin's isolated context. The command trie is
-rebuilt from the live tables for every command, so nothing else needs undoing. Reloading unloads the
-plugin, then reads the DLL from disk again, so it picks up a new build. Asking to unload a load-once
-plugin is refused with a message naming what it contributed, and asking you to restart.
+rebuilt from the live tables for every command, so nothing else needs undoing. Turning off a load-once
+plugin takes effect at the next restart.
 
 SharpMUSH's tests check that an unloaded plugin's context is really freed from memory, not just
 marked as unloaded.
@@ -157,29 +159,35 @@ package uses `@scene` and the `scene…()` functions, which is why plugins regis
 install. The scene test suite passes unchanged with the scene system running as a plugin, which shows
 the plugin interfaces cover everything it needs.
 
-## Managed packages
+## Plugin packages
 
-A managed package (`kind: managed`) carries a plugin's files and their SHA-256 checksums in its
-`package.yaml` (see [Publishing a plugin as a package](/guides/plugins#publishing-a-plugin-as-a-package)).
-Installing one:
+A plugin package (`kind: plugin`) carries a plugin's files and their SHA-256 checksums in its
+`package.yaml` (see [Publishing a plugin as a package](/guides/plugins#publishing-a-plugin-as-a-package)
+and [Application, Plugin and UI Packages](/reference/package-kinds#plugin-packages)). Installing one:
 
-1. **Trust check, in two parts, both required.** The operator confirms this install with the
-   managed-code opt-in, *and* the package id is on the server's allow-list (`ManagedPackages:AllowList`,
-   or `ManagedPackages:AllowAll`). A package can never declare itself trusted.
+1. **Trust check.** The host allows plugin packages unless it sets `SHARPMUSH_PLUGIN_INSTALL=false`,
+   which refuses every one, from a remote or by upload. When it allows them, the administrator still
+   confirms, for each apply, that they trust the author's code. A package can never declare itself
+   trusted.
 2. **Version check.** A package built for a newer plugin contract than the server provides is refused.
 3. **Checksums.** Every file is read from the exact commit the manifest came from and compared with its
-   checksum. A missing file or any mismatch stops the install with nothing written.
-4. **Install.** The checked files are written into `plugins/<id>/`, replacing any earlier copy, and
-   their names are recorded with the installed package.
-5. **Uninstall** unloads the plugin first if it can be unloaded, then deletes `plugins/<id>/` so the
+   checksum, and the files must include a `plugin.json` with the package's id. A missing file or any
+   mismatch stops the install with nothing written.
+4. **Install.** The checked files are written into the installed-plugins directory, in a folder named
+   for the plugin id, replacing any earlier copy. The directory is `SHARPMUSH_PLUGINS_PATH`, by default
+   the world's path with `.plugins` added, on the data volume beside the world so an image update keeps
+   it.
+5. **Uninstall** unloads the plugin first if it can be unloaded, then deletes its folder so the
    next start doesn't load it.
 
-A newly installed managed plugin loads **the next time the server starts**.
+A newly installed plugin loads **the next time the server starts**. A [UI package](/reference/package-kinds#ui-packages)
+(`kind: ui`) asks for the same confirmation; its files go under `.ui/` in the same directory, where the
+plugin loader does not look.
 
 <Aside type="caution" title="Checksums are not trust">
-A managed package runs arbitrary compiled C# with full server trust; there is no sandbox, exactly as
+A plugin package runs arbitrary compiled C# with full server trust; there is no sandbox, exactly as
 with a DLL copied into `plugins/` by hand. Checksums prove the files are the ones the manifest named.
-Whether to run them is the operator's decision, which is why the default is to install none.
+Whether to run them is the administrator's decision, which is why every install asks.
 </Aside>
 
 <LinkCard

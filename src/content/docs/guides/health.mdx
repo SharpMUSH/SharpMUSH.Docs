@@ -44,8 +44,8 @@ posed and which hours of the day they posed in; for each room and day, its poses
 started there and who posed there; and the time of each character's and room's last pose.
 
 <Aside>
-Counting starts when the server is upgraded. The weeks before that have no counts, so the first
-month's comparisons read as if nobody posed before.
+Days before the server began counting have no counts, so comparisons that reach back past that
+day read as if nobody posed.
 </Aside>
 
 ## The Activity page
@@ -63,7 +63,7 @@ shaded the same way, next to the busiest and dead rooms:
 
 ## +health
 
-Install the **health** package from **Admin, Packages**. It adds `+health`. These examples come from
+Install the **health** package from **Packages** in Build & manage. It adds `+health`. These examples come from
 a game with `+config health/limit=5` and the health-jobs package, which adds the *Staff load*
 section and `/staff` (see [Staff load](#staff-load)):
 
@@ -160,8 +160,8 @@ of each month kept posing. It shows the last 12 months, the `months` setting:
   days, and so on. A dash means those days have not all passed yet.
 
 The month comes from the audit log: the first time the character, or its account, was given the
-`approved` role. A character approved before the audit log kept that counts by the month it was
-created, and the screen says how many did.
+`approved` role. A character with no approval in the audit log counts by the month it was created,
+and the screen says how many did.
 
 ## Rooms
 

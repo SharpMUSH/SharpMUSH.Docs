@@ -16,8 +16,9 @@ Choose how the web side reaches the internet:
 
 - `docker-compose.prod.yml` includes Caddy. Open web ports 80 and 443 and the telnet port you intend
   to use; keep the game server, NATS, metrics and connection-server web ports private.
-- `docker-compose.cloudflare.yml` uses a Cloudflare Tunnel for the web side and hides the machine's
-  address. Telnet still needs its own, deliberate public route.
+- `docker-compose.cloudflare.yml` uses a Cloudflare Tunnel for the web side and hides the web
+  origin. Telnet still needs its own, deliberate public route, a DNS-only record that shows the
+  machine's address.
 
 Create `.env` from `.env.example`, set unique secrets, restrict who can read the file, and keep it out
 of source control and anything you share for troubleshooting. Set up restic only if you turn backups
@@ -70,7 +71,9 @@ These are not interchangeable:
 | The world | `sharpmush-server`'s `app-data` volume | Use `@backup` to make a point-in-time copy. Never let restic or another tool read the live `data.mdb`. |
 | Wiki files | `app-data` volume, outside the world | Include them directly in restic snapshots. A world copy does not contain uploads. |
 | NATS data | The `nats-data` volume | Keep it so browser sessions can recover across restarts, and back it up if that matters to you. Losing it never means losing the world. |
-| Plugins and settings | The deployment folder or a mounted plugin folder | Keep them in version control or snapshots, with `.env` values in a separate secrets store. |
+| Key ring | `app-data` volume, `lightning.dataprotection-keys` beside the world | Back it up (the restic container does), apart from the world copies where you can. Without it the world's [secrets](/guides/secrets) must be set again. |
+| Installed plugins | `app-data` volume, `lightning.plugins` beside the world | Included in restic snapshots. Restore the whole folder with the world. |
+| Deployment settings | The `deploy/` folder and `.env` | Keep them in version control or snapshots, with `.env` values in a separate secrets store. |
 | The restic repository | Off-machine storage | Protect its password separately, watch the nightly results, and test restores. It holds safe world copies and the other files you chose, not a live snapshot of the running database. |
 
 Keeping backups is not the same as knowing they work. Check the nightly results and `@backup/list`,
@@ -102,7 +105,7 @@ The restore commands are in the [Deployment Reference](/guides/deployment#restor
   and `@storage`.
 - Backups finished, and the off-machine copies are being kept as intended.
 - Leftover `.previous`, `.precompact`, `.staging-*` and unfinished backup folders. Remove them only
-  after whatever replaced them is checked (see [Earlier worlds](/guides/deployment#earlier-worlds)).
+  after whatever replaced them is checked (see [Earlier worlds](/guides/storage-and-retention#earlier-worlds)).
 - Certificate expiry, proxy routes, that telnet answers, and a real portal login (a page loading is
   not enough).
 - Changes to accounts, bans, site locks and administrators. Replace any exposed secret and sign out

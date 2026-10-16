@@ -1,12 +1,15 @@
 ---
 title: Package Format
-description: The complete package.yaml reference for SharpMUSH softcode, application and managed packages.
+description: "The package.yaml reference for SharpMUSH softcode packages: the manifest, refs, objects, versions and the format versions."
 ---
 
 import { Aside } from '@astrojs/starlight/components';
 
-This is the full reference for `package.yaml`, the file that describes a SharpMUSH package. For what
+This is the reference for `package.yaml`, the file that describes a SharpMUSH package. For what
 packages are and how to install them, start with [Softcode Packages](/guides/packages).
+[Package Declarations](/reference/package-declarations) covers the roles, settings, wiki pages,
+attribute entries and other blocks a package brings beside its objects, and
+[Application, Plugin and UI Packages](/reference/package-kinds) the other kinds of package.
 
 A package is a folder with a `package.yaml` in it. The file describes **the result you want**, not a
 script: there is no ordering, no `@create` lines, and **no dbrefs**. Objects are named with
@@ -20,7 +23,7 @@ back.
 Every top-level key a softcode package can use, with the format version that added it:
 
 ```yaml
-format: "1.10"                  # format version (omit = 1; 1.2 adds roles and permissions, 1.3 settings, 1.5 attribute entries, 1.6 the engine range, 1.7 plugins, 1.8 attribute indexes, 1.10 category)
+format: "1.10"                  # format version (omit = 1; 1.2 adds roles and permissions, 1.3 settings, 1.4 wiki pages, 1.5 attribute entries, 1.6 the engine range, 1.7 plugins, 1.8 attribute indexes, 1.9 attribute watches, 1.10 category)
 package: myrddins-bbs           # required: lowercase letters, digits and hyphens, up to 64 characters
 version: 2.4.1                  # required: a version number (see Versions below)
 authors: [Myrddin]              # optional: a list, or one string
@@ -121,9 +124,31 @@ attributes:                     # optional (1.5): attribute entries, as @attribu
     index: true                 # optional (1.8): an index, as @attribute/index makes it
 ```
 
-The sections below cover each block. `kind:` and `application:` are under
-[Application packages](#application-packages), and `binaries:` under
-[Managed packages](#managed-packages).
+The sections below cover the manifest itself. The blocks from `categories:` on are in
+[Package Declarations](/reference/package-declarations), and `kind:`, `application:` and `binaries:` in
+[Application, Plugin and UI Packages](/reference/package-kinds).
+
+## Format versions
+
+`format:` names the version of this format the manifest is written for. A server warns about a newer
+minor version and ignores the keys it doesn't know; it refuses a newer major version. This server reads
+format 1.10.
+
+| Format | Adds |
+|---|---|
+| 1 | The manifest on this page |
+| 1.1 | Application packages |
+| 1.2 | [`categories:`, `permissions:` and `roles:`](/reference/package-declarations#roles-and-permissions-format-12) |
+| 1.3 | [`settings:`](/reference/package-declarations#configuration-options-format-13) |
+| 1.4 | [`wiki:` and `locale:`](/reference/package-declarations#wiki-pages-format-14) |
+| 1.5 | [`attributes:`](/reference/package-declarations#attribute-entries-format-15) |
+| 1.6 | [`verified_server` and `maximum_server`](/reference/package-declarations#engine-version-range-format-16) |
+| 1.7 | [`plugins:`](/reference/package-declarations#plugins-a-package-calls-format-17) |
+| 1.8 | [An attribute entry's `index:`](/reference/package-declarations#attribute-indexes-format-18) |
+| 1.9 | [An attribute entry's `watch:`](/reference/package-declarations#attribute-watches-format-19) |
+| 1.10 | [`category:`](/reference/package-declarations#category-format-110) |
+
+Write `"1.10"` in quotes, so YAML tools don't read it as 1.1.
 
 ## Writing softcode in YAML
 
@@ -307,465 +332,36 @@ that is not one to three numbers, or a `maximum_server` below `requires_server`.
 1.2 and 1.3 blocks: an invalid category, permission or role name; a built-in permission or a system
 role; a role priority outside 1-29 or a colour that isn't `#rrggbb`; a role permission other than
 `allow` or `deny`; a configuration option that doesn't exist or that a package can't set, a value it
-doesn't take, or a ref for an option that isn't a dbref; any of these blocks in a managed package.
-In the format 1.5 `attributes:` block: a name `@attribute` would refuse, a flag that isn't an
+doesn't take, or a ref for an option that isn't a dbref; any of these blocks in a plugin or UI package.
+In format 1.4: a `page` that isn't `namespace:slug` in the `main`, `help` or `category` namespace, a page
+listed twice, a page with both or neither of `file` and `markdown`, or a link that doesn't name its page in
+full. In the format 1.5 `attributes:` block: a name `@attribute` would refuse, a flag that isn't an
 attribute flag, a `limit` that doesn't compile, both a `limit` and an `enum`, an empty `enum`, a
 `delimiter` longer than one character or a choice that contains it, a `retroactive` other than true
 or false, or the block in a manifest whose `format` is below 1.5. In format 1.7: a `plugins:` entry
 that isn't a valid plugin id. In format 1.8: an `index:` that isn't `true`, `false` or the options
-`@attribute/index` takes, or one on an entry with `internal` in its flags. In format 1.10: a `category:` longer
+`@attribute/index` takes, or one on an entry with `internal` in its flags. In format 1.9: a `watch:` that isn't `true`, `false` or
+the attribute wildcards `@attribute/watch` takes. In format 1.10: a `category:` longer
 than 40 characters.
 
 **Warnings** (the manifest is accepted): unknown keys (likely typos); reserved keys (`provides`,
 `recommends`, `suggests`, configure `pattern`); configure questions nothing uses; more than 5
 keywords; a format version whose minor number is newer than the server supports; a `verified_server`
 below `requires_server` or above `maximum_server`; a plugin listed twice in `plugins:`; an `index:` in a
-manifest whose `format` is below 1.8, which is ignored; a `category:` in a manifest whose `format`
+manifest whose `format` is below 1.8, which is ignored; a `watch:` in a manifest whose `format` is below
+1.9, which is ignored; a `category:` in a manifest whose `format`
 is below 1.10, which is ignored; a permission or
 role naming a category the package doesn't declare, or a role allowing a permission the package
 doesn't declare (the game must already have it, or the install stops).
 
-## Roles and permissions (format 1.2)
+## Repositories and the bundled catalogue
 
-A package can bring the roles and custom permissions its softcode checks, and the categories they
-belong to. Declare them beside `objects:` and set `format: 1.2`; an older server warns and ignores
-these blocks.
-
-```yaml
-format: 1.2
-package: requests
-version: 1.0.0
-
-objects:
-  - ref: requests
-    type: thing
-    name: Requests
-
-categories:                     # each list optional; every category needs a description
-  roles:
-    - name: Requests
-      description: Roles for working the request queue.
-  permissions:
-    - name: Requests
-      description: Permissions for the request queue.
-
-permissions:                    # custom permissions only, checked with permission() or PERM^ locks
-  - name: requests.handle
-    category: Requests          # declared above, or already in the game
-    description: Work on any request.
-
-roles:
-  - slug: handler               # what roles() lists and hasrole() takes
-    name: Request Handler       # optional display name (defaults to the slug)
-    category: Requests
-    color: "#4fc3c8"            # optional
-    priority: 11                # optional, 1-29: always below the wizard role
-    permissions:                # custom permissions only: allow | deny
-      requests.handle: allow
-```
-
-A role may allow or deny only custom permissions. Built-in ones (`wiki.admin`, `game.wizard` and so
-on) are the game's to hand out with `@role`, so installing a package never grants staff powers. A
-package can't declare a system role, and a managed package can't declare any of these blocks.
-
-- **Install.** Anything the game doesn't have yet is created and belongs to the package. Anything the
-  game already has (a `Staff` category, a `helper` role) is used as it is; the package never changes
-  or removes it. A role or permission another installed package owns stops the install, as does a
-  role naming a category or permission that neither the package nor the game has.
-- **Upgrade.** Each item is compared field by field with what the previous version declared: a field
-  the new version changes takes the new value, and every other field keeps what the game has. So
-  renaming the package's role, or denying one of its permissions on it, survives an upgrade that
-  doesn't touch that field.
-- **Removed items and uninstall.** A role nobody holds, a permission no remaining role uses, and an
-  empty category are removed. Anything the game still relies on (a role someone holds, a permission a
-  role still uses, a category with something in it) is kept and stops belonging to the package, so a
-  later reinstall treats it as the game's own. Removing a permission also clears every account and
-  object override of it.
-- **Rollback** restores objects and attributes only; roles, permissions and categories stay as they
-  are.
-
-## Configuration options (format 1.3)
-
-A package can set configuration options, the same ones `@config/set` sets. Declare them under
-`settings:` and set `format: 1.3`; an older server warns and ignores the block.
-
-```yaml
-format: 1.3
-package: messages
-version: 1.0.0
-
-objects:
-  - ref: messages
-    type: thing
-    name: Messages
-
-settings:                       # the option name as @config lists it: its value
-  messages_object: "{{messages}}"   # a dbref option may name one object ref
-  noisy_whisper: "yes"          # otherwise, a value @config/set would accept
-```
-
-The option must exist and be one `@config/set` can change (not a file path, a list with its own
-command, or one of God's options), and a value must be one the option accepts; otherwise the
-manifest is refused. A ref is only allowed for a dbref option, and must be the whole value. When the
-package is planned, each value is also checked against the live game: a value out of range, or one
-the game refuses, stops the plan instead of being adjusted. A managed package can't declare
-`settings:`.
-
-The review screen lists each option with its current and new value, and asks for confirmation before
-applying a package that changes one.
-
-- **Install.** Each option is set, and the value it replaced is recorded. An option another installed
-  package sets stops the install: uninstall that package first.
-- **Upgrade.** A value the new version changes is set again. A value it leaves alone keeps whatever
-  the game has now, so an administrator's `@config/set` survives.
-- **Removed options and uninstall.** The option goes back to the value the package replaced, unless
-  the game has changed it since; then it is left alone.
-- **Rollback** leaves configuration options as they are.
-
-## Attribute entries (format 1.5)
-
-A package can add standard attributes to the game's attribute table, the one `@attribute` manages:
-the flags every new copy of an attribute gets, and a `limit` or an `enum` its values must meet.
-Declare them under `attributes:` and set `format: 1.5`; an older server warns and ignores the block.
-
-```yaml
-format: 1.5
-package: jobs
-version: 2.0.0
-
-attributes:                     # attribute name: the entry @attribute would make
-  JOB`STATUS:
-    enum: [new, staff, player, held, closed]   # as @attribute/enum: a value must be one of these
-  JOB`TITLE:
-    limit: '^.{1,60}$'          # as @attribute/limit: a regular expression, any case
-  JOB`DUE:
-    enum: [this week, next week, someday]
-    delimiter: '|'              # choices with spaces need another delimiter
-  JOB`NOTES:
-    flags: [wizard, no_command] # default flags, as @attribute/access takes them
-    retroactive: true           # also give these flags to every copy already on an object
-```
-
-A name is written as `@attribute` takes it, with `` ` `` only between branches. Each flag must be an
-attribute flag (`help attribute flags` lists them; `branch` can't be a default). An entry takes a `limit` or an
-`enum`, not both, because each replaces the other. A managed package can't declare `attributes:`.
-
-After installing `jobs` above, `` @attribute JOB`STATUS `` shows the entry:
-
-```
-@attribute: Information for 'JOB`STATUS'
-  Default flags: none
-  Enum values: new staff player held closed
-```
-
-Output: the entry's name, its default flags (none here) and the values it accepts. Setting another
-value is refused:
-
-```
-&JOB`STATUS me=bogus
-```
-
-Output: `` Value for JOB`STATUS needs to be one of: new staff player held closed ``.
-
-The review screen lists each entry with what the apply does to it, and how many existing copies a
-`retroactive` entry changes.
-
-![The review screen's Attribute entries card: JOB`STATUS and JOB`OWNER are created, JOB`OWNER changes 3 existing copies to the default flags WIZARD, JOB`NOTE is the game's and stays as it is, and the confirmation box above Apply is ticked](../../../assets/guide/attribute-entries-casefile-confirmed.webp)
-
-- **Install.** An entry the game doesn't have is created and becomes the package's. An entry the game
-  already has is the game's: the package uses it as it is and never changes or removes it. If its
-  `limit` or `enum` differs from the manifest's, the install stops and says why; different default
-  flags are only noted. An entry another installed package owns stops the install.
-- **Retroactive.** Default flags reach new copies of the attribute only. With `retroactive: true`,
-  every copy already on an object gets exactly the entry's flags too, whenever the apply writes them
-  or a new version turns `retroactive` on; owners are left alone. The review screen shows how many copies change and asks for confirmation
-  before applying.
-- **Upgrade.** A field the new version changes (the flags, or the limit or enum) takes the new value.
-  A field it leaves alone keeps whatever the game has now, so an administrator's `@attribute/access`
-  survives.
-- **Removed entries and uninstall.** The entry is deleted from the table. Values already stored on
-  objects stay as they are.
-- **Rollback** leaves attribute entries as they are.
-
-## Engine version range (format 1.6)
-
-Three keys say which SharpMUSH versions a package runs on. `verified_server` and `maximum_server`
-need `format: 1.6`; an older server warns and ignores them.
-
-```yaml
-format: 1.6
-requires_server: ">=2.0"    # the lowest version, with >= or >
-verified_server: "2.4"      # the newest version the author tested on
-maximum_server: "2"         # the newest version it runs on: every 2.x
-```
-
-| Key | Written as | On a server outside it |
-|---|---|---|
-| `requires_server` | `>=` or `>` clauses | Refused: the review screen shows why and **Apply** stays off |
-| `verified_server` | a version | A newer *major* version warns; the install goes ahead |
-| `maximum_server` | one to three numbers | Warns, and **Apply** waits for **Install it anyway** |
-
-In `maximum_server`, the numbers left out match anything: `2` is every 2.x, `2.4` every 2.4.x,
-`2.4.1` that version alone. A package installed past its maximum is marked **Past maximum** on the
-Packages page, and the audit log records `package.past-maximum`. Installing a version that fits the
-server clears the mark.
-
-Leave `maximum_server` out unless a SharpMUSH version is known to break the package.
-[Versioning Packages](/guides/versioning) explains why, and what counts as a breaking change.
-
-## Plugins a package calls (format 1.7)
-
-Some commands and functions come from a [plugin](/guides/plugins), not from the engine: `+scene`,
-`scenewhere()` and the other `scene…()` functions are the Scene plugin's. A plugin can be turned off,
-fail to load, or not be installed at all, and then those names are not there. A package whose code
-calls them names the plugins under `plugins:`, by plugin id (the `id` in its `plugin.json`):
-
-```yaml
-format: 1.7
-package: scene-verse
-version: 1.1.0
-plugins: [scene]
-
-depends:
-  - scene: ">=1.6"
-```
-
-- **Install and upgrade.** The plan is blocked while any plugin it names is not running. The review
-  screen and `@package` say which one: `needs the scene plugin, which is not running`.
-- **Turning a plugin off** (the Plugins tab or `@plugin/disable`) uninstalls, after a backup and your
-  confirmation, every package that names it, and the packages that depend on those.
-- **Rollback.** Rolling a package back puts back the plugins that revision named. A rollback to a
-  revision whose plugin is not running is refused: `revision 1 needs the scene plugin, which is not running`.
-- **The bundled catalogue** does not offer a package whose plugin is not running, and a new game does
-  not install it.
-
-![The review of the scene package on a server without the Scene plugin: a red line reads "Needs the scene plugin, which is not running on this server." and Apply is greyed out](../../../assets/guide/package-review-needs-plugin.webp)
-
-![The setup wizard's package list: Scene System is greyed out with "Not available on this server: the plugin it runs on is not installed."](../../../assets/guide/setup-package-needs-plugin.webp)
-
-Name a plugin here only when the package cannot work without it. Code that only reads a plugin when it
-is there, and checks first, needs no entry. The bundled `room-contents` package does this: it asks
-`scenewhere()` for the room's scene and treats any `#-1` answer, including the one for a function that
-does not exist, as no scene.
-
-## Attribute indexes (format 1.8)
-
-An attribute entry can carry an `index:`, so the package's code can find objects by the attribute's
-value with `indexed()` or `lsearch()`'s `INDEX` class instead of searching every object.
-[Attribute Indexes](/guides/attribute-indexes) explains what an index does. Set `format: 1.8`; in an
-older manifest `index:` is ignored with a warning.
-
-```yaml
-format: 1.8
-package: casebook
-version: 1.0.0
-
-attributes:
-  CASE`STATUS:
-    enum: [open, held, closed]
-    index: true                 # text without case, whole values, every object
-  CASE`LEVEL:
-    index: numeric type:thing   # the option words, as @attribute/index takes them
-  CASE`TAGS:
-    index: [exact, "split:|"]   # or the same words as a list
-```
-
-`index: false` is the same as no `index:`. The options are `exact`, `numeric`, `split` or
-`split:<delimiter>`, and `type:<type>`.
-
-![The review screen's Attribute entries card: CASE`STATUS is created and builds an index, text without case, on 3 objects; CASE`LEVEL is created and builds an index, numbers then text without case, things only, on 2 objects](../../../assets/guide/attribute-index-casebook-card.webp)
-
-- **Install.** The review screen says how many objects each index builds over. The index is built in
-  the background after the apply; until it is ready, `indexed()` answers `#-1 INDEX BUILDING`. If the
-  game already has the attribute, it must already have the same index, or the install stops and names
-  the `@attribute/index` line that fixes it.
-- **Upgrade.** The index is merged like the entry's other fields: a version that changes `index:`
-  changes the index, and one that leaves it alone keeps whatever the game has now.
-- **Removed entries and uninstall.** The entry is deleted with its index.
-
-## Category (format 1.10)
-
-`category:` names the group a package belongs with, in the words people read. The setup wizard lists
-the bundled packages under their categories, so a game picks its scene packages together and its staff
-tools together. Set `format: "1.10"`, quoted so that YAML tools do not read it as 1.1. In an older
-manifest `category:` is ignored with a warning.
-
-```yaml
-format: "1.10"
-package: jobs-app
-version: 1.0.3
-category: Staff
-```
-
-`category:` is optional. A category is one name of up to 40 characters, and runs of spaces in it
-become one. Packages that share a category, ignoring case, are listed together, and one with no
-category is listed under **Uncategorized**, last. Within a category, a package that needs another package of the same category is
-listed under it: `jobs-app` comes under `jobs`.
-
-![The setup wizard's Staff group, 0 of 4 chosen: Jobs with Jobs in the portal listed under it, and health with health-jobs listed under it](../../../assets/guide/setup-packages-addons.webp)
-
-The bundled packages use these categories:
-
-| Category | Packages |
-|---|---|
-| Essentials | `softcode-editor`, `plus-help`, `plus-config`, `messages` |
-| Web portal | `http-handler`, `profile-handler`, `room-contents`, `comm-feed` |
-| Scenes | `scene`, `scene-here`, `radio-scene`, `scene-verse`, `scene-safety`, `highlights`, `highlights-app`, `time`, `timeline`, `scene-availability`, `summary` |
-| Community | `wiki-reader`, `radio`, `bboards`, `bboards-app`, `who-where`, `status`, `watch`, `discord`, `notifications`, `notifications-app` |
-| Staff | `jobs`, `jobs-app`, `health`, `health-jobs` |
-| Characters | `chargen`, `chargen-app`, `finger`, `info`, `roster`, `roster-jobs`, `relationships`, `relationships-scene`, `relationships-app`, `relationships-card`, `alts` |
-
-## Application packages
-
-Most packages are **softcode** packages (`kind: softcode`, the default): they create objects and
-manage attributes. An **application** package (`kind: application`) adds a
-[portal application](/guides/applications) instead. It owns **no objects**; it depends on the
-softcode package that provides the HTTP routes the application reads and submits to.
-
-```yaml
-format: 1.1
-package: chargen-app
-kind: application                 # softcode (default) | application
-version: 1.0.0
-depends:
-  - chargen: ">=1.0"              # the softcode package providing the routes
-
-configure:
-  access:                         # an application setting can be an installer question
-    label: "Minimum role"
-    type: string
-    default: player
-
-application:                      # required for kind: application, not allowed otherwise
-  slug: chargen                   # its address: /apps/chargen (defaults to the package id)
-  display_name: Character Application
-  icon: assignment_ind            # optional Material icon name
-  type: page                      # page | widget
-  schema_url: http/chargen/schema # GET: the form or view description
-  data_url: http/chargen          # optional GET: data to show, or to fill the form with
-  submit_route: http/chargen      # optional POST base for actions
-  minimum_role: "{{?access}}"     # guest|player|builder|royalty|wizard|god, or a {{?configure}} ref
-  nav_placement: Play             # optional menu section (pages): Play, World, Build, Manage, or a new name
-  nav_url: http/chargen/nav       # optional GET: the app's own sidebar links (pages in a section of their own)
-  zones: [MainContent]            # optional layout zones (widgets)
-  scope: play                     # optional page a widget belongs to (for example play)
-  oob_package: chargen.status     # optional: show the latest push of this OOB package as the widget's data
-  permission: chargen.review      # optional permission the viewer must also hold
-  order: 50                       # optional sort order
-```
-
-`permission` limits the application further than `minimum_role`: its menu entry is hidden and
-`/apps/{slug}` shows a no-access card unless the viewer holds that permission (built-in, or custom
-from `@role`). Like `minimum_role`, this is only the portal's check; the softcode routes still make
-their own decisions.
-
-`nav_url` gives a page in a menu section of its own (a `nav_placement` other than Play, World, Build
-or Manage) its own sidebar. The portal asks the route on every visit to the section, for that viewer,
-and shows its links instead of the app's single link:
-
-```json
-{ "groups": [
-  { "label": "", "items": [
-    { "label": "Needs attention", "path": "/apps/jobs", "icon": "inbox", "count": 3 },
-    { "label": "Closed", "path": "/apps/jobs?filter=old", "icon": "inventory_2" } ] },
-  { "label": "Buckets", "items": [ … ] } ] }
-```
-
-`path` must be a portal address (starting with a single `/`), `icon` is a Material icon name, and
-`count` is optional. A link is highlighted when both its path and its query match the current
-address. No groups, or a route that fails, leaves the single link.
-
-`scope` names the page a widget belongs to: the Play page lists the `play` widgets for its right-hand
-area and sidebar. `oob_package` replaces `data_url` for live data: the widget still loads its
-description from `schema_url`, but shows the latest data the game pushed under that OOB package
-(a `{ "fields": { … } }` document), and updates on every new push. Missing or broken data shows the
-widget's empty state.
-
-The text fields (`display_name`, `icon`, `schema_url`, `data_url`, `submit_route`, `minimum_role`,
-`nav_placement`, `nav_url`, `scope`, `oob_package`, `permission`, `zones`) accept the same
-`{{?configure}}`, `{{$well_known}}` and `{{dependency/ref}}` refs as attribute values, so one published
-application package adapts its role, placement and routes to each game. Applying the package
-registers the application (the same record **Admin → Applications** creates by hand), and
-uninstalling removes it. An application package must **not** declare `objects:`; keep the softcode in
-a separate package and depend on it.
-
-## Managed packages
-
-A **managed** package (`kind: managed`) distributes a compiled C# plugin instead of softcode. It
-carries no `objects:`, `application:`, `categories:`, `permissions:`, `roles:` or `settings:`, only
-the plugin's files and their checksums:
-
-```yaml
-format: 1
-package: hello-ui
-kind: managed
-version: 1.0.0
-
-binaries:                         # required for kind: managed, not allowed otherwise
-  min_server_version: ">=1.0"     # the plugin contract version the files were built against
-  files:                          # at least one; each sits beside package.yaml
-    - file: HelloUiPlugin.dll     # a plain file name, no folders
-      sha256: "a3a25a87d7d35612e175961657f2aa94e87c93c22f513bd424c52ebbc6975623"
-    - file: plugin.json
-      sha256: "5b0c85e13578c170502bd61ff14fc0d10795b1f48451dd686a0e8980dc909758"
-```
-
-Installing checks every file against its SHA-256 and refuses a server older than
-`min_server_version`. The files are copied into `plugins/<package id>/` only once the server's
-operator has allowed managed code, and the plugin loads on the next restart. A plugin that needs
-roles, permissions or settings declares them in a softcode package it depends on. See
-[Publishing a plugin as a package](/guides/plugins#publishing-a-plugin-as-a-package).
-
-## Repositories, discovery and releases
-
-A git repository holds one or more packages. Its root may have an `index.yaml` so browsing is fast;
-without one, the repository is searched for `package.yaml` files. An entry is a folder path, or a
-mapping with `path` and optionally `name`, `package`, `version` and `description`, so the portal can
-list packages without reading every manifest (an id may appear only once):
-
-```yaml
-name: SharpMUSH Packages
-description: Official softcode packages.
-packages:
-  - path: who-where/
-    name: Who/Where
-    package: who-where
-    version: 1.2.0
-    description: +who and +where commands
-  - starter-area/
-```
-
-**Releases are git tags** named `<package-folder>/v<version>`, for example `who-where/v1.2.0`. The
-version list in the portal is the tag list, installing a version uses its tag, and the latest commit
-is the development channel. Never move or delete a release tag; publish a fix as a new version. The
-installer records the commit it applied and warns loudly if a tag it installed from later points
-somewhere else.
-
-### The bundled catalogue
-
-Some packages are built into the server and appear in the portal under the reserved remote name
-**`bundled`**, with no download and no configured remote. Two separate things can be true of them:
-
-- **Shipped**: the package is in the server and can be installed from the catalogue at any time.
-- **Installed on first start**: a new game gets it without being asked. `http-handler`,
-  `profile-handler`, `room-contents`, `comm-feed`, `plus-help`, `plus-config`, `scene`, `scene-help`,
-  `scene-config` and `scene-here` are. A bridge such as `scene-help` installs only where both of the
-  packages it joins are installed (see [Bridge Packages](/guides/bridge-packages/)).
-  `wiki-reader`, `jobs`, `jobs-app`, `messages`, `bboards`, `who-where`, `status`, `watch`, `finger`,
-  `notifications`, `notifications-app` and `scene-verse` are shipped but not installed: `+wiki` puts an object in the master room, the job queue, the
-  [bulletin boards](/guides/bboards), `+who`, [`+status`](/guides/status), the [watch list](/guides/watch), [`+finger`](/guides/finger)
-  and [`+notify`](/guides/notifications) add commands a game
-  may not want, a game chooses whether it wants a [verse and content warnings](/guides/scene-details#verse-canon-and-content-warnings)
-  named on its scenes, and a new game reads its connect screen and MOTDs from stored text until
-  an administrator chooses the Messages object (in the setup wizard or on the package's page).
-
-A bundled package may only depend on other bundled packages, so installing it never needs the
-network. Anything installed from the catalogue records `bundled:sharpmush` as its source, and is
-upgraded in place when a newer server ships a newer version.
+Repositories, release tags and the packages built into the server are covered in
+[Softcode Packages](/guides/packages#getting-packages).
 
 ## Who owns installed objects
 
-Installed objects belong to the **Package Manager wizard** (`#3`, set by the `package_manager`
+Installed objects belong to the **Package Manager wizard** (`#7`, set by the `package_manager`
 option). The game records which package created each object and manages each attribute, including
 each attribute's value as installed. That is what makes upgrades a real three-way merge: the original,
 your live edits and the new version. Every apply is recorded with the manifest, your configure
@@ -794,14 +390,16 @@ under **Admin → Packages → Remotes**.
 | `jobs` + `jobs-app` | A complete system: commands added with `@command/add` and `@hook/override/inline`, a role and permission category, eight permissions and eight roles declared by the package, per-object hooks, `+help` topics, and a portal application driven by the same code |
 | `messages` | A configuration option (`messages_object`) pointed at the package's own object (format 1.3) |
 | `bboards` | An attribute entry (`BBOARD`, wizard and no_command by default) declared in the manifest (format 1.5) |
-| `hello-ui` | A managed package: a compiled plugin that adds a portal page |
+| `coast-guide` | A content pack: wiki pages only, one of them pinned to the wiki home (format 1.4) |
+| `hello-ui` | A plugin package: a compiled plugin that adds a portal page |
+| `builder-graph` | A UI package: a hosted HTML and JavaScript page |
 
 `hello-world`, slightly shortened:
 
 ```yaml
 format: 1
 package: hello-world
-version: 1.0.0
+version: 1.0.1
 authors: [SharpMUSH]
 description: "Minimal example package: one object, one command."
 license: MIT

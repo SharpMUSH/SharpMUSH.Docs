@@ -1,0 +1,146 @@
+---
+title: Application, Plugin and UI Packages
+description: The package.yaml reference for application packages, compiled plugin packages and hosted UI packages.
+---
+
+Most packages are softcode packages, described in [Package Format](/reference/package-format).
+`kind:` picks one of the other three described here.
+
+## Application packages
+
+Most packages are **softcode** packages (`kind: softcode`, the default): they create objects and
+manage attributes. An **application** package (`kind: application`) adds a
+[portal application](/guides/applications) instead. It owns **no objects**; it depends on the
+softcode package that provides the HTTP routes the application reads and submits to.
+
+```yaml
+format: 1.1
+package: chargen-app
+kind: application                 # softcode (default) | application
+version: 1.0.0
+depends:
+  - chargen: ">=1.0"              # the softcode package providing the routes
+
+configure:
+  access:                         # an application setting can be an installer question
+    label: "Minimum role"
+    type: string
+    default: player
+
+application:                      # required for kind: application, not allowed otherwise
+  slug: chargen                   # its address: /apps/chargen (defaults to the package id)
+  display_name: Character Application
+  icon: assignment_ind            # optional Material icon name
+  type: page                      # page | widget
+  schema_url: http/chargen/schema # GET: the form or view description
+  data_url: http/chargen          # optional GET: data to show, or to fill the form with
+  submit_route: http/chargen      # optional POST base for actions
+  minimum_role: "{{?access}}"     # guest|player|builder|royalty|wizard|god, or a {{?configure}} ref
+  nav_placement: Play             # optional menu section (pages): Play, World, Build, Manage, or a new name
+  nav_url: http/chargen/nav       # optional GET: the app's own sidebar links (pages in a section of their own)
+  zones: [MainContent]            # optional layout zones (widgets)
+  scope: play                     # optional page a widget belongs to (for example play)
+  oob_package: chargen.status     # optional: show the latest push of this OOB package as the widget's data
+  permission: chargen.review      # optional permission the viewer must also hold
+  order: 50                       # optional sort order
+```
+
+`permission` limits the application further than `minimum_role`: its menu entry is hidden and
+`/apps/{slug}` shows a no-access card unless the viewer holds that permission (built-in, or custom
+from `@role`). Like `minimum_role`, this is only the portal's check; the softcode routes still make
+their own decisions.
+
+`nav_url` gives a page in a menu section of its own (a `nav_placement` other than Play, World, Build
+or Manage) its own sidebar. The portal asks the route on every visit to the section, for that viewer,
+and shows its links instead of the app's single link:
+
+```json
+{ "groups": [
+  { "label": "", "items": [
+    { "label": "Needs attention", "path": "/apps/jobs", "icon": "inbox", "count": 3 },
+    { "label": "Closed", "path": "/apps/jobs?filter=old", "icon": "inventory_2" } ] },
+  { "label": "Buckets", "items": [ … ] } ] }
+```
+
+`path` must be a portal address (starting with a single `/`), `icon` is a Material icon name, and
+`count` is optional. A link is highlighted when both its path and its query match the current
+address. No groups, or a route that fails, leaves the single link.
+
+`scope` names the page a widget belongs to: the Play page lists the `play` widgets for its right-hand
+area and sidebar. `oob_package` replaces `data_url` for live data: the widget still loads its
+description from `schema_url`, but shows the latest data the game pushed under that OOB package
+(a `{ "fields": { … } }` document), and updates on every new push. Missing or broken data shows the
+widget's empty state.
+
+The text fields (`display_name`, `icon`, `schema_url`, `data_url`, `submit_route`, `minimum_role`,
+`nav_placement`, `nav_url`, `scope`, `oob_package`, `permission`, `zones`) accept the same
+`{{?configure}}`, `{{$well_known}}` and `{{dependency/ref}}` refs as attribute values, so one published
+application package adapts its role, placement and routes to each game. Applying the package
+registers the application (the same record **Admin → Applications** creates by hand), and
+uninstalling removes it. An application package must **not** declare `objects:`; keep the softcode in
+a separate package and depend on it.
+
+## Plugin packages
+
+A **plugin** package (`kind: plugin`) distributes a compiled C# plugin instead of softcode. It
+carries no `objects:`, `application:`, `categories:`, `permissions:`, `roles:`, `settings:`,
+`attributes:` or `wiki:`, only the plugin's files and their checksums:
+
+```yaml
+format: 1
+package: hello-ui
+kind: plugin
+version: 1.0.0
+
+binaries:                         # required for kind: plugin and kind: ui, not allowed otherwise
+  min_server_version: ">=2.0"     # the plugin contract version the files were built against
+  files:                          # at least one; each sits beside package.yaml
+    - file: HelloUiPlugin.dll     # a plain file name, no folders
+      sha256: "a3a25a87d7d35612e175961657f2aa94e87c93c22f513bd424c52ebbc6975623"
+    - file: plugin.json
+      sha256: "5b0c85e13578c170502bd61ff14fc0d10795b1f48451dd686a0e8980dc909758"
+```
+
+The files must include the plugin's `plugin.json`, with the same id as the package. Installing
+checks every file against its SHA-256 and refuses a package built for a newer plugin contract than
+the server provides. The plugin loads on the next restart. A plugin that needs roles, permissions or
+settings declares them in a softcode package it depends on. [How Plugins Load](/technical/plugin-system#plugin-packages)
+covers where the files go and what an administrator confirms before they are installed;
+[Publishing a plugin as a package](/guides/plugins#publishing-a-plugin-as-a-package) covers writing one.
+
+## UI packages
+
+A **UI** package (`kind: ui`) installs a plain HTML and JavaScript page that the portal hosts, with
+no compiled code and no game objects. Its `binaries:` lists the page's files and their checksums, the
+same way a plugin package lists a DLL. The bundled `builder-graph` example is one:
+
+```yaml
+format: 1.3
+package: builder-graph
+version: 0.3.0
+kind: ui
+binaries:
+  min_server_version: ">=2.0"
+  files:
+    - file: ui.json
+      sha256: ca8d7de593a16bf150bc0a57665cad77385f05d27d8fda63bc333fde6f8939f7
+    - file: index.html
+      sha256: dcd17006342429509cdd639c017692ef9a84dfe5f177a0d1b0226fd42e1303e9
+    - file: graph.js
+      sha256: 54ce2a2c6fe8b390653977fbd9539e52c68687c28366beb98f13d21b9fbe9dea
+    - file: graph.css
+      sha256: af7f1151cd7cc8d222fdb5fe9f66be3a1c6f7972f420c1489d5fa023783edce4
+```
+
+- **`ui.json`** is required. It gives `version: 1`, an `id` that matches the package id, the
+  `entry` HTML file (which must be one of the listed files), a positive `configVersion` and a
+  `configSchema`: the settings each copy of the page takes, as a subset of JSON Schema.
+- **Files.** At most 32, each at most 2 MiB and 8 MiB in all, with plain names and the extensions
+  of browser files (HTML, JavaScript, CSS, JSON, PNG, SVG). An assembly is refused.
+- **Trust.** Installing asks for the same confirmation as a plugin package, and the portal serves
+  hosted pages only while the `allow_browser_code` option is on.
+- **Instances.** Installing adds the page once. An administrator then registers one or more
+  applications that use it under **Admin → Applications**, each with its own slug and its own settings,
+  checked against `configSchema`. Uninstalling is refused while an application still uses the page,
+  unless the uninstall is forced, which removes those applications too.
+- **Rollback.** A UI package has no snapshot rollback; apply the version you want instead.

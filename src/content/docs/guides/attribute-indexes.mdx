@@ -169,40 +169,13 @@ may not read.
 
 ## Indexes in a package
 
-A package can ship an index with its attribute entries. Add `index:` to the entry and set
-`format: 1.8`:
-
-```yaml
-format: 1.8
-package: casebook
-version: 1.0.0
-# objects: and the rest of the manifest as usual
-
-attributes:
-  CASE`STATUS:
-    enum: [open, held, closed]
-    index: true                 # the default: text without case, whole values, every object
-  CASE`LEVEL:
-    index: numeric type:thing   # the option words, as @attribute/index takes them
-```
-
-The review screen says what each index builds over:
-
-![The review screen's Attribute entries card: CASE`STATUS is created and builds an index, text without case, on 3 objects; CASE`LEVEL is created and builds an index, numbers then text without case, things only, on 2 objects](../../../assets/guide/attribute-index-casebook-card.webp)
+A package can ship an index with its attribute entries, as an `index:` on the entry with
+`format: 1.8`. [Attribute indexes (format 1.8)](/reference/package-declarations#attribute-indexes-format-18)
+gives the key, its options and what install, upgrade and uninstall do with it.
 
 After the install the indexes are ready to use:
 
 ![The portal terminal after installing casebook: @attribute CASE`STATUS shows its enum and its index as ready, indexed(CASE`LEVEL, >=, 10) finds Harbour Fire, and the CASE`STATUS index lists each case with its status, held before open](../../../assets/guide/attribute-index-casebook-ingame.webp)
-
-- If the game already has the attribute, it must already have the same index, or the install stops
-  and names the `@attribute/index` line that fixes it. The package's queries rely on the index's
-  order, so it does not guess.
-- An upgrade that changes `index:` changes the index. One staff changed and the new version did not
-  is kept.
-- Uninstalling the package deletes the entries it made, with their indexes.
-
-In a manifest older than 1.8, `index:` is ignored with a warning.
-[Package Format](/reference/package-format#attribute-indexes-format-18) has the details.
 
 ## Storage
 

@@ -18,14 +18,15 @@ How the pieces connect:
   `wss://…/ws`, through Caddy or a Cloudflare Tunnel. The proxy sends ordinary web traffic to the game
   server (`SharpMUSH.Server`, port 8080) and `/ws` to the connection server (`SharpMUSH.SocketServer`,
   port 4202).
-- MU\* clients connect straight to the connection server on telnet port 4201.
+- MU\* clients connect straight to the connection server on telnet port 4201 (plaintext), or 4203
+  over TLS when the TLS overlay is enabled.
 - The connection server formats output through the rendering worker (`SharpMUSH.RenderingWorker`)
   over HTTP/2 on a private Unix socket.
 - The connection server and game server exchange commands and output through NATS.
 - The game server alone reads and writes the world (LMDB) and the uploaded wiki files, and makes the
   point-in-time world copies that backups read.
-- The restic backup container reads the finished copies and the wiki files and sends encrypted
-  snapshots off the machine.
+- The restic backup container reads the finished copies, the wiki files, the key ring and the
+  installed plugins, and sends encrypted snapshots off the machine.
 - Prometheus scrapes the private `/metrics` endpoints of the game and connection servers, and Compose
   health checks watch every service.
 
@@ -39,6 +40,7 @@ How the pieces connect:
 | `SharpMUSH.RenderingWorker` | Formatting output for each kind of client, behind a private Unix socket | Connections stay open; output waits and retries until it is back | The connection server checks its health over the Unix socket | Image and settings only; it holds no game data |
 | NATS with JetStream | Messages between the parts of the game, and what browsers need to recover | Coordination and recovery suffer; the world itself is untouched | NATS health, logs, storage limits and its volume | Its persistent volume, if browser recovery across restarts matters to you |
 | LMDB world | The game world, in the game server's `app-data` volume | The game server cannot run without it | `@storage`, storage metrics, server readiness, database errors in the logs | Only finished `@backup` copies; never a read of the live file |
+| Key ring and installed plugins | The keys that decrypt stored secrets, and plugins installed from packages, in `app-data` beside the world | The game server starts without them, but stored secrets can't be read and installed plugins are missing | `@secret`, the portal's Plugins tab | A restic snapshot of both folders |
 | Wiki files | Uploaded files, kept outside the world | Pages can still exist while their files are missing | Fetching files in the portal | A direct restic snapshot of the folder |
 | Restic and off-machine storage | Encrypted recovery copies away from the machine | No effect until you need to recover | The nightly result, repository checks, restore drills | Holds the chosen world copies, wiki files, plugins and settings, not running processes |
 
