@@ -132,7 +132,7 @@ function headingIds(content) {
     if (!heading) { topic = null; continue; }
     const level = heading[1].length;
     const text = heading[2].trim();
-    if (level === 1 && topic) {
+    if (level === 1 && topic !== null) {
       headings.push({ level, text, id: topic, alias: true });
       continue;
     }
@@ -210,14 +210,17 @@ export function convertInternalLinks(content) {
     let textContent = section.content;
     
     // Pattern 1: [help TOPIC|DISPLAY] or [help TOPIC]
-    const helpLinkPattern = /\[help\s+([^\]|]+?)(\|([^\]]+?))?\]/gi;
+    // A topic whose own name starts with "help", such as [help search], is that topic.
+    const helpLinkPattern = /(?<!\\)\[help\s+([^\]|]+?)(\|([^\]]+?))?\](?!\()/gi;
     textContent = textContent.replace(helpLinkPattern, (match, topic, pipe, display) => {
-      const displayText = display || topic;
-      return convertTopicToLink(topic, displayText);
+      const whole = `help ${topic}`;
+      if (HELP_LOOKUPS[whole.toUpperCase().trim()]) return convertTopicToLink(whole, display || whole);
+      return convertTopicToLink(topic, display || topic);
     });
     
-    // Pattern 2: Simple [TOPIC] links - but be more selective
-    const simpleLinkPattern = /\[([^\]]+?)\]/g;
+    // Pattern 2: Simple [TOPIC] links - but be more selective. An escaped \[ is text, and a
+    // bracket followed by ( is already a Markdown link.
+    const simpleLinkPattern = /(?<!\\)\[([^\]]+?)\](?!\()/g;
     textContent = textContent.replace(simpleLinkPattern, (match, topic) => {
       // Skip if this looks like it's already a markdown link
       if (topic.includes('](') || topic.includes('http') || match.includes('](')) {
@@ -264,7 +267,7 @@ function convertTopicToLink(topic, displayText) {
   const topicUpper = topic.toUpperCase().trim();
 
   const lookup = HELP_LOOKUPS[topicUpper];
-  if (lookup) return `[${displayText}](/reference/sharpmush-help/${lookup.doc}/#${lookup.id})`;
+  if (lookup) return `[${displayText}](/reference/sharpmush-help/${lookup.doc}/${lookup.id ? '#' + lookup.id : ''})`;
   
   // Find the appropriate document for this topic
   let targetDoc = DOC_MAPPINGS[topicUpper];

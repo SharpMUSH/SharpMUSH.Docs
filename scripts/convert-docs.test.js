@@ -85,3 +85,20 @@ test('a topic on a page with no help-article block links to its heading there', 
     useLinkData({ mappings: {}, anchors: {}, lookups: {} });
   }
 });
+
+test('a help link keeps a topic named "help ...", and leaves escaped brackets and Markdown links alone', () => {
+  const pages = {
+    'help-search': '<!-- help-article\n{"lookup": "help search"}\n-->\n# help search\n',
+    sharpfunc: '# @@()\n# null()\n\nText.\n',
+  };
+  useLinkData({ mappings: {}, anchors: topicAnchors(pages), lookups: helpLookups(pages) });
+  try {
+    assert.equal(
+      convertInternalLinks('See [help search], [NULL()], \\[Room\'s owner\\] and [Chat Cards](https://example.com/).'),
+      'See [help search](/reference/sharpmush-help/help-search/#help-search), [NULL()](/reference/sharpmush-help/sharpfunc/), ' +
+        '\\[Room\'s owner\\] and [Chat Cards](https://example.com/).'
+    );
+  } finally {
+    useLinkData({ mappings: {}, anchors: {}, lookups: {} });
+  }
+});
