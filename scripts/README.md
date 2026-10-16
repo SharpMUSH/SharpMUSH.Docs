@@ -12,7 +12,7 @@ Converts markdown files from the SharpMUSH submodule into Starlight-compatible d
 - **Frontmatter generation**: Adds Starlight-compatible YAML frontmatter with title and description
 - **Heading level adjustment**: Converts H1 (`#`) to H2 (`##`) and H2 (`##`) to H3 (`###`) for better integration with Starlight navigation
 - **Link conversion**: Converts SharpMUSH-style internal links (`[help TOPIC|DISPLAY]`) to Starlight navigation links
-- **Automatic categorization**: Intelligently maps help topics to appropriate documentation files
+- **Links by lookup**: A link goes to the page and heading whose `help-article` block names the topic as its lookup, an alias or a redirect, as the game finds it. Topics on a page without that block fall back to `doc-mappings.json`
 
 ### `index-headers.js`
 
@@ -37,6 +37,7 @@ Analyzes all documentation files to generate comprehensive header mappings:
 The converter intelligently excludes certain patterns from conversion:
 
 - **Code blocks**: Content inside ``` fenced blocks and `backticks` is preserved
+- **Comments**: The `help-article` block and any other HTML comment are left as they are
 - **Function calls**: `[get(obj/attr)]`, `[function(arg1,arg2)]` are not converted
 - **Paths and URLs**: Links containing `/`, `#`, `$`, `&` are skipped, except a known topic with a switch such as `[@THEME/LIST]`
 - **Anchors**: a topic links to the id its heading gets on its page, so `@THEME` after `THEME()` on one page links to `#theme-1`; an alias links to its topic

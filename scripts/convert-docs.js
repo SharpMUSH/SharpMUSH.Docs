@@ -61,43 +61,89 @@ let TOPIC_ANCHORS = {};
 export function topicAnchors(pages) {
   const anchors = {};
   for (const [doc, content] of Object.entries(pages)) {
-    const occurrences = new Map();
-    const idFor = (text) => {
-      const slug = createSlugFromTitle(text);
-      let id = slug;
-      while (occurrences.has(id)) {
-        occurrences.set(slug, occurrences.get(slug) + 1);
-        id = `${slug}-${occurrences.get(slug)}`;
-      }
-      occurrences.set(id, 0);
-      return id;
-    };
     const topics = (anchors[doc] = {});
-    let fenced = false;
-    let topic = null;
-    for (const raw of content.split('\n')) {
-      const line = raw.replace(/\r$/, '');
-      if (/^[ \t]*```/.test(line)) fenced = !fenced;
-      if (fenced) { topic = null; continue; }
-      const heading = line.match(/^(#{1,6}) (.+)/);
-      if (!heading) { topic = null; continue; }
-      const text = heading[2].trim();
-      if (heading[1] === '#' && topic) {
-        // An alias right under its topic, removed when the page is converted.
-        topics[text.toUpperCase()] ??= topic;
-        continue;
-      }
-      const id = idFor(text);
-      topic = heading[1] === '#' ? id : null;
-      if (topic) topics[text.toUpperCase()] ??= id;
+    for (const heading of headingIds(content)) {
+      if (heading.level === 1) topics[heading.text.toUpperCase()] ??= heading.id;
     }
   }
   return anchors;
 }
 
-export function useLinkData({ mappings = DOC_MAPPINGS, anchors = TOPIC_ANCHORS } = {}) {
+// Every help lookup, by its upper-cased name: the page it is on and its heading's id there. A page
+// names its lookups in its help-article block: the article's lookup and aliases are its first
+// heading, each section's lookup and aliases that section's heading, and a redirect is the lookup it
+// names. This is how the game finds a topic, so a link follows the topic whichever file it is in.
+let HELP_LOOKUPS = {};
+
+export function helpLookups(pages) {
+  const lookups = {};
+  const redirects = [];
+  for (const [doc, content] of Object.entries(pages)) {
+    const block = content.match(/^<!-- help-article\s*\n([\s\S]*?)\n-->/);
+    if (!block) continue;
+    let article;
+    try {
+      article = JSON.parse(block[1]);
+    } catch {
+      continue;
+    }
+    const ids = headingIds(content);
+    const add = (names, id) => {
+      if (id === undefined) return;
+      for (const name of names) {
+        if (typeof name === 'string') lookups[name.toUpperCase().trim()] ??= { doc, id };
+      }
+    };
+    add([article.lookup, ...(article.aliases ?? [])], ids.find((h) => h.level === 1)?.id);
+    for (const section of article.sections ?? []) {
+      const heading = ids.find((h) => h.level > 1 && h.text === section.heading);
+      add([section.lookup, ...(section.aliases ?? [])], heading?.id);
+    }
+    for (const [from, to] of Object.entries(article.redirects ?? {})) redirects.push([from, to]);
+  }
+  for (const [from, to] of redirects) {
+    const target = lookups[to.toUpperCase().trim()];
+    if (target) lookups[from.toUpperCase().trim()] ??= target;
+  }
+  return lookups;
+}
+
+// Each heading on a page with the id the site gives it. An alias, a # heading right under its topic
+// that the conversion removes, takes its topic's id and numbers nothing.
+function headingIds(content) {
+  const occurrences = new Map();
+  const headings = [];
+  let fenced = false;
+  let topic = null;
+  for (const raw of content.split('\n')) {
+    const line = raw.replace(/\r$/, '');
+    if (/^[ \t]*```/.test(line)) fenced = !fenced;
+    if (fenced) { topic = null; continue; }
+    const heading = line.match(/^(#{1,6}) (.+)/);
+    if (!heading) { topic = null; continue; }
+    const level = heading[1].length;
+    const text = heading[2].trim();
+    if (level === 1 && topic) {
+      headings.push({ level, text, id: topic, alias: true });
+      continue;
+    }
+    const slug = createSlugFromTitle(text);
+    let id = slug;
+    while (occurrences.has(id)) {
+      occurrences.set(slug, occurrences.get(slug) + 1);
+      id = `${slug}-${occurrences.get(slug)}`;
+    }
+    occurrences.set(id, 0);
+    headings.push({ level, text, id });
+    topic = level === 1 ? id : null;
+  }
+  return headings;
+}
+
+export function useLinkData({ mappings = DOC_MAPPINGS, anchors = TOPIC_ANCHORS, lookups = HELP_LOOKUPS } = {}) {
   DOC_MAPPINGS = mappings;
   TOPIC_ANCHORS = anchors;
+  HELP_LOOKUPS = lookups;
 }
 
 function createSlugFromTitle(title) {
@@ -115,9 +161,9 @@ export function convertInternalLinks(content) {
   const sections = [];
   let currentIndex = 0;
   
-  // Find all code: fenced blocks, then inline spans of any backtick run length (``a`b``),
-  // skipping an escaped backtick (socket\`connect), which opens no span.
-  const codeBlockPattern = /^[ \t]*```[\s\S]*?^[ \t]*```[^\n]*$|(?<![\\`])(`+)(?!`)[^\n]*?[^`\n]\1(?!`)/gm;
+  // Find all code: HTML comments such as the help-article block, fenced blocks, then inline spans of
+  // any backtick run length (``a`b``), skipping an escaped backtick (socket\`connect), which opens no span.
+  const codeBlockPattern = /<!--[\s\S]*?-->|^[ \t]*```[\s\S]*?^[ \t]*```[^\n]*$|(?<![\\`])(`+)(?!`)[^\n]*?[^`\n]\1(?!`)/gm;
   let match;
   
   while ((match = codeBlockPattern.exec(content)) !== null) {
@@ -184,7 +230,7 @@ export function convertInternalLinks(content) {
       
       // Skip patterns that contain special characters that suggest they're not help topics
       // A known topic with a switch, such as [@THEME/LIST], is still a link.
-      if (topic.includes('/') && DOC_MAPPINGS[topic.toUpperCase().trim()]) {
+      if (topic.includes('/') && (DOC_MAPPINGS[topic.toUpperCase().trim()] || HELP_LOOKUPS[topic.toUpperCase().trim()])) {
         return convertTopicToLink(topic, topic);
       }
       if (topic.includes('/') || topic.includes('#') || topic.includes('$') || topic.includes('&') || topic.includes('*')) {
@@ -207,6 +253,9 @@ export function convertInternalLinks(content) {
 
 function convertTopicToLink(topic, displayText) {
   const topicUpper = topic.toUpperCase().trim();
+
+  const lookup = HELP_LOOKUPS[topicUpper];
+  if (lookup) return `[${displayText}](/reference/sharpmush-help/${lookup.doc}/#${lookup.id})`;
   
   // Find the appropriate document for this topic
   let targetDoc = DOC_MAPPINGS[topicUpper];
@@ -438,6 +487,7 @@ async function convertAllDocs() {
       pages[file.replace(/\.md$/, '')] = await fs.readFile(path.join(SUBMODULE_DOCS_PATH, file), 'utf-8');
     }
     TOPIC_ANCHORS = topicAnchors(pages);
+    HELP_LOOKUPS = helpLookups(pages);
     
     if (markdownFiles.length === 0) {
       console.warn('No markdown files found in source directory');
