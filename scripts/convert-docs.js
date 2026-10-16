@@ -72,7 +72,8 @@ export function topicAnchors(pages) {
 // Every help lookup, by its upper-cased name: the page it is on and its heading's id there. A page
 // names its lookups in its help-article block: the article's lookup and aliases are its first
 // heading, each section's lookup and aliases that section's heading, and a redirect is the lookup it
-// names. This is how the game finds a topic, so a link follows the topic whichever file it is in.
+// names. Every page's # headings are topics too. This is how the game finds a topic, so a link
+// follows the topic whichever file it is in.
 let HELP_LOOKUPS = {};
 
 export function helpLookups(pages) {
@@ -104,6 +105,12 @@ export function helpLookups(pages) {
   for (const [from, to] of redirects) {
     const target = lookups[to.toUpperCase().trim()];
     if (target) lookups[from.toUpperCase().trim()] ??= target;
+  }
+  // A page with no block, such as layout-functions, names its topics with its # headings.
+  for (const [doc, content] of Object.entries(pages)) {
+    for (const heading of headingIds(content)) {
+      if (heading.level === 1) lookups[heading.text.toUpperCase()] ??= { doc, id: heading.id };
+    }
   }
   return lookups;
 }

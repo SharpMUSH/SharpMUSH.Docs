@@ -75,3 +75,13 @@ test('leaves the help-article block alone', () => {
   const block = '<!-- help-article\n{\n  "aliases": [\n    "@WIKI"\n  ]\n}\n-->\n# Wiki\n';
   assert.equal(convertInternalLinks(block), block);
 });
+
+test('a topic on a page with no help-article block links to its heading there', () => {
+  const pages = { 'layout-functions': '# themes()\n\nText.\n\n# tone()\n\nMore.\n' };
+  useLinkData({ mappings: {}, anchors: topicAnchors(pages), lookups: helpLookups(pages) });
+  try {
+    assert.equal(convertInternalLinks('| [TONE()] |'), '| [TONE()](/reference/sharpmush-help/layout-functions/#tone) |');
+  } finally {
+    useLinkData({ mappings: {}, anchors: {}, lookups: {} });
+  }
+});
