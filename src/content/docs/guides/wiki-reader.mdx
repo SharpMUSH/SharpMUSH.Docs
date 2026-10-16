@@ -1,0 +1,270 @@
+---
+title: Reading the Wiki In-Game
+description: Browsing, searching and reading the game's wiki from a MU* client with +wiki, and checking for unfiled pages as staff.
+---
+
+The game's wiki holds its longer writing: the setting, the theme, the house rules. It is read in
+the [web portal](/guides/web-portal/#for-players) at `/wiki`, and with the **Wiki Reader** package
+it is read in the game too. `+wiki` lists what is there, opens an article laid out for your screen,
+searches, and browses by category, without leaving your client. Staff get one more command,
+`+wiki/audit`, which finds pages nobody has filed in a category.
+
+| You are | You want to | Read |
+|---|---|---|
+| A player | see what the wiki has | [Finding articles](#finding-articles) |
+| A player | read an article | [Reading an article](#reading-an-article) |
+| A player | find a page by what it says, or by subject | [Searching and categories](#searching-and-categories) |
+| Staff | find pages that are hard to reach | [The editorial audit](#the-editorial-audit) |
+| Staff | install the reader | [Running the Wiki Reader](#running-the-wiki-reader) |
+
+In the game, `+help wiki` has the same commands in short form. `+wiki` only reads: writing and
+editing articles is done with `@wiki` or in the portal, described in
+[editing wiki pages](/reference/sharpmush-help/wiki/#editing-wiki-pages).
+
+The examples follow Tobin, a player, and Cole, a staffer, on a game with two articles of its own:
+**Harbour Town**, a short setting page, and **House Rules**. Their categories (Setting, Policy) are
+set by staff along the way.
+
+## Finding articles
+
+`+wiki` on its own shows the wiki's sections, called namespaces, and how many pages each holds:
+
+```text
+> +wiki
+═══════════════════════════════════╡ Wiki ╞═══════════════════════════════════
+Namespace  Holds                                                         Pages
+main       Articles                                                          3
+help       Help pages                                                        1
+character  Character biographies                                             0
+system     Staff pages                                                       0
+category   What each category is for                                         1
+══════════════════════════════════════════════════════════════════════════════
++wiki <page> · +wiki/info <page> · +wiki/search <text>
++wiki/list [<namespace>] · +wiki/category [<name>] · +wiki/recent [<n>]
+══════════════════════════════════════════════════════════════════════════════
+```
+
+`+wiki/list` lists every published page, and `+wiki/list <namespace>` one namespace's:
+
+```text
+> +wiki/list main
+════════════════════════════════╡ Pages: main ╞═══════════════════════════════
+Page               Title
+main:harbour_town  Harbour Town
+main:home          Home
+main:house_rules   House Rules
+══════════════════════════════════════════════════════════════════════════════
+3 entries - page 1 of 1
+══════════════════════════════════════════════════════════════════════════════
+```
+
+A long listing is split to fit your screen. The page number goes last, as a switch:
+`+wiki/list/2 main` is the second page. Asking for a page past the end says how many there are:
+
+```text
+> +wiki/list/2 main
+[WIKI] Warning: There is one page — you asked for page 2.
+```
+
+`+wiki/recent` shows the ten pages edited most recently, and `+wiki/recent <n>` up to 50:
+
+```text
+> +wiki/recent 3
+══════════════════════════════╡ Recently edited ╞═════════════════════════════
+Page               Title                                               Edited
+category:setting   Setting                                             35s ago
+main:house_rules   House Rules                                         38s ago
+main:harbour_town  Harbour Town                                        41s ago
+══════════════════════════════════════════════════════════════════════════════
+3 entries - page 1 of 1
+══════════════════════════════════════════════════════════════════════════════
+```
+
+In a client that takes clickable links, such as the portal's terminal, every page and category in
+these listings is a link that opens it.
+
+## Reading an article
+
+`+wiki <page>` opens an article. Type its title or the name in the Page column; case and the
+underscore do not matter, and a page in `main` needs no `main:` in front:
+
+```text
+> +wiki harbour town
+════════════════════════════╡ Harbour Town (main) ╞═══════════════════════════
+Harbour Town
+
+A fishing town on a cold northern coast. The harbour freezes in deep winter,
+and the town lives on what the boats bring in before it does.
+
+Places
+* The Old Mill by the river
+* The Harbour Tavern on the quay
+
+New here? Start with House Rules.
+══════════════════════════════════════════════════════════════════════════════
+Categories: Setting
+══════════════════════════════════════════════════════════════════════════════
+rev 1 [en] - 29s ago
+══════════════════════════════════════════════════════════════════════════════
+```
+
+Headings, lists and bold text are drawn for your client and wrapped to your screen width. Under
+the article are its categories and its revision, language and when it was last edited. A link to
+another page, like **House Rules** here, is highlighted, and a client that takes clickable links
+opens that page when you click it.
+
+```text
+> +wiki house_rules
+════════════════════════════╡ House Rules (main) ╞════════════════════════════
+House Rules
+1. Ask before you involve someone else's character in a scene.
+2. Keep OOC talk on the OOC channel.
+3. Staff decisions can be appealed with +request.
+══════════════════════════════════════════════════════════════════════════════
+rev 1 [en] - 28s ago
+══════════════════════════════════════════════════════════════════════════════
+```
+
+A name `main` has no page for is looked for in the other namespaces, so a page such as
+`help:markdown_guide` opens with `+wiki markdown_guide`. A page that does not exist says so:
+
+```text
+> +wiki lighthouse
+[WIKI] Warning: No such wiki page: lighthouse
+```
+
+`+wiki/info <page>` shows a page's details instead of its text, including who wrote it:
+
+```text
+> +wiki/info harbour_town
+═══════════════════════════════╡ Harbour Town ╞═══════════════════════════════
+Title:      Harbour Town
+Namespace:  main
+Revision:   1
+Locale:     en
+Categories: Setting
+Author:     Cole (#21)
+Updated:    43s ago
+══════════════════════════════════════════════════════════════════════════════
++wiki harbour_town · +wiki/category
+══════════════════════════════════════════════════════════════════════════════
+```
+
+### Drafts
+
+Drafts never show up in `+wiki`. While Cole is still writing a Winter Festival page, it is
+invisible to Tobin until Cole publishes it:
+
+```text
+> +wiki winter festival
+[WIKI] Warning: No such wiki page: winter festival
+```
+
+## Searching and categories
+
+`+wiki/search <text>` finds pages whose title or text holds the words. `*` and `?` are wildcards:
+
+```text
+> +wiki/search freezes
+══════════════════════════════╡ Search: freezes ╞═════════════════════════════
+Page               Title
+main:harbour_town  Harbour Town
+══════════════════════════════════════════════════════════════════════════════
+1 entry - page 1 of 1
+══════════════════════════════════════════════════════════════════════════════
+```
+
+Staff file pages under categories, such as Setting. `+wiki/category` lists every category and how
+many pages it holds, and `+wiki/category <name>` the pages in one:
+
+```text
+> +wiki/category
+════════════════════════════════╡ Categories ╞════════════════════════════════
+Category                                                                 Pages
+Help                                                                         1
+Policy                                                                       1
+Setting                                                                      2
+══════════════════════════════════════════════════════════════════════════════
+3 entries - page 1 of 1
+══════════════════════════════════════════════════════════════════════════════
+> +wiki/category setting
+═════════════════════════════╡ Category: Setting ╞════════════════════════════
+Page                  Title
+main:harbour_town     Harbour Town
+main:winter_festival  Winter Festival
+══════════════════════════════════════════════════════════════════════════════
+2 entries - page 1 of 1
+══════════════════════════════════════════════════════════════════════════════
+```
+
+Winter Festival is the page from [Drafts](#drafts), now published and filed under Setting.
+
+Any switch can be cut short to a beginning no other switch has, so `+wiki/c` is
+`+wiki/category`. A switch the reader does not know lists the ones it does:
+
+```text
+> +wiki/x
+[WIKI] Warning: +wiki has no /x switch. Switches: /list /search /category /recent /info
+```
+
+## The editorial audit
+
+A page in no category can only be found by name or by search, which gets harder as a wiki grows.
+`+wiki/audit` counts the published pages and lists the ones without a category. Only wizards and
+royalty can run it; anyone else is told `Staff only.`
+
+```text
+> +wiki/audit
+════════════════════════════════╡ Wiki audit ╞════════════════════════════════
+Published pages:    5
+Without a category: 3
+═══════════════════════════════╡ Uncategorised ╞══════════════════════════════
+Page              Title
+category:setting  Setting
+main:home         Home
+main:house_rules  House Rules
+══════════════════════════════════════════════════════════════════════════════
+drafts are invisible to softcode - use @wiki/list
+══════════════════════════════════════════════════════════════════════════════
+```
+
+File a page with `@wiki/category <page>=<name>, <name>` and run the audit again:
+
+```text
+> @wiki/category house_rules=Policy
+WIKI: 'House Rules' categories: Policy.
+> +wiki/audit
+════════════════════════════════╡ Wiki audit ╞════════════════════════════════
+Published pages:    6
+Without a category: 3
+═══════════════════════════════╡ Uncategorised ╞══════════════════════════════
+Page              Title
+category:policy   Policy
+category:setting  Setting
+main:home         Home
+══════════════════════════════════════════════════════════════════════════════
+drafts are invisible to softcode - use @wiki/list
+══════════════════════════════════════════════════════════════════════════════
+```
+
+House Rules has left the list, and the new category's own page, `category:policy`, has joined it.
+Filing a category's page under another category makes it a subcategory of that one (see
+[wiki categories](/reference/sharpmush-help/wiki/#wiki-categories)).
+
+The audit sees published pages only. `@wiki/list` shows drafts as well, marked `(draft)`, and
+`@wiki/publish <page>` puts one live.
+
+## Running the Wiki Reader
+
+The Wiki Reader ships with the server but is not installed on a new game. Installed, it puts a
+**Wiki Reader** object in the master room. The wiki itself, `@wiki` and the portal's `/wiki`, work
+without it.
+
+To install it, an administrator opens **Packages** in the portal's admin area, chooses **Browse**
+and installs `wiki-reader`. It needs `plus-help`, which a new game already has, and adds its
+`+help wiki` topics there. See [Softcode Packages](/guides/packages/) for how installing, upgrading
+and rolling back work.
+
+The package has no settings of its own. What a player sees follows the wiki: who may edit
+a page, and which pages are published, are set with `@wiki` and in the portal's admin area under
+`/admin/wiki`.

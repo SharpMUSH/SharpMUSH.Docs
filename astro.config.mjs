@@ -101,6 +101,8 @@ export default defineConfig({
                           collapsed: true,
                           items: [
                               { label: 'Game Help with +help', slug: 'guides/game-help' },
+                              { label: 'Connect Screen and MOTD', slug: 'guides/game-messages' },
+                              { label: 'The Line Editor', slug: 'guides/line-editor' },
                           ],
                       },
                       {
@@ -140,6 +142,8 @@ export default defineConfig({
                               { label: 'Watch List', slug: 'guides/watch' },
                               { label: 'Notifications', slug: 'guides/notifications' },
                               { label: 'Bulletin Boards', slug: 'guides/bboards' },
+                              { label: 'Radio', slug: 'guides/radio' },
+                              { label: 'Reading the Wiki In-Game', slug: 'guides/wiki-reader' },
                               { label: 'Discord', slug: 'guides/discord' },
                               { label: 'Discord for Players', slug: 'guides/discord-players' },
                           ],
@@ -148,6 +152,7 @@ export default defineConfig({
                           label: 'Staff',
                           collapsed: true,
                           items: [
+                              { label: 'Jobs', slug: 'guides/jobs' },
                               { label: 'Jobs That Run Themselves', slug: 'guides/jobs-automation' },
                               { label: 'Game Health', slug: 'guides/health' },
                           ],
