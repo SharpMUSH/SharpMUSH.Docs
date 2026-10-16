@@ -53,6 +53,7 @@ export default defineConfig({
                       { label: 'The Web Portal', slug: 'guides/web-portal' },
                       { label: 'Portal Applications', slug: 'guides/applications' },
                       { label: 'Building Portal Applications', slug: 'guides/building-applications' },
+                      { label: 'Apps That Act for You', slug: 'guides/connected-apps' },
                       { label: 'Character Galleries', slug: 'guides/galleries' },
                       { label: 'The Command Palette', slug: 'guides/command-palette' },
                       { label: 'Chat Cards', slug: 'guides/chat-cards' },
