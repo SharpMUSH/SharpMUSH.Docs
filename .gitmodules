@@ -1,3 +1,7 @@
 [submodule "SharpMUSH-submodule"]
 	path = SharpMUSH-submodule
 	url = https://github.com/SharpMUSH/SharpMUSH.git
+[submodule "SharpMUSH-help"]
+	path = SharpMUSH-help
+	url = https://github.com/SharpMUSH/SharpMUSH.git
+	branch = help-export

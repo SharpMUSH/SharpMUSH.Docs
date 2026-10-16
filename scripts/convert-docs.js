@@ -7,7 +7,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const SUBMODULE_DOCS_PATH = path.join(__dirname, '..', 'SharpMUSH-submodule', 'SharpMUSH.Documentation', 'Helpfiles', 'SharpMUSH');
+const SUBMODULE_DOCS_PATH = path.join(__dirname, '..', 'SharpMUSH-help', 'help');
 const OUTPUT_DOCS_PATH = path.join(__dirname, '..', 'src', 'content', 'docs', 'reference', 'sharpmush-help');
 
 // Mapping of internal link patterns to Starlight-compatible links
