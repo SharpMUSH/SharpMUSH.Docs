@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { convertInternalLinks, topicAnchors, useLinkData } from './convert-docs.js';
+import { convertInternalLinks, helpLookups, topicAnchors, useLinkData } from './convert-docs.js';
 
 test('links a help topic in plain text', () => {
   assert.equal(convertInternalLinks('See [@lock].'), 'See [@lock](/reference/sharpmush-help/sharpcmd/#lock).');
@@ -45,5 +45,60 @@ test('an alias links to its topic, and an unknown topic with a slash stays text'
     );
   } finally {
     useLinkData({ mappings: {}, anchors: {} });
+  }
+});
+
+test('a help link goes to the page and section its lookup names, whatever the file is called', () => {
+  const block = (article) => `<!-- help-article\n${JSON.stringify(article, null, 2)}\n-->\n`;
+  const pages = {
+    wiki: block({
+      lookup: 'wiki',
+      aliases: ['@WIKI'],
+      sections: [{ heading: 'Editing wiki pages', lookup: 'wiki editing', aliases: ['@WIKI/CREATE'] }],
+      redirects: { 'wiki authoring commands': 'wiki editing' },
+    }) + '# Wiki\n\nText.\n\n## Examples\n\n## Editing wiki pages\n\nMore.\n',
+  };
+  useLinkData({ mappings: {}, anchors: topicAnchors(pages), lookups: helpLookups(pages) });
+  try {
+    assert.equal(
+      convertInternalLinks('See [wiki editing], [@WIKI/CREATE], [wiki authoring commands] and [@wiki].'),
+      'See [wiki editing](/reference/sharpmush-help/wiki/#editing-wiki-pages), ' +
+        '[@WIKI/CREATE](/reference/sharpmush-help/wiki/#editing-wiki-pages), ' +
+        '[wiki authoring commands](/reference/sharpmush-help/wiki/#editing-wiki-pages) and [@wiki](/reference/sharpmush-help/wiki/#wiki).'
+    );
+  } finally {
+    useLinkData({ mappings: {}, anchors: {}, lookups: {} });
+  }
+});
+
+test('leaves the help-article block alone', () => {
+  const block = '<!-- help-article\n{\n  "aliases": [\n    "@WIKI"\n  ]\n}\n-->\n# Wiki\n';
+  assert.equal(convertInternalLinks(block), block);
+});
+
+test('a topic on a page with no help-article block links to its heading there', () => {
+  const pages = { 'layout-functions': '# themes()\n\nText.\n\n# tone()\n\nMore.\n' };
+  useLinkData({ mappings: {}, anchors: topicAnchors(pages), lookups: helpLookups(pages) });
+  try {
+    assert.equal(convertInternalLinks('| [TONE()] |'), '| [TONE()](/reference/sharpmush-help/layout-functions/#tone) |');
+  } finally {
+    useLinkData({ mappings: {}, anchors: {}, lookups: {} });
+  }
+});
+
+test('a help link keeps a topic named "help ...", and leaves escaped brackets and Markdown links alone', () => {
+  const pages = {
+    'help-search': '<!-- help-article\n{"lookup": "help search"}\n-->\n# help search\n',
+    sharpfunc: '# @@()\n# null()\n\nText.\n',
+  };
+  useLinkData({ mappings: {}, anchors: topicAnchors(pages), lookups: helpLookups(pages) });
+  try {
+    assert.equal(
+      convertInternalLinks('See [help search], [NULL()], \\[Room\'s owner\\] and [Chat Cards](https://example.com/).'),
+      'See [help search](/reference/sharpmush-help/help-search/#help-search), [NULL()](/reference/sharpmush-help/sharpfunc/), ' +
+        '\\[Room\'s owner\\] and [Chat Cards](https://example.com/).'
+    );
+  } finally {
+    useLinkData({ mappings: {}, anchors: {}, lookups: {} });
   }
 });
