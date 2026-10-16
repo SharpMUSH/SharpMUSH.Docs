@@ -377,12 +377,9 @@ under **Admin → Packages → Remotes**.
 
 | Package | What it shows |
 |---|---|
-| `hello-world` | The smallest package: one object, one command, and a `+help` topic |
-| `who-where` | Several objects, internal refs, parents, flags and an attribute prefix |
-| `starter-area` | Rooms and exits (`location:` and `destination:`) |
+| `who-where` | Several objects, internal refs, parents, flags and attribute trees (``CMD`WHO``, ``FUN`WHERE`<SWITCH>``) |
 | `plus-help` | Object powers (`See_All`, `Send_OOB`), and the librarian other packages attach their `+help` topics to |
 | `scene` | A custom permission (`scene.close`) placed in the game's own `Staff` category |
-| `bbs-lite` | Dependencies with source hints, typed configure questions, cross-package refs, conflicts, locks and prerelease versions |
 | `http-handler`, `profile-handler` | Attach entries on the HTTP handler, and one package attaching to another |
 | `scene-help`, `scene-config` | Bridge packages: two attach entries joining `scene` to `plus-help`, and one joining it to `plus-config` (see [Bridge Packages](/guides/bridge-packages/)) |
 | `scene-verse` | Changing another package's output without editing it: scene details and `+scene` filters attached to the Scene Logger (see [Scene Details](/guides/scene-details#changing-what-scene-shows)) |
@@ -390,16 +387,25 @@ under **Admin → Packages → Remotes**.
 | `jobs` + `jobs-app` | A complete system: commands added with `@command/add` and `@hook/override/inline`, a role and permission category, eight permissions and eight roles declared by the package, per-object hooks, `+help` topics, and a portal application driven by the same code |
 | `messages` | A configuration option (`messages_object`) pointed at the package's own object (format 1.3) |
 | `bboards` | An attribute entry (`BBOARD`, wizard and no_command by default) declared in the manifest (format 1.5) |
-| `coast-guide` | A content pack: wiki pages only, one of them pinned to the wiki home (format 1.4) |
 | `hello-ui` | A plugin package: a compiled plugin that adds a portal page |
 | `builder-graph` | A UI package: a hosted HTML and JavaScript page |
+
+Four smaller packages, written for learning the format, are in the SharpMUSH Guide repository under
+`Examples/Packages/`. None of them ships with the server.
+
+| Package | What it shows |
+|---|---|
+| `hello-world` | The smallest package: one object, one command, and a `+help` topic |
+| `starter-area` | Rooms and exits (`location:` and `destination:`) |
+| `bbs-lite` | Dependencies with source hints, typed configure questions, cross-package refs, conflicts, locks and prerelease versions |
+| `coast-guide` | A content pack: wiki pages only, one of them pinned to the wiki home (format 1.4) |
 
 `hello-world`, slightly shortened:
 
 ```yaml
 format: 1
 package: hello-world
-version: 1.0.1
+version: 1.0.2
 authors: [SharpMUSH]
 description: "Minimal example package: one object, one command."
 license: MIT
@@ -414,7 +420,7 @@ objects:
     type: thing
     name: Hello World Object
     attributes:
-      CMD_+HELLO: |-
+      CMD`HELLO: |-
         $+hello:@pemit %#=Hello, [name(%#)]!
 
   # +help in its smallest form: a HELP root describing the set, one leaf per topic,
@@ -441,7 +447,8 @@ After installing it, players get a `+hello` command that greets them by name.
 
 - Write substitutions bare: `%0`, `%q<name>`. Brackets are for function calls only.
 - Prefer `firstof()` to nested `if()` calls for "first one that works" choices.
-- Pick a `convention_prefix` and use it on attribute names; it is advice, not a rule.
+- Name attributes as trees, ``<kind>`<section>`<Name>``: ``CMD`BBPOST``, ``FUN`DISPLAY`LIST``,
+  ``DATA`CONFIG`<NAME>``.
 - Keep function objects `no_command`, and put `$command` patterns on a separate global object (see
   `who-where`).
 - Never hardcode a dbref. Use `{{?configure}}` for objects that differ between games and
