@@ -135,8 +135,9 @@ author or the scene's owner can mark it.
 
 ## Reading the log
 
-- `+scene/recall <n>` shows the last `<n>` poses of your focused scene. On its own it shows two rounds:
-  twice as many poses as there are people in the scene.
+- `+scene/recall <n>` shows the last `<n>` poses of your focused scene. On its own it shows two
+  rounds, a round being one pose for each person in the scene. Staff change the number of rounds with
+  `+config scene/recall-rounds=<n>`.
 - `+scene/recall <id>=<n>` does the same for any scene you can see.
 - `+scene/log [<id>]` shows the whole log.
 
@@ -153,7 +154,9 @@ In the web portal, **Scenes** lists the same scenes, and each scene has a page w
 
 ## Running a scene
 
-`+scene/create <title>` starts a scene in the room you are in and makes it your focus. You own it.
+`+scene/create <title>` creates a scene in the room you are in and makes it your focus. You own it.
+It records poses at once. When staff set `+config scene/default-status=new`, a new scene waits for
+`+scene/start` instead.
 
 ```
 > +scene/create Smugglers at the Harbour
