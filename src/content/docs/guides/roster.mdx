@@ -268,7 +268,8 @@ The roster ships with the server but is not installed on a new game. An administ
 from the portal:
 
 1. Open **Packages** in the admin area and choose **Browse**.
-2. Install `roster`. It needs `plus-help`, which a new game already has.
+2. Install `roster`. It needs `plus-help`, which a new game already has, and an event handler,
+   which is chosen in first-run setup.
 3. To decide applications in the job queue, also install `roster-jobs`. It needs `jobs`.
 
 `+roster` is a game command, matched before softcode `$`-commands, so a `+roster` your game
@@ -308,8 +309,8 @@ Settings are attributes on the **Roster** object:
 |---|---|---|
 | ``DATA`MAX`PER`ACCOUNT`` | how many roster characters one account may hold; `0` is no limit | `1` |
 | ``DATA`IDLE`DAYS`` | the days `+roster/idle` uses when given none | `60` |
-| ``DATA`HOW`TO`GET`` | the line saying how a player gets a character | |
-| ``DATA`RETURN`MESSAGE`` | what the account's characters are told when one goes back | |
+| ``DATA`HOW`TO`GET`` | the line saying how a player gets a character | `Ask staff how to take on a roster character.` |
+| ``DATA`RETURN`MESSAGE`` | what the account's characters are told when one goes back | `Its password has been changed, so it is no longer yours to play.` |
 | ``DATA`FIELDS`ORDER`` | the fields a character's screen shows first, in order | `GROUP SUMMARY` |
 
 ``DATA`MAX`OPEN`` on the **Roster Applications** object, inside the Roster, is how many

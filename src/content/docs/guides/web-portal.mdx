@@ -19,8 +19,9 @@ way to get the shape of this page.
 
 ## First run
 
-A fresh install has no accounts. The first visitor to **`/setup`** claims the admin account and
-creates the God character, then the route closes.
+The first visitor to **`/setup`** claims the admin account, which is made in advance and linked to
+God (#1). The setup wizard then offers to import a PennMUSH database, sets the HTTP and event handler
+objects, and lets the admin choose the bundled packages. It stays open until the admin finishes it.
 
 <Aside type="danger">
 Until someone completes `/setup`, anyone who reaches it takes ownership of the game. Deploy and
@@ -38,10 +39,10 @@ own several characters.
 | `/characters` | The characters this account owns |
 | `/characters/new` | Character creation |
 | `/character/{name}` | A public character profile |
-| `/account`, `/settings` | Account details, per-character settings, theme |
+| `/account`, `/settings` | Account details and passkeys, characters, theme (`/settings/theme`), notifications |
 
 Because the login is an account rather than a character, switching characters does not mean
-disconnecting and reconnecting, and a lost password is an email recovery rather than a staff ticket.
+disconnecting and reconnecting. Staff reset a lost password from `/admin/accounts`.
 Guest access upgrades into a real character without losing the session.
 
 ## Playing in the browser
@@ -52,8 +53,8 @@ drives the live side panes.
 
 The terminal's **Server URI** must point at the connection server's `/ws` endpoint. On a deployment
 behind the supplied proxy config that is `wss://<your-domain>/ws`; see
-[Run with Docker](/guides/docker-quickstart#point-the-browser-terminal-at-the-right-place) for why
-this is its own hostname and path.
+[The browser terminal address](/guides/deployment#the-browser-terminal-address) for why this path
+goes to the connection server and not the game server.
 
 ### Prompts
 
@@ -100,6 +101,7 @@ each prompt as an ordinary line.
 	<Card title="Scenes" icon="comment">
 		`/scenes` — browse logged scenes, and watch running ones at `/scenes/active` as poses land.
 		On a phone, and for the schedule in a calendar app, see [Scenes on a Phone](/guides/scenes-on-a-phone).
+		Scenes are part of the Scene System, a bundled application a new game has unless staff remove it.
 	</Card>
 	<Card title="Help" icon="information">
 		`/help` — the server's own helpfiles, searchable, with working cross-links.
@@ -112,47 +114,69 @@ requests, defined by admins as a softcode schema rather than written as web code
 Softcode layouts also render as native portal structure: boxes become panels, fields become
 definition lists, columns wrap on narrow screens, and figures show real images. The same softcode
 still produces terminal art and accessible reading order. See
-[Visual Layouts, Themes, and Images](/guides/visual-layouts).
+[Visual Layouts and Images](/guides/visual-layouts).
 
 ## The admin panel
 
 `/admin` is the staff dashboard. What a given staffer sees is governed by roles, not by a single
-wizard bit.
+wizard bit. The pages are grouped as the portal's sidebar groups them.
 
-### Configuration
+### Build
 
-- **`/admin/config`** — the server's configuration, grouped into categories and rendered as typed
-  form fields, including array and dictionary values as editable lists.
-- **`/admin/config/restrictions`** — command and function restrictions.
-- **`/admin/config/sitelock`** — sitelock rules.
-- **`/admin/config/bannednames`** — disallowed character names.
-- **`/admin/config/import`** and **`/admin/database/import`** — bring a PennMUSH configuration and
-  database across. This is a staged, one-way operation; use the [migration runbook](/guides/pennmush-migration),
-  not the upload form alone, to plan rehearsal, validation, cutover, and rollback.
+- **`/softcode`** — edit the attributes on objects you control, and try code in a console. See
+  [The softcode editor](#the-softcode-editor).
+- **`/admin/snapshots`** — capture a recovery point for an object, and restore fields from it.
+- **`/admin/jobs`** — run an attribute on a schedule, as your character.
+- **`/admin/diagnostics`** — queued and running work, and why recent work failed.
 
 ### People
 
-- **`/admin/players`** — the player list, with a detail view per player.
-- **`/admin/accounts`** and **`/admin/characters`** — the account and character sides of the same
-  people.
-- **`/admin/moderation`** — the moderation queue.
-- **`/admin/roles`** — define what staff roles may do.
-- **`/admin/suggestions`** — player suggestions.
+- **`/admin/accounts`** — reset passwords, and disable, close or delete web accounts.
+- **`/admin/characters`** — find any character by name, account, flag or whether they are online,
+  with a detail view for each at `/admin/characters/<number>`.
+- **`/admin/guests`** — the characters handed out to visitors who connect as a guest.
+- **`/admin/activity`** — when people play, who is drifting away, and which rooms are used.
+- **`/admin/roles`** — create roles, decide what each one allows, and assign them.
+
+### Moderation
+
+- **`/admin/moderation`** — warn, boot, ban or unlink a character, with a reason.
+- **`/admin/audit`** — who changed what, in the portal and in the game.
 
 ### Content
 
-- **`/admin/wiki`** and **`/admin/wiki/assets`** — wiki administration and uploaded assets.
+- **`/admin/wiki`** — publish, protect, file and bulk-edit wiki pages.
 - **`/admin/media`** — the image library, where staff [lock a file](/guides/galleries/#locks) to a permission.
-- **`/admin/profiles`** — character profile templates and fields.
+- **`/admin/suggestions`** — the word lists that suggest a fix for a mistyped help topic or function name.
+- **`/admin/messages`** — the connect screen, the messages of the day and the other texts a connection is shown.
+- **`/admin/scenes/types`** — how each kind of scene line reads in the portal. Listed only while the
+  Scene System is installed.
+
+### Portal
+
+- **`/admin/applications`** — the Dynamic Applications published at `/apps/{slug}`.
 - **`/admin/layout`** — the portal's own layout: which widgets appear on which pages, edited per
   scope in a layout editor.
-
-### Extensions
-
+- **`/admin/themes`** — the portal's colour themes, and which one players get. See
+  [Portal Themes](/guides/portal-themes).
 - **`/admin/packages`** — installed softcode packages, plus `browse`, `remotes`, `review` and
   `author` views. See [Softcode Packages](/guides/packages).
-- **`/admin/applications`** — the Dynamic Applications published at `/apps/{slug}`.
-- **`/admin/server`** — server status and control.
+- **`/admin/profiles`** — check and reset the softcode that serves character profiles.
+
+### Server
+
+- **`/admin/server`** — uptime, connections, queue, storage and backups, read live.
+- **`/admin/config`** — the server's configuration, grouped into categories and rendered as typed
+  form fields, including array and dictionary values as editable lists. Its sub-pages are
+  `/admin/config/restrictions` (command and function restrictions), `/admin/config/sitelock`,
+  `/admin/config/bannednames` (disallowed character names), `/admin/config/secrets`,
+  `/admin/config/mssp`, `/admin/config/asciitranslations` and `/admin/config/import`.
+- **`/admin/import`** — bring a PennMUSH, RhostMUSH or TinyMUX database into this game. With
+  `/admin/config/import` this is a staged, one-way operation; use the
+  [migration runbook](/guides/pennmush-migration), not the upload form alone, to plan rehearsal,
+  validation, cutover, and rollback.
+- **`/admin/discord`** — the bot, linked channels, role mappings and linked members. Listed only
+  while the Discord application is installed.
 
 ## The softcode editor
 
@@ -164,7 +188,7 @@ shows are the real parser's, not an approximation.
 ## Next steps
 
 <LinkCard
-  title="Visual Layouts, Themes, and Images"
+  title="Visual Layouts and Images"
   href="/guides/visual-layouts"
   description="Design softcode displays that adapt across the portal, terminals, personal themes, and screen readers."
 />

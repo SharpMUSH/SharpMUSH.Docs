@@ -3,90 +3,27 @@ title: "Compatibility"
 description: "Lays out the Compatibility with PennMUSH"
 ---
 
-import { Card } from '@astrojs/starlight/components';
-import { Aside } from '@astrojs/starlight/components';
-import { Code } from '@astrojs/starlight/components';
-
 Planning to move a live game? Compatibility findings are inputs to a rehearsal, not proof that an
 import is ready for players. Use the [PennMUSH migration runbook](/guides/pennmush-migration) to test
 your own identities, data, softcode, connection paths, portal, and integrations.
 
-SharpMUSH does away with some of the more unique aspects of PennMUSH parser curiosities.
+SharpMUSH targets PennMUSH 1.8.8 softcode. Where it differs, the game's own help says how, one topic
+per area. Each page below is the same text as that `help` topic in the game.
 
-<Card title="Unbalanced Parenthesis">
+| Page | What it covers |
+|---|---|
+| [PennMUSH Compatibility](/reference/sharpmush-help/pennmush-compatibility/) | The overview: what kinds of difference there are, and where each is listed |
+| [Parser](/reference/sharpmush-help/compatibility-parser/) | How a line is parsed, dispatched and evaluated: unbalanced brackets are an error, `##` in `iter()` is data, a function name can't be produced by evaluation |
+| [Arguments](/reference/sharpmush-help/compatibility-arguments/) | Functions that take extra, optional arguments |
+| [Names](/reference/sharpmush-help/compatibility-names/) | Functions and commands that PennMUSH doesn't have, or that take their arguments in another order |
+| [Commands](/reference/sharpmush-help/compatibility-commands/) | The command table, the configuration and the objects a new game starts with |
+| [Config](/reference/sharpmush-help/compatibility-config/) | Configuration options that change how existing code evaluates, such as `tiny_booleans` and `tiny_math` |
+| [Output](/reference/sharpmush-help/compatibility-output/) | `render()` and markup written for something outside the game |
+| [Identity](/reference/sharpmush-help/compatibility-identity/) | Object identity, timestamps and numbers |
+| [Mail](/reference/sharpmush-help/compatibility-mail/) | The differences in `@mail` |
+| [Economy](/reference/sharpmush-help/compatibility-economy/) | Currency and `money()` |
+| [Defects](/reference/sharpmush-help/compatibility-defects/) | Differences that are bugs, expected to change |
+| [Unresolved](/reference/sharpmush-help/compatibility-unresolved/) | Differences with no decision yet; don't depend on either behaviour |
 
-In PennMUSH, the following is legal, while is not in SharpMUSH:
-
-```lisp title="PennMUSH" frame="terminal" "> 3"
-think add(1,2 
-> 3
-```
-
-Instead, complete the parenthesis.
-```lisp title="SharpMUSH" frame="terminal" "> 3"
-think add(1,2)
-> 3
-```
-
-</Card>
-
-<Card title="Forgiving Parenthesis">
-
-In PennMUSH, the following is legal, while is not in SharpMUSH:
-
-```lisp title="PennMUSH" frame="terminal" "> #1"
-lsearch(all,eval,\[strmatch(##,%#)\])
-> #1
-```
-
-Instead, escape all the contents. This is also needed for #lambda evaluation.
-```lisp title="SharpMUSH" frame="terminal" "> #1"
-lsearch(all,eval,\[strmatch\(##\,%#\)\])
-> #1
-```
-
-</Card>
-
-<Card title="Full Recursion Parsing">
-
-In PennMUSH, TinyMUX, etc, you can do the following:
-
-```lisp title="PennMUSH" frame="terminal" "> FOO"
-&fn me=ucstr; think [v(fn)](foo)
-> FOO
-```
-
-Instead, use `callfn()` to call the intended function.
-```lisp title="SharpMUSH" frame="terminal" "> FOO"
-&fn me=ucstr; think callfn(v(fn),foo)
-> FOO
-```
-
-This is an awesome feature of MUSH-likes, but we explicitly do not support this, as it makes the parser non-deterministic, ambiguous and harder to maintain. 
-Most existing Softcode does not rely on this behavior however. 
-
-<Aside>
-SharpMUSH introduces `callfn()` and `@callcmd` to replace this loss, which ensures most scenarios have a way to build the compatibility back in.
-</Aside>
-
-</Card>
-
-<Card title="## Double-Evaluation">
-
-In PennMUSH, `##` inside `iter()` performs double-evaluation, meaning the substitution result is evaluated again as MUSHcode:
-
-```lisp title="PennMUSH" frame="terminal" "> red"
-iter(\[if(true\,red\,white)\],##,)
-> red
-```
-
-In SharpMUSH, `##` is substituted as `%iL` (a literal reference), so the result is returned as-is without further evaluation:
-
-```lisp title="SharpMUSH" frame="terminal" "> [if(true,red,white)]"
-iter(\[if(true\,red\,white)\],##,)
-> [if(true,red,white)]
-```
-
-If double-evaluation is needed, use `s()` or `objeval()` to explicitly evaluate the result.
-
-</Card>
+Code written for TinyMUX or RhostMUSH has guides of its own:
+[TinyMUX Softcode](/guides/tinymux-softcode) and [RhostMUSH Softcode](/guides/rhostmush-softcode).

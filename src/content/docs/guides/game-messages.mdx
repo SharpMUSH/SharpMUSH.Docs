@@ -1,0 +1,220 @@
+---
+title: Connect Screen and MOTD
+description: What the connect screen, the message of the day and the other login messages are, when each shows, and how staff change them.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Every connection is shown a few fixed messages: the **connect screen** when it arrives, the
+**message of the day** (MOTD) after a player logs in, a goodbye when they quit, and a few others.
+With the `messages` package installed, each one is an attribute on a thing called **Messages**, and
+staff change a message by setting that attribute.
+
+| You are | You want to | Read |
+|---|---|---|
+| Staff | know which message shows when | [The messages](#the-messages) |
+| Staff | put news in front of everyone who logs in | [Changing the MOTD](#changing-the-motd) |
+| Staff | change what a new connection sees | [Changing the connect screen](#changing-the-connect-screen) |
+| Staff | install it, or go back to plain text | [Running the Messages object](#running-the-messages-object) |
+
+In the game, `help messages` has the same table in short form, and `help @motd` covers the
+temporary messages.
+
+## The messages
+
+| Attribute | Shown |
+|---|---|
+| `CONNECT` | at the connect screen, before anyone logs in |
+| `MOTD` | to every player after logging in |
+| `WIZMOTD` | after the MOTD, to wizards and royalty |
+| `GUEST` | after the MOTD, to a guest |
+| `NEWUSER` | after `register` creates an account: how to make or claim a first character |
+| `REGISTER` | instead of creating a character while player creation is off |
+| `DOWN` | before the refusal while logins are off |
+| `QUIT` | after the goodbye on `QUIT` and `LOGOUT` |
+
+This is what a player sees on login with the package's own messages. The MOTD greets them and says
+how many are online; a wizard also gets the staff notice from `WIZMOTD`:
+
+```text
+> connect Gus gus-pw-1
+Welcome back, Gus!
+
+─┤ Welcome to SharpMUSH ├─────────────────────────────────────────────────────
+Hello, Gus. 6 players are connected.
+Type help for the commands, or WHO to see who is here.
+
+[STAFF] Nothing new for staff. Leave a note here with @wizmotd <message>.
+```
+
+And the goodbye from `QUIT`:
+
+```text
+> QUIT
+GOODBYE.
+
+Goodbye from SharpMUSH. Come back soon!
+```
+
+`REGISTER`, `DOWN`, `NEWUSER` and `GUEST` only show while the game is in a particular state: player
+creation off, logins off, a new account just made, or a guest connected. They are short notices in
+the same style.
+
+Each attribute is softcode, run as the Messages object when its message is shown. `%#` is the
+player who will see it (the object itself at the connect screen, where nobody has logged in yet),
+and `%0` is the connection's descriptor. An attribute that comes out empty shows nothing, and a
+message the object has no attribute for shows the stored text from the portal instead.
+
+## Changing the MOTD
+
+`@listmotd` says where the messages come from, and so which object to change. On this game it is
+`#42`:
+
+```text
+> @listmotd
+Current Message of the Day settings:
+  Messages come from: Messages(#42) (messages_object)
+Temporary Message of the Day (cleared on restart):
+  Connect MOTD: (not set)
+  Wizard MOTD:  (not set)
+  Down MOTD:    (not set)
+  Full MOTD:    (not set)
+```
+
+<Aside type="tip">
+Before changing a message, `examine #42/MOTD` and keep a copy of what it says, so you can put it back
+exactly.
+</Aside>
+
+### News for a while: `@motd`
+
+For news that matters for a day or two, `@motd <text>` shows your line in place of the `MOTD`
+attribute until you clear it, without touching the object:
+
+```text
+> @motd The server restarts at 22:00 for an upgrade. Back by 22:15.
+Connect MOTD set.
+```
+
+The next player to log in sees it where the greeting would be:
+
+```text
+> connect Hana hana-pw-1
+Welcome back, Hana!
+The server restarts at 22:00 for an upgrade. Back by 22:15.
+```
+
+`@motd/clear` brings the `MOTD` attribute back, and a restart clears it too:
+
+```text
+> @motd/clear
+Connect MOTD cleared.
+```
+
+`@wizmotd <text>` does the same for the staff notice.
+
+### A lasting change: the `MOTD` attribute
+
+To change the greeting itself, set the attribute. This one keeps the package's heading and greeting
+and adds a line of news:
+
+```text
+> &MOTD #42=%r[u(FUN`SECTION,Welcome to [mudname()])]%rHello, [name(%#)]. The harbour festival opens on Friday at 8pm.%rType [cmdlink(help,help,Read the help)] for the commands.
+Messages/MOTD - Set.
+```
+
+Every login from then on shows it:
+
+```text
+> connect Hana hana-pw-1
+Welcome back, Hana!
+
+─┤ Welcome to SharpMUSH ├─────────────────────────────────────────────────────
+Hello, Hana. The harbour festival opens on Friday at 8pm.
+Type help for the commands.
+```
+
+`FUN`SECTION` draws the heading rule, and `cmdlink()` makes `help` a link a player can click in the
+portal or a client that supports links. `think u(#42/MOTD)` shows you the result as it stands, without
+logging in again.
+
+## Changing the connect screen
+
+The connect screen is what a new connection sees before it logs in. The package's `CONNECT` puts
+the logo beside the ways in:
+
+```text
+          ==         ==            Welcome to SharpMUSH!
+         ====       ====
+       =======     =======         ─┤ New here? ├─────────────────────────────
+      =========   =========        register  <name> [email] <password>
+     =========== ===========       make      <character> <password>
+    =================== =====      ─┤ Just looking? ├─────────────────────────
+  ======-  ===========   ======    connect   guest
+ ======     =========     ======   ─┤ Have an account? ├──────────────────────
+======   =   =======   =   ======  login     <name-or-email> <password>
+======   ==   =====   ==   ======  play      <character>
+ =====   ===   ===   ===   =====   claim     <character> <password>
+ =====   ====   =   ====   =====   ─┤ Playing a character? ├──────────────────
+  ====   =====     =====   ====    connect   <character> <password>
+   ===    ====     ====    ===     ─┤ Any time ├──────────────────────────────
+   ===     ===     ===-    ===     WHO       who is online
+    ==     ===     ===     ==      QUIT      leave the game
+     =      ==     ==      =
+             =     =
+```
+
+The web portal and MXP or Pueblo clients get the logo as a picture instead (once `mud_url` is set),
+and a narrow screen gets the commands under the logo. A section is left out while the option behind
+it is off: no "New here?" while `player_creation` is off, no "Just looking?" while `guests` is.
+
+The list of commands is its own attribute, `FUN`MENU`, so a connect screen of your own can reuse it.
+Try the new screen with `think` first, since a mistake here is seen by everyone who connects:
+
+```text
+> think [u(#42/FUN`MENU)]%r%rThe harbour festival opens on Friday at 8pm.
+Welcome to SharpMUSH!
+
+─┤ New here? ├────────────────────────────────────────────────────────────────
+register  <name> [email] <password>
+make      <character> <password>
+─┤ Just looking? ├────────────────────────────────────────────────────────────
+connect   guest
+─┤ Have an account? ├─────────────────────────────────────────────────────────
+login     <name-or-email> <password>
+play      <character>
+claim     <character> <password>
+─┤ Playing a character? ├─────────────────────────────────────────────────────
+connect   <character> <password>
+─┤ Any time ├─────────────────────────────────────────────────────────────────
+WHO       who is online
+QUIT      leave the game
+
+The harbour festival opens on Friday at 8pm.
+```
+
+Then set it:
+
+```text
+> &CONNECT #42=[u(FUN`MENU)]%r%rThe harbour festival opens on Friday at 8pm.
+Messages/CONNECT - Set.
+```
+
+The next connection to arrive gets the screen from the `think` above, without the logo.
+
+The connect screen carries no command links, since nobody is logged in to click them. The layout
+functions it uses (`flex()`, `figure()`, `rule()`, `fields()`) are in
+[Layout Functions](/reference/sharpmush-help/layout-functions/); see
+[Visual Layouts and Images](/guides/visual-layouts/) for how they fit each reader's screen.
+
+## Running the Messages object
+
+A new game does not install the `messages` package; it shows the stored text of each message until
+an administrator chooses the Messages object, in the setup wizard or from the
+[packages](/guides/packages/) page. It depends on nothing else.
+
+Installing it creates the Messages object and sets the `messages_object` option to it, which
+switches the game to reading its messages from the object. Removing the package puts the option back
+as it was, unless it has been changed since. The Messages page of the
+[admin panel](/guides/web-portal/) (`/admin/messages`) switches back to the stored text, and edits
+that text, without removing the package.

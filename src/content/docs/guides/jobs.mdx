@@ -1,0 +1,544 @@
+---
+title: Jobs
+description: Asking staff for something with +request, following your jobs, and working the staff queue in buckets.
+---
+
+**Jobs** are how players ask staff for something and how staff keep track of it: a room fix, a
+bug, a plot idea, an application. Each request is a job with a running conversation between the
+player and staff. Each job sits in a **bucket**, such as Requests, Building or Bugs, and the bucket
+decides who works it.
+
+A job is always waiting on someone. It is **New** until staff pick it up, then **With staff** or
+**Waiting on you** as the two sides reply, **On hold** when staff park it, and **Closed** once it is
+approved, denied, completed or canceled.
+
+| You are | You want to | Read |
+|---|---|---|
+| A player | ask staff for something | [Sending a request](#sending-a-request) |
+| A player | read staff's answer and reply | [Following your jobs](#following-your-jobs) |
+| A player | let a friend follow a job with you | [Helpers](#helpers) |
+| Staff | see what is waiting | [The queue](#the-queue) |
+| Staff | take a job and answer it | [Working a job](#working-a-job) |
+| Staff | close a job | [Closing a job](#closing-a-job) |
+| Staff | change what a bucket does, or who works it | [Buckets](#buckets) |
+| Staff | install it | [Running Jobs](#running-jobs) |
+
+In the game, `+help jobs` has the player commands in short form, `+help jobs staff` the staff ones,
+`+help jobs commands` every switch, and `+help buckets` the bucket settings. `+job`, `+jobs`,
+`+myjob`, `+myjobs`, `+ticket` and `+tickets` are all the same command, so use the one you know.
+A switch can be cut short to any start only it has: `/rep` is `/reply`.
+
+Buckets can also answer, approve and track jobs on their own: first replies, measured waits,
+checklists, status updates and approving at once are in [Jobs That Run Themselves](/guides/jobs-automation/).
+
+## Sending a request
+
+`+buckets` lists the buckets you can file in, with how soon each usually answers:
+
+```text
+> +buckets
+════════════════════════════════╡ Job buckets ╞═══════════════════════════════
+Bucket        Open  First answer   What it is for
+Applications     0  within 3 days  Character applications.
+Bugs             0  within 7 days  Problems with code or the server.
+Building         0  within 7 days  Rooms, objects, descriptions and typos.
+Feedback         0  within 7 days  Suggestions and complaints. Staff do not
+                                   see who sent them.
+Plots            0  within 7 days  Plot and scene proposals.
+Requests         0  within 3 days  Anything you need from staff.
+══════════════════════════════════════════════════════════════════════════════
++request [<bucket>/]<title>=<text>
+══════════════════════════════════════════════════════════════════════════════
+```
+
+`+request <title>=<text>` files a job in Requests:
+
+```text
+> +request Lantern for my shop=Could my shop on Cooper's Row get a lit lantern over the door? It's too dark to find at night.
+[JOBS] Done: Filed job 1 in Requests: Lantern for my shop. Staff aim to answer within 3 days. +job 1 shows it.
+```
+
+To file in another bucket, put its full name and a `/` before the title:
+
+```text
+> +request Building/Shop sign typo=The sign over our shop reads "Kettel & Co". It should be "Kettle & Co".
+[JOBS] Done: Filed job 3 in Building: Shop sign typo. Staff aim to answer within 7 days. +job 3 shows it.
+```
+
+The part before the `/` counts as a bucket only when it is a bucket's whole name, so
+`+request Help w/ exits=...` is just a title in Requests.
+
+Four shortcuts file straight into one bucket: `+bug` into Bugs, `+typo` into Building, `+pitch`
+into Plots and `+apply` into Applications.
+
+```text
+> +bug The ferry exit=Typing ferry from the Quay says "I don't see that here." even though the exit shows in the room.
+[JOBS] Done: Filed job 2 in Bugs: The ferry exit. Staff aim to answer within 7 days. +job 2 shows it.
+```
+
+Messages are markdown, so `**bold**` and lists work. Nothing you write is run as code, so brackets
+and percent signs are safe. To show text exactly as typed, such as a piece of code, add `/softcode`:
+`+bug/softcode <title>=<text>`. `+help jobs format` has the rest.
+
+## Following your jobs
+
+`+jobs` lists your open jobs. A `*` marks one with something you have not read:
+
+```text
+> +jobs
+═══════════════════════════════════╡ Jobs ╞═══════════════════════════════════
+ #  Bucket    Title                                    Status          Updated
+ 2  Bugs      The ferry exit                           New             Oct 16
+*1  Requests  Lantern for my shop                      Waiting on you  Oct 16
+══════════════════════════════════════════════════════════════════════════════
++job <#> reads one · +job/old lists your closed ones
+══════════════════════════════════════════════════════════════════════════════
+```
+
+You are told when staff answer, and get a copy by @mail:
+
+```text
+[JOBS] Ash replied to your job 1: Lantern for my shop. +job 1 shows it.
+MAIL: You have a new message (1) from Jobs.
+```
+
+`+job <#>` reads a job, every message under a line saying who wrote it and when. Message 2 is
+the bucket's own first reply, which [Jobs That Run Themselves](/guides/jobs-automation/#first-replies)
+explains:
+
+```text
+> +job 1
+════════════════════════╡ Job 1: Lantern for my shop ╞════════════════════════
+Bucket:   Requests
+Status:   Waiting on you
+Priority: Normal
+Filed:    Oct 16 00:51 by Bea
+Handlers: Ash
+══════════════════════════╡ Bea · Oct 16 00:51 · #1 ╞═════════════════════════
+Could my shop on Cooper's Row get a lit lantern over the door? It's too dark
+to find at night.
+═══════════════════════╡ Requests · Oct 16 00:51 · #2 ╞═══════════════════════
+Thanks. Staff have your request and will answer here.
+
+Staff aim to answer within 3 days.
+══════════════════════════╡ Ash · Oct 16 00:51 · #3 ╞═════════════════════════
+Happy to. Do you want a plain iron lantern, or one with the shop's sign
+painted on the glass?
+══════════════════════════════════════════════════════════════════════════════
++job/reply 1=<text> answers
+══════════════════════════════════════════════════════════════════════════════
+```
+
+`+job/reply <#>=<text>` answers, and hands the turn back to staff:
+
+```text
+> +job/reply 1=The painted one, please: a copper kettle on blue glass. Mira keeps the shop with me.
+[JOBS] Done: You replied to job 1.
+```
+
+When staff close a job you are told how, and the job moves to `+jobs/old`:
+
+```text
+[JOBS] Ash approved your job 1: Lantern for my shop. +job 1 shows it.
+> +jobs/old
+════════════════════════════════╡ Closed jobs ╞═══════════════════════════════
+ #  Bucket    Title                                          Status    Updated
+*1  Requests  Lantern for my shop                            Approved  Oct 16
+══════════════════════════════════════════════════════════════════════════════
++job <#> reads one
+══════════════════════════════════════════════════════════════════════════════
+```
+
+A reply within a few days of a job closing opens it again, so a follow-up stays with the rest of
+the conversation. How many days is the bucket's `reopen` setting; Requests allows 7:
+
+```text
+> +job/reply 1=One more thing: could it light itself at dusk?
+[JOBS] Done: You replied to job 1 and opened it again.
+```
+
+Past that, file a new request and mention the old job's number.
+
+A few more things you can do with your own jobs:
+
+- `+job/cancel <#>` withdraws a job you filed.
+- `+jobs/catchup` marks everything read.
+- `+job/options mail=off` stops the @mail copies; `=on` brings them back.
+
+```text
+> +job/cancel 2
+[JOBS] Done: Job 2 is closed: canceled.
+> +job/options mail=off
+[JOBS] Done: Job mail is off.
+```
+
+### Helpers
+
+`+job/addhelper <#>=<player>` lets someone else read a job and reply to it, as you can.
+`+job/remhelper <#>=<player>` takes that back, and a helper can remove themselves.
+
+```text
+> +job/addhelper 1=Mira
+[JOBS] Done: Mira can read and answer job 1 now.
+```
+
+The job then shows in Mira's `+jobs`, and she hears when it closes:
+
+```text
+[JOBS] Ash approved job 1: Lantern for my shop. +job 1 shows it.
+```
+
+A helper never sees staff notes, the same as the player who filed the job.
+
+## The queue
+
+Staff are whoever works a bucket, and that comes from a role, not from being a wizard. Without one,
+a wizard sees what a player sees. The **Job Admin** role (`job-admin`) works every bucket, and
+each bucket has a role of its own, such as `job-admin-building`:
+
+```text
+> @role/assign me=job-admin
+Ash now holds job-admin.
+```
+
+`+buckets` then marks every bucket you work with `*`, and shows Staff, a bucket hidden from players:
+
+```text
+> +buckets
+════════════════════════════════╡ Job buckets ╞═══════════════════════════════
+Bucket         Open  First answer   What it is for
+Applications*     0  within 3 days  Character applications.
+Bugs*             0  within 7 days  Problems with code or the server.
+Building*         0  within 7 days  Rooms, objects, descriptions and typos.
+Feedback*         0  within 7 days  Suggestions and complaints. Staff do not
+                                    see who sent them.
+Plots*            0  within 7 days  Plot and scene proposals.
+Requests*         0  within 3 days  Anything you need from staff.
+Staff*            0  within 7 days  Work among staff. Players do not see it.
+══════════════════════════════════════════════════════════════════════════════
+* you work it · +request [<bucket>/]<title>=<text>
+══════════════════════════════════════════════════════════════════════════════
+```
+
+Staff who are connected hear every new job, and every reply from a player, in a bucket they work:
+
+```text
+[JOBS] Bea filed job 1 (Requests): Lantern for my shop
+[JOBS] Bea replied to job 1 (Requests): Lantern for my shop
+```
+
+For staff, `+jobs` opens on what needs staff in the buckets they work, high priority first and
+then whoever has waited longest, followed by their own open jobs:
+
+```text
+> +jobs
+═══════════════════════════════════╡ Jobs ╞═══════════════════════════════════
+ #  Bucket    Title                                            Status  Updated
+*2  Bugs      The ferry exit                                   New     Oct 16
+*1  Requests  Lantern for my shop                              New     Oct 16
+══════════════════════════════════════════════════════════════════════════════
++job <#> reads one · +jobs/all lists every open job
+══════════════════════════════════════════════════════════════════════════════
+```
+
+Other views:
+
+| Type | To see |
+|---|---|
+| `+jobs <bucket>` | one bucket's open jobs |
+| `+jobs/all` | every open job, including those waiting on a player |
+| `+jobs/new`, `/mine`, `/overdue`, `/player`, `/held` | new jobs, the ones you handle, overdue ones, those waiting on a player, those on hold |
+| `+jobs/from <player>` | jobs a player filed |
+| `+jobs/who <player>` | jobs someone handles |
+| `+job/old [<bucket>]` | closed jobs |
+| `+job/next`, `+job/scan` | read the next unread job, or list them |
+
+```text
+> +jobs/all
+═══════════════════════════════╡ All open jobs ╞══════════════════════════════
+ #  Bucket    Title                                       Status       Updated
+ 2  Bugs      The ferry exit                              With player  Oct 16
+*3  Building  Shop sign typo                              New          Oct 16
+══════════════════════════════════════════════════════════════════════════════
+> +jobs Bugs
+═════════════════════════════╡ Open jobs in Bugs ╞════════════════════════════
+#  Bucket  Title                                          Status       Updated
+2  Bugs    The ferry exit                                 With player  Oct 16
+══════════════════════════════════════════════════════════════════════════════
++job/old Bugs lists its closed jobs
+══════════════════════════════════════════════════════════════════════════════
+```
+
+A list longer than your screen comes in pages, and the page number goes last: `+jobs/2`,
+`+jobs/new/2`, `+job/old/3 Requests`.
+
+## Working a job
+
+`+job/claim <#>` makes you the job's handler; `+job/unclaim` lets it go.
+`+job/assign <#>=<names>` sets the handlers instead, and `+<role>` there hands a job to everyone
+holding a role. `+job/watch <#>` tells you of every change without making you a handler.
+
+```text
+> +job/claim 1
+[JOBS] Done: You handle job 1 now.
+> +job/assign 2=Ash
+[JOBS] Job 2 is handled by Ash.
+```
+
+`+job/reply <#>=<text>` answers the player, and makes it their turn. `+job/note <#>=<text>` writes a
+note only staff see. It passes no turn and the player is not told:
+
+```text
+> +job/note 1=Lanterns on Cooper's Row are the lamplighters' plot. Checking with Tomas before I promise anything.
+[JOBS] Done: You added a staff note to job 1.
+> +job/reply 1=Happy to. Do you want a plain iron lantern, or one with the shop's sign painted on the glass?
+[JOBS] Done: You replied to job 1.
+```
+
+Staff reading the job see the note, marked as staff only, and the due date. Bea's own copy of the
+same job, [above](#following-your-jobs), has neither:
+
+```text
+> +job 1
+════════════════════════╡ Job 1: Lantern for my shop ╞════════════════════════
+Bucket:   Requests
+Status:   Needs staff
+Priority: Normal
+Filed:    Oct 16 00:51 by Bea
+Due:      Oct 19 00:51
+Handlers: Ash
+Helpers:  Mira
+══════════════════════════╡ Bea · Oct 16 00:51 · #1 ╞═════════════════════════
+Could my shop on Cooper's Row get a lit lantern over the door? It's too dark
+to find at night.
+═══════════════════════╡ Requests · Oct 16 00:51 · #2 ╞═══════════════════════
+Thanks. Staff have your request and will answer here.
+
+Staff aim to answer within 3 days.
+═══════════════════╡ Ash (staff only) · Oct 16 00:51 · #3 ╞═══════════════════
+Lanterns on Cooper's Row are the lamplighters' plot. Checking with Tomas
+before I promise anything.
+══════════════════════════╡ Ash · Oct 16 00:51 · #4 ╞═════════════════════════
+Happy to. Do you want a plain iron lantern, or one with the shop's sign
+painted on the glass?
+══════════════════════════╡ Bea · Oct 16 00:52 · #5 ╞═════════════════════════
+The painted one, please: a copper kettle on blue glass. Mira keeps the shop
+with me.
+══════════════════════════════════════════════════════════════════════════════
++job/reply 1=<text> answers
+══════════════════════════════════════════════════════════════════════════════
+```
+
+`+job/all <#>` adds the job's log: who claimed it, moved it, changed its priority.
+
+### Priority, due dates and holding
+
+A new job is due when its bucket's `turnaround` runs out. It is overdue only while staff owe the
+answer, never while it waits on the player.
+
+```text
+> +job/priority 2=high
+[JOBS] Done: Job 2 is high priority.
+> +job/due 2=+1d
+[JOBS] Done: Job 2 is due Oct 17 00:53.
+> +job/hold 1
+[JOBS] Done: Job 1 is on hold.
+```
+
+`+job/due` takes `+12h`, `+3d`, `+1w`, a date, or `none`. Priority is `low`, `normal` or `high`.
+`+job/state <#>=staff`, `player` or `held` sets whose turn it is by hand, and
+`+job/trans <#>=<bucket>` moves a job to another bucket.
+
+### Asking a player something
+
+`+job/query <player>/<title>=<text>` opens a job for a player, already waiting on them. It is filed
+in Requests:
+
+```text
+> +job/query Bea/Lantern at dusk=A self-lighting lantern needs the lamplighters' say. Can you wait until Friday's plot scene?
+[JOBS] Done: Opened job 5 for Bea: Lantern at dusk
+```
+
+Bea hears `[JOBS] Ash opened your job 5: Lantern at dusk. +job 5 shows it.`, and her `+jobs` shows it
+as **Waiting on you**. `+job/create <bucket>/<title>=<text>` opens a job of your own instead.
+
+## Closing a job
+
+`+job/approve`, `+job/deny`, `+job/complete` and `+job/cancel <#>=<text>` close a job. The text is
+the last message, for the player to read; leave it out and the outcome is all they get.
+
+```text
+> +job/approve 1=Done: the lantern hangs over the door, kettle and all. Mira can light it too.
+[JOBS] Done: Job 1 is closed: approved.
+> +job/complete 3=Fixed the sign. Thanks for spotting it.
+[JOBS] Done: Job 3 is closed: completed.
+```
+
+`+job/reopen <#>` opens a closed job again, waiting on staff with a fresh due date:
+
+```text
+> +job/reopen 4
+[JOBS] Done: Job 4 is open again and waiting on staff.
+```
+
+A Job Admin can remove a job for good with `+job/delete <#>`, or fold one into another with
+`+job/merge <from>=<into>`.
+
+## Buckets
+
+The game starts with seven buckets: Applications, Requests (where `+request` goes), Building, Bugs,
+Plots, Feedback and Staff. `+bucket <name>` shows what one does. Staff who work it also see its
+permission, role, locks and hooks:
+
+```text
+> +bucket Requests
+═════════════════════════════╡ Bucket: Requests ╞═════════════════════════════
+About:           Anything you need from staff.
+Turnaround:      3 days
+First answer:    Not measured yet
+Closed in:       Not measured yet
+Reopen:          7 days
+Anonymous:       none
+Hidden:          no
+Taking jobs:     yes
+Priority:        normal
+Keep:            forever
+Acknowledge:     Thanks. Staff have your request and will answer here.
+Approve at once: no
+Checklist:       None
+Permission:      softcode.jobs.requests
+Role:            job-admin-requests
+File lock:       #TRUE
+Work lock:       PERM^softcode.jobs.admin|PERM^softcode.jobs.requests
+Hooks:           none written
+══════════════════════════════════════════════════════════════════════════════
++bucket/set Requests/<setting>=<value>
+══════════════════════════════════════════════════════════════════════════════
+```
+
+### Settings
+
+A Job Admin, or anyone who works the bucket, changes a setting with
+`+bucket/set <bucket>/<setting>=<value>`:
+
+```text
+> +bucket/set Requests/turnaround=2
+[JOBS] Requests turnaround is 2.
+> +bucket/set Building/description=Rooms, objects, descriptions, signs and typos.
+[JOBS] Building description is Rooms, objects, descriptions, signs and typos.
+```
+
+| Setting | What it does |
+|---|---|
+| `description` | what `+buckets` says the bucket is for |
+| `turnaround` | days staff have to answer a new job before it is overdue; `0` for no due date |
+| `reopen` | days after closing in which the player's reply opens a job again; `0` for never |
+| `anonymous` | `filer` hides who filed from staff; `staff` hides staff names from players; `none` |
+| `hidden` | `yes` shows the bucket only to those who work it |
+| `priority` | what new jobs start at |
+| `keep` | days a closed job stays; empty keeps them forever |
+
+`acknowledge`, `checklist` and `audit` are covered in
+[Jobs That Run Themselves](/guides/jobs-automation/).
+
+Feedback starts with `anonymous` set to `filer`, so staff read the message but not the name:
+
+```text
+[JOBS] Anonymous filed job 6 (Feedback): Too many night scenes
+> +job 6
+═══════════════════════╡ Job 6: Too many night scenes ╞═══════════════════════
+Bucket:       Feedback
+Status:       New
+Priority:     Normal
+Filed:        Oct 16 00:55 by Anonymous
+First answer: Within 7 days
+Due:          Oct 23 00:55
+Handlers:     Nobody
+═══════════════════════╡ Anonymous · Oct 16 00:55 · #1 ╞══════════════════════
+Most plot scenes start after midnight my time. Could some run earlier?
+...
+```
+
+A Job Admin can still see who filed one:
+
+```text
+> +job/source 6
+[JOBS] Job 6 was filed by Bea (#20:1792111559428).
+```
+
+### Who works a bucket
+
+Give someone one bucket with its role. Here Mira works Building and nothing else:
+
+```text
+> @role/assign *Mira=job-admin-building
+Mira now holds job-admin-building.
+```
+
+She now hears of new Building jobs and can work them:
+
+```text
+[JOBS] Bea filed job 4 (Building): Cooper's Row
+> +job/claim 4
+[JOBS] Done: You handle job 4 now.
+> +job/complete 4=Fixed: cobbles.
+[JOBS] Done: Job 4 is closed: completed.
+```
+
+A role of your own can allow the same permission: `@role/allow helper=softcode.jobs.requests`.
+What is actually checked is the bucket's work lock, which `+bucket/lock <bucket>/work=<lock>` can
+change; `/file` sets who may file there. `+help jobs roles` has more.
+
+### Making and removing buckets
+
+A Job Admin makes a bucket with `+bucket/create <name>=<description>`. It comes with its own
+permission and role:
+
+```text
+> +bucket/create Festivals=Midwinter fair stalls, contests and prizes.
+[JOBS] Done: Bucket Festivals is ready. The role job-admin-festivals works it: @role/assign <player>=job-admin-festivals
+> +bucket/delete Festivals
+[JOBS] Done: Bucket Festivals is deleted, with its role and permission.
+```
+
+`+bucket/delete` takes only an empty bucket; `+bucket/delete <bucket>=<other bucket>` moves its jobs
+there first. `+bucket/rename` renames one, and `+bucket/disable` stops new jobs arriving while the
+ones there are worked as before. Requests can be neither disabled nor deleted.
+
+A bucket can also run code when its jobs change, in `` ON`<EVENT> `` attributes such as
+`` ON`APPROVE ``. `+help jobs hooks` lists them.
+
+## Running Jobs
+
+### Installing
+
+Jobs ships with the server but is not installed on a new game. An administrator installs it
+during [first-run setup](/guides/packages/), where it is in the Staff group, or later from the
+portal:
+
+1. Open **Packages** in the admin area and choose **Browse**.
+2. Install `jobs`. It needs `plus-config`, `plus-help` and `http-handler`; a new game already has
+   them.
+3. Install `jobs-app` too for the portal's **Jobs** page.
+
+The `jobs-app` package adds a **Jobs** page to the portal at `/apps/jobs`, under Support in the
+sidebar. Players file and follow their requests there, and staff work the buckets they hold, with
+the same rules as in the game. See [Applications](/guides/applications/) for how portal
+applications work.
+
+See [Softcode Packages](/guides/packages/) for how installing, upgrading and rolling back work.
+
+### Roles
+
+| Role | Works |
+|---|---|
+| Job Admin (`job-admin`) | every bucket; can also delete jobs and make, change and remove buckets |
+| Job Admin - Applications (`job-admin-applications`), and one per bucket | that bucket's jobs and settings |
+
+Nobody holds these until they are given, wizards included.
+
+### Settings
+
+Each bucket's settings are changed with `+bucket/set`, as [above](#settings). The package's one
+game setting, `jobs/wait-sample`, is a [`+config`](/guides/config/) value and is described in
+[Jobs That Run Themselves](/guides/jobs-automation/#how-soon-a-bucket-answers).

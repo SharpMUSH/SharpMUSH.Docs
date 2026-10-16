@@ -33,20 +33,20 @@ The [Architecture](/technical/architecture) page explains why the parts are spli
 
 ## What you need
 
-- **The .NET SDK the repository pins**, currently **11.0.100-rc.1**. The `global.json` file at the
+- **The .NET SDK the repository pins**, currently **11.0.100-rc.2**. The `global.json` file at the
   root of the repository names the version; an older SDK stops with "A compatible .NET SDK was not
   found" before it builds anything. Microsoft's install script fetches that exact version:
 
   <Tabs syncKey="os">
   <TabItem label="Linux and macOS">
   ```bash
-  curl -sSL https://dot.net/v1/dotnet-install.sh | bash -s -- --version 11.0.100-rc.1.26425.128
+  curl -sSL https://dot.net/v1/dotnet-install.sh | bash -s -- --version 11.0.100-rc.2.26504.105
   ```
   </TabItem>
   <TabItem label="Windows">
   ```powershell
   Invoke-WebRequest https://dot.net/v1/dotnet-install.ps1 -OutFile dotnet-install.ps1
-  ./dotnet-install.ps1 -Version 11.0.100-rc.1.26425.128
+  ./dotnet-install.ps1 -Version 11.0.100-rc.2.26504.105
   ```
   </TabItem>
   </Tabs>
@@ -135,7 +135,8 @@ change it, and start it again while the others keep running.
 
    Open `https://localhost:7102`. A new world opens on the setup wizard: choose a username and
    password for the administrator account, which is linked to God (`#1`). The wizard then offers to
-   import a PennMUSH database and asks which bundled packages to install.
+   import a PennMUSH, RhostMUSH or TinyMUX database, asks which objects handle HTTP requests and
+   events, and which bundled packages to install.
 
 6. Connect a MU\* client.
 

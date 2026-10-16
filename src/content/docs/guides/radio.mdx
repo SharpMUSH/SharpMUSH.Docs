@@ -1,0 +1,369 @@
+---
+title: Radio
+description: Tune in to radio frequencies, speak and pose on them from anywhere, read back what was said, and run a frequency with moderators, admins and locks.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+**Radio** gives the game a set of **frequencies**. Tune in to one and you hear everything said on
+it, wherever you are in the game, and you can speak on it yourself. A frequency keeps what was said,
+so you can read back the calls you missed. Each frequency has its own admins, who run it, and
+moderators, who keep order, and it can be locked so only some players hear it.
+
+| You are | You want to | Read |
+|---|---|---|
+| A player | find a frequency and tune in | [Tuning in](#tuning-in) |
+| A player | speak, pose and read back what was said | [Speaking](#speaking), [Recalling](#recalling) |
+| A player | use a callsign, a title or a colour, or go quiet | [Your settings](#your-settings) |
+| A moderator | stop someone speaking, or let a player in | [Moderating a frequency](#moderating-a-frequency) |
+| A frequency's admin | create, rename, lock or delete a frequency | [Running a frequency](#running-a-frequency) |
+| Staff | install it and choose who runs the radio | [Setting up the radio](#setting-up-the-radio) |
+
+In the game, `+help radio` has the same commands in short form, and `+help radio moderators` and
+`+help radio admins` the rest.
+
+The examples follow Eli, a player, and Dana, a member of staff, on the frequency Harbour Watch.
+
+## Tuning in
+
+`+radio` on its own lists the frequencies you may tune in to. The **You** column says `on` for one
+you are tuned in to, `gagged` for one you have gagged, and `-` for the rest:
+
+```text
+> +radio
+═══════════════════════════════════╡ Radio ╞══════════════════════════════════
+Frequency      Category  You  About
+Harbour Watch  Port      -    Calls from the harbour patrol boats.
+Tower Ops      Port      -    -
+═════════════════════╡ +radio/join <frequency> tunes in ╞═════════════════════
+```
+
+`+radio/join <frequency>` tunes in, and `+radio/leave <frequency>` tunes out again. You stay tuned in
+when you log off, so you are still on the frequency next time:
+
+```text
+> +radio/join Harbour Watch
+[RADIO] Done: You tune in to Harbour Watch.
+> +radio/leave Harbour
+[RADIO] Done: You tune out of Harbour Watch.
+```
+
+You only need to type enough of a name to tell it from the others: `Harbour` or `harb` is enough
+here. A frequency you may not tune in to is not in your list, and joining it is refused:
+
+```text
+> +radio/join Tower Ops
+[RADIO] Error: You may not tune in to Tower Ops.
+```
+
+`+radio/examine <frequency>` shows one frequency: what it is for, who is listening now, who runs it,
+and your own settings on it.
+
+```text
+> +radio/examine Harbour Watch
+═══════════════════════════════╡ Harbour Watch ╞══════════════════════════════
+Category:   Port
+About:      Calls from the harbour patrol boats.
+You:        tuned in
+Title:      none
+Alterego:   none
+Listening:  Dana and Eli
+Admins:     Dana
+Moderators: none
+Members:    none
+══════════════════════════════════════════════════════════════════════════════
+```
+
+## Speaking
+
+`+radio <frequency>=<message>` speaks on a frequency you are tuned in to. Start the message with `:`
+to pose, or `;` to pose without a space. Everyone tuned in hears it, wherever they are:
+
+```text
+> +radio harb=Tower, we have an unlit vessel off the north mole.
+<Harbour Watch> Eli says, "Tower, we have an unlit vessel off the north mole."
+> +radio harb=:acknowledges. Sending a launch.
+<Harbour Watch> Dana acknowledges. Sending a launch.
+> +radio harb=;'s launch is already out.
+<Harbour Watch> Eli's launch is already out.
+```
+
+The name matches only the frequencies you are tuned in to, so speaking on one you have not joined
+is refused:
+
+```text
+> +radio Tower=Hello?
+[RADIO] Warning: You are not tuned in to a frequency called 'Tower'. +radio lists them.
+```
+
+## Recalling
+
+`+radio/recall <frequency>` shows the last 50 lines said on a frequency, and
+`+radio/recall <frequency>=<lines>` as many as you ask for, up to 500. You can recall any frequency
+you may tune in to, without tuning in first.
+
+```text
+> +radio/recall Harbour Watch=2
+═══════════════════════════╡ Recall: Harbour Watch ╞══════════════════════════
+<Harbour Watch> Dana acknowledges. Sending a launch.
+<Harbour Watch> Eli's launch is already out.
+═══════════════════════════════╡ End of recall ╞══════════════════════════════
+```
+
+A frequency keeps 500 lines unless its admin sets another number; see
+[What a frequency keeps](#what-a-frequency-keeps).
+
+## Your settings
+
+Each of these is yours alone and applies to one frequency. Leave the part after `=` empty to clear
+it: `+radio/title Harbour Watch=` takes the title away.
+
+| Type | To |
+|---|---|
+| `+radio/title <frequency>=<title>` | put a title before your name there, up to 40 characters |
+| `+radio/alterego <frequency>=<name>` | speak there under another name, such as a callsign, up to 30 characters |
+| `+radio/color <frequency>=<colour>` | see that frequency's name in a colour of your own |
+| `+radio/gag <frequency>` | hear nothing from it until `+radio/ungag <frequency>` or you disconnect |
+| `+radio/gag all` | gag every frequency you are tuned in to; `+radio/ungag all` ends it |
+
+A title and an alterego together:
+
+```text
+> +radio/title Harbour Watch=Bosun
+[RADIO] Done: Your title on Harbour Watch is now Bosun.
+> +radio Harbour=Launch two is away.
+<Harbour Watch> Bosun Eli says, "Launch two is away."
+> +radio/alterego Harbour Watch=Watch Two
+[RADIO] Done: You speak on Harbour Watch as Watch Two now.
+> +radio Harbour=Launch two is away.
+<Harbour Watch> Bosun Watch Two says, "Launch two is away."
+```
+
+A line keeps the alterego it was said under, so the recall still shows `Watch Two` after you clear
+it. The title is shown as it is when the line is read, so clearing it takes it off the old lines in
+the recall too.
+
+A colour is a theme colour such as `info`, `primary` or `success`, which follows your own
+[`@theme`](/guides/layout-themes/), or `ansi()` codes such as `hg`. Without one, a frequency's name
+is in the `info` colour.
+
+A gag lasts until you ungag or disconnect, and while it lasts you are left out of the **Listening**
+list. You are still tuned in, and can still speak and recall:
+
+```text
+> +radio/gag Harbour Watch
+[RADIO] Done: You hear nothing from Harbour Watch until you ungag it or disconnect.
+> +radio/ungag Harbour Watch
+[RADIO] Done: You hear Harbour Watch again.
+```
+
+## Moderating a frequency
+
+A frequency's moderators keep order on it. Its admins are moderators too, and so are staff with the
+wizard role or the Radio Admin role, on every frequency.
+
+`+radio/restrict <frequency>=<player>/<duration>` stops a player speaking there, for a time such as
+`30m`, `2h` or `7d`. Without a duration it lasts until a moderator lifts it with
+`+radio/unrestrict <frequency>=<player>`. A restricted player can still listen and recall, and is
+told when it starts and when it is lifted:
+
+```text
+> +radio/restrict Harbour Watch=Eli/30m
+[RADIO] Done: Eli may not speak on Harbour Watch until Fri Oct 16 01:22:53 2026.
+```
+
+Eli hears:
+
+```text
+[RADIO] You may not speak on Harbour Watch until Fri Oct 16 01:22:53 2026.
+> +radio Harbour=Testing.
+[RADIO] Error: You may not speak on Harbour Watch.
+```
+
+```text
+> +radio/unrestrict Harbour Watch=Eli
+[RADIO] Done: Eli may speak on Harbour Watch again.
+```
+
+`+radio/memadd <frequency>=<player>` puts a player on the frequency's **members** list, and
+`+radio/memrem` takes them off. A member can always tune in and speak, whatever the frequency's lock
+says, which is how a closed frequency lets its people in (see [Locks](#locks)):
+
+```text
+> +radio/memadd Tower Ops=Eli
+[RADIO] Done: Eli is one of the members of Tower Ops now.
+```
+
+Anyone who is not a moderator is refused with `Only a moderator of <frequency> can do that.`
+
+## Running a frequency
+
+A frequency's admins run it. Whoever creates a frequency is its first admin, and staff with the
+wizard role or the Radio Admin role are admins of every frequency. Only they may create one; anyone
+else is refused with `Only a radio admin can create frequencies.`
+
+`+radio/create <name>=<category>` creates a frequency. The category is optional and only groups the
+list. A name is up to 30 letters, digits, spaces, dots and dashes.
+
+```text
+> +radio/create Harbour Watch=Port
+[RADIO] Done: Created Harbour Watch. +radio/join Harbour Watch tunes in.
+> +radio/desc Harbour Watch=Calls from the harbour patrol boats.
+[RADIO] Done: Set the description of Harbour Watch.
+```
+
+`/rename` and `/category` change how it is listed. Renaming keeps everything said on it, and
+everyone stays tuned in:
+
+```text
+> +radio/category Tower Ops=Air
+[RADIO] Done: Tower Ops is in Air now.
+> +radio/rename Tower Ops=Tower Control
+[RADIO] Done: Tower Ops is called Tower Control now.
+```
+
+`+radio/modadd` and `+radio/modrem <frequency>=<player>` change who moderates it, and `+radio/admadd`
+and `+radio/admrem` who runs it. A moderator may change the members list but not these:
+
+```text
+> +radio/modadd Harbour Watch=Eli
+[RADIO] Done: Eli is one of the moderators of Harbour Watch now.
+```
+
+`+radio/delete <frequency>` asks first. Typing the name again after `=` deletes it, with everything
+said on it and everyone's settings there:
+
+```text
+> +radio/delete Pier Gossip
+[RADIO] Warning: This deletes Pier Gossip with everything said on it. Type +radio/delete Pier Gossip=Pier Gossip to do it.
+> +radio/delete Pier Gossip=Pier Gossip
+[RADIO] Done: Deleted Pier Gossip.
+```
+
+### Locks
+
+Each frequency has three [locks](/reference/sharpmush-help/sharplock/#lock-bit):
+
+| Lock | Decides who else may | Unless set |
+|---|---|---|
+| `talk` | tune in, recall and speak | everyone |
+| `moderate` | moderate it | the wizard role and radio admins |
+| `admin` | run it | the wizard role and radio admins |
+
+Being on a list always passes its lock: a member passes `talk`, a moderator `moderate`, an admin
+`admin`. `+radio/lock <frequency>/<lock>=<lock>` sets one, and `+radio/unlock <frequency>/<lock>`
+puts back the default. Any lock works, such as `role^harbourmaster` for holders of a role, or
+`#false` for nobody but the lists.
+
+To close Tower Ops to everyone but its members:
+
+```text
+> +radio/lock Tower Ops/talk=#false
+[RADIO] Done: The talk lock of Tower Ops is #false now.
+> +radio/memadd Tower Ops=Eli
+[RADIO] Done: Eli is one of the members of Tower Ops now.
+```
+
+Admins see the locks at the foot of `+radio/examine`, with how many lines it keeps:
+
+```text
+> +radio/examine Tower Ops
+═════════════════════════════════╡ Tower Ops ╞════════════════════════════════
+Category:   Port
+About:      none
+You:        not tuned in
+Title:      none
+Alterego:   none
+Listening:  Eli
+Admins:     Dana
+Moderators: none
+Members:    Eli
+Talk lock:     #false
+Moderate lock: role^wizard|perm^softcode.radio.admin
+Admin lock:    role^wizard|perm^softcode.radio.admin
+Keeps:         500 lines
+══════════════════════════════════════════════════════════════════════════════
+```
+
+A frequency closed to someone is left out of their `+radio` list.
+
+### What a frequency keeps
+
+`+radio/options <frequency>/<option>=<value>` sets what a frequency keeps. Leave the part after `=`
+empty to put back the default.
+
+| Option | Sets | Unless set |
+|---|---|---|
+| `keep` | how many lines it keeps for recall | 500 |
+| `age` | drop lines older than this, such as `30d` | the server's default |
+| `length` | the longest message, in characters | the server's default |
+
+```text
+> +radio/options Harbour Watch/keep=200
+[RADIO] Done: Harbour Watch: keep is 200.
+> +radio/options Harbour Watch/length=20
+[RADIO] Done: Harbour Watch: length is 20.
+```
+
+A longer message is refused:
+
+```text
+> +radio Harbour=This message is far too long for the limit.
+[RADIO] Warning: Harbour Watch takes messages of up to 20 characters.
+```
+
+## Setting up the radio
+
+### Installing
+
+Radio ships with the server but is not installed on a new game. An administrator installs it from
+the portal: open **Packages** in the admin area, choose **Browse**, and install `radio`. It needs
+`plus-help`, which a new game already has. See [Softcode Packages](/guides/packages/) for how
+installing, upgrading and rolling back work.
+
+It adds the **Radio** object to the master room and the command `+radio` for everyone. `+radio` is
+a game command, matched before softcode `$`-commands, so a `+radio` your game already has in
+softcode stops running once the package is in. A new game has no frequencies: create the first ones
+as staff with `+radio/create`.
+
+The `radio-scene` package, also in the catalogue and not installed on a new game, adds
+`+radio/log`, which puts what a player hears on a frequency into the scene they are in, as
+[radio poses](/guides/scene-pose-types/).
+
+### Who runs the radio
+
+The package adds the **Radio Admin** role (`radio-admin`), in a category of its own called Radio. A
+radio admin creates frequencies, and moderates and runs every one of them, as the wizard role does.
+Give it with `@role/assign`:
+
+```text
+> @role/assign *Eli=radio-admin
+Eli now holds radio-admin.
+> +radio/create Pier Gossip=Social
+[RADIO] Done: Created Pier Gossip. +radio/join Pier Gossip tunes in.
+```
+
+To let one player do the same without the role, allow them the permission instead:
+`@permission/allow *Eli=softcode.radio.admin`. To run only one frequency, make them its admin with
+`+radio/admadd`; to keep order on one, its moderator with `+radio/modadd`.
+
+### Settings
+
+Radio has no `+config` settings. Each frequency's limits are its [options](#what-a-frequency-keeps),
+and who runs it is its lists and [locks](#locks). A few game-wide defaults are attributes on the
+Radio object, changed with `&`:
+
+| Attribute | What it is | Default |
+|---|---|---|
+| ``DATA`RECALL`` | How many lines `+radio/recall` shows when no number is given. | 50 |
+| ``DATA`RECALL`MAX`` | The most lines one recall shows. | 500 |
+| ``DATA`COLOR`` | The colour of a frequency's name for a listener who chose none. | `info` |
+| ``DATA`LOCK`MODERATE`` | The moderate lock of a frequency that sets none. | `role^wizard\|perm^softcode.radio.admin` |
+| ``DATA`LOCK`ADMIN`` | The admin lock of a frequency that sets none, and who may create frequencies. | `role^wizard\|perm^softcode.radio.admin` |
+
+<Aside>
+Each frequency is a feed, `radio/<number>`, which the server keeps with its lines and its
+listeners; `help @feed` in the game covers feeds. Softcode can read a frequency's lines with
+`feedrecall()`, and another package can act on every line with a
+[feed tap](/guides/extension-points/#points-the-server-offers), the way `radio-scene` does.
+</Aside>

@@ -18,6 +18,7 @@ This page covers:
 - letting several packages hear the same event;
 - stopping an event, for the few events that allow it;
 - hearing an event from a package;
+- running code whenever an attribute changes;
 - PennMUSH's events, for a game moved from PennMUSH.
 
 The full list of events and their arguments is in the [event list](/reference/sharpmush-help/sharpevents/).
@@ -149,6 +150,36 @@ The bundled `comm-feed` and `room-contents` packages are built this way: `comm-f
 ``PAGE`MESSAGE`COMMFEED``, `room-contents` hears room changes as ``ROOM`CONTENTS`ROOMCONTENTS``, and `timeline` hears a scene starting
 as ``SCENE`STATUS`TIMELINE`` (see [IC Dates and Timelines](/guides/timeline/#acting-when-a-scene-starts)). See
 [Softcode Packages](/guides/packages/) and the [package format](/reference/package-format/).
+
+## Watched attributes
+
+The game can run code whenever an attribute changes, instead of reading every object's attributes
+over and over. Staff choose which attributes, so attributes nobody watches cost nothing.
+
+`@attribute/watch <attribute>` watches a standard attribute: every time a copy of it is set, cleared or
+wiped, on any object and by any command or function, the event handler runs its attributes named
+``WATCH`<attribute>`` and ``WATCH`<attribute>`*``. Each package keeps a handler of its own one level
+below, such as ``WATCH`HP`GAUGE``, so packages do not edit each other's. A handler gets the object as
+`%0` or `%<objid>`, the attribute's full name as `%1` or `%<attribute>`, the old and new values as `%2`
+and `%3` (`%<old>` and `%<new>`), and whoever changed it as `%4` or `%<enactor>`.
+
+The attribute has to be in the attribute table first; `@attribute/access <attribute>=none` adds it.
+`@attribute/watch <attribute>=` stops watching it, and `attrwatch(<attribute>)` tells softcode what it
+is watched with. Only staff with `config.admin` can watch an attribute. See
+[`@attribute`](/reference/sharpmush-help/attribute-command/).
+
+```sharp
+> @attribute/access HP=none
+> &HP me=20
+> @attribute/watch HP
+> &WATCH`HP`LOG #9=@pemit %<objid>=HP went from %<old> to %<new>.
+> &HP me=15
+```
+
+Output: after the last line you are told `HP went from 20 to 15.`
+
+A package watches an attribute with `watch:` on an attribute entry; see
+[Attribute watches](/reference/package-declarations#attribute-watches-format-19).
 
 ## PennMUSH events
 

@@ -14,7 +14,7 @@ what each does, and change them; `+config` refuses a value the setting does not 
 | You are | You want to | Read |
 |---|---|---|
 | Staff | see and change a system's settings | [Reading settings](#reading-settings) and [Changing a setting](#changing-a-setting) |
-| Staff | know what each bundled package lets you set | [The bundled packages' settings](#the-bundled-packages-settings) |
+| Staff | know what some bundled packages let you set | [Some bundled packages' settings](#some-bundled-packages-settings) |
 | A coder | give your own code settings | [Giving your code settings](#giving-your-code-settings) |
 | A package author | ship settings with a package | [In a package](#in-a-package) |
 
@@ -33,9 +33,9 @@ Anyone may read the settings. `+config` alone lists every system that has some:
 ║                      and who sets which field.                             ║
 ║ scene             3  Scenes. What a new scene starts as, which details     ║
 ║                      players may set, and how much +scene/recall shows.    ║
-║ status            4  Status. How long a status line, note and place may    ║
+║ status            5  Status. How long a status line, note and place may    ║
 ║                      be, and what +status/list says under the list.        ║
-║ time              9  Time and the IC clock. The game's time zone, how      ║
+║ time             14  Time and the IC clock. The game's time zone, how      ║
 ║                      times are written, and the IC clock.                  ║
 ║ who-where         3  Who and Where. What +who and +where show.             ║
 ╠════════════════════════════════════════════════════════════════════════════╣
@@ -116,7 +116,10 @@ setting to its own staff. To keep `+config` from someone who has `config.admin`,
 command with `@command/restrict` or `@lock/command`.
 </Aside>
 
-## The bundled packages' settings
+## Some bundled packages' settings
+
+These are some of the systems the bundled packages register; `+config` lists every system a game has
+installed.
 
 | System | Setting | What it changes | Default |
 |---|---|---|---|
@@ -135,6 +138,9 @@ command with `@command/restrict` or `@lock/command`.
 | | `ic-anchor`, `ic-ratio`, `ic-days`, `ic-years` | Where the IC clock starts, how fast it runs, and days and years added. | `1767225600`, `1`, `0`, `0` |
 | | `ic-months`, `ic-weekdays` | The IC month and weekday names, split by `\|`; all of them or none. | the real ones |
 | | `ic-show` | Whether `+time` shows the IC date. | `yes` |
+| | `detect`, `detect-ip` | For a player who set no zone: `set` fills it in from what their client reports (`detect`) or from where they connect (`detect-ip`), `offer` tells them at login, `off` does nothing. | `set`, `off` |
+| | `ip-service`, `ip-field` | The https address that answers with an address's zone, and where the zone is in its JSON reply. Used only when `detect-ip` is not `off`. | `https://ipinfo.io/<ip>/json`, `timezone` |
+| | `match-zones` | The zones `+timezone/match` offers, in order. | a list of common zones |
 | `scene` | `default-status` | What `+scene/create` makes: `active` logs at once, `new` or `scheduled` waits for `+scene/start`. | `active` |
 | | `open-details` | Whether an owner may set scene details the game does not list. | `yes` |
 | | `recall-rounds` | How many rounds of poses a bare `+scene/recall` shows, 1 to 20. | `2` |
@@ -394,7 +400,9 @@ The weather now follows autumn, not spring.
 ## In a package
 
 A package declares the same attributes on its own object and registers by attaching one leaf to
-the Config Registry, the way it registers its help with `+help`. It depends on `plus-config`:
+the Config Registry, the way it registers its help with `+help`. It depends on `plus-config`.
+A package that should also run without `+config` keeps the attributes and leaves the registration
+to a [bridge package](/guides/bridge-packages/), as `scene` does with `scene-config`:
 
 ```yaml
 depends:

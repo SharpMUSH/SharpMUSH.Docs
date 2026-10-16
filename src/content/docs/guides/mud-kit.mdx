@@ -1,0 +1,314 @@
+---
+title: MUD Kit Packages
+description: Every GMCP message the MUD kit packages send a MUD client such as Mudlet, field by field, and each package's settings.
+---
+
+The MUD kit is a set of bundled packages that tell a MUD client such as Mudlet about the game over GMCP.
+[Supporting MUD Clients](/guides/mud-clients/) explains how it works and how to install it. This page lists
+each package's messages, their fields, and the package's `+config` settings.
+
+Each message below is listed with its fields and when it is sent. The examples are what a client was
+sent on a running server.
+
+## gmcp-room: the map and who is here
+
+| Message | Sent |
+|---|---|
+| `Room.Info` | to a player when they move, and on each new connection |
+| `Room.Players` | with every `Room.Info` |
+| `Room.AddPlayer` | to the others in the room, when a connected player arrives, or connects for the first time |
+| `Room.RemovePlayer` | to the others in the room, when a player leaves, or their last connection closes |
+
+```
+Room.Info {"num":26,"name":"Garden","area":"Town","environment":"garden","exits":{"south":0},"coords":"3,4,0"}
+Room.Players [{"name":"Wren","fullname":"Wren of the Marsh"}]
+Room.AddPlayer {"name":"Tam","fullname":"Tam"}
+Room.RemovePlayer "Wren"
+```
+
+`Room.Info`:
+
+| Field | Type | What |
+|---|---|---|
+| `num` | number | the room's dbref number. It never changes while the room exists, which is what a mapper wants |
+| `name` | string | the room's name |
+| `area` | string | the room's `AREA` attribute, or else the name of its zone, or else empty |
+| `environment` | string | the room's `ENVIRONMENT` attribute, such as `garden`, or empty |
+| `exits` | object | each exit the player sees, by name, to the number of the room it leads to. This is [`exitmap()`](/guides/gmcp-softcode/#exitmap) |
+| `coords` | string | `x,y,z` from the room's `X`, `Y` and `Z` attributes, a missing one as `0`. Left out of a room with none of them, or with one that is not a number |
+
+`Room.Players` is a list of every connected player in the room the viewer sees, the viewer included. A
+DARK player is seen only by themself and by someone who may see everything. Each entry, like the body of
+`Room.AddPlayer`, is:
+
+| Field | Type | What |
+|---|---|---|
+| `name` | string | the player's name |
+| `fullname` | string | the player's `FULLNAME` attribute, or else their name |
+
+`Room.RemovePlayer` is the player's name, as a string.
+
+Settings, `+config gmcp-room`:
+
+| Setting | Default | What |
+|---|---|---|
+| `area` | `AREA` | the room attribute naming its area. A room without it is in its zone's area. Empty uses the zone alone |
+| `environment` | `ENVIRONMENT` | the room attribute holding its terrain. Empty sends none |
+| `coordinates` | `X Y Z` | the room attributes holding x, y and z, in that order (two or three) |
+| `fullname` | `FULLNAME` | the player attribute holding the name shown in full |
+
+To place a room on a mapper, set its attributes:
+
+```
+> &AREA #26=Town
+Garden/AREA - Set.
+> &ENVIRONMENT #26=garden
+Garden/ENVIRONMENT - Set.
+> &X #26=3
+Garden/X - Set.
+> &Y #26=4
+Garden/Y - Set.
+> &Z #26=0
+Garden/Z - Set.
+```
+
+## gmcp-comm: channels and pages
+
+| Message | Sent |
+|---|---|
+| `Comm.Channel.Text` | a channel line or a page reached the player |
+| `Comm.Channel.List` | the player connects, joins or leaves a channel |
+
+```
+Comm.Channel.List [{"name":"MudKit","caption":"MudKit","command":"+mudkit"}]
+Comm.Channel.Text {"channel":"MudKit","talker":"Alice","text":"\u003CMudKit\u003E Alice says, \u0022Hello, Bob.\u0022"}
+Comm.Channel.Text {"channel":"page","talker":"Alice","text":"Alice pages: Over here."}
+Comm.Channel.Text {"channel":"page","talker":"Alice","text":"You paged Bob with \u0027Over here.\u0027"}
+```
+
+The `\u003C`, `\u0022` and `\u0027` are JSON's way of writing `<`, `"` and `'`; a client reads them as those characters.
+
+`Comm.Channel.Text`:
+
+| Field | Type | What |
+|---|---|---|
+| `channel` | string | the channel's name. A page is filed under `page` |
+| `talker` | string | who spoke, without colour |
+| `text` | string | the whole line as the player's screen shows it, in ANSI colour, or without colour for a screen reader |
+
+A page is sent to each player it reached, as they see it (`Alice pages: Over here.`), and to the pager,
+as they see it (`You paged Bob with 'Over here.'`). The engine names exactly who received each line, so
+nobody is sent a line they did not see.
+
+`Comm.Channel.List` is a list of the channels the player is on, each:
+
+| Field | Type | What |
+|---|---|---|
+| `name` | string | the channel's name |
+| `caption` | string | the same name, for the client to show |
+| `command` | string | what a client types before a message to speak on the channel: `+` and the name in lower case |
+
+Settings, `+config gmcp-comm`:
+
+| Setting | Default | What |
+|---|---|---|
+| `pages` | on | whether pages are sent too |
+| `page-channel` | `page` | the channel name pages are filed under |
+
+Stock Mudlet does not list `Comm`: see [When Mudlet does not list a module](/guides/mud-clients/#when-mudlet-does-not-list-a-module).
+
+## gmcp-items: the inventory window
+
+| Message | Sent |
+|---|---|
+| `Char.Items.List` | on connect (both lists), when the client asks, and the room's list when the player moves |
+| `Char.Items.Add` | a thing reached the player's hands or their room |
+| `Char.Items.Remove` | a thing left them |
+
+A client asks by sending `Char.Items.Inv` or `Char.Items.Room`, with no body, and the answer goes to the
+connection that asked.
+
+Alice is handed a lantern, then drops it. Bob is in the room:
+
+```
+Alice << Char.Items.Add {"location":"inv","item":{"id":"29","name":"Lantern"}}
+Alice << Char.Items.Remove {"location":"inv","item":{"id":"29","name":"Lantern"}}
+Alice << Char.Items.Add {"location":"room","item":{"id":"29","name":"Lantern"}}
+Bob   << Char.Items.Add {"location":"room","item":{"id":"29","name":"Lantern"}}
+Alice >> Char.Items.Inv
+Alice << Char.Items.List {"location":"inv","items":[]}
+```
+
+| Field | Type | What |
+|---|---|---|
+| `location` | string | `inv`, what the player carries, or `room`, what lies in their room |
+| `items` (List) | list | every thing there the player sees |
+| `item` (Add, Remove) | object | the thing that came or went |
+| `id` | string | the thing's dbref number, as digits |
+| `name` | string | the thing's name |
+
+Things only: players are in `Room.Players` and exits in `Room.Info`. A DARK thing in a room is listed
+only to a player who may see everything. What is inside a container is not sent.
+
+Settings, `+config gmcp-items`:
+
+| Setting | Default | What |
+|---|---|---|
+| `room` | on | whether the room's things are sent, or only what the player carries |
+
+## gmcp-char: name, gauges and status
+
+| Message | Sent |
+|---|---|
+| `Char.Name` | on connect, and when the player is renamed |
+| `Char.Vitals` | on connect, and when a vitals attribute changes |
+| `Char.Status` | on connect, when a status attribute changes, and on a rename |
+
+With `+config gmcp-char/status=LEVEL`, Wren connects:
+
+```
+Char.Name {"name":"Wren","fullname":"Wren of the Marsh"}
+Char.Vitals {"hp":25,"maxhp":40}
+Char.Status {"name":"Wren","fullname":"Wren of the Marsh","level":3}
+```
+
+`Char.Name` has `name` and `fullname`, as in `Room.Players`. `Char.Vitals` has one field for each
+vitals attribute the player has, and `Char.Status` the player's `name` and `fullname` and then one field
+for each status attribute. Each field is named after the attribute's last name in lower case
+(``STATS`HP`` is `hp`), and its value is a number when the attribute holds one, else a string. An
+attribute the player does not have is left out, so a player with none is sent `Char.Vitals {}`. Mudlet's
+gauges read `hp` and `maxhp`, `mp` and `maxmp`, `mv` and `maxmv`.
+
+Settings, `+config gmcp-char`:
+
+| Setting | Default | What |
+|---|---|---|
+| `vitals` | `HP MAXHP MP MAXMP` | the player attributes sent as `Char.Vitals` |
+| `status` | none | the player attributes sent as `Char.Status`, such as `LEVEL CLASS` |
+| `fullname` | `FULLNAME` | the player attribute holding the name shown in full |
+
+The package sends a change the moment it happens, without checking anyone's attributes over and over.
+That is what [watched attributes](/guides/mud-clients/#watched-attributes) are for.
+
+### What gmcp-char does
+
+For each attribute its `vitals` and `status` settings name, gmcp-char sets this up for you when it is
+installed, and again whenever `+config` changes those settings:
+
+- it adds the attribute to the attribute table, but only if it is not there already, so an attribute
+  the game already has keeps its flags;
+- it watches the attribute, if nothing watches it yet;
+- it puts its handler, ``WATCH`<attribute>`GMCPCHAR``, on the event handler.
+
+```
+> think attrwatch(HP)
+WATCH`HP WATCH`HP`*
+> think lattr(#9/WATCH`HP`*)
+WATCH`HP`GMCPCHAR
+```
+
+If someone else already watches an attribute in another way, gmcp-char leaves it alone and does not
+send its changes. Whoever changed the setting is told:
+
+```
+> @attribute/watch LEVEL=WATCH`LEVEL`STAFF
+LEVEL is watched: every change to it runs the event handler's WATCH`LEVEL`STAFF.
+> +config gmcp-char/status=LEVEL
+[CONFIG] Done: gmcp-char/status is now LEVEL, was none.
+GMCP Char: LEVEL is already watched with WATCH`LEVEL`STAFF, so it is left as it is and its changes are not sent.
+```
+
+When an attribute is taken out of the settings, gmcp-char removes its handler. It stops watching the
+attribute only if no other handler for it is left, so another package's gauge keeps working:
+
+```
+> +config gmcp-char/vitals=HP MAXHP
+[CONFIG] Done: gmcp-char/vitals is now HP, MAXHP, was HP, MAXHP, MP, MAXMP.
+> think iter(HP MAXHP MP MAXMP,%i0=[attrwatch(%i0)],,|)
+HP=WATCH`HP WATCH`HP`*|MAXHP=WATCH`MAXHP WATCH`MAXHP`*|MP=|MAXMP=
+```
+
+Uninstalling runs no code, so the handlers stay behind for a while. The next time a watched attribute
+changes, its handler sees that gmcp-char is gone, removes itself, and stops the watch the same way.
+Table entries gmcp-char added stay in the table.
+
+So a staff member or a combat system only sets the attribute, and the player's client is told:
+
+```
+> &MAXHP me=40
+God/MAXHP - Set.
+God << Char.Vitals {"maxhp":40}
+> &HP me=25
+God/HP - Set.
+God << Char.Vitals {"hp":25,"maxhp":40}
+```
+
+Each message carries the whole gauge, not only the attribute that changed.
+
+## mudlet-client: the game's interface, map and Discord
+
+| Message | Sent |
+|---|---|
+| `Client.Map` | when Mudlet says `Core.Hello` |
+| `Client.GUI` | when the player connects, unless they turned `+gui off`; on `Core.Hello` from a connection already logged in; on `+gui on` |
+| `External.Discord.Info` | when Mudlet says `External.Discord.Hello` |
+| `External.Discord.Status` | on `External.Discord.Hello` and `External.Discord.Get`, and when the player connects |
+
+```
+Client.Map {"url":"https://example.org/map.xml"}
+Client.GUI {"version":"1.0","url":"https://example.org/game.mpackage"}
+External.Discord.Info {"inviteurl":"https://discord.gg/example"}
+External.Discord.Status {"game":"SharpMUSH","details":"Playing Wren","starttime":1792059569}
+```
+
+| Message | Field | What |
+|---|---|---|
+| `Client.GUI` | `version` | the interface package's version. Mudlet installs it again when this changes |
+| | `url` | where Mudlet downloads the interface package (`.mpackage`) |
+| `Client.Map` | `url` | where Mudlet downloads the game's map |
+| `External.Discord.Info` | `inviteurl` | an invite to the game's Discord server; left out when not set |
+| | `applicationid` | the game's own Discord application id; left out when not set |
+| `External.Discord.Status` | `game` | the game's name |
+| | `details` | `Playing` and the character's name; left out before login, or when `discord-character` is off |
+| | `starttime` | when the player connected, in seconds since 1970; left out before login |
+
+A setting left empty sends nothing: no `Client.GUI` without a `gui-url`, no `Client.Map` without a
+`map-url`.
+
+Settings, `+config mudlet-client`:
+
+| Setting | Default | What |
+|---|---|---|
+| `gui-url` | none | the interface package Mudlet downloads |
+| `gui-version` | `1.0` | its version; change it with each new package |
+| `map-url` | none | the map Mudlet downloads |
+| `discord-invite` | none | an invite to the game's Discord server |
+| `discord-application` | none | the game's own Discord application id |
+| `discord-game` | the game's name | the game's name in a Discord status |
+| `discord-character` | on | whether the status names the character played |
+
+Players choose whether they are offered the interface:
+
+| Command | What |
+|---|---|
+| `+gui` | whether the game has an interface package, its version, and whether it is offered to you |
+| `+gui on` | offer it when you connect, and offer it now |
+| `+gui off` | stop offering it |
+
+```
+> +gui off
+[GUI] Done: Your client will not be offered the game's interface when you connect. +gui on offers it again.
+> +gui
+╔════════════════════════════╡ Mudlet interface ╞════════════════════════════╗
+║ Package: https://example.org/game.mpackage                                 ║
+║ Version: 2.1                                                               ║
+║ Offered: no, you turned it off                                             ║
+║ Map:     https://example.org/map.xml                                       ║
+╠════════════════════════════════════════════════════════════════════════════╣
+║ +gui on and +gui off choose whether it is offered.                         ║
+╚════════════════════════════════════════════════════════════════════════════╝
+```
+
+`Client.GUI` and `Client.Map` go to every connection that agreed to GMCP, whatever it listed, because
+Mudlet never lists `Client`. The Discord messages are sent only to a client that listed
+`External.Discord`, as Mudlet does, or listed nothing.
