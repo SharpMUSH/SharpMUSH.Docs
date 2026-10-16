@@ -1,0 +1,221 @@
+---
+title: Bridge Packages
+description: Join two packages with a small third one, so each works on its own and a game installs only what it wants.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+A **bridge package** joins two packages that do not know about each other. Neither of them depends on
+the other. The bridge depends on both, and holds only what makes sense when both are installed.
+
+The bundled `scene` package is built this way. It runs scenes, and needs no other package. Its
+`+help` topics and its settings reach `+help` and `+config` through two bridges, `scene-help` and
+`scene-config`:
+
+![The scene package depends on nothing. scene-help depends on scene and plus-help, and adds SRC`SCENE to the +help librarian. scene-config depends on scene and plus-config, and adds SYSTEM`SCENE to the +config registry](../../../assets/guide/bridge-packages-scene.svg)
+
+This page covers:
+
+- why a package is split this way;
+- the scene bridges, as a worked example;
+- writing a bridge;
+- when a dependency is the better choice.
+
+For the places one package lets another change its behaviour, see [Extension Points](/guides/extension-points/).
+
+## Why bridges
+
+A game installs the packages it wants. If `scene` depended on `plus-help`, a game could not run
+scenes without also running `+help`, and removing `+help` would mean removing scenes first.
+
+A bridge keeps each package whole on its own:
+
+- Each package installs, upgrades and uninstalls without the other.
+- No package checks at run time whether another is installed. The code that needs both is in the
+  bridge, and the bridge is only there when both are.
+- Uninstalling a bridge removes only the joining. The two packages are left as they were.
+
+## The scene bridges
+
+`scene` keeps its own data in the shape the other packages read:
+
+- Its help topics are a `HELP` tree on its own **Scene Help** object, the way `+help` reads topics.
+- Its settings are ``DATA`CONFIG`<NAME>`` attributes on the Scene Logger, with the leaves `+config`
+  reads: the type, the default, the limits and a description. The scene commands read each setting
+  with `get()`, whether or not `+config` is installed.
+
+On its own, nothing outside the package reads that data. Each bridge is the one registration that
+makes another package read it:
+
+| Bridge | Depends on | What it adds |
+|---|---|---|
+| `scene-help` | `scene`, `plus-help` | ``SRC`SCENE`` on the `+help` librarian, naming the Scene Help object, and a line at the end of `+scene/help` |
+| `scene-config` | `scene`, `plus-config` | ``SYSTEM`SCENE`` on the `+config` registry, naming the Scene Logger |
+
+A new game installs `plus-help`, `plus-config`, `scene` and both bridges at its first start, so it
+has `+help scene` and `+config scene` as before. A bundled bridge installs only where both of the
+packages it joins are installed: a game that turned `scene` off does not get either bridge.
+
+### With and without the bridges
+
+Without `scene-help` and `scene-config`, scenes run as before, and `+help` and `+config` do not
+know about them:
+
+```text
+> +help scene
+[HELP] Warning: No local topic 'scene'. Try help scene or +help/search scene.
+> +config scene
+[CONFIG] Warning: No system is called scene. +config lists them.
+```
+
+`+scene/help` still lists every `+scene` command, because the scene package has their usage lines
+itself. With `scene-help` installed, the list ends with where to read more:
+
+```text
+> +scene/help
+══════════════════════════════╡ Scene commands ╞══════════════════════════════
++scene/activate <id>
++scene/as <name>, or +scene/as on its own to pose under your own name again
+...
++scene/upcoming [<days>|all]
+
++help scene explains them.
+══════════════════════════════════════════════════════════════════════════════
+```
+
+Settings changed while `+config` was not installed are kept. Here a game set two of them on the
+Scene Logger directly, then installed `plus-config` and `scene-config`:
+
+```text
+> &DATA`CONFIG`RECALL-ROUNDS <Scene Logger>=1
+Scene Logger/DATA`CONFIG`RECALL-ROUNDS - Set.
+> &DATA`CONFIG`DEFAULT-STATUS <Scene Logger>=new
+Scene Logger/DATA`CONFIG`DEFAULT-STATUS - Set.
+```
+
+```text
+> +config scene
+╔════════════════════════════╡ Settings: Scenes ╞════════════════════════════╗
+║ What a new scene starts as, which details players may set, and how much    ║
+║ +scene/recall shows.                                                       ║
+║                                                                            ║
+║ Setting          Value  Allowed                   What it does             ║
+║ -------------------------------------------------------------------------- ║
+║ default-status*  new    Active, new, or           New scene status. What   ║
+║                         scheduled                 +scene/create makes: an  ║
+║                                                   active scene logs at     ║
+║                                                   once; new or scheduled   ║
+║                                                   waits for +scene/start.  ║
+║ open-details     yes    Yes or no                 Open details. Whether an ║
+║                                                   owner may set scene      ║
+║                                                   details the game does    ║
+║                                                   not list.                ║
+║ recall-rounds*   1      A whole number from 1 to  Recall rounds. How many  ║
+║                         20                        rounds of poses a bare   ║
+║                                                   +scene/recall shows.     ║
+╠════════════════════════════════════════════════════════════════════════════╣
+║ * changed from its default.  +config scene/<setting>=<value> changes one.  ║
+╚════════════════════════════════════════════════════════════════════════════╝
+```
+
+### The whole of scene-help
+
+```yaml
+format: "1.10"
+package: scene-help
+version: 1.0.0
+description: "Puts the scene topics into +help: registers the scene package's help with the +help librarian, and +scene/help points at +help scene."
+category: Scenes
+
+depends:
+  - package: scene
+    version: ">=1.12"
+    source:
+      repo: https://github.com/SharpMUSH/SharpMUSH
+      path: examples/packages/scene/
+      branch: main
+  - package: plus-help
+    version: ">=1.0"
+    source:
+      repo: https://github.com/SharpMUSH/SharpMUSH
+      path: examples/packages/plus-help/
+      branch: main
+
+objects:
+  - ref: help_registration
+    target: "{{plus-help/librarian}}"
+    attributes:
+      SRC`SCENE: |-
+        {{scene/scene_help}}
+
+  - ref: help_pointer
+    target: "{{scene/logger}}"
+    attributes:
+      FILTER`HELP`PLUSHELP: |-
+        %0%r%r+help scene explains them.
+```
+
+It creates no object. Both entries are attach entries: they add attributes to objects the other two
+packages created, and uninstalling `scene-help` removes those attributes again. The second entry
+uses the scene package's `HELP` [filter point](/guides/extension-points/#filter-points).
+
+Packages that add scene topics, such as `scene-verse` and `radio-scene`, attach them to the Scene
+Help object. They reach `+help` through the same registration, and need no bridge of their own.
+
+## Writing a bridge
+
+1. **Keep your data where it belongs.** The package keeps its own data on its own objects, in the
+   shape the other package reads: a `HELP` tree for `+help`, ``DATA`CONFIG`` leaves for `+config`.
+   Data nobody reads does no harm, and it is already there when the bridge arrives.
+2. **Put only the joining in the bridge.** A registration leaf, a filter, an event attribute, a line
+   on another package's card. If the bridge grows commands of its own, it may be a package in its
+   own right.
+3. **Depend on both.** `depends:` on each package makes their objects legal attach targets, such as
+   `{{plus-help/librarian}}` and `{{scene/logger}}`, and keeps either from being uninstalled while
+   the bridge is attached to it.
+4. **Name it after both.** `<package>-<other>`, as `scene-help`, `radio-scene` and `roster-jobs` are.
+   Give it the category of the package it extends.
+5. **Read the other package's data, not its code.** When the bridge must call another object's code,
+   use `@trigger/inline/nobreak/args`, not `@include`: a `{{ref}}` in the included code is looked
+   up on the object running it, which is the bridge's caller, not the bridge.
+6. **Nothing assumes the bridge.** The package's own messages never send a player to a command from
+   the other package. `+scene` says `+scene/help lists the commands`, and the bridge adds the line
+   about `+help scene`.
+
+Changing a bridge bumps its version, as with any package. When the package it extends changes the
+data a bridge reads, raise the bridge's `version:` range on it.
+
+<Aside>
+A bridge is a package like any other, so a game can uninstall one to keep the two packages apart.
+Uninstalling `scene-config` leaves the scene settings on the Scene Logger, where staff can still set
+them with `&`.
+</Aside>
+
+## Bridge or dependency
+
+Depend on a package when yours cannot do its job without it: `relationships-app` draws the
+relationships package's data and has nothing to show without it.
+
+Use a bridge when the other package adds an ability on top: a help topic, a setting screen, a
+line on a card, a scene log for the radio. Signs that a package wants a bridge:
+
+- It depends on another package only to attach one registration leaf to it.
+- It draws a section about another system, such as a room display that builds a scene block itself.
+  The section belongs in a bridge that fills a point the display offers.
+- Most of its commands are not about the other package. An availability calendar is mostly about
+  when characters are free; showing who in a scene's cast is free is the part that needs scenes.
+- It reads another package's fields for one line of output, such as a card line drawn from a
+  profile's fields.
+
+The bundled bridges:
+
+| Bridge | Joins | What it adds |
+|---|---|---|
+| `scene-help` | `scene`, `plus-help` | The scene topics in `+help` |
+| `scene-config` | `scene`, `plus-config` | The scene settings in `+config` |
+| `radio-scene` | `radio`, `scene` | `+radio/log`: what a listener hears goes into their scene |
+| `relationships-scene` | `relationships`, `scene` | Last scene together on the `+rel` card and the name card |
+| `roster-jobs` | `roster`, `jobs` | Roster applications through the job queue |
+| `health-jobs` | `health`, `jobs` | Staff load in `+health` |
+
+See also [Softcode Packages](/guides/packages/) and the [package format](/reference/package-format/).

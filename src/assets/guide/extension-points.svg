@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 330" width="760" height="330" font-family="system-ui,sans-serif" font-size="15">
+  <rect width="760" height="330" rx="12" fill="#f8fafc"/>
+  <defs>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#475569"/></marker>
+  </defs>
+  <text x="30" y="36" font-weight="600" fill="#0f172a">A filter point: one value passed through every filter</text>
+  <g fill="#ffffff" stroke="#64748b" stroke-width="1.5">
+    <rect x="30" y="56" width="170" height="44" rx="8"/>
+    <rect x="270" y="56" width="180" height="44" rx="8"/>
+    <rect x="510" y="56" width="180" height="44" rx="8"/>
+  </g>
+  <g text-anchor="middle" fill="#0f172a">
+    <text x="115" y="83">The sky is grey.</text>
+    <text x="360" y="83" font-size="13">FILTER`REPORT`TIDE</text>
+    <text x="600" y="83" font-size="13">FILTER`REPORT`WIND</text>
+  </g>
+  <g stroke="#475569" stroke-width="1.5" fill="none" marker-end="url(#b)">
+    <path d="M200 78 L266 78"/>
+    <path d="M450 78 L506 78"/>
+    <path d="M600 100 L600 126"/>
+  </g>
+  <text x="690" y="146" text-anchor="end" font-size="13" fill="#334155">The sky is grey. The tide is in. Wind from the west.</text>
+
+  <text x="30" y="200" font-weight="600" fill="#0f172a">A trigger point: every attribute below it runs on its own</text>
+  <g fill="#ffffff" stroke="#64748b" stroke-width="1.5">
+    <rect x="30" y="230" width="170" height="44" rx="8"/>
+    <rect x="300" y="216" width="200" height="40" rx="8"/>
+    <rect x="300" y="268" width="200" height="40" rx="8"/>
+  </g>
+  <g text-anchor="middle" fill="#0f172a">
+    <text x="115" y="257">+sky grey</text>
+    <text x="400" y="241" font-size="13">ON`CHANGE`HARBOUR</text>
+    <text x="400" y="293" font-size="13">ON`CHANGE`LOG</text>
+  </g>
+  <g stroke="#475569" stroke-width="1.5" fill="none" marker-end="url(#b)">
+    <path d="M200 246 L296 236"/>
+    <path d="M200 258 L296 286"/>
+  </g>
+  <text x="520" y="241" font-size="13" fill="#334155">queued with %&lt;sky&gt; and %&lt;by&gt;</text>
+  <text x="520" y="293" font-size="13" fill="#334155">queued with %&lt;sky&gt; and %&lt;by&gt;</text>
+</svg>

@@ -67,6 +67,8 @@ export default defineConfig({
                       { label: 'Chat Cards', slug: 'guides/chat-cards' },
                       { label: 'The Command Palette', slug: 'guides/command-palette' },
                       { label: 'Events', slug: 'guides/events' },
+                      { label: 'Extension Points', slug: 'guides/extension-points' },
+                      { label: 'Bridge Packages', slug: 'guides/bridge-packages' },
                       { label: 'Bulletin Boards', slug: 'guides/bboards' },
                       { label: 'Jobs That Run Themselves', slug: 'guides/jobs-automation' },
                       { label: 'Character Galleries', slug: 'guides/galleries' },
