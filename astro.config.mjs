@@ -76,6 +76,8 @@ export default defineConfig({
                       { label: 'Game Settings with +config', slug: 'guides/config' },
                       { label: 'Named Arguments', slug: 'guides/named-arguments' },
                       { label: 'Events', slug: 'guides/events' },
+                      { label: 'Extension Points', slug: 'guides/extension-points' },
+                      { label: 'Bridge Packages', slug: 'guides/bridge-packages' },
                       { label: 'Attribute Indexes', slug: 'guides/attribute-indexes' },
                       { label: 'Calling Web Services', slug: 'guides/web-requests' },
                       { label: 'RhostMUSH Softcode', slug: 'guides/rhostmush-softcode' },

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" width="760" height="300" font-family="system-ui,sans-serif" font-size="15">
+  <rect width="760" height="300" rx="12" fill="#f8fafc"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#475569"/></marker>
+  </defs>
+  <g fill="#ffffff" stroke="#64748b" stroke-width="1.5">
+    <rect x="290" y="20" width="180" height="96" rx="8"/>
+    <rect x="30" y="190" width="180" height="80" rx="8"/>
+    <rect x="550" y="190" width="180" height="80" rx="8"/>
+  </g>
+  <g fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5">
+    <rect x="160" y="128" width="150" height="40" rx="20"/>
+    <rect x="450" y="128" width="150" height="40" rx="20"/>
+  </g>
+  <g fill="#0f172a" text-anchor="middle">
+    <text x="380" y="46" font-weight="600">scene</text>
+    <text x="380" y="70" font-size="13" fill="#334155">help topics on Scene Help</text>
+    <text x="380" y="90" font-size="13" fill="#334155">settings as DATA`CONFIG</text>
+    <text x="380" y="108" font-size="12" fill="#64748b">depends on nothing</text>
+    <text x="120" y="222" font-weight="600">plus-help</text>
+    <text x="120" y="246" font-size="13" fill="#334155">+help, the librarian</text>
+    <text x="640" y="222" font-weight="600">plus-config</text>
+    <text x="640" y="246" font-size="13" fill="#334155">+config, the registry</text>
+    <text x="235" y="153" font-weight="600" fill="#075985">scene-help</text>
+    <text x="525" y="153" font-weight="600" fill="#075985">scene-config</text>
+  </g>
+  <g stroke="#475569" stroke-width="1.5" fill="none" marker-end="url(#a)">
+    <path d="M250 128 L320 117"/>
+    <path d="M200 168 L150 188"/>
+    <path d="M510 128 L440 117"/>
+    <path d="M560 168 L610 188"/>
+  </g>
+  <g font-size="12" fill="#475569">
+    <text x="196" y="110">depends on</text>
+    <text x="40" y="176">adds SRC`SCENE</text>
+    <text x="500" y="110">depends on</text>
+    <text x="600" y="176">adds SYSTEM`SCENE</text>
+  </g>
+</svg>

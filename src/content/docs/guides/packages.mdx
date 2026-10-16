@@ -141,9 +141,10 @@ Some packages are built into the server and appear in the portal under the reser
 
 - **Shipped**: the package is in the server and can be installed from the catalogue at any time.
 - **Installed on first start**: a new game gets it without being asked. `http-handler`,
-  `profile-handler`, `room-contents`, `comm-feed`, `plus-help`, `plus-config`, `scene` and
-  `scene-here` are. They are why a fresh game already has a working HTTP handler, `+help`, `+config`
-  and a scene system. Every other bundled package is shipped but not installed: the
+  `profile-handler`, `room-contents`, `comm-feed`, `plus-help`, `plus-config`, `scene`,
+  `scene-help`, `scene-config` and `scene-here` are. They are why a fresh game already has a working
+  HTTP handler, `+help`, `+config` and a scene system. A bridge such as `scene-help` installs only
+  where both of the packages it joins are installed (see [Bridge Packages](/guides/bridge-packages/)). Every other bundled package is shipped but not installed: the
   [bulletin boards](/guides/bboards), `+who`, [`+status`](/guides/status), the [watch list](/guides/watch), [`+finger`](/guides/finger)
   and [`+notify`](/guides/notifications), for example, add commands a game
   may not want, a game chooses whether it wants a [verse and content warnings](/guides/scene-details#verse-canon-and-content-warnings)
