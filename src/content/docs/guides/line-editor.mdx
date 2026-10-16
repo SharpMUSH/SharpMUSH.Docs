@@ -1,0 +1,312 @@
+---
+title: The Line Editor
+description: Write a $-command or a function attribute one line at a time with @editor, check it, and save it or leave without saving.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+**`@editor`** opens an attribute in a line editor inside the game. You type the code one line at a
+time, list what you have, check it for mistakes, and save it when it is right. Nothing you type is
+run or evaluated while you edit, so brackets, percent signs and semicolons go in exactly as typed.
+It suits a builder writing a `$`-command or a function on an object from any MU\* client.
+
+| You are | You want to | Read |
+|---|---|---|
+| A builder | open an attribute in the editor | [Opening an attribute](#opening-an-attribute) |
+| A builder | add lines, and take back the last one | [Adding lines](#adding-lines) |
+| A builder | check your code before saving | [Checking the draft](#checking-the-draft) |
+| A builder | save, or leave without saving | [Saving and leaving](#saving-and-leaving) |
+| A builder | follow one example from start to finish | [Example: a bell that rings](#example-a-bell-that-rings) |
+| Staff | install the editor | [Running the editor](#running-the-editor) |
+
+In the game, `help @editor` has the same commands in short form.
+
+<Aside>
+SharpMUSH has three different things called an editor. This page is the in-game `@editor` command.
+The web portal has its own **Softcode Editor** at `/softcode`, a full-screen editor with tabs and
+highlighting; see [The softcode editor](/guides/web-portal#the-softcode-editor). To write softcode in
+files in VS Code, Neovim or Emacs, see [Softcode in Your Editor](/guides/editor-support).
+</Aside>
+
+## Opening an attribute
+
+`@editor <object>/<attribute>` opens an attribute on an object you control. A new attribute, or one
+that is neither a command nor a function yet, needs `=command` or `=function` after it, so the editor
+knows how to check it:
+
+```text
+> @editor Harbour Bell/CMD`RING
+[EDITOR] Warning: Use =function or =command for a new or unflagged attribute.
+> @editor Harbour Bell/CMD`RING=command
+[EDITOR] The draft is empty.
+CMD`RING> .h help · .sq save and quit
+```
+
+The prompt names the attribute you are editing. Use `=command` for a `$`-command and `=function`
+for code you call with `u()`. Once the attribute is saved, it remembers which it is, and
+`@editor <object>/<attribute>` on its own opens it again with its lines listed.
+
+## Adding lines
+
+Every line you type that is not one of the editor's own commands is added to the end of the
+draft. `.l` lists the draft with line numbers:
+
+```text
+> $ring bell:@emit The harbour bell rings out across the water.;
+CMD`RING> .h help · .sq save and quit
+> @emit %n pulls the rope twice.;
+CMD`RING> .h help · .sq save and quit
+> .l
+  1: $ring bell:@emit The harbour bell rings out across the water.;
+  2: @emit %n pulls the rope twice.;
+CMD`RING> .h help · .sq save and quit
+```
+
+`.u` takes back the last line you added. Typing `.u` again puts it back, so it undoes one line, not
+several.
+
+A line that has to start with a dot starts with two instead: `..done` adds the line `.done`.
+
+The editor only adds lines at the end. To change a line further up, save and use
+[`@edit`](/reference/sharpmush-help/edit-command/) on the attribute, which replaces text wherever it
+is; the [example](#changing-an-earlier-line) shows one.
+
+<Aside type="tip">
+In a `$`-command, the lines are joined by line breaks, and a line break does not end a command.
+End each command with `;`, as above, or start the next line with `;`, or the next line becomes
+part of the one before it.
+</Aside>
+
+## Checking the draft
+
+`.c` checks the draft the way the game reads it, without saving. A mistake names its line and
+column, as `.l` numbers them:
+
+```text
+> .c
+[EDITOR] Warning: Line 3, column 33: "end of input"
+CMD`RING> .h help · .sq save and quit
+```
+
+Once the mistake is gone, `.c` says so:
+
+```text
+> .c
+[EDITOR] Done: Syntax OK.
+CMD`RING> .h help · .sq save and quit
+```
+
+Saving checks the draft too, and refuses to save code with a mistake in it.
+
+## Saving and leaving
+
+| Type | To |
+|---|---|
+| `.s` | check and save, and keep editing |
+| `.sq` | check, save and leave |
+| `.q` | leave, when everything is saved |
+| `.q!` | leave and throw away what is not saved |
+| `.h` | list these |
+
+`.q` will not let you lose work by accident:
+
+```text
+> .q
+[EDITOR] Warning: There are unsaved changes. .sq saves and quits, .q! discards them.
+CMD`RING> .h help · .sq save and quit
+> .q!
+[EDITOR] Editor closed.
+```
+
+If the save fails, because of a mistake in the code or for any other reason, `.sq` keeps you in
+the editor with your draft. The attribute on the object only changes when a save works.
+
+The editor also refuses to save over someone else's work. If the attribute is changed by anyone
+while you have it open, your save is refused and the attribute keeps their version:
+
+```text
+> .sq
+[EDITOR] Warning: FUN`TIDE or its syntax flag changed after the editor opened it. Not saved.
+FUN`TIDE> .h help · .sq save and quit
+```
+
+`.q!` then leaves; open the attribute again to start from what is stored now.
+
+The editor stays open until you leave it, even if you step away for an hour. If you ever need out
+at once, `@input/cancel` closes it and saves nothing:
+
+```text
+> @input/cancel
+Input session cancelled. Ordinary commands are available.
+```
+
+Logging out with the editor open also throws the draft away.
+
+## Example: a bell that rings
+
+Fern builds a bell that anyone in the room can ring. A new object ignores `$`-commands until
+`NO_COMMAND` is taken off it:
+
+```text
+> @create Harbour Bell
+Created: Object #53.
+> drop Harbour Bell
+You drop Harbour Bell.
+> @set Harbour Bell=!no_command
+Harbour Bell - NO_COMMAND reset.
+```
+
+She opens a new command attribute and types the command, with a mistake in the last line, and
+checks it:
+
+```text
+> @editor Harbour Bell/CMD`RING=command
+[EDITOR] The draft is empty.
+CMD`RING> .h help · .sq save and quit
+> $ring bell:@emit The harbour bell rings out across the water.;
+CMD`RING> .h help · .sq save and quit
+> @emit %n pulls the rope twice.;
+CMD`RING> .h help · .sq save and quit
+> @emit A gull lifts off the pier[
+CMD`RING> .h help · .sq save and quit
+> .l
+  1: $ring bell:@emit The harbour bell rings out across the water.;
+  2: @emit %n pulls the rope twice.;
+  3: @emit A gull lifts off the pier[
+CMD`RING> .h help · .sq save and quit
+> .c
+[EDITOR] Warning: Line 3, column 33: "end of input"
+CMD`RING> .h help · .sq save and quit
+```
+
+The stray `[` opens something that never closes. She takes the line back, types it again, checks,
+and saves and leaves:
+
+```text
+> .u
+[EDITOR] Done: Undone.
+CMD`RING> .h help · .sq save and quit
+> .l
+  1: $ring bell:@emit The harbour bell rings out across the water.;
+  2: @emit %n pulls the rope twice.;
+CMD`RING> .h help · .sq save and quit
+> @emit A gull lifts off the pier.
+CMD`RING> .h help · .sq save and quit
+> .c
+[EDITOR] Done: Syntax OK.
+CMD`RING> .h help · .sq save and quit
+> .sq
+Harbour Bell/CMD`RING - Set.
+Harbour Bell/CMD`RING - cmdsyntax set.
+Harbour Bell/CMD`RING - funsyntax reset.
+[EDITOR] Done: CMD`RING saved.
+flags: cmdsyntax
+[EDITOR] Editor closed.
+> ring bell
+The harbour bell rings out across the water.
+Fern pulls the rope twice.
+A gull lifts off the pier.
+```
+
+The save marks the attribute as a command, which is how the editor knows next time.
+
+### Adding to it
+
+Opening it again lists what is there. The last line has no `;` after it, so the new line starts
+with one. `.s` saves and stays in the editor; `.q` then leaves, since nothing is unsaved:
+
+```text
+> @editor Harbour Bell/CMD`RING
+  1: $ring bell:@emit The harbour bell rings out across the water.;
+  2: @emit %n pulls the rope twice.;
+  3: @emit A gull lifts off the pier.
+CMD`RING> .h help · .sq save and quit
+> ;@emit The ferryman waves from the deck.
+CMD`RING> .h help · .sq save and quit
+> .s
+Harbour Bell/CMD`RING - Set.
+Harbour Bell/CMD`RING - cmdsyntax set.
+Harbour Bell/CMD`RING - funsyntax reset.
+[EDITOR] Done: CMD`RING saved.
+flags: cmdsyntax
+CMD`RING> .h help · .sq save and quit
+> .q
+[EDITOR] Editor closed.
+> ring bell
+The harbour bell rings out across the water.
+Fern pulls the rope twice.
+A gull lifts off the pier.
+The ferryman waves from the deck.
+```
+
+### Leaving without saving
+
+She starts another line, thinks better of it, and leaves with `.q!`. The attribute keeps the four
+lines she saved.
+
+```text
+> @editor Harbour Bell/CMD`RING
+  1: $ring bell:@emit The harbour bell rings out across the water.;
+  2: @emit %n pulls the rope twice.;
+  3: @emit A gull lifts off the pier.
+  4: ;@emit The ferryman waves from the deck.
+CMD`RING> .h help · .sq save and quit
+> ;@emit Somebody shouts.
+CMD`RING> .h help · .sq save and quit
+> .q
+[EDITOR] Warning: There are unsaved changes. .sq saves and quits, .q! discards them.
+CMD`RING> .h help · .sq save and quit
+> .q!
+[EDITOR] Editor closed.
+```
+
+### Changing an earlier line
+
+The editor cannot reach line 2, so she changes it with `@edit`, outside the editor:
+
+```text
+> @edit Harbour Bell/CMD`RING=twice,three times
+CMD`RING - Set: $ring bell:@emit The harbour bell rings out across the water.;
+@emit %n pulls the rope three times.;
+@emit A gull lifts off the pier.
+;@emit The ferryman waves from the deck.
+```
+
+### A function
+
+`=function` works the same way for code called with `u()`. A long call can be spread over lines,
+since the line breaks are part of the code:
+
+```text
+> @editor Harbour Bell/FUN`TIDE=function
+[EDITOR] The draft is empty.
+FUN`TIDE> .h help · .sq save and quit
+> switch(%0,high,The ferry can sail.,
+FUN`TIDE> .h help · .sq save and quit
+> low,The ferry waits for the tide.,
+FUN`TIDE> .h help · .sq save and quit
+> Nobody knows the tide.)
+FUN`TIDE> .h help · .sq save and quit
+> .sq
+Harbour Bell/FUN`TIDE - Set.
+Harbour Bell/FUN`TIDE - funsyntax set.
+Harbour Bell/FUN`TIDE - cmdsyntax reset.
+[EDITOR] Done: FUN`TIDE saved.
+flags: cmdsyntax
+[EDITOR] Editor closed.
+> think u(Harbour Bell/FUN`TIDE,low)
+The ferry waits for the tide.
+```
+
+## Running the editor
+
+The editor ships with the server as the `softcode-editor` package. A new game does not install it:
+the setup wizard offers it under **Essentials**, and an administrator can install it any time from
+**Packages** in the portal's admin area. It needs no other package. See
+[Softcode Packages](/guides/packages) for installing, upgrading and rolling back.
+
+It adds `@editor` for everyone. Anyone can use it on an object they control, and the editor saves
+as the player, so their own permissions decide what they may set. It has no settings.
+
+Ask builders to finish their editor sessions before staff upgrade, roll back or uninstall the
+package: an open editor is still using it.
