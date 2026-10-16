@@ -304,9 +304,14 @@ The event is marked as free time, so it does not block your calendar.
 ## Setting up scenes
 
 Scenes are the `scene` package, which a new game installs. It runs on the Scene plugin that ships
-with the server, and needs `plus-help` and `plus-config`, which a new game also installs. Without the
-plugin running, the package does not install, and turning the plugin off removes the package. The
-portal shows its **Scenes** pages only while the package is installed.
+with the server and needs no other package. Without the plugin running, the package does not install,
+and turning the plugin off removes the package. The portal shows its **Scenes** pages only while the
+package is installed.
+
+Two bridge packages, also installed on a new game, join scenes to the rest of the game: `scene-help`
+puts the scene topics in `+help`, and `scene-config` puts the scene settings in `+config`. Without
+them, scenes still run, but `+help scene` and `+config scene` find nothing. See
+[Bridge Packages](/guides/bridge-packages/).
 
 Other packages add to scenes. Each has its own page:
 
