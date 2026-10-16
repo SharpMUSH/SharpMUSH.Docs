@@ -1,0 +1,187 @@
+---
+title: Game Help with +help
+description: Reading the game's own help with +help, and writing house rules and other topics for it as staff.
+---
+
+`help` and `+help` are two different things:
+
+- `help` is the server's own help: every built-in command and function. Nobody on a game can change it.
+- `+help` is the game's own help: the topics its installed packages carry, and the ones its staff
+  write. A package's topics appear when it is installed and go when it is removed.
+
+`+help` is the `plus-help` package, which a new game installs.
+
+The examples are from a game with only the packages a new game installs.
+
+## Reading help
+
+`+help` on its own lists where the topics come from and what each covers:
+
+```
+> +help
+═══════════════════════════════════╡ Help ╞═══════════════════════════════════
++help is this game's own help — what the systems installed here do, and
+whatever its staff have written down. The server's own commands are documented
+separately, under help.
+
+Everything below is what this game actually has installed. Read a topic by
+name: +help scene, or +help scene join for a topic several words long.
+
+Staff: this page is itself a topic. Replace it with +help/write index=<text>,
+and add your own with +help/write <topic>=<text> — see write.
+══════════════════════════════╡ Available help ╞══════════════════════════════
+Source       Covers
+plus-config  Game settings that softcode systems keep for themselves.
+plus-help    Reading and writing this game's help.
+scene        Shared scenes: joining one, posing in it, and reading the log.
+══════════════════════════════════════════════════════════════════════════════
++help <topic> · +help/list [<source>] · +help/search <text> · +help/sources
+```
+
+`+help <topic>` reads one. A topic name can be several words, and a topic lists its subtopics and
+the topics it points to:
+
+```
+> +help scene join
+═════════════════════════════╡ scene/scene join ╞═════════════════════════════
++scene/join <id> puts you in a scene and makes it your focus — the scene your
+poses are recorded into. +scene lists the ids.
+
+* +scene/tag <id> — RSVP to a scheduled scene without joining it yet
+* +scene/untag <id> — withdraw the RSVP
+* +scene/leave — leave the focused scene; if you never posed, you leave no
+trace
+* +scene/deactivate — stay a member but stop recording; +scene/activate <id>
+resumes
+
+Joining needs an approved character.
+
+See also: scene pose · pot
+══════════════════════════════════════════════════════════════════════════════
++help/list scene
+```
+
+- `*` and `?` are wildcards: `+help scene*`.
+- A command finds the topic that shows it, so `+help +scene/join` works.
+- A word that is no topic's name finds the topics whose names start with it or hold it.
+- When two sources have a topic of the same name, `+help` lists both, and `+help <source>/<topic>`
+  picks one, such as `+help scene/pot`. A topic the game writes wins outright.
+
+`+help/list [<source>]` lists every topic, or one source's. `+help/search <text>` finds the topics
+whose names or text hold it:
+
+```
+> +help/search rsvp
+═══════════════════════════════╡ Search: rsvp ╞═══════════════════════════════
+Topic                 Summary
+scene/scene join      +scene/join <id> puts you in a scene and makes it...
+scene/scene schedule  A scene can be announced before it happens, so...
+══════════════════════════════════════════════════════════════════════════════
+2 topics - page 1 of 1
+```
+
+A long listing comes in pages, and the page is a last switch: `+help/list/2`, `+help/search/3 combat`.
+A switch can be shortened to any start no other switch shares: `+help/l` is `+help/list`.
+
+## Writing topics
+
+Wizards and royalty write the game's own topics, such as house rules or how to apply:
+
+- `+help/write <topic>=<text>` creates or replaces a topic.
+- `+help/delete <topic>` removes one.
+
+A topic name is words of letters, digits, `_`, `.` and `-`. A topic of several words is a subtopic of
+the one its first words name:
+
+```
+> +help/write rules=Be kind. Keep IC and OOC apart.
+[HELP] Done: Wrote game/rules.
+> +help/write rules conduct=Ask before you fight another character.
+[HELP] Done: Wrote game/rules conduct.
+```
+
+A player then reads it:
+
+```
+> +help rules
+════════════════════════════════╡ game/rules ╞════════════════════════════════
+Be kind. Keep IC and OOC apart.
+
+Subtopics: conduct
+══════════════════════════════════════════════════════════════════════════════
++help/list game
+```
+
+The text is markdown, and it is evaluated each time someone reads it, so a topic can show the
+reader's own name with `[name(%#)]` or colour with `tone()`. The line you type is evaluated once on
+the way in, as `&attr obj=...` is: escape code you want run for each reader. `\[`, `\(` and `\)`
+show the character, and `%%` shows a `%`.
+
+`+help` itself shows the topic `index`. Write your own with `+help/write index=<text>`; a topic
+the game writes wins over a package's of the same name. Upgrading a package never changes the
+game's topics.
+
+## Where topics come from
+
+`+help/sources` lists each source, the object its topics are on, and how many it has. The game's own
+topics are the `game` source:
+
+```
+> +help/sources
+═══════════════════════════════╡ Help sources ╞═══════════════════════════════
+Source       Object  Name                                               Topics
+game         #12     Game Help                                               0
+plus-config  #14     Config Help                                             3
+plus-help    #11     Help Librarian's Help                                   5
+scene        #16     Scene Help                                             10
+══════════════════════════════════════════════════════════════════════════════
++help/source <name>=<object>
+```
+
+For softcode no package installed, staff can register an object by hand:
+`+help/source <name>=<object>` reads that object's `HELP` tree as a source, and
+`+help/unsource <name>` stops.
+
+## Help in a package
+
+A package carries its topics in a `HELP` attribute tree on an ordinary object, and registers that
+object with the librarian in its `package.yaml`. The package manager writes the registration when
+the package is installed and clears it when it is removed.
+
+```yaml
+depends:
+  - package: plus-help
+    version: ">=1.0"
+
+objects:
+  - ref: my_help
+    type: thing
+    name: My Help
+    attributes:
+      HELP: |-
+        One line describing what this package covers.
+      HELP`MYTHING: |-
+        What `+mything` does.
+      HELP`MYTHING`ADVANCED: |-
+        The topic "mything advanced", and a subtopic of "mything".
+      SEE`MYTHING: |-
+        scene|rules
+
+  - ref: my_help_registration
+    target: "{{plus-help/librarian}}"
+    attributes:
+      SRC`MY-PACKAGE: |-
+        {{my_help}}
+```
+
+- `HELP` is the line `+help` shows for the source. It must be set, or the topics under it are not
+  found.
+- Each `` HELP`<TOPIC> `` is a topic, and the attribute tree makes the subtopics.
+- `` SEE`<TOPIC> `` lists the topics it points to, split by `|`.
+
+Keep the topics off an object that has to be `WIZARD` for its commands. The librarian is not
+privileged, so it can list such an object's topics but not show them. The `scene` package keeps
+its commands on the Scene Logger and its help on a separate Scene Help thing.
+
+[Package Format](/reference/package-format/) covers `depends`, `objects` and attach targets such as
+`{{plus-help/librarian}}`.
