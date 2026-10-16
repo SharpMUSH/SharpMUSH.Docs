@@ -6,7 +6,7 @@ This directory contains scripts for automatically converting SharpMUSH documenta
 
 ### `convert-docs.js`
 
-Converts markdown files from the SharpMUSH submodule into Starlight-compatible documentation with:
+Converts the help files in `SharpMUSH-help/help` into Starlight-compatible documentation. `SharpMUSH-help` is a submodule that follows SharpMUSH's `help-export` branch, which holds the help as the game serves it: the engine's files and every shipped plugin's, with the plugin listings written in. The converter adds:
 
 - **Filename-based titles**: Uses predefined titles based on filenames for consistent documentation structure
 - **Frontmatter generation**: Adds Starlight-compatible YAML frontmatter with title and description

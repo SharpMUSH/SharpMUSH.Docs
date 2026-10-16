@@ -6,7 +6,7 @@ The official documentation website for SharpMUSH, built with [Astro](https://ast
 
 ## 🎯 Overview
 
-This documentation site automatically pulls help files from the main [SharpMUSH repository](https://github.com/SharpMUSH/SharpMUSH) using Git submodules and converts them to a modern, searchable web interface.
+This documentation site automatically pulls help files from the main [SharpMUSH repository](https://github.com/SharpMUSH/SharpMUSH) using Git submodules and converts them to a modern, searchable web interface. The help comes from its `help-export` branch: the help as the game serves it, plugin help and listings included.
 
 ## 🚀 Quick Start
 
@@ -26,7 +26,8 @@ npm run dev
 
 ```
 .
-├── SharpMUSH-submodule/           # Git submodule to main repository
+├── SharpMUSH-submodule/           # Git submodule to main repository (syntax grammar)
+├── SharpMUSH-help/                # Git submodule to its help-export branch (help files)
 ├── scripts/
 │   ├── convert-docs.js            # Documentation converter
 │   └── README.md                  # Converter documentation
