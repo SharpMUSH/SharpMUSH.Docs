@@ -131,14 +131,15 @@ This example is Grid Builder, a public app registered with the redirect address
      &client_id=smc_3smLdIqEyx17lcVR
      &redirect_uri=https%3A%2F%2Fbuilder.example.com%2Fcallback
      &scope=commands+build
-     &state=xyz
+     &state=<state>
      &code_challenge=<challenge>
      &code_challenge_method=S256
    ```
 
    When the player allows it, the portal sends them to
-   `https://builder.example.com/callback?code=<code>&state=xyz`. Check that `state` is the one you
-   sent. The code works once, within a minute.
+   `https://builder.example.com/callback?code=<code>&state=<state>`. Make `state` a new random
+   value for each request and keep it in the app. Refuse the callback if `state` is missing or is
+   not the one you sent. The code works once, within a minute.
 
 3. Trade the code for tokens:
 
