@@ -3,303 +3,482 @@
   "reference": "Sharpie approved mascot preview",
   "images": [
     {
-      "file": "sharpie-world-builder.webp",
-      "source": "exec-44fee358-6ef1-4b30-917c-2e1c1f910578.png",
-      "source_sha256": "4d92effacb1d91cf9f106ff5fb68e43655e23a48bed02cafb998a1fd5b7a4c20",
+      "file": "sharpie-portal.webp",
+      "source": "exec-ae22739c-128b-45c0-8c47-6c6d97900ccc.png",
+      "source_sha256": "8346b5514ea8b597d07a6d6b25d465c085affb15e3fe809142134748b23f7ed8",
+      "size": [
+        1983,
+        793
+      ],
+      "opaque_bounds": [
+        114,
+        97,
+        1663,
+        761
+      ],
+      "alpha": "native generated alpha; no background removal",
+      "export": "lossless WebP; exact RGBA round-trip verified",
+      "action": "Sharpie leans toward a small mint browser window and touches a large square room tile on its screen with one forepaw; second forepaw on the window's lower edge. The touched tile is slightly raised, an abstract speech bubble sits within screen. Eyes aimed at tile, window and cat form one connected scene.",
+      "refinement": "Generative lower-leg/paw refinement, safe framing and approved mint-green color reference; rounded white sock paws, consistent toe details and natural occlusion; no palette normalization.",
+      "visible_bounds": [
+        544,
+        110,
+        1455,
+        712
+      ]
+    },
+    {
+      "file": "sharpie-appearance.webp",
+      "source": "exec-64cb3691-2c7a-4545-a396-0a31c8b76f41.png",
+      "source_sha256": "3aeb3aae130529358913a65d7a339fa271d097c2a6bcc325672157e1cbb267ab",
+      "size": [
+        1983,
+        793
+      ],
+      "opaque_bounds": [
+        162,
+        49,
+        1834,
+        776
+      ],
+      "alpha": "native generated alpha; no background removal",
+      "export": "lossless WebP; exact RGBA round-trip verified",
+      "action": "Sharpie is actively sliding a large round knob along a mint horizontal settings slider with one forepaw. Its second forepaw braces the small control panel. Above panel, a mint swatch tile and a small speaker symbol suggest visual and audio preferences. Clear paw-to-slider contact.",
+      "refinement": "Generative lower-leg/paw refinement, safe framing and approved mint-green color reference; rounded white sock paws, consistent toe details and natural occlusion; no palette normalization.",
+      "visible_bounds": [
+        529,
+        124,
+        1522,
+        716
+      ]
+    },
+    {
+      "file": "sharpie-plugins.webp",
+      "source": "exec-070abecd-2ddb-400a-a626-b1aa2cd22907.png",
+      "source_sha256": "c2deff72f0a1f77fd0ce49cd0fe6030b7a0a179e164b5ef654821bcd05cb64cd",
+      "size": [
+        1983,
+        793
+      ],
+      "opaque_bounds": [
+        315,
+        71,
+        1709,
+        735
+      ],
+      "alpha": "native generated alpha; no background removal",
+      "export": "lossless WebP; exact RGBA round-trip verified",
+      "action": "Sharpie physically pushes a mint puzzle piece into a matching block socket using one forepaw, with the second forepaw steadying the receiving block. The two puzzle pieces are nearly joined; small gear on receiving block. Eyes focused on the fit.",
+      "refinement": "Generative lower-leg/paw refinement, safe framing and approved mint-green color reference; rounded white sock paws, consistent toe details and natural occlusion; no palette normalization.",
+      "visible_bounds": [
+        606,
+        74,
+        1399,
+        731
+      ]
+    },
+    {
+      "file": "sharpie-reference.webp",
+      "source": "exec-8d1428f1-ff7c-483c-b737-0aca72659d16.png",
+      "source_sha256": "8904fc3f3d6504245c5d483a4cd750913f5c527d7510f658f73a558126685e4e",
+      "size": [
+        1983,
+        793
+      ],
+      "opaque_bounds": [
+        41,
+        32,
+        1874,
+        743
+      ],
+      "alpha": "native generated alpha; no background removal",
+      "export": "lossless WebP; exact RGBA round-trip verified",
+      "action": "Sharpie pulls a single mint reference book halfway out of a low three-book shelf with one forepaw gripping the book edge; the second forepaw steadies the shelf. Blank book spines with small index tabs, no letters. Clearly engaged in finding information.",
+      "refinement": "Generative lower-leg/paw refinement, safe framing and approved mint-green color reference; rounded white sock paws, consistent toe details and natural occlusion; no palette normalization.",
+      "visible_bounds": [
+        541,
+        97,
+        1498,
+        739
+      ]
+    },
+    {
+      "file": "sharpie-help.webp",
+      "source": "exec-38db64e3-a638-42be-ad23-c90d2b46cc78.png",
+      "source_sha256": "29f4d4f96a4ba68f68451e5ab7040c284cf5d97c07e55e886686885022f05555",
+      "size": [
+        1983,
+        793
+      ],
+      "opaque_bounds": [
+        73,
+        23,
+        1509,
+        710
+      ],
+      "alpha": "native generated alpha; no background removal",
+      "export": "lossless WebP; exact RGBA round-trip verified",
+      "action": "Sharpie reads an open mint-and-white help book, using one forepaw to lift and turn a single white page while the second forepaw holds the book's lower edge. Face and eyes turned toward the page. Simple small speech bubble above book, no text.",
+      "refinement": "Generative lower-leg/paw refinement, safe framing and approved mint-green color reference; rounded white sock paws, consistent toe details and natural occlusion; no palette normalization.",
+      "visible_bounds": [
+        632,
+        89,
+        1339,
+        703
+      ]
+    },
+    {
+      "file": "sharpie-scenes.webp",
+      "source": "exec-b3c3efb2-d1cb-4638-bf23-4efc27946a71.png",
+      "source_sha256": "bac2b3c7054bd5ccb7b7fff9e68233dc7b4032898059e819244c450c6c3bf0a7",
+      "size": [
+        1983,
+        793
+      ],
+      "opaque_bounds": [
+        283,
+        76,
+        1608,
+        773
+      ],
+      "alpha": "native generated alpha; no background removal",
+      "export": "lossless WebP; exact RGBA round-trip verified",
+      "action": "Sharpie physically draws back a small mint stage curtain with one forepaw and rests its other forepaw on the low stage edge, revealing a tiny abstract room set and two overlapping speech bubbles. Welcoming someone into a shared story, eyes looking at curtain opening.",
+      "refinement": "Generative lower-leg/paw refinement, safe framing and approved mint-green color reference; rounded white sock paws, consistent toe details and natural occlusion; no palette normalization.",
+      "visible_bounds": [
+        416,
+        115,
+        1549,
+        687
+      ]
+    },
+    {
+      "file": "sharpie-characters.webp",
+      "source": "exec-df86d1cf-c407-484e-b603-9c7faca43fc1.png",
+      "source_sha256": "06fd213ff70e561a7348f5c51f6de9e35adf188019c034df46934a71e28b1b39",
+      "size": [
+        1983,
+        793
+      ],
+      "opaque_bounds": [
+        168,
+        94,
+        1826,
+        761
+      ],
+      "alpha": "native generated alpha; no background removal",
+      "export": "lossless WebP; exact RGBA round-trip verified",
+      "action": "Sharpie presses a small mint paw-shaped stamp onto a blank character profile card using one forepaw; second forepaw holds the card flat. Card has simple cat-head silhouette and a couple geometric bars, no writing. Clear stamp-to-card contact, attentive expression.",
+      "refinement": "Generative lower-leg/paw refinement, safe framing and approved mint-green color reference; rounded white sock paws, consistent toe details and natural occlusion; no palette normalization.",
+      "visible_bounds": [
+        606,
+        97,
+        1462,
+        747
+      ]
+    },
+    {
+      "file": "sharpie-community.webp",
+      "source": "exec-22285e22-d07a-4789-bfc2-e3f90bcfda92.png",
+      "source_sha256": "b037a6ed61764ae03b134f0c7585e57accf4c53a40b082b6e63eb383668bf0ff",
+      "size": [
+        1983,
+        793
+      ],
+      "opaque_bounds": [
+        67,
+        98,
+        1705,
+        767
+      ],
+      "alpha": "native generated alpha; no background removal",
+      "export": "lossless WebP; exact RGBA round-trip verified",
+      "action": "Sharpie is placing a mint connection token onto a small map of three linked rooms with one forepaw, while second forepaw steadies map edge. Two small speech bubbles rise from connected rooms. Engaged in connecting people and places, eyes on the token.",
+      "refinement": "Generative lower-leg/paw refinement, safe framing and approved mint-green color reference; rounded white sock paws, consistent toe details and natural occlusion; no palette normalization.",
+      "visible_bounds": [
+        535,
+        103,
+        1468,
+        734
+      ]
+    },
+    {
+      "file": "sharpie-jobs.webp",
+      "source": "exec-cd5b5828-f8e4-4038-a815-0049edb54d1a.png",
+      "source_sha256": "ecd9e2f1ad1839894a306875385929ca65ecc6c5ad321d4d7ecd14a834c9c3c8",
+      "size": [
+        1983,
+        793
+      ],
+      "opaque_bounds": [
+        533,
+        31,
+        1542,
+        754
+      ],
+      "alpha": "native generated alpha; no background removal",
+      "export": "lossless WebP; exact RGBA round-trip verified",
+      "action": "Sharpie checks off a box on a mint clipboard with a short mint pencil held in one forepaw; second forepaw holds clipboard steady at its bottom edge. Three checkbox rows, one clear check, no words. Clear pencil tip-to-checkbox contact.",
+      "refinement": "Generative lower-leg/paw refinement, safe framing and approved mint-green color reference; rounded white sock paws, consistent toe details and natural occlusion; no palette normalization.",
+      "visible_bounds": [
+        628,
+        76,
+        1354,
+        737
+      ]
+    },
+    {
+      "file": "sharpie-clients.webp",
+      "source": "exec-824a8da6-72ed-4c81-874e-9ef3dccdf59d.png",
+      "source_sha256": "aafeaabd9f17ec464bcb319ee9935afcc5a9d389f5081ee386b4091dcd5501f0",
+      "size": [
+        1983,
+        793
+      ],
+      "opaque_bounds": [
+        39,
+        27,
+        1848,
+        725
+      ],
+      "alpha": "native generated alpha; no background removal",
+      "export": "lossless WebP; exact RGBA round-trip verified",
+      "action": "Sharpie taps a large square tile on a small mint desktop terminal screen with one forepaw; other forepaw rests on the base. A small phone nearby mirrors that same single square tile, linked by three tiny dots. No actual text or code.",
+      "refinement": "Generative lower-leg/paw refinement, safe framing and approved mint-green color reference; rounded white sock paws, consistent toe details and natural occlusion; no palette normalization.",
+      "visible_bounds": [
+        450,
+        122,
+        1558,
+        699
+      ]
+    },
+    {
+      "file": "sharpie-radio.webp",
+      "source": "exec-a57efd34-2c20-4d05-9b8f-be9afce0d118.png",
+      "source_sha256": "3f5ddd93e33ba9fedcf4cd79761a5ad56f7a8aec9cf7e5324bd24a8a98a6f6ff",
+      "size": [
+        1983,
+        793
+      ],
+      "opaque_bounds": [
+        194,
+        30,
+        1655,
+        723
+      ],
+      "alpha": "native generated alpha; no background removal",
+      "export": "lossless WebP; exact RGBA round-trip verified",
+      "action": "Sharpie turns a large circular tuning dial on a compact mint tabletop radio with one forepaw; other forepaw braces the radio casing. Eyes focused on dial, perked ears listening, two modest radio wave arcs from short antenna. Natural tactile interaction.",
+      "refinement": "Generative lower-leg/paw refinement, safe framing and approved mint-green color reference; rounded white sock paws, consistent toe details and natural occlusion; no palette normalization.",
+      "visible_bounds": [
+        552,
+        109,
+        1451,
+        717
+      ]
+    },
+    {
+      "file": "sharpie-wiki.webp",
+      "source": "exec-526aa303-bccf-4d56-a831-cdec78ed41db.png",
+      "source_sha256": "00fe728d1419a992f417862a9b48057b3ded1fb912c41b35ccfb3d6cdcd73e02",
+      "size": [
+        1983,
+        793
+      ],
+      "opaque_bounds": [
+        549,
+        35,
+        1751,
+        753
+      ],
+      "alpha": "native generated alpha; no background removal",
+      "export": "lossless WebP; exact RGBA round-trip verified",
+      "action": "Sharpie follows an article in an open mint-and-white wiki book with one forepaw pointing at a blank page, while second forepaw turns a page by its outer corner. A couple clean mint tabs on book. BOTH forepaws on book, no other paws on ground, no third limb.",
+      "refinement": "Generative lower-leg/paw refinement, safe framing and approved mint-green color reference; rounded white sock paws, consistent toe details and natural occlusion; no palette normalization.",
+      "visible_bounds": [
+        632,
+        106,
+        1421,
+        707
+      ]
+    },
+    {
+      "file": "sharpie-boards.webp",
+      "source": "exec-23efd4a6-cf40-4ffa-a6bb-49abdd9b6dcc.png",
+      "source_sha256": "ce3a6ac904bb1dca547b25def424f06439dda6c410c8dfa0bb2474c5ece7391f",
+      "size": [
+        1983,
+        793
+      ],
+      "opaque_bounds": [
+        116,
+        19,
+        1816,
+        728
+      ],
+      "alpha": "native generated alpha; no background removal",
+      "export": "lossless WebP; exact RGBA round-trip verified",
+      "action": "Sharpie pins a single blank white note card onto a low mint bulletin board with one forepaw pressing a mint pin; second forepaw supports card lower corner. Two existing notes already pinned. Eyes at pin, clearly posting a message. No writing.",
+      "refinement": "Generative lower-leg/paw refinement, safe framing and approved mint-green color reference; rounded white sock paws, consistent toe details and natural occlusion; no palette normalization.",
+      "visible_bounds": [
+        553,
+        123,
+        1427,
+        698
+      ]
+    },
+    {
+      "file": "sharpie-editor.webp",
+      "source": "exec-8460368b-fb7e-4042-8e78-6e494961f8e1.png",
+      "source_sha256": "74193a4cf9013f32be6c20b14bede6a9db4a5110facb82520931b82a3b08c850",
+      "size": [
+        1983,
+        793
+      ],
+      "opaque_bounds": [
+        73,
+        35,
+        1518,
+        746
+      ],
+      "alpha": "native generated alpha; no background removal",
+      "export": "lossless WebP; exact RGBA round-trip verified",
+      "action": "Sharpie edits a line in a small mint editor panel: one forepaw grips a mint pencil with tip touching the middle of three blank horizontal bars on panel; second forepaw holds panel edge steady. No actual text or code, one simple caret mark.",
+      "refinement": "Generative lower-leg/paw refinement, safe framing and approved mint-green color reference; rounded white sock paws, consistent toe details and natural occlusion; no palette normalization.",
+      "visible_bounds": [
+        580,
+        96,
+        1373,
+        733
+      ]
+    },
+    {
+      "file": "sharpie-packages.webp",
+      "source": "exec-59f827be-e82a-46f5-ba9b-ac168854903e.png",
+      "source_sha256": "4b9c318e2a6031bfdb33bc1b1d8d50ae14cd88e863f61eb8cf8f1f97b5ba0340",
+      "size": [
+        1983,
+        793
+      ],
+      "opaque_bounds": [
+        49,
+        70,
+        1947,
+        740
+      ],
+      "alpha": "native generated alpha; no background removal",
+      "export": "lossless WebP; exact RGBA round-trip verified",
+      "action": "Sharpie lifts one mint reusable room block out of an open mint package box with one forepaw, while second forepaw rests on box rim. The lifted block is physically in the paw, not floating untouched. Two other blocks remain neatly in box, eyes on held block.",
+      "refinement": "Generative lower-leg/paw refinement, safe framing and approved mint-green color reference; rounded white sock paws, consistent toe details and natural occlusion; no palette normalization.",
+      "visible_bounds": [
+        567,
+        101,
+        1423,
+        729
+      ]
+    },
+    {
+      "file": "sharpie-first-steps.webp",
+      "source": "exec-3d530fec-98b6-4500-af33-f5a92d627aee.png",
+      "source_sha256": "ea2586d5e7b656224fedf5414014aa9e342b938090d2132c8a77780f535553f0",
+      "size": [
+        1983,
+        793
+      ],
+      "opaque_bounds": [
+        420,
+        108,
+        1765,
+        703
+      ],
+      "alpha": "native generated alpha; no background removal",
+      "export": "lossless WebP; exact RGBA round-trip verified",
+      "action": "Sharpie is actively nudging the first of three mint stepping stones into place with one forepaw. Second forepaw rests on the adjacent stone, cat leans forward looking toward the path and a small mint open doorway. Two visible forepaws total, one seated haunch and one tail, no extra feet. Inviting first steps through building, not a static cat and separate doorway.",
+      "refinement": "Generative lower-leg/paw refinement, safe framing and approved mint-green color reference; rounded white sock paws, consistent toe details and natural occlusion; no palette normalization.",
+      "visible_bounds": [
+        445,
+        141,
+        1599,
+        696
+      ]
+    },
+    {
+      "file": "sharpie-welcome.webp",
+      "source": "exec-bd0de173-263c-47dd-93b7-3c0802baee68.png",
+      "source_sha256": "ad11ee6e4f3f6bdf5e6cde36e5ce736f1fc419c20dfc2fa3014f914963ccaefc",
       "size": [
         1254,
         1254
       ],
-      "alpha": "native generated alpha; no background removal",
-      "export": "lossless WebP; exact RGBA round-trip verified"
-    },
-    {
-      "file": "sharpie-portal.webp",
-      "source": "exec-708f10eb-9423-4c26-adea-6b9cc742e237.png",
-      "source_sha256": "a6f74c6a4cf67afe7d9e9316a7d50f989f7073bf5aa2580c3c8f688f2e80f405",
-      "size": [
-        1983,
-        793
-      ],
       "opaque_bounds": [
-        434,
-        15,
-        1574,
-        780
+        45,
+        70,
+        1212,
+        1254
       ],
       "alpha": "native generated alpha; no background removal",
       "export": "lossless WebP; exact RGBA round-trip verified",
-      "action": "Sharpie leans toward a small mint browser window and touches a large square room tile on its screen with one forepaw; second forepaw on the window's lower edge. The touched tile is slightly raised, an abstract speech bubble sits within screen. Eyes aimed at tile, window and cat form one connected scene."
+      "brief": "Create a square genuine-alpha transparent illustration for the SharpMUSH homepage. Reference 1 is approved Sharpie identity, reference 2 style only; DO NOT include packages or props from reference 2. Sharpie is alone, welcoming the viewer: cute sophisticated minimal ink #17333E kitty, mint #00DDB3 clearly geometric M on forehead and tail tip, pure opaque WHITE face/chest/ear interiors, tall ears and full rounded :3 smile. Face looks directly at viewer. One forepaw raised in a friendly wave with simple mint greeting-motion accents next to it, other forepaw rests naturally in front. EXACTLY two forepaws, one compact seated haunch, one tail, no extra arms or legs. Full cat completely inside canvas with large transparent margins, no ears touching edges. A welcoming front-door character portrait, not building objects, no scenery, no text or speech bubbles. Native transparency, not a background extraction. No checkerboard painting, shadows, haze, watermark or lettering; its name will be live HTML beside artwork.",
+      "action": "Welcoming wave with a refined feline paw, one central pad and four toe pads.",
+      "refinement": "Generative lower-leg/paw refinement, safe framing and approved mint-green color reference; rounded white sock paws, consistent toe details and natural occlusion; no palette normalization.",
+      "visible_bounds": [
+        210,
+        189,
+        1076,
+        1103
+      ]
     },
     {
-      "file": "sharpie-appearance.webp",
-      "source": "exec-9da50b8a-66c0-4cdf-b4d4-dd08a3a59f65.png",
-      "source_sha256": "a849162c973e3f0e15cd6a7f6e58c0fbd9b26ccb14a3ac6d52605af91a36c7b9",
+      "file": "sharpie-explanation.webp",
+      "source": "exec-1d767082-543b-4d24-a5dd-0d4aa4e0b58b.png",
+      "source_sha256": "10337f8460e1a75740a41011f5b9ab453359be8e4166924007e95277ae001fe6",
       "size": [
         1983,
         793
       ],
       "opaque_bounds": [
-        412,
-        24,
-        1616,
-        779
+        243,
+        7,
+        1558,
+        738
       ],
       "alpha": "native generated alpha; no background removal",
       "export": "lossless WebP; exact RGBA round-trip verified",
-      "action": "Sharpie is actively sliding a large round knob along a mint horizontal settings slider with one forepaw. Its second forepaw braces the small control panel. Above panel, a mint swatch tile and a small speaker symbol suggest visual and audio preferences. Clear paw-to-slider contact."
+      "brief": "One standalone wide landscape (2.5:1) genuine transparent-alpha illustration for 'What is SharpMUSH?' documentation. Approved Sharpie minimal identity and same crisp vector-like style as refs, ink #17333E, mint #00DDB3, opaque pure WHITE fur. Show Sharpie ANSWERING A QUESTION: cat uses one forepaw to point with a short mint pointer at a simple upright world diagram showing three connected room blocks and two small speech bubbles; its second forepaw steadies the diagram frame. A single small question-mark bubble hovering above the diagram conveys the question; the ONLY permissible glyph is '?'. Mascot looks at diagram explaining it, helpful confident expression. Clear physical pointer-to-diagram contact. Exactly two forepaws and one tail, no extra limbs. Not just a cat next to unrelated objects. Everything fully inside canvas with 10% safe margins. No text words numbers fakecode painted background/checkerboard, ground plane, haze or shadow. Genuine alpha outside, white fur opaque. This scene is distinct from hero welcoming portrait and package illustrations.",
+      "refinement": "Generative lower-leg/paw refinement, safe framing and approved mint-green color reference; rounded white sock paws, consistent toe details and natural occlusion; no palette normalization.",
+      "visible_bounds": [
+        534,
+        91,
+        1457,
+        681
+      ]
     },
     {
-      "file": "sharpie-plugins.webp",
-      "source": "exec-bb1b957b-47ea-4c7b-8453-a65f216e7bc7.png",
-      "source_sha256": "11bd36ea4a5cd950ef0038ea09b3d5de80eae846298b11746a93758eac8feb58",
+      "file": "sharpie-library.webp",
+      "source": "exec-0c1e6038-a220-446b-a9ce-b25325c3461f.png",
+      "source_sha256": "5bf7ff74677f47db3488c9ad8e60d357021a2a022b5062492fef1a988e6bb804",
       "size": [
         1983,
         793
       ],
       "opaque_bounds": [
+        410,
+        61,
+        1880,
+        736
+      ],
+      "alpha": "native generated alpha; no background removal",
+      "export": "lossless WebP; exact RGBA round-trip verified",
+      "brief": "One standalone wide landscape 2.5:1 genuine-alpha transparent illustration for SharpMUSH Package Overview. Approved minimal Sharpie kitty, ink #17333E mint #00DDB3 and opaque PURE WHITE face/chest/paws/ear interiors, recognizable M forehead rounded :3 muzzle and tall ears. Action: Sharpie physically SORTS closed mint package boxes into a low three-cubby library shelf. One forepaw pushes a closed mint box into the middle cubby, second forepaw steadies the shelf edge; cat leans and looks at that box. Other two cubbies contain neatly stored boxes with different tiny simple geometric icons (circle, triangle), no letters. Exactly two forepaws, one compact seated haunch, one tail, no extra limbs. Clean sparse sophisticated vector-like shapes. Full ears paws tail shelf corners inside frame with 10% transparent safe margin. No open package, floating cubes or unboxing (that is a different existing illustration). No background panel/checkerboard, ground haze, broad shadows, captions, words or watermarks. Genuine native transparent background, white fur remains opaque.",
+      "refinement": "Generative lower-leg/paw refinement, safe framing and approved mint-green color reference; rounded white sock paws, consistent toe details and natural occlusion; no palette normalization.",
+      "visible_bounds": [
         526,
-        5,
-        1460,
-        788
-      ],
-      "alpha": "native generated alpha; no background removal",
-      "export": "lossless WebP; exact RGBA round-trip verified",
-      "action": "Sharpie physically pushes a mint puzzle piece into a matching block socket using one forepaw, with the second forepaw steadying the receiving block. The two puzzle pieces are nearly joined; small gear on receiving block. Eyes focused on the fit."
-    },
-    {
-      "file": "sharpie-reference.webp",
-      "source": "exec-961c8baf-bdbf-4663-abe6-f9e42d9b4223.png",
-      "source_sha256": "3e7fecc77f1bb497953e6c375387e21da62057f1b9d719dfd0dfdaa2848e6ef5",
-      "size": [
-        1983,
-        793
-      ],
-      "opaque_bounds": [
-        493,
-        15,
-        1563,
-        774
-      ],
-      "alpha": "native generated alpha; no background removal",
-      "export": "lossless WebP; exact RGBA round-trip verified",
-      "action": "Sharpie pulls a single mint reference book halfway out of a low three-book shelf with one forepaw gripping the book edge; the second forepaw steadies the shelf. Blank book spines with small index tabs, no letters. Clearly engaged in finding information."
-    },
-    {
-      "file": "sharpie-help.webp",
-      "source": "exec-14fe4e13-cd81-481a-b658-caed3535fba9.png",
-      "source_sha256": "164f1db60a796f7d71fa7fc74d92c7ca4f31e60fb427ddc309082b7cc1ae6713",
-      "size": [
-        1983,
-        793
-      ],
-      "opaque_bounds": [
-        584,
-        41,
-        1408,
-        781
-      ],
-      "alpha": "native generated alpha; no background removal",
-      "export": "lossless WebP; exact RGBA round-trip verified",
-      "action": "Sharpie reads an open mint-and-white help book, using one forepaw to lift and turn a single white page while the second forepaw holds the book's lower edge. Face and eyes turned toward the page. Simple small speech bubble above book, no text."
-    },
-    {
-      "file": "sharpie-scenes.webp",
-      "source": "exec-8d746a03-a0e8-4520-8f2c-d0dcee6c0756.png",
-      "source_sha256": "e3ccb6ae729f05cb8a2747d0b85d191881120759188acdd1b50cf5708eaf245e",
-      "size": [
-        1983,
-        793
-      ],
-      "opaque_bounds": [
-        317,
-        32,
-        1673,
-        747
-      ],
-      "alpha": "native generated alpha; no background removal",
-      "export": "lossless WebP; exact RGBA round-trip verified",
-      "action": "Sharpie physically draws back a small mint stage curtain with one forepaw and rests its other forepaw on the low stage edge, revealing a tiny abstract room set and two overlapping speech bubbles. Welcoming someone into a shared story, eyes looking at curtain opening."
-    },
-    {
-      "file": "sharpie-characters.webp",
-      "source": "exec-09efd698-7a5d-42da-8cb2-4b34b73c1aed.png",
-      "source_sha256": "769ecfb75701e45149d8f0c03428d65b521d52227a8808e6a0aecc489534084f",
-      "size": [
-        1983,
-        793
-      ],
-      "opaque_bounds": [
-        530,
-        10,
-        1537,
-        783
-      ],
-      "alpha": "native generated alpha; no background removal",
-      "export": "lossless WebP; exact RGBA round-trip verified",
-      "action": "Sharpie presses a small mint paw-shaped stamp onto a blank character profile card using one forepaw; second forepaw holds the card flat. Card has simple cat-head silhouette and a couple geometric bars, no writing. Clear stamp-to-card contact, attentive expression."
-    },
-    {
-      "file": "sharpie-community.webp",
-      "source": "exec-9081f59b-6ac7-4265-9a37-0544cd9ca487.png",
-      "source_sha256": "e040030131f536fb60e264c9cc6bce35cced3de9c21c9e44d183b9bc88b25330",
-      "size": [
-        1983,
-        793
-      ],
-      "opaque_bounds": [
-        440,
-        24,
-        1559,
-        776
-      ],
-      "alpha": "native generated alpha; no background removal",
-      "export": "lossless WebP; exact RGBA round-trip verified",
-      "action": "Sharpie is placing a mint connection token onto a small map of three linked rooms with one forepaw, while second forepaw steadies map edge. Two small speech bubbles rise from connected rooms. Engaged in connecting people and places, eyes on the token."
-    },
-    {
-      "file": "sharpie-jobs.webp",
-      "source": "exec-3806ad04-be51-42b1-aab6-cc296e3d06ca.png",
-      "source_sha256": "7c8eeaf0bf22b1eef83b471792045f9763e99a2b472c7e1e6c1e04a3125bc062",
-      "size": [
-        1983,
-        793
-      ],
-      "opaque_bounds": [
-        594,
-        20,
-        1396,
-        776
-      ],
-      "alpha": "native generated alpha; no background removal",
-      "export": "lossless WebP; exact RGBA round-trip verified",
-      "action": "Sharpie checks off a box on a mint clipboard with a short mint pencil held in one forepaw; second forepaw holds clipboard steady at its bottom edge. Three checkbox rows, one clear check, no words. Clear pencil tip-to-checkbox contact."
-    },
-    {
-      "file": "sharpie-clients.webp",
-      "source": "exec-629ed9ce-c18e-4a82-ac3f-051b432b7cab.png",
-      "source_sha256": "b7f909b709603f3aa2cdfd1b2208d6147a447f4c125e102c3d6e76421c5f818d",
-      "size": [
-        1983,
-        793
-      ],
-      "opaque_bounds": [
-        331,
-        35,
-        1682,
-        771
-      ],
-      "alpha": "native generated alpha; no background removal",
-      "export": "lossless WebP; exact RGBA round-trip verified",
-      "action": "Sharpie taps a large square tile on a small mint desktop terminal screen with one forepaw; other forepaw rests on the base. A small phone nearby mirrors that same single square tile, linked by three tiny dots. No actual text or code."
-    },
-    {
-      "file": "sharpie-radio.webp",
-      "source": "exec-c1469b04-e785-4515-a8bf-4517d768c1cf.png",
-      "source_sha256": "bed22d0e37ad5ee7bac00cd19d699726ff7c88985ee9b4deb5e5637ef7ef14df",
-      "size": [
-        1983,
-        793
-      ],
-      "opaque_bounds": [
-        457,
-        7,
-        1573,
-        781
-      ],
-      "alpha": "native generated alpha; no background removal",
-      "export": "lossless WebP; exact RGBA round-trip verified",
-      "action": "Sharpie turns a large circular tuning dial on a compact mint tabletop radio with one forepaw; other forepaw braces the radio casing. Eyes focused on dial, perked ears listening, two modest radio wave arcs from short antenna. Natural tactile interaction."
-    },
-    {
-      "file": "sharpie-wiki.webp",
-      "source": "exec-1061c354-404e-416e-8d8f-a1de9b1ed9a5.png",
-      "source_sha256": "58388bec9b58cae74dedfe68f43b4eedcc00a134a5c71cf564d4aebd46f5318f",
-      "size": [
-        1983,
-        793
-      ],
-      "opaque_bounds": [
-        541,
-        13,
-        1521,
-        763
-      ],
-      "alpha": "native generated alpha; no background removal",
-      "export": "lossless WebP; exact RGBA round-trip verified",
-      "action": "Sharpie follows an article in an open mint-and-white wiki book with one forepaw pointing at a blank page, while second forepaw turns a page by its outer corner. A couple clean mint tabs on book. BOTH forepaws on book, no other paws on ground, no third limb."
-    },
-    {
-      "file": "sharpie-boards.webp",
-      "source": "exec-fa7809f8-8fd2-415d-acb4-5d1ae5644f34.png",
-      "source_sha256": "738d83bc5b883b77b7bb31e61c0b3429b946f73054cbf37bdab24b33165b2683",
-      "size": [
-        1983,
-        793
-      ],
-      "opaque_bounds": [
-        438,
-        7,
-        1563,
-        787
-      ],
-      "alpha": "native generated alpha; no background removal",
-      "export": "lossless WebP; exact RGBA round-trip verified",
-      "action": "Sharpie pins a single blank white note card onto a low mint bulletin board with one forepaw pressing a mint pin; second forepaw supports card lower corner. Two existing notes already pinned. Eyes at pin, clearly posting a message. No writing."
-    },
-    {
-      "file": "sharpie-editor.webp",
-      "source": "exec-90dc3eea-9602-4b7a-af2d-63f60b65a915.png",
-      "source_sha256": "6b559439cdb07afb2175cd1de4ed06c40fb9f8432654e0e7761703bcce030351",
-      "size": [
-        1983,
-        793
-      ],
-      "opaque_bounds": [
-        518,
-        16,
-        1425,
-        757
-      ],
-      "alpha": "native generated alpha; no background removal",
-      "export": "lossless WebP; exact RGBA round-trip verified",
-      "action": "Sharpie edits a line in a small mint editor panel: one forepaw grips a mint pencil with tip touching the middle of three blank horizontal bars on panel; second forepaw holds panel edge steady. No actual text or code, one simple caret mark."
-    },
-    {
-      "file": "sharpie-packages.webp",
-      "source": "exec-6fcdd238-c751-403f-8ddb-b4fa1bade7a4.png",
-      "source_sha256": "dfb3647469119c4a69730e8bb283709caae85c098f020459bc3165146613847f",
-      "size": [
-        1983,
-        793
-      ],
-      "opaque_bounds": [
-        487,
-        20,
-        1494,
-        788
-      ],
-      "alpha": "native generated alpha; no background removal",
-      "export": "lossless WebP; exact RGBA round-trip verified",
-      "action": "Sharpie lifts one mint reusable room block out of an open mint package box with one forepaw, while second forepaw rests on box rim. The lifted block is physically in the paw, not floating untouched. Two other blocks remain neatly in box, eyes on held block."
-    },
-    {
-      "file": "sharpie-first-steps.webp",
-      "source": "exec-52c2ec30-3f8e-42a7-b139-d6c31764a76e.png",
-      "source_sha256": "1e43cda7ae25831c91ff7959fd3379ead3042a222d731a7fa048162e4442cbd6",
-      "size": [
-        1983,
-        793
-      ],
-      "opaque_bounds": [
-        287,
-        13,
-        1836,
-        776
-      ],
-      "alpha": "native generated alpha; no background removal",
-      "export": "lossless WebP; exact RGBA round-trip verified",
-      "action": "Sharpie is actively nudging the first of three mint stepping stones into place with one forepaw. Second forepaw rests on the adjacent stone, cat leans forward looking toward the path and a small mint open doorway. Two visible forepaws total, one seated haunch and one tail, no extra feet. Inviting first steps through building, not a static cat and separate doorway."
+        104,
+        1480,
+        683
+      ]
     }
-  ]
+  ],
+  "color_reference": "Approved minimal Sharpie logo: mint #00DDB3, ink #17333E, white; direct reference on each final generative edit.",
+  "editing": "Generative anatomy, framing and color refinement only; no deterministic palette normalization or background removal."
 }
