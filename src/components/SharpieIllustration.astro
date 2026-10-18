@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets';
+import firstSteps from '../assets/sharpie/sharpie-first-steps.webp';
+import packages from '../assets/sharpie/sharpie-packages.webp';
+
+interface Props {
+  scene: 'first-steps' | 'packages';
+}
+
+const scenes = { 'first-steps': firstSteps, packages };
+const { scene } = Astro.props;
+---
+
+<div class="sharpie-illustration" aria-hidden="true">
+  <Image
+    src={scenes[scene]}
+    alt=""
+    widths={[320, 480, 720, 960]}
+    sizes="(min-width: 32rem) 28rem, calc(100vw - 3rem)"
+    loading="lazy"
+    decoding="async"
+  />
+</div>
+
+<style>
+  .sharpie-illustration {
+    width: min(100%, 28rem);
+    margin: 1.25rem auto;
+  }
+
+  .sharpie-illustration img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+</style>

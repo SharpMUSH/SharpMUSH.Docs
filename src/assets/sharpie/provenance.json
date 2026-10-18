@@ -1,0 +1,39 @@
+{
+  "generator": "OpenAI built-in imagegen",
+  "reference": "Sharpie approved mascot preview",
+  "images": [
+    {
+      "file": "sharpie-world-builder.webp",
+      "source": "exec-44fee358-6ef1-4b30-917c-2e1c1f910578.png",
+      "source_sha256": "4d92effacb1d91cf9f106ff5fb68e43655e23a48bed02cafb998a1fd5b7a4c20",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha": "native generated alpha; no background removal",
+      "export": "lossless WebP; exact RGBA round-trip verified"
+    },
+    {
+      "file": "sharpie-first-steps.webp",
+      "source": "exec-7d687e66-81c7-42e6-9c14-f3450c9888ae.png",
+      "source_sha256": "cadd69e5dadf87e291ac10cd23bf4718f2fb2108951d0ec573fbd903ccfcf2d7",
+      "size": [
+        1983,
+        793
+      ],
+      "alpha": "native generated alpha; no background removal",
+      "export": "lossless WebP; exact RGBA round-trip verified"
+    },
+    {
+      "file": "sharpie-packages.webp",
+      "source": "exec-e4fb47bc-f457-4a58-9a15-67d56e295737.png",
+      "source_sha256": "f026f20461b19628c894964740863a5833957d3d193476ca82f37690b5abff36",
+      "size": [
+        1983,
+        793
+      ],
+      "alpha": "native generated alpha; no background removal",
+      "export": "lossless WebP; exact RGBA round-trip verified"
+    }
+  ]
+}

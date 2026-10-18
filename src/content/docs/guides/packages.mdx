@@ -4,6 +4,7 @@ description: Installing, upgrading and authoring SharpMUSH softcode packages.
 ---
 
 import { Steps, LinkCard } from '@astrojs/starlight/components';
+import SharpieIllustration from '../../../components/SharpieIllustration.astro';
 
 Global softcode has traditionally been distributed as a `.mush` file you paste into a client and
 hope for the best: the dbrefs have to line up, there is no record of what was installed, and there is
@@ -13,6 +14,8 @@ SharpMUSH still accepts `.mush` files: paste one in as you would on any other MU
 **packages**, which are safer and much easier to upgrade and maintain. A package is a declarative description of softcode — the
 objects that should exist, and the attributes, flags, locks and parents they carry — installed
 through the admin panel at `/admin/packages`.
+
+<SharpieIllustration scene="packages" />
 
 ## How installing works
 
