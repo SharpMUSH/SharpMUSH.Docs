@@ -1,0 +1,34 @@
+---
+title: Package Overview
+description: Find the SharpMUSH packages for storytelling, characters, community, staff work and MUD clients.
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import SharpieIllustration from '../../../components/SharpieIllustration.astro';
+
+Packages give your game systems that players and staff can use from the game, the web portal, or both.
+Start with the part of your world you want to build. Each guide explains the player commands and the
+staff setup for that system.
+
+<SharpieIllustration scene="packages" />
+
+## Find a package
+
+<CardGrid>
+  <LinkCard title="Essentials" href="/guides/game-help/" description="The game's own help, connect messages and the in-game line editor." />
+  <LinkCard title="Scenes" href="/guides/scenes/" description="Shared roleplay, scene logs, scheduling and calendars." />
+  <LinkCard title="Characters" href="/guides/character-applications/" description="Character applications, profiles, journals and relationships." />
+  <LinkCard title="Community" href="/guides/who-where/" description="Who is online, bulletin boards, radio and shared information." />
+  <LinkCard title="Staff" href="/guides/jobs/" description="Requests, staff queues, automation and game health." />
+  <LinkCard title="MUD clients" href="/guides/mud-clients/" description="Client maps, gauges, chat and sound through the MUD kit." />
+</CardGrid>
+
+## Explore common systems
+
+The [bulletin boards](/guides/bboards/) keep community discussions available after a player logs out.
+[Radio](/guides/radio/) carries conversations across the game.
+The [Wiki Reader](/guides/wiki-reader/) brings your game's longer writing into a MU\* client,
+and the [Line Editor](/guides/line-editor/) lets builders write and check attributes without leaving it.
+
+For installing, upgrading or authoring packages, read [Softcode Packages](/guides/packages/).
+The [package format reference](/reference/package-format/) describes their declarations.

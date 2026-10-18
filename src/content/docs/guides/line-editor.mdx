@@ -3,12 +3,15 @@ title: The Line Editor
 description: Write a $-command or a function attribute one line at a time with @editor, check it, and save it or leave without saving.
 ---
 
+import SharpieIllustration from '../../../components/SharpieIllustration.astro';
 import { Aside } from '@astrojs/starlight/components';
 
 **`@editor`** opens an attribute in a line editor inside the game. You type the code one line at a
 time, list what you have, check it for mistakes, and save it when it is right. Nothing you type is
 run or evaluated while you edit, so brackets, percent signs and semicolons go in exactly as typed.
 It suits a builder writing a `$`-command or a function on an object from any MU\* client.
+
+<SharpieIllustration scene="editor" />
 
 | You are | You want to | Read |
 |---|---|---|

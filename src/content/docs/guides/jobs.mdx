@@ -3,10 +3,14 @@ title: Jobs
 description: Asking staff for something with +request, following your jobs, and working the staff queue in buckets.
 ---
 
+import SharpieIllustration from '../../../components/SharpieIllustration.astro';
+
 **Jobs** are how players ask staff for something and how staff keep track of it: a room fix, a
 bug, a plot idea, an application. Each request is a job with a running conversation between the
 player and staff. Each job sits in a **bucket**, such as Requests, Building or Bugs, and the bucket
 decides who works it.
+
+<SharpieIllustration scene="jobs" />
 
 A job is always waiting on someone. It is **New** until staff pick it up, then **With staff** or
 **Waiting on you** as the two sides reply, **On hold** when staff park it, and **Closed** once it is
