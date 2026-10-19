@@ -97,6 +97,7 @@ export default defineConfig({
               {
                   label: 'Packages',
                   items: [
+                      { label: 'Package Overview', slug: 'guides/package-library' },
                       {
                           label: 'Essentials',
                           collapsed: true,

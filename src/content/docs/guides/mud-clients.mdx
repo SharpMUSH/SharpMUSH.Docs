@@ -3,11 +3,14 @@ title: Supporting MUD Clients
 description: Send MUD clients such as Mudlet a map, gauges, an inventory, a chat window and sound over GMCP, with the MUD kit packages.
 ---
 
+import SharpieIllustration from '../../../components/SharpieIllustration.astro';
 import { Aside, Steps } from '@astrojs/starlight/components';
 
 A MUD client such as **Mudlet** can do more than show the game's text. Told where the player is, it
 draws a map; told their health, it draws a gauge; told the channel lines, it keeps them in a window of
 their own. The game tells it these things over **GMCP**, beside the text.
+
+<SharpieIllustration scene="clients" />
 
 SharpMUSH handles GMCP itself: it agrees to it with each client, remembers what the client asked for,
 and plays sounds. What the game tells a client about its rooms, channels and characters comes from

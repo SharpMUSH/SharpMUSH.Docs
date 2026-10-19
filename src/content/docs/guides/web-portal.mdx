@@ -3,11 +3,14 @@ title: The Web Portal
 description: A tour of the SharpMUSH web portal and its admin panel.
 ---
 
+import SharpieIllustration from '../../../components/SharpieIllustration.astro';
 import { Aside, LinkCard, CardGrid, Card } from '@astrojs/starlight/components';
 
 Every SharpMUSH server serves a web portal from the same origin as the game. It is not an optional
 add-on or a separate deployment: the Blazor portal is baked into the server image, so if the game is
 running, the website is running.
+
+<SharpieIllustration scene="portal" />
 
 This is where most administration happens. There is no `mush.cnf` to edit and no `@config` incantation
 to remember for the common cases — you change a setting in a form and it takes effect.

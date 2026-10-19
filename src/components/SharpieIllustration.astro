@@ -1,0 +1,74 @@
+---
+import { Image } from 'astro:assets';
+import firstSteps from '../assets/sharpie/sharpie-first-steps.webp';
+import packages from '../assets/sharpie/sharpie-packages.webp';
+import explanation from '../assets/sharpie/sharpie-explanation.webp';
+import library from '../assets/sharpie/sharpie-library.webp';
+import portal from '../assets/sharpie/sharpie-portal.webp';
+import appearance from '../assets/sharpie/sharpie-appearance.webp';
+import plugins from '../assets/sharpie/sharpie-plugins.webp';
+import reference from '../assets/sharpie/sharpie-reference.webp';
+import help from '../assets/sharpie/sharpie-help.webp';
+import scenesArt from '../assets/sharpie/sharpie-scenes.webp';
+import characters from '../assets/sharpie/sharpie-characters.webp';
+import community from '../assets/sharpie/sharpie-community.webp';
+import jobs from '../assets/sharpie/sharpie-jobs.webp';
+import clients from '../assets/sharpie/sharpie-clients.webp';
+import radio from '../assets/sharpie/sharpie-radio.webp';
+import wiki from '../assets/sharpie/sharpie-wiki.webp';
+import boards from '../assets/sharpie/sharpie-boards.webp';
+import editor from '../assets/sharpie/sharpie-editor.webp';
+
+const illustrations = {
+  'first-steps': firstSteps,
+  packages,
+  explanation,
+  library,
+  portal,
+  appearance,
+  plugins,
+  reference,
+  help,
+  scenes: scenesArt,
+  characters,
+  community,
+  jobs,
+  clients,
+  radio,
+  wiki,
+  boards,
+  editor,
+};
+
+interface Props {
+  scene: keyof typeof illustrations;
+}
+
+const { scene } = Astro.props;
+---
+
+<div class="sharpie-illustration" aria-hidden="true">
+  <Image
+    src={illustrations[scene]}
+    alt=""
+    widths={[320, 480, 720, 960]}
+    sizes="(min-width: 32rem) 28rem, calc(100vw - 3rem)"
+    loading="lazy"
+    decoding="async"
+  />
+</div>
+
+<style>
+  .sharpie-illustration {
+    width: min(100%, 28rem);
+    margin: 1.25rem auto;
+  }
+
+  .sharpie-illustration img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 12rem;
+    object-fit: contain;
+  }
+</style>
