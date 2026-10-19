@@ -9,6 +9,16 @@ export default defineConfig({
   integrations: [
       starlight({
           title: 'SharpMUSH',
+          description: 'Build and run your own multiplayer text world. Guides to hosting, softcode, packages and the SharpMUSH web portal.',
+          head: [
+              { tag: 'meta', attrs: { property: 'og:image', content: 'https://sharpmush.com/social/sharpie-docs.png' } },
+              { tag: 'meta', attrs: { property: 'og:image:type', content: 'image/png' } },
+              { tag: 'meta', attrs: { property: 'og:image:width', content: '1280' } },
+              { tag: 'meta', attrs: { property: 'og:image:height', content: '640' } },
+              { tag: 'meta', attrs: { property: 'og:image:alt', content: 'SharpMUSH Docs: guides for your next text world. Sharpie shows an illustrated world-building manual.' } },
+              { tag: 'meta', attrs: { name: 'twitter:image', content: 'https://sharpmush.com/social/sharpie-docs.png' } },
+              { tag: 'meta', attrs: { name: 'twitter:image:alt', content: 'SharpMUSH Docs: guides for your next text world. Sharpie shows an illustrated world-building manual.' } },
+          ],
           logo: { src : './src/assets/logo.svg' },
           customCss: ['./src/styles/colors.css'],
           social: [

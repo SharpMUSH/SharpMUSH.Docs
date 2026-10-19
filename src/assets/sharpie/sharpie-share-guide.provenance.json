@@ -1,0 +1,19 @@
+{
+  "generator": "OpenAI built-in imagegen",
+  "source": "exec-d262743b-33b3-494a-a11f-6d4054dd63e2.png",
+  "source_sha256": "a32eba3075140f281b41a6f952b7a767ac9e526fbd61dcf2e2ebcf6fb27d9869",
+  "action": "Sharpie holds up a wide tabbed reference manual with one forepaw keeping its page open and the other pointing at a large simple room-and-speech-bubble diagram on that page. Show compact seated body, rounded white hind socks. One manual, clear contact, no lettering.",
+  "reference": "Approved minimal Sharpie logo; mint #00DDB3, ink #17333E, white",
+  "constraints": "Flat colors; no palette normalization; native alpha; rounded white hind paws; complete silhouette",
+  "export": "Lossless optimized PNG; exact RGBA round-trip verified",
+  "size": [
+    1254,
+    1254
+  ],
+  "alpha_bounds": [
+    85,
+    2,
+    1226,
+    1174
+  ]
+}

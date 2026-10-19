@@ -3,10 +3,12 @@ title: SharpMUSH
 description: Discover and get set up with SharpMUSH.
 template: splash
 hero:
-  tagline: Build your own text roleplaying world with SharpMUSH. Meet Sharpie, our mascot and fellow world builder.
+  tagline: Build your own multiplayer text world. Create places, tell stories, and bring your community together.
   image:
-    file: ../../assets/sharpie/sharpie-welcome.webp
-    alt: ''
+    html: |
+      <div class="sharpie-welcome">
+        <img src="/sharpie/sharpie-welcome-perch.svg" width="640" height="520" alt="Sharpie, our mascot, welcomes you with her paws resting on her name." loading="eager" decoding="async" />
+      </div>
   actions:
     - text: Documentation
       link: /guides/get-started/
@@ -23,6 +25,7 @@ hero:
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
+import '../../styles/sharpie-welcome.css';
 
 ## Get started with SharpMUSH
 

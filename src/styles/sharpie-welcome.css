@@ -1,0 +1,5 @@
+.hero .sharpie-welcome { width: 100%; max-width: 25rem; }
+.hero .sharpie-welcome img { display: block; width: 100%; height: auto; margin: 0; }
+@media (max-width: 49.99rem) {
+  .hero:has(.sharpie-welcome) > .hero-html { order: 2; width: min(85%, 20rem); margin-top: 1rem; }
+}
