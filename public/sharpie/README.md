@@ -1,11 +1,3 @@
-# Homepage welcome nameplate
+# Sharpie welcome lockup
 
-`sharpie-welcome-nameplate.webp` is a byte-identical copy of the approved
-`src/assets/sharpie/sharpie-welcome.webp`. Starlight's `hero.image.html` supports
-live typography but does not resolve Astro image imports, so the public copy
-supports the accessible HTML composition without a site-wide Hero override.
-
-The Sharpie name, greeting and caption remain live selectable text, adapting to
-light and dark themes. This illustration is still used only on the homepage.
-Source, generation and palette provenance remain in
-`src/assets/sharpie/provenance.json`; no artwork or alpha normalization was used.
+`sharpie-welcome-perch.svg` is an editable vector composition of the approved Sharpie primary head, two consistent rounded white paws, and live SVG lettering. The paws overlap the lettering to introduce Sharpie visually. It uses ink #17333E, mint #00DDB3 and pure white, with no gradients, filters or raster matting. The original approved head master is preserved unchanged in SharpMUSH assets. Keep the complete viewBox and accessible title/description. The canonical SharpMUSH M remains the product mark.
