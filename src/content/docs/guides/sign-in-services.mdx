@@ -1,169 +1,169 @@
 ---
 title: Signing In with Discord or Google
-description: Let players make an account and sign in to the portal with Discord, Google, GitHub, Microsoft or another OAuth 2.0 service, with no password of their own.
+description: Let players make an account and sign in to the portal with Discord, Google, Microsoft, Grapevine or GitHub, with no password of their own.
 ---
 
 import { Aside } from '@astrojs/starlight/components';
 
 Players can sign in to the web portal with an account they already have somewhere else: Discord,
-Google, GitHub, Microsoft, or any other service that speaks OAuth 2.0. A new player presses
-**Continue with Discord**, picks a username, and has an account with no password to set or forget.
-A player with a password can link a service too, and then use either.
+Google, Microsoft, Grapevine or GitHub. A new player presses **Continue with Discord**, picks a
+username, and has an account with no password to set or forget. A player who already has an
+account can link a service to it and then use either.
 
 This page covers:
 
 - [Signing in](#signing-in)
 - [Linking a service to your account](#linking-a-service-to-your-account)
 - [Accounts with no password](#accounts-with-no-password)
+- [Playing from a MUD client](#playing-from-a-mud-client)
 - [Setting up a service](#setting-up-a-service)
 - [Worked example: Discord](#worked-example-discord)
-- [Google, GitHub and Microsoft](#google-github-and-microsoft)
-- [Other services](#other-services)
+- [Google, Microsoft, Grapevine and GitHub](#google-microsoft-grapevine-and-github)
 - [What the game keeps](#what-the-game-keeps)
 
 ## Signing in
 
 Once staff have set a service up, the sign-in page shows a button for it under the password form.
 
-![The sign-in page: the username and password form, Sign in with a passkey, and under it Continue with Discord, Continue with Example ID and Continue with Google.](../../../assets/guide/sign-in-services-login.webp)
+![The sign-in page: the username and password form, Sign in with a passkey, and under it Continue with Discord, Continue with Google and Continue with GitHub.](../../../assets/guide/sign-in-services-login.webp)
 
 The button sends you to the service, which asks you to allow the game to see who you are. When you
 allow it, the service sends you back.
 
 - If an account here already signs in with that service account, you are signed in to it.
-- If none does, the portal asks for a username. The name and verified email the service gave are
-  filled in; change either before you press **Create account**.
+- If none does, the portal asks you to choose a username. **Create account** makes the account;
+  **Cancel** makes nothing.
 
-![The Create your account page: no account here signs in with Example ID as Ariel Vance yet, with the username and email filled in from the service, a Create account button, and a hint to sign in first to link an existing account.](../../../assets/guide/sign-in-services-new-account.webp)
+![The page a new player reaches: choose a username for your new account, with the username Ariel typed in, a Create account button and Cancel.](../../../assets/guide/sign-in-services-new-account.webp)
 
 Sitelock, bans and the **player creation** setting apply exactly as they do to password sign-in.
-When the game takes no new accounts, the page says so and creates none.
 
 <Aside type="caution">
-The portal never joins a service account to an existing account because their emails match. To use
-a service with the account you already have, sign in to it first and link the service, as below.
+The portal never finds, joins or claims an account by its email. To use a service with the account
+you already have, sign in to that account first and link the service, as below.
 </Aside>
-
-Signing in with a service is for the portal. A MUD client still connects with a character's name and
-its own password.
 
 ## Linking a service to your account
 
-Your account page has an **Other ways to sign in** card. It lists the services linked to your
-account, with the name each one gave and when you last signed in with it, and a **Link** button for
-each service the game offers that you have not linked.
+Your account page has a **Sign-in methods** card. It lists the services linked to your account,
+each with an **Unlink** button, and a **Link** button for each service the game offers.
 
-![The account page of an account with no password: Password Not set with a Set a password button, and the Other ways to sign in card listing Example ID as Ariel Vance with an unlink button, and Link Discord and Link Google buttons.](../../../assets/guide/sign-in-services-account.webp)
+![The Sign-in methods card: Link Discord, Link Google and Link GitHub, then the buttons for the account password, character-password sign-in, email and passkeys.](../../../assets/guide/sign-in-services-account.webp)
 
-**Link** sends you to the service and back. A service account can sign in to one account here at
-most: if it already signs in to another one, linking is refused.
+Linking, unlinking and every other change on this card first asks you to prove it is you, once,
+for that one change. You can prove it with your account password, a passkey, or by signing in
+again with a service already linked. A remembered login does not count, and neither does a
+character's password.
 
-The unlink button removes the link. A service that staff have since removed or turned off is still
-listed, marked **unavailable**, so you can see it and remove it.
+A service account can be linked to one account here at most: if it is linked to another one,
+linking is refused. You can link more than one account from the same service, for example two
+Discord accounts.
 
 ## Accounts with no password
 
-An account made through a service has no password. Its account page shows **Password: Not set**
-and a **Set a password** button that does not ask for a current password. Adding a passkey does not
-ask for one either.
+An account made through a service has no account password. It can add one later from the
+**Sign-in methods** card, along with passkeys and other services.
 
 The portal will not take away the last way into an account. Unlinking the only service, or removing
-the only passkey, of an account with no password is refused until you set a password or add another
-way in.
+the only passkey or password, is refused until you add another way in. A service counts only while
+staff have it turned on, so it is worth adding a second way in before you need it.
+
+## Playing from a MUD client
+
+Signing in with a service is for the portal. A MUD client still connects to a character. An account
+with no password has two ways to do that, both from the character list on your account page:
+
+- **Generate one-use login** makes a `connect` command to paste into your MUD client. It works once,
+  for that one character, and expires after two minutes. Make a new one each time you connect.
+- **Set character password** gives that character a password of its own, which works with `connect`
+  as any character password does. It does not change your account's sign-in.
+
+Both ask you to prove it is you first.
+
+<Aside>
+Use a MUD client connection with TLS when the game offers one. A plain telnet connection lets
+anyone who can watch it read the one-use login, even though it expires quickly.
+</Aside>
 
 ## Setting up a service
 
-You need the `config.admin` permission. Open **Admin**, then **Configuration**, and under
-**Security** choose **Sign-in services**.
+You need the `config.admin` permission. Open **Admin**, then **Configuration**, and choose the
+service's sign-in page under **Applications**, or open `/admin/config/signin/<service>` directly:
+`discord`, `google`, `microsoft`, `grapevine` or `github`. Every service starts turned off.
 
-![The Sign-in services page: the Add a service form with GitHub chosen, its id, the redirect address to register, client id and client secret fields, and Discord, Example ID and Google in the list of services, each Ready.](../../../assets/guide/sign-in-services-admin.webp)
+![The GitHub sign-in page: Ready, the registration name, Enable account sign-in, the client id, the public HTTPS origin, the callback address to register, the secret's name, and Save.](../../../assets/guide/sign-in-services-admin.webp)
 
-- **Service** is Discord, Google, GitHub, Microsoft, or **Other (OAuth 2.0)**. For the first four
-  the game already knows the service's addresses.
-- **Id** names the service in the game's addresses. It is lower-case letters and digits, and it
-  cannot change once saved, because the service has the redirect address that holds it. The
-  **Service** cannot change either, nor an **Other** service's profile address or id field: they
-  decide which person each link belongs to. To point the id at another service, remove it and add
-  it again.
-- **Name players see** is what the button says. It defaults to the service's own name.
-- **Redirect address** is the address to give the service. It is built from the address you opened
-  this page at, so open the page at the game's public address, the one players use.
-- **Client id** and **Client secret** are what the service gives you when you register the game.
-  The secret is stored as the [secret](/guides/secrets) `signin.<id>.secret` and never shown
-  again. When you change a service later, leave the secret empty to keep the stored one.
-- **Players can sign in with it** turns the button on or off without removing the service.
+- **Enable account sign-in** turns the service on. Turning it off takes effect at once.
+- **Client id** is what the service gives you when you register the game with it.
+- **Public HTTPS origin** is the address players reach the game at, such as
+  `https://mush.example.com`, with no path after it.
+- The page shows the **callback URL** to give the service: your origin followed by
+  `/signin-external-<service>`.
+- The **client secret** is not typed here. Store it on the **Secrets** page under the name the page
+  shows, `auth.<service>.clientsecret`. Grapevine needs no secret.
 
-The list says which services are **Ready**. One without its secret says **No secret**: setting
-`signin.<id>.secret` with `@secret`, or from an environment variable or file, makes it ready.
+After you save, or change a secret, restart the server. The page says **Ready** once the restarted
+server can use the service, and says what is missing if it cannot.
 
-Removing a service removes its stored secret and every link players made to it. A player who
-signed in only with that service cannot sign in again until staff set a password for their account.
-Once the service is set up again, players link it again from their account page.
+A client id cannot be changed while accounts are linked through it, because a service can give the
+same person a different id under another client. When a change affects linked accounts, the page
+asks you to tick the box acknowledging it before it saves.
 
 ## Worked example: Discord
 
-1. Open the **Sign-in services** page at your game's public address, for example
-   `https://mush.example.com/admin/config/signin`. With **Service** set to **Discord** and the id
-   `discord`, copy the **Redirect address**:
+1. Open `https://mush.example.com/admin/config/signin/discord`. Type `https://mush.example.com` as
+   the public origin, and copy the callback URL the page shows:
 
    ```
-   https://mush.example.com/api/auth/external/discord/callback
+   https://mush.example.com/signin-external-discord
    ```
 
-2. In the Discord Developer Portal, create an application, or open the one your game's bot already
-   uses. Under **OAuth2**, add the redirect address under **Redirects** and save.
+2. In the Discord Developer Portal, create an application. Under **OAuth2**, add the callback URL
+   under **Redirects** and save.
 
 3. On the same **OAuth2** page, copy the **Client ID**. Press **Reset Secret** and copy the
    **Client Secret**.
 
-4. Back on the **Sign-in services** page, paste both and press **Save**. Discord is listed as
-   **Ready**.
+4. Back on the sign-in page, paste the client id, tick **Enable account sign-in**, and press
+   **Save**.
 
-5. Sign out and open the sign-in page. It has a **Continue with Discord** button.
+5. Open **Secrets**, set `auth.discord.clientsecret` to the client secret, and restart the server.
 
-The game asks Discord for `identify` and `email`. Discord's display name is offered as the
-username, and the email only when Discord says it is verified.
+6. Open the sign-in page again. It says **Ready**, and the portal's sign-in page has a
+   **Continue with Discord** button.
+
+The game asks Discord for `identify` only, so it learns the player's Discord id and username and
+nothing else.
 
 <Aside>
 Signing in with Discord is separate from the [Discord plugin](/guides/discord). The plugin links a
-character to a Discord user for the bot; this links an account to a Discord user for signing in.
-Neither needs the other.
+character to a Discord user for the bot, with a secret of its own; this links an account to a
+Discord user for signing in. Neither needs the other.
 </Aside>
 
-## Google, GitHub and Microsoft
+## Google, Microsoft, Grapevine and GitHub
 
-Each service is set up the same way: register the game with the service, give it the redirect
-address, and paste the client id and secret into the portal.
+Each service is set up the same way: register the game with the service, give it the callback URL,
+and enter the client id here and the secret on the **Secrets** page.
 
-| Service | Where to register | What the game reads |
+| Service | Where to register | What the game asks for |
 |---|---|---|
-| Google | Google Cloud console, **Google Auth Platform**: fill in **Branding** first, then under **Clients** create a client of type **Web application**, with the redirect address under **Authorized redirect URIs** | Name, and the email when Google says it is verified |
-| GitHub | GitHub **Settings**, **Developer settings**, **OAuth Apps**: the redirect address is the **Authorization callback URL** | Name or login. No email is offered |
-| Microsoft | Microsoft Entra admin center, **App registrations**: choose accounts in any organizational directory and personal Microsoft accounts, and add the redirect address as a **Web** redirect URI. Make a client secret under **Certificates & secrets** | Name. No email is offered |
+| Google | Google Cloud console, **Google Auth Platform**: fill in **Branding** first, then under **Clients** create a client of type **Web application**, with the callback URL under **Authorized redirect URIs** | `openid profile` |
+| Microsoft | Microsoft Entra admin center, **App registrations**: add the callback URL as a **Web** redirect URI, and make a client secret under **Certificates & secrets** | `openid profile` |
+| Grapevine | Your game's settings on Grapevine, with the callback URL as the redirect address. No secret: do not reuse the Grapevine chat secret | `profile` |
+| GitHub | GitHub **Settings**, **Developer settings**, **OAuth Apps**: the callback URL is the **Authorization callback URL** | Nothing beyond the public profile |
 
-## Other services
-
-**Other (OAuth 2.0)** works with any service that offers the authorization code flow and a profile
-address that answers JSON. Give it:
-
-| Field | What it is |
-|---|---|
-| Authorization address | The page players are sent to |
-| Token address | Where the game trades the returned code for a token |
-| Profile address | Where the game reads the player's profile with that token |
-| Scopes | The scopes asked for, separated by spaces |
-| Id field | The profile field holding the person's id, which must never change |
-| Name fields | Profile fields tried in turn for a name, separated by spaces |
-| Email field, Email verified field | Where the email is, and the field that is `true` when it is verified. Without a verified field, no email is offered |
-
-The addresses must be `https`. Plain `http` is allowed only for `localhost` and `127.0.0.1`, for
-trying a service on the server's own machine.
-
-The game sends the client id and secret in the token request's form, and uses PKCE (`S256`) on
-every sign-in.
+Microsoft has two more fields. **Audience** chooses who may sign in: `common` for personal and work
+or school accounts, `organizations` for work or school accounts only, `consumers` for personal
+accounts only, or one organization's tenant id. **Allowed tenants** can narrow it to a list of
+tenant ids. Choose the same kinds of account the app registration supports.
 
 ## What the game keeps
 
-For each link the game keeps the service's id for the person, the name it last gave, when the link
-was made and when it was last used. It keeps no token from the service: the game reads the profile
-once during sign-in and forgets the token.
+For each link the game keeps which service it is, the service's id for the person, the name the
+service gave, and when the link was made and last used. It keeps no token from the service, asks for
+no email, and never uses a service's email to find an account.
+
+A service's client secret is stored encrypted with the server's data protection keys. Back those keys
+up with the world: a world restored without them cannot read its secrets, and every service needs
+its secret set again.
