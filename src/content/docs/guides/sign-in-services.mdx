@@ -81,7 +81,10 @@ You need the `config.admin` permission. Open **Admin**, then **Configuration**, 
 - **Service** is Discord, Google, GitHub, Microsoft, or **Other (OAuth 2.0)**. For the first four
   the game already knows the service's addresses.
 - **Id** names the service in the game's addresses. It is lower-case letters and digits, and it
-  cannot change once saved, because the service has the redirect address that holds it.
+  cannot change once saved, because the service has the redirect address that holds it. The
+  **Service** cannot change either, nor an **Other** service's profile address or id field: they
+  decide which person each link belongs to. To point the id at another service, remove it and add
+  it again.
 - **Name players see** is what the button says. It defaults to the service's own name.
 - **Redirect address** is the address to give the service. It is built from the address you opened
   this page at, so open the page at the game's public address, the one players use.
@@ -93,8 +96,9 @@ You need the `config.admin` permission. Open **Admin**, then **Configuration**, 
 The list says which services are **Ready**. One without its secret says **No secret**: setting
 `signin.<id>.secret` with `@secret`, or from an environment variable or file, makes it ready.
 
-Removing a service removes its stored secret. The links players made are kept, so setting the
-service up again under the same id brings them back.
+Removing a service removes its stored secret and every link players made to it. A player who
+signed in only with that service cannot sign in again until staff set a password for their account.
+Once the service is set up again, players link it again from their account page.
 
 ## Worked example: Discord
 
