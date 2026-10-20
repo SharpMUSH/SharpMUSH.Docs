@@ -151,11 +151,15 @@ and enter the client id here and the secret on the **Secrets** page.
 | Google | Google Cloud console, **Google Auth Platform**: fill in **Branding** first, then under **Clients** create a client of type **Web application**, with the callback URL under **Authorized redirect URIs** | `openid profile` |
 | Microsoft | Microsoft Entra admin center, **App registrations**: add the callback URL as a **Web** redirect URI, and make a client secret under **Certificates & secrets** | `openid profile` |
 | Grapevine | Your game's settings on Grapevine, with the callback URL as the redirect address. No secret: do not reuse the Grapevine chat secret | `profile` |
-| GitHub | GitHub **Settings**, **Developer settings**, **OAuth Apps**: the callback URL is the **Authorization callback URL** | Nothing beyond the public profile |
+| GitHub | GitHub **Settings**, **Developer settings**, **OAuth Apps**: the callback URL is the **Authorization callback URL** | No scope. The game reads only the player's public profile |
 
 A new Google app starts in **Testing**, where only the accounts listed under **Audience** as test
 users can sign in. Add yourself there to try it, then press **Publish app** on the same page before
 players use it. The game asks only for `openid profile`, so publishing needs no review from Google.
+
+For GitHub, register a new OAuth app just for signing in. If a player once gave an existing app wider
+access, GitHub gives the game that same access, even though the game asks for none. The game still
+reads only the profile and throws the token away.
 
 Microsoft has two more fields. **Audience** chooses who may sign in: `common` for personal and work
 or school accounts, `organizations` for work or school accounts only, `consumers` for personal
