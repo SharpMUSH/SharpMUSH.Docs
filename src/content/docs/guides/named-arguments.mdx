@@ -86,6 +86,8 @@ Output: `Hello, Bob. You have 3 new posts.`
 `%0` and `%1` still hold `Bob` and `3`, so existing code keeps working. `@function greet` lists the
 names, and `@function/args greet=` clears them.
 
+![A telnet session: @function greet shows a panel with its type, state, location #1/FN`GREET, 0 to 10 arguments and the names who, count; @function lists greet(who, count) with its location, argument count and enabled state, under a count of user-defined and built-in functions](../../../assets/guide/function-listing.webp)
+
 <Aside type="caution">
 Global functions are not saved when the game restarts; the usual place to define them is a
 `@startup` on God (#1). Redefining a function clears its names, so put each `@function/args` right
