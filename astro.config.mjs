@@ -114,6 +114,7 @@ export default defineConfig({
                           collapsed: true,
                           items: [
                               { label: 'Game Help with +help', slug: 'guides/game-help' },
+                              { label: 'Getting Started Checklist', slug: 'guides/onboarding' },
                               { label: 'Connect Screen and MOTD', slug: 'guides/game-messages' },
                               { label: 'The Line Editor', slug: 'guides/line-editor' },
                           ],
