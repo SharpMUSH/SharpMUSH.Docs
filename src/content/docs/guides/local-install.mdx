@@ -185,6 +185,12 @@ rendering worker) and starts them with NATS. The portal is at `http://localhost:
 port `4201`. The world is in the `app-data` Docker volume, so it survives a rebuild. Run the same
 command again after a change.
 
+Open the portal on the same computer, at `localhost`. Browsers run it only over https or at
+`localhost`, so from another computer on your network, over plain http, it shows this page instead of
+the portal. Telnet works from anywhere.
+
+![A dark page headed "This portal needs a secure connection". It says the portal was opened at http://192.0.2.2:8080, and to put the game behind a certificate or open it on the server at http://localhost, and that telnet clients can connect without it.](../../../assets/guide/portal-insecure-origin.webp)
+
 To try the latest build of `main` without building anything, use the published images instead:
 
 ```bash
