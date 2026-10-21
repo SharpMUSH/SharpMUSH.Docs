@@ -102,6 +102,41 @@ is; `json()` builds plain text and would drop the mark. A player can type `%*<|>
 a player typed through `unmark()` before it goes into a list. It keeps the colour and takes the mark
 off. `secure()` and `escape()` take it off as well.
 
+### Example: a room's contents and exits
+
+`datacolumns()` takes the table a column at a time: each argument is a heading and then its cells.
+A list of names from `iter()` or `lvplayers()` becomes a column once its heading is put in front.
+When a cell can hold a space, as an exit name can, split the cells by `%r` and set `delim` to
+`%r`. Any list inside the options, such as `grow`, is split the same way.
+
+```sharp
+think box(datacolumns({{"delim":"%r","grow":"1%r1","rule":""}},Contents%rMannaz%rRaya,Exits%rNorth <N>%rOut <O>),Garden,40)
+```
+
+```text
++==============< Garden >==============+
+| Contents           Exits             |
+| Mannaz             North <N>         |
+| Raya               Out <O>           |
++======================================+
+```
+
+Each column grows to share the width, and `"rule":""` leaves out the line under the headings. A
+telnet client without UTF-8 gets the ASCII box above; the web portal draws a table in a frame:
+
+![The portal terminal showing the Garden box: a framed table with the headings Contents and Exits over Mannaz, Raya and the exits North and Out](../../../assets/guide/layout-datacolumns-portal.webp)
+
+![A telnet session with SOCKSET charset=ascii, then the same think command drawing the Garden box with plus signs, equals signs and bars](../../../assets/guide/layout-datacolumns-ascii.webp)
+
+In a room's `@conformat`, build the columns from the room itself, with `%r` between the cells:
+
+```sharp
+@conformat here=box(datacolumns({{"delim":"%r","grow":"1%r1","rule":""}},Contents%r[iter(lvplayers(%!),name(##),%b,%r)],Exits%r[iter(lexits(%!),name(##),%b,%r)]),name(%!))
+```
+
+A layout option it cannot read is named in the error. With `delim` set to `%r` but `grow` still
+written as `"1|2"`, the result is `#-1 LAYOUT OPTION GROW: INVALID ARGUMENT`.
+
 <Aside type="tip" title="Prefer meaning over manual spacing">
 If the content is a set of labels and values, use `fields()` rather than padding strings yourself.
 When the labels are only known when the code runs, `lfields()` takes them and their values as two lists.
