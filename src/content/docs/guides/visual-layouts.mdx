@@ -153,6 +153,38 @@ depend on colour alone: the text, values, and structure remain present. A player
 layouts sent to MU\* clients; it does not override the portal's own theme.
 [Layout Themes](/guides/layout-themes/) covers choosing, adding and inheriting themes.
 
+## Shade with a gradient
+
+`gradient()` blends colours one into the next across text or a whole layout. Given a layout, it
+shades the box, its title and its text together, over the colours the theme would give them:
+
+```sharp
+think gradient(box(Sheet,Mannaz,20),hc|hm,{{"flow":"diagonal"}})
+```
+
+The colours can be `ansi()` codes, `#rrggbb` values, or theme colours named as `tone()` names them,
+such as `primary|info`. A theme colour follows the game's `layout_theme`, so the gradient stays in
+the theme's palette when the theme changes. The `"target"` option shades only the box drawing
+(`"borders"`) or only the text (`"text"`), and the other part keeps its theme colour:
+
+```sharp
+think gradient(box(Sheet,Mannaz,20),#ff4040|#40c0ff,{{"target":"borders","flow":"diagonal"}})
+think gradient(box(Strength: 3%rDexterity: 2,Stats,20),#ffd040|#ff40c0,{{"target":"text"}})
+```
+
+A blend needs a client with 256 colours or more. A client with only the sixteen standard colours
+gets bands of the colours you named instead, each character in the nearest one. `terminfo()` shows
+which a connection gets, and `SOCKSET colorstyle=truecolor` asks for more when a client reports
+less than it can show.
+
+![The gradient() help examples in a truecolour telnet client: a name running red through gold to blue, words from red to yellow, mirrored and repeated rules, a box shaded cyan to magenta corner to corner, a table shaded gold to blue across its columns, a box with only its border shaded and one with only its text shaded](../../../assets/guide/gradient-telnet-truecolor.webp)
+
+![The same examples in a sixteen-colour client: each one is in bands of the colours it names, such as a cyan upper left and a magenta lower right on the shaded box](../../../assets/guide/gradient-telnet-16.webp)
+
+![The examples in the web portal's terminal: the boxes are drawn as cards with gradient borders, and the text is clipped to the gradient](../../../assets/guide/gradient-portal.webp)
+
+`help gradient()` in the game lists every option, with an example of each.
+
 ## Draw pictures without losing the text
 
 `image()` is appropriate for a standalone picture. `figure()` is the richer layout primitive: it
