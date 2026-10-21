@@ -3,6 +3,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { fromMarkdown } from 'mdast-util-from-markdown';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -163,6 +164,26 @@ function createSlugFromTitle(title) {
     .replace(/\s+/g, '-') // Replace spaces with hyphens
     .replace(/-+/g, '-') // Replace multiple hyphens with single
     .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+}
+
+// The HTML tags help prose may use: a line break and the styling the game's terminal renderer reads.
+const MARKUP_TAGS = new Set(['br', 'b', 'strong', 'i', 'em', 'u', 's', 'strike', 'del', 'font', 'span', 'color']);
+
+// Help prose writes argument names as tags, *<width>*. Left as HTML, a browser hides them as unknown
+// elements, and <title> or <body> swallow the rest of the page, so every other tag the Markdown parser
+// reads as HTML is escaped to text. Code, and the tags inside it, is left alone.
+export function escapeArgumentTags(content) {
+  const edits = [];
+  const visit = (node) => {
+    if (node.type === 'html' && !node.value.startsWith('<!')) {
+      const value = node.value.replace(/<(\/?)([A-Za-z][A-Za-z0-9-]*)([^<>]*)>/g, (tag, slash, name, rest) =>
+        MARKUP_TAGS.has(name.toLowerCase()) ? tag : `&lt;${slash}${name}${rest}&gt;`);
+      if (value !== node.value) edits.push({ start: node.position.start.offset, end: node.position.end.offset, value });
+    }
+    node.children?.forEach(visit);
+  };
+  visit(fromMarkdown(content));
+  return edits.reverse().reduce((text, edit) => text.slice(0, edit.start) + edit.value + text.slice(edit.end), content);
 }
 
 export function convertInternalLinks(content) {
@@ -385,6 +406,9 @@ async function convertFile(sourceFile, targetFile) {
     
     // Convert heading levels (H1 -> H2, H2 -> H3) and remove aliases
     content = convertHeadingLevels(content);
+
+    // Show argument names written as tags, such as <width>, as text
+    content = escapeArgumentTags(content);
     
     // Convert internal links
     content = convertInternalLinks(content);
