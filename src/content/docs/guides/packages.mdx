@@ -145,8 +145,8 @@ Some packages are built into the server and appear in the portal under the reser
 - **Shipped**: the package is in the server and can be installed from the catalogue at any time.
 - **Installed on first start**: a new game gets it without being asked. `http-handler`,
   `profile-handler`, `room-contents`, `comm-feed`, `plus-help`, `plus-config`, `scene`,
-  `scene-help`, `scene-config`, `scene-here`, [`onboarding`](/guides/onboarding/), `onboarding-help`,
-  `onboarding-config` and `onboarding-app` are. They are why a fresh game already has a working
+  `scene-help`, `scene-config`, `scene-here`, [`onboarding`](/guides/onboarding/), `onboarding-help`
+  and `onboarding-config` are. They are why a fresh game already has a working
   HTTP handler, `+help`, `+config`, a scene system and a getting-started checklist. A bridge such as `scene-help` installs only
   where both of the packages it joins are installed (see [Bridge Packages](/guides/bridge-packages/)). Every other bundled package is shipped but not installed: the
   [bulletin boards](/guides/bboards), `+who`, [`+status`](/guides/status), the [watch list](/guides/watch), [`+finger`](/guides/finger)
@@ -172,7 +172,7 @@ The bundled packages use these categories (a package's `category:`, described in
 
 | Category | Packages |
 |---|---|
-| Essentials | `softcode-editor`, `plus-help`, `plus-config`, `messages`, `onboarding`, `onboarding-help`, `onboarding-config`, `onboarding-app` |
+| Essentials | `softcode-editor`, `plus-help`, `plus-config`, `messages`, `onboarding`, `onboarding-help`, `onboarding-config` |
 | Web portal | `http-handler`, `profile-handler`, `room-contents`, `comm-feed` |
 | Scenes | `scene`, `scene-help`, `scene-config`, `scene-here`, `radio-scene`, `scene-verse`, `scene-safety`, `highlights`, `highlights-app`, `time`, `timeline`, `scene-availability`, `summary` |
 | Community | `wiki-reader`, `radio`, `bboards`, `bboards-app`, `who-where`, `status`, `watch`, `discord`, `notifications`, `notifications-app` |

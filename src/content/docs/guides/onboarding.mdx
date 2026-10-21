@@ -1,24 +1,25 @@
 ---
 title: Getting Started Checklist
-description: The +welcome checklist new characters see at login and on the portal's home page, the steps a game puts on it, and how a package adds one.
+description: The +welcome checklist new characters see at login, the steps a game puts on it, and how a package adds one.
 ---
 
 import { Aside } from '@astrojs/starlight/components';
 
 The **onboarding** package gives each new character a short checklist of things to do first:
 learn the basics, read the game's help, write a description, get approved. It shows when they log
-in, any time they type `+welcome`, and on the portal's home page. The game chooses the steps.
+in and any time they type `+welcome`. The game chooses the steps.
 
 - A step the game can check ticks itself off: setting a description, joining a channel, getting
   approved.
-- Any other step the player ticks off with `+welcome/done <step>`, or **Mark done** on the portal.
-- `+welcome/hide` stops the list showing at login and on the portal. `+welcome` still shows it.
+- Any other step the player ticks off with `+welcome/done <number>`.
+- `+welcome <number>` tells you more about a step.
+- `+welcome/hide` stops the list showing at login. `+welcome` still shows it.
 
 | You are | You want to | Read |
 |---|---|---|
 | A player | see what to do next | [The checklist](#the-checklist) |
 | A player | tick a step off, or stop the list showing | [Ticking steps off](#ticking-steps-off) |
-| A player | use it on the portal | [On the portal](#on-the-portal) |
+| A player | read more about a step | [More about a step](#more-about-a-step) |
 | Staff | change the steps or when it shows | [For staff](#for-staff) |
 | A package author | add a step from a package | [Adding a step from a package](#adding-a-step-from-a-package) |
 | Staff | install it | [Running the package](#running-the-package) |
@@ -31,7 +32,10 @@ and `+help welcome steps` how a step is put together.
 A new game installs the package on its first start, so a new character sees the list the first
 time they log in, below the room:
 
-![Ada logs in on the portal's terminal. Below the room, a box titled Getting started lists four steps, each To do, with how to do it and a link to tick it off, and the footer says 4 steps to go.](../../../assets/guide/onboarding-login-terminal.webp)
+![Ada logs in on the portal's terminal. Below the room, a box titled Getting started lists four numbered steps, each To do, with how to do it and a link to tick it off. The footer says 4 steps to go, that +welcome <number> tells you more about a step, and to type +welcome to see the list again.](../../../assets/guide/onboarding-login-terminal.webp)
+
+At login the list ends with a line saying how to see it again: `Type +welcome to see this list
+again, or +welcome/hide to stop it showing at login.`
 
 `+welcome` shows it again at any time:
 
@@ -39,25 +43,35 @@ time they log in, below the room:
 > +welcome
 ╔═════════════════════════════╡ Getting started ╞════════════════════════════╗
 ║ A few things to do first. The list keeps track as you go.                  ║
-║          Step                     How                                      ║
+║ #           Step                     How                                   ║
 ║ -------------------------------------------------------------------------- ║
-║ [Done]   Learn the basics                                                  ║
-║ [To do]  Read this game's help    +help lists this game's own commands and ║
-║                                   topics. Done? +welcome/done plushelp     ║
-║ [To do]  Describe your character  @desc me=<what others see when they look ║
-║                                   at you>                                  ║
-║ [To do]  Get approved             Staff have your application. +app shows  ║
-║                                   where it stands.                         ║
+║ 1  [Done]   Learn the basics                                               ║
+║ 2  [To do]  Read this game's help    +help lists this game's own commands  ║
+║                                      and topics. Done? +welcome/done 2     ║
+║ 3  [To do]  Describe your character  @desc me=<what others see when they   ║
+║                                      look at you>                          ║
+║ 4  [To do]  Get approved             Staff approve characters before they  ║
+║                                      join scenes. Ask staff how to apply.  ║
 ╠════════════════════════════════════════════════════════════════════════════╣
-║ 3 steps to go. +welcome/hide stops it showing at login.                    ║
+║ 3 steps to go. +welcome <number> tells you more about a step.              ║
+║ +welcome/hide stops it showing at login.                                   ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 ```
 
-A step's line says how to do it while it is open, and nothing once it is done. On a client that
-shows links, `+welcome/done <step>` is a link.
+Each step has a number. A step's line says how to do it while it is open, and nothing once it is
+done. On a client that shows links, `+welcome/done <number>` is a link.
 
 Not every character sees every step. A guest has no description or approval step, and the
-channel step shows only when there is a channel to join.
+channel step shows only when there is a channel to join. The numbers follow your own list.
+
+## More about a step
+
+`+welcome <number>` shows one step: whether it is done, how to do it, and more about it when the
+game has written more.
+
+![Ada types +welcome 4. A box titled 4. Get approved shows To do, the one-line hint, a paragraph on why games approve characters and where to ask how to apply, and a footer saying the step ticks itself off once it is done.](../../../assets/guide/onboarding-step-terminal.webp)
+
+The step's name works as well as its number: `+welcome approval` shows the same.
 
 ## Ticking steps off
 
@@ -72,37 +86,25 @@ yourself:
 Bea/DESCRIBE - Set.
 ```
 
-A step the game cannot check, such as reading the help, you tick off when you have done it. The
-step's name is the word after `+welcome/done` in its line:
+A step the game cannot check, such as reading the help, you tick off when you have done it, by its
+number on the list:
 
 ```
-> +welcome/done basics
+> +welcome/done 1
 [WELCOME] Done: Learn the basics. 3 steps to go.
-> +welcome/undo basics
+> +welcome/undo 1
 [WELCOME] Done: Learn the basics is open again.
 ```
 
+The step's name works too: `+welcome/done basics`.
+
 While a step is open, the list shows at every login. Two commands change that for you:
 
-- `+welcome/hide` stops it showing at login and on the portal. `+welcome` still shows it, with a
+- `+welcome/hide` stops it showing at login. `+welcome` still shows it, with a
   note at the bottom: `Hidden at login: +welcome/show brings it back.`
 - `+welcome/show` brings it back.
 
 Once every step is done, the list stops showing at login on its own.
-
-## On the portal
-
-With the **onboarding-app** package, the list is a card on the portal's home page for a signed-in
-character with a step still open:
-
-![The portal's home page signed in as Ada. In the right-hand column, under New Here?, a Getting started card lists the four steps, each with a To do tag, its hint, and a Mark done button on the two that are ticked off by hand, then a Hide this list button.](../../../assets/guide/onboarding-portal-home.webp)
-
-**Mark done** ticks a step off, the same as `+welcome/done`. The card updates in place:
-
-![The Getting started card after Mark done: Learn the basics now has a Done tag and no button, and the other steps are unchanged.](../../../assets/guide/onboarding-portal-card-done.webp)
-
-**Hide this list** does what `+welcome/hide` does: the card goes, and stays gone at login too.
-The card also goes once every step is done. A visitor who is not signed in never sees it.
 
 ## For staff
 
@@ -111,7 +113,7 @@ With **onboarding-config**, the list's settings are in `+config onboarding`:
 | Setting | Default | What it changes |
 |---|---|---|
 | `login` | `open` | When the list shows at login: `open` at every login while a step is open, `first` at the first login only, `off` never. |
-| `title` | Getting started | The list's title, in the game and on the portal. |
+| `title` | Getting started | The list's title. |
 | `intro` | A few things to do first. The list keeps track as you go. | The line above the steps. Empty shows none. |
 | `steps` | five steps | The steps, as a table. |
 
@@ -122,8 +124,10 @@ With **onboarding-config**, the list's settings are in `+config onboarding`:
 
 ### The steps
 
-The steps are a table: each has a name, a `label`, a `hint` saying how to do it, and an `order`
-(lowest first). A new game has these:
+The steps are a table. Each has a name, a `label`, a `hint` saying in a line how to do it, a
+`detail` with more about it (up to 1,000 characters, shown by `+welcome <number>`), and an `order`
+(lowest first). A name starts with a letter, so a number always means a place on the list. A new
+game has these:
 
 | Step | Order | Ticks itself off when |
 |---|---|---|
@@ -142,12 +146,15 @@ The steps are a table: each has a name, a `label`, a `hint` saying how to do it,
 [CONFIG] Done: onboarding/steps/rules/hint is now The Policies page on the wiki., was none.
 > +config onboarding/steps/rules/order=5
 [CONFIG] Done: onboarding/steps/rules/order is now 5, was 50.
+> +config onboarding/steps/rules/detail=Six short rules. The one that matters most: ask before you hurt another character.
+[CONFIG] Done: onboarding/steps/rules/detail is now Six short rules. The one that matters most: ask before you hurt another character., was none.
 ```
 
-With order 5 it comes first, and a player ticks it off with `+welcome/done rules`:
+With order 5 it comes first. `+welcome 1` shows the detail, and a player ticks it off with
+`+welcome/done 1`:
 
 ```
-> +welcome/done rules
+> +welcome/done 1
 [WELCOME] Done: Read the house rules. 4 steps to go.
 ```
 
@@ -175,6 +182,8 @@ attaches one entry to the store:
   attributes:
     STEP`PLUSHELP: Read this game's help
     STEP`PLUSHELP`HINT: +help lists this game's own commands and topics.
+    STEP`PLUSHELP`DETAIL: >-
+      help covers the commands every SharpMUSH game has. +help covers this game's own: ...
     STEP`PLUSHELP`ORDER: "20"
 ```
 
@@ -206,8 +215,8 @@ ticked off, and `` ONBOARDING`HIDE `` while they have the list hidden.
 
 ## Running the package
 
-A new game installs **onboarding**, **onboarding-help**, **onboarding-config** and
-**onboarding-app** on its first start; the setup wizard lists them in its Essentials group.
+A new game installs **onboarding**, **onboarding-help** and **onboarding-config** on its first
+start; the setup wizard lists them in its Essentials group.
 **onboarding-chargen** is offered, not installed, like chargen itself: it is in the setup wizard's
 Characters group, with chargen.
 
@@ -217,7 +226,5 @@ Characters group, with chargen.
 | `onboarding-help` | `+help welcome`, and the **Read this game's help** step |
 | `onboarding-config` | `+config onboarding`, and `+help welcome staff` |
 | `onboarding-chargen` | Where the player's application stands, under **Get approved** |
-| `onboarding-app` | The card on the portal's home page |
 
-The package needs the event handler, for the list at login, and the HTTP handler, for the portal
-card. Both come with a new game.
+The package needs the event handler, for the list at login. It comes with a new game.
