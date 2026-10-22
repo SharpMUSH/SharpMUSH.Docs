@@ -255,15 +255,19 @@ the attributes on the Chargen Store that define it:
 
 ### Fields in chapters
 
-A long background often outgrows one attribute, and older games keep it as BG1, BG2 and so on. Give
-the field an attribute with a `*` in it, and the `*` stands for the chapter:
+A long background often outgrows one attribute, and older games keep it as BG1, BG2 and so on. A
+field whose attribute has a `*` in it comes in chapters, and the `*` stands for the chapter. The
+form's Background field starts that way, as `BG*`. To do the same for another field, or to change
+how many chapters Background allows:
 
 ```
-> +apps/field/attribute background=BG*
-[APP] Done: Background attribute: BG*
+> +apps/field/attribute personality=PERS*
+[APP] Done: Personality attribute: PERS*
 > +apps/field/chapters background=5
 [APP] Done: Background chapters: 5
 ```
+
+`+apps/field/attribute background=BACKGROUND` puts Background back in one attribute.
 
 Each chapter is then an attribute of its own, and `max` is the most characters in one chapter. A
 character who already has BG1 and BG2, from an imported database, finds them as chapters 1 and 2.
