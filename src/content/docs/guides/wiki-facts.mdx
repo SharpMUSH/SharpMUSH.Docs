@@ -42,7 +42,7 @@ may not read is left out, and so is a page you may not read that names this one.
 ## Properties
 
 A page states only properties the game defines. Each property has a name in two parts,
-`<group>:<name>`, such as `pf2e:level`, and a type: `number`, `keyword`, `page` or `boolean`. A
+`<group>:<name>`, such as `pf2e:level`, and a type (see [Value types](#value-types)). A
 property takes one value per page unless it allows several. A keyword property can list the
 keywords it allows; with none listed, it allows any. A label and a description tell readers what
 it records. Changing properties needs the wiki.admin permission.
@@ -50,6 +50,27 @@ it records. Changing properties needs the wiki.admin permission.
 Changing or removing a property leaves the facts pages already state. A page keeps a value its
 property no longer takes until someone changes that property on it, and a property defined again
 finds the pages that state it.
+
+### Value types
+
+| Type | A value is | Example | Ranges and comparisons |
+|---|---|---|---|
+| `number` | a whole number | `3` | yes |
+| `decimal` | a number with a decimal point; no `1e3` or `1,000` | `12.5` | yes |
+| `date` | a day, written year-month-day | `4675-05-02` | yes, a later day is above |
+| `keyword` | a word, from the property's list if it has one | `arcane` | no |
+| `text` | any text, kept as written; it matches whatever its case | `First City` | no |
+| `boolean` | `true` or `false` | `true` | no |
+| `page` | a page, written as its title | `Help:Fireball` | no |
+
+A value of the wrong type is refused with the reason:
+
+```text
+> @wiki/fact sandpoint/lore:founded=May 4675
+WIKI: lore:founded is a date like 2026-10-23, not 'May 4675'.
+> @wiki/fact sandpoint/lore:tax=1e3
+WIKI: lore:tax is a number like 1.5, not '1e3'.
+```
 
 ### Properties in the portal
 
@@ -97,7 +118,8 @@ WIKI: Removed faction:rank. Pages that state it keep their facts.
 ### Properties in a package
 
 A package defines the properties its pages state under `wiki_properties:` in its `package.yaml`,
-which needs `format: "1.17"` or later; an older format ignores the block with a warning. Installing
+which needs `format: "1.17"` or later; an older format ignores the block with a warning. A `text`,
+`decimal` or `date` property needs `format: "1.18"`. Installing
 the package defines the properties, and removing it removes them. A property the game defined first
 stays the game's. The install is refused unless that property has the same type, takes one value or
 several as the package does, and allows every keyword the package lists: a `pf2e:tradition` that
@@ -126,7 +148,10 @@ The value control follows the property's type:
 | Type | Control | Example |
 |---|---|---|
 | Whole number | number box | `3` |
+| Decimal | number box that takes a decimal point | `12.5` |
+| Date | date picker | `4675-05-02` |
 | Keyword | list of the property's keywords | `arcane` |
+| Text | text box | `First City` |
 | True or false | true/false list | `true` |
 | Page | text box, the page's title | `Wizard`, `Help:Fireball` |
 
@@ -134,6 +159,8 @@ The value control follows the property's type:
 are not changed, the editor stays open, and the reason is shown under it:
 
 ![The editor after Publish changes, with pf2e:class set to No Such Page. Under the save bar: pf2e:class names a page that does not exist: 'No Such Page'.](../../../assets/guide/wiki-facts-refused.webp)
+
+![The editor for Sandpoint: Categories Settlements, then Facts with lore:founded in a date picker showing 05/02/4675, lore:motto first city, and lore:tax 3.75.](../../../assets/guide/wiki-facts-editor-types.webp)
 
 A translation shows its page's facts but cannot change them.
 
@@ -199,8 +226,9 @@ A query lists the pages whose facts meet every condition. It takes up to four co
 | `pf2e:tradition!=arcane` | does not state it |
 | `pf2e:class=*` | states any value |
 | `pf2e:class!=*` | states none |
-| `pf2e:level>3`, `<3`, `>=3`, `<=3` | states a whole number above, below, at least or at most 3 |
-| `pf2e:level=1..3` | states a whole number from 1 to 3; leave an end off for no limit, as in `..2` |
+| `pf2e:level>3`, `<3`, `>=3`, `<=3` | states a number, decimal or date above, below, at least or at most the value |
+| `pf2e:level=1..3` | states a value from 1 to 3; leave an end off for no limit, as in `..2` |
+| `lore:founded=4600-01-01..4699-12-31` | states a day in that century |
 
 A query needs one condition a page meets by stating a value, or a sort: `!=` alone finds no pages.
 These settings go with the conditions:
@@ -208,7 +236,7 @@ These settings go with the conditions:
 | Setting | What it does |
 |---|---|
 | `category=<name>`, `namespace=<name>` | limit where the pages come from |
-| `sort=<property>` | orders the pages by a number or keyword; a page that states none is left out |
+| `sort=<property>` | orders the pages by any property but a page; a page that states none is left out |
 | `order=desc` | puts the highest first; `order=asc`, the default, the lowest |
 | `show=<property>\|<property>` | lists up to four properties' values beside each page |
 
@@ -261,6 +289,26 @@ main:fireball main:magic_missile main:shield
 WIKI: A query needs a condition a page meets by stating a value; != alone finds no pages.
 ```
 
+Decimals, dates and text answer the same way:
+
+```text
+> @wiki/query category=settlements, lore:founded>=4600-01-01, sort=lore:founded, show=lore:founded|lore:tax
++< 3 page(s) where category=settlements, lore:founded>=4600-01-01, sort=lore:+
+| Page            Title       Founded     Tax rate                           |
+| ------------------------------------------------                           |
+| main:magnimar   Magnimar    4606-08-15  8.25                               |
+| main:kenabres   Kenabres    4630-11-11  9.5                                |
+| main:sandpoint  Sandpoint   4675-05-02  3.75                               |
++----------------------------------------------------------------------------+
+> @wiki/query lore:motto=FIRST CITY, show=lore:motto
++---------< 2 page(s) where lore:motto=FIRST CITY, show=lore:motto >---------+
+| Page            Title       Motto                                          |
+| --------------------------------------                                     |
+| main:absalom    Absalom     First City                                     |
+| main:sandpoint  Sandpoint   first city                                     |
++----------------------------------------------------------------------------+
+```
+
 A query leaves out every page you may not read.
 
 ### A query in a page's text
@@ -302,18 +350,22 @@ shield         1      wizard * cleric
 ### Filtering a category
 
 A category page lists, above its pages, each property its pages state, with the values they state
-and how many pages state each. A property shows its twelve most stated values. When a whole-number
-property has more than six values, they are counted in up to six ranges instead.
+and how many pages state each. A property shows its twelve most stated values. When a number,
+decimal or date property has more than six values, they are counted in up to six ranges instead:
+ranges of equal width for whole numbers, and for decimals and dates ranges of about as many values
+each, from one value a page states to another. Text that differs only in case is one value.
 
 ![The spells category page. Above its four pages: Class with wizard 3 and cleric 2, Level with 1 2 and 3 1, and Tradition with arcane 3, divine 2, occult 2 and primal 2.](../../../assets/guide/wiki-facts-facets.webp)
 
 Choosing a value replaces the category's pages with the pages that state it, as a table with a
 column for each property you chose from. Choosing a second value of the same property finds pages
-that state either; a whole number takes one value or range at a time. Each property counts the pages
+that state either; a number, decimal or date takes one value or range at a time. Each property counts the pages
 that meet your other choices, so its other values stay listed. **Clear filters** shows the
 category's pages again.
 
 ![The same page with Level 1 and Tradition arcane chosen: 2 pages match, then a table of shield and magic_missile with their traditions and level. Tradition now counts arcane 2, occult 2 and divine 1.](../../../assets/guide/wiki-facts-facets-chosen.webp)
+
+![The Settlements category page with the Founded range 4407-01-20 to 4540-06-01 chosen: 2 pages match, then a table of Korvosa (4407-01-20) and Riddleport (4540-06-01). Motto and Tax rate count only those two.](../../../assets/guide/wiki-facts-facets-dates.webp)
 
 In the game, `@wiki/facets <category>` lists the same counts, and conditions after `=` narrow them.
 In a client that can click, a value narrows the list, and **List them** runs `@wiki/query` for the
@@ -333,6 +385,15 @@ pages counted.
 | Class:     wizard (3) * cleric (1)                                         |
 | Level:     1 (2) * 3 (1)                                                   |
 | Tradition: arcane (3) * divine (2) * occult (2) * primal (2)               |
++----------------------------------------------------------------------------+
+> @wiki/facets settlements
++---------------------------< Facets: Settlements >--------------------------+
+| 8 page(s).                                                                 |
+| Founded:  1000-03-01 (1) * 1100-09-09 (1) * 4407-01-20 to 4540-06-01 (2) * |
+|           4606-08-15 (1) * 4630-11-11 (1) * 4640-02-14 to 4675-05-02 (2)   |
+| Motto:    First City (2) * Monuments Endure (2) * Order Above All (1)      |
+| Tax rate: 0.5 (1) * 3.75 (1) * 8.25 to 9.5 (2) * 11 (1) * 12.5 (1) * 15 to |
+|           20 (2)                                                           |
 +----------------------------------------------------------------------------+
 ```
 
