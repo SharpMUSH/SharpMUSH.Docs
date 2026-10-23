@@ -263,6 +263,42 @@ WIKI: A query needs a condition a page meets by stating a value; != alone finds 
 
 A query leaves out every page you may not read.
 
+### A query in a page's text
+
+A `::: facts` block in a page's text lists the pages its query finds, each time the page is read, so
+the list keeps up with the wiki. The conditions and settings follow `facts` on the opening line, as
+`@wiki/query` takes them, and a bare `:::` closes the block. It is a query, not softcode, so it runs
+nothing.
+
+```markdown
+Every arcane spell, highest level first:
+
+::: facts pf2e:tradition=arcane, sort=pf2e:level, order=desc, show=pf2e:level|pf2e:class
+:::
+```
+
+![The Arcane spells page in the portal: its sentence, then a table of fireball (3, wizard), magic_missile (1, wizard) and shield (1, wizard · cleric).](../../../assets/guide/wiki-facts-block.webp)
+
+`@wiki` shows the same table, up to 20 pages, with a link to the rest. A query the wiki cannot answer
+shows the reason where the block is. Elsewhere, such as `rendermarkdown()`, the block is a note that
+the list is on the web portal.
+
+```text
+> @wiki arcane_spells
+------------------------------------------------------------------------------
+Wiki: Arcane spells [main]
+Categories: -   Rev 1 - 2026-10-23 20:06
+------------------------------------------------------------------------------
+Every arcane spell, highest level first:
+
+Page           Level  Class
+-------------------------------------
+fireball       3      wizard
+magic_missile  1      wizard
+shield         1      wizard * cleric
+------------------------------------------------------------------------------
+```
+
 ### Filtering a category
 
 A category page lists, above its pages, each property its pages state, with the values they state
