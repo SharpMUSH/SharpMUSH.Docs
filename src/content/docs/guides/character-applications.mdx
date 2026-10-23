@@ -19,6 +19,7 @@ staff approve it. The same application is in the game with `+app` and in the web
 | Staff | read, comment on and decide applications | [Reviewing](#reviewing) |
 | Staff | limit how many characters play at once | [A cap and a waitlist](#a-cap-and-a-waitlist) |
 | Staff | change the questions | [Changing the form](#changing-the-form) |
+| Staff | let a background run over several attributes | [Fields in chapters](#fields-in-chapters) |
 | Staff | install it and change its settings | [Running applications](#running-applications) |
 
 In the game, `+help app` has the same commands in short form.
@@ -53,7 +54,8 @@ before, field by field.
 
 `+app/set <field>=<text>` fills in a field, and an empty text clears it. For a long field,
 `+app/write <field>` lets you type as many lines as you like; send `.done` on a line by itself to
-save it.
+save it. A field that comes in [chapters](#fields-in-chapters) takes
+`+app/set <field>/<chapter>=<text>`.
 
 Each answer is an attribute on your character, named for the field. Only `+app` changes it, so
 staff see every change in the next round:
@@ -201,7 +203,11 @@ turns the cap off.
 
 ## Changing the form
 
-The questions are the game's. The form is sections, and fields in them; `+apps/fields` lists them.
+The questions are the game's. The form is sections, and fields in them. `+apps/fields` lists them,
+with the attribute each answer is kept in:
+
+![+apps/fields: the Concept, History and Personality sections, each a table of its fields with their type, attribute, most characters and notes](../../../assets/guide/chargen-apps-fields.webp)
+
 Changing it takes the `config.admin` permission:
 
 ```
@@ -229,14 +235,65 @@ one back to its default.
 | `type` | `text` (a line), `long` (paragraphs) or `choice`. |
 | `choices` | For a choice field, the choices, split by `|`. |
 | `required` | `yes` when it must be filled in before submitting. |
-| `max` | The most characters: 200 for text and 4000 for long by default. |
+| `max` | The most characters: 500 for text and 8000 for long by default. For a field in chapters, the most in each chapter. |
 | `order` | Where it comes in its section. |
 | `help` | A line shown under an empty field. |
-| `attribute` | The attribute on the character that holds the answer: the key by default. |
+| `attribute` | The attribute on the character that holds the answer: the key by default. One with a `*` makes the field come in [chapters](#fields-in-chapters). |
+| `chapters` | For a field in chapters, how many it may have: 20 by default, up to 100. |
 
 `+apps/section/order <key>=<number>` moves a section; lower comes first.
 `+apps/field/remove <key>` and `+apps/section/remove <key>` take things out. Answers already given
 stay on the characters, and a new `attribute` does not move them.
+
+### Looking at one field
+
+`+apps/field <key>` shows one field in full: every option, with **(default)** after the ones the
+form leaves unset, the attributes each character keeps it in, and for staff who change the form
+the attributes on the Chargen Store that define it:
+
+![+apps/field background: its options, BG* as the answer's attribute with each round's, and a table of its attributes on the Chargen Store](../../../assets/guide/chargen-apps-field.webp)
+
+### Fields in chapters
+
+A long background often outgrows one attribute, and older games keep it as BG1, BG2 and so on. A
+field whose attribute has a `*` in it comes in chapters, and the `*` stands for the chapter. The
+form's Background field starts that way, as `BG*`. To do the same for another field, or to change
+how many chapters Background allows:
+
+```
+> +apps/field/attribute personality=PERS*
+[APP] Done: Personality attribute: PERS*
+> +apps/field/chapters background=5
+[APP] Done: Background chapters: 5
+```
+
+`+apps/field/attribute background=BACKGROUND` puts Background back in one attribute.
+
+Each chapter is then an attribute of its own, and `max` is the most characters in one chapter. A
+character who already has BG1 and BG2, from an imported database, finds them as chapters 1 and 2.
+
+The player writes a chapter with `+app/set <field>/<chapter>=<text>` or
+`+app/write <field>/<chapter>`. A chapter is a word of up to 20 letters, digits, `-` and `_`,
+usually a number, and the field named alone is chapter 1:
+
+```
+> +app/set background=Born on the river barges, Cora learned the moods of the Sallow before she could read.
+[APP] Done: Background chapter 1 saved.
+> +app/set background/2=Then the war came, and the barges carried soldiers instead of grain.
+[APP] Done: Background chapter 2 saved.
+```
+
+`+app` shows every chapter in order, each under its name:
+
+![+app for Cora: the Background answer in three chapters, each under a Chapter heading](../../../assets/guide/chargen-app-chapters.webp)
+
+A submission keeps every chapter, and `+app/diff` shows only the chapters that changed:
+
+![+app/diff Cora: Background chapter 2, what it said in round 1 and what it says in round 2](../../../assets/guide/chargen-app-diff-chapter.webp)
+
+In the portal, each chapter has its own box, with an empty one for the next while there is room:
+
+![The History section of the portal form: a box for each of Background chapters 1 to 3, and an empty box for chapter 4](../../../assets/guide/chargen-portal-chapters.webp)
 
 ## Running applications
 
@@ -296,6 +353,7 @@ After the next approval, the character is there:
 
 <Aside>
 The answers and the rounds are kept on the character: each field's attribute, and
-``CHARGEN`ROUND`<n>`` with ``CHARGEN`ROUND`<n>`<field>`` for each submission. Only `+app` writes
+``CHARGEN`ROUND`<n>`` with ``CHARGEN`ROUND`<n>`<field>`` for each submission, or
+``CHARGEN`ROUND`<n>`<field>`<chapter>`` for each chapter of a field in chapters. Only `+app` writes
 them. The state and comments are kept on the Chargen Store, and uninstalling `chargen` removes those.
 </Aside>
