@@ -10,6 +10,7 @@ them adds no revision and a translation has the same facts as its page.
 | You want to | Read |
 |---|---|
 | see a page's facts | [Reading facts](#reading-facts) |
+| define the properties facts may state | [Properties](#properties) |
 | set facts in the portal | [In the portal](#in-the-portal) |
 | set facts in the game | [In the game](#in-the-game) |
 | use facts in softcode | [From softcode](#from-softcode) |
@@ -25,6 +26,77 @@ links to it.
 ![The Fireball page in the portal. Under the text, a Facts list shows pf2e:class Wizard as a link, pf2e:level 3, and pf2e:tradition arcane · primal. The page's categories follow.](../../../assets/guide/wiki-facts-page.webp)
 
 A fact that names a page you may not read is left out.
+
+## Properties
+
+A page states only properties the game defines. Each property has a name in two parts,
+`<group>:<name>`, such as `pf2e:level`, and a type: `number`, `keyword`, `page` or `boolean`. A
+property takes one value per page unless it allows several. A keyword property can list the
+keywords it allows; with none listed, it allows any. A label and a description tell readers what
+it records. Changing properties needs the wiki.admin permission.
+
+Changing or removing a property leaves the facts pages already state. A page keeps a value its
+property no longer takes until someone changes that property on it, and a property defined again
+finds the pages that state it.
+
+### Properties in the portal
+
+**Wiki pages** under **Build & manage** has a **Fact properties** card listing every property.
+**+** defines a new one; the pencil changes one and the bin removes it.
+
+![The Fact properties card: pf2e:class, page, several, labelled Class; pf2e:level, number, labelled Level; pf2e:tradition, keyword, several, allowing arcane, divine, occult and primal. Each row has an edit and a remove button.](../../../assets/guide/wiki-facts-properties.webp)
+
+![The New property dialog: Property pf2e:tradition, Type keyword, A page may state several values switched on, Values arcane, divine, occult and primal, Label Tradition, and a description.](../../../assets/guide/wiki-facts-property-dialog.webp)
+
+A definition the wiki refuses, such as a name without a group, is not saved, and the reason is shown.
+
+### Properties in the game
+
+`@wiki/property` lists the properties and `@wiki/property <property>` shows one.
+`@wiki/property <property>=<type>` defines a property or changes its type, and
+`@wiki/property <property>=` removes it. `@wiki/property <property>/<field>=<value>` sets one of
+`label`, `description`, `values` (keywords separated by `|`) or `multiple` (`yes` or `no`).
+
+```text
+> @wiki/property
++-----------------------------< Wiki properties >----------------------------+
+| Property        Type     Values   Label                                    |
+| --------------------------------------------                               |
+| pf2e:class      page     several  Class                                    |
+| pf2e:level      number   one      Level                                    |
+| pf2e:tradition  keyword  several  Tradition                                |
++----------------------------------------------------------------------------+
+> @wiki/property pf2e:tradition
++------------------------< Property: pf2e:tradition >------------------------+
+| Type:        keyword                                                       |
+| Values:      several                                                       |
+| Allowed:     arcane | divine | occult | primal                             |
+| Label:       Tradition                                                     |
+| Description: The magic traditions a spell belongs to.                      |
++----------------------------------------------------------------------------+
+> @wiki/property faction:rank=keyword
+WIKI: Defined faction:rank: keyword.
+> @wiki/property faction:rank/values=captain|sergeant
+WIKI: Changed faction:rank. Pages that state it keep their facts.
+> @wiki/property faction:rank=
+WIKI: Removed faction:rank. Pages that state it keep their facts.
+```
+
+### Properties in a package
+
+A package defines the properties its pages state under `wiki_properties:` in its `package.yaml`.
+Installing it defines them; removing it removes them. A property the game defined first stays the
+game's, and the install is refused when it does not take the values the package states.
+
+```yaml
+format: "1.17"
+wiki_properties:
+  pf2e:tradition:
+    type: keyword
+    multiple: true
+    values: [arcane, divine, occult, primal]
+    label: Tradition
+```
 
 ## In the portal
 
