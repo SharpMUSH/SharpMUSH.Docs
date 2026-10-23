@@ -1,0 +1,87 @@
+---
+title: Wiki Facts
+description: Giving wiki pages facts, such as a spell's level, in the portal and the game, and reading them from softcode.
+---
+
+A fact is a property of a wiki page and its value: a spell's level, its traditions, the class that
+casts it. Facts are held by the page beside its categories, not written in its text, so changing
+them adds no revision and a translation has the same facts as its page.
+
+| You want to | Read |
+|---|---|
+| see a page's facts | [Reading facts](#reading-facts) |
+| set facts in the portal | [In the portal](#in-the-portal) |
+| set facts in the game | [In the game](#in-the-game) |
+| use facts in softcode | [From softcode](#from-softcode) |
+
+The examples use two pages, **Fireball** and **Wizard**.
+
+## Reading facts
+
+A page with facts lists them under its text, above its categories. A fact that names another page
+links to it.
+
+![The Fireball page in the portal. Under the text, a Facts list shows pf2e:class Wizard as a link, pf2e:level 3, and pf2e:tradition arcane · primal. The page's categories follow.](../../../assets/guide/wiki-facts-page.webp)
+
+A fact that names a page you may not read is left out.
+
+## In the portal
+
+Editing a page shows its facts below its categories. Each fact is a box with its property and its
+value; × removes it. **Add a fact** offers the properties the page can still take: a property that
+takes one value is not offered again once the page has it.
+
+![The editor's Facts row: pf2e:class Wizard, pf2e:level 3, and two pf2e:tradition boxes with keyword lists set to arcane and primal, each with ×, then Add a fact.](../../../assets/guide/wiki-facts-editor.webp)
+
+The value control follows the property's type:
+
+| Type | Control | Example |
+|---|---|---|
+| Whole number | number box | `3` |
+| Keyword | list of the property's keywords | `arcane` |
+| True or false | true/false list | `true` |
+| Page | text box, the page's title | `Wizard`, `Help:Fireball` |
+
+**Publish changes** saves the facts with the rest of the edit. When a value is refused, the facts
+are not changed, the editor stays open, and the reason is shown under it:
+
+![The editor after Publish changes, with pf2e:class set to No Such Page. Under the save bar: pf2e:class names a page that does not exist: 'No Such Page'.](../../../assets/guide/wiki-facts-refused.webp)
+
+A translation shows its page's facts but cannot change them.
+
+## In the game
+
+`@wiki/fact <page>` shows a page's facts. `@wiki/fact <page>/<property>=<values>` replaces one
+property's values; separate several with `|`, and leave nothing after `=` to clear them.
+
+```text
+> @wiki/fact fireball
++-----------------------------< Facts: Fireball >----------------------------+
+| pf2e:class:     Wizard                                                     |
+| pf2e:level:     3                                                          |
+| pf2e:tradition: arcane | primal                                            |
++----------------------------------------------------------------------------+
+> @wiki/fact fireball/pf2e:tradition=arcane|divine
+WIKI: 'Fireball' pf2e:tradition: arcane | divine.
+> @wiki/fact fireball/pf2e:level=two
+WIKI: pf2e:level is a whole number, not 'two'.
+```
+
+Setting a fact is an edit, so the page's edit requirements apply.
+
+## From softcode
+
+`wikifact(<page>)` lists the properties a page has facts for. `wikifact(<page>, <property>)`
+returns that property's values, separated by spaces or by a delimiter you give. A value that names
+a page comes back as that page's reference.
+
+```text
+> think wikifact(fireball)
+pf2e:class pf2e:level pf2e:tradition
+> think wikifact(fireball, pf2e:class)
+main:wizard
+> think wikifact(fireball, pf2e:tradition, %b-%b)
+arcane - primal
+```
+
+The in-game help has the same in short form: `help wiki facts` and `help wikifact()`.

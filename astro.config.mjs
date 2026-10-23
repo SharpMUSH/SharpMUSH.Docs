@@ -158,6 +158,7 @@ export default defineConfig({
                               { label: 'Bulletin Boards', slug: 'guides/bboards' },
                               { label: 'Radio', slug: 'guides/radio' },
                               { label: 'Reading the Wiki In-Game', slug: 'guides/wiki-reader' },
+                              { label: 'Wiki Facts', slug: 'guides/wiki-facts' },
                               { label: 'Discord', slug: 'guides/discord' },
                               { label: 'Discord for Players', slug: 'guides/discord-players' },
                           ],
