@@ -190,16 +190,38 @@ arcane - primal
 
 ## Finding pages by their facts
 
-A query lists the pages whose facts meet every condition. Write each condition as
-`<property>=<value>`, naming a page by its title, or as `<property>=<low>..<high>` for a range of
-whole numbers. Leave one end of a range off for no limit, as in `pf2e:level=..2`. `category=<name>`
-and `namespace=<name>` limit where the pages come from. A query takes up to four fact conditions.
+A query lists the pages whose facts meet every condition. It takes up to four conditions:
+
+| Condition | A page meets it when it |
+|---|---|
+| `pf2e:tradition=arcane` | states that value; a page is named by its title |
+| `pf2e:tradition=arcane\|divine` | states either value |
+| `pf2e:tradition!=arcane` | does not state it |
+| `pf2e:class=*` | states any value |
+| `pf2e:class!=*` | states none |
+| `pf2e:level>3`, `<3`, `>=3`, `<=3` | states a whole number above, below, at least or at most 3 |
+| `pf2e:level=1..3` | states a whole number from 1 to 3; leave an end off for no limit, as in `..2` |
+
+A query needs one condition a page meets by stating a value, or a sort: `!=` alone finds no pages.
+These settings go with the conditions:
+
+| Setting | What it does |
+|---|---|
+| `category=<name>`, `namespace=<name>` | limit where the pages come from |
+| `sort=<property>` | orders the pages by a number or keyword; a page that states none is left out |
+| `order=desc` | puts the highest first; `order=asc`, the default, the lowest |
+| `show=<property>\|<property>` | lists up to four properties' values beside each page |
 
 A category page has a **Find pages by fact** box above its pages. It searches that category; type
 the other conditions, separated by commas, and press **Find**. When there are more pages than one
 answer holds, **More** reads the rest.
 
 ![The Spells category page. The Find pages by fact box holds pf2e:tradition=arcane, pf2e:level=1..3, and lists Fireball, Shield, Magic Missile, Lightning Bolt and Haste.](../../../assets/guide/wiki-facts-query.webp)
+
+Following a fact's value opens **Pages by fact**, a box of its own that searches the whole wiki. With
+`show=`, the pages come as a table, a column for each property:
+
+![Pages by fact with pf2e:tradition=arcane, sort=pf2e:level, order=desc, show=pf2e:level|pf2e:tradition|pf2e:class. A table lists fireball (3, arcane · primal, wizard), magic_missile (1, arcane · occult, wizard) and shield (1, arcane · divine · occult, wizard · cleric).](../../../assets/guide/wiki-facts-query-show.webp)
 
 A condition the wiki cannot answer is refused with the reason:
 
@@ -226,6 +248,22 @@ main:shield main:heal
 WIKI: pf2e:level is a whole number, not 'high'.
 > think wikiquery(pf2e:level=1..x)
 #-1 INVALID WIKI QUERY
+```
+
+With `show=`, `@wiki/query` lists the values in place of the revision and date. `wikiquery()` returns
+pages only, so it refuses `show=`; read a page's values with `wikifact()`.
+
+```text
+> @wiki/query pf2e:tradition=arcane, pf2e:level>1, sort=pf2e:level, show=pf2e:level
++< 1 page(s) where pf2e:tradition=arcane, pf2e:level>1, sort=pf2e:level, show+
+| Page           Title       Level                                           |
+| --------------------------------                                           |
+| main:fireball  fireball    3                                               |
++----------------------------------------------------------------------------+
+> think wikiquery(pf2e:tradition=arcane, sort=pf2e:level, order=desc)
+main:fireball main:magic_missile main:shield
+> @wiki/query pf2e:level!=1
+WIKI: A query needs a condition a page meets by stating a value; != alone finds no pages.
 ```
 
 A query leaves out every page you may not read.
