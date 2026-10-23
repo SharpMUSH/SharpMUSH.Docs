@@ -20,12 +20,24 @@ The examples use a **Wizard** page and the spells in a **Spells** category, such
 
 ## Reading facts
 
-A page with facts lists them under its text, above its categories. A fact that names another page
-links to it.
+A page with facts lists them under its text, above its categories, each under its property's label.
+A value that names a page links to that page. Any other value links to the other pages that state
+it.
 
-![The Fireball page in the portal. Under the text, a Facts list shows pf2e:class Wizard as a link, pf2e:level 3, and pf2e:tradition arcane · primal. The page's categories follow.](../../../assets/guide/wiki-facts-page.webp)
+![The Fireball page in the portal. Under the text, a Facts list shows Class wizard, pf2e:rank 3 and Tradition arcane · primal, every value a link.](../../../assets/guide/wiki-facts-page.webp)
 
-A fact that names a page you may not read is left out.
+Under **Named by**, a page lists the pages whose facts name it, by property. A page shows up to 20
+for each property; when more name it, **all** lists every one.
+
+![The Wizard page in the portal. Under the text, Named by shows Class fireball · shield · magic_missile.](../../../assets/guide/wiki-facts-named-by.webp)
+
+Following a value that does not name a page opens **Pages by fact**, which lists the pages that
+state it. Its box holds the query, so you can change it and press **Find** again.
+
+![The Pages by fact page with pf2e:tradition=arcane in its box, listing fireball, shield and magic_missile.](../../../assets/guide/wiki-facts-query-page.webp)
+
+A property with no label is shown by its key, as `pf2e:rank` is above. A fact that names a page you
+may not read is left out, and so is a page you may not read that names this one.
 
 ## Properties
 
@@ -127,7 +139,23 @@ A translation shows its page's facts but cannot change them.
 
 ## In the game
 
-`@wiki/fact <page>` shows a page's facts. `@wiki/fact <page>/<property>=<values>` replaces one
+`@wiki <page>` shows a page's facts under its text, then the pages that name it. In a client that
+can click, a page runs `@wiki` for that page, and any other value runs `@wiki/query` for the pages
+that state it.
+
+```text
+> @wiki wizard
+──────────────────────────────────────────────────────────────────────────────
+Wiki: wizard [main]
+Categories: -   Rev 1 — 2026-10-23 15:21
+──────────────────────────────────────────────────────────────────────────────
+A wizard studies arcane magic.
+─────────────────────────────────┤ Named by ├─────────────────────────────────
+Class: fireball · shield · magic_missile
+──────────────────────────────────────────────────────────────────────────────
+```
+
+`@wiki/fact <page>` shows a page's facts alone. `@wiki/fact <page>/<property>=<values>` replaces one
 property's values; separate several with `|`, and leave nothing after `=` to clear them.
 
 ```text
