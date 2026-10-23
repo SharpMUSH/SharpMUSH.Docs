@@ -84,9 +84,12 @@ WIKI: Removed faction:rank. Pages that state it keep their facts.
 
 ### Properties in a package
 
-A package defines the properties its pages state under `wiki_properties:` in its `package.yaml`.
-Installing it defines them; removing it removes them. A property the game defined first stays the
-game's, and the install is refused when it does not take the values the package states.
+A package defines the properties its pages state under `wiki_properties:` in its `package.yaml`,
+which needs `format: "1.17"` or later; an older format ignores the block with a warning. Installing
+the package defines the properties, and removing it removes them. A property the game defined first
+stays the game's. The install is refused unless that property has the same type, takes one value or
+several as the package does, and allows every keyword the package lists: a `pf2e:tradition` that
+takes one value refuses the package below, which states several.
 
 ```yaml
 format: "1.17"
