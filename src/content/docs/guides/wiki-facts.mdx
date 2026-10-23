@@ -1,6 +1,6 @@
 ---
 title: Wiki Facts
-description: Giving wiki pages facts, such as a spell's level, in the portal and the game, and reading them from softcode.
+description: Giving wiki pages facts, such as a spell's level, in the portal and the game, reading them from softcode, and finding the pages that state a value.
 ---
 
 A fact is a property of a wiki page and its value: a spell's level, its traditions, the class that
@@ -13,8 +13,9 @@ them adds no revision and a translation has the same facts as its page.
 | set facts in the portal | [In the portal](#in-the-portal) |
 | set facts in the game | [In the game](#in-the-game) |
 | use facts in softcode | [From softcode](#from-softcode) |
+| find the pages that state a value | [Finding pages by their facts](#finding-pages-by-their-facts) |
 
-The examples use two pages, **Fireball** and **Wizard**.
+The examples use a **Wizard** page and the spells in a **Spells** category, such as **Fireball** and **Shield**.
 
 ## Reading facts
 
@@ -84,4 +85,61 @@ main:wizard
 arcane - primal
 ```
 
-The in-game help has the same in short form: `help wiki facts` and `help wikifact()`.
+## Finding pages by their facts
+
+A query lists the pages whose facts meet every condition. Write each condition as
+`<property>=<value>`, naming a page by its title, or as `<property>=<low>..<high>` for a range of
+whole numbers. Leave one end of a range off for no limit, as in `pf2e:level=..2`. `category=<name>`
+and `namespace=<name>` limit where the pages come from. A query takes up to four fact conditions.
+
+A category page has a **Find pages by fact** box above its pages. It searches that category; type
+the other conditions, separated by commas, and press **Find**. When there are more pages than one
+answer holds, **More** reads the rest.
+
+![The Spells category page. The Find pages by fact box holds pf2e:tradition=arcane, pf2e:level=1..3, and lists Fireball, Shield, Magic Missile, Lightning Bolt and Haste.](../../../assets/guide/wiki-facts-query.webp)
+
+A condition the wiki cannot answer is refused with the reason:
+
+![The box with pf2e:level=high, and under it: pf2e:level is a whole number, not 'high'.](../../../assets/guide/wiki-facts-query-refused.webp)
+
+In the game, `@wiki/query` lists the pages, and `wikiquery()` returns their references:
+
+```text
+> @wiki/query pf2e:tradition=arcane, pf2e:level=1..3
++---------< 5 page(s) where pf2e:tradition=arcane, pf2e:level=1..3 >---------+
+| Page                 Title           Rev  Edited                           |
+| ----------------------------------------------------                       |
+| main:fireball        Fireball          2  2026-10-22                       |
+| main:shield          Shield            1  2026-10-23                       |
+| main:magic_missile   Magic Missile     1  2026-10-23                       |
+| main:lightning_bolt  Lightning Bolt    1  2026-10-23                       |
+| main:haste           Haste             1  2026-10-23                       |
++----------------------------------------------------------------------------+
+> think wikiquery(category=Spells, pf2e:class=Wizard)
+main:fireball main:shield main:magic_missile
+> think wikiquery(pf2e:level=..1, pf2e:tradition=divine)
+main:shield main:heal
+> @wiki/query pf2e:level=high
+WIKI: pf2e:level is a whole number, not 'high'.
+> think wikiquery(pf2e:level=1..x)
+#-1 INVALID WIKI QUERY
+```
+
+A query leaves out every page you may not read.
+
+### The fact index
+
+Queries read an index of every page's facts. The server builds it in the background when it starts,
+and every edit keeps it up to date from then on. Until it is built, a query answers that the index is
+still building: `#-1 WIKI INDEX BUILDING` in softcode.
+
+`@wiki/fact/index` shows how far the index has come. `@wiki/fact/index rebuild` empties it and
+builds it again, and needs the wiki.admin permission.
+
+```text
+> @wiki/fact/index
+WIKI: The fact index is ready: 10 pages.
+```
+
+The in-game help has the same in short form: `help wiki facts`, `help wikifact()` and
+`help wikiquery()`.
