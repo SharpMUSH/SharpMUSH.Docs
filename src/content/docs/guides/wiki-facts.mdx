@@ -212,14 +212,9 @@ These settings go with the conditions:
 | `order=desc` | puts the highest first; `order=asc`, the default, the lowest |
 | `show=<property>\|<property>` | lists up to four properties' values beside each page |
 
-A category page has a **Find pages by fact** box above its pages. It searches that category; type
-the other conditions, separated by commas, and press **Find**. When there are more pages than one
-answer holds, **More** reads the rest.
-
-![The Spells category page. The Find pages by fact box holds pf2e:tradition=arcane, pf2e:level=1..3, and lists Fireball, Shield, Magic Missile, Lightning Bolt and Haste.](../../../assets/guide/wiki-facts-query.webp)
-
-Following a fact's value opens **Pages by fact**, a box of its own that searches the whole wiki. With
-`show=`, the pages come as a table, a column for each property:
+Following a fact's value opens **Pages by fact**, a box that searches the whole wiki: type the
+conditions, separated by commas, and press **Find**. When there are more pages than one answer
+holds, **More** reads the rest. With `show=`, the pages come as a table, a column for each property:
 
 ![Pages by fact with pf2e:tradition=arcane, sort=pf2e:level, order=desc, show=pf2e:level|pf2e:tradition|pf2e:class. A table lists fireball (3, arcane · primal, wizard), magic_missile (1, arcane · occult, wizard) and shield (1, arcane · divine · occult, wizard · cleric).](../../../assets/guide/wiki-facts-query-show.webp)
 
@@ -267,6 +262,43 @@ WIKI: A query needs a condition a page meets by stating a value; != alone finds 
 ```
 
 A query leaves out every page you may not read.
+
+### Filtering a category
+
+A category page lists, above its pages, each property its pages state, with the values they state
+and how many pages state each. A property shows its twelve most stated values. When a whole-number
+property has more than six values, they are counted in up to six ranges instead.
+
+![The spells category page. Above its four pages: Class with wizard 3 and cleric 2, Level with 1 2 and 3 1, and Tradition with arcane 3, divine 2, occult 2 and primal 2.](../../../assets/guide/wiki-facts-facets.webp)
+
+Choosing a value replaces the category's pages with the pages that state it, as a table with a
+column for each property you chose from. Choosing a second value of the same property finds pages
+that state either; a whole number takes one value or range at a time. Each property counts the pages
+that meet your other choices, so its other values stay listed. **Clear filters** shows the
+category's pages again.
+
+![The same page with Level 1 and Tradition arcane chosen: 2 pages match, then a table of shield and magic_missile with their traditions and level. Tradition now counts arcane 2, occult 2 and divine 1.](../../../assets/guide/wiki-facts-facets-chosen.webp)
+
+In the game, `@wiki/facets <category>` lists the same counts, and conditions after `=` narrow them.
+In a client that can click, a value narrows the list, and **List them** runs `@wiki/query` for the
+pages counted.
+
+```text
+> @wiki/facets spells
++-----------------------------< Facets: spells >-----------------------------+
+| 4 page(s).                                                                 |
+| Class:     wizard (3) * cleric (2)                                         |
+| Level:     1 (2) * 3 (1)                                                   |
+| Tradition: arcane (3) * divine (2) * occult (2) * primal (2)               |
++----------------------------------------------------------------------------+
+> @wiki/facets spells=pf2e:tradition=arcane
++-----------------------------< Facets: spells >-----------------------------+
+| 3 page(s) where pf2e:tradition=arcane. List them                           |
+| Class:     wizard (3) * cleric (1)                                         |
+| Level:     1 (2) * 3 (1)                                                   |
+| Tradition: arcane (3) * divine (2) * occult (2) * primal (2)               |
++----------------------------------------------------------------------------+
+```
 
 ### The fact index
 
