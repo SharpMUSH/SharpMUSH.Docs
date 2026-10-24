@@ -121,6 +121,30 @@ reader's own name with `[name(%#)]` or colour with `tone()`. The line you type i
 the way in, as `&attr obj=...` is: escape code you want run for each reader. `\[`, `\(` and `\)`
 show the character, and `%%` shows a `%`.
 
+## Topics for staff only
+
+Some topics are for staff alone, such as how the game's settings are changed. A topic can carry a
+lock, and a reader who fails it never meets the topic: not on the front page, in a listing, in a
+search, under another topic's subtopics or see-also line, nor by typing its name. A lock on a topic
+covers its subtopics too.
+
+- `+help/restrict <topic>=<lock>` shows one of the game's topics only to those passing the lock.
+- `+help/unrestrict <topic>` takes off that topic's own lock. A lock on a topic above it, or on the whole source, still applies.
+
+The lock is any key `@lock` takes, such as `role^wizard|role^royalty` or `perm^config.admin`. One
+that cannot be read is refused. Someone who passes the lock sees it at the foot of the topic:
+
+![A wizard writes game/rules and game/rules staff, restricts rules staff to role^wizard|role^royalty, and reads it with "Shown only to: role^wizard|role^royalty" at its foot; +help rules lists staff as a subtopic](../../../assets/guide/help-locks-staff.webp)
+
+A player reading the same help finds `rules` with no subtopics, no `rules staff`, and no `+config`
+help at all:
+
+![A player reads +help rules with no subtopics line; +help rules staff and +help/list plus-config both answer that there is no such topic or source](../../../assets/guide/help-locks-player.webp)
+
+Packages lock their own staff topics. `+config`'s help is for those with `config.admin`, and
+`+health`'s for those with `players.view`, because those are what the commands need. A package's
+topics about staff commands or settings are locked to the permission those commands check.
+
 `+help` itself shows the topic `index`. Write your own with `+help/write index=<text>`; a topic
 the game writes wins over a package's of the same name. Upgrading a package never changes the
 game's topics.
@@ -182,6 +206,16 @@ objects:
   found.
 - Each `` HELP`<TOPIC> `` is a topic, and the attribute tree makes the subtopics.
 - `` SEE`<TOPIC> `` lists the topics it points to, split by `|`.
+- `` LOCK`<TOPIC> `` is a lock key: only a reader who passes it sees that topic and its subtopics.
+  `LOCK` on its own locks every topic on the object, which hides the whole source.
+
+```yaml
+      LOCK`MYTHING`ADVANCED: |-
+        perm^softcode.mything.admin
+```
+
+Lock a topic to the permission its commands check, so the help and the command agree on who may use
+them.
 
 Keep the topics off an object that has to be `WIZARD` for its commands. The librarian is not
 privileged, so it can list such an object's topics but not show them. The `scene` package keeps
