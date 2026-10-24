@@ -143,7 +143,19 @@ help at all:
 
 Packages lock their own staff topics. `+config`'s help is for those with `config.admin`, and
 `+health`'s for those with `players.view`, because those are what the commands need. A package's
-topics about staff commands or settings are locked to the permission those commands check.
+topics about staff commands or settings are locked to the permission those commands check. Topics
+about writing code against a package are for those with `packages.admin`, and the topics on writing
+help itself for wizards and royalty.
+
+The jobs package's staff topics are for whoever works a bucket, whichever bucket that is. A player
+who files jobs sees only the topics about filing them:
+
+![A player reads +help jobs with only api and format as subtopics; +help jobs hooks answers that there is no such topic](../../../assets/guide/help-locks-jobs-player.webp)
+
+Someone who works the Requests bucket sees every subtopic, and `Shown only to: Jobs staff` at the
+foot of each staff topic:
+
+![A bucket worker reads +help jobs with every subtopic listed, and +help jobs hooks with "Shown only to: Jobs staff" at its foot](../../../assets/guide/help-locks-jobs-staff.webp)
 
 `+help` itself shows the topic `index`. Write your own with `+help/write index=<text>`; a topic
 the game writes wins over a package's of the same name. Upgrading a package never changes the
@@ -216,6 +228,19 @@ objects:
 
 Lock a topic to the permission its commands check, so the help and the command agree on who may use
 them.
+
+The key is evaluated on its object before it is tested, so it can name one of the package's own
+objects by reference. When no single permission says who a topic is for, point an indirect lock at
+a lock the package keeps on one of its objects. The jobs package locks its staff topics this way, to
+a `staff` lock on its Jobs object that passes anyone who works a bucket:
+
+```yaml
+      LOCK`JOBS`HOOKS: |-
+        @{{jobs}}/staff
+```
+
+An indirect lock shows at the foot of the topic as the object's name and the lock's name:
+`Shown only to: Jobs staff`.
 
 Keep the topics off an object that has to be `WIZARD` for its commands. The librarian is not
 privileged, so it can list such an object's topics but not show them. The `scene` package keeps
