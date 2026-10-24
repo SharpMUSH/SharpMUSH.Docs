@@ -399,10 +399,10 @@ an attribute name can hold neither: `#20:1792045608032` is `20_1792045608032`.
 
 ### Shared scenes in your own code
 
-`sceneshared(<player>, <player>[, <count>])` lists the scenes both players belong to, the latest
-activity first, keeping those the caller may see. It comes with the Scene System:
+`scenelist(shared, <player>)` lists the scenes you and that player both belong to,
+the latest activity first, keeping those you may see; `scenelist(shared, <player>, <player>)` starts from someone else. It comes with the Scene System:
 
 ```
-> think sceneshared(me,Ash,3)
+> think scenelist(shared,Ash)
 1
 ```
