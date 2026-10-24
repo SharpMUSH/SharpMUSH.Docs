@@ -386,10 +386,10 @@ canon era verse
 |---|---|
 | `scene(<id>,<detail>)` | The scene's value for a detail; several are split by `\|` |
 | `scene(<id>,details)` | The details the scene has a value for: the listed ones in order, then the rest by name |
-| `scenedetails()` | The details the game lists, in order |
+| `scenedetail()` | The details the game lists, in order |
 | `scenedetail(<detail>[,<field>])` | One field of a listed detail: `label` (the default), `hint`, `choices`, `many`, `listed`, `tone`, `order`, `hidden` or `sort` |
-| `scenedetailvalue(<detail>,<value>)` | The value as the detail would keep it, or `#-1` and why it would be refused |
-| `scenedetailcheck(<detail>,<json>)` | Empty when the JSON reads as a detail, or `#-1` and why not |
+| `scenedetail(<detail>,value,<value>)` | The value as the detail would keep it, or `#-1` and why it would be refused |
+| `scenedetail(<detail>,check,<json>)` | Empty when the JSON reads as a detail, or `#-1` and why not |
 
 A pose's marks are its tags: `scenepose(<scene>,<pose>,tags)`.
 
