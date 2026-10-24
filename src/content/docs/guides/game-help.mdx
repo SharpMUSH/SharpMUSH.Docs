@@ -129,7 +129,7 @@ search, under another topic's subtopics or see-also line, nor by typing its name
 covers its subtopics too.
 
 - `+help/restrict <topic>=<lock>` shows one of the game's topics only to those passing the lock.
-- `+help/unrestrict <topic>` shows it to everyone again.
+- `+help/unrestrict <topic>` takes off that topic's own lock. A lock on a topic above it, or on the whole source, still applies.
 
 The lock is any key `@lock` takes, such as `role^wizard|role^royalty` or `perm^config.admin`. One
 that cannot be read is refused. Someone who passes the lock sees it at the foot of the topic:
