@@ -209,7 +209,8 @@ above.
    The second lets the game believe Railway's front door about who is visiting. Nothing but that
    front door can reach the service's web port, so it trusts only Railway.
 
-3. Right-click the service, choose **Attach Volume**, and mount it at `/data`. The world lives there.
+3. Add a volume: right-click an empty spot on the project canvas, or press Ctrl+K (⌘K on a Mac)
+   and search for "volume". Attach it to the service and mount it at `/data`. The world lives there.
 
 4. In the service's **Settings**, under **Networking**: generate a domain on port `8000` for the
    portal, and add a **TCP Proxy** on port `4201` for telnet. Under **Deploy**, set the healthcheck
