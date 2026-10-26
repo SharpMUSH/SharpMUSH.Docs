@@ -268,8 +268,7 @@ The roster ships with the server but is not installed on a new game. An administ
 from the portal:
 
 1. Open **Packages** in the admin area and choose **Browse**.
-2. Install `roster`. It needs `plus-help`, which a new game already has, and an event handler,
-   which is chosen in first-run setup.
+2. Install `roster`. It needs an event handler, which is chosen in first-run setup. Its `+help` topics and `+config` settings come with it, through the `roster-help` and `roster-config` bridges, wherever `+help` and `+config` are installed.
 3. To decide applications in the job queue, also install `roster-jobs`. It needs `jobs`.
 
 `+roster` is a game command, matched before softcode `$`-commands, so a `+roster` your game
