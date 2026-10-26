@@ -27,34 +27,56 @@ import '../../styles/sharpie-welcome.css';
 
 <CardGrid stagger>
 	<Card title="Why SharpMUSH?" icon="magnifier">
-		SharpMUSH is a modern iteration of the time tested MUSH frameworks, 
-		retaining their softcode capabilities, offering C# Plugin Support.
-		
-		For more details, check out our article on our [Design Premise](/about/design-premise).
+		SharpMUSH is a MUSH server for games that play out in a MU\* client, a browser and a
+		Discord server at once. It keeps the softcode MUSH builders know, and lets a game write
+		its own systems in it. Read the [design premise](/about/design-premise/).
 	</Card>
-
-	<Card title="Bring over PennMUSH" icon="rocket">
-		Follow the [migration runbook](/guides/pennmush-migration/) to rehearse the one-way import,
-		validate your own game, cut over with evidence, and preserve a rollback path.
+	<Card title="Play from anywhere" icon="laptop">
+		Players connect with a MU\* client or the [web portal](/guides/web-portal/), which has a
+		Play terminal, mail, scenes and the wiki, and works on a phone and with
+		[screen readers](/guides/screen-readers/). MUD clients such as Mudlet get a map and gauges
+		over [GMCP](/guides/mud-clients/).
+	</Card>
+	<Card title="Bridge Discord and the game" icon="discord">
+		[Link Discord channels](/guides/discord/) to the game: a line said in the game is posted
+		in the channel, and a member's message comes back in as the character they chose.
+		Players can [sign in with Discord](/guides/sign-in-services/), Google and others.
+	</Card>
+	<Card title="Tools for roleplay and staff" icon="comment">
+		[Scenes](/guides/scenes/) log roleplay as it happens. The wiki holds pages with
+		[facts](/guides/wiki-facts/), such as a spell's level, that the portal and softcode can
+		search. [Jobs](/guides/jobs/) track what players ask staff for.
+	</Card>
+	<Card title="Softcode first" icon="puzzle">
+		Game systems are softcode, shipped as [packages](/guides/packages/) you install, upgrade
+		and remove. [Portal pages](/guides/applications/) can be softcode too. When softcode is not
+		enough, a [C# plugin](/guides/plugins/) adds to the engine without a fork.
+	</Card>
+	<Card title="Bring your world" icon="rocket">
+		[Import](/guides/pennmush-migration/) a PennMUSH, RhostMUSH or TinyMUX database with its mail.
+		SharpMUSH runs PennMUSH softcode, with the [differences](/reference/compatibility/) listed,
+		and understands much of [TinyMUX](/guides/tinymux-softcode/) and
+		[RhostMUSH](/guides/rhostmush-softcode/) softcode too.
+	</Card>
+	<Card title="Let other tools in" icon="pencil">
+		[Apps](/guides/connected-apps/) such as a character sheet site act as a character, with only
+		the rights its player allowed and no password. Editors check softcode as you type through
+		the [language server](/guides/editor-support/).
+	</Card>
+	<Card title="Run it from a browser" icon="setting">
+		Set up, configure, moderate and back up your game from the
+		[web portal](/guides/web-portal/), without editing config files.
 	</Card>
 	<Card title="Runs on Docker" icon="seti:docker">
 		Booting up a game is a single [Docker Compose command](/guides/docker-quickstart/).
 		The same stack runs on a €4–6/month VPS.
 	</Card>
-	<Card title="See it running" icon="rocket">
+	<Card title="See it running" icon="external">
 		Our [live example game](https://mush.sharpmush.com) runs the current build.
-		Create a character, or look around as a guest — no install required.
-	</Card>
-	<Card title="Configure your new MUSH" icon="setting">
-		Configure, moderate and extend your game from the [web portal](/guides/web-portal/),
-		without editing config files.
-	</Card>
-	<Card title="Extend it your way" icon="puzzle">
-		Install [softcode packages](/guides/packages/) from a repository, or ship compiled
-		[C# plugins](/guides/plugins/) without forking the engine.
+		Create a character, or look around as a guest, with nothing to install.
 	</Card>
 	<Card title="Read the docs" icon="open-book">
-		Learn more in our [SharpMUSH docs](/guides/get-started). 
+		Learn more in our [SharpMUSH docs](/guides/get-started/).
 		Looking for a specific command or function? Check out the [Helpfile Reference](/reference/sharpmush-help/sharptop/),
 		generated from the server's own help topics.
 	</Card>
