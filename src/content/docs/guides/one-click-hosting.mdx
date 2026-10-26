@@ -150,6 +150,12 @@ computer.
    deploy/fly/launch.sh my-game iad
    ```
 
+   On Windows, in PowerShell:
+
+   ```powershell
+   powershell -ExecutionPolicy Bypass -File deploy\fly\launch.ps1 my-game iad
+   ```
+
    This creates the app, a 10 GB volume for the world, a dedicated IPv4 address for telnet (Fly
    charges $2 a month for it) and an IPv6 address, then builds and starts one machine with 2 GB of
    memory. The first run takes several minutes.
@@ -160,14 +166,16 @@ computer.
    fly logs --app my-game --no-tail | grep setup_code
    ```
 
+   In PowerShell, use `Select-String setup_code` in place of `grep setup_code`.
+
    Players connect their MUD clients to the dedicated IPv4 address that `fly ips list --app my-game`
    shows, on port 4201.
 
 </Steps>
 
 To use your own domain on Fly, run `fly certs add mush.example.com --app my-game`, add the DNS records
-it asks for, set `SHARPMUSH_DOMAIN` in `deploy/fly/fly.toml`, and run `launch.sh` again. Running
-`launch.sh` again later is also how you update the game.
+it asks for, set `SHARPMUSH_DOMAIN` in `deploy/fly/fly.toml`, and run the launch script again.
+Running it again later is also how you update the game.
 
 ## Finish setup
 
