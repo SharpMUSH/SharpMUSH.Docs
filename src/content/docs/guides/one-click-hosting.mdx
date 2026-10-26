@@ -18,7 +18,7 @@ until you have claimed the admin account.
 |---|---|---|
 | Any VPS provider (DigitalOcean, Hetzner, Vultr, Linode, OVH, ...) | Paste the setup text into the server's user data box | $12 for 2 GB, $24 for 4 GB on most; Hetzner is cheaper |
 | Akamai / Linode | Fill in the SharpMUSH StackScript form | $12 for 2 GB, $24 for 4 GB |
-| Fly.io | Run one command from your computer | about $11 for the machine, $2 for the telnet address, $1.50 for storage |
+| Fly.io | Run one command from your computer | about $11 for the machine, $1.50 for storage, and $2 for an IPv4 telnet address if you add one |
 
 All of them need a server with **at least 2 GB of memory**; 4 GB is comfortable. Choose Ubuntu 24.04
 (or later) or Debian 12 when the host asks for an operating system.
@@ -156,9 +156,9 @@ computer.
    powershell -ExecutionPolicy Bypass -File deploy\fly\launch.ps1 my-game iad
    ```
 
-   This creates the app, a 10 GB volume for the world, a dedicated IPv4 address for telnet (Fly
-   charges $2 a month for it) and an IPv6 address, then builds and starts one machine with 2 GB of
-   memory. The first run takes several minutes.
+   This creates the app, a 10 GB volume for the world and two free addresses, IPv6 and a shared
+   IPv4, then builds and starts one machine with 2 GB of memory. The first run takes several
+   minutes.
 
 3. Find your setup link in the log, and carry on with [Finish setup](#finish-setup).
 
@@ -168,10 +168,16 @@ computer.
 
    In PowerShell, use `Select-String setup_code` in place of `grep setup_code`.
 
-   Players connect their MUD clients to the dedicated IPv4 address that `fly ips list --app my-game`
-   shows, on port 4201.
+   Players connect their MUD clients to `my-game.fly.dev`, port 4201.
 
 </Steps>
+
+<Aside>
+Fly's shared IPv4 address carries only web traffic. The portal and the web terminal reach everyone,
+but telnet answers over IPv6 alone, so a player whose network has no IPv6 cannot connect a MUD
+client. To fix that, run the launch script again with `--dedicated-ipv4` (`-DedicatedIPv4` in
+PowerShell). It adds an IPv4 address of the game's own, which Fly charges $2 a month for.
+</Aside>
 
 To use your own domain on Fly, run `fly certs add mush.example.com --app my-game`, add the DNS records
 it asks for, set `SHARPMUSH_DOMAIN` in `deploy/fly/fly.toml`, and run the launch script again.
