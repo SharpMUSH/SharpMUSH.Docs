@@ -46,6 +46,7 @@ export default defineConfig({
                   label: 'Run a Game',
                   items: [
                       { label: 'Get Started', slug: 'guides/get-started' },
+                      { label: 'Launch a Server', slug: 'guides/one-click-hosting' },
                       { label: 'Run with Docker', slug: 'guides/docker-quickstart' },
                       { label: 'Migrate from another MUSH', slug: 'guides/pennmush-migration' },
                       { label: 'Operator Handbook', slug: 'guides/operator-handbook' },

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" width="900" height="400" role="img" aria-labelledby="t d">
+<title id="t">What the one-click installer sets up</title>
+<desc id="d">A player's browser reaches your server over HTTPS, either straight to Caddy on ports 80 and 443 with a Let's Encrypt certificate, or through Cloudflare, which hands the request to a tunnel running on the server. Caddy sends the portal to the game server and the web terminal to the connection server. A MUD client reaches the connection server directly over telnet on port 4201. The connection server, the renderer, NATS and the game server all run on the server, and the world is stored on the server's own disk. Until you finish setup, Caddy lets in only the browser that opened your setup link, and telnet answers only on the server itself.</desc>
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#475569"/></marker>
+</defs>
+<rect width="900" height="400" rx="12" fill="#f8fafc"/>
+<g font-family="ui-sans-serif,system-ui,sans-serif" font-size="14" fill="#1e293b">
+  <text x="24" y="34" font-size="15" font-weight="600">Players</text>
+  <text x="300" y="34" font-size="15" font-weight="600">Your server (one VPS)</text>
+
+  <rect x="24" y="70" width="170" height="64" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="38" y="96" font-weight="600">Web browser</text>
+  <text x="38" y="118" font-size="12" fill="#475569">portal and web terminal</text>
+
+  <rect x="24" y="270" width="170" height="64" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="38" y="296" font-weight="600">MUD client</text>
+  <text x="38" y="318" font-size="12" fill="#475569">Mudlet, MUSHclient, ...</text>
+
+  <rect x="300" y="50" width="576" height="326" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-dasharray="6 4"/>
+
+  <rect x="320" y="70" width="190" height="84" rx="8" fill="#fef3c7" stroke="#d97706"/>
+  <text x="334" y="96" font-weight="600">Caddy</text>
+  <text x="334" y="116" font-size="12" fill="#475569">HTTPS on 80 and 443, or</text>
+  <text x="334" y="132" font-size="12" fill="#475569">behind a Cloudflare Tunnel;</text>
+  <text x="334" y="148" font-size="12" fill="#475569">holds the first-boot guard</text>
+
+  <rect x="320" y="270" width="190" height="64" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="334" y="296" font-weight="600">Connection server</text>
+  <text x="334" y="318" font-size="12" fill="#475569">telnet 4201, web terminal</text>
+
+  <rect x="600" y="70" width="256" height="84" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="614" y="96" font-weight="600">Game server</text>
+  <text x="614" y="116" font-size="12" fill="#475569">engine, portal, API;</text>
+  <text x="614" y="132" font-size="12" fill="#475569">the world on the server's disk,</text>
+  <text x="614" y="148" font-size="12" fill="#475569">copied every six hours</text>
+
+  <rect x="600" y="190" width="256" height="50" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="614" y="220" font-weight="600">NATS</text>
+  <text x="670" y="220" font-size="12" fill="#475569">messages between the two</text>
+
+  <rect x="600" y="276" width="256" height="50" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="614" y="306" font-weight="600">Renderer</text>
+  <text x="694" y="306" font-size="12" fill="#475569">colour and layout</text>
+
+  <g stroke="#475569" stroke-width="1.6" fill="none" marker-end="url(#a)">
+    <path d="M194 102 H318"/>
+    <path d="M194 302 H318"/>
+    <path d="M510 112 H598"/>
+    <path d="M416 154 V268"/>
+    <path d="M728 154 V188"/>
+    <path d="M598 215 H560 V290 H512"/>
+    <path d="M512 314 H598"/>
+  </g>
+  <g font-size="12" fill="#475569">
+    <text x="206" y="94">HTTPS</text>
+    <text x="206" y="294">telnet</text>
+    <text x="424" y="216">/ws</text>
+  </g>
+</g>
+</svg>
