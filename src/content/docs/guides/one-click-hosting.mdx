@@ -66,13 +66,6 @@ The installer needs to know what address your portal will have. You have three c
          CLOUDFLARE_API_TOKEN=
          # Optional: an existing tunnel's token instead (point its hostname at http://caddy:80).
          CLOUDFLARE_TUNNEL_TOKEN=
-         # Optional nightly backups (see "Turn on backups" below).
-         RESTIC_REPOSITORY=
-         RESTIC_PASSWORD=
-         B2_ACCOUNT_ID=
-         B2_ACCOUNT_KEY=
-         AWS_ACCESS_KEY_ID=
-         AWS_SECRET_ACCESS_KEY=
          SHARPMUSH_SOURCE_REF=main
 
    runcmd:
@@ -114,17 +107,10 @@ curl -fsSL https://raw.githubusercontent.com/SharpMUSH/SharpMUSH/main/deploy/one
    # <UDF name="SHARPMUSH_DOMAIN" label="Domain for the web portal" example="mush.example.com. Leave empty to start on <ip>.sslip.io." default="" />
    # <UDF name="CLOUDFLARE_API_TOKEN" label="Cloudflare API token (optional)" default="" />
    # <UDF name="CLOUDFLARE_TUNNEL_TOKEN" label="Existing Cloudflare tunnel token (optional)" default="" />
-   # <UDF name="RESTIC_REPOSITORY" label="Backup repository (optional)" default="" />
-   # <UDF name="RESTIC_PASSWORD" label="Backup encryption password" default="" />
-   # <UDF name="B2_ACCOUNT_ID" label="Backblaze B2 key ID" default="" />
-   # <UDF name="B2_ACCOUNT_KEY" label="Backblaze B2 application key" default="" />
-   # <UDF name="AWS_ACCESS_KEY_ID" label="S3 or R2 access key ID" default="" />
-   # <UDF name="AWS_SECRET_ACCESS_KEY" label="S3 or R2 secret access key" default="" />
    # <UDF name="SHARPMUSH_SOURCE_REF" label="SharpMUSH installer version (git ref)" default="main" />
    set -euo pipefail
    exec > >(tee -a /var/log/stackscript.log) 2>&1
-   export SHARPMUSH_DOMAIN CLOUDFLARE_API_TOKEN CLOUDFLARE_TUNNEL_TOKEN RESTIC_REPOSITORY RESTIC_PASSWORD \
-     B2_ACCOUNT_ID B2_ACCOUNT_KEY AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY SHARPMUSH_SOURCE_REF
+   export SHARPMUSH_DOMAIN CLOUDFLARE_API_TOKEN CLOUDFLARE_TUNNEL_TOKEN SHARPMUSH_SOURCE_REF
    curl -fsSL "https://raw.githubusercontent.com/SharpMUSH/SharpMUSH/${SHARPMUSH_SOURCE_REF:-main}/deploy/oneclick/install.sh" \
      -o /root/sharpmush-install.sh
    bash /root/sharpmush-install.sh
@@ -220,8 +206,8 @@ telnet address from the welcome message.
    | Zone | DNS | Edit |
    | Zone | Zone | Read |
 
-3. Under **Zone Resources**, choose **Specific zone** and your domain, so the token can touch nothing
-   else.
+3. Under **Account Resources**, choose your account. Under **Zone Resources**, choose
+   **Specific zone** and your domain, so the token can change DNS for that domain only.
 
 4. Create the token, copy it into the `CLOUDFLARE_API_TOKEN` field, and put your domain in
    `SHARPMUSH_DOMAIN`.
@@ -239,8 +225,9 @@ Log in over SSH and run:
 sharpmush-configure
 ```
 
-It asks each question again with the current answer in brackets. Press Enter to keep an answer, type
-a new one, or type `none` to clear it. Use it to move from sslip.io to your own domain, to put the
+It asks again for the domain and the Cloudflare tokens, with the current answer in brackets. Press
+Enter to keep an answer, type a new one, or type `none` to clear it. Backups are set as in
+[Turn on backups](#turn-on-backups). Use it to move from sslip.io to your own domain, to put the
 game behind Cloudflare, or to take it out again.
 
 The game lives in `/opt/sharpmush`. It starts on boot, and the game server and renderer update
@@ -250,8 +237,8 @@ replacing it disconnects players. See [Updating](/guides/deployment#updating).
 ## Turn on backups
 
 The game copies the world to the server's own disk every six hours. For copies that survive losing
-the server, fill in the backup fields when you launch, or add them later by logging in as root and
-running `sharpmush-configure` with them set:
+the server, log in as root and run `sharpmush-configure` with the backup settings set. They are not
+in the launch forms, because your host keeps what you type there for as long as the server exists.
 
 ```bash
 RESTIC_REPOSITORY=b2:my-bucket:sharpmush RESTIC_PASSWORD='a long password' \
