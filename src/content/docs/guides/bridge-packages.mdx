@@ -53,8 +53,14 @@ makes another package read it:
 | `scene-config` | `scene`, `plus-config` | ``SYSTEM`SCENE`` on the `+config` registry, naming the Scene Logger |
 
 A new game installs `plus-help`, `plus-config`, `scene` and both bridges at its first start, so it
-has `+help scene` and `+config scene` as before. A bundled bridge installs only where both of the
-packages it joins are installed: a game that turned `scene` off does not get either bridge.
+has `+help scene` and `+config scene` as before. A bundled bridge is installed as soon as both of
+the packages it joins are, whether at a start, in the setup wizard or from the **Packages** page, and
+is uninstalled with either of them. A game that turned `scene` off does not get either bridge, and
+a bridge an administrator uninstalled on its own stays uninstalled.
+
+Every bundled package with topics or settings works the same way. `jobs` keeps its topics and its
+settings, and `jobs-help` and `jobs-config` register them; `bboards`, `finger`, `time` and the rest
+have their own `-help` and `-config` pair.
 
 ### With and without the bridges
 
@@ -213,6 +219,8 @@ The bundled bridges:
 |---|---|---|
 | `scene-help` | `scene`, `plus-help` | The scene topics in `+help` |
 | `scene-config` | `scene`, `plus-config` | The scene settings in `+config` |
+| `<package>-help` | `<package>`, `plus-help` | That package's topics in `+help`: `jobs-help`, `bboards-help`, `time-help`, ... |
+| `<package>-config` | `<package>`, `plus-config` | That package's settings in `+config`: `jobs-config`, `bboards-config`, `time-config`, ... |
 | `radio-scene` | `radio`, `scene` | `+radio/log`: what a listener hears goes into their scene |
 | `relationships-scene` | `relationships`, `scene` | Last scene together on the `+rel` card and the name card |
 | `roster-jobs` | `roster`, `jobs` | Roster applications through the job queue |

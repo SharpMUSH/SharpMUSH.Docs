@@ -402,7 +402,8 @@ The weather now follows autumn, not spring.
 A package declares the same attributes on its own object and registers by attaching one leaf to
 the Config Registry, the way it registers its help with `+help`. It depends on `plus-config`.
 A package that should also run without `+config` keeps the attributes and leaves the registration
-to a [bridge package](/guides/bridge-packages/), as `scene` does with `scene-config`:
+to a [bridge package](/guides/bridge-packages/), as `scene` does with `scene-config` and every other
+bundled package with its own `-config` bridge:
 
 ```yaml
 depends:

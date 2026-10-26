@@ -246,5 +246,10 @@ Keep the topics off an object that has to be `WIZARD` for its commands. The libr
 privileged, so it can list such an object's topics but not show them. The `scene` package keeps
 its commands on the Scene Logger and its help on a separate Scene Help thing.
 
+A package written for other games keeps the registration out of the package itself, in a
+`<package>-help` [bridge package](/guides/bridge-packages/) that depends on both. The package then
+installs on a game without `+help`, and its topics appear where `+help` is. Every bundled package
+does this: `jobs-help` holds the one ``SRC`JOBS`` leaf for `jobs`.
+
 [Package Format](/reference/package-format/) covers `depends`, `objects` and attach targets such as
 `{{plus-help/librarian}}`.

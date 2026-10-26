@@ -110,8 +110,9 @@ portal's Packages page, from the **bundled** catalogue:
 | `mudlet-client` | `Client.GUI`, `Client.Map`, `External.Discord.Info`, `External.Discord.Status`, and `+gui` |
 | `mud-kit` | nothing itself: it installs the five above and adds the `+help gmcp` overview |
 
-Each of the five installs and uninstalls on its own, so a game takes only what it uses. They need
-`plus-help` and `plus-config`, which are installed with them. Every package adds its handlers to the
+Each of the five installs and uninstalls on its own, so a game takes only what it uses. Each one's
+`+help` topics and `+config` settings come with it, through its `-help` and `-config` bridges
+(`gmcp-room-help`, `gmcp-room-config`, ...), wherever `+help` and `+config` are installed. Every package adds its handlers to the
 event handler (`#9` in a new game) one level below the event, such as ``OBJECT`MOVE`GMCPROOM``, beside
 the handlers already there. See [Events](/guides/events/#several-attributes-on-one-event).
 

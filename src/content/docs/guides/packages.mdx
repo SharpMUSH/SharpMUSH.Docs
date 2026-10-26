@@ -147,8 +147,8 @@ Some packages are built into the server and appear in the portal under the reser
   `profile-handler`, `room-contents`, `comm-feed`, `plus-help`, `plus-config`, `scene`,
   `scene-help`, `scene-config`, `scene-here`, [`onboarding`](/guides/onboarding/), `onboarding-help`
   and `onboarding-config` are. They are why a fresh game already has a working
-  HTTP handler, `+help`, `+config`, a scene system and a getting-started checklist. A bridge such as `scene-help` installs only
-  where both of the packages it joins are installed (see [Bridge Packages](/guides/bridge-packages/)). Every other bundled package is shipped but not installed: the
+  HTTP handler, `+help`, `+config`, a scene system and a getting-started checklist. A bridge such as `scene-help` or `jobs-help` is
+  installed wherever both of the packages it joins are, as soon as they are (see [Bridge Packages](/guides/bridge-packages/)). Every other bundled package is shipped but not installed: the
   [bulletin boards](/guides/bboards), `+who`, [`+status`](/guides/status), the [watch list](/guides/watch), [`+finger`](/guides/finger)
   and [`+notify`](/guides/notifications), for example, add commands a game
   may not want, a game chooses whether it wants a [verse and content warnings](/guides/scene-details#verse-canon-and-content-warnings)
@@ -180,6 +180,9 @@ The bundled packages use these categories (a package's `category:`, described in
 | Characters | `chargen`, `chargen-app`, `finger`, `info`, `roster`, `roster-jobs`, `relationships`, `relationships-scene`, `relationships-app`, `relationships-card`, `alts`, `onboarding-chargen` |
 | MUD clients | `gmcp-room`, `gmcp-comm`, `gmcp-items`, `gmcp-char`, `mudlet-client`, `mud-kit` |
 | Uncategorized | `discord-channels`, `discord-scenes` |
+
+Each package's `-help` and `-config` bridges, such as `jobs-help` and `jobs-config`, are in its
+category and listed under it. The wizard ticks them with it.
 
 ![The setup wizard's Staff group, 0 of 4 chosen: Jobs with Jobs in the portal listed under it, and health with health-jobs listed under it](../../../assets/guide/setup-packages-addons.webp)
 
