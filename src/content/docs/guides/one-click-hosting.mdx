@@ -19,13 +19,20 @@ until you have claimed the admin account.
 | Any VPS provider (DigitalOcean, Hetzner, Vultr, Linode, OVH, ...) | Paste the setup text into the server's user data box | $12 for 2 GB, $24 for 4 GB on most; Hetzner is cheaper |
 | Akamai / Linode | Fill in the SharpMUSH StackScript form | $12 for 2 GB, $24 for 4 GB |
 | Fly.io | Run one command from your computer | about $11 for the machine, $1.50 for storage, and $2 for an IPv4 telnet address if you add one |
+| Railway | Create one service in Railway's dashboard | billed by use on top of Railway's $5 Hobby plan; see railway.com/pricing |
 
 All of them need a server with **at least 2 GB of memory**; 4 GB is comfortable. Choose Ubuntu 24.04
 (or later) or Debian 12 when the host asks for an operating system.
 
 A VPS is the simpler choice: the game gets the whole server, updates itself, and an engine update
-does not disconnect your players. Fly.io runs everything in one container, so every update restarts
-the game.
+does not disconnect your players. Fly.io and Railway run everything in one container, so every
+update restarts the game and disconnects everyone; nothing updates there until you do it. See
+[Update your game](#update-your-game).
+
+<Aside type="caution">
+SharpMUSH has no release yet. Every route here runs the `dev` images, built from each change merged
+into SharpMUSH after its tests pass. Expect changes, and keep backups.
+</Aside>
 
 ## Decide on an address
 
@@ -130,35 +137,35 @@ curl -fsSL https://raw.githubusercontent.com/SharpMUSH/SharpMUSH/main/deploy/one
 
 ## Launch on Fly.io
 
-You need a Fly.io account, [flyctl](https://fly.io/docs/flyctl/install/) and git on your own
-computer.
+You need a Fly.io account and [flyctl](https://fly.io/docs/flyctl/install/) on your own computer.
+Fly runs the ready-built `sharpmush/sharpmush-fly` image, so there is nothing to download or build.
 
 <Steps>
 
-1. Sign in and get the SharpMUSH files.
+1. Sign in.
 
    ```bash
    fly auth login
-   git clone https://github.com/SharpMUSH/SharpMUSH.git
-   cd SharpMUSH
    ```
 
-2. Launch. Pick an app name (it becomes `<name>.fly.dev`) and a
-   [region](https://fly.io/docs/reference/regions/) near your players.
+2. Make a folder for the game's settings and launch from it. Pick an app name (it becomes
+   `<name>.fly.dev`) and a [region](https://fly.io/docs/reference/regions/) near your players.
 
    ```bash
-   deploy/fly/launch.sh my-game iad
+   mkdir my-game && cd my-game
+   curl -fsSL https://raw.githubusercontent.com/SharpMUSH/SharpMUSH/main/deploy/fly/launch.sh | bash -s -- my-game iad
    ```
 
    On Windows, in PowerShell:
 
    ```powershell
-   powershell -ExecutionPolicy Bypass -File deploy\fly\launch.ps1 my-game iad
+   mkdir my-game; cd my-game
+   & ([scriptblock]::Create((irm https://raw.githubusercontent.com/SharpMUSH/SharpMUSH/main/deploy/fly/launch.ps1))) my-game iad
    ```
 
-   This creates the app, a 10 GB volume for the world and two free addresses, IPv6 and a shared
-   IPv4, then builds and starts one machine with 2 GB of memory. The first run takes several
-   minutes.
+   This saves the app's settings as `my-game.fly.toml`, creates the app, a 10 GB volume for the
+   world and two free addresses, IPv6 and a shared IPv4, then starts one machine with 2 GB of
+   memory. Keep the folder: you update the game from it.
 
 3. Find your setup link in the log, and carry on with [Finish setup](#finish-setup).
 
@@ -180,8 +187,38 @@ PowerShell). It adds an IPv4 address of the game's own, which Fly charges $2 a m
 </Aside>
 
 To use your own domain on Fly, run `fly certs add mush.example.com --app my-game`, add the DNS records
-it asks for, set `SHARPMUSH_DOMAIN` in `deploy/fly/fly.toml`, and run the launch script again.
-Running it again later is also how you update the game.
+it asks for, set `SHARPMUSH_DOMAIN` in `my-game.fly.toml`, and run the launch command again from the
+same folder.
+
+## Launch on Railway
+
+Railway runs the same ready-built image as Fly. You need a Railway account on the Hobby plan or
+above.
+
+<Steps>
+
+1. Create a project, then **Create** → **Docker Image**, and enter `sharpmush/sharpmush-fly:dev`.
+
+2. In the service's **Variables**, add:
+
+   | Variable | Value |
+   |---|---|
+   | `PORT` | `8000` |
+   | `SHARPMUSH_TRUSTED_PROXIES` | `0.0.0.0/0 ::/0` |
+
+   The second lets the game believe Railway's front door about who is visiting. Nothing but that
+   front door can reach the service's web port, so it trusts only Railway.
+
+3. Right-click the service, choose **Attach Volume**, and mount it at `/data`. The world lives there.
+
+4. In the service's **Settings**, under **Networking**: generate a domain on port `8000` for the
+   portal, and add a **TCP Proxy** on port `4201` for telnet. Under **Deploy**, set the healthcheck
+   path to `/health`. Leave automatic image updates off.
+
+5. Deploy. The deploy log shows your setup link and the telnet address Railway picked for you, such
+   as `shortline.proxy.rlwy.net` port `31457`. Carry on with [Finish setup](#finish-setup).
+
+</Steps>
 
 ## Finish setup
 
@@ -191,7 +228,7 @@ a short page saying the server is waiting for its owner.
 
 <Steps>
 
-1. Open the setup link from the welcome message (or the Fly log). It looks like
+1. Open the setup link from the welcome message (or the Fly or Railway log). It looks like
    `https://mush.example.com/?setup_code=4f1c...`, and takes you to the setup page.
 
 2. Choose the administrator's name and password. This account is linked to God (`#1`).
@@ -244,9 +281,47 @@ Enter to keep an answer, type a new one, or type `none` to clear it. Backups are
 [Turn on backups](#turn-on-backups). Use it to move from sslip.io to your own domain, to put the
 game behind Cloudflare, or to take it out again.
 
-The game lives in `/opt/sharpmush`. It starts on boot, and the game server and renderer update
-themselves when new versions are published; the connection server is updated by hand, because
-replacing it disconnects players. See [Updating](/guides/deployment#updating).
+The game lives in `/opt/sharpmush` and starts on boot.
+
+## Update your game
+
+Take a backup before any update you do by hand (`@backup` in the game, as a wizard). A world that a
+newer server has upgraded cannot be opened by an older one, so going back needs that copy.
+
+### On a VPS
+
+The game server and the renderer update themselves. A few minutes after a new version is published,
+they restart on it. Players stay connected: they see a restart notice, and what they type while the
+game is down usually runs once it is back.
+
+The connection server does not update itself, because it holds every player's connection and
+replacing it disconnects everyone. Update it when you are ready to drop players, after telling them:
+
+```bash
+cd /opt/sharpmush
+docker compose pull connectionserver
+docker compose up -d connectionserver
+```
+
+Restarting the server, or the `sharpmush` service, also pulls the newest version of everything,
+connection server included.
+
+### On Fly.io
+
+Nothing updates on its own. Every update restarts the whole game and disconnects everyone, so pick a
+quiet time and announce it. From the folder you launched from:
+
+```bash
+fly deploy --app my-game --config my-game.fly.toml
+```
+
+Running the launch command again does the same.
+
+### On Railway
+
+Nothing updates on its own while automatic image updates stay off; turning them on would restart
+the game and disconnect everyone whenever a new version appears. When the service's settings offer
+an update for the image, pick a quiet time, announce it, and apply it.
 
 ## Turn on backups
 
