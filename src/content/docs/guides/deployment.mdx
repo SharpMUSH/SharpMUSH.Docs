@@ -31,6 +31,8 @@ run the stack. Pick one, based on how you want HTTPS handled:
 | `docker-compose.analysis.yml` | Optional: the remote MCP and LSP analysis transports. See [Remote MCP and LSP Analysis](/guides/mcp). |
 | `grafana/sharpmush-invocations.json` | An optional Grafana dashboard for function and command timings. See [Metrics](#metrics). |
 | `Caddyfile` | Caddy's settings, used by `docker-compose.prod.yml`. |
+| `oneclick/` | The installer behind [Launch a Server](/guides/one-click-hosting): `install.sh`, the stack it runs (`compose.yml`, `Caddyfile`), the first-boot guard, the cloud-init text, the Linode StackScript and the DigitalOcean image template. |
+| `fly/` | SharpMUSH in one container for Fly.io, with `launch.sh`. See [Launch on Fly.io](/guides/one-click-hosting#launch-on-flyio). |
 | `sharpmush.service` | An optional systemd unit that starts the stack from the Compose file when the machine boots. |
 | `.env.example` | A template for your secrets and settings. Copy it to `.env` and fill it in. |
 | `.gitignore` | Keeps your real `.env` out of git. |

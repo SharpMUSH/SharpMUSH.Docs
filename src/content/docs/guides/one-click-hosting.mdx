@@ -1,0 +1,293 @@
+---
+title: Launch a Server
+description: Get a public SharpMUSH game running on a rented server in a few minutes, without editing any files.
+---
+
+import { Steps, Aside, Tabs, TabItem, LinkCard } from '@astrojs/starlight/components';
+
+This page takes you from nothing to a public game with a web portal and telnet, on a server you rent
+by the month. You fill in a short form, or paste one block of text, and an installer does the rest:
+it installs Docker, starts SharpMUSH, gets an HTTPS certificate, and keeps the game locked to you
+until you have claimed the admin account.
+
+![Players' browsers reach Caddy over HTTPS, directly or through a Cloudflare Tunnel; Caddy passes the portal to the game server and the web terminal to the connection server. MUD clients reach the connection server on telnet port 4201. NATS, the renderer and the game server run on the same server, with the world on its disk.](../../../assets/guide/one-click-hosting.svg)
+
+## Pick a host
+
+| Host | How you launch | Rough monthly cost |
+|---|---|---|
+| Any VPS provider (DigitalOcean, Hetzner, Vultr, Linode, OVH, ...) | Paste the setup text into the server's user data box | $12 for 2 GB, $24 for 4 GB on most; Hetzner is cheaper |
+| Akamai / Linode | Fill in the SharpMUSH StackScript form | $12 for 2 GB, $24 for 4 GB |
+| Fly.io | Run one command from your computer | about $11 for the machine, $2 for the telnet address, $1.50 for storage |
+
+All of them need a server with **at least 2 GB of memory**; 4 GB is comfortable. Choose Ubuntu 24.04
+(or later) or Debian 12 when the host asks for an operating system.
+
+A VPS is the simpler choice: the game gets the whole server, updates itself, and an engine update
+does not disconnect your players. Fly.io runs everything in one container, so every update restarts
+the game.
+
+## Decide on an address
+
+The installer needs to know what address your portal will have. You have three choices.
+
+- **No domain.** Leave the domain empty and the game starts at `<your-server-ip>.sslip.io`, which
+  works with no DNS set up at all. It is the quickest way to try things, but the certificate service
+  limits how many sslip.io certificates it issues each week across everyone using it, so it can fail
+  at busy times. Move to your own domain once you have one.
+- **Your own domain.** For example `mush.example.com`. Before you launch, add an **A record** for it
+  pointing at the server's IP address. On most hosts you only learn the address once the server
+  exists, so either reserve an address first or add the record straight after creating the server.
+  The certificate arrives as soon as the record does.
+- **A domain on Cloudflare.** Give the installer a Cloudflare API token and it sets everything up:
+  a tunnel for the portal, so your server opens no web ports, and a `telnet.<your-domain>` record for
+  MUD clients. See [Make a Cloudflare API token](#make-a-cloudflare-api-token).
+
+## Launch on any VPS
+
+<Steps>
+
+1. Start creating a server with your host. Pick Ubuntu 24.04 and a plan with 2 GB of memory or more.
+
+2. Find the field for **user data**. Hosts give it different names: look for *user data*,
+   *cloud-init*, *cloud config* or *initialization script*, often under advanced options.
+
+3. Paste this text into it, and fill in the lines you want. Every line may stay empty.
+
+   ```yaml
+   #cloud-config
+   write_files:
+     - path: /root/sharpmush-answers.env
+       permissions: "0600"
+       content: |
+         # The portal's domain, e.g. mush.example.com. Empty: the game starts on <ip>.sslip.io.
+         SHARPMUSH_DOMAIN=
+         # Optional, with a domain on Cloudflare: sets up the tunnel and DNS for you.
+         CLOUDFLARE_API_TOKEN=
+         # Optional: an existing tunnel's token instead (point its hostname at http://caddy:80).
+         CLOUDFLARE_TUNNEL_TOKEN=
+         # Optional nightly backups (see "Turn on backups" below).
+         RESTIC_REPOSITORY=
+         RESTIC_PASSWORD=
+         B2_ACCOUNT_ID=
+         B2_ACCOUNT_KEY=
+         AWS_ACCESS_KEY_ID=
+         AWS_SECRET_ACCESS_KEY=
+         SHARPMUSH_SOURCE_REF=main
+
+   runcmd:
+     - - bash
+       - -c
+       - |
+         set -euo pipefail
+         set -a; . /root/sharpmush-answers.env; set +a
+         curl -fsSL "https://raw.githubusercontent.com/SharpMUSH/SharpMUSH/${SHARPMUSH_SOURCE_REF:-main}/deploy/oneclick/install.sh" -o /root/sharpmush-install.sh
+         bash /root/sharpmush-install.sh 2>&1 | tee /var/log/sharpmush-install.log
+         shred -u /root/sharpmush-answers.env /root/sharpmush-install.sh
+   ```
+
+4. Create the server and wait three to five minutes while it installs.
+
+5. Log in over SSH (`ssh root@<your-server-ip>`). The welcome message shows your game's addresses and
+   your **setup link**. Carry on with [Finish setup](#finish-setup).
+
+</Steps>
+
+<Aside>
+Already have a server? Log in over SSH and run the installer directly. It asks no questions and uses
+`<ip>.sslip.io`; run `sharpmush-configure` afterwards to give it a domain.
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/SharpMUSH/SharpMUSH/main/deploy/oneclick/install.sh | sudo bash
+```
+</Aside>
+
+## Launch on Akamai / Linode
+
+<Steps>
+
+1. In Linode's Cloud Manager, open **StackScripts**, then **Create StackScript**. Name it
+   SharpMUSH, tick Ubuntu 24.04 and Debian 12 as target images, and paste this script:
+
+   ```bash
+   #!/bin/bash
+   # <UDF name="SHARPMUSH_DOMAIN" label="Domain for the web portal" example="mush.example.com. Leave empty to start on <ip>.sslip.io." default="" />
+   # <UDF name="CLOUDFLARE_API_TOKEN" label="Cloudflare API token (optional)" default="" />
+   # <UDF name="CLOUDFLARE_TUNNEL_TOKEN" label="Existing Cloudflare tunnel token (optional)" default="" />
+   # <UDF name="RESTIC_REPOSITORY" label="Backup repository (optional)" default="" />
+   # <UDF name="RESTIC_PASSWORD" label="Backup encryption password" default="" />
+   # <UDF name="B2_ACCOUNT_ID" label="Backblaze B2 key ID" default="" />
+   # <UDF name="B2_ACCOUNT_KEY" label="Backblaze B2 application key" default="" />
+   # <UDF name="AWS_ACCESS_KEY_ID" label="S3 or R2 access key ID" default="" />
+   # <UDF name="AWS_SECRET_ACCESS_KEY" label="S3 or R2 secret access key" default="" />
+   # <UDF name="SHARPMUSH_SOURCE_REF" label="SharpMUSH installer version (git ref)" default="main" />
+   set -euo pipefail
+   exec > >(tee -a /var/log/stackscript.log) 2>&1
+   export SHARPMUSH_DOMAIN CLOUDFLARE_API_TOKEN CLOUDFLARE_TUNNEL_TOKEN RESTIC_REPOSITORY RESTIC_PASSWORD \
+     B2_ACCOUNT_ID B2_ACCOUNT_KEY AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY SHARPMUSH_SOURCE_REF
+   curl -fsSL "https://raw.githubusercontent.com/SharpMUSH/SharpMUSH/${SHARPMUSH_SOURCE_REF:-main}/deploy/oneclick/install.sh" \
+     -o /root/sharpmush-install.sh
+   bash /root/sharpmush-install.sh
+   rm -f /root/sharpmush-install.sh
+   ```
+
+2. Save it and choose **Deploy New Linode**. The form now has a field for each line above: fill in
+   the ones you want.
+
+3. Pick a region, a **Shared CPU** plan with 4 GB (2 GB works), a root password, and create the Linode.
+
+4. After three to five minutes, log in over SSH. The welcome message has your setup link. Carry on
+   with [Finish setup](#finish-setup). If it is not there yet, the install is still running:
+   `tail -f /var/log/stackscript.log` shows how far it has got.
+
+</Steps>
+
+## Launch on Fly.io
+
+You need a Fly.io account, [flyctl](https://fly.io/docs/flyctl/install/) and git on your own
+computer.
+
+<Steps>
+
+1. Sign in and get the SharpMUSH files.
+
+   ```bash
+   fly auth login
+   git clone https://github.com/SharpMUSH/SharpMUSH.git
+   cd SharpMUSH
+   ```
+
+2. Launch. Pick an app name (it becomes `<name>.fly.dev`) and a
+   [region](https://fly.io/docs/reference/regions/) near your players.
+
+   ```bash
+   deploy/fly/launch.sh my-game iad
+   ```
+
+   This creates the app, a 10 GB volume for the world, a dedicated IPv4 address for telnet (Fly
+   charges $2 a month for it) and an IPv6 address, then builds and starts one machine with 2 GB of
+   memory. The first run takes several minutes.
+
+3. Find your setup link in the log, and carry on with [Finish setup](#finish-setup).
+
+   ```bash
+   fly logs --app my-game --no-tail | grep setup_code
+   ```
+
+   Players connect their MUD clients to the dedicated IPv4 address that `fly ips list --app my-game`
+   shows, on port 4201.
+
+</Steps>
+
+To use your own domain on Fly, run `fly certs add mush.example.com --app my-game`, add the DNS records
+it asks for, set `SHARPMUSH_DOMAIN` in `deploy/fly/fly.toml`, and run `launch.sh` again. Running
+`launch.sh` again later is also how you update the game.
+
+## Finish setup
+
+Until you finish this step, your game is locked: the portal answers only a browser that has opened
+your setup link, and telnet answers only on the server itself. Anyone else who finds the address sees
+a short page saying the server is waiting for its owner.
+
+<Steps>
+
+1. Open the setup link from the welcome message (or the Fly log). It looks like
+   `https://mush.example.com/?setup_code=4f1c...`, and takes you to the setup page.
+
+2. Choose the administrator's name and password. This account is linked to God (`#1`).
+
+3. Work through the rest of the setup wizard: import an existing database if you have one, then pick
+   the packages you want.
+
+</Steps>
+
+Within 15 seconds of the admin account being claimed, the lock lifts: the portal opens to everyone
+and telnet starts answering on port 4201. Give players the portal address and, for MUD clients, the
+telnet address from the welcome message.
+
+## Make a Cloudflare API token
+
+<Steps>
+
+1. In the Cloudflare dashboard, open **My Profile**, then **API Tokens**, then **Create Token**,
+   and choose **Create Custom Token**.
+
+2. Give it these three permissions:
+
+   | | | |
+   |---|---|---|
+   | Account | Cloudflare Tunnel | Edit |
+   | Zone | DNS | Edit |
+   | Zone | Zone | Read |
+
+3. Under **Zone Resources**, choose **Specific zone** and your domain, so the token can touch nothing
+   else.
+
+4. Create the token, copy it into the `CLOUDFLARE_API_TOKEN` field, and put your domain in
+   `SHARPMUSH_DOMAIN`.
+
+</Steps>
+
+The installer uses the token once and does not store it. Your host keeps a copy of what you typed
+into the launch form, so revoke the token in the same dashboard page once the game is up.
+
+## Change things later
+
+Log in over SSH and run:
+
+```bash
+sharpmush-configure
+```
+
+It asks each question again with the current answer in brackets. Press Enter to keep an answer, type
+a new one, or type `none` to clear it. Use it to move from sslip.io to your own domain, to put the
+game behind Cloudflare, or to take it out again.
+
+The game lives in `/opt/sharpmush`. It starts on boot, and the game server and renderer update
+themselves when new versions are published; the connection server is updated by hand, because
+replacing it disconnects players. See [Updating](/guides/deployment#updating).
+
+## Turn on backups
+
+The game copies the world to the server's own disk every six hours. For copies that survive losing
+the server, fill in the backup fields when you launch, or add them later by logging in as root and
+running `sharpmush-configure` with them set:
+
+```bash
+RESTIC_REPOSITORY=b2:my-bucket:sharpmush RESTIC_PASSWORD='a long password' \
+  B2_ACCOUNT_ID=... B2_ACCOUNT_KEY=... sharpmush-configure
+```
+
+| Field | Backblaze B2 | Cloudflare R2 or S3 |
+|---|---|---|
+| `RESTIC_REPOSITORY` | `b2:<bucket>:sharpmush` | `s3:https://<account-id>.r2.cloudflarestorage.com/<bucket>` |
+| `RESTIC_PASSWORD` | a long password you keep safe | the same |
+| keys | `B2_ACCOUNT_ID`, `B2_ACCOUNT_KEY` | `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` |
+
+<Aside type="caution">
+Without the backup password the backups cannot be read. Store it in a password manager.
+</Aside>
+
+Create the repository once, before the first nightly run at 03:30:
+
+```bash
+cd /opt/sharpmush && docker compose run --rm backup restic init
+```
+
+[Backups](/guides/deployment#backups) covers checking and restoring them.
+
+## When something goes wrong
+
+| What you see | What to do |
+|---|---|
+| No welcome message with a setup link | The install is still running or failed. Read `/var/log/sharpmush-install.log` (`/var/log/stackscript.log` on Linode). |
+| The browser warns about the certificate | The domain's A record does not point at the server yet, or sslip.io's weekly certificate limit is used up. Check the record, or give the game your own domain with `sharpmush-configure`. |
+| "Waiting for its owner to finish setup" | That browser has not opened the setup link. Open it from the welcome message. |
+| Telnet connects nowhere | Setup is not finished yet; telnet opens once it is. |
+| Anything else | `cd /opt/sharpmush && docker compose ps` shows what is running, and `docker compose logs sharpmush-server` shows the game's log. |
+
+<LinkCard
+  title="Operator Handbook"
+  href="/guides/operator-handbook"
+  description="Turn this first server into a tested backup, upgrade, monitoring, and recovery practice."
+/>
