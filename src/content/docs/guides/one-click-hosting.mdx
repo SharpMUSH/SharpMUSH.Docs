@@ -88,8 +88,8 @@ The installer needs to know what address your portal will have. You have three c
          shred -u /root/sharpmush-answers.env /root/sharpmush-install.sh
    ```
 
-4. If the host puts a firewall in front of the server, open TCP ports 80, 443 and 4201 in it
-   (and UDP 443, for faster HTTPS). See [Where to paste it](#where-to-paste-it).
+4. If the host puts a firewall in front of the server, open TCP ports 80, 443, 4201 and 4203 in
+   it (and UDP 443, for faster HTTPS). See [Where to paste it](#where-to-paste-it).
 
 5. Create the server and wait three to five minutes while it installs.
 
@@ -107,7 +107,7 @@ The installer needs to know what address your portal will have. You have three c
 | Vultr | **Additional features** → **Cloud-Init User-Data** | none unless you add a firewall group |
 | Scaleway | **Advanced settings** → **Cloud-init** | the default security group lets everything in |
 | OVHcloud Public Cloud | **Post-installation script** | none by default |
-| AWS Lightsail | **Add launch script**, as the shell form below | open 443 and 4201 on the instance's **Networking** tab; 22 and 80 are open already |
+| AWS Lightsail | **Add launch script**, as the shell form below | open 443, 4201 and 4203 on the instance's **Networking** tab; 22 and 80 are open already |
 | Oracle Cloud | see [Launch free on Oracle Cloud](#launch-free-on-oracle-cloud) | the network's security list |
 
 Lightsail runs its launch script as shell commands, so it takes the same answers in this form:
@@ -149,7 +149,7 @@ which is plenty for a game.
 4. Create the instance and note its public IP address.
 
 5. Open the game's ports. From the instance's page, follow its subnet to the **Default Security
-   List** and add ingress rules from `0.0.0.0/0` for TCP ports 80, 443 and 4201, and UDP 443.
+   List** and add ingress rules from `0.0.0.0/0` for TCP ports 80, 443, 4201 and 4203, and UDP 443.
 
 6. After five minutes, log in with `ssh ubuntu@<your-server-ip>` and run `sudo -i`. The welcome
    message has your setup link. Carry on with [Finish setup](#finish-setup).
@@ -347,6 +347,32 @@ Within 15 seconds of the admin account being claimed, the lock lifts: the portal
 and telnet starts answering on port 4201. Give players the portal address and, for MUD clients, the
 telnet address from the welcome message.
 
+## Encrypted telnet
+
+Plain telnet on port 4201 sends everything as typed, passwords included. Players have two ways to
+keep their connection private:
+
+- **The portal's web terminal.** It runs over HTTPS on every host.
+- **A MUD client with TLS (also called SSL) turned on, connecting to port 4203.** This needs a
+  server you set up with the installer. The welcome message shows the address as `TLS telnet`.
+
+| How you launched | TLS telnet address |
+|---|---|
+| A VPS with Let's Encrypt | your domain, port 4203 (or your `<ip>.sslip.io` address) |
+| A VPS behind a Cloudflare Tunnel, set up with an API token | `telnet.<your-domain>`, port 4203 |
+| A VPS behind a tunnel you made yourself | none; port 4203 refuses connections |
+| Fly.io or Railway | none yet; use the web terminal |
+
+The certificate is the one the server already gets for your portal (or, behind a tunnel, one it
+gets for the telnet address). It renews on its own, and a renewal disconnects nobody. Port 4201
+stays open for clients that do not speak TLS.
+
+To check it, run this from your own computer. It should print `Verification: OK`:
+
+```bash
+openssl s_client -connect mush.example.com:4203 -verify_hostname mush.example.com -brief </dev/null
+```
+
 ## Make a Cloudflare API token
 
 <Steps>
@@ -476,6 +502,7 @@ cd /opt/sharpmush && docker compose run --rm backup restic init
 | The browser warns about the certificate | The domain's A record does not point at the server yet, or sslip.io's weekly certificate limit is used up. Check the record, or give the game your own domain with `sharpmush-configure`. |
 | "Waiting for its owner to finish setup" | That browser has not opened the setup link. Open it from the welcome message. |
 | Telnet connects nowhere | Setup is not finished yet; telnet opens once it is. |
+| TLS telnet on 4203 is refused | The certificate is not ready yet: wait a few minutes after the portal first answers over HTTPS. Behind a tunnel you made yourself there is no telnet address, so 4203 stays closed. |
 | Anything else | `cd /opt/sharpmush && docker compose ps` shows what is running, and `docker compose logs sharpmush-server` shows the game's log. |
 
 <LinkCard
