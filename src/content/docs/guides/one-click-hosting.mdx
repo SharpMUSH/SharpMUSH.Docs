@@ -14,22 +14,42 @@ until you have claimed the admin account.
 
 ## Pick a host
 
-| Host | How you launch | Rough monthly cost |
-|---|---|---|
-| Any VPS provider (DigitalOcean, Hetzner, Vultr, Scaleway, OVHcloud, AWS Lightsail, ...) | Paste the setup text into the server's user data box | $12 for 2 GB, $24 for 4 GB on most; Hetzner's ARM servers cost a few euros |
-| Oracle Cloud | Paste the setup text, on an ARM server in the free tier | free, within Oracle's Always Free limits |
-| Akamai / Linode | Fill in the SharpMUSH StackScript form | $12 for 2 GB, $24 for 4 GB |
-| Fly.io | Run one command from your computer | about $20 for three small machines and their storage, or $11 run as one; $2 more for an IPv4 telnet address if you add one |
-| Railway | Press the Deploy on Railway button | billed by use on top of Railway's $5 Hobby plan; see railway.com/pricing |
+The first choice is who runs updates.
 
-All of them need a server with **at least 2 GB of memory**; 4 GB is comfortable. Choose Ubuntu 24.04
+- **It updates itself (a VPS).** The installer sets the game server and the renderer to update on
+  their own a few minutes after each new version, and players stay connected through it. You update
+  only the connection server, which holds every player's connection, when you choose to drop
+  everyone. You also get TLS telnet on port 4203 and the whole server for the game.
+- **You own the updates (Fly.io, Railway).** Nothing changes until you update it, so the game stays
+  on the version you tested. Updating the game server or the renderer keeps players connected;
+  updating the edge, which holds their connections, drops everyone. These are the quickest to put
+  up: one command or one button, and no server to look after.
+
+| Host | Updates | How you launch | Rough monthly cost |
+|---|---|---|---|
+| Oracle Cloud | itself | Paste the setup text, on an ARM server in the free tier | free, within Oracle's Always Free limits |
+| Hetzner | itself | Paste the setup text into Cloud config | from €6.49 before VAT |
+| Vultr | itself | Paste the setup text into the user data box | $10 for 2 GB, $20 for 4 GB |
+| DigitalOcean | itself | Paste the setup text into the user data box | $12 for 2 GB, $24 for 4 GB |
+| Akamai / Linode | itself | Fill in the SharpMUSH StackScript form | $12 for 2 GB, $24 for 4 GB |
+| Other VPS providers (Scaleway, OVHcloud, AWS Lightsail, ...) | itself | Paste the setup text into the user data box | about $12 for 2 GB, $24 for 4 GB |
+| Fly.io | you | Run one command from your computer | about $20 for three small machines and their storage, or $11 run as one; $2 more for an IPv4 telnet address if you add one |
+| Railway | you | Press the Deploy on Railway button | billed by use on top of Railway's $5 Hobby plan; see railway.com/pricing |
+
+Prices change; check the host's own page before you pick.
+
+Every host needs a server with **at least 2 GB of memory**; 4 GB is comfortable. Choose Ubuntu 24.04
 (or later) or Debian 12 when the host asks for an operating system. Intel, AMD and ARM servers all
 work.
 
-A VPS is the simpler choice: the game gets the whole server and updates itself, and an engine
-update does not disconnect your players. On Fly.io and Railway nothing updates until you do it, and
-an update disconnects nobody unless you also update the part that holds players' connections. See
-[Update your game](#update-your-game).
+What we suggest:
+
+- **To try SharpMUSH for nothing:** Oracle Cloud's free tier, if it has room when you ask.
+- **For a game that looks after itself, cheaply:** Hetzner or Vultr.
+- **For a form to fill in rather than text to paste:** Akamai / Linode.
+- **To be playing in minutes and choose each update yourself:** Railway or Fly.io.
+
+See [Update your game](#update-your-game) for how each one updates.
 
 <Aside type="caution">
 SharpMUSH has no release yet. Every route here runs the `dev` images, built from each change merged
