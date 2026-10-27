@@ -331,8 +331,9 @@ To build the same project yourself, or to see what the button sets up:
    world lives on the server's.
 
 4. In the `edge` service's **Settings**, under **Networking**: generate a domain on port `8000` for
-   the portal, and add a **TCP Proxy** on port `4201` for telnet. Under **Deploy**, set the
-   healthcheck path to `/health`. Give `server` and `renderer` no public networking. On all three,
+   the portal, and add a **TCP Proxy** on port `4201` for telnet. Leave the healthcheck path
+   under **Deploy** empty: the edge answers it from the server, which cannot start until the edge
+   is up. Give `server` and `renderer` no public networking. On all three,
    leave automatic image updates off.
 
 5. Deploy. The edge's deploy log shows your setup link and the telnet address Railway picked for
