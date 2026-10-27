@@ -16,17 +16,19 @@ until you have claimed the admin account.
 
 | Host | How you launch | Rough monthly cost |
 |---|---|---|
-| Any VPS provider (DigitalOcean, Hetzner, Vultr, Linode, OVH, ...) | Paste the setup text into the server's user data box | $12 for 2 GB, $24 for 4 GB on most; Hetzner is cheaper |
+| Any VPS provider (DigitalOcean, Hetzner, Vultr, Scaleway, OVHcloud, AWS Lightsail, ...) | Paste the setup text into the server's user data box | $12 for 2 GB, $24 for 4 GB on most; Hetzner's ARM servers cost a few euros |
+| Oracle Cloud | Paste the setup text, on an ARM server in the free tier | free, within Oracle's Always Free limits |
 | Akamai / Linode | Fill in the SharpMUSH StackScript form | $12 for 2 GB, $24 for 4 GB |
-| Fly.io | Run one command from your computer | about $11 for the machine, $1.50 for storage, and $2 for an IPv4 telnet address if you add one |
-| Railway | Create one service in Railway's dashboard | billed by use on top of Railway's $5 Hobby plan; see railway.com/pricing |
+| Fly.io | Run one command from your computer | about $20 for three small machines and their storage, or $11 run as one; $2 more for an IPv4 telnet address if you add one |
+| Railway | Create three services in Railway's dashboard | billed by use on top of Railway's $5 Hobby plan; see railway.com/pricing |
 
 All of them need a server with **at least 2 GB of memory**; 4 GB is comfortable. Choose Ubuntu 24.04
-(or later) or Debian 12 when the host asks for an operating system.
+(or later) or Debian 12 when the host asks for an operating system. Intel, AMD and ARM servers all
+work.
 
-A VPS is the simpler choice: the game gets the whole server, updates itself, and an engine update
-does not disconnect your players. Fly.io and Railway run everything in one container, so every
-update restarts the game and disconnects everyone; nothing updates there until you do it. See
+A VPS is the simpler choice: the game gets the whole server and updates itself, and an engine
+update does not disconnect your players. On Fly.io and Railway nothing updates until you do it, and
+an update disconnects nobody unless you also update the part that holds players' connections. See
 [Update your game](#update-your-game).
 
 <Aside type="caution">
@@ -86,12 +88,39 @@ The installer needs to know what address your portal will have. You have three c
          shred -u /root/sharpmush-answers.env /root/sharpmush-install.sh
    ```
 
-4. Create the server and wait three to five minutes while it installs.
+4. If the host puts a firewall in front of the server, open TCP ports 80, 443 and 4201 in it
+   (and UDP 443, for faster HTTPS). See [Where to paste it](#where-to-paste-it).
 
-5. Log in over SSH (`ssh root@<your-server-ip>`). The welcome message shows your game's addresses and
+5. Create the server and wait three to five minutes while it installs.
+
+6. Log in over SSH (`ssh root@<your-server-ip>`). The welcome message shows your game's addresses and
    your **setup link**. Carry on with [Finish setup](#finish-setup).
 
 </Steps>
+
+### Where to paste it
+
+| Host | Where the setup text goes | Firewall |
+|---|---|---|
+| DigitalOcean | **Advanced options** → **Add initialization scripts** | none unless you add a Cloud Firewall |
+| Hetzner | **Cloud config** | none unless you add a Firewall |
+| Vultr | **Additional features** → **Cloud-Init User-Data** | none unless you add a firewall group |
+| Scaleway | **Advanced settings** → **Cloud-init** | the default security group lets everything in |
+| OVHcloud Public Cloud | **Post-installation script** | none by default |
+| AWS Lightsail | **Add launch script**, as the shell form below | open 443 and 4201 on the instance's **Networking** tab; 22 and 80 are open already |
+| Oracle Cloud | see [Launch free on Oracle Cloud](#launch-free-on-oracle-cloud) | the network's security list |
+
+Lightsail runs its launch script as shell commands, so it takes the same answers in this form:
+
+```bash
+#!/bin/bash
+export SHARPMUSH_DOMAIN= CLOUDFLARE_API_TOKEN= CLOUDFLARE_TUNNEL_TOKEN=
+curl -fsSL https://raw.githubusercontent.com/SharpMUSH/SharpMUSH/main/deploy/oneclick/install.sh \
+  | bash 2>&1 | tee /var/log/sharpmush-install.log
+```
+
+A host with no user data box at all, such as OVHcloud's VPS range, takes the installer over SSH
+instead, as in the note below.
 
 <Aside>
 Already have a server? Log in over SSH and run the installer directly. It asks no questions and uses
@@ -100,6 +129,38 @@ Already have a server? Log in over SSH and run the installer directly. It asks n
 ```bash
 curl -fsSL https://raw.githubusercontent.com/SharpMUSH/SharpMUSH/main/deploy/oneclick/install.sh | sudo bash
 ```
+</Aside>
+
+## Launch free on Oracle Cloud
+
+Oracle's Always Free tier includes ARM servers with up to 4 cores and 24 GB of memory between them,
+which is plenty for a game.
+
+<Steps>
+
+1. In Oracle Cloud's console, open **Compute** → **Instances** → **Create instance**.
+
+2. Under **Image and shape**, choose **Canonical Ubuntu 24.04** and the **VM.Standard.A1.Flex**
+   shape with 2 OCPUs and 12 GB of memory (or up to 4 and 24). It is marked *Always Free-eligible*.
+
+3. Under **Advanced options** → **Management**, choose **Paste cloud-init script** and paste the
+   setup text from [Launch on any VPS](#launch-on-any-vps), with your answers filled in.
+
+4. Create the instance and note its public IP address.
+
+5. Open the game's ports. From the instance's page, follow its subnet to the **Default Security
+   List** and add ingress rules from `0.0.0.0/0` for TCP ports 80, 443 and 4201, and UDP 443.
+
+6. After five minutes, log in with `ssh ubuntu@<your-server-ip>` and run `sudo -i`. The welcome
+   message has your setup link. Carry on with [Finish setup](#finish-setup).
+
+</Steps>
+
+<Aside type="caution">
+Free ARM servers are often out of stock in busy regions; if creating one fails for capacity, try
+another availability domain or later. Oracle may also reclaim Always Free servers that sit idle,
+and a quiet game can look idle. Upgrading the account to Pay As You Go keeps the same free allowance
+and stops that; you pay only for what goes beyond it.
 </Aside>
 
 ## Launch on Akamai / Linode
