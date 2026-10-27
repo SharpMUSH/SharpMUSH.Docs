@@ -27,7 +27,8 @@ All of them need a server with **at least 2 GB of memory**; 4 GB is comfortable.
 A VPS is the simpler choice: the game gets the whole server, updates itself, and an engine update
 does not disconnect your players. On Fly.io and Railway nothing updates until you do it. There too,
 updating the game server or the renderer keeps everyone connected; only the edge, which holds the
-connections, disconnects everyone when it updates. See [Update your game](#update-your-game).
+connections, disconnects everyone when it updates. A Fly game launched as one app (`--single`)
+disconnects everyone on every update. See [Update your game](#update-your-game).
 
 <Aside type="caution">
 SharpMUSH has no release yet. Every route here runs the `dev` images, built from each change merged
