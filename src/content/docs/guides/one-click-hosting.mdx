@@ -20,7 +20,7 @@ until you have claimed the admin account.
 | Oracle Cloud | Paste the setup text, on an ARM server in the free tier | free, within Oracle's Always Free limits |
 | Akamai / Linode | Fill in the SharpMUSH StackScript form | $12 for 2 GB, $24 for 4 GB |
 | Fly.io | Run one command from your computer | about $20 for three small machines and their storage, or $11 run as one; $2 more for an IPv4 telnet address if you add one |
-| Railway | Create three services in Railway's dashboard | billed by use on top of Railway's $5 Hobby plan; see railway.com/pricing |
+| Railway | Press the Deploy on Railway button | billed by use on top of Railway's $5 Hobby plan; see railway.com/pricing |
 
 All of them need a server with **at least 2 GB of memory**; 4 GB is comfortable. Choose Ubuntu 24.04
 (or later) or Debian 12 when the host asks for an operating system. Intel, AMD and ARM servers all
@@ -272,6 +272,22 @@ with; moving it to the other means launching a new game and restoring an `@backu
 
 Railway runs the same ready-built images as Fly, as three services in one project: `edge`,
 `server` and `renderer`. You need a Railway account on the Hobby plan or above.
+
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/Fk8PBS?referralCode=fcp2a2&utm_medium=integration&utm_source=button&utm_campaign=generic)
+
+<Steps>
+
+1. Press **Deploy on Railway** and sign in. Railway shows the three services with their settings
+   filled in. Deploy them as they are.
+
+2. The edge's deploy log shows your setup link and the telnet address Railway picked for you, such
+   as `shortline.proxy.rlwy.net` port `31457`. Carry on with [Finish setup](#finish-setup).
+
+</Steps>
+
+### Set it up by hand
+
+To build the same project yourself, or to see what the button sets up:
 
 <Steps>
 
