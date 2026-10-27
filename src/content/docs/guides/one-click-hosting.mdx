@@ -18,16 +18,16 @@ until you have claimed the admin account.
 |---|---|---|
 | Any VPS provider (DigitalOcean, Hetzner, Vultr, Linode, OVH, ...) | Paste the setup text into the server's user data box | $12 for 2 GB, $24 for 4 GB on most; Hetzner is cheaper |
 | Akamai / Linode | Fill in the SharpMUSH StackScript form | $12 for 2 GB, $24 for 4 GB |
-| Fly.io | Run one command from your computer | about $11 for the machine, $1.50 for storage, and $2 for an IPv4 telnet address if you add one |
-| Railway | Create one service in Railway's dashboard | billed by use on top of Railway's $5 Hobby plan; see railway.com/pricing |
+| Fly.io | Run one command from your computer | about $20 for the three machines ($11 as one app), $1.50 for storage, and $2 for an IPv4 telnet address if you add one |
+| Railway | Create three services in Railway's dashboard | billed by use on top of Railway's $5 Hobby plan; see railway.com/pricing |
 
 All of them need a server with **at least 2 GB of memory**; 4 GB is comfortable. Choose Ubuntu 24.04
 (or later) or Debian 12 when the host asks for an operating system.
 
 A VPS is the simpler choice: the game gets the whole server, updates itself, and an engine update
-does not disconnect your players. Fly.io and Railway run everything in one container, so every
-update restarts the game and disconnects everyone; nothing updates there until you do it. See
-[Update your game](#update-your-game).
+does not disconnect your players. On Fly.io and Railway nothing updates until you do it. There too,
+updating the game server or the renderer keeps everyone connected; only the edge, which holds the
+connections, disconnects everyone when it updates. See [Update your game](#update-your-game).
 
 <Aside type="caution">
 SharpMUSH has no release yet. Every route here runs the `dev` images, built from each change merged
