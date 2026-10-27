@@ -70,9 +70,9 @@ ownership automatically. A socket volume owned by root must be given to `1654:16
 services start. Stop both services and change its owner; this disconnects players:
 
 ```bash
-docker compose -f docker-compose.prod.yml stop connectionserver renderer
+docker compose -f docker-compose.prod.yml stop socketserver renderer
 docker compose -f docker-compose.prod.yml run --rm --no-deps --user 0:0 --entrypoint chown renderer -R 1654:1654 /run/sharpmush
-docker compose -f docker-compose.prod.yml up -d connectionserver renderer
+docker compose -f docker-compose.prod.yml up -d socketserver renderer
 ```
 
 Use your own Compose file for all three commands. The connection server waits for the renderer to
@@ -255,12 +255,12 @@ to the web side, and telnet gets a plain DNS record pointing at the machine.
    - **Subdomain/domain:** `mush.example.com`
    - **Path:** `ws`
    - **Service type:** `HTTP`
-   - **URL:** `connectionserver:4202`
+   - **URL:** `socketserver:4202`
 
    Then set the portal terminal's **Server URI** to `wss://mush.example.com/ws`.
 
    Instead of a path, you can give the terminal its own address: `ws.mush.example.com` →
-   `HTTP` → `connectionserver:4202`, with the Server URI `wss://ws.mush.example.com/ws`. The path
+   `HTTP` → `socketserver:4202`, with the Server URI `wss://ws.mush.example.com/ws`. The path
    route keeps everything on one address.
 
 </Steps>
@@ -435,7 +435,7 @@ restore command.
 
 ```bash
 RESTORE_VOLUME="sharpmush-restore-$(date -u +%Y%m%dT%H%M%SZ)-$$"
-docker compose stop sharpmush-server connectionserver &&
+docker compose stop sharpmush-server socketserver &&
 
 # 1. Restore into a scratch volume. The -v keeps the files after the container exits;
 #    without it restic writes into the container itself and they are lost.
@@ -481,7 +481,7 @@ docker compose run --rm --no-deps -v "$RESTORE_VOLUME:/restore" --entrypoint sh 
   fi
   rm -rf "$target/lightning.plugins"
   cp -a "$source/lightning.plugins" "$target/lightning.plugins"' && \
-  docker compose start connectionserver sharpmush-server
+  docker compose start socketserver sharpmush-server
 ```
 
 If the snapshot has no plugin folder, stop and look at the recovery point: the game may never have
@@ -529,7 +529,7 @@ Do this in an announced window: it recreates the connection server, which discon
 
 **The Cloudflare stack updates itself.** Every change merged into SharpMUSH runs the full test suite
 and then publishes new images to Docker Hub: `sharpmush/sharpmush-server:dev` for the game server,
-`sharpmush/sharpmush-connectionserver:dev` for the renderer, and
+`sharpmush/sharpmush-renderer:dev` for the renderer, and
 `sharpmush/sharpmush-socketserver:dev` for the connection server. The `watchtower` container checks
 every 5 minutes and replaces the **game server and renderer** when their images change. Neither
 replacement disconnects anyone: players see a restart notice and carry on.
@@ -538,8 +538,8 @@ The **connection server is not updated automatically**, because it holds every p
 and replacing it disconnects everyone. Update it on purpose, when you are willing to drop players:
 
 ```bash
-docker compose -f docker-compose.cloudflare.yml pull connectionserver
-docker compose -f docker-compose.cloudflare.yml up -d connectionserver
+docker compose -f docker-compose.cloudflare.yml pull socketserver
+docker compose -f docker-compose.cloudflare.yml up -d socketserver
 ```
 
 Nothing is built on the machine, and it needs no inbound access. The web portal is built into the

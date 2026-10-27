@@ -15,18 +15,19 @@ The [Deployment Reference](/guides/deployment#updating) has the update commands.
 |---|---|---|
 | Game server (`sharpmush-server`) | Kept by the connection server | Picked up again when the game server returns |
 | Renderer (`renderer`) | Kept | Kept; output waits until the renderer is back |
-| Connection server (`connectionserver`) | **Closed** | A logged-in browser can reconnect and carry on within its recovery window; telnet players reconnect and log in again |
+| Connection server (`socketserver`) | **Closed** | A logged-in browser can reconnect and carry on within its recovery window; telnet players reconnect and log in again |
 | The machine, its disk, or NATS's stored data | Not guaranteed | Limited to what was stored |
 
 The **connection server** holds every telnet and browser connection. The **renderer** formats output
-for each kind of client and talks to the connection server over a private socket on the same machine.
+for each kind of client and talks to the connection server over a private socket on the same machine,
+or, on Fly.io and Railway, where each runs apart, over a private network address (`Rendering__Address`).
 The **game server** talks to both through NATS, never through a player's connection. So keep NATS and
 the connection server running while the game server or renderer is updated.
 
 <Aside type="note" title="About the names">
-The `connectionserver` service runs the connection server (`SharpMUSH.SocketServer`, image
+The `socketserver` service runs the connection server (`SharpMUSH.SocketServer`, image
 `sharpmush/sharpmush-socketserver`). The `renderer` service runs the rendering worker
-(`SharpMUSH.RenderingWorker`, image `sharpmush/sharpmush-connectionserver`). `ConnectionServer__*`
+(`SharpMUSH.RenderingWorker`, image `sharpmush/sharpmush-renderer`). `ConnectionServer__*`
 settings configure the connection server.
 </Aside>
 
@@ -53,8 +54,8 @@ The Caddy file runs no Watchtower; update it by hand, as in the
 announced window:
 
 ```bash
-docker compose -f docker-compose.cloudflare.yml pull connectionserver
-docker compose -f docker-compose.cloudflare.yml up -d connectionserver
+docker compose -f docker-compose.cloudflare.yml pull socketserver
+docker compose -f docker-compose.cloudflare.yml up -d socketserver
 ```
 
 If you set that label to `true`, a routine image update will disconnect every player without warning:
