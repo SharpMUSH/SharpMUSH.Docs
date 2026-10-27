@@ -138,7 +138,17 @@ curl -fsSL https://raw.githubusercontent.com/SharpMUSH/SharpMUSH/main/deploy/one
 ## Launch on Fly.io
 
 You need a Fly.io account and [flyctl](https://fly.io/docs/flyctl/install/) on your own computer.
-Fly runs the ready-built `sharpmush/sharpmush-fly` image, so there is nothing to download or build.
+Fly runs the ready-built `sharpmush/sharpmush-allinone` image, so there is nothing to download or build.
+
+The game runs as three Fly apps on a private network of their own:
+
+| App | Runs | Public |
+|---|---|---|
+| `my-game` | the edge: the web front, the message bus and every player's connection | portal, telnet |
+| `my-game-server` | the game server, with the world on its volume | no |
+| `my-game-renderer` | the renderer, which formats output for each client | no |
+
+Split this way, updating the game server or the renderer drops nobody.
 
 <Steps>
 
@@ -163,9 +173,11 @@ Fly runs the ready-built `sharpmush/sharpmush-fly` image, so there is nothing to
    & ([scriptblock]::Create((irm https://raw.githubusercontent.com/SharpMUSH/SharpMUSH/main/deploy/fly/launch.ps1))) my-game iad
    ```
 
-   This saves the app's settings as `my-game.fly.toml`, creates the app, a 10 GB volume for the
-   world and two free addresses, IPv6 and a shared IPv4, then starts one machine with 2 GB of
-   memory. Keep the folder: you update the game from it.
+   This saves each app's settings beside you as `my-game.edge.fly.toml`, `my-game.server.fly.toml`
+   and `my-game.renderer.fly.toml`. It creates the three apps, a 1 GB volume for the edge, a 10 GB
+   volume for the world and two free addresses for the edge, IPv6 and a shared IPv4. Then it
+   starts the edge, the server and the renderer, in that order. Keep the folder: you update the
+   game from it.
 
 3. Find your setup link in the log, and carry on with [Finish setup](#finish-setup).
 
@@ -187,37 +199,55 @@ PowerShell). It adds an IPv4 address of the game's own, which Fly charges $2 a m
 </Aside>
 
 To use your own domain on Fly, run `fly certs add mush.example.com --app my-game`, add the DNS records
-it asks for, set `SHARPMUSH_DOMAIN` in `my-game.fly.toml`, and run the launch command again from the
-same folder.
+it asks for, set `SHARPMUSH_DOMAIN` in `my-game.edge.fly.toml`, and deploy the edge again:
+`fly deploy --app my-game --config my-game.edge.fly.toml`. That drops everyone connected.
+
+To run the whole game as one app, add `--single` (`-Single` in PowerShell) the first time you
+launch. It costs about half as much, roughly $11 a month in place of $20, but every update drops
+everyone connected. Its settings are in `my-game.fly.toml`. A game keeps the layout it was launched
+with; moving it to the other means launching a new game and restoring an `@backup` copy there.
 
 ## Launch on Railway
 
-Railway runs the same ready-built image as Fly. You need a Railway account on the Hobby plan or
-above.
+Railway runs the same ready-built image as Fly, as three services in one project: `edge`,
+`server` and `renderer`. You need a Railway account on the Hobby plan or above.
 
 <Steps>
 
-1. Create a project, then **Create** → **Docker Image**, and enter `sharpmush/sharpmush-fly:dev`.
+1. Create a project. Add three services, each with **Create** → **Docker Image** and
+   `sharpmush/sharpmush-allinone:dev`, and name them `edge`, `server` and `renderer`. The names
+   matter: the variables below use them to find each other.
 
-2. In the service's **Variables**, add:
+2. Give each service its **Variables**:
 
-   | Variable | Value |
-   |---|---|
-   | `PORT` | `8000` |
-   | `SHARPMUSH_TRUSTED_PROXIES` | `0.0.0.0/0 ::/0` |
+   | Service | Variable | Value |
+   |---|---|---|
+   | `edge` | `SHARPMUSH_ROLE` | `edge` |
+   | | `PORT` | `8000` |
+   | | `SHARPMUSH_TRUSTED_PROXIES` | `0.0.0.0/0 ::/0` |
+   | | `SHARPMUSH_SERVER_ADDRESS` | `${{server.RAILWAY_PRIVATE_DOMAIN}}:8080` |
+   | | `Rendering__Address` | `http://${{renderer.RAILWAY_PRIVATE_DOMAIN}}:5100` |
+   | `server` | `SHARPMUSH_ROLE` | `server` |
+   | | `SHARPMUSH_NATS_URL` | `nats://${{edge.RAILWAY_PRIVATE_DOMAIN}}:4222` |
+   | `renderer` | `SHARPMUSH_ROLE` | `renderer` |
+   | | `Rendering__Address` | `http://${{RAILWAY_PRIVATE_DOMAIN}}:5100` |
 
-   The second lets the game believe Railway's front door about who is visiting. Nothing but that
-   front door can reach the service's web port, so it trusts only Railway.
+   Type the `${{...}}` values as they are: Railway fills in each service's private address.
+   `SHARPMUSH_TRUSTED_PROXIES` lets the game believe Railway's front door about who is visiting.
+   Nothing but that front door can reach the edge's web port, so it trusts only Railway.
 
-3. Add a volume: right-click an empty spot on the project canvas, or press Ctrl+K (⌘K on a Mac)
-   and search for "volume". Attach it to the service and mount it at `/data`. The world lives there.
+3. Add two volumes: right-click an empty spot on the project canvas, or press Ctrl+K (⌘K on a Mac)
+   and search for "volume". Attach one to `edge` and one to `server`, both mounted at `/data`. The
+   world lives on the server's.
 
-4. In the service's **Settings**, under **Networking**: generate a domain on port `8000` for the
-   portal, and add a **TCP Proxy** on port `4201` for telnet. Under **Deploy**, set the healthcheck
-   path to `/health`. Leave automatic image updates off.
+4. In the `edge` service's **Settings**, under **Networking**: generate a domain on port `8000` for
+   the portal, and add a **TCP Proxy** on port `4201` for telnet. Under **Deploy**, set the
+   healthcheck path to `/health`. Give `server` and `renderer` no public networking. On all three,
+   leave automatic image updates off.
 
-5. Deploy. The deploy log shows your setup link and the telnet address Railway picked for you, such
-   as `shortline.proxy.rlwy.net` port `31457`. Carry on with [Finish setup](#finish-setup).
+5. Deploy. The edge's deploy log shows your setup link and the telnet address Railway picked for
+   you, such as `shortline.proxy.rlwy.net` port `31457`. Carry on with
+   [Finish setup](#finish-setup).
 
 </Steps>
 
@@ -229,7 +259,7 @@ a short page saying the server is waiting for its owner.
 
 <Steps>
 
-1. Open the setup link from the welcome message (or the Fly or Railway log). It looks like
+1. Open the setup link from the welcome message (or the edge's log on Fly or Railway). It looks like
    `https://mush.example.com/?setup_code=4f1c...`, and takes you to the setup page.
 
 2. Choose the administrator's name and password. This account is linked to God (`#1`).
@@ -300,8 +330,8 @@ replacing it disconnects everyone. Update it when you are ready to drop players,
 
 ```bash
 cd /opt/sharpmush
-docker compose pull connectionserver
-docker compose up -d connectionserver
+docker compose pull socketserver
+docker compose up -d socketserver
 ```
 
 Restarting the server, or the `sharpmush` service, also pulls the newest version of everything,
@@ -309,20 +339,31 @@ connection server included.
 
 ### On Fly.io
 
-Nothing updates on its own. Every update restarts the whole game and disconnects everyone, so pick a
-quiet time and announce it. From the folder you launched from:
+Nothing updates on its own. From the folder you launched from, run the launch command again. It
+updates the game server and the renderer, and players stay connected through both restarts.
+
+The edge is left as it is, because updating it disconnects everyone. When you are ready to drop
+players, after telling them, add `--update-edge` (`-UpdateEdge` in PowerShell) to the launch
+command, or update the edge alone:
+
+```bash
+fly deploy --app my-game --config my-game.edge.fly.toml
+```
+
+A game launched with `--single` restarts as a whole on every update and disconnects everyone, so
+pick a quiet time and announce it:
 
 ```bash
 fly deploy --app my-game --config my-game.fly.toml
 ```
 
-Running the launch command again does the same.
-
 ### On Railway
 
-Nothing updates on its own while automatic image updates stay off; turning them on would restart
-the game and disconnect everyone whenever a new version appears. When the service's settings offer
-an update for the image, pick a quiet time, announce it, and apply it.
+Nothing updates on its own while automatic image updates stay off. When a service's settings offer
+an update for the image, apply it:
+
+- `server` and `renderer`: whenever you like. Players stay connected through the restart.
+- `edge`: every update disconnects everyone, so pick a quiet time and announce it.
 
 ## Turn on backups
 
