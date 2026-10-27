@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { convertInternalLinks, helpLookups, topicAnchors, useLinkData } from './convert-docs.js';
+import { convertInternalLinks, escapeArgumentTags, helpLookups, topicAnchors, useLinkData } from './convert-docs.js';
 
 test('links a help topic in plain text', () => {
   assert.equal(convertInternalLinks('See [@lock].'), 'See [@lock](/reference/sharpmush-help/sharpcmd/#lock).');
@@ -101,4 +101,34 @@ test('a help link keeps a topic named "help ...", and leaves escaped brackets an
   } finally {
     useLinkData({ mappings: {}, anchors: {}, lookups: {} });
   }
+});
+
+test('shows argument names written as tags as text', () => {
+  assert.equal(
+    escapeArgumentTags('A bar filled to *<value>*\'s share of *<maximum>*.<br>\nA *<title>* above *<body>*.'),
+    'A bar filled to *&lt;value&gt;*\'s share of *&lt;maximum&gt;*.<br>\nA *&lt;title&gt;* above *&lt;body&gt;*.'
+  );
+});
+
+test('keeps comments, styling and code as written', () => {
+  const text = '<!-- help-article\n{}\n-->\n# box()\n\n`box(<body>)` and <b>bold</b>\n\n    > think box(<title>)\n\n```\n<body>\n```\n';
+  assert.equal(escapeArgumentTags(text), text);
+});
+
+test('shows a line that opens with an argument name as text', () => {
+  assert.equal(escapeArgumentTags('Intro.\n\n<title> opens the line.\n'), 'Intro.\n\n&lt;title&gt; opens the line.\n');
+});
+
+test('leaves a comment inside an HTML block alone', () => {
+  const text = '<span>\n<!-- <title> -->\n<width>\n</span>\n';
+  assert.equal(escapeArgumentTags(text), '<span>\n<!-- <title> -->\n&lt;width&gt;\n</span>\n');
+});
+
+test('leaves a quoted attribute value alone', () => {
+  const text = '<span title="<width>">text</span>\n';
+  assert.equal(escapeArgumentTags(text), text);
+});
+
+test('keeps blockquote prefixes on an HTML block', () => {
+  assert.equal(escapeArgumentTags('> <span>\n> <width>\n> </span>\n'), '> <span>\n> &lt;width&gt;\n> </span>\n');
 });
