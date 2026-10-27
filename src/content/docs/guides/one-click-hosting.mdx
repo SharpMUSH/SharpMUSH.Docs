@@ -199,7 +199,7 @@ and stops that; you pay only for what goes beyond it.
 ## Launch on Fly.io
 
 You need a Fly.io account and [flyctl](https://fly.io/docs/flyctl/install/) on your own computer.
-Fly runs the ready-built `sharpmush/sharpmush-allinone` image, so there is nothing to download or build.
+Fly runs SharpMUSH's ready-built images, so there is nothing to download or build.
 
 The game runs as three Fly apps on a private network of their own:
 
@@ -270,32 +270,45 @@ with; moving it to the other means launching a new game and restoring an `@backu
 
 ## Launch on Railway
 
-Railway runs the same ready-built image as Fly, as three services in one project: `edge`,
+Railway runs the same ready-built images as Fly, as three services in one project: `edge`,
 `server` and `renderer`. You need a Railway account on the Hobby plan or above.
 
 <Steps>
 
-1. Create a project. Add three services, each with **Create** → **Docker Image** and
-   `sharpmush/sharpmush-allinone:dev`, and name them `edge`, `server` and `renderer`. The names
-   matter: the variables below use them to find each other.
+1. Create a project. Add three services with **Create** → **Docker Image**, and name them:
+
+   | Service | Image |
+   |---|---|
+   | `edge` | `sharpmush/sharpmush-edge:dev` |
+   | `server` | `sharpmush/sharpmush-server:dev` |
+   | `renderer` | `sharpmush/sharpmush-renderer:dev` |
+
+   The names matter: the variables below use them to find each other.
 
 2. Give each service its **Variables**:
 
    | Service | Variable | Value |
    |---|---|---|
-   | `edge` | `SHARPMUSH_ROLE` | `edge` |
-   | | `PORT` | `8000` |
+   | `edge` | `PORT` | `8000` |
    | | `SHARPMUSH_TRUSTED_PROXIES` | `0.0.0.0/0 ::/0` |
    | | `SHARPMUSH_SERVER_ADDRESS` | `${{server.RAILWAY_PRIVATE_DOMAIN}}:8080` |
    | | `Rendering__Address` | `http://${{renderer.RAILWAY_PRIVATE_DOMAIN}}:5100` |
-   | `server` | `SHARPMUSH_ROLE` | `server` |
-   | | `SHARPMUSH_NATS_URL` | `nats://${{edge.RAILWAY_PRIVATE_DOMAIN}}:4222` |
-   | `renderer` | `SHARPMUSH_ROLE` | `renderer` |
-   | | `Rendering__Address` | `http://${{RAILWAY_PRIVATE_DOMAIN}}:5100` |
+   | `server` | `NATS_URL` | `nats://${{edge.RAILWAY_PRIVATE_DOMAIN}}:4222` |
+   | | `ForwardedHeaders__KnownNetworks__0` | `0.0.0.0/0` |
+   | | `ForwardedHeaders__KnownNetworks__1` | `::/0` |
+   | | `SHARPMUSH_LIGHTNING_PATH` | `/data/lightning` |
+   | | `SHARPMUSH_LIGHTNING_SYNC` | `periodic` |
+   | | `SHARPMUSH_BACKUP_PATH` | `/data/backup` |
+   | | `SHARPMUSH_BACKUP_INTERVAL` | `6h` |
+   | | `SHARPMUSH_BACKUP_KEEP` | `2` |
+   | | `Wiki__AssetRoot` | `/data/wiki-assets` |
+   | `renderer` | `Rendering__Address` | `http://${{RAILWAY_PRIVATE_DOMAIN}}:5100` |
 
    Type the `${{...}}` values as they are: Railway fills in each service's private address.
    `SHARPMUSH_TRUSTED_PROXIES` lets the game believe Railway's front door about who is visiting.
-   Nothing but that front door can reach the edge's web port, so it trusts only Railway.
+   Nothing but that front door can reach the edge's web port, so it trusts only Railway. The
+   server's `KnownNetworks` do the same for the edge, the only thing that can reach the server.
+   The server's other variables keep the world, its backups and wiki uploads on its volume.
 
 3. Add two volumes: right-click an empty spot on the project canvas, or press Ctrl+K (⌘K on a Mac)
    and search for "volume". Attach one to `edge` and one to `server`, both mounted at `/data`. The
