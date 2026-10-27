@@ -1,0 +1,107 @@
+---
+title: The World Map
+description: The portal's World map draws each map of the game from its rooms and exits. A map is a thing whose MAP`KIND says how it is drawn, and a room is on the map that is its zone.
+---
+
+The **World map** is a portal page that draws the game's maps. Each map is drawn from its rooms and
+the exits between them, one level at a time, and the room you are in is marked. Choosing a room
+lists its exits; choosing an exit's room moves to it, and an exit that leads to another map opens
+that map.
+
+![The Harbour map in the portal: Quay in the middle, marked as where you are, with Lighthouse to the north, Fish market to the east, Customs house to the west and a two-cell Boatyard to the south. Shed has no coordinates and is drawn below the grid. Below the map, Quay's exits are listed.](../../../assets/guide/world-map-harbour.webp)
+
+This page covers:
+
+- [Setting it up](#setting-it-up)
+- [Making a map](#making-a-map)
+- [How a map is drawn](#how-a-map-is-drawn)
+- [Several maps](#several-maps)
+- [Who sees what](#who-sees-what)
+
+## Setting it up
+
+The World map is the **World map** package. Install it from the portal's Packages page, or tick it
+under Building in the last step of first-run setup. Once it is installed, **World map** appears in
+the portal's menu. On a game with +help, ticking it in setup also brings **World map: +help
+topics**, which adds `+help map`.
+
+## Making a map
+
+A map is a thing whose `` MAP`KIND `` attribute says how it is drawn. A room is on the map that is
+its zone, so `@chzone` puts a room on a map.
+
+A builder, standing in a room called Boathouse:
+
+```
+> @create Harbour
+Created: Object #32.
+> &MAP`KIND Harbour=coordinates
+Harbour/MAP`KIND - Set.
+> @chzone here=Harbour
+Unlocked zone Harbour(#32Tn) - automatically zone-locking to itself
+Zone changed.
+> &MAP`COORDS`X here=3
+Boathouse/MAP`COORDS`X - Set.
+> &MAP`COORDS`Y here=-1
+Boathouse/MAP`COORDS`Y - Set.
+```
+
+Do the same in each room of the harbour. Harbour now shows in the World map's list.
+
+## How a map is drawn
+
+`` MAP`KIND `` is one of three:
+
+| Kind | Shown as | A room's place |
+|---|---|---|
+| `coordinates` | Grid | the cell its `` MAP`COORDS`X ``, `` MAP`COORDS`Y `` and `` MAP`COORDS`Z `` name |
+| `compass` | Compass | worked out from its exits: a room north of another is drawn above it |
+| `graph` | Picture | the point its `` MAP`POS`X `` and `` MAP`POS`Y `` name, with no grid |
+
+North is up. Z is the level, and the map shows one level at a time: the level you are on, with a
+button for each of the others. On a compass map, `up` and `down` exits change the level. A room
+with an exit up or down is marked with a small arrow.
+
+![The Harbour map's level 1: the Lamp room, above the Lighthouse, with an arrow showing its way down.](../../../assets/guide/world-map-harbour-level1.webp)
+
+A room covers one cell unless its `` MAP`SIZE`W `` and `` MAP`SIZE`H `` say more. The cell its
+coordinates name is its south-west corner, so `&MAP`SIZE`W Boatyard=2` makes the Boatyard two cells
+wide, reaching east.
+
+A compass map keeps any coordinates a room does have and places the rest by their exits, so a few
+coordinates can pin down where a large area sits. Exits named or aliased `n`, `north`, `ne`,
+`northeast` and so on, `u`, `up`, `d` and `down` count; other exits are drawn as lines between
+rooms but do not place them.
+
+![The Old Town compass map: Market square in the middle, Temple steps to the north, Well to the south, Tanners' row to the west, and the Town gate to the east with a dot showing it leads to another map.](../../../assets/guide/world-map-oldtown.webp)
+
+A room the map cannot place, such as a room on a grid map with no coordinates, is drawn with a
+dashed edge in a row below the others, on the level of a room its exits join it to.
+
+## Several maps
+
+A game may have as many maps as it likes, each of its own kind. An exit from a room on one map to
+a room on another is drawn as a dot on the room it leaves; in the room's exits it reads
+**To the map** and the map's name, and choosing it opens that map.
+
+`` MAP`PARENT `` puts one map inside another in the list:
+
+```
+> &MAP`PARENT Old Town=#26
+Old Town/MAP`PARENT - Set.
+```
+
+Old Town is now listed under Harbour (`#26`).
+
+## Who sees what
+
+A map is listed to everyone once its `` MAP`KIND `` is set. Each player sees only the rooms they
+could see in the game: a `DARK` room is left out unless they can examine it, and so are its exits.
+The page shows the map as the character you are playing, and changes when you switch characters.
+
+Apps you allow to **Run commands** can read the same maps. See
+[Apps That Act for You](/guides/connected-apps/).
+
+On a phone the list of maps sits above the map, and the map scrolls inside its frame.
+
+![The Harbour map on a phone: the map list above, then the level buttons and the grid.](../../../assets/guide/world-map-harbour-phone.webp)

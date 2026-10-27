@@ -56,6 +56,7 @@ export default defineConfig({
                       { label: 'Listing Your Game', slug: 'guides/mssp' },
                       { label: 'Letting Your Players Build', slug: 'guides/player-building' },
                       { label: 'Mapping Your Rooms', slug: 'guides/builder-graph' },
+                      { label: 'The World Map', slug: 'guides/world-map' },
                   ],
               },
               {
