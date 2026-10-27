@@ -8,14 +8,16 @@ the exits between them, one level at a time, and the room you are in is marked. 
 lists its exits; choosing an exit's room moves to it, and an exit that leads to another map opens
 that map.
 
-![The Harbour map in the portal: Quay in the middle, marked as where you are, with Lighthouse to the north, Fish market to the east, Customs house to the west and a two-cell Boatyard to the south. Shed has no coordinates and is drawn below the grid. Below the map, Quay's exits are listed.](../../../assets/guide/world-map-harbour.webp)
+![The Harbour map in the portal: Quay in the middle, marked as where you are, with Lighthouse to the north, Fish market to the east, Customs house to the west and a two-cell Boatyard to the south. Old Town, a region inside the Harbour, is a tall grey box on the left. Shed has no coordinates and is drawn below the grid. Above the map are the level arrows and the levels Quayside and Lamp deck; below it, Quay's exits.](../../../assets/guide/world-map-harbour.webp)
 
 This page covers:
 
 - [Setting it up](#setting-it-up)
 - [Making a map](#making-a-map)
 - [How a map is drawn](#how-a-map-is-drawn)
+- [Levels](#levels)
 - [Several maps](#several-maps)
+- [Regions](#regions)
 - [Who sees what](#who-sees-what)
 
 ## Setting it up
@@ -58,11 +60,7 @@ Do the same in each room of the harbour. Harbour now shows in the World map's li
 | `compass` | Compass | worked out from its exits: a room north of another is drawn above it |
 | `graph` | Picture | the point its `` MAP`POS`X `` and `` MAP`POS`Y `` name, with no grid |
 
-North is up. Z is the level, and the map shows one level at a time: the level you are on, with a
-button for each of the others. On a compass map, `up` and `down` exits change the level. A room
-with an exit up or down is marked with a small arrow.
-
-![The Harbour map's level 1: the Lamp room, above the Lighthouse, with an arrow showing its way down.](../../../assets/guide/world-map-harbour-level1.webp)
+North is up. On a compass map, `up` and `down` exits change the level (see [Levels](#levels)).
 
 A room covers one cell unless its `` MAP`SIZE`W `` and `` MAP`SIZE`H `` say more. The cell its
 coordinates name is its south-west corner, so `&MAP`SIZE`W Boatyard=2` makes the Boatyard two cells
@@ -73,10 +71,29 @@ coordinates can pin down where a large area sits. Exits named or aliased `n`, `n
 `northeast` and so on, `u`, `up`, `d` and `down` count; other exits are drawn as lines between
 rooms but do not place them.
 
-![The Old Town compass map: Market square in the middle, Temple steps to the north, Well to the south, Tanners' row to the west, and the Town gate to the east with a dot showing it leads to another map.](../../../assets/guide/world-map-oldtown.webp)
+![The Old Town compass map: Harbour / Old Town above it, then Market square in the middle, Temple steps to the north, Well to the south, Tanners' row to the west, and the Town gate to the east with a dot showing it leads to another map.](../../../assets/guide/world-map-oldtown.webp)
 
 A room the map cannot place, such as a room on a grid map with no coordinates, is drawn with a
 dashed edge in a row below the others, on the level of a room its exits join it to.
+
+## Levels
+
+Z is the level. A `coordinates` or `compass` map shows one level at a time, with a button for each
+level and arrows that step up and down. A room with an exit up or down is marked with a small
+arrow, and choosing that exit's room in the room's exits goes to its level.
+
+`` MAP`LEVEL`<level> `` names a level; a level without a name is shown as its number.
+`` MAP`LEVEL `` is the level a visitor sees first. Someone standing on the map starts on their own
+level.
+
+```
+> &MAP`LEVEL`-1 Harbour=Sewers
+Harbour/MAP`LEVEL`-1 - Set.
+> &MAP`LEVEL Harbour=-1
+Harbour/MAP`LEVEL - Set.
+```
+
+![The Harbour map on its Lamp deck level: the Lamp room, above the Lighthouse, with an arrow showing its way down. The up arrow is greyed out, as there is no level above.](../../../assets/guide/world-map-harbour-level1.webp)
 
 ## Several maps
 
@@ -84,14 +101,30 @@ A game may have as many maps as it likes, each of its own kind. An exit from a r
 a room on another is drawn as a dot on the room it leaves; in the room's exits it reads
 **To the map** and the map's name, and choosing it opens that map.
 
-A map zoned to another map is a region inside it, as a room zoned to a map is on it:
+## Regions
+
+A map zoned to another map is a region inside it, as a room zoned to a map is on it. Regions nest
+as deep as you like: Sol System, Earth, United States, New York, Brooklyn.
+
+A region is listed under its map, and the maps it is inside are named above it, each a link. On
+its map, a region is a grey box that opens it. The box goes where the region's own
+`` MAP`COORDS `` (`` MAP`POS `` on a graph map) and `` MAP`SIZE `` say, as a room's would; without
+them it is drawn in the row below. While you stand anywhere inside a region, its box is marked.
+
+Holding the Old Town map, with the Harbour beside it:
 
 ```
-> @chzone Old Town=#26
+> @chzone Old Town=Harbour
 Zone changed.
+> &MAP`COORDS`X Old Town=0
+Old Town/MAP`COORDS`X - Set.
+> &MAP`COORDS`Y Old Town=-2
+Old Town/MAP`COORDS`Y - Set.
+> &MAP`SIZE`H Old Town=3
+Old Town/MAP`SIZE`H - Set.
 ```
 
-Old Town is now listed under Harbour (`#26`).
+Old Town is now listed under Harbour, and drawn on the Harbour's left, three cells tall.
 
 ## Who sees what
 
@@ -104,4 +137,4 @@ Apps you allow to **Run commands** can read the same maps. See
 
 On a phone the list of maps sits above the map, and the map scrolls inside its frame.
 
-![The Harbour map on a phone: the map list above, then the level buttons and the grid.](../../../assets/guide/world-map-harbour-phone.webp)
+![The Harbour map on a phone: the map list above, then the level arrows and buttons, and the grid.](../../../assets/guide/world-map-harbour-phone.webp)
