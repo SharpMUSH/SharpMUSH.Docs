@@ -100,8 +100,11 @@ guesses wrong, choose the format on the import page. A start-up import reads
 | RhostMUSH | the flatfile `@dump/flat` writes | `.dump.mail` from `wmail/unload`, with `.dump.folder` in the mail folders slot | none, see below |
 | TinyMUX | the flatfile (versions 1 to 5) | `mail.db` | `comsys.db` in the chat slot |
 
-The `mush.cnf` slot reads only PennMUSH's configuration file. Set the options from a RhostMUSH or
-TinyMUX configuration file yourself.
+The configuration slot takes PennMUSH's `mush.cnf`, TinyMUX's `netmux.conf` or RhostMUSH's
+`netrhost.conf`. A setting the two TinyMUSH-family servers name differently, such as
+`player_starting_room`, sets the option PennMUSH calls `player_start`. The import does not follow
+include lines, and its report lists each one it passed over, so paste the included files' lines into
+the main file. Every file may be uploaded gzipped, as PennMUSH writes its dumps.
 
 **What comes across.** Objects keep their numbers, names, owners, parents, zones, locks, attributes
 and creation times. Flags and powers become SharpMUSH's where one matches: a wizard gets the `wizard`
@@ -114,7 +117,9 @@ their members, and each player's comsys aliases become `CHANALIAS` attributes.
 
 **What the import changes in softcode.** Colour written as `%c` or `%x` codes, such as
 `%crRed%cn`, becomes `ansi()`, here `ansi(r,Red)`, because in SharpMUSH `%c` is the last command and
-`%x` an attribute. A RhostMUSH import also rewrites its character codes (`%<065>` becomes `A`) and
+`%x` an attribute. A code the import can't turn into `ansi()`, such as one built by a function at run
+time, is removed, and the report warns about each attribute it was removed from. A RhostMUSH import
+also rewrites its character codes (`%<065>` becomes `A`) and
 literal `timefmt()` formats. The import also turns on the compatibility options the old server's
 softcode expects, and lists them in its report.
 

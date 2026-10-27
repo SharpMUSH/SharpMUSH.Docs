@@ -1,29 +1,48 @@
 ---
 title: "Compatibility"
-description: "Lays out the Compatibility with PennMUSH"
+description: "How SharpMUSH differs from PennMUSH, and what it takes from TinyMUX and RhostMUSH"
 ---
 
 Planning to move a live game? Compatibility findings are inputs to a rehearsal, not proof that an
-import is ready for players. Use the [PennMUSH migration runbook](/guides/pennmush-migration) to test
-your own identities, data, softcode, connection paths, portal, and integrations.
+import is ready for players. Use the [migration runbook](/guides/pennmush-migration) to test your own
+identities, data, softcode, connection paths, portal, and integrations.
 
 SharpMUSH targets PennMUSH 1.8.8 softcode. Where it differs, the game's own help says how, one topic
-per area. Each page below is the same text as that `help` topic in the game.
+per area. Each page below is the same text as that `help` topic in the game, and SharpMUSH's test
+suite runs their examples against the server.
 
 | Page | What it covers |
 |---|---|
 | [PennMUSH Compatibility](/reference/sharpmush-help/pennmush-compatibility/) | The overview: what kinds of difference there are, and where each is listed |
 | [Parser](/reference/sharpmush-help/compatibility-parser/) | How a line is parsed, dispatched and evaluated: unbalanced brackets are an error, `##` in `iter()` is data, a function name can't be produced by evaluation |
-| [Arguments](/reference/sharpmush-help/compatibility-arguments/) | Functions that take extra, optional arguments |
-| [Names](/reference/sharpmush-help/compatibility-names/) | Functions and commands that PennMUSH doesn't have, or that take their arguments in another order |
+| [Arguments](/reference/sharpmush-help/compatibility-arguments/) | Functions that take extra, optional arguments, and the TinyMUX and RhostMUSH forms PennMUSH refuses |
+| [Names](/reference/sharpmush-help/compatibility-names/) | Functions and commands that PennMUSH doesn't have, including those from TinyMUX and RhostMUSH, and two that take their arguments in another order |
 | [Commands](/reference/sharpmush-help/compatibility-commands/) | The command table, the configuration and the objects a new game starts with |
-| [Config](/reference/sharpmush-help/compatibility-config/) | Configuration options that change how existing code evaluates, such as `tiny_booleans` and `tiny_math` |
-| [Output](/reference/sharpmush-help/compatibility-output/) | `render()` and markup written for something outside the game |
+| [Config](/reference/sharpmush-help/compatibility-config/) | Configuration options that change how existing code evaluates, such as `tiny_booleans`, `null_eq_zero` and the TinyMUX and RhostMUSH options |
+| [Output](/reference/sharpmush-help/compatibility-output/) | `render()`, `decompose()` and markup written for something outside the game |
 | [Identity](/reference/sharpmush-help/compatibility-identity/) | Object identity, timestamps and numbers |
 | [Mail](/reference/sharpmush-help/compatibility-mail/) | The differences in `@mail` |
 | [Economy](/reference/sharpmush-help/compatibility-economy/) | Currency and `money()` |
 | [Defects](/reference/sharpmush-help/compatibility-defects/) | Differences that are bugs, expected to change |
 | [Unresolved](/reference/sharpmush-help/compatibility-unresolved/) | Differences with no decision yet; don't depend on either behaviour |
 
-Code written for TinyMUX or RhostMUSH has guides of its own:
-[TinyMUX Softcode](/guides/tinymux-softcode) and [RhostMUSH Softcode](/guides/rhostmush-softcode).
+## TinyMUX and RhostMUSH
+
+SharpMUSH also runs much of the softcode written for TinyMUX and RhostMUSH. A call PennMUSH refuses,
+such as `switch(x,default)` or `ifelse(x,yes)`, is answered as those servers answer it. Where the
+servers give the same code different answers, SharpMUSH keeps PennMUSH's unless a setting says
+otherwise. [TinyMUX Softcode](/guides/tinymux-softcode) and
+[RhostMUSH Softcode](/guides/rhostmush-softcode) cover each in full.
+
+## What an import turns on
+
+Importing a database turns on the settings its softcode expects, and the import report lists them.
+
+| Imported from | Settings turned on |
+|---|---|
+| PennMUSH | `paren_groups`, `http_qregisters` |
+| TinyMUX | `paren_groups`, `mux_logic`, `mux_justify`, `mux_collation`, `rhost_list`, `innermost_tokens`, `tiny_trim_fun`, `tiny_math`, `null_eq_zero`, and `function_recursion_limit` raised to at least 500 |
+| RhostMUSH | `paren_groups`, `tiny_trim_fun`, `rhost_edit`, `rhost_lattr`, `rhost_printf`, `rhost_map_args`, `rhost_list`, `sidefx_flag`, and `mail` as a name for `@mail` |
+
+The configuration file you give the import (`mush.cnf`, `netmux.conf` or `netrhost.conf`) is applied
+too. The [Config](/reference/sharpmush-help/compatibility-config/) page says what each setting does.

@@ -20,7 +20,7 @@ This page covers:
 - bang notation, `!` and `!!` before a function call;
 - register labels, a second name for a q-register;
 - `%i_<n>`, `%i_L`, `%il` and `%-<n>`, more substitutions for loops and arguments;
-- the functions that come from RhostMUSH;
+- the functions that come from RhostMUSH, and `ifelse()` with two arguments;
 - RhostMUSH's spellings of `@switch`, `@dolist` and `@lock` switches;
 - extra arguments to `map()`, and the one-argument `search()`;
 - the `rhost_edit`, `rhost_lattr`, `rhost_printf`, `rhost_map_args`, `rhost_list` and `sidefx_flag`
@@ -264,6 +264,33 @@ item counts as the number it starts with, so they never refuse an item.
 | `land(1 1 0)` | `0` |
 | `lor(0 0 2)` | `1` |
 | `lxnor(1 0 1)` | `0` |
+
+### pack() and unpack()
+
+`pack()` writes a number in another base, 64 unless you name one, and `unpack()` reads it back. The
+radix-64 digits can all appear in an attribute name, so a packed number makes a short one. TinyMUX
+has both functions too.
+
+| Call | Gives |
+| --- | --- |
+| `pack(255,16)` | `FF` |
+| `pack(255)` | `3$` |
+| `unpack(3$)` | `255` |
+
+RhostMUSH's `unpack()` reads up to the first character that is not a digit of the radix. SharpMUSH
+answers `#-1 NUMBER IS NOT VALID FOR INPUT RADIX` instead: `unpack(ff,16)` is an error, since lower
+case `f` is not a radix-16 digit. A true third argument switches both to `baseconv()`'s digits.
+
+### ifelse() with two arguments
+
+`ifelse(<condition>, <true expression>)` is `if()`, as on RhostMUSH. PennMUSH requires all three
+arguments, so this changes no PennMUSH code that works.
+
+```sharp
+think [ifelse(1,yes)]|[ifelse(0,yes)]
+```
+
+Output: `yes|`
 
 ### columns()
 

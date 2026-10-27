@@ -191,4 +191,6 @@ for either server. With it on, `@list` still names the game's functions, command
 - `columns()` is RhostMUSH's, `columns(<text>, <width>, <columns>, ...)`, which takes the number of
   columns as its third argument. TinyMUX's `columns(<list>, <width>[, <delimiter>[, <indent>]])` is a
   different function, so calls to it have to be rewritten, for example with `table()` or `align()`.
-- Some functions only TinyMUX has are not there.
+- Some functions only TinyMUX has are not there. `pack()` and `unpack()` are; see
+  [RhostMUSH Softcode](/guides/rhostmush-softcode/#pack-and-unpack) for how `unpack()` treats a
+  character that is not a digit.
