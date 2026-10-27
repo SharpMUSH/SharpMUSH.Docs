@@ -21,13 +21,14 @@ until you have claimed the admin account.
 | Akamai / Linode | Fill in the SharpMUSH StackScript form | $12 for 2 GB, $24 for 4 GB |
 | Fly.io | Run one command from your computer | about $20 for three small machines and their storage, or $11 run as one; $2 more for an IPv4 telnet address if you add one |
 | Railway | Press the Deploy on Railway button | billed by use on top of Railway's $5 Hobby plan; see railway.com/pricing |
+| Zeabur | Run one command from your computer | from Zeabur's $5 Dev plan; see zeabur.com/pricing |
 
 All of them need a server with **at least 2 GB of memory**; 4 GB is comfortable. Choose Ubuntu 24.04
 (or later) or Debian 12 when the host asks for an operating system. Intel, AMD and ARM servers all
 work.
 
 A VPS is the simpler choice: the game gets the whole server and updates itself, and an engine
-update does not disconnect your players. On Fly.io and Railway nothing updates until you do it, and
+update does not disconnect your players. On Fly.io, Railway and Zeabur nothing updates until you do it, and
 an update disconnects nobody unless you also update the part that holds players' connections. See
 [Update your game](#update-your-game).
 
@@ -342,6 +343,32 @@ To build the same project yourself, or to see what the button sets up:
 
 </Steps>
 
+## Launch on Zeabur
+
+Zeabur runs the same ready-built images as Fly and Railway, as three services in one project:
+`edge`, `server` and `renderer`. Only the edge is public: the portal on its domain and telnet on an
+address Zeabur picks. You need a Zeabur account and [Node.js](https://nodejs.org/) on your computer,
+for Zeabur's command-line tool.
+
+<Steps>
+
+1. Download the template and deploy it:
+
+   ```bash
+   curl -fsSLO https://raw.githubusercontent.com/SharpMUSH/SharpMUSH/main/deploy/zeabur/template.yaml
+   npx zeabur@latest auth login
+   npx zeabur@latest template deploy -f template.yaml
+   ```
+
+   It asks for a region and a domain for the portal, such as `my-game`, which becomes
+   `my-game.zeabur.app`.
+
+2. In the Zeabur dashboard, open the `edge` service. Its log shows your setup link, and its
+   instructions show the telnet address, such as `hnd1.clusters.zeabur.com` port `31457`. Zeabur
+   says that address can change in rare cases. Carry on with [Finish setup](#finish-setup).
+
+</Steps>
+
 ## Finish setup
 
 Until you finish this step, your game is locked: the portal answers only a browser that has opened
@@ -350,7 +377,7 @@ a short page saying the server is waiting for its owner.
 
 <Steps>
 
-1. Open the setup link from the welcome message (or the edge's log on Fly or Railway). It looks like
+1. Open the setup link from the welcome message (or the edge's log on Fly, Railway or Zeabur). It looks like
    `https://mush.example.com/?setup_code=4f1c...`, and takes you to the setup page.
 
 2. Choose the administrator's name and password. This account is linked to God (`#1`).
@@ -378,7 +405,7 @@ keep their connection private:
 | A VPS with Let's Encrypt | your domain, port 4203 (or your `<ip>.sslip.io` address) |
 | A VPS behind a Cloudflare Tunnel, set up with an API token | `telnet.<your-domain>`, port 4203 |
 | A VPS behind a tunnel you made yourself | none; port 4203 refuses connections |
-| Fly.io or Railway | none yet; use the web terminal |
+| Fly.io, Railway or Zeabur | none yet; use the web terminal |
 
 The certificate is the one the server already gets for your portal (or, behind a tunnel, one it
 gets for the telnet address). It renews on its own, and a renewal disconnects nobody. Port 4201
@@ -481,6 +508,14 @@ an update for the image, apply it:
 
 - `server` and `renderer`: whenever you like. Players stay connected through the restart.
 - `edge`: every update disconnects everyone, so pick a quiet time and announce it.
+
+### On Zeabur
+
+Nothing updates on its own. Redeploying a service in the dashboard pulls the newest build of its
+image:
+
+- `server` and `renderer`: whenever you like. Players stay connected through the restart.
+- `edge`: every redeploy disconnects everyone, so pick a quiet time and announce it.
 
 ## Turn on backups
 
