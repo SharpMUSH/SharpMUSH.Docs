@@ -171,14 +171,18 @@ const MARKUP_TAGS = new Set(['br', 'b', 'strong', 'i', 'em', 'u', 's', 'strike',
 
 // Help prose writes argument names as tags, *<width>*. Left as HTML, a browser hides them as unknown
 // elements, and <title> or <body> swallow the rest of the page, so every other tag the Markdown parser
-// reads as HTML is escaped to text. Code, and the tags inside it, is left alone.
+// reads as HTML is escaped to text. Code, comments and quoted attribute values are left alone. The edit
+// is made on the source the node spans, not on its value, so a blockquote's `> ` prefixes stay.
 export function escapeArgumentTags(content) {
   const edits = [];
   const visit = (node) => {
     if (node.type === 'html' && !node.value.startsWith('<!')) {
-      const value = node.value.replace(/<(\/?)([A-Za-z][A-Za-z0-9-]*)([^<>]*)>/g, (tag, slash, name, rest) =>
-        MARKUP_TAGS.has(name.toLowerCase()) ? tag : `&lt;${slash}${name}${rest}&gt;`);
-      if (value !== node.value) edits.push({ start: node.position.start.offset, end: node.position.end.offset, value });
+      const start = node.position.start.offset;
+      const end = node.position.end.offset;
+      const source = content.slice(start, end);
+      const value = source.replace(/<!--[\s\S]*?-->|<(\/?)([A-Za-z][A-Za-z0-9-]*)((?:"[^"]*"|'[^']*'|[^"'<>])*)>/g,
+        (tag, slash, name, rest) => name === undefined || MARKUP_TAGS.has(name.toLowerCase()) ? tag : `&lt;${slash}${name}${rest}&gt;`);
+      if (value !== source) edits.push({ start, end, value });
     }
     node.children?.forEach(visit);
   };
