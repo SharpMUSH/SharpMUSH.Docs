@@ -84,11 +84,11 @@ A game may have as many maps as it likes, each of its own kind. An exit from a r
 a room on another is drawn as a dot on the room it leaves; in the room's exits it reads
 **To the map** and the map's name, and choosing it opens that map.
 
-`` MAP`PARENT `` puts one map inside another in the list:
+A map zoned to another map is a region inside it, as a room zoned to a map is on it:
 
 ```
-> &MAP`PARENT Old Town=#26
-Old Town/MAP`PARENT - Set.
+> @chzone Old Town=#26
+Zone changed.
 ```
 
 Old Town is now listed under Harbour (`#26`).
