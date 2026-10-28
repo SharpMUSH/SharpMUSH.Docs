@@ -18,6 +18,9 @@ This page covers:
 - [Levels](#levels)
 - [Several maps](#several-maps)
 - [Regions](#regions)
+- [Picture maps](#picture-maps)
+- [Getting there](#getting-there)
+- [Changing a map in the portal](#changing-a-map-in-the-portal)
 - [Who sees what](#who-sees-what)
 
 ## Setting it up
@@ -125,6 +128,83 @@ Old Town/MAP`SIZE`H - Set.
 ```
 
 Old Town is now listed under Harbour, and drawn on the Harbour's left, three cells tall.
+
+## Picture maps
+
+A `graph` map can be drawn on a picture. `` MAP`BACKDROP `` holds the picture's address: a path
+on the game's own site, such as the link of an image in the wiki's image library, or an `https`
+address. Any other address is not shown. `` MAP`SIZE`W `` and `` MAP`SIZE`H `` are the picture's
+size in pixels.
+
+Each room's `` MAP`POS`X `` and `` MAP`POS`Y `` are then a point on the picture, in pixels from its
+top left corner. A room is drawn as a pin with its name under it, unless it has a `` MAP`SIZE `` of
+its own: then it is an area of that many pixels around its point.
+
+Holding the Isle map:
+
+```
+> &MAP`BACKDROP Isle=/api/wiki-assets/fd8b00b0889f4bee97f0eb7f7a8849f7/isle.png
+Isle/MAP`BACKDROP - Set.
+> &MAP`SIZE`W Isle=900
+Isle/MAP`SIZE`W - Set.
+> &MAP`SIZE`H Isle=640
+Isle/MAP`SIZE`H - Set.
+```
+
+## Getting there
+
+Choosing a room shows the way there from where you stand: the exits to take in turn, over the
+exits you can see, on this map or across others. The way is drawn on the map, and under the room's
+exits is one line you can paste into any client. **Walk there** runs it as your character.
+
+![The Isle, a picture map: an island with a wood, a river and two peaks, and pins for the Ford, Watch tower, Spring, Mill, Ropery and Tar shed, with Saltpans drawn as an area. Spring is chosen, and the way to it from the Quay on the Harbour map is drawn in orange through the Ford and the Watch tower. Under the map, Getting there lists four steps, the first two naming the map they enter, then the line walk Boathouse road path spring with a copy button, and Walk there.](../../../assets/guide/world-map-isle.webp)
+
+`walk` takes exits separated by spaces and stops at the first exit that refuses you, such as a
+locked door. An exit whose name has a space is written by its first alias without one, so give such exits a
+one-word alias: `@name Coast road=Coast road;road`. A way through an exit with no such name is
+still shown, with no line to paste.
+
+## Changing a map in the portal
+
+If you control a map, the World map shows **Edit map**. While you edit, nothing reaches the game,
+and the map shows what it will look like once your changes run.
+
+- Choose a room you control to set its place or size, dig a room above or below it, or take it off
+  the map. A room you do not control is drawn faded and cannot be changed.
+- Choose an empty cell next to a room, or a spot on a picture map, to dig a room there. It is
+  joined to a room beside it by an exit and, if you like, an exit back; on a grid the names follow
+  the direction, such as `East;e` there and `West;w` back. `in` and `i` are refused as exit names,
+  as `i` is the inventory.
+- Add a room you control that this map's exits lead to and that is on no map, or a room by its
+  dbref.
+
+![The Harbour map while editing: a banner says players see nothing until you apply. An empty cell east of the Fish market is chosen, and under the map the Edit panel offers Move Fish market here and a form to dig a room there, named Chandlery, joined from the Fish market by East;e, with West;w as the way back.](../../../assets/guide/world-map-builder-dig.webp)
+
+**Review and apply** lists each change as the commands it runs. **Apply** runs them as you, with
+your permissions, one after another, and checks each one. The first that fails stops the rest, and
+the list that follows says which changes ran.
+
+![The review of one change, Dig Chandlery: the commands @dig Chandlery, @chzone, the two coordinates and @open, with the new room shown as <Chandlery> until it exists. The Chandlery is already drawn east of the Fish market.](../../../assets/guide/world-map-builder-review.webp)
+
+On the Isle, digging a Tar shed at a spot joined to the Ford runs:
+
+```
+> @dig Tar shed
+Tar shed created with room number 115.
+> @chzone #115=Isle
+Zone changed.
+> &MAP`POS`X #115=380
+Tar shed/MAP`POS`X - Set.
+> &MAP`POS`Y #115=520
+Tar shed/MAP`POS`Y - Set.
+> @open Tar lane;tar=#115,Ford path;fp,#73
+Opened exit #116
+Trying to link...
+Linked exit #116 to #115
+Opened exit #117
+Trying to link...
+Linked exit #117 to #73
+```
 
 ## Who sees what
 
