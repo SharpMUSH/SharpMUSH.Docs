@@ -1,0 +1,220 @@
+---
+title: The World Map
+description: The portal's World map draws each map of the game from its rooms and exits. A map is a thing whose MAP`KIND says how it is drawn, and a room is on the map that is its zone.
+---
+
+The **World map** is a portal page that draws the game's maps. Each map is drawn from its rooms and
+the exits between them, one level at a time, and the room you are in is marked. Choosing a room
+lists its exits; choosing an exit's room moves to it, and an exit that leads to another map opens
+that map.
+
+![The Harbour map in the portal: Quay in the middle, marked as where you are, with Lighthouse to the north, Fish market to the east, Customs house to the west and a two-cell Boatyard to the south. Old Town, a region inside the Harbour, is a tall grey box on the left. Shed has no coordinates and is drawn below the grid. Above the map are the level arrows and the levels Quayside and Lamp deck; below it, Quay's exits.](../../../assets/guide/world-map-harbour.webp)
+
+This page covers:
+
+- [Setting it up](#setting-it-up)
+- [Making a map](#making-a-map)
+- [How a map is drawn](#how-a-map-is-drawn)
+- [Levels](#levels)
+- [Several maps](#several-maps)
+- [Regions](#regions)
+- [Picture maps](#picture-maps)
+- [Getting there](#getting-there)
+- [Changing a map in the portal](#changing-a-map-in-the-portal)
+- [Who sees what](#who-sees-what)
+
+## Setting it up
+
+The World map is the **World map** package. Install it from the portal's Packages page, or tick it
+under Building in the last step of first-run setup. Once it is installed, **World map** appears in
+the portal's menu. On a game with +help, ticking it in setup also brings **World map: +help
+topics**, which adds `+help map`.
+
+## Making a map
+
+A map is a thing whose `` MAP`KIND `` attribute says how it is drawn. A room is on the map that is
+its zone, so `@chzone` puts a room on a map.
+
+A builder, standing in a room called Boathouse:
+
+```
+> @create Harbour
+Created: Object #32.
+> &MAP`KIND Harbour=coordinates
+Harbour/MAP`KIND - Set.
+> @chzone here=Harbour
+Unlocked zone Harbour(#32Tn) - automatically zone-locking to itself
+Zone changed.
+> &MAP`COORDS`X here=3
+Boathouse/MAP`COORDS`X - Set.
+> &MAP`COORDS`Y here=-1
+Boathouse/MAP`COORDS`Y - Set.
+```
+
+Do the same in each room of the harbour. Harbour now shows in the World map's list.
+
+## How a map is drawn
+
+`` MAP`KIND `` is one of three:
+
+| Kind | Shown as | A room's place |
+|---|---|---|
+| `coordinates` | Grid | the cell its `` MAP`COORDS`X ``, `` MAP`COORDS`Y `` and `` MAP`COORDS`Z `` name |
+| `compass` | Compass | worked out from its exits: a room north of another is drawn above it |
+| `graph` | Picture | the point its `` MAP`POS`X `` and `` MAP`POS`Y `` name, with no grid |
+
+North is up. On a compass map, `up` and `down` exits change the level (see [Levels](#levels)).
+
+A room covers one cell unless its `` MAP`SIZE`W `` and `` MAP`SIZE`H `` say more. The cell its
+coordinates name is its south-west corner, so `&MAP`SIZE`W Boatyard=2` makes the Boatyard two cells
+wide, reaching east.
+
+A compass map keeps any coordinates a room does have and places the rest by their exits, so a few
+coordinates can pin down where a large area sits. Exits named or aliased `n`, `north`, `ne`,
+`northeast` and so on, `u`, `up`, `d` and `down` count; other exits are drawn as lines between
+rooms but do not place them.
+
+![The Old Town compass map: Harbour / Old Town above it, then Market square in the middle, Temple steps to the north, Well to the south, Tanners' row to the west, and the Town gate to the east with a dot showing it leads to another map.](../../../assets/guide/world-map-oldtown.webp)
+
+A room the map cannot place, such as a room on a grid map with no coordinates, is drawn with a
+dashed edge in a row below the others, on the level of a room its exits join it to.
+
+## Levels
+
+Z is the level. A `coordinates` or `compass` map shows one level at a time, with a button for each
+level and arrows that step up and down. A room with an exit up or down is marked with a small
+arrow, and choosing that exit's room in the room's exits goes to its level.
+
+`` MAP`LEVEL`<level> `` names a level; a level without a name is shown as its number.
+`` MAP`LEVEL `` is the level a visitor sees first. Someone standing on the map starts on their own
+level.
+
+```
+> &MAP`LEVEL`-1 Harbour=Sewers
+Harbour/MAP`LEVEL`-1 - Set.
+> &MAP`LEVEL Harbour=-1
+Harbour/MAP`LEVEL - Set.
+```
+
+![The Harbour map on its Lamp deck level: the Lamp room, above the Lighthouse, with an arrow showing its way down. The up arrow is greyed out, as there is no level above.](../../../assets/guide/world-map-harbour-level1.webp)
+
+## Several maps
+
+A game may have as many maps as it likes, each of its own kind. An exit from a room on one map to
+a room on another is drawn as a dot on the room it leaves; in the room's exits it reads
+**To the map** and the map's name, and choosing it opens that map.
+
+## Regions
+
+A map zoned to another map is a region inside it, as a room zoned to a map is on it. Regions nest
+as deep as you like: Sol System, Earth, United States, New York, Brooklyn.
+
+A region is listed under its map, and the maps it is inside are named above it, each a link. On
+its map, a region is a grey box that opens it. The box goes where the region's own
+`` MAP`COORDS `` (`` MAP`POS `` on a graph map) and `` MAP`SIZE `` say, as a room's would; without
+them it is drawn in the row below. While you stand anywhere inside a region, its box is marked.
+
+Holding the Old Town map, with the Harbour beside it:
+
+```
+> @chzone Old Town=Harbour
+Zone changed.
+> &MAP`COORDS`X Old Town=0
+Old Town/MAP`COORDS`X - Set.
+> &MAP`COORDS`Y Old Town=-2
+Old Town/MAP`COORDS`Y - Set.
+> &MAP`SIZE`H Old Town=3
+Old Town/MAP`SIZE`H - Set.
+```
+
+Old Town is now listed under Harbour, and drawn on the Harbour's left, three cells tall.
+
+## Picture maps
+
+A `graph` map can be drawn on a picture. `` MAP`BACKDROP `` holds the picture's address: a path
+on the game's own site, such as the link of an image in the wiki's image library, or an `https`
+address. Any other address is not shown. `` MAP`SIZE`W `` and `` MAP`SIZE`H `` are the picture's
+size in pixels.
+
+Each room's `` MAP`POS`X `` and `` MAP`POS`Y `` are then a point on the picture, in pixels from its
+top left corner. A room is drawn as a pin with its name under it, unless it has a `` MAP`SIZE `` of
+its own: then it is an area of that many pixels around its point.
+
+Holding the Isle map:
+
+```
+> &MAP`BACKDROP Isle=/api/wiki-assets/fd8b00b0889f4bee97f0eb7f7a8849f7/isle.png
+Isle/MAP`BACKDROP - Set.
+> &MAP`SIZE`W Isle=900
+Isle/MAP`SIZE`W - Set.
+> &MAP`SIZE`H Isle=640
+Isle/MAP`SIZE`H - Set.
+```
+
+## Getting there
+
+Choosing a room shows the way there from where you stand: the exits to take in turn, over the
+exits you can see, on this map or across others. The way is drawn on the map, and under the room's
+exits is one line you can paste into any client. **Walk there** runs it as your character.
+
+![The Isle, a picture map: an island with a wood, a river and two peaks, and pins for the Ford, Watch tower, Spring, Mill, Ropery and Tar shed, with Saltpans drawn as an area. Spring is chosen, and the way to it from the Quay on the Harbour map is drawn in orange through the Ford and the Watch tower. Under the map, Getting there lists four steps, the first two naming the map they enter, then the line walk Boathouse road path spring with a copy button, and Walk there.](../../../assets/guide/world-map-isle.webp)
+
+`walk` takes exits separated by spaces and stops at the first exit that refuses you, such as a
+locked door. An exit whose name has a space is written by its first alias without one, so give such exits a
+one-word alias: `@name Coast road=Coast road;road`. A way through an exit with no such name is
+still shown, with no line to paste.
+
+## Changing a map in the portal
+
+If you control a map, the World map shows **Edit map**. While you edit, nothing reaches the game,
+and the map shows what it will look like once your changes run.
+
+- Choose a room you control to set its place or size, dig a room above or below it, or take it off
+  the map. A room you do not control is drawn faded and cannot be changed.
+- Choose an empty cell next to a room, or a spot on a picture map, to dig a room there. It is
+  joined to a room beside it by an exit and, if you like, an exit back; on a grid the names follow
+  the direction, such as `East;e` there and `West;w` back. `in` and `i` are refused as exit names,
+  as `i` is the inventory.
+- Add a room you control that this map's exits lead to and that is on no map, or a room by its
+  dbref.
+
+![The Harbour map while editing: a banner says players see nothing until you apply. An empty cell east of the Fish market is chosen, and under the map the Edit panel offers Move Fish market here and a form to dig a room there, named Chandlery, joined from the Fish market by East;e, with West;w as the way back.](../../../assets/guide/world-map-builder-dig.webp)
+
+**Review and apply** lists each change as the commands it runs. **Apply** runs them as you, with
+your permissions, one after another, and checks each one. The first that fails stops the rest, and
+the list that follows says which changes ran.
+
+![The review of one change, Dig Chandlery: the commands @dig Chandlery, @chzone, the two coordinates and @open, with the new room shown by its name in angle brackets until it exists. The Chandlery is already drawn east of the Fish market.](../../../assets/guide/world-map-builder-review.webp)
+
+On the Isle, digging a Tar shed at a spot joined to the Ford runs:
+
+```
+> @dig Tar shed
+Tar shed created with room number 115.
+> @chzone #115=Isle
+Zone changed.
+> &MAP`POS`X #115=380
+Tar shed/MAP`POS`X - Set.
+> &MAP`POS`Y #115=520
+Tar shed/MAP`POS`Y - Set.
+> @open Tar lane;tar=#115,Ford path;fp,#73
+Opened exit #116
+Trying to link...
+Linked exit #116 to #115
+Opened exit #117
+Trying to link...
+Linked exit #117 to #73
+```
+
+## Who sees what
+
+A map is listed to everyone once its `` MAP`KIND `` is set. Each player sees only the rooms they
+could see in the game: a `DARK` room is left out unless they can examine it, and so are its exits.
+The page shows the map as the character you are playing, and changes when you switch characters.
+
+Apps you allow to **Run commands** can read the same maps. See
+[Apps That Act for You](/guides/connected-apps/).
+
+On a phone the list of maps sits above the map, and the map scrolls inside its frame.
+
+![The Harbour map on a phone: the map list above, then the level arrows and buttons, and the grid.](../../../assets/guide/world-map-harbour-phone.webp)
