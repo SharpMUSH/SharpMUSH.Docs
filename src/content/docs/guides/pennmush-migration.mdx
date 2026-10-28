@@ -122,9 +122,10 @@ their members, and each player's comsys aliases become `CHANALIAS` attributes.
 RhostMUSH reality levels become [reality layers](/reference/sharpmush-help/reality/), when the
 configuration file that names them is imported too. Each level's name works as a layer name in
 softcode, so `rxlevel(me,Umbra)` still reads. RhostMUSH totems become flags. A RhostMUSH cluster is
-merged into its first object, which takes every attribute the cluster held. When two of the
-cluster's objects hold an attribute of the same name, the first one's value is kept, and the report
-lists each such attribute. RhostMUSH tags come
+merged into its first object, which takes the custom attributes the others held. Their built-in
+attributes, such as a description, and the other objects themselves are not imported, so look at
+them before you cut over. When two of the cluster's objects hold an attribute of the same name, the
+first one's value is kept, and the report lists each such attribute. RhostMUSH tags come
 across as tags, so `#weather` still names the same object, and each player's own tags stay theirs.
 
 **What the import changes in softcode.** Colour written as `%c` or `%x` codes, such as
@@ -133,7 +134,9 @@ across as tags, so `#weather` still names the same object, and each player's own
 time, is removed, and the report warns about each attribute it was removed from. A RhostMUSH import
 also rewrites its character codes (`%<065>` becomes `A`), literal `timefmt()` formats, and calls to
 RhostMUSH functions whose arguments differ from SharpMUSH's, such as `ljc()` and `streq()`, as the
-SharpMUSH call that gives the same answer. RhostMUSH's `tag()` becomes `tagref()`, because
+SharpMUSH call that gives the same answer. A call it can't rewrite safely, such as `ljc()` with a
+function call for its width, which the rewrite would run twice, is left as written and listed in the
+report; fix each one by hand, since SharpMUSH has no such function. RhostMUSH's `tag()` becomes `tagref()`, because
 SharpMUSH's `tag()` writes an HTML tag. The import also turns on the compatibility options the old server's
 softcode expects, and lists them in its report.
 
