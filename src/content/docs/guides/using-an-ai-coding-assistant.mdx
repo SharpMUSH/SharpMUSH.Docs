@@ -1,0 +1,128 @@
+---
+title: Using an AI coding assistant
+description: Use official references and development-game tests to review assistant-proposed softcode.
+---
+
+Use a coding assistant beside your source and development game. Give it the current SharpMUSH references, ask it to explain one small change, and test that change before keeping it. The game already has a softcode editor and a package workflow; this setup uses those existing tools.
+
+**Review draft.** This workflow was source-checked on 11 October 2026. No plugin was installed, game changed, or code executed while preparing it.
+
+## Give the assistant the right references
+
+Start with the official [SharpMUSH.Guide repository](https://github.com/SharpMUSH/SharpMUSH.Guide). Its [writing softcode skill](https://github.com/SharpMUSH/SharpMUSH.Guide/blob/main/skills/writing-sharpmush-softcode/SKILL.md) explains current idioms and common evaluation, reachability, identity, and permission mistakes. Its command, function, and configuration folders are generated from the server helpfiles. The repository also advertises its reference on Context7 as the SharpMUSH library. [Guide README](https://github.com/SharpMUSH/SharpMUSH.Guide/blob/main/README.md)
+
+For Claude Code, the Guide currently documents these commands:
+
+```text
+/plugin marketplace add SharpMUSH/SharpMUSH.Guide
+/plugin install sharpmush-softcode@sharpmush
+```
+
+Review the source and your assistant's requested access before installing. These are setup instructions for you, not an installation already performed. [Official installation instructions](https://github.com/SharpMUSH/SharpMUSH.Guide/blob/main/README.md)
+
+For another coding assistant, make that same skill and the relevant reference files available in its project context through the tool's supported file or repository workflow. Ask it to read the skill explicitly. Do not assume that a link in a prompt installed a skill or gave the assistant repository access. If the tool cannot retrieve the references, provide the relevant text yourself and have it state that limit.
+
+Prefer documentation matching your server release or commit. The latest `main` branch can describe behavior your deployed game does not yet have. Ask the assistant to record both versions and call out any mismatch. For an uncertain command, check `help <topic>` on the target development game and inspect the corresponding official server helpfile or implementation.
+
+## Connect live code intelligence (optional)
+
+SharpMUSH also has two code-analysis surfaces. The in-game MCP endpoint uses Streamable HTTP and analyzes softcode with the running world's parser and registered commands and functions. The standalone `SharpMUSH.LanguageServer` is an offline editor process using stdio. See [Softcode in Your Editor](/guides/editor-support/) for the editor workflow.
+
+For an MCP-aware assistant, first check that your target release supports MCP and that an administrator has enabled the endpoint. It is disabled by default outside the Development configuration. The documented default path is `/mcp`, and each request uses a game character's HTTP Basic authentication. Use localhost or TLS and your client's supported private credential configuration. Never put real credentials in examples, assistant prompts, committed configuration, shell history, or screenshots. Follow the [official MCP setup guide](https://raw.githubusercontent.com/SharpMUSH/SharpMUSH/c3fa0c736f8c45c465a89477a159a5b08cd42f9d/docs/guides/mcp-server.md) for your release; this optional section was source-checked against server revision `c3fa0c736f8c45c465a89477a159a5b08cd42f9d`.
+
+Ask the assistant to use `validate` with the appropriate parse mode (`commandsperline` for a terminal setup file), then explain the returned diagnostics. MCP and LSP analysis can help catch syntax problems; neither establishes gameplay behavior, reachability, or permission boundaries. Complete the development-game tests even when analysis reports no errors.
+
+## Keep a small project folder
+
+A useful starting layout is:
+
+```text
+hello-tutorial/
+  README.md
+  hello.mush
+  tests.md
+  context.md
+```
+
+- `README.md`: purpose, who can use the command, object placement, and installation steps.
+- `hello.mush`: the reviewed terminal setup lines, with clearly marked game-specific dbref placeholders.
+- `tests.md`: inputs, expected outputs, actual outputs, tester role, and server version.
+- `context.md`: relevant object ownership, executor permissions, deployment details, and source links. Keep credentials, private player information, and production exports out of it.
+
+Use version control for these files. Save the working baseline before changing it. If you later turn the feature into a package, use the existing [package export and validation workflow](https://sharpmush.com/guides/packages/) rather than asking the assistant to invent an installer.
+
+## Start with this project context
+
+Fill in the placeholders and give this to your assistant:
+
+```text
+I am writing softcode for a SharpMUSH development game.
+
+Server release or commit: <version>
+Official Guide revision: <revision>
+Game-specific restrictions or compatibility settings: <known settings or unknown>
+Feature: a tutorial +hello command with an optional friendly or formal style.
+Code object: <dbref and name>
+Owner: <character>
+Object location: <inventory or test room>
+Executor roles and relevant permissions: <verified values>
+Intended users: ordinary players able to reach the object.
+Allowed effects: send one private response to the invoking player.
+Forbidden effects: change player data, grant roles, create more objects,
+call external services, or publish globally.
+
+Read the official writing-sharpmush-softcode skill and the reference for
+every command or function you use. Cite direct official source links.
+Do not substitute another MUSH dialect without checking compatibility.
+
+Explain the enactor, executor, ownership, matching scope, input contract,
+and permission requirements before proposing code. Treat player text as
+data and do not evaluate it again.
+
+Make the smallest change to the current source. Return the exact diff,
+the reason for each change, and tests with expected results. Include
+invalid input, ordinary-player behavior, and a recovery step.
+
+Do not run commands against a live game or publish anything unless I
+explicitly authorize that action. Separate source-checked conclusions
+from tests you actually ran. Ask for missing context rather than guessing.
+```
+
+The source of truth remains the target game and its matching documentation. A confident answer is not evidence that a command exists or that a permission check protects the right character.
+
+## Work through one review loop
+
+1. **State one outcome.** For example: “Add a formal style to `+hello` and reject every other argument.” Give the current attribute value, rather than asking for an entire command system from scratch.
+2. **Ask for an explanation first.** The assistant should say which attribute changes, what `%#` and `%!` refer to, and why an ordinary player can reach it.
+3. **Review a small diff.** Reject unrelated changes, new roles, broad privileges, new dependencies, or publication steps that the feature does not need.
+4. **Apply in the development game.** Use the existing terminal or `/softcode` editor. Distinguish full terminal commands from an attribute's stored value. [Editor implementation](https://raw.githubusercontent.com/SharpMUSH/SharpMUSH/e40ed91276d695544e9800c330785cbebfa4ff72/SharpMUSH.Client/Pages/SoftcodeEditor.razor)
+5. **Run the promised tests.** Test both staff and a player on a non-staff account, because characters also receive their account's roles. Copy actual results into `tests.md`. [Roles reference](/reference/sharpmush-help/roles/)
+6. **Report failures precisely.** Give the exact input, actual output, expected output, relevant attribute, object placement, and server version. Ask for one explanation and one minimal correction. Rerun all tests affected by the correction.
+7. **Save the result.** Export the object, compare the stored code with your source, and commit the passing version with its test record. Share or install it more widely only after a separate review.
+
+For the first lesson, a good follow-up request is:
+
+```text
+Review these two +hello attributes. Do not rewrite them yet.
+Identify any place where an ordinary player could get a different result
+from an administrator, where input could be evaluated again, or where
+both patterns could match the same command. Give the official source
+for each finding and a test that would prove or disprove it.
+```
+
+## Know what validation establishes
+
+- **Source-checked:** the proposed syntax and reasoning were compared with official references or implementation.
+- **Syntax or package validation passed:** the named tool accepted the particular source or manifest. This does not establish in-game behavior or authorization.
+- **Development-game tested:** the listed inputs were executed against the recorded server version, with actual outputs and identities recorded.
+- **Ready for wider use:** the intended behavior, permission boundary, installation, and recovery have all been reviewed and tested for the target deployment.
+
+Ask the assistant to name the highest level it actually reached. A useful assistant gives you code you can understand, a test you can repeat, and a clear account of what is still unverified.
+
+## Companion lesson
+
+Start with [Your first softcode command](/guides/your-first-softcode-command/) for the administrator exercise used in this workflow.
+
+## Source review record
+
+Source-checked on 11 October 2026 against server revision [`e40ed912`](https://github.com/SharpMUSH/SharpMUSH/commit/e40ed91276d695544e9800c330785cbebfa4ff72) and Guide revision [`ed6d08d4`](https://github.com/SharpMUSH/SharpMUSH.Guide/commit/ed6d08d4cb46b227f6b4e583f5eca6fb87fa9a43). The command lines, visible messages, page-lock behavior, and cross-account tests have not been executed on a development game. Run the listed tests against the chosen server release and record actual outputs and identities before treating this lesson as tested.
