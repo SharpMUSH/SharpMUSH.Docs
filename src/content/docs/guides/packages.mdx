@@ -140,7 +140,7 @@ third-party package repos from the admin panel along with their trust tier.
 ### The bundled catalogue
 
 Some packages are built into the server and appear in the portal under the reserved remote name
-**`bundled`**, with no download and no configured remote. Two separate things can be true of them:
+**`bundled`**, with no download and no configured remote. Three separate things can be true of them:
 
 - **Shipped**: the package is in the server and can be installed from the catalogue at any time.
 - **Installed on first start**: a new game gets it without being asked. `http-handler`,
@@ -148,7 +148,12 @@ Some packages are built into the server and appear in the portal under the reser
   `scene-help`, `scene-config`, `scene-here`, [`onboarding`](/guides/onboarding/), `onboarding-help`
   and `onboarding-config` are. They are why a fresh game already has a working
   HTTP handler, `+help`, `+config`, a scene system and a getting-started checklist. A bridge such as `scene-help` or `jobs-help` is
-  installed wherever both of the packages it joins are, as soon as they are (see [Bridge Packages](/guides/bridge-packages/)). Every other bundled package is shipped but not installed: the
+  installed wherever both of the packages it joins are, as soon as they are (see [Bridge Packages](/guides/bridge-packages/)).
+- **Ticked at setup**: the setup wizard offers it ticked, so a new game gets it unless the
+  administrator unticks it, but a game that is already running does not get it when the server is
+  upgraded. The [World map](/guides/world-map/) is. Once removed, it is no longer offered ticked.
+
+Every other bundled package is shipped but not installed: the
   [bulletin boards](/guides/bboards), `+who`, [`+status`](/guides/status), the [watch list](/guides/watch), [`+finger`](/guides/finger)
   and [`+notify`](/guides/notifications), for example, add commands a game
   may not want, a game chooses whether it wants a [verse and content warnings](/guides/scene-details#verse-canon-and-content-warnings)
