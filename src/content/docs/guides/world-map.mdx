@@ -16,6 +16,7 @@ This page covers:
 - [Making a map](#making-a-map)
 - [How a map is drawn](#how-a-map-is-drawn)
 - [Levels](#levels)
+- [Kinds of place](#kinds-of-place)
 - [Several maps](#several-maps)
 - [Regions](#regions)
 - [Picture maps](#picture-maps)
@@ -52,6 +53,11 @@ Boathouse/MAP`COORDS`Y - Set.
 ```
 
 Do the same in each room of the harbour. Harbour now shows in the World map's list.
+
+**New map**, under the map list in the portal, runs the first two commands for you and opens the
+new map. The map object stays in your inventory. Destroying it takes the map away.
+
+![The New map form under the map list: the name Docks, the layout Compass, a note that the map is an object you carry and that rooms join it when they are zoned to it, and Cancel and Create.](../../../assets/guide/world-map-new-map.webp)
 
 ## How a map is drawn
 
@@ -97,6 +103,39 @@ Harbour/MAP`LEVEL - Set.
 ```
 
 ![The Harbour map on its Lamp deck level: the Lamp room, above the Lighthouse, with an arrow showing its way down. The up arrow is greyed out, as there is no level above.](../../../assets/guide/world-map-harbour-level1.webp)
+
+## Kinds of place
+
+A room's `ENVIRONMENT` attribute says what kind of place it is, such as `dock` or `market`. The
+gmcp-room package sends the same attribute to a MUD client's mapper. The map's legend says how each
+kind is drawn. Each part is an attribute of its own on the map object:
+`` MAP`LEGEND`<kind>`LABEL ``, `` `TONE `` (a `tone()` colour name) and `` `ICON ``. A map inside
+another map uses the outer map's legend, unless it names that kind itself.
+
+```
+> &ENVIRONMENT Quay=dock
+Quay/ENVIRONMENT - Set.
+> &MAP`LEGEND`DOCK`LABEL Harbour=Docks
+Harbour/MAP`LEGEND`DOCK`LABEL - Set.
+> &MAP`LEGEND`DOCK`TONE Harbour=blue
+Harbour/MAP`LEGEND`DOCK`TONE - Set.
+> &MAP`LEGEND`DOCK`ICON Harbour=anchor
+Harbour/MAP`LEGEND`DOCK`ICON - Set.
+```
+
+An icon is one of `water`, `forest`, `park`, `mountain`, `road`, `home`, `shop`, `food`, `drink`,
+`bed`, `temple`, `castle`, `shield`, `anchor`, `star`, `chat`, `book`, `mask`, `lock` and `flag`, or
+one or two characters drawn as text. The legend under the map lists only the kinds its rooms
+use.
+
+Choosing a room also shows its description, and the players there whom you could find with
+`loc()`. A room with players in it shows how many.
+
+![The Harbour map with a legend: the docks drawn blue with an anchor, the Lighthouse red with a star, the Fish market and Chandlery yellow with a shop sign. Quay is chosen; under the legend its panel shows its description, Here now: God, Wren, and its exits, with Up the hill leading to Room Zero, on no map.](../../../assets/guide/world-map-legend-room.webp)
+
+A new game's starter world has two zones drawn this way, OOC and IC. The arrival room, Room Zero,
+is on the OOC zone, and its **In Character** exit leads to the Commons, the first room in character. That exit lets
+through only approved characters and staff.
 
 ## Several maps
 
@@ -160,29 +199,37 @@ exits is one line you can paste into any client. **Walk there** runs it as your 
 ![The Isle, a picture map: an island with a wood, a river and two peaks, and pins for the Ford, Watch tower, Spring, Mill, Ropery and Tar shed, with Saltpans drawn as an area. Spring is chosen, and the way to it from the Quay on the Harbour map is drawn in orange through the Ford and the Watch tower. Under the map, Getting there lists four steps, the first two naming the map they enter, then the line walk Boathouse road path spring with a copy button, and Walk there.](../../../assets/guide/world-map-isle.webp)
 
 `walk` takes exits separated by spaces and stops at the first exit that refuses you, such as a
-locked door. An exit whose name has a space is written by its first alias without one, so give such exits a
-one-word alias: `@name Coast road=Coast road;road`. A way through an exit with no such name is
-still shown, with no line to paste.
+locked door. An exit whose name has a space is written by its first alias without one, or else in
+double quotes: `walk "Old gate" north`.
 
 ## Changing a map in the portal
 
 If you control a map, the World map shows **Edit map**. While you edit, nothing reaches the game,
 and the map shows what it will look like once your changes run.
 
-- Choose a room you control to set its place or size, dig a room above or below it, or take it off
-  the map. A room you do not control is drawn faded and cannot be changed.
-- Choose an empty cell next to a room, or a spot on a picture map, to dig a room there. It is
-  joined to a room beside it by an exit and, if you like, an exit back; on a grid the names follow
-  the direction, such as `East;e` there and `West;w` back. `in` and `i` are refused as exit names,
-  as `i` is the inventory.
+- Choose a room you control to rename or describe it, set its place or size, dig a room above or
+  below it, or take it off the map. A room you do not control is drawn faded and cannot be changed.
+- A chosen room lists its exits. Rename or destroy one you control, or open a way to another room
+  on the map. An exit name the room already uses is refused.
+- Choose an empty cell next to a room, or a spot on a picture map, to dig a room there, with a
+  description if you like. It is joined to the room straight beside it by an exit and, if you like,
+  an exit back; on a grid the names follow the direction, such as `East;e` there and `West;w` back.
+  `in` and `i` are refused as exit names, as `i` is the inventory.
 - Add a room you control that this map's exits lead to and that is on no map, or a room by its
   dbref.
+- On a grid, name the level on show.
 
 ![The Harbour map while editing: a banner says players see nothing until you apply. An empty cell east of the Fish market is chosen, and under the map the Edit panel offers Move Fish market here and a form to dig a room there, named Chandlery, joined from the Fish market by East;e, with West;w as the way back.](../../../assets/guide/world-map-builder-dig.webp)
 
-**Review and apply** lists each change as the commands it runs. **Apply** runs them as you, with
-your permissions, one after another, and checks each one. The first that fails stops the rest, and
-the list that follows says which changes ran.
+![The Edit panel for the Lighthouse: its name and description, its place and size, its exits East;e to Lamp store, South;s to Quay and Up;u to Lamp room, each with Rename and Destroy, and Open a way to the Customs house by Southwest;sw, with Northeast;ne back. Below are the rooms to add and the name of level 0, Quayside.](../../../assets/guide/world-map-builder-room.webp)
+
+**Review and apply** lists each change as the commands it runs. When your quota limits what you
+build, the review counts the rooms and exits the changes make, and a plan that needs more than you
+have left cannot be applied. **Apply** runs the commands as you, with your permissions, one after
+another, and checks each one. The first that fails stops the rest, and the list that follows says
+which changes ran.
+
+![The review of one change, Open a way from Lighthouse to Customs house, with its command @open Southwest;sw=#36,Northeast;ne,#28. The new exit is already drawn between the two rooms.](../../../assets/guide/world-map-builder-join.webp)
 
 ![The review of one change, Dig Chandlery: the commands @dig Chandlery, @chzone, the two coordinates and @open, with the new room shown by its name in angle brackets until it exists. The Chandlery is already drawn east of the Fish market.](../../../assets/guide/world-map-builder-review.webp)
 
