@@ -69,7 +69,7 @@ settings you plan to use for real.
 5. Read the import report before accepting it. Accepting moves the old live world to
    `<world>.previous` and puts the imported world in its place in one step.
 
-6. Go back to setup to choose HTTP and event handlers and bundled packages. An imported world may
+6. Go back to setup to choose the staff roles, HTTP and event handlers and bundled packages. An imported world may
    already have its own handlers; understand which attributes a setup choice moves or removes before
    you add a second one.
 
@@ -112,7 +112,8 @@ role, and a TinyMUX power such as `control_all` becomes the permission it stands
 levels become roles of their own, each placed just above the role with the same rights: `guildmaster`
 above `player`, `architect` above `builder`, `councilor` above `royalty` and `immortal` above
 `wizard`. Two also get a little more: `guildmaster` may view players and inspect the queue, and
-`immortal` may run the server. A flag or power with no match is kept as
+`immortal` may run the server. All four are made, whether or not anyone holds them, and setup's
+staff step starts on RhostMUSH's levels. A flag or power with no match is kept as
 a custom flag or power, so `hasflag()` still sees it. Passwords keep working: each form these servers
 store is checked at login and replaced with SharpMUSH's own the first time the player connects. Mail
 comes across, in RhostMUSH's folders when the folder dump is given. TinyMUX channels come across with
