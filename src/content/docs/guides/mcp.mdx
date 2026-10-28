@@ -19,9 +19,7 @@ Remote LSP targets a **3.17 capability subset**, advertising only implemented ca
 
 ## Administrator walkthrough
 
-This path assumes an already configured HTTPS game and an **existing character with a game password**. Analysis uses that character name/password, not the portal account email, a portal cookie, an API key or a GitHub login. Analysis does not save attributes or run commands. The remote work in PR #1800 is merged; use a server build containing it, and build the editor/bridge from the matching checkout.
-
-The commands below are instructions for an operator, not stages run during this documentation update. No game, character credentials, TLS keys, exposed listener or IDE session was created to validate this recipe.
+This path assumes an already configured HTTPS game and an **existing character with a game password**. Build the editor and bridge from the same checkout as the server. Analysis uses that character name/password, not the portal account email, a portal cookie, an API key or a GitHub login. Analysis does not save attributes or run commands.
 
 ## 1. Forward the settings through Compose
 
@@ -32,7 +30,7 @@ SHARPMUSH_MCP_ENABLED=true
 SHARPMUSH_LSP_ENABLED=true
 ```
 
-Use only the switches for transports you need. `.env` supplies Compose interpolation; it does **not** automatically inject arbitrary entries into a container. Save the YAML below as `deploy/docker-compose.analysis.yml` if your checkout does not yet include it. The optional overlay maps these switches to `Mcp__Enabled` and `Lsp__Enabled` in `sharpmush-server.environment`. ASP.NET Core maps double underscores to configuration section separators. Both switches default to false.
+Use only the switches for transports you need. `.env` supplies Compose interpolation; it does **not** automatically inject arbitrary entries into a container. `deploy/docker-compose.analysis.yml` maps these switches to `Mcp__Enabled` and `Lsp__Enabled` in `sharpmush-server.environment`. ASP.NET Core maps double underscores to configuration section separators. Both switches default to false.
 
 ```yaml
 # Optional remote analysis; does not publish ports or configure credentials/TLS.
@@ -71,7 +69,7 @@ docker compose -f docker-compose.cloudflare.yml -f docker-compose.analysis.yml p
 docker compose -f docker-compose.cloudflare.yml -f docker-compose.analysis.yml up -d --no-deps sharpmush-server
 ```
 
-Ensure the selected image contains the merged implementation. Keep the overlay in **every** subsequent configuration/recreation command, including any configured systemd unit's Compose invocations. To disable a transport set its switch to false and recreate the server with the same files. Disabled or missing plugins return 404.
+Keep the overlay in **every** subsequent configuration/recreation command, including any configured systemd unit's Compose invocations. To disable a transport set its switch to false and recreate the server with the same files. Disabled or missing plugins return 404.
 
 The complete optional plugin payloads must remain in `plugins/mcp/` and `plugins/lsp/`; copying only an entry DLL is insufficient. The supplied Caddy route sends `/ws` to the terminal connection server, while `/mcp` and `/lsp` reach the main server through its catch-all route. No extra public port is needed. Use HTTPS for MCP and WSS for LSP, with normally validated certificates. Native clients may omit Origin; if a client sends Origin, its exact HTTP(S) origin needs an `AnalysisTransports:AllowedOrigins` entry. Do not substitute `Cors:AllowedOrigins` or wildcard trust.
 
@@ -87,7 +85,7 @@ npm test
 npm run package
 ```
 
-Keep the bridge's entire publish directory. In VS Code's Extensions menu choose **Install from VSIX…** and select the generated `.vsix`. This is a source-built example, not a claim that a marketplace extension is installed.
+Keep the bridge's entire publish directory. In VS Code's Extensions menu choose **Install from VSIX…** and select the generated `.vsix`.
 
 Open a trusted workspace and set these values in **user settings JSON**, replacing the path/domain:
 
@@ -102,7 +100,7 @@ Open a trusted workspace and set these values in **user settings JSON**, replaci
 
 Run **SharpMUSH: Set Remote Credentials** from the Command Palette. Enter the existing **character name**, then its password in the hidden prompt. The extension stores both in endpoint-bound SecretStorage and injects them only into the bridge child environment. Changing endpoint requires credentials for that endpoint. Use **Developer: Reload Window** after settings/credential changes, then open or reopen a softcode file. **SharpMUSH: Clear Remote Credentials** deletes the current endpoint's entries and stops the client. Never put the password in settings, arguments, URLs, tracing logs or version control.
 
-Create `analysis-smoke.mushfn` containing `add(`. Expect a syntax diagnostic in Problems. Replace it with `add(1,2)`; expect that syntax error to clear. Hover `add` for function help, request completion with `ad`, and signature help within `add(`. These are expected checks, not a live IDE run recorded here. `.mush`/`.mu` use commands per line, `.mushfn`/`.fun` use function mode, and `.mushcmd` uses command-list mode.
+Create `analysis-smoke.mushfn` containing `add(`. Expect a syntax diagnostic in Problems. Replace it with `add(1,2)`; expect that syntax error to clear. Hover `add` for function help, request completion with `ad`, and signature help within `add(`. `.mush`/`.mu` use commands per line, `.mushfn`/`.fun` use function mode, and `.mushcmd` uses command-list mode.
 
 An `analysis-timeout` warning preserves the document; edit again to retry. If pending document work is rejected within an established session, the session closes: reload/reconnect and reopen files. If initial session admission returns HTTP 429 before WebSocket upgrade, no session exists; retry the connection after capacity becomes available. The client does not automatically resume documents.
 
@@ -147,7 +145,7 @@ curl --silent --show-error --include --user "$analysis_character" \
   "$analysis_url"
 ```
 
-Expect a successful tool result with at least one diagnostic (`severity`, `message`, and zero-based start/end line/character fields). Repeat with `add(1,2)` and expect no syntax diagnostics. Tool results are analysis, not evidence that gameplay permissions or live commands work. These expected outputs are based on the implementation's tests; no credentialed live request was run for this guide.
+Expect a successful tool result with at least one diagnostic (`severity`, `message`, and zero-based start/end line/character fields). Repeat with `add(1,2)` and expect no syntax diagnostics. Tool results are analysis, not evidence that gameplay permissions or live commands work.
 
 ## 4. Optional VS Code MCP client
 
@@ -173,7 +171,7 @@ For VS Code's desktop extension-host MCP client, run **MCP: Open User Configurat
 
 Supply base64 of UTF-8 `character:password` using trusted local tooling/password management; base64 is reversible and remains a secret. Do not put its value into this file or use an online encoder. This MCP input is separate from the LSP extension's SecretStorage command. Review server trust, start it using **MCP: List Servers**, then ask the agent to call `validate` with `code: "add("`, `parseType: "function"`; confirm the tool invocation and inspect the diagnostic. This needs an available VS Code chat/agent provider. Interactive-input configurations are not forwarded to Agent Host sessions; this example is scoped to the desktop extension host. No OAuth/browser-ticket login is offered by SharpMUSH.
 
-Client configuration fields follow the [VS Code MCP reference](https://code.visualstudio.com/docs/agents/reference/mcp-configuration); [VS Code setup guidance](https://code.visualstudio.com/docs/agent-customization/mcp-servers) describes user configuration and trust. The concrete client UI/authentication path remains untested here.
+Client configuration fields follow the [VS Code MCP reference](https://code.visualstudio.com/docs/agents/reference/mcp-configuration); [VS Code setup guidance](https://code.visualstudio.com/docs/agent-customization/mcp-servers) describes user configuration and trust.
 
 ## Troubleshooting
 
