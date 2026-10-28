@@ -111,7 +111,8 @@ and creation times. Flags and powers become SharpMUSH's where one matches: a wiz
 role, and a TinyMUX power such as `control_all` becomes the permission it stands for. RhostMUSH's staff
 levels become roles of their own, each placed just above the role with the same rights: `guildmaster`
 above `player`, `architect` above `builder`, `councilor` above `royalty` and `immortal` above
-`wizard`. A flag or power with no match is kept as
+`wizard`. Two also get a little more: `guildmaster` may view players and inspect the queue, and
+`immortal` may run the server. A flag or power with no match is kept as
 a custom flag or power, so `hasflag()` still sees it. Passwords keep working: each form these servers
 store is checked at login and replaced with SharpMUSH's own the first time the player connects. Mail
 comes across, in RhostMUSH's folders when the folder dump is given. TinyMUX channels come across with
@@ -120,7 +121,9 @@ their members, and each player's comsys aliases become `CHANALIAS` attributes.
 RhostMUSH reality levels become [reality layers](/reference/sharpmush-help/reality/), when the
 configuration file that names them is imported too. Each level's name works as a layer name in
 softcode, so `rxlevel(me,Umbra)` still reads. RhostMUSH totems become flags. A RhostMUSH cluster is
-merged into its first object, which takes every attribute the cluster held. RhostMUSH tags come
+merged into its first object, which takes every attribute the cluster held. When two of the
+cluster's objects hold an attribute of the same name, the first one's value is kept, and the report
+lists each such attribute. RhostMUSH tags come
 across as tags, so `#weather` still names the same object, and each player's own tags stay theirs.
 
 **What the import changes in softcode.** Colour written as `%c` or `%x` codes, such as
@@ -128,8 +131,9 @@ across as tags, so `#weather` still names the same object, and each player's own
 `%x` an attribute. A code the import can't turn into `ansi()`, such as one built by a function at run
 time, is removed, and the report warns about each attribute it was removed from. A RhostMUSH import
 also rewrites its character codes (`%<065>` becomes `A`), literal `timefmt()` formats, and calls to
-RhostMUSH functions whose arguments differ from SharpMUSH's, such as `ljc()`, `streq()` and
-`tag()`, as the SharpMUSH call that gives the same answer. The import also turns on the compatibility options the old server's
+RhostMUSH functions whose arguments differ from SharpMUSH's, such as `ljc()` and `streq()`, as the
+SharpMUSH call that gives the same answer. RhostMUSH's `tag()` becomes `tagref()`, because
+SharpMUSH's `tag()` writes an HTML tag. The import also turns on the compatibility options the old server's
 softcode expects, and lists them in its report.
 
 **What is left behind.** Destroyed objects, money, flags and toggles SharpMUSH has nothing for, and
