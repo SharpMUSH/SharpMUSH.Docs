@@ -58,6 +58,17 @@ export function validateContent({ root = process.cwd(), requiredRoutes = ['guide
     }
   }
 
+  const guideAssets = path.join(root, 'src/assets/guide');
+  if (fs.existsSync(guideAssets)) {
+    const sources = fs.readdirSync(path.join(root, 'src'), { recursive: true, withFileTypes: true })
+      .filter((entry) => entry.isFile() && /\.(mdx?|astro|ts|js|mjs|css)$/.test(entry.name))
+      .map((entry) => fs.readFileSync(path.join(entry.parentPath, entry.name), 'utf8'))
+      .join('\n');
+    for (const name of fs.readdirSync(guideAssets)) {
+      if (/\.(png|webp|jpe?g|gif|svg)$/i.test(name) && !sources.includes(name)) failures.push(`src/assets/guide/${name} is not used by any page`);
+    }
+  }
+
   for (const relative of ['src/content/docs/guides/local-install.mdx', 'src/content/docs/guides/plugins.mdx', 'src/content/docs/reference/features.mdx']) {
     const file = path.join(root, relative);
     if (fs.existsSync(file) && /(?:\.NET\s*10|net10\.0)/i.test(fs.readFileSync(file, 'utf8'))) failures.push(`${relative} refers to the stale .NET 10 SDK`);
