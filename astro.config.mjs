@@ -156,6 +156,7 @@ export default defineConfig({
                               { label: 'Who and Where', slug: 'guides/who-where' },
                               { label: 'Status', slug: 'guides/status' },
                               { label: 'Staff List', slug: 'guides/staff' },
+                              { label: 'Census', slug: 'guides/census' },
                               { label: 'Watch List', slug: 'guides/watch' },
                               { label: 'Notifications', slug: 'guides/notifications' },
                               { label: 'Bulletin Boards', slug: 'guides/bboards' },
