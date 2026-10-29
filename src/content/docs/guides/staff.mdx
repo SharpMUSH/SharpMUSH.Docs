@@ -116,12 +116,15 @@ immortal wizard moderator councilor royalty architect guildmaster helper
 
 A role the game does not have lists nobody, so the same setting works whichever staff roles
 the game chose. The Role column shows the first role in the setting that each character
-holds. To list builders too:
+holds. To list builders too, add their role:
 
 ```
-> +config staff/roles=wizard royalty builder
-[CONFIG] Done: staff/roles is now wizard, royalty, builder, was immortal, wizard, moderator, councilor, royalty, architect, guildmaster, helper.
+> +config/add staff/roles=builder
+[CONFIG] Done: staff/roles is now immortal, wizard, moderator, councilor, royalty, architect, guildmaster, helper, builder, was immortal, wizard, moderator, councilor, royalty, architect, guildmaster, helper.
 ```
+
+`+config/remove staff/roles=builder` takes it off again. Setting the list with
+`+config staff/roles=...` replaces all of it.
 
 God (#1) and the Package Manager hold the wizard role to run the game, so they are left
 out. Either is listed once it holds a duty.
