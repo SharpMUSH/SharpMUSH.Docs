@@ -36,6 +36,32 @@
 	--sm-cta-to: #00553d;
 }
 
+/* Motion, the same tokens as the game's portal: Material 3's standard easing, and a spring with the
+   damping of its Expressive default spatial spring (0.8), sampled into linear() and played over 0.35s
+   (a stiffness of about 600). A colour, shadow or opacity change takes --motion-fade; a turn or a
+   small lift takes --motion-spring. Reduced motion zeroes the spring and keeps the fades, which move
+   nothing. */
+:root {
+	--duration-effect: 0.15s;
+	--duration-spring: 0.35s;
+	--ease-standard: cubic-bezier(0.2, 0, 0, 1);
+	--ease-spring: linear(0, 0.008 1.5%, 0.029 3%, 0.061 4.5%, 0.102 6%, 0.148 7.5%, 0.198 9%, 0.433 15.5%, 0.536 18.5%, 0.644 22%, 0.723 25%, 0.791 28%, 0.848 31%, 0.893 34%, 0.934 37.5%, 0.964 41%, 0.988 45%, 1.004 49.5%, 1.012 54.5%, 1.015 63.5%, 1);
+	--motion-fade: var(--duration-effect) var(--ease-standard);
+	--motion-spring: var(--duration-spring) var(--ease-spring);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	:root {
+		--duration-spring: 0s;
+	}
+}
+
+/* Starlight turns its carets on its own ease-in-out, and the sidebar's ignores reduced motion. */
+.sidebar-content .caret,
+.sl-markdown-content summary:not(:where(.not-content *))::before {
+	transition: transform var(--motion-spring);
+}
+
 /* Hero call-to-action for the live example game. Deliberately louder than the
    flat accent fill Starlight gives `variant: primary`, so the demo reads as the
    thing to click. Unlayered, so it wins over starlight.components. */
@@ -45,7 +71,7 @@
 	color: var(--sl-color-black);
 	font-weight: 600;
 	box-shadow: 0 2px 14px -4px color-mix(in oklab, var(--sl-color-accent) 70%, transparent);
-	transition: box-shadow 0.25s ease, transform 0.25s ease;
+	transition: box-shadow var(--motion-fade), transform var(--motion-spring);
 }
 
 .sl-link-button.hero-demo-cta:hover {
@@ -63,10 +89,9 @@
 	outline-offset: 0.25rem;
 }
 
+/* No lift at all: with the spring at zero it would still jump. The shadow still fades. */
 @media (prefers-reduced-motion: reduce) {
-	.sl-link-button.hero-demo-cta,
 	.sl-link-button.hero-demo-cta:hover {
-		transition: none;
 		transform: none;
 	}
 }
