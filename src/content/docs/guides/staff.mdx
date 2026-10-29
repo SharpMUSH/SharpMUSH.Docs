@@ -9,18 +9,21 @@ The **staff** package adds `+staff`, and `+stafflist` for the same list. It show
 game's staff are and what each of them looks after: John is the Head Director, Jim is a
 Builder.
 
-![+staff as a player sees it: a box titled Staff with a row for each staff member, giving their name, duty, staff role and idle time, then the count and the duties nobody holds.](../../../assets/guide/staff-list.webp)
+![+staff as a player sees it: a box titled Staff with a row for each staff member, giving their name, duty, staff role, whether they are on duty and their idle time. John is On duty with LFRP beside it, Ann is Off duty, Jim and Kit are Offline. Under it, the count and the open duty Storyteller.](../../../assets/guide/staff-list.webp)
 
 - Everyone holding a staff role is listed on their own. Nobody keeps a list by hand.
 - Duties are set with `+config`, and someone holding one is listed even without a staff role.
+- Staff say whether they are on duty with `+staff/on` and `+staff/off`.
 - God (#1) is not listed unless it holds a duty.
 
 | You are | You want to | Read |
 |---|---|---|
 | A player | see who the staff are | [Reading the list](#reading-the-list) |
+| Staff | say whether you are on duty | [On and off duty](#on-and-off-duty) |
 | Staff | give someone a duty | [Setting duties](#setting-duties) |
 | Staff | choose which roles count as staff | [Staff roles](#staff-roles) |
 | Staff | install it | [Installing](#installing) |
+| A coder | change the Status column | [Changing the Status column](#changing-the-status-column) |
 
 In the game, `+help staff` has the same in short form.
 
@@ -33,16 +36,41 @@ In the game, `+help staff` has the same in short form.
 | Name | The character's name |
 | Duty | The duties they hold, such as `Plot Staff, Theme` when they hold two |
 | Role | Their staff role, such as Wizard or Royalty. Empty for someone listed only for a duty |
-| Idle | How long they have been idle, or `Off` |
+| Status | `On duty` or `Off duty` while they are connected, and `Offline` when they are not |
+| Idle | How long they have been idle, while they are connected |
 
-Idle is `Off` for someone who is not connected, and for someone hidden from the who list,
-so a staff member who is `DARK` is not given away.
+Someone hidden from the who list is shown `Offline`, on duty or not, so a staff member who
+is `DARK` is not given away.
 
 Under the table, the footer counts who is listed and how many are connected, and names the
 duties nobody holds yet, such as `Open: Storyteller`.
 
 The list is in order of duty, then of role, then of name: someone holding a duty comes
 before everyone holding none, and the duty's order says which comes first.
+
+## On and off duty
+
+Anyone on the list says whether they are on duty:
+
+```
+> +staff/on
+[STAFF] Done: You are on duty.
+> +staff/off
+[STAFF] Done: You are off duty.
+```
+
+You stay on duty until you type `+staff/off`, through logging off and back on. While you
+are not connected, `+staff` shows you `Offline` either way. Someone who is not on the list
+is told so:
+
+```
+> +staff/on
+[STAFF] Error: Only someone on the staff list can go on or off duty.
+```
+
+Where the [status](/guides/status) package is installed, `+staff` also shows each connected
+staff member's `+status`, such as `On duty · LFRP`, once an administrator installs the
+`staff-status` package as well.
 
 ## Setting duties
 
@@ -122,3 +150,13 @@ A game that already has a `+staff` of its own should remove that first, or both 
 
 See [Softcode Packages](/guides/packages) for how installing, upgrading and rolling back
 work.
+
+## Changing the Status column
+
+Another package can change the Status column with a filter on the **Staff List**: an
+attribute named ``FILTER`STAFF`STATUS`<name>``. For each row, `+staff` runs every filter in
+name order with `chain()`. Each is given the status so far as `%0` (`On duty`, `Off duty` or
+`Offline` to begin with), the character as `%1`, and `1` as `%2` when they are connected,
+and returns the status to show. `staff-status` is one such filter.
+
+A filter a package attaches to the Staff List goes away when that package is uninstalled.
