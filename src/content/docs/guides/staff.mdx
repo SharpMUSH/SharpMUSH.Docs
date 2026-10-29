@@ -1,0 +1,124 @@
+---
+title: Staff List
+description: Listing the game's staff with +staff, each with the duties they hold, from staff roles and a duties table kept with +config.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The **staff** package adds `+staff`, and `+stafflist` for the same list. It shows who the
+game's staff are and what each of them looks after: John is the Head Director, Jim is a
+Builder.
+
+![+staff as a player sees it: a box titled Staff with a row for each staff member, giving their name, duty, staff role and idle time, then the count and the duties nobody holds.](../../../assets/guide/staff-list.webp)
+
+- Everyone holding a staff role is listed on their own. Nobody keeps a list by hand.
+- Duties are set with `+config`, and someone holding one is listed even without a staff role.
+- God (#1) is not listed unless it holds a duty.
+
+| You are | You want to | Read |
+|---|---|---|
+| A player | see who the staff are | [Reading the list](#reading-the-list) |
+| Staff | give someone a duty | [Setting duties](#setting-duties) |
+| Staff | choose which roles count as staff | [Staff roles](#staff-roles) |
+| Staff | install it | [Installing](#installing) |
+
+In the game, `+help staff` has the same in short form.
+
+## Reading the list
+
+`+staff` shows one row for each staff member:
+
+| Column | Shows |
+|---|---|
+| Name | The character's name |
+| Duty | The duties they hold, such as `Plot Staff, Theme` when they hold two |
+| Role | Their staff role, such as Wizard or Royalty. Empty for someone listed only for a duty |
+| Idle | How long they have been idle, or `Off` |
+
+Idle is `Off` for someone who is not connected, and for someone hidden from the who list,
+so a staff member who is `DARK` is not given away.
+
+Under the table, the footer counts who is listed and how many are connected, and names the
+duties nobody holds yet, such as `Open: Storyteller`.
+
+The list is in order of duty, then of role, then of name: someone holding a duty comes
+before everyone holding none, and the duty's order says which comes first.
+
+## Setting duties
+
+Duties are a [table](/guides/config#tables) in `+config staff/duties`. Changing it needs the `config.admin`
+permission. Each duty has:
+
+- a **name**, which is how you change it, such as `director`;
+- a **title**, what `+staff` shows, such as `Head Director`;
+- a **holder**, the player who holds it, or nobody while it is open;
+- an **order**, from 0 to 999, lower first. A new duty has 50.
+
+Add a duty with its title, then give it to a player:
+
+```
+> +config/add staff/duties/director=Head Director
+[CONFIG] Done: Added staff/duties/director. +config staff/duties/director shows it.
+> +config staff/duties/director/holder=*John
+[CONFIG] Done: staff/duties/director/holder is now John (#24), was none.
+> +config staff/duties/director/order=10
+[CONFIG] Done: staff/duties/director/order is now 10, was 50.
+```
+
+`+config staff/duties` lists every duty with its fields:
+
+![+config staff/duties: a table with one row per duty, its title, who holds it and its order. Storyteller is held by none.](../../../assets/guide/staff-duties.webp)
+
+- To open a duty again, set its holder to nothing: `+config staff/duties/builder/holder=`.
+- To take a duty away, `+config/remove staff/duties/builder`.
+- A player can hold several duties. `+staff` shows them all, in order.
+- For two builders, add two duties with the same title, such as `builder` and `builder2`.
+
+The holder is kept as the character itself, not their name, so renaming them keeps the duty.
+A holder whose character is destroyed leaves the duty open.
+
+## Staff roles
+
+`+staff` lists everyone holding one of the roles in `+config staff/roles`. On a new game
+that is SharpMUSH's and RhostMUSH's staff roles, highest first:
+
+```
+immortal wizard moderator councilor royalty architect guildmaster helper
+```
+
+A role the game does not have lists nobody, so the same setting works whichever staff roles
+the game chose. The Role column shows the first role in the setting that each character
+holds. To list builders too:
+
+```
+> +config staff/roles=wizard royalty builder
+[CONFIG] Done: staff/roles is now wizard, royalty, builder, was immortal, wizard, moderator, councilor, royalty, architect, guildmaster, helper.
+```
+
+God (#1) and the Package Manager hold the wizard role to run the game, so they are left
+out. Either is listed once it holds a duty.
+
+<Aside type="caution">
+A role given to an account reaches every character on that account, so each of them is
+listed as staff. To list only a staff character, give the role to that character, not to
+the account.
+</Aside>
+
+Give someone a role with `@role/assign`, such as `@role/assign *Ann=royalty`; `help @role` in the
+game has the rest.
+
+## Installing
+
+The staff package ships with the server but is not installed on a new game. An
+administrator installs it from the portal:
+
+1. Open **Packages** in the admin area and choose **Browse**.
+2. Install `staff`. Its `+help` topics and `+config` settings come with it, through the
+   `staff-help` and `staff-config` bridges, wherever `+help` and `+config` are installed.
+
+It adds `+staff` and `+stafflist` as `$`-commands on an object in the master room, **Staff
+List**, which also holds the settings. The duties are kept on the **Staff Store** inside it.
+A game that already has a `+staff` of its own should remove that first, or both answer.
+
+See [Softcode Packages](/guides/packages) for how installing, upgrading and rolling back
+work.
