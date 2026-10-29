@@ -36,31 +36,49 @@ recorded as in character. Two commands record the other shipped types:
 ### Hiding a type
 
 Some players would rather read a scene without the out-of-character chatter, or without the radio
-traffic. `+scene/hide <type>` leaves that type out of your `+scene/recall` and `+scene/log`, and a
-note under the recall says how many lines it left out:
+traffic. You choose what to hide in two places, and each keeps its own choice:
+
+- **Reading** a scene: `+scene/log`, `+scene/highlights`, and a scene's page in the portal.
+- **Playing** in one: `+scene/recall`, the Play page, and a live scene you joined in the portal.
+
+Out-of-character lines start hidden while reading and shown while playing. When you are in a scene,
+the OOC talk is part of it; when you read one later, it usually is not.
+
+`+scene/hide <type>` leaves a type out in both places. Add `=reading` or `=playing` to change only
+one. A note under the recall or log says how many lines it left out:
 
 ```text
-> +scene/hide ooc
-[SCENE] Done: Out of character lines are hidden from your recall and log. +scene/show ooc shows them again.
-> +scene/recall 5=10
-═╡ Wren · pose 32 ╞═══════════════════════════════════════════════╡ Scene 5 ╞═
-Wren pulls her hood up and squints at the breakwater. "That's no fishing boat."
-═╡ Tomas · pose 33 ╞══════════════════════════════════════════════╡ Scene 5 ╞═
-Tomas sets down the crate and follows her gaze, one hand on the rail.
-<RADIO · 5> [Harbour Watch] Tomas: Tower, we have an unlit vessel off the north mole.
-═╡ Wren · pose 37 ╞═══════════════════════════════════════════════╡ Scene 5 ╞═
-Out past the mole, the fog bell begins to ring.
-═╡ Wren · pose 38 ╞═══════════════════════════════════════════════╡ Scene 5 ╞═
-Wren is already moving, boots loud on the wet boards.
-[SCENE] 2 lines of ooc hidden. +scene/show <type> shows them.
-> +scene/show ooc
-[SCENE] Done: Out of character lines show in your recall and log.
+> +scene/log 1
+═╡ Scene 1: Midnight at the Docks ╞═══════════════════════════════════════════
+═╡ Wren Halloway · pose 1 ╞═══════════════════════════════════════════════════
+Wren Halloway leans against a stack of crates, watching the fog roll in off the water.
+══════════════════════════════════════════════════════════════════╡ Scene 1 ╞═
+═╡ Tomas Reyes · pose 2 ╞═════════════════════════════════════════════════════
+Tomas Reyes steps out of the fog, coat collar up. "You're early."
+══════════════════════════════════════════════════════════════════╡ Scene 1 ╞═
+═╡ Wren Halloway · pose 6 ╞═══════════════════════════════════════════════════
+Wren Halloway says, "Early is on time, Reyes. On time is late."
+══════════════════════════════════════════════════════════════════╡ Scene 1 ╞═
+[SCENE] 3 lines of ooc hidden. +scene/show <type>=reading shows them.
+> +scene/show ooc=reading
+[SCENE] Done: Out of character lines show while reading.
+> +scene/hide ooc=playing
+[SCENE] Done: Out of character lines are hidden while playing. +scene/show ooc shows them again.
+> +scene/hide
+[SCENE] While reading: every pose type shows.
+While playing: ooc hidden.
++scene/hide <type> hides one and +scene/show <type> shows one again; add =reading or =playing for only one of them.
 ```
 
-`+scene/hide` on its own lists what you hide. The choice is kept on your character, so the portal
-reads the same one: the **Show** menu above a scene's story lists the types with a tick beside each,
-and unticking one there is the same as `+scene/hide`. In the portal, hidden lines fold into a row
-such as "1 Out of character line hidden", which opens them for that page.
+`+scene/hide` on its own lists what you hide in each place. The choices are kept on your character,
+so the portal reads the same ones: the **Show** menu above a scene's story lists the types with a
+tick beside each, and unticking one there is the same as `+scene/hide <type>=reading` on a scene's
+page, or `=playing` on Play and in a scene you joined. In the portal, hidden lines fold into a row
+such as "3 Out of character lines hidden", which opens them for that page.
+
+![A scene's page, read rather than played: the Show menu has Out of character unticked, and the three OOC lines are folded into one row that says "3 Out of character lines hidden".](../../../assets/guide/scene-ooc-reading.webp)
+
+![The same scene joined to play in it: the Show menu has every type ticked, and the OOC lines show as tinted bands between the poses, above the IC and OOC composer.](../../../assets/guide/scene-ooc-playing.webp)
 
 Hiding only affects reading the log. Lines said in the room while you are there still reach you.
 
@@ -151,7 +169,7 @@ A type has six fields:
 | `presentation` | its layout in the portal, from the table above |
 | `tone` | its colour, a theme colour's name |
 | `icon` | for a `message`: `radio`, `phone`, `chat`, `dice`, `book`, `scroll`, `megaphone`, `eye`, `mask`, `music`, `star` or `bolt` |
-| `hidden` | `yes` makes it start hidden for players who have not chosen |
+| `hidden` | where it starts hidden for players who have not chosen: `yes` for both places, `reading`, `playing`, or `no` |
 | `order` | its place in lists, lowest first |
 
 A value that does not fit is refused, and the type keeps what it had.
@@ -228,13 +246,14 @@ lists the types the game read and, separately, every `TYPE` attribute it left ou
 ```text
 > @scene/types
 ╭───────────────────────────────┤ Pose types ├───────────────────────────────╮
-│ Key        Label             Presentation  Tone       Icon   Hidden  Order │
+│ Key        Label            Presentation  Tone       Icon   Hidden   Order │
 │ ────────────────────────────────────────────────────────────────────────── │
-│ ic         In character      prose                           no         10 │
-│ ooc        Out of character  band          secondary         no         20 │
-│ narration  Narration         aside         secondary         no         30 │
-│ radio      Radio             message       info       radio  no         40 │
-│ dice       Dice rolls        notice        warning    dice   no         50 │
+│ ic         In character     prose                           no          10 │
+│ ooc        Out of           band          secondary         reading     20 │
+│            character                                                       │
+│ narration  Narration        aside         secondary         no          30 │
+│ radio      Radio            message       info       radio  no          40 │
+│ dice       Dice rolls       notice        warning    dice   no          50 │
 ╰────────────────────────────────────────────────────────────────────────────╯
 ╭────────────────────────────────┤ Not read ├────────────────────────────────╮
 │ Attribute   Why it was left out                                            │
