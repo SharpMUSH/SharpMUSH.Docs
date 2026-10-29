@@ -15,6 +15,7 @@ This page covers:
 - [Setting it up](#setting-it-up)
 - [Making a map](#making-a-map)
 - [How a map is drawn](#how-a-map-is-drawn)
+- [Moving around a map](#moving-around-a-map)
 - [Levels](#levels)
 - [Kinds of place](#kinds-of-place)
 - [Several maps](#several-maps)
@@ -84,6 +85,23 @@ rooms but do not place them.
 
 A room the map cannot place, such as a room on a grid map with no coordinates, is drawn with a
 dashed edge in a row below the others, on the level of a room its exits join it to.
+
+## Moving around a map
+
+A map opens at the size that fits its frame, with the room you are in in the middle. The zoom
+buttons above the map make it larger or smaller around the middle of the view, and **Fit the map**
+fits it again. Scroll or swipe to move across a map larger than its frame.
+
+Lines stay the same width at any size, and room names grow and shrink with the map. A room too
+small to hold its name has the name on a label under it.
+
+![The Coast map, a picture map with no picture, fitted to its frame: six rooms on a ground of faint dots, from the Lighthouse at the top left to the Watchtower at the bottom right, each with its name on a label below it.](../../../assets/guide/world-map-coast.webp)
+
+**You are here** brings your room to the middle of the view. While the World map is open, it
+follows you: when you walk to another room, that room is marked and brought to the middle, and when
+you walk onto another map, that map opens.
+
+![The OOC map after walking from Room Zero to Room One: Room One is now filled in the accent colour as where you are, and the room panel below shows Room One.](../../../assets/guide/world-map-follow.webp)
 
 ## Levels
 
@@ -179,6 +197,10 @@ Each room's `` MAP`POS`X `` and `` MAP`POS`Y `` are then a point on the picture,
 top left corner. A room is drawn as a pin with its name under it, unless it has a `` MAP`SIZE `` of
 its own: then it is an area of that many pixels around its point.
 
+A `graph` map with no picture draws each room as a box, as large as a grid cell, on a ground of faint
+dots. `` MAP`POS`X `` and `` MAP`POS`Y `` are then the box's centre, in the same units, so rooms 96
+apart sit side by side.
+
 Holding the Isle map:
 
 ```
@@ -212,12 +234,15 @@ and the map shows what it will look like once your changes run.
 - A chosen room lists its exits. Rename or destroy one you control, or open a way to another room
   on the map. An exit name the room already uses is refused.
 - Choose an empty cell next to a room, or a spot on a picture map, to dig a room there, with a
-  description if you like. It is joined to the room straight beside it by an exit and, if you like,
+  description if you like. A picture map with no picture leaves room around its rooms to choose a
+  spot in, so a room can be placed or moved well away from the others. It is joined to the room straight beside it by an exit and, if you like,
   an exit back; on a grid the names follow the direction, such as `East;e` there and `West;w` back.
   `in` and `i` are refused as exit names, as `i` is the inventory.
 - Add a room you control that this map's exits lead to and that is on no map, or a room by its
   dbref.
 - On a grid, name the level on show.
+
+![The Coast map while editing: a banner says players see nothing until you apply, and the dotted ground reaches well past the six rooms on every side, leaving space to place a room away from them.](../../../assets/guide/world-map-coast-editing.webp)
 
 ![The Harbour map while editing: a banner says players see nothing until you apply. An empty cell east of the Fish market is chosen, and under the map the Edit panel offers Move Fish market here and a form to dig a room there, named Chandlery, joined from the Fish market by East;e, with West;w as the way back.](../../../assets/guide/world-map-builder-dig.webp)
 
