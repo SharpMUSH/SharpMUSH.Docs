@@ -117,6 +117,35 @@ the article are its categories and its revision, language and when it was last e
 another page, like **House Rules** here, is highlighted, and a client that takes clickable links
 opens that page when you click it.
 
+An article can list other pages: every page in a category, every page in a namespace, the pages
+edited last, or the pages a fact query finds. The Markdown Guide (`@wiki help:markdown_guide`)
+shows how to write one. The list is made when you open the article, so a page added since is on
+it. A list shows up to 20 pages, then a link to the rest:
+
+```text
+> +wiki town guide
+═════════════════════════════╡ Town Guide (main) ╞════════════════════════════
+Town Guide
+
+Where to go:
+
+Page
+──────────────
+Harbor Market
+Lantern Street
+The Old Mill
+
+Recently edited
+Page           Edited
+─────────────────────────
+Town Guide     2026-10-29
+Places         2026-10-29
+Harbor Market  2026-10-29
+══════════════════════════════════════════════════════════════════════════════
+rev 1 [en] - 1m 50s ago
+══════════════════════════════════════════════════════════════════════════════
+```
+
 ```text
 > +wiki house_rules
 ════════════════════════════╡ House Rules (main) ╞════════════════════════════
