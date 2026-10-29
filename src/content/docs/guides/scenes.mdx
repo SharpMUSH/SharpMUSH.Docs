@@ -60,7 +60,7 @@ Owner   Mira                                                                 0
 ```
 
 `+scene/join <id>` puts you in the scene and makes it your **focus**, the scene your poses are
-recorded into. Joining needs an approved character.
+recorded into. Joining needs the `scene.join` permission; see [Who can take part](#who-can-take-part).
 
 ```
 > +scene/join 1
@@ -187,7 +187,7 @@ Anyone holding the `scene.close` permission can finish a scene they do not own w
 
 ### Who can read it
 
-A scene is public: it is listed in `+scene` and anyone can read its log. `+scene/private [<id>]`
+A scene is public: it is listed in `+scene` and anyone holding `scene.view` can read its log. `+scene/private [<id>]`
 hides it and its log from everyone but its members, and `+scene/public [<id>]` puts it back. Who may
 pose is decided by who has joined, not by this setting.
 
@@ -315,6 +315,40 @@ Two bridge packages, also installed on a new game, join scenes to the rest of th
 puts the scene topics in `+help`, and `scene-config` puts the scene settings in `+config`. Without
 them, scenes still run, but `+help scene` and `+config scene` find nothing. See
 [Bridge Packages](/guides/bridge-packages/).
+
+### Who can take part
+
+Four permissions, which the scene package defines, decide what a character may do with scenes:
+
+| Permission | Lets a character | Given to |
+|---|---|---|
+| `scene.view` | Read scenes they are not in: `+scene`, `+scene/old`, `+scene/upcoming`, a scene's card and its log, in the game and on the website | everyone |
+| `scene.join` | Join a scene, RSVP to one, and mark poses | the `approved` role, royalty, wizards |
+| `scene.pose` | Have their poses recorded, pose from the website, and fix their own poses | the `approved` role, royalty, wizards |
+| `scene.create` | Start and schedule scenes, and run the ones they own | the `approved` role, royalty, wizards |
+
+A scene a character is in stays readable to them without `scene.view`. Change who holds a permission
+as you would any other, with `@role/allow` and `@role/deny`, or on the **Roles** page of the admin
+area. To let every character join and pose, approved or not:
+
+```
+> @role/allow player=scene.join scene.pose
+```
+
+To keep guests out of the scene logs:
+
+```
+> @role/deny guest=scene.view
+```
+
+A character without a permission is told which one it needs:
+
+```
+> +scene/join 1
+[SCENE] Error: Permission denied. You need the scene.join permission.
+```
+
+### Other packages
 
 Other packages add to scenes. Each has its own page:
 
