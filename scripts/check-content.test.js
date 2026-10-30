@@ -92,3 +92,11 @@ test('accepts links to the SharpMUSH repository itself, its issues and other rep
   const root = fixture('[Source](https://github.com/SharpMUSH/SharpMUSH) [Issue](https://github.com/SharpMUSH/SharpMUSH/issues/743) [Template](https://github.com/SharpMUSH/SharpMUSH.Template)');
   assert.deepEqual(validateContent({ root, requiredRoutes: ['guides/test'] }), []);
 });
+
+test('catches a guide image no page uses', () => {
+  const root = fixture('![Setup claim form](../../../assets/guide/used.webp)');
+  fs.mkdirSync(path.join(root, 'src/assets/guide'), { recursive: true });
+  fs.writeFileSync(path.join(root, 'src/assets/guide/used.webp'), 'webp');
+  fs.writeFileSync(path.join(root, 'src/assets/guide/before.webp'), 'webp');
+  assert.deepEqual(validateContent({ root, requiredRoutes: ['guides/test'] }), ['src/assets/guide/before.webp is not used by any page']);
+});
