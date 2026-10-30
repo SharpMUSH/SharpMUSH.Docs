@@ -1,0 +1,105 @@
+---
+title: Portal Navigation
+description: Group the web portal's navigation the way your game thinks of it, add links, hide what you don't need, and choose the phone tabs.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+The web portal's navigation is the rail down the left of a desktop screen, the menu that slides in on a phone,
+and the tab bar along the bottom of a phone. Staff arrange it for everyone at **Admin > Portal > Navigation**
+(`/admin/navigation`), which needs the `layout.admin` permission. Players see what staff arranged. They can't
+rearrange it, but they can open and close pop-out groups in the phone menu.
+
+There is no game command for this: the navigation only exists in the portal.
+
+## What you can change
+
+- **Groups.** Make a group, name it, and choose how it is shown. Move a group up or down.
+- **Order.** Move anything up or down in its group, or to another group. Drag it, use the arrow buttons, or
+  pick a group from **Move to**.
+- **Hidden.** Take something off the navigation. It still works for whoever may use it, and the
+  [command palette](/guides/command-palette) still finds it.
+- **Links.** Add a link to a portal page or another website, such as your game's Discord. A link can be
+  limited to people with a permission.
+- **Phone tabs.** Choose the three tabs between **Home** and **Menu**.
+
+Nothing here changes who can open what. The navigation only shows a page to people who could already open
+it, wherever you put it. A group with nothing in it for someone isn't shown to them.
+
+## How a group is shown
+
+Each group has a **Shown as** setting. On a desktop rail:
+
+| Shown as | On the rail | In the phone menu |
+|---|---|---|
+| **Each item on its own** | A button for each item, under the group's name. | The group's name, then its items. |
+| **One button, with a sidebar** | One button that opens the first item. An application's page lists the group's other applications in its sidebar. | The group's name, then its items. |
+| **One button that opens a list** | One button. Choosing it opens the group's items beside the rail. | A heading you can open and close. |
+
+Use **Each item on its own** for the few things players use all the time. Use the other two when a group
+holds many applications and would make the rail long.
+
+A group shown as a list draws its first four items' icons on its button, unless you give the group an icon
+of its own. Type a Material icon name, such as `forum`, in **Icon**.
+
+The list opens when you click its button, not when you point at it. **Escape**, a click elsewhere, or
+following a link closes it. Up and Down move between its links.
+
+In the phone menu, a group shown as a list is open while it holds the page you are on. Otherwise it stays
+as you last left it in that browser.
+
+## When the rail runs out of room
+
+On a short screen, the groups that don't fit go into **More**, a button at the bottom of the groups that
+opens a list of them, each under its name. Make the window taller and they come back.
+
+## New applications
+
+When a package adds a portal application, it asks for a group through its **Nav placement**
+([Portal Applications](/guides/applications)). If you have a group with that name, the application joins
+it. If you don't, it gets a new group of that name, shown as **One button, with a sidebar**. The editor marks
+anything you haven't placed yet as **New**.
+
+To decide for yourself where each new application goes, turn off **Show newly installed applications
+straight away**. A new application then waits under **Hidden** until you move it.
+
+Uninstalling an application leaves its place in your layout, marked **Not installed**. If the application
+is installed again, it goes back where you had it. Remove the row to forget it.
+
+## Add a link
+
+<Steps>
+
+1. Under the group the link goes in, fill in **Link name** and **Address**. The address is a portal page
+   starting with `/`, such as `/wiki/rules`, or a website starting with `https://`.
+
+2. Optionally, type a permission, such as `wiki.admin`, so only people who hold it see the link.
+
+3. Press **Add link**, then **Save**.
+
+</Steps>
+
+A link to another website opens in a new tab. Links can't be hidden: remove one instead.
+
+## Choose the phone tabs
+
+A phone shows a tab bar along the bottom: **Home**, up to three tabs you choose, and **Menu**, which opens
+everything. Under **Phone tab bar**, choose each tab. A tab can be one item, or a whole group. A group's tab
+opens its items in a sheet that rises from the bottom of the screen.
+
+A tab someone can't open isn't shown to them. Tablets use the phone menu and tab bar too.
+
+## Preview, save and start over
+
+**Preview** shows the navigation as a visitor, a player, or staff who can open everything. Press **Save**
+to give it to everyone. A portal someone already has open shows it after they reload the page.
+
+If someone else saved while you were editing, your save is refused and nothing of yours is lost from the
+page. Press **Reload** to see their version, then make your changes again.
+
+**Reset to default** removes your groups, order, hidden items and links, and puts back the Play and World
+groups every game starts with.
+
+<Aside>
+Every save and reset is recorded in the audit log, as `navigation.save` and `navigation.reset`.
+</Aside>
