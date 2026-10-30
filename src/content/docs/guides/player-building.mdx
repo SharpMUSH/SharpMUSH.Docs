@@ -42,6 +42,10 @@ changed it. When the quota is used up, building stops with:
 Sorry, your building quota has run out.
 ```
 
+To build more, ask staff with `+request Building/More quota=...`, saying what you are building and
+about how many rooms it needs. Each room you dig with a pair of exits takes three slots, so 20 is
+one small area. Staff decide how much to give; [Changing quotas](#changing-quotas) shows how.
+
 Destroying something gives its slot back once it is gone. `@destroy` marks an object for
 destruction and the game removes it a few minutes later; `@destroy` it a second time to remove it
 at once:
@@ -345,6 +349,24 @@ The number is the total, not an addition, and setting it below what a player alr
 them building without taking anything away. `@allquota <number>` sets every player's quota at once.
 
 A request for more quota is a job like any other: `+request Building/More quota=...`.
+
+### Building without a limit
+
+The `No_Quota` power lets a player build as much as they like. A wizard gives it to one character:
+
+```
+> @power *Mira=No_Quota
+Mira - No_Quota granted.
+```
+
+`@quota` still shows Mira's number, but nothing stops her building past it. `@power *Mira=!No_Quota`
+takes it away, and the quota applies again to everything she owns.
+
+In the portal, **Roles & permissions**, **Assignments**, look up the player's account, and under
+**Overrides** set `game.no_quota` to **Allow**. That covers every character on the account.
+
+The Builder role does not change a quota. It only lets its holders build when your game limits
+building to builders. Wizards build without a limit.
 
 ## Letting others into a room
 
