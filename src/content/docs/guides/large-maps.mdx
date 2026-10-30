@@ -16,6 +16,7 @@ This page covers:
 - [Walking a map](#walking-a-map)
 - [Lent rooms](#lent-rooms)
 - [Rooms that stay](#rooms-that-stay)
+- [Changing a world map in the portal](#changing-a-world-map-in-the-portal)
 - [Reading a map in softcode](#reading-a-map-in-softcode)
 
 ## Setting it up
@@ -43,8 +44,9 @@ Painted 10 places as river.
 ```
 
 A place is `x,y`, or `x,y,z` with z the level. The map's legend says how each terrain looks, as on
-any map: `` MAP`LEGEND`<type>`LABEL ``, `` `TONE `` and `` `ICON ``. `` `DESC `` describes the rooms
-the map lends, and a type whose `` `CLOSED `` holds a reason cannot be entered.
+any map: `` MAP`LEGEND`<type>`LABEL ``, `` `TONE `` and `` `ICON ``. `` `CHAR `` is the one character
+`+map` and `worlddraw()` show for it. `` `DESC `` describes the rooms the map lends, and a type whose
+`` `CLOSED `` holds a reason cannot be entered.
 
 ```
 > &MAP`LEGEND`FOREST`LABEL #25=Old forest
@@ -58,8 +60,9 @@ Wilds/MAP`LEGEND`RIVER`CLOSED - Set.
 ```
 
 A side of a place can be a wall, one-way or locked, with the reason a mover is told (locks are
-below). A place can
-have a name of its own, and JSON data that the portal's World map shows in its panel.
+below). A place can have a name of its own, and JSON data that the portal's World map shows in its
+panel. A place whose data sets `"render":{"hidden":true}` shows as bare terrain to anyone who may
+not examine the map: no name, data, room or walls of its own.
 
 ```
 > @world/wall #25/2,2/n=wall,A fallen oak blocks the path.
@@ -70,7 +73,8 @@ Named 3,4,0 Old Oak.
 Set the data of 3,4,0.
 ```
 
-`help @world` lists every switch.
+`help @world` lists every switch. When `@world` refuses, it says what is missing, such as
+control of the map. A map it cannot find by name is named by its dbref instead.
 
 ## Walking a map
 
@@ -85,6 +89,10 @@ Name the map by its dbref unless you are standing near it.
 Each exit leads to the room on the place beside the mover's, lending one if the place has none. A
 wall, a one-way side seen from the wrong end, a closed terrain and a lock the mover does not pass
 refuse, with their reasons. The map's exits are a zone's exits, so a room's own exits come first.
+
+`+map/exits` also puts `` ZONE`EXITS `` on the map: given a room and a viewer, the map's exits that
+lead somewhere from it. `look` in a lent room lists those ways, and so do the Play page and a GMCP
+client's room data. A way that refuses, or leads off the map, is left out.
 
 `worldroom()` gives the room on a place, lending one if it has none. A wizard puts Wren on 2,2:
 
@@ -111,8 +119,8 @@ Oaks crowd the path, and the light comes down green.
 ```
 
 `+map` draws the places within five of yours, north up, with `@` where you stand. Each place is its
-terrain's icon when that is a character or two, else the first letter of its label. A place with
-nothing painted is blank.
+terrain's `` `CHAR ``, else its icon when that is a character or two, else the first letter of its
+label. A place with nothing painted is blank. Under the map, a key line names each type.
 
 ```
 > +map
@@ -160,7 +168,8 @@ Once a lent room has held nothing for five minutes, the game takes it back: it i
 Spare room, leaves the map's zone and parent, and waits to be lent again to another place on its
 owner's maps. A room with anyone or anything in it stays lent, and one whose map is destroyed waits
 until it is empty. The game keeps at most 50 spare rooms, and
-destroys a spare that has waited a week. A wizard can take back every empty lent room at once:
+destroys a spare that has waited a week. Lent rooms and spares belong to the map's owner and count
+against that player's [building quota](/guides/player-building/#your-building-quota). A wizard can take back every empty lent room at once:
 
 ```
 > @world/sweep
@@ -237,6 +246,24 @@ The slope is too steep to climb without gear.
 ```
 
 Names in a legend key are looked up from the map, so use dbrefs, flags and attributes there.
+
+## Changing a world map in the portal
+
+On the portal's World map, **Edit map** on a grid map you control shows a World map section. On a
+map that is not a world map yet, **Make this a world map** plans `@world/create`. On a world map:
+
+- Click the map to choose a place. The paint box starts on it: give the far corner and a terrain
+  type, or pick one of the legend's types, and **Paint**. An empty type erases.
+- The chosen place takes a name, a side set open, wall or one way with the reason a refused player
+  is told, **Hide from players** or **Show to players**, and a room you control placed on it by
+  its dbref.
+- **Open the direction exits** runs `+map/exits`. It needs the World grid package, and the map must
+  be a room.
+
+Each change is the `@world` command you would type. Nothing runs until you review and apply them,
+as for any map. See [Changing a map in the portal](/guides/world-map/#changing-a-map-in-the-portal).
+Rooms standing on a place are reached by the map's own exits, so the review does not warn that
+they have no way in.
 
 ## Reading a map in softcode
 
