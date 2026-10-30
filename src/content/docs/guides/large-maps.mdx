@@ -59,10 +59,10 @@ Wilds/MAP`LEGEND`RIVER`LABEL - Set.
 Wilds/MAP`LEGEND`RIVER`CLOSED - Set.
 ```
 
-A side of a place can be a wall, one-way or locked, with the reason a mover is told. A place can
-have a name of its own, and JSON data that the portal's World map shows in its panel. A place whose
-data sets `"render":{"hidden":true}` shows as bare terrain to anyone who may not examine the map:
-no name, data, room or walls of its own.
+A side of a place can be a wall, one-way or locked, with the reason a mover is told (locks are
+below). A place can have a name of its own, and JSON data that the portal's World map shows in its
+panel. A place whose data sets `"render":{"hidden":true}` shows as bare terrain to anyone who may
+not examine the map: no name, data, room or walls of its own.
 
 ```
 > @world/wall #25/2,2/n=wall,A fallen oak blocks the path.
@@ -87,8 +87,8 @@ Name the map by its dbref unless you are standing near it.
 ```
 
 Each exit leads to the room on the place beside the mover's, lending one if the place has none. A
-wall, a one-way side seen from the wrong end and a closed terrain refuse, with their reasons. The
-map's exits are a zone's exits, so a room's own exits come first.
+wall, a one-way side seen from the wrong end, a closed terrain and a lock the mover does not pass
+refuse, with their reasons. The map's exits are a zone's exits, so a room's own exits come first.
 
 `+map/exits` also puts `` ZONE`EXITS `` on the map: given a room and a viewer, the map's exits that
 lead somewhere from it. `look` in a lent room lists those ways, and so do the Play page and a GMCP
@@ -199,6 +199,54 @@ needs control of the map:
 
 `@world/room #25/5,5=` with nothing after the `=` takes the room off its place again.
 
+## Locks
+
+A locked side works like a locked exit. `@world/lock` gives it a key, the same keys `@lock` takes,
+and a mover who passes the key goes through. The map is the locked object. The reason set with
+`@world/wall` is what everyone else is told.
+
+```
+> @world/wall #25/3,3/n=lock,The ranger's gate is barred.
+The north side of 3,3,0 is now locked.
+> @world/lock #25/3,3/n=RANGER:yes
+The north side of 3,3,0 is now locked.
+```
+
+Wren, on 3,3, is not a ranger:
+
+```
+> north
+The ranger's gate is barred.
+```
+
+`@world/lock #25/3,3/n` with no key opens the side again.
+
+The legend can also lock moving from one terrain into another, which suits mountains, deep water
+and the like:
+
+- `` MAP`LEGEND`<type>`LOCK ``: the key for entering that type from any other type. Moving between
+  two places of the same type needs no key.
+- `` MAP`LEGEND`<type>`LOCK`<from> ``: the key for entering it from one type, used in place of
+  `` `LOCK ``. Set it for the type itself to lock moving within it.
+- `` MAP`LEGEND`<type>`FAILURE `` and `` `FAILURE`<from> ``: what a refused mover is told.
+
+`#FALSE` lets nobody in. Here the mountains are closed except to climbers coming from the forest:
+
+```
+> @world/paint #25/0,9:9,9=mountain
+Painted 10 places as mountain.
+> &MAP`LEGEND`MOUNTAIN`LOCK #25=#FALSE
+Wilds/MAP`LEGEND`MOUNTAIN`LOCK - Set.
+> &MAP`LEGEND`MOUNTAIN`LOCK`FOREST #25=CLIMBER:yes
+Wilds/MAP`LEGEND`MOUNTAIN`LOCK`FOREST - Set.
+> &MAP`LEGEND`MOUNTAIN`FAILURE #25=The slope is too steep to climb without gear.
+Wilds/MAP`LEGEND`MOUNTAIN`FAILURE - Set.
+> think worldway(#25,3,8,0,n,reason,*Wren)
+The slope is too steep to climb without gear.
+```
+
+Names in a legend key are looked up from the map, so use dbrefs, flags and attributes there.
+
 ## Changing a world map in the portal
 
 On the portal's World map, **Edit map** on a grid map you control shows a World map section. On a
@@ -222,7 +270,7 @@ they have no way in.
 | Function | Gives |
 |---|---|
 | `worldcell(<map>, <x>, <y>[, <z>[, <field>]])` | a place's terrain, label, name, data, room, and more |
-| `worldway(<map>, <x>, <y>, <z>, <direction>[, <field>])` | where a way out of a place leads, and whether it is open |
+| `worldway(<map>, <x>, <y>, <z>, <direction>[, <field>[, <mover>]])` | where a way out of a place leads, and whether it is open, for a mover if one is named |
 | `worlddraw(<map>, <x>, <y>[, <z>[, <radius>[, <mark>]]])` | the places around one, drawn as text, as `+map` does |
 | `worldroom(<map>, <x>, <y>[, <z>])` | the room on a place, lending one if it has none |
 | `worldplace(<room>[, <field>])` | the place a room stands on |
