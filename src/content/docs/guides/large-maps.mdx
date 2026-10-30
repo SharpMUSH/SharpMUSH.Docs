@@ -148,8 +148,9 @@ Room: #36, lent
 ```
 
 Once a lent room has held nothing for five minutes, the game takes it back: it is renamed
-Spare room, leaves the map's zone and parent, and waits to be lent again, on this map or another.
-A room with anyone or anything in it stays lent. The game keeps at most 50 spare rooms, and
+Spare room, leaves the map's zone and parent, and waits to be lent again to another place on its
+owner's maps. A room with anyone or anything in it stays lent, and one whose map is destroyed waits
+until it is empty. The game keeps at most 50 spare rooms, and
 destroys a spare that has waited a week. A wizard can take back every empty lent room at once:
 
 ```
