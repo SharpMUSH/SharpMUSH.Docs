@@ -85,6 +85,14 @@ Each exit leads to the room on the place beside the mover's, lending one if the 
 wall, a one-way side seen from the wrong end and a closed terrain refuse, with their reasons. The
 map's exits are a zone's exits, so a room's own exits come first.
 
+`worldroom()` gives the room on a place, lending one if it has none. A wizard puts Wren on 2,2:
+
+```
+> think worldroom(#25,2,2)
+#36
+> @tel *Wren=#36
+```
+
 Wren, standing on 2,2:
 
 ```
@@ -190,6 +198,8 @@ needs control of the map:
 | `worlddraw(<map>, <x>, <y>[, <z>[, <radius>[, <mark>]]])` | the places around one, drawn as text, as `+map` does |
 | `worldroom(<map>, <x>, <y>[, <z>])` | the room on a place, lending one if it has none |
 | `worldplace(<room>[, <field>])` | the place a room stands on |
+
+With the Wayside Inn still standing on 5,5:
 
 ```
 > think worldroom(#25,5,5)
