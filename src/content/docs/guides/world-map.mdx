@@ -56,7 +56,8 @@ Boathouse/MAP`COORDS`Y - Set.
 Do the same in each room of the harbour. Harbour now shows in the World map's list.
 
 **New map**, under the map list in the portal, runs the first two commands for you and opens the
-new map. The map object stays in your inventory. Destroying it takes the map away.
+new map. It shows to a character who may `@create`. The map object stays in your inventory.
+Destroying it takes the map away.
 
 ![The New map form under the map list: the name Docks, the layout Compass, a note that the map is an object you carry and that rooms join it when they are zoned to it, and Cancel and Create.](../../../assets/guide/world-map-new-map.webp)
 
@@ -235,7 +236,9 @@ and the map shows what it will look like once your changes run.
 - Choose a room you control to rename or describe it, set its place or size, dig a room above or
   below it, or take it off the map. A room you do not control is drawn faded and cannot be changed.
 - A chosen room lists its exits. Rename or destroy one you control, or open a way to another room
-  on the map. An exit name the room already uses is refused.
+  on the map, or to any room by its dbref, which links one map to another. A way to a room off
+  the map shows that room's name. An exit name the room already uses is refused.
+- On a map with no rooms, choose any cell to dig the first one. It has no exit yet.
 - Choose an empty cell next to a room, or a spot on a picture map, to dig a room there, with a
   description if you like. A picture map with no picture leaves room around its rooms to choose a
   spot in, so a room can be placed or moved well away from the others. It is joined to the room straight beside it by an exit and, if you like,
@@ -244,6 +247,12 @@ and the map shows what it will look like once your changes run.
 - Add a room you control that this map's exits lead to and that is on no map, or a room by its
   dbref.
 - On a grid, name the level on show.
+- **Map settings** changes the map itself: its name, the map it sits inside, the level it opens
+  on, its legend's types with a colour and an icon each, and on a picture map the picture and its
+  size. Pick the picture from the media library or upload one; its size is read from the picture.
+- **Go there** on a room or a place takes you there, so you can look at what you built.
+- On a world map, the World map section paints its places and sets their sides, names and rooms.
+  See [Large Maps](/guides/large-maps/#changing-a-world-map-in-the-portal).
 
 ![The Coast map while editing: a banner says players see nothing until you apply, and the dotted ground reaches well past the six rooms on every side, leaving space to place a room away from them.](../../../assets/guide/world-map-coast-editing.webp)
 
@@ -283,8 +292,10 @@ Linked exit #117 to #73
 
 ## Who sees what
 
-A map is listed to everyone once its `` MAP`KIND `` is set. Each player sees only the rooms they
-could see in the game: a `DARK` room is left out unless they can examine it, and so are its exits.
+A map is listed to everyone once its `` MAP`KIND `` is set and it holds something they may see. A
+map with nothing they may see is listed only to whoever controls it. Each player sees only the
+rooms they could see in the game: a `DARK` room is left out unless they can examine it, and so are
+its exits.
 The page shows the map as the character you are playing, and changes when you switch characters.
 
 Apps you allow to **Run commands** can read the same maps. See
