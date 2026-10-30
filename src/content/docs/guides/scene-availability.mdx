@@ -108,6 +108,42 @@ busy entry touches it.
 A character keeps 30 entries at most, and a note is up to 60 characters. Your notes are yours: no one
 else sees them.
 
+### Your other characters
+
+When your account has more than one character, `+avail` lists the entries of all of them, yours
+first. Another character's entry is numbered with its name, and the week ahead counts them together:
+you are free only when every one of them is. For this example, Ann starts over with one entry, busy
+on weekdays from 9:00 to 17:00, and her alt Bea is busy on Monday evenings:
+
+```
+> +avail
+=============================< Your availability >============================
+     #  Kind  When                           Note
+     1  busy  Weekdays, 09:00-17:00          Work
+ Bea/1  busy  Every Mon, 18:00-20:00         Raid night
+==============================< The week ahead >==============================
+Day         Free                              Busy
+Mon 2 Nov   00:00-09:00, 17:00-18:00,         09:00-17:00 Work, 18:00-20:00
+            20:00-24:00                       Raid night
+```
+
+`+avail/remove`, `+avail/skip` and `+avail/unskip` take that name too, from any of your characters:
+
+```
+> +avail/skip Bea/1=2026-11-09
+[AVAIL] Done: Entry Bea/1 leaves out Mon 9 Nov 2026.
+```
+
+A new entry, and `+avail/clear`, are for the character you are playing. Others see each of your
+characters on its own, with its own entries only, so without the package below nothing they see ties
+your characters together.
+
+Where the game has installed the **availability-alts** package beside **alts**, a list you make
+public with `+alts/public on` counts as one person for everyone: `+avail <name>` shows the week of
+all the characters on it and names the others, `+avail/find` counts one free only when all are, and
+a scene's card counts them the same way. A character you keep off the list with `+alts/hide` still
+counts on its own. `+help avail alts` says the same in the game.
+
 ## Writing a time
 
 The `<when>` after `+avail/busy` and `+avail/free` is words in any order. Capitals and commas do
@@ -194,6 +230,9 @@ does not count.
 `+avail/find <names>=<length>` lists the times in the coming week when you and every player named
 are all free, for at least that length. Names are split by spaces or commas. The length is `2h`,
 `90m`, `1h30m` or a number of hours, and two hours when left out.
+
+When you look for a time, you count as free only when every character on your account is. The others
+named count with their own entries, and with availability-alts, those of the characters they list in public.
 
 Bob has added `+avail/free daily 23:00-03:00` and `+avail/busy wed 23:00-01:00=Five-a-side`, in
 London. Ann asks for a time with Bob and Cleo, who had not set any times yet:
