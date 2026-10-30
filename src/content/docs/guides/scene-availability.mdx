@@ -136,6 +136,12 @@ Mon 2 Nov   00:00-09:00, 17:00-18:00,         09:00-17:00 Work, 18:00-20:00
 A new entry, and `+avail/clear`, are for the character you are playing. Others see each of your
 characters on its own, with its own entries only, so nothing they see ties your characters together.
 
+Where the game has installed the **availability-alts** package beside **alts**, a list you make
+public with `+alts/public on` counts as one person for everyone: `+avail <name>` shows the week of
+all the characters on it and names the others, `+avail/find` counts one free only when all are, and
+a scene's card counts them the same way. A character you keep off the list with `+alts/hide` still
+counts on its own. `+help avail alts` says the same in the game.
+
 ## Writing a time
 
 The `<when>` after `+avail/busy` and `+avail/free` is words in any order. Capitals and commas do
@@ -224,7 +230,7 @@ are all free, for at least that length. Names are split by spaces or commas. The
 `90m`, `1h30m` or a number of hours, and two hours when left out.
 
 When you look for a time, you count as free only when every character on your account is. The others
-named count with their own entries alone.
+named count with their own entries, and those of the characters they list in public as theirs.
 
 Bob has added `+avail/free daily 23:00-03:00` and `+avail/busy wed 23:00-01:00=Five-a-side`, in
 London. Ann asks for a time with Bob and Cleo, who had not set any times yet:
