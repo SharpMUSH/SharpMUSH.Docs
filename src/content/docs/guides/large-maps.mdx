@@ -1,0 +1,212 @@
+---
+title: Large Maps
+description: A world map keeps its places itself, so a forest of ten thousand places needs no room for each one. People walk it through rooms the map lends to the places they stand on.
+---
+
+A large grid of rooms, such as a forest, a desert or open sea, takes one object for every room. A
+**world map** keeps its places itself instead: each place has a terrain, may have walls and a name,
+and costs no object. When someone walks onto a place, the map lends it a room, and takes the room
+back once it is empty. A place that needs a real room, such as an inn, can have one of its own that
+stays.
+
+This page covers:
+
+- [Setting it up](#setting-it-up)
+- [Making a world map](#making-a-world-map)
+- [Walking a map](#walking-a-map)
+- [Lent rooms](#lent-rooms)
+- [Rooms that stay](#rooms-that-stay)
+- [Reading a map in softcode](#reading-a-map-in-softcode)
+
+## Setting it up
+
+World maps come from the World plugin, which the server loads unless an administrator turns it off under
+**Plugins** on the portal's Packages page. It adds `@world` and the world functions. To walk a map, also install the
+**World grid** package from the portal's Packages page, after the [World map](/guides/world-map/)
+package it depends on. On a game with +help, **World grid: +help topics** adds `+help map grid`.
+
+## Making a world map
+
+A world map that people walk is a room that nobody enters: its exits work in every room it lends.
+Make it with `@dig`, then `@world/create`, then paint its places with a terrain type. Each `@world`
+switch needs control of the map.
+
+```
+> @dig Wilds
+Wilds created with room number 25.
+> @world/create #25
+Wilds is now a world map.
+> @world/paint #25/0,0:9,9=forest
+Painted 100 places as forest.
+> @world/paint #25/6,0:6,9=river
+Painted 10 places as river.
+```
+
+A place is `x,y`, or `x,y,z` with z the level. The map's legend says how each terrain looks, as on
+any map: `` MAP`LEGEND`<type>`LABEL ``, `` `TONE `` and `` `ICON ``. `` `DESC `` describes the rooms
+the map lends, and a type whose `` `CLOSED `` holds a reason cannot be entered.
+
+```
+> &MAP`LEGEND`FOREST`LABEL #25=Old forest
+Wilds/MAP`LEGEND`FOREST`LABEL - Set.
+> &MAP`LEGEND`FOREST`DESC #25=Oaks crowd the path, and the light comes down green.
+Wilds/MAP`LEGEND`FOREST`DESC - Set.
+> &MAP`LEGEND`RIVER`LABEL #25=River
+Wilds/MAP`LEGEND`RIVER`LABEL - Set.
+> &MAP`LEGEND`RIVER`CLOSED #25=The river runs too fast to wade.
+Wilds/MAP`LEGEND`RIVER`CLOSED - Set.
+```
+
+A side of a place can be a wall, one-way or locked, with the reason a mover is told. A place can
+have a name of its own, and JSON data that the portal's World map shows in its panel.
+
+```
+> @world/wall #25/2,2/n=wall,A fallen oak blocks the path.
+The north side of 2,2,0 is now a wall.
+> @world/place #25/3,4=Old Oak
+Named 3,4,0 Old Oak.
+> @world/data #25/3,4={"info":{"Danger":"Low"}}
+Set the data of 3,4,0.
+```
+
+`help @world` lists every switch.
+
+## Walking a map
+
+`+map/exits` opens ten exits on the map, `North;n` to `Down;d`, and gives them to the map's owner.
+Name the map by its dbref unless you are standing near it.
+
+```
+> +map/exits #25
+[MAP] Done: Opened 10 direction exits on Wilds.
+```
+
+Each exit leads to the room on the place beside the mover's, lending one if the place has none. A
+wall, a one-way side seen from the wrong end and a closed terrain refuse, with their reasons. The
+map's exits are a zone's exits, so a room's own exits come first.
+
+`worldroom()` gives the room on a place, lending one if it has none. A wizard puts Wren on 2,2:
+
+```
+> think worldroom(#25,2,2)
+#36
+> @tel *Wren=#36
+```
+
+Wren, standing on 2,2:
+
+```
+> look
+=< Old forest (2,2,0) >=======================================================
+Oaks crowd the path, and the light comes down green.
+> north
+A fallen oak blocks the path.
+> east
+=< Old forest (3,2,0) >=======================================================
+Oaks crowd the path, and the light comes down green.
+> north
+=< Old forest (3,3,0) >=======================================================
+Oaks crowd the path, and the light comes down green.
+```
+
+`+map` draws the places within five of yours, north up, with `@` where you stand. Each place is its
+terrain's icon when that is a character or two, else the first letter of its label. A place with
+nothing painted is blank.
+
+```
+> +map
+  OOOOOOROO
+  OOOOOOROO
+  OOOOOOROO
+  OOOOOOROO
+  OOOOOOROO
+  OOO@OOROO
+  OOOOOOROO
+  OOOOOOROO
+  OOOOOOROO
+```
+
+Three steps east, the river refuses:
+
+```
+> e
+=< Old forest (4,3,0) >=======================================================
+Oaks crowd the path, and the light comes down green.
+> e
+=< Old forest (5,3,0) >=======================================================
+Oaks crowd the path, and the light comes down green.
+> e
+The river runs too fast to wade.
+```
+
+## Lent rooms
+
+A lent room is named after its place's name, or its terrain's label and where it is. It joins the
+map's zone and is set `FLOATING`, so nothing reports it as cut off from the rest of the game. It is
+described by the World grid package's cell parent. To describe the rooms of a map your own way, set
+`` MAP`CELLPARENT `` on the map to a parent of your own.
+
+`@world` on a place names the room on it, and whether the room is lent:
+
+```
+> @world #25/2,2
+2,2,0 on Wilds: Old forest (forest).
+North: wall (A fallen oak blocks the path.)
+Room: #36, lent
+```
+
+Once a lent room has held nothing for five minutes, the game takes it back: it is renamed
+Spare room, leaves the map's zone and parent, and waits to be lent again to another place on its
+owner's maps. A room with anyone or anything in it stays lent, and one whose map is destroyed waits
+until it is empty. The game keeps at most 50 spare rooms, and
+destroys a spare that has waited a week. A wizard can take back every empty lent room at once:
+
+```
+> @world/sweep
+Took back 4 empty rooms, and destroyed 0 spares.
+```
+
+## Rooms that stay
+
+A room of your own can stand on a place, and is then the room every way onto that place leads to.
+Placing it needs control of the map and of the room. It joins the map's zone, and keeps its own
+name, description and exits.
+
+```
+> @dig Wayside Inn
+Wayside Inn created with room number 37.
+> @world/room #25/5,5=#37
+Wayside Inn now stands on 5,5,0 to stay.
+```
+
+`+map/keep` keeps the lent room you stand in on its place, as it is, so it is never taken back. It
+needs control of the map:
+
+```
+> +map/keep
+[MAP] Done: Old forest (2,2,0) stays on 2,2,0 now.
+```
+
+`@world/room #25/5,5=` with nothing after the `=` takes the room off its place again.
+
+## Reading a map in softcode
+
+| Function | Gives |
+|---|---|
+| `worldcell(<map>, <x>, <y>[, <z>[, <field>]])` | a place's terrain, label, name, data, room, and more |
+| `worldway(<map>, <x>, <y>, <z>, <direction>[, <field>])` | where a way out of a place leads, and whether it is open |
+| `worlddraw(<map>, <x>, <y>[, <z>[, <radius>[, <mark>]]])` | the places around one, drawn as text, as `+map` does |
+| `worldroom(<map>, <x>, <y>[, <z>])` | the room on a place, lending one if it has none |
+| `worldplace(<room>[, <field>])` | the place a room stands on |
+
+With the Wayside Inn still standing on 5,5:
+
+```
+> think worldroom(#25,5,5)
+#37
+> think worldplace(#37)
+5,5,0
+```
+
+`worldroom()` needs control of the map, and lends a room, so it is a side-effect function. See
+`help world functions` for every field.
