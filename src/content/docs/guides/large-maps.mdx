@@ -27,7 +27,8 @@ This page covers:
 World maps come from the World plugin, which the server loads unless an administrator turns it off under
 **Plugins** on the portal's Packages page. It adds `@world` and the world functions. To walk a map, also install the
 **World grid** package from the portal's Packages page, after the [World map](/guides/world-map/)
-package it depends on. On a game with +help, **World grid: +help topics** adds `+help map grid`.
+package it depends on. On a game with +help, **World grid: +help topics** adds `+help map grid`, shown to
+builders and staff.
 
 ## Making a world map
 
@@ -122,12 +123,14 @@ Oaks crowd the path, and the light comes down green.
 Oaks crowd the path, and the light comes down green.
 ```
 
-`+map` draws the places within five of yours, north up, with `@` where you stand. Each place is its
-terrain's `` `CHAR ``, else its icon when that is a character or two, else the first letter of its
-label. A place with nothing painted is blank. Under the map, a key line names each type.
+`+map`, from the World map package, draws the places within five of yours, north up, with `@` where
+you stand (three on a hex map, whose rows take two lines). Each place is its terrain's `` `CHAR ``,
+else its icon when that is a character or two, else the first letter of its label. A place with
+nothing painted is blank. Under the map, a key line names each type drawn.
 
 ```
 > +map
+Wilds
   OOOOOOROO
   OOOOOOROO
   OOOOOOROO
@@ -137,6 +140,9 @@ label. A place with nothing painted is blank. Under the map, a key line names ea
   OOOOOOROO
   OOOOOOROO
   OOOOOOROO
+
+
+Key: @ you · O Old forest · R River
 ```
 
 Three steps east, the river refuses:
