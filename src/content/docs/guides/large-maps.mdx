@@ -401,16 +401,17 @@ wall/Brambles block the path.
 none
 ```
 
-`+map/exits` opens an exit for each way on the map, under the way's names, rather than the ten
-directions:
+`+map/exits` opens one exit for each way name on the map, rather than the ten directions. Ways out
+of different places with the same first name share one exit, which takes the way out of the mover's
+place:
 
 ```
 > +map/exits #75
 [MAP] Done: Opened 3 way exits on Downs.
 ```
 
-The portal's World map draws each place as a box and each way as a line between two places. A way
-with a way back is two lines side by side. A way with no way back ends in an arrow. A wall is
+The portal's World map draws each place as a box and each way as a line between two places on the
+level shown. A way to another level is not drawn. A way with a way back is two lines side by side. A way with no way back ends in an arrow. A wall is
 dotted and a lock dashed, and each line has the way's first name beside it.
 
 ## Changing a world map in the portal
