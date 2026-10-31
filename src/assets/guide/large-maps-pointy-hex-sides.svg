@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 460" width="720" height="460" role="img" aria-labelledby="t d">
+<title id="t">A pointy hex place, its six neighbours and its corner steps</title>
+<desc id="d">The place 0,0 in the middle, with its neighbours: 0,1 to the northeast, 1,0 to the east, 1,-1 to the southeast, 0,-1 to the southwest, -1,0 to the west and -1,1 to the northwest. The place 0,0 stores its northeast, east and southeast sides, drawn thick; its other three sides are stored by the neighbours across them. North and south face corners: north leads round the top corner to -1,2, and south round the bottom corner to 1,-2.</desc>
+<rect width="720" height="460" rx="12" fill="#f8fafc"/>
+<g font-family="ui-sans-serif,system-ui,sans-serif" font-size="14" fill="#1e293b">
+  <polygon points="254.8,253.0 215.0,276.0 175.2,253.0 175.2,207.0 215.0,184.0 254.8,207.0" fill="#dcfce7" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="215.0" y="235.0" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14">0,0</text>
+  <polygon points="294.7,184.0 254.8,207.0 215.0,184.0 215.0,138.0 254.8,115.0 294.7,138.0" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="254.8" y="166.0" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14">0,1</text>
+  <polygon points="334.5,253.0 294.7,276.0 254.8,253.0 254.8,207.0 294.7,184.0 334.5,207.0" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="294.7" y="235.0" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14">1,0</text>
+  <polygon points="294.7,322.0 254.8,345.0 215.0,322.0 215.0,276.0 254.8,253.0 294.7,276.0" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="254.8" y="304.0" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14">1,-1</text>
+  <polygon points="215.0,322.0 175.2,345.0 135.3,322.0 135.3,276.0 175.2,253.0 215.0,276.0" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="175.2" y="304.0" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14">0,-1</text>
+  <polygon points="175.2,253.0 135.3,276.0 95.5,253.0 95.5,207.0 135.3,184.0 175.2,207.0" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="135.3" y="235.0" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14">-1,0</text>
+  <polygon points="215.0,184.0 175.2,207.0 135.3,184.0 135.3,138.0 175.2,115.0 215.0,138.0" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="175.2" y="166.0" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14">-1,1</text>
+  <polygon points="254.8,115.0 215.0,138.0 175.2,115.0 175.2,69.0 215.0,46.0 254.8,69.0" fill="#fef9c3" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="215.0" y="97.0" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14">-1,2</text>
+  <polygon points="254.8,391.0 215.0,414.0 175.2,391.0 175.2,345.0 215.0,322.0 254.8,345.0" fill="#fef9c3" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="215.0" y="373.0" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14">1,-2</text>
+  <line x1="254.8" y1="207.0" x2="254.8" y2="253.0" stroke="#15803d" stroke-width="6" stroke-linecap="round"/>
+  <text x="242.9" y="234.0" text-anchor="middle" font-weight="700" font-size="12" fill="#15803d">e</text>
+  <line x1="254.8" y1="253.0" x2="215.0" y2="276.0" stroke="#15803d" stroke-width="6" stroke-linecap="round"/>
+  <text x="228.9" y="258.1" text-anchor="middle" font-weight="700" font-size="12" fill="#15803d">se</text>
+  <line x1="215.0" y1="276.0" x2="175.2" y2="253.0" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 5"/>
+  <text x="201.1" y="258.1" text-anchor="middle" font-weight="700" font-size="12" fill="#475569">sw</text>
+  <line x1="175.2" y1="253.0" x2="175.2" y2="207.0" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 5"/>
+  <text x="187.1" y="234.0" text-anchor="middle" font-weight="700" font-size="12" fill="#475569">w</text>
+  <line x1="175.2" y1="207.0" x2="215.0" y2="184.0" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 5"/>
+  <text x="201.1" y="209.8" text-anchor="middle" font-weight="700" font-size="12" fill="#475569">nw</text>
+  <line x1="215.0" y1="184.0" x2="254.8" y2="207.0" stroke="#15803d" stroke-width="6" stroke-linecap="round"/>
+  <text x="228.9" y="209.8" text-anchor="middle" font-weight="700" font-size="12" fill="#15803d">ne</text>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a16207"/></marker></defs>
+  <line x1="215.0" y1="184.0" x2="215.0" y2="110.0" stroke="#a16207" stroke-width="2.5" marker-end="url(#a)"/>
+  <line x1="215.0" y1="276.0" x2="215.0" y2="350.0" stroke="#a16207" stroke-width="2.5" marker-end="url(#a)"/>
+  <text x="450" y="80" font-size="15" font-weight="600">Sides of 0,0</text>
+  <text x="450" y="108" font-size="12" fill="#475569">Side</text>
+  <text x="500" y="108" font-size="12" fill="#475569">Leads to</text>
+  <text x="580" y="108" font-size="12" fill="#475569">Stored as</text>
+  <text x="450" y="134" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" fill="#15803d">ne</text>
+  <text x="500" y="134" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" fill="#15803d">0,1</text>
+  <text x="580" y="134" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" fill="#15803d">its own</text>
+  <text x="450" y="160" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" fill="#15803d">e</text>
+  <text x="500" y="160" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" fill="#15803d">1,0</text>
+  <text x="580" y="160" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" fill="#15803d">its own</text>
+  <text x="450" y="186" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" fill="#15803d">se</text>
+  <text x="500" y="186" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" fill="#15803d">1,-1</text>
+  <text x="580" y="186" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" fill="#15803d">its own</text>
+  <text x="450" y="212" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" fill="#1e293b">sw</text>
+  <text x="500" y="212" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" fill="#1e293b">0,-1</text>
+  <text x="580" y="212" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" fill="#1e293b">ne of 0,-1</text>
+  <text x="450" y="238" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" fill="#1e293b">w</text>
+  <text x="500" y="238" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" fill="#1e293b">-1,0</text>
+  <text x="580" y="238" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" fill="#1e293b">e of -1,0</text>
+  <text x="450" y="264" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" fill="#1e293b">nw</text>
+  <text x="500" y="264" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" fill="#1e293b">-1,1</text>
+  <text x="580" y="264" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" fill="#1e293b">se of -1,1</text>
+  <text x="450" y="290" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" fill="#a16207">n</text>
+  <text x="500" y="290" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" fill="#a16207">-1,2</text>
+  <text x="580" y="290" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" fill="#a16207">corner step</text>
+  <text x="450" y="316" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" fill="#a16207">s</text>
+  <text x="500" y="316" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" fill="#a16207">1,-2</text>
+  <text x="580" y="316" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" fill="#a16207">corner step</text>
+  <text x="450" y="364" font-size="13" fill="#475569">u and d lead a level up and down,</text>
+  <text x="450" y="382" font-size="13" fill="#475569">as on a square map.</text>
+</g>
+</svg>
