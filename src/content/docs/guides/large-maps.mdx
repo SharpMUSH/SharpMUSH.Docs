@@ -18,6 +18,7 @@ This page covers:
 - [Rooms that stay](#rooms-that-stay)
 - [Locks](#locks)
 - [Hex maps](#hex-maps)
+- [Graph maps](#graph-maps)
 - [Changing a world map in the portal](#changing-a-world-map-in-the-portal)
 - [Reading a map in softcode](#reading-a-map-in-softcode)
 
@@ -345,12 +346,80 @@ R R @ R R
 The portal's World map draws both kinds as hexagons, with each wall on its side and each room a
 smaller hexagon inside the place it stands on.
 
+## Graph maps
+
+A graph map's places have no sides and no neighbours. They are joined only by the ways you make
+between them, each with names, as an exit has. Use one for a road map, a set of islands or a
+dungeon where only some places lead to others. A place is still `x,y` or `x,y,z`, and that is where
+the World map draws it, but places side by side are not joined unless a way joins them.
+
+`@world/link` makes a way. Give the place it leads to and its names, `;` between them: the first is
+shown, and any of them walks it. Give names back as well and the way back is made too.
+
+```
+> @dig Downs
+Downs created with room number 75.
+> @world/create #75=graph
+Downs is now a world map.
+> @world/paint #75/0,0=grass
+Painted 1 place as grass.
+> @world/paint #75/3,0=grass
+Painted 1 place as grass.
+> @world/paint #75/1,3=wood
+Painted 1 place as wood.
+> @world/link #75/0,0=3,0,Old Road;road,Back Road;back
+Old Road leads from 0,0,0 to 3,0,0, and Back Road from 3,0,0 back.
+> @world/link #75/3,0=1,3,Shrine Path;shrine
+Shrine Path leads from 3,0,0 to 1,3,0.
+> @world/link #75/1,3=0,0,Long Track;track
+Long Track leads from 1,3,0 to 0,0,0.
+```
+
+![Barrow at 0,0, Crossroads at 3,0 and Shrine at 1,3. Old Road leads from Barrow to Crossroads and Back Road leads back. Shrine Path leads one way from Crossroads to Shrine, and is a wall. Long Track leads one way from Shrine to Barrow.](../../../assets/guide/large-maps-graph-ways.svg)
+
+A way leads to any place on the map, on any level. A place has at most 64 ways out. Linking a way
+with the same first name out of the same place replaces it. To remove a way, name it with no `=`;
+the way back stays:
+
+```
+> @world/link #75/1,3/track
+Removed the way Long Track out of 1,3,0.
+```
+
+`@world/wall` and `@world/lock` take a way's name where a side goes. A way is `open`, `wall` or
+`lock`. A walled way stays on the map and refuses with its reason. A way already leads one way, so
+it is never `oneway`: link a way back for a road that goes both ways.
+
+```
+> @world/wall #75/3,0/shrine=wall,Brambles block the path.
+The way Shrine Path out of 3,0,0 is now a wall.
+> think worldway(#75,0,0,0,road,to)/[worldway(#75,3,0,0,back,to)]
+3,0,0/0,0,0
+> think worldway(#75,3,0,0,shrine)/[worldway(#75,3,0,0,shrine,reason)]
+wall/Brambles block the path.
+> think worldway(#75,0,0,0,n)
+none
+```
+
+`+map/exits` opens an exit for each way on the map, under the way's names, rather than the ten
+directions:
+
+```
+> +map/exits #75
+[MAP] Done: Opened 3 way exits on Downs.
+```
+
+The portal's World map draws each place as a box and each way as a line between two places. A way
+with a way back is two lines side by side. A way with no way back ends in an arrow. A wall is
+dotted and a lock dashed, and each line has the way's first name beside it.
+
 ## Changing a world map in the portal
 
 On the portal's World map, **Edit map** on a grid map you control shows a World map section. On a
 map that is not a world map yet, **Make this a world map** plans `@world/create`, **Make this a
-flat-topped hex world map** plans it with `=hex`, and **Make this a pointy-topped hex world map**
-with `=pointy-hex`. On a world map:
+flat-topped hex world map** plans it with `=hex`, **Make this a pointy-topped hex world map**
+with `=pointy-hex`, and **Make this a graph world map, its places joined by named ways** with
+`=graph`. On a world map:
 
 - Click the map to choose a place. The paint box starts on it: give the far corner and a terrain
   type, or pick one of the legend's types, and **Paint**. An empty type erases.
@@ -358,6 +427,9 @@ with `=pointy-hex`. On a world map:
   refused player is told, **Hide from players** or **Show to players**, and a room you control
   placed on it by its dbref. A locked side keeps its key; give it one in the game with
   `@world/lock`.
+- On a graph map, the chosen place lists its ways, each with **Remove**. Give the x, y and z of the
+  place a new way leads to, its names and, if you like, the names of the way back, and **Add way**.
+  The way's passage is set open, wall or locked with **Set way**.
 - **Open the direction exits** runs `+map/exits`. It needs the World grid package, and the map must
   be a room.
 
@@ -370,9 +442,9 @@ they have no way in.
 
 | Function | Gives |
 |---|---|
-| `worldmap(<map>[, <field>])` | the map's space (`square`, `hex` or `pointy-hex`), its sides, the directions `worldway()` takes there, its levels and its painted box |
-| `worldcell(<map>, <x>, <y>[, <z>[, <field>]])` | a place's terrain, label, name, data, room, and more |
-| `worldway(<map>, <x>, <y>, <z>, <direction>[, <field>[, <mover>]])` | where a way out of a place leads, and whether it is open, for a mover if one is named |
+| `worldmap(<map>[, <field>])` | the map's space (`square`, `hex`, `pointy-hex` or `graph`), its sides, the directions `worldway()` takes there (on a graph map, its ways and their names), its levels and its painted box |
+| `worldcell(<map>, <x>, <y>[, <z>[, <field>]])` | a place's terrain, label, name, data, room, its ways on a graph map, and more |
+| `worldway(<map>, <x>, <y>, <z>, <direction>[, <field>[, <mover>]])` | where a way out of a place leads, and whether it is open, for a mover if one is named; on a graph map, the way is named instead of a direction |
 | `worlddraw(<map>, <x>, <y>[, <z>[, <radius>[, <mark>]]])` | the places around one, drawn as text, as `+map` does |
 | `worldroom(<map>, <x>, <y>[, <z>])` | the room on a place, lending one if it has none |
 | `worldplace(<room>[, <field>])` | the place a room stands on |
