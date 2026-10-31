@@ -16,6 +16,8 @@ This page covers:
 - [Walking a map](#walking-a-map)
 - [Lent rooms](#lent-rooms)
 - [Rooms that stay](#rooms-that-stay)
+- [Locks](#locks)
+- [Hex maps](#hex-maps)
 - [Changing a world map in the portal](#changing-a-world-map-in-the-portal)
 - [Reading a map in softcode](#reading-a-map-in-softcode)
 
@@ -78,8 +80,9 @@ control of the map. A map it cannot find by name is named by its dbref instead.
 
 ## Walking a map
 
-`+map/exits` opens ten exits on the map, `North;n` to `Down;d`, and gives them to the map's owner.
-Name the map by its dbref unless you are standing near it.
+`+map/exits` opens an exit on the map for each way out of its places, and gives them to the map's
+owner: ten on a square map, `North;n` to `Down;d`, and eight on a [hex map](#hex-maps). Name the map
+by its dbref unless you are standing near it.
 
 ```
 > +map/exits #25
@@ -247,14 +250,69 @@ The slope is too steep to climb without gear.
 
 Names in a legend key are looked up from the map, so use dbrefs, flags and attributes there.
 
+## Hex maps
+
+A hex map's places are hexagons, so every place has six neighbours the same distance away and no
+diagonals. Make one with `=hex` after the map:
+
+```
+> @dig Moor
+Moor created with room number 36.
+> @world/create #36=hex
+Moor is now a world map.
+> @world/paint #36/-2,-2:2,2=heath
+Painted 25 places as heath.
+```
+
+A place is still `x,y`, with north at y + 1. The hexagons stand with a flat side to the north, and
+each column is half a place higher than the one to its west, so a paint box draws as a slanted
+block. A place's sides are `n`, `ne`, `se`, `s`, `sw` and `nw`, with `u` and `d` as on a square map.
+There is no `e` or `w`.
+
+![The place 0,0 and its six neighbours: 0,1 north, 1,0 northeast, 1,-1 southeast, 0,-1 south, -1,0 southwest and -1,1 northwest. It stores its north, northeast and southeast sides; the others are stored by the neighbour across them.](../../../assets/guide/large-maps-hex-sides.svg)
+
+Walls, locks and one-way sides work as on a square map, and a side is the same side seen from either
+place:
+
+```
+> @world/wall #36/0,0/sw=wall,A drystone wall.
+The southwest side of 0,0,0 is now a wall.
+> think worldway(#36,-1,0,0,ne)/[worldway(#36,-1,0,0,ne,reason)]
+wall/A drystone wall.
+> @world/wall #36/0,0/e=wall
+Which side? A hex place's sides are n, ne, se, s, sw, nw, u or d: give one as <map>/<x>,<y>[,<z>]/<side>.
+```
+
+`+map/exits` opens the eight ways, and `+map` and `worlddraw()` draw two lines for each row of
+places, each column two characters from the next:
+
+```
+> +map/exits #36
+[MAP] Done: Opened 8 direction exits on Moor.
+> think worlddraw(#36,0,0,0,2,@)
+    H
+  H   H
+H   H   H
+  H   H
+H   @   H
+  H   H
+H   H   H
+  H   H
+    H
+```
+
+The portal's World map draws a hex map as hexagons, with each wall on its side and each room inside
+the hexagon it stands on.
+
 ## Changing a world map in the portal
 
 On the portal's World map, **Edit map** on a grid map you control shows a World map section. On a
-map that is not a world map yet, **Make this a world map** plans `@world/create`. On a world map:
+map that is not a world map yet, **Make this a world map** plans `@world/create`, and **Make this a
+hex world map** plans `@world/create` with `=hex`. On a world map:
 
 - Click the map to choose a place. The paint box starts on it: give the far corner and a terrain
   type, or pick one of the legend's types, and **Paint**. An empty type erases.
-- The chosen place takes a name, a side set open, wall, one way or locked with the reason a
+- The chosen place takes a name, a side (on a hex map, one of its six, or up or down) set open, wall, one way or locked with the reason a
   refused player is told, **Hide from players** or **Show to players**, and a room you control
   placed on it by its dbref. A locked side keeps its key; give it one in the game with
   `@world/lock`.
@@ -270,6 +328,7 @@ they have no way in.
 
 | Function | Gives |
 |---|---|
+| `worldmap(<map>[, <field>])` | the map's space (`square` or `hex`), its sides, the directions `worldway()` takes there, its levels and its painted box |
 | `worldcell(<map>, <x>, <y>[, <z>[, <field>]])` | a place's terrain, label, name, data, room, and more |
 | `worldway(<map>, <x>, <y>, <z>, <direction>[, <field>[, <mover>]])` | where a way out of a place leads, and whether it is open, for a mover if one is named |
 | `worlddraw(<map>, <x>, <y>[, <z>[, <radius>[, <mark>]]])` | the places around one, drawn as text, as `+map` does |
