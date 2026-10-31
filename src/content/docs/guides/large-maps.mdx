@@ -254,9 +254,10 @@ map that is not a world map yet, **Make this a world map** plans `@world/create`
 
 - Click the map to choose a place. The paint box starts on it: give the far corner and a terrain
   type, or pick one of the legend's types, and **Paint**. An empty type erases.
-- The chosen place takes a name, a side set open, wall or one way with the reason a refused player
-  is told, **Hide from players** or **Show to players**, and a room you control placed on it by
-  its dbref.
+- The chosen place takes a name, a side set open, wall, one way or locked with the reason a
+  refused player is told, **Hide from players** or **Show to players**, and a room you control
+  placed on it by its dbref. A locked side keeps its key; give it one in the game with
+  `@world/lock`.
 - **Open the direction exits** runs `+map/exits`. It needs the World grid package, and the map must
   be a room.
 
