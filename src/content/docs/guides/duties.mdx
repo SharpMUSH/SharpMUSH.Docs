@@ -1,0 +1,246 @@
+---
+title: Duties
+description: Short adventures a party plays with +duty, from challenge to challenge. Players write them, a duty reviewer approves them, and staff choose which are on the active roster.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The **duties** package adds `+duty`: short adventures a party plays through together. The
+party goes from challenge to challenge. At each one everyone rolls, and how the party did
+picks the way on. A duty can hand out rewards on the way and at its end.
+
+- Every player can write a duty. A duty reviewer approves it, or sends it back with a note.
+- Staff choose which approved duties players can start, and on which days.
+- Everyone always rolls, and everyone always has something to roll.
+- Steps nobody in the party has seen are taken first, so a duty played again goes somewhere new.
+- There are no timers. The party's leader keeps things moving.
+
+| You are | You want to | Read |
+|---|---|---|
+| A player | play a duty | [Playing](#playing) |
+| A player | write a duty | [Writing a duty](#writing-a-duty) |
+| A duty reviewer | approve duties | [Reviewing](#reviewing) |
+| Staff | choose what can be played | [The active roster](#the-active-roster) |
+| Staff | install it | [Installing](#installing) |
+| A coder | add a sheet system | [Sheet systems](#sheet-systems) |
+
+In the game, `+help duty` has the same in short form.
+
+## Playing
+
+`+duty` lists the duties you can start now, with your progress in each: the rewards you
+have received and the challenges you have seen. Under them are the parties gathering.
+
+`+duty <duty>` shows one duty: its description, the party it wants, and your progress.
+
+To play:
+
+1. `+duty/start <duty>` gathers a party, and tells you its number.
+2. Others join with `+duty/join <number>`.
+3. The leader sets out with `+duty/go` once enough are there.
+
+At a challenge, `+duty` shows the options:
+
+```
++=======================< The Harbor Fire - The Gate >=======================+
+| A burning gate.                                                            |
+|                                                                            |
+| Option     Roll                                Trait    Difficulty  Needs  |
+| -------------------------------------------------------------------------- |
+| force      Winning                             Winning  standard    1 of 1 |
+| sneak      Skill (trained)                     Skill    hard        1 of 1 |
+| improvise  Improvise                           Winning  extreme     1 roll |
++============================================================================+
+| Round 1. Waiting on Ana and Ben. 2 ways lead on. +duty/try <option> to     |
+| roll.                                                                      |
++============================================================================+
+```
+
+Everyone rolls once each round with `+duty/try <option>`:
+
+- **Needs** is how many more successes the option needs. When an option still needs more
+  after everyone has rolled, everyone rolls another round.
+- An option marked `trained` can be rolled only by someone trained in its trait.
+- `improvise` is always there. It is one difficulty harder than the hardest option.
+
+When everyone has rolled and no option is still waiting, the challenge has its outcome.
+The party's result is what most of its members got. Members who succeeded receive the
+challenge's rewards. Then the party goes on to the next step.
+
+At a narration, the leader goes on with `+duty/go`. At an end, the duty is over: a
+successful end counts as finishing it.
+
+### Keeping the party moving
+
+| Command | Who | What |
+|---|---|---|
+| `+duty/leave` | anyone | Leave the party |
+| `+duty/force <name>` | the leader | Roll Improvise for someone who has not rolled |
+| `+duty/kick <name>` | the leader | Send someone away. Their roll this round no longer counts |
+| `+duty/abandon` | the leader | End the duty. Nobody earns its rewards |
+
+When the leader leaves, whoever has been in the party longest leads. When the last member
+leaves, the duty ends.
+
+`+duty/info <duty>` shows what you have learned from a duty.
+
+## Writing a duty
+
+A duty is a set of **steps** joined by **links**. Each step is one of:
+
+- a **challenge**: everyone rolls, and the result picks the link to follow;
+- a **narration**: text to read, then the leader goes on;
+- an **end**: the duty is over, in success or failure.
+
+Start one, give it a description, and add its steps. The first step is where it starts.
+
+```
+> +duty/create harbor=The Harbor Fire
+[DUTY] Done: Created harbor. Add its first step with +duty/node harbor/<step>=challenge.
+> +duty/set harbor/description=Smoke over the docks.
+> +duty/node harbor/gate=challenge
+[DUTY] Done: gate is a challenge. harbor starts there.
+```
+
+`+duty/set <duty>/<field>=<value>` changes the duty's `title`, `description`, `start`,
+`repeat` (`once` or `every`), `min` and `max` (the party's size). With a step's name in the
+middle, it changes the step: its `label`, its `text`, and `seen`, the text for someone who
+has been there before. A challenge also takes an outcome text for each result:
+`crit-success`, `success`, `partial`, `fail` and `crit-fail`. An end takes `result`,
+`success` or `fail`.
+
+### Options
+
+A challenge's options are what the party can roll:
+
+```
+> +duty/option harbor/gate/force=win standard
+[DUTY] Done: gate/force rolls win at standard.
+```
+
+After the trait and the difficulty come, if you want them, the successes needed and the
+failures allowed, then `trained`: `+duty/option harbor/gate/climb=athletics hard 2 1 trained`.
+The difficulty is `trivial`, `easy`, `standard`, `hard` or `extreme`.
+
+Every challenge needs one option anyone can roll: an untrained option on a trait the sheet
+system lets everyone use.
+
+### Links
+
+`+duty/link <duty>/<from>/<port>=<to>` joins two steps:
+
+```
+> +duty/link harbor/gate/success=hall
+[DUTY] Done: Link 1: gate on success leads to hall.
+```
+
+- A challenge leaves by `success` and `fail`. It can also have links on `crit-success`,
+  `partial` and `crit-fail`; without them those results go by success or fail.
+- A narration leaves by `continue`.
+- After the step, a link can take settings: `weight=<n>`, `min=<n>` and `max=<n>` (how many
+  members succeeded), `share=<percent>` of the party, and `requires=<option>` (an option
+  that must have succeeded). It is used only when all of them hold.
+- Several links on one port are a choice. The steps the fewest members have seen come first,
+  then the weights decide.
+- Every challenge needs a link on success and one on fail with no settings, so the party
+  always has a way on.
+
+### Rewards
+
+`+duty/reward <duty>/<step>=<kind> [once|every] <details>` adds a reward to any step:
+
+```
+> +duty/reward harbor/gate=coin once 5
+[DUTY] Done: Reward 1 on gate: coin, once.
+```
+
+- `info` is something learned. Its details are the text, which `+duty/info` shows again.
+- The sheet system adds its own kinds, such as coin. Its details are a JSON object of the
+  kind's fields, or the value of its first field.
+- `once` gives a reward to each character only the first time. It is the default.
+- A challenge gives its rewards to the members who succeeded. A narration or an end gives
+  them to everyone there.
+
+### Checking and submitting
+
+`+duty/steps <duty>` shows every step, option, link and reward, with the links numbered.
+`+duty/check <duty>` lists what still needs work:
+
+```
+> +duty/check harbor
++============================< harbor needs work >===========================+
+| Nothing leads to hall.                                                     |
+| Nothing leads to loot.                                                     |
+| Nothing leads to lost.                                                     |
+| gate needs a link on success with no conditions.                           |
+| gate needs a link on fail with no conditions.                              |
++============================================================================+
+```
+
+When nothing is left, `+duty/submit <duty>` sends it to the duty reviewers.
+`+duty/withdraw <duty>` takes it back to change it. `+duty/mine` lists your duties.
+
+Changing a duty after it is approved makes a new draft beside it. Players keep playing the
+approved one until the draft is approved too. `+duty/discard <duty>` drops the draft.
+
+## Reviewing
+
+Duty reviewers hold `softcode.duties.review`, which the **Duty Reviewer** role gives:
+
+```
+@role/assign *Ann=duty-reviewer
+```
+
+- `+duty/review` lists the duties waiting; `+duty/review <duty>` shows one with every step.
+- `+duty/approve <duty>` approves it.
+- `+duty/return <duty>=<note>` sends it back to its author with the note.
+- `+duty/note <duty>/<step>=<note>` leaves a note on one step.
+- `+duty/retire <duty>` takes an approved duty out of use, and `+duty/restore` brings it back.
+- `+duty/end <number>` ends any party's duty.
+
+## The active roster
+
+Approving a duty does not make it playable. Players can start a duty only while it is on
+the **active roster**:
+
+```
+> +duty/roster harbor=on
+[DUTY] Done: harbor is on the active roster.
+```
+
+`+duty/roster` on its own lists the approved duties, whether each is on the roster, and
+its window.
+
+A window limits the days a duty can be started: `+duty/window harbor=2026-12-01,2026-12-31`.
+Add `,yearly` for days of every year, written `MM-DD`. A yearly window may wrap the new
+year: `+duty/window frost=12-01,01-06,yearly`. `+duty/window harbor=` clears it.
+
+The roster is also a table in `+config duties`, beside the sheet system to use, the most
+steps one duty may have, and the largest party.
+
+## Installing
+
+Install **Duties** from the portal's package list, or with the package manager. Install
+**Duties help** and **Duties settings** too, for `+help duty` and `+config duties`.
+
+<Aside type="caution">
+Duties roll nothing on their own. Install a sheet system bridge as well, such as
+`duties-d20` or `duties-fate`. Without one, duties can be written but not checked or played.
+</Aside>
+
+## Sheet systems
+
+A sheet system bridge attaches `` PROVIDER`<NAME> `` to the Duties object, holding its own
+object. With several installed, `+config duties/system` picks one by name. The object answers:
+
+| Attribute | Gets | Returns |
+|---|---|---|
+| `` FN`DUTIES`TRAITS `` | | A JSON array of `{"key","label","group","always"}`. `always` marks traits everyone can roll |
+| `` FN`DUTIES`CHECK `` | `%<roller>`, `%<trait>`, `%<difficulty>`, `%<mods>`, `%<context>` | `{"tier","text"}`, the tier one of `crit-fail`, `fail`, `partial`, `success`, `crit-success` |
+| `` FN`DUTIES`REWARDS `` | | A JSON array of `{"kind","label","fields":[{"key","type"}]}` |
+| `` ON`DUTIES`GRANT `` | `%<roller>`, `%<reward>`, `%<context>` | Triggered to hand a reward out. `%<reward>` has `kind`, `repeat` and the kind's fields |
+| `` FN`DUTIES`TRAINED `` | `%<roller>`, `%<trait>` | Optional. 1 when they are trained in it |
+| `` FN`DUTIES`CAN `` | `%<roller>`, `%<trait>` | Optional. 1 when they may roll it |
+| `` FN`DUTIES`FALLBACK `` | `%<roller>`, `%<context>` | Optional. The trait Improvise rolls |
+
+Duties keeps track of `once` rewards itself, so a system only hands out what it is given.

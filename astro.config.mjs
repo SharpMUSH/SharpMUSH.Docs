@@ -135,6 +135,7 @@ export default defineConfig({
                               { label: 'Scenes on a Phone', slug: 'guides/scenes-on-a-phone' },
                               { label: 'Highlights', slug: 'guides/highlights' },
                               { label: 'Pose Summaries', slug: 'guides/summary' },
+                              { label: 'Duties', slug: 'guides/duties' },
                               { label: 'Time and Time Zones', slug: 'guides/time' },
                               { label: 'IC Dates and Timelines', slug: 'guides/timeline' },
                           ],
