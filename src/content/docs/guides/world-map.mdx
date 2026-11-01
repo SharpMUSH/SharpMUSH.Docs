@@ -97,6 +97,10 @@ fits it again. Drag with the mouse, scroll, or swipe with one finger to move acr
 than its frame. To zoom about a spot, pinch on a touch screen or trackpad, or hold Ctrl and use the
 mouse wheel.
 
+With the keyboard, Tab goes from room to room, and an arrow key on a
+room goes to the nearest room that way. A room straight ahead is chosen over a nearer one off to
+the side. Enter or Space chooses the room.
+
 Lines stay the same width at any size, and room names grow and shrink with the map. A room too
 small to hold its name has the name on a label under it; smaller still, the name shows only when
 you point at the room, and a screen reader still reads it.
@@ -203,6 +207,10 @@ Each room's `` MAP`POS`X `` and `` MAP`POS`Y `` are then a point on the picture,
 top left corner. A room is drawn as a pin with its name under it, unless it has a `` MAP`SIZE `` of
 its own: then it is an area of that many pixels around its point.
 
+Every room is drawn on the picture. A room whose point or size reaches past the picture's edge is
+drawn against that edge, and while you edit the map it is outlined in orange and listed in the
+checks, with **Move inside the picture** to store it where it is drawn.
+
 A `graph` map with no picture draws each room without a `` MAP`SIZE `` as a box, as large as a grid
 cell, on a ground of faint dots; a room with a `` MAP`SIZE `` keeps that size. `` MAP`POS`X `` and `` MAP`POS`Y `` are then the box's centre, in the same units, so rooms 96
 apart sit side by side.
@@ -287,6 +295,39 @@ and the map shows what it will look like once your changes run.
 ![The Harbour map while editing: a banner says players see nothing until you apply. An empty cell east of the Fish market is chosen, and under the map the Edit panel offers Move Fish market here and a form to dig a room there, named Chandlery, joined from the Fish market by East;e, with West;w as the way back.](../../../assets/guide/world-map-builder-dig.webp)
 
 ![The Edit panel for the Lighthouse: its name and description, its place and size, its exits East;e to Lamp store, South;s to Quay and Up;u to Lamp room, each with Rename and Destroy, and Open a way to the Customs house by Southwest;sw, with Northeast;ne back. Below are the rooms to add and the name of level 0, Quayside.](../../../assets/guide/world-map-builder-room.webp)
+
+### Moving and resizing rooms
+
+While you edit, a room you control can be moved and resized on the map itself:
+
+- **Drag a room** to move it. Its old spot stays as a dashed outline until you let go. On a grid it
+  lands on whole cells, on a hex map on the hexagon under its middle, and on a picture map at the
+  point you let go, which is shown under it in the picture's pixels. Escape puts it back.
+- **Drag a corner** of the chosen room to resize it: in cells on a grid, in pixels on a picture.
+  Rooms on a hex map are one hexagon each and have no size.
+- On a picture map a room stays on the picture. A drag stops at the edge, and a place or size you
+  type is moved back inside, with a note saying where it went.
+- On a grid or hex map a room cannot go where another room of the level already is.
+- Rooms standing on a place of a world map move with their place; see
+  [Large Maps](/guides/large-maps/#changing-a-world-map-in-the-portal).
+
+With the keyboard, choose the room first (Tab to it, then Enter):
+
+| Keys | What they do |
+|---|---|
+| Arrow keys | Move the chosen room one cell, one hexagon, or 8 pixels on a picture |
+| Shift + arrow keys | On a picture, move 40 pixels. On a flat-topped hex map, Shift with Left or Right steps to the upper neighbour instead of the lower one; on a pointy one, Shift with Up or Down steps north-west or south-east |
+| Ctrl + Shift + arrow keys (Cmd + Shift on a Mac) | Resize the chosen room: Right and Down grow it, Left and Up shrink it |
+
+On a flat-topped hex map, Up and Down step north and south, and Left and Right step to the
+south-west and south-east hexagons. On a pointy-topped one, Left and Right step west and east, and
+Up and Down step north-east and south-west.
+
+Each move or resize is read out by a screen reader, for example "Old Mill moved to 1525, 346. The
+picture's edge stopped it." Without dragging, choose a room, then an empty cell or spot and **Move
+here**, or type its place and size in the Edit panel.
+
+Every move and resize is a change in the plan, like any other, until you apply it.
 
 **Review and apply** lists each change as the commands it runs. When your quota limits what you
 build, the review counts the rooms and exits the changes make, and a plan that needs more than you
