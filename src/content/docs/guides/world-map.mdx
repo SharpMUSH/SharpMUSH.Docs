@@ -1,6 +1,6 @@
 ---
 title: The World Map
-description: The portal's World map draws each map of the game from its rooms and exits. A map is a thing whose MAP`KIND says how it is drawn, and a room is on the map that is its zone.
+description: The World map draws each map of the game from its rooms and exits, in the portal and in the game with +map. A map is a thing whose MAP`KIND says how it is drawn, and a room is on the map that is its zone.
 ---
 
 The **World map** is a portal page that draws the game's maps. Each map is drawn from its rooms and
@@ -22,6 +22,7 @@ This page covers:
 - [Regions](#regions)
 - [Picture maps](#picture-maps)
 - [Getting there](#getting-there)
+- [In the game: +map](#in-the-game-map)
 - [Changing a map in the portal](#changing-a-map-in-the-portal)
 - [Who sees what](#who-sees-what)
 
@@ -29,8 +30,9 @@ This page covers:
 
 The World map is the **World map** package. First-run setup offers it ticked under Building in its last step;
 a game that is already running installs it from the portal's Packages page. Once it is installed, **World map** appears in
-the portal's menu. On a game with +help, ticking it in setup also brings **World map: +help
-topics**, which adds `+help map`.
+the portal's menu, and `+map` draws the map you stand on in the game. On a game with +help, ticking
+it in setup also brings **World map: +help topics**, which adds `+help map`. `+help map` is for
+everyone; `+help map making` and the topics about building a map are shown to builders and staff.
 
 ## Making a map
 
@@ -227,6 +229,32 @@ exits is one line you can paste into any client. **Walk there** runs it as your 
 `walk` takes exits separated by spaces and stops at the first exit that refuses you, such as a
 locked door. An exit whose name has a space is written by its first alias without one, or else in
 double quotes: `walk "Old gate" north`.
+
+## In the game: +map
+
+`+map` draws the map your room is on, around you, north up, with `@` where you stand. Each room is a
+cell in brackets holding its kind's character: the kind's `` MAP`LEGEND`<kind>`CHAR ``, else its
+icon when that is one or two characters, else the first letter of its label. An exit between two
+rooms side by side is a line, `-`, `|`, `/` or `\`. A key under the map names each kind drawn, and
+the first line names the map and, off level 0, the level.
+
+```
+> +map
+Bay
+    [L] [ ]
+     | /
+[ ]-[@]-[M]
+     |
+    [~]
+Key: @ you · L Lighthouse · M Market · ~ Open water
+```
+
+It draws three cells each way, and only the rooms and exits you can see: a `DARK` room only for
+someone who controls it or sees everything. A compass map places the rooms its compass exits reach
+from yours, a grid map the rooms whose `` MAP`COORDS `` are near yours on your level, and a picture
+map each room's `` MAP`POS `` on a grid of 96 pixels a cell. A room the map cannot place has no
+`+map`. On a [large map](/guides/large-maps/) the World plugin keeps, `+map` draws its places
+instead, one character each. A client without UTF-8 gets `*` for the `·` in the key.
 
 ## Changing a map in the portal
 
