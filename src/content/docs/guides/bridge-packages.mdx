@@ -180,8 +180,9 @@ Help object. They reach `+help` through the same registration, and need no bridg
    `{{plus-help/librarian}}` and `{{scene/logger}}`, and keeps either from being uninstalled while
    the bridge is attached to it.
 4. **Name it after both.** `<package>-<other>`, as `scene-help`, `radio-scene` and `roster-jobs` are.
-   Give it the category and subcategory of the package it extends, and say `bridge: true` (format
-   1.20), so the package library lists it under that package.
+   Give it the category and subcategory of the package it extends, list that package first in
+   `depends:`, and say `bridge: true` (format 1.20). The package library lists a bridge under the
+   first package in its `depends:` that the same repository holds.
 5. **Read the other package's data, not its code.** When the bridge must call another object's code,
    use `@trigger/inline/nobreak/args`, not `@include`: a `{{ref}}` in the included code is looked
    up on the object running it, which is the bridge's caller, not the bridge.

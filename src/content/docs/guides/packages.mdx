@@ -113,8 +113,9 @@ Then browse, pick a package and a version, review the changeset, and apply.
 
 **Browse** lists a repository's packages by [category and subcategory](/reference/package-declarations#subcategory-and-bridges-format-120).
 Each row says what the package ships (softcode, wiki pages, an application, a plugin), its version,
-and whether it is installed. A [bridge](/guides/bridge-packages) sits under the package it extends,
-behind a line that counts that package's add-ons, and names the two packages it joins. Search, the
+and whether it is installed. A [bridge](/guides/bridge-packages) sits under the first package in its `depends:`
+that the same repository holds, behind a line that counts that package's add-ons, and names the two
+packages it joins. Search, the
 **Ships** filter and the category buttons narrow the list. **Queue install** adds a package to the
 queue at the bottom of the page and turns into **Queued**; select it again to take the package back
 out. Queueing a bridge also queues the packages it joins, and what those need, when they are neither
