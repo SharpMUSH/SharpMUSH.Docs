@@ -379,3 +379,36 @@ listed under it: `jobs-app` comes under `jobs`.
 
 The categories the bundled packages use are listed in
 [Softcode Packages](/guides/packages#the-bundled-catalogue).
+
+## Subcategory and bridges (format 1.20)
+
+`subcategory:` names a group within the category. The package library under **Admin → Packages →
+Browse** lists a category's packages by subcategory, under a heading for each, so a repository with
+many game systems shows its Fate packages together and its Pathfinder packages together.
+
+`bridge: true` marks a [bridge package](/guides/bridge-packages): one that joins two packages and
+holds only what makes sense when both are installed. A bridge lists both packages in `depends:`. The
+library lists it under the first package it depends on that the same repository holds, behind that
+package's add-ons line, and names the two packages it joins. A bridge between two packages the
+repository doesn't hold is listed on its own.
+
+```yaml
+format: "1.20"
+package: sheet-fate-help
+title: "Fate sheet: +help topics"
+version: 1.0.1
+category: Game System
+subcategory: Fate
+bridge: true
+depends:
+  - package: sheet-fate
+    version: ">=1.0 <2.0"
+  - package: plus-help
+    version: ">=1.0"
+```
+
+Both keys are optional. A subcategory follows the rules of a category: up to 40 characters, runs of
+spaces made one, and packages that share one, ignoring case, listed together. A package with a
+category and no subcategory is listed first in its category, before the headings. In a manifest whose
+`format` is below 1.20, both keys are ignored with a warning. A `bridge: true` with fewer than two
+packages in `depends:` is an error.

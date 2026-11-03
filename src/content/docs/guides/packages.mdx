@@ -111,6 +111,17 @@ https://github.com/SharpMUSH/SharpMUSH-Packages
 
 Then browse, pick a package and a version, review the changeset, and apply.
 
+**Browse** lists a repository's packages by [category and subcategory](/reference/package-declarations#subcategory-and-bridges-format-120).
+Each row says what the package ships (softcode, wiki pages, an application, a plugin), its version,
+and whether it is installed. A [bridge](/guides/bridge-packages) sits under the package it extends,
+behind a line that counts that package's add-ons, and names the two packages it joins. Search, the
+**Ships** filter and the category buttons narrow the list. **Queue install** adds a package to the
+queue at the bottom of the page and turns into **Queued**; select it again to take the package back
+out. **Review queued changes** opens the queue as one batch to apply. A step with settings to choose asks for
+them first; any other step can be applied as it stands, and **Full review** opens its changeset.
+
+![Browse, in the Game System category under Fate: the Fate sheet, queued, with its four add-ons open. Each add-on is a bridge, such as Fate sheet: +help topics, which joins sheet-fate and plus-help.](../../../assets/guide/package-library-fate.webp)
+
 A git repository holds one or more packages. Its root may have an `index.yaml` so browsing is fast;
 without one, the repository is searched for `package.yaml` files. An entry is a folder path, or a
 mapping with `path` and optionally `name`, `package`, `version` and `description`, so the portal can

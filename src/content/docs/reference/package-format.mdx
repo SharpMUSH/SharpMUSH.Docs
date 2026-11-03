@@ -23,7 +23,7 @@ back.
 Every top-level key a softcode package can use, with the format version that added it:
 
 ```yaml
-format: "1.10"                  # format version (omit = 1; 1.2 adds roles and permissions, 1.3 settings, 1.4 wiki pages, 1.5 attribute entries, 1.6 the engine range, 1.7 plugins, 1.8 attribute indexes, 1.9 attribute watches, 1.10 category)
+format: "1.20"                  # format version (omit = 1; see Format versions for what each one adds)
 package: myrddins-bbs           # required: lowercase letters, digits and hyphens, up to 64 characters
 version: 2.4.1                  # required: a version number (see Versions below)
 authors: [Myrddin]              # optional: a list, or one string
@@ -32,6 +32,7 @@ license: MIT                    # optional: an SPDX licence name is recommended
 homepage: https://example.com   # optional
 keywords: [bbs, boards]         # optional: up to 5, used for browsing and searching
 category: Community             # optional (1.10): the group the setup wizard lists it under (see Category)
+subcategory: Boards             # optional (1.20): the group within the category the package library lists it under
 convention_prefix: BBS_         # optional: the attribute name prefix you use; advisory, not enforced
 requires_server: ">=2.0"        # optional: the lowest SharpMUSH version it runs on
 verified_server: "2.4"          # optional: the newest SharpMUSH version it was tested on (1.6)
@@ -132,7 +133,7 @@ The sections below cover the manifest itself. The blocks from `categories:` on a
 
 `format:` names the version of this format the manifest is written for. A server warns about a newer
 minor version and ignores the keys it doesn't know; it refuses a newer major version. This server reads
-format 1.10.
+format 1.20.
 
 | Format | Adds |
 |---|---|
@@ -147,8 +148,18 @@ format 1.10.
 | 1.8 | [An attribute entry's `index:`](/reference/package-declarations#attribute-indexes-format-18) |
 | 1.9 | [An attribute entry's `watch:`](/reference/package-declarations#attribute-watches-format-19) |
 | 1.10 | [`category:`](/reference/package-declarations#category-format-110) |
+| 1.11 | An application's configuration tile |
+| 1.12 | A configuration tile's options |
+| 1.13 | `wiki_collection_name:` |
+| 1.14 | `wiki_landing_page:` |
+| 1.15 | `grants:` |
+| 1.16 | `title:`, required from this format |
+| 1.17 | `wiki_properties:` |
+| 1.18 | Text, decimal and date wiki properties |
+| 1.19 | An object's `function_invocation_limit:` |
+| 1.20 | [`subcategory:` and `bridge:`](/reference/package-declarations#subcategory-and-bridges-format-120) |
 
-Write `"1.10"` in quotes, so YAML tools don't read it as 1.1.
+Write `"1.10"` and `"1.20"` in quotes, so YAML tools don't read them as 1.1 and 1.2.
 
 ## Writing softcode in YAML
 
@@ -342,7 +353,8 @@ or false, or the block in a manifest whose `format` is below 1.5. In format 1.7:
 that isn't a valid plugin id. In format 1.8: an `index:` that isn't `true`, `false` or the options
 `@attribute/index` takes, or one on an entry with `internal` in its flags. In format 1.9: a `watch:` that isn't `true`, `false` or
 the attribute wildcards `@attribute/watch` takes. In format 1.10: a `category:` longer
-than 40 characters.
+than 40 characters. In format 1.20: a `subcategory:` longer than 40 characters, a `bridge:` that
+isn't `true` or `false`, or a bridge with fewer than two packages in `depends:`.
 
 **Warnings** (the manifest is accepted): unknown keys (likely typos); reserved keys (`provides`,
 `recommends`, `suggests`, configure `pattern`); configure questions nothing uses; more than 5
@@ -350,7 +362,8 @@ keywords; a format version whose minor number is newer than the server supports;
 below `requires_server` or above `maximum_server`; a plugin listed twice in `plugins:`; an `index:` in a
 manifest whose `format` is below 1.8, which is ignored; a `watch:` in a manifest whose `format` is below
 1.9, which is ignored; a `category:` in a manifest whose `format`
-is below 1.10, which is ignored; a permission or
+is below 1.10, which is ignored; a `subcategory:` or `bridge:` in a manifest whose `format` is below
+1.20, which is ignored; a permission or
 role naming a category the package doesn't declare, or a role allowing a permission the package
 doesn't declare (the game must already have it, or the install stops).
 
