@@ -127,10 +127,12 @@ changes as they stand now.
 
 ![Browse, in the Game System category under Fate: the Fate sheet, queued, with its four add-ons open. Each add-on is a bridge, such as Fate sheet: +help topics, which joins sheet-fate and plus-help.](../../../assets/guide/package-library-fate.webp)
 
-**Dependency graph** shows the same packages as a graph instead of a list. Packages that need nothing are on the
-left, and each package is one column right of what it needs, joined to it by a line. A bridge has a
+**Dependency graph** shows the packages the filters leave as a graph, together with every package they need,
+directly or through others, whether or not this repository lists it. Packages that need nothing are on the
+left, and each package is one column right of the furthest package it needs, joined by a line to each one.
+Packages that need nothing and that nothing needs are listed below the graph instead. A bridge has a
 dashed border, and the border colour says whether a package is installed, queued, available, or needed but
-not in this repository. The filters narrow the graph too, and it keeps every package the shown ones need.
+not in this repository.
 Select a package to highlight what it needs and what needs it, through every step; both are listed below
 the graph. The **Dependencies** tab under **Admin → Packages** draws the installed packages the same way.
 
