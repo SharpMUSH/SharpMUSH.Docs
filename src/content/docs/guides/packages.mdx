@@ -127,6 +127,15 @@ changes as they stand now.
 
 ![Browse, in the Game System category under Fate: the Fate sheet, queued, with its four add-ons open. Each add-on is a bridge, such as Fate sheet: +help topics, which joins sheet-fate and plus-help.](../../../assets/guide/package-library-fate.webp)
 
+**Dependency graph** shows the same packages as a graph instead of a list. Packages that need nothing are on the
+left, and each package is one column right of what it needs, joined to it by a line. A bridge has a
+dashed border, and the border colour says whether a package is installed, queued, available, or needed but
+not in this repository. The filters narrow the graph too, and it keeps every package the shown ones need.
+Select a package to highlight what it needs and what needs it, through every step; both are listed below
+the graph. The **Dependencies** tab under **Admin → Packages** draws the installed packages the same way.
+
+![The dependency graph filtered to "fate", with Fate sheet selected. Fate sheet needs nothing; its add-ons, the toolkits built on it and their add-ons are highlighted, and the rest is dimmed.](../../../assets/guide/package-graph-fate.webp)
+
 A git repository holds one or more packages. Its root may have an `index.yaml` so browsing is fast;
 without one, the repository is searched for `package.yaml` files. An entry is a folder path, or a
 mapping with `path` and optionally `name`, `package`, `version` and `description`, so the portal can
