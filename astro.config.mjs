@@ -184,7 +184,7 @@ export default defineConfig({
                           collapsed: true,
                           items: [
                               { label: 'Supporting MUD Clients', slug: 'guides/mud-clients' },
-                              { label: 'MUD Kit Packages', slug: 'guides/mud-kit' },
+                              { label: 'GMCP Packages', slug: 'guides/mud-kit' },
                               { label: 'Sounds and GMCP Softcode', slug: 'guides/gmcp-softcode' },
                           ],
                       },

@@ -1,6 +1,6 @@
 ---
 title: Supporting MUD Clients
-description: Send MUD clients such as Mudlet a map, gauges, an inventory, a chat window and sound over GMCP, with the MUD kit packages.
+description: Send MUD clients such as Mudlet a map, gauges, an inventory, a chat window and sound over GMCP, with the gmcp package.
 ---
 
 import SharpieIllustration from '../../../components/SharpieIllustration.astro';
@@ -15,25 +15,25 @@ their own. The game tells it these things over **GMCP**, beside the text.
 SharpMUSH handles GMCP itself: it agrees to it with each client, remembers what the client asked for,
 and plays sounds. What the game tells a client about its rooms, channels and characters comes from
 softcode packages, because only the game knows what a room's area or a character's health is. The
-**MUD kit** is a set of those packages, ready to install.
+**gmcp** package is those softcode packages' work in one install, and **gmcp-mudlet** adds what is Mudlet's own.
 
 | You want to | Read |
 |---|---|
 | see how the pieces fit | [How it works](#how-it-works) |
 | know what each client asks for | [What GMCP is](#what-gmcp-is) |
-| set a game up for Mudlet | [Installing the MUD kit](#installing-the-mud-kit) |
-| look up a GMCP message field by field | [MUD Kit Packages](/guides/mud-kit/) |
-| draw health gauges | [gmcp-char](/guides/mud-kit/#gmcp-char-name-gauges-and-status) and [Watched attributes](#watched-attributes) |
+| set a game up for Mudlet | [Installing the gmcp package](#installing-the-gmcp-package) |
+| look up a GMCP message field by field | [GMCP Packages](/guides/mud-kit/) |
+| draw health gauges | [Char](/guides/mud-kit/#char-name-gauges-and-status) and [Watched attributes](#watched-attributes) |
 | play sounds and music | [Sounds and GMCP Softcode](/guides/gmcp-softcode/#sounds-and-music) |
 | write your own GMCP softcode | [Functions for GMCP softcode](/guides/gmcp-softcode/#functions-for-gmcp-softcode) |
 | see a whole session | [A worked Mudlet session](#a-worked-mudlet-session) |
 
-Every example on this page was run on a SharpMUSH server with the MUD kit installed, and the output
+Every example on this page was run on a SharpMUSH server with the gmcp packages installed, and the output
 shown is what it sent.
 
 ## How it works
 
-![A MUD client talks GMCP to the socket server, which keeps the client's Core.Supports list and passes it, and what the client sends, to the engine. The engine raises events, the MUD kit packages answer them with oob() and supported, and the engine sends the result back to the client. The rendering worker turns sound() and music() into Client.Media frames sent just before their line.](../../../assets/guide/mud-clients-flow.svg)
+![A MUD client talks GMCP to the socket server, which keeps the client's Core.Supports list and passes it, and what the client sends, to the engine. The engine raises events, the gmcp packages answer them with oob() and supported, and the engine sends the result back to the client. The rendering worker turns sound() and music() into Client.Media frames sent just before their line.](../../../assets/guide/mud-clients-flow.svg)
 
 - **The socket server** agrees to GMCP with each telnet client and keeps the list of modules the client
   asked for. It sends `Client.Media.Default` when the game has a `media_base_url`.
@@ -62,7 +62,7 @@ covers everything under it: `Room` covers `Room.Info` and `Room.Players`.
 
 What each client sends:
 
-| Client | `Core.Supports` | What the MUD kit sends it |
+| Client | `Core.Supports` | What the gmcp packages send it |
 |---|---|---|
 | **Mudlet** | `Char 1`, `Char.Skills 1`, `Char.Items 1`, `Room 1`, `IRE.Rift 1`, `IRE.Composer 1`, `External.Discord 1`, `Client.Media 1` | Room, Char, Char.Items, External.Discord, Client.Media, and Client.GUI and Client.Map. Not Comm, which Mudlet does not list: see [below](#when-mudlet-does-not-list-a-module) |
 | **Blightmud**, **TinTin++**, **MUSHclient** | none, unless a script sends one | everything |
@@ -96,31 +96,28 @@ Mudlet does not list `Client` either, but the interface package (`Client.GUI`) a
 (`Client.Map`) are sent to every connection that agreed to GMCP, because the script that would add
 `Client` lives in the very interface being offered. A client that does not know them ignores them.
 
-## Installing the MUD kit
+## Installing the gmcp package
 
-The MUD kit is bundled with the server but not installed until you choose it. Install it from the
+The gmcp package is bundled with the server but not installed until you choose it. Install it from the
 portal's Packages page, from the **bundled** catalogue:
 
 | Package | Sends |
 |---|---|
-| `gmcp-room` | `Room.Info`, `Room.Players`, `Room.AddPlayer`, `Room.RemovePlayer` |
-| `gmcp-comm` | `Comm.Channel.Text`, `Comm.Channel.List` |
-| `gmcp-items` | `Char.Items.List`, `Char.Items.Add`, `Char.Items.Remove` |
-| `gmcp-char` | `Char.Name`, `Char.Vitals`, `Char.Status` |
-| `mudlet-client` | `Client.GUI`, `Client.Map`, `External.Discord.Info`, `External.Discord.Status`, and `+gui` |
-| `mud-kit` | nothing itself: it installs the five above and adds the `+help gmcp` overview |
+| `gmcp` | Room: `Room.Info`, `Room.Players`, `Room.AddPlayer`, `Room.RemovePlayer`. Comm: `Comm.Channel.Text`, `Comm.Channel.List`. Items: `Char.Items.List`, `Char.Items.Add`, `Char.Items.Remove`. Char: `Char.Name`, `Char.Vitals`, `Char.Status` |
+| `gmcp-mudlet` | an add-on for Mudlet, needing `gmcp`: `Client.GUI`, `Client.Map`, `External.Discord.Info`, `External.Discord.Status`, and `+gui` |
 
-Each of the five installs and uninstalls on its own, so a game takes only what it uses. Each one's
-`+help` topics and `+config` settings come with it, through its `-help` and `-config` bridges
-(`gmcp-room-help`, `gmcp-room-config`, ...), wherever `+help` and `+config` are installed. Every package adds its handlers to the
-event handler (`#9` in a new game) one level below the event, such as ``OBJECT`MOVE`GMCPROOM``, beside
-the handlers already there. See [Events](/guides/events/#several-attributes-on-one-event).
+A game whose players do not use Mudlet installs `gmcp` alone. The `modules` setting turns off any module
+the game does not want. The `+help` topics and `+config` settings come with each package through its
+`-help` and `-config` bridges (`gmcp-help`, `gmcp-config`, `gmcp-mudlet-help`, `gmcp-mudlet-config`), wherever
+`+help` and `+config` are installed. Each package adds its handlers to the event handler (`#9` in a new game)
+one level below the event, such as ``OBJECT`MOVE`GMCP``, beside the handlers already there. See
+[Events](/guides/events/#several-attributes-on-one-event).
 
-Staff change each package's settings with `+config`, for example `+config gmcp-room`:
+Staff change the settings with `+config gmcp` and `+config gmcp-mudlet`:
 
 ```
-> +config mudlet-client/gui-url=https://example.org/game.mpackage
-[CONFIG] Done: mudlet-client/gui-url is now https://example.org/game.mpackage, was none.
+> +config gmcp-mudlet/gui-url=https://example.org/game.mpackage
+[CONFIG] Done: gmcp-mudlet/gui-url is now https://example.org/game.mpackage, was none.
 ```
 
 Players read about it with `+help gmcp`.
@@ -130,7 +127,7 @@ A client whose player turned on screen reader mode is sent chat lines without co
 in sentences instead of a box. See [Screen Readers](/guides/screen-readers/).
 </Aside>
 
-Each message the kit sends, field by field, with each package's settings, is in [MUD Kit Packages](/guides/mud-kit/).
+Each message the packages send, field by field, with their settings, is in [GMCP Packages](/guides/mud-kit/).
 
 ## Watched attributes
 
@@ -143,20 +140,20 @@ wiped, on any object and by any command or function, the event handler runs its 
 ``WATCH`<attribute>`` and ``WATCH`<attribute>`*``. Only staff with `config.admin` can watch an attribute.
 See [`@attribute`](/reference/sharpmush-help/attribute-command/).
 
-You rarely need to do this yourself for the MUD kit: gmcp-char watches each attribute its `vitals` and
+You rarely need to do this yourself for the gmcp package: it watches each attribute its `vitals` and
 `status` settings name, and puts its own handler on the event handler. See
-[What gmcp-char does](/guides/mud-kit/#what-gmcp-char-does).
+[What the Char module does](/guides/mud-kit/#what-the-char-module-does).
 
 ## A worked Mudlet session
 
-Two players connect to a game with the MUD kit installed. **Wren** plays in a stock Mudlet 4.19 and
+Two players connect to a game with gmcp and gmcp-mudlet installed. **Wren** plays in a stock Mudlet 4.19 and
 **Tam** in a client that agrees to GMCP and lists nothing, as TinTin++ does. Staff have set:
 
 ```
-> +config mudlet-client/gui-url=https://example.org/game.mpackage
-> +config mudlet-client/map-url=https://example.org/map.xml
-> +config mudlet-client/discord-invite=https://discord.gg/example
-> +config gmcp-char/status=LEVEL
+> +config gmcp-mudlet/gui-url=https://example.org/game.mpackage
+> +config gmcp-mudlet/map-url=https://example.org/map.xml
+> +config gmcp-mudlet/discord-invite=https://discord.gg/example
+> +config gmcp/status=LEVEL
 > @config/set media_base_url=https://example.org/sounds
 ```
 
@@ -212,7 +209,7 @@ Garden in the area `Town`, with terrain `garden` and coordinates 3, 4, 0.
    Tam  << Comm.Channel.List []
    ```
 
-5. **Wren is hurt and goes up a level.** gmcp-char watches both, so her gauges and status change at once:
+5. **Wren is hurt and goes up a level.** The gmcp package watches both, so her gauges and status change at once:
 
    ```
    > &HP *Wren=20
@@ -244,8 +241,8 @@ The whole session, as the two clients saw it:
 ![Transcript of the session: God's setup commands, Wren's stock Mudlet connecting and listing its modules, gmcpsupports(), exitmap() and oob() with and without supported, a channel line sent to the chat window only after Comm is added, Tam's client that lists nothing being sent every package, Char.Vitals and Char.Status after HP and LEVEL change, Client.Media.Play and Stop for Wren but not Tam, Client.Media.Default sent again when media_base_url changes, and Room.Info for the Garden with its area and coordinates](../../../assets/guide/mud-clients-session.webp)
 
 A second session, two Mudlet clients whose scripts added `Comm` and `Client` to their lists: Alice and Bob connect, join a
-channel, talk, page, and Alice is handed a lantern, drops it and walks north. Only the MUD kit's messages
+channel, talk, page, and Alice is handed a lantern, drops it and walks north. Only the gmcp packages' messages
 are shown:
 
-![Transcript of the MUD kit's GMCP messages for Alice and Bob: Client.Map on Core.Hello, Char, Char.Items, Room, Client.GUI and External.Discord.Status on connect, Room.AddPlayer when Bob arrives, Comm.Channel.List on joining a channel, Comm.Channel.Text for a channel line and a page, Char.Vitals as HP is set, Char.Items.Add and Remove for the lantern, and Room.Info and Room.RemovePlayer as Alice walks north](../../../assets/guide/mud-clients-kit-frames.webp)
+![Transcript of the gmcp packages' GMCP messages for Alice and Bob: Client.Map on Core.Hello, Char, Char.Items, Room, Client.GUI and External.Discord.Status on connect, Room.AddPlayer when Bob arrives, Comm.Channel.List on joining a channel, Comm.Channel.Text for a channel line and a page, Char.Vitals as HP is set, Char.Items.Add and Remove for the lantern, and Room.Info and Room.RemovePlayer as Alice walks north](../../../assets/guide/mud-clients-kit-frames.webp)
 
