@@ -102,12 +102,10 @@ The [Deployment Reference](/guides/deployment) has the details for each of these
   description="Turn this first deployment into a tested backup, upgrade, monitoring, and recovery practice."
 />
 
-## Running the development stack
+## Running the stack on your own machine
 
-The Compose files at the repository root are a different thing. `docker-compose.yml` builds the
-images from your checkout and `docker-compose-hub.yml` pulls the latest build of `main`; both run the
-stack on your own machine (portal at `http://localhost:8080`, telnet on 4201) to check a change, with
-no proxy, no backups and no automatic updates. They are covered in
+The same Compose files run the stack on your own computer to check a change: set
+`SHARPMUSH_DOMAIN=localhost` and the images build from your checkout. See
 [Develop SharpMUSH](/guides/local-install#run-the-whole-stack-in-docker).
 
 <LinkCard
