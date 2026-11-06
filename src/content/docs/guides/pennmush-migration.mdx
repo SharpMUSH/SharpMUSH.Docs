@@ -9,7 +9,7 @@ SharpMUSH directly imports a **PennMUSH flatfile** and, optionally, its `mush.cn
 (`maildb`), and chat database (`chatdb`). The flatfile keeps every object's dbref, so softcode can
 keep referring to the same objects. The mail and chat databases bring mail aliases, messages and
 channels. It also imports a **RhostMUSH flatfile** with its mail dumps, and a **TinyMUX flatfile**
-with its `mail.db` and `comsys.db`; [Importing from RhostMUSH or TinyMUX](#importing-from-rhostmush-or-tinymux)
+with its `mail.db` and `comsys.db`, or the `netmux.sqlite` TinyMUX 2.14 runs from; [Importing from RhostMUSH or TinyMUX](#importing-from-rhostmush-or-tinymux)
 says what those imports carry over and what they leave behind. Everything else on this page applies
 to all three. Where it names a PennMUSH file, use the matching file from your server.
 
@@ -89,7 +89,7 @@ differences.
 ## Importing from RhostMUSH or TinyMUX
 
 The import tells the three formats apart from the file's first lines: a TinyMUX flatfile starts `+X`,
-and a PennMUSH database and a RhostMUSH flatfile both start `+V` and differ in the line after it. If it
+TinyMUX's `netmux.sqlite` starts `SQLite format 3`, and a PennMUSH database and a RhostMUSH flatfile both start `+V` and differ in the line after it. If it
 guesses wrong, choose the format on the import page. A start-up import reads
 `PENNMUSH_DATABASE_FORMAT` (`auto`, `pennmush`, `rhostmush` or `tinymux`) beside
 `PENNMUSH_DATABASE_PATH`.
@@ -99,6 +99,12 @@ guesses wrong, choose the format on the import page. A start-up import reads
 | PennMUSH | the flatfile | `maildb` | `chatdb` |
 | RhostMUSH | the flatfile `@dump/flat` writes | `.dump.mail` from `wmail/unload`, with `.dump.folder` in the mail folders slot | none, see below |
 | TinyMUX | the flatfile (versions 1 to 5) | `mail.db` | `comsys.db` in the chat slot |
+| TinyMUX 2.14 | `game/data/netmux.sqlite` | in the database | in the database |
+
+TinyMUX 2.14 keeps the game, its channels and its mail in `netmux.sqlite`, so that one file is the
+whole upload. Stop the game before you copy it: TinyMUX writes changes to `netmux.sqlite-wal` first,
+and the import reads only the main file. A mail or chat file uploaded with it is refused. A flatfile
+written by `db_unload` imports the same game.
 
 The configuration slot takes PennMUSH's `mush.cnf`, TinyMUX's `netmux.conf` or RhostMUSH's
 `netrhost.conf`. A setting the two TinyMUSH-family servers name differently, such as
