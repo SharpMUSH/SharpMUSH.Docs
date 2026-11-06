@@ -278,15 +278,31 @@ External.Discord.Status {"game":"SharpMUSH","details":"Playing Wren","starttime"
 | | `details` | `Playing` and the character's name; left out before login, or when `discord-character` is off |
 | | `starttime` | when the player connected, in seconds since 1970; left out before login |
 
-A setting left empty sends nothing: no `Client.GUI` without a `gui-url`, no `Client.Map` without a
-`map-url`.
+While `gui-url` is empty, `Client.GUI` offers the interface the server ships, at
+`<mud_url>/mudlet/sharpmush-ui.mpackage` with its own version; it needs `mud_url` to be the game's web
+address. The `gui` setting off sends no `Client.GUI` at all. No `Client.Map` is sent without a `map-url`.
+
+The interface the server ships puts a panel on the right of the game's text:
+
+| Part | Drawn from |
+|---|---|
+| the room: name, area, exits, who is here, things here, things carried | `Room.Info`, `Room.Players`, `Char.Items.*` |
+| a gauge for each value sent with a maximum, such as `hp` and `maxhp` | `Char.Vitals` |
+| a chat window for channel lines and pages | `Comm.Channel.Text` |
+| a map drawn as the player walks, by compass exit or at `coords` | `Room.Info` |
+
+It adds `Comm.Channel` to Mudlet's `Core.Supports`, so the chat window is sent its lines. `interface hide`
+and `interface show`, typed in Mudlet, take the panel away and bring it back. To offer a game's own
+interface instead, start from this one, export it from Mudlet under a name of your own and set `gui-url`
+and `gui-version`; `+help gui setup` walks staff through it.
 
 `gmcp-mudlet` is an add-on: it needs `gmcp` installed. Settings, `+config gmcp-mudlet`:
 
 | Setting | Default | What |
 |---|---|---|
-| `gui-url` | none | the interface package Mudlet downloads |
-| `gui-version` | `1.0` | its version; change it with each new package |
+| `gui` | on | whether Mudlet is offered an interface at all |
+| `gui-url` | none | the game's own interface package; empty offers the one the server ships |
+| `gui-version` | `1.0` | the version of the package `gui-url` names; change it with each new package |
 | `map-url` | none | the map Mudlet downloads |
 | `discord-invite` | none | an invite to the game's Discord server |
 | `discord-application` | none | the game's own Discord application id |
@@ -297,7 +313,7 @@ Players choose whether they are offered the interface:
 
 | Command | What |
 |---|---|
-| `+gui` | whether the game has an interface package, its version, and whether it is offered to you |
+| `+gui` | which interface the game offers, its version, and whether it is offered to you |
 | `+gui on` | offer it when you connect, and offer it now |
 | `+gui off` | stop offering it |
 
