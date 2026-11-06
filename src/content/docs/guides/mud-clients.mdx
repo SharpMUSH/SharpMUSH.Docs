@@ -74,8 +74,8 @@ nothing is sent everything. A client that sent a list is sent only what is on it
 ### When Mudlet does not list a module
 
 Stock Mudlet does not list `Comm`, so it is not sent channel lines (`Comm.Channel.Text`) or its
-channel list. A Mudlet script adds the module, and the game's own Mudlet interface package is the place
-for it:
+channel list. A Mudlet script adds the module. The interface the server ships does, and a game's own
+Mudlet interface package is the place for it too:
 
 ```lua
 sendGMCP([[Core.Supports.Add ["Comm.Channel 1"] ]])
