@@ -11,8 +11,8 @@ in. These are a scene's **details**. The scene's owner sets them, they show on t
 the top of its log and on its page in the portal, and players can list scenes by them.
 
 The `scene` package keeps any detail an owner names. A game can also list the details it uses, with a
-name and a hint for each. The `scene-verse` package lists three, a verse, a canon and a content
-warning, and shows them more prominently.
+name and a hint for each. The `scene-safety` package lists a content warning, and the `scene-verse`
+package lists a verse and a canon, and they show more prominently.
 
 A single pose can carry something of its own too, such as being a flashback. That is a **mark**,
 covered further down.
@@ -131,8 +131,11 @@ private.
 
 ## Verse, canon and content warnings
 
-The `scene-verse` package comes with SharpMUSH but is not installed on a new game. Install it from
-the admin panel's Packages page. It lists three details:
+The `scene-safety` package comes with SharpMUSH but is not installed on a new game; it lists the
+content warning, and tells whoever joins a scene its warnings. The `scene-verse` package is in the
+official package library (see [Getting packages](/guides/packages/#getting-packages)); it lists a
+verse and a canon. Install either from the admin panel's Packages page. With both, a game lists three
+details:
 
 | Detail | Name | What goes in it |
 |---|---|---|
@@ -348,18 +351,18 @@ Participant  Ann                                                             0
 ==============================================================================
 ```
 
-The `scene-verse` package works this way. Its content warning takes its colour from its `tone`, and
-one filter tells a joiner about it:
+The `scene-safety` package works this way. Its content warning takes its colour from its `tone`, and
+its join filter tells a joiner about it:
 
 ```yaml
 objects:
-  - ref: verse
+  - ref: scene_filters
     target: "{{scene/logger}}"
     attributes:
       DETAIL`WARNING: |-
         {"label":"Content warning","hint":"What a reader may want to know before joining, such as violence. Split several with |.","many":true,"listed":true,"tone":"warning","order":5}
-      FILTER`JOIN`VERSE: |-
-        %0[if(strlen(scene(%1,warning)),%r[notice(SCENE,Content warning: [u(%!/FUN`DETAIL`SHOW,%1,warning)])])]
+      FILTER`JOIN`SAFETY: |-
+        u({{safety}}/FUN`FILTER`JOIN,%0,%1,%2)
 ```
 
 Because the package attaches its attributes to the `scene` package's Scene Logger, uninstalling it
@@ -367,7 +370,7 @@ takes its filters and its `DETAIL` attributes away again. See [Managing attribut
 for how attaching works.
 
 <Aside>
-Name a filter after your package, as `` FILTER`JOIN`VERSE `` is, so two packages never write the same
+Name a filter after your package, as `` FILTER`JOIN`SAFETY `` is, so two packages never write the same
 attribute. Filters on one point run in the order of their names.
 </Aside>
 

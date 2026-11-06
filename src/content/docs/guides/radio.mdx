@@ -319,8 +319,9 @@ A longer message is refused:
 
 ### Installing
 
-Radio ships with the server but is not installed on a new game. An administrator installs it from
-the portal: open **Packages** in the admin area, choose **Browse**, and install `radio`. Its `+help` topics and `+config` settings come with it, through the `radio-help` and `radio-config` bridges, wherever `+help` and `+config` are installed. See [Softcode Packages](/guides/packages/) for how
+Radio is in the official package library, not shipped with the server. An administrator adds the
+library as a remote (see [Getting packages](/guides/packages/#getting-packages)), then opens
+**Packages** in the admin area, chooses **Browse**, and installs `radio`. Its `+help` topics and `+config` settings come with it, through the `radio-help` and `radio-config` bridges, wherever `+help` and `+config` are installed. See [Softcode Packages](/guides/packages/) for how
 installing, upgrading and rolling back work.
 
 It adds the **Radio** object to the master room and the command `+radio` for everyone. `+radio` is
@@ -328,7 +329,7 @@ a game command, matched before softcode `$`-commands, so a `+radio` your game al
 softcode stops running once the package is in. A new game has no frequencies: create the first ones
 as staff with `+radio/create`.
 
-The `radio-scene` package, also in the catalogue and not installed on a new game, adds
+The `radio-scene` package, also in the package library, adds
 `+radio/log`, which puts what a player hears on a frequency into the scene they are in, as
 [radio poses](/guides/scene-pose-types/).
 
