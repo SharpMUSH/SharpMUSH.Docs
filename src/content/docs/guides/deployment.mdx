@@ -36,7 +36,7 @@ run the stack. Pick one, based on how you want HTTPS handled:
 | `sharpmush.service` | An optional systemd unit that starts the stack from the Compose file when the machine boots. |
 | `.env.example` | A template for your secrets and settings. Copy it to `.env` and fill it in. |
 | `.gitignore` | Keeps your real `.env` out of git. |
-| `../nats.conf` | The NATS settings, shared with the development stack. It raises the largest message to 6 MB and gives NATS's stored messages a 6 GB budget. Both Compose files use it. |
+| `../nats.conf` | The NATS settings. It raises the largest message to 6 MB and gives NATS's stored messages a 6 GB budget. Both Compose files use it. |
 
 ## First-time setup
 

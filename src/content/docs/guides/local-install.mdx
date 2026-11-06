@@ -86,11 +86,11 @@ change it, and start it again while the others keep running.
 2. Start NATS.
 
    ```bash
-   docker run -d --name sharpmush-nats -p 127.0.0.1:4222:4222 -v "$PWD/nats.conf:/etc/nats/nats.conf:ro" nats:2-alpine -js -c /etc/nats/nats.conf
+   docker run -d --name sharpmush-dev-nats -p 127.0.0.1:4222:4222 -v "$PWD/nats.conf:/etc/nats/nats.conf:ro" nats:2-alpine -js -c /etc/nats/nats.conf
    ```
 
    This starts NATS in the background with the repository's `nats.conf`, on port 4222 of this
-   computer only. Next time, `docker start sharpmush-nats` starts it again.
+   computer only. Next time, `docker start sharpmush-dev-nats` starts it again.
 
 3. Point the game server and the connection server at it.
 
@@ -144,7 +144,7 @@ change it, and start it again while the others keep running.
 
 </Steps>
 
-To stop, press <kbd>Ctrl</kbd>+<kbd>C</kbd> in each terminal, then `docker stop sharpmush-nats`.
+To stop, press <kbd>Ctrl</kbd>+<kbd>C</kbd> in each terminal, then `docker stop sharpmush-dev-nats`.
 
 ### Where your world is kept
 
