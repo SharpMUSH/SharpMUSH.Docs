@@ -62,8 +62,10 @@ The config takes up to 100 rooms and two optional keys:
 ## Giving rooms coordinates
 
 A room's position is three numbers in attributes on the room: x to the east, y to the north and z
-for the level. These are the same attributes the `gmcp` package sends to a MUD client's
-mapper, so one set of numbers serves both.
+for the level. The Builder Graph reads `X`, `Y` and `Z` by default. The `gmcp` package sends a MUD
+client's mapper ``MAP`COORDS`X``, ``MAP`COORDS`Y`` and ``MAP`COORDS`Z`` by default; to have one set of
+numbers serve both, set the page's `coordinates` to
+``["MAP`COORDS`X","MAP`COORDS`Y","MAP`COORDS`Z"]``, or gmcp's `coordinates` setting to `X Y Z`.
 
 ```
 > &X #20=1
