@@ -102,9 +102,13 @@ guesses wrong, choose the format on the import page. A start-up import reads
 | TinyMUX 2.14 | `game/data/netmux.sqlite` | in the database | in the database |
 
 TinyMUX 2.14 keeps the game, its channels and its mail in `netmux.sqlite`, so that one file is the
-whole upload. Stop the game before you copy it: TinyMUX writes changes to `netmux.sqlite-wal` first,
-and the import reads only the main file. A mail or chat file uploaded with it is refused. A flatfile
-written by `db_unload` imports the same game.
+whole upload. TinyMUX writes changes to `netmux.sqlite-wal` first, and the import reads only the main
+file, so stop the game before you copy it. A clean shutdown moves everything into the main file and
+removes `netmux.sqlite-wal`. If that file is still there and not empty (after a crash, say), make sure
+nothing has the database open and run `sqlite3 netmux.sqlite "PRAGMA wal_checkpoint(TRUNCATE);"` in
+`game/data` before you copy it. A mail or chat file uploaded with it is refused. To import a flatfile
+instead, run `./db_unload netmux netmux.flat -C comsys.db -m mail.db` and upload `mail.db` and
+`comsys.db` in the mail and chat slots beside it.
 
 The configuration slot takes PennMUSH's `mush.cnf`, TinyMUX's `netmux.conf` or RhostMUSH's
 `netrhost.conf`. A setting the two TinyMUSH-family servers name differently, such as
