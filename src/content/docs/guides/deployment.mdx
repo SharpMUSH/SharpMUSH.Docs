@@ -172,8 +172,8 @@ server settings change that:
 | 4222 / 8222 | NATS | No. Internal only. |
 
 If you **don't** use Caddy (for example, a load balancer handles HTTPS), remember that `/ws` lives on
-the connection server (`4202`), not the game server. Publish `4202` or add an equivalent `/ws` route,
-as well as publishing `8080`.
+the connection server (`4202`), not the game server. The terminal connects to `/ws` on the portal's
+own address, so your proxy must send that path to `4202`, as well as publishing `8080`.
 
 <Aside type="caution" title="Port 4201 is unencrypted">
 Everything a player types on port `4201`, including their password when they log in, crosses the
