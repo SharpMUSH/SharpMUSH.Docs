@@ -26,21 +26,20 @@ The examples use a small workshop: Gate (`#18`), Yard (`#19`), Forge (`#20`), St
 
 ## Setting it up
 
-The Builder Graph is the `builder-graph` package. It does not ship with the server: its files are
-in the `examples/packages/builder-graph` folder of the SharpMUSH source repository. It is a browser
-page, with no softcode and no world objects. Hosted pages only run when the `allow_browser_code` option
-is on:
+The Builder Graph is the `builder-graph` package. It ships with the server in the Building group
+but is not installed on a new game. It is a browser page, with no softcode and no world objects.
+Hosted pages only run when the `allow_browser_code` option is on:
 
 ```
 > @config/set allow_browser_code=yes
 Option set.
 ```
 
-1. Make a ZIP of the five files in `examples/packages/builder-graph` (`package.yaml`, `ui.json`,
-   `index.html`, `graph.js` and `graph.css`), all at the top level.
-2. In the portal, open **Admin**, then **Packages**, press **Upload plugin**, choose the ZIP, review
-   it and apply it. This needs the packages administration permission.
-3. Open **Admin**, then **Applications**, and add an application. Tick **Plain HTML/JavaScript
+1. Tick it in the last step of [first-run setup](/guides/packages/), or install it later: in the
+   portal, open **Admin**, then **Packages**, choose **Browse**, and install `builder-graph` from the
+   `bundled` catalogue. The review lists its four files; tick **I trust the browser code in
+   builder-graph** and apply. This needs the packages administration permission.
+2. Open **Admin**, then **Applications**, and add an application. Tick **Plain HTML/JavaScript
    package**, enter `builder-graph` as the **Installed definition ID**, `1` as the **Config
    version**, a slug such as `workshop`, and an **Instance JSON config** naming the rooms:
 

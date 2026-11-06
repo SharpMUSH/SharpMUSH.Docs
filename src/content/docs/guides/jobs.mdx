@@ -516,9 +516,9 @@ A bucket can also run code when its jobs change, in `` ON`<EVENT> `` attributes 
 
 ### Installing
 
-Jobs ships with the server but is not installed on a new game. An administrator installs it
-during [first-run setup](/guides/packages/), where it is in the Staff group, or later from the
-portal:
+Jobs ships with the server. [First-run setup](/guides/packages/) offers it ticked in the Staff
+group, so a new game gets it unless the administrator unticks it; a game that is already running
+does not get it when the server is upgraded. An administrator can install it later from the portal:
 
 1. Open **Packages** in the admin area and choose **Browse**.
 2. Install `jobs`. It needs `http-handler`, which a new game already has. Its `+help` topics and `+config` settings come with it, through the `jobs-help` and `jobs-config` bridges, wherever `+help` and `+config` are installed.
