@@ -83,8 +83,8 @@ first. Deploy and claim in one sitting.
 
 The [Deployment Reference](/guides/deployment) has the details for each of these:
 
-- **The browser terminal.** In the portal, set the terminal's **Server URI** to
-  `wss://<your-domain>/ws`. See [The browser terminal address](/guides/deployment#the-browser-terminal-address).
+- **The browser terminal.** The portal's terminal connects to `wss://<your-domain>/ws`, which your
+  proxy must send to the connection server. See [The browser terminal address](/guides/deployment#the-browser-terminal-address).
 - **Ports.** Which ports to open, and which stay private: [Ports](/guides/deployment#ports). Port
   `4201` is plaintext telnet; [telnet over TLS](/guides/deployment#telnet-over-tls) on `4203` is
   optional. Behind a Cloudflare Tunnel, telnet needs its own DNS-only record:
