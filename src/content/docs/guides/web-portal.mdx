@@ -54,8 +54,8 @@ Guest access upgrades into a real character without losing the session.
 It connects over a WebSocket served by the connection server, and out-of-band data from the game
 drives the live side panes.
 
-The terminal's **Server URI** must point at the connection server's `/ws` endpoint. On a deployment
-behind the supplied proxy config that is `wss://<your-domain>/ws`; see
+The terminal connects to `/ws` on the portal's own address, `wss://<your-domain>/ws`, and the proxy
+sends that path to the connection server's `/ws` endpoint. See
 [The browser terminal address](/guides/deployment#the-browser-terminal-address) for why this path
 goes to the connection server and not the game server.
 

@@ -133,15 +133,16 @@ server holds their connections.
 ### The browser terminal address
 
 The portal's terminal connects to `/ws`, which is served by the **connection server** on port `4202`,
-not by the game server. The `Caddyfile` already sends `https://<your-domain>/ws` there, so in the
-portal set the terminal's **Server URI** to:
+not by the game server. The terminal has no address setting: it connects to `/ws` on the address the
+portal was loaded from, so a portal at `https://<your-domain>` uses:
 
 ```
 wss://<your-domain>/ws
 ```
 
-The default `ws://localhost:4202/ws` is for local development only. A browser on an HTTPS page will
-refuse a plain `ws://` connection.
+The `Caddyfile` already sends `https://<your-domain>/ws` to the connection server. A proxy of your own
+must send that same path there. A portal opened on `localhost` connects to `ws://localhost:4202/ws`,
+the connection server in local development.
 
 ### Passkeys
 
@@ -171,8 +172,8 @@ server settings change that:
 | 4222 / 8222 | NATS | No. Internal only. |
 
 If you **don't** use Caddy (for example, a load balancer handles HTTPS), remember that `/ws` lives on
-the connection server (`4202`), not the game server. Publish `4202` or add an equivalent `/ws` route,
-as well as publishing `8080`.
+the connection server (`4202`), not the game server. The terminal connects to `/ws` on the portal's
+own address, so your proxy must send that path to `4202`, as well as publishing `8080`.
 
 <Aside type="caution" title="Port 4201 is unencrypted">
 Everything a player types on port `4201`, including their password when they log in, crosses the
@@ -257,11 +258,8 @@ to the web side, and telnet gets a plain DNS record pointing at the machine.
    - **Service type:** `HTTP`
    - **URL:** `socketserver:4202`
 
-   Then set the portal terminal's **Server URI** to `wss://mush.example.com/ws`.
-
-   Instead of a path, you can give the terminal its own address: `ws.mush.example.com` →
-   `HTTP` → `socketserver:4202`, with the Server URI `wss://ws.mush.example.com/ws`. The path
-   route keeps everything on one address.
+   The portal's terminal connects to `wss://mush.example.com/ws`, the `/ws` path on the portal's own
+   address, so this route must be a path on the portal's hostname, not a hostname of its own.
 
 </Steps>
 
