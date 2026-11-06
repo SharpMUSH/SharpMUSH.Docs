@@ -4,7 +4,7 @@ description: Play sounds and music in Mudlet over GMCP, set where the game keeps
 ---
 
 Sounds and music reach a MUD client over GMCP beside the game's text, and softcode can send GMCP messages of
-its own. [Supporting MUD Clients](/guides/mud-clients/) explains GMCP and the MUD kit built on these.
+its own. [Supporting MUD Clients](/guides/mud-clients/) explains GMCP and the gmcp package built on these.
 
 ## Sounds and music
 
@@ -66,7 +66,7 @@ Empty sends nothing, and the game's sounds then need full addresses. An imported
 
 ## Functions for GMCP softcode
 
-The MUD kit is ordinary softcode, built on three functions. Use them to send packages of your own.
+The gmcp package is ordinary softcode, built on three functions. Use them to send packages of your own.
 
 ### gmcpsupports()
 
@@ -112,7 +112,7 @@ Wren's stock Mudlet did not list `Comm`:
 1
 ```
 
-The MUD kit sends with `supported`, except `Client.GUI` and `Client.Map`. Use it for your own packages too, rather than testing
+The gmcp packages send with `supported`, except `Client.GUI` and `Client.Map`. Use it for your own packages too, rather than testing
 `gmcpsupports()` first. Sending to anyone but yourself needs a wizard or the `Send_OOB` power. A
 descriptor number sends to that one connection, even before anyone has logged in on it, which is how a
 ``SOCKET`GMCP`` handler answers what a client asked.

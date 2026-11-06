@@ -1,16 +1,23 @@
 ---
-title: MUD Kit Packages
-description: Every GMCP message the MUD kit packages send a MUD client such as Mudlet, field by field, and each package's settings.
+title: GMCP Packages
+description: Every GMCP message the gmcp package and its Mudlet add-on send a MUD client such as Mudlet, field by field, and their settings.
 ---
 
-The MUD kit is a set of bundled packages that tell a MUD client such as Mudlet about the game over GMCP.
-[Supporting MUD Clients](/guides/mud-clients/) explains how it works and how to install it. This page lists
-each package's messages, their fields, and the package's `+config` settings.
+The bundled `gmcp` package tells a MUD client such as Mudlet about the game over GMCP: one package for the
+Room, Comm, Char.Items and Char modules every client reads. `gmcp-mudlet` adds on top of it what is Mudlet's
+own. [Supporting MUD Clients](/guides/mud-clients/) explains how it works and how to install it. This page
+lists each module's messages, their fields, and the `+config` settings that shape them.
 
 Each message below is listed with its fields and when it is sent. The examples are what a client was
 sent on a running server.
 
-## gmcp-room: the map and who is here
+The `modules` setting chooses which modules the game sends at all, `Room Comm Items Char` by default:
+
+```
+> +config gmcp/modules=Room Char
+```
+
+## Room: the map and who is here
 
 | Message | Sent |
 |---|---|
@@ -35,7 +42,7 @@ Room.RemovePlayer "Wren"
 | `area` | string | the room's `AREA` attribute, or else the name of its zone, or else empty |
 | `environment` | string | the room's `ENVIRONMENT` attribute, such as `garden`, or empty |
 | `exits` | object | each exit the player sees, by name, to the number of the room it leads to. This is [`exitmap()`](/guides/gmcp-softcode/#exitmap) |
-| `coords` | string | `x,y,z` from the room's `X`, `Y` and `Z` attributes, a missing one as `0`. Left out of a room with none of them, or with one that is not a number |
+| `coords` | string | `x,y,z` from the room's ``MAP`COORDS`X``, ``MAP`COORDS`Y`` and ``MAP`COORDS`Z`` attributes, a missing one as `0`. Left out of a room with none of them, or with one that is not a number |
 
 `Room.Players` is a list of every connected player in the room the viewer sees, the viewer included. A
 DARK player is seen only by themself and by someone who may see everything. Each entry, like the body of
@@ -48,14 +55,14 @@ DARK player is seen only by themself and by someone who may see everything. Each
 
 `Room.RemovePlayer` is the player's name, as a string.
 
-Settings, `+config gmcp-room`:
+Settings, `+config gmcp`:
 
 | Setting | Default | What |
 |---|---|---|
 | `area` | `AREA` | the room attribute naming its area. A room without it is in its zone's area. Empty uses the zone alone |
 | `environment` | `ENVIRONMENT` | the room attribute holding its terrain. Empty sends none |
-| `coordinates` | `X Y Z` | the room attributes holding x, y and z, in that order (two or three) |
-| `fullname` | `FULLNAME` | the player attribute holding the name shown in full |
+| `coordinates` | ``MAP`COORDS`X MAP`COORDS`Y MAP`COORDS`Z`` | the room attributes holding x, y and z, in that order (two or three), the ones the World map reads |
+| `fullname` | `FULLNAME` | the player attribute holding the name shown in full, here and in `Char.Name` |
 
 To place a room on a mapper, set its attributes:
 
@@ -64,15 +71,15 @@ To place a room on a mapper, set its attributes:
 Garden/AREA - Set.
 > &ENVIRONMENT #26=garden
 Garden/ENVIRONMENT - Set.
-> &X #26=3
-Garden/X - Set.
-> &Y #26=4
-Garden/Y - Set.
-> &Z #26=0
-Garden/Z - Set.
+> &MAP`COORDS`X #26=3
+Garden/MAP`COORDS`X - Set.
+> &MAP`COORDS`Y #26=4
+Garden/MAP`COORDS`Y - Set.
+> &MAP`COORDS`Z #26=0
+Garden/MAP`COORDS`Z - Set.
 ```
 
-## gmcp-comm: channels and pages
+## Comm: channels and pages
 
 | Message | Sent |
 |---|---|
@@ -108,7 +115,7 @@ nobody is sent a line they did not see.
 | `caption` | string | the same name, for the client to show |
 | `command` | string | what a client types before a message to speak on the channel: `+` and the name in lower case |
 
-Settings, `+config gmcp-comm`:
+Settings, `+config gmcp`:
 
 | Setting | Default | What |
 |---|---|---|
@@ -117,7 +124,7 @@ Settings, `+config gmcp-comm`:
 
 Stock Mudlet does not list `Comm`: see [When Mudlet does not list a module](/guides/mud-clients/#when-mudlet-does-not-list-a-module).
 
-## gmcp-items: the inventory window
+## Char.Items: the inventory window
 
 | Message | Sent |
 |---|---|
@@ -150,13 +157,13 @@ Alice << Char.Items.List {"location":"inv","items":[]}
 Things only: players are in `Room.Players` and exits in `Room.Info`. A DARK thing in a room is listed
 only to a player who may see everything. What is inside a container is not sent.
 
-Settings, `+config gmcp-items`:
+Settings, `+config gmcp`:
 
 | Setting | Default | What |
 |---|---|---|
-| `room` | on | whether the room's things are sent, or only what the player carries |
+| `items-room` | on | whether the room's things are sent, or only what the player carries |
 
-## gmcp-char: name, gauges and status
+## Char: name, gauges and status
 
 | Message | Sent |
 |---|---|
@@ -164,7 +171,7 @@ Settings, `+config gmcp-items`:
 | `Char.Vitals` | on connect, and when a vitals attribute changes |
 | `Char.Status` | on connect, when a status attribute changes, and on a rename |
 
-With `+config gmcp-char/status=LEVEL`, Wren connects:
+With `+config gmcp/status=LEVEL`, Wren connects:
 
 ```
 Char.Name {"name":"Wren","fullname":"Wren of the Marsh"}
@@ -179,58 +186,57 @@ for each status attribute. Each field is named after the attribute's last name i
 attribute the player does not have is left out, so a player with none is sent `Char.Vitals {}`. Mudlet's
 gauges read `hp` and `maxhp`, `mp` and `maxmp`, `mv` and `maxmv`.
 
-Settings, `+config gmcp-char`:
+Settings, `+config gmcp`:
 
 | Setting | Default | What |
 |---|---|---|
 | `vitals` | `HP MAXHP MP MAXMP` | the player attributes sent as `Char.Vitals` |
 | `status` | none | the player attributes sent as `Char.Status`, such as `LEVEL CLASS` |
-| `fullname` | `FULLNAME` | the player attribute holding the name shown in full |
 
 The package sends a change the moment it happens, without checking anyone's attributes over and over.
 That is what [watched attributes](/guides/mud-clients/#watched-attributes) are for.
 
-### What gmcp-char does
+### What the Char module does
 
-For each attribute its `vitals` and `status` settings name, gmcp-char sets this up for you when it is
+For each attribute the `vitals` and `status` settings name, the gmcp package sets this up for you when it is
 installed, and again whenever `+config` changes those settings:
 
 - it adds the attribute to the attribute table, but only if it is not there already, so an attribute
   the game already has keeps its flags;
 - it watches the attribute, if nothing watches it yet;
-- it puts its handler, ``WATCH`<attribute>`GMCPCHAR``, on the event handler.
+- it puts its handler, ``WATCH`<attribute>`GMCP``, on the event handler.
 
 ```
 > think attrwatch(HP)
 WATCH`HP WATCH`HP`*
 > think lattr(#9/WATCH`HP`*)
-WATCH`HP`GMCPCHAR
+WATCH`HP`GMCP
 ```
 
-If someone else already watches an attribute in another way, gmcp-char leaves it alone and does not
+If someone else already watches an attribute in another way, the package leaves it alone and does not
 send its changes. Whoever changed the setting is told:
 
 ```
 > @attribute/watch LEVEL=WATCH`LEVEL`STAFF
 LEVEL is watched: every change to it runs the event handler's WATCH`LEVEL`STAFF.
-> +config gmcp-char/status=LEVEL
-[CONFIG] Done: gmcp-char/status is now LEVEL, was none.
-GMCP Char: LEVEL is already watched with WATCH`LEVEL`STAFF, so it is left as it is and its changes are not sent.
+> +config gmcp/status=LEVEL
+[CONFIG] Done: gmcp/status is now LEVEL, was none.
+GMCP: LEVEL is already watched with WATCH`LEVEL`STAFF, so it is left as it is and its changes are not sent.
 ```
 
-When an attribute is taken out of the settings, gmcp-char removes its handler. It stops watching the
+When an attribute is taken out of the settings, the package removes its handler. It stops watching the
 attribute only if no other handler for it is left, so another package's gauge keeps working:
 
 ```
-> +config gmcp-char/vitals=HP MAXHP
-[CONFIG] Done: gmcp-char/vitals is now HP, MAXHP, was HP, MAXHP, MP, MAXMP.
+> +config gmcp/vitals=HP MAXHP
+[CONFIG] Done: gmcp/vitals is now HP, MAXHP, was HP, MAXHP, MP, MAXMP.
 > think iter(HP MAXHP MP MAXMP,%i0=[attrwatch(%i0)],,|)
 HP=WATCH`HP WATCH`HP`*|MAXHP=WATCH`MAXHP WATCH`MAXHP`*|MP=|MAXMP=
 ```
 
 Uninstalling runs no code, so the handlers stay behind for a while. The next time a watched attribute
-changes, its handler sees that gmcp-char is gone, removes itself, and stops the watch the same way.
-Table entries gmcp-char added stay in the table.
+changes, its handler sees that the package is gone, removes itself, and stops the watch the same way.
+Table entries the package added stay in the table.
 
 So a staff member or a combat system only sets the attribute, and the player's client is told:
 
@@ -245,7 +251,7 @@ God << Char.Vitals {"hp":25,"maxhp":40}
 
 Each message carries the whole gauge, not only the attribute that changed.
 
-## mudlet-client: the game's interface, map and Discord
+## gmcp-mudlet: the game's interface, map and Discord
 
 | Message | Sent |
 |---|---|
@@ -275,7 +281,7 @@ External.Discord.Status {"game":"SharpMUSH","details":"Playing Wren","starttime"
 A setting left empty sends nothing: no `Client.GUI` without a `gui-url`, no `Client.Map` without a
 `map-url`.
 
-Settings, `+config mudlet-client`:
+`gmcp-mudlet` is an add-on: it needs `gmcp` installed. Settings, `+config gmcp-mudlet`:
 
 | Setting | Default | What |
 |---|---|---|

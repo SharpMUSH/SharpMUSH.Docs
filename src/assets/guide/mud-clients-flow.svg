@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" width="900" height="380" role="img" aria-labelledby="t d">
 <title id="t">How GMCP moves between a MUD client and the game</title>
-<desc id="d">A MUD client such as Mudlet talks GMCP to the socket server. The socket server keeps the client's Core.Supports list, passes it and what the client sends to the engine over NATS, and sends Client.Media.Default when media_base_url is set. The engine stores the list for gmcpsupports(), raises events such as OBJECT`MOVE and SOCKET`GMCP, runs the event handler's WATCH` attributes when a watched attribute changes, and the softcode packages gmcp-room, gmcp-comm, gmcp-items, gmcp-char and mudlet-client answer them by calling oob() with supported. The engine sends those frames back through the socket server to the client. The rendering worker turns sound() and music() in a line into Client.Media.Play and Stop frames, which the socket server sends just before the line.</desc>
+<desc id="d">A MUD client such as Mudlet talks GMCP to the socket server. The socket server keeps the client's Core.Supports list, passes it and what the client sends to the engine over NATS, and sends Client.Media.Default when media_base_url is set. The engine stores the list for gmcpsupports(), raises events such as OBJECT`MOVE and SOCKET`GMCP, runs the event handler's WATCH` attributes when a watched attribute changes, and the softcode package gmcp and its add-ons such as gmcp-mudlet answer them by calling oob() with supported. The engine sends those frames back through the socket server to the client. The rendering worker turns sound() and music() in a line into Client.Media.Play and Stop frames, which the socket server sends just before the line.</desc>
 <defs>
   <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#475569"/></marker>
 </defs>
@@ -39,8 +39,8 @@
 
   <rect x="560" y="236" width="316" height="100" rx="8" fill="#ffffff" stroke="#94a3b8"/>
   <text x="574" y="262" font-weight="600">Softcode packages</text>
-  <text x="574" y="284" font-size="12" fill="#475569">gmcp-room, gmcp-comm, gmcp-items,</text>
-  <text x="574" y="300" font-size="12" fill="#475569">gmcp-char, mudlet-client: shape the</text>
+  <text x="574" y="284" font-size="12" fill="#475569">gmcp, and add-ons such as</text>
+  <text x="574" y="300" font-size="12" fill="#475569">gmcp-mudlet: shape the</text>
   <text x="574" y="316" font-size="12" fill="#475569">game's data into the GMCP bodies</text>
 
   <line x1="204" y1="100" x2="246" y2="100" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
