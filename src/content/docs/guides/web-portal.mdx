@@ -31,16 +31,37 @@ Until someone completes `/setup`, anyone who reaches it takes ownership of the g
 claim in the same sitting.
 </Aside>
 
+## Finding your way
+
+There are three different kinds of guidance. These descriptions distinguish what each is for;
+the game's navigation labels may differ.
+
+| You need | Where to look |
+|---|---|
+| **Learn to play** — how the interface works | The guided introduction at `/welcome`, also linked from Help. Try [the example game's guide](https://mush.sharpmush.com/welcome) without signing in. |
+| **About this game** — setting, rules and character requirements | The game's own welcome, rules and character-guide pages. Staff choose this material; the [wiki](/guides/wiki-reader/) at `/wiki` is another place to find what they publish. |
+| **Command reference** — syntax and what a command does | The server's help at `/help`, or `help` in a client. Try [the example game's reference](https://mush.sharpmush.com/help). For installed systems and staff-written topics, see [Game Help with +help](/guides/game-help/). |
+
+The interface guide does not replace a game's rules or approval process. Available sign-in methods,
+packages and player permissions depend on that game. You can also play with a MU\* client or connect
+directly through the terminal; the guided introduction is not a required step.
+
 ## Accounts and characters
 
-SharpMUSH separates the **account** you log in with from the **characters** you play. One account can
-own several characters.
+Your **account** is your private sign-in. A **character** is who you play in the shared world. One
+account can own several characters; check which character you are playing before acting.
+
+Select a character already listed on your account. To link an existing character that is not yet
+linked to an account, sign in and claim it with its character password rather than creating a
+duplicate. If it has no character password, ask staff for help. Account and character passwords are
+separate.
 
 | Page | What it is for |
 |---|---|
 | `/register`, `/login` | Account signup and login, with a password, a passkey or a [sign-in service](/guides/sign-in-services) |
-| `/characters` | The characters this account owns |
-| `/characters/new` | Character creation |
+| `/characters` | The public character directory |
+| `/characters/new` | Create a new character |
+| `/characters/claim` | Link an eligible existing character; see the guidance above. |
 | `/character/{name}` | A public character profile |
 | `/account`, `/settings` | Account details, passkeys and linked sign-in services, characters, theme (`/settings/theme`), notifications |
 
@@ -120,6 +141,10 @@ still produces terminal art and accessible reading order. See
 [Visual Layouts and Images](/guides/visual-layouts).
 
 ## The admin panel
+
+For running the game, use the [Operator Handbook](/guides/operator-handbook/) alongside this panel
+reference. The first-player readiness checklist is at `/admin/onboarding`; it is separate from the
+player's interface guide. Keep the game's own welcome and rules under staff control.
 
 `/admin` is the staff dashboard. What a given staffer sees is governed by roles, not by a single
 wizard bit. The pages are grouped as the portal's sidebar groups them.
