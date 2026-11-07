@@ -56,14 +56,15 @@ with no account keeps its own.
 
 ## Joining a scene
 
-When you join a scene whose content warnings touch your lines or veils, you are told, and nobody
+A scene's owner gives it content warnings with `+scene/set warning=<warning>|<warning>`. Whoever
+joins the scene is told them. When they touch your lines or veils, you are told that too, and nobody
 else is:
 
 ```
 > +scene/join 1
 [SCENE] Done: Joined and focused on scene 1.
-[SAFETY] Warning: This scene's content warnings touch your lines: Spiders and snakes · Gore. +safety/pause or +safety/skip tells its owner without your name.
 [SCENE] Content warning: Spiders and snakes · Gore · Fire
+[SAFETY] Warning: This scene's content warnings touch your lines: Spiders and snakes · Gore. +safety/pause or +safety/skip tells its owner without your name.
 ```
 
 A line or veil touches a warning when either contains the other as whole words. A line of
@@ -71,7 +72,7 @@ A line or veil touches a warning when either contains the other as whole words. 
 
 ![Two players join a scene whose warnings touch their lines and veils](../../../assets/guide/scene-safety-join.webp)
 
-By default the warnings are the scene's `warning` detail, which the `scene-verse` package adds;
+By default the warnings are the scene's `warning` detail, which this package adds;
 the `warning-detail` [setting](#settings) names another. See [Scene Details](/guides/scene-details).
 
 ## Pause and skip
@@ -160,8 +161,7 @@ Scene Safety ships with the server but is not installed on a new game. An admini
 it from the portal:
 
 1. Open **Packages** in the admin area and choose **Browse**.
-2. Install `scene-verse`, which gives scenes their content warnings.
-3. Install `scene-safety`. It needs `scene`, which a new game already has. Its `+help` topics and `+config` settings come with it, through the `scene-safety-help` and `scene-safety-config` bridges, wherever `+help` and `+config` are installed.
+2. Install `scene-safety`. It needs `scene`, which a new game already has. Its `+help` topics and `+config` settings come with it, through the `scene-safety-help` and `scene-safety-config` bridges, wherever `+help` and `+config` are installed.
 
 It needs the Scene plugin, and is not offered while the plugin is not running. It adds the
 command `+safety` for everyone, so a `+safety` your game already has in softcode stops running once
