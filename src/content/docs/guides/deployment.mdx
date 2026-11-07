@@ -254,12 +254,15 @@ to the web side, and telnet gets a plain DNS record pointing at the machine.
 4. **Add the terminal route.** The browser terminal's `/ws` is served by the connection server, so it
    needs its own route, placed **above** the one from step 3 (Cloudflare checks them top to bottom):
    - **Subdomain/domain:** `mush.example.com`
-   - **Path:** `ws`
+   - **Path:** `^/ws(/|$)`
    - **Service type:** `HTTP`
    - **URL:** `socketserver:4202`
 
    The portal's terminal connects to `wss://mush.example.com/ws`, the `/ws` path on the portal's own
    address, so this route must be a path on the portal's hostname, not a hostname of its own.
+   Cloudflare reads the path as a regular expression that can match anywhere in the path, so a bare
+   `ws` would also send pages such as `/wiki/News` to the connection server. Keep the `^` and the
+   `(/|$)`.
 
 </Steps>
 
