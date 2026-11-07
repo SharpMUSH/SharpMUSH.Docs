@@ -3,7 +3,7 @@ title: Softcode in Your Editor
 description: Use the SharpMUSH Language Server for error checking, completion and highlighting of softcode in VS Code, Neovim or Emacs.
 ---
 
-import { Aside, Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
 
 If you write softcode in files rather than straight into the game, the **SharpMUSH Language Server**
 gives your editor the same understanding of softcode the game has. It works with any editor that
@@ -57,73 +57,16 @@ Windows. Look there first if your editor shows no errors or completions.
 
 ## VS Code
 
-VS Code needs a small extension that starts the server. The SharpMUSH source includes a working
-example in `SharpMUSH.LanguageServer/vscode-extension-example`. The parts that matter:
+Use the maintained desktop example in `SharpMUSH.LanguageServer/vscode-extension-example`. With Node 22 or newer, run `npm ci`, `npm test` and `npm run package` in that directory, then choose **Install from VSIX…** in VS Code's Extensions menu and select the generated file. Build `SharpMUSH.LanguageServer` with the repository-pinned SDK and configure user settings:
 
-<Steps>
+```json
+{
+  "sharpmush.languageServer.mode": "offline",
+  "sharpmush.languageServer.path": "/absolute/path/SharpMUSH.LanguageServer.dll"
+}
+```
 
-1. **Declare the language** in the extension's `package.json`, so `.mush` and `.mu` files are
-   recognised:
-
-   ```json
-   {
-     "name": "sharpmush",
-     "displayName": "SharpMUSH Language Support",
-     "engines": { "vscode": "^1.75.0" },
-     "activationEvents": ["onLanguage:mush"],
-     "main": "./out/extension.js",
-     "contributes": {
-       "languages": [{
-         "id": "mush",
-         "extensions": [".mush", ".mu", ".mushfn", ".fun", ".mushcmd"],
-         "aliases": ["MUSH", "mush"]
-       }]
-     },
-     "dependencies": { "vscode-languageclient": "^8.1.0" }
-   }
-   ```
-
-2. **Start the server** from the extension, pointing at the built
-   `SharpMUSH.LanguageServer.dll` (here copied or linked into a `server` folder in the extension):
-
-   ```typescript
-   import * as path from 'path';
-   import { workspace, ExtensionContext } from 'vscode';
-   import { LanguageClient, LanguageClientOptions, ServerOptions } from 'vscode-languageclient/node';
-
-   let client: LanguageClient;
-
-   export function activate(context: ExtensionContext) {
-     const serverPath = context.asAbsolutePath(path.join('server', 'SharpMUSH.LanguageServer.dll'));
-     const serverOptions: ServerOptions = {
-       run: { command: 'dotnet', args: [serverPath] },
-       debug: { command: 'dotnet', args: [serverPath] }
-     };
-     const clientOptions: LanguageClientOptions = {
-       documentSelector: [{ scheme: 'file', language: 'mush' }],
-       synchronize: { fileEvents: workspace.createFileSystemWatcher('**/*.{mush,mu,mushfn,fun,mushcmd}') }
-     };
-     client = new LanguageClient('sharpmush', 'SharpMUSH Language Server', serverOptions, clientOptions);
-     client.start();
-   }
-
-   export function deactivate() {
-     return client?.stop();
-   }
-   ```
-
-3. **Build and install it.** In the extension's folder, with Node.js installed:
-
-   ```bash
-   npm install
-   npm run compile
-   npm run package
-   ```
-
-   This makes a `.vsix` file. In VS Code, open the Extensions view, choose **Install from VSIX…** from
-   its `…` menu, and pick the file.
-
-</Steps>
+Keep the DLL's complete output directory and have `dotnet` on the editor's PATH. Open a trusted workspace and a softcode file. For the server-aware remote mode, follow the [Administrator walkthrough](/guides/mcp#administrator-walkthrough), which keeps the build, remote settings, secure credential command and diagnostics check together.
 
 ## Neovim
 
@@ -194,9 +137,11 @@ symbols; rename; formatting; workspace symbols; and inlay hints.
 
 The optional remote LSP plugin offers diagnostics, completion, hover and signature help using metadata filtered for your authenticated character. An ordinary editor launches `SharpMUSH.LspBridge` over stdio; the bridge connects to the game's authenticated WebSocket endpoint. Remote analysis supports `.mush` and `.mu` (commands per line), `.mushfn` and `.fun` (function), and `.mushcmd` (command list). Positions use UTF-16.
 
-Remote LSP does not offer the broader offline feature list below: formatting, rename, definitions and references are outside its initial scope. It does not synchronize attributes, execute code or read the server filesystem. Connections do not resume documents automatically. Overload can explicitly close a connection when synchronization diagnostics cannot be admitted. After a restart or explicit close, reconnect, initialize a fresh session and reopen documents. An analysis deadline instead produces an `analysis-timeout` warning, preserves the session/document and retries on the next edit.
+Remote LSP does not offer the broader offline feature list below: formatting, rename, definitions and references are outside its initial scope. It does not synchronize attributes, execute code or read the server filesystem. Connections do not resume documents automatically. Overload within an established session can explicitly close its connection when synchronization diagnostics cannot be admitted. Initial session admission instead returns HTTP 429 before upgrade; retry the connection when capacity becomes available. After a restart or explicit close, reconnect, initialize a fresh session and reopen documents. An analysis deadline instead produces an `analysis-timeout` warning, preserves the session/document and retries on the next edit.
 
 See [Remote MCP and LSP Analysis](/guides/mcp) for turning the remote LSP on, its endpoint and protocol, and its limits. MCP serves AI analysis clients; LSP serves editors.
+
+For the VS Code settings, the credential command and a diagnostics check, follow the [Administrator walkthrough](/guides/mcp#administrator-walkthrough).
 
 Build the bridge with the same .NET 11 SDK as the server:
 
