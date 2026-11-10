@@ -33,20 +33,20 @@ The [Architecture](/technical/architecture) page explains why the parts are spli
 
 ## What you need
 
-- **The .NET SDK the repository pins**, currently **11.0.100-rc.2**. The `global.json` file at the
+- **The .NET SDK the repository pins**, currently **11.0.100**. The `global.json` file at the
   root of the repository names the version; an older SDK stops with "A compatible .NET SDK was not
   found" before it builds anything. Microsoft's install script fetches that exact version:
 
   <Tabs syncKey="os">
   <TabItem label="Linux and macOS">
   ```bash
-  curl -sSL https://dot.net/v1/dotnet-install.sh | bash -s -- --version 11.0.100-rc.2.26504.105
+  curl -sSL https://dot.net/v1/dotnet-install.sh | bash -s -- --version 11.0.100
   ```
   </TabItem>
   <TabItem label="Windows">
   ```powershell
   Invoke-WebRequest https://dot.net/v1/dotnet-install.ps1 -OutFile dotnet-install.ps1
-  ./dotnet-install.ps1 -Version 11.0.100-rc.2.26504.105
+  ./dotnet-install.ps1 -Version 11.0.100
   ```
   </TabItem>
   </Tabs>
