@@ -9,7 +9,7 @@ The examples show a character named Alice. Lines starting with `>` are what you 
 
 ## Start with a safe place to work
 
-Use your own development game or an approved staff sandbox. You need a character allowed to create a thing and edit its attributes, with enough building quota and currency for your game's configuration. If creation is refused, have an administrator check your effective roles and command restrictions before continuing. Do not change permissions on a public demonstration game to follow this guide. See [roles](/reference/sharpmush-help/roles/) and [command restrictions](/reference/sharpmush-help/command/).
+Use your own development game or an approved staff sandbox. You need a character allowed to create a thing and edit its attributes, with enough building quota and currency for your game's configuration. If creation is refused, have an administrator check your effective roles and command restrictions before continuing. Do not change permissions on a public demonstration game to follow this guide. See [roles](/reference/sharpmush-help/roles/) and [command restrictions](/reference/sharpmush-help/restrict/).
 
 You do not need to build a room. The first command will live on a thing you carry. A carried object's commands are available to its carrier; placing it in a room makes them available to people in that room. Keep this experiment out of the Master Room, where commands become game-wide. See [$-commands](/reference/sharpmush-help/commands/).
 
@@ -36,7 +36,7 @@ Home: Room Zero(#0R)
 Location: Alice(#21PenAc)
 ```
 
-Output: the name, owner, and location describe the thing you just created. The `n` after `T` is the `NO_COMMAND` flag, which `@create` sets on every new thing. While it is set, the game never checks the object for commands, so clear it:
+Output: the name, owner, and location describe the thing you just created. The `n` after `T` is the `NO_COMMAND` flag, which `@create` sets on a new thing by default (the `thing_flags` option). While it is set, the game never checks the object for commands, so clear it:
 
 ```
 > @set <hello>=!no_command
@@ -62,9 +62,9 @@ Here is what you wrote:
 
 - ``&CMD`HELLO`` stores an attribute named ``CMD`HELLO``. The backtick groups related attribute names into a tree.
 - `$+hello:` matches the command `+hello`. The part after the colon is its action list.
-- `@pemit/silent` sends a private message without a confirmation to the sender.
+- `@pemit/silent` sends a private message to `%#` without telling the object that sent it.
 - `%#` is the enactor, the character who used the command. `%n` is that character's name.
-- `cmdsyntax` tells `examine` and the editor to lay the value out as a command list. It does not enable the command or grant any permission.
+- `cmdsyntax` tells `examine` and `@grep/print` to lay the value out as a command list. It does not enable the command or grant any permission.
 
 See [substitutions](/reference/sharpmush-help/substitutions/), [@pemit](/reference/sharpmush-help/pemit-command/) and [attribute flags](/reference/sharpmush-help/attribute-flags/#display-formatting).
 
@@ -171,7 +171,7 @@ Check these in order before changing privileges:
 
 1. Did ``examine <hello>/CMD`HELLO`` show the attribute you intended to save?
 2. Is the thing still in your inventory or in the same room?
-3. Does it have `HALT` or `NO_COMMAND` set? A new thing has `NO_COMMAND`.
+3. Does it have `HALT` or `NO_COMMAND` set? A new thing has `NO_COMMAND` by default.
 4. Can the enactor pass its use and command locks? A failed lock answers `Huh?  (Type "help" for help.)`, as if no command matched.
 5. Is another command matching the same input?
 6. Is the recipient `HAVEN`, or does their page lock refuse the object? Then the command runs but the private message is dropped, and the player sees nothing.
@@ -192,7 +192,7 @@ Export a readable copy before cleanup:
 @set Hello Tutorial/CMD`HELLOSTYLE=cmdsyntax
 ```
 
-Output: commands that rebuild the object. `&CMD` creates the empty branch that holds the two command attributes. Save the output with your version and test notes. Review its references before replaying it elsewhere; a decompile is a script that rebuilds the object, not an identity that carries between games. See [@decompile](/reference/sharpmush-help/decompile-command/).
+Output: commands that rebuild the object. `&CMD` creates the empty branch that holds the two command attributes. Save the output with your version and test notes. Review its references before replaying it elsewhere; a decompile is a script that rebuilds the object, not an identity that carries between games. It lists only flags that are set, so it has no `@set` for `NO_COMMAND`: after replaying it, clear the flag on the new object with `@set <hello>=!no_command` as above. See [@decompile](/reference/sharpmush-help/decompile-command/).
 
 When you later want to share the feature as a package, start with the read-only scan. It needs the `packages.admin` permission:
 

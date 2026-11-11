@@ -7,7 +7,7 @@ Use a coding assistant beside your source and development game. Give it the Shar
 
 ## Give the assistant the right references
 
-Start with the SharpMUSH.Guide repository. Its `writing-sharpmush-softcode` skill explains SharpMUSH idioms and the common evaluation, reachability, identity, and permission mistakes. Its command, function, and configuration folders are generated from the server helpfiles, the same text as the [help reference](/reference/sharpmush-help/sharptop/) on this site. The same reference is on Context7 as the `SharpMUSH` library, so an assistant that reads Context7 can query it directly.
+Start with the SharpMUSH.Guide repository (`SharpMUSH/SharpMUSH.Guide` on GitHub). Its `writing-sharpmush-softcode` skill explains SharpMUSH idioms and the common evaluation, reachability, identity, and permission mistakes. Its command, function, and configuration folders are generated from the server helpfiles, the same text as the [help reference](/reference/sharpmush-help/sharptop/) on this site. The same reference is on Context7 as the `SharpMUSH` library, so an assistant that reads Context7 can query it directly.
 
 To install the skill in Claude Code:
 
@@ -24,7 +24,7 @@ Prefer documentation matching your server version. The latest `main` branch can 
 
 ## Connect live code intelligence (optional)
 
-SharpMUSH also has two code-analysis surfaces. The in-game MCP endpoint uses Streamable HTTP and analyzes softcode with the running world's parser and registered commands and functions. The standalone `SharpMUSH.LanguageServer` is an offline editor process using stdio. See [Softcode in Your Editor](/guides/editor-support/) for the editor workflow.
+SharpMUSH also has two code-analysis surfaces. The in-game MCP endpoint uses Streamable HTTP and checks softcode with the running world's parser. The standalone `SharpMUSH.LanguageServer` is an offline editor process using stdio. See [Softcode in Your Editor](/guides/editor-support/) for the editor workflow.
 
 For an MCP-aware assistant, first check that an administrator has enabled the endpoint. It is off unless the server runs in the Development environment or sets `Mcp__Enabled=true`. The default path is `/mcp`, and each request uses a game character's HTTP Basic authentication. Use localhost or TLS and your client's private credential storage. Never put real credentials in examples, assistant prompts, committed configuration, shell history, or screenshots. [Remote MCP and LSP analysis](/guides/mcp/) covers enabling it and connecting a client.
 
@@ -34,13 +34,13 @@ Ask the assistant to call `validate` with the parse mode that fits the text: `co
 []
 ```
 
-A line with a misplaced bracket gives an error and its position. For `think [add(1,2]`:
+A line with a misplaced bracket gives an error and its position. For `think [add(1,2]` in `commandsperline` mode:
 
 ```json
 [{"severity":"Error","message":"Unexpected token ']' at this position","startLine":0,"startCharacter":14,"endLine":0,"endCharacter":15,"source":"SharpMUSH Parser"}]
 ```
 
-Output: the `]` at character 14, counting from 0, closes the bracket before `add(` is closed. MCP and LSP analysis check syntax only. They do not show gameplay behavior, reachability, or permission boundaries, and they miss a mistake that still parses, such as a missing `)` inside a function argument. Complete the development-game tests even when analysis reports no errors.
+Output: the `]` at character 14, counting from 0, closes the bracket before `add(` is closed. MCP and LSP analysis check syntax only. They do not show gameplay behavior, reachability, or permission boundaries, and they miss a mistake that still parses. `think [nosuchfn(1)]` validates with no diagnostics, but in the game it prints an error that starts `#-1 FUNCTION (NOSUCHFN) NOT FOUND`. Complete the development-game tests even when analysis reports no errors.
 
 ## Keep a small project folder
 
