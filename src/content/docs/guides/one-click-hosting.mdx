@@ -200,7 +200,7 @@ Once your SSH key logs you in, turn passwords off. First check that the key work
 your own computer:
 
 ```bash
-ssh -o PasswordAuthentication=no root@<your-server-ip> true && echo ok
+ssh -o PreferredAuthentications=publickey root@<your-server-ip> true && echo ok
 ```
 
 If that prints `ok`, run this to accept keys only and lock root's password:
@@ -209,7 +209,8 @@ If that prints `ok`, run this to accept keys only and lock root's password:
 ssh root@<your-server-ip> 'printf "PasswordAuthentication no\nKbdInteractiveAuthentication no\nPermitRootLogin prohibit-password\n" > /etc/ssh/sshd_config.d/00-keys-only.conf && sshd -t && systemctl reload ssh && usermod -p "*" root'
 ```
 
-The file's name starts with `00-` so it wins over the cloud image's own settings. Check it from your
+The file's name starts with `00-` so it wins over the cloud image's own settings. With root's password
+locked, the host's web console no longer lets you in either, so keep a copy of your key somewhere safe. Check it from your
 computer: this should be refused with `Permission denied (publickey)` and never ask for a password.
 
 ```bash
@@ -612,13 +613,15 @@ Prometheus then scrapes `127.0.0.1:19092` and `127.0.0.1:19091` on your machine.
 
 ## Move a game to a new server
 
-Take an `@backup` copy on the old server first, and copy it off. Then install on the new server as
-above with the same domain, and restore the copy there ([Backups](/guides/deployment#backups) covers
-restoring). Behind Cloudflare, the installer makes a tunnel
-of its own and moves the domain and `telnet.<your-domain>` to the new server; the old server's tunnel
-then gets no traffic. The installer names it in a note: stop the old server's stack, then delete that
-tunnel under **Zero Trust** → **Networks** → **Tunnels**. Cloudflare refuses to delete a tunnel while
-it is still connected.
+A game is more than its world: the wiki's uploads, installed plugins and the key ring that decrypts
+stored secrets move with it. [Turn on backups](#turn-on-backups) on the old server and run one, install
+on the new server as above with the same domain, then restore that snapshot there as in
+[Restoring for real](/guides/deployment#restoring-for-real).
+
+Behind Cloudflare, the installer makes a tunnel of the new server's own and moves the domain and
+`telnet.<your-domain>` to it, so the old server stops getting players. The installer names the old
+tunnel in a note: stop the old server's stack, then delete that tunnel under **Zero Trust** →
+**Networks** → **Tunnels**. Cloudflare refuses to delete a tunnel while it is still connected.
 
 ## When something goes wrong
 
