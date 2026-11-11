@@ -21,7 +21,7 @@ description: "SharpMUSH documentation for reglmatch()"
       "heading": "Regular expression examples",
       "lookup": "reglmatch regular expression examples"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-regular-expression-examples-heading-regular-expression-examples-lookup-reglmatch-regular-expression-examples),
+  ],
   "redirects": {
     "REGLMATCH2": "reglmatch regular expression examples"
   }
@@ -46,7 +46,7 @@ SharpMUSH also registers regmatchalli() for reglmatchalli(). Despite the name it
 - [regmatch()](/reference/sharpmush-help/regmatch-function/#regmatch)
 - [GRAB()](/reference/sharpmush-help/sharpfunc/#grab)
 - [element()](/reference/sharpmush-help/element-function/#element)
-- [regexp syntax](/reference/sharpmush-help/sharpconf/#regexp-syntax)
+- [regexp syntax](/reference/sharpmush-help/regexp-syntax/#regular-expression-syntax)
 :::
 
 ### Regular expression examples

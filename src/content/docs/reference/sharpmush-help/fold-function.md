@@ -10,14 +10,14 @@ description: "SharpMUSH documentation for fold()"
   "lookup": "fold()",
   "aliases": [
     "fold"
-  ](/reference/sharpmush-help/sharpconf/#fold),
+  ],
   "sections": [
     {
       "id": "fold-examples",
       "heading": "Fold examples",
       "lookup": "fold examples"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-fold-examples-heading-fold-examples-lookup-fold-examples),
+  ],
   "redirects": {
     "FOLD2": "fold examples"
   }

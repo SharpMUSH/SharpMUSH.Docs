@@ -19,6 +19,11 @@ description: "SharpMUSH documentation for align()"
       "lookup": "align columns"
     },
     {
+      "id": "options",
+      "heading": "Column options",
+      "lookup": "align column options"
+    },
+    {
       "id": "examples",
       "heading": "Basic examples",
       "lookup": "align examples"
@@ -33,7 +38,7 @@ description: "SharpMUSH documentation for align()"
       "heading": "Column merging",
       "lookup": "align column merging"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-columns-heading-column-specifications-lookup-align-columns-id-examples-heading-basic-examples-lookup-align-examples-id-decorated-layouts-heading-decorated-layouts-lookup-align-decorated-layouts-id-merging-heading-column-merging-lookup-align-column-merging),
+  ],
   "redirects": {
     "ALIGN2": "align columns",
     "ALIGN3": "align examples",
@@ -50,9 +55,16 @@ description: "SharpMUSH documentation for align()"
 
 Creates columns of text, each column designated by `<col>` arguments. Each `<col>` is individually wrapped inside its own column, allowing for easy creation of book pages, newsletters, or the like. In lalign(), `<colList>` is a `<delim>`-separated list of the columns.
 
-`<widths>` is a space-separated list of column widths. '10 10 10' for the widths argument specifies that there are 3 columns, each 10 spaces wide. You can alter the behavior of a column in multiple ways. (See [align columns](/reference/sharpmush-help/sharpconf/#align-columns) for details.)
+`<widths>` is a space-separated list of column widths. '10 10 10' for the widths argument specifies that there are 3 columns, each 10 spaces wide. You can alter the behavior of a column in multiple ways. (See [align columns](/reference/sharpmush-help/align/#column-specifications) for details.)
 
 `<filler>` is a single character that, if given, is the character used to fill empty columns and remaining spaces. `<colsep>`, if given, is inserted between every column, on every row. `<rowsep>`, if given, is inserted between every line. By default, `<filler>` and `<colsep>` are a space, and `<rowsep>` is a newline.
+
+::: seealso
+- [CENTER()](/reference/sharpmush-help/center-function/#center)
+- [LJUST()](/reference/sharpmush-help/sharpfunc/#ljust)
+- [RJUST()](/reference/sharpmush-help/sharpfunc/#rjust)
+- [TABLE()](/reference/sharpmush-help/sharpfunc/#table)
+:::
 
 ### Column specifications
 
@@ -70,7 +82,9 @@ Placing one of these characters before the width alters the spacing for this col
 - `_`: full justify.
 - `=`: paragraph justify.
 
-### Options
+### Column options
+
+These options go after the width in a column specification (see [align columns](/reference/sharpmush-help/align/#column-specifications)):
 
 - `.`: repeat while another non-repeating column still has text.
 - `` ` ``: merge with the column to the left when this column runs out of text.
@@ -81,13 +95,6 @@ Placing one of these characters before the width alters the spacing for this col
 - `#`: omit the column separator after this column. Merge-left passes this option to the left column.
 
 Ansi: Place ansi characters (as defined in [ansi()](/reference/sharpmush-help/ansi-function/#ansi)) within ()s to define a column's ansi markup.
-
-::: seealso
-- [CENTER()](/reference/sharpmush-help/sharpfunc/#center)
-- [LJUST()](/reference/sharpmush-help/sharpfunc/#ljust)
-- [RJUST()](/reference/sharpmush-help/sharpfunc/#rjust)
-- [TABLE()](/reference/sharpmush-help/sharpfunc/#table)
-:::
 
 ### Basic examples
 
@@ -126,30 +133,30 @@ Examples:
 ### Decorated layouts
 
 ```sharp
-    > &haiku me = Alignment function,%rIt justifies your writing,%rBut the words still suck.%rLuke
+> &haiku me = Alignment function,%rIt justifies your writing,%rBut the words still suck.%rLuke
 
-    > th [align(5 -40 5,,[repeat(-,40)]%r[u(haiku)]%r[repeat(-,40)],,%b,+)]
+> th [align(5 -40 5,,[repeat(-,40)]%r[u(haiku)]%r[repeat(-,40)],,%b,+)]
 
-         +----------------------------------------+
-         +          Alignment function,           +
-         +       It justifies your writing,       +
-         +       But the words still suck.        +
-         +                  Luke                  +
-         +----------------------------------------+
+     +----------------------------------------+
+     +          Alignment function,           +
+     +       It justifies your writing,       +
+     +       But the words still suck.        +
+     +                  Luke                  +
+     +----------------------------------------+
 ```
 
 ### Column merging
 
 ```sharp
-  > &dropcap me=%b_______%r|__%b%b%b__|%r%b%b%b|%b|%r%b%b%b|_|
-  > &story me=%r'was the night before Christmas, when all through the house%rNot a creature was stirring, not even a mouse.%rThe stockings were hung by the chimney with care,%rIn hopes that St Nicholas soon would be there.
-  > th align(9'(ch) 68, u(dropcap), u(story))
+> &dropcap me=%b_______%r|__%b%b%b__|%r%b%b%b|%b|%r%b%b%b|_|
+> &story me=%r'was the night before Christmas, when all through the house%rNot a creature was stirring, not even a mouse.%rThe stockings were hung by the chimney with care,%rIn hopes that St Nicholas soon would be there.
+> th align(9'(ch) 68, u(dropcap), u(story))
 
-   _______
-  |__   __| 'was the night before Christmas, when all through the house
-     | |    Not a creature was stirring, not even a mouse.
-     |_|    The stockings were hung by the chimney with care,
-  In hopes that St Nicholas soon would be there.
+ _______
+|__   __| 'was the night before Christmas, when all through the house
+   | |    Not a creature was stirring, not even a mouse.
+   |_|    The stockings were hung by the chimney with care,
+In hopes that St Nicholas soon would be there.
 
 ```
 

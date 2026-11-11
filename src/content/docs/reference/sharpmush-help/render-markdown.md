@@ -10,17 +10,32 @@ description: "SharpMUSH documentation for rendermarkdown()"
   "lookup": "rendermarkdown()",
   "aliases": [
     "rendermarkdown"
-  ](/reference/sharpmush-help/sharpconf/#rendermarkdown),
+  ],
   "sections": [
+    {
+      "id": "arguments",
+      "heading": "Arguments and errors",
+      "lookup": "rendermarkdown arguments"
+    },
     {
       "id": "supported-markdown-features",
       "heading": "Supported Markdown Features",
       "lookup": "rendermarkdown supported markdown features"
     },
     {
+      "id": "containers",
+      "heading": "Containers and layout",
+      "lookup": "rendermarkdown containers"
+    },
+    {
       "id": "syntax-highlighting-in-code-blocks",
       "heading": "Syntax Highlighting in Code Blocks",
       "lookup": "rendermarkdown syntax highlighting in code blocks"
+    },
+    {
+      "id": "other-languages",
+      "heading": "Other languages",
+      "lookup": "rendermarkdown other languages"
     },
     {
       "id": "mush-special-character-escaping",
@@ -31,8 +46,38 @@ description: "SharpMUSH documentation for rendermarkdown()"
       "id": "examples",
       "heading": "Examples",
       "lookup": "rendermarkdown examples"
+    },
+    {
+      "id": "link-examples",
+      "heading": "Link examples",
+      "lookup": "rendermarkdown link examples"
+    },
+    {
+      "id": "table-examples",
+      "heading": "Table examples",
+      "lookup": "rendermarkdown table examples"
+    },
+    {
+      "id": "wide-table-examples",
+      "heading": "Wide table examples",
+      "lookup": "rendermarkdown wide table examples"
+    },
+    {
+      "id": "code-examples",
+      "heading": "Code block examples",
+      "lookup": "rendermarkdown code examples"
+    },
+    {
+      "id": "list-examples",
+      "heading": "List examples",
+      "lookup": "rendermarkdown list examples"
+    },
+    {
+      "id": "quote-examples",
+      "heading": "Quote examples",
+      "lookup": "rendermarkdown quote examples"
     }
-  ](/reference/sharpmush-help/sharplock/#id-supported-markdown-features-heading-supported-markdown-features-lookup-rendermarkdown-supported-markdown-features-id-syntax-highlighting-in-code-blocks-heading-syntax-highlighting-in-code-blocks-lookup-rendermarkdown-syntax-highlighting-in-code-blocks-id-mush-special-character-escaping-heading-mush-special-character-escaping-lookup-rendermarkdown-mush-special-character-escaping-id-examples-heading-examples-lookup-rendermarkdown-examples)
+  ]
 }
 -->
 ## rendermarkdown()
@@ -40,6 +85,22 @@ description: "SharpMUSH documentation for rendermarkdown()"
 `rendermarkdown([<markdown>[, <width>]])`
 
 Renders CommonMark/Markdown text into SharpMUSH MarkupString with ANSI formatting. This function converts markdown syntax into formatted text with ANSI color codes and styles for display in MUSH clients. The output is a MarkupString with the ANSI styling embedded, so it can be passed on to other functions.
+
+- [rendermarkdown arguments](/reference/sharpmush-help/render-markdown/#arguments-and-errors): the markdown and width arguments, and errors
+- [rendermarkdown supported markdown features](/reference/sharpmush-help/render-markdown/#supported-markdown-features): what each Markdown element renders as
+- [rendermarkdown containers](/reference/sharpmush-help/render-markdown/#containers-and-layout): see-also footers, centred blocks and flex layouts
+- [rendermarkdown syntax highlighting in code blocks](/reference/sharpmush-help/render-markdown/#syntax-highlighting-in-code-blocks): language tags on fenced code
+- [rendermarkdown other languages](/reference/sharpmush-help/render-markdown/#other-languages): other language tags, and code with no tag
+- [rendermarkdown mush special character escaping](/reference/sharpmush-help/render-markdown/#mush-special-character-escaping): writing `[ ]` and `( )` inside the argument
+- [rendermarkdown examples](/reference/sharpmush-help/render-markdown/#examples): text formatting and headings
+- [rendermarkdown link examples](/reference/sharpmush-help/render-markdown/#link-examples): a link, with its escaping
+- [rendermarkdown table examples](/reference/sharpmush-help/render-markdown/#table-examples): a table
+- [rendermarkdown wide table examples](/reference/sharpmush-help/render-markdown/#wide-table-examples): a table wider than the width
+- [rendermarkdown code examples](/reference/sharpmush-help/render-markdown/#code-block-examples): highlighted and plain code blocks
+- [rendermarkdown list examples](/reference/sharpmush-help/render-markdown/#list-examples): ordered and unordered lists
+- [rendermarkdown quote examples](/reference/sharpmush-help/render-markdown/#quote-examples): a block quote
+
+### Arguments and errors
 
 ### Parameters
 
@@ -51,20 +112,13 @@ Renders CommonMark/Markdown text into SharpMUSH MarkupString with ANSI formattin
 - `#-1 INVALID WIDTH (MUST BE 10-1000)` if `<width>` is not a number in that range.
 - `#-1 ERROR RENDERING MARKDOWN: <error>` if rendering the markdown fails.
 
-### Sections
-
-- [rendermarkdown supported markdown features](/reference/sharpmush-help/sharpconf/#rendermarkdown-supported-markdown-features): what each Markdown element renders as.
-- [rendermarkdown syntax highlighting in code blocks](/reference/sharpmush-help/sharplock/#rendermarkdown-syntax-highlighting-in-code-blocks): language tags on fenced code.
-- [rendermarkdown mush special character escaping](/reference/sharpmush-help/sharpconf/#rendermarkdown-mush-special-character-escaping): writing `[ ]` and `( )` inside the argument.
-- [rendermarkdown examples](/reference/sharpmush-help/sharpconf/#rendermarkdown-examples): one example per element.
-
 ### Supported Markdown Features
 
 ### Inline formatting
 
 - **Text Formatting**: `**bold**`, `*italic*`, `` `code` ``
 - **Links**: `[text](url)` or `<url>` (rendered as ANSI OSC 8 hyperlinks, clickable in compatible terminals such as iTerm2 and Windows Terminal)
-- **Images**: `![alt](url)` reads `[image: alt]` (or `[image]`). When the caller may use [image()](/reference/sharpmush-help/sharppueb/#image), a client that draws pictures (the web terminal, MXP, Pueblo) is shown the picture instead, held to `image_hosts` the same way. An image alone in its paragraph is laid out as a [figure()](/reference/sharpmush-help/layout-functions/#figure); one inside a sentence stays in the line. A pixel size in `{width=200 height=100}` after the image is kept; a percentage is not.
+- **Images**: `![alt](url)` reads `[image: alt]` (or `[image]`). When the caller may use [image()](/reference/sharpmush-help/sharppueb/#image), a client that draws pictures (the web terminal, MXP, Pueblo) is shown the picture instead, held to `image_hosts` the same way. An image alone in its paragraph is laid out as a [figure()](/reference/sharpmush-help/figure-function/#figure); one inside a sentence stays in the line. A pixel size in `{width=200 height=100}` after the image is kept; a percentage is not.
 - **HTML Entities**: `&amp;`, `&lt;`, etc.
 
 ### Blocks
@@ -73,13 +127,14 @@ Renders CommonMark/Markdown text into SharpMUSH MarkupString with ANSI formattin
 - **Lists**: Ordered (`1. Item`) and unordered (`- Item`); a long item wraps under its own text, not under its marker. Bullets are ANSI faint.
 - **Tables**: Pipe-delimited tables with column alignment (`:---` left, `:---:` center, `---:` right). Each column is as wide as its widest cell; on a narrow client the widest columns wrap first, then the rightmost columns are left out. The separators are ANSI faint. The web portal shows a real table.
 - **Rules**: `---` on a line of its own draws an ANSI faint line across the width.
-- **Code Blocks**: Triple-backtick fenced code blocks with optional language tag for syntax highlighting (see [rendermarkdown syntax highlighting in code blocks](/reference/sharpmush-help/sharplock/#rendermarkdown-syntax-highlighting-in-code-blocks)).
+- **Code Blocks**: Triple-backtick fenced code blocks with optional language tag for syntax highlighting (see [rendermarkdown syntax highlighting in code blocks](/reference/sharpmush-help/render-markdown/#syntax-highlighting-in-code-blocks)).
 - **Block Quotes**: `> Quote` rendered with 2-space indentation.
 
 ### Containers and layout
 
 - **See Also footers**: a `::: seealso` block holding a list of `[topic]` or `` `code` `` names prints as one line, `See Also: @lock, @unlock`, wrapped under the first topic. If any item says more than its name, the list prints as a list under the label.
 - **Centred blocks**: everything between `::: center` and a closing `:::` is wrapped to `<width>` and each line centred in it. The wiki and the web portal centre the same block on the page.
+- **Wiki listings**: `::: category <name>`, `::: pagelist <namespace>`, `::: recent <count>` and `::: facts <conditions>` list the wiki pages they find, as `wikicategory()`, `wikilist()`, `wikirecent()` and `wikiquery()` would return them to you: published pages you may read, titled in your locale, each a link to the page where your client can click. Up to 8 blocks are listed, with up to 20 pages each.
 - **Layout**: a `:::: flex` block holding `::: item` blocks prints its items side by side as columns, each rendered at its own width.
   - Settings go in `{...}` after the name: `grow`, `basis`, `min`, `gap`, `align`, `justify`, `direction`, `wrap`. The wiki's Markdown Guide lists every setting.
   - A block holding others needs more colons than they have.
@@ -127,7 +182,7 @@ When using markdown features with square brackets `[ ]` or parentheses `(` `)`, 
 - `%(` for `(`
 - `%)` for `)`
 
-See [rendermarkdown examples](/reference/sharpmush-help/sharpconf/#rendermarkdown-examples) for a link written this way.
+See [rendermarkdown link examples](/reference/sharpmush-help/render-markdown/#link-examples) for a link written this way.
 
 ### Examples
 
@@ -162,7 +217,7 @@ This is a paragraph
 
 (heading is underlined and bold with ANSI codes)
 
-### Links
+### Link examples
 
 Note the escaping:
 
@@ -178,7 +233,7 @@ Click here
 
 (with ANSI OSC 8 hyperlink - clickable in compatible terminals)
 
-### Tables
+### Table examples
 
 ```sharp
 think rendermarkdown(| Name | Age |%r|------|-----|%r| Alice | 30 |%r| Bob | 25 |)
@@ -195,7 +250,7 @@ Bob   | 25
 
 (the separators and the line under the headings are ANSI faint)
 
-### Tables wider than the width
+### Wide table examples
 
 ```sharp
 think rendermarkdown(| Topic | Summary |%r|---|---|%r| @lock | Sets a lock on an object, which decides who may pass it. |, 40)
@@ -211,6 +266,8 @@ Topic | Summary
 ```
 
 (the widest column wraps to fit 40 characters)
+
+### Code block examples
 
 ### Highlighted code blocks
 
@@ -246,6 +303,8 @@ Output:
 
 (2-space indentation, no colour)
 
+### List examples
+
 ### Ordered lists
 
 ```sharp
@@ -276,7 +335,7 @@ Output:
 
 (bullets styled with ANSI faint)
 
-### Block quotes
+### Quote examples
 
 ```sharp
 think rendermarkdown(> This is a quote%r> spanning multiple lines)

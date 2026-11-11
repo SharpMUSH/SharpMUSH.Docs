@@ -10,7 +10,7 @@ description: "SharpMUSH documentation for munge()"
   "lookup": "munge()",
   "aliases": [
     "munge"
-  ](/reference/sharpmush-help/sharpconf/#munge),
+  ],
   "sections": [
     {
       "id": "reordering-related-lists",
@@ -22,7 +22,7 @@ description: "SharpMUSH documentation for munge()"
       "heading": "Connection order example",
       "lookup": "munge connection order example"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-reordering-related-lists-heading-reordering-related-lists-lookup-munge-reordering-related-lists-id-connection-order-example-heading-connection-order-example-lookup-munge-connection-order-example),
+  ],
   "redirects": {
     "MUNGE2": "munge reordering related lists",
     "MUNGE3": "munge connection order example"

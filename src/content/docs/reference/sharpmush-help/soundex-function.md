@@ -10,14 +10,14 @@ description: "SharpMUSH documentation for soundex()"
   "lookup": "soundex()",
   "aliases": [
     "soundex"
-  ](/reference/sharpmush-help/sharpconf/#soundex),
+  ],
   "sections": [
     {
       "id": "soundex-algorithm",
       "heading": "Soundex algorithm",
       "lookup": "soundex algorithm"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-soundex-algorithm-heading-soundex-algorithm-lookup-soundex-algorithm),
+  ],
   "redirects": {
     "SOUNDEX2": "soundex algorithm"
   }
@@ -34,7 +34,7 @@ The soundex function returns the soundex pattern for a word. A soundex pattern r
 F160
 ```
 
-For details of how the algorithm works, see [soundex algorithm](/reference/sharpmush-help/sharpconf/#soundex-algorithm).
+For details of how the algorithm works, see [soundex algorithm](/reference/sharpmush-help/soundex-function/#soundex-algorithm).
 
 
 ::: seealso

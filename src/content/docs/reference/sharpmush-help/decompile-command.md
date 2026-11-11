@@ -20,7 +20,7 @@ description: "SharpMUSH documentation for @decompile"
       "heading": "TinyFugue editing",
       "lookup": "@decompile tinyfugue editing"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-output-switches-heading-output-switches-lookup-decompile-output-switches-id-tinyfugue-editing-heading-tinyfugue-editing-lookup-decompile-tinyfugue-editing),
+  ],
   "redirects": {
     "@decompile2": "@decompile output switches",
     "@decompile3": "@decompile tinyfugue editing"
@@ -34,9 +34,9 @@ description: "SharpMUSH documentation for @decompile"
 
 @decompile outputs a list of the commands that you would have to enter in order to recreate `<object>`. Useful for either copying objects from one MUSH to another, or for making logs of important objects to protect against an accidental @nuke or a crash.
 
-Output: the dbref of the object decompiled.
+`@decompile` outputs the dbref of the object decompiled.
 
-All output lines are prefixed with `<prefix>`, if one is given. This is useful for creating client-side scripts for editing code.
+All output lines are prefixed with `<prefix>`, if one is given. This is useful for creating client-side scripts for editing code. The `/prefix` switch is accepted and changes nothing; the prefix is what follows the `=`.
 
 You can either @decompile an entire object, or just certain parts of it. To @decompile just a few attributes, for example, you could type:
 ```sharp
@@ -59,7 +59,7 @@ Only the code to set the object's attributes is printed. Same as `@decompile <ob
 `@decompile/skipdefaults`<br>
 Don't output commands to set attribute flags if those flags are the defaults for that attribute on that MUSH.<br>
 `@decompile/tf`<br>
-Explained in [@decompile tinyfugue editing](/reference/sharpmush-help/sharpcmd/#decompile-tinyfugue-editing).
+Explained in [@decompile tinyfugue editing](/reference/sharpmush-help/decompile-command/#tinyfugue-editing).
 
 ### TinyFugue editing
 
@@ -85,8 +85,8 @@ Set your Options -> Grab Password
 
 
 ::: seealso
-- [CLIENTS](/reference/sharpmush-help/sharptop/#clients)
+- [CLIENTS](/reference/sharpmush-help/clients/#clients)
 - [attributes](/reference/sharpmush-help/attributes/#attributes)
-- [WILDCARDS](/reference/sharpmush-help/sharptop/#wildcards)
+- [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)
 - [mushcode](/reference/sharpmush-help/mushcode/#mushcode)
 :::

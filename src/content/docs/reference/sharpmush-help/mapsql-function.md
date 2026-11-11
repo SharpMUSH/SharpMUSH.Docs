@@ -1,0 +1,51 @@
+---
+title: "mapsql()"
+description: "SharpMUSH documentation for mapsql()"
+---
+
+<!-- help-article
+{
+  "corpus": "help",
+  "id": "mapsql-function",
+  "lookup": "mapsql()",
+  "aliases": [],
+  "sections": [
+    {"id": "rows", "heading": "Rows and field names", "lookup": "mapsql rows"},
+    {"id": "prepared", "heading": "Prepared statements", "lookup": "mapsql prepared statements"}
+  ]
+}
+-->
+## mapsql()
+`mapsql([<object>/]<attribute>, <query>[, <osep>[, <dofieldnames>[, <param1>[, <param2>[, ...]]]]])`
+
+Performs an SQL query if the MUSH is configured to connect to an SQL database server. This function requires a WIZARD flag or the Sql_Ok power. A query can change the database it reaches, so the function is refused when side-effect functions are turned off.
+
+`<query>` is evaluated, so it's useful to either read it from another attribute with u() or use lit() to protect commas. If you will be interpolating user-provided values into the query, be careful to escape them with sqlescape().
+
+- [mapsql rows](/reference/sharpmush-help/mapsql-function/#rows-and-field-names): what the attribute receives for each row
+- [mapsql prepared statements](/reference/sharpmush-help/mapsql-function/#prepared-statements): parameterized queries and an example
+
+### Rows and field names
+
+Each row of the result is passed to `<attribute>`, with the first nine columns available as %1-%9, and twenty more available via v(10) - v(29). %0 is set to the row number, which will start with 1. The fields will also be available as named arguments, with r(`<field name>`, args) returning the appropriate value.
+
+If `<dofieldnames>` evaluates to a true boolean, then the first call will be with row number (%0) set to 0, and %1-%9 and v(10) - v(29) will be set to the field names.
+
+### Prepared statements
+
+With more than 4 arguments, mapsql() uses a prepared statement: the 5th argument onwards are parameters that replace `?` placeholders in the query. This is the recommended way to prevent SQL injection attacks, as parameters are properly escaped and type-safe.
+
+```sharp
+> &DisplayRow me=User %1 has email %2
+> think mapsql(me/DisplayRow,lit(SELECT name\, email FROM users WHERE status = ?),%r,0,active)
+```
+
+See [SQL Examples](/reference/sharpmush-help/sharpfunc/#sql-examples) for examples.
+
+::: seealso
+- [anonymous attributes](/reference/sharpmush-help/anonymous-attributes/#anonymous-attributes)
+- [SQLESCAPE()](/reference/sharpmush-help/sharpfunc/#sqlescape)
+- [SQL()](/reference/sharpmush-help/sql-function/#sql)
+- [@sql](/reference/sharpmush-help/sql-command/#sql)
+- [@mapsql](/reference/sharpmush-help/mapsql-command/#mapsql)
+:::

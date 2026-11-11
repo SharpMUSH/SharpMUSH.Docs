@@ -10,7 +10,7 @@ description: "SharpMUSH documentation for @reality"
   "lookup": "@reality",
   "aliases": [
     "Reality layers"
-  ](/reference/sharpmush-help/sharpconf/#reality-layers),
+  ],
   "sections": [
     {
       "id": "receiving-and-transmitting-layers",
@@ -47,38 +47,39 @@ description: "SharpMUSH documentation for @reality"
       "heading": "Persistence",
       "lookup": "@reality persistence"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-receiving-and-transmitting-layers-heading-receiving-and-transmitting-layers-lookup-reality-receiving-and-transmitting-layers-id-administration-heading-administration-lookup-reality-administration-id-layer-descriptions-heading-layer-descriptions-lookup-reality-layer-descriptions-id-ghost-example-heading-ghost-example-lookup-reality-ghost-example-id-perception-rules-heading-perception-rules-lookup-reality-perception-rules-id-portal-visibility-heading-portal-visibility-lookup-reality-portal-visibility-id-persistence-heading-persistence-lookup-reality-persistence)
+  ]
 }
 -->
 ## @reality
 
 Reality layers let objects share a room while being present to some viewers and not to others: a ghost can walk among the living unseen. The feature starts disabled. When it is on, locks, DARK and permissions still apply as usual.
 
-- [@reality receiving and transmitting layers](/reference/sharpmush-help/sharpcmd/#reality-receiving-and-transmitting-layers) - how one object perceives another
-- [@reality administration](/reference/sharpmush-help/sharpcmd/#reality-administration) - the `@reality` command
-- [@reality layer descriptions](/reference/sharpmush-help/sharpcmd/#reality-layer-descriptions) - a different description per layer
-- [@reality ghost example](/reference/sharpmush-help/sharpcmd/#reality-ghost-example) - a worked setup
-- [@reality perception rules](/reference/sharpmush-help/sharpcmd/#reality-perception-rules) - what the layers filter
-- [@reality portal visibility](/reference/sharpmush-help/sharpcmd/#reality-portal-visibility) - the web portal
-- [@reality persistence](/reference/sharpmush-help/sharpcmd/#reality-persistence) - where the settings are kept
+- [@reality receiving and transmitting layers](/reference/sharpmush-help/reality/#receiving-and-transmitting-layers) - how one object perceives another
+- [@reality administration](/reference/sharpmush-help/reality/#administration) - the `@reality` command
+- [@reality layer descriptions](/reference/sharpmush-help/reality/#layer-descriptions) - a different description per layer
+- [@reality ghost example](/reference/sharpmush-help/reality/#ghost-example) - a worked setup
+- [@reality perception rules](/reference/sharpmush-help/reality/#perception-rules) - what the layers filter
+- [@reality portal visibility](/reference/sharpmush-help/reality/#portal-visibility) - the web portal
+- [@reality persistence](/reference/sharpmush-help/reality/#persistence) - where the settings are kept
 
 ### Receiving and transmitting layers
 
 Each object has a receiving set (RX) and a transmitting set (TX). A viewer or listener perceives another object when its RX and that object's TX share a layer. The two directions are independent: a ghost may hear a living player who cannot hear the ghost. An object always perceives itself, even with empty sets.
 
-The world starts with one layer, `normal`, and an object with no settings receives and transmits `normal`.
+The world starts with one layer, `normal`, and an object with no settings receives and transmits `normal`. A layer can also be named by an alias: importing a RhostMUSH or TinyMUX game records each reality level's own name, such as `Real` for `normal`.
 
 Settings belong to the object's full identity, including its creation time, so a recycled dbref does not inherit them. Removing a layer takes it out of every object's sets; nothing else takes its place.
 
 ### Administration
 
-- `@reality` or `@reality/list` - whether reality is on, and the configured layers
+- `@reality` or `@reality/list` - whether reality is on, the configured layers, and their aliases
 - `@reality/enable` and `@reality/disable` - turn the feature on or off; disabling keeps the configuration
 - `@reality/add <layer>` and `@reality/remove <layer>` - define or delete a layer
 - `@reality/rx <object>=<layers>` - set what the object receives
 - `@reality/tx <object>=<layers>` - set what the object transmits
 - `@reality/describe <object>=<layer>/<attribute>` - describe the object with `<attribute>` to viewers on `<layer>`
 - `@reality/describe <object>=<layer>` - remove that layer's description
+- `@reality/reset <object>` - clear the object's settings, so it receives and transmits `normal` again
 - `@reality/inspect <object>` - show the object's RX, TX and descriptions
 
 `<layers>` is a space-separated list; an empty value sets an empty set. `<object>` must be a dbref, so you can repair an object you cannot currently perceive.
@@ -90,7 +91,7 @@ Every switch needs the `reality.admin` permission on the account linked to the p
 | Layers per world | 32 |
 | Layer name | 1-32 ASCII letters, digits, `_` or `-`; case does not matter |
 
-Output: the message `@reality` shows.
+`@reality` outputs the message it shows.
 
 ### Layer descriptions
 

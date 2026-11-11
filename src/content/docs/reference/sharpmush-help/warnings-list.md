@@ -15,7 +15,7 @@ description: "SharpMUSH documentation for Warnings List"
       "heading": "Combined warning profiles",
       "lookup": "warnings list combined warning profiles"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-combined-warning-profiles-heading-combined-warning-profiles-lookup-warnings-list-combined-warning-profiles),
+  ],
   "redirects": {
     "WARNINGS LIST2": "warnings list combined warning profiles"
   }

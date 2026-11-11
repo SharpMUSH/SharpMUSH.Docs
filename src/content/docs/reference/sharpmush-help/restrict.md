@@ -16,11 +16,21 @@ description: "SharpMUSH documentation for Restrict"
       "lookup": "restrict command restriction rules"
     },
     {
+      "id": "function-and-command-only",
+      "heading": "Restrictions for functions or commands only",
+      "lookup": "restrict function only"
+    },
+    {
+      "id": "imported-restrictions",
+      "heading": "Restriction settings and imported games",
+      "lookup": "restrict imported"
+    },
+    {
       "id": "function-and-command-permissions",
       "heading": "Function and command permissions",
       "lookup": "restrict function and command permissions"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-command-restriction-rules-heading-command-restriction-rules-lookup-restrict-command-restriction-rules-id-function-and-command-permissions-heading-function-and-command-permissions-lookup-restrict-function-and-command-permissions),
+  ],
   "redirects": {
     "RESTRICT2": "restrict command restriction rules",
     "RESTRICT3": "restrict function and command permissions"
@@ -29,12 +39,9 @@ description: "SharpMUSH documentation for Restrict"
 -->
 ## Restrict
 
-Commands, functions and attributes can have their permission levels controlled in the mush config files, or by wizards from the game via `@command`, `@function` and `@attribute`.
+Commands, functions and attributes can have their permission levels controlled in the game's configuration, or by wizards from the game via `@command`, `@function` and `@attribute`.
 
-In the config file, the syntax is:<br>
-`restrict_command <command-name> <restriction> [" <error message>]`<br>
-    restrict_function `<function-name>` `<restriction>`<br>
-    restrict_attribute `<attribute-name>` `<restriction>`
+In the configuration, the `command_restrictions` and `function_restrictions` settings hold `<name> <restriction>` lines (see [restrict imported](/reference/sharpmush-help/restrict/#restriction-settings-and-imported-games)).
 
 From the game:<br>
 `@command/restrict <command-name>=<restriction> [" <error message>]`<br>
@@ -54,8 +61,10 @@ For commands, `<restriction>` should be an `@lock`-style boolexp (though, for ba
     nofixed    Usable only by non-FIXED objects.<br>
     noguest    Usable only by non-guest `@powered` objects.<br>
     nobody     Nothing can use it. Same as the /disable switch to `@command` or `@function`.<br>
-    logname    When used, log cmd/fun name, and who is using it<br>
-    logargs    When used, log cmd/fun name and args, and who is using it
+    logname    When a built-in function is used, log its name, and who is using it.<br>
+    logargs    When a built-in function is used, log its name and arguments, and who is using it. @command/restrict refuses both.
+
+### Restrictions for functions or commands only
 
 Functions only:<br>
     noparse    Function arguments are not evaluated. Only applies to `@functions`.<br>
@@ -66,7 +75,14 @@ Functions only:<br>
 
 Commands only:<br>
      noplayer   Cannot be used by players.<br>
+     noapp      Cannot be run by an app acting for a player.<br>
 Commands can also give any flag, power or type, to restrict to objects with one of those flags or powers, or of one of those types.
+
+### Restriction settings and imported games
+
+The game keeps its `restrict_command` lines in the `command_restrictions` setting and its `restrict_function` lines in `function_restrictions`; a new game ships both empty (see [compatibility commands](/reference/sharpmush-help/compatibility-commands/#compatibility-commands)). In `command_restrictions`, `noguest`, `nofixed`, `noplayer`, `nobody`, a flag or power name, a lock and the `" <message>` suffix all mean what they mean in `restrict.cnf`. `function_restrictions` takes `noguest`, `nogagged`, `nofixed`, `admin`, `wizard`, `god`, `nobody`, `logname`, `logargs`, `deprecated`, `localize` and `nosidefx`.
+
+An imported game keeps its own: reading a PennMUSH `mush.cnf` follows its `include` lines, as `config_file_startup` does, and carries each `restrict_command` line into `command_restrictions` and each `restrict_function` line into `function_restrictions`, and both are applied at startup, so an imported `restrict_function lstats noguest` answers a guest's `lstats()` with `#-1 PERMISSION DENIED` as PennMUSH does. Any other word (`noparse`, `userfn`), or a `!` word that clears one of a built-in's own restrictions, is kept but has no effect, and the import names it. A line that cannot be carried (an include that cannot be read, a restriction with no value, a `restrict_attribute`) is logged by name, and so is every `include` in a `mush.cnf` uploaded through the portal, which is not followed because it would name a file on the server.
 
 ### Function and command permissions
 
@@ -81,8 +97,7 @@ Examples:
     > @function/restrict ansi=admin
 ```
 ```sharp
-  Don't let anyone set SUSPECT or GAGGED use @emit, and log the name of anyone who uses it.
-    > @command/restrict @emit=logname
+  Don't let anyone set SUSPECT or GAGGED use @emit.
     > @command/restrict @emit=!flag^suspect&!flag^gagged
 ```
 
@@ -90,5 +105,5 @@ Examples:
 - [@command](/reference/sharpmush-help/command/#command)
 - [@function](/reference/sharpmush-help/function-command/#function)
 - [@attribute](/reference/sharpmush-help/attribute-command/#attribute)
-- [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
+- [LOCKING](/reference/sharpmush-help/locking/#locking)
 :::

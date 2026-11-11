@@ -17,7 +17,7 @@ description: "SharpMUSH documentation for Verbs"
       "aliases": [
         "NONAME",
         "NOSPACE"
-      ](/reference/sharpmush-help/sharpcmd/#id-name-and-spacing-behavior-heading-name-and-spacing-behavior-lookup-verbs-name-and-spacing-behavior-aliases-noname-nospace)
+      ]
     }
   ],
   "redirects": {

@@ -10,7 +10,7 @@ description: "SharpMUSH documentation for connlog()"
   "lookup": "connlog()",
   "aliases": [
     "connlog"
-  ](/reference/sharpmush-help/sharpconf/#connlog),
+  ],
   "sections": [
     {
       "id": "search-filters",
@@ -22,7 +22,7 @@ description: "SharpMUSH documentation for connlog()"
       "heading": "Connection search examples",
       "lookup": "connlog connection search examples"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-search-filters-heading-search-filters-lookup-connlog-search-filters-id-connection-search-examples-heading-connection-search-examples-lookup-connlog-connection-search-examples),
+  ],
   "redirects": {
     "CONNLOG2": "connlog search filters",
     "CONNLOG3": "connlog connection search examples"

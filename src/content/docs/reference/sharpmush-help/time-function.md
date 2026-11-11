@@ -18,7 +18,7 @@ description: "SharpMUSH documentation for time()"
       "heading": "Timezone examples",
       "lookup": "time timezone examples"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-timezone-examples-heading-timezone-examples-lookup-time-timezone-examples),
+  ],
   "redirects": {
     "TIME2": "time timezone examples"
   }
@@ -58,6 +58,6 @@ Thu Mar 01 19:20:25 2012
 - [timefmt()](/reference/sharpmush-help/timefmt-function/#timefmt)
 - [TIMESTRING()](/reference/sharpmush-help/sharpfunc/#timestring)
 - [CONVSECS()](/reference/sharpmush-help/sharpfunc/#convsecs)
-- [CONVTIME()](/reference/sharpmush-help/sharpfunc/#convtime)
+- [CONVTIME()](/reference/sharpmush-help/convtime-function/#convtime)
 - [timezones](/reference/sharpmush-help/timezones/#timezones)
 :::

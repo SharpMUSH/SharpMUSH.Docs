@@ -10,14 +10,14 @@ description: "SharpMUSH documentation for WHO"
   "lookup": "who",
   "aliases": [
     "DOING"
-  ](/reference/sharpmush-help/sharpconf/#doing),
+  ],
   "sections": [
     {
       "id": "softcoded-who-integration",
       "heading": "Softcoded WHO integration",
       "lookup": "who softcoded who integration"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-softcoded-who-integration-heading-softcoded-who-integration-lookup-who-softcoded-who-integration),
+  ],
   "redirects": {
     "WHO2": "who softcoded who integration"
   }

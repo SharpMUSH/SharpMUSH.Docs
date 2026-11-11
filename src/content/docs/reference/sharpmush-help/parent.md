@@ -11,7 +11,7 @@ description: "SharpMUSH documentation for Parents"
   "aliases": [
     "PARENTS",
     "OBJECT PARENTS"
-  ](/reference/sharpmush-help/sharpconf/#parents-object-parents),
+  ],
   "sections": [
     {
       "id": "inherited-properties",
@@ -33,7 +33,7 @@ description: "SharpMUSH documentation for Parents"
       "heading": "Ancestor behavior",
       "lookup": "parent ancestor behavior"
     }
-  ](/reference/sharpmush-help/sharpattr/#id-inherited-properties-heading-inherited-properties-lookup-parent-inherited-properties-id-attribute-overrides-heading-attribute-overrides-lookup-parent-attribute-overrides-id-command-overrides-heading-command-overrides-lookup-parent-command-overrides-id-ancestor-behavior-heading-ancestor-behavior-lookup-parent-ancestor-behavior),
+  ],
   "redirects": {
     "PARENTS2": "parent inherited properties",
     "PARENTS3": "parent attribute overrides",

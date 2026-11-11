@@ -14,9 +14,19 @@ description: "SharpMUSH documentation for speak()"
   ],
   "sections": [
     {
+      "id": "formats",
+      "heading": "Speech formats",
+      "lookup": "speak formats"
+    },
+    {
       "id": "basic-examples",
       "heading": "Basic speech examples",
       "lookup": "speak examples"
+    },
+    {
+      "id": "name-examples",
+      "heading": "Say string and name examples",
+      "lookup": "speak name examples"
     },
     {
       "id": "transforms",
@@ -43,7 +53,7 @@ description: "SharpMUSH documentation for speak()"
       "heading": "Selective transforms",
       "lookup": "speak selective transforms"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-basic-examples-heading-basic-speech-examples-lookup-speak-examples-id-transforms-heading-transforming-speech-fragments-lookup-speak-transforms-id-transform-examples-heading-transform-examples-lookup-speak-transform-examples-id-null-fragments-heading-empty-transformed-fragments-lookup-speak-empty-fragments-id-empty-say-heading-empty-plain-speech-lookup-speak-empty-speech-id-selective-transforms-heading-selective-transforms-lookup-speak-selective-transforms),
+  ],
   "redirects": {
     "SPEAK2": "speak examples",
     "SPEAK3": "speak transforms",
@@ -61,6 +71,8 @@ description: "SharpMUSH documentation for speak()"
 This function is used to format speech-like constructs, and is capable of transforming text within a speech string; it is useful for implementing "language code" and the like.
 
 If `<speaker>` begins with &, the rest of the `<speaker>` string is treated as the speaker's name, so you can use it for NPCs or tacking on titles (such as with @chatformat). Otherwise, the name of the object `<speaker>` is used.
+
+### Speech formats
 
 When only `<speaker>` and `<string>` are given, this function formats `<string>` as if it were speech from `<speaker>`, as follows.
 
@@ -106,6 +118,8 @@ Wizard says, "Test."
 > @emit [speak(me, Test.)]
 Wizard says, "Test."
 ```
+
+### Say string and name examples
 
 ```sharp
 > @emit [speak(me, Test., yells:)]
@@ -173,7 +187,7 @@ Wizard tests. "Fragment 1 is: Hi." And... "Fragment 2 is: Bye." The end.
 ```
 
 ```sharp
-> @emit speak(me, :tests. "Hi." And... `<<Bye.>`> The end., ,va, , `<<, >`>)
+> @emit speak(me, :tests. "Hi." And... <<Bye.>> The end., ,va, , <<, >>)
 Wizard tests. "Hi." And... "Fragment 1 is: Bye." The end.
 ```
 

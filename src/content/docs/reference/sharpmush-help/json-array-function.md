@@ -10,14 +10,14 @@ description: "SharpMUSH documentation for json_array()"
   "lookup": "json_array()",
   "aliases": [
     "json_array"
-  ](/reference/sharpmush-help/sharpconf/#jsonarray),
+  ],
   "sections": [
     {
       "id": "array-construction-examples",
       "heading": "Array construction examples",
       "lookup": "json_array array construction examples"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-array-construction-examples-heading-array-construction-examples-lookup-jsonarray-array-construction-examples),
+  ],
   "redirects": {
     "JSON_ARRAY2": "json_array array construction examples"
   }
@@ -34,7 +34,7 @@ Unlike json(array, ...), which takes each element as a separate argument, json_a
 ::: seealso
 - [json()](/reference/sharpmush-help/json-function/#json)
 - [json_map()](/reference/sharpmush-help/json-map-function/#jsonmap)
-- [OOB()](/reference/sharpmush-help/sharpfunc/#oob)
+- [OOB()](/reference/sharpmush-help/oob-function/#oob)
 :::
 
 ### Array construction examples

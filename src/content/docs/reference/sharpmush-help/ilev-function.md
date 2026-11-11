@@ -21,7 +21,7 @@ description: "SharpMUSH documentation for ilev()"
       "heading": "Nested iteration examples",
       "lookup": "ilev nested iteration examples"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-nested-iteration-examples-heading-nested-iteration-examples-lookup-ilev-nested-iteration-examples),
+  ],
   "redirects": {
     "ITEXT2": "ilev nested iteration examples"
   }
@@ -30,13 +30,13 @@ description: "SharpMUSH documentation for ilev()"
 ## ilev()
 
 `ilev()`<br>
-`itext(\<n\>)`<br>
-%i`\<n\>`<br>
-`inum(\<n\>)`
+`itext([<n>])`<br>
+`%i<n>`<br>
+`inum([<n>])`
 
-These functions return the equivilent of ## (itext) or #@ (inum) for iter() and @dolist, where an `\<n\>`=0 returns to the current iter or @dolist, `\<n\>`=1 refers to the iter()/@dolist which the current iter() or @dolist is nested in, etc. An `\<n\>` of "L" can be used to refer to the outermost iter()/@dolist. %i`\<n\>` is an alias for itext(`\<n\>`), where `\<n\>` can be from 0 to 9 (or "L").
+These functions return the equivalent of ## (itext) or #@ (inum) for iter() and @dolist, where an `<n>`=0 returns to the current iter or @dolist, `<n>`=1 refers to the iter()/@dolist which the current iter() or @dolist is nested in, etc. An `<n>` of "L" can be used to refer to the outermost iter()/@dolist, and `itext()` and `inum()` with no `<n>` are `itext(0)` and `inum(0)`, as in TinyMUX, and empty outside a loop. `%i<n>` is an alias for itext(`<n>`), where `<n>` can be from 0 to 9 (or "L").
 
-ilev() returns the current nesting depth, or -1 when used outside an iter() or @dolist. Thus, itext(ilev()) will return the outermost ##, equivilent to %iL.
+ilev() returns the current nesting depth, or -1 when used outside an iter() or @dolist. Thus, itext(ilev()) will return the outermost ##, equivalent to %iL.
 
 ::: seealso
 - [iter()](/reference/sharpmush-help/iter-function/#iter)

@@ -8,7 +8,7 @@ description: "SharpMUSH documentation for @permission"
   "corpus": "help",
   "id": "permission-command",
   "lookup": "@permission",
-  "aliases": ["@permissions"](/reference/sharpmush-help/sharpconf/#permissions),
+  "aliases": ["@permissions"],
   "sections": [
     {
       "id": "permission-overrides",
@@ -16,16 +16,27 @@ description: "SharpMUSH documentation for @permission"
       "lookup": "@permission overrides"
     },
     {
+      "id": "permission-reach",
+      "heading": "Reach",
+      "lookup": "@permission reach"
+    },
+    {
       "id": "permission-custom",
       "heading": "Custom permissions",
       "lookup": "@permission define"
+    },
+    {
+      "id": "permission-naming",
+      "heading": "Naming and removing custom permissions",
+      "lookup": "@permission naming",
+      "aliases": ["@permission/undefine"]
     },
     {
       "id": "permission-categories",
       "heading": "Permission categories",
       "lookup": "@permission categories"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-permission-overrides-heading-overrides-lookup-permission-overrides-id-permission-custom-heading-custom-permissions-lookup-permission-define-id-permission-categories-heading-permission-categories-lookup-permission-categories),
+  ],
   "redirects": {
     "@permission2": "@permission overrides",
     "@permission3": "@permission define"
@@ -36,8 +47,8 @@ description: "SharpMUSH documentation for @permission"
 
 `@permission[/list]`<br>
 `@permission[/info] <permission>`<br>
-`@permission/allow[/account] <object>=<permission> [<permission> ...]`<br>
-`@permission/deny[/account] <object>=<permission> [<permission> ...]`<br>
+`@permission/allow[/account] <object>=<permission> [<permission> ...][/<role>]`<br>
+`@permission/deny[/account] <object>=<permission> [<permission> ...][/<role>]`<br>
 `@permission/clear[/account] <object>=<permission> [<permission> ...]`<br>
 `@permission/define <permission>=<category>[/<description>]`<br>
 `@permission/undefine <permission>`<br>
@@ -58,7 +69,7 @@ An override sets one permission on one holder, and beats every role that holder 
 
 When both are set, the object's override beats the account's. `@power <object>=See_All` is an Allow override on `game.see_all`, and `@power <object>=!See_All` clears it.
 
-An override cannot touch `administrator`, and nothing overrides a role that allows `administrator`. Setting one follows the rules of [@role rank](/reference/sharpmush-help/sharpcmd/#role-rank).
+An override cannot touch `administrator`, and nothing overrides a role that allows `administrator`. Setting one follows the rules of [@role rank](/reference/sharpmush-help/role-command/#who-may-change-what).
 
 ### Examples
 
@@ -68,15 +79,28 @@ An override cannot touch `administrator`, and nothing overrides a role that allo
 > @permission/allow/account Ariel=wiki.delete
 ```
 
+### Reach
+
+A role after a `/` gives an override a reach: it applies only to targets whose owners rank within it. A target ranks as the highest-priority role its owner holds, leaving out `everyone`; a player with no staff role ranks as `player`.
+
+- An Allow with a reach applies to targets ranked at or below the role. `@permission/allow Kim=game.tport_anything/moderator` lets Kim teleport what players and moderators own, and nothing a wizard owns.
+- A Deny with a reach applies to targets ranked at or above the role. If Ana's account allows `game.tport_anything`, `@permission/deny Ana=game.tport_anything/wizard` stops Ana teleporting what wizards own, and leaves the rest alone.
+- Outside its reach an override does nothing: the account's override decides, then the roles.
+
+Only permissions that act on a target take a reach: `control.all`, the teleport powers, the staff permissions of [roles staff](/reference/sharpmush-help/roles/#staff-permissions) and the player permissions of [roles everyday](/reference/sharpmush-help/roles/#everyday-permissions) marked so there. Wizards and royalty teleport without the powers. A check with no target ranks it as `player`. A reach naming a deleted role allows nothing and denies everything. Granting an Allow with a reach needs that permission at the reach's rank.
+
+### Examples
+
+```sharp
+> @permission/allow Kim=game.tport_anything/moderator
+> @permission/deny Ana=game.tport_anything/wizard
+> examine Kim
+Output: Overrides: +game.tport_anything/moderator
+```
+
 ### Custom permissions
 
-A game can add permissions of its own for its softcode to check. `@permission/define bbs.moderate=Staff/Moderate any board` defines `bbs.moderate` in the `Staff` permission category; from then on it is allowed and denied like any built-in permission, with `@role/allow`, overrides and the portal's role editor. Softcode asks `permission(%#,bbs.moderate)` or locks with `PERM^bbs.moderate`, and `@command/restrict` and `@function/restrict` accept it. A package can define the permissions it checks itself (see [roles packages](/reference/sharpmush-help/sharpconf/#roles-packages)); the scene package defines `scene.close`.
-
-A name is two or more parts joined by `.`, each of lowercase letters, digits and `_`, at most 64 characters; `valid(permission, <name>)` checks one. It cannot be a built-in permission, or start with `game.`, `control.` or `protect.`. Defining a name again changes its category and description; `@permission/category <permission>=<category>` changes only the category.
-
-`@permission/undefine <permission>` removes it, and every role and override that set it. It needs the right to grant the permission.
-
-A new custom permission is held only by #1 and holders of `administrator` until a role or override allows it. A holder of `game.wizard` may allow any custom permission. Defining or removing one needs the `roles.admin` permission.
+A game can add permissions of its own for its softcode to check. `@permission/define bbs.moderate=Staff/Moderate any board` defines `bbs.moderate` in the `Staff` permission category; from then on it is allowed and denied like any built-in permission, with `@role/allow`, overrides and the portal's role editor. Softcode asks `permission(%#,bbs.moderate)` or locks with `PERM^bbs.moderate`, and `@command/restrict` and `@function/restrict` accept it. A package can define the permissions it checks itself (see [roles packages](/reference/sharpmush-help/roles/#roles-and-permissions-from-packages)); the scene package defines `scene.close`.
 
 ### Examples
 
@@ -86,9 +110,17 @@ A new custom permission is held only by #1 and holders of `administrator` until 
 > think permission(*Ariel,bbs.moderate)
 ```
 
+### Naming and removing custom permissions
+
+A name is two or more parts joined by `.`, each of lowercase letters, digits and `_`, at most 64 characters; `valid(permission, <name>)` checks one. It cannot be a built-in permission, or start with `game.`, `control.` or `protect.`. Defining a name again changes its category and description; `@permission/category <permission>=<category>` changes only the category.
+
+`@permission/undefine <permission>` removes it, and every role and override that set it. It needs the right to grant the permission.
+
+A new custom permission is held only by #1 and holders of `administrator` until a role or override allows it. A holder of `game.wizard` may allow any custom permission. Defining or removing one needs the `roles.admin` permission.
+
 ### Permission categories
 
-Custom permissions have a category list of their own, apart from the role categories of [@role categories](/reference/sharpmush-help/sharpcmd/#role-categories); the same name may be in both. Each category has a description of up to 200 characters. A new game has `Staff`. `@permission/categories` lists them, with how many permissions each holds and its description.
+Custom permissions have a category list of their own, apart from the role categories of [@role categories](/reference/sharpmush-help/role-command/#role-categories); the same name may be in both. Each category has a description of up to 200 characters. A new game has `Staff`. `@permission/categories` lists them, with how many permissions each holds and its description.
 
 `@permission/category/create <category>=<description>` makes one. A name is 1 to 32 characters a player name may use, without `/`; `valid(rolecategory, <name>)` checks one. Names are matched without regard to case. `@permission/define` and `@permission/category` refuse a category that does not exist, with a reminder to create it first.
 

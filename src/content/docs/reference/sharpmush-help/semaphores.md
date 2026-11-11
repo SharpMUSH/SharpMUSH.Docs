@@ -35,7 +35,7 @@ description: "SharpMUSH documentation for Semaphores"
       "heading": "Named semaphore example",
       "lookup": "semaphores named semaphore example"
     }
-  ](/reference/sharpmush-help/sharpattr/#id-notifying-waiters-heading-notifying-waiters-lookup-semaphores-notifying-waiters-id-execution-identity-heading-execution-identity-lookup-semaphores-execution-identity-id-mutual-exclusion-heading-mutual-exclusion-lookup-semaphores-mutual-exclusion-id-named-semaphore-attributes-heading-named-semaphore-attributes-lookup-semaphores-named-semaphore-attributes-id-named-semaphore-example-heading-named-semaphore-example-lookup-semaphores-named-semaphore-example),
+  ],
   "redirects": {
     "SEMAPHORES2": "semaphores notifying waiters",
     "SEMAPHORES3": "semaphores execution identity",
@@ -62,7 +62,7 @@ and the action takes place after the object has been "notified" that its time fo
 
 An object is notified using the "`@notify`" command. When you type "`@wait` `<object>`=`<action>`", you are adding one to the SEMAPHORE attribute on the object. When you type "`@notify` `<object>`", you are decreasing the SEMAPHORE attribute on the object by one. Whenever the attribute decreases, one of the actions waiting on the object takes place. The actions occur in the order they were added.
 
-You can make the semaphore attribute of an object negative by `@notify`-ing it more times than things have been `@wait`-ed on it. If you do so, anything `@wait`-ed on the object will add one to the SEMAPHORE attribute and the action will take place immediately. You can also make all the actions waiting on an object take place right away by using "`@notify`/all", or wipe all the commands out and clear the SEMAPHORE attribute by using "`@drain`". Please note that all SEMAPHORE attributes are cleared out whenever the MUSH is restarted.
+You can make the semaphore attribute of an object negative by `@notify`-ing it more times than things have been `@wait`-ed on it. If you do so, anything `@wait`-ed on the object will add one to the SEMAPHORE attribute and the action will take place immediately. You can also make all the actions waiting on an object take place right away by using "`@notify`/all", or wipe all the commands out and clear the SEMAPHORE attribute by using "`@drain`". The SEMAPHORE attribute is kept when the MUSH restarts, but the commands waiting on it are lost, so reset it in a STARTUP attribute (for example with `@drain me`).
 
 Semaphores can be used to make sure that events occur in the right order, or to make sure that two players can't use the same object at the same time.
 
@@ -100,11 +100,11 @@ Semaphores can be used to enforce mutual exclusion - to prevent the same object 
     SEMAPHORE [#1ic+]: -1
 ```
 
-If a second player types doit as well, the second player's command is put on the semaphore queue and not run until the `@notify` me at the end of the REPORT attribute. Note the STARTUP attribute - because semaphores are cleared when the MUSH starts up, you must insure that the object gets `@notify`'d once when it starts up.
+If a second player types doit as well, the second player's command is put on the semaphore queue and not run until the `@notify` me at the end of the REPORT attribute. Note the STARTUP attribute - because the commands waiting on a semaphore are lost when the MUSH restarts, it resets the count with `@drain` and then `@notify`s the object once.
 
 ### Named semaphore attributes
 
-Normally, semaphores use the SEMAPHORE attribute. However, other attributes can be used, as long as they follow a few simple rules: If the attribute is already set, it has to have the same owner (God) and flags as the SEMAPHORE attribute would (typically no_inherit, no_clone, and locked - see [@set](/reference/sharpmush-help/sharpcmd/#set) and '`@atrlock`'), and have a numeric or empty value. If it's not set, it can't be one of the built in attributes (See `@list` attribs) unless, naturally, it is SEMAPHORE.
+Normally, semaphores use the SEMAPHORE attribute. However, other attributes can be used, as long as they follow a few simple rules: If the attribute is already set, it has to have the same owner (God) and flags as the SEMAPHORE attribute would (typically no_inherit, no_clone, and locked - see [@set](/reference/sharpmush-help/set-command/#set) and '`@atrlock`'), and have a numeric or empty value. If it's not set, it can't be one of the built in attributes (See `@list` attribs) unless, naturally, it is SEMAPHORE.
 
 See the help on `@wait`, `@notify` and `@drain` for details, but, briefly, you can use named semaphores with `<object>`/`<attribute>` where you would normally just use `<object>` in those commands. This means you can't have an untimed semaphore on an attribute with a numeric name.
 

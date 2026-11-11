@@ -15,7 +15,7 @@ description: "SharpMUSH documentation for @listen"
       "heading": "Listening behavior",
       "lookup": "@listen listening behavior"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-listening-behavior-heading-listening-behavior-lookup-listen-listening-behavior),
+  ],
   "redirects": {
     "@listen2": "@listen listening behavior"
   }
@@ -27,7 +27,7 @@ description: "SharpMUSH documentation for @listen"
 
 Sets the object's listen pattern to `<pattern>`, which can have wildcards. Whenever something the object hears matches the pattern, the object's ahear/amhear/aahear attribute will be triggered. In addition, anything inside the object will hear it as well, if the speaker passes @lock/infilter.
 
-Rather than using @listen, it's recommended you use ^-listening patterns, which can be set in any attribute similar to $-commands. This allows for descriptive attribute names, and also allows multiple patterns per object. See [listening listen patterns](/reference/sharpmush-help/sharpconf/#listening-listen-patterns) for more information.
+Rather than using @listen, it's recommended you use ^-listening patterns, which can be set in any attribute similar to $-commands. This allows for descriptive attribute names, and also allows multiple patterns per object. See [listening listen patterns](/reference/sharpmush-help/listening/#listen-patterns) for more information.
 
 For example:
 ```sharp
@@ -67,5 +67,5 @@ Recorder records: Whee!
 ::: seealso
 - [listening](/reference/sharpmush-help/listening/#listening)
 - `AHEAR`, `AMHEAR`, and `AAHEAR`: [@ahear](/reference/sharpmush-help/sharpcmd/#ahear)
-- [WILDCARDS](/reference/sharpmush-help/sharptop/#wildcards)
+- [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)
 :::

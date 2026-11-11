@@ -1,29 +1,59 @@
 {
   "_metadata": {
-    "generatedAt": "2026-10-08T18:35:07.200Z",
+    "generatedAt": "2026-11-11T01:48:17.846Z",
     "sourceFiles": [
       "accent-function.md",
       "accents.md",
+      "account-command.md",
       "accounts.md",
       "action-lists.md",
+      "activity-function.md",
+      "administration.md",
+      "aindex-function.md",
       "align.md",
+      "andbool-function.md",
+      "andchr-function.md",
       "anonymous-attributes.md",
       "ansi-function.md",
+      "application-drafts.md",
+      "ascii-command.md",
       "attribute-command.md",
       "attribute-flags.md",
       "attribute-trees.md",
       "attributes.md",
+      "attrwatch-function.md",
+      "backup-command.md",
+      "bang-notation.md",
+      "bit-locks.md",
+      "blacklist-command.md",
       "boolean-values.md",
+      "box-function.md",
       "break-command.md",
+      "bullets-function.md",
+      "butlast-function.md",
+      "cansee-function.md",
       "capabilities.md",
+      "caplist-function.md",
+      "center-function.md",
+      "chain-function.md",
+      "channel-admin-command.md",
+      "channel-clock-command.md",
       "channel-functions.md",
       "channel-joining-command.md",
+      "channel-privs-command.md",
       "charges-command.md",
+      "charset.md",
       "chatformat-command.md",
       "chzone-command.md",
+      "citer-function.md",
+      "clients.md",
+      "cloak-function.md",
+      "clone-command.md",
       "colors-function.md",
+      "columns-function.md",
       "command-output.md",
       "command.md",
+      "commands-index.md",
       "commands.md",
       "compatibility-arguments.md",
       "compatibility-commands.md",
@@ -32,100 +62,214 @@
       "compatibility-economy.md",
       "compatibility-identity.md",
       "compatibility-mail.md",
-      "compatibility-matched.md",
       "compatibility-names.md",
       "compatibility-output.md",
       "compatibility-parser.md",
       "compatibility-unresolved.md",
+      "config-alias-command.md",
+      "config-command.md",
       "config-cosmetic-command.md",
+      "config-debug-command.md",
+      "config-file-command.md",
       "config-limits-command.md",
+      "config-net-command.md",
+      "config-onboarding-command.md",
+      "config-parameters-command.md",
+      "config-textfile-command.md",
+      "config-tiny-command.md",
+      "config-wiki-command.md",
       "connlog-function.md",
+      "context-command.md",
+      "context-function.md",
+      "convtime-function.md",
+      "copyright.md",
+      "cosh-function.md",
+      "cpattr-command.md",
+      "creplace-function.md",
       "database.md",
+      "datacolumns-function.md",
+      "datatable-function.md",
+      "dateparse-function.md",
       "debug.md",
       "decompile-command.md",
+      "delextract-function.md",
       "destroy-command.md",
       "dig-command.md",
+      "discord-command.md",
+      "discord-functions.md",
       "dolist-command.md",
       "edit-command.md",
+      "editor-command.md",
       "element-function.md",
+      "elementpos-function.md",
+      "escapex-function.md",
       "etimefmt-function.md",
+      "eval-command.md",
       "evaluation-order.md",
       "event-examples.md",
+      "event-list.md",
+      "events.md",
       "execution-budget.md",
+      "exitmap-function.md",
       "failure.md",
+      "fbetween-function.md",
+      "feed-command.md",
+      "feed-functions.md",
+      "fields-function.md",
+      "figure-function.md",
       "filter-command.md",
       "flag-command.md",
+      "flag-list.md",
       "flags.md",
+      "flex-function.md",
       "fn-function.md",
       "fold-function.md",
+      "folder-command.md",
       "force-command.md",
       "foreach-function.md",
+      "formdecode-function.md",
+      "formq-function.md",
       "function-command.md",
+      "function-list.md",
       "functions.md",
+      "gallery.md",
+      "gauge-function.md",
+      "globalroom-function.md",
+      "gmcpsupports-function.md",
+      "gradient-function.md",
+      "graphics.md",
       "gs-chat.md",
       "gs-mail.md",
       "gs-moving.md",
       "gs-talking.md",
+      "halt-command.md",
+      "hasarg.md",
       "help-search.md",
       "hook.md",
+      "http-command.md",
+      "http-examples.md",
+      "http-routing.md",
       "http.md",
       "if-command.md",
       "ilev-function.md",
+      "image-attributes.md",
       "include-command.md",
+      "indexed-function.md",
+      "inf-function.md",
+      "input-command.md",
       "interiors.md",
+      "isalpha-function.md",
+      "isdbref-function.md",
+      "israt-function.md",
       "iter-function.md",
       "jobs.md",
       "json-array-function.md",
+      "json-fill-function.md",
       "json-function.md",
       "json-map-function.md",
       "json-mod-function.md",
       "json-query-function.md",
+      "keepflags-function.md",
+      "keeptype-function.md",
+      "ladd-function.md",
+      "land-function.md",
+      "lattr-function.md",
+      "layout-borders.md",
       "layout-functions.md",
+      "layout-themes.md",
+      "layout.md",
+      "lband-function.md",
+      "lcat-function.md",
+      "limath-function.md",
+      "list-command.md",
+      "list-function.md",
+      "list-separators.md",
+      "listcommands-function.md",
+      "listdiff-function.md",
       "listen-command.md",
       "listening.md",
+      "listflags-function.md",
       "literal-command.md",
+      "livewire-command.md",
+      "livewire-function.md",
       "localfun.md",
       "locate-function.md",
       "lock-evaluation-command.md",
       "lock-keys.md",
+      "lock-zone-command.md",
+      "lockfilter-function.md",
+      "locking.md",
       "locktypes.md",
       "look.md",
+      "lpage-command.md",
       "lsearch-function.md",
+      "mail-other.md",
+      "mailalias-function.md",
       "malias-command.md",
-      "markdown.md",
+      "map-function.md",
+      "mapsql-command.md",
+      "mapsql-function.md",
+      "mask-function.md",
       "message-command.md",
       "messages.md",
       "mix-function.md",
+      "mogrifier.md",
       "monikers.md",
+      "motd-command.md",
+      "move-function.md",
+      "movement.md",
+      "mrpage-command.md",
       "munge-function.md",
       "mushcode.md",
+      "named-arguments.md",
+      "nameq-function.md",
+      "nameqm-function.md",
       "newbie.md",
+      "notice-function.md",
       "notify-command.md",
+      "nsiter-function.md",
+      "numpos-function.md",
       "oemit-command.md",
+      "oob-function.md",
+      "ooc-command.md",
       "page-functions.md",
       "page.md",
       "pageformat-command.md",
+      "palette.md",
       "parent.md",
+      "parents-function.md",
+      "parsestr-function.md",
       "pemit-command.md",
       "pennmush-compatibility.md",
       "permission-command.md",
+      "pfind-function.md",
       "pfun-function.md",
+      "pipe-command.md",
       "piping.md",
+      "player-events.md",
+      "playmem-function.md",
+      "plugin-command.md",
+      "plugin-help.md",
       "pose.md",
       "power-command.md",
+      "printf-function.md",
+      "privatize-function.md",
+      "profile-command.md",
       "ps-command.md",
       "pueblo.md",
       "puppets.md",
+      "push-command.md",
       "queue-budgets.md",
       "queue.md",
-      "queuebudgets.md",
       "queuecontrol.md",
       "quota-command.md",
       "reality.md",
+      "recover-command.md",
       "regexp-classes.md",
       "regexp-syntax.md",
       "regexp.md",
       "registers.md",
+      "reglattri-function.md",
       "reglmatch-function.md",
       "regmatch-function.md",
       "render-markdown-custom.md",
@@ -134,13 +278,40 @@
       "restrict.md",
       "restrictedexpr.md",
       "retry-command.md",
+      "rhostmush-arguments.md",
       "role-command.md",
       "roles.md",
+      "roll-command.md",
+      "roll-data.md",
+      "roll-dice.md",
+      "roll-function.md",
+      "roll-modifiers.md",
+      "roll-options.md",
+      "roll-pools.md",
+      "roll-records.md",
+      "rollback-command.md",
+      "rollinfo-function.md",
+      "rule-function.md",
+      "rxdesc-function.md",
+      "rxlevel-command.md",
+      "rxlevel-function.md",
+      "scene-command.md",
+      "scene-functions.md",
+      "scene-system.md",
+      "scene-type-functions.md",
+      "scene-write-functions.md",
+      "schema-functions.md",
+      "screenreader-support.md",
+      "screenreader.md",
       "search-command.md",
+      "secret-command.md",
+      "securex-function.md",
       "security.md",
       "semaphores.md",
+      "set-command.md",
       "setq-function.md",
-      "sharpattr.md",
+      "setqm-function.md",
+      "sha1-function.md",
       "sharpchat.md",
       "sharpcmd.md",
       "sharpcode.md",
@@ -148,66 +319,146 @@
       "sharpevents.md",
       "sharpflag.md",
       "sharpfunc.md",
-      "sharphttp.md",
       "sharplock.md",
       "sharpmail.md",
       "sharpmush-features.md",
       "sharppueb.md",
       "sharptop.md",
       "sharpwiki.md",
+      "site-command.md",
       "sitelock-command.md",
+      "size-function.md",
       "snapshots.md",
+      "socket-commands.md",
+      "socket-events.md",
+      "sockset-command.md",
+      "sorting.md",
       "soundex-function.md",
       "speak.md",
+      "sql-command.md",
+      "sql-function.md",
+      "standin-function.md",
+      "stopevent-function.md",
+      "storage-command.md",
+      "str-function.md",
+      "strdistance-function.md",
+      "strfunc-function.md",
+      "strlenraw-function.md",
+      "subeval-function.md",
       "substitutions.md",
+      "swatch-function.md",
       "switch-command.md",
       "switch-function.md",
+      "tag-command.md",
+      "tagref-function.md",
+      "tagwrap-function.md",
       "teleport-command.md",
+      "terminfo-function.md",
+      "textfile-function.md",
+      "theme-command.md",
       "time-function.md",
       "timecalc-function.md",
       "timefmt-function.md",
       "timezones.md",
+      "tinymux-forms.md",
+      "tobin-function.md",
+      "tone-function.md",
       "topics.md",
+      "totcmds-function.md",
+      "totmember-function.md",
+      "totpos-function.md",
+      "translate-function.md",
+      "tree-function.md",
       "trigger-command.md",
+      "trim-function.md",
       "u-function.md",
+      "u2default-function.md",
+      "u2local-function.md",
+      "uargs-function.md",
+      "ueval-function.md",
       "ulocal-function.md",
       "uptime-command.md",
+      "url-unescape-function.md",
       "valid-function.md",
+      "vattrcnt-function.md",
       "verb-command.md",
       "verbs.md",
       "wait-command.md",
       "warnings-command.md",
       "warnings-list.md",
+      "websockets.md",
+      "while-function.md",
       "who.md",
+      "wiki-administration.md",
+      "wiki-categories.md",
+      "wiki-editing.md",
+      "wiki-facts.md",
+      "wiki-function.md",
       "wiki.md",
+      "wildcards.md",
+      "world-command.md",
+      "world-functions.md",
+      "wrap-function.md",
+      "wrapcolumns-function.md",
+      "wshtml-function.md",
       "zone-masters.md",
       "zones.md"
     ],
-    "totalMappings": 1338
+    "totalMappings": 1491
   },
   "mappings": {
     "ACCENT()": "accent-function",
     "ACCENTS": "accents",
+    "@ACCOUNT": "account-command",
     "ACCOUNTS": "accounts",
     "ACTION LISTS": "action-lists",
+    "ACTIVITY()": "activity-function",
+    "ADMINISTRATION": "administration",
+    "AINDEX()": "aindex-function",
     "ALIGN()": "align",
+    "ANDBOOL()": "andbool-function",
+    "ANDCHR()": "andchr-function",
     "ANONYMOUS ATTRIBUTES": "anonymous-attributes",
     "ANSI()": "ansi-function",
+    "@APPDRAFT": "application-drafts",
+    "@ASCII": "ascii-command",
     "@ATTRIBUTE": "attribute-command",
     "ATTRIBUTE FLAGS": "attribute-flags",
     "ATTRIBUTE TREES": "attribute-trees",
     "ATTRIBUTES": "attributes",
+    "ATTRWATCH()": "attrwatch-function",
+    "@BACKUP": "backup-command",
+    "BANG NOTATION": "bang-notation",
+    "BIT LOCKS": "bit-locks",
+    "@BLACKLIST": "blacklist-command",
     "BOOLEAN VALUES": "boolean-values",
+    "BOX()": "box-function",
     "@BREAK": "break-command",
+    "BULLETS()": "bullets-function",
+    "BUTLAST()": "butlast-function",
+    "CANSEE()": "cansee-function",
     "ADMINISTRATIVE CAPABILITIES": "capabilities",
+    "CAPLIST()": "caplist-function",
+    "CENTER()": "center-function",
+    "CHAIN()": "chain-function",
+    "@CHANNEL ADMIN": "channel-admin-command",
+    "@CHANNEL CLOCK": "channel-clock-command",
     "CHANNEL FUNCTIONS": "channel-functions",
     "@CHANNEL JOINING": "channel-joining-command",
+    "@CHANNEL PRIVS": "channel-privs-command",
     "@CHARGES": "charges-command",
+    "CHARSET": "charset",
     "@CHATFORMAT": "chatformat-command",
     "@CHZONE": "chzone-command",
+    "CITER()": "citer-function",
+    "CLIENTS": "clients",
+    "CLOAK()": "cloak-function",
+    "@CLONE": "clone-command",
     "COLORS()": "colors-function",
+    "COLUMNS()": "columns-function",
     "COMMAND OUTPUT": "command-output",
     "@COMMAND": "command",
+    "COMMANDS": "commands-index",
     "$-COMMANDS": "commands",
     "COMPATIBILITY ARGUMENTS": "compatibility-arguments",
     "COMPATIBILITY COMMANDS": "compatibility-commands",
@@ -216,125 +467,222 @@
     "COMPATIBILITY ECONOMY": "compatibility-economy",
     "COMPATIBILITY IDENTITY": "compatibility-identity",
     "COMPATIBILITY MAIL": "compatibility-mail",
-    "COMPATIBILITY MATCHED": "compatibility-matched",
     "COMPATIBILITY NAMES": "compatibility-names",
     "COMPATIBILITY OUTPUT": "compatibility-output",
     "COMPATIBILITY PARSER": "compatibility-parser",
     "COMPATIBILITY UNRESOLVED": "compatibility-unresolved",
+    "@CONFIG ALIAS": "config-alias-command",
+    "@CONFIG": "config-command",
     "@CONFIG COSMETIC": "config-cosmetic-command",
+    "@CONFIG DEBUG": "config-debug-command",
+    "@CONFIG FILE": "config-file-command",
     "@CONFIG LIMITS": "config-limits-command",
+    "@CONFIG NET": "config-net-command",
+    "@CONFIG ONBOARDING": "config-onboarding-command",
+    "@CONFIG PARAMETERS": "config-parameters-command",
+    "@CONFIG TEXTFILE": "config-textfile-command",
+    "@CONFIG TINY": "config-tiny-command",
+    "@CONFIG WIKI": "config-wiki-command",
     "CONNLOG()": "connlog-function",
+    "@CONTEXT": "context-command",
+    "CONTEXT()": "context-function",
+    "CONVTIME()": "convtime-function",
+    "COPYRIGHT": "copyright",
+    "COSH(), SINH() AND TANH()": "cosh-function",
+    "@CPATTR": "cpattr-command",
+    "CREPLACE()": "creplace-function",
     "DATABASE": "database",
+    "DATACOLUMNS()": "datacolumns-function",
+    "DATATABLE()": "datatable-function",
+    "DATEPARSE()": "dateparse-function",
     "DEBUG": "debug",
     "@DECOMPILE": "decompile-command",
+    "DELEXTRACT()": "delextract-function",
     "@DESTROY": "destroy-command",
     "@DIG": "dig-command",
+    "@DISCORD": "discord-command",
+    "DISCORDLINK()": "discord-functions",
     "@DOLIST": "dolist-command",
     "@EDIT": "edit-command",
+    "@EDITOR": "editor-command",
     "ELEMENT()": "element-function",
+    "ELEMENTPOS()": "elementpos-function",
+    "ESCAPEX()": "escapex-function",
     "ETIMEFMT()": "etimefmt-function",
+    "@EVAL": "eval-command",
     "EVALUATION ORDER": "evaluation-order",
     "EVENT EXAMPLES": "event-examples",
+    "EVENT LIST": "event-list",
+    "EVENTS": "events",
     "EXECUTION BUDGET": "execution-budget",
+    "EXITMAP()": "exitmap-function",
     "FAILURE": "failure",
+    "FBETWEEN()": "fbetween-function",
+    "@FEED": "feed-command",
+    "FEED FUNCTIONS": "feed-functions",
+    "FIELDS()": "fields-function",
+    "FIGURE()": "figure-function",
     "@FILTER": "filter-command",
     "@FLAG": "flag-command",
+    "FLAG LIST": "flag-list",
     "FLAGS": "flags",
+    "FLEX()": "flex-function",
     "FN()": "fn-function",
     "FOLD()": "fold-function",
+    "@FOLDER": "folder-command",
     "@FORCE": "force-command",
     "FOREACH()": "foreach-function",
+    "FORMDECODE()": "formdecode-function",
+    "FORMQ()": "formq-function",
     "@FUNCTION": "function-command",
+    "FUNCTION LIST": "function-list",
     "FUNCTIONS": "functions",
+    "GALLERY": "gallery",
+    "GAUGE()": "gauge-function",
+    "GLOBALROOM()": "globalroom-function",
+    "GMCPSUPPORTS()": "gmcpsupports-function",
+    "GRADIENT()": "gradient-function",
+    "GRAPHICS": "graphics",
     "GETTING STARTED: CHAT": "gs-chat",
     "GETTING STARTED: MAIL": "gs-mail",
     "GETTING STARTED: MOVING": "gs-moving",
     "GETTING STARTED: TALKING": "gs-talking",
+    "@HALT": "halt-command",
+    "HASARG()": "hasarg",
     "HELP SEARCH": "help-search",
     "@HOOK": "hook",
+    "@HTTP": "http-command",
+    "HTTP EXAMPLES": "http-examples",
+    "HTTP ROUTING": "http-routing",
     "HTTP": "http",
     "@IF": "if-command",
     "ILEV()": "ilev-function",
+    "IMAGE": "image-attributes",
     "@INCLUDE": "include-command",
+    "INDEXED()": "indexed-function",
+    "INF()": "inf-function",
+    "@INPUT": "input-command",
     "INTERIORS": "interiors",
+    "CHARACTER TESTS": "isalpha-function",
+    "ISDBREF()": "isdbref-function",
+    "ISRAT()": "israt-function",
     "ITER()": "iter-function",
     "RECURRING JOBS": "jobs",
     "JSON_ARRAY()": "json-array-function",
+    "JSON_FILL()": "json-fill-function",
     "JSON()": "json-function",
     "JSON_MAP()": "json-map-function",
     "JSON_MOD()": "json-mod-function",
     "JSON_QUERY()": "json-query-function",
-    "LAYOUT FUNCTIONS": "layout-functions",
-    "LAYOUT BORDERS": "layout-functions",
-    "LAYOUT THEMES": "layout-functions",
+    "KEEPFLAGS() AND REMFLAGS()": "keepflags-function",
+    "KEEPTYPE() AND REMTYPE()": "keeptype-function",
+    "LADD()": "ladd-function",
+    "LAND()": "land-function",
+    "LATTR()": "lattr-function",
+    "LAYOUT BORDERS": "layout-borders",
     "THEMES()": "layout-functions",
     "THEME()": "layout-functions",
-    "SWATCH()": "layout-functions",
-    "@THEME": "layout-functions",
-    "@THEME/LIST": "layout-functions",
-    "@THEME/ADD": "layout-functions",
-    "@THEME/REMOVE": "layout-functions",
-    "@THEME/DISABLE": "layout-functions",
-    "@THEME/ENABLE": "layout-functions",
-    "BOX()": "layout-functions",
-    "RULE()": "layout-functions",
-    "FLEX()": "layout-functions",
+    "LFLEX()": "layout-functions",
     "ITEM()": "layout-functions",
-    "FIELDS()": "layout-functions",
-    "TREE()": "layout-functions",
+    "LFIELDS()": "layout-functions",
+    "LTREE()": "layout-functions",
     "NODE()": "layout-functions",
-    "FIGURE()": "layout-functions",
-    "GAUGE()": "layout-functions",
-    "BULLETS()": "layout-functions",
+    "LNODE()": "layout-functions",
     "GRID()": "layout-functions",
-    "DATATABLE()": "layout-functions",
-    "DATACOLUMNS()": "layout-functions",
-    "GRADIENT()": "layout-functions",
+    "LDATATABLE()": "layout-functions",
     "BADGE()": "layout-functions",
-    "NOTICE()": "layout-functions",
+    "LAYOUT THEMES": "layout-themes",
+    "LAYOUT FUNCTIONS": "layout",
+    "LBAND()": "lband-function",
+    "LCAT()": "lcat-function",
+    "LIMATH()": "limath-function",
+    "@LIST": "list-command",
+    "LIST()": "list-function",
+    "LIST SEPARATORS": "list-separators",
+    "LISTCOMMANDS()": "listcommands-function",
+    "LISTDIFF()": "listdiff-function",
     "@LISTEN": "listen-command",
     "LISTENING": "listening",
+    "LISTFLAGS()": "listflags-function",
+    "@LIVEWIRE": "livewire-command",
+    "LIVEWIRE()": "livewire-function",
     "LOCALFUN": "localfun",
-    "@FUNCTION/LOCAL": "localfun",
-    "LOCAL FUNCTION STARTUP": "localfun",
     "LOCATE()": "locate-function",
     "@LOCK-EVALUATION": "lock-evaluation-command",
     "LOCK KEYS": "lock-keys",
+    "@LOCK/ZONE": "lock-zone-command",
+    "LOCKFILTER()": "lockfilter-function",
+    "LOCKING": "locking",
     "LOCK TYPES": "locktypes",
     "LOOK": "look",
+    "LPAGE": "lpage-command",
     "LSEARCH()": "lsearch-function",
+    "OTHER MAIL COMMANDS": "mail-other",
+    "MAILALIAS()": "mailalias-function",
     "@MALIAS": "malias-command",
+    "MAP()": "map-function",
+    "@MAPSQL": "mapsql-command",
+    "MAPSQL()": "mapsql-function",
+    "MASK()": "mask-function",
     "@MESSAGE": "message-command",
     "MESSAGES": "messages",
     "MIX()": "mix-function",
+    "MOGRIFIER": "mogrifier",
     "MONIKERS": "monikers",
+    "@MOTD": "motd-command",
+    "MOVE()": "move-function",
+    "MOVEMENT": "movement",
+    "MRPAGE": "mrpage-command",
     "MUNGE()": "munge-function",
     "MUSHCODE": "mushcode",
+    "NAMED ARGUMENTS": "named-arguments",
+    "NAMEQ()": "nameq-function",
+    "NAMEQM()": "nameqm-function",
     "NEWBIE": "newbie",
+    "NOTICE()": "notice-function",
     "@NOTIFY": "notify-command",
+    "NSITER()": "nsiter-function",
+    "NUMPOS()": "numpos-function",
     "@OEMIT": "oemit-command",
+    "OOB()": "oob-function",
+    "OOC": "ooc-command",
     "PAGE FUNCTIONS": "page-functions",
     "PAGE": "page",
     "@PAGEFORMAT": "pageformat-command",
+    "PALETTE ENTRIES": "palette",
     "PARENTS": "parent",
+    "PARENTS()": "parents-function",
+    "PARSESTR()": "parsestr-function",
     "@PEMIT": "pemit-command",
     "PENNMUSH COMPATIBILITY": "pennmush-compatibility",
     "@PERMISSION": "permission-command",
+    "PFIND()": "pfind-function",
     "PFUN()": "pfun-function",
+    "@PIPE": "pipe-command",
     "PIPING": "piping",
+    "PLAYER EVENTS": "player-events",
+    "PLAYMEM()": "playmem-function",
+    "@PLUGIN": "plugin-command",
+    "PLUGIN HELP": "plugin-help",
     "@POWER": "power-command",
+    "PRINTF()": "printf-function",
+    "PRIVATIZE()": "privatize-function",
+    "@PROFILE": "profile-command",
     "@PS": "ps-command",
     "PUEBLO": "pueblo",
     "PUPPETS": "puppets",
+    "@PUSH": "push-command",
     "QUEUE BUDGETS": "queue-budgets",
     "QUEUE": "queue",
     "@QUEUE": "queuecontrol",
     "@QUOTA": "quota-command",
     "@REALITY": "reality",
+    "@RECOVER": "recover-command",
     "REGULAR EXPRESSION CLASSES": "regexp-classes",
     "REGULAR EXPRESSION SYNTAX": "regexp-syntax",
     "REGULAR EXPRESSIONS": "regexp",
     "REGISTERS": "registers",
+    "REGLATTRI()": "reglattri-function",
     "REGLMATCH()": "reglmatch-function",
     "REGMATCH()": "regmatch-function",
     "RENDERMARKDOWNCUSTOM()": "render-markdown-custom",
@@ -343,17 +691,40 @@
     "RESTRICT": "restrict",
     "RESTRICTEDEXPR()": "restrictedexpr",
     "@RETRY": "retry-command",
+    "RHOSTMUSH ARGUMENTS": "rhostmush-arguments",
     "@ROLE": "role-command",
     "ROLES": "roles",
+    "@ROLL": "roll-command",
+    "ROLL DATA": "roll-data",
+    "ROLL DICE": "roll-dice",
+    "ROLL()": "roll-function",
+    "ROLL MODIFIERS": "roll-modifiers",
+    "ROLL OPTIONS": "roll-options",
+    "ROLL POOLS": "roll-pools",
+    "ROLL RECORDS": "roll-records",
+    "@ROLLBACK": "rollback-command",
+    "ROLLINFO()": "rollinfo-function",
+    "RULE()": "rule-function",
+    "RXDESC()": "rxdesc-function",
+    "@RXLEVEL": "rxlevel-command",
+    "RXLEVEL()": "rxlevel-function",
+    "@SCENE": "scene-command",
+    "SCENE FUNCTIONS": "scene-functions",
+    "SCENE SYSTEM": "scene-system",
+    "SCENE TYPE AND DETAIL FUNCTIONS": "scene-type-functions",
+    "SCENE WRITE FUNCTIONS": "scene-write-functions",
+    "SCHEMARENDER()": "schema-functions",
+    "SCREEN READER SUPPORT": "screenreader-support",
+    "SCREEN READERS": "screenreader",
     "@SEARCH": "search-command",
+    "@SECRET": "secret-command",
+    "SECUREX()": "securex-function",
     "SECURITY": "security",
     "SEMAPHORES": "semaphores",
+    "@SET": "set-command",
     "SETQ()": "setq-function",
-    "IMAGE": "sharpattr",
-    "IMAGE ATTRIBUTES": "sharpattr",
-    "IMAGE\\`BANNER": "sharpattr",
-    "IMAGE\\`ALT": "sharpattr",
-    "IMAGE\\`FOCAL": "sharpattr",
+    "SETQM()": "setqm-function",
+    "SHA1()": "sha1-function",
     "CHAT": "sharpchat",
     "CHAT SYSTEM": "sharpchat",
     "COMSYS": "sharpchat",
@@ -364,35 +735,30 @@
     "@NSCEMIT": "sharpchat",
     "CEMIT()": "sharpchat",
     "NSCEMIT()": "sharpchat",
+    "CHANNEL PICTURES": "sharpchat",
     "@CHANNEL": "sharpchat",
     "@CHANNEL OTHER": "sharpchat",
     "@CHANNEL/RECALL": "sharpchat",
     "@CHANNEL/TITLE": "sharpchat",
     "@CHANNEL/BUFFER": "sharpchat",
-    "@CHANNEL ADMIN": "sharpchat",
-    "@CHANNEL/ADD": "sharpchat",
-    "@CHANNEL/DELETE": "sharpchat",
-    "@CHANNEL/MOGRIFIER": "sharpchat",
-    "@CHANNEL/CHOWN": "sharpchat",
-    "@CHANNEL/NAME": "sharpchat",
-    "@CHANNEL/RENAME": "sharpchat",
-    "@CHANNEL/DESCRIBE": "sharpchat",
-    "@CHANNEL/PRIVS": "sharpchat",
-    "@CHANNEL/WIPE": "sharpchat",
-    "@CHANNEL/DECOMPILE": "sharpchat",
     "@CHANNEL LIST": "sharpchat",
-    "@CHANNEL PRIVS": "sharpchat",
-    "CHANNEL-PRIVS": "sharpchat",
-    "@CHANNEL CLOCK": "sharpchat",
-    "@CHANNEL/CLOCK": "sharpchat",
-    "@CLOCK": "sharpchat",
     "MUX COMSYS": "sharpchat",
     "MUXCOMSYS": "sharpchat",
     "ADDCOM": "sharpchat",
     "DELCOM": "sharpchat",
     "COMLIST": "sharpchat",
     "COMTITLE": "sharpchat",
-    "COMMANDS": "sharpcmd",
+    "ALLCOM": "sharpchat",
+    "CLEARCOM": "sharpchat",
+    "MUX CHANNEL ADMIN": "sharpchat",
+    "@CCREATE": "sharpchat",
+    "@CDESTROY": "sharpchat",
+    "@CBOOT": "sharpchat",
+    "@CWHO": "sharpchat",
+    "@CCHOWN": "sharpchat",
+    "@COFLAGS": "sharpchat",
+    "@CPFLAGS": "sharpchat",
+    "@CSET": "sharpchat",
     "@-ATTRIBUTES": "sharpcmd",
     "@-BUILDING": "sharpcmd",
     "@-GENERAL": "sharpcmd",
@@ -460,28 +826,18 @@
     "@USE": "sharpcmd",
     "@OUSE": "sharpcmd",
     "@AWAY": "sharpcmd",
-    "@BACKUP": "sharpcmd",
     "@BOOT": "sharpcmd",
     "@CHOWN": "sharpcmd",
     "@CHOWNALL": "sharpcmd",
     "@CHZONEALL": "sharpcmd",
-    "@CLONE": "sharpcmd",
     "@COMMENT": "sharpcmd",
-    "@CONFIG": "sharpcmd",
     "@CONFORMAT": "sharpcmd",
-    "@INPUT": "sharpcmd",
-    "@INPUT/START": "sharpcmd",
-    "@INPUT/PROMPT": "sharpcmd",
-    "@INPUT/CANCEL": "sharpcmd",
-    "@INPUT/RESCUE": "sharpcmd",
     "@INVFORMAT": "sharpcmd",
     "@DESCFORMAT": "sharpcmd",
     "@IDESCFORMAT": "sharpcmd",
     "@NAMEACCENT": "sharpcmd",
     "@NAMEFORMAT": "sharpcmd",
     "@COST": "sharpcmd",
-    "@CPATTR": "sharpcmd",
-    "@MVATTR": "sharpcmd",
     "@CREATE": "sharpcmd",
     "@DBCK": "sharpcmd",
     "@DESCRIBE": "sharpcmd",
@@ -496,6 +852,7 @@
     "@ELOCK": "sharpcmd",
     "@EUNLOCK": "sharpcmd",
     "@EMIT": "sharpcmd",
+    "EMIT": "sharpcmd",
     "@ENABLE": "sharpcmd",
     "@DISABLE": "sharpcmd",
     "@ZENTER": "sharpcmd",
@@ -506,7 +863,6 @@
     "@AZLEAVE": "sharpcmd",
     "@ENTRANCES": "sharpcmd",
     "@EXITFORMAT": "sharpcmd",
-    "@HTTP": "sharpcmd",
     "@FIRSTEXIT": "sharpcmd",
     "@FIND": "sharpcmd",
     "@FORWARDLIST": "sharpcmd",
@@ -515,8 +871,6 @@
     "DEBUGFORWARDLIST": "sharpcmd",
     "FLAG PERMISSIONS": "sharpcmd",
     "@GREP": "sharpcmd",
-    "@HALT": "sharpcmd",
-    "@ALLHALT": "sharpcmd",
     "@HAVEN": "sharpcmd",
     "@HIDE": "sharpcmd",
     "@IDESCRIBE": "sharpcmd",
@@ -528,22 +882,14 @@
     "@INPREFIX": "sharpcmd",
     "@KICK": "sharpcmd",
     "@LEMIT": "sharpcmd",
-    "@LIST": "sharpcmd",
     "@LINK": "sharpcmd",
     "@DESTINATION": "sharpcmd",
     "@EXITTO": "sharpcmd",
     "VARIABLE EXITS": "sharpcmd",
-    "LOCKING": "sharpcmd",
-    "LOCKS": "sharpcmd",
-    "@LOCK": "sharpcmd",
     "@LSET": "sharpcmd",
     "@LOG": "sharpcmd",
     "@LOGWIPE": "sharpcmd",
     "@MONIKER": "sharpcmd",
-    "@MOTD": "sharpcmd",
-    "@LISTMOTD": "sharpcmd",
-    "@WIZMOTD": "sharpcmd",
-    "@REJECTMOTD": "sharpcmd",
     "@NAME": "sharpcmd",
     "@ONAME": "sharpcmd",
     "@ANAME": "sharpcmd",
@@ -576,32 +922,25 @@
     "@REMIT": "sharpcmd",
     "@RESTART": "sharpcmd",
     "@SCAN": "sharpcmd",
-    "@SET": "sharpcmd",
     "ATTRIB_SET": "sharpcmd",
     "@_": "sharpcmd",
+    "@GENDER": "sharpcmd",
     "@SEX": "sharpcmd",
     "@SHUTDOWN": "sharpcmd",
     "@SLAVE": "sharpcmd",
-    "@SOCKSET": "sharpcmd",
-    "SOCKSET": "sharpcmd",
     "COLORSTYLE": "sharpcmd",
     "HYPERLINKS": "sharpcmd",
     "COMMANDLINKS": "sharpcmd",
-    "GRAPHICS": "sharpcmd",
     "ANIMATION": "sharpcmd",
     "TERMINAL": "sharpcmd",
     "@SPEECHMOD": "sharpcmd",
-    "@MAPSQL": "sharpcmd",
-    "@SQL": "sharpcmd",
     "@STARTUP": "sharpcmd",
     "@STATS": "sharpcmd",
-    "@STORAGE": "sharpcmd",
     "@SWEEP": "sharpcmd",
     "@ULOCK": "sharpcmd",
     "@UUNLOCK": "sharpcmd",
     "@UNLINK": "sharpcmd",
     "@UNLOCK": "sharpcmd",
-    "@ACCOUNT": "sharpcmd",
     "@LOCALE": "sharpcmd",
     "@MAP": "sharpcmd",
     "@VERSION": "sharpcmd",
@@ -640,8 +979,6 @@
     "GO": "sharpcmd",
     "GOTO": "sharpcmd",
     "MOVE": "sharpcmd",
-    "MOVEMENT": "sharpcmd",
-    "MOVE-ATTRIBUTES": "sharpcmd",
     "INFO": "sharpcmd",
     "INVENTORY": "sharpcmd",
     "LEAVE": "sharpcmd",
@@ -653,25 +990,22 @@
     "CONNECT": "sharpcmd",
     "REGISTER": "sharpcmd",
     "LOGIN": "sharpcmd",
-    "MAKE": "sharpcmd",
+    "CREATE": "sharpcmd",
     "PLAY": "sharpcmd",
     "CLAIM": "sharpcmd",
     "VERSION": "sharpcmd",
     "QUIT": "sharpcmd",
     "UNFOLLOW": "sharpcmd",
     "USE": "sharpcmd",
+    "WALK": "sharpcmd",
     "WARN_ON_MISSING": "sharpcmd",
     "UNIMPLEMENTED_COMMAND": "sharpcmd",
     "WHISPER": "sharpcmd",
     "SESSION": "sharpcmd",
     "WITH": "sharpcmd",
-    "SOCKET COMMANDS": "sharpcmd",
     "MSSP-REQUEST": "sharpcmd",
     "@SUGGEST": "sharpcmd",
     "@PS/HISTORY": "sharpcmd",
-    "@PROFILE": "sharpcmd",
-    "@PROFILE/START": "sharpcmd",
-    "@PROFILE/STOP": "sharpcmd",
     "CONTACT": "sharpcode",
     "CODE": "sharpcode",
     "DOWNLOAD": "sharpcode",
@@ -681,10 +1015,6 @@
     "I18N": "sharpcode",
     "LOCALE": "sharpcode",
     "TRANSLATION": "sharpcode",
-    "COPYRIGHT": "sharpcode",
-    "COPYRITE": "sharpcode",
-    "LICENSE": "sharpcode",
-    "@CONFIG PARAMETERS": "sharpconf",
     "@CONFIG ATTRIBS": "sharpconf",
     "@CONFIG CHAT": "sharpconf",
     "@CONFIG CMDS": "sharpconf",
@@ -694,15 +1024,10 @@
     "@CONFIG FLAGS": "sharpconf",
     "@CONFIG FUNCS": "sharpconf",
     "@CONFIG LOG": "sharpconf",
-    "@CONFIG NET": "sharpconf",
-    "@CONFIG TINY": "sharpconf",
-    "EVENTS": "sharpevents",
-    "EVENT": "sharpevents",
-    "EVENT LIST": "sharpevents",
-    "DATABASE EVENTS": "sharpevents",
-    "EVENT DB": "sharpevents",
     "DUMP EVENTS": "sharpevents",
     "EVENT DUMP": "sharpevents",
+    "DATABASE EVENTS": "sharpevents",
+    "EVENT DB": "sharpevents",
     "LOG EVENTS": "sharpevents",
     "EVENT LOG": "sharpevents",
     "OBJECT EVENTS": "sharpevents",
@@ -711,10 +1036,6 @@
     "EVENT SQL": "sharpevents",
     "SIGNAL EVENTS": "sharpevents",
     "EVENT SIGNAL": "sharpevents",
-    "PLAYER EVENTS": "sharpevents",
-    "EVENT PLAYER": "sharpevents",
-    "SOCKET EVENTS": "sharpevents",
-    "EVENT SOCKET": "sharpevents",
     "HTTP EVENTS": "sharpevents",
     "EVENT HTTP": "sharpevents",
     "ROOM EVENTS": "sharpevents",
@@ -723,8 +1044,14 @@
     "EVENT CHANNEL": "sharpevents",
     "PAGE EVENTS": "sharpevents",
     "EVENT PAGE": "sharpevents",
-    "FLAG LIST": "sharpflag",
-    "FLAGS LIST": "sharpflag",
+    "MAIL EVENTS": "sharpevents",
+    "EVENT MAIL": "sharpevents",
+    "SCENE EVENTS": "sharpevents",
+    "EVENT SCENE": "sharpevents",
+    "BACKUP EVENTS": "sharpevents",
+    "EVENT BACKUP": "sharpevents",
+    "GALLERY EVENTS": "sharpevents",
+    "EVENT GALLERY": "sharpevents",
     "ABODE": "sharpflag",
     "ANSI": "sharpflag",
     "AUDIBLE": "sharpflag",
@@ -742,32 +1069,56 @@
     "FLOATING": "sharpflag",
     "GAGGED": "sharpflag",
     "GOING": "sharpflag",
+    "GOING_TWICE": "sharpflag",
+    "HALT": "sharpflag",
     "HALTED": "sharpflag",
     "HAVEN": "sharpflag",
-    "INHERIT": "sharpflag",
+    "HEAR_CONNECT": "sharpflag",
+    "HEAVY": "sharpflag",
     "JUMP_OK": "sharpflag",
+    "JUDGE": "sharpflag",
+    "JURY_OK": "sharpflag",
     "KEEPALIVE": "sharpflag",
     "LIGHT": "sharpflag",
     "LINK_OK": "sharpflag",
+    "LISTEN_PARENT": "sharpflag",
+    "LOUD": "sharpflag",
+    "OPEN_OK": "sharpflag",
     "MONITOR": "sharpflag",
+    "MISTRUST": "sharpflag",
+    "MONIKER": "sharpflag",
     "MYOPIC": "sharpflag",
+    "NOACCENTS": "sharpflag",
+    "NO_LEAVE": "sharpflag",
+    "NO_LOG": "sharpflag",
+    "NO_TEL": "sharpflag",
+    "NO_WARN": "sharpflag",
     "NO_COMMAND": "sharpflag",
     "NOSPOOF": "sharpflag",
     "OPAQUE": "sharpflag",
+    "ON-VACATION": "sharpflag",
     "ORPHAN": "sharpflag",
+    "PARANOID": "sharpflag",
     "PUPPET": "sharpflag",
     "QUIET": "sharpflag",
+    "ROYALTY": "sharpflag",
     "SAFE": "sharpflag",
     "SHARED": "sharpflag",
+    "SHOW_SEPARATORS": "sharpflag",
+    "SIDEFX": "sharpflag",
     "STICKY": "sharpflag",
+    "SUSPECT": "sharpflag",
+    "TERSE": "sharpflag",
     "TRANSPARENT": "sharpflag",
+    "TRUST": "sharpflag",
+    "INHERIT": "sharpflag",
     "UNFINDABLE": "sharpflag",
     "UNINSPECTED": "sharpflag",
+    "UNREGISTERED": "sharpflag",
     "VERBOSE": "sharpflag",
     "VISUAL": "sharpflag",
     "WIZARD": "sharpflag",
-    "FUNCTION LIST": "sharpfunc",
-    "FUNCTION TYPES": "sharpfunc",
+    "Z_TEL": "sharpflag",
     "ATTRIBUTE FUNCTIONS": "sharpfunc",
     "BITWISE FUNCTIONS": "sharpfunc",
     "BOOLEAN FUNCTIONS": "sharpfunc",
@@ -787,6 +1138,8 @@
     "@@()": "sharpfunc",
     "NULL()": "sharpfunc",
     "ABS()": "sharpfunc",
+    "ACCOUNT()": "sharpfunc",
+    "ACCOUNTCHARS()": "sharpfunc",
     "ACCNAME()": "sharpfunc",
     "ACOS()": "sharpfunc",
     "ADD()": "sharpfunc",
@@ -814,6 +1167,8 @@
     "BEEP()": "sharpfunc",
     "BEFORE()": "sharpfunc",
     "BENCHMARK()": "sharpfunc",
+    "BETWEEN()": "sharpfunc",
+    "BITTYPE()": "sharpfunc",
     "BRACKETS()": "sharpfunc",
     "BNAND()": "sharpfunc",
     "BNOT()": "sharpfunc",
@@ -823,11 +1178,11 @@
     "CAPSTR()": "sharpfunc",
     "CAT()": "sharpfunc",
     "STRCAT()": "sharpfunc",
-    "CENTER()": "sharpfunc",
-    "CHAIN()": "sharpfunc",
     "CHECKPASS()": "sharpfunc",
+    "CHOOSE()": "sharpfunc",
     "CHR()": "sharpfunc",
     "ORD()": "sharpfunc",
+    "CLIENTZONE()": "sharpfunc",
     "CLONE()": "sharpfunc",
     "CMDS()": "sharpfunc",
     "SENT()": "sharpfunc",
@@ -843,9 +1198,9 @@
     "CONTROLS()": "sharpfunc",
     "CONVSECS()": "sharpfunc",
     "CONVUTCSECS()": "sharpfunc",
-    "CONVTIME()": "sharpfunc",
-    "CONVUTCTIME()": "sharpfunc",
     "COS()": "sharpfunc",
+    "CPAD()": "sharpfunc",
+    "CRC32()": "sharpfunc",
     "PCREATE()": "sharpfunc",
     "CREATE()": "sharpfunc",
     "CTIME()": "sharpfunc",
@@ -856,6 +1211,7 @@
     "DECOMPOSEWEB()": "sharpfunc",
     "DECOMPOSE()": "sharpfunc",
     "DEFAULT()": "sharpfunc",
+    "DESTROY()": "sharpfunc",
     "STRDELETE()": "sharpfunc",
     "DELETE()": "sharpfunc",
     "DIE()": "sharpfunc",
@@ -867,6 +1223,7 @@
     "HASH": "sharpfunc",
     "DIST2D()": "sharpfunc",
     "DIST3D()": "sharpfunc",
+    "DISTRIBUTE()": "sharpfunc",
     "DIV()": "sharpfunc",
     "FLOORDIV()": "sharpfunc",
     "FDIV()": "sharpfunc",
@@ -888,6 +1245,7 @@
     "DECRYPT()": "sharpfunc",
     "ENTRANCES()": "sharpfunc",
     "EQ()": "sharpfunc",
+    "ERROR()": "sharpfunc",
     "ESCAPE()": "sharpfunc",
     "EVAL()": "sharpfunc",
     "GET_EVAL()": "sharpfunc",
@@ -912,6 +1270,7 @@
     "GET()": "sharpfunc",
     "XGET()": "sharpfunc",
     "GETPIDS()": "sharpfunc",
+    "SYNTAXDIAGNOSTICS()": "sharpfunc",
     "GRAB()": "sharpfunc",
     "REGRAB()": "sharpfunc",
     "REGRABI()": "sharpfunc",
@@ -950,8 +1309,6 @@
     "LINSERT()": "sharpfunc",
     "ISDAYLIGHT()": "sharpfunc",
     "ISAPPROVED()": "sharpfunc",
-    "ISDBREF()": "sharpfunc",
-    "ISOBJID()": "sharpfunc",
     "ISINT()": "sharpfunc",
     "ISNUM()": "sharpfunc",
     "ISREGEXP()": "sharpfunc",
@@ -963,10 +1320,8 @@
     "IPADDR()": "sharpfunc",
     "JITER()": "sharpfunc",
     "LAST()": "sharpfunc",
-    "LATTR()": "sharpfunc",
-    "LATTRP()": "sharpfunc",
-    "REGLATTR()": "sharpfunc",
-    "REGLATTRP()": "sharpfunc",
+    "LATTRCMDS()": "sharpfunc",
+    "LCMDS()": "sharpfunc",
     "NATTR()": "sharpfunc",
     "NATTRP()": "sharpfunc",
     "ATTRCNT()": "sharpfunc",
@@ -977,6 +1332,7 @@
     "LCSTR()": "sharpfunc",
     "LCSTR2()": "sharpfunc",
     "LDELETE()": "sharpfunc",
+    "LEDIT()": "sharpfunc",
     "LEFT()": "sharpfunc",
     "NSLEMIT()": "sharpfunc",
     "LEMIT()": "sharpfunc",
@@ -984,7 +1340,6 @@
     "LEXITS()": "sharpfunc",
     "LJUST()": "sharpfunc",
     "LINK()": "sharpfunc",
-    "LIST()": "sharpfunc",
     "LIT()": "sharpfunc",
     "LMATH()": "sharpfunc",
     "LN()": "sharpfunc",
@@ -994,18 +1349,19 @@
     "LOCK()": "sharpfunc",
     "LLOCKS()": "sharpfunc",
     "LOCKS()": "sharpfunc",
-    "LOCKFILTER()": "sharpfunc",
     "LOCKFLAGS()": "sharpfunc",
     "LLOCKFLAGS()": "sharpfunc",
     "LOCKOWNER()": "sharpfunc",
     "LISTSET()": "sharpfunc",
     "LSET()": "sharpfunc",
     "LOG()": "sharpfunc",
+    "LPAD()": "sharpfunc",
     "LPARENT()": "sharpfunc",
     "LPLAYERS()": "sharpfunc",
     "LTHINGS()": "sharpfunc",
     "LOBJECTS()": "sharpfunc",
     "LPOS()": "sharpfunc",
+    "LRAND()": "sharpfunc",
     "LSTATS()": "sharpfunc",
     "STATS()": "sharpfunc",
     "LT()": "sharpfunc",
@@ -1017,7 +1373,6 @@
     "LVOBJECTS()": "sharpfunc",
     "LWHO()": "sharpfunc",
     "LWHOID()": "sharpfunc",
-    "MAP()": "sharpfunc",
     "MAX()": "sharpfunc",
     "AVG()": "sharpfunc",
     "MEAN()": "sharpfunc",
@@ -1044,6 +1399,7 @@
     "NAME()": "sharpfunc",
     "MONIKER()": "sharpfunc",
     "CNAME()": "sharpfunc",
+    "MOON()": "sharpfunc",
     "NAMELIST()": "sharpfunc",
     "NAMEGRAB()": "sharpfunc",
     "NAMEGRABALL()": "sharpfunc",
@@ -1073,6 +1429,7 @@
     "OBJ()": "sharpfunc",
     "%O": "sharpfunc",
     "OBJEVAL()": "sharpfunc",
+    "OBJEVALS()": "sharpfunc",
     "OBJID()": "sharpfunc",
     "OBJMEM()": "sharpfunc",
     "OEMIT()": "sharpfunc",
@@ -1084,13 +1441,14 @@
     "ORLFLAGS()": "sharpfunc",
     "ORLPOWERS()": "sharpfunc",
     "OWNER()": "sharpfunc",
+    "PACK()": "sharpfunc",
     "PARENT()": "sharpfunc",
     "PEMIT()": "sharpfunc",
     "NSPEMIT()": "sharpfunc",
     "PROMPT()": "sharpfunc",
     "NSPROMPT()": "sharpfunc",
     "PERMISSION()": "sharpfunc",
-    "PI()": "sharpfunc",
+    "PI()": "textfile-function",
     "PIDINFO()": "sharpfunc",
     "PLAYERMEM()": "sharpfunc",
     "PLAYER()": "sharpfunc",
@@ -1128,6 +1486,7 @@
     "REPEAT()": "sharpfunc",
     "LREPLACE()": "sharpfunc",
     "REPLACE()": "sharpfunc",
+    "LROOMS()": "sharpfunc",
     "REST()": "sharpfunc",
     "REVWORDS()": "sharpfunc",
     "RIGHT()": "sharpfunc",
@@ -1135,11 +1494,13 @@
     "RLOC()": "sharpfunc",
     "RNUM()": "sharpfunc",
     "ROLES()": "sharpfunc",
+    "ROMAN()": "sharpfunc",
     "ROOM()": "sharpfunc",
     "ROOT()": "sharpfunc",
     "ROUND()": "sharpfunc",
     "CEIL()": "sharpfunc",
     "FLOOR()": "sharpfunc",
+    "RPAD()": "sharpfunc",
     "S()": "sharpfunc",
     "S-FUNCTION": "sharpfunc",
     "SCAN()": "sharpfunc",
@@ -1163,15 +1524,12 @@
     "SORT()": "sharpfunc",
     "SORTBY()": "sharpfunc",
     "SORTKEY()": "sharpfunc",
-    "SORTING": "sharpfunc",
     "SOUNDLIKE()": "sharpfunc",
     "SOUNDSLIKE()": "sharpfunc",
     "SPACE()": "sharpfunc",
     "SPELLNUM()": "sharpfunc",
     "ORDINAL()": "sharpfunc",
     "SPLICE()": "sharpfunc",
-    "MAPSQL()": "sharpfunc",
-    "SQL()": "sharpfunc",
     "SQL EXAMPLES": "sharpfunc",
     "SQLESCAPE()": "sharpfunc",
     "SQRT()": "sharpfunc",
@@ -1181,19 +1539,20 @@
     "RESTARTS()": "sharpfunc",
     "SSL()": "sharpfunc",
     "STEP()": "sharpfunc",
+    "STEPARGS()": "sharpfunc",
     "STDDEV()": "sharpfunc",
     "STRFIRSTOF()": "sharpfunc",
     "STRALLOF()": "sharpfunc",
     "STRINSERT()": "sharpfunc",
+    "STRIP()": "sharpfunc",
     "STRIPACCENTS()": "sharpfunc",
     "STRIPANSI()": "sharpfunc",
-    "STRDISTANCE()": "sharpfunc",
-    "PRINTF()": "sharpfunc",
     "DISPLAYWIDTH()": "sharpfunc",
     "GRAPHEMECOUNT()": "sharpfunc",
     "GRAPHEMES()": "sharpfunc",
     "STRLEN()": "sharpfunc",
     "STRMATCH()": "sharpfunc",
+    "STRMEM()": "sharpfunc",
     "STRREPLACE()": "sharpfunc",
     "SUB()": "sharpfunc",
     "SUBJ()": "sharpfunc",
@@ -1211,27 +1570,16 @@
     "TABLE()": "sharpfunc",
     "TAN()": "sharpfunc",
     "TEL()": "sharpfunc",
-    "TERMINFO()": "sharpfunc",
     "JSON FUNCTIONS": "sharpfunc",
-    "WEBSOCKET_HTML()": "sharpfunc",
-    "WEBSOCKET_JSON()": "sharpfunc",
-    "OOB()": "sharpfunc",
-    "GMCP": "sharpfunc",
     "ISJSON()": "sharpfunc",
     "JSON_GROUP_BY()": "sharpfunc",
     "JSON PATHS": "sharpfunc",
     "TESTLOCK()": "sharpfunc",
-    "TEXTFILE()": "sharpfunc",
-    "TEXTENTRIES()": "sharpfunc",
-    "TEXTSEARCH()": "sharpfunc",
-    "DYNHELP()": "sharpfunc",
     "ETIME()": "sharpfunc",
     "TIMESTRING()": "sharpfunc",
     "STRINGSECS()": "sharpfunc",
     "TR()": "sharpfunc",
-    "TRIM()": "sharpfunc",
-    "TRIMPENN()": "sharpfunc",
-    "TRIMTINY()": "sharpfunc",
+    "TRIGGER()": "sharpfunc",
     "TRUNC()": "sharpfunc",
     "VAL()": "sharpfunc",
     "TYPE()": "sharpfunc",
@@ -1240,12 +1588,15 @@
     "UDEFAULT()": "sharpfunc",
     "ULDEFAULT()": "sharpfunc",
     "UNIQUE()": "sharpfunc",
+    "UNPACK()": "sharpfunc",
+    "UNMARK()": "sharpfunc",
     "V()": "sharpfunc",
     "V-FUNCTION": "sharpfunc",
     "VADD()": "sharpfunc",
     "VCROSS()": "sharpfunc",
     "VDIM()": "sharpfunc",
     "VDOT()": "sharpfunc",
+    "VERB()": "sharpfunc",
     "VMIN()": "sharpfunc",
     "VMAX()": "sharpfunc",
     "VERSION()": "sharpfunc",
@@ -1263,7 +1614,6 @@
     "WIPE()": "sharpfunc",
     "WORDPOS()": "sharpfunc",
     "WORDS()": "sharpfunc",
-    "WRAP()": "sharpfunc",
     "XATTR()": "sharpfunc",
     "XATTRP()": "sharpfunc",
     "REGXATTR()": "sharpfunc",
@@ -1297,21 +1647,12 @@
     "URLENCODE()": "sharpfunc",
     "URLDECODE()": "sharpfunc",
     "HMAC()": "sharpfunc",
-    "FORMDECODE()": "sharphttp",
-    "FORMQ()": "sharphttp",
     "@LOCK-SIMPLE": "sharplock",
     "@LOCK-OBJID": "sharplock",
     "@LOCK-OWNER": "sharplock",
     "@LOCK-CARRY": "sharplock",
     "@LOCK-ATTRIBUTE": "sharplock",
     "@LOCK-NAME": "sharplock",
-    "@LOCK-BIT": "sharplock",
-    "@LOCK-FLAG": "sharplock",
-    "@LOCK-TYPE": "sharplock",
-    "@LOCK-POWER": "sharplock",
-    "@LOCK-ROLE": "sharplock",
-    "@LOCK-PERM": "sharplock",
-    "@LOCK-CHANNEL": "sharplock",
     "@LOCK-DBREFLIST": "sharplock",
     "@LOCK-LIST": "sharplock",
     "@LOCK-INDIRECT": "sharplock",
@@ -1343,12 +1684,6 @@
     "@LOCK/CONTROL": "sharplock",
     "@LOCK/DESTROY": "sharplock",
     "@LOCK/EXAMINE": "sharplock",
-    "@LOCK/ZONE": "sharplock",
-    "@LOCK/CHZONE": "sharplock",
-    "@LOCK/CHOWN": "sharplock",
-    "@LOCK/PARENT": "sharplock",
-    "@LOCK/LINK": "sharplock",
-    "@LOCK/OPEN": "sharplock",
     "@LOCK/USER": "sharplock",
     "@LOCK/USER:<NAME>": "sharplock",
     "MAIL": "sharpmail",
@@ -1362,15 +1697,6 @@
     "MAIL-SENDING": "sharpmail",
     "@MAIL/SEND": "sharpmail",
     "@MAIL/FWD": "sharpmail",
-    "OTHER MAIL COMMANDS": "sharpmail",
-    "MAIL-OTHER": "sharpmail",
-    "@MAIL/CLEAR": "sharpmail",
-    "@MAIL/UNCLEAR": "sharpmail",
-    "@MAIL/PURGE": "sharpmail",
-    "@MAIL/TAG": "sharpmail",
-    "@MAIL/UNTAG": "sharpmail",
-    "@MAIL/UNREAD": "sharpmail",
-    "@MAIL/STATUS": "sharpmail",
     "MAIL FOLDERS": "sharpmail",
     "MAIL-FOLDERS": "sharpmail",
     "@MAIL/FOLDER": "sharpmail",
@@ -1407,7 +1733,6 @@
     "HTML()": "sharppueb",
     "TAG()": "sharppueb",
     "ENDTAG()": "sharppueb",
-    "TAGWRAP()": "sharppueb",
     "CMDLINK()": "sharppueb",
     "MEDIA FUNCTIONS": "sharppueb",
     "SOUND()": "sharppueb",
@@ -1419,9 +1744,8 @@
     "CLEARSCREEN()": "sharppueb",
     "PREFETCH()": "sharppueb",
     "EXPIRELINKS()": "sharppueb",
-    "WEBSOCKETS": "sharppueb",
-    "WSHTML()": "sharppueb",
     "HELP": "sharptop",
+    "&HELP": "sharptop",
     "+HELP": "sharptop",
     "GETTING STARTED": "sharptop",
     "GS": "sharptop",
@@ -1429,7 +1753,6 @@
     "ANCESTORS": "sharptop",
     "ATTRIBUTE OWNERSHIP": "sharptop",
     "ATTRIB-OWNERSHIP": "sharptop",
-    "CLIENTS": "sharptop",
     "CONTROL": "sharptop",
     "COSTS": "sharptop",
     "CREDITS": "sharptop",
@@ -1484,45 +1807,95 @@
     "EXITS": "sharptop",
     "GARBAGE": "sharptop",
     "WARNINGS": "sharptop",
-    "WILDCARDS": "sharptop",
     "ZONE MASTER ROOMS": "sharptop",
     "ZMRS": "sharptop",
     "MATCHING": "sharptop",
-    "&HELP": "sharptop",
     "DESCRIPTOR": "sharptop",
     "PORT": "sharptop",
     "UNICODE": "sharptop",
-    "WIKI()": "sharpwiki",
     "WIKICATEGORY()": "sharpwiki",
     "WIKILIST()": "sharpwiki",
     "WIKISEARCH()": "sharpwiki",
     "WIKIRECENT()": "sharpwiki",
+    "WIKIFACT()": "sharpwiki",
+    "WIKIQUERY()": "sharpwiki",
     "WIKIACCESS()": "sharpwiki",
+    "@SITE": "site-command",
     "@SITELOCK": "sitelock-command",
+    "SIZE()": "size-function",
     "OBJECT SNAPSHOTS": "snapshots",
+    "SOCKET COMMANDS": "socket-commands",
+    "SOCKET EVENTS": "socket-events",
+    "@SOCKSET": "sockset-command",
+    "SORTING": "sorting",
     "SOUNDEX()": "soundex-function",
     "SPEAK()": "speak",
+    "@SQL": "sql-command",
+    "SQL()": "sql-function",
+    "STANDIN()": "standin-function",
+    "STOPEVENT()": "stopevent-function",
+    "@STORAGE": "storage-command",
+    "STR()": "str-function",
+    "STRDISTANCE()": "strdistance-function",
+    "STRFUNC()": "strfunc-function",
+    "STRLENRAW()": "strlenraw-function",
+    "SUBEVAL()": "subeval-function",
     "SUBSTITUTIONS": "substitutions",
+    "SWATCH()": "swatch-function",
     "@SWITCH": "switch-command",
     "SWITCH()": "switch-function",
+    "@TAG": "tag-command",
+    "TAGREF()": "tagref-function",
+    "TAGWRAP()": "tagwrap-function",
     "@TELEPORT": "teleport-command",
+    "TERMINFO()": "terminfo-function",
+    "TEXTFILE()": "textfile-function",
+    "@THEME": "theme-command",
     "TIME()": "time-function",
     "TIMECALC()": "timecalc-function",
     "TIMEFMT()": "timefmt-function",
     "TIMEZONES": "timezones",
+    "TINYMUX FORMS": "tinymux-forms",
+    "TOBIN()": "tobin-function",
+    "TONE()": "tone-function",
     "TOPICS": "topics",
+    "TOTCMDS()": "totcmds-function",
+    "TOTMEMBER()": "totmember-function",
+    "TOTPOS()": "totpos-function",
+    "TRANSLATE()": "translate-function",
+    "TREE()": "tree-function",
     "@TRIGGER": "trigger-command",
+    "TRIM()": "trim-function",
     "U()": "u-function",
+    "U2DEFAULT()": "u2default-function",
+    "U2LOCAL()": "u2local-function",
+    "UARGS()": "uargs-function",
+    "UEVAL() AND STREVAL()": "ueval-function",
     "ULOCAL()": "ulocal-function",
     "@UPTIME": "uptime-command",
+    "URL_UNESCAPE()": "url-unescape-function",
     "VALID()": "valid-function",
+    "VATTRCNT()": "vattrcnt-function",
     "@VERB": "verb-command",
     "VERBS": "verbs",
     "@WAIT": "wait-command",
     "@WARNINGS": "warnings-command",
     "WARNINGS LIST": "warnings-list",
+    "WEBSOCKETS": "websockets",
+    "WHILE()": "while-function",
     "WHO": "who",
+    "WIKI ADMINISTRATION": "wiki-administration",
+    "WIKI CATEGORIES": "wiki-categories",
+    "WIKI EDITING": "wiki-editing",
+    "WIKI FACTS": "wiki-facts",
+    "WIKI()": "wiki-function",
     "WIKI": "wiki",
+    "WILDCARDS": "wildcards",
+    "@WORLD": "world-command",
+    "WORLD FUNCTIONS": "world-functions",
+    "WRAP()": "wrap-function",
+    "WRAPCOLUMNS()": "wrapcolumns-function",
+    "WSHTML()": "wshtml-function",
     "ZONE MASTERS": "zone-masters",
     "ZONES": "zones"
   },
@@ -1539,6 +1912,12 @@
         "normalized": "ACCENTS"
       }
     ],
+    "account-command": [
+      {
+        "original": "@account",
+        "normalized": "@ACCOUNT"
+      }
+    ],
     "accounts": [
       {
         "original": "Accounts",
@@ -1551,10 +1930,40 @@
         "normalized": "ACTION LISTS"
       }
     ],
+    "activity-function": [
+      {
+        "original": "activity()",
+        "normalized": "ACTIVITY()"
+      }
+    ],
+    "administration": [
+      {
+        "original": "Administration",
+        "normalized": "ADMINISTRATION"
+      }
+    ],
+    "aindex-function": [
+      {
+        "original": "aindex()",
+        "normalized": "AINDEX()"
+      }
+    ],
     "align": [
       {
         "original": "align()",
         "normalized": "ALIGN()"
+      }
+    ],
+    "andbool-function": [
+      {
+        "original": "andbool()",
+        "normalized": "ANDBOOL()"
+      }
+    ],
+    "andchr-function": [
+      {
+        "original": "andchr()",
+        "normalized": "ANDCHR()"
       }
     ],
     "anonymous-attributes": [
@@ -1567,6 +1976,18 @@
       {
         "original": "ansi()",
         "normalized": "ANSI()"
+      }
+    ],
+    "application-drafts": [
+      {
+        "original": "@appdraft",
+        "normalized": "@APPDRAFT"
+      }
+    ],
+    "ascii-command": [
+      {
+        "original": "@ascii",
+        "normalized": "@ASCII"
       }
     ],
     "attribute-command": [
@@ -1593,10 +2014,46 @@
         "normalized": "ATTRIBUTES"
       }
     ],
+    "attrwatch-function": [
+      {
+        "original": "attrwatch()",
+        "normalized": "ATTRWATCH()"
+      }
+    ],
+    "backup-command": [
+      {
+        "original": "@backup",
+        "normalized": "@BACKUP"
+      }
+    ],
+    "bang-notation": [
+      {
+        "original": "Bang Notation",
+        "normalized": "BANG NOTATION"
+      }
+    ],
+    "bit-locks": [
+      {
+        "original": "Bit Locks",
+        "normalized": "BIT LOCKS"
+      }
+    ],
+    "blacklist-command": [
+      {
+        "original": "@blacklist",
+        "normalized": "@BLACKLIST"
+      }
+    ],
     "boolean-values": [
       {
         "original": "Boolean Values",
         "normalized": "BOOLEAN VALUES"
+      }
+    ],
+    "box-function": [
+      {
+        "original": "box()",
+        "normalized": "BOX()"
       }
     ],
     "break-command": [
@@ -1605,10 +2062,58 @@
         "normalized": "@BREAK"
       }
     ],
+    "bullets-function": [
+      {
+        "original": "bullets()",
+        "normalized": "BULLETS()"
+      }
+    ],
+    "butlast-function": [
+      {
+        "original": "butlast()",
+        "normalized": "BUTLAST()"
+      }
+    ],
+    "cansee-function": [
+      {
+        "original": "cansee()",
+        "normalized": "CANSEE()"
+      }
+    ],
     "capabilities": [
       {
         "original": "Administrative Capabilities",
         "normalized": "ADMINISTRATIVE CAPABILITIES"
+      }
+    ],
+    "caplist-function": [
+      {
+        "original": "caplist()",
+        "normalized": "CAPLIST()"
+      }
+    ],
+    "center-function": [
+      {
+        "original": "center()",
+        "normalized": "CENTER()"
+      }
+    ],
+    "chain-function": [
+      {
+        "original": "chain()",
+        "normalized": "CHAIN()"
+      }
+    ],
+    "channel-admin-command": [
+      {
+        "original": "@channel admin",
+        "normalized": "@CHANNEL ADMIN"
+      }
+    ],
+    "channel-clock-command": [
+      {
+        "original": "@channel clock",
+        "normalized": "@CHANNEL CLOCK"
       }
     ],
     "channel-functions": [
@@ -1623,10 +2128,22 @@
         "normalized": "@CHANNEL JOINING"
       }
     ],
+    "channel-privs-command": [
+      {
+        "original": "@channel privs",
+        "normalized": "@CHANNEL PRIVS"
+      }
+    ],
     "charges-command": [
       {
         "original": "@charges",
         "normalized": "@CHARGES"
+      }
+    ],
+    "charset": [
+      {
+        "original": "charset",
+        "normalized": "CHARSET"
       }
     ],
     "chatformat-command": [
@@ -1641,10 +2158,40 @@
         "normalized": "@CHZONE"
       }
     ],
+    "citer-function": [
+      {
+        "original": "citer()",
+        "normalized": "CITER()"
+      }
+    ],
+    "clients": [
+      {
+        "original": "Clients",
+        "normalized": "CLIENTS"
+      }
+    ],
+    "cloak-function": [
+      {
+        "original": "cloak()",
+        "normalized": "CLOAK()"
+      }
+    ],
+    "clone-command": [
+      {
+        "original": "@clone",
+        "normalized": "@CLONE"
+      }
+    ],
     "colors-function": [
       {
         "original": "colors()",
         "normalized": "COLORS()"
+      }
+    ],
+    "columns-function": [
+      {
+        "original": "columns()",
+        "normalized": "COLUMNS()"
       }
     ],
     "command-output": [
@@ -1657,6 +2204,12 @@
       {
         "original": "@command",
         "normalized": "@COMMAND"
+      }
+    ],
+    "commands-index": [
+      {
+        "original": "Commands",
+        "normalized": "COMMANDS"
       }
     ],
     "commands": [
@@ -1707,12 +2260,6 @@
         "normalized": "COMPATIBILITY MAIL"
       }
     ],
-    "compatibility-matched": [
-      {
-        "original": "Compatibility Matched",
-        "normalized": "COMPATIBILITY MATCHED"
-      }
-    ],
     "compatibility-names": [
       {
         "original": "Compatibility Names",
@@ -1737,10 +2284,34 @@
         "normalized": "COMPATIBILITY UNRESOLVED"
       }
     ],
+    "config-alias-command": [
+      {
+        "original": "@config alias",
+        "normalized": "@CONFIG ALIAS"
+      }
+    ],
+    "config-command": [
+      {
+        "original": "@config",
+        "normalized": "@CONFIG"
+      }
+    ],
     "config-cosmetic-command": [
       {
         "original": "@config cosmetic",
         "normalized": "@CONFIG COSMETIC"
+      }
+    ],
+    "config-debug-command": [
+      {
+        "original": "@config debug",
+        "normalized": "@CONFIG DEBUG"
+      }
+    ],
+    "config-file-command": [
+      {
+        "original": "@config file",
+        "normalized": "@CONFIG FILE"
       }
     ],
     "config-limits-command": [
@@ -1749,16 +2320,112 @@
         "normalized": "@CONFIG LIMITS"
       }
     ],
+    "config-net-command": [
+      {
+        "original": "@config net",
+        "normalized": "@CONFIG NET"
+      }
+    ],
+    "config-onboarding-command": [
+      {
+        "original": "@config onboarding",
+        "normalized": "@CONFIG ONBOARDING"
+      }
+    ],
+    "config-parameters-command": [
+      {
+        "original": "@config parameters",
+        "normalized": "@CONFIG PARAMETERS"
+      }
+    ],
+    "config-textfile-command": [
+      {
+        "original": "@config textfile",
+        "normalized": "@CONFIG TEXTFILE"
+      }
+    ],
+    "config-tiny-command": [
+      {
+        "original": "@config tiny",
+        "normalized": "@CONFIG TINY"
+      }
+    ],
+    "config-wiki-command": [
+      {
+        "original": "@config wiki",
+        "normalized": "@CONFIG WIKI"
+      }
+    ],
     "connlog-function": [
       {
         "original": "connlog()",
         "normalized": "CONNLOG()"
       }
     ],
+    "context-command": [
+      {
+        "original": "@context",
+        "normalized": "@CONTEXT"
+      }
+    ],
+    "context-function": [
+      {
+        "original": "context()",
+        "normalized": "CONTEXT()"
+      }
+    ],
+    "convtime-function": [
+      {
+        "original": "convtime()",
+        "normalized": "CONVTIME()"
+      }
+    ],
+    "copyright": [
+      {
+        "original": "Copyright",
+        "normalized": "COPYRIGHT"
+      }
+    ],
+    "cosh-function": [
+      {
+        "original": "cosh(), sinh() and tanh()",
+        "normalized": "COSH(), SINH() AND TANH()"
+      }
+    ],
+    "cpattr-command": [
+      {
+        "original": "@cpattr",
+        "normalized": "@CPATTR"
+      }
+    ],
+    "creplace-function": [
+      {
+        "original": "creplace()",
+        "normalized": "CREPLACE()"
+      }
+    ],
     "database": [
       {
         "original": "Database",
         "normalized": "DATABASE"
+      }
+    ],
+    "datacolumns-function": [
+      {
+        "original": "datacolumns()",
+        "normalized": "DATACOLUMNS()"
+      }
+    ],
+    "datatable-function": [
+      {
+        "original": "datatable()",
+        "normalized": "DATATABLE()"
+      }
+    ],
+    "dateparse-function": [
+      {
+        "original": "dateparse()",
+        "normalized": "DATEPARSE()"
       }
     ],
     "debug": [
@@ -1773,6 +2440,12 @@
         "normalized": "@DECOMPILE"
       }
     ],
+    "delextract-function": [
+      {
+        "original": "delextract()",
+        "normalized": "DELEXTRACT()"
+      }
+    ],
     "destroy-command": [
       {
         "original": "@destroy",
@@ -1783,6 +2456,18 @@
       {
         "original": "@dig",
         "normalized": "@DIG"
+      }
+    ],
+    "discord-command": [
+      {
+        "original": "@discord",
+        "normalized": "@DISCORD"
+      }
+    ],
+    "discord-functions": [
+      {
+        "original": "discordlink()",
+        "normalized": "DISCORDLINK()"
       }
     ],
     "dolist-command": [
@@ -1797,16 +2482,40 @@
         "normalized": "@EDIT"
       }
     ],
+    "editor-command": [
+      {
+        "original": "@editor",
+        "normalized": "@EDITOR"
+      }
+    ],
     "element-function": [
       {
         "original": "element()",
         "normalized": "ELEMENT()"
       }
     ],
+    "elementpos-function": [
+      {
+        "original": "elementpos()",
+        "normalized": "ELEMENTPOS()"
+      }
+    ],
+    "escapex-function": [
+      {
+        "original": "escapex()",
+        "normalized": "ESCAPEX()"
+      }
+    ],
     "etimefmt-function": [
       {
         "original": "etimefmt()",
         "normalized": "ETIMEFMT()"
+      }
+    ],
+    "eval-command": [
+      {
+        "original": "@eval",
+        "normalized": "@EVAL"
       }
     ],
     "evaluation-order": [
@@ -1821,16 +2530,64 @@
         "normalized": "EVENT EXAMPLES"
       }
     ],
+    "event-list": [
+      {
+        "original": "Event List",
+        "normalized": "EVENT LIST"
+      }
+    ],
+    "events": [
+      {
+        "original": "Events",
+        "normalized": "EVENTS"
+      }
+    ],
     "execution-budget": [
       {
         "original": "Execution Budget",
         "normalized": "EXECUTION BUDGET"
       }
     ],
+    "exitmap-function": [
+      {
+        "original": "exitmap()",
+        "normalized": "EXITMAP()"
+      }
+    ],
     "failure": [
       {
         "original": "Failure",
         "normalized": "FAILURE"
+      }
+    ],
+    "fbetween-function": [
+      {
+        "original": "fbetween()",
+        "normalized": "FBETWEEN()"
+      }
+    ],
+    "feed-command": [
+      {
+        "original": "@feed",
+        "normalized": "@FEED"
+      }
+    ],
+    "feed-functions": [
+      {
+        "original": "Feed Functions",
+        "normalized": "FEED FUNCTIONS"
+      }
+    ],
+    "fields-function": [
+      {
+        "original": "fields()",
+        "normalized": "FIELDS()"
+      }
+    ],
+    "figure-function": [
+      {
+        "original": "figure()",
+        "normalized": "FIGURE()"
       }
     ],
     "filter-command": [
@@ -1845,10 +2602,22 @@
         "normalized": "@FLAG"
       }
     ],
+    "flag-list": [
+      {
+        "original": "Flag List",
+        "normalized": "FLAG LIST"
+      }
+    ],
     "flags": [
       {
         "original": "Flags",
         "normalized": "FLAGS"
+      }
+    ],
+    "flex-function": [
+      {
+        "original": "flex()",
+        "normalized": "FLEX()"
       }
     ],
     "fn-function": [
@@ -1863,6 +2632,12 @@
         "normalized": "FOLD()"
       }
     ],
+    "folder-command": [
+      {
+        "original": "@folder",
+        "normalized": "@FOLDER"
+      }
+    ],
     "force-command": [
       {
         "original": "@force",
@@ -1875,16 +2650,70 @@
         "normalized": "FOREACH()"
       }
     ],
+    "formdecode-function": [
+      {
+        "original": "formdecode()",
+        "normalized": "FORMDECODE()"
+      }
+    ],
+    "formq-function": [
+      {
+        "original": "formq()",
+        "normalized": "FORMQ()"
+      }
+    ],
     "function-command": [
       {
         "original": "@function",
         "normalized": "@FUNCTION"
       }
     ],
+    "function-list": [
+      {
+        "original": "Function List",
+        "normalized": "FUNCTION LIST"
+      }
+    ],
     "functions": [
       {
         "original": "Functions",
         "normalized": "FUNCTIONS"
+      }
+    ],
+    "gallery": [
+      {
+        "original": "Gallery",
+        "normalized": "GALLERY"
+      }
+    ],
+    "gauge-function": [
+      {
+        "original": "gauge()",
+        "normalized": "GAUGE()"
+      }
+    ],
+    "globalroom-function": [
+      {
+        "original": "globalroom()",
+        "normalized": "GLOBALROOM()"
+      }
+    ],
+    "gmcpsupports-function": [
+      {
+        "original": "gmcpsupports()",
+        "normalized": "GMCPSUPPORTS()"
+      }
+    ],
+    "gradient-function": [
+      {
+        "original": "gradient()",
+        "normalized": "GRADIENT()"
+      }
+    ],
+    "graphics": [
+      {
+        "original": "graphics",
+        "normalized": "GRAPHICS"
       }
     ],
     "gs-chat": [
@@ -1911,6 +2740,18 @@
         "normalized": "GETTING STARTED: TALKING"
       }
     ],
+    "halt-command": [
+      {
+        "original": "@halt",
+        "normalized": "@HALT"
+      }
+    ],
+    "hasarg": [
+      {
+        "original": "hasarg()",
+        "normalized": "HASARG()"
+      }
+    ],
     "help-search": [
       {
         "original": "Help Search",
@@ -1921,6 +2762,24 @@
       {
         "original": "@hook",
         "normalized": "@HOOK"
+      }
+    ],
+    "http-command": [
+      {
+        "original": "@http",
+        "normalized": "@HTTP"
+      }
+    ],
+    "http-examples": [
+      {
+        "original": "HTTP Examples",
+        "normalized": "HTTP EXAMPLES"
+      }
+    ],
+    "http-routing": [
+      {
+        "original": "HTTP Routing",
+        "normalized": "HTTP ROUTING"
       }
     ],
     "http": [
@@ -1941,16 +2800,58 @@
         "normalized": "ILEV()"
       }
     ],
+    "image-attributes": [
+      {
+        "original": "IMAGE",
+        "normalized": "IMAGE"
+      }
+    ],
     "include-command": [
       {
         "original": "@include",
         "normalized": "@INCLUDE"
       }
     ],
+    "indexed-function": [
+      {
+        "original": "indexed()",
+        "normalized": "INDEXED()"
+      }
+    ],
+    "inf-function": [
+      {
+        "original": "inf()",
+        "normalized": "INF()"
+      }
+    ],
+    "input-command": [
+      {
+        "original": "@input",
+        "normalized": "@INPUT"
+      }
+    ],
     "interiors": [
       {
         "original": "Interiors",
         "normalized": "INTERIORS"
+      }
+    ],
+    "isalpha-function": [
+      {
+        "original": "Character Tests",
+        "normalized": "CHARACTER TESTS"
+      }
+    ],
+    "isdbref-function": [
+      {
+        "original": "isdbref()",
+        "normalized": "ISDBREF()"
+      }
+    ],
+    "israt-function": [
+      {
+        "original": "israt()",
+        "normalized": "ISRAT()"
       }
     ],
     "iter-function": [
@@ -1969,6 +2870,12 @@
       {
         "original": "json_array()",
         "normalized": "JSON_ARRAY()"
+      }
+    ],
+    "json-fill-function": [
+      {
+        "original": "json_fill()",
+        "normalized": "JSON_FILL()"
       }
     ],
     "json-function": [
@@ -1995,19 +2902,43 @@
         "normalized": "JSON_QUERY()"
       }
     ],
-    "layout-functions": [
+    "keepflags-function": [
       {
-        "original": "Layout Functions",
-        "normalized": "LAYOUT FUNCTIONS"
-      },
+        "original": "keepflags() and remflags()",
+        "normalized": "KEEPFLAGS() AND REMFLAGS()"
+      }
+    ],
+    "keeptype-function": [
+      {
+        "original": "keeptype() and remtype()",
+        "normalized": "KEEPTYPE() AND REMTYPE()"
+      }
+    ],
+    "ladd-function": [
+      {
+        "original": "ladd()",
+        "normalized": "LADD()"
+      }
+    ],
+    "land-function": [
+      {
+        "original": "land()",
+        "normalized": "LAND()"
+      }
+    ],
+    "lattr-function": [
+      {
+        "original": "lattr()",
+        "normalized": "LATTR()"
+      }
+    ],
+    "layout-borders": [
       {
         "original": "Layout Borders",
         "normalized": "LAYOUT BORDERS"
-      },
-      {
-        "original": "Layout Themes",
-        "normalized": "LAYOUT THEMES"
-      },
+      }
+    ],
+    "layout-functions": [
       {
         "original": "themes()",
         "normalized": "THEMES()"
@@ -2017,96 +2948,100 @@
         "normalized": "THEME()"
       },
       {
-        "original": "swatch()",
-        "normalized": "SWATCH()"
-      },
-      {
-        "original": "@theme",
-        "normalized": "@THEME"
-      },
-      {
-        "original": "@theme/list",
-        "normalized": "@THEME/LIST"
-      },
-      {
-        "original": "@theme/add",
-        "normalized": "@THEME/ADD"
-      },
-      {
-        "original": "@theme/remove",
-        "normalized": "@THEME/REMOVE"
-      },
-      {
-        "original": "@theme/disable",
-        "normalized": "@THEME/DISABLE"
-      },
-      {
-        "original": "@theme/enable",
-        "normalized": "@THEME/ENABLE"
-      },
-      {
-        "original": "box()",
-        "normalized": "BOX()"
-      },
-      {
-        "original": "rule()",
-        "normalized": "RULE()"
-      },
-      {
-        "original": "flex()",
-        "normalized": "FLEX()"
+        "original": "lflex()",
+        "normalized": "LFLEX()"
       },
       {
         "original": "item()",
         "normalized": "ITEM()"
       },
       {
-        "original": "fields()",
-        "normalized": "FIELDS()"
+        "original": "lfields()",
+        "normalized": "LFIELDS()"
       },
       {
-        "original": "tree()",
-        "normalized": "TREE()"
+        "original": "ltree()",
+        "normalized": "LTREE()"
       },
       {
         "original": "node()",
         "normalized": "NODE()"
       },
       {
-        "original": "figure()",
-        "normalized": "FIGURE()"
-      },
-      {
-        "original": "gauge()",
-        "normalized": "GAUGE()"
-      },
-      {
-        "original": "bullets()",
-        "normalized": "BULLETS()"
+        "original": "lnode()",
+        "normalized": "LNODE()"
       },
       {
         "original": "grid()",
         "normalized": "GRID()"
       },
       {
-        "original": "datatable()",
-        "normalized": "DATATABLE()"
-      },
-      {
-        "original": "datacolumns()",
-        "normalized": "DATACOLUMNS()"
-      },
-      {
-        "original": "gradient()",
-        "normalized": "GRADIENT()"
+        "original": "ldatatable()",
+        "normalized": "LDATATABLE()"
       },
       {
         "original": "badge()",
         "normalized": "BADGE()"
-      },
+      }
+    ],
+    "layout-themes": [
       {
-        "original": "notice()",
-        "normalized": "NOTICE()"
+        "original": "Layout Themes",
+        "normalized": "LAYOUT THEMES"
+      }
+    ],
+    "layout": [
+      {
+        "original": "Layout Functions",
+        "normalized": "LAYOUT FUNCTIONS"
+      }
+    ],
+    "lband-function": [
+      {
+        "original": "lband()",
+        "normalized": "LBAND()"
+      }
+    ],
+    "lcat-function": [
+      {
+        "original": "lcat()",
+        "normalized": "LCAT()"
+      }
+    ],
+    "limath-function": [
+      {
+        "original": "limath()",
+        "normalized": "LIMATH()"
+      }
+    ],
+    "list-command": [
+      {
+        "original": "@list",
+        "normalized": "@LIST"
+      }
+    ],
+    "list-function": [
+      {
+        "original": "list()",
+        "normalized": "LIST()"
+      }
+    ],
+    "list-separators": [
+      {
+        "original": "List Separators",
+        "normalized": "LIST SEPARATORS"
+      }
+    ],
+    "listcommands-function": [
+      {
+        "original": "listcommands()",
+        "normalized": "LISTCOMMANDS()"
+      }
+    ],
+    "listdiff-function": [
+      {
+        "original": "listdiff()",
+        "normalized": "LISTDIFF()"
       }
     ],
     "listen-command": [
@@ -2121,18 +3056,28 @@
         "normalized": "LISTENING"
       }
     ],
+    "listflags-function": [
+      {
+        "original": "listflags()",
+        "normalized": "LISTFLAGS()"
+      }
+    ],
+    "livewire-command": [
+      {
+        "original": "@livewire",
+        "normalized": "@LIVEWIRE"
+      }
+    ],
+    "livewire-function": [
+      {
+        "original": "livewire()",
+        "normalized": "LIVEWIRE()"
+      }
+    ],
     "localfun": [
       {
         "original": "localfun",
         "normalized": "LOCALFUN"
-      },
-      {
-        "original": "@function/local",
-        "normalized": "@FUNCTION/LOCAL"
-      },
-      {
-        "original": "Local Function Startup",
-        "normalized": "LOCAL FUNCTION STARTUP"
       }
     ],
     "locate-function": [
@@ -2153,6 +3098,24 @@
         "normalized": "LOCK KEYS"
       }
     ],
+    "lock-zone-command": [
+      {
+        "original": "@lock/zone",
+        "normalized": "@LOCK/ZONE"
+      }
+    ],
+    "lockfilter-function": [
+      {
+        "original": "lockfilter()",
+        "normalized": "LOCKFILTER()"
+      }
+    ],
+    "locking": [
+      {
+        "original": "Locking",
+        "normalized": "LOCKING"
+      }
+    ],
     "locktypes": [
       {
         "original": "Lock Types",
@@ -2165,16 +3128,58 @@
         "normalized": "LOOK"
       }
     ],
+    "lpage-command": [
+      {
+        "original": "lpage",
+        "normalized": "LPAGE"
+      }
+    ],
     "lsearch-function": [
       {
         "original": "lsearch()",
         "normalized": "LSEARCH()"
       }
     ],
+    "mail-other": [
+      {
+        "original": "Other Mail Commands",
+        "normalized": "OTHER MAIL COMMANDS"
+      }
+    ],
+    "mailalias-function": [
+      {
+        "original": "mailalias()",
+        "normalized": "MAILALIAS()"
+      }
+    ],
     "malias-command": [
       {
         "original": "@malias",
         "normalized": "@MALIAS"
+      }
+    ],
+    "map-function": [
+      {
+        "original": "map()",
+        "normalized": "MAP()"
+      }
+    ],
+    "mapsql-command": [
+      {
+        "original": "@mapsql",
+        "normalized": "@MAPSQL"
+      }
+    ],
+    "mapsql-function": [
+      {
+        "original": "mapsql()",
+        "normalized": "MAPSQL()"
+      }
+    ],
+    "mask-function": [
+      {
+        "original": "mask()",
+        "normalized": "MASK()"
       }
     ],
     "message-command": [
@@ -2195,10 +3200,40 @@
         "normalized": "MIX()"
       }
     ],
+    "mogrifier": [
+      {
+        "original": "mogrifier",
+        "normalized": "MOGRIFIER"
+      }
+    ],
     "monikers": [
       {
         "original": "Monikers",
         "normalized": "MONIKERS"
+      }
+    ],
+    "motd-command": [
+      {
+        "original": "@motd",
+        "normalized": "@MOTD"
+      }
+    ],
+    "move-function": [
+      {
+        "original": "move()",
+        "normalized": "MOVE()"
+      }
+    ],
+    "movement": [
+      {
+        "original": "Movement",
+        "normalized": "MOVEMENT"
+      }
+    ],
+    "mrpage-command": [
+      {
+        "original": "mrpage",
+        "normalized": "MRPAGE"
       }
     ],
     "munge-function": [
@@ -2213,10 +3248,34 @@
         "normalized": "MUSHCODE"
       }
     ],
+    "named-arguments": [
+      {
+        "original": "Named Arguments",
+        "normalized": "NAMED ARGUMENTS"
+      }
+    ],
+    "nameq-function": [
+      {
+        "original": "nameq()",
+        "normalized": "NAMEQ()"
+      }
+    ],
+    "nameqm-function": [
+      {
+        "original": "nameqm()",
+        "normalized": "NAMEQM()"
+      }
+    ],
     "newbie": [
       {
         "original": "Newbie",
         "normalized": "NEWBIE"
+      }
+    ],
+    "notice-function": [
+      {
+        "original": "notice()",
+        "normalized": "NOTICE()"
       }
     ],
     "notify-command": [
@@ -2225,10 +3284,34 @@
         "normalized": "@NOTIFY"
       }
     ],
+    "nsiter-function": [
+      {
+        "original": "nsiter()",
+        "normalized": "NSITER()"
+      }
+    ],
+    "numpos-function": [
+      {
+        "original": "numpos()",
+        "normalized": "NUMPOS()"
+      }
+    ],
     "oemit-command": [
       {
         "original": "@oemit",
         "normalized": "@OEMIT"
+      }
+    ],
+    "oob-function": [
+      {
+        "original": "oob()",
+        "normalized": "OOB()"
+      }
+    ],
+    "ooc-command": [
+      {
+        "original": "ooc",
+        "normalized": "OOC"
       }
     ],
     "page-functions": [
@@ -2249,10 +3332,28 @@
         "normalized": "@PAGEFORMAT"
       }
     ],
+    "palette": [
+      {
+        "original": "Palette Entries",
+        "normalized": "PALETTE ENTRIES"
+      }
+    ],
     "parent": [
       {
         "original": "Parents",
         "normalized": "PARENTS"
+      }
+    ],
+    "parents-function": [
+      {
+        "original": "parents()",
+        "normalized": "PARENTS()"
+      }
+    ],
+    "parsestr-function": [
+      {
+        "original": "parsestr()",
+        "normalized": "PARSESTR()"
       }
     ],
     "pemit-command": [
@@ -2273,10 +3374,22 @@
         "normalized": "@PERMISSION"
       }
     ],
+    "pfind-function": [
+      {
+        "original": "pfind()",
+        "normalized": "PFIND()"
+      }
+    ],
     "pfun-function": [
       {
         "original": "pfun()",
         "normalized": "PFUN()"
+      }
+    ],
+    "pipe-command": [
+      {
+        "original": "@pipe",
+        "normalized": "@PIPE"
       }
     ],
     "piping": [
@@ -2285,10 +3398,52 @@
         "normalized": "PIPING"
       }
     ],
+    "player-events": [
+      {
+        "original": "Player Events",
+        "normalized": "PLAYER EVENTS"
+      }
+    ],
+    "playmem-function": [
+      {
+        "original": "playmem()",
+        "normalized": "PLAYMEM()"
+      }
+    ],
+    "plugin-command": [
+      {
+        "original": "@plugin",
+        "normalized": "@PLUGIN"
+      }
+    ],
+    "plugin-help": [
+      {
+        "original": "Plugin Help",
+        "normalized": "PLUGIN HELP"
+      }
+    ],
     "power-command": [
       {
         "original": "@power",
         "normalized": "@POWER"
+      }
+    ],
+    "printf-function": [
+      {
+        "original": "printf()",
+        "normalized": "PRINTF()"
+      }
+    ],
+    "privatize-function": [
+      {
+        "original": "privatize()",
+        "normalized": "PRIVATIZE()"
+      }
+    ],
+    "profile-command": [
+      {
+        "original": "@profile",
+        "normalized": "@PROFILE"
       }
     ],
     "ps-command": [
@@ -2307,6 +3462,12 @@
       {
         "original": "Puppets",
         "normalized": "PUPPETS"
+      }
+    ],
+    "push-command": [
+      {
+        "original": "@push",
+        "normalized": "@PUSH"
       }
     ],
     "queue-budgets": [
@@ -2339,6 +3500,12 @@
         "normalized": "@REALITY"
       }
     ],
+    "recover-command": [
+      {
+        "original": "@recover",
+        "normalized": "@RECOVER"
+      }
+    ],
     "regexp-classes": [
       {
         "original": "Regular Expression Classes",
@@ -2361,6 +3528,12 @@
       {
         "original": "Registers",
         "normalized": "REGISTERS"
+      }
+    ],
+    "reglattri-function": [
+      {
+        "original": "reglattri()",
+        "normalized": "REGLATTRI()"
       }
     ],
     "reglmatch-function": [
@@ -2411,6 +3584,12 @@
         "normalized": "@RETRY"
       }
     ],
+    "rhostmush-arguments": [
+      {
+        "original": "RhostMUSH Arguments",
+        "normalized": "RHOSTMUSH ARGUMENTS"
+      }
+    ],
     "role-command": [
       {
         "original": "@role",
@@ -2423,10 +3602,154 @@
         "normalized": "ROLES"
       }
     ],
+    "roll-command": [
+      {
+        "original": "@roll",
+        "normalized": "@ROLL"
+      }
+    ],
+    "roll-data": [
+      {
+        "original": "Roll Data",
+        "normalized": "ROLL DATA"
+      }
+    ],
+    "roll-dice": [
+      {
+        "original": "Roll Dice",
+        "normalized": "ROLL DICE"
+      }
+    ],
+    "roll-function": [
+      {
+        "original": "roll()",
+        "normalized": "ROLL()"
+      }
+    ],
+    "roll-modifiers": [
+      {
+        "original": "Roll Modifiers",
+        "normalized": "ROLL MODIFIERS"
+      }
+    ],
+    "roll-options": [
+      {
+        "original": "Roll Options",
+        "normalized": "ROLL OPTIONS"
+      }
+    ],
+    "roll-pools": [
+      {
+        "original": "Roll Pools",
+        "normalized": "ROLL POOLS"
+      }
+    ],
+    "roll-records": [
+      {
+        "original": "Roll Records",
+        "normalized": "ROLL RECORDS"
+      }
+    ],
+    "rollback-command": [
+      {
+        "original": "@rollback",
+        "normalized": "@ROLLBACK"
+      }
+    ],
+    "rollinfo-function": [
+      {
+        "original": "rollinfo()",
+        "normalized": "ROLLINFO()"
+      }
+    ],
+    "rule-function": [
+      {
+        "original": "rule()",
+        "normalized": "RULE()"
+      }
+    ],
+    "rxdesc-function": [
+      {
+        "original": "rxdesc()",
+        "normalized": "RXDESC()"
+      }
+    ],
+    "rxlevel-command": [
+      {
+        "original": "@rxlevel",
+        "normalized": "@RXLEVEL"
+      }
+    ],
+    "rxlevel-function": [
+      {
+        "original": "rxlevel()",
+        "normalized": "RXLEVEL()"
+      }
+    ],
+    "scene-command": [
+      {
+        "original": "@scene",
+        "normalized": "@SCENE"
+      }
+    ],
+    "scene-functions": [
+      {
+        "original": "Scene Functions",
+        "normalized": "SCENE FUNCTIONS"
+      }
+    ],
+    "scene-system": [
+      {
+        "original": "Scene System",
+        "normalized": "SCENE SYSTEM"
+      }
+    ],
+    "scene-type-functions": [
+      {
+        "original": "Scene Type and Detail Functions",
+        "normalized": "SCENE TYPE AND DETAIL FUNCTIONS"
+      }
+    ],
+    "scene-write-functions": [
+      {
+        "original": "Scene Write Functions",
+        "normalized": "SCENE WRITE FUNCTIONS"
+      }
+    ],
+    "schema-functions": [
+      {
+        "original": "schemarender()",
+        "normalized": "SCHEMARENDER()"
+      }
+    ],
+    "screenreader-support": [
+      {
+        "original": "Screen Reader Support",
+        "normalized": "SCREEN READER SUPPORT"
+      }
+    ],
+    "screenreader": [
+      {
+        "original": "Screen Readers",
+        "normalized": "SCREEN READERS"
+      }
+    ],
     "search-command": [
       {
         "original": "@search",
         "normalized": "@SEARCH"
+      }
+    ],
+    "secret-command": [
+      {
+        "original": "@secret",
+        "normalized": "@SECRET"
+      }
+    ],
+    "securex-function": [
+      {
+        "original": "securex()",
+        "normalized": "SECUREX()"
       }
     ],
     "security": [
@@ -2441,32 +3764,28 @@
         "normalized": "SEMAPHORES"
       }
     ],
+    "set-command": [
+      {
+        "original": "@set",
+        "normalized": "@SET"
+      }
+    ],
     "setq-function": [
       {
         "original": "setq()",
         "normalized": "SETQ()"
       }
     ],
-    "sharpattr": [
+    "setqm-function": [
       {
-        "original": "IMAGE",
-        "normalized": "IMAGE"
-      },
+        "original": "setqm()",
+        "normalized": "SETQM()"
+      }
+    ],
+    "sha1-function": [
       {
-        "original": "Image Attributes",
-        "normalized": "IMAGE ATTRIBUTES"
-      },
-      {
-        "original": "IMAGE\\`BANNER",
-        "normalized": "IMAGE\\`BANNER"
-      },
-      {
-        "original": "IMAGE\\`ALT",
-        "normalized": "IMAGE\\`ALT"
-      },
-      {
-        "original": "IMAGE\\`FOCAL",
-        "normalized": "IMAGE\\`FOCAL"
+        "original": "sha1()",
+        "normalized": "SHA1()"
       }
     ],
     "sharpchat": [
@@ -2511,6 +3830,10 @@
         "normalized": "NSCEMIT()"
       },
       {
+        "original": "Channel Pictures",
+        "normalized": "CHANNEL PICTURES"
+      },
+      {
         "original": "@channel",
         "normalized": "@CHANNEL"
       },
@@ -2531,72 +3854,8 @@
         "normalized": "@CHANNEL/BUFFER"
       },
       {
-        "original": "@channel admin",
-        "normalized": "@CHANNEL ADMIN"
-      },
-      {
-        "original": "@channel/add",
-        "normalized": "@CHANNEL/ADD"
-      },
-      {
-        "original": "@channel/delete",
-        "normalized": "@CHANNEL/DELETE"
-      },
-      {
-        "original": "@channel/mogrifier",
-        "normalized": "@CHANNEL/MOGRIFIER"
-      },
-      {
-        "original": "@channel/chown",
-        "normalized": "@CHANNEL/CHOWN"
-      },
-      {
-        "original": "@channel/name",
-        "normalized": "@CHANNEL/NAME"
-      },
-      {
-        "original": "@channel/rename",
-        "normalized": "@CHANNEL/RENAME"
-      },
-      {
-        "original": "@channel/describe",
-        "normalized": "@CHANNEL/DESCRIBE"
-      },
-      {
-        "original": "@channel/privs",
-        "normalized": "@CHANNEL/PRIVS"
-      },
-      {
-        "original": "@channel/wipe",
-        "normalized": "@CHANNEL/WIPE"
-      },
-      {
-        "original": "@channel/decompile",
-        "normalized": "@CHANNEL/DECOMPILE"
-      },
-      {
         "original": "@channel list",
         "normalized": "@CHANNEL LIST"
-      },
-      {
-        "original": "@channel privs",
-        "normalized": "@CHANNEL PRIVS"
-      },
-      {
-        "original": "Channel-privs",
-        "normalized": "CHANNEL-PRIVS"
-      },
-      {
-        "original": "@channel clock",
-        "normalized": "@CHANNEL CLOCK"
-      },
-      {
-        "original": "@channel/clock",
-        "normalized": "@CHANNEL/CLOCK"
-      },
-      {
-        "original": "@clock",
-        "normalized": "@CLOCK"
       },
       {
         "original": "MUX Comsys",
@@ -2621,13 +3880,53 @@
       {
         "original": "comtitle",
         "normalized": "COMTITLE"
+      },
+      {
+        "original": "allcom",
+        "normalized": "ALLCOM"
+      },
+      {
+        "original": "clearcom",
+        "normalized": "CLEARCOM"
+      },
+      {
+        "original": "MUX Channel Admin",
+        "normalized": "MUX CHANNEL ADMIN"
+      },
+      {
+        "original": "@ccreate",
+        "normalized": "@CCREATE"
+      },
+      {
+        "original": "@cdestroy",
+        "normalized": "@CDESTROY"
+      },
+      {
+        "original": "@cboot",
+        "normalized": "@CBOOT"
+      },
+      {
+        "original": "@cwho",
+        "normalized": "@CWHO"
+      },
+      {
+        "original": "@cchown",
+        "normalized": "@CCHOWN"
+      },
+      {
+        "original": "@coflags",
+        "normalized": "@COFLAGS"
+      },
+      {
+        "original": "@cpflags",
+        "normalized": "@CPFLAGS"
+      },
+      {
+        "original": "@cset",
+        "normalized": "@CSET"
       }
     ],
     "sharpcmd": [
-      {
-        "original": "Commands",
-        "normalized": "COMMANDS"
-      },
       {
         "original": "@-attributes",
         "normalized": "@-ATTRIBUTES"
@@ -2897,10 +4196,6 @@
         "normalized": "@AWAY"
       },
       {
-        "original": "@backup",
-        "normalized": "@BACKUP"
-      },
-      {
         "original": "@boot",
         "normalized": "@BOOT"
       },
@@ -2917,36 +4212,12 @@
         "normalized": "@CHZONEALL"
       },
       {
-        "original": "@clone",
-        "normalized": "@CLONE"
-      },
-      {
         "original": "@comment",
         "normalized": "@COMMENT"
       },
       {
-        "original": "@config",
-        "normalized": "@CONFIG"
-      },
-      {
         "original": "@conformat",
         "normalized": "@CONFORMAT"
-      },
-      {
-        "original": "@input",
-        "normalized": "@INPUT"
-      },
-      {
-        "original": "@input/start",
-        "normalized": "@INPUT/START"
-      },
-      {
-        "original": "@input/prompt",
-        "normalized": "@INPUT/PROMPT"
-      },
-      {
-        "original": "@input/cancel",
-        "normalized": "@INPUT/CANCEL"
       },
       {
         "original": "@invformat",
@@ -2971,14 +4242,6 @@
       {
         "original": "@cost",
         "normalized": "@COST"
-      },
-      {
-        "original": "@cpattr",
-        "normalized": "@CPATTR"
-      },
-      {
-        "original": "@mvattr",
-        "normalized": "@MVATTR"
       },
       {
         "original": "@create",
@@ -3037,6 +4300,10 @@
         "normalized": "@EMIT"
       },
       {
+        "original": "emit",
+        "normalized": "EMIT"
+      },
+      {
         "original": "@enable",
         "normalized": "@ENABLE"
       },
@@ -3077,10 +4344,6 @@
         "normalized": "@EXITFORMAT"
       },
       {
-        "original": "@http",
-        "normalized": "@HTTP"
-      },
-      {
         "original": "@firstexit",
         "normalized": "@FIRSTEXIT"
       },
@@ -3111,14 +4374,6 @@
       {
         "original": "@grep",
         "normalized": "@GREP"
-      },
-      {
-        "original": "@halt",
-        "normalized": "@HALT"
-      },
-      {
-        "original": "@allhalt",
-        "normalized": "@ALLHALT"
       },
       {
         "original": "@haven",
@@ -3165,10 +4420,6 @@
         "normalized": "@LEMIT"
       },
       {
-        "original": "@list",
-        "normalized": "@LIST"
-      },
-      {
         "original": "@link",
         "normalized": "@LINK"
       },
@@ -3185,18 +4436,6 @@
         "normalized": "VARIABLE EXITS"
       },
       {
-        "original": "Locking",
-        "normalized": "LOCKING"
-      },
-      {
-        "original": "Locks",
-        "normalized": "LOCKS"
-      },
-      {
-        "original": "@lock",
-        "normalized": "@LOCK"
-      },
-      {
         "original": "@lset",
         "normalized": "@LSET"
       },
@@ -3211,22 +4450,6 @@
       {
         "original": "@moniker",
         "normalized": "@MONIKER"
-      },
-      {
-        "original": "@motd",
-        "normalized": "@MOTD"
-      },
-      {
-        "original": "@listmotd",
-        "normalized": "@LISTMOTD"
-      },
-      {
-        "original": "@wizmotd",
-        "normalized": "@WIZMOTD"
-      },
-      {
-        "original": "@rejectmotd",
-        "normalized": "@REJECTMOTD"
       },
       {
         "original": "@name",
@@ -3357,16 +4580,16 @@
         "normalized": "@SCAN"
       },
       {
-        "original": "@set",
-        "normalized": "@SET"
-      },
-      {
         "original": "ATTRIB_SET",
         "normalized": "ATTRIB_SET"
       },
       {
         "original": "@_",
         "normalized": "@_"
+      },
+      {
+        "original": "@gender",
+        "normalized": "@GENDER"
       },
       {
         "original": "@sex",
@@ -3381,14 +4604,6 @@
         "normalized": "@SLAVE"
       },
       {
-        "original": "@sockset",
-        "normalized": "@SOCKSET"
-      },
-      {
-        "original": "SOCKSET",
-        "normalized": "SOCKSET"
-      },
-      {
         "original": "colorstyle",
         "normalized": "COLORSTYLE"
       },
@@ -3399,10 +4614,6 @@
       {
         "original": "commandlinks",
         "normalized": "COMMANDLINKS"
-      },
-      {
-        "original": "graphics",
-        "normalized": "GRAPHICS"
       },
       {
         "original": "animation",
@@ -3417,24 +4628,12 @@
         "normalized": "@SPEECHMOD"
       },
       {
-        "original": "@mapsql",
-        "normalized": "@MAPSQL"
-      },
-      {
-        "original": "@sql",
-        "normalized": "@SQL"
-      },
-      {
         "original": "@startup",
         "normalized": "@STARTUP"
       },
       {
         "original": "@stats",
         "normalized": "@STATS"
-      },
-      {
-        "original": "@storage",
-        "normalized": "@STORAGE"
       },
       {
         "original": "@sweep",
@@ -3455,10 +4654,6 @@
       {
         "original": "@unlock",
         "normalized": "@UNLOCK"
-      },
-      {
-        "original": "@account",
-        "normalized": "@ACCOUNT"
       },
       {
         "original": "@locale",
@@ -3613,14 +4808,6 @@
         "normalized": "MOVE"
       },
       {
-        "original": "Movement",
-        "normalized": "MOVEMENT"
-      },
-      {
-        "original": "Move-attributes",
-        "normalized": "MOVE-ATTRIBUTES"
-      },
-      {
         "original": "INFO",
         "normalized": "INFO"
       },
@@ -3665,8 +4852,8 @@
         "normalized": "LOGIN"
       },
       {
-        "original": "make",
-        "normalized": "MAKE"
+        "original": "create",
+        "normalized": "CREATE"
       },
       {
         "original": "play",
@@ -3693,6 +4880,10 @@
         "normalized": "USE"
       },
       {
+        "original": "walk",
+        "normalized": "WALK"
+      },
+      {
         "original": "WARN_ON_MISSING",
         "normalized": "WARN_ON_MISSING"
       },
@@ -3713,10 +4904,6 @@
         "normalized": "WITH"
       },
       {
-        "original": "Socket Commands",
-        "normalized": "SOCKET COMMANDS"
-      },
-      {
         "original": "MSSP-REQUEST",
         "normalized": "MSSP-REQUEST"
       },
@@ -3727,18 +4914,6 @@
       {
         "original": "@ps/history",
         "normalized": "@PS/HISTORY"
-      },
-      {
-        "original": "@profile",
-        "normalized": "@PROFILE"
-      },
-      {
-        "original": "@profile/start",
-        "normalized": "@PROFILE/START"
-      },
-      {
-        "original": "@profile/stop",
-        "normalized": "@PROFILE/STOP"
       }
     ],
     "sharpcode": [
@@ -3777,25 +4952,9 @@
       {
         "original": "Translation",
         "normalized": "TRANSLATION"
-      },
-      {
-        "original": "Copyright",
-        "normalized": "COPYRIGHT"
-      },
-      {
-        "original": "Copyrite",
-        "normalized": "COPYRITE"
-      },
-      {
-        "original": "License",
-        "normalized": "LICENSE"
       }
     ],
     "sharpconf": [
-      {
-        "original": "@config parameters",
-        "normalized": "@CONFIG PARAMETERS"
-      },
       {
         "original": "@config attribs",
         "normalized": "@CONFIG ATTRIBS"
@@ -3831,28 +4990,16 @@
       {
         "original": "@config log",
         "normalized": "@CONFIG LOG"
-      },
-      {
-        "original": "@config net",
-        "normalized": "@CONFIG NET"
-      },
-      {
-        "original": "@config tiny",
-        "normalized": "@CONFIG TINY"
       }
     ],
     "sharpevents": [
       {
-        "original": "Events",
-        "normalized": "EVENTS"
+        "original": "Dump Events",
+        "normalized": "DUMP EVENTS"
       },
       {
-        "original": "Event",
-        "normalized": "EVENT"
-      },
-      {
-        "original": "Event List",
-        "normalized": "EVENT LIST"
+        "original": "Event Dump",
+        "normalized": "EVENT DUMP"
       },
       {
         "original": "Database Events",
@@ -3861,14 +5008,6 @@
       {
         "original": "Event DB",
         "normalized": "EVENT DB"
-      },
-      {
-        "original": "Dump Events",
-        "normalized": "DUMP EVENTS"
-      },
-      {
-        "original": "Event Dump",
-        "normalized": "EVENT DUMP"
       },
       {
         "original": "Log Events",
@@ -3903,22 +5042,6 @@
         "normalized": "EVENT SIGNAL"
       },
       {
-        "original": "Player Events",
-        "normalized": "PLAYER EVENTS"
-      },
-      {
-        "original": "Event Player",
-        "normalized": "EVENT PLAYER"
-      },
-      {
-        "original": "Socket Events",
-        "normalized": "SOCKET EVENTS"
-      },
-      {
-        "original": "Event Socket",
-        "normalized": "EVENT SOCKET"
-      },
-      {
         "original": "HTTP Events",
         "normalized": "HTTP EVENTS"
       },
@@ -3949,17 +5072,41 @@
       {
         "original": "Event Page",
         "normalized": "EVENT PAGE"
+      },
+      {
+        "original": "Mail Events",
+        "normalized": "MAIL EVENTS"
+      },
+      {
+        "original": "Event Mail",
+        "normalized": "EVENT MAIL"
+      },
+      {
+        "original": "Scene Events",
+        "normalized": "SCENE EVENTS"
+      },
+      {
+        "original": "Event Scene",
+        "normalized": "EVENT SCENE"
+      },
+      {
+        "original": "Backup Events",
+        "normalized": "BACKUP EVENTS"
+      },
+      {
+        "original": "Event Backup",
+        "normalized": "EVENT BACKUP"
+      },
+      {
+        "original": "Gallery Events",
+        "normalized": "GALLERY EVENTS"
+      },
+      {
+        "original": "Event Gallery",
+        "normalized": "EVENT GALLERY"
       }
     ],
     "sharpflag": [
-      {
-        "original": "Flag List",
-        "normalized": "FLAG LIST"
-      },
-      {
-        "original": "Flags List",
-        "normalized": "FLAGS LIST"
-      },
       {
         "original": "ABODE",
         "normalized": "ABODE"
@@ -4029,6 +5176,14 @@
         "normalized": "GOING"
       },
       {
+        "original": "GOING_TWICE",
+        "normalized": "GOING_TWICE"
+      },
+      {
+        "original": "HALT",
+        "normalized": "HALT"
+      },
+      {
         "original": "HALTED",
         "normalized": "HALTED"
       },
@@ -4037,12 +5192,24 @@
         "normalized": "HAVEN"
       },
       {
-        "original": "INHERIT",
-        "normalized": "INHERIT"
+        "original": "HEAR_CONNECT",
+        "normalized": "HEAR_CONNECT"
+      },
+      {
+        "original": "HEAVY",
+        "normalized": "HEAVY"
       },
       {
         "original": "JUMP_OK",
         "normalized": "JUMP_OK"
+      },
+      {
+        "original": "JUDGE",
+        "normalized": "JUDGE"
+      },
+      {
+        "original": "JURY_OK",
+        "normalized": "JURY_OK"
       },
       {
         "original": "KEEPALIVE",
@@ -4057,12 +5224,52 @@
         "normalized": "LINK_OK"
       },
       {
+        "original": "LISTEN_PARENT",
+        "normalized": "LISTEN_PARENT"
+      },
+      {
+        "original": "LOUD",
+        "normalized": "LOUD"
+      },
+      {
+        "original": "OPEN_OK",
+        "normalized": "OPEN_OK"
+      },
+      {
         "original": "MONITOR",
         "normalized": "MONITOR"
       },
       {
+        "original": "MISTRUST",
+        "normalized": "MISTRUST"
+      },
+      {
+        "original": "MONIKER",
+        "normalized": "MONIKER"
+      },
+      {
         "original": "MYOPIC",
         "normalized": "MYOPIC"
+      },
+      {
+        "original": "NOACCENTS",
+        "normalized": "NOACCENTS"
+      },
+      {
+        "original": "NO_LEAVE",
+        "normalized": "NO_LEAVE"
+      },
+      {
+        "original": "NO_LOG",
+        "normalized": "NO_LOG"
+      },
+      {
+        "original": "NO_TEL",
+        "normalized": "NO_TEL"
+      },
+      {
+        "original": "NO_WARN",
+        "normalized": "NO_WARN"
       },
       {
         "original": "NO_COMMAND",
@@ -4077,8 +5284,16 @@
         "normalized": "OPAQUE"
       },
       {
+        "original": "ON-VACATION",
+        "normalized": "ON-VACATION"
+      },
+      {
         "original": "ORPHAN",
         "normalized": "ORPHAN"
+      },
+      {
+        "original": "PARANOID",
+        "normalized": "PARANOID"
       },
       {
         "original": "PUPPET",
@@ -4089,6 +5304,10 @@
         "normalized": "QUIET"
       },
       {
+        "original": "ROYALTY",
+        "normalized": "ROYALTY"
+      },
+      {
         "original": "SAFE",
         "normalized": "SAFE"
       },
@@ -4097,12 +5316,36 @@
         "normalized": "SHARED"
       },
       {
+        "original": "SHOW_SEPARATORS",
+        "normalized": "SHOW_SEPARATORS"
+      },
+      {
+        "original": "SIDEFX",
+        "normalized": "SIDEFX"
+      },
+      {
         "original": "STICKY",
         "normalized": "STICKY"
       },
       {
+        "original": "SUSPECT",
+        "normalized": "SUSPECT"
+      },
+      {
+        "original": "TERSE",
+        "normalized": "TERSE"
+      },
+      {
         "original": "TRANSPARENT",
         "normalized": "TRANSPARENT"
+      },
+      {
+        "original": "TRUST",
+        "normalized": "TRUST"
+      },
+      {
+        "original": "INHERIT",
+        "normalized": "INHERIT"
       },
       {
         "original": "UNFINDABLE",
@@ -4111,6 +5354,10 @@
       {
         "original": "UNINSPECTED",
         "normalized": "UNINSPECTED"
+      },
+      {
+        "original": "UNREGISTERED",
+        "normalized": "UNREGISTERED"
       },
       {
         "original": "VERBOSE",
@@ -4123,17 +5370,13 @@
       {
         "original": "WIZARD",
         "normalized": "WIZARD"
+      },
+      {
+        "original": "Z_TEL",
+        "normalized": "Z_TEL"
       }
     ],
     "sharpfunc": [
-      {
-        "original": "Function List",
-        "normalized": "FUNCTION LIST"
-      },
-      {
-        "original": "Function Types",
-        "normalized": "FUNCTION TYPES"
-      },
       {
         "original": "Attribute Functions",
         "normalized": "ATTRIBUTE FUNCTIONS"
@@ -4209,6 +5452,14 @@
       {
         "original": "abs()",
         "normalized": "ABS()"
+      },
+      {
+        "original": "account()",
+        "normalized": "ACCOUNT()"
+      },
+      {
+        "original": "accountchars()",
+        "normalized": "ACCOUNTCHARS()"
       },
       {
         "original": "accname()",
@@ -4319,6 +5570,14 @@
         "normalized": "BENCHMARK()"
       },
       {
+        "original": "between()",
+        "normalized": "BETWEEN()"
+      },
+      {
+        "original": "bittype()",
+        "normalized": "BITTYPE()"
+      },
+      {
         "original": "brackets()",
         "normalized": "BRACKETS()"
       },
@@ -4355,16 +5614,12 @@
         "normalized": "STRCAT()"
       },
       {
-        "original": "center()",
-        "normalized": "CENTER()"
-      },
-      {
-        "original": "chain()",
-        "normalized": "CHAIN()"
-      },
-      {
         "original": "checkpass()",
         "normalized": "CHECKPASS()"
+      },
+      {
+        "original": "choose()",
+        "normalized": "CHOOSE()"
       },
       {
         "original": "chr()",
@@ -4373,6 +5628,10 @@
       {
         "original": "ord()",
         "normalized": "ORD()"
+      },
+      {
+        "original": "clientzone()",
+        "normalized": "CLIENTZONE()"
       },
       {
         "original": "clone()",
@@ -4435,16 +5694,16 @@
         "normalized": "CONVUTCSECS()"
       },
       {
-        "original": "convtime()",
-        "normalized": "CONVTIME()"
-      },
-      {
-        "original": "convutctime()",
-        "normalized": "CONVUTCTIME()"
-      },
-      {
         "original": "cos()",
         "normalized": "COS()"
+      },
+      {
+        "original": "cpad()",
+        "normalized": "CPAD()"
+      },
+      {
+        "original": "crc32()",
+        "normalized": "CRC32()"
       },
       {
         "original": "pcreate()",
@@ -4485,6 +5744,10 @@
       {
         "original": "default()",
         "normalized": "DEFAULT()"
+      },
+      {
+        "original": "destroy()",
+        "normalized": "DESTROY()"
       },
       {
         "original": "strdelete()",
@@ -4529,6 +5792,10 @@
       {
         "original": "dist3d()",
         "normalized": "DIST3D()"
+      },
+      {
+        "original": "distribute()",
+        "normalized": "DISTRIBUTE()"
       },
       {
         "original": "div()",
@@ -4613,6 +5880,10 @@
       {
         "original": "eq()",
         "normalized": "EQ()"
+      },
+      {
+        "original": "error()",
+        "normalized": "ERROR()"
       },
       {
         "original": "escape()",
@@ -4709,6 +5980,10 @@
       {
         "original": "getpids()",
         "normalized": "GETPIDS()"
+      },
+      {
+        "original": "syntaxdiagnostics()",
+        "normalized": "SYNTAXDIAGNOSTICS()"
       },
       {
         "original": "grab()",
@@ -4863,14 +6138,6 @@
         "normalized": "ISAPPROVED()"
       },
       {
-        "original": "isdbref()",
-        "normalized": "ISDBREF()"
-      },
-      {
-        "original": "isobjid()",
-        "normalized": "ISOBJID()"
-      },
-      {
         "original": "isint()",
         "normalized": "ISINT()"
       },
@@ -4915,20 +6182,12 @@
         "normalized": "LAST()"
       },
       {
-        "original": "lattr()",
-        "normalized": "LATTR()"
+        "original": "lattrcmds()",
+        "normalized": "LATTRCMDS()"
       },
       {
-        "original": "lattrp()",
-        "normalized": "LATTRP()"
-      },
-      {
-        "original": "reglattr()",
-        "normalized": "REGLATTR()"
-      },
-      {
-        "original": "reglattrp()",
-        "normalized": "REGLATTRP()"
+        "original": "lcmds()",
+        "normalized": "LCMDS()"
       },
       {
         "original": "nattr()",
@@ -4971,6 +6230,10 @@
         "normalized": "LDELETE()"
       },
       {
+        "original": "ledit()",
+        "normalized": "LEDIT()"
+      },
+      {
         "original": "left()",
         "normalized": "LEFT()"
       },
@@ -4997,10 +6260,6 @@
       {
         "original": "link()",
         "normalized": "LINK()"
-      },
-      {
-        "original": "list()",
-        "normalized": "LIST()"
       },
       {
         "original": "lit()",
@@ -5039,10 +6298,6 @@
         "normalized": "LOCKS()"
       },
       {
-        "original": "lockfilter()",
-        "normalized": "LOCKFILTER()"
-      },
-      {
         "original": "lockflags()",
         "normalized": "LOCKFLAGS()"
       },
@@ -5067,6 +6322,10 @@
         "normalized": "LOG()"
       },
       {
+        "original": "lpad()",
+        "normalized": "LPAD()"
+      },
+      {
         "original": "lparent()",
         "normalized": "LPARENT()"
       },
@@ -5085,6 +6344,10 @@
       {
         "original": "lpos()",
         "normalized": "LPOS()"
+      },
+      {
+        "original": "lrand()",
+        "normalized": "LRAND()"
       },
       {
         "original": "lstats()",
@@ -5129,10 +6392,6 @@
       {
         "original": "lwhoid()",
         "normalized": "LWHOID()"
-      },
-      {
-        "original": "map()",
-        "normalized": "MAP()"
       },
       {
         "original": "max()",
@@ -5237,6 +6496,10 @@
       {
         "original": "cname()",
         "normalized": "CNAME()"
+      },
+      {
+        "original": "moon()",
+        "normalized": "MOON()"
       },
       {
         "original": "namelist()",
@@ -5355,6 +6618,10 @@
         "normalized": "OBJEVAL()"
       },
       {
+        "original": "objevals()",
+        "normalized": "OBJEVALS()"
+      },
+      {
         "original": "objid()",
         "normalized": "OBJID()"
       },
@@ -5397,6 +6664,10 @@
       {
         "original": "owner()",
         "normalized": "OWNER()"
+      },
+      {
+        "original": "pack()",
+        "normalized": "PACK()"
       },
       {
         "original": "parent()",
@@ -5575,6 +6846,10 @@
         "normalized": "REPLACE()"
       },
       {
+        "original": "lrooms()",
+        "normalized": "LROOMS()"
+      },
+      {
         "original": "rest()",
         "normalized": "REST()"
       },
@@ -5603,6 +6878,10 @@
         "normalized": "ROLES()"
       },
       {
+        "original": "roman()",
+        "normalized": "ROMAN()"
+      },
+      {
         "original": "room()",
         "normalized": "ROOM()"
       },
@@ -5621,6 +6900,10 @@
       {
         "original": "floor()",
         "normalized": "FLOOR()"
+      },
+      {
+        "original": "rpad()",
+        "normalized": "RPAD()"
       },
       {
         "original": "s()",
@@ -5715,10 +6998,6 @@
         "normalized": "SORTKEY()"
       },
       {
-        "original": "Sorting",
-        "normalized": "SORTING"
-      },
-      {
         "original": "soundlike()",
         "normalized": "SOUNDLIKE()"
       },
@@ -5741,14 +7020,6 @@
       {
         "original": "splice()",
         "normalized": "SPLICE()"
-      },
-      {
-        "original": "mapsql()",
-        "normalized": "MAPSQL()"
-      },
-      {
-        "original": "sql()",
-        "normalized": "SQL()"
       },
       {
         "original": "SQL Examples",
@@ -5787,6 +7058,10 @@
         "normalized": "STEP()"
       },
       {
+        "original": "stepargs()",
+        "normalized": "STEPARGS()"
+      },
+      {
         "original": "stddev()",
         "normalized": "STDDEV()"
       },
@@ -5803,20 +7078,16 @@
         "normalized": "STRINSERT()"
       },
       {
+        "original": "strip()",
+        "normalized": "STRIP()"
+      },
+      {
         "original": "stripaccents()",
         "normalized": "STRIPACCENTS()"
       },
       {
         "original": "stripansi()",
         "normalized": "STRIPANSI()"
-      },
-      {
-        "original": "strdistance()",
-        "normalized": "STRDISTANCE()"
-      },
-      {
-        "original": "printf()",
-        "normalized": "PRINTF()"
       },
       {
         "original": "displaywidth()",
@@ -5837,6 +7108,10 @@
       {
         "original": "strmatch()",
         "normalized": "STRMATCH()"
+      },
+      {
+        "original": "strmem()",
+        "normalized": "STRMEM()"
       },
       {
         "original": "strreplace()",
@@ -5907,28 +7182,8 @@
         "normalized": "TEL()"
       },
       {
-        "original": "terminfo()",
-        "normalized": "TERMINFO()"
-      },
-      {
         "original": "JSON Functions",
         "normalized": "JSON FUNCTIONS"
-      },
-      {
-        "original": "websocket_html()",
-        "normalized": "WEBSOCKET_HTML()"
-      },
-      {
-        "original": "websocket_json()",
-        "normalized": "WEBSOCKET_JSON()"
-      },
-      {
-        "original": "oob()",
-        "normalized": "OOB()"
-      },
-      {
-        "original": "GMCP",
-        "normalized": "GMCP"
       },
       {
         "original": "isjson()",
@@ -5947,22 +7202,6 @@
         "normalized": "TESTLOCK()"
       },
       {
-        "original": "textfile()",
-        "normalized": "TEXTFILE()"
-      },
-      {
-        "original": "textentries()",
-        "normalized": "TEXTENTRIES()"
-      },
-      {
-        "original": "textsearch()",
-        "normalized": "TEXTSEARCH()"
-      },
-      {
-        "original": "dynhelp()",
-        "normalized": "DYNHELP()"
-      },
-      {
         "original": "etime()",
         "normalized": "ETIME()"
       },
@@ -5979,16 +7218,8 @@
         "normalized": "TR()"
       },
       {
-        "original": "trim()",
-        "normalized": "TRIM()"
-      },
-      {
-        "original": "trimpenn()",
-        "normalized": "TRIMPENN()"
-      },
-      {
-        "original": "trimtiny()",
-        "normalized": "TRIMTINY()"
+        "original": "trigger()",
+        "normalized": "TRIGGER()"
       },
       {
         "original": "trunc()",
@@ -6023,6 +7254,14 @@
         "normalized": "UNIQUE()"
       },
       {
+        "original": "unpack()",
+        "normalized": "UNPACK()"
+      },
+      {
+        "original": "unmark()",
+        "normalized": "UNMARK()"
+      },
+      {
         "original": "v()",
         "normalized": "V()"
       },
@@ -6045,6 +7284,10 @@
       {
         "original": "vdot()",
         "normalized": "VDOT()"
+      },
+      {
+        "original": "verb()",
+        "normalized": "VERB()"
       },
       {
         "original": "vmin()",
@@ -6113,10 +7356,6 @@
       {
         "original": "words()",
         "normalized": "WORDS()"
-      },
-      {
-        "original": "wrap()",
-        "normalized": "WRAP()"
       },
       {
         "original": "xattr()",
@@ -6251,16 +7490,6 @@
         "normalized": "HMAC()"
       }
     ],
-    "sharphttp": [
-      {
-        "original": "formdecode()",
-        "normalized": "FORMDECODE()"
-      },
-      {
-        "original": "formq()",
-        "normalized": "FORMQ()"
-      }
-    ],
     "sharplock": [
       {
         "original": "@lock-simple",
@@ -6285,34 +7514,6 @@
       {
         "original": "@lock-name",
         "normalized": "@LOCK-NAME"
-      },
-      {
-        "original": "@lock-bit",
-        "normalized": "@LOCK-BIT"
-      },
-      {
-        "original": "@lock-flag",
-        "normalized": "@LOCK-FLAG"
-      },
-      {
-        "original": "@lock-type",
-        "normalized": "@LOCK-TYPE"
-      },
-      {
-        "original": "@lock-power",
-        "normalized": "@LOCK-POWER"
-      },
-      {
-        "original": "@lock-role",
-        "normalized": "@LOCK-ROLE"
-      },
-      {
-        "original": "@lock-perm",
-        "normalized": "@LOCK-PERM"
-      },
-      {
-        "original": "@lock-channel",
-        "normalized": "@LOCK-CHANNEL"
       },
       {
         "original": "@lock-dbreflist",
@@ -6439,30 +7640,6 @@
         "normalized": "@LOCK/EXAMINE"
       },
       {
-        "original": "@lock/zone",
-        "normalized": "@LOCK/ZONE"
-      },
-      {
-        "original": "@lock/chzone",
-        "normalized": "@LOCK/CHZONE"
-      },
-      {
-        "original": "@lock/chown",
-        "normalized": "@LOCK/CHOWN"
-      },
-      {
-        "original": "@lock/parent",
-        "normalized": "@LOCK/PARENT"
-      },
-      {
-        "original": "@lock/link",
-        "normalized": "@LOCK/LINK"
-      },
-      {
-        "original": "@lock/open",
-        "normalized": "@LOCK/OPEN"
-      },
-      {
         "original": "@lock/user",
         "normalized": "@LOCK/USER"
       },
@@ -6515,42 +7692,6 @@
       {
         "original": "@mail/fwd",
         "normalized": "@MAIL/FWD"
-      },
-      {
-        "original": "Other Mail Commands",
-        "normalized": "OTHER MAIL COMMANDS"
-      },
-      {
-        "original": "Mail-other",
-        "normalized": "MAIL-OTHER"
-      },
-      {
-        "original": "@mail/clear",
-        "normalized": "@MAIL/CLEAR"
-      },
-      {
-        "original": "@mail/unclear",
-        "normalized": "@MAIL/UNCLEAR"
-      },
-      {
-        "original": "@mail/purge",
-        "normalized": "@MAIL/PURGE"
-      },
-      {
-        "original": "@mail/tag",
-        "normalized": "@MAIL/TAG"
-      },
-      {
-        "original": "@mail/untag",
-        "normalized": "@MAIL/UNTAG"
-      },
-      {
-        "original": "@mail/unread",
-        "normalized": "@MAIL/UNREAD"
-      },
-      {
-        "original": "@mail/status",
-        "normalized": "@MAIL/STATUS"
       },
       {
         "original": "Mail Folders",
@@ -6701,10 +7842,6 @@
         "normalized": "ENDTAG()"
       },
       {
-        "original": "tagwrap()",
-        "normalized": "TAGWRAP()"
-      },
-      {
         "original": "cmdlink()",
         "normalized": "CMDLINK()"
       },
@@ -6747,20 +7884,16 @@
       {
         "original": "expirelinks()",
         "normalized": "EXPIRELINKS()"
-      },
-      {
-        "original": "WebSockets",
-        "normalized": "WEBSOCKETS"
-      },
-      {
-        "original": "wshtml()",
-        "normalized": "WSHTML()"
       }
     ],
     "sharptop": [
       {
         "original": "help",
         "normalized": "HELP"
+      },
+      {
+        "original": "&help",
+        "normalized": "&HELP"
       },
       {
         "original": "+help",
@@ -6789,10 +7922,6 @@
       {
         "original": "Attrib-ownership",
         "normalized": "ATTRIB-OWNERSHIP"
-      },
-      {
-        "original": "Clients",
-        "normalized": "CLIENTS"
       },
       {
         "original": "Control",
@@ -7011,10 +8140,6 @@
         "normalized": "WARNINGS"
       },
       {
-        "original": "Wildcards",
-        "normalized": "WILDCARDS"
-      },
-      {
         "original": "Zone Master Rooms",
         "normalized": "ZONE MASTER ROOMS"
       },
@@ -7025,10 +8150,6 @@
       {
         "original": "Matching",
         "normalized": "MATCHING"
-      },
-      {
-        "original": "&HELP",
-        "normalized": "&HELP"
       },
       {
         "original": "Descriptor",
@@ -7044,10 +8165,6 @@
       }
     ],
     "sharpwiki": [
-      {
-        "original": "wiki()",
-        "normalized": "WIKI()"
-      },
       {
         "original": "wikicategory()",
         "normalized": "WIKICATEGORY()"
@@ -7065,8 +8182,22 @@
         "normalized": "WIKIRECENT()"
       },
       {
+        "original": "wikifact()",
+        "normalized": "WIKIFACT()"
+      },
+      {
+        "original": "wikiquery()",
+        "normalized": "WIKIQUERY()"
+      },
+      {
         "original": "wikiaccess()",
         "normalized": "WIKIACCESS()"
+      }
+    ],
+    "site-command": [
+      {
+        "original": "@site",
+        "normalized": "@SITE"
       }
     ],
     "sitelock-command": [
@@ -7075,10 +8206,40 @@
         "normalized": "@SITELOCK"
       }
     ],
+    "size-function": [
+      {
+        "original": "size()",
+        "normalized": "SIZE()"
+      }
+    ],
     "snapshots": [
       {
         "original": "Object Snapshots",
         "normalized": "OBJECT SNAPSHOTS"
+      }
+    ],
+    "socket-commands": [
+      {
+        "original": "Socket Commands",
+        "normalized": "SOCKET COMMANDS"
+      }
+    ],
+    "socket-events": [
+      {
+        "original": "Socket Events",
+        "normalized": "SOCKET EVENTS"
+      }
+    ],
+    "sockset-command": [
+      {
+        "original": "@sockset",
+        "normalized": "@SOCKSET"
+      }
+    ],
+    "sorting": [
+      {
+        "original": "Sorting",
+        "normalized": "SORTING"
       }
     ],
     "soundex-function": [
@@ -7093,10 +8254,76 @@
         "normalized": "SPEAK()"
       }
     ],
+    "sql-command": [
+      {
+        "original": "@sql",
+        "normalized": "@SQL"
+      }
+    ],
+    "sql-function": [
+      {
+        "original": "sql()",
+        "normalized": "SQL()"
+      }
+    ],
+    "standin-function": [
+      {
+        "original": "standin()",
+        "normalized": "STANDIN()"
+      }
+    ],
+    "stopevent-function": [
+      {
+        "original": "stopevent()",
+        "normalized": "STOPEVENT()"
+      }
+    ],
+    "storage-command": [
+      {
+        "original": "@storage",
+        "normalized": "@STORAGE"
+      }
+    ],
+    "str-function": [
+      {
+        "original": "str()",
+        "normalized": "STR()"
+      }
+    ],
+    "strdistance-function": [
+      {
+        "original": "strdistance()",
+        "normalized": "STRDISTANCE()"
+      }
+    ],
+    "strfunc-function": [
+      {
+        "original": "strfunc()",
+        "normalized": "STRFUNC()"
+      }
+    ],
+    "strlenraw-function": [
+      {
+        "original": "strlenraw()",
+        "normalized": "STRLENRAW()"
+      }
+    ],
+    "subeval-function": [
+      {
+        "original": "subeval()",
+        "normalized": "SUBEVAL()"
+      }
+    ],
     "substitutions": [
       {
         "original": "Substitutions",
         "normalized": "SUBSTITUTIONS"
+      }
+    ],
+    "swatch-function": [
+      {
+        "original": "swatch()",
+        "normalized": "SWATCH()"
       }
     ],
     "switch-command": [
@@ -7111,10 +8338,50 @@
         "normalized": "SWITCH()"
       }
     ],
+    "tag-command": [
+      {
+        "original": "@tag",
+        "normalized": "@TAG"
+      }
+    ],
+    "tagref-function": [
+      {
+        "original": "tagref()",
+        "normalized": "TAGREF()"
+      }
+    ],
+    "tagwrap-function": [
+      {
+        "original": "tagwrap()",
+        "normalized": "TAGWRAP()"
+      }
+    ],
     "teleport-command": [
       {
         "original": "@teleport",
         "normalized": "@TELEPORT"
+      }
+    ],
+    "terminfo-function": [
+      {
+        "original": "terminfo()",
+        "normalized": "TERMINFO()"
+      }
+    ],
+    "textfile-function": [
+      {
+        "original": "textfile()",
+        "normalized": "TEXTFILE()"
+      },
+      {
+        "original": "pi()",
+        "normalized": "PI()"
+      }
+    ],
+    "theme-command": [
+      {
+        "original": "@theme",
+        "normalized": "@THEME"
       }
     ],
     "time-function": [
@@ -7141,10 +8408,58 @@
         "normalized": "TIMEZONES"
       }
     ],
+    "tinymux-forms": [
+      {
+        "original": "TinyMUX Forms",
+        "normalized": "TINYMUX FORMS"
+      }
+    ],
+    "tobin-function": [
+      {
+        "original": "tobin()",
+        "normalized": "TOBIN()"
+      }
+    ],
+    "tone-function": [
+      {
+        "original": "tone()",
+        "normalized": "TONE()"
+      }
+    ],
     "topics": [
       {
         "original": "Topics",
         "normalized": "TOPICS"
+      }
+    ],
+    "totcmds-function": [
+      {
+        "original": "totcmds()",
+        "normalized": "TOTCMDS()"
+      }
+    ],
+    "totmember-function": [
+      {
+        "original": "totmember()",
+        "normalized": "TOTMEMBER()"
+      }
+    ],
+    "totpos-function": [
+      {
+        "original": "totpos()",
+        "normalized": "TOTPOS()"
+      }
+    ],
+    "translate-function": [
+      {
+        "original": "translate()",
+        "normalized": "TRANSLATE()"
+      }
+    ],
+    "tree-function": [
+      {
+        "original": "tree()",
+        "normalized": "TREE()"
       }
     ],
     "trigger-command": [
@@ -7153,10 +8468,40 @@
         "normalized": "@TRIGGER"
       }
     ],
+    "trim-function": [
+      {
+        "original": "trim()",
+        "normalized": "TRIM()"
+      }
+    ],
     "u-function": [
       {
         "original": "u()",
         "normalized": "U()"
+      }
+    ],
+    "u2default-function": [
+      {
+        "original": "u2default()",
+        "normalized": "U2DEFAULT()"
+      }
+    ],
+    "u2local-function": [
+      {
+        "original": "u2local()",
+        "normalized": "U2LOCAL()"
+      }
+    ],
+    "uargs-function": [
+      {
+        "original": "uargs()",
+        "normalized": "UARGS()"
+      }
+    ],
+    "ueval-function": [
+      {
+        "original": "ueval() and streval()",
+        "normalized": "UEVAL() AND STREVAL()"
       }
     ],
     "ulocal-function": [
@@ -7171,10 +8516,22 @@
         "normalized": "@UPTIME"
       }
     ],
+    "url-unescape-function": [
+      {
+        "original": "url_unescape()",
+        "normalized": "URL_UNESCAPE()"
+      }
+    ],
     "valid-function": [
       {
         "original": "valid()",
         "normalized": "VALID()"
+      }
+    ],
+    "vattrcnt-function": [
+      {
+        "original": "vattrcnt()",
+        "normalized": "VATTRCNT()"
       }
     ],
     "verb-command": [
@@ -7207,16 +8564,94 @@
         "normalized": "WARNINGS LIST"
       }
     ],
+    "websockets": [
+      {
+        "original": "WebSockets",
+        "normalized": "WEBSOCKETS"
+      }
+    ],
+    "while-function": [
+      {
+        "original": "while()",
+        "normalized": "WHILE()"
+      }
+    ],
     "who": [
       {
         "original": "WHO",
         "normalized": "WHO"
       }
     ],
+    "wiki-administration": [
+      {
+        "original": "Wiki Administration",
+        "normalized": "WIKI ADMINISTRATION"
+      }
+    ],
+    "wiki-categories": [
+      {
+        "original": "Wiki Categories",
+        "normalized": "WIKI CATEGORIES"
+      }
+    ],
+    "wiki-editing": [
+      {
+        "original": "Wiki Editing",
+        "normalized": "WIKI EDITING"
+      }
+    ],
+    "wiki-facts": [
+      {
+        "original": "Wiki Facts",
+        "normalized": "WIKI FACTS"
+      }
+    ],
+    "wiki-function": [
+      {
+        "original": "wiki()",
+        "normalized": "WIKI()"
+      }
+    ],
     "wiki": [
       {
         "original": "Wiki",
         "normalized": "WIKI"
+      }
+    ],
+    "wildcards": [
+      {
+        "original": "Wildcards",
+        "normalized": "WILDCARDS"
+      }
+    ],
+    "world-command": [
+      {
+        "original": "@world",
+        "normalized": "@WORLD"
+      }
+    ],
+    "world-functions": [
+      {
+        "original": "World Functions",
+        "normalized": "WORLD FUNCTIONS"
+      }
+    ],
+    "wrap-function": [
+      {
+        "original": "wrap()",
+        "normalized": "WRAP()"
+      }
+    ],
+    "wrapcolumns-function": [
+      {
+        "original": "wrapcolumns()",
+        "normalized": "WRAPCOLUMNS()"
+      }
+    ],
+    "wshtml-function": [
+      {
+        "original": "wshtml()",
+        "normalized": "WSHTML()"
       }
     ],
     "zone-masters": [

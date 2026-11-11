@@ -24,15 +24,15 @@ Pueblo and MXP are different dialects, not one extending the other. Most formatt
 
 `pueblo(<player|descriptor>)`
 
-This function returns 1 if the given player or descriptor is currently Pueblo-enabled, and 0 otherwise. An MXP client is not a Pueblo client: it returns 0 unless the client also sent the Pueblo handshake. [TERMINFO()](/reference/sharpmush-help/sharpfunc/#terminfo) lists "mxp" for an MXP client.
+This function returns 1 if the given player or descriptor is currently Pueblo-enabled, and 0 otherwise. An MXP client is not a Pueblo client: it returns 0 unless the client also sent the Pueblo handshake. [TERMINFO()](/reference/sharpmush-help/terminfo-function/#terminfo) lists "mxp" for an MXP client.
 
-If used on a player/descriptor which is not connected, pueblo() returns #-1 NOT CONNECTED. Mortals can only give a *<descriptor>* for their own connections (but can give any *<player>* arg), while See_All objects can check any descriptor.
+If used on a player/descriptor which is not connected, pueblo() returns #-1 NOT CONNECTED. Mortals can only give a *&lt;descriptor&gt;* for their own connections (but can give any *&lt;player&gt;* arg), while See_All objects can check any descriptor.
 
-When used with a *<player>* argument, the most recently active connection is used if the *<player>* is logged in more than once.
+When used with a *&lt;player&gt;* argument, the most recently active connection is used if the *&lt;player&gt;* is logged in more than once.
 
 
 ::: seealso
-- [TERMINFO()](/reference/sharpmush-help/sharpfunc/#terminfo)
+- [TERMINFO()](/reference/sharpmush-help/terminfo-function/#terminfo)
 - [HTML()](/reference/sharpmush-help/sharppueb/#html-1)
 - [pueblo](/reference/sharpmush-help/pueblo/#pueblo)
 :::
@@ -46,11 +46,10 @@ When used with a *<player>* argument, the most recently active connection is use
 
 HTML Functions are used to output HTML tags to HTML capable users: Pueblo and MXP clients, and the web portal. These tags will be stripped by the system for anything non-HTML related.
 
-Available functions:
-- tagwrap()
-- cmdlink()
-- wshtml()
-- html(), tag() and endtag() (see their entries)
+|                    |                    |                    |                    |
+|--------------------|--------------------|--------------------|--------------------|
+| [CMDLINK()](/reference/sharpmush-help/sharppueb/#cmdlink)        | [ENDTAG()](/reference/sharpmush-help/sharppueb/#endtag)         | [HTML()](/reference/sharpmush-help/sharppueb/#html-1)           | [TAG()](/reference/sharpmush-help/sharppueb/#tag)            |
+| [TAGWRAP()](/reference/sharpmush-help/tagwrap-function/#tagwrap)        | [WSHTML()](/reference/sharpmush-help/wshtml-function/#wshtml)         |                    |                    |
 
 Things a client may have that are not tags (a sound, a picture, a pane, a screen to clear) are written once and rendered by each client in its own way. See [MEDIA FUNCTIONS](/reference/sharpmush-help/sharppueb/#media-functions).
 
@@ -67,7 +66,7 @@ Mortals are restricted in the tags they may use. Most standard HTML tags are ok;
 
 `html(<string>)`
 
-In PennMUSH this wizard-only function outputs *<string>* as a single HTML tag. SharpMUSH's markup is a span over the text it applies to, so it has no single tag to write, and html() returns `#-1 USE TAGWRAP INSTEAD`. Use [TAGWRAP()](/reference/sharpmush-help/sharppueb/#tagwrap).
+In PennMUSH this wizard-only function outputs *&lt;string&gt;* as a single HTML tag. SharpMUSH's markup is a span over the text it applies to, so it has no single tag to write, and html() returns `#-1 USE TAGWRAP INSTEAD`. Use [TAGWRAP()](/reference/sharpmush-help/tagwrap-function/#tagwrap).
 
 
 ::: seealso
@@ -80,12 +79,12 @@ In PennMUSH this wizard-only function outputs *<string>* as a single HTML tag. S
 
 `tag(<name>[, <param1>[, ... , <paramN>]])`
 
-In PennMUSH this outputs an opening HTML/Pueblo tag. SharpMUSH's markup is a span over the text it applies to, so it has no tag without an end, and tag() returns `#-1 USE TAGWRAP INSTEAD`. Use [TAGWRAP()](/reference/sharpmush-help/sharppueb/#tagwrap).
+In PennMUSH this outputs an opening HTML/Pueblo tag. SharpMUSH's markup is a span over the text it applies to, so it has no tag without an end, and tag() returns `#-1 USE TAGWRAP INSTEAD`. Use [TAGWRAP()](/reference/sharpmush-help/tagwrap-function/#tagwrap).
 
 
 ::: seealso
 - [ENDTAG()](/reference/sharpmush-help/sharppueb/#endtag)
-- [TAGWRAP()](/reference/sharpmush-help/sharppueb/#tagwrap)
+- [TAGWRAP()](/reference/sharpmush-help/tagwrap-function/#tagwrap)
 - [HTML()](/reference/sharpmush-help/sharppueb/#html-1)
 :::
 
@@ -93,44 +92,12 @@ In PennMUSH this outputs an opening HTML/Pueblo tag. SharpMUSH's markup is a spa
 
 `endtag(<name>)`
 
-In PennMUSH this outputs a closing HTML/Pueblo tag. As with [TAG()](/reference/sharpmush-help/sharppueb/#tag), SharpMUSH returns `#-1 USE TAGWRAP INSTEAD`. Use [TAGWRAP()](/reference/sharpmush-help/sharppueb/#tagwrap).
+In PennMUSH this outputs a closing HTML/Pueblo tag. As with [TAG()](/reference/sharpmush-help/sharppueb/#tag), SharpMUSH returns `#-1 USE TAGWRAP INSTEAD`. Use [TAGWRAP()](/reference/sharpmush-help/tagwrap-function/#tagwrap).
 
 
 ::: seealso
 - [TAG()](/reference/sharpmush-help/sharppueb/#tag)
-- [TAGWRAP()](/reference/sharpmush-help/sharppueb/#tagwrap)
-- [HTML()](/reference/sharpmush-help/sharppueb/#html-1)
-:::
-
-## tagwrap()
-
-`tagwrap(<name>[, <parameters>], <string>)`
-
-This function outputs *<string>*, wrapped in the *<name>* HTML tag with the specified *<parameters>*.
-
-The tag is markup on *<string>*, not text in it. A Pueblo client, an MXP client and the web portal receive it as a tag; every other client receives *<string>* alone. strlen() and the other string functions see only *<string>*.
-
-### Example
-```sharp
-tagwrap(a,href="https://sharpmush.com",SharpMUSH Downloads)
-```
-
-Will output (in HTML):
-```html
-<a href="https://sharpmush.com">SharpMUSH Downloads</a>
-```
-
-The tag is written as given, so it has to mean something in the reader's client. Most tags are spelled the same in Pueblo and MXP, but command links are not: use [CMDLINK()](/reference/sharpmush-help/sharppueb/#cmdlink) for one.
-
-Without Send_OOB, *<name>* must be one of PennMUSH's allowed tags (A, B, I, U, FONT, PRE, IMG, TABLE and the like; anything else is `#-1 PERMISSION DENIED`), and the *<parameters>* are kept only if every one is on SharpMUSH's list of presentational attributes (href, src, color, face, size, align, width, height, title, xch_hint, class, and a few more), with any href or src naming an http, https, mailto, ftp or tel address. If any parameter fails, all of them are dropped. This is stricter than PennMUSH because the web portal renders the tag in a browser. A *<name>* that is not letters and digits is `#-1 INVALID TAG NAME` for everyone.
-
-A particularly important use of this function is `tagwrap(pre, <string>)`. Because Pueblo works like an html browser, spaces and tabs are compressed to a single space. If you have code (a +who function, for example) that relies on exact spacing, surround its output with a tagwrap(pre,...) so that Pueblo will render it as "preformatted" text.
-
-
-::: seealso
-- [CMDLINK()](/reference/sharpmush-help/sharppueb/#cmdlink)
-- [TAG()](/reference/sharpmush-help/sharppueb/#tag)
-- [ENDTAG()](/reference/sharpmush-help/sharppueb/#endtag)
+- [TAGWRAP()](/reference/sharpmush-help/tagwrap-function/#tagwrap)
 - [HTML()](/reference/sharpmush-help/sharppueb/#html-1)
 :::
 
@@ -138,11 +105,13 @@ A particularly important use of this function is `tagwrap(pre, <string>)`. Becau
 
 `cmdlink(<string>, <command>[, <hint>])`
 
-Outputs *<string>* as a link that runs *<command>* when clicked. *<hint>*, which defaults to *<command>*, is shown as a tooltip.
+Outputs *&lt;string&gt;* as a link that runs *&lt;command&gt;* when clicked. *&lt;hint&gt;*, which defaults to *&lt;command&gt;*, is shown as a tooltip.
 
-Each client gets the link in its own dialect: `<a xch_cmd>` for Pueblo, `<send href>` for MXP, a clickable link in the web portal. Every other client gets *<string>* alone. This is why a command link is a function of its own: one written with tagwrap() works in only one of those clients.
+Each client gets the link in its own dialect: `<a xch_cmd>` for Pueblo, `<send href>` for MXP, a clickable link in the web portal. Every other client gets *&lt;string&gt;* alone. This is why a command link is a function of its own: one written with tagwrap() works in only one of those clients.
 
-cmdlink() is SharpMUSH's own. It needs a Wizard or the Send_OOB @power, as PennMUSH requires for XCH_CMD; anyone else gets `#-1 PERMISSION DENIED`. A *<command>* containing a control character (a line break, a tab, an escape) is `#-1 INVALID ARGUMENT`: a line break would have the client send the rest as a second command, and the others are not part of any command a player could type.
+cmdlink() is SharpMUSH's own. It needs a Wizard or the Send_OOB @power, as PennMUSH requires for XCH_CMD; anyone else gets `#-1 PERMISSION DENIED`. A *&lt;command&gt;* containing a control character (a line break, a tab, an escape) is `#-1 INVALID ARGUMENT`: a line break would have the client send the rest as a second command, and the others are not part of any command a player could type.
+
+Clicking a link sends *&lt;command&gt;* as if the reader had typed it, so it runs as whoever clicks, not as the object that made the link, and anyone can type the same line. A command behind a link checks who is running it (`%#`) the way any command does. [Chat Cards](https://sharpmush.com/guides/chat-cards/) on the SharpMUSH documentation site works through an example.
 
 ### Example
 ```sharp
@@ -150,7 +119,7 @@ cmdlink() is SharpMUSH's own. It needs a Wizard or the Send_OOB @power, as PennM
 ```
 
 ::: seealso
-- [TAGWRAP()](/reference/sharpmush-help/sharppueb/#tagwrap)
+- [TAGWRAP()](/reference/sharpmush-help/tagwrap-function/#tagwrap)
 - [HTML FUNCTIONS](/reference/sharpmush-help/sharppueb/#html-functions)
 :::
 
@@ -158,16 +127,13 @@ cmdlink() is SharpMUSH's own. It needs a Wizard or the Send_OOB @power, as PennM
 
 Sounds, pictures, panes and the rest are said once, and each client is told about them in the way that client has. An MXP client gets MXP's elements, a Pueblo client its `xch_` ones, the web portal an HTML element it can act on, and a plain telnet client either nothing or the words that stand in for what it cannot show.
 
-Available functions:
-- sound() and music()
-- stopsound()
-- image()
-- figure() (a picture with text art and text flowing round it; see [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout-functions/#layout-functions))
-- pane()
-- preformat()
-- clearscreen()
-- prefetch()
-- expirelinks()
+|                 |                 |                 |                 |
+|-----------------|-----------------|-----------------|-----------------|
+| [CLEARSCREEN()](/reference/sharpmush-help/sharppueb/#clearscreen) | [EXPIRELINKS()](/reference/sharpmush-help/sharppueb/#expirelinks) | [FIGURE()](/reference/sharpmush-help/figure-function/#figure)      | [IMAGE()](/reference/sharpmush-help/sharppueb/#image)       |
+| [MUSIC()](/reference/sharpmush-help/sharppueb/#music)       | [PANE()](/reference/sharpmush-help/sharppueb/#pane)        | [PREFETCH()](/reference/sharpmush-help/sharppueb/#prefetch)    | [PREFORMAT()](/reference/sharpmush-help/sharppueb/#preformat)   |
+| [SOUND()](/reference/sharpmush-help/sharppueb/#sound)       | [STOPSOUND()](/reference/sharpmush-help/sharppueb/#stopsound)   |                 |                 |
+
+figure() is a picture with text art and text flowing round it; it is described with the [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions).
 
 None of them leaves anything in the plain text, so `strlen()` and listen patterns see what they saw before, except where a function stands words in for what a client cannot show, such as a picture's description.
 
@@ -181,9 +147,11 @@ All but preformat() need a Wizard or the Send_OOB @power, as [CMDLINK()](/refere
 
 `sound(<file>[, <volume>[, <repeats>]])`
 
-Plays a sound effect. *<file>* is a file the client resolves against the game's own sound directory, or an absolute address. *<volume>* is 0 to 100. *<repeats>* is how many times to play it, or `-1` to play it until it is stopped.
+Plays a sound effect. *&lt;file&gt;* is a file the client resolves against the game's own sound directory, or an absolute address. *&lt;volume&gt;* is 0 to 100. *&lt;repeats&gt;* is how many times to play it, or `-1` to play it until it is stopped.
 
 MXP gets `<SOUND>`, Pueblo `<img xch_sound>`, the web portal an `<audio>` element the page decides whether to play, and a plain telnet client nothing at all.
+
+A client such as Mudlet that lists Client.Media in GMCP Core.Supports is sent GMCP Client.Media.Play before the line, with *&lt;repeats&gt;* as its loops. A full address is fetched from where it says; a file name is fetched from the game's `media_base_url` (see [@config net](/reference/sharpmush-help/config-net-command/#config-net)).
 
 ### Example
 ```sharp
@@ -202,6 +170,8 @@ MXP gets `<SOUND>`, Pueblo `<img xch_sound>`, the web portal an `<audio>` elemen
 
 As [SOUND()](/reference/sharpmush-help/sharppueb/#sound), for background music: one piece plays at a time, and MXP has a channel of its own for it. `music(theme.mid,,-1)` plays until something stops it.
 
+Mudlet is sent Client.Media.Play as music under the key `music`, so a new piece replaces the one playing.
+
 ::: seealso
 - [SOUND()](/reference/sharpmush-help/sharppueb/#sound)
 - [STOPSOUND()](/reference/sharpmush-help/sharppueb/#stopsound)
@@ -211,7 +181,9 @@ As [SOUND()](/reference/sharpmush-help/sharppueb/#sound), for background music: 
 
 `stopsound([<channel>])`
 
-Silences what is playing. *<channel>* is `effects` or `music`; with none, both stop.
+Silences what is playing. *&lt;channel&gt;* is `effects` or `music`; with none, both stop.
+
+Mudlet is sent Client.Media.Stop for sounds, for music, or with nothing named, for everything.
 
 ::: seealso
 - [SOUND()](/reference/sharpmush-help/sharppueb/#sound)
@@ -222,9 +194,9 @@ Silences what is playing. *<channel>* is `effects` or `music`; with none, both s
 
 `image(<address>[, <description>[, <width>[, <height>]]])`
 
-A picture. *<width>* and *<height>* are in pixels.
+A picture. *&lt;width&gt;* and *&lt;height&gt;* are in pixels.
 
-*<description>* is what a client with no pictures shows instead (the address itself when none is given), so it is worth writing. MXP gets `<IMAGE>`, Pueblo and the portal `<img>`, and a terminal the words.
+*&lt;description&gt;* is what a client with no pictures shows instead (the address itself when none is given), so it is worth writing. MXP gets `<IMAGE>`, Pueblo and the portal `<img>`, and a terminal the words.
 
 Put it inside [CMDLINK()](/reference/sharpmush-help/sharppueb/#cmdlink) for a picture that runs a command when clicked.
 
@@ -240,7 +212,7 @@ It needs a Wizard, the Send_OOB @power or the Send_Image @power (which the appro
 
 `pane(<text>, <name>[, <title>])`
 
-Sends *<text>* to a pane of its own (a window or region the client keeps apart from the main output), opening it if the client has none by that name. *<title>* is what the pane is labelled.
+Sends *&lt;text&gt;* to a pane of its own (a window or region the client keeps apart from the main output), opening it if the client has none by that name. *&lt;title&gt;* is what the pane is labelled.
 
 A client with no panes shows the text where it is, which is why the text is inside the function rather than sent after it.
 
@@ -253,7 +225,7 @@ A client with no panes shows the text where it is, which is why the text is insi
 
 `preformat(<text>)`
 
-Says *<text>* is laid out by its own spacing: a table, a map, a listing.
+Says *&lt;text&gt;* is laid out by its own spacing: a table, a map, a listing.
 
 A client reading the stream as HTML (a Pueblo client, the portal) collapses runs of spaces and uses a variable width font, so anything drawn with spaces needs this around it or its columns will not line up. Pueblo gets `<xch_mudtext>`, the portal `<pre>`, and a terminal the text unchanged, since a terminal lays it out that way already.
 
@@ -267,7 +239,7 @@ A client reading the stream as HTML (a Pueblo client, the portal) collapses runs
 ::: seealso
 - [align()](/reference/sharpmush-help/align/#align)
 - [TABLE()](/reference/sharpmush-help/sharpfunc/#table)
-- [pueblo client enhancements](/reference/sharpmush-help/sharppueb/#pueblo-client-enhancements)
+- [pueblo client enhancements](/reference/sharpmush-help/pueblo/#client-enhancements)
 :::
 
 ## clearscreen()
@@ -286,71 +258,8 @@ Asks the client to fetch something now that it will want soon, so it is already 
 
 `expirelinks([<group>])`
 
-Makes links already on the player's screen stop working: those in *<group>*, or every one when no group is named. MXP acts on it, the portal is told, and a client with neither leaves its old links working.
+Makes links already on the player's screen stop working: those in *&lt;group&gt;*, or every one when no group is named. MXP acts on it, the portal is told, and a client with neither leaves its old links working.
 
 ::: seealso
 - [CMDLINK()](/reference/sharpmush-help/sharppueb/#cmdlink)
-:::
-
-## WebSockets
-
-WebSockets are a network protocol used by JavaScript-enabled web browsers to make persistent network connections, similar to the telnet connection you use to connect to SharpMUSH. With WebSockets enabled in mush.cnf, it is possible to connect from MUSH clients embedded in HTML pages using JavaScript. A WebSocket client can natively render HTML, but can also parse Pueblo links into HTML links that send a command to the MUSH when clicked. For safety, we separate plain text from the other kinds of HTML/Pueblo code that we want rendered. In order to render HTML/Pueblo, a player with the Pueblo_Send power uses special functions to embed HTML/Pueblo markup. Players without the PUEBLO_SEND power can not use these markup functions. Any HTML code strings that are not properly marked up will simply show up as unrendered plain text.
-
-See https://github.com/grapenut/websockclient for an example client.
-
-The different kinds of markup that can be sent to clients are:
-* Plain text
-* HTML tags
-* Pueblo links
-* JSON objects
-* Prompts
-
-Without using any HTML markup functions, output is rendered as normal plain text (including ANSI and xterm256 color).
-
-See [HTML FUNCTIONS](/reference/sharpmush-help/sharppueb/#html-functions) for functions used to embed HTML markup tags one at a time.<br>
-See [WSHTML()](/reference/sharpmush-help/sharppueb/#wshtml) for help embedding large segments of raw HTML markup to be sent to WebSocket clients.
-
-For clickable command links, use [CMDLINK()](/reference/sharpmush-help/sharppueb/#cmdlink), e.g. `cmdlink(Who is online?,+who)`. The web portal and the example client above both follow it, and so do Pueblo and MXP clients, each in its own dialect.
-
-You can also send data encapsulated in a JSON object.
-
-See [json()](/reference/sharpmush-help/json-function/#json) for information about formatting data into JSON object strings.<br>
-See [OOB()](/reference/sharpmush-help/sharpfunc/#oob) for sending a JSON object to a WebSocket client as a JavaScript object, or to a telnet client over GMCP.
-
-See [@prompt](/reference/sharpmush-help/sharpcmd/#prompt) for information about sending telnet GOAHEAD prompts. Support for prompts depends on the WebSocket client. The example client above shows prompts on their own line, separating the input and output windows, but requires PROMPT_NEWLINES to be turned off.
-
-
-::: seealso
-- [HTML FUNCTIONS](/reference/sharpmush-help/sharppueb/#html-functions)
-- [json()](/reference/sharpmush-help/json-function/#json)
-- [pueblo](/reference/sharpmush-help/pueblo/#pueblo)
-- [WSHTML()](/reference/sharpmush-help/sharppueb/#wshtml)
-- [OOB()](/reference/sharpmush-help/sharpfunc/#oob)
-:::
-
-## wshtml()
-
-`wshtml(<html>[, <default>])`
-
-  Turns an HTML fragment into markup and returns it, for whatever emits it to deliver: text becomes the text, each element becomes a tag over what it encloses, exactly as [TAGWRAP()](/reference/sharpmush-help/sharppueb/#tagwrap) builds one tag at a time. A WebSocket, Pueblo or MXP client receives the tags; an ANSI client gets the styling it can show for `<b>`, `<i>`, `<u>` and `<s>` and the words for everything else; everything else gets the words. Nothing is sent by the function itself, and the value stores, slices and re-evaluates like any other string.
-
-  The fragment is read the way a browser reads it: an unclosed tag closes at the end, a stray closing tag is dropped, a bare `<` is text. An element that encloses nothing is dropped, since a tag has to cover something; `<br>` is a line break.
-
-  The gate is [TAGWRAP()](/reference/sharpmush-help/sharppueb/#tagwrap)'s. With the Send_OOB power (Pueblo_Send is its older name), any tag and any attribute. Without it, only the tags PennMUSH's `tagwrap()` allows (one forbidden tag refuses the whole fragment) and only attributes a browser cannot be made to run, one forbidden attribute dropping them all from that tag.
-
-  PennMUSH's `wshtml(<html>, <default>)` takes a second, plain-text string for clients without HTML, and its `wsjson()` embeds a JSON object the same way. Here `<default>` is accepted, so softcode written for PennMUSH still runs, but it is not used: the markup's own text is what a client without HTML sees. There is no `wsjson()`: JSON is data for a program rather than text with a plain reading, so it goes by [OOB()](/reference/sharpmush-help/sharpfunc/#oob), which sends it where a connection can receive it.
-
-  For example:
-
-```sharp
-@emit [wshtml(<a href="https://sharpmush.com">SharpMUSH</a>)]
-```
-
-  A player on the web portal or a Pueblo/MXP client sees a link reading SharpMUSH; a telnet player, and any listening object, sees `SharpMUSH`.
-
-::: seealso
-- [WEBSOCKETS](/reference/sharpmush-help/sharppueb/#websockets)
-- [pueblo](/reference/sharpmush-help/pueblo/#pueblo)
-- [HTML FUNCTIONS](/reference/sharpmush-help/sharppueb/#html-functions)
-- [JSON FUNCTIONS](/reference/sharpmush-help/sharpfunc/#json-functions)
 :::

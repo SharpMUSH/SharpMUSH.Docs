@@ -10,14 +10,14 @@ description: "SharpMUSH documentation for json()"
   "lookup": "json()",
   "aliases": [
     "json"
-  ](/reference/sharpmush-help/sharpconf/#json),
+  ],
   "sections": [
     {
       "id": "value-construction-examples",
       "heading": "Value construction examples",
       "lookup": "json value construction examples"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-value-construction-examples-heading-value-construction-examples-lookup-json-value-construction-examples),
+  ],
   "redirects": {
     "JSON2": "json value construction examples"
   }
@@ -35,16 +35,20 @@ For `<type>`...   `<data>` should be...<br>
 null            not given<br>
 boolean         one arg, either "true", "1", "false" or "0"<br>
 string          one arg, any string, including an empty string<br>
+markupstring    one arg, any string; its colour and markup are kept, for a portal page that draws them<br>
 number          one arg, a valid number<br>
 array           zero or more args, each themselves valid JSON<br>
 object          zero or more pairs of arguments, the first a plain string (NOT a quoted JSON string), the second valid JSON of any type
 
 When `<type>` is "array" or "object", it's recommended that subsequent JSON arguments are created with nested calls to JSON().
 
+A large structure that is mostly the same each time, such as a portal form, is faster stored as JSON in an attribute and completed with json_fill().
+
 ::: seealso
-- [OOB()](/reference/sharpmush-help/sharpfunc/#oob)
+- [OOB()](/reference/sharpmush-help/oob-function/#oob)
 - [ISJSON()](/reference/sharpmush-help/sharpfunc/#isjson)
 - [json_array()](/reference/sharpmush-help/json-array-function/#jsonarray)
+- [json_fill()](/reference/sharpmush-help/json-fill-function/#jsonfill)
 - [json_query()](/reference/sharpmush-help/json-query-function/#jsonquery)
 - [json_map()](/reference/sharpmush-help/json-map-function/#jsonmap)
 - [RENDER()](/reference/sharpmush-help/sharpfunc/#render)
@@ -63,21 +67,17 @@ null
 ```
 
 ```sharp
-> think json(array, json(number, pi()), json(string, Pie), json(bool, true))
-[3.141593, "Pie", true]
+> think json(array, json(number, pi()), json(string, Pie), json(boolean, true))
+[3.141593,"Pie",true]
 ```
 
 ```sharp
 > &oneobject me=json(object, name, json(string, name(%0)), dbref, json(string, %0), created, json(number, csecs(%0)))
 > think u(oneobject, #1)
-{"name": "One", "dbref": "#1", "created": 1431039583}
+{"name":"One","dbref":"#1","created":1431039583}
 ```
 
 ```sharp
 > think json(array, u(oneobject, #0), u(oneobject, #1), u(oneobject, #2))
-[
-{"name": "Room Zero", "dbref": "#0", "created": 1431039583},
-{"name": "One", "dbref": "#1", "created": 1431039583},
-{"name": "Master Room", "dbref": "#2", "created": 1431039583}
-]
+[{"name":"Room Zero","dbref":"#0","created":1431039583},{"name":"One","dbref":"#1","created":1431039583},{"name":"Master Room","dbref":"#2","created":1431039583}]
 ```

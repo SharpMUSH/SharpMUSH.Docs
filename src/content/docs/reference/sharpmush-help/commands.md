@@ -11,7 +11,7 @@ description: "SharpMUSH documentation for $-commands"
   "aliases": [
     "MACROS",
     "USER-DEFINED COMMANDS"
-  ](/reference/sharpmush-help/sharpconf/#macros-user-defined-commands),
+  ],
   "sections": [
     {
       "id": "patterns-and-registers",
@@ -45,7 +45,7 @@ It is recommended that `<command pattern>` not begin with "@", as many of SharpM
 
 ### Patterns and registers
 
-Any number of wildcards, * and ?, may be in present in `<command pattern>`. A * matches any number of characters (including none), and ? matches exactly one character. When the action list is executed, the values on the stack in %0-%9 and v(10)-v(29) are the portions of what the user types that match the first 30 *'s or ?'s. You can also match a regular expression rather than wildcards by setting the REGEXP attribute flag on `<attribute>`; see [regexp](/reference/sharpmush-help/sharpconf/#regexp) for details. When using named regexp captures, the named arguments can be accessed via r(`<name>`, args).
+Any number of wildcards, * and ?, may be in present in `<command pattern>`. A * matches any number of characters (including none), and ? matches exactly one character. When the action list is executed, the values on the stack in %0-%9 and v(10)-v(29) are the portions of what the user types that match the first 30 *'s or ?'s. You can also match a regular expression rather than wildcards by setting the REGEXP attribute flag on `<attribute>`; see [regexp](/reference/sharpmush-help/regexp/#regular-expressions) for details. When using named regexp captures, the named arguments can be accessed via r(`<name>`, args).
 
 For example, to make a 'wave' command, you could do the following:
 ```sharp
@@ -65,6 +65,6 @@ If a command would match, but the enactor can't pass the lock, the object may de
 - [evaluation order](/reference/sharpmush-help/evaluation-order/#evaluation-order)
 - [STACK](/reference/sharpmush-help/sharptop/#stack)
 - [%]
-- [WILDCARDS](/reference/sharpmush-help/sharptop/#wildcards)
-- [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
+- [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)
+- [LOCKING](/reference/sharpmush-help/locking/#locking)
 :::

@@ -10,7 +10,7 @@ description: "SharpMUSH documentation for locate()"
   "lookup": "locate()",
   "aliases": [
     "locate"
-  ](/reference/sharpmush-help/sharpconf/#locate),
+  ],
   "sections": [
     {
       "id": "search-locations",
@@ -22,7 +22,7 @@ description: "SharpMUSH documentation for locate()"
       "heading": "Matching examples",
       "lookup": "locate matching examples"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-search-locations-heading-search-locations-lookup-locate-search-locations-id-matching-examples-heading-matching-examples-lookup-locate-matching-examples),
+  ],
   "redirects": {
     "LOCATE2": "locate search locations",
     "LOCATE3": "locate matching examples"

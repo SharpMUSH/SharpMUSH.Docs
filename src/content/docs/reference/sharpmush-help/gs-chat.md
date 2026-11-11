@@ -10,14 +10,14 @@ description: "SharpMUSH documentation for Getting Started: Chat"
   "lookup": "gs chat",
   "aliases": [
     "GS CHANNELS"
-  ](/reference/sharpmush-help/sharpchat/#gs-channels),
+  ],
   "sections": [
     {
       "id": "speaking-on-channels",
       "heading": "Speaking on channels",
       "lookup": "gs chat speaking on channels"
     }
-  ](/reference/sharpmush-help/sharpchat/#id-speaking-on-channels-heading-speaking-on-channels-lookup-gs-chat-speaking-on-channels),
+  ],
   "redirects": {
     "GS CHAT2": "gs chat speaking on channels"
   }
@@ -53,7 +53,7 @@ Some games customize the appearance of channels a little (for instance, adding c
 There's much more you can do with the channel system - see [@channel](/reference/sharpmush-help/sharpchat/#channel) for the other commands, and [@channel joining](/reference/sharpmush-help/channel-joining-command/#channel-joining) for joining and leaving.
 
 ::: seealso
-- [gs talking](/reference/sharpmush-help/sharpconf/#gs-talking)
+- [gs talking](/reference/sharpmush-help/gs-talking/#getting-started-talking)
 - [@channel](/reference/sharpmush-help/sharpchat/#channel)
 - [@chat](/reference/sharpmush-help/sharpchat/#chat-1)
 :::

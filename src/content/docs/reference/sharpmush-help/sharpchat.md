@@ -22,7 +22,7 @@ There are some aliases in place for players more familiar with the MUX comsys - 
 - [channel functions](/reference/sharpmush-help/channel-functions/#channel-functions)
 - [CHAN_USEFIRSTMATCH](/reference/sharpmush-help/sharpchat/#chanusefirstmatch)
 - [@chatformat](/reference/sharpmush-help/chatformat-command/#chatformat)
-- [@CHANNEL CLOCK](/reference/sharpmush-help/sharpchat/#channel-clock)
+- [@CHANNEL CLOCK](/reference/sharpmush-help/channel-clock-command/#channel-clock)
 :::
 
 ## @chat
@@ -61,18 +61,20 @@ Normally, when an object attempts to speak on the channel system with @chat, usi
 
 ## @cemit
 
-- `@cemit[/noisy|/silent][/noeval] <channel>=<message>`
+- `@cemit[/noisy|/silent][/noeval][/spoof] <channel>=<message>`
 - `@nscemit[/noisy|/silent][/noeval] <channel>=<message>`
-- `cemit(<channel>, <message>[, <noisy>])`
-- `nscemit(<channel>, <message>[, <noisy>])`
+- `cemit(<channel>, <message>[, <noisy>[, <picture>]])`
+- `nscemit(<channel>, <message>[, <noisy>[, <picture>]])`
 
 @cemit emits *\<message\>* on *\<channel\>*. It does not include your name. The channel prefix is included if the /noisy switch is given, and omitted if /silent is given - if neither is given, the default behaviour is controlled by the noisy_cemit @config option. The /noeval switch prevents *\<message\>* from being evaluated.
 
 You must be able to speak on the channel, or have the See_All and Pemit_All @powers, to @cemit on the channel.
 
-@nscemit is exactly the same, but does not produce nospoof information when used by players with the Can_spoof @power.
+@nscemit is exactly the same, but does not produce nospoof information when used by players with the Can_spoof @power. `@cemit/spoof` is the same as @nscemit.
 
 cemit() and nscemit() work the same as @cemit/silent and @nscemit/silent, respectively. If *\<noisy\>* is given as a true value, they work like @cemit/noisy and @nscemit/noisy, respectively, instead.
+
+*\<picture\>* is shown beside the line in the web portal; see [Channel Pictures](/reference/sharpmush-help/sharpchat/#channel-pictures).
 
 @cemit is intended for use in writing extended chat systems. 
 
@@ -80,15 +82,30 @@ cemit() and nscemit() work the same as @cemit/silent and @nscemit/silent, respec
 - [@chat](/reference/sharpmush-help/sharpchat/#chat-1)
 :::
 
+## Channel Pictures
+
+The fourth argument to cemit() and nscemit(), *\<picture\>*, is a picture the web portal shows beside the line; a MU* client shows nothing of it. It is a character you control, by dbref or objid, whose portal picture is used, or an https image URL. Any other value returns `#-1 INVALID PICTURE`, and a character you do not control returns `#-1 PERMISSION DENIED`.
+
+```
+> think cemit(Public, The tower bell rings., 1, https://example.com/bell.png)
+```
+
+Output: `<Public> The tower bell rings.` In the web portal, the line has the bell picture beside it.
+
+::: seealso
+- [@cemit](/reference/sharpmush-help/sharpchat/#cemit)
+:::
+
 ## @channel
 
 The `@channel` command is used to add, join, list and modify channels in the chat system. It takes many different switches.
 
-Help for `@channel` is split into a number of topics. Please see [@channel \<topic\>](/reference/sharpmush-help/sharpcmd/#channel-topic) for more, where *\<topic\>* is one of the words below. For help on a specific switch to `@channel`, use [@channel/<switch>].
+Help for `@channel` is split into a number of topics. For help on a specific switch to `@channel`, use `help @channel/<switch>`.
 
-- **Joining** - How to find, join, and leave channels
-- **Other** - Setting channel titles, recalling previous chat messages
-- **Admin** - Adding, deleting and modifying channels
+- [@channel joining](/reference/sharpmush-help/channel-joining-command/#channel-joining) - How to find, join, and leave channels
+- [@channel other](/reference/sharpmush-help/sharpchat/#channel-other) - Setting channel titles, recalling previous chat messages
+- [@channel admin](/reference/sharpmush-help/channel-admin-command/#channel-admin) - Adding, deleting and modifying channels
+- [@channel clock](/reference/sharpmush-help/channel-clock-command/#channel-clock) - Locking who may join, speak on, see or moderate a channel
 
 ::: seealso
 - [CHAT](/reference/sharpmush-help/sharpchat/#chat)
@@ -99,7 +116,7 @@ Help for `@channel` is split into a number of topics. Please see [@channel \<top
 
 ## @channel other
 
-- `@channel/recall[/last] <channel>[=<count>]`
+- `@channel/recall[/quiet] <channel>[=<count>]`
 - `@channel/title <channel>=<title>`
 - `@channel/buffer <channel>=<size>`
 
@@ -111,47 +128,7 @@ Help for `@channel` is split into a number of topics. Please see [@channel \<top
 
 ::: seealso
 - [@channel joining](/reference/sharpmush-help/channel-joining-command/#channel-joining)
-- [@CHANNEL ADMIN](/reference/sharpmush-help/sharpchat/#channel-admin)
-:::
-
-## @channel admin
-
-- `@channel/add <channel>=<privlist>`
-- `@channel/delete <channel>`
-- `@channel/mogrifier <channel>=<object>`
-- `@channel/chown <channel>=<player>`
-- `@channel/name <channel>=<newname>`
-- `@channel/rename <channel>=<newname>`
-- `@channel/describe <channel>=<description>`
-- `@channel/privs <channel>=<privlist>`
-- `@channel/wipe <channel>`
-- `@channel/decompile[/brief] <channel>`
-- `@clock/join|/speak|/see|/hide|/mod <channel>[=<lock>]`
-
-`@channel/add` creates a new channel with the privileges in *<privlist>*, the same list `@channel/privs` takes, and it is required. You may not own more channels than the `max_channels` limit allows unless you are staff.
-
-`@channel/delete` removes a channel. Only channel admins can do this.
-
-`@channel/mogrifier` sets an object to be the channel's mogrifier. Only channel admins can do this. See [mogrifier](/reference/sharpmush-help/sharpconf/#mogrifier) for details.
-
-`@channel/chown` changes the owner of a channel. Only channel admins can do this.
-
-`@channel/name` and `@channel/rename` both rename a channel. Only channel admins can do this.
-
-`@channel/describe` changes a channel's description. Only channel admins can do this.
-
-`@channel/privs` changes a channel's privileges. Only channel admins can do this. See [@CHANNEL PRIVS](/reference/sharpmush-help/sharpchat/#channel-privs) for details.
-
-`@channel/wipe` removes all players from a channel. Only channel admins can do this.
-
-`@channel/decompile` prints the commands that would recreate the channel: its privileges, owner, mogrifier, locks, description, buffer size and membership. You must be able to decompile the channel. The /brief switch stops before the membership; members hiding on the channel are listed only to someone who could see them on [@channel joining](/reference/sharpmush-help/channel-joining-command/#channel-joining).
-
-Channel locks are managed by the separate `@clock` command, not by a `@channel` switch. See [@CHANNEL CLOCK](/reference/sharpmush-help/sharpchat/#channel-clock) for details.
-
-::: seealso
-- [@channel joining](/reference/sharpmush-help/channel-joining-command/#channel-joining)
-- [@CHANNEL ADMIN](/reference/sharpmush-help/sharpchat/#channel-admin)
-- [@CHANNEL CLOCK](/reference/sharpmush-help/sharpchat/#channel-clock)
+- [@CHANNEL ADMIN](/reference/sharpmush-help/channel-admin-command/#channel-admin)
 :::
 
 ## @channel list
@@ -178,84 +155,8 @@ which reads `(None)` when nothing matched.
 
 ::: seealso
 - [@channel joining](/reference/sharpmush-help/channel-joining-command/#channel-joining)
-- [@CHANNEL ADMIN](/reference/sharpmush-help/sharpchat/#channel-admin)
-- [@CHANNEL CLOCK](/reference/sharpmush-help/sharpchat/#channel-clock)
-:::
-
-## @channel privs
-
-`@channel/privs <channel>=<privlist>`
-
-Channel privileges say who a channel admits and how its messages are rendered. They are set with `@channel/privs`, and on a brand new channel with `@channel/add <channel>=<privlist>`.
-
-*<privlist>* is a space-separated list of privilege names, or of the single-letter abbreviations below. The list **replaces** the channel's current privileges rather than adding to them, so name every privilege the channel is to keep. Names match without regard to case; the letters do not, because `O` is Object and `o` is Open.
-
-Available privileges:
-- **player** (`P`): Players may use the channel
-- **object** (`O`): Non-players may use the channel
-- **admin** (`A`): Only royalty, wizards, and holders of the `chat_privs` power may use the channel
-- **wizard** (`W`): Only wizards may use the channel
-- **quiet** (`Q`): The channel does not show connection messages
-- **open** (`o`): You may speak on the channel even when you are not listening to it
-- **hide_ok** (`H`): You may hide yourself from the channel's who list
-- **notitles** (`T`): Channel titles are not shown in channel messages
-- **nonames** (`N`): Speakers' names are not shown in channel messages
-- **nocemit** (`C`): [@CEMIT](/reference/sharpmush-help/sharpchat/#cemit) is prohibited on the channel
-- **interact** (`I`): Channel output is filtered through the game's interaction rules
-- **disabled** (`D`): No one can join or speak on the channel
-
-These are privileges, not locks. A privilege says which *kind* of thing the channel is open to; a lock says which particular objects get through. Joining, speaking, seeing, hiding and modifying are each governed by a lock of their own; see [@CHANNEL CLOCK](/reference/sharpmush-help/sharpchat/#channel-clock).
-
-`loud` is not a channel privilege and cannot be given to a channel. It is a flag set on an object; see [FLAG LIST](/reference/sharpmush-help/sharpflag/#flag-list).
-
-**Examples**
-```sharp
-@channel/privs Public=player quiet open nocemit
-@channel/privs Admin=player admin
-@channel/privs Public=P Q o C
-```
-
-::: seealso
-- [@channel joining](/reference/sharpmush-help/channel-joining-command/#channel-joining)
-- [@CHANNEL CLOCK](/reference/sharpmush-help/sharpchat/#channel-clock)
-- [@CHANNEL CLOCK](/reference/sharpmush-help/sharpchat/#channel-clock)
-- [cflags()](/reference/sharpmush-help/sharpfunc/#cflags)
-:::
-
-## @channel clock
-
-`@clock/join <channel>[=<lock>]`<br>
-`@clock/speak <channel>[=<lock>]`<br>
-`@clock/see <channel>[=<lock>]`<br>
-`@clock/hide <channel>[=<lock>]`<br>
-`@clock/mod <channel>[=<lock>]`
-
-Channel locks are set with `@clock`, which is its own command; there is no `@channel/clock` switch. Each switch names the one lock it sets, and omitting *<lock>* removes that lock. With no switch at all, `@clock` sets the join lock. See [lock keys](/reference/sharpmush-help/lock-keys/#lock-keys) for what may go in a *<lock>*.
-
-There are five locks:
-- **join**: Restricts who can join the channel
-- **speak**: Restricts who can speak on the channel
-- **see**: Restricts who can see the channel on `@channel/list`
-- **hide**: Restricts `@channel/hide` on a channel that is `hide_ok`
-- **mod**: Restricts who can modify the channel. Passing the mod lock lets you do anything to a channel short of deleting it
-
-A lock is evaluated against the object trying to pass it, exactly as if it had been set on that object.
-
-You may set a channel's locks if you own it, if you pass its mod lock, or if you are a wizard. A new channel starts with none of the five set, and an unset lock is one everybody passes.
-
-**Examples**
-```sharp
-@clock/join Public=flag^wizard
-@clock/speak Public=!flag^gagged
-@clock/mod Secret=#123
-@clock/speak Public=
-```
-
-::: seealso
-- [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
-- [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
-- [lock keys](/reference/sharpmush-help/lock-keys/#lock-keys)
-- [@CHANNEL PRIVS](/reference/sharpmush-help/sharpchat/#channel-privs)
+- [@CHANNEL ADMIN](/reference/sharpmush-help/channel-admin-command/#channel-admin)
+- [@CHANNEL CLOCK](/reference/sharpmush-help/channel-clock-command/#channel-clock)
 :::
 
 ## MUX Comsys
@@ -263,22 +164,86 @@ You may set a channel's locks if you own it, if you pass its mod lock, or if you
 `addcom <alias>=<channel>`<br>
 `delcom <alias>`<br>
 `comlist`<br>
-`comtitle <alias>=<title>`
+`comtitle <alias>=<title>`<br>
+`@clist[/full]`
 
 SharpMUSH provides the MUX comsys commands for players more familiar with them:
 
 - `addcom <alias>=<channel>` joins `<channel>` and remembers `<alias>` for it
 - `delcom <alias>` leaves the channel `<alias>` names and forgets the alias
-- `comlist` lists your aliases and the channels they name
+- `comlist` lists your aliases, the channels they name, whether you are on each (`On`, `Gag` or `Off`) and your title there
 - `comtitle <alias>=<title>` is `@channel/title <channel>=<title>`
-- `<alias> <message>` > `@chat <channel>=<message>`
-- `<alias>:` > `@chat <channel>=:`
-- `<alias>;` > `@chat <channel>=;`
+- `<alias> <message>` > `@chat <channel>=<message>`, and `<alias> :<pose>` and `<alias> ;<pose>` pose
+- `<alias> on` > `@channel/ungag <channel>`
+- `<alias> off` > `@channel/gag <channel>`
+- `<alias> who` > `@channel/who <channel>`
+- `allcom on|off|who` does that on every channel your aliases name, and `clearcom` is `delcom` for every alias
+- `@clist` > `@channel/list`; the `/full` switch is accepted and changes nothing
 
-Aliases are stored on you as `` CHANALIAS`<alias> `` attributes, so they survive a disconnect. Where a command takes a channel name rather than an alias you must give enough of the name to identify it uniquely.
+Aliases are stored on you as `` CHANALIAS`<alias> `` attributes, so they survive a disconnect. These commands and aliases work only while the `use_muxcomm` option is on; otherwise they answer `Command disabled.` Where a command takes a channel name rather than an alias you must give enough of the name to identify it uniquely.
 
 ::: seealso
 - [@channel](/reference/sharpmush-help/sharpchat/#channel)
 - [@chat](/reference/sharpmush-help/sharpchat/#chat-1)
 - [CHAN_USEFIRSTMATCH](/reference/sharpmush-help/sharpchat/#chanusefirstmatch)
+- [MUX Channel Admin](/reference/sharpmush-help/sharpchat/#mux-channel-admin)
+:::
+
+## MUX Channel Admin
+
+`@ccreate <channel>`<br>
+`@cdestroy <channel>`<br>
+`@cboot[/quiet] <channel>=<object>`<br>
+`@cwho <channel>[/all]`<br>
+`@cchown <channel>=<player>`<br>
+`@coflags <channel>=[!]join`<br>
+`@cpflags <channel>=[!]join`
+
+TinyMUX's channel commands. Each runs the `@channel` command it stands for, as you:
+
+- `@ccreate` > `@channel/add <channel>=player object`, a channel players and objects may join
+- `@cdestroy` > `@channel/delete`
+- `@cboot` > `@channel/off <channel>=<object>`; `/quiet` is accepted and changes nothing
+- `@cwho` > `@channel/who`, which lists every member, so `/all` changes nothing
+- `@cchown` > `@channel/chown`
+- `@coflags` and `@cpflags` add or remove the `object` or `player` privilege: whether objects or players may join. TinyMUX's `transmit` and `receive` flags have no equivalent; `@clock/speak` chooses who may speak.
+
+Like `addcom`, they work only while `use_muxcomm` is on. `@cset` changes a channel's other settings.
+
+::: seealso
+- [@cset](/reference/sharpmush-help/sharpchat/#cset)
+- [MUX Comsys](/reference/sharpmush-help/sharpchat/#mux-comsys)
+- [@CHANNEL ADMIN](/reference/sharpmush-help/channel-admin-command/#channel-admin)
+:::
+
+## @cset
+
+`@cset/<option> <channel>[=<value>]`
+
+TinyMUX's `@cset` changes one channel setting. Each option is a `@channel` or `@clock` change, made as you:
+
+- `/public`: removes the see lock (`@clock/see <channel>=`), so everyone finds the channel in `@channel/list`
+- `/private`: sets the see lock to `#FALSE`, so only its members and those with See_All find it
+- `/loud`: removes the `quiet` privilege, so connects and disconnects are announced
+- `/mute` or `/quiet`: adds the `quiet` privilege
+- `/spoof` or `/anon`: adds the `nonames` privilege, so a message shows the title without the speaker's name
+- `/nospoof`: removes the `nonames` privilege
+- `/log`: `@channel/buffer <channel>=<value>`, how many messages the channel keeps
+- `/object`: `@channel/mogrifier <channel>=<value>`, the object that stands in for TinyMUX's channel object (see [mogrifier members](/reference/sharpmush-help/mogrifier/#members-joining-and-leaving))
+
+`/header` and `/timestamp_logs` have no SharpMUSH equivalent, and say so.
+
+Example:
+
+```
+> @cset/mute Public
+> think clflags(Public)
+```
+
+Output: `Player Object Quiet`
+
+::: seealso
+- [MUX Channel Admin](/reference/sharpmush-help/sharpchat/#mux-channel-admin)
+- [@channel/buffer](/reference/sharpmush-help/sharpchat/#channel-other)
+- [@CHANNEL CLOCK](/reference/sharpmush-help/channel-clock-command/#channel-clock)
 :::

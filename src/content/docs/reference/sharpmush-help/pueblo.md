@@ -15,7 +15,7 @@ description: "SharpMUSH documentation for Pueblo"
       "heading": "Client enhancements",
       "lookup": "pueblo client enhancements"
     }
-  ](/reference/sharpmush-help/sharppueb/#id-client-enhancements-heading-client-enhancements-lookup-pueblo-client-enhancements),
+  ],
   "redirects": {
     "PUEBLO2": "pueblo client enhancements"
   }
@@ -29,7 +29,7 @@ SharpMUSH will automatically detect a Pueblo client (rather, the client will ann
 
 
 ::: seealso
-- [pueblo client enhancements](/reference/sharpmush-help/sharppueb/#pueblo-client-enhancements)
+- [pueblo client enhancements](/reference/sharpmush-help/pueblo/#client-enhancements)
 :::
 
 ### Client enhancements

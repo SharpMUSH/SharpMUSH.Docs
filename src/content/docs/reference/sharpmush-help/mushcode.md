@@ -10,14 +10,14 @@ description: "SharpMUSH documentation for MUSHcode"
   "lookup": "mushcode",
   "aliases": [
     "SOFTCODE"
-  ](/reference/sharpmush-help/sharpconf/#softcode),
+  ],
   "sections": [
     {
       "id": "learning-resources",
       "heading": "Learning resources",
       "lookup": "mushcode learning resources"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-learning-resources-heading-learning-resources-lookup-mushcode-learning-resources),
+  ],
   "redirects": {
     "MUSHCODE2": "mushcode learning resources"
   }
@@ -31,7 +31,7 @@ At its most basic, writing MUSHcode is just stringing together a series of comma
 
 ### Learning resources
 
-If you would like to learn more about MUSHcoding and how to create `$-commands` for yourself, the following help files may be useful. You may also find it useful to download a copy of Amberyl's MUSH manual and follow the examples described there. However, the manual is quite old now, and some parts may no longer be relevant or entirely accurate. 
+If you would like to learn more about MUSHcoding and how to create `$-commands` for yourself, the following help files may be useful. You may also find it useful to download a copy of Amberyl's MUSH manual and follow the examples described there. It was written for older servers, so check its examples against these help files. 
   
 ### Related help topics
 - [attributes](/reference/sharpmush-help/attributes/#attributes)
@@ -43,7 +43,7 @@ If you would like to learn more about MUSHcoding and how to create `$-commands` 
 - [database](/reference/sharpmush-help/database/#database)
 - [evaluation order](/reference/sharpmush-help/evaluation-order/#evaluation-order)
 - [TYPES OF OBJECTS](/reference/sharpmush-help/sharptop/#types-of-objects)
-- [WILDCARDS](/reference/sharpmush-help/sharptop/#wildcards)
+- [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)
 - [STRINGS](/reference/sharpmush-help/sharptop/#strings)
 - [LISTS](/reference/sharpmush-help/sharptop/#lists)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)

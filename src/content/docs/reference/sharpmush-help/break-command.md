@@ -10,14 +10,14 @@ description: "SharpMUSH documentation for @break"
   "lookup": "@break",
   "aliases": [
     "@assert"
-  ](/reference/sharpmush-help/sharpconf/#assert),
+  ],
   "sections": [
     {
       "id": "conditional-break-examples",
       "heading": "Conditional break examples",
       "lookup": "@break conditional break examples"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-conditional-break-examples-heading-conditional-break-examples-lookup-break-conditional-break-examples),
+  ],
   "redirects": {
     "@break2": "@break conditional break examples",
     "@assert2": "@break conditional break examples"
@@ -31,7 +31,7 @@ description: "SharpMUSH documentation for @break"
 
 `@break` stops the execution of further commands in the current action list if `<boolean>` is a true value. It doesn't affect new queue entries made by previous commands in the action list. It can be useful for doing error checking without having to nest @switches.
 
-Output: `@break` and `@assert` leave the previous command's output unchanged.
+`@break` and `@assert` leave the previous command's output unchanged.
 
 If `<action list>` is given, it is executed instead of the rest of the commands in the current action list. By default, `<action list>` is run immediately, replacing the rest of the action list @break was called in. If the `/queued` switch is given, `<action list>` will instead be queued to be run later. @break also accepts an /inline switch, for Rhost compatability; this switch does nothing on SharpMUSH.
 

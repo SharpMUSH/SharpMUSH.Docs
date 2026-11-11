@@ -19,7 +19,7 @@ description: "SharpMUSH documentation for element()"
       "heading": "Wildcard examples",
       "lookup": "element wildcard examples"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-wildcard-examples-heading-wildcard-examples-lookup-element-wildcard-examples),
+  ],
   "redirects": {
     "MATCH2": "element wildcard examples"
   }
@@ -43,7 +43,7 @@ To get the matching elements, instead of the indexes of where they appear in the
 - [STRMATCH()](/reference/sharpmush-help/sharpfunc/#strmatch)
 - [MEMBER()](/reference/sharpmush-help/sharpfunc/#member)
 - [reglmatch()](/reference/sharpmush-help/reglmatch-function/#reglmatch)
-- [WILDCARDS](/reference/sharpmush-help/sharptop/#wildcards)
+- [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)
 :::
 
 ### Wildcard examples

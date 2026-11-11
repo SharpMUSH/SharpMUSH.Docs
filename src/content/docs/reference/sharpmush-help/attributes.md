@@ -11,7 +11,7 @@ description: "SharpMUSH documentation for Attributes Overview"
   "aliases": [
     "ATTRIBUTES LIST",
     "ATTRIBUTE LIST"
-  ](/reference/sharpmush-help/sharpattr/#attributes-list-attribute-list),
+  ],
   "sections": [
     {
       "id": "attribute-contents",
@@ -28,7 +28,7 @@ description: "SharpMUSH documentation for Attributes Overview"
       "heading": "Attribute ownership",
       "lookup": "attributes attribute ownership"
     }
-  ](/reference/sharpmush-help/sharpattr/#id-attribute-contents-heading-attribute-contents-lookup-attributes-attribute-contents-id-abbreviating-names-heading-abbreviating-names-lookup-attributes-abbreviating-names-id-attribute-ownership-heading-attribute-ownership-lookup-attributes-attribute-ownership),
+  ],
   "redirects": {
     "ATTRIBUTES2": "attributes attribute contents",
     "ATTRIBUTES3": "attributes abbreviating names",
@@ -54,7 +54,7 @@ Standard Attributes: (see `@list/attribs` for the complete list)
 | [@LFAIL](/reference/sharpmush-help/sharpcmd/#lfail)       | [@LISTEN](/reference/sharpmush-help/listen-command/#listen)    | [@MOVE](/reference/sharpmush-help/sharpcmd/#move)          | [@ODESCRIBE](/reference/sharpmush-help/sharpcmd/#adescribe)   | [@ODROP](/reference/sharpmush-help/sharpcmd/#adrop)       |
 | [@OEFAIL](/reference/sharpmush-help/sharpcmd/#aefail)      | [@OENTER](/reference/sharpmush-help/sharpcmd/#aenter)    | [@OFAILURE](/reference/sharpmush-help/sharpcmd/#afailure)      | [@OLEAVE](/reference/sharpmush-help/sharpcmd/#leave)      | [@OLFAIL](/reference/sharpmush-help/sharpcmd/#lfail)      |
 | [@OMOVE](/reference/sharpmush-help/sharpcmd/#move)       | [@OPAYMENT](/reference/sharpmush-help/sharpcmd/#apayment)  | [@OSUCCESS](/reference/sharpmush-help/sharpcmd/#asuccess)      | [@OXENTER](/reference/sharpmush-help/sharpcmd/#aenter)     | [@OXLEAVE](/reference/sharpmush-help/sharpcmd/#leave)     |
-| [@OXMOVE](/reference/sharpmush-help/sharpcmd/#move)      | [@PAYMENT](/reference/sharpmush-help/sharpcmd/#apayment)   | [QUEUE](/reference/sharpmush-help/queue/#queue) (*)      | [RQUOTA](/reference/sharpmush-help/sharptop/#rquota) (*)   | [@RUNOUT](/reference/sharpmush-help/sharpcmd/#runout)      |
+| [@OXMOVE](/reference/sharpmush-help/sharpcmd/#move)      | [@PAYMENT](/reference/sharpmush-help/sharpcmd/#apayment)   | [QUEUE](/reference/sharpmush-help/queue/#queue) (*)      | [RQUOTA](/reference/sharpmush-help/sharptop/#rquota) (*)   | [@RUNOUT](/reference/sharpmush-help/charges-command/#charges)      |
 | [@SEX](/reference/sharpmush-help/sharpcmd/#sex)         | [@STARTUP](/reference/sharpmush-help/sharpcmd/#startup)   | [@SUCCESS](/reference/sharpmush-help/sharpcmd/#asuccess)       | TFPREFIX       |                |
 
 ### Attribute contents
@@ -92,7 +92,7 @@ In addition to the standard attributes with pre-set effects, there are some spec
 
 ::: seealso
 - [ATTRIB-OWNERSHIP](/reference/sharpmush-help/sharptop/#attribute-ownership)
-- [@set](/reference/sharpmush-help/sharpcmd/#set)
+- [@set](/reference/sharpmush-help/set-command/#set)
 - [examine](/reference/sharpmush-help/sharpcmd/#examine)
 - [@atrchown](/reference/sharpmush-help/sharpcmd/#atrchown)
 - [@atrlock](/reference/sharpmush-help/sharpcmd/#atrlock)

@@ -20,7 +20,7 @@ description: "SharpMUSH documentation for Getting Started: Talking"
       "heading": "Talking privately",
       "lookup": "gs talking privately"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-posing-actions-heading-posing-actions-lookup-gs-talking-posing-actions-id-talking-privately-heading-talking-privately-lookup-gs-talking-privately),
+  ],
   "redirects": {
     "GS TALKING2": "gs talking posing actions"
   }
@@ -71,9 +71,9 @@ To talk to someone who isn't in the room with you, use `page`: `page Lisa=Hi the
 
 
 ::: seealso
-- [gs chat](/reference/sharpmush-help/sharpchat/#gs-chat)
+- [gs chat](/reference/sharpmush-help/gs-chat/#getting-started-chat)
 - [say](/reference/sharpmush-help/sharpcmd/#-4)
-- [pose](/reference/sharpmush-help/sharpconf/#pose)
+- [pose](/reference/sharpmush-help/pose/)
 - [@emit](/reference/sharpmush-help/sharpcmd/#emit)
 - [page](/reference/sharpmush-help/page/#page)
 - [whisper](/reference/sharpmush-help/sharpcmd/#whisper)

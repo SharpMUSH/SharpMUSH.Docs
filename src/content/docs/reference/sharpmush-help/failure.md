@@ -15,7 +15,7 @@ description: "SharpMUSH documentation for Failure"
       "heading": "Failure attributes",
       "lookup": "failure attributes"
     }
-  ](/reference/sharpmush-help/sharpattr/#id-failure-attributes-heading-failure-attributes-lookup-failure-attributes),
+  ],
   "redirects": {
     "failure2": "failure attributes"
   }
@@ -25,12 +25,12 @@ description: "SharpMUSH documentation for Failure"
 
 A "failure" usually occurs when you try to do something that is governed by an `@lock` and you don't pass the lock. If you try to take a player or thing, or pass through an exit, and you don't pass its Basic `@lock`, you will set off their `@failure`/`@ofailure`/`@afailure` attributes. A few failures have special attributes, while others use ``<locktype>_LOCK`FAILURE``, ``<locktype>_LOCK`OFAILURE`` and ``<locktype>_LOCK`AFAILURE`` attributes.
 
-See [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
+See [LOCKING](/reference/sharpmush-help/locking/#locking)
 
 
 ::: seealso
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
-- [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
+- [LOCKING](/reference/sharpmush-help/locking/#locking)
 - [@afailure](/reference/sharpmush-help/sharpcmd/#afailure)
 - [@aefail](/reference/sharpmush-help/sharpcmd/#aefail)
 - [@lfail](/reference/sharpmush-help/sharpcmd/#lfail)

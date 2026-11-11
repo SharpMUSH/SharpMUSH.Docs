@@ -11,8 +11,10 @@ description: "SharpMUSH documentation for Piping"
   "aliases": [
     "%|",
     ";|"
-  ](/reference/sharpmush-help/sharpconf/),
-  "sections": []
+  ],
+  "sections": [
+    {"id": "details", "heading": "What is piped", "lookup": "piping details"}
+  ]
 }
 -->
 ## Piping
@@ -25,6 +27,10 @@ To try a list at the prompt, run it with `@force/noeval me={...}`. Without `/noe
 > @force/noeval me={think [ansi(hr,Hello)] there ;| @pemit me=Got [words(%|)] words: %|}
 Got 2 words: Hello there
 ```
+
+- [piping details](/reference/sharpmush-help/piping/#what-is-piped): what `%|` holds, which command reads it, and limits
+
+### What is piped
 
 `%|` holds every line the piped command showed you, joined with `%r`, colors and other markup kept. `stripansi()` removes the markup; there is no terminal code to translate.
 

@@ -11,6 +11,11 @@ description: "SharpMUSH documentation for Command Output"
   "aliases": [],
   "sections": [
     {
+      "id": "keeping",
+      "heading": "Keeping a value and failures",
+      "lookup": "command output keeping"
+    },
+    {
       "id": "kinds",
       "heading": "What each command leaves",
       "lookup": "command output kinds"
@@ -20,7 +25,7 @@ description: "SharpMUSH documentation for Command Output"
       "heading": "Output across the queue",
       "lookup": "command output queue"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-kinds-heading-what-each-command-leaves-lookup-command-output-kinds-id-queue-heading-output-across-the-queue-lookup-command-output-queue)
+  ]
 }
 -->
 ## Command Output
@@ -39,7 +44,13 @@ The examples run their lists with `@force/noeval me={...}`, the way to try a lis
 
 To use what a command shows instead, pipe it into the next command with `;|` and read `%|`: see [piping](/reference/sharpmush-help/piping/#piping).
 
-A command that outputs something says what in its help, on a line starting `Output:`. Most commands that change something output nothing, and the next command replaces `%>`. To use a value after such a command, keep it in a q-register: `@dig Kitchen;@desc [setq(0,%>)]%q0=A small kitchen.;@link %q0=here`.
+- [command output keeping](/reference/sharpmush-help/command-output/#keeping-a-value-and-failures): keeping a value in a q-register, and failed commands
+- [command output kinds](/reference/sharpmush-help/command-output/#what-each-command-leaves): which commands leave a value, nothing, or `%>` unchanged
+- [command output queue](/reference/sharpmush-help/command-output/#output-across-the-queue): `%>` in queued lists, typed lines and functions
+
+### Keeping a value and failures
+
+A command's help says what it outputs, if anything. Most commands that change something output nothing, and the next command replaces `%>`. To use a value after such a command, keep it in a q-register: `@dig Kitchen;@desc [setq(0,%>)]%q0=A small kitchen.;@link %q0=here`.
 
 A command that fails leaves the `#-1` error it failed with, the way its function would return it.
 

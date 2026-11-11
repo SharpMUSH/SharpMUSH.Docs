@@ -15,7 +15,7 @@ description: "SharpMUSH documentation for Getting Started: Mail"
       "heading": "Sending mail",
       "lookup": "gs mail sending mail"
     }
-  ](/reference/sharpmush-help/sharpmail/#id-sending-mail-heading-sending-mail-lookup-gs-mail-sending-mail),
+  ],
   "redirects": {
     "GS MAIL2": "gs mail sending mail"
   }
@@ -51,5 +51,5 @@ You can do other, slightly more complex things with the mail system, too, like f
 ::: seealso
 - [MAIL](/reference/sharpmush-help/sharpmail/#mail)
 - [@mail](/reference/sharpmush-help/sharpmail/#mail)
-- [gs chat](/reference/sharpmush-help/sharpchat/#gs-chat)
+- [gs chat](/reference/sharpmush-help/gs-chat/#getting-started-chat)
 :::

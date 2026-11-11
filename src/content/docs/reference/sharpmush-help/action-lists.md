@@ -15,7 +15,7 @@ description: "SharpMUSH documentation for Action Lists"
       "heading": "Action list examples",
       "lookup": "action lists action list examples"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-action-list-examples-heading-action-list-examples-lookup-action-lists-action-list-examples),
+  ],
   "redirects": {
     "ACTION2": "action lists action list examples"
   }

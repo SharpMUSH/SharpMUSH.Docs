@@ -15,7 +15,7 @@ description: "SharpMUSH documentation for Evaluation Order"
       "heading": "Zone fallback matching",
       "lookup": "evaluation order zone fallback matching"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-zone-fallback-matching-heading-zone-fallback-matching-lookup-evaluation-order-zone-fallback-matching),
+  ],
   "redirects": {
     "EVALUATION2": "evaluation order zone fallback matching"
   }
@@ -27,7 +27,7 @@ Whenever some text is entered by an object, the MUSH attempts to match it agains
 
     Socket commands (*): QUIT, SCREENWIDTH, etc<br>
     Single-token commands: ", :, ;, +, \, #<br>
-    MUX-style channel aliases, if enabled (see [MUXCOMSYS](/reference/sharpmush-help/sharpchat/#mux-comsys))<br>
+    MUX-style channel aliases (see [MUXCOMSYS](/reference/sharpmush-help/sharpchat/#mux-comsys))<br>
     Exits in the room<br>
     &attribute setting<br>
     Regular game commands: get, inventory, `@emit`, etc<br>

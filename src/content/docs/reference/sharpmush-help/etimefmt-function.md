@@ -10,7 +10,7 @@ description: "SharpMUSH documentation for etimefmt()"
   "lookup": "etimefmt()",
   "aliases": [
     "etimefmt"
-  ](/reference/sharpmush-help/sharpconf/#etimefmt),
+  ],
   "sections": [
     {
       "id": "duration-escape-codes",
@@ -22,7 +22,7 @@ description: "SharpMUSH documentation for etimefmt()"
       "heading": "Duration examples",
       "lookup": "etimefmt duration examples"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-duration-escape-codes-heading-duration-escape-codes-lookup-etimefmt-duration-escape-codes-id-duration-examples-heading-duration-examples-lookup-etimefmt-duration-examples),
+  ],
   "redirects": {
     "ETIMEFMT2": "etimefmt duration escape codes",
     "ETIMEFMT3": "etimefmt duration examples"
@@ -37,7 +37,7 @@ This function is similar to timestring() - it formats a number of seconds into d
 
 Escape codes in `<format>` are replaced by the proper values, and other characters are left unchanged.
 
-A list of all codes is in [etimefmt duration escape codes](/reference/sharpmush-help/sharpconf/#etimefmt-duration-escape-codes).
+A list of all codes is in [etimefmt duration escape codes](/reference/sharpmush-help/etimefmt-function/#duration-escape-codes).
 
 Examples:
 ```sharp

@@ -1,0 +1,58 @@
+---
+title: "WebSockets"
+description: "SharpMUSH documentation for WebSockets"
+---
+
+<!-- help-article
+{
+  "corpus": "help",
+  "id": "websockets",
+  "lookup": "WebSockets",
+  "aliases": [],
+  "sections": [
+    {"id": "markup", "heading": "Kinds of markup", "lookup": "websockets markup"},
+    {"id": "json-prompts", "heading": "JSON and prompts", "lookup": "websockets json and prompts"}
+  ]
+}
+-->
+## WebSockets
+
+WebSockets are a network protocol used by JavaScript-enabled web browsers to make persistent network connections, similar to the telnet connection you use to connect to SharpMUSH. WebSockets are always on (at /ws on the connection server), so it is possible to connect from MUSH clients embedded in HTML pages using JavaScript. A WebSocket client can natively render HTML, but can also parse Pueblo links into HTML links that send a command to the MUSH when clicked. For safety, we separate plain text from the other kinds of HTML/Pueblo code that we want rendered. In order to render HTML/Pueblo, a player uses special functions to embed HTML/Pueblo markup. Without the Send_OOB power (or wizard), these functions allow only a safe list of tags (see [TAGWRAP()](/reference/sharpmush-help/tagwrap-function/#tagwrap)). Any HTML code strings that are not properly marked up will simply show up as unrendered plain text.
+
+See https://github.com/grapenut/websockclient for an example client.
+
+- [websockets markup](/reference/sharpmush-help/websockets/#kinds-of-markup): plain text, HTML tags and command links
+- [websockets json and prompts](/reference/sharpmush-help/websockets/#json-and-prompts): JSON objects and prompts
+
+### Kinds of markup
+
+The different kinds of markup that can be sent to clients are:
+* Plain text
+* HTML tags
+* Pueblo links
+* JSON objects
+* Prompts
+
+Without using any HTML markup functions, output is rendered as normal plain text (including ANSI and xterm256 color).
+
+See [HTML FUNCTIONS](/reference/sharpmush-help/sharppueb/#html-functions) for functions used to embed HTML markup tags one at a time.<br>
+See [WSHTML()](/reference/sharpmush-help/wshtml-function/#wshtml) for help embedding large segments of raw HTML markup to be sent to WebSocket clients.
+
+For clickable command links, use [CMDLINK()](/reference/sharpmush-help/sharppueb/#cmdlink), e.g. `cmdlink(Who is online?,+who)`. The web portal and the example client above both follow it, and so do Pueblo and MXP clients, each in its own dialect.
+
+### JSON and prompts
+
+You can also send data encapsulated in a JSON object.
+
+See [json()](/reference/sharpmush-help/json-function/#json) for information about formatting data into JSON object strings.<br>
+See [OOB()](/reference/sharpmush-help/oob-function/#oob) for sending a JSON object to a WebSocket client as a JavaScript object, or to a telnet client over GMCP.
+
+See [@prompt](/reference/sharpmush-help/sharpcmd/#prompt) for information about sending telnet GOAHEAD prompts. Support for prompts depends on the WebSocket client. The example client above shows prompts on their own line, separating the input and output windows, but requires PROMPT_NEWLINES to be turned off.
+
+::: seealso
+- [HTML FUNCTIONS](/reference/sharpmush-help/sharppueb/#html-functions)
+- [json()](/reference/sharpmush-help/json-function/#json)
+- [pueblo](/reference/sharpmush-help/pueblo/#pueblo)
+- [WSHTML()](/reference/sharpmush-help/wshtml-function/#wshtml)
+- [OOB()](/reference/sharpmush-help/oob-function/#oob)
+:::

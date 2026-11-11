@@ -23,7 +23,7 @@ description: "SharpMUSH documentation for @respond"
       "heading": "Response requirements",
       "lookup": "@respond requirements"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-examples-heading-response-examples-lookup-respond-examples-id-requirements-heading-response-requirements-lookup-respond-requirements),
+  ],
   "redirects": {
     "@RESPOND2": "@respond examples",
     "@RESPOND3": "@respond requirements"
@@ -50,8 +50,8 @@ If `@respond` is run outside of an HTTP Context, the enactor will see "(HTTP): .
 
 
 ::: seealso
-- [@respond examples](/reference/sharpmush-help/sharpcmd/#respond-examples)
-- [@respond requirements](/reference/sharpmush-help/sharpcmd/#respond-requirements)
+- [@respond examples](/reference/sharpmush-help/respond/#response-examples)
+- [@respond requirements](/reference/sharpmush-help/respond/#response-requirements)
 :::
 
 ### Response examples
@@ -87,13 +87,13 @@ Adding a Content-Length header is not allowed - SharpMUSH calculates it from the
 To vaguely comply with most HTTP requirements:
 
 `@respond <code> <text>`
-- *<code>* must be 3 digits, followed by a space, then printable ascii text
+- *&lt;code&gt;* must be 3 digits, followed by a space, then printable ascii text
 - Total length must be < 40 characters
 - This will be prepended by HTTP/1.1 when sent back to the client
 
 `@respond/header <name>: <value>`
-- *<name>* must be printable ascii characters (No accents, no %r)
-- *<value>* must be printable, but accents allowed (No %r)
+- *&lt;name&gt;* must be printable ascii characters (No accents, no %r)
+- *&lt;value&gt;* must be printable, but accents allowed (No %r)
 
 `@respond/type <ctype>`
-- *<ctype>* should be alphanumeric, +, ., /, -. HTTP/1.1 does allow for parameters (text/plain; content-encoding=...), so we don't enforce anything at present except printability().
+- *&lt;ctype&gt;* should be alphanumeric, +, ., /, -. HTTP/1.1 does allow for parameters (text/plain; content-encoding=...), so we don't enforce anything at present except printability().

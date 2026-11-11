@@ -11,11 +11,16 @@ description: "SharpMUSH documentation for @flag"
   "aliases": [],
   "sections": [
     {
+      "id": "managing-flags",
+      "heading": "Managing flags",
+      "lookup": "@flag managing"
+    },
+    {
       "id": "adding-flags",
       "heading": "Adding flags",
       "lookup": "@flag adding flags"
     }
-  ](/reference/sharpmush-help/sharpflag/#id-adding-flags-heading-adding-flags-lookup-flag-adding-flags),
+  ],
   "redirects": {
     "@flag2": "@flag adding flags"
   }
@@ -25,7 +30,22 @@ description: "SharpMUSH documentation for @flag"
 
 `@flag <flag name>`<br>
 `@flag/list [<flag name pattern>]`<br>
-`@flag/add <flag name>=[<letter>], [<type(s)>], [<setperms>], [<unsetperms>]`<br>
+`@flag/debug <flag name>`
+
+This command manipulates the list of flags in the database. With no switches, the command displays information about the given flag, including aliases and permissions. `@flag/list` lists names of enabled flags, and may be given a wildcarded pattern to restrict which names it will show. `@flag/debug` shows the same information as `@flag <flag name>` with the flag's stored id first, and needs the config.admin permission.
+
+- [@flag managing](/reference/sharpmush-help/flag-command/#managing-flags): the God-only switches that change the flag table
+- [@flag adding flags](/reference/sharpmush-help/flag-command/#adding-flags): adding a new flag, and its arguments
+
+::: seealso
+- [flags](/reference/sharpmush-help/flags/#flags)
+- [@set](/reference/sharpmush-help/set-command/#set)
+- [@power](/reference/sharpmush-help/power-command/#power)
+- [flag permissions](/reference/sharpmush-help/sharpcmd/#flag-permissions)
+:::
+
+### Managing flags
+
 `@flag/delete <flag name>`<br>
 `@flag/alias <flag name>=<alias>`<br>
 `@flag/letter <flag name>[=<letter>]`<br>
@@ -35,27 +55,21 @@ description: "SharpMUSH documentation for @flag"
 `@flag/disable <flagname>`<br>
 `@flag/decompile [<pattern>]`
 
-This command manipulates the list of flags in the database. With no switches, the command displays information about the given flag, including aliases and permissions. `@flag/list` lists names of enabled flags, and may be given a wildcarded pattern to restrict which names it will show.
-
 All other switches to this command are restricted to God:
 - /disable disables a flag, making it invisible and unusable
 - /enable re-enables a disabled flag
 - /alias adds a new alias for an existing flag; use !`<alias>` to delete one.
 - /letter changes or removes a single-letter alias for an existing flag.
-- /restrict changes flag permissions (see help @flag adding flags)
-- /type changes flag type(s) (see help @flag adding flags)
+- /restrict changes flag permissions (see [@flag adding flags](/reference/sharpmush-help/flag-command/#adding-flags))
+- /type changes flag type(s) (see [@flag adding flags](/reference/sharpmush-help/flag-command/#adding-flags))
 - /delete deletes a flag completely, removing it from all objects in the database and then removing it permanently from the flag table. It requires the exact flag name or alias to be used. Be very very careful with this.
 - /decompile prints out a list of @flag/add commands needed to recreate the flag table on another MUSH. If `<pattern>` is given, only flags whose names match that wildcard pattern are shown.
 
-
-::: seealso
-- [flags](/reference/sharpmush-help/flags/#flags)
-- [@set](/reference/sharpmush-help/sharpcmd/#set)
-- [@power](/reference/sharpmush-help/power-command/#power)
-- [flag permissions](/reference/sharpmush-help/sharpcmd/#flag-permissions)
-:::
+The `/debug` switch is accepted and changes nothing.
 
 ### Adding flags
+
+`@flag/add <flag name>=[<letter>], [<type(s)>], [<setperms>], [<unsetperms>]`
 
 `@flag/add` is used to add a new flag with the given name. Arguments other than the flag name are optional:
 

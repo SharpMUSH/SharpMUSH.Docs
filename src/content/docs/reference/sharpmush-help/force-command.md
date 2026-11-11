@@ -20,7 +20,7 @@ description: "SharpMUSH documentation for @force"
       "heading": "Inline execution",
       "lookup": "@force inline execution"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-evaluation-and-spoofing-heading-evaluation-and-spoofing-lookup-force-evaluation-and-spoofing-id-inline-execution-heading-inline-execution-lookup-force-inline-execution),
+  ],
   "redirects": {
     "@force2": "@force evaluation and spoofing",
     "@force3": "@force inline execution"
@@ -33,14 +33,14 @@ description: "SharpMUSH documentation for @force"
 
 This command forces `<object>` to queue the given action list, as if the object had entered the action list itself. You must control `<object>` to @force it. @force is useful for manipulating puppets.
 
-Output: with `/inline` or `/inplace`, the output of the last command run; queued, nothing. See [command output](/reference/sharpmush-help/command-output/#command-output).
+With `/inline` or `/inplace`, `@force` outputs what the last command it ran output; queued, it outputs nothing. See [command output](/reference/sharpmush-help/command-output/#command-output).
 
 If `/inline` is given, `<object>` will run `<action list>` _now_, instead of being queued for execution later. By default, `<action list>` will be able to see/alter q-registers in the calling action list, and any @breaks in `<action list>` will also stop the calling action list. The following switches alter that behaviour:
 - /nobreak: @breaks in `<action list>` will not stop the calling action list.
 - /localize: q-registers will be saved before `<action list>` is run, and restored after.
 - /clearregs: q-registers will all be reset before `<action list>` is run. You'll usually want to use /localize as well with this.
 
-`@force/inplace` is an alias for `@force/inline/nobreak/localize`.
+`@force/inplace` is an alias for `@force/inline/nobreak/localize`. `@force/now`, TinyMUX's spelling, is `@force/inline`.
 
 @force can be abbreviated as<br>
 `<dbref> <action list>`

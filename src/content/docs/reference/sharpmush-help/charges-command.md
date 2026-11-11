@@ -10,14 +10,14 @@ description: "SharpMUSH documentation for @charges"
   "lookup": "@charges",
   "aliases": [
     "@runout"
-  ](/reference/sharpmush-help/sharpconf/#runout),
+  ],
   "sections": [
     {
       "id": "examples",
       "heading": "Limited use example",
       "lookup": "@charges examples"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-examples-heading-limited-use-example-lookup-charges-examples),
+  ],
   "redirects": {
     "charges2": "@charges examples",
     "runout2": "@charges examples"

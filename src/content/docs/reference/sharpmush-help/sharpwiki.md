@@ -3,65 +3,6 @@ title: "Wiki"
 description: "SharpMUSH documentation for Wiki"
 ---
 
-## wiki()
-
-- `wiki(<page>)`
-- `wiki(<page>, <field>)`
-- `wiki(<page>, <field>, <locale>)`
-
-Returns information about a wiki page. With one argument, returns the page's
-plain-text content. The page target accepts a namespace prefix
-(`wiki(help:markdown_guide)`).
-
-The optional second argument selects a field:
-* `text` - plain text content (the default)
-* `markdown` - the raw Markdown source
-* `title` - the display title
-* `locale` - the locale actually served (see below)
-* `categories` - the categories the page is in, as keys, space-separated.
-  A translation has no categories of its own: every locale answers the same
-* `namespace` - main, help, character, system, or category
-* `revision` - the current revision number in the served locale
-* `updated` - the last-edit time as a Unix timestamp (secs)
-* `author` - the dbref of the page's creator
-
-The optional third argument names a locale; it defaults to your `LOCALE`.
-`text`, `markdown`, `title`, `revision` and `locale` come from the translation
-in that locale; everything else is page metadata and is the same in every
-locale. When there is no translation you get the fallback version rather than
-an error, and the `locale` field is how softcode detects that: it returns the
-locale that was served, not the one you asked for. An unparseable locale is
-treated as if you had passed none.
-
-Unpublished pages and unpublished translations are never reachable from
-`wiki()`. Softcode has no reader to check drafts against, so a draft page
-answers exactly as a missing one does; there is no field, not even `title`,
-that reveals it. Read a draft with `@wiki/view/draft` instead.
-
-Pages you may not read (see [wiki permissions](/reference/sharpmush-help/sharpconf/#wiki-permissions)) are treated the same way.
-
-Returns #-1 NO SUCH WIKI PAGE when the page does not exist, is a draft, or is
-one you may not read.
-
-### Example
-
-```sharp
-> think wiki(home, title)
-Home
-> think wiki(help:markdown_guide, revision)
-1
-> think wiki(markdown_guide, locale, fr)
-en
-```
-
-::: seealso
-- [WIKICATEGORY()](/reference/sharpmush-help/sharpwiki/#wikicategory)
-- [WIKILIST()](/reference/sharpmush-help/sharpwiki/#wikilist)
-- [WIKISEARCH()](/reference/sharpmush-help/sharpwiki/#wikisearch)
-- [WIKIRECENT()](/reference/sharpmush-help/sharpwiki/#wikirecent)
-- [WIKIACCESS()](/reference/sharpmush-help/sharpwiki/#wikiaccess)
-:::
-
 ## wikicategory()
 
 - `wikicategory(<category>)`
@@ -86,7 +27,7 @@ help
 ```
 
 ::: seealso
-- [WIKI()](/reference/sharpmush-help/sharpwiki/#wiki)
+- [WIKI()](/reference/sharpmush-help/wiki-function/#wiki)
 - [WIKILIST()](/reference/sharpmush-help/sharpwiki/#wikilist)
 - [wiki](/reference/sharpmush-help/wiki/#wiki)
 :::
@@ -98,11 +39,11 @@ help
 
 Returns a space-separated list of wiki page references, optionally restricted
 to one namespace. Main-namespace pages appear as their slug; other pages as
-`namespace:slug`; both forms are valid inputs to [WIKI()](/reference/sharpmush-help/sharpwiki/#wiki) and `@wiki`.
+`namespace:slug`; both forms are valid inputs to [WIKI()](/reference/sharpmush-help/wiki-function/#wiki) and `@wiki`.
 
 A page reference is its canonical slug, which does not change between locales,
 so this list is the same whatever your `LOCALE` is. Pass a reference from it to
-[WIKI()](/reference/sharpmush-help/sharpwiki/#wiki) with a locale to read that page's translation.
+[WIKI()](/reference/sharpmush-help/wiki-function/#wiki) with a locale to read that page's translation.
 
 ### Example
 
@@ -112,7 +53,7 @@ help:markdown_guide
 ```
 
 ::: seealso
-- [WIKI()](/reference/sharpmush-help/sharpwiki/#wiki)
+- [WIKI()](/reference/sharpmush-help/wiki-function/#wiki)
 - [WIKISEARCH()](/reference/sharpmush-help/sharpwiki/#wikisearch)
 :::
 
@@ -121,8 +62,8 @@ help:markdown_guide
 - `wikisearch(<text>)`
 
 Returns a space-separated list of page references whose title or content
-contains *<text>* (case-insensitive), in any locale the page has been
-translated into. `*` and `?` in *<text>* are wildcards, matched anywhere in the
+contains *&lt;text&gt;* (case-insensitive), in any locale the page has been
+translated into. `*` and `?` in *&lt;text&gt;* are wildcards, matched anywhere in the
 title or content: `wikisearch(home*)` finds what `wikisearch(home)` does. Each page appears once however many of its locales matched.
 Unpublished pages and unpublished translations are never returned. Limited to
 the first 100 matches.
@@ -135,7 +76,7 @@ combat_primer house_rules
 ```
 
 ::: seealso
-- [WIKI()](/reference/sharpmush-help/sharpwiki/#wiki)
+- [WIKI()](/reference/sharpmush-help/wiki-function/#wiki)
 - [WIKILIST()](/reference/sharpmush-help/sharpwiki/#wikilist)
 :::
 
@@ -145,11 +86,73 @@ combat_primer house_rules
 - `wikirecent(<count>)`
 
 Returns a space-separated list of the most recently edited page references,
-newest first. *<count>* defaults to 10 and is clamped to 1-50.
+newest first. *&lt;count&gt;* defaults to 10 and must be 1-50; any other value is
+an error.
 
 ::: seealso
-- [WIKI()](/reference/sharpmush-help/sharpwiki/#wiki)
+- [WIKI()](/reference/sharpmush-help/wiki-function/#wiki)
 - [WIKILIST()](/reference/sharpmush-help/sharpwiki/#wikilist)
+:::
+
+## wikifact()
+
+- `wikifact(<page>)`
+- `wikifact(<page>, <property>[, <delimiter>])`
+
+With only a page, returns the properties the page has facts for. With a
+property, returns that property's values. A value that names a page is
+returned as that page's reference. A fact that names a page you may not
+read is left out. The list is separated by spaces, or by `<delimiter>` if
+you give one.
+
+Set facts with `@wiki/fact <page>/<property>=<value>`.
+
+### Example
+
+```sharp
+> think wikifact(fireball)
+pf2e:level pf2e:tradition
+> think wikifact(fireball, pf2e:tradition, |)
+arcane|primal
+```
+
+::: seealso
+- [WIKI()](/reference/sharpmush-help/wiki-function/#wiki)
+- [wiki facts](/reference/sharpmush-help/wiki-facts/#wiki-facts)
+:::
+
+## wikiquery()
+
+- `wikiquery(<condition>[, <condition>...])`
+
+Returns a space-separated list of the references of the published pages
+whose facts meet every condition. You can give up to four fact conditions,
+written as `@wiki/query` takes them (see [wiki fact conditions](/reference/sharpmush-help/wiki-facts/#conditions)), plus:
+
+- `category=<name>`: the page is in that category.
+- `namespace=<name>`: the page is in that namespace.
+- `sort=<property>`: order the pages by any property but a page.
+- `order=desc`: highest first.
+
+`show=` is refused: read a page's values with `wikifact()`. A page you may
+not read is left out, and at most 1000 pages are returned. A condition the
+wiki cannot answer returns `#-1 INVALID WIKI QUERY`. Until the fact index
+is built, the result is `#-1 WIKI INDEX BUILDING`.
+
+### Example
+
+```sharp
+> think wikiquery(pf2e:tradition=arcane, pf2e:level=1..3)
+main:shield main:fireball
+> think wikiquery(category=Spells, pf2e:class=Wizard)
+main:shield
+> think wikiquery(pf2e:tradition=arcane, sort=pf2e:level, order=desc)
+main:fireball main:magic_missile main:shield
+```
+
+::: seealso
+- [WIKIFACT()](/reference/sharpmush-help/sharpwiki/#wikifact)
+- [wiki fact queries](/reference/sharpmush-help/wiki-facts/#queries)
 :::
 
 ## wikiaccess()
@@ -157,14 +160,14 @@ newest first. *<count>* defaults to 10 and is clamped to 1-50.
 - `wikiaccess(<page>, <action>)`
 - `wikiaccess(<page>, <action>, <player>)`
 
-Returns 1 when you, or *<player>*, may take *<action>* on a wiki page, and 0
-when not. *<action>* is `read`, `edit` or `delete`. The answer weighs the
+Returns 1 when you, or *&lt;player&gt;*, may take *&lt;action&gt;* on a wiki page, and 0
+when not. *&lt;action&gt;* is `read`, `edit` or `delete`. The answer weighs the
 global permission for the action and everything the page's namespace,
-categories and the page itself require; see [wiki permissions](/reference/sharpmush-help/sharpconf/#wiki-permissions). `@wiki/access`
+categories and the page itself require; see [wiki permissions](/reference/sharpmush-help/wiki-administration/#wiki-permissions). `@wiki/access`
 says why.
 
 Asking about another player needs `wiki.admin`. A page you may not read, or a
-draft, returns #-1 NO SUCH WIKI PAGE, as [WIKI()](/reference/sharpmush-help/sharpwiki/#wiki) does.
+draft, returns #-1 NO SUCH WIKI PAGE, as [WIKI()](/reference/sharpmush-help/wiki-function/#wiki) does.
 
 ### Example
 
@@ -176,5 +179,5 @@ draft, returns #-1 NO SUCH WIKI PAGE, as [WIKI()](/reference/sharpmush-help/shar
 ```
 
 **See Also:**
-- [WIKI()](/reference/sharpmush-help/sharpwiki/#wiki)
-- [wiki permissions](/reference/sharpmush-help/sharpconf/#wiki-permissions)
+- [WIKI()](/reference/sharpmush-help/wiki-function/#wiki)
+- [wiki permissions](/reference/sharpmush-help/wiki-administration/#wiki-permissions)

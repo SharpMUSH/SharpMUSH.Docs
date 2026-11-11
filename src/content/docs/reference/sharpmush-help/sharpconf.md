@@ -3,32 +3,6 @@ title: "Configuration"
 description: "SharpMUSH documentation for Configuration"
 ---
 
-## @config parameters
-Many of the mush's run-time options can be set from the game by wizards, using `@config/set <option>=<new value>`. Those that can be set with visible changes are listed below, grouped by category. See [@config <category>](/reference/sharpmush-help/sharpcmd/#config-category) for details on each.
-
-Categories:
-- Attribs
-- Chat
-- Cmds
-- Cosmetic
-- Costs
-- Db
-- Dump
-- Flags
-- Funcs
-- Limits
-- Log
-- Net
-- Tiny
-
-The categories and groups are the same as those used by `@config/list`. Values must be of the listed type for each option. They include: *<number>*, *<dbref>*, *<boolean>* (Yes/No), *<time>*, or *<string>*.
-
-Options which take a *<time>* will accept either a number of seconds or a combination of numbers followed by 's' for seconds, 'm' for minutes or 'h' for hours, making `1h30m` and `5400` equivalent.
-
-*<dbref>* options can be given with or without the leading '#', so '1' and '#1' are the same.
-
-A few options map names to lists of words, such as `command_aliases`, `command_restrictions`, `sitelock_rules` and `mssp`. `@config <category>` and `@config <option>` show one entry per line, the name followed by its words.
-
 ## @config attribs
 These options control some attribute behavior.
 
@@ -36,23 +10,28 @@ These options control some attribute behavior.
 - `amail=<boolean>`: Is the @amail attribute used?
 - `player_listen=<boolean>`: Is @listen checked on players?
 - `player_ahear=<boolean>`: Is @ahear triggered on players?
-- `startups=<boolean>`: Are @startup triggered at restart?
+- `startups=<boolean>`: Run every @startup attribute when the server starts? Turn it off to keep a broken @startup from running; @restart still works.
 - `room_connects=<boolean>`: Are @aconnect and @adisconnect triggered on rooms?
-- `read_remote_desc=<boolean>`: Can anyone remotely retrieve @descs?
+- `read_remote_desc=<boolean>`: Can players look at a far-away object that has no @describe? When it is off, they get "You can't see that from here." An object with a @describe can be looked at from afar unless the attribute is NEARBY.
 - `empty_attrs=<boolean>`: Can attributes be set to an empty string?
-- `reverse_shs=<boolean>`: Reverse the endedness of the shs password encryption? (**Warning**: Playing with this will break logins)
+- `gender_attr=<string>`: The attribute that holds an object's gender, which pronoun substitution reads and [@gender](/reference/sharpmush-help/sharpcmd/#gender) sets. SEX when blank, and by default.
+- `reverse_shs=<boolean>`: Accepted but ignored; it has no effect on passwords or logins.
+- `subj_pronoun_attr=<dbref>/<attribute>`: An attribute that gives the subjective pronoun (%s) in place of the built-in one. It is evaluated as with u(), with %0 set to the pronoun the gender would give, and its result is used. Unset by default.
+- `obj_pronoun_attr=<dbref>/<attribute>`: The same for the objective pronoun (%o).
+- `poss_pronoun_attr=<dbref>/<attribute>`: The same for the possessive pronoun (%p).
+- `abs_pronoun_attr=<dbref>/<attribute>`: The same for the absolute possessive pronoun (%a).
 
 ## @config chat
 These options control chat system settings.
 
-- `chan_cost=<number>`: How many pennies a channel costs to create.
-- `max_channels=<number>`: How many channels can exist total.
-- `max_player_chans=<number>`: How many channels can each non-admin player create? If 0, mortals cannot create channels.
+- `chan_cost=<number>`: Accepted but ignored; channels cost nothing to create.
+- `max_channels=<number>`: How many channels the game may have in all.
+- `max_player_chans=<number>`: How many channels each non-admin player may own. 0 means only admins can create channels.
 - `noisy_cemit=<boolean>`: Is @cemit/noisy the default?
 - `chan_title_len=<number>`: How long can @channel/title's be?
-- `use_muxcomm=<boolean>`: Enable MUX-style channel aliases? See [MUXCOMSYS](/reference/sharpmush-help/sharpchat/#mux-comsys)
-- `chat_token_alias=<character>`: A single character that can be used as well as + for talking on channels (+<chan> <msg>)
-- `page_log=<boolean>`: Keep each player's pages so they can read their page history, in game (page/recall) and in the web portal? A SharpMUSH extension, on by default; set it to no to keep no page log. See [page log](/reference/sharpmush-help/sharpconf/#page-log)
+- `use_muxcomm=<boolean>`: Turn on MUX-style channel aliases (addcom, delcom, comlist, comtitle, @clist and `<alias> <message>`)? See [MUXCOMSYS](/reference/sharpmush-help/sharpchat/#mux-comsys)
+- `chat_token_alias=<character>`: A single character that can be used as well as + for talking on channels (+&lt;chan&gt; &lt;msg&gt;)
+- `page_log=<boolean>`: Keep each player's pages so they can read their page history, in game (page/recall) and in the web portal? A SharpMUSH extension, on by default; set it to no to keep no page log. See [page log](/reference/sharpmush-help/page/#page-log)
 - `page_log_retention_days=<number>`: How many days a logged page is kept. -1 (the default) never deletes.
 
 ## @config cmds
@@ -67,17 +46,18 @@ These options affect command behavior.
 - `wiz_noaenter=<boolean>`: If yes, dark players don't trigger @aenters.
 - `really_safe=<boolean>`: Does SAFE prevent @nuking?
 - `destroy_possessions=<boolean>`: When a player is destroyed, are their objects as well?
+- `probate_judge=<dbref>`: The player who is given a destroyed player's objects, channels and feed kinds when they are kept. #1 by default.
 
 ## @config costs
-These options control how many pennies various things cost.
+SharpMUSH has no money, so only quota_cost has an effect.
 
-- `object_cost=<number>`: How many pennies it costs to create an object.
-- `exit_cost=<number>`: How many pennies it costs to create an exit.
-- `link_cost=<number>`: How many pennies it costs to use @link.
-- `room_cost=<number>`: How many pennies it costs to @dig a room.
-- `queue_cost=<number>`: How many pennies it costs to queue a command. Refunded when the command executes.
-- `quota_cost=<number>`: How much @quota goes down by for each object.
-- `find_cost=<number>`: How many pennies it costs to use @search, @find, @entrances, and their function versions.
+- `object_cost=<number>`: Accepted but ignored.
+- `exit_cost=<number>`: Accepted but ignored.
+- `link_cost=<number>`: Accepted but ignored.
+- `room_cost=<number>`: Accepted but ignored.
+- `queue_cost=<number>`: Accepted but ignored.
+- `quota_cost=<number>`: How much @quota each object uses.
+- `find_cost=<number>`: Accepted but ignored.
 
 ## @config db
 These are database options.
@@ -90,21 +70,23 @@ These are database options.
 - `ancestor_player=<dbref>`: As ancestor_room for players.
 - `base_room=<dbref>`: The starting room used to determine if other rooms are disconnected.
 - `default_home=<dbref>`: The room to send things to when they're homeless.
-- `exits_connect_rooms=<boolean>`: Is a room with any exit at all in not considered disconnected for FLOATING checks?
+- `exits_connect_rooms=<boolean>`: Is a room with any exit of its own counted as connected, so `@dbck` and the scheduled purge don't warn its owner about it? See [FLOATING](/reference/sharpmush-help/sharpflag/#floating).
 - `zone_control_zmp_only=<boolean>`: Do we only perform control checks on ZMPs, or do we check ZMOs and ZMRs too?
+- `allow_browser_code=<boolean>`: May plugins ship compiled components that run in visitors' browsers as part of the web portal? Off by default. Turn it on only for plugins you trust.
 
 ## @config dump
 These options affect database saves and other periodic checks.
 
-- `forking_dump=<boolean>`: Does the game clone itself and save in the copy, or just pause while the save happens?
 - `dump_message=<string>`: Notification message for a database save.
 - `dump_complete=<string>`: Notification message for the end of a save.
 - `dump_warning_1min=<string>`: Notification one minute before a save.
 - `dump_warning_5min=<string>`: Notification five minutes before a save.
-- `dump_interval=<time>`: Seconds between database saves.
 - `warn_interval=<time>`: Seconds between automatic @wchecks.
 - `purge_interval=<time>`: Seconds between automatic @purges.
-- `dbck_interval=<time>`: Seconds between automatic @dbcks.
+- `recover_keep_players=<time>`: How long a destroyed character stays on the recover list: `forever`, or a time such as `90d`. Default: `forever`
+- `recover_keep_objects=<time>`: How long any other destroyed object stays on the recover list. Default: `30d`
+
+A save is a backup: the messages are shown around every `@backup`, `@dump` and scheduled backup, and an empty one is not shown. How often backups are scheduled is the server's SHARPMUSH_BACKUP_INTERVAL setting, not an option, so PennMUSH's dump_interval is read and ignored; so is dbck_interval, since `@dbck` runs only when asked (see [event dump](/reference/sharpmush-help/sharpevents/#dump-events) and [event db](/reference/sharpmush-help/sharpevents/#database-events)).
 
 ## @config flags
 These options set the default flags for newly-created objects and channels. Each is a
@@ -122,44 +104,21 @@ as a matter of course.
 
 ::: seealso
 - [NO_COMMAND](/reference/sharpmush-help/sharpflag/#nocommand)
-- [@set](/reference/sharpmush-help/sharpcmd/#set)
-- [FLAG LIST](/reference/sharpmush-help/sharpflag/#flag-list)
+- [@set](/reference/sharpmush-help/set-command/#set)
+- [FLAG LIST](/reference/sharpmush-help/flag-list/#flag-list)
 :::
 
 ## @config funcs
 These options affect the behavior of some functions.
 
-- `safer_ufun=<boolean>`: Are objects stopped from evaluting attributes on objects with more privileges than themselves?
+- `safer_ufun=<boolean>`: Accepted but ignored: the privilege rule described in [u()](/reference/sharpmush-help/u-function/#u) always applies.
 - `function_side_effects=<boolean>`: Are function side effects (functions which alter the database) allowed?
 
 ## @config log
 These options affect logging.
 
-- `log_commands=<boolean>`: Are all commands logged?
-- `log_forces=<boolean>`: Are @forces of wizard objects logged?
+- `log_commands=<boolean>`: Should every command be written to the command log? Commands by SUSPECT players are always written, and commands by NO_LOG objects never are. Passwords are starred out.
+- `log_forces=<boolean>`: Should @force by wizards, and @force of wizard-owned objects, be written to the wizard log?
+- `use_connlog=<boolean>`: Can connlog(), connrecord() and addrlog() read the connection log? On by default; when it is off they return `#-1 CONNECTION LOG DISABLED`.
 
-## @config net
-Networking and connection-related options.
-
-- `mud_name=<string>`: The name of the mush for mudname() and @version and the like.
-- `mud_url=<string>`: If this is set, the welcome message for the mush is bracketed in <!-- ... --> for all clients, and web browsers are redirected to the url described in mud_url. First-run setup fills it in with the address the web portal was reached at, unless that is the server's own machine. An MXP or Pueblo client is sent the game's own pictures, such as the connect screen's logo, at this address; while it is unset, such a client is shown their text instead.
-- `http_handler=<dbref/number>`: If this is set, support HTTP requests to MUSH port.
-- `http_per_second=<number>`: If this is set, limit HTTP requests allowed per second.
-- `use_dns=<boolean>`: Are IP addresses resolved into hostnames?
-- `logins=<boolean>`: Are mortal logins enabled?
-- `player_creation=<boolean>`: Can CREATE be used from the login screen?
-- `guests=<boolean>`: Are guest logins allowed?
-- `pueblo=<boolean>`: Is Pueblo support turned on?
-- `sql_platform=<string>`: What kind of SQL server are we using? ("mysql", "postgreql", "sqlite" or "disabled")
-- `sql_host=<string>`: What is the hostname or ip address of the SQL server
-- `ssl_require_client_cert=<boolean>`: Are client certificates verified in SSL connections?
-
-## @config tiny
-Options that help control compability with TinyMUSH servers.
-
-- `null_eq_zero=<boolean>`: Is a null string where a number is expected considered a 0?
-- `tiny_booleans=<boolean>`: Use Tiny-style boolean values where only non-zero numbers are true.
-- `tiny_trim_fun=<boolean>`: Are the second and third arguments to trim() reversed?
-- `tiny_math=<boolean>`: Is a string where a number is expected considered a 0?
-- `silent_pemit=<boolean>`: Does @pemit default to @pemit/silent?
-- `paren_groups=<boolean>`: Does an unescaped `(` that starts no function call open a literal group, as in PennMUSH? Its commas are text and its `)` does not close the call around it, so `cat(x,(a,b)c)` has two arguments. When off, escape literal parentheses inside function arguments with `\(` `\)` or `%(` `%)`. Importing a PennMUSH database turns it on.
+The server writes its logs through Serilog, set in the Serilog section of its appsettings.json. These options are accepted but ignored: `use_syslog`, `error_log`, `command_log`, `wizard_log`, `checkpt_log`, `trace_log`, `connect_log` and `mem_check`. Staff actions are kept in the audit log as well.

@@ -15,7 +15,7 @@ description: "SharpMUSH documentation for @uptime"
       "heading": "Process statistics",
       "lookup": "@uptime process statistics"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-process-statistics-heading-process-statistics-lookup-uptime-process-statistics),
+  ],
   "redirects": {
     "@uptime2": "@uptime process statistics"
   }
@@ -27,7 +27,7 @@ description: "SharpMUSH documentation for @uptime"
 
 Reports the server start time, last reboot, total reboot count, current time, time until the next purge and warning runs, and SharpMUSH uptime. Wizards also receive the process statistics below, unless they use `/mortal`.
 
-Output: the time the game started, in seconds, as `uptime()` returns it.
+`@uptime` outputs the time the game started, in seconds, as `uptime()` returns it.
 
 ### Process statistics
 
@@ -35,5 +35,5 @@ Wizard output includes the process ID, current and peak working-set memory, and 
 
 ::: seealso
 - [@stats](/reference/sharpmush-help/sharpcmd/#stats)
-- [@list](/reference/sharpmush-help/sharpcmd/#list)
+- [@list](/reference/sharpmush-help/list-command/#list)
 :::

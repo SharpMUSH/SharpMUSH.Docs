@@ -8,7 +8,7 @@ description: "SharpMUSH documentation for Roles"
   "corpus": "help",
   "id": "roles",
   "lookup": "roles",
-  "aliases": ["role"](/reference/sharpmush-help/sharpconf/#role),
+  "aliases": ["role"],
   "sections": [
     {
       "id": "roles-resolution",
@@ -16,9 +16,24 @@ description: "SharpMUSH documentation for Roles"
       "lookup": "roles combine"
     },
     {
+      "id": "roles-umbrellas",
+      "heading": "Umbrella permissions and taking one away",
+      "lookup": "roles umbrellas"
+    },
+    {
       "id": "roles-defaults",
       "heading": "Roles a new game starts with",
       "lookup": "roles defaults"
+    },
+    {
+      "id": "roles-approved",
+      "heading": "The approved, helper and moderator roles",
+      "lookup": "roles approved"
+    },
+    {
+      "id": "roles-rhost",
+      "heading": "RhostMUSH's staff levels",
+      "lookup": "roles rhost"
     },
     {
       "id": "roles-flags",
@@ -26,16 +41,36 @@ description: "SharpMUSH documentation for Roles"
       "lookup": "roles flags"
     },
     {
+      "id": "roles-guards",
+      "heading": "Guarded roles",
+      "lookup": "roles guards"
+    },
+    {
       "id": "roles-wizard-split",
       "heading": "What a wizard's work is split into",
       "lookup": "roles wizard"
+    },
+    {
+      "id": "roles-staff",
+      "heading": "Staff permissions",
+      "lookup": "roles staff"
+    },
+    {
+      "id": "roles-everyday",
+      "heading": "Everyday permissions",
+      "lookup": "roles everyday"
+    },
+    {
+      "id": "roles-wizard-only",
+      "heading": "What still needs game.wizard",
+      "lookup": "roles wizard only"
     },
     {
       "id": "roles-packages",
       "heading": "Roles and permissions from packages",
       "lookup": "roles packages"
     }
-  ](/reference/sharpmush-help/sharpflag/#id-roles-resolution-heading-how-roles-combine-lookup-roles-combine-id-roles-defaults-heading-roles-a-new-game-starts-with-lookup-roles-defaults-id-roles-flags-heading-roles-flags-and-powers-lookup-roles-flags-id-roles-wizard-split-heading-what-a-wizards-work-is-split-into-lookup-roles-wizard-id-roles-packages-heading-roles-and-permissions-from-packages-lookup-roles-packages),
+  ],
   "redirects": {
     "roles2": "roles combine",
     "roles3": "roles defaults"
@@ -48,7 +83,7 @@ A role is a named set of permissions. Roles decide what an object may do: in the
 
 Both objects and accounts hold roles. An object holds the roles assigned to it; a character linked to an account also holds the account's. Nothing is inherited from an object's owner.
 
-Each role sets every permission to one of three states: Allow, Deny, or neither (it leaves the permission to other roles). Each role also has a priority, which places it in the role hierarchy. See [@role](/reference/sharpmush-help/role-command/#role) for the commands, and [@permission](/reference/sharpmush-help/permission-command/#permission) for the list of permissions. A game can add permissions of its own, such as `bbs.moderate`, with `@permission/define` (see [@permission define](/reference/sharpmush-help/sharpcmd/#permission-define)), and a package can bring its own (see [roles packages](/reference/sharpmush-help/sharpconf/#roles-packages)).
+Each role sets every permission to one of three states: Allow, Deny, or neither (it leaves the permission to other roles). Each role also has a priority, which places it in the role hierarchy. See [@role](/reference/sharpmush-help/role-command/#role) for the commands, and [@permission](/reference/sharpmush-help/permission-command/#permission) for the list of permissions. A game can add permissions of its own, such as `bbs.moderate`, with `@permission/define` (see [@permission define](/reference/sharpmush-help/permission-command/#custom-permissions)), and a package can bring its own (see [roles packages](/reference/sharpmush-help/roles/#roles-and-permissions-from-packages)).
 
 ### How roles combine
 
@@ -60,22 +95,24 @@ For each permission, the first of these that applies decides:
 4. If its account has an override for it (`@permission/allow/account`), that override decides.
 5. If any role held allows it, it is held. A Deny on one role never cancels an Allow on another, whatever their priorities.
 6. If a role held denies it, it is not held, even when the `everyone` role allows it.
-7. Otherwise, the `everyone` role decides. A permission nobody allows is denied.
+7. Otherwise, the `everyone` role decides. The everyday permissions in [roles everyday](/reference/sharpmush-help/roles/#everyday-permissions) are allowed by default for holders of `everyone` when no role, including `everyone`, denies them. Other permissions nobody allows are denied.
 
 Priority does not decide any of this, and it does not decide control. It only orders roles for management: you can manage only roles, objects and accounts below your own highest role.
 
-Some permissions are umbrellas over narrower ones: `wiki.admin` covers `wiki.read`, `wiki.drafts`, `wiki.create`, `wiki.edit` and `wiki.delete`; `media.admin` covers `media.upload`; `players.moderate` covers `players.view`; and `jobs.manage`, `queue.inspect` and `queue.control` cover their `.own` versions. A role or override that sets the umbrella but leaves the narrower permission alone applies the umbrella's setting to it. A setting on the narrower permission itself always wins within the same role.
+### Umbrella permissions and taking one away
 
-To take a permission away from one object, use an override (`@permission/deny`). To take it away from a group, leave it off the roles they hold rather than adding a Deny role on top, because any other role's Allow wins.
+Some permissions are umbrellas over narrower ones: `wiki.admin` covers `wiki.read`, `wiki.drafts`, `wiki.create`, `wiki.edit` and `wiki.delete`; `media.admin` covers `media.upload`; `players.moderate` covers `players.view`; `game.wizard` covers six of the staff permissions in [roles staff](/reference/sharpmush-help/roles/#staff-permissions); `game.chown.any` covers `game.chown.self`; and `jobs.manage`, `queue.inspect` and `queue.control` cover their `.own` versions. A role or override that sets the umbrella but leaves the narrower permission alone applies the umbrella's setting to it. A setting on the narrower permission itself always wins within the same role.
+
+To take a permission away from one object, use an override (`@permission/deny`). For a permission that requires an Allow, take it away from a group by leaving it off the roles they hold rather than adding a Deny role on top, because any other role's Allow wins. Everyday permissions are different: leaving one unset keeps its default Allow. Restrict one with a role Deny while removing any other role's explicit Allow, or use an object or account override.
 
 ### Roles a new game starts with
 
 | Priority | Role | Allows |
 |---|---|---|
-| 40 | god | administrator |
-| 30 | wizard | every portal permission except `server.admin` and `administrator`, plus `game.wizard`, `chat.admin`, `server.operate`, `control.all`, `protect.wizard`, `protect.admin` |
+| 40 | god | `administrator`, `protect.role` |
+| 30 | wizard | every portal permission except `server.admin` and `administrator`, plus `game.wizard`, `chat.admin`, `feed.admin`, `notify.push`, `softcode.sidefx`, `server.operate`, `control.all`, `protect.role`, `control.role.wizard`, `control.role.royalty`, `control.role.councilor`, `control.role.architect` |
 | 25 | moderator | `players.moderate`, `wiki.admin`, `media.admin`, `queue.inspect`, `queue.control`, `roles.admin` |
-| 20 | royalty | `players.view`, `wiki.admin`, `media.admin`, `queue.inspect`, `game.royalty`, `protect.admin` |
+| 20 | royalty | `players.view`, `wiki.admin`, `media.admin`, `queue.inspect`, `game.royalty`, `protect.role`, `control.role.royalty` |
 | 15 | builder | `diagnostics.profile`, `game.builder` |
 | 12 | helper | `players.view`, `queue.inspect` |
 | 11 | approved | `wiki.create`, `wiki.edit`, `game.send_image`; [isapproved()](/reference/sharpmush-help/sharpfunc/#isapproved) reads it |
@@ -83,11 +120,28 @@ To take a permission away from one object, use an override (`@permission/deny`).
 | 0 | guest | `game.guest` |
 | 0 | everyone | `wiki.read` |
 
+### The approved, helper and moderator roles
+
 `approved` marks a character that has met the game's own bar for full participation. Nothing in the engine assigns it; a game assigns it when its own bar is met (a finished chargen, a staff review), with `@role/assign <player>=approved`. Writing and editing the wiki comes with it: by default a player who is not approved reads the wiki but cannot change any page, their own character's biography and gallery included, unless another role or an override (see [@permission](/reference/sharpmush-help/permission-command/#permission)) allows it. Staff get the same through `wiki.admin` (royalty, moderator) or every permission (wizard).
 
 `helper` and `moderator` are ordinary roles: assign them with `@role/assign`, and edit or delete them as you like. They are created only in a new game.
 
+Setup can give a game RhostMUSH's staff levels in their place: see [roles rhost](/reference/sharpmush-help/roles/#rhostmushs-staff-levels).
+
 Permissions that act on objects still check ownership and locks. For example, `snapshots.restore` lets a player restore only objects they control.
+
+### RhostMUSH's staff levels
+
+Setup can give a game RhostMUSH's staff levels in place of `helper` and `moderator`, and a RhostMUSH import does. Each level is an ordinary role, ranked just above the built-in role whose permissions it copies:
+
+| Priority | Role | Allows |
+|---|---|---|
+| 35 | immortal | what wizard allows, plus `server.admin`, `control.role.immortal` |
+| 22 | councilor | what royalty allows, plus `control.all`, `control.role.councilor`, `control.role.architect` |
+| 16 | architect | what builder allows, plus `control.all`, `protect.role`, `control.role.architect` |
+| 13 | guildmaster | what player allows, plus `players.view`, `queue.inspect` |
+
+RhostMUSH's royalty is the `wizard` role. As in RhostMUSH, each level controls what is held below it: an architect controls players and their things, a councilor architects too. Immortal, councilor and architect are guarded (see [roles guards](/reference/sharpmush-help/roles/#guarded-roles)), which keeps each below the levels above it, and a wizard controls a councilor or an architect but not an immortal. The setup step removes the roles of the set not chosen, except any role someone holds.
 
 ### Roles, flags and powers
 
@@ -95,7 +149,29 @@ The privilege flags and the PennMUSH powers are roles and permissions:
 
 - The WIZARD flag is the `wizard` role, and ROYALTY the `royalty` role. `@set` assigns and removes them; `hasflag()`, `flags()` and `FLAG^` locks answer from them.
 - Each power is a `game.` permission: See_All is `game.see_all`. `@power` sets an Allow override on the object, and `haspower()`, `powers()` and `POWER^` locks answer from what the object holds, so a role that allows `game.see_all` gives every holder See_All. The Builder and Guest powers are the `builder` and `guest` roles.
-- Control reads permissions too. `control.all` controls everything except #1 and holders of `protect.wizard`; a holder of `protect.admin` is controlled only by another holder of it. Ownership, zones and locks still decide control as in PennMUSH.
+- Control reads permissions too, never role order: see [roles guards](/reference/sharpmush-help/roles/#guarded-roles).
+
+### Guarded roles
+
+A role that allows `protect.role` is guarded. Whoever holds it, a player or an object, is controlled only by something that holds `control.role.<role>` for that role. With several guarded roles, it must pass every one. Passing a guard gives no control by itself: `control.all`, ownership, zones and control locks decide from there, with TRUST and MISTRUST as in PennMUSH.
+
+| Guarded role | Who passes its guard |
+|---|---|
+| god | nobody; #1 is itself |
+| immortal | immortal, god |
+| wizard | wizard, immortal, god |
+| councilor | councilor, wizard, immortal, god |
+| royalty | royalty, councilor, wizard, immortal, god |
+| architect | architect, councilor, wizard, immortal, god |
+
+So a wizard controls another wizard's things, as in PennMUSH, while royalty controls only what it owns. `control.role.god` is #1's alone: no role, override or `administrator` gives it.
+
+Only #1 can guard a role, take a guard off or delete a guarded role; a pass can be granted only by something that holds it, and a guarded role can be given only by something that passes its guard, so nobody can shield themselves from those above them. As #1, to guard a role and let wizards past it:
+
+```
+@role/allow curator=protect.role
+@role/allow wizard=control.role.curator
+```
 
 ### What a wizard's work is split into
 
@@ -107,10 +183,52 @@ Being a wizard (`game.wizard`) is split into groups, so a custom role can hand o
 | `config.admin` | @config/set, @enable, @disable, @command, @function, @attribute and @power definitions, @hook |
 | `packages.admin` | @package |
 | `chat.admin` | Wizard channels (and Admin channels), channel privileges, @channel changes and nuking on channels you don't own, @wizwall, @wall, @rwall, the MOTDs and `wizmotd()`, @mail admin and stats, mail alias admin |
-| `wiki.admin` | wiki requirements (setting them, and skipping them), protecting and publishing pages; see [wiki permissions](/reference/sharpmush-help/sharpconf/#wiki-permissions) |
+| `feed.admin` | @feed on every kind: defining kinds, their taps, members and limits (a kind's owner runs its own without it); see [@feed](/reference/sharpmush-help/feed-command/#feed) |
+| `softcode.sidefx` | side-effect functions, when the `sidefx_flag` option asks for the SIDEFX flag; see [SIDEFX](/reference/sharpmush-help/sharpflag/#sidefx) |
+| `wiki.admin` | wiki requirements (setting them, and skipping them), protecting and publishing pages; see [wiki permissions](/reference/sharpmush-help/wiki-administration/#wiki-permissions) |
 | `server.operate` | @shutdown, @dump, @dbck, @purge, @readcache, @backup, @storage, @log, @slave, @kick, @uptime details |
 
-Everything else a wizard does still needs `game.wizard`: wizard attributes, overrides in `examine` and `@destroy`, the preserve switches, @chownall and @chzoneall, and every check on whether the target is a wizard. A check that also takes a power, such as @halt with Halt or @sql with SQL_OK, takes that power as before. Any single command can be given its own permission with `@command/restrict <command>=PERM^<permission>`, and a function with `@function/restrict <function>=<permission>`.
+### Staff permissions
+
+These take parts of a wizard's standing over other players' things, so a role or an override can give one without `game.wizard`. `game.wizard` covers the first six, so taking it away takes them too.
+
+| Permission | Covers |
+|---|---|
+| `game.chown.self` | @chown of another's object to yourself, without carrying it |
+| `game.chown.any` | @chown between any owners, /preserve, @chownall, @atrchown to anyone; covers `game.chown.self` |
+| `game.nuke` | @destroy and @nuke of players |
+| `game.override` | setting wizard and locked attributes and locks on what you control |
+| `game.flags.restricted` | setting wizard-only flags, and CHOWN_OK and DESTROY_OK, on what you control |
+| `game.noforce` | nobody ranked below you may @force you |
+| `game.noboot` | nobody ranked below you may @boot you; no role allows it |
+| `game.override.movement` | passing enter, leave and exit locks; no role allows it |
+
+Each can carry a reach (see [@permission reach](/reference/sharpmush-help/permission-command/#reach)). On `game.noforce` and `game.noboot` a reach names who is kept out: with reach `architect`, nobody ranked at or below architect may force you.
+
+### Everyday permissions
+
+Every object holds these unless a role or override denies them, so nobody notices them until one is taken away. One denied to a player is denied to everything the player owns as well. They let staff mute one thing precisely: `@permission/deny Twink=player.page` stops Twink paging, and `@permission/deny Twink=player.page/helper` stops Twink paging staff only.
+
+| Permission | Covers |
+|---|---|
+| `player.page` | page, checked against each recipient; takes a reach |
+| `player.create` | @create, @dig, @open, @clone and their functions |
+| `player.give` | give, checked against the recipient; takes a reach |
+| `player.receive` | being given things |
+| `player.force` | @force |
+| `player.chat` | @chat, @cemit, channel aliases, joining or running a channel; not listing, gagging, muting, hiding or leaving |
+| `player.commands` | `$`-commands |
+| `player.examine` | examining others' VISUAL objects; takes a reach |
+| `player.modify` | control through a zone, a control lock or a SHARED player; takes a reach |
+| `player.chown` | taking CHOWN_OK objects; takes a reach |
+| `player.teleport` | @teleport by control or JUMP_OK; takes a reach, measured on what is moved |
+| `player.password` | @password |
+
+A role's Deny takes one from everyone holding that role, unless an override or a role other than `everyone` allows it.
+
+### What still needs game.wizard
+
+Everything else a wizard does still needs `game.wizard`: overrides in `examine`, @chzoneall, the preserve switches of @link, @clone and @chzone, and every check on whether the target is a wizard. A check that also takes a power, such as @halt with Halt or @sql with SQL_OK, takes that power as before. Any single command can be given its own permission with `@command/restrict <command>=PERM^<permission>`, and a function with `@function/restrict <function>=<permission>`.
 
 A power made with `@power/add` is stored on the object as before.
 

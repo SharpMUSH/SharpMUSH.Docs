@@ -10,6 +10,7 @@ description: "SharpMUSH documentation for @message"
   "lookup": "@message",
   "aliases": [],
   "sections": [
+    {"id": "switches", "heading": "Switches", "lookup": "@message switches", "aliases": ["@message/noeval", "@message/spoof", "@message/remit", "@message/oemit", "@message/nospoof", "@message/silent", "@message/noisy"]},
     {
       "id": "speech-format-examples",
       "heading": "Speech format examples",
@@ -20,7 +21,7 @@ description: "SharpMUSH documentation for @message"
       "heading": "Language system example",
       "lookup": "@message language system example"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-speech-format-examples-heading-speech-format-examples-lookup-message-speech-format-examples-id-language-system-example-heading-language-system-example-lookup-message-language-system-example),
+  ],
   "redirects": {
     "@message2": "@message speech format examples",
     "@message3": "@message language system example"
@@ -39,14 +40,9 @@ If `<obj>` is not given, or is given as "#-2", the attribute will be checked on 
 
 If one of the arguments matches "##", it will be replaced with the dbref of the recipient.
 
-Switches:
-- /noeval -- none of @message's arguments will be evaluated
-- /spoof -- the message will appear to be from the enactor, not the executor. Requires the Can_Spoof @power
-- /remit -- works like @remit, treating `<recipients>` as a list of rooms to send the message to
-- /oemit -- works like @oemit, with `<recipients>` as a list of objects not to emit to. See [@oemit](/reference/sharpmush-help/oemit-command/#oemit) for more info
-- /nospoof -- don't show nospoof info, as per @nspemit/@nsremit/@nsoemit
-- /silent -- don't show a confirmation message
-- /noisy -- show a confirmation message; default depends on the silent_pemit @config option
+- [@message switches](/reference/sharpmush-help/message-command/#switches): evaluation, spoofing, rooms, exclusions and confirmation
+- [@message speech format examples](/reference/sharpmush-help/message-command/#speech-format-examples): speech formats, and a rough @chatformat
+- [@message language system example](/reference/sharpmush-help/message-command/#language-system-example): a basic language system
 
 ::: seealso
 - [MESSAGE()](/reference/sharpmush-help/sharpfunc/#message)
@@ -56,6 +52,16 @@ Switches:
 - [@remit](/reference/sharpmush-help/sharpcmd/#remit)
 - [speak()](/reference/sharpmush-help/speak/#speak)
 :::
+
+### Switches
+
+- /noeval -- none of @message's arguments will be evaluated
+- /spoof -- the message will appear to be from the enactor, not the executor. Requires the Can_Spoof @power
+- /remit -- works like @remit, treating `<recipients>` as a list of rooms to send the message to
+- /oemit -- works like @oemit, with `<recipients>` as a list of objects not to emit to. See [@oemit](/reference/sharpmush-help/oemit-command/#oemit) for more info
+- /nospoof -- don't show nospoof info, as per @nspemit/@nsremit/@nsoemit
+- /silent -- don't show a confirmation message
+- /noisy -- show a confirmation message; default depends on the silent_pemit @config option
 
 ### Speech format examples
 
