@@ -116,8 +116,10 @@ The configuration slot takes PennMUSH's `mush.cnf`, TinyMUX's `netmux.conf` or R
 `netrhost.conf`. A setting the two TinyMUSH-family servers name differently, such as
 `player_starting_room`, sets the option PennMUSH calls `player_start`. Upload the files it includes,
 such as `alias.conf` and `compat.conf`, in the slot beside it: each `include` line reads the uploaded
-file of that name, whatever folder the line gives, and the report names each included file that was
-not uploaded. Every file may be uploaded gzipped, as PennMUSH writes its dumps.
+file of that name, whatever folder the line gives, so two included files may not share a name. The
+report names each included file that was not uploaded. The configuration and its included files are
+uploaded as plain text; the database, mail, chat and mail folder files may be gzipped, as PennMUSH
+writes its dumps.
 
 **What comes across.** Objects keep their numbers, names, owners, parents, zones, locks, attributes
 and creation times. Flags and powers become SharpMUSH's where one matches: a wizard gets the `wizard`
