@@ -3,41 +3,6 @@ title: "Flags"
 description: "SharpMUSH documentation for Flags"
 ---
 
-## Flag List
-
-| Flag | Title | Flag | Title | Flag | Title |
-|------|-------|------|-------|------|-------|
-| A | Abode/Ansi | C | Chown_ok/Color | D | Dark |
-| F | Fixed/Floating | H | Haven | I | Trust |
-| J | Judge/Jump_ok | L | Link_ok | M | Monitor |
-| N | No_leave/No_tel | O | Opaque | Q | Quiet |
-| S | Sticky | U | Unfindable | V | Visual |
-| W | Wizard | X | Safe | Z | Shared/Z_tel |
-| ^ | Listen_parent | ~ | Noaccents | ? | Unregistered |
-| " | Nospoof | a | Audible | b | Debug |
-| d | Destroy_ok | e | Enter_ok | g | Gagged |
-| h | Halt | i | Orphan | j | Jury_ok |
-| k | Keepalive | l | Light | m | Mistrust/Myopic |
-| n | No_command | o | On-vacation | p | Puppet |
-| r | Royalty | s | Suspect | t | Transparent |
-| u | Uninspected | v | Verbose | w | No_warn |
-| x | Cloudy/Terse |  |  |  |  |
-
-Additional Flags:
-* Chan_usefirstmatch
-* Hear_connect
-* Heavy
-* Loud
-* No_log
-* Paranoid
-* Track_money
-* XTERM256
-* TRUECOLOR
-* MONIKER
-* open_ok
-
-Some flags may not be enabled on some MUSHes. `@flag/list` will show which are available.
-
 ## ABODE
 
 **Flag: ABODE (rooms)**
@@ -66,8 +31,8 @@ ANSI highlight can also be enabled on a per-connection basis with `@sockset`.
 - [COLOR](/reference/sharpmush-help/sharpflag/#color)
 - [XTERM256](/reference/sharpmush-help/sharpflag/#xterm256)
 - [TRUECOLOR](/reference/sharpmush-help/sharpflag/#truecolor)
-- [@config](/reference/sharpmush-help/sharpcmd/#config)
-- [@SOCKSET](/reference/sharpmush-help/sharpcmd/#sockset)
+- [@config](/reference/sharpmush-help/config-command/#config)
+- [@SOCKSET](/reference/sharpmush-help/sockset-command/#sockset)
 :::
 
 ## AUDIBLE
@@ -78,9 +43,9 @@ Objects which are set AUDIBLE forward sound in a number of ways. Only sound pass
 
 If an AUDIBLE object has an `@forwardlist` attribute set, sound heard by the object is forwarded to the objects listed in the `@forwardlist`. See [@forwardlist](/reference/sharpmush-help/sharpcmd/#forwardlist) for more information.
 
-When a THING is set AUDIBLE, any sound made inside it is broadcast to other objects in its location. This is useful for coding vehicles. Only sound passing the `@filter` is broadcast, and is prefixed with the thing's `@prefix`, or "From [name(\<thing\>)], " if no `@prefix` is set.
+When a THING is set AUDIBLE, any sound made inside it is broadcast to other objects in its location. This is useful for coding vehicles. Only sound passing the `@filter` is broadcast, and is prefixed with the thing's `@prefix`, or "From `[name(<thing>)]`, " if no `@prefix` is set.
 
-Setting the AUDIBLE flag on a ROOM activates audible exits in that room. EXITs which are set AUDIBLE propagate sound from their source room to their destination, prefixed with the exit's `@prefix`, or "From [name(home(\<exit\>))], " if no `@prefix` is set.
+Setting the AUDIBLE flag on a ROOM activates audible exits in that room. EXITs which are set AUDIBLE propagate sound from their source room to their destination, prefixed with the exit's `@prefix`, or "From `[name(home(<exit>))]`, " if no `@prefix` is set.
 
 
 ::: seealso
@@ -91,28 +56,13 @@ Setting the AUDIBLE flag on a ROOM activates audible exits in that room. EXITs w
 
 ## TRACK_MONEY
 
-**Flag: TRACK_MONEY (players)**
+**Flag: TRACK_MONEY (all types)**
 
-By setting the TRACK_MONEY flag, a player can determine which objects may be using their money. TRACK_MONEY reports all charges to a player and their objects except the queue deposit.
-
-```sharp
-> @set me=TRACK_MONEY
-> give Javelin=50
-You give 50 pennies to Javelin.
-GAME: Walker spent 50 pennies!
-> @create foo
-GAME: Walker spent 10 pennies!
-Created: Object #345.
-> @for foo=@search eval=1
-GAME: foo(#345) spent 100 pennies!
-(search results)
-> <a whole buncha commands>
-GAME: Object Walker(#123) lost a Penny to queue loss.
-```
+SharpMUSH has no money, so nothing is ever charged and this flag reports nothing. It can be set, and an imported database keeps it, but it has no effect.
 
 
 ::: seealso
-- [no_pay](/reference/sharpmush-help/sharpconf/#nopay)
+- [compatibility economy](/reference/sharpmush-help/compatibility-economy/#compatibility-economy)
 :::
 
 ## CHOWN_OK
@@ -154,7 +104,7 @@ ANSI colors can also be enabled on a per-connection basis with `@sockset`.
 - [XTERM256](/reference/sharpmush-help/sharpflag/#xterm256)
 - [TRUECOLOR](/reference/sharpmush-help/sharpflag/#truecolor)
 - [ansi()](/reference/sharpmush-help/ansi-function/#ansi)
-- [@SOCKSET](/reference/sharpmush-help/sharpcmd/#sockset)
+- [@SOCKSET](/reference/sharpmush-help/sockset-command/#sockset)
 :::
 
 
@@ -164,7 +114,7 @@ ANSI colors can also be enabled on a per-connection basis with `@sockset`.
 
 This flag indicates to the MUSH that the player's client can handle the 256 XTERM colors.
 
-The flag is aliased to COLOR256 for MUX compatability.
+The flag is aliased to XTERM and COLOR256.
 
 XTERM colors can also be enabled on a per-connection basis with `@sockset`.
 
@@ -174,7 +124,7 @@ XTERM colors can also be enabled on a per-connection basis with `@sockset`.
 - [COLOR](/reference/sharpmush-help/sharpflag/#color)
 - [TRUECOLOR](/reference/sharpmush-help/sharpflag/#truecolor)
 - [ansi()](/reference/sharpmush-help/ansi-function/#ansi)
-- [@SOCKSET](/reference/sharpmush-help/sharpcmd/#sockset)
+- [@SOCKSET](/reference/sharpmush-help/sockset-command/#sockset)
 :::
 
 ## TRUECOLOR
@@ -193,7 +143,7 @@ RGB colors can also be enabled on a per-connection basis with `@sockset`.
 - [COLOR](/reference/sharpmush-help/sharpflag/#color)
 - [XTERM256](/reference/sharpmush-help/sharpflag/#xterm256)
 - [ansi()](/reference/sharpmush-help/ansi-function/#ansi)
-- [@SOCKSET](/reference/sharpmush-help/sharpcmd/#sockset)
+- [@SOCKSET](/reference/sharpmush-help/sockset-command/#sockset)
 :::
 
 ## CONNECTED
@@ -202,7 +152,7 @@ RGB colors can also be enabled on a per-connection basis with `@sockset`.
 
 This flag is used internally by the MUSH to track whether a player is currently connected. It cannot be set or cleared manually.
 
-Prior to 1.8.5p6, mortal objects couldn't use `hasflag(<player>, connected)` to see if a player was online, and needed to instead use `conn()` or `lwho()`. Starting with that version, any object can use `hasflag()` to see if they can see that a player is online. Be careful, when coding on a privileged object, not to give away the presence of hidden players!
+Any object can use `hasflag(<player>, connected)` to see whether a player it can see is online. Be careful, when coding on a privileged object, not to give away the presence of hidden players!
 
 
 ::: seealso
@@ -217,13 +167,13 @@ Prior to 1.8.5p6, mortal objects couldn't use `hasflag(<player>, connected)` to 
 
 When a room is set DARK, only objects which are set LIGHT will show up in the rooms contents list when someone "look"s in the room. Exits which are set DARK do not show up in a room's Obvious Exits list.
 
-DARK players and things do not show up in the contents list of rooms. Only Wizard players can set themselves dark. Puppets and Audible things with an `@forwardlist` will not be hidden by the flag.
+DARK players and things do not show up in the contents list of rooms. A DARK player is hidden only if they are a wizard or hold the CAN_DARK power. Puppets and Audible things with an `@forwardlist` will not be hidden by the flag.
 
 Note that players and things still trigger enter/leave messages, etc, in DARK rooms.
 
 If the "full_invis" `@config` option is on, DARK players and things will show up as "Someone" or "Something", respectively, when they speak.
 
-In the past, players set DARK were automatically hidden from the WHO list via `@hide`, but this no longer happens. If you wish to disappear completely, you must use `@hide` after setting yourself DARK.
+DARK does not hide a player from the WHO list. To disappear completely, use `@hide` as well.
 
 
 ::: seealso
@@ -265,32 +215,49 @@ ENTER_OK is often used in conjunction with AUDIBLE on vehicles and buildings.
 ::: seealso
 - [enter](/reference/sharpmush-help/sharpcmd/#enter)
 - [give](/reference/sharpmush-help/sharpcmd/#give-1)
-- [@tel](/reference/sharpmush-help/sharpcmd/#tel)
-- [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
+- [@teleport](/reference/sharpmush-help/teleport-command/#teleport)
+- [LOCKING](/reference/sharpmush-help/locking/#locking)
 :::
 
 ## FIXED
 
-**Flag: FIXED (exits)**
+**Flag: FIXED (players)**
 
-A FIXED exit cannot be unlinked. Only the owner can remove the FIXED flag. This flag is used to prevent accidental unlinking of important exits.
+A FIXED player cannot `@teleport` anything, and nothing they own can be teleported, except into the FIXED player. STICKY things they own stay where they are dropped, and functions restricted to non-FIXED players refuse their objects. A teleporter with the Tport_Anything power is exempt.
+
+Only wizards can set or clear FIXED.
 
 
 ::: seealso
-- [@unlink](/reference/sharpmush-help/sharpcmd/#unlink)
+- [@teleport](/reference/sharpmush-help/teleport-command/#teleport)
+- [STICKY](/reference/sharpmush-help/sharpflag/#sticky)
 :::
 
 ## FLOATING
 
 **Flag: FLOATING (rooms)**
 
-A FLOATING room is one that isn't linked to by any exits. Such rooms can only be reached by teleporting to them. This flag is set automatically by the MUSH.
+A FLOATING room counts as connected, and so does every room its exits lead to. `@dbck` and each scheduled purge (see '@config purge_interval') tell the owner of every room that can't be reached through exits from the base room or a FLOATING room. A room isn't reported if it, or its owner, is set NO_WARN, or if it has exits of its own while exits_connect_rooms is on.
+
+Set FLOATING on the first room of an area that isn't linked to the grid yet, to stop the warnings for every room in it.
+
+Example:
+```
+> @set here=FLOATING
+```
+
+Output:
+```
+Room Zero - FLOATING set.
+```
 
 ## GAGGED
 
 **Flag: GAGGED (players)**
 
-A GAGGED player cannot speak, pose, emit, or whisper. They can still page and use commands.
+A GAGGED player, and everything they own, cannot speak, pose, emit, whisper, page or use the chat commands. Most commands that act on the world, such as get, give, @dig, @link, @lock and @trigger, are refused too, and so are functions such as pemit() and create().
+
+Only wizards can set or clear GAGGED, and a wizard cannot be gagged.
 
 
 ::: seealso
@@ -312,55 +279,118 @@ The GOING flag is used internally by the MUSH to mark objects which are schedule
 - [@destroy](/reference/sharpmush-help/destroy-command/#destroy)
 :::
 
-## HALTED
+## GOING_TWICE
 
-**Flag: HALTED (all types)**
+**Flag: GOING_TWICE (all types)**
 
-A HALTED object cannot run its commands. Commands on the object are not even checked. The flag can be set with `@halt` and cleared with `@restart`.
+GOING_TWICE is used internally with GOING. The periodic purge sets it on an object that is still GOING, and frees an object that is both GOING and GOING_TWICE on its next pass. `@undestroy` clears both flags.
+
+It cannot be set or cleared manually, and only God sees it.
 
 
 ::: seealso
-- [@halt](/reference/sharpmush-help/sharpcmd/#halt)
+- [@destroy](/reference/sharpmush-help/destroy-command/#destroy)
+- [GOING](/reference/sharpmush-help/sharpflag/#going)
+:::
+
+## HALT
+
+**Flag: HALT (all types)**
+
+A HALT object runs no softcode. Nothing it queues runs, its `$`-commands and `^`-patterns do not fire, `@restart` skips its `@startup`, and `u()` on its attributes returns their text unevaluated.
+
+A HALT player can still type commands; only their queued work is stopped.
+
+`@halt <object>` with no new actions sets HALT, and so does `@chown` without /preserve. Clear it with `@set <object>=!HALT`; `@restart` does not clear it.
+
+
+::: seealso
+- [@halt](/reference/sharpmush-help/halt-command/#halt)
 - [@restart](/reference/sharpmush-help/sharpcmd/#restart)
+- [@chown](/reference/sharpmush-help/sharpcmd/#chown)
 :::
 
 ## HAVEN
 
-**Flag: HAVEN (rooms, players)**
+**Flag: HAVEN (players)**
 
-A HAVEN room prevents people in it from paging each other or using communications channels. This is useful for RP areas where out-of-character communication should be minimized.
-
-A HAVEN player cannot be paged. They can still use channels and receive pages that they've requested with the "page/request" command.
+A HAVEN player cannot be paged or sent `@pemit` messages, except by wizards and holders of the Pemit_All power (who page with `page/override`). Channels are not affected.
 
 
 ::: seealso
 - [page](/reference/sharpmush-help/page/#page)
-- [channel](/reference/sharpmush-help/sharpchat/#channel)
+- [@pemit](/reference/sharpmush-help/pemit-command/#pemit)
 :::
 
-## INHERIT
+## HEAR_CONNECT
 
-**Flag: INHERIT (all types)**
+**Flag: HEAR_CONNECT (all types)**
 
-The INHERIT flag is used internally by the MUSH. It cannot be set or cleared manually.
+A player set HEAR_CONNECT is told whenever a player connects or disconnects, as in `GAME: Walker has connected.` When the player is DARK, only wizards and royalty with HEAR_CONNECT are told.
+
+Only royalty and wizards can set HEAR_CONNECT.
+
+
+::: seealso
+- [SUSPECT](/reference/sharpmush-help/sharpflag/#suspect)
+- [DARK](/reference/sharpmush-help/sharpflag/#dark)
+:::
+
+## HEAVY
+
+**Flag: HEAVY (all types)**
+
+Controlling the room an object stands in is normally enough to `@teleport` the object out of it. A HEAVY object needs more: the teleporter must control the object itself, or have the same owner.
+
+Only royalty and wizards can set HEAVY.
+
+
+::: seealso
+- [@teleport](/reference/sharpmush-help/teleport-command/#teleport)
+:::
 
 ## JUMP_OK
 
 **Flag: JUMP_OK (rooms)**
 
-If a room is set JUMP_OK, anyone can link exits to it, if they pass its `@lock/link`. This flag is often used in conjunction with LINK_OK.
+If a room is set JUMP_OK, anyone who passes its `@lock/teleport` can `@teleport` into it.
 
 
 ::: seealso
-- [@link](/reference/sharpmush-help/sharpcmd/#link)
+- [@teleport](/reference/sharpmush-help/teleport-command/#teleport)
 - [LINK_OK](/reference/sharpmush-help/sharpflag/#linkok)
+- [ABODE](/reference/sharpmush-help/sharpflag/#abode)
 :::
+
+## JUDGE
+
+**Flag: JUDGE (players)**
+
+JUDGE can be set on a player, but it has no effect in SharpMUSH. A game's own code may test it with `hasflag()`. Only royalty and wizards can set or clear it.
+
+## JURY_OK
+
+**Flag: JURY_OK (players)**
+
+The flag is aliased to JURYOK.
+
+JURY_OK can be set on a player, but it has no effect in SharpMUSH. A game's own code may test it with `hasflag()`. Only royalty and wizards can set or clear it.
 
 ## KEEPALIVE
 
 **Flag: KEEPALIVE (players)**
 
-The KEEPALIVE flag prevents you from being automatically disconnected after a period of inactivity.
+A KEEPALIVE player's telnet connection is sent a telnet NOP when nothing has been sent to it for keepalive_timeout seconds. Some routers drop a connection that has been quiet for a while; the NOP keeps it open. The client shows nothing.
+
+Only connections whose client has negotiated a telnet option get the NOP, and not after `@sockset telnet=no`.
+
+KEEPALIVE does not stop the game disconnecting an idle player. That depends on the idle_timeout option and the Idle power, which wizards and royalty also have.
+
+
+::: seealso
+- [@power](/reference/sharpmush-help/power-command/#power)
+- [@config limits](/reference/sharpmush-help/config-limits-command/#config-limits)
+:::
 
 ## LIGHT
 
@@ -375,33 +405,174 @@ Objects which are set LIGHT show up in the contents list of DARK rooms. They do 
 
 ## LINK_OK
 
-**Flag: LINK_OK (rooms)**
+**Flag: LINK_OK (rooms, things)**
 
-If a room is set LINK_OK, anyone can make it their home, if they pass its `@lock/link`. This flag is often used in conjunction with JUMP_OK.
+If a room is set LINK_OK, anyone who passes its `@lock/link` can link exits to it, but not from it. A thing set LINK_OK takes exits too when the `link_to_object` @config option is on.
+
+Anyone who passes a LINK_OK object's `@lock/parent` can `@parent` an object to it.
+
+LINK_OK does not let others make it their home; that is ABODE.
 
 
 ::: seealso
 - [@link](/reference/sharpmush-help/sharpcmd/#link)
+- [@parent](/reference/sharpmush-help/sharpcmd/#parent)
+- [ABODE](/reference/sharpmush-help/sharpflag/#abode)
 - [JUMP_OK](/reference/sharpmush-help/sharpflag/#jumpok)
+- [OPEN_OK](/reference/sharpmush-help/sharpflag/#openok)
+:::
+
+## LISTEN_PARENT
+
+**Flag: LISTEN_PARENT (players, things, rooms)**
+
+An object set both MONITOR and LISTEN_PARENT also checks the `^`-patterns on its parents against what it hears. Without LISTEN_PARENT, only its own `^`-patterns are checked.
+
+
+::: seealso
+- [MONITOR](/reference/sharpmush-help/sharpflag/#monitor)
+- [listening](/reference/sharpmush-help/listening/#listening)
+- [parent](/reference/sharpmush-help/parent/#parents)
+:::
+
+## LOUD
+
+**Flag: LOUD (all types)**
+
+A LOUD object passes the speech lock of the room it speaks in, and can speak on a channel whatever the channel's speak restrictions.
+
+Only royalty and wizards can set LOUD.
+
+
+::: seealso
+- [@channel](/reference/sharpmush-help/sharpchat/#channel)
+:::
+
+## OPEN_OK
+
+**Flag: OPEN_OK (rooms)**
+
+If a room is set OPEN_OK, anyone who passes its `@lock/open` can `@open` exits in it.
+
+
+::: seealso
+- [@open](/reference/sharpmush-help/sharpcmd/#open)
+- [LINK_OK](/reference/sharpmush-help/sharpflag/#linkok)
 :::
 
 ## MONITOR
 
-**Flag: MONITOR (players)**
+**Flag: MONITOR (players, things, rooms)**
 
-When a player is set MONITOR, they receive notification whenever another player or object attempts to page them, even if the page fails (due to the player being HAVEN, for example).
+The flag is aliased to LISTENER and WATCHER.
+
+An object set MONITOR checks its `^`-patterns against everything it hears, and runs the ones that match. Without MONITOR, its `^`-patterns are ignored. A HALT object's patterns never run.
 
 
 ::: seealso
-- [page](/reference/sharpmush-help/page/#page)
-- [HAVEN](/reference/sharpmush-help/sharpflag/#haven)
+- [listening](/reference/sharpmush-help/listening/#listening)
+- [LISTEN_PARENT](/reference/sharpmush-help/sharpflag/#listenparent)
+- [@listen](/reference/sharpmush-help/listen-command/#listen)
+:::
+
+## MISTRUST
+
+**Flag: MISTRUST (things, exits, rooms)**
+
+A MISTRUST object controls only itself, not the other objects its owner owns, and cannot use its owner's No_Quota power. It does not see the flags only the owner's objects may see, such as NOSPOOF.
+
+Setting or clearing MISTRUST needs the same privilege as TRUST.
+
+
+::: seealso
+- [TRUST](/reference/sharpmush-help/sharpflag/#trust)
+:::
+
+## MONIKER
+
+**Flag: MONIKER (all types)**
+
+An object set MONIKER has its name colored by its `@moniker` in every place the "monikers" `@config` option lists, even when the option leaves out the object's type. Only royalty and wizards can set or clear the flag.
+
+
+::: seealso
+- [@moniker](/reference/sharpmush-help/sharpcmd/#moniker)
+- [monikers](/reference/sharpmush-help/monikers/#monikers)
 :::
 
 ## MYOPIC
 
 **Flag: MYOPIC (players)**
 
-A MYOPIC player only sees the flags on objects that they own or control.
+A MYOPIC player sees names without dbrefs and flags, even on objects they control, as a player who controls nothing would. It applies to `look`, room contents and `inventory`. The flag is read from the object's owner, so it also applies to the player's objects.
+
+Example, carrying a thing named Widget:
+```
+> @set me=MYOPIC
+> inventory
+```
+
+Output:
+```
+You are carrying:
+Widget
+```
+
+## NOACCENTS
+
+**Flag: NOACCENTS (players)**
+
+A NOACCENTS player is sent plain ASCII on every telnet connection, with each accented letter sent as the plain letter it is based on. It does what `@sockset stripaccents=yes` does to one connection. The portal's terminal shows text as written. Clearing the flag goes back to what each connection negotiated.
+
+
+::: seealso
+- [@sockset](/reference/sharpmush-help/sockset-command/#sockset)
+:::
+
+## NO_LEAVE
+
+**Flag: NO_LEAVE (things)**
+
+The flag is aliased to NOLEAVE.
+
+Nobody inside a NO_LEAVE thing can get out of it with the `leave` command; they get the thing's `@lock/leave` failure message, or "You can't leave." Teleporting out is not affected.
+
+
+::: seealso
+- [leave](/reference/sharpmush-help/sharpcmd/#leave-1)
+- [@teleport](/reference/sharpmush-help/teleport-command/#teleport)
+:::
+
+## NO_LOG
+
+**Flag: NO_LOG (all types)**
+
+NO_LOG can be set, but it has no effect in SharpMUSH. Only wizards can set or clear it.
+
+## NO_TEL
+
+**Flag: NO_TEL (rooms)**
+
+Nothing in a NO_TEL room, or inside something in it, can be `@teleport`ed out, unless the teleporter controls the room or has the Tport_Anywhere power, as wizards and royalty do.
+
+
+::: seealso
+- [@teleport](/reference/sharpmush-help/teleport-command/#teleport)
+- [Z_TEL](/reference/sharpmush-help/sharpflag/#ztel)
+:::
+
+## NO_WARN
+
+**Flag: NO_WARN (all types)**
+
+The flag is aliased to NOWARN.
+
+`@warnings` checks skip an object set NO_WARN, and every object whose owner is set NO_WARN.
+
+
+::: seealso
+- [@warnings](/reference/sharpmush-help/warnings-command/#warnings)
+:::
 
 ## NO_COMMAND
 
@@ -416,34 +587,58 @@ There is also a NO_COMMAND attribute flag, which disables `$`-command AND `^`-li
 
 ::: seealso
 - [attribute flags](/reference/sharpmush-help/attribute-flags/#attribute-flags)
-- [@config](/reference/sharpmush-help/sharpcmd/#config)
-- [@set](/reference/sharpmush-help/sharpcmd/#set)
+- [@config](/reference/sharpmush-help/config-command/#config)
+- [@set](/reference/sharpmush-help/set-command/#set)
 :::
 
 ## NOSPOOF
 
 **Flag: NOSPOOF (players)**
 
-When a player is set NOSPOOF, they see the dbref# and name of the object that triggered any command which generates output to them. This helps prevent objects from impersonating other objects or players.
-
-The NOSPOOF prefix can be customized by setting the `@nospoof_message` config option.
+When a player is set NOSPOOF, a message caused by another object comes with that object's name in brackets, as in `[Walker:] Hello.` This helps prevent objects from impersonating other objects or players. With PARANOID, the tag also gives dbrefs.
 
 
 ::: seealso
-- [@config](/reference/sharpmush-help/sharpcmd/#config)
+- [PARANOID](/reference/sharpmush-help/sharpflag/#paranoid)
 :::
 
 ## OPAQUE
 
 **Flag: OPAQUE (all types)**
 
-An OPAQUE object's flags are not visible to others in its location's contents list.
+A player or thing set OPAQUE does not show its contents to anyone looking at it from outside. In the exit list of a TRANSPARENT room, an OPAQUE exit is shown without its destination.
+
+## ON-VACATION
+
+**Flag: ON-VACATION (players)**
+
+The flag is aliased to ON_VACATION, ONVACATION and VACATION.
+
+Set ON-VACATION to tell other players you are away for a while. A game's own code may test it with `hasflag()`.
+
+While it is set, you are reminded at each scheduled purge (see '@config purge_interval'), and you are reminded to clear it when you connect.
+
+Output when you connect:
+```
+Welcome back from vacation! Don't forget to unset your ON-VACATION flag
+```
 
 ## ORPHAN
 
 **Flag: ORPHAN (all types)**
 
-The ORPHAN flag marks objects which were owned by a player who has been destroyed. Such objects can be claimed by anyone who passes their `@lock/chown`.
+An object set ORPHAN does not inherit from the ancestor for its type: attribute and lock lookups on it stop at its own parents. See [Ancestors](/reference/sharpmush-help/sharptop/#ancestors).
+
+## PARANOID
+
+**Flag: PARANOID (all types)**
+
+PARANOID changes the NOSPOOF tag. A player set NOSPOOF and PARANOID sees the speaker's dbref, and its owner when the owner is someone else: `[Box(#12)]` or `[Walker(#5)'s Box(#12)]`. They also see the tag on messages they caused themselves. PARANOID without NOSPOOF does nothing.
+
+
+::: seealso
+- [NOSPOOF](/reference/sharpmush-help/sharpflag/#nospoof)
+:::
 
 ## PUPPET
 
@@ -458,7 +653,7 @@ If a PUPPET is also set LISTEN, it will respond to what it hears according to it
 - [@force](/reference/sharpmush-help/force-command/#force)
 - [@pemit](/reference/sharpmush-help/pemit-command/#pemit)
 - [@remit](/reference/sharpmush-help/sharpcmd/#remit)
-- [LISTEN](/reference/sharpmush-help/sharpconf/#listen)
+- [@listen](/reference/sharpmush-help/listen-command/#listen)
 :::
 
 ## QUIET
@@ -469,11 +664,35 @@ This flag suppresses several acknowledgement messages from commands, such as 'Se
 
 A QUIET player hears none of those. A player who is not QUIET still hears none about a QUIET object they own: its `&` and `@set` attribute writes, `@edit`, `@parent`, `@link` home, `@lock`, `@power` and flag changes. `@notify` and `@drain` say nothing when the object running them, or its owner, is QUIET, and `@channel/title` says nothing to a QUIET player. Three confirmations are never suppressed, as in PennMUSH: "Dropto set." from `@link`, "Owner changed." from `@chown`, and setting or clearing QUIET itself.
 
+## ROYALTY
+
+**Flag: ROYALTY (all types)**
+
+The ROYALTY flag is the `royalty` role: `@set <object>=ROYALTY` assigns the role and `@set <object>=!ROYALTY` removes it, under the rules of [@role rank](/reference/sharpmush-help/role-command/#who-may-change-what), and `hasflag()` reports it for anything that holds the role, itself or through its account. See [roles flags](/reference/sharpmush-help/roles/#roles-flags-and-powers).
+
+Royalty can:
+* See and examine everything, without control
+* Teleport anything anywhere
+* Hear DARK players connect, with HEAR_CONNECT
+* Idle without being disconnected
+* Build without quota limits
+* Set the flags reserved for royalty
+
+The `royalty` role is guarded: only royalty and the roles above it that pass its guard control an object of royalty. See [roles guards](/reference/sharpmush-help/roles/#guarded-roles).
+
+
+::: seealso
+- [roles](/reference/sharpmush-help/roles/#roles)
+- [WIZARD](/reference/sharpmush-help/sharpflag/#wizard)
+:::
+
 ## SAFE
 
 **Flag: SAFE (all types)**
 
-A SAFE object cannot be destroyed with `@destroy`. Only a Wizard can remove the SAFE flag. DESTROY_OK takes precedence over SAFE.
+A SAFE object cannot be destroyed with a plain `@destroy`; `@nuke` is needed. When the really_safe option is on, which is the default, even `@nuke` is refused until the flag is cleared. `@wipe` and `wipe()` refuse a SAFE object too. DESTROY_OK takes precedence over SAFE.
+
+Anyone who controls the object can clear SAFE.
 
 
 ::: seealso
@@ -483,43 +702,125 @@ A SAFE object cannot be destroyed with `@destroy`. Only a Wizard can remove the 
 
 ## SHARED
 
-**Flag: SHARED (exits)**
+**Flag: SHARED (players)**
 
-A SHARED exit can be triggered from either end. When someone uses a SHARED exit from its destination, they go to its source. This is useful for creating two-way passages with a single exit.
+A player set SHARED is a shared player (also called a Zone Master): anyone who passes its `@lock/zone` controls the objects it owns. A player who passes that lock can also `@chown` what they own to it.
+
+
+::: seealso
+- [zone masters](/reference/sharpmush-help/zone-masters/#zone-masters)
+- [@chown](/reference/sharpmush-help/sharpcmd/#chown)
+- [@lock](/reference/sharpmush-help/locking/#locking)
+:::
+
+## SHOW_SEPARATORS
+
+**Flag: SHOW_SEPARATORS (players)**
+
+A player set SHOW_SEPARATORS sees each marked list separator in what they are shown in reverse video, in a terminal and in the portal, so a marked `|` stands out from a typed one. Nobody else's output changes. See [list separators](/reference/sharpmush-help/list-separators/#list-separators).
+
+```sharp
+> @set me=SHOW_SEPARATORS
+> think a|b%*<|>c
+```
+
+Output: `a|b|c`, with the second `|` in reverse video.
+
+
+::: seealso
+- [list separators](/reference/sharpmush-help/list-separators/#list-separators)
+- [decompose()](/reference/sharpmush-help/sharpfunc/#decompose)
+:::
+
+## SIDEFX
+
+**Flag: SIDEFX (all types)**
+
+This flag matters only when the `sidefx_flag` option is on. Then a side-effect function, one that changes the game rather than only answering (pemit(), set(), attrib_set(), create(), name() with a new name and the like), works only for an object that has SIDEFX or holds the `softcode.sidefx` permission, which the wizard role allows. Anything else gets `#-1 FUNCTION DISABLED`, the same answer as when side effects are turned off for everyone. Reading forms, such as name() with one argument, are never affected.
+
+Anyone may set SIDEFX on an object they control. With the option off, which is the default, the flag does nothing.
+
+The flag and the option come from RhostMUSH.
+
+
+::: seealso
+- [compatibility config](/reference/sharpmush-help/compatibility-config/#compatibility-config)
+- [roles](/reference/sharpmush-help/roles/#roles)
+:::
 
 ## STICKY
 
 **Flag: STICKY (things, rooms)**
 
-When a STICKY thing is dropped, it goes to its home instead of staying in the current location.
+When a STICKY thing is dropped, it goes to its home instead of staying in the current location, unless its owner is FIXED. When you move, STICKY things you carry but do not control go home.
 
-When someone leaves a STICKY room through any exit (including `@tel`), they are sent to their home instead of the exit's destination.
+A STICKY room with a drop-to keeps what is dropped in it until the last connected player leaves. Then its contents go through the drop-to, except STICKY things, which go home.
+
+## SUSPECT
+
+**Flag: SUSPECT (all types)**
+
+When a SUSPECT player connects or disconnects, wizards are told, as in `GAME: Suspect Walker has connected.`
+
+A player who connects, or makes a character, from a site whose [@sitelock](/reference/sharpmush-help/sitelock-command/#sitelock) rule includes `suspect` is set SUSPECT. Wizards are told when a SUSPECT character is made, as in `GAME: Suspect Walker created.`
+
+Only wizards can set or clear SUSPECT, and only wizards and objects with See_All see it.
+
+## TERSE
+
+**Flag: TERSE (players, things)**
+
+When a TERSE player, anything a TERSE player owns, or a TERSE thing moves, the look it gets on arrival leaves out the room's description. A `look` typed on purpose still shows it.
+
+
+::: seealso
+- [look](/reference/sharpmush-help/look/#look)
+:::
 
 ## TRANSPARENT
 
-**Flag: TRANSPARENT (exits)**
+**Flag: TRANSPARENT (exits, rooms)**
 
-When someone looks at a TRANSPARENT exit, they see the description and contents of the exit's destination, instead of the exit's own description.
+When someone looks at a TRANSPARENT exit, they see the exit's own name and description, then the description and contents of the exit's destination.
 
 If the exit is also set CLOUDY, they only see the destination's description, not its contents.
+
+A TRANSPARENT room lists its exits one per line, each with its destination.
 
 
 ::: seealso
 - [CLOUDY](/reference/sharpmush-help/sharpflag/#cloudy)
+- [OPAQUE](/reference/sharpmush-help/sharpflag/#opaque)
 - [look](/reference/sharpmush-help/look/#look)
+:::
+
+## TRUST
+
+**Flag: TRUST (all types)**
+
+The flag is aliased to INHERIT.
+
+A TRUST object controls its owner and everything its owner owns. Every object of a TRUST player is treated the same way. An object without TRUST controls only those of its owner's objects that are not players, not TRUST, and not owned by a TRUST player, so TRUST also protects an object from its owner's other objects.
+
+The owner can set or clear TRUST, as can a wizard. `@chown` and `@chzone` clear it unless /preserve is given.
+
+
+::: seealso
+- [MISTRUST](/reference/sharpmush-help/sharpflag/#mistrust)
+- [@chown](/reference/sharpmush-help/sharpcmd/#chown)
+- [@chzone](/reference/sharpmush-help/chzone-command/#chzone)
 :::
 
 ## UNFINDABLE
 
 **Flag: UNFINDABLE (all types)**
 
-An UNFINDABLE object cannot be found with `@find`, `@search`, or `locate`. Only a Wizard can find UNFINDABLE objects.
+The location of an UNFINDABLE player cannot be found with `@whereis`, `loc()` and the like, and neither can that of a player inside an UNFINDABLE room or thing. Anyone who controls the player, is near them, or has See_All can still locate them.
 
 
 ::: seealso
-- [@find](/reference/sharpmush-help/sharpcmd/#find)
-- [@search](/reference/sharpmush-help/search-command/#search)
-- [locate](/reference/sharpmush-help/sharpconf/#locate)
+- [@whereis](/reference/sharpmush-help/sharpcmd/#whereis)
+- [loc()](/reference/sharpmush-help/sharpfunc/#loc)
 :::
 
 ## UNINSPECTED
@@ -530,42 +831,56 @@ This flag has no hardcoded purpose, but may be used by MUSH staff to indicate th
 
 Setting and clearing it requires Royalty.
 
+## UNREGISTERED
+
+**Flag: UNREGISTERED (players)**
+
+Powers cannot be granted to an UNREGISTERED player with `@power`. A game's own code can test the flag, for example in a lock such as `flag^unregistered`.
+
+Only royalty and wizards can set or clear UNREGISTERED.
+
+
+::: seealso
+- [@power](/reference/sharpmush-help/power-command/#power)
+:::
+
 ## VERBOSE
 
 **Flag: VERBOSE (all types)**
 
-The VERBOSE flag is similar to DEBUG, but shows less information. When an object is set VERBOSE, all command evaluation results will be shown to the object's owner, in the format:
+When an object is set VERBOSE, each command it runs is shown to its owner, and to any dbrefs in its DEBUGFORWARDLIST, in the format:
 
 ```text
-#dbref! <string to evaluate> => <evaluated string>
+#<dbref>] <command>
 ```
 
-Objects run under this flag are computationally expensive, and can generate large amounts of spam, so this flag should only be set when needed, and cleared afterwards.
+A VERBOSE puppet also relays what it hears to its owner when they are in the same room.
 
-There's also a VERBOSE attribute flag, which only affects a single attribute; see [attribute flags](/reference/sharpmush-help/attribute-flags/#attribute-flags) for more information.
+VERBOSE can generate a lot of output, so set it only when needed, and clear it afterwards.
 
 
 ::: seealso
 - [debug](/reference/sharpmush-help/debug/#debug)
+- [PUPPET](/reference/sharpmush-help/sharpflag/#puppet)
 :::
 
 ## VISUAL
 
 **Flag: VISUAL (all types)**
 
-A VISUAL object's attributes can be examined by anyone in its location who passes its `@lock/visual`. This is often used in conjunction with VERBOSE or DEBUG for debugging.
+Anyone who passes a VISUAL object's `@lock/examine` can examine it and read its locks without controlling it. This is often used in conjunction with VERBOSE or DEBUG for debugging.
 
 
 ::: seealso
 - [examine](/reference/sharpmush-help/sharpcmd/#examine)
-- [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
+- [LOCKING](/reference/sharpmush-help/locking/#locking)
 :::
 
 ## WIZARD
 
 **Flag: WIZARD (players)**
 
-The WIZARD flag marks objects with administrative privileges. It is the `wizard` role: `@set <object>=WIZARD` assigns the role to the object and `@set <object>=!WIZARD` removes it, under the rules of [@role rank](/reference/sharpmush-help/sharpcmd/#role-rank), and `hasflag()` reports it for anything that holds the role, itself or through its account. See [roles flags](/reference/sharpmush-help/sharpflag/#roles-flags).
+The WIZARD flag marks objects with administrative privileges. It is the `wizard` role: `@set <object>=WIZARD` assigns the role to the object and `@set <object>=!WIZARD` removes it, under the rules of [@role rank](/reference/sharpmush-help/role-command/#who-may-change-what), and `hasflag()` reports it for anything that holds the role, itself or through its account. See [roles flags](/reference/sharpmush-help/roles/#roles-flags-and-powers).
 
 Wizards can:
 * See and modify any object
@@ -579,8 +894,17 @@ With great power comes great responsibility!
 
 
 ::: seealso
-- [wizhelp](/reference/sharpmush-help/sharpconf/#wizhelp)
-- [@admin](/reference/sharpmush-help/sharpcmd/#admin)
 - [roles](/reference/sharpmush-help/roles/#roles)
 :::
 
+## Z_TEL
+
+**Flag: Z_TEL (rooms, things)**
+
+When a room is in a zone, and the room or its zone object is set Z_TEL, nothing in it can be `@teleport`ed to a room outside that zone, unless the teleporter controls the room or has the Tport_Anywhere power.
+
+
+::: seealso
+- [zones](/reference/sharpmush-help/zones/#zones)
+- [NO_TEL](/reference/sharpmush-help/sharpflag/#notel)
+:::

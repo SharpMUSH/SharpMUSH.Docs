@@ -15,7 +15,7 @@ description: "SharpMUSH documentation for @pemit"
       "heading": "Output switches",
       "lookup": "@pemit output switches"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-output-switches-heading-output-switches-lookup-pemit-output-switches),
+  ],
   "redirects": {
     "@pemit2": "@pemit output switches"
   }
@@ -38,12 +38,13 @@ The basic form of this command sends `<message>` to `<object>` directly. It is v
 
 The @pemit command can take the following additional switches:
 - /contents -- equivalent to @remit.
+- /object -- accepted for TinyMUX code. It changes nothing: the message reaches only `<object>` already.
 - /silent -- does not tell the @pemit'ing object a confirmation message.
 - /noisy -- tells the @pemit'ing object a confirmation message.
 - /noeval -- `<message>` will not be evaluated for substitutions
 - /spoof -- the enactor's dbref will be used for nospoof notifications instead of the executor's dbref. Requires control over enactor or Can_spoof power.
 
-You cannot @pemit to objects set HAVEN, or objects whose @lock/page you do not pass, unless you are set WIZARD or have the pemit_all @power.
+You cannot @pemit to objects set HAVEN, or objects whose @lock/page you do not pass, unless you are set WIZARD or have the Pemit_All @power.
 
 
 ::: seealso

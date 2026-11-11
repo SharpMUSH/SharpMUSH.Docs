@@ -3,100 +3,74 @@ title: "Events"
 description: "SharpMUSH documentation for Events"
 ---
 
-## Events
-SharpMUSH Events are hardcoded events that may or may not be caused by players. An object designated as the event handler (via the "event_handler" config option) has attributes triggered on it, with arguments, on specified events.
+## Dump Events
+A SharpMUSH game writes every change to disk as it happens, so its dump is a backup: `@backup` and `@dump` take one at once, and the server takes one every SHARPMUSH_BACKUP_INTERVAL when that is set, warning everyone five minutes and one minute before. Each warning is given only when the interval is longer than it.
 
-Unlike PennMUSH, **SharpMUSH pre-populates the event handler**: a new database is seeded with an **Event Handler object (#9)**, and the "event_handler" config option already points at it. You do not create one or set the config; you simply add attributes named after the events you care about:
+- **dump\`5min** (*message*, *forking*)
+- A scheduled backup will be taken in 5 minutes.
+- **dump\`1min** (*message*, *forking*)
+- A scheduled backup will be taken in 1 minute.
+- **dump\`complete** (*message*, *forking*)
+- A backup was written.
+- **dump\`error** (*message*, *forking*, *status*)
+- A backup could not be written. You might want this to alert any admin on.
 
+*&lt;message&gt;* is the message shown to everyone: dump_warning_5min, dump_warning_1min, dump_complete, or for dump\`error "GAME: ERROR! Database save failed!", which goes to connected wizards and royalty. *&lt;forking&gt;* is always 0: a backup never forks. *&lt;status&gt;* is "PERROR " followed by the reason the backup failed.
+
+The standard messages are still shown when these events are set. To turn one off, set it to an empty string with `@config/set` or in mush.cnf. %# is whoever ran `@backup` or `@dump`, or #1 for a scheduled backup. backup\`complete and backup\`error are raised alongside, with the copy's name and size.
+
+### Example
 ```sharp
-> &<event name> #9=<action list>
+> &DUMP`ERROR #9=@cemit Admin=Save failed: %<status>
 ```
 
-If you would rather use a different object, point the config at it with `@config/set event_handler=<dbref>` and set the "event_handler" option in your mush.cnf so it survives dumps and is receiving events even during startup. On a fresh instance this is optional.
-
-**How handler code runs:**
-- Event attributes run with the handler object's **own permissions** (it executes as itself, like the HTTP handler and any normal attribute). The seeded Event Handler **#9 is a WIZARD object**, so out of the box it can `@set`, `@power`, `@lock`, and see-all as an admin handler needs. If you point event_handler at your own object, flag it wizard (`@set <obj>=wizard`) to grant it those powers.
-- An event is **queued**, as in PennMUSH: the attribute becomes a queue entry of its own, run by the handler and counted against the handler's queue. The command that caused the event does not wait for it, and the event gets its own "queue_entry_cpu_time" limit rather than sharing the causer's. A connecting player's auto-look, for instance, is shown before PLAYER\`CONNECT runs.
-- The enactor (%#) is the executor that caused the event. For a **system event with no executor** (an automatic dump, a signal, an idle-boot), %# is **#1 (God)**, not #-1. If the causer has been destroyed since, %# is #1 as well. Because %# is a real dbref either way, use an event's own arguments (not %#) to distinguish system- from player-caused triggers.
-
-
-::: seealso
-- [EVENT LIST](/reference/sharpmush-help/sharpevents/#event-list)
-- [event examples](/reference/sharpmush-help/event-examples/#event-examples)
-:::
-
-## Event List
-Event names are of the format *<type>\`<event>*. The 'type' is used simply to group similar events together for help.
-
-Event syntax in the help is of the form:<br>
-*<eventgroup>\`<eventname>* (What is passed as %0, %1, ... %9)
-
-The following event types and events have been added to SharpMUSH. To see the help for them, type [event <type>](/reference/sharpmush-help/sharpevents/#event-type).
-
-Event Types:
-- **dump**: dump\`5min, dump\`1min, dump\`complete, dump\`error
-- **db**: db\`dbck, db\`purge, db\`warnings
-- **log**: log\`err, log\`cmd, log\`conn, log\`trace, log\`check, log\`huh
-- **object**: object\`create, object\`destroy, object\`move, object\`rename, object\`flag
-- **sql**: sql\`connect, sql\`connectfail, sql\`disconnect
-- **signal**: signal\`usr1, signal\`usr2
-- **player**: player\`create, player\`connect, player\`disconnect, player\`inactivity, player\`channels, player\`warn
-- **socket**: socket\`connect, socket\`disconnect, socket\`loginfail, socket\`createfail
-- **http**: http\`blocked http\`fail http\`command
-- **room**: room\`contents
-- **channel**: channel\`message, channel\`who
-- **page**: page\`message
-
-The room, channel and page events, and player\`channels, are SharpMUSH's own; PennMUSH has no equivalent. They exist so a handler can send a web client structured updates (the bundled room-contents and comm-feed packages), and each names exactly who the update concerns, so a handler never has to work out again who could see what. player\`warn is SharpMUSH's own too: it is how a warning from the web portal reaches the game.
-
 ## Database Events
-- **db\`dbck**: Run after the regular database consistency check.
-- **db\`purge**: Run after the regular purging of destroyed objects.
-- **db\`wcheck**: Run after the regular @warnings check.
+- **db\`dbck**
+- Triggered when `@dbck` has read the newest backup through without a fault. SharpMUSH keeps its links consistent as it writes them, so its check reads the copy you would restore instead of the live world. %# is whoever ran `@dbck`.
+- **db\`purge**
+- Triggered after the scheduled purge of destroyed objects, every purge_interval.
+- **db\`wcheck**
+- Triggered after the scheduled @warnings check of every object, every warn_interval.
 
-**Note**: These events are only triggered after the automatic scheduled checks, and not if someone manually runs `@dbck`, `@purge` or `@wcheck`.
-
-## Dump Events
-- **dump\`5min** (*Original message*, *isforking*)
-- Database save will occur in 5 minutes.
-- **dump\`1min** (*Original message*, *isforking*)
-- Database save will occur in 1 minute.
-- **dump\`complete** (*Original message*, *wasforking*)
-- Database save has completed.
-- **dump\`error** (*Error message*, *wasforking*, *exit_status*)
-- Database save failed! You might want this to alert any admin on.
-- *exit_status* has different meanings in forking and non-forking dumps.
-- In forking: *exit_status* is a string, either "SIGNAL <int>" or "EXIT <int>". SIGNAL <int> refers to the mush process receiving error message via signal while EXIT <int> refers to mush process exiting abnormally.
-- In nonforking: *exit_status* is "PERROR <string>" - string being the error message returned by strerror(errno). If you are seeing errors on dbsave, we recommend setting forking_dump to 0, as nonforking dumps have more verbose error messages.
-
-The standard messages shown on dumps are still displayed when these events are set. To disable the standard message, set them to empty strings via `@config` or in mush.cnf.
+**Note**: These events are only triggered after the scheduled runs, and not when someone runs `@purge` or `@wcheck`. %# is #1.
 
 ## Log Events
-Events in the log tree get triggered whenever the game logs any information to a log file (Either because of `@log`, or something else happening.) They all get passed a single argument, the message being logged.
+Events in the log tree are triggered when `@log` writes a message to a log. The switch names the log: `@log/err` triggers log\`err, and `@log` with no switch triggers log\`cmd. %# is whoever ran `@log`. The server's own log lines (connections, errors) go to the server log and do not trigger these.
 
-- **log\`err**: Errors and the general catch-all.
-- **log\`cmd**: Logged commands.
-- **log\`wiz**: Logged wizard activity.
-- **log\`conn**: Connection notifications.
-- **log\`trace**: Memory tracking notifications.
-- **log\`check**: Save-releated log messages.
-- **log\`huh**: Commands that generate huh messages.
+- **log\`err** (*message*)
+- **log\`cmd** (*message*)
+- **log\`wiz** (*message*)
+- **log\`conn** (*message*)
+- **log\`trace** (*message*)
+- **log\`check** (*message*)
+
+*&lt;message&gt;* is the message as logged, as plain text.
+
+- **log\`huh** (*message*)
+- Triggered when a player types a command the game does not understand (Huh?) somewhere they do not control. *&lt;message&gt;* is PennMUSH's huh log line: "HUH: Name(#dbref) in Room(#dbref) \[Room's owner\]: command". %# is the player.
+
+### Example
+```sharp
+> &LOG`WIZ #9=@cemit Admin=Logged by [name(%#)]: %<message>
+> @log/wiz Moved the plot room.
+Message logged to Wizard log.
+```
 
 ## Object Events
-- **object\`create** (*new objid*, *cloned-from*)
-- Triggered on the creation of any object except player. If it was created using `@clone`, then *<cloned-from>* will be a objid. Otherwise *<cloned-from>* will be null.
+- **object\`create** (*objid*, *clone*)
+- Triggered on the creation of any object except player. If it was created using `@clone`, then *&lt;clone&gt;* will be a objid. Otherwise *&lt;clone&gt;* will be null.
 
-- **object\`destroy** (*objid*, *origname*, *type*, *owner*, *parent*, *zone*)
+- **object\`destroy** (*objid*, *name*, *type*, *owner*, *parent*, *zone*)
 - Triggered _after_ the object is totally destroyed. Passed arguments are former objid, name, type, owner, etc. Enactor is always #-1, so use former owner.
 
-- **object\`move** (*objid*, *newloc*, *origloc*, *issilent*, *cause*)
-- Triggered after the object is moved, `@tel'd`, or otherwise sent to a new location. If *<issilent>* is 1, then the object was moved using `@tel/silent`.
+- **object\`move** (*objid*, *destination*, *origin*, *silent*, *cause*)
+- Triggered after the object is moved, `@tel'd`, or otherwise sent to a new location. If *&lt;silent&gt;* is 1, then the object was moved using `@tel/silent`.
 
-- **object\`rename** (*objid*, *new name*, *old name*)
+- **object\`rename** (*objid*, *name*, *oldname*)
 - Triggered when any object is renamed.
     
-- **object\`flag** (*objid of object with flag*, *flag name*, *type*, *setbool*, *setstr*)
-- Triggered when a flag or power which has the "event" restriction is set or cleared. *<type>* is one of FLAG or POWER. *<setbool>* is 1 if the flag/power is being set, and 0 if it's being cleared. *<setstr>* is either "SET" or "CLEARED".
+- **object\`flag** (*objid*, *flag*, *type*, *set*, *change*)
+- Triggered when a flag or power which has the "event" restriction is set or cleared. *&lt;type&gt;* is one of FLAG or POWER. *&lt;set&gt;* is 1 if the flag/power is being set, and 0 if it's being cleared. *&lt;change&gt;* is either "SET" or "CLEARED".
 
 ### Example
 ```sharp
@@ -104,87 +78,110 @@ Events in the log tree get triggered whenever the game logs any information to a
 ```
 
 ## SQL Events
+SharpMUSH opens a connection for each sql() query, so these report a change: whether the latest attempt to reach the SQL server worked, against the one before it.
+
 - **sql\`connect** (*platform*)
-- Triggered on successful connect to the SQL database. *<platform>* is 'mysql', 'postgresql' or 'sqlite3'.
+- Triggered on successful connect to the SQL database, the first time and after a failure. *&lt;platform&gt;* is 'mysql', 'postgresql' or 'sqlite3'.
 
-- **sql\`connectfail** (*platform*, *error message*)
-- Triggered on unsuccessful connect to the SQL database.
+- **sql\`connectfail** (*platform*, *error*)
+- Triggered on unsuccessful connect to the SQL database, when the attempt before it failed too or there was none. *&lt;error&gt;* is the database driver's message.
 
-- **sql\`disconnect** (*platform*, *error message*)
-- Triggered if SQL disconnects for any reason. Usually not a worry since Penn will auto-reconnect if it can.
+- **sql\`disconnect** (*platform*, *error*)
+- Triggered when the SQL database cannot be reached after it could be. sql() tries again on its next query.
+
+%# is whoever ran the query.
 
 ## Signal Events
 No arguments are passed to these events.
 
-- **signal\`usr1**: Triggered when the SharpMUSH process receives a "kill -USR1"
-- **signal\`usr2**: Triggered when the SharpMUSH process receives a "kill -USR2"
+- **signal\`usr1**: Triggered when the SharpMUSH server process receives a "kill -USR1"
+- **signal\`usr2**: Triggered when the SharpMUSH server process receives a "kill -USR2"
 
-If these attributes exist, then penn will **NOT** perform what it usually does when it receives a signal. In effect, these override Penn's default actions.
+If these attributes exist, then SharpMUSH will **NOT** perform what it usually does when it receives a signal. In effect, these override the default actions: USR1 restarts the server, as `@shutdown/reboot` does, and USR2 takes a backup, as `@dump` does. Players stay connected through a restart.
 
-To mimic old behaviour:
+To announce a restart to every connected player first, and dump on USR2:
 ```sharp
 &SIGNAL`USR1 #9=@nspemit/list lwho()=GAME: Reboot w/o disconnect from game account, please wait. ; @shutdown/reboot
 &SIGNAL`USR2 #9=@dump
 ```
 
-## Player Events
-- **player\`create** (*objid*, *name*, *how*, *descriptor*, *email*)
-- Triggered when a player is created. If the player was `@pcreated`, then %# will be the person who did the `@pcreate`. If player was created by using 'create' at the connect screen, then %# will be #-1 and *<descriptor>* will be non-null. *<how>* is one of: "pcreate", "create" or "register". If created using 'register', *<email>* will be set appropriately.
-
-- **player\`connect** (*objid*, *number of connections*, *descriptor*)
-- Similar to `@aconnect`, but for events, and so you can use descriptor.
-
-- **player\`disconnect** (*objid*, *number of remaining connections*, *hidden?*, *cause of disconnection*, *ip*, *descriptor*, *conn() secs*, *idle() secs*, *recv bytes/sent bytes/command count*)
-- Similar to `@adisconnect`, but for event system, and with more information available.
-
-- **player\`inactivity**
-- Triggered when idle players are disconnected. Only run if at least one player gets idlebooted (Or auto-hidden), not at every inactivity check.
-
-- **player\`channels** (*objid*, *cause*, *channel*)
-- Triggered for a connected player when their channel list may have changed. *<cause>* is one of connect, resume, join, leave, status (a change to their own channel flags, such as a gag or a title), rename or delete; *<channel>* is the channel concerned (its new name after a rename), and empty on connect and resume. resume is a web connection that came back to its session, still logged in (a page reload, or a dropped connection), and is sent the list again. Not triggered for a player who is not connected: they are sent their whole list when they connect.
-
-- **player\`warn** (*objid*, *reason*, *staff account*)
-- Triggered when staff warn a character from the web portal's moderation page. %# is the staff member's character, *<objid>* the warned character, *<reason>* what staff wrote, and *<staff account>* the staff member's account name. SharpMUSH keeps no warning itself beyond the audit log entry: the handler decides what a warning does, such as sending mail, opening a job or keeping a count. Nothing happens when the handler has no PLAYER\`WARN attribute.
-
-## Socket Events
-- **socket\`connect** (*descriptor*, *ip*)
-- Triggered when a socket first connects to the port. Using both this and player\`connect could be spammy. This happens when a connecting socket sees the connect screen.
-
-- **socket\`disconnect** (*former descriptor*, *former ip*, *cause of disconnection*, *recv bytes/sent bytes/command count*)
-- Triggered when a socket disconnects. Using this and player\`disconnect could be spammy.
-
-- **socket\`loginfail** (*descriptor*, *IP*, *count*, *reason*, *playerobjid*, *name*)
-- Triggered when a login attempt fails. *<count>* is the number of fails in the past 10 minutes. If used in conjuction with the config option connect_fail_limit, then any failures after the limit is reached will **NOT** trigger socket\`loginfail. If the connect is a failed attempt to log into a valid player, *<playerobjid>* will be set to that objid. Otherwise it will be set to #-1. *<name>* is the name the connection attempted to connect with, and is only set when *<playerobjid>* is #-1.
-
-- **socket\`createfail** (*descriptor*, *ip*, *count*, *reason*, *name[*, *error]*)
-- Triggered when a player create attempt fails. *<count>* is the # of fails caused by this ip. If the failure is from an attempt to register a player via email, the error code of the mailer program is provided as *<error>*.
-
-**Note**: A sitelock rule with deny_silent will not trigger socket\`createfail or socket\`createfail.
-
 ## HTTP Events
-- **http\`blocked** (*former descriptor*, *ip*, *method*, *path*, *reason*)
-- Triggered when an HTTP request is sitelocked !connect, by IP or path, 'reason' will describe if it's IP or path.
+- **http\`blocked** (*descriptor*, *ip*, *method*, *path*, *reason*)
+- Triggered when an HTTP request is sitelocked !connect, by IP or path. *&lt;reason&gt;* is "IP sitelocked !connect" or "path sitelocked !connect". *&lt;descriptor&gt;* is empty: an HTTP request has no connection of its own.
 
-- **http\`fail** (*former descriptor*, *ip*, *reason*)
-- Triggered when an HTTP connection fails for poor formatting, malformed requests, or similar parsing errors. This can occur before method, path, etc are obtained, so is limited in information.
+- **http\`fail** (*descriptor*, *ip*, *reason*)
+- Triggered when an HTTP request reaches the http_handler and its body cannot be read: one larger than the server accepts, or malformed chunked data. *&lt;reason&gt;* is the web server's message, and the request is answered with its status. *&lt;descriptor&gt;* is empty.
 
-- **http\`command** (*IP*, *method*, *path*, *resp_code*, *resp_content_type*, *request_content_len*, *resp_content_len*)
+- **http\`command** (*ip*, *method*, *path*, *status*, *content-type*, *request-length*, *response-length*)
 - Triggered after an HTTP command is executed, using the same remaining request lifetime. It is omitted if that lifetime has already expired. If the event exhausts the deadline, the HTTP response is 503; request cancellation also cancels the event.
 
 **Note**: A sitelock rule with deny_silent will not trigger http\`blocked
 
 ## Room Events
-- **room\`contents** (*room objid*, *cause*)
-- Triggered, for the room rather than for whoever moved, whenever what is in a room changes: something enters or leaves it, or a player connects or disconnects in it. *<cause>* is one of move-in, move-out, connect, disconnect or resume. %# is whoever caused it: the mover, or the wizard who `@tel`'d them. resume is a web connection that came back to its session, still logged in (a page reload, or a dropped connection): nothing in the room changed, %# is that player, and only they need the room again.
+- **room\`contents** (*room*, *cause*)
+- Triggered, for the room rather than for whoever moved, whenever what is in a room changes: something enters or leaves it, or a player connects or disconnects in it. *&lt;cause&gt;* is one of move-in, move-out, connect, disconnect or resume. %# is whoever caused it: the mover, or the wizard who `@tel`'d them. resume is a web connection that came back to its session, still logged in (a page reload, or a dropped connection): nothing in the room changed, %# is that player, and only they need the room again.
 
 ## Channel Events
-- **channel\`message** (*channel*, *speaker objid*, *style*, *speaker name*, *message*, *recipients*, *time*, *id*)
-- Triggered after a channel line has been delivered. *<recipients>* is the objids of exactly the members it was delivered to: a member who has gagged the channel, one the speaker may not be heard by, one whose `@chatformat` silenced the line, and a muted member's copy of a connect or disconnect line are not among them. Nobody received it, nothing is triggered. *<style>* is one of say, pose, semipose, emit or presence (a connect or disconnect line). *<speaker name>* and *<message>* are plain text, as the channel's mogrifier left them. *<speaker objid>* is empty for a line with no speaker, and both it and *<speaker name>* are empty for an `@cemit` line, which does not name its emitter (%# is still the emitter). *<time>* is milliseconds since 1970. *<id>* is the line's id, the one `@channel/recall`'s buffer holds it under (and the web portal reads it back by); ids rise with time, so a later line has a larger one.
+- **channel\`message** (*channel*, *speaker*, *style*, *name*, *message*, *recipients*, *time*, *id*, *picture*)
+- Triggered after a channel line has been delivered. *&lt;recipients&gt;* is the objids of exactly the members it was delivered to: a member who has gagged the channel, one the speaker may not be heard by, one whose `@chatformat` silenced the line, and a muted member's copy of a connect or disconnect line are not among them. Nobody received it, nothing is triggered. *&lt;style&gt;* is one of say, pose, semipose, emit or presence (a connect or disconnect line). *&lt;name&gt;* and *&lt;message&gt;* keep their colour, as the channel's mogrifier left them. *&lt;speaker&gt;* is empty for a line with no speaker, and both it and *&lt;name&gt;* are empty for an `@cemit` line, which does not name its emitter (%# is still the emitter). *&lt;time&gt;* is milliseconds since 1970. *&lt;id&gt;* is the line's id, the one `@channel/recall`'s buffer holds it under (and the web portal reads it back by); ids rise with time, so a later line has a larger one. *&lt;picture&gt;* is the picture the line was sent with, `cemit()`'s fourth argument: a character's objid or an https image URL, or empty.
 
-- **channel\`who** (*channel*, *member objid*, *member name*, *on|off*, *viewers*, *cause*)
-- Triggered when a member comes onto or goes off a channel's member list, as `@channel/who` lists it: a thing always, a player while connected, and a member hiding on the channel only to a viewer who may see hidden members. *<viewers>* is the objids of the connected player members whose view of the list changed, and *on* or *off* is what changed for them; a change seen differently by different members (someone starting `@channel/hide`) triggers once for each. *<cause>* is one of connect, disconnect (the last connection closing), join, leave or status (hiding or no longer hiding). %# is the member.
+- **channel\`who** (*channel*, *member*, *name*, *change*, *viewers*, *cause*)
+- Triggered when a member comes onto or goes off a channel's member list, as `@channel/who` lists it: a thing always, a player while connected, and a member hiding on the channel only to a viewer who may see hidden members. *&lt;viewers&gt;* is the objids of the connected player members whose view of the list changed, and *on* or *off* is what changed for them; a change seen differently by different members (someone starting `@channel/hide`) triggers once for each. *&lt;cause&gt;* is one of connect, disconnect (the last connection closing), join, leave or status (hiding or no longer hiding). %# is the member.
 
 ## Page Events
-- **page\`message** (*pager objid*, *recipients*, *style*, *pager name*, *message*, *time*, *id*)
-- Triggered after a page reaches at least one recipient. *<recipients>* is the objids of the players it reached: one who is not connected, is HAVEN, refuses pages from the pager, or whose page lock the pager fails is not among them. *<style>* is one of say, pose or semipose. *<pager name>* is as the recipients' terminal shows it, with the page alias when page_aliases is on. *<message>* is plain text. *<time>* is milliseconds since 1970. *<id>* is the page's id, from the sequence channel line ids come from; when the page_log option is on, it is the id the page log keeps the page under (see [page log](/reference/sharpmush-help/sharpconf/#page-log)).
+- **page\`message** (*speaker*, *recipients*, *style*, *name*, *message*, *time*, *id*)
+- Triggered after a page reaches at least one recipient. *&lt;recipients&gt;* is the objids of the players it reached: one who is not connected, is HAVEN, refuses pages from the pager, or whose page lock the pager fails is not among them. *&lt;style&gt;* is one of say, pose or semipose. *&lt;name&gt;* is as the recipients' terminal shows it, with the page alias when page_aliases is on. *&lt;message&gt;* keeps its colour. *&lt;time&gt;* is milliseconds since 1970. *&lt;id&gt;* is the page's id, from the sequence channel line ids come from; when the page_log option is on, it is the id the page log keeps the page under (see [page log](/reference/sharpmush-help/page/#page-log)).
 
+## Mail Events
+- **mail\`received** (*recipient*, *sender*, *number*, *subject*, *urgent*)
+- Triggered after @mail is delivered to a player's mailbox, once for each recipient, before their MAILFILTER files it. *&lt;number&gt;* is the message's number in the recipient's inbox, *&lt;subject&gt;* keeps its colour, and *&lt;urgent&gt;* is 1 for `@mail/urgent`. %# is the sender. The body is not passed: read it with mail() as the recipient if you need it.
+
+### Example
+```sharp
+> &MAIL`RECEIVED #9=@cemit Admin=[name(%<sender>)] mailed [name(%<recipient>)]: %<subject>
+```
+
+## Scene Events
+- **scene\`status** (*scene*, *status*, *previous*)
+- Triggered by the Scene plugin when a scene is made or its status changes: `@scene/create` and scenecreate() make one, and `@scene/set <id>/status=` or sceneset() change it, which is how `+scene/start`, `/pause` and `/finish` do it. *&lt;scene&gt;* is the scene's id, *&lt;status&gt;* its status now (new, active, paused, finished or cancelled as the scene package uses them), and *&lt;previous&gt;* its status before, empty for a scene just made. Setting the status it already has triggers nothing. %# is whoever made the scene or changed it. Only raised while the Scene plugin is loaded.
+
+### Example
+```sharp
+&SCENE`STATUS #9=@if strmatch(%<status>,active)={@cemit Public=Scene %<scene> has started: [scene(%<scene>,title)]}
+```
+
+- **scene\`change** (*scene*, *key*, *previous*)
+- Triggered by the Scene plugin when `@scene/set <id>/<key>=` or sceneset() changes any key of a scene but its status, which has scene\`status, and its plot, which links the scene to a plot rather than setting a key: its time (`scheduledfor`), title, room, whether it is public, or a detail. `+scene/schedule`, `/reschedule` and `/title` change keys this way. *&lt;key&gt;* is the key's name in lower case, and *&lt;previous&gt;* what it held before, empty when it was unset: a time in milliseconds since 1970, a flag as 1 or 0, a room or owner as its dbref. Read the new value with `scene(<scene>,<key>)`. Setting a key to what it already holds triggers nothing. %# is whoever changed it. Only raised while the Scene plugin is loaded.
+
+### Example
+```sharp
+&SCENE`CHANGE #9=@if strmatch(%<key>,scheduledfor)={@cemit Public=Scene %<scene> now starts [convsecs(div(scene(%<scene>,scheduledfor),1000))].}
+```
+
+## Backup Events
+- **backup\`complete** (*name*, *bytes*)
+- Triggered after `@backup` or a scheduled backup (SHARPMUSH_BACKUP_INTERVAL) has written a copy of the world. *&lt;name&gt;* is the copy's name, as `@backup/list` shows it, and *&lt;bytes&gt;* its size.
+
+- **backup\`error** (*reason*)
+- Triggered when a copy could not be written. *&lt;reason&gt;* is why, as `@backup` reports it.
+
+%# is whoever ran `@backup`, or #1 for a scheduled copy.
+
+### Example
+```sharp
+> &BACKUP`ERROR #9=@cemit Admin=Backup failed: %<reason>
+```
+
+## Gallery Events
+- **gallery\`add** (*objid*, *asset*, *url*, *use*)
+- Triggered after an image is added to a character's profile gallery on the web portal. %# is the character who uploaded it, *&lt;objid&gt;* the character whose gallery it is, *&lt;asset&gt;* the stored file's id, *&lt;url&gt;* its site-relative address, and *&lt;use&gt;* one of gallery, avatar or banner: what it was uploaded as.
+
+- **gallery\`report** (*objid*, *asset*, *url*, *reason*, *caption*)
+- Triggered when someone signed in to the web portal reports a gallery image. %# is the reporter's character, *&lt;objid&gt;* the character whose gallery holds the image, *&lt;reason&gt;* what the reporter wrote, and *&lt;caption&gt;* the image's caption, empty when it has none. SharpMUSH keeps no report of its own: the handler decides what one does. The portal offers Report only while the event handler has GALLERY\`REPORT or a package's attribute under it; the bundled jobs package sets GALLERY\`REPORT\`JOBS, which files a job. *&lt;reason&gt;* is the reporter's own text, so use it as text and never evaluate it.
+
+### Example
+```sharp
+&GALLERY`ADD #9=@wizwall/emit New picture for [name(%<objid>)]: %<url> as %<use>
+```
+
+See [gallery](/reference/sharpmush-help/gallery/#gallery).

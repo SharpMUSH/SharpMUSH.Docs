@@ -15,7 +15,7 @@ description: "SharpMUSH documentation for @retry"
       "heading": "Retry examples",
       "lookup": "@retry examples"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-retry-examples-heading-retry-examples-lookup-retry-examples),
+  ],
   "redirects": {
     "@retry2": "@retry examples"
   }
@@ -28,7 +28,7 @@ description: "SharpMUSH documentation for @retry"
 
 The @retry command restarts the current queue entry, enabling people to loop their command without requiring a wait for the next queue entry. It can be a little tricky to understand at first. It basically tells the parser: "If `<boolean>` is true, then go back to the beginning." It can also replace %0-%9 with the arguments passed to it. (`<arg0>`,...).
 
-Output: the output of the last command run. See [command output](/reference/sharpmush-help/command-output/#command-output).
+`@retry` outputs what the last command it ran output. See [command output](/reference/sharpmush-help/command-output/#command-output).
 
 Please note: @retry only restarts the action list it is currently in. If you have: "`@break 1=@retry 1=hello`", then the action list is only "`@retry 1=hello`" - which would thus keep retrying until a limit intervenes.
 

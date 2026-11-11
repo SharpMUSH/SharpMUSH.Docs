@@ -11,14 +11,14 @@ description: "SharpMUSH documentation for @if"
   "aliases": [
     "@ifelse",
     "@skip"
-  ](/reference/sharpmush-help/sharpconf/#ifelse-skip),
+  ],
   "sections": [
     {
       "id": "conditional-examples",
       "heading": "Conditional examples",
       "lookup": "@if conditional examples"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-conditional-examples-heading-conditional-examples-lookup-if-conditional-examples),
+  ],
   "redirects": {
     "@if2": "@if conditional examples"
   }
@@ -31,7 +31,7 @@ description: "SharpMUSH documentation for @if"
 
 If `<boolean>` is true, the action list `<true>` is run, otherwise the action list `<false>` is run. The action list is not queued, it is run immediately, in the same action list as @if.
 
-Output: the output of the last command run. See [command output](/reference/sharpmush-help/command-output/#command-output).
+`@if` outputs what the last command it ran output. See [command output](/reference/sharpmush-help/command-output/#command-output).
 
 For RhostMUSH compatability, @skip runs the action list `<false>` when `<boolean>` is false, and does nothing for true values.
 

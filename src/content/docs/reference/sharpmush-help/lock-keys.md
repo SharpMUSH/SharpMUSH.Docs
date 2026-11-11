@@ -16,7 +16,12 @@ description: "SharpMUSH documentation for Lock Keys"
       "lookup": "lock keys combining lock keys",
       "aliases": [
         "@LOCK-COMPLEX"
-      ](/reference/sharpmush-help/sharplock/#id-combining-lock-keys-heading-combining-lock-keys-lookup-lock-keys-combining-lock-keys-aliases-lock-complex)
+      ]
+    },
+    {
+      "id": "grouping-lock-keys",
+      "heading": "Grouping lock keys",
+      "lookup": "lock keys grouping"
     }
   ],
   "redirects": {
@@ -26,22 +31,22 @@ description: "SharpMUSH documentation for Lock Keys"
 -->
 ## Lock Keys
 
-There are many key types, and it is also possible to form more complex locks by using boolean symbols and grouping. See [lock keys combining lock keys](/reference/sharpmush-help/sharplock/#lock-keys-combining-lock-keys) for examples.
+There are many key types, and it is also possible to form more complex locks by using boolean symbols and grouping. See [lock keys combining lock keys](/reference/sharpmush-help/lock-keys/#combining-lock-keys) for examples.
 
-The types of keys are outlined below. Detailed help for each is available by typing `[@lock-<key>]`, replacing *<key>* with the word on the left.
+The types of keys are outlined below. Detailed help for each is available by typing `[@lock-<key>]`, replacing *&lt;key&gt;* with the word on the left.
 
-- **Simple** - Always true, always false, or locking to a specific object.
-- **Name** - Check the name of the object attempting to pass the lock.
-- **Owner** - Lock to objects owned by the owner of an object.
-- **Carry** - Lock to someone carrying an object, such as a key.
-- **Indirect** - Use the result of another @lock.
-- **Attribute** - Check an attribute on the object trying to pass the lock.
-- **Evaluation** - Evaluate an attribute on the object the lock is on.
-- **Bit** - Check for a flag, type, power, role, permission, or channel membership.
-- **Dbreflist** - Check if the dbref of the object trying to pass the lock is in a list set in an attribute.
-- **Host** - Check for players connecting from a particular host/ip.
+- [@lock-simple](/reference/sharpmush-help/sharplock/#lock-simple) - Always true, always false, or locking to a specific object.
+- [@lock-name](/reference/sharpmush-help/sharplock/#lock-name) - Check the name of the object attempting to pass the lock.
+- [@lock-owner](/reference/sharpmush-help/sharplock/#lock-owner) - Lock to objects owned by the owner of an object.
+- [@lock-carry](/reference/sharpmush-help/sharplock/#lock-owner) - Lock to someone carrying an object, such as a key.
+- [@lock-indirect](/reference/sharpmush-help/sharplock/#lock-indirect) - Use the result of another @lock.
+- [@lock-attribute](/reference/sharpmush-help/sharplock/#lock-attribute) - Check an attribute on the object trying to pass the lock.
+- [@lock-evaluation](/reference/sharpmush-help/lock-evaluation-command/#lock-evaluation) - Evaluate an attribute on the object the lock is on.
+- [@lock-bit](/reference/sharpmush-help/bit-locks/#bit-locks) - Check for a flag, type, power, role, permission, or channel membership.
+- [@lock-dbreflist](/reference/sharpmush-help/sharplock/#lock-dbreflist) - Check if the dbref of the object trying to pass the lock is in a list set in an attribute.
+- [@lock-host](/reference/sharpmush-help/sharplock/#lock-host) - Check for players connecting from a particular host/ip.
 
-You can negate lock keys, and combine multiple keys, as explained in [lock keys combining lock keys](/reference/sharpmush-help/sharplock/#lock-keys-combining-lock-keys).
+You can negate lock keys, and combine multiple keys, as explained in [lock keys combining lock keys](/reference/sharpmush-help/lock-keys/#combining-lock-keys).
 
 ### Combining lock keys
 
@@ -68,7 +73,9 @@ locks the exit "OOC Room" so that only those with their STATUS attribute set to 
 
 only allows those with their @sex set to Male who are carrying a "Bathroom Key" object to pass.
 
-You can group together different sets of keys by enclosing each group in parenthesis "()". For instance,
+### Grouping lock keys
+
+You can group together different sets of keys by enclosing each group in parentheses "()". For instance,
 
 ```sharp
 > @lock Entrance=!type^player | (type^player & !flag^unregistered)
@@ -78,8 +85,8 @@ allows non-players to pass, or players who do not have the "unregistered" flag s
 
 
 ::: seealso
-- [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
-- [locktypes](/reference/sharpmush-help/sharplock/#locktypes)
-- [@CHANNEL CLOCK](/reference/sharpmush-help/sharpchat/#channel-clock)
+- [LOCKING](/reference/sharpmush-help/locking/#locking)
+- [locktypes](/reference/sharpmush-help/locktypes/#lock-types)
+- [@CHANNEL CLOCK](/reference/sharpmush-help/channel-clock-command/#channel-clock)
 - [OBJID()](/reference/sharpmush-help/sharpfunc/#objid)
 :::

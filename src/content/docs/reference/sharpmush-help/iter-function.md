@@ -13,12 +13,14 @@ description: "SharpMUSH documentation for iter()"
     "iter"
   ],
   "sections": [
+    {"id": "nesting", "heading": "Nesting and where ## counts", "lookup": "iter nesting"},
     {
       "id": "iteration-examples",
       "heading": "Iteration examples",
       "lookup": "iter iteration examples"
-    }
-  ](/reference/sharpmush-help/sharpconf/#id-iteration-examples-heading-iteration-examples-lookup-iter-iteration-examples),
+    },
+    {"id": "separator-examples", "heading": "Separator and safety examples", "lookup": "iter separator examples"}
+  ],
   "redirects": {
     "ITER2": "iter iteration examples"
   }
@@ -28,24 +30,30 @@ description: "SharpMUSH documentation for iter()"
 
 `iter(<list>, <pattern>[, <delimiter>[, <output separator>]])`
 
-For each word in `<list>`, iter() evaluates `<pattern>` once, and returns a list of the results of those evaluations. Words in `<list>` are separated by `<delimiter>`, if given, and spaces if not. Words in the resulting list are separated by the given `<ouput separator>`, or a space if no output separator is given.
+For each word in `<list>`, iter() evaluates `<pattern>` once, and returns a list of the results of those evaluations. Words in `<list>` are separated by `<delimiter>`, if given, and spaces if not. Words in the resulting list are separated by the given `<output separator>`, or a space if no output separator is given. An empty `<output separator>` puts nothing between them.
 
-Prior to each evaluation, every occurrence of the string "##" in `<pattern>` is replaced with the current word from `<list>`. However, because this replacement occurs before evaluation, it cannot be used well in nested iter()s, and should not be used on user input or untrusted `<list>`s, as the word will be evaluated. Instead, you can use the %iX substitution, or the itext() function. The substitution '%iL' refers to the outermost iter of the current expression, and is intended to replace ##.
-
-The string "#@" will be replaced with the position of the current word in `<list>`. Like "##", the replacement occurs before substitution. Use the inum() function for nested iter()s.
-
-If you nest iter()s, ## and #@ refer to the first/outermost iter(). The ilev() function can be used to get the current iter() nesting level.
+In `<pattern>`, "##" stands for the current word and "#@" for its position in `<list>`, counting from 1. The word is never evaluated as code, so ## is safe on user input. See [compatibility parser in iter is data not code](/reference/sharpmush-help/compatibility-parser/#in-iter-is-data-not-code).
 
 parse() is an alias for iter().
 
+- [iter nesting](/reference/sharpmush-help/iter-function/#nesting-and-where-counts): nested iter()s, where ## and #@ count, and `innermost_tokens`
+- [iter iteration examples](/reference/sharpmush-help/iter-function/#iteration-examples): patterns, positions, and calling an attribute
+- [iter separator examples](/reference/sharpmush-help/iter-function/#separator-and-safety-examples): an output separator, and keeping code-looking input as text
+
 ::: seealso
 - [ilev()](/reference/sharpmush-help/ilev-function/#ilev)
-- [ilev()](/reference/sharpmush-help/ilev-function/#ilev)
-- [ilev()](/reference/sharpmush-help/ilev-function/#ilev)
 - [IBREAK()](/reference/sharpmush-help/sharpfunc/#ibreak)
-- [MAP()](/reference/sharpmush-help/sharpfunc/#map)
+- [MAP()](/reference/sharpmush-help/map-function/#map)
 - [@dolist](/reference/sharpmush-help/dolist-command/#dolist)
 :::
+
+### Nesting and where ## counts
+
+If you nest iter()s, ## and #@ refer to the first/outermost iter(). For the current iter(), use %i0 or itext(0), and inum(0). The ilev() function can be used to get the current iter() nesting level.
+
+"##" and "#@" count only where they are written in the iter() itself. In the code of an attribute the pattern calls, such as u(), they are plain text unless that code runs an iter() of its own. They are also plain text outside any iter() or @dolist, and inside lit() or after \.
+
+With the `innermost_tokens` option on, ## and #@ name the innermost iter() or @dolist that is running, as TinyMUX's do, and they also work in the code of an attribute the pattern calls. See [compatibility config innermost loop tokens](/reference/sharpmush-help/compatibility-config/#innermost-loop-tokens).
 
 ### Iteration examples
 
@@ -76,6 +84,8 @@ Since this example just evaluates another attribute for each element of the list
 > say map(strlen_fun, This is a test string.)
 ```
 
+### Separator and safety examples
+
 ```sharp
 > say iter(lnum(3), %i0, ,%r)
 You say, "0
@@ -83,10 +93,11 @@ You say, "0
 2"
 ```
 
-An example of why using ## instead of %i0 can be insecure, and lead to unintended evaluation:<br>
+Both ## and %i0 insert the element as text without evaluating it. Read stored player text with v() or get(), not u():
 ```sharp
-> say iter((1\,1),add##)
-You say, "2"
-> say iter((1\,1),add%i0)
-You say, "add(1,1)"
+> &DATA`TEXT me=[add(1,1)]
+> think iter(v(DATA`TEXT),##)
+[add(1,1)]
+> think iter(v(DATA`TEXT),%i0)
+[add(1,1)]
 ```

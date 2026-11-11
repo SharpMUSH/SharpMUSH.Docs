@@ -15,7 +15,7 @@ description: "SharpMUSH documentation for Accents"
       "heading": "Special characters",
       "lookup": "accents special characters"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-special-characters-heading-special-characters-lookup-accents-special-characters),
+  ],
   "redirects": {
     "ACCENTS2": "accents special characters"
   }

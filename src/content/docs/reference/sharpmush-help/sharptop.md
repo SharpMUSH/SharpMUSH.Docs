@@ -6,40 +6,52 @@ description: "SharpMUSH documentation for Top-Level Topics"
 ## help
 This is the index to the MUSH online help files.
 
-  For an explanation of the help system, type:    help [newbie](/reference/sharpmush-help/newbie/#newbie)<br>
-  For a walkthrough of SharpMUSH systems, type:   help [Getting Started](/reference/sharpmush-help/sharptop/#getting-started)<br>
-  For help finding the helpfile you want:         help [search](/reference/sharpmush-help/sharpconf/#search)(/reference/sharpmush-help/sharpconf/#search)
+### New players
 
-  For the list of MUSH commands, type:            help [COMMANDS](/reference/sharpmush-help/sharpcmd/#commands)<br>
-  For the list of MUSH topics, type:              help [topics](/reference/sharpmush-help/topics/#topics)<br>
-  For an alphabetical list of all help entries:   help [search](/reference/sharpmush-help/sharpconf/#search)(/reference/sharpmush-help/sharpconf/#search)<br>
-  For what SharpMUSH adds to PennMUSH:            help [sharpmush features](/reference/sharpmush-help/sharpmush-features/#sharpmush-features)<br>
-  For information about SharpMUSH:                help [code](/reference/sharpmush-help/sharpcode/#contact)
+|                                            |                         |
+|--------------------------------------------|-------------------------|
+| How to read the help files:                | help [newbie](/reference/sharpmush-help/newbie/#newbie)           |
+| A walkthrough of moving, talking and mail: | help [Getting Started](/reference/sharpmush-help/sharptop/#getting-started)  |
+| Finding the helpfile you want:             | help [help search](/reference/sharpmush-help/help-search/#help-search)      |
+| Commands such as look, say and page:       | help [COMMANDS](/reference/sharpmush-help/commands-index/#commands)         |
+| This game's own commands and topics:       | help [+help](/reference/sharpmush-help/sharptop/#help-1)            |
 
-  For a list of flags:                            help [FLAG LIST](/reference/sharpmush-help/sharpflag/#flag-list)<br>
-  For a list of functions:                        help [FUNCTION LIST](/reference/sharpmush-help/sharpfunc/#function-list)<br>
-  For a list of attributes:                       help [attributes](/reference/sharpmush-help/attributes/#attributes)<br>
-  To see the configuration of this MUSH:          `@config`
+### Builders and coders
 
-  On many MUSHes, list local commands with:       `+help`
+|                                            |                           |
+|--------------------------------------------|---------------------------|
+| The list of MUSH topics:                   | help [topics](/reference/sharpmush-help/topics/#topics)             |
+| The list of flags:                         | help [FLAG LIST](/reference/sharpmush-help/flag-list/#flag-list)          |
+| The list of functions:                     | help [FUNCTION LIST](/reference/sharpmush-help/function-list/#function-list)      |
+| The list of attributes:                    | help [attributes](/reference/sharpmush-help/attributes/#attributes)         |
+| What SharpMUSH adds to PennMUSH:           | help [sharpmush features](/reference/sharpmush-help/sharpmush-features/#sharpmush-features) |
+| The help its plugins bring:                | help [plugin help](/reference/sharpmush-help/plugin-help/#plugin-help)        |
 
-  If there are any errors in the help text, please notify a wizard in the game, or file an issue at https://github.com/SharpMUSH/SharpMUSH/issues, which is the bug-tracking site for SharpMUSH (and its distributed help files) but probably has no relation to this MUSH in particular.
+### Administrators
+
+|                                            |                           |
+|--------------------------------------------|---------------------------|
+| Settings, players, roles, backups:         | help [administration](/reference/sharpmush-help/administration/#administration)     |
+| Commands only staff can use:               | help [@-wizard](/reference/sharpmush-help/sharpcmd/#wizard)           |
+| The configuration of this MUSH:            | `@config`                 |
+
+For information about SharpMUSH, see [code](/reference/sharpmush-help/sharpcode/#contact). If the help text has an error, tell a wizard on this game or report it to SharpMUSH at https://github.com/SharpMUSH/SharpMUSH/issues.
 
 ## +help
-  `help` is the server's own help, the same on every SharpMUSH game. `+help` is this game's: the topics its installed systems carry, such as `+scene` and `+request`, and whatever its staff have written down. Type `+help` for its index and `+help <topic>` for a topic.
+  `help` is the server's own help, the same on every SharpMUSH game. `+help` is this game's: the topics its installed systems carry, such as `+scene` and `+request`, and whatever its staff have written down. Type `+help` for its index and `+help <topic>` for a topic. If no topic matches, `+help <source>` lists that source's topics, like `+help/list <source>`.
 
 ## Getting Started
   This helpfile is a quick walkthrough of some of SharpMUSH's standard systems. It uses the same syntax as the other helpfiles; if you're not familiar with the syntax of the SharpMUSH helpfiles, please read [newbie](/reference/sharpmush-help/newbie/#newbie) first, as it's explained there.
 
-  For help with getting around, please see [gs moving](/reference/sharpmush-help/sharpconf/#gs-moving).
+  For help with getting around, please see [gs moving](/reference/sharpmush-help/gs-moving/#getting-started-moving).
 
-  To talk to people in the room with you, see [gs talking](/reference/sharpmush-help/sharpconf/#gs-talking).
+  To talk to people in the room with you, see [gs talking](/reference/sharpmush-help/gs-talking/#getting-started-talking).
 
-  For a brief guide to the SharpMUSH chat system, see [gs chat](/reference/sharpmush-help/sharpchat/#gs-chat).
+  For a brief guide to the SharpMUSH chat system, see [gs chat](/reference/sharpmush-help/gs-chat/#getting-started-chat).
 
-  For information on how to send and read mail using SharpMUSH's built-in mail system, `@mail`, see [gs mail](/reference/sharpmush-help/sharpmail/#gs-mail).
+  For information on how to send and read mail using SharpMUSH's built-in mail system, `@mail`, see [gs mail](/reference/sharpmush-help/gs-mail/#getting-started-mail).
 
-  If the game has a web portal, you can [register](/reference/sharpmush-help/sharpcmd/#register) an account there or at the login screen, then [make](/reference/sharpmush-help/sharpcmd/#make) characters and [play](/reference/sharpmush-help/sharpcmd/#play) them. The portal also serves the game's [wiki](/reference/sharpmush-help/wiki/#wiki).
+  To make an account and a character at the login screen, see [register](/reference/sharpmush-help/sharpcmd/#register), [create](/reference/sharpmush-help/sharpcmd/#create-1) and [play](/reference/sharpmush-help/sharpcmd/#play). A game with a web portal offers the same there, and serves its [wiki](/reference/sharpmush-help/wiki/#wiki).
 
   To have the server address you in another language, see [@locale](/reference/sharpmush-help/sharpcmd/#locale).
 
@@ -56,7 +68,7 @@ This is the index to the MUSH online help files.
 
 
 ::: seealso
-- [parent](/reference/sharpmush-help/sharpconf/#parent)
+- [parent](/reference/sharpmush-help/parent/#parents)
 - [ORPHAN](/reference/sharpmush-help/sharpflag/#orphan)
 :::
 
@@ -73,24 +85,6 @@ This is the index to the MUSH online help files.
 - [OWNER()](/reference/sharpmush-help/sharpfunc/#owner)
 - [attributes](/reference/sharpmush-help/attributes/#attributes)
 :::
-
-## Clients
-  Clients are special software programs that you can use to connect to MUSHes. They are usually much nicer to use than raw telnet and give you many additional features, such as larger text buffers (so you can type more), backscroll, history of previous commands, macros, and so on.
-
-  Here is a list of common clients and the web sites where they can be found.  Please note that the below sites are subject to change. The below are listed solely for your information and possible benefit. The developers of SharpMUSH have nothing to do with the clients. Except for Potato, which is made by Mike. Not that this is a shameless plug. Noooo. Carry on.
-
-  | OPERATING SYSTEM | CLIENT      | WEB SITE                              |
-  |------------------|-------------|---------------------------------------|
-  | UNIX             | Tinyfugue   | http://tinyfugue.sourceforge.net      |
-  |                  | Potato      | http://www.potatomushclient.com       |
-  | WINDOWS          | MUSHClient  | http://www.mushclient.com             |
-  |                  | MuckClient  | http://www.xcalibur.co.uk/MuckClient/ |
-  |                  | Potato      | http://www.potatomushclient.com       |
-  |                  | BeipMU      | http://www.beipmu.com (Recommended)   |
-  | MAC OS X         | Savitar     | http://www.heynow.com/Savitar/        |
-  |                  | Atlantis    | http://www.riverdark.net/atlantis/    |
-  |                  | Potato      | http://www.potatomushclient.com       |
-  |                  | Unix clients will also run on OS X. |               |
 
 ## Control
   Controlling an object basically means that you have the power to change the object's characteristics such as flags and attributes. It may also mean that you have the ability to destroy it.
@@ -116,22 +110,14 @@ This is the index to the MUSH online help files.
 
 ::: seealso
 - [CONTROLS()](/reference/sharpmush-help/sharpfunc/#controls)
-- [TRUST](/reference/sharpmush-help/sharpconf/#trust)
-- [MISTRUST](/reference/sharpmush-help/sharpconf/#mistrust)
 - [zones](/reference/sharpmush-help/zones/#zones)
 - [zone masters](/reference/sharpmush-help/zone-masters/#zone-masters)
 :::
 
 ## Costs
-  Some things on the MUSH cost pennies. The default costs are shown below:
+  SharpMUSH has no money, so building and searching cost no pennies. The only cost is quota: when the 'use_quota' `@config` option is on, each object you create counts 'quota_cost' against your quota. See [quotas](/reference/sharpmush-help/sharptop/#quotas).
 
-    `@dig`: 10 pennies<br>
-    `@create`: 10 pennies (or more)<br>
-    `@search`: 100 pennies *<br>
-    `@link`: 1 penny (if you didn't already own it, +1 to the previous owner)<br>
-    `@open`: 1 penny (2 pennies if linked at the same time)
-
-  Type '`@config`/list costs' to get the costs for the MUSH you are on.
+  The penny cost options in '`@config`/list costs' (object_cost, exit_cost, link_cost, room_cost, queue_cost, find_cost) are accepted but have no effect.
 
 
 ::: seealso
@@ -147,13 +133,13 @@ This is the index to the MUSH online help files.
 
 ::: seealso
 - [code](/reference/sharpmush-help/sharpcode/#contact)
-- [copyright](/reference/sharpmush-help/sharpcode/#copyright)
+- [copyright](/reference/sharpmush-help/copyright/#copyright)
 :::
 
 ## Object IDs
-  When an object is destroyed, its dbref number will eventually be recycled and given to a newly created object. This can cause problems in code, particularly in database code which stores members of a group, as code which was meant to refer to the old object ends up referring to the new one by mistake.
+  When an object is destroyed, its dbref number can later be given to a newly created object (for example by a creator with the Pick_DBRefs `@power`). This can cause problems in code, particularly in database code which stores members of a group, as code which was meant to refer to the old object ends up referring to the new one by mistake.
 
-  To avoid this problem, you can use the "object id", or objid, instead of the dbref. An object id consists of the object's dbref, a colon, and then the object's creation time. Objids can be used anywhere dbrefs can and, because the creation time is different each time the dbref is recycled, the objid is totally unique to each object.
+  To avoid this problem, you can use the "object id", or objid, instead of the dbref. An object id consists of the object's dbref, a colon, and then the object's creation time. Objids can be used anywhere dbrefs can and, because the creation time is different each time the dbref is reused, the objid is totally unique to each object.
 
   The `objid()` function returns the object id of an object, and the %: substitution evaluates to the objid of the enactor.
 
@@ -177,7 +163,7 @@ This is the index to the MUSH online help files.
 - [@link](/reference/sharpmush-help/sharpcmd/#link)
 - [STICKY](/reference/sharpmush-help/sharpflag/#sticky)
 - [LINK_OK](/reference/sharpmush-help/sharpflag/#linkok)
-- [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
+- [LOCKING](/reference/sharpmush-help/locking/#locking)
 :::
 
 ## Enactor
@@ -209,8 +195,8 @@ This is the index to the MUSH online help files.
     Cyclonus (#6) is the enactor and #6 is the executor!
     > @create Box
     Created: Object #10
-    > &EMIT box=$emit: @emit %n (%#) is the enactor and %! is the executor!
-    > emit
+    > &WHOAMI box=$whoami: @emit %n (%#) is the enactor and %! is the executor!
+    > whoami
     Cyclonus (#6) is the enactor and #10 is the executor!
 ```
 
@@ -243,11 +229,16 @@ This is the index to the MUSH online help files.
 :::
 
 ## Gender
-  Gender on a MUSH is entirely up to you. You can set yourself (or any of your objects) to be male, female, neuter, or plural. If whatever is in the SEX attribute is not recognizable, the MUSH will assume the object is neuter. Setting a gender attribute will enable pronoun substitution by the MUSH. The SEX attribute is visual to anyone who wants to see it.
+  Gender on a MUSH is entirely up to you. You can set yourself (or any of your objects) to be male, female, neuter, or plural. If whatever is in the SEX attribute is not recognizable, the MUSH will assume the object is plural (they/them). Setting a gender attribute will enable pronoun substitution by the MUSH. The SEX attribute is visual to anyone who wants to see it.
 
   The `obj()`, `subj()`, `poss()` and `aposs()` functions return different pronouns for an object based on its `@sex`, and the %o, %s, %p and %a substitutions return the same pronouns for the enactor.
 
+  Only the first letter of the SEX attribute counts, in upper or lower case: M is male (he, him, his, his), F or W is female (she, her, her, hers), and T or P is plural (they, them, their, theirs). So `male`, `m`, `Female`, `woman` and `plural` all work. Anything else, or no SEX attribute at all, also gives they, them, their and theirs; PennMUSH gives it, it, its and its there.
+
+  A game can keep gender in another attribute with the `gender_attr` option (see [@config attribs](/reference/sharpmush-help/sharpconf/#config-attribs)); pronouns then read that attribute instead of SEX. `@gender` sets whichever attribute that is, while `@sex` always sets SEX.
+
 ::: seealso
+- [@gender](/reference/sharpmush-help/sharpcmd/#gender)
 - [@sex](/reference/sharpmush-help/sharpcmd/#sex)
 - [%]
 :::
@@ -273,7 +264,7 @@ This is the index to the MUSH online help files.
 :::
 
 ## Homes
-  Every thing or player has a home, which is usually the room where it was created. You can reset your home or the home of any object you own with the `@link` command: `@link` [me | `<object>`]=`<location>`. You must also control `<location>`, unless that location (room or thing) is set ABODE or LINK_OK.
+  Every thing or player has a home, which is usually the room where it was created. You can reset your home or the home of any object you own with the `@link` command: `@link [me | <object>]=<location>`. You must also control `<location>`, unless that location (room or thing) is set ABODE or LINK_OK.
 
   The 'home' command outputs the dbref of the room you arrive in (see [command output](/reference/sharpmush-help/command-output/#command-output)).
 
@@ -354,17 +345,17 @@ This is the index to the MUSH online help files.
     &PART1 object=<action list> ; @trigger me/PART2
     &PART2 object=@select <test for being done>=<false>,@trigger me/PART1
   ```
-  Looping can be a problem when it goes on without stopping. The `@ps` command can be used to see if you are looping. Beware! A looping machine that isn't `@halt`'d will drain your pennies while you are away from the mush!
+  Looping can be a problem when it goes on without stopping. The `@ps` command can be used to see if you are looping. Beware! A looping machine that isn't `@halt`'d keeps running while you are away from the mush.
 
   The `@retry` and `@include` commands, and %= substitution, can also be useful for building code which needs to loop.
 
 ::: seealso
 - [@ps](/reference/sharpmush-help/ps-command/#ps)
-- [HALTED](/reference/sharpmush-help/sharpflag/#halted)
+- [HALTED](/reference/sharpmush-help/sharpflag/#halt)
 - [COSTS](/reference/sharpmush-help/sharptop/#costs)
 - [@trigger](/reference/sharpmush-help/trigger-command/#trigger)
 - [@retry](/reference/sharpmush-help/retry-command/#retry)
-- [% substitution reference](/reference/sharpmush-help/sharpconf/#substitution-reference)
+- [substitutions](/reference/sharpmush-help/substitutions/#substitutions)
 :::
 
 ## Master Room
@@ -385,18 +376,18 @@ This is the index to the MUSH online help files.
 
 ::: seealso
 - [newbie](/reference/sharpmush-help/newbie/#newbie)
-- [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
+- [LOCKING](/reference/sharpmush-help/locking/#locking)
 - [@describe](/reference/sharpmush-help/sharpcmd/#describe)
 - [@sex](/reference/sharpmush-help/sharpcmd/#sex)
 - [MATCHING](/reference/sharpmush-help/sharptop/#matching)
 :::
 
 ## Money
-  The MUSH has a built-in money system, which gives a starting amount of money to new players and hands out a daily allowance thereafter. MUSH money (the default name is "pennies", but this may be different depending on the particular MUSH) is spent on some MUSH commands that are computationally expensive or alter the database. In addition, every time you "queue" a command, it costs you a certain amount of money -- this prevents looping from getting out of control, since when all your money is spent, you can't queue any more commands.
+  SharpMUSH has no money system. Players get no starting money or daily allowance, and queued commands and building cost nothing.
 
-  The money system can also be used on player-created objects by setting `@cost`/`@payment`/`@opayment`/`@apayment` attributes and using the "give" command to give pennies, or by setting `@pricelist`/`@buy`/`@obuy`/`@abuy` attributes and buying items with the "buy" command. The Pay `@lock` on an object controls who can give it pennies.
+  Giving pennies with "give" is refused, and the "buy" command does not buy anything. The `@cost`, `@payment` and `@pricelist` attributes can be set but nothing uses them.
 
-  The "score" command tells you how many pennies you have.
+  The "score" command says that money is not tracked.
 
 
 ::: seealso
@@ -404,7 +395,7 @@ This is the index to the MUSH online help files.
 - [give](/reference/sharpmush-help/sharpcmd/#give-1)
 - [@cost](/reference/sharpmush-help/sharpcmd/#cost)
 - [@apayment](/reference/sharpmush-help/sharpcmd/#apayment)
-- [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
+- [LOCKING](/reference/sharpmush-help/locking/#locking)
 - [buy](/reference/sharpmush-help/sharpcmd/#buy-1)
 - [@buy](/reference/sharpmush-help/sharpcmd/#buy)
 - [score](/reference/sharpmush-help/sharpcmd/#score)
@@ -412,7 +403,7 @@ This is the index to the MUSH online help files.
 :::
 
 ## Non-standard Attributes
-  While there are many standard attributes in MUSH, objects can also have an enormous number of attributes, with any name you wish to use. In the past, you were limited to attributes named VA-VZ, WA-WZ, XA-XZ; these are still available as standard attributes. However, it is strongly recommended that you use non-standard attributes and meaningful names in order to make maintaining your MUSHCode easier.
+  While there are many standard attributes in MUSH, objects can also have an enormous number of attributes, with any name you wish to use. The attributes VA-VZ, WA-WZ and XA-XZ are standard attributes anyone can use. It is strongly recommended that you use non-standard attributes and meaningful names in order to make maintaining your MUSHCode easier.
 
   To set a non-standard attribute, you can use these formats:<br>
       &`<attribute name>` `<obj>`=`<value>`  OR<br>
@@ -433,7 +424,7 @@ This is the index to the MUSH online help files.
 ## Quotas
   The Quota system controls how many objects a player may own. It is only used of the 'use_quota' `@config` option is set to Yes.
 
-  Each object created normally costs one quota (though this can be altered with the 'quota_cost' `@config` option), and every player starts with a fixed amount of quota, controlled with the 'starting_quota' `@config` option. Whenever you create an object of any type, your remaining quota, stored in the RQUOTA attribute, is decreased by the quota_cost.
+  Each object created normally costs one quota (though this can be altered with the 'quota_cost' `@config` option), and every player starts with a fixed amount of quota, controlled with the 'starting_quota' `@config` option. Whenever you create an object of any type, it counts against your quota: you can create an object while your quota minus the number of objects you own is at least the quota_cost.
 
   Wizards can give specific players (for example, builder characters) unlimited quota by giving them the No_Quota `@power`.
 
@@ -444,7 +435,6 @@ This is the index to the MUSH online help files.
 - [@quota](/reference/sharpmush-help/quota-command/#quota)
 - [QUOTA()](/reference/sharpmush-help/sharpfunc/#quota)
 - [@power](/reference/sharpmush-help/power-command/#power)
-- [@power](/reference/sharpmush-help/power-command/#power)
 :::
 
 ## Regexp Examples
@@ -452,18 +442,18 @@ This is the index to the MUSH online help files.
 
   The regexp pattern '.*' is equivalent to the wildcard '*'; it matches zero or more arbitrary characters. To match one or more arbitrary characters, the regexp pattern is '.+'.
 
-  To match a string of numbers, use:       [0-9](/reference/sharpmush-help/sharpconf/#0-9)+    or \d+<br>
-  To match a string of letters only, use:  [A-Za-z](/reference/sharpmush-help/sharpconf/#a-za-z)+ or \w+
+  To match a string of numbers, use:       `[0-9]+`    or `\d+`<br>
+  To match a string of letters only, use:  `[A-Za-z]+` or `\w+`
 
-  See [regexp syntax](/reference/sharpmush-help/sharpconf/#regexp-syntax)
+  See [regexp syntax](/reference/sharpmush-help/regexp-syntax/#regular-expression-syntax)
 
 ## RQUOTA
-  This attribute tracks remaining building quota if it is implemented. It is settable in-game only by a wizard, and is only visible to wizards.
+  SharpMUSH does not use this attribute: remaining quota is the player's quota minus the objects they own. A database import reads RQUOTA to set the quota. It is settable in-game only by a wizard, and is only visible to wizards.
 
 
 ::: seealso
 - [@quota](/reference/sharpmush-help/quota-command/#quota)
-- [@quota administrative quota changes](/reference/sharpmush-help/sharpcmd/#quota-administrative-quota-changes)
+- [@quota administrative quota changes](/reference/sharpmush-help/quota-command/#administrative-quota-changes)
 :::
 
 ## Setting Attributes
@@ -483,7 +473,7 @@ This is the index to the MUSH online help files.
 ::: seealso
 - [attributes](/reference/sharpmush-help/attributes/#attributes)
 - [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/sharptop/#non-standard-attributes)
-- [@set](/reference/sharpmush-help/sharpcmd/#set)
+- [@set](/reference/sharpmush-help/set-command/#set)
 - [@wipe](/reference/sharpmush-help/sharpcmd/#wipe)
 - [ATTRIB_SET()](/reference/sharpmush-help/sharpfunc/#attribset)
 - [SET()](/reference/sharpmush-help/sharpfunc/#set)
@@ -505,7 +495,6 @@ This is the index to the MUSH online help files.
 - [@remit](/reference/sharpmush-help/sharpcmd/#remit)
 - [@oemit](/reference/sharpmush-help/oemit-command/#oemit)
 - [NOSPOOF](/reference/sharpmush-help/sharpflag/#nospoof)
-- [PARANOID](/reference/sharpmush-help/sharpconf/#paranoid)
 :::
 
 ## Stack
@@ -538,11 +527,9 @@ This is the index to the MUSH online help files.
 
 ::: seealso
 - [failure](/reference/sharpmush-help/failure/#failure)
-- [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
+- [LOCKING](/reference/sharpmush-help/locking/#locking)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
 - [attributes](/reference/sharpmush-help/attributes/#attributes)
-- [@asuccess](/reference/sharpmush-help/sharpcmd/#asuccess)
-- [@asuccess](/reference/sharpmush-help/sharpcmd/#asuccess)
 - [@asuccess](/reference/sharpmush-help/sharpcmd/#asuccess)
 :::
 
@@ -561,14 +548,14 @@ This is the index to the MUSH online help files.
     `@pemit`/noeval/silent me=Hi!
 
   Help on the switches available for a command is available in the help file for that command.<br>
-  (If you are looking for information on `@switch`, see [`@switch`].)
+  (If you are looking for information on `@switch`, see [@switch](/reference/sharpmush-help/switch-command/#switch).)
 
 ## Types of Objects
   Everything on a MUSH is an object in the MUSH database. There are four main types of objects: players, things (once called 'objects'), rooms and exits. You can see the type of an object when you 'examine' it, or with the `type()` function.
 
-  There is also a 'garbage' type, used for objects which have been created and then `@destroyed`. Garbage objects cannot be used in any way, and their dbrefs will be recycled (with a new objid) when something new is created.
+  There is no garbage object in SharpMUSH: a destroyed object goes onto the recover list, and its number is free once its entry is gone. See [garbage](/reference/sharpmush-help/sharptop/#garbage).
 
-  For more information on any of the types, see [`<type>`].
+  For more information on each type, see [players](/reference/sharpmush-help/sharptop/#players), [things](/reference/sharpmush-help/sharptop/#things), [rooms](/reference/sharpmush-help/sharptop/#rooms), [exits](/reference/sharpmush-help/sharptop/#exits) and [garbage](/reference/sharpmush-help/sharptop/#garbage).
 
   The `@stats` command lists how many objects of each type currently exits in the database.
 
@@ -619,7 +606,7 @@ This is the index to the MUSH online help files.
 :::
 
 ## Exits
-  Exits are created with `@open`. They link rooms together, and can be used by players and things to move from one room to another with the GOTO command. Exits cannot move (though they can be `@teleported` to another room). They can have multiple aliases in their `@alias`. They are NOT checked for `$-commands` or ^-listens. Exits can have variable destinations; see [`@destination`] for more information.
+  Exits are created with `@open`. They link rooms together, and can be used by players and things to move from one room to another with the GOTO command. Exits cannot move (though they can be `@teleported` to another room). They can have multiple aliases in their `@alias`. They are NOT checked for `$-commands` or ^-listens. Exits can have variable destinations; see [@destination](/reference/sharpmush-help/sharpcmd/#destination) for more information.
 
   You can change the destination of an exit with the `@link` command. `home()` returns the source room of an exit, and `loc()` returns its destination.
 
@@ -639,13 +626,14 @@ This is the index to the MUSH online help files.
 :::
 
 ## Garbage
-  Garbage objects previously existed as one of the four main types (player, thing, exit or room) but were destroyed with `@destroy`/`@nuke`. They exist only as placeholders in the database; you can do nothing with them. The dbrefs of garbage objects will be reused when new objects are created (but with a different creation time/object id).
+  SharpMUSH keeps no garbage objects. A destroyed object waits on the recover list under its own number (see [@recover](/reference/sharpmush-help/recover-command/#recover)); once its entry expires or is purged, the number is free. `@stats`, `lstats()` and `hastype(#<n>, GARBAGE)` count free numbers as garbage.
 
-  The total number of garbage objects, and the next garbage object to be recycled, is shown in `@stats`. You can use lsearch(all,type,garbage) to get a list of all garbage dbrefs.
+  A new object takes the free number that has waited longest, once it is due, and otherwise the next unused one. A number freed early with `@purge` is due when its entry would have expired; one the configuration names, such as the master room, is never taken unasked. A creator with the Pick_DBRefs `@power` can ask for any free number. A reused number gets a new creation time, so its objid differs. `@recover/free` lists the free numbers.
 
 
 ::: seealso
 - [@destroy](/reference/sharpmush-help/destroy-command/#destroy)
+- [@recover](/reference/sharpmush-help/recover-command/#recover)
 - [@stats](/reference/sharpmush-help/sharpcmd/#stats)
 :::
 
@@ -655,44 +643,6 @@ This is the index to the MUSH online help files.
 
   For more information, see the following help topics:<br>
     `@warnings`        `@wcheck`         NO_WARN         WARNINGS LIST
-
-## Wildcards
-  SharpMUSH has two standard wildcards, which can be used in `$-commands`, as well as a number of softcode functions: an asterisk (*) matches zero or more of any characters, and a question mark (?) matches exactly one character. The most common use of wildcards is to allow people to pass arguments to `$-commands`. For example, let's say you want to have a 'wave' command which allows you to wave to a specific person:
-
-```sharp
-    > &cmd.wave me=$wave *: pose waves.
-```
-
-  The "*" wildcard will match anything, allowing you to type "wave foo", "wave bar", etc. You can use the %0-%9 substitutions to get the values which matched the first ten wildcards in the command:
-
-```sharp
-    > &cmd.wave me=$wave *: pose waves to %0.
-    > wave to Muse
-    Mike waves to Muse.
-```
-
-  A backslash (\) can be used to escape * and ? if you want to match a literal asterisk or question mark. (Note that you will often have to use \\ so that the softcode parser doesn't evaluate it away!)
-
-```sharp
-  > think strmatch(foobar, ?*?)
-  1
-  > think strmatch(foobar, \\?*\\?)
-  0
-  > think strmatch(?foobar?, \\?*\\?)
-  1
-```
-
-  The "**" wildcard is also available for matching attribute names - see HELP attribute trees browsing for more information.
-
-  It's also possible to use regular expressions, rather than wildcards, for matching strings. Regexps allow a lot more control over what is matched, but are therefore somewhat more complex. See [regexp](/reference/sharpmush-help/sharpconf/#regexp) for details.
-
-
-::: seealso
-- [$-commands]
-- [regexp](/reference/sharpmush-help/sharpconf/#regexp)
-- [STACK](/reference/sharpmush-help/sharptop/#stack)
-- [registers](/reference/sharpmush-help/registers/#registers)
-:::
 
 ## Zone Master Rooms
 
@@ -727,9 +677,6 @@ This is the index to the MUSH online help files.
   In commands that take a list of space-separated names (like page), you'll need to enclose names with spaces in "double quotes". The same is true on the login screen. For example:<br>
     page "Leeroy Jenkins"=Stop doing that.
 
-## &HELP
-This is the AHELP index.
-
 ## Descriptor
   A descriptor (also called a port or socket descriptor) is a unique (though reusable) number assigned to each connection to the MUSH. The descriptor for each connection is shown on the Wizard WHO in the 'Des' column.
 
@@ -739,7 +686,6 @@ This is the AHELP index.
 - [who](/reference/sharpmush-help/who/#who)
 - [%]
 - [LPORTS()](/reference/sharpmush-help/sharpfunc/#lports)
-- [LPORTS()](/reference/sharpmush-help/sharpfunc/#lports)
 - [PLAYER()](/reference/sharpmush-help/sharpfunc/#player)
 - [@boot](/reference/sharpmush-help/sharpcmd/#boot)
 - [Connection functions](/reference/sharpmush-help/sharpfunc/#connection-functions)
@@ -747,16 +693,8 @@ This is the AHELP index.
 
 ## Unicode
 
-At the moment, SharpMUSH has very minimal support for Unicode. Almost all text is treated internally as being in the Latin-1 character set. Clients that support telnet character set negotiation can send and receive UTF-8, but only characters in the Basic Latin and Latin-1 Supplement blocks are accepted (Others are replaced with question marks).
+SharpMUSH text is Unicode: strings are UTF-16 inside the server, and network text supports UTF-8. A client that is not sent UTF-8 gets each character it cannot show as the nearest one it can; see [CHARSET](/reference/sharpmush-help/charset/#charset) and [@ascii](/reference/sharpmush-help/ascii-command/#ascii).
 
-A few functions support Unicode-aware text transformations:
+A column, a character and a code unit are not always the same. [STRLEN()](/reference/sharpmush-help/sharpfunc/#strlen) and [DISPLAYWIDTH()](/reference/sharpmush-help/sharpfunc/#displaywidth) count terminal columns, so a wide CJK character counts as two and a combining accent as none. [GRAPHEMECOUNT()](/reference/sharpmush-help/sharpfunc/#graphemecount) and [GRAPHEMES()](/reference/sharpmush-help/sharpfunc/#graphemes) work on whole grapheme clusters, such as a letter with its accent or a joined emoji.
 
-- [STRIPACCENTS()](/reference/sharpmush-help/sharpfunc/#stripaccents)
-
-When the MUSH is compiled with the ICU library (See `@config` compile), additional functions support Unicode-aware text transformations:
-
-- [LCSTR()](/reference/sharpmush-help/sharpfunc/#lcstr)
-- [UCSTR()](/reference/sharpmush-help/sharpfunc/#ucstr)
-
-When using these functions, do not assume that they return the same number of characters as their argument.
-
+[ACCENT()](/reference/sharpmush-help/accent-function/#accent) and [STRIPACCENTS()](/reference/sharpmush-help/sharpfunc/#stripaccents) add and remove accents, and the NOACCENTS flag strips them for older clients. See also [internationalization](/reference/sharpmush-help/sharpcode/#internationalization).

@@ -30,7 +30,7 @@ description: "SharpMUSH documentation for Administrative Capabilities"
       "heading": "Delegated role management",
       "lookup": "administrative capabilities delegated role management"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-grant-and-deny-resolution-heading-grant-and-deny-resolution-lookup-administrative-capabilities-grant-and-deny-resolution-id-capability-scopes-heading-capability-scopes-lookup-administrative-capabilities-capability-scopes-id-actor-identity-and-revocation-heading-actor-identity-and-revocation-lookup-administrative-capabilities-actor-identity-and-revocation-id-delegated-role-management-heading-delegated-role-management-lookup-administrative-capabilities-delegated-role-management)
+  ]
 }
 -->
 ## Administrative Capabilities
@@ -50,7 +50,7 @@ Each scope is decided on its own, the way Discord computes permissions. The firs
 5. Any held role that denies the scope refuses it.
 6. The `everyone` role decides; a scope nobody allows is refused.
 
-Priority is never consulted here; it only orders who may manage whom (see [administrative capabilities delegated role management](/reference/sharpmush-help/sharpconf/#administrative-capabilities-delegated-role-management)).
+Priority is never consulted here; it only orders who may manage whom (see [administrative capabilities delegated role management](/reference/sharpmush-help/capabilities/#delegated-role-management)).
 
 Within one role or override set, a narrower scope left on Inherit takes the setting of the scope above it, so an explicit setting on the narrower scope wins over its parent.
 
@@ -66,7 +66,7 @@ Within one role or override set, a narrower scope left on Inherit takes the sett
 | `queue.inspect` | inspecting anyone's queued work |
 | `queue.control.own` | controlling your own queued work |
 | `queue.control` | controlling anyone's queued work |
-| `diagnostics.profile` | [@profile](/reference/sharpmush-help/sharpcmd/#profile) |
+| `diagnostics.profile` | [@profile](/reference/sharpmush-help/profile-command/#profile) |
 | `reality.admin` | [@reality](/reference/sharpmush-help/reality/#reality) |
 
 Each scope without `.own` implies its `.own` form. An `.own` scope still needs you to own the thing it acts on. Restoring never follows from capturing.

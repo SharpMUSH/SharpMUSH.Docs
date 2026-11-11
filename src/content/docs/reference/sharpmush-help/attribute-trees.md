@@ -12,8 +12,13 @@ description: "SharpMUSH documentation for Attribute Trees"
     "ATTR TREES",
     "ATTRIB TREES",
     "\\`"
-  ](/reference/sharpmush-help/sharpattr/#attr-trees-attrib-trees),
+  ],
   "sections": [
+    {
+      "id": "objids",
+      "heading": "Objids in attribute names",
+      "lookup": "attribute trees objids"
+    },
     {
       "id": "browsing",
       "heading": "Browsing trees",
@@ -33,8 +38,13 @@ description: "SharpMUSH documentation for Attribute Trees"
       "id": "compatibility",
       "heading": "Compatibility rationale",
       "lookup": "attribute trees compatibility"
+    },
+    {
+      "id": "clone-veiled",
+      "heading": "Why no_clone and veiled stay put",
+      "lookup": "attribute trees veiled"
     }
-  ](/reference/sharpmush-help/sharpattr/#id-browsing-heading-browsing-trees-lookup-attribute-trees-browsing-id-permissions-heading-permissions-lookup-attribute-trees-permissions-id-inheritance-heading-inheritance-lookup-attribute-trees-inheritance-id-compatibility-heading-compatibility-rationale-lookup-attribute-trees-compatibility),
+  ],
   "redirects": {
     "ATTRIBUTE TREES2": "attribute trees browsing",
     "\\`2": "attribute trees browsing",
@@ -65,6 +75,17 @@ Attribute names may not start or end with the backtick, and may not contain two 
 
 All attributes are either branch attributes or leaf attributes. A branch attribute is an attribute that has other branches or leaves beneath it; a leaf attribute is one that does not. Any attribute may act as a branch. If you try to create an unsupported leaf, branch attributes will be created as needed to support it.
 
+### Objids in attribute names
+
+An attribute name may not contain a colon, so an objid such as #30:171943 cannot be part of one. Turn it into a key first:
+
+```sharp
+> think edit(after(#30:171943,#),:,`)
+30`171943
+```
+
+Output: the objid's two numbers as two levels of a tree, such as DATA`30`171943`NAME.
+
 ### Browsing trees
 
 Attribute trees provide two immediate benefits. First, they reduce spam when examining objects. The usual * and ? wildcards for attributes do not match the \` character; the new ** wildcard does. Some examples of using examine:
@@ -83,7 +104,7 @@ The same principles apply to lattr(). `@decompile obj` is a special case, and di
 Branch attributes will be displayed with a \` in the attribute flags on examine. 
 
 ::: seealso
-- [WILDCARDS](/reference/sharpmush-help/sharptop/#wildcards)
+- [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)
 :::
 
 ### Permissions
@@ -114,6 +135,8 @@ etc.
 
 - `no_inherit`, `no_command`, and `mortal_dark` propagate down attribute trees exactly as described above: flag a branch, and every leaf and subbranch beneath it inherits the restriction.
 - `wizard` propagates for **writes** only: a `wizard`-flagged branch blocks a mortal from writing any leaf beneath it, even one with no flags of its own. `wizard` does **not** gate reads at all, at any level. PennMUSH's `can_read_attr_internal` (`src/attrib.c:282-338`) never tests `AF_Wizard` -- only `AF_Internal`, `mortal_dark`, and the visual/ownership escapes. A mortal can read a leaf under a `wizard` branch without trouble.
+### Why no_clone and veiled stay put
+
 - `no_clone` does **not** propagate. PennMUSH's `atr_cpy` (`src/attrib.c:1691-1709`, the routine behind `@clone`) tests `AF_Nocopy` on each attribute individually; no tree walk anywhere extends a branch's `no_clone` to its leaves.
 - `veiled` does **not** propagate. PennMUSH's only use of `AF_VEILED` (`src/look.c:302-316`) is cosmetic: it hides an attribute's own value in `examine`'s default listing, nothing more. No ancestor walk anywhere tests it, for display or otherwise.
 

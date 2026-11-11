@@ -11,6 +11,11 @@ description: "SharpMUSH documentation for @trigger"
   "aliases": [],
   "sections": [
     {
+      "id": "switches",
+      "heading": "Switches",
+      "lookup": "@trigger switches"
+    },
+    {
       "id": "enactor-and-register-behavior",
       "heading": "Enactor and register behavior",
       "lookup": "@trigger enactor and register behavior"
@@ -20,7 +25,7 @@ description: "SharpMUSH documentation for @trigger"
       "heading": "Trigger examples",
       "lookup": "@trigger examples"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-enactor-and-register-behavior-heading-enactor-and-register-behavior-lookup-trigger-enactor-and-register-behavior-id-trigger-examples-heading-trigger-examples-lookup-trigger-examples),
+  ],
   "redirects": {
     "@trigger2": "@trigger enactor and register behavior",
     "@trigger3": "@trigger examples"
@@ -30,28 +35,34 @@ description: "SharpMUSH documentation for @trigger"
 ## @trigger
 
 `@trigger[/<switches>] <object>/<attribute>[=<arg0>, ..., <arg29>]`<br>
-`@trigger/match[/<switches>] <object>/<attribute>=<string>`
+`@trigger/match[/<switches>] <object>/<attribute>=<string>`<br>
+`@trigger/args[/<switches>] <object>/<attribute>=<name>, <value>[, <name>, <value>...]`
 
 @trigger queues an action list stored in an attribute. It can also pass values to that attribute on the stack, as %0 to %9 and `r(0,args)` to `r(29,args)`.
 
-Output: with `/inline` or `/inplace`, the output of the last command run; queued, nothing. See [command output](/reference/sharpmush-help/command-output/#command-output).
+With `/inline` or `/inplace`, `@trigger` outputs what the last command it ran output; queued, it outputs nothing. See [command output](/reference/sharpmush-help/command-output/#command-output).
 
-Switches:
+You must control `<object>`, or it must be Link_OK and you must have the same owner, to trigger an attribute on it.
+
+The triggered attribute is queued - the new action list is not run instantly. The action list is executed by `<object>`, not by the object using @trigger.
+
+- [@trigger switches](/reference/sharpmush-help/trigger-command/#switches): named arguments, spoofing, inline runs and registers
+
+### Switches
+
+- /args: Pass named arguments instead: each `<name>, <value>` pair is read in the attribute as `%<name>` (see [uargs()](/reference/sharpmush-help/uargs-function/#uargs)), and also by numbered value position starting at %0. With `/match`, the pairs follow the match string.
 - /spoof: If you control `<object>`, enactor is preserved.
 - /inline: Run @triggered attribute immediately, rather than queueing it.
 - /clearregs: Clear Q-registers before @triggering.
+- /quiet: Don't tell you "Triggered.", as the QUIET flag does. trigger() uses it.
 
 If `/inline` is given, the following switches can be used:
 - /nobreak: If the @triggered attribute has @break or @assert, it won't propagate up.
 - /localize: Don't let the @triggered attribute override your Q-registers.
 
-`/inplace` is an alias for `/inline/localize/nobreak`.
+`/inplace` is an alias for `/inline/localize/nobreak`. `/now`, TinyMUX's spelling, is `/inline`.
 
-The `/match` switch is explained in [@trigger enactor and register behavior](/reference/sharpmush-help/sharpcmd/#trigger-enactor-and-register-behavior)
-
-You must control `<object>`, or it must be Link_OK and you must have the same owner, to trigger an attribute on it.
-
-The triggered attribute is queued - the new action list is not run instantly. The action list is executed by `<object>`, not by the object using @trigger.
+The `/match` switch is explained in [@trigger enactor and register behavior](/reference/sharpmush-help/trigger-command/#enactor-and-register-behavior)
 
 ### Enactor and register behavior
 

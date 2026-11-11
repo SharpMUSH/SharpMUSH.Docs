@@ -10,14 +10,15 @@ description: "SharpMUSH documentation for @edit"
   "lookup": "@edit",
   "aliases": [
     "@gedit"
-  ](/reference/sharpmush-help/sharpconf/#gedit),
+  ],
   "sections": [
+    {"id": "switches", "heading": "Switches and quoting", "lookup": "@edit switches", "aliases": ["@edit/first", "@edit/check", "@edit/quiet"]},
     {
       "id": "regular-expression-replacement",
       "heading": "Regular expression replacement",
       "lookup": "@edit regular expression replacement"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-regular-expression-replacement-heading-regular-expression-replacement-lookup-edit-regular-expression-replacement),
+  ],
   "redirects": {
     "@edit2": "@edit regular expression replacement"
   }
@@ -33,7 +34,12 @@ This command allows you to edit the contents of attributes, without having to re
 
 All the attributes on `<object>` whose names match the wildcard pattern `<attributes>` will be searched for the string `<search>`, and each occurrence of it will be replaced with the string `<replace>`.
 
-If `<search>` is "$", then `<replace>` will be added to the end of the attributes. When `<search>` is "^", `<replace>` will be added to the beginning of the attributes. (If you need to replace a single $ or ^, consider using @edit/regexp (see help @edit regular expression replacement) or the edit() function.)
+If `<search>` is "$", then `<replace>` will be added to the end of the attributes. When `<search>` is "^", `<replace>` will be added to the beginning of the attributes. (If you need to replace a single $ or ^, consider using @edit/regexp (see [@edit regular expression replacement](/reference/sharpmush-help/edit-command/#regular-expression-replacement)) or the edit() function.)
+
+- [@edit switches](/reference/sharpmush-help/edit-command/#switches-and-quoting): `/first`, `/check` and `/quiet`, and quoting the arguments
+- [@edit regular expression replacement](/reference/sharpmush-help/edit-command/#regular-expression-replacement): `@edit/regexp`, and evaluating the replacement
+
+### Switches and quoting
 
 If the `/first` switch is given, only the first occurrence of `<search>` in each attribute is replaced. If the `/check` switch is given, the attributes are not altered, you'll just be shown what would be changed (with the changes ansi-highlighted).
 
@@ -69,5 +75,5 @@ Replace a literal '^' with 'v'
 - [EDIT()](/reference/sharpmush-help/sharpfunc/#edit)
 - [REGEDIT()](/reference/sharpmush-help/sharpfunc/#regedit)
 - [attributes](/reference/sharpmush-help/attributes/#attributes)
-- [WILDCARDS](/reference/sharpmush-help/sharptop/#wildcards)
+- [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)
 :::

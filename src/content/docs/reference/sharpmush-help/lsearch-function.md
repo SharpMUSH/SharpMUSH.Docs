@@ -23,12 +23,19 @@ description: "SharpMUSH documentation for lsearch()"
       "heading": "Evaluation classes",
       "lookup": "lsearch evaluation classes"
     },
+    {"id": "index-class", "heading": "The INDEX class", "lookup": "lsearch index class"},
+    {
+      "id": "rhostmush-one-argument-form",
+      "heading": "RhostMUSH one-argument form",
+      "lookup": "lsearch rhostmush one argument form"
+    },
+    {"id": "rhostmush-classes", "heading": "One-argument form classes", "lookup": "lsearch rhostmush classes"},
     {
       "id": "search-examples",
       "heading": "Search examples",
       "lookup": "lsearch search examples"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-evaluation-classes-heading-evaluation-classes-lookup-lsearch-evaluation-classes-id-search-examples-heading-search-examples-lookup-lsearch-search-examples),
+  ],
   "redirects": {
     "LSEARCH2": "lsearch evaluation classes",
     "SEARCH2": "lsearch evaluation classes",
@@ -45,7 +52,7 @@ description: "SharpMUSH documentation for lsearch()"
 `children(<object>)`<br>
 `nchildren(<object>)`
 
-This function is similar to the @search command, except it returns just a list of dbref numbers. The function must have at least three arguments. You can specify "all" or `<player>` for the `<player>` field; for mortals, only objects they can examine are included. If you do not want to restrict something, use "none" for `<class>` and `<restriction>`.
+This function is similar to the @search command, except it returns just a list of dbref numbers. The function needs at least the `<player>` argument; `lsearch(all)` lists every object. You can specify "all" or `<player>` for the `<player>` field; for mortals, only objects they can examine are included. If you do not want to restrict something, use "none" for `<class>` and `<restriction>`.
 
 The possible `<class>`es and `<restriction>`s are the same as those accepted by @search. lsearch() can accept multiple class/restriction pairs, and applies them in a boolean "AND" fashion, returning only dbrefs that fulfill all restrictions. See [@search](/reference/sharpmush-help/search-command/#search) for information about them.
 
@@ -57,17 +64,50 @@ nlsearch(...) and nchildren(...) return the count of results that would be retur
 
 If `<class>` is one of the eval classes (EVAL, EEXITS, EROOMS, ETHINGS or EPLAYERS), note that any brackets, percent signs, or other special characters should be escaped, as the code in `<restriction>` will be evaluated twice - once as an argument to lsearch(), and then again for each object looked at in the search. Before the per-object evaluation, the string "##" is replaced with the object dbref.
 
-lsearch() is free unless it includes either an eval-class search or an elock search that contains an eval or indirect lock. Otherwise, it costs find_cost pennies to perform the lsearch.
-
 lsearchr() is like an lsearch() run through revwords(). Results are returned from highest dbref to lowest. search() is an alias for lsearch().
+
+search() and lsearch() also take the one-argument form RhostMUSH and TinyMUSH use, `search([<player>] <class>=<restriction>[, <low>[, <high>]])`; see [lsearch rhostmush one argument form](/reference/sharpmush-help/lsearch-function/#rhostmush-one-argument-form).
 
 
 ::: seealso
+- [indexed()](/reference/sharpmush-help/indexed-function/#indexed)
 - [@search](/reference/sharpmush-help/search-command/#search)
 - [@find](/reference/sharpmush-help/sharpcmd/#find)
 - [LPARENT()](/reference/sharpmush-help/sharpfunc/#lparent)
 - [LSTATS()](/reference/sharpmush-help/sharpfunc/#lstats)
 :::
+
+### The INDEX class
+
+lsearch() also takes an INDEX class, which PennMUSH does not have: `INDEX, <attribute>:<value>` keeps the objects whose own copy of `<attribute>` the attribute's index lists under `<value>`, as indexed(`<attribute>`, =, `<value>`) finds them, and the search starts from those objects instead of every object. The attribute must have a ready index (see [@attribute index](/reference/sharpmush-help/attribute-command/#attribute-indexes)); while it is being built lsearch() returns `#-1 INDEX BUILDING`, and without one `#-1 ATTRIBUTE NOT INDEXED`. Only objects whose copy you could read with get() are listed.
+
+### RhostMUSH one-argument form
+
+`search([<player>] <class>=<restriction>[, <low>[, <high>]])`
+
+When the first argument holds an `=`, search(), lsearch() and nsearch() read it the way RhostMUSH and TinyMUSH write a search: one class and its restriction, after an optional player whose objects to search. Without a player, the search covers every owner you may search. `<low>` and `<high>` limit the dbrefs searched, with or without their `#`. This form comes from RhostMUSH; PennMUSH treats such an argument as a player name, which cannot contain `=`.
+
+```sharp
+> think search(me th=lamp)
+#12 #40
+> think search(type=player,1,10)
+#1 #6
+```
+
+### One-argument form classes
+
+The class may be shortened to any start of its name; where two names share a start, the first in this list wins:
+
+| Class | Finds |
+|---|---|
+| exits, objects (or things), rooms, players | objects of that type whose name contains `<restriction>` |
+| name | objects of any type whose name contains `<restriction>` |
+| type | objects of the type `<restriction>` names: rooms, exits, objects (or things), players, also shortened |
+| evaluate, eplayer, eroom, eobject (or ething), eexit | objects, of the type named, for which `<restriction>` evaluates true, as the EVAL classes |
+| flags | objects with every flag whose letter is in `<restriction>` |
+| parent | children of the object `<restriction>` |
+
+A players, type=players or parent search with no player covers every owner. An unknown class or type returns `#-1 INVALID SEARCH TYPE`, and an unknown player `#-1`.
 
 ### Search examples
 
@@ -80,4 +120,5 @@ lsearch(me, type, room, 100, 200)        <-- same, but only w/db# 100-200<br>
 lsearch(all, eplayer, \[eq(money(##),100)\]) <-- lists all players with 100 coins.<br>
 lsearch(all, type, player, elock, (FLAG^WIZARD|FLAG^ROYALTY)&!FLAG^IC) ^-- list all wiz and roy players that are not IC.<br>
 lsearch(all, type, player, elock, sex:m*) <- lists all players with an @sex beginning with 'm'<br>
-lsearch(me, elock, !desc:*)              <-- lists all objects you own that don't have an @desc set
+lsearch(me, elock, !desc:*)              <-- lists all objects you own that don't have an @desc set<br>
+lsearch(all, type, player, index, STATUS:approved) <-- lists the players whose STATUS is approved, from the STATUS index

@@ -15,7 +15,7 @@ description: "SharpMUSH documentation for Puppets"
       "heading": "Puppet example",
       "lookup": "puppets puppet example"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-puppet-example-heading-puppet-example-lookup-puppets-puppet-example),
+  ],
   "redirects": {
     "PUPPETS2": "puppets puppet example"
   }
@@ -46,7 +46,7 @@ An example of a puppet:
   Punch> The Finishing Place
   Punch>
   Punch> Obvious exits:
-  Punch> Door \<S\>
+  Punch> Door <S>
   > @force #18=:waves hello
   Punch> Punch waves hello
   > #18 say Hello.

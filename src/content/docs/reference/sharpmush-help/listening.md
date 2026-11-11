@@ -17,7 +17,7 @@ description: "SharpMUSH documentation for Listening"
       "aliases": [
         "^",
         "^-LISTENS"
-      ](/reference/sharpmush-help/sharpconf/#id-listen-patterns-heading-listen-patterns-lookup-listening-listen-patterns-aliases-listens)
+      ]
     },
     {
       "id": "listener-flags-and-triggers",

@@ -10,14 +10,14 @@ description: "SharpMUSH documentation for foreach()"
   "lookup": "foreach()",
   "aliases": [
     "foreach"
-  ](/reference/sharpmush-help/sharpconf/#foreach),
+  ],
   "sections": [
     {
       "id": "character-iteration-examples",
       "heading": "Character iteration examples",
       "lookup": "foreach character iteration examples"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-character-iteration-examples-heading-character-iteration-examples-lookup-foreach-character-iteration-examples),
+  ],
   "redirects": {
     "FOREACH2": "foreach character iteration examples"
   }
@@ -58,6 +58,6 @@ You say, "1 1 1 1 0 "
 
 
 ::: seealso
-- [MAP()](/reference/sharpmush-help/sharpfunc/#map)
+- [MAP()](/reference/sharpmush-help/map-function/#map)
 - [anonymous attributes](/reference/sharpmush-help/anonymous-attributes/#anonymous-attributes)
 :::

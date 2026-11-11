@@ -11,11 +11,16 @@ description: "SharpMUSH documentation for @notify"
   "aliases": [],
   "sections": [
     {
+      "id": "storage",
+      "heading": "Storing the counter",
+      "lookup": "@notify storage"
+    },
+    {
       "id": "updating-waiting-registers",
       "heading": "Updating waiting registers",
       "lookup": "@notify updating waiting registers"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-updating-waiting-registers-heading-updating-waiting-registers-lookup-notify-updating-waiting-registers),
+  ],
   "redirects": {
     "@notify2": "@notify updating waiting registers"
   }
@@ -23,12 +28,10 @@ description: "SharpMUSH documentation for @notify"
 -->
 ## @notify
 
-`@notify[/any][/all] <object>[/<attribute>][=<number>]`<br>
-`@notify/setq <object>[/<attribute>]=<qreg1>,<qval1>[,...]`
+`@notify[/any][/all][/quiet] <object>[/<attribute>][=<number>]`<br>
+`@notify/setq[/quiet] <object>[/<attribute>]=<qreg1>,<qval1>[,...]`
 
 This command notifies a semaphore, allowing commands queued for that semaphore to be executed.
-
-The semaphore counter is stored before waiting commands are released. If the database cannot confirm a counter change, affected work stays reserved and further semaphore changes are refused until reconciliation succeeds. A later attempt verifies the stored count before completing or abandoning the uncertain operation. Conflicting counts or incomplete semaphore flags require administrator repair.
 
 If the `/any` switch is given, then all semaphores associated with `<object>` are @notified. Otherwise, only the specified semaphore `<attribute>` (or SEMAPHORE if no attribute is specified) is @notified.
 
@@ -37,6 +40,12 @@ If the `/all` switch is given, then all queue entries associated with the select
 If the `/all` switch was not used, and there were not enough queue entries waiting to satisfy the requested `<number>`, then the semaphore becomes negative, and subsequent @waits will not block until it reaches 0 again.
 
 You may not specify both the `/any` switch and a specific attribute. Similarly, you may not specify both the `/all` switch and a number.
+
+@notify tells you "Notified." unless you, or your owner, are set QUIET, or the `/quiet` switch is given.
+
+### Storing the counter
+
+The semaphore counter is stored before waiting commands are released. If the database cannot confirm a counter change, affected work stays reserved and further semaphore changes are refused until reconciliation succeeds. A later attempt verifies the stored count before completing or abandoning the uncertain operation. Conflicting counts or incomplete semaphore flags require administrator repair.
 
 ### Updating waiting registers
 
@@ -56,5 +65,5 @@ Hello, Walker!
 - [semaphores](/reference/sharpmush-help/semaphores/#semaphores)
 - [@drain](/reference/sharpmush-help/sharpcmd/#drain)
 - [@wait](/reference/sharpmush-help/wait-command/#wait)
-- [@halt](/reference/sharpmush-help/sharpcmd/#halt)
+- [@halt](/reference/sharpmush-help/halt-command/#halt)
 :::

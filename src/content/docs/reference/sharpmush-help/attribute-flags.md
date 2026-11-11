@@ -24,8 +24,18 @@ description: "SharpMUSH documentation for Attribute Flags"
       "id": "display",
       "heading": "Display formatting",
       "lookup": "attribute flags display"
+    },
+    {
+      "id": "dialect",
+      "heading": "Other servers' names",
+      "lookup": "attribute flags dialect"
+    },
+    {
+      "id": "layout",
+      "heading": "How formatted values are laid out",
+      "lookup": "attribute flags layout"
     }
-  ](/reference/sharpmush-help/sharpattr/#id-access-and-matching-heading-access-and-matching-lookup-attribute-flags-access-and-matching-id-listening-and-internal-heading-listening-and-internal-flags-lookup-attribute-flags-listening-and-internal-id-display-heading-display-formatting-lookup-attribute-flags-display),
+  ],
   "redirects": {
     "ATTRIBUTE FLAGS2": "attribute flags access and matching",
     "ATTRIBUTE FLAGS3": "attribute flags listening and internal",
@@ -37,7 +47,7 @@ description: "SharpMUSH documentation for Attribute Flags"
 
 Attribute flags are set on an object's attributes using `@set`, or applied to attributes globally using `@attribute`. Their names (and, when applicable, the character used in examine as shorthand for the flag) are shown below.
 
-These flags restrict access or alter attribute behavior. Propagation depends on the flag; see [attribute trees permissions](/reference/sharpmush-help/sharpattr/#attribute-trees-permissions).
+These flags restrict access or alter attribute behavior. Propagation depends on the flag; see [attribute trees permissions](/reference/sharpmush-help/attribute-trees/#permissions).
 
 - `no_command ($)`    Attribute won't be checked for $-commands or ^-listen patterns.
 - `no_inherit (i)`    Attribute will not be inherited by the children of this object.
@@ -55,13 +65,13 @@ These flags restrict access or alter attribute behavior. Propagation depends on 
 These attribute flags grant access. They are not inherited down attribute trees, and must be set on a branch attribute as well as a leaf to take effect (to make FOO\`BAR visual, FOO must be visual too):
 
 - `visual (v)`        Attribute can be seen by anyone via examine, get(), eval(), ufun(), zfun(), and similar functions.
-- `public (p)`        This attribute can be evaluated by any object, even if safer_ufun is in use. **DANGEROUS! AVOID!**
+- `public (p)`        This attribute can be evaluated by any object, whatever its privileges. **DANGEROUS! AVOID!**
 
 These attribute flags alter the way attributes are used in commands and ^-listens. They always only affect the attribute they're set on, regardless of attribute trees:
 
 - `debug (b)`         Start showing debug output while this attr is evaluated.
 - `no_debug (B)`      Stop showing debug output when this attr is evaluated
-- `regexp (R)`        Match $-commands and ^-listens using regular expressions. See **[regexp](/reference/sharpmush-help/sharpconf/#regexp)**
+- `regexp (R)`        Match $-commands and ^-listens using regular expressions. See **[regexp](/reference/sharpmush-help/regexp/#regular-expressions)**
 - `case (C)`          Match $-commands and ^-listens case sensitively.
 - `nospace (s)`       Attribute won't add a space after the object name in @o-* messages. See **[verbs](/reference/sharpmush-help/verbs/#verbs)**
 - `noname (N)`        Attribute won't show name in @o-* messages.
@@ -89,6 +99,17 @@ If both are set, `cmdsyntax` takes priority, since a command list may itself con
 
 Formatting never rewrites the stored attribute; `@decompile` and the raw value returned by `get()`/`v()` are unaffected regardless of these flags.
 
+### Other servers' names
+
+- `rhost`             The attribute is written for RhostMUSH. When it runs, a function or command SharpMUSH has no name for is looked up among RhostMUSH's names for one it has: `wildmatch()` runs `match()`, `@sudo` runs `@force/inplace`. SharpMUSH's own names, and `@function`s, still come first.
+- `mux`               The same for TinyMUX: `strtrunc()` runs `left()`, `iadd()` runs `add()`, `@qmail` runs `@mail/quick`.
+
+Attribute names follow the flag too: in an attribute flagged `mux`, `get(me/kill)` reads `DEATH` and `@reject me=...` sets `HAVEN`, the names a TinyMUX import stores those attributes by. The full lists are in [compatibility config other servers attribute names](/reference/sharpmush-help/compatibility-config/#other-servers-attribute-names).
+
+An attribute without the flag reads the game's `dialect` option instead, as typed commands do. A RhostMUSH or TinyMUX database import sets the option and its flag on every attribute it brings in. See [compatibility config](/reference/sharpmush-help/compatibility-config/#compatibility-config).
+
+### How formatted values are laid out
+
 A value that already fits your screen width is shown on one line. When a call does not fit, it is split with one argument per line -- and so is every call and bracket group nested inside it, however short, so that a split call reads as a tree rather than as a wrapped first line above a dense remainder. A call with no arguments, such as `rand()`, is never split: there is nothing to put on the next line. A `[` that sits directly in front of a call stays with it, so you will see `[u(` at the end of a line rather than a `[` on a line of its own.
 
 Two functions are shown exactly as you stored them, however long they get and whatever encloses them: `lit()` and `localize()`. Both take their argument as literal text rather than evaluating it, so the layout leaves their contents alone -- a line break inserted inside one would become part of what it returns.
@@ -96,7 +117,7 @@ Two functions are shown exactly as you stored them, however long they get and wh
 What sits between `{ ... }` braces is prose to the formatter: a `,` or `;` there is data, not a separator, so a braced branch stays on one line however long it is, and a function name written inside braces is left exactly as you typed it. The `{` itself can start a new line, and a `[ ... ]` inside the braces is laid out normally, since brackets are the one thing that make code out of a brace body again. A `@switch` whose branches are wrapped in `{}`, the most common style, therefore shows one line per branch, with any bracketed call inside a branch indented under it.
 
 ::: seealso
-- [@set](/reference/sharpmush-help/sharpcmd/#set)
+- [@set](/reference/sharpmush-help/set-command/#set)
 - [@attribute](/reference/sharpmush-help/attribute-command/#attribute)
 - [attribute trees](/reference/sharpmush-help/attribute-trees/#attribute-trees)
 - [examine](/reference/sharpmush-help/sharpcmd/#examine)

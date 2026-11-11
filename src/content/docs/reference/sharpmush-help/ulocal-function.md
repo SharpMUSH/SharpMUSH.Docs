@@ -10,14 +10,14 @@ description: "SharpMUSH documentation for ulocal()"
   "lookup": "ulocal()",
   "aliases": [
     "ulocal"
-  ](/reference/sharpmush-help/sharpconf/#ulocal),
+  ],
   "sections": [
     {
       "id": "local-register-examples",
       "heading": "Local register examples",
       "lookup": "ulocal local register examples"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-local-register-examples-heading-local-register-examples-lookup-ulocal-local-register-examples),
+  ],
   "redirects": {
     "ULOCAL2": "ulocal local register examples"
   }
@@ -37,14 +37,14 @@ Examples:
 &SUB-FUNCTION me=setq(0,v(FRUIT))[extract(%q0,match(%q0,%0),1)]
 &TOP-FUNCTION me=setq(0,are delicious!)[ulocal(SUB-FUNCTION,%0)] %q0
 say u(TOP-FUNCTION,b*)
-You say "bananas are delicious!"
+You say, "bananas are delicious!"
 ```
 
 If SUB-FUNCTION had been called with u() instead of ulocal():<br>
 ```sharp
 > &TOP-FUNCTION me=setq(0,are delicious!)[u(SUB-FUNCTION,%0)] %q0
 > say u(TOP-FUNCTION,b*)
-You say "bananas apples bananas oranges pears"
+You say, "bananas apples bananas oranges pears"
 ```
 
 In this second example, in SUB-FUNCTION, %q0 was set to "apples bananas oranges pears", so that when the u() "returned" and TOP-FUNCTION evaluated %q0, this is what was printed. In the first example, ulocal() reset the value of %q0 to its original "are delicious!"

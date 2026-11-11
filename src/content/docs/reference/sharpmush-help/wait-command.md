@@ -20,7 +20,7 @@ description: "SharpMUSH documentation for @wait"
       "heading": "Retiming queued jobs",
       "lookup": "@wait retiming queued jobs"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-named-semaphores-heading-named-semaphores-lookup-wait-named-semaphores-id-retiming-queued-jobs-heading-retiming-queued-jobs-lookup-wait-retiming-queued-jobs),
+  ],
   "redirects": {
     "@wait2": "@wait named semaphores",
     "@wait3": "@wait retiming queued jobs"
@@ -39,7 +39,7 @@ The second form sets up a semaphore wait on `<object>`. The enactor will execute
 
 The third form combines the first two: the enactor will execute `<command_list>` when `<object>` is @notified or when `<time>` passes, whichever happens first.
 
-More forms that support semaphores on arbitrary attributes are described in [@wait named semaphores](/reference/sharpmush-help/sharpcmd/#wait-named-semaphores).
+More forms that support semaphores on arbitrary attributes are described in [@wait named semaphores](/reference/sharpmush-help/wait-command/#named-semaphores).
 
 
 ::: seealso

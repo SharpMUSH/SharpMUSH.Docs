@@ -15,7 +15,7 @@ description: "SharpMUSH documentation for DEBUG"
       "heading": "Debugging example",
       "lookup": "debug debugging example"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-debugging-example-heading-debugging-example-lookup-debug-debugging-example),
+  ],
   "redirects": {
     "DEBUG2": "debug debugging example"
   }

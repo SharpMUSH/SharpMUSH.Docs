@@ -10,6 +10,8 @@ description: "SharpMUSH documentation for @include"
   "lookup": "@include",
   "aliases": [],
   "sections": [
+    {"id": "example", "heading": "Example", "lookup": "@include example"},
+    {"id": "arguments", "heading": "Arguments and nesting", "lookup": "@include arguments and nesting"},
     {
       "id": "include-switches",
       "heading": "Include switches",
@@ -22,7 +24,8 @@ description: "SharpMUSH documentation for @include"
       "aliases": [
         "@include/chain"
       ]
-    }
+    },
+    {"id": "pipeline-example", "heading": "Pipeline example", "lookup": "@include pipeline example"}
   ],
   "redirects": {
     "@include2": "@include switches",
@@ -32,13 +35,21 @@ description: "SharpMUSH documentation for @include"
 -->
 ## @include
 
-`@include[/<switches>] <object>/<attribute>[=<arg1>,<arg2>,...]`
+`@include[/<switches>] <object>/<attribute>[=<arg1>,<arg2>,...]`<br>
+`@include/args[/<switches>] <object>/<attribute>=<name>,<value>[,<name>,<value>...]`
 
 @include inserts the contents of the attribute provided into the action list in-place, without adding a new queue entry. It is useful to avoid having to copy the same code into multiple commands. The attribute to be included must be visible to the enactor.
 
-Output: the output of the last command run. See [command output](/reference/sharpmush-help/command-output/#command-output).
+`@include` outputs what the last command it ran output. See [command output](/reference/sharpmush-help/command-output/#command-output).
+
+- [@include example](/reference/sharpmush-help/include-command/#example): shared checks, and attributes that are also $-commands
+- [@include arguments and nesting](/reference/sharpmush-help/include-command/#arguments-and-nesting): %0-%9 in the included actions, and the nesting limit
+- [@include switches](/reference/sharpmush-help/include-command/#include-switches): `/args`, `/chain`, `/nobreak`, `/localize` and `/clearregs`
+- [@include attribute pipelines](/reference/sharpmush-help/include-command/#attribute-pipelines): several attributes in sequence with `/chain`
+- [@include pipeline example](/reference/sharpmush-help/include-command/#pipeline-example): a command validated by a three-step chain
 
 ### Example
+
 ```sharp
 &CHECKS me=@assert [orflags(%#,Wr)]; @break [gt(words(lwho()),%0)]
 &CMD1 me=$cmd *: @include me/CHECKS; @pemit %#=You passed.
@@ -50,6 +61,8 @@ When including attribute contents, @include ignores any ^...: or $...: at the st
 &CHECKS me=$testchk *: @assert [orflags(%#,Wr)]; @break [gt(words(lwho()),%0)]
 ```
 
+### Arguments and nesting
+
 The including environment (%0-%9) is available to the included actions. If arguments are provided to @include, they are substituted for the environment's %0, %1, etc. while the included action list is running. The environment is then restored after the @include.
 
 In-place action lists (those run by @include, @trigger, @force, @switch/inplace, @dolist/inplace and the like) nest at most 50 deep within one queue entry. A list nested any deeper is skipped without a message, and the list that included it carries on with its next command. An attribute that includes itself therefore runs 50 times.
@@ -57,14 +70,15 @@ In-place action lists (those run by @include, @trigger, @force, @switch/inplace,
 ### Include switches
 
 @include takes the following switches to alter its behaviour:
-- /chain: Include several attributes in sequence, as a pipeline. See [@include attribute pipelines](/reference/sharpmush-help/sharpcmd/#include-attribute-pipelines).
+- /args: The arguments are `<name>,<value>` pairs, read in the included actions as `%<name>` (see [uargs()](/reference/sharpmush-help/uargs-function/#uargs)). Each supplied value also replaces its numbered slot, starting at %0. Untouched inherited slots stay available, including with /chain. This replaces the previous names-only overlay. hasarg(name,supplied) reports only this include's supplied keys; hasarg(name) also sees inherited keys.
+- /chain: Include several attributes in sequence, as a pipeline. See [@include attribute pipelines](/reference/sharpmush-help/include-command/#attribute-pipelines).
 - /nobreak: Prevents an @break/@assert in the included attribute from breaking the including action list.
 - /localize: Saves all q-registers before including the attribute, and restores them after including the attribute.
 - /clearregs: Clears all q-registers before including the attribute.
 
 
 ::: seealso
-- [@include attribute pipelines](/reference/sharpmush-help/sharpcmd/#include-attribute-pipelines)
+- [@include attribute pipelines](/reference/sharpmush-help/include-command/#attribute-pipelines)
 - [@trigger](/reference/sharpmush-help/trigger-command/#trigger)
 - [u()](/reference/sharpmush-help/u-function/#u)
 - [@break](/reference/sharpmush-help/break-command/#break)
@@ -83,7 +97,8 @@ Three things set a chain apart from writing several separate @includes:
 
 The /nobreak, /localize and /clearregs switches behave as they do for a single @include. /nobreak confines an @break/@assert to the link it fires in, so instead of short-circuiting, the chain simply continues to the next link. /localize and /clearregs save and restore, or clear, the q-registers around the whole chain; within the chain the links still share registers.
 
-### Example
+### Pipeline example
+
 A `+set <number>` command that validates its input through a three-step chain:
 ```sharp
 &CMD`SET obj=$+set *: @include/chain me/INC`VALIDATE me/INC`RANGE me/INC`APPLY=%0
@@ -99,7 +114,7 @@ A `+set <number>` command that validates its input through a three-step chain:
 
 ::: seealso
 - [@include](/reference/sharpmush-help/include-command/#include)
-- [@include switches](/reference/sharpmush-help/sharpcmd/#include-switches)
+- [@include switches](/reference/sharpmush-help/include-command/#include-switches)
 - [@break](/reference/sharpmush-help/break-command/#break)
 - [@dolist](/reference/sharpmush-help/dolist-command/#dolist)
 - [@trigger](/reference/sharpmush-help/trigger-command/#trigger)

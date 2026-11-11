@@ -15,7 +15,7 @@ description: "SharpMUSH documentation for Registers"
       "heading": "Capture register behavior",
       "lookup": "registers capture register behavior"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-capture-register-behavior-heading-capture-register-behavior-lookup-registers-capture-register-behavior),
+  ],
   "redirects": {
     "REGISTERS2": "registers capture register behavior"
   }
@@ -52,13 +52,12 @@ Please see [setq()](/reference/sharpmush-help/setq-function/#setq) for more info
 - [%]
 - [@trigger](/reference/sharpmush-help/trigger-command/#trigger)
 - [$-commands]
-- [WILDCARDS](/reference/sharpmush-help/sharptop/#wildcards)
+- [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)
 - [setq()](/reference/sharpmush-help/setq-function/#setq)
 - [V()](/reference/sharpmush-help/sharpfunc/#v)
 - [R()](/reference/sharpmush-help/sharpfunc/#r)
 - [REGISTERS()](/reference/sharpmush-help/sharpfunc/#registers)
 - [LISTQ()](/reference/sharpmush-help/sharpfunc/#listq)
 - [LETQ()](/reference/sharpmush-help/sharpfunc/#letq)
-- [LISTQ()](/reference/sharpmush-help/sharpfunc/#listq)
 - [STRMATCH()](/reference/sharpmush-help/sharpfunc/#strmatch)
 :::

@@ -10,6 +10,7 @@ description: "SharpMUSH documentation for @dolist"
   "lookup": "@dolist",
   "aliases": [],
   "sections": [
+    {"id": "substitutions", "heading": "Element substitutions", "lookup": "@dolist substitutions"},
     {
       "id": "notification-and-delimiters",
       "heading": "Notification and delimiters",
@@ -19,8 +20,10 @@ description: "SharpMUSH documentation for @dolist"
       "id": "iteration-examples",
       "heading": "Iteration examples",
       "lookup": "@dolist iteration examples"
-    }
-  ](/reference/sharpmush-help/sharpconf/#id-notification-and-delimiters-heading-notification-and-delimiters-lookup-dolist-notification-and-delimiters-id-iteration-examples-heading-iteration-examples-lookup-dolist-iteration-examples),
+    },
+    {"id": "then", "heading": "Running something afterwards", "lookup": "@dolist then", "aliases": ["@dolist/then"]},
+    {"id": "nested-examples", "heading": "Nested iteration examples", "lookup": "@dolist nested examples"}
+  ],
   "redirects": {
     "@dolist2": "@dolist notification and delimiters",
     "@dolist3": "@dolist iteration examples"
@@ -29,37 +32,65 @@ description: "SharpMUSH documentation for @dolist"
 -->
 ## @dolist
 
-`@dolist[/<switches>][/notify][/delimit <delim>] <list>=<action list>`
+`@dolist[/<switches>][/notify][/delimit <delim>] <list>=<action list>`<br>
+`@dolist/pid <object> <list>=<action list>`<br>
+`@dolist/then <list>=<action list>,<afterwards>`
 
-@dolist queues the `<action list>` for execution once for each element in `<list>`. `<list>` is space-separated, unless the `/delimit` switch is given, in which case it is a `<delim>`-separated list.
+@dolist queues the `<action list>` for execution once for each element in `<list>`. `<list>` is space-separated, unless the `/delimit` switch is given, in which case it is a `<delim>`-separated list. A marked `<delim>`, such as `%*<|>`, splits only where it is marked: see [list separators](/reference/sharpmush-help/list-separators/#list-separators). The `/space` switch asks for the default, a space-separated list, and changes nothing; it comes from RhostMUSH.
 
-Output: with `/inline` or `/inplace`, the output of the last command run; queued, nothing. See [command output](/reference/sharpmush-help/command-output/#command-output).
+With `/inline` or `/inplace`, `@dolist` outputs what the last command it ran output; queued, it outputs nothing. See [command output](/reference/sharpmush-help/command-output/#command-output).
 
-The %i0 substitution, or the function itext(0), can be used in the `<action list>` to get the current element of the `<list>`, and the inum(0) function returns the position of the current element. ilev() returns the nesting depth of @dolists. The %iL substitution returns the itext() for the outermost @dolist, and is equivilent to itext(ilev()).
+- [@dolist substitutions](/reference/sharpmush-help/dolist-command/#element-substitutions): `%i0`, `inum()`, `%d0`, `##` and `#@` in the action list
+- [@dolist notification and delimiters](/reference/sharpmush-help/dolist-command/#notification-and-delimiters): `/notify`, `/pid`, `/inline` and the switches that go with it
+- [@dolist then](/reference/sharpmush-help/dolist-command/#running-something-afterwards): `/then`, an action list run after the last element
+- [@dolist iteration examples](/reference/sharpmush-help/dolist-command/#iteration-examples): positions and `/notify`
+- [@dolist nested examples](/reference/sharpmush-help/dolist-command/#nested-iteration-examples): one @dolist inside another, and inside iter()
 
-For backwards compatability, the string "##" is also replaced with the current element of the list, and "#@" the current position. However, these replacements occur BEFORE evaluation, which means that they always return the values for the outermost @dolist, and are thus unsuitable for nesting. It also makes them unsafe for use on user-input or strings which may contain special characters; using the %i* sub or itext() instead is very strongly recommended.
+### Element substitutions
+
+The %i0 substitution, or the function itext(0), can be used in the `<action list>` to get the current element of the `<list>`, and the inum(0) function returns the position of the current element. ilev() returns the nesting depth of @dolists. The %iL substitution returns the itext() for the outermost @dolist, and is equivalent to itext(ilev()).
+
+%d0 is the current element as well, %d1 the element of the @dolist around it, and %dL the outermost one's. Unlike %i, %d counts only @dolists, so an iter() inside the action list does not move it. The idea comes from RhostMUSH.
+
+For backwards compatibility, "##" also stands for the current element of the list, and "#@" for its position, counting from 1. In a nested @dolist they name the outermost one. The element is never evaluated as code. For the current @dolist, use %i0 or itext(0), and inum(0). Like iter()'s, they count only in the action list as written, not in the code of an attribute it triggers or calls. With the `innermost_tokens` option on, they name the innermost @dolist or iter() instead, wherever they are written. See [compatibility config innermost loop tokens](/reference/sharpmush-help/compatibility-config/#innermost-loop-tokens).
 
 ### Notification and delimiters
 
-If the `/notify` switch is given, the command "@notify me" is queued after all copies of `<action list>` have been queued. This is useful for object synchronization with semaphores.
+If the `/notify` switch is given, the command "@notify me" is queued after all copies of `<action list>` have been queued. This is useful for object synchronization with semaphores. With `/pid`, the first word of `<list>` is taken out of it and names the object to notify instead of you; `/notify` wins over `/pid`, and `/delimit` turns it off.
 
-If the `/inline` switch is given, @dolist will run the new action lists instantly, instead of queueing them to be run later.
+If the `/inline` switch (or TinyMUX's `/now`) is given, @dolist will run the new action lists instantly, instead of queueing them to be run later.
 
 When using `@dolist/inline`, an @break in an `<action list>` will stop the calling action list (and any further `<action list>`s) from running. Each `<action list>` will also be able to see/alter the q-registers for the calling action list. The following switches can be used with `/inline` to alter this behaviour:
 - /nobreak: @breaks in `<action list>` do not effect to the calling action list
 - /localize: q-registers are saved before each `<action>` is run, and restored after it completes
-- /clearreg: q-registers are all reset before each `<action>` is run. Most useful when used in combination with /localize.
+- /clearregs: q-registers are all reset before each `<action>` is run. Most useful when used in combination with /localize. `/clearreg` is the same switch, as RhostMUSH spells it.
+
+Without `/inline` or `/inplace`, /localize and /clearregs do nothing: each queued `<action list>` starts with its own copy of the q-registers as they were when @dolist ran.
 
 `@dolist/inplace` is an alias for `@dolist/inline/nobreak/localize`.
 
 ::: seealso
 - [iter()](/reference/sharpmush-help/iter-function/#iter)
 - [ilev()](/reference/sharpmush-help/ilev-function/#ilev)
-- [MAP()](/reference/sharpmush-help/sharpfunc/#map)
+- [MAP()](/reference/sharpmush-help/map-function/#map)
 - [@notify](/reference/sharpmush-help/notify-command/#notify)
 - [semaphores](/reference/sharpmush-help/semaphores/#semaphores)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 :::
+
+### Running something afterwards
+
+`@dolist/then <list>=<action list>,<afterwards>`
+
+With `/then`, the action list after the last comma runs once after every copy of `<action list>`, with the number of elements in %0, even when `<list>` is empty. Queued, it is queued after them; with `/inline`, it runs in place after the last one. Put braces around an action list that has a comma of its own.
+
+```sharp
+> @dolist/then a b c=say %i0,say That was %0.
+You say, "a"
+You say, "b"
+You say, "c"
+You say, "That was 3."
+```
 
 ### Iteration examples
 
@@ -82,6 +113,8 @@ Notified.
 You say, "Done"
 ```
 
+### Nested iteration examples
+
 ```sharp
 > @dolist a b c=@dolist 1 2 3=say %iL/%i0
 You say, "a/1"
@@ -93,4 +126,10 @@ You say, "b/3"
 You say, "c/1"
 You say, "c/2"
 You say, "c/3"
+```
+
+```sharp
+> @dolist a b=think iter(x y,%d0:%i0)
+a:x a:y
+b:x b:y
 ```

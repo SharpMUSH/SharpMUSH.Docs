@@ -30,7 +30,7 @@ description: "SharpMUSH documentation for @malias"
       "heading": "Administrative alias operations",
       "lookup": "@malias administrative alias operations"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-creating-and-naming-aliases-heading-creating-and-naming-aliases-lookup-malias-creating-and-naming-aliases-id-managing-recipients-heading-managing-recipients-lookup-malias-managing-recipients-id-alias-permissions-heading-alias-permissions-lookup-malias-alias-permissions-id-administrative-alias-operations-heading-administrative-alias-operations-lookup-malias-administrative-alias-operations),
+  ],
   "redirects": {
     "@MALIAS2": "@malias creating and naming aliases",
     "@MALIAS3": "@malias managing recipients",
@@ -51,7 +51,7 @@ The @malias command is used to create, view, and manipulate @mail aliases, or li
 
 
 ::: seealso
-- [@malias creating and naming aliases](/reference/sharpmush-help/sharpcmd/#malias-creating-and-naming-aliases)
+- [@malias creating and naming aliases](/reference/sharpmush-help/malias-command/#creating-and-naming-aliases)
 :::
 
 ### Creating and naming aliases
@@ -63,7 +63,7 @@ The @malias command is used to create, view, and manipulate @mail aliases, or li
 
 The first form above creates a new alias for the given list of players.
 
-`@malias/desc` sets the alias's description, which is shown when aliases are listed.
+`@malias/desc` sets the alias's description, which is shown when aliases are listed. `/describe` is the same switch.
 
 `@malias/rename` renames an alias.
 
@@ -71,7 +71,7 @@ The first form above creates a new alias for the given list of players.
 
 
 ::: seealso
-- [@malias managing recipients](/reference/sharpmush-help/sharpcmd/#malias-managing-recipients)
+- [@malias managing recipients](/reference/sharpmush-help/malias-command/#managing-recipients)
 :::
 
 ### Managing recipients
@@ -80,7 +80,7 @@ The first form above creates a new alias for the given list of players.
 - `@malias/add <alias>=<player list>`
 - `@malias/remove <alias>=<player list>`
 
-`@malias/set` resets the list of players on the alias to *<player list>*.
+`@malias/set` resets the list of players on the alias to *&lt;player list&gt;*.
 
 `@malias/add` adds players to the alias. Note that the same player may be on an alias multiple times.
 
@@ -88,7 +88,7 @@ The first form above creates a new alias for the given list of players.
 
 
 ::: seealso
-- [@malias alias permissions](/reference/sharpmush-help/sharpcmd/#malias-alias-permissions)
+- [@malias alias permissions](/reference/sharpmush-help/malias-command/#alias-permissions)
 :::
 
 ### Alias permissions
@@ -98,7 +98,7 @@ The first form above creates a new alias for the given list of players.
 
 `@malias/use` controls who may use an alias. Players who may use an alias will see it in their @malias list, and can @mail to the alias.
 
-`@malias/see` controls who may list the members of an alias.
+`@malias/see` controls who may list the members of an alias. `/useflag` and `/seeflag` are the same as `/use` and `/see`.
 
 An empty permission list allows any player. The permission list may also be a space-separated list of one or more of "owner", "members" (of the alias), and "admin".
 
@@ -106,7 +106,7 @@ By default, the owner and alias members may see and use the alias, but only the 
 
 
 ::: seealso
-- [@malias administrative alias operations](/reference/sharpmush-help/sharpcmd/#malias-administrative-alias-operations)
+- [@malias administrative alias operations](/reference/sharpmush-help/malias-command/#administrative-alias-operations)
 :::
 
 ### Administrative alias operations
@@ -118,7 +118,7 @@ By default, the owner and alias members may see and use the alias, but only the 
 
 `@malias/all` is an admin-only command that lists all aliases in the MUSH.
 
-`@malias/stat` is an admin-only command that displays statistics about the number of aliases and members of aliases in use.
+`@malias/stat` is an admin-only command that displays statistics about the number of aliases and members of aliases in use. `/stats` is the same switch.
 
 `@malias/chown` is a wizard-only command that changes the owner of an alias.
 

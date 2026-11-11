@@ -20,7 +20,7 @@ description: "SharpMUSH documentation for ansi()"
       "heading": "Color examples",
       "lookup": "ansi color examples"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-legacy-color-codes-heading-legacy-color-codes-lookup-ansi-legacy-color-codes-id-color-examples-heading-color-examples-lookup-ansi-color-examples),
+  ],
   "redirects": {
     "ANSI2": "ansi legacy color codes",
     "ANSI3": "ansi color examples"
@@ -29,12 +29,13 @@ description: "SharpMUSH documentation for ansi()"
 -->
 ## ansi()
 
-`ansi(<codes>[ ... <codesN>], <string>)`
+`ansi(<codes>[ ... <codesN>], <string>)`<br>
+`ansi(<codes>, <string>, <codes2>, <string2>[, ...])`
 
 This allows you to mark up a string using ANSI terminal effects, 16-color codes, and 256 XTERM colors (specified as color names or hex values).
 
-The old-style `<ansi-codes>` are listed in "help ansi legacy color codes".<br>
-Each block of space-separated `<codes>` can be one or more old-style ANSI codes, as listed in "help ansi legacy color codes", or a foreground and/or background color. Background colors are prefixed with a "/". Each color can be one of:
+The old-style `<ansi-codes>` are listed in [ansi legacy color codes](/reference/sharpmush-help/ansi-function/#legacy-color-codes).<br>
+Each block of space-separated `<codes>` can be one or more old-style ANSI codes, as listed in [ansi legacy color codes](/reference/sharpmush-help/ansi-function/#legacy-color-codes), or a foreground and/or background color. Background colors are prefixed with a "/". Each color can be one of:
 
     * +`<colorname>` (for a list of valid names, see [colors()](/reference/sharpmush-help/colors-function/#colors))
     * a hexcode, optionally in angle brackets (#000000, `<#ff0055>`, etc)
@@ -43,16 +44,12 @@ Each block of space-separated `<codes>` can be one or more old-style ANSI codes,
 
 For example, "ansi(+orange/#0000ff,Test)" would color "Test" in orange, on a blue background. In the event that your client does not support those colors, SharpMUSH will downgrade the color to the closest fit that your client can understand.
 
-Codes are parsed from left to right so, with later codes overriding earlier ones. So, for example:
-```sharp
-ansi(y /+green B <#ffffff>, test)
-would show white text on an ANSI-blue background.
-```
+The second form is TinyMUX's: each `<string>` is marked up with the `<codes>` before it, and the pieces are joined in order, so ansi(r,Red,g,Green) is "Red" in red then "Green" in green. An odd number of arguments is an error.
 
 ::: seealso
 - [ANSI](/reference/sharpmush-help/sharpflag/#ansi)
 - [COLOR](/reference/sharpmush-help/sharpflag/#color)
-- [@SOCKSET](/reference/sharpmush-help/sharpcmd/#sockset)
+- [@SOCKSET](/reference/sharpmush-help/sockset-command/#sockset)
 - [COLORSTYLE](/reference/sharpmush-help/sharpcmd/#colorstyle)
 - [colors()](/reference/sharpmush-help/colors-function/#colors)
 :::
@@ -80,6 +77,12 @@ Old-style valid color codes are:
 For example, "ansi(fc, Test)" would hilight "Test" in flashing cyan. Default foreground and background use the client's default color for fore and back.
 
 ### Color examples
+
+Codes are parsed from left to right so, with later codes overriding earlier ones. So, for example:
+```sharp
+ansi(y /+green B <#ffffff>, test)
+would show white text on an ANSI-blue background.
+```
 
 Bright yellow text on a blue background:<br>
 ```sharp

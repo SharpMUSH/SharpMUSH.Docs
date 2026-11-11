@@ -24,15 +24,18 @@ description: "SharpMUSH documentation for Compatibility Output"
       "id": "decompose-tags",
       "heading": "`decompose()` writes tags and links as the calls that make them",
       "lookup": "compatibility output decompose tags"
+    },
+    {
+      "id": "decompose-named-colour",
+      "heading": "`decompose()` writes a named colour as its code",
+      "lookup": "compatibility output decompose named colour"
     }
   ]
 }
 -->
 ## Compatibility Output
 
-`render(<string>, <formats>)` converts a string's markup for something outside the game: a bot, a
-web page, an SQL column. The formats are `ansi`, `html`, `noaccents` and `markup`, as in PennMUSH,
-and `ansi` requires the `Can_Spoof` power.
+`render(<string>, <formats>)` converts a string's markup for something outside the game: a bot, a web page, an SQL column. The formats are `ansi`, `html`, `noaccents` and `markup`, as in PennMUSH, and `ansi` requires the `Can_Spoof` power. SharpMUSH adds `markdown`, which writes a table as a Markdown pipe table, for a wiki page.
 
 ### `render()` markup compatibility
 
@@ -46,26 +49,22 @@ and `ansi` requires the `Can_Spoof` power.
 
 ```sharp
 > think render(ansi(r,a<b>c),html)
-<span style="color: #aa0000">a&lt;b&gt;c</span>
+<span style="color: var(--ms-ansi-1, #aa0000)">a&lt;b&gt;c</span>
 > think render(ansi(r,red),markup)
 red
 ```
 
-**Workaround.** Choose the output format needed by the consumer to get a portable string: `html` for a
-web page, `ansi` for a terminal capture, neither for plain text.
+**Workaround.** Choose the output format needed by the consumer to get a portable string: `html` for a web page, `ansi` for a terminal capture, neither for plain text.
 
 ### `decompose()` writes colour inside colour nested
 
 **A choice.**
 
-**PennMUSH** closes the open `ansi()` call and opens a flat one each time the colour changes, so colour
-inside colour comes back side by side, each call carrying the combined codes.
+**PennMUSH** closes the open `ansi()` call and opens a flat one each time the colour changes, so colour inside colour comes back side by side, each call carrying the combined codes.
 
-**SharpMUSH** writes it the way it was made, one call inside the other. Escapes, the space rule, `%r`/`%t`
-and the code letters are PennMUSH's.
+**SharpMUSH** writes it the way it was made, one call inside the other. Escapes, the space rule, `%r`/`%t` and the code letters are PennMUSH's.
 
-**Why.** PennMUSH's markup is a flat stream of open and close codes, so flat is all it can write.
-SharpMUSH keeps markup as layers, and the nested form evaluates to the same string.
+**Why.** PennMUSH's markup is a flat stream of open and close codes, so flat is all it can write. SharpMUSH keeps markup as layers, and the nested form evaluates to the same string.
 
 ```sharp
 > think decompose(ansi(r,a[ansi(g,b)]c))
@@ -74,8 +73,7 @@ SharpMUSH keeps markup as layers, and the nested form evaluates to the same stri
 
 PennMUSH: `[ansi(r,a)][ansi(g,b)][ansi(r,c)]`. Example: parity case `dc.nesting`.
 
-**Workaround.** Code that evaluates `decompose()`'s result, which is what it is for, gets the same string
-on both. Only code that compares the text of two `decompose()` results needs the colours not to nest.
+**Workaround.** Code that evaluates `decompose()`'s result, which is what it is for, gets the same string on both. Only code that compares the text of two `decompose()` results needs the colours not to nest.
 
 ### `decompose()` writes tags and links as the calls that make them
 
@@ -83,11 +81,9 @@ on both. Only code that compares the text of two `decompose()` results needs the
 
 **PennMUSH** writes a tag as `[tag(<name>)]` before the text and `[endtag(<name>)]` after it.
 
-**SharpMUSH** writes `[tagwrap(<name>[,<attributes>],<text>)]`, a command link as
-`[cmdlink(<text>,<command>[,<hint>])]`, and an address link as `[tagwrap(a,href="<address>",<text>)]`.
+**SharpMUSH** writes `[tagwrap(<name>[,<attributes>],<text>)]`, a command link as `[cmdlink(<text>,<command>[,<hint>])]`, and an address link as `[tagwrap(a,href="<address>",<text>)]`.
 
-**Why.** A tag here is a layer over the text it covers, so it has no half-open form: `tag()` and `endtag()`
-answer that `tagwrap()` is the way, and `decompose()` writes the calls that do rebuild the string.
+**Why.** A tag here is a layer over the text it covers, so it has no half-open form: `tag()` and `endtag()` answer that `tagwrap()` is the way, and `decompose()` writes the calls that do rebuild the string.
 
 ```sharp
 > think decompose(tagwrap(b,bold))
@@ -96,5 +92,23 @@ answer that `tagwrap()` is the way, and `decompose()` writes the calls that do r
 
 PennMUSH: `[tag(b)]bold[endtag(b)]`. Example: parity case `dc.markup`.
 
-**Workaround.** Evaluate `decompose()`'s result on the game that wrote it. Code that moves decomposed
-tags between the two servers has to rewrite one form into the other.
+**Workaround.** Evaluate `decompose()`'s result on the game that wrote it. Code that moves decomposed tags between the two servers has to rewrite one form into the other.
+
+### `decompose()` writes a named colour as its code
+
+**A choice.**
+
+**PennMUSH** keeps the name of an xterm colour or of one six letters or shorter, so `decompose()` writes `+red` back as `+red`; a longer name it stores as hex too.
+
+**SharpMUSH** stores the colour itself, not its name, and writes it as its hex code.
+
+**Why.** A named colour here is resolved when it is made, and the layer holds only the colour.
+
+```sharp
+> think decompose(ansi(+red,x))
+[ansi(#ff0000,x)]
+```
+
+PennMUSH: `[ansi(+red,x)]`. Example: parity case `dc.colours`.
+
+**Workaround.** Evaluating either result gives the same colour. Only code that compares the text of `decompose()` results needs the names.

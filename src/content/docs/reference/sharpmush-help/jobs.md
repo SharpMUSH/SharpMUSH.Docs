@@ -10,7 +10,7 @@ description: "SharpMUSH documentation for Recurring Jobs"
   "lookup": "recurring jobs",
   "aliases": [
     "@JOB"
-  ](/reference/sharpmush-help/sharpconf/#job),
+  ],
   "sections": [
     {
       "id": "commands-and-ownership",
@@ -47,7 +47,7 @@ description: "SharpMUSH documentation for Recurring Jobs"
       "heading": "Status reporting",
       "lookup": "recurring jobs status reporting"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-commands-and-ownership-heading-commands-and-ownership-lookup-recurring-jobs-commands-and-ownership-id-schedule-grammar-heading-schedule-grammar-lookup-recurring-jobs-schedule-grammar-id-schedule-examples-heading-schedule-examples-lookup-recurring-jobs-schedule-examples-id-timezones-heading-timezones-lookup-recurring-jobs-timezones-id-admission-and-restart-heading-admission-and-restart-lookup-recurring-jobs-admission-and-restart-id-execution-permissions-heading-execution-permissions-lookup-recurring-jobs-execution-permissions-id-status-reporting-heading-status-reporting-lookup-recurring-jobs-status-reporting)
+  ]
 }
 -->
 ## Recurring Jobs
@@ -58,12 +58,12 @@ A job records its ID, owning account, player and target, attribute, description,
 
 The sections below cover:
 
-- [recurring jobs commands and ownership](/reference/sharpmush-help/sharpconf/#recurring-jobs-commands-and-ownership) - the `@job` command and who may change a job
-- [recurring jobs schedule grammar](/reference/sharpmush-help/sharpconf/#recurring-jobs-schedule-grammar) and [recurring jobs schedule examples](/reference/sharpmush-help/sharpconf/#recurring-jobs-schedule-examples) - writing a schedule
-- [recurring jobs timezones](/reference/sharpmush-help/sharpconf/#recurring-jobs-timezones) - daylight saving and wall-clock time
-- [recurring jobs admission and restart](/reference/sharpmush-help/sharpconf/#recurring-jobs-admission-and-restart) - missed, late and overlapping firings
-- [recurring jobs execution permissions](/reference/sharpmush-help/sharpconf/#recurring-jobs-execution-permissions) - what is checked each time a job runs
-- [recurring jobs status reporting](/reference/sharpmush-help/sharpconf/#recurring-jobs-status-reporting) - what the last firing fields mean
+- [recurring jobs commands and ownership](/reference/sharpmush-help/jobs/#commands-and-ownership) - the `@job` command and who may change a job
+- [recurring jobs schedule grammar](/reference/sharpmush-help/jobs/#schedule-grammar) and [recurring jobs schedule examples](/reference/sharpmush-help/jobs/#schedule-examples) - writing a schedule
+- [recurring jobs timezones](/reference/sharpmush-help/jobs/#timezones) - daylight saving and wall-clock time
+- [recurring jobs admission and restart](/reference/sharpmush-help/jobs/#admission-and-restart) - missed, late and overlapping firings
+- [recurring jobs execution permissions](/reference/sharpmush-help/jobs/#execution-permissions) - what is checked each time a job runs
+- [recurring jobs status reporting](/reference/sharpmush-help/jobs/#status-reporting) - what the last firing fields mean
 
 ### Commands and ownership
 
@@ -85,7 +85,7 @@ Add `/all` to `/disable`, `/enable`, `/schedule` or `/delete` to select another 
 
 Both are resolved like any other permission (see [administrative capabilities](/reference/sharpmush-help/capabilities/#administrative-capabilities)). A job always runs as the active player who created it; editing another account's schedule never changes who it runs as.
 
-Output: the message `@job` shows, such as `Created recurring job <id>`.
+`@job` outputs the message it shows, such as `Created recurring job <id>`.
 
 ### Schedule grammar
 
@@ -112,7 +112,7 @@ When both day fields are restricted (neither is a literal `*`), either one may m
 
 ### Schedule examples
 
-```
+```text
 0 9 * * 1-5      Weekdays at 09:00
 */15 * * * *     Every fifteen minutes
 0 0 1,15 * *     Midnight on the first and fifteenth

@@ -18,7 +18,7 @@ description: "SharpMUSH documentation for timecalc()"
       "heading": "Time modifiers",
       "lookup": "timecalc time modifiers"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-time-modifiers-heading-time-modifiers-lookup-timecalc-time-modifiers),
+  ],
   "redirects": {
     "TIMECALC2": "timecalc time modifiers"
   }

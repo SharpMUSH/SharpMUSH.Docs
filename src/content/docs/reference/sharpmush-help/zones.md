@@ -14,14 +14,14 @@ description: "SharpMUSH documentation for Zones"
     "ZONE MASTER THINGS",
     "ZMOs",
     "ZMTs"
-  ](/reference/sharpmush-help/sharpconf/#zone-objects-zone-master-objects-zone-master-things-zmos-zmts),
+  ],
   "sections": [
     {
       "id": "zone-commands",
       "heading": "Zone commands",
       "lookup": "zones zone commands"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-zone-commands-heading-zone-commands-lookup-zones-zone-commands),
+  ],
   "redirects": {
     "ZONES2": "zones zone commands"
   }

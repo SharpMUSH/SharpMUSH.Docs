@@ -10,7 +10,7 @@ description: "SharpMUSH documentation for Object Snapshots"
   "lookup": "object snapshots",
   "aliases": [
     "@SNAPSHOT"
-  ](/reference/sharpmush-help/sharpconf/#snapshot),
+  ],
   "sections": [
     {
       "id": "commands",
@@ -38,11 +38,17 @@ description: "SharpMUSH documentation for Object Snapshots"
       "lookup": "object snapshots recovery"
     },
     {
+      "id": "keeping-current-state",
+      "heading": "Keeping the current state",
+      "lookup": "object snapshots keeping current state",
+      "aliases": ["@snapshot/resolve"]
+    },
+    {
       "id": "validation",
       "heading": "Validation",
       "lookup": "object snapshots validation"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-commands-heading-commands-lookup-object-snapshots-commands-id-preview-and-restore-selection-heading-preview-and-restore-selection-lookup-object-snapshots-preview-and-restore-selection-id-captured-data-heading-captured-data-lookup-object-snapshots-captured-data-id-retention-limits-heading-retention-limits-lookup-object-snapshots-retention-limits-id-recovery-heading-recovery-lookup-object-snapshots-recovery-id-validation-heading-validation-lookup-object-snapshots-validation)
+  ]
 }
 -->
 ## Object Snapshots
@@ -68,7 +74,7 @@ A snapshot is visible to the account that took it, for as long as the character 
 
 The portal's Object snapshots page does the same.
 
-Output: the message `@snapshot` shows, such as `Captured snapshot <id>`, the list, or the preview and its token.
+`@snapshot` outputs the message it shows, such as `Captured snapshot <id>`, the list, or the preview and its token.
 
 ### Preview and restore selection
 
@@ -125,9 +131,9 @@ The server runs one snapshot write at a time, but other commands can still chang
 
 A restore is refused before any change when the snapshot is malformed or in an unsupported format, the object's type changed, its dbref was recycled, an attribute's creator or flag or a lock's reference no longer exists, the preview is invalid, or a permission is missing.
 
-Snapshots do not replace [@backup](/reference/sharpmush-help/sharpcmd/#backup) for the whole world, or package rollback for packages.
+Snapshots do not replace [@backup](/reference/sharpmush-help/backup-command/#backup) for the whole world, or package rollback for packages.
 
 ::: seealso
 - [administrative capabilities](/reference/sharpmush-help/capabilities/#administrative-capabilities)
-- [@backup](/reference/sharpmush-help/sharpcmd/#backup)
+- [@backup](/reference/sharpmush-help/backup-command/#backup)
 :::

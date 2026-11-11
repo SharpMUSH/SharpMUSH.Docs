@@ -8,13 +8,13 @@ description: "SharpMUSH documentation for ]"
   "corpus": "help",
   "id": "literal-command",
   "lookup": "]",
-  "aliases": [],
+  "aliases": ["literal command"],
   "sections": [
     {
       "id": "literal-command-examples",
       "heading": "Literal command examples",
       "lookup": "literal command examples",
-      "aliases": ["](/reference/sharpmush-help/sharpconf/#id-literal-command-examples-heading-literal-command-examples-lookup-literal-command-examples-aliases) literal command examples"]
+      "aliases": ["] literal command examples"]
     }
   ],
   "redirects": {
@@ -48,7 +48,7 @@ You say, "[add(1,1)]"
 
 This can be used to pass unevaluated MUSHcode to softcoded commands without having to escape every special character, or to help objects set attributes to contain unevaluated code.
 
-See [literal command examples](/reference/sharpmush-help/sharpconf/#literal-command-examples) for more examples.
+See [literal command examples](/reference/sharpmush-help/literal-command/#literal-command-examples) for more examples.
 
 
 ::: seealso

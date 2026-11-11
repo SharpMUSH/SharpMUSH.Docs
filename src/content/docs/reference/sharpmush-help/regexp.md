@@ -10,14 +10,14 @@ description: "SharpMUSH documentation for Regular Expressions"
   "lookup": "regexp",
   "aliases": [
     "REGEXPS"
-  ](/reference/sharpmush-help/sharpconf/#regexps),
+  ],
   "sections": [
     {
       "id": "data-validation-examples",
       "heading": "Data validation examples",
       "lookup": "regexp data validation examples"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-data-validation-examples-heading-data-validation-examples-lookup-regexp-data-validation-examples),
+  ],
   "redirects": {
     "REGEXPS2": "regexp data validation examples"
   }
@@ -27,7 +27,7 @@ description: "SharpMUSH documentation for Regular Expressions"
 
 (This help text is largely from TinyMUSH 2.2.4, with permission)
 
-SharpMUSH regular expressions use the .NET engine. When porting PennMUSH code, check [regexp syntax](/reference/sharpmush-help/sharpconf/#regexp-syntax) and [regexp classes](/reference/sharpmush-help/sharpconf/#regexp-classes) for PCRE and POSIX syntax differences.
+SharpMUSH regular expressions use the .NET engine. When porting PennMUSH code, check [regexp syntax](/reference/sharpmush-help/regexp-syntax/#regular-expression-syntax) and [regexp classes](/reference/sharpmush-help/regexp-classes/#regular-expression-classes) for PCRE and POSIX syntax differences.
 
 The majority of matching in MUSH is done with wildcard ("globbing") patterns. There is a second type of matching, using regular expressions, that is available in certain circumstances.
 
@@ -50,4 +50,4 @@ The '+' sign in the command has to be escaped out, or it is taken as a regexp to
 
 However, keep in mind that players who attempt to use the command and give invalid input (such as "`+setnum` cookies=thirty") will receive the normal, non-descriptive Huh? message. Using a broader match and validating the input in softcode, so you can give more descriptive error messages, may be desirable.
 
-Regular expression syntax is explained in [regexp syntax](/reference/sharpmush-help/sharpconf/#regexp-syntax).
+Regular expression syntax is explained in [regexp syntax](/reference/sharpmush-help/regexp-syntax/#regular-expression-syntax), and [regexp examples](/reference/sharpmush-help/sharptop/#regexp-examples) has a few short patterns.

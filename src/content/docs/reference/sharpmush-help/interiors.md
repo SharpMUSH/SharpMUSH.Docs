@@ -15,7 +15,7 @@ description: "SharpMUSH documentation for Interiors"
       "heading": "Communication across interiors",
       "lookup": "interiors communication across interiors"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-communication-across-interiors-heading-communication-across-interiors-lookup-interiors-communication-across-interiors),
+  ],
   "redirects": {
     "INTERIORS2": "interiors communication across interiors"
   }

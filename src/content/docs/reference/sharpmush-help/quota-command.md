@@ -17,7 +17,7 @@ description: "SharpMUSH documentation for @quota"
       "aliases": [
         "@squota",
         "@allquota"
-      ](/reference/sharpmush-help/sharpconf/#id-administrative-quota-changes-heading-administrative-quota-changes-lookup-quota-administrative-quota-changes-aliases-squota-allquota)
+      ]
     }
   ],
   "redirects": {

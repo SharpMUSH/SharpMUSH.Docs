@@ -10,7 +10,7 @@ description: "SharpMUSH documentation for pfun()"
   "lookup": "pfun()",
   "aliases": [
     "pfun"
-  ](/reference/sharpmush-help/sharpconf/#pfun),
+  ],
   "sections": [
     {
       "id": "evaluation-permissions",
@@ -22,7 +22,7 @@ description: "SharpMUSH documentation for pfun()"
       "heading": "Branch inheritance examples",
       "lookup": "pfun branch inheritance examples"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-evaluation-permissions-heading-evaluation-permissions-lookup-pfun-evaluation-permissions-id-branch-inheritance-examples-heading-branch-inheritance-examples-lookup-pfun-branch-inheritance-examples),
+  ],
   "redirects": {
     "PFUN2": "pfun evaluation permissions",
     "PFUN3": "pfun branch inheritance examples"
@@ -57,7 +57,7 @@ This function does not have the security problems of using
 
 `ufun(parent(me)/<attribute>)`
 
-as the attribute is inherited (and evaluated by you, not the parent) - you don't need to be able to examine the parent object, and safer_ufun does not stop the evaluation. Note that no_inherit attribute flags are still checked, as with normal attribute inheritence.
+as the attribute is inherited (and evaluated by you, not the parent) - you don't need to be able to examine the parent object, and the privilege rule in [u()](/reference/sharpmush-help/u-function/#u) does not stop the evaluation. Note that no_inherit attribute flags are still checked, as with normal attribute inheritence.
 
 This function is particularly useful when you want to inherit an attribute tree from a parent, but add further branches.
 
@@ -67,7 +67,7 @@ This function is particularly useful when you want to inherit an attribute tree 
 - [GET()](/reference/sharpmush-help/sharpfunc/#get)
 - [PARENT()](/reference/sharpmush-help/sharpfunc/#parent)
 - [ZFUN()](/reference/sharpmush-help/sharpfunc/#zfun)
-- [parent](/reference/sharpmush-help/sharpconf/#parent)
+- [parent](/reference/sharpmush-help/parent/#parents)
 :::
 
 ### Branch inheritance examples

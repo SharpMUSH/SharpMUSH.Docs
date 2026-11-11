@@ -10,14 +10,14 @@ description: "SharpMUSH documentation for fn()"
   "lookup": "fn()",
   "aliases": [
     "fn"
-  ](/reference/sharpmush-help/sharpconf/#fn),
+  ],
   "sections": [
     {
       "id": "executor-selection",
       "heading": "Executor selection",
       "lookup": "fn executor selection"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-executor-selection-heading-executor-selection-lookup-fn-executor-selection),
+  ],
   "redirects": {
     "FN2": "fn executor selection"
   }

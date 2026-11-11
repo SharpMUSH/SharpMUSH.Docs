@@ -89,6 +89,15 @@ description: "SharpMUSH documentation for Channel Functions"
       "aliases": []
     },
     {
+      "id": "comalias",
+      "heading": "comalias()",
+      "lookup": "comalias()",
+      "aliases": [
+        "comtitle()",
+        "chanobj()"
+      ]
+    },
+    {
       "id": "examples",
       "heading": "Examples",
       "lookup": "channel functions examples"
@@ -121,7 +130,7 @@ Functions inspect membership, privileges, history, and channel metadata. For cha
 `cflags(<channel>[,<object>])`<br>
 `clflags(<channel>[,<object>])`
 
-- **cflags()** and **clflags()**: With one argument, *\<channel\>*'s privileges; with two, *\<object\>*'s own flags on that channel. `cflags()` abbreviates each to its single letter and `clflags()` spells it out; that is the only difference between them. See [@CHANNEL PRIVS](/reference/sharpmush-help/sharpchat/#channel-privs) for the privilege letters; a member's own flags are `Q`uiet, `H`ide, `G`ag and `C`ombine. Reading another object's flags requires that you be able to examine it, and answers `#-1 NOT ON CHANNEL` when it is not a member.
+- **cflags()** and **clflags()**: With one argument, *\<channel\>*'s privileges; with two, *\<object\>*'s own flags on that channel. `cflags()` abbreviates each to its single letter and `clflags()` spells it out; that is the only difference between them. See [@CHANNEL PRIVS](/reference/sharpmush-help/channel-privs-command/#channel-privs) for the privilege letters; a member's own flags are `Q`uiet, `H`ide, `G`ag and `C`ombine. Reading another object's flags requires that you be able to examine it, and answers `#-1 NOT ON CHANNEL` when it is not a member.
 
 ### cstatus()
 
@@ -148,7 +157,7 @@ Functions inspect membership, privileges, history, and channel metadata. For cha
 
 `cmogrifier(<channel>)`
 
-- **cmogrifier()**: the dbref of *\<channel\>*'s mogrifier, or nothing when none is set. See [@CHANNEL ADMIN](/reference/sharpmush-help/sharpchat/#channel-admin).
+- **cmogrifier()**: the dbref of *\<channel\>*'s mogrifier, or nothing when none is set. See [@CHANNEL ADMIN](/reference/sharpmush-help/channel-admin-command/#channel-admin).
 
 ### cinfo()
 
@@ -160,7 +169,7 @@ Functions inspect membership, privileges, history, and channel metadata. For cha
 
 `cwho(<channel>[,<on|off|all>[,<skip gagged?>]])`
 
-- **cwho()**: The dbrefs of *\<channel\>*'s members, space separated. The second argument selects which: **on** (default) lists connected members, **off** lists the rest, and **all** lists everyone. Members hiding on the channel are treated as off unless you have the `Who` power; things are always listed. A true third argument omits members who are gagging the channel.
+- **cwho()**: The dbrefs of *\<channel\>*'s members, space separated. The second argument selects which: **on** (default) lists connected members, **off** lists the rest, and **all** lists everyone. Members hiding on the channel are treated as off unless you are a wizard or royalty or have the See_All power; things are always listed. A true third argument omits members who are gagging the channel.
 
 ### crecall()
 
@@ -178,7 +187,21 @@ Functions inspect membership, privileges, history, and channel metadata. For cha
 
 `clock(<channel>[/<locktype>][, <new lock>])`
 
-- **clock()**: The key of one of *\<channel\>*'s locks. The lock type is a suffix on the channel argument, one of `JOIN` (the default), `SPEAK`, `MOD`, `SEE` or `HIDE`; anything else answers `#-1 NO SUCH LOCK TYPE`. You must be able to decompile the channel. See [@CHANNEL CLOCK](/reference/sharpmush-help/sharpchat/#channel-clock).
+- **clock()**: The key of one of *\<channel\>*'s locks. The lock type is a suffix on the channel argument, one of `JOIN` (the default), `SPEAK`, `MOD`, `SEE` or `HIDE`; anything else answers `#-1 NO SUCH LOCK TYPE`. You must be able to decompile the channel. See [@CHANNEL CLOCK](/reference/sharpmush-help/channel-clock-command/#channel-clock).
+
+### comalias()
+
+`comalias(<object>,<channel>)`<br>
+`comtitle(<object>,<channel>)`<br>
+`chanobj(<channel>)`
+
+TinyMUX's comsys functions (see [muxcomsys](/reference/sharpmush-help/sharpchat/#mux-comsys)).
+
+- **comalias()**: the first `addcom` alias *\<object\>* holds for *\<channel\>*, in lower case, or nothing when it has none.
+- **comtitle()**: *\<object\>*'s title on *\<channel\>*, as ctitle() gives it.
+- **chanobj()**: *\<channel\>*'s mogrifier, which stands in for TinyMUX's channel object, or `#-1` when it has none (see [mogrifier members](/reference/sharpmush-help/mogrifier/#members-joining-and-leaving)).
+
+comalias() and comtitle() answer only for objects you control; for anything else they answer `#-1 PERMISSION DENIED`.
 
 ### Examples
 
@@ -197,11 +220,14 @@ C
 ON COMBINE
 > think clock(Public/SPEAK)
 !FLAG^GAGGED
+> addcom pub=Public
+> think comalias(me,Public)
+pub
 ```
 
 ::: seealso
 - [@channel](/reference/sharpmush-help/sharpchat/#channel)
 - [@chat](/reference/sharpmush-help/sharpchat/#chat-1)
 - [@CEMIT](/reference/sharpmush-help/sharpchat/#cemit)
-- [@CHANNEL CLOCK](/reference/sharpmush-help/sharpchat/#channel-clock)
+- [@CHANNEL CLOCK](/reference/sharpmush-help/channel-clock-command/#channel-clock)
 :::

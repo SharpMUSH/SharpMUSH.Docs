@@ -15,7 +15,7 @@ description: "SharpMUSH documentation for @filter"
       "heading": "Audible exit example",
       "lookup": "@filter audible exit example"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-audible-exit-example-heading-audible-exit-example-lookup-filter-audible-exit-example),
+  ],
   "redirects": {
     "@filter2": "@filter audible exit example"
   }
@@ -43,7 +43,7 @@ Sounds are only forwarded if the speaker also passes `<object>`'s @lock/filter, 
 - [listening](/reference/sharpmush-help/listening/#listening)
 - [@forwardlist](/reference/sharpmush-help/sharpcmd/#forwardlist)
 - [@prefix](/reference/sharpmush-help/sharpcmd/#prefix)
-- [WILDCARDS](/reference/sharpmush-help/sharptop/#wildcards)
+- [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)
 :::
 
 ### Audible exit example

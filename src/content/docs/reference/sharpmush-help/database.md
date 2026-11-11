@@ -19,7 +19,7 @@ description: "SharpMUSH documentation for Database"
       "heading": "Finding object references",
       "lookup": "database finding object references"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-finding-object-references-heading-finding-object-references-lookup-database-finding-object-references),
+  ],
   "redirects": {
     "DBREF2": "database finding object references"
   }

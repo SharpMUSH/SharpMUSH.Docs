@@ -11,11 +11,16 @@ description: "SharpMUSH documentation for Regular Expression Classes"
   "aliases": [],
   "sections": [
     {
+      "id": "replacements",
+      "heading": "Replacements for POSIX classes",
+      "lookup": "regexp classes replacements"
+    },
+    {
       "id": "portable-character-classes",
       "heading": "Portable character classes",
       "lookup": "regexp classes portable character classes"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-portable-character-classes-heading-portable-character-classes-lookup-regexp-classes-portable-character-classes),
+  ],
   "redirects": {
     "REGEXP CLASSES2": "regexp classes portable character classes"
   }
@@ -24,9 +29,14 @@ description: "SharpMUSH documentation for Regular Expression Classes"
 
 ## Regular Expression Classes
 
-SharpMUSH uses .NET character classes and Unicode categories. POSIX bracket classes such as `[[:digit:]]`, `[[:alpha:]]`, and `[[:^word:]]` are not supported. Convert them when porting PennMUSH patterns; .NET can accept some of this text as a different pattern without reporting an error.
+POSIX classes such as `[[:digit:]]` and `[[:alpha:]]` work inside a bracket expression and match ASCII characters only, as in PennMUSH. The .NET classes `\d`, `\w` and `\p{L}` match Unicode characters as well. The negated spelling `[[:^word:]]` is not supported; write `[^[:word:]]`.
 
-The following are replacement choices, not exact equivalences for every PCRE locale or option:
+- [regexp classes replacements](/reference/sharpmush-help/regexp-classes/#replacements-for-posix-classes): what each POSIX class matches, and its Unicode counterpart
+- [regexp classes portable character classes](/reference/sharpmush-help/regexp-classes/#portable-character-classes): choosing ASCII or Unicode, with examples
+
+### Replacements for POSIX classes
+
+Each class matches its ASCII pattern. The Unicode pattern also matches other scripts:
 
 | POSIX name | ASCII pattern | Unicode pattern |
 | --- | --- | --- |
@@ -35,8 +45,9 @@ The following are replacement choices, not exact equivalences for every PCRE loc
 | `alnum` | `[A-Za-z0-9]` | `[\p{L}\p{Nd}]` |
 | `lower` | `[a-z]` | `\p{Ll}` |
 | `upper` | `[A-Z]` | `\p{Lu}` |
-| `word` | `[A-Za-z0-9_]` | `\w` |
+| `word` | `\w` (Unicode) | `\w` |
 | `space` | `[\t\n\v\f\r ]` | `\s` |
+| `blank` | `[ \t]` | `[\p{Zs}\t]` |
 | `ascii` | `[\x00-\x7F]` | Same ASCII range. |
 | `cntrl` | `[\x00-\x1F\x7F]` | `\p{Cc}` |
 | `graph` | `[\x21-\x7E]` | Choose the required categories explicitly. |
@@ -44,7 +55,7 @@ The following are replacement choices, not exact equivalences for every PCRE loc
 | `punct` | `[\x21-\x2F\x3A-\x40\x5B-\x60\x7B-\x7E]` | `\p{P}` (Unicode punctuation excludes many symbols). |
 | `xdigit` | `[A-Fa-f0-9]` | Same range for ASCII hexadecimal input. |
 
-Negate a whole class with a leading `^`, for example `[^0-9]`. Use `\D`, `\S`, `\W`, or `\P{L}` for the complements of their corresponding Unicode classes. To combine letters and digits, write `[\p{L}\p{Nd}]`, not `[[:alnum:]]`.
+Negate a class with a leading `^`, as in `[^0-9]`. `\D`, `\S`, `\W` and `\P{L}` are the complements of the Unicode classes.
 
 ### Portable character classes
 
@@ -65,6 +76,8 @@ In evaluated MUSH function arguments, `lit()` keeps the character-class brackets
 1
 > think regmatch(chr(1635),lit(\A[0-9]\z))
 0
+> think regmatch(123,lit(\A[[:digit:]]+\z))
+1
 ```
 
-See [regexp syntax](/reference/sharpmush-help/sharpconf/#regexp-syntax) for anchors, escaping, and the other differences from PCRE.
+See [regexp syntax](/reference/sharpmush-help/regexp-syntax/#regular-expression-syntax) for anchors, escaping, and the other differences from PCRE.

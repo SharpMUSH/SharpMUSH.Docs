@@ -17,7 +17,7 @@ This lock will always fail.
 ```sharp
 > @lock My Toy = =me
 ```
-This locks the object "My Toy" to you and you alone. It is recommended that you `@lock me = =me` in order to prevent anyone else from picking you up. The two = signs are NOT a typo! The first is part of the @lock syntax (as shown at the top of [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)) the second is a lock key that means "only this exact object".
+This locks the object "My Toy" to you and you alone. It is recommended that you `@lock me = =me` in order to prevent anyone else from picking you up. The two = signs are NOT a typo! The first is part of the @lock syntax (as shown at the top of [LOCKING](/reference/sharpmush-help/locking/#locking)) the second is a lock key that means "only this exact object".
 
 For backwards compatibility, `OBJID^<object>` is an alias for `=<object>`.
 
@@ -53,7 +53,7 @@ You can lock an object to an attribute on the person trying to pass the lock (as
 
 `@lock <object>=<attribute>:<value>`
 
-*<value>* can contain wildcards (*), greater than (>) or less than (<) symbols.
+*&lt;value&gt;* can contain wildcards (*), greater than (>) or less than (<) symbols.
 
 For example:
 ```sharp
@@ -72,43 +72,12 @@ You can test for objects matching a given name by using the below format:
 
 `@lock <object>=name^<pattern>`
 
-It is similar to performing strmatch(%n,*<pattern>*), though will also match for a player/exit with *<pattern>* as one of its @aliases.
+It is similar to performing strmatch(%n,*&lt;pattern&gt;*), though will also match for a player/exit with *&lt;pattern&gt;* as one of its @aliases.
 
 For example, to lock "Bob's Tools" to only people with a name beginning with Bob:
 ```sharp
 @lock/use Bob's Tools=name^bob*
 ```
-
-## @lock-bit
-
-### Bit Locks
-You can test for set flags, powers, roles, permissions, or object types in a lock directly, without using an evaluation lock, with these formats:
-
-`@lock <object>=flag^<flag>`<br>
-`@lock <object>=power^<power>`<br>
-`@lock <object>=type^<type>`
-
-These locks act like the object the lock is on does a hasflag(%#, *<flag>*), or haspower(%#, *<power>*), hastype(%#, *<type>*) succeeding only if the flag/power is set, or the object is of the specified type.
-
-For example:
-```sharp
-@lock/use Admin Commands=flag^wizard|flag^royalty
-```
-
-To test for a role or a permission (see [roles](/reference/sharpmush-help/roles/#roles)):
-
-`@lock <object>=role^<role>`<br>
-`@lock <object>=perm^<permission>`
-
-`role^<role>` passes when the object trying the lock holds the role, its own or its account's, as hasrole() reports. `perm^<permission>` passes when it holds the permission, as permission() reports.
-
-```sharp
-@lock/use Staff Board=role^moderator|perm^players.moderate
-```
-
-You can also test for channel membership with:
-
-`@lock <object>=channel^<channel>`
 
 ## @lock-dbreflist
 
@@ -127,7 +96,7 @@ For example:
 ## @lock-indirect
 
 ### Indirect Locks
-An "indirect" lock allows you to lock something to the same thing as another object (very useful in setting channel locks; see [@CHANNEL CLOCK](/reference/sharpmush-help/sharpchat/#channel-clock)):
+An "indirect" lock allows you to lock something to the same thing as another object (very useful in setting channel locks; see [@CHANNEL CLOCK](/reference/sharpmush-help/channel-clock-command/#channel-clock)):
 ```sharp
 @lock Second Puppet=@First Puppet
 ```
@@ -146,13 +115,13 @@ You can check to make sure an object is owned by a player connected from a speci
 `@lock <object>=ip^<ipaddress>`<br>
 `@lock <object>=hostname^<hostname>`
 
-*<ipaddress>* and *<hostname>* can contain wildcards. *<object>* must be able to see the LASTIP attribute (for ip locks) or LASTSITE attribute (for hostname locks) on the enactor's owner.
+*&lt;ipaddress&gt;* and *&lt;hostname&gt;* can contain wildcards. *&lt;object&gt;* must be able to see the LASTIP attribute (for ip locks) or LASTSITE attribute (for hostname locks) on the enactor's owner.
 
 For example:
 ```sharp
 @lock <object>=ip^127.0.0.1
 ```
-This locks *<object>* to players (and the objects of players) currently connected from the computer the MUSH is running on.
+This locks *&lt;object&gt;* to players (and the objects of players) currently connected from the computer the MUSH is running on.
 
 
 ::: seealso
@@ -206,8 +175,8 @@ For rooms, the Teleport lock controls who can "@teleport" into the room, if it h
 ::: seealso
 - [JUMP_OK](/reference/sharpmush-help/sharpflag/#jumpok)
 - [@teleport](/reference/sharpmush-help/teleport-command/#teleport)
-- [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
-- [locktypes](/reference/sharpmush-help/sharplock/#locktypes)
+- [LOCKING](/reference/sharpmush-help/locking/#locking)
+- [locktypes](/reference/sharpmush-help/locktypes/#lock-types)
 - [lock keys](/reference/sharpmush-help/lock-keys/#lock-keys)
 :::
 
@@ -239,8 +208,8 @@ For rooms, only objects which pass this lock will be sent to the rooms Drop-To. 
 - [DROP-TOS](/reference/sharpmush-help/sharptop/#drop-tos)
 - [drop](/reference/sharpmush-help/sharpcmd/#drop)
 - [empty](/reference/sharpmush-help/sharpcmd/#empty)
-- [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
-- [locktypes](/reference/sharpmush-help/sharplock/#locktypes)
+- [LOCKING](/reference/sharpmush-help/locking/#locking)
+- [locktypes](/reference/sharpmush-help/locktypes/#lock-types)
 - [lock keys](/reference/sharpmush-help/lock-keys/#lock-keys)
 :::
 
@@ -255,8 +224,8 @@ For players, things and rooms, this lock controls who may "use" the object. You 
 - [@aufail](/reference/sharpmush-help/sharpcmd/#aufail)
 - [use](/reference/sharpmush-help/sharpcmd/#use)
 - [$-commands]
-- [listening listen patterns](/reference/sharpmush-help/sharpconf/#listening-listen-patterns)
-- [@CHANNEL ADMIN](/reference/sharpmush-help/sharpchat/#channel-admin)
+- [listening listen patterns](/reference/sharpmush-help/listening/#listen-patterns)
+- [@CHANNEL ADMIN](/reference/sharpmush-help/channel-admin-command/#channel-admin)
 :::
 
 ### Command Lock
@@ -273,7 +242,7 @@ For players, things and rooms, you must pass this lock (as well as the Use lock)
 
 
 ::: seealso
-- [listening listen patterns](/reference/sharpmush-help/sharpconf/#listening-listen-patterns)
+- [listening listen patterns](/reference/sharpmush-help/listening/#listen-patterns)
 :::
 
 ## @lock/page
@@ -310,7 +279,6 @@ Controls who can forward @mail to this object via @mailforward.
 
 ::: seealso
 - [MAIL](/reference/sharpmush-help/sharpmail/#mail)
-- [@mailforward](/reference/sharpmush-help/sharpcmd/#mailforward)
 - [@LOCK/FOLLOW](/reference/sharpmush-help/sharplock/#lockfollow)
 :::
 
@@ -338,7 +306,7 @@ For players and things, controls who may give the object away. Has no meaning fo
 Controls who may give items to this object.
 
 ### Pay Lock
-Controls who can 'buy' an item from this vendor.
+Can be set, but has no effect: SharpMUSH has no money, so nothing can be bought or paid.
 
 ### Receive Lock
 Controls what may be given to this object.
@@ -350,7 +318,6 @@ Controls who can take from this container.
 ::: seealso
 - [give](/reference/sharpmush-help/sharpcmd/#give-1)
 - [buy](/reference/sharpmush-help/sharpcmd/#buy-1)
-- [@LOCK/BASIC](/reference/sharpmush-help/sharplock/#lockbasic)
 - [@LOCK/BASIC](/reference/sharpmush-help/sharplock/#lockbasic)
 :::
 
@@ -393,71 +360,10 @@ Limits who can examine a VISUAL object.
 - [VISUAL](/reference/sharpmush-help/sharpflag/#visual)
 :::
 
-## @lock/zone
-
-### Zone Lock
-Objects which pass a SHARED player's @lock/zone control all the objects the shared player owns. If the zone_control_zmp_only @config option is off, anything passing the @lock/zone of other objects will control everything @chzoned to the object.
-
-
-::: seealso
-- [@chzone](/reference/sharpmush-help/chzone-command/#chzone)
-- [SHARED](/reference/sharpmush-help/sharpflag/#shared)
-- [zones](/reference/sharpmush-help/zones/#zones)
-- [ZMR](/reference/sharpmush-help/sharpconf/#zmr)
-:::
-
-### Chzone Lock
-If set, controls who can @chzone an object to this zone.
-
-
-::: seealso
-- [@chzone](/reference/sharpmush-help/chzone-command/#chzone)
-- [zones](/reference/sharpmush-help/zones/#zones)
-:::
-
-### Chown Lock
-If set, controls who can change the owner of this CHOWN_OK object via @chown.
-
-
-::: seealso
-- [CHOWN_OK](/reference/sharpmush-help/sharpflag/#chownok)
-- [@chown](/reference/sharpmush-help/sharpcmd/#chown)
-:::
-
-### Parent Lock
-Controls who can @parent something to this LINK_OK object.
-
-
-::: seealso
-- [@parent](/reference/sharpmush-help/sharpcmd/#parent)
-- [LINK_OK](/reference/sharpmush-help/sharpflag/#linkok)
-:::
-
-### Link Lock
-Controls who can @link this unlinked exit, or who can @link an exit to this LINK_OK room/thing.
-
-
-::: seealso
-- [@link](/reference/sharpmush-help/sharpcmd/#link)
-- [LINK_OK](/reference/sharpmush-help/sharpflag/#linkok)
-- [LINK_ANYWHERE POWER](/reference/sharpmush-help/sharpconf/#linkanywhere-power)
-:::
-
-### Open Lock
-Controls who can @open an exit from this OPEN_OK room.
-
-
-::: seealso
-- [@open](/reference/sharpmush-help/sharpcmd/#open)
-- [@dig](/reference/sharpmush-help/dig-command/#dig)
-- [OPEN_OK](/reference/sharpmush-help/sharpconf/#openok)
-- [OPEN_ANYWHERE POWER](/reference/sharpmush-help/sharpconf/#openanywhere-power)
-:::
-
 ## @lock/user
 
 ### User-defined Locks
-User-defined locks have no hardcoded meaning. They allow you to set locks for any purpose, which you can test using the elock() function. *<name>* can be anything which is a valid attribute name. For example, in a combat system you might use a "wield" @lock on weapons, similar to:
+User-defined locks have no hardcoded meaning. They allow you to set locks for any purpose, which you can test using the elock() function. *&lt;name&gt;* can be anything which is a valid attribute name. For example, in a combat system you might use a "wield" @lock on weapons, similar to:
 
 ```sharp
 > @lock/user:wield War Hammer=strength:>20
@@ -469,7 +375,7 @@ and then test it with `elock(War Hammer/wield, %#)`.
 ::: seealso
 - [ELOCK()](/reference/sharpmush-help/sharpfunc/#elock)
 - [valid()](/reference/sharpmush-help/valid-function/#valid)
-- [LOCKING](/reference/sharpmush-help/sharpcmd/#locking)
-- [locktypes](/reference/sharpmush-help/sharplock/#locktypes)
+- [LOCKING](/reference/sharpmush-help/locking/#locking)
+- [locktypes](/reference/sharpmush-help/locktypes/#lock-types)
 - [lock keys](/reference/sharpmush-help/lock-keys/#lock-keys)
 :::

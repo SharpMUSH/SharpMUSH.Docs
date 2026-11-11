@@ -10,14 +10,14 @@ description: "SharpMUSH documentation for accent()"
   "lookup": "accent()",
   "aliases": [
     "accent"
-  ](/reference/sharpmush-help/sharpconf/#accent),
+  ],
   "sections": [
     {
       "id": "accent-examples",
       "heading": "Accent examples",
       "lookup": "accent examples"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-accent-examples-heading-accent-examples-lookup-accent-examples),
+  ],
   "redirects": {
     "ACCENT2": "accent examples",
     "ACCENTS3": "accent examples"

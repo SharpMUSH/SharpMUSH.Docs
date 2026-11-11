@@ -15,7 +15,7 @@ description: "SharpMUSH documentation for Getting Started: Moving"
       "heading": "Home and navigation",
       "lookup": "gs moving home and navigation"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-home-and-navigation-heading-home-and-navigation-lookup-gs-moving-home-and-navigation),
+  ],
   "redirects": {
     "GS MOVING2": "gs moving home and navigation"
   }

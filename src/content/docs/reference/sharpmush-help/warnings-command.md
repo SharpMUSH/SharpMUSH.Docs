@@ -20,7 +20,7 @@ description: "SharpMUSH documentation for @warnings"
       "heading": "Selective warning profiles",
       "lookup": "@warnings selective warning profiles"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-building-warning-profiles-heading-building-warning-profiles-lookup-warnings-building-warning-profiles-id-selective-warning-profiles-heading-selective-warning-profiles-lookup-warnings-selective-warning-profiles),
+  ],
   "redirects": {
     "@warnings2": "@warnings building warning profiles",
     "@warnings3": "@warnings selective warning profiles"
@@ -36,7 +36,7 @@ This command will set the types of warnings which should be reported on an objec
 When an object is checked for warnings (via @wcheck by the owner, or automatically), only warnings which are set to be reported on the object will be reported. If no warnings are set on the object, the owner's warning settings will be used. When admin use @wcheck to check non-owned objects, their personal warnings are always used.
 
 For a list of warnings, see [warnings list](/reference/sharpmush-help/warnings-list/#warnings-list).<br>
-For examples, see [@warnings building warning profiles](/reference/sharpmush-help/sharpcmd/#warnings-building-warning-profiles).
+For examples, see [@warnings building warning profiles](/reference/sharpmush-help/warnings-command/#building-warning-profiles).
 
 
 ::: seealso

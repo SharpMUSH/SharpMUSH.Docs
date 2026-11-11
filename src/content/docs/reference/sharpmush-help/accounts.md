@@ -8,7 +8,7 @@ description: "SharpMUSH documentation for Accounts"
   "corpus": "help",
   "id": "accounts",
   "lookup": "accounts",
-  "aliases": ["account"](/reference/sharpmush-help/sharpconf/#account),
+  "aliases": ["account"],
   "sections": [
     {
       "id": "accounts-claiming",
@@ -20,7 +20,7 @@ description: "SharpMUSH documentation for Accounts"
       "heading": "Linking a character for someone",
       "lookup": "accounts staff"
     }
-  ](/reference/sharpmush-help/sharpconf/#id-accounts-claiming-heading-claiming-a-character-you-already-have-lookup-accounts-claiming-id-accounts-staff-heading-linking-a-character-for-someone-lookup-accounts-staff)
+  ]
 }
 -->
 ## Accounts
@@ -29,16 +29,16 @@ An account is one login for the web portal and the account menu at the connect s
 
 A character can reach an account four ways:
 
-- `make <character> <password>` at the account menu, or New character on the portal, creates one already linked. See [make](/reference/sharpmush-help/sharpcmd/#make).
-- `claim <character> <password>` at the account menu, `@account/claim <character>=<password>` in the game, or Claim an existing character on the portal, links one that already exists. See [accounts claiming](/reference/sharpmush-help/sharpconf/#accounts-claiming).
-- Staff link one with `@account/link` or the portal's character page. See [accounts staff](/reference/sharpmush-help/sharpconf/#accounts-staff).
+- `create <character> <password>` at the account menu, or New character on the portal, creates one already linked. See [create](/reference/sharpmush-help/sharpcmd/#create-1).
+- `claim <character> <password>` at the account menu, `@account/claim <character>=<password>` in the game, or Claim an existing character on the portal, links one that already exists. See [accounts claiming](/reference/sharpmush-help/accounts/#claiming-a-character-you-already-have).
+- Staff link one with `@account/link` or the portal's character page. See [accounts staff](/reference/sharpmush-help/accounts/#linking-a-character-for-someone).
 - The first person to finish the portal's setup claims character #1.
 
 A character on no account still plays the PennMUSH way, with [connect](/reference/sharpmush-help/sharpcmd/#connect) and its own password. Linking it changes nothing about that: its password, its objects and its dbref stay the same.
 
 ### Claiming a character you already have
 
-A character made at the connect screen with `create`, made by staff with [@pcreate](/reference/sharpmush-help/sharpcmd/#pcreate), or brought over in a PennMUSH import has no account. Its holder adds it to theirs by proving they know its password:
+A character made by staff with [@pcreate](/reference/sharpmush-help/sharpcmd/#pcreate), or brought over in a PennMUSH import, has no account. Its holder adds it to theirs by proving they know its password:
 
 - At the connect screen, `login` to the account, then type `claim <character> <password>`. See [claim](/reference/sharpmush-help/sharpcmd/#claim).
 - In the game, while playing a character on the account, type `@account/claim <character>=<password>`.
@@ -57,10 +57,14 @@ Staff link a character to an account without its password, for a player who lost
 
 A character on another account has to be unlinked from it first. The account takes on the character's roles, so only God links God and only a wizard links a wizard. Both are recorded in the audit log.
 
+Softcode reads links with [account()](/reference/sharpmush-help/sharpfunc/#account) and [accountchars()](/reference/sharpmush-help/sharpfunc/#accountchars), and hears about them through the player\`link and player\`unlink events (see [events](/reference/sharpmush-help/events/#events)).
+
 ::: seealso
 - [claim](/reference/sharpmush-help/sharpcmd/#claim)
-- [make](/reference/sharpmush-help/sharpcmd/#make)
+- [create](/reference/sharpmush-help/sharpcmd/#create-1)
 - [login](/reference/sharpmush-help/sharpcmd/#login)
-- [@account](/reference/sharpmush-help/sharpcmd/#account)
+- [@account](/reference/sharpmush-help/account-command/#account)
+- [ACCOUNT()](/reference/sharpmush-help/sharpfunc/#account)
+- [ACCOUNTCHARS()](/reference/sharpmush-help/sharpfunc/#accountchars)
 - [roles](/reference/sharpmush-help/roles/#roles)
 :::

@@ -25,7 +25,7 @@ description: "SharpMUSH documentation for @verb"
       "heading": "Global verb example",
       "lookup": "@verb global verb example"
     }
-  ](/reference/sharpmush-help/sharpcmd/#id-verb-permissions-heading-verb-permissions-lookup-verb-permissions-id-local-verb-example-heading-local-verb-example-lookup-verb-local-verb-example-id-global-verb-example-heading-global-verb-example-lookup-verb-global-verb-example),
+  ],
   "redirects": {
     "@verb2": "@verb permissions",
     "@verb3": "@verb local verb example",

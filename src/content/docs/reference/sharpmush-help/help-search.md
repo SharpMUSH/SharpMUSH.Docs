@@ -14,12 +14,17 @@ description: "SharpMUSH documentation for Help Search"
   ],
   "sections": [
     {
+      "id": "patterns",
+      "heading": "Name patterns and text search",
+      "lookup": "help search patterns"
+    },
+    {
       "id": "content-search",
       "heading": "Content search",
       "lookup": "help search content search",
       "aliases": [
         "help query"
-      ](/reference/sharpmush-help/sharpconf/#id-content-search-heading-content-search-lookup-help-search-content-search-aliases-help-query)
+      ]
     }
   ],
   "redirects": {
@@ -31,8 +36,7 @@ description: "SharpMUSH documentation for Help Search"
 
 `help <textname>`<br>
 `help <namepattern>`<br>
-`help/search <pattern>`<br>
-`help/query[/brief] <sqlite3query>`<br>
+`help/search <text>`<br>
 
 These commands and switches also work with other things using our helpfile setup: news, ahelp, and any others added.
 
@@ -41,6 +45,17 @@ help `<textname>` is how to see a help file.
   > help helpfile
   > help @search
 ```
+
+- [help search patterns](/reference/sharpmush-help/help-search/#name-patterns-and-text-search): finding entries by a name pattern, or by text they contain
+
+help/search lists the entries whose text contains a string, see [help search content search](/reference/sharpmush-help/help-search/#content-search) for more.
+
+
+::: seealso
+- [TEXTFILE()](/reference/sharpmush-help/textfile-function/#textfile): `textfile()` reads an entry, `textentries()` lists matching topic names, and `textsearch()` searches entry content.
+:::
+
+### Name patterns and text search
 
 help `<namepattern>` is a good way to read long helpfilenames or find a pattern you're looking for. If `<namepattern>` matches multiple entries, it will show you their names.
 ```sharp
@@ -54,26 +69,12 @@ If you want to find helpfiles that _contain_ a pattern, use "help/search". For e
   > help/search @switch
 ```
 
-help/query is a more advanced and complex way to search our helpfiles, see [search content search](/reference/sharpmush-help/sharpconf/#search-content-search)(/reference/sharpmush-help/sharpconf/#search-content-search) for more.
-
-To add more categories and commands (like 'news'), read "game/txt/README"
-
-
-::: seealso
-- [TEXTFILE()](/reference/sharpmush-help/sharpfunc/#textfile): `textfile()` reads an entry, `textentries()` lists matching topic names, and `textsearch()` searches entry content.
-:::
-
 ### Content search
 
-Displays help entries that match `<pattern>` using an advanced full text search. If the /brief switch is given, only shows the names of matching entries. Without it, also shows a fragment of the entry with matches underlined.
-
-The pattern is one or more phrases, where each phrase is one or more words (enclosed with quote marks if there's more than one word, or searching for a word with characters like @ or +). A * at the end treats the phrase as a prefix. Phrases can be combined with AND (The default), OR and NOT. The function NEAR(phrase phrase...) matches entries where two or more phrases are near each other. An optional second argument controls how close the matching is. All these operators must appear in upper case. For full details, see https://www.sqlite.org/fts5.html#full_text_query_syntax
-
+Lists the names of help entries whose text contains `<text>`, as `Matches: <names>`, or `No matches.` when none does. The match is a plain substring match that ignores case: wildcards, quote marks and words like AND or OR are matched as literal text.
 
 Examples:
 ```sharp
-  help/query cosine OR tangent
-  help/query "treated as"
-  help/query NEAR(player wizard, 20)
-  help/query "@attrib"*
+  > help/search cosine
+  > help/search treated as
 ```

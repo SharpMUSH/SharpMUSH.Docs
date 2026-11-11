@@ -30,7 +30,7 @@ description: "SharpMUSH documentation for Anonymous Attributes"
       "lookup": "anonymous attributes supported functions",
       "aliases": [
         "LAMBDA FUNCTIONS"
-      ](/reference/sharpmush-help/sharpattr/#id-list-mapping-examples-heading-list-mapping-examples-lookup-anonymous-attributes-list-mapping-examples-id-literal-evaluation-heading-literal-evaluation-lookup-anonymous-attributes-literal-evaluation-id-supported-functions-heading-supported-functions-lookup-anonymous-attributes-supported-functions-aliases-lambda-functions)
+      ]
     }
   ],
   "redirects": {
@@ -114,8 +114,8 @@ The following functions support anonymous attributes:
 - [FILTER()](/reference/sharpmush-help/sharpfunc/#filter)
 - [fold()](/reference/sharpmush-help/fold-function/#fold)
 - [foreach()](/reference/sharpmush-help/foreach-function/#foreach)
-- [MAP()](/reference/sharpmush-help/sharpfunc/#map)
-- [MAPSQL()](/reference/sharpmush-help/sharpfunc/#mapsql)
+- [MAP()](/reference/sharpmush-help/map-function/#map)
+- [MAPSQL()](/reference/sharpmush-help/mapsql-function/#mapsql)
 - [mix()](/reference/sharpmush-help/mix-function/#mix)
 - [munge()](/reference/sharpmush-help/munge-function/#munge)
 - [NAMELIST()](/reference/sharpmush-help/sharpfunc/#namelist)

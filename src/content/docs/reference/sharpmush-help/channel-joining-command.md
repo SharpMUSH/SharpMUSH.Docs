@@ -19,6 +19,7 @@ description: "SharpMUSH documentation for @channel joining"
     "@channel/leave"
   ],
   "sections": [
+    {"id": "listing", "heading": "Listing channels", "lookup": "@channel joining listing"},
     {
       "id": "personal-channel-settings",
       "heading": "Personal channel settings",
@@ -32,7 +33,8 @@ description: "SharpMUSH documentation for @channel joining"
         "@channel/combine",
         "@channel/uncombine"
       ]
-    }
+    },
+    {"id": "undoing", "heading": "Which channels, and undoing", "lookup": "@channel joining undoing settings"}
   ],
   "redirects": {
     "@CHANNEL JOINING2": "@channel joining personal channel settings"
@@ -47,13 +49,19 @@ description: "SharpMUSH documentation for @channel joining"
 - `@channel/on <channel>[=<player>]`
 - `@channel/off <channel>[=<player>]`
 
-`@channel/list` shows a list of all the channels you can see, along with some basic information such as whether you are on the channel, how it's locked, etc. [@CHANNEL LIST](/reference/sharpmush-help/sharpchat/#channel-list) explains the output in detail. If a *\<prefix\>* is given, only channels whose names begin with *\<prefix\>* are shown. If the /on switch is given, only channels you've joined are shown. If /off is given, channels you are on will not be shown. The /quiet switch shows just a list of channel names, without any extra information.
+`@channel/on` and `@channel/off` add or remove you from the given *\<channel\>*. You only hear messages for channels you're on, and most channels require you to join them before you can speak on them. /join and /leave are aliases for /on and /off.
+
+- [@channel joining listing](/reference/sharpmush-help/channel-joining-command/#listing-channels): `@channel/list`, `/what` and `/who`
+- [@channel joining personal channel settings](/reference/sharpmush-help/channel-joining-command/#personal-channel-settings): gag, mute, hide and combine
+- [@channel joining undoing settings](/reference/sharpmush-help/channel-joining-command/#which-channels-and-undoing): which channels, and undoing a setting
+
+### Listing channels
+
+`@channel/list` shows a list of all the channels you can see, along with some basic information such as whether you are on the channel, how it's locked, etc. [@CHANNEL LIST](/reference/sharpmush-help/sharpchat/#channel-list) explains the output in detail. If a *\<prefix\>* is given, only channels whose names begin with *\<prefix\>* are shown. If the /on switch is given, only channels you've joined are shown. If /off is given, channels you are on will not be shown. The /quiet switch shows just a list of channel names, without any extra information. `@clist` is the same as `@channel/list` with no switches or prefix; `@clist/full` is accepted, for PennMUSH softcode, and lists the same way.
 
 `@channel/what` shows the name, description, owner, priv flags, mogrifier and buffer size for all channels, or all channels whose names begin with *\<prefix\>* if one is given. Channels you may decompile also show their locks.
 
-`@channel/who` lists the members of the given channel: connected players and things. Members hiding on the channel with `@channel/hide` are omitted unless you have the `Who` power. A member's own hidden or gagging state is noted beside their name. The web portal's channel view keeps the same list beside the conversation, in place of connect and disconnect lines, which it does not show.
-
-`@channel/on` and `@channel/off` add or remove you from the given *\<channel\>*. You only hear messages for channels you're on, and most channels require you to join them before you can speak on them. /join and /leave are aliases for /on and /off.
+`@channel/who` lists the members of the given channel: connected players and things. Members hiding on the channel with `@channel/hide` are omitted unless you are a wizard or royalty or have the See_All power. A member's own hidden or gagging state is noted beside their name. The web portal's channel view keeps the same list beside the conversation, in place of connect and disconnect lines, which it does not show.
 
 ### Personal channel settings
 
@@ -74,15 +82,17 @@ On channels with the 'hide_ok' priv, `@channel/hide` lets you hide from the @cha
 
 Connect and disconnect messages across all channels you have marked with `@channel/combine` will be combined into a single message with a |-separated list of all channel names. Only players can use this.
 
+### Which channels, and undoing
+
 For all four of these commands, you can specify a single channel to affect, or omit *\<channel\>* to affect every channel you are on. Naming a channel resolves against the channels you are on, so an abbreviation cannot be made ambiguous by a channel you never joined; the argument-less form reports what it did in one line and names no channel. To undo the gag/mute/hide, either use `@channel/<switch> [<channel>]=no` or `@channel/un<switch> [<channel>]`.
 
-These are all your OWN settings on a channel. There is no command for muting or gagging somebody else; to stop a member speaking, lock the channel with `@clock/speak` (see [@CHANNEL CLOCK](/reference/sharpmush-help/sharpchat/#channel-clock)).
+These are all your OWN settings on a channel. There is no command for muting or gagging somebody else; to stop a member speaking, lock the channel with `@clock/speak` (see [@CHANNEL CLOCK](/reference/sharpmush-help/channel-clock-command/#channel-clock)).
 
 ::: seealso
 - [@channel joining](/reference/sharpmush-help/channel-joining-command/#channel-joining)
-- [cstatus()](/reference/sharpmush-help/sharpfunc/#cstatus)
-- [cowner()](/reference/sharpmush-help/sharpfunc/#cowner)
-- [cflags()](/reference/sharpmush-help/sharpfunc/#cflags)
-- [channels()](/reference/sharpmush-help/sharpfunc/#channels)
-- [@CHANNEL ADMIN](/reference/sharpmush-help/sharpchat/#channel-admin)
+- [cstatus()](/reference/sharpmush-help/channel-functions/#cstatus)
+- [cowner()](/reference/sharpmush-help/channel-functions/#cowner)
+- [cflags()](/reference/sharpmush-help/channel-functions/#cflags)
+- [channels()](/reference/sharpmush-help/channel-functions/#channels)
+- [@CHANNEL ADMIN](/reference/sharpmush-help/channel-admin-command/#channel-admin)
 :::
