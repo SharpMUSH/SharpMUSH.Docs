@@ -20,6 +20,8 @@ This page covers:
 - bang notation, `!` and `!!` before a function call;
 - register labels, a second name for a q-register;
 - `%i_<n>`, `%i_L`, `%il` and `%-<n>`, more substitutions for loops and arguments;
+- in the `rhost` dialect, RhostMUSH's other substitutions, the `}` prefix, and commas in
+  one-argument functions;
 - the functions that come from RhostMUSH, and `ifelse()` with two arguments;
 - RhostMUSH's spellings of `@switch`, `@dolist` and `@lock` switches;
 - extra arguments to `map()`, and the one-argument `search()`;
@@ -29,7 +31,8 @@ This page covers:
 - what is deliberately different from RhostMUSH.
 
 Every example below was run on SharpMUSH. Most are in the game's help (`help @dolist`, `help bang
-notation`, `help setq`, `help compatibility config` and each function's own entry), where SharpMUSH's
+notation`, `help setq`, `help compatibility config`, `help compatibility dialects` and each function's
+own entry), where SharpMUSH's
 test suite runs them on every change. The `rhost_list` section shows the call's form only.
 
 ## The @dolist element
@@ -166,6 +169,40 @@ think u(me/FIRST_LAST,a,b,c,d,e,f,g,h,i,j,k,l,m)
 ```
 
 Output: `a and m`
+
+## The rhost dialect
+
+Code read in the `rhost` dialect takes some forms the way RhostMUSH does. That is code in an
+attribute with the `rhost` flag, which a RhostMUSH import sets on every attribute it brings in. While
+the game's `dialect` setting is `rhost`, it is also anything typed and code in an attribute with no
+dialect flag. Elsewhere these forms keep PennMUSH's
+meaning.
+
+| Form | Is |
+| --- | --- |
+| `%+!` | every argument, joined by spaces; `%+!<c>!` joins them with `<c>` |
+| `%-` | every argument from `%10` on, joined by commas |
+| `%-#`, `%-n`, `%-k` | the dbref, name and moniker of the object whose queued command is running, or the player who typed it; a `u()` does not change them |
+| `%-m`, `%-p` | in a hook, the command line it runs for and the line the player typed; empty elsewhere |
+| `%-h<name>` | `#-1 INVALID CACHE`: SharpMUSH has no attribute cache |
+| `%f`, `%w` | `%f` and `#-1`, as on a RhostMUSH game that defines no `%f` and has no twink lock |
+
+A command typed after `}` keeps its runs of spaces.
+
+A function that takes one argument reads any commas in it as text, so `strlen(a,b)` is 3. This covers
+`capstr()`, `decode64()`, `encode64()`, `escape()`, `flip()` (and `reverse()`), `ispunct()`,
+`lcstr()`, `lit()`, `s()`, `secure()`, `strlen()`, `strlenraw()` and `ucstr()`.
+
+With `dialect` set to `rhost`:
+
+```sharp
+think ulambda(lit(#lambda/%+!|%+!-!),a,b,c)
+think %-#|%f|%w
+}think a   b
+think strlen(a,b)
+```
+
+Output, typed by `#1`: `a b c|a-b-c`, `#1|%f|#-1`, `a   b` and `3`
 
 ## Functions from RhostMUSH
 
@@ -433,10 +470,8 @@ Output for a wizard, with `sidefx_flag` on: `0 1`
 A few RhostMUSH forms are not taken up, or work differently, because following RhostMUSH would change
 what PennMUSH code prints or how SharpMUSH's permissions work:
 
-- `%+!` is not RhostMUSH's. `%+` is the number of arguments, as in PennMUSH, so `%+!` is that number
-  followed by `!`.
-- A bare `%-`, with no number after it, is just `-`. RhostMUSH gives `%-` followed by a letter other
-  meanings; only `%-<n>` is taken up.
+- Outside the `rhost` dialect, `%+!` is the number of arguments followed by `!`, and `%-` followed by
+  anything but a number is `-` and that text, as in PennMUSH.
 - `edit()` with four or five arguments is RhostMUSH's only under `rhost_edit`, since PennMUSH reads
   those arguments as further from/to pairs.
 - An object whose SEX is unset or not recognised is "they" and "them", where RhostMUSH and PennMUSH
