@@ -545,6 +545,16 @@ async function convertAllDocs() {
     }
     
     console.log(`\n✅ Successfully converted ${markdownFiles.length} files`);
+
+    // Remove pages whose topic file is no longer in the export, so a topic the help drops
+    // leaves the site instead of staying published with its old text.
+    const exported = new Set(markdownFiles);
+    for (const file of await fs.readdir(OUTPUT_DOCS_PATH)) {
+      if (file.endsWith('.md') && !exported.has(file)) {
+        await fs.unlink(path.join(OUTPUT_DOCS_PATH, file));
+        console.log(`Removed ${file}: no longer in the help export`);
+      }
+    }
     
     // Fix links that point to removed aliases
     console.log('\nFixing links to removed aliases...');
