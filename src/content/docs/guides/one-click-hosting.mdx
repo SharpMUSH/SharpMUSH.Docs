@@ -28,6 +28,7 @@ The first choice is who runs updates.
 | Host | Updates | How you launch | Rough monthly cost |
 |---|---|---|---|
 | Oracle Cloud | itself | Paste the setup text, on an ARM server in the free tier | free, within Oracle's Always Free limits |
+| Contabo | itself | Run the installer over SSH | about €4.50 before VAT for 4 cores and 8 GB (Cloud VPS 10) |
 | Hetzner | itself | Paste the setup text into Cloud config | from €6.49 before VAT |
 | Vultr | itself | Paste the setup text into the user data box | $10 for 2 GB, $20 for 4 GB |
 | DigitalOcean | itself | Paste the setup text into the user data box | $12 for 2 GB, $24 for 4 GB |
@@ -45,6 +46,7 @@ work.
 What we suggest:
 
 - **To try SharpMUSH for nothing:** Oracle Cloud's free tier, if it has room when you ask.
+- **For the most server for the money:** Contabo. See [Launch on Contabo](#launch-on-contabo).
 - **For a game that looks after itself, cheaply:** Hetzner or Vultr.
 - **For a form to fill in rather than text to paste:** Akamai / Linode.
 - **To be playing in minutes and choose each update yourself:** Railway or Fly.io.
@@ -143,13 +145,79 @@ A host with no user data box at all, such as OVHcloud's VPS range, takes the ins
 instead, as in the note below.
 
 <Aside>
-Already have a server? Log in over SSH and run the installer directly. It asks no questions and uses
-`<ip>.sslip.io`; run `sharpmush-configure` afterwards to give it a domain.
+Already have a server? Log in over SSH and run the installer directly. Piped like this it asks no
+questions and uses `<ip>.sslip.io`; run `sharpmush-configure` afterwards to give it a domain.
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/SharpMUSH/SharpMUSH/main/deploy/oneclick/install.sh | sudo bash
 ```
+
+To answer the questions first instead, download it and run it with `--ask`, as in
+[Launch on Contabo](#launch-on-contabo).
 </Aside>
+
+## Launch on Contabo
+
+Contabo's Cloud VPS plans give more memory and cores for the money than the other hosts here. The
+smallest, Cloud VPS 10, has 4 cores, 8 GB of memory and 75 GB of disk, twice the 4 GB that is
+comfortable for a game. Plans are paid by the month, not by the hour. Check the order page for the
+current price, the discount for a longer term and any setup fee before you order.
+
+<Steps>
+
+1. Order a **Cloud VPS** with **Ubuntu 24.04**, in the region nearest your players. Set a root
+   password when asked, or note the one Contabo emails you.
+
+2. Copy your SSH key to it, from your own computer. It asks for the root password once.
+
+   ```bash
+   ssh-copy-id -i ~/.ssh/id_ed25519.pub root@<your-server-ip>
+   ```
+
+   No key yet? Make one with `ssh-keygen -t ed25519` first.
+
+3. Turn off password logins, as in [Lock down SSH](#lock-down-ssh). Contabo servers accept the root
+   password from anywhere until you do.
+
+4. If your domain is on Cloudflare, [make an API token](#make-a-cloudflare-api-token).
+
+5. Run the installer. It asks for the domain and the Cloudflare token before it installs anything,
+   so the token stays out of your shell history. Press Enter at a question to skip it.
+
+   ```bash
+   ssh -t root@<your-server-ip> 'curl -fsSL https://raw.githubusercontent.com/SharpMUSH/SharpMUSH/main/deploy/oneclick/install.sh -o install.sh && bash install.sh install --ask'
+   ```
+
+   It opens ports 22, 80, 443, 4201 and 4203 in the server's own firewall. When it finishes, it prints your addresses and setup link, and any notes on what is left to
+   do, such as a reboot for system updates. Carry on with [Finish setup](#finish-setup).
+
+</Steps>
+
+## Lock down SSH
+
+A new VPS usually lets root log in with a password, and bots try passwords on every public address.
+Once your SSH key logs you in, turn passwords off. First check that the key works on its own, from
+your own computer:
+
+```bash
+ssh -o PreferredAuthentications=publickey root@<your-server-ip> true && echo ok
+```
+
+If that prints `ok`, run this to accept keys only and lock root's password:
+
+```bash
+ssh root@<your-server-ip> 'printf "PasswordAuthentication no\nKbdInteractiveAuthentication no\nPermitRootLogin prohibit-password\n" > /etc/ssh/sshd_config.d/00-keys-only.conf && sshd -t && systemctl reload ssh && usermod -p "*" root'
+```
+
+The file's name starts with `00-` so it wins over the cloud image's own settings. With root's password
+locked, the host's web console no longer lets you in either, so keep a copy of your key somewhere safe. Check it from your
+computer: this should be refused with `Permission denied (publickey)` and never ask for a password.
+
+```bash
+ssh -o PubkeyAuthentication=no root@<your-server-ip> true
+```
+
+The installer prints a note while the server still accepts passwords.
 
 ## Launch free on Oracle Cloud
 
@@ -531,6 +599,30 @@ cd /opt/sharpmush && docker compose run --rm backup restic init
 
 [Backups](/guides/deployment#backups) covers checking and restoring them.
 
+## Monitoring
+
+The game server's and the connection server's metrics (`/metrics` on ports 9092 and 9091) are
+published on the server's own loopback address only. To scrape them from elsewhere, carry them over
+SSH:
+
+```bash
+ssh -N -L 19092:127.0.0.1:9092 -L 19091:127.0.0.1:9091 root@<your-server-ip>
+```
+
+Prometheus then scrapes `127.0.0.1:19092` and `127.0.0.1:19091` on your machine.
+
+## Move a game to a new server
+
+A game is more than its world: the wiki's uploads, installed plugins and the key ring that decrypts
+stored secrets move with it. [Turn on backups](#turn-on-backups) on the old server and run one, install
+on the new server as above with the same domain, then restore that snapshot there as in
+[Restoring for real](/guides/deployment#restoring-for-real).
+
+Behind Cloudflare, the installer makes a tunnel of the new server's own and moves the domain and
+`telnet.<your-domain>` to it, so the old server stops getting players. The installer names the old
+tunnel in a note: stop the old server's stack, then delete that tunnel under **Zero Trust** →
+**Networks** → **Tunnels**. Cloudflare refuses to delete a tunnel while it is still connected.
+
 ## When something goes wrong
 
 | What you see | What to do |
@@ -538,7 +630,9 @@ cd /opt/sharpmush && docker compose run --rm backup restic init
 | No welcome message with a setup link | The install is still running or failed. Read `/var/log/sharpmush-install.log` (`/var/log/stackscript.log` on Linode). |
 | The browser warns about the certificate | The domain's A record does not point at the server yet, or sslip.io's weekly certificate limit is used up. Check the record, or give the game your own domain with `sharpmush-configure`. |
 | "Waiting for its owner to finish setup" | That browser has not opened the setup link. Open it from the welcome message. |
-| Telnet connects nowhere | Setup is not finished yet; telnet opens once it is. |
+| Telnet connects nowhere | Setup is not finished yet; telnet opens once it is. Check it from your computer with `nc -vz <telnet address> 4201`. |
+| "The Cloudflare token cannot manage tunnels" | The token lacks **Account** → **Cloudflare Tunnel** → **Edit**, or your account is not chosen under **Account Resources**. Edit the token and run the installer again (or `sharpmush-configure` once it has installed). |
+| A Cloudflare error page right after installing | The tunnel is still connecting. The installer waits for it and prints a note if it gave up; wait a minute and reload. |
 | TLS telnet on 4203 is refused | The certificate is not ready yet: wait a few minutes after the portal first answers over HTTPS. Behind a tunnel you made yourself there is no telnet address, so 4203 stays closed. |
 | Anything else | `cd /opt/sharpmush && docker compose ps` shows what is running, and `docker compose logs sharpmush-server` shows the game's log. |
 
