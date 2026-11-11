@@ -154,9 +154,9 @@ function call for its width, which the rewrite would run twice, is left as writt
 report; fix each one by hand, since SharpMUSH has no such function. RhostMUSH's `tag()` becomes `tagref()`, because
 SharpMUSH's `tag()` writes an HTML tag. In command code (`$`-commands, `^`-listens and attributes that start with
 `@`, `&`, `{`, `think` or `wmail`), RhostMUSH commands SharpMUSH spells differently are rewritten too: `join` and `grab`
-become `@teleport`, `@freeze` and `@thaw` become `@queue/pause` and `@queue/resume`, `@zone` becomes `@chzone`,
+become `@teleport`, `@freeze` and `@thaw` become `@queue/pause` and `@queue/resume`, `@thaw/delete` becomes `@halt/pid`, `@zone` becomes `@chzone`,
 `@lfunction` becomes `@function/local`, a call to a local function becomes `localfun()`, and `@dynhelp` becomes
-`textfile()`. Each rewrite is listed in the report, with what to check by hand. The import also turns on the compatibility options the old server's
+`textfile()`. Each rewrite is listed in the report, with what to check by hand. A `join` or `grab` aimed at a pronoun such as `him`, or at text that is not one name, dbref or substitution, is left as written without a note, so search for those by hand. The import also turns on the compatibility options the old server's
 softcode expects, and lists them in its report.
 
 **What is left behind.** Destroyed objects, money, flags and toggles SharpMUSH has nothing for, and
