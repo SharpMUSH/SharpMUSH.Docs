@@ -1,0 +1,158 @@
+---
+title: "box()"
+description: "SharpMUSH documentation for box()"
+---
+
+<!-- help-article
+{
+  "corpus": "help",
+  "id": "box-function",
+  "lookup": "box()",
+  "aliases": [],
+  "sections": [
+    {
+      "id": "options",
+      "heading": "Options",
+      "lookup": "box() options"
+    },
+    {
+      "id": "examples",
+      "heading": "Examples",
+      "lookup": "box() examples"
+    },
+    {
+      "id": "nesting-examples",
+      "heading": "Layouts inside a box",
+      "lookup": "box() nesting examples"
+    },
+    {
+      "id": "box-in-a-box",
+      "heading": "A box in a box",
+      "lookup": "box() in a box"
+    },
+    {
+      "id": "border-examples",
+      "heading": "Border examples",
+      "lookup": "box() border examples"
+    }
+  ]
+}
+-->
+## box()
+
+`box(<body>[, <title>[, <width>[, <options>]]])`
+
+Draws a frame round *&lt;body&gt;*, with *&lt;title&gt;* set into the top edge. A [RULE()](/reference/sharpmush-help/rule-function/#rule) on a line of its own in the body becomes a divider across the box; a [FLEX()](/reference/sharpmush-help/flex-function/#flex), [FIELDS()](/reference/sharpmush-help/fields-function/#fields) or [TREE()](/reference/sharpmush-help/tree-function/#tree) keeps its layout inside it. A flex() with `"join":true` splits the box into panes that share its edges; see [flex() panes].
+
+*&lt;width&gt;* is the whole box, borders included; see [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions) for an empty width.
+
+- [box() options]: borders, theme, title placement, more titles and padding
+- [box() examples]: a centred title, one on the left, and two columns
+- [box() nesting examples]: a centred body, and fields with a divider
+- [box() in a box]: a box inside another keeps its width
+- [box() border examples]: a rounded border, pieces of your own, and a bottom title
+
+::: seealso
+- [RULE()](/reference/sharpmush-help/rule-function/#rule)
+- [LAYOUT BORDERS](/reference/sharpmush-help/layout-borders/#layout-borders)
+- [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions)
+:::
+
+### Options
+
+Options (the last argument, which may be empty):
+- `"border":"<style>"` and the border pieces - see [LAYOUT BORDERS](/reference/sharpmush-help/layout-borders/#layout-borders).
+- `"theme":"<theme>"` - colours for the layout and everything inside it; see [LAYOUT THEMES](/reference/sharpmush-help/layout-themes/#layout-themes).
+- `"title":"left"`, `"title":"center"` or `"title":"right"` - where the title sits. Centred by default.
+- `"titles":[...]` - more titles in the top edge, written as for [RULE()](/reference/sharpmush-help/rule-function/#rule).
+- `"bottomtitles":[...]` - titles in the bottom edge, written the same way.
+- `"pad":<n>` - spaces between each side and the body, 0 to 10. One by default.
+
+### Examples
+
+```sharp
+> think box(Hello there.,Greeting,30)
++========< Greeting >========+
+| Hello there.               |
++============================+
+```
+
+```sharp
+> think box(Hello,Title,20,{{"title":"left"}})
++=< Title >========+
+| Hello            |
++==================+
+```
+
+Two columns in a box, with [FLEX()](/reference/sharpmush-help/flex-function/#flex):
+
+```sharp
+> think box(flex({{"sep":" | "}},item(Contents%rMannaz%rRaya,12),Exits%rNorth%rOut),Garden,34)
++===========< Garden >===========+
+| Contents     | Exits           |
+| Mannaz       | North           |
+| Raya         | Out             |
++================================+
+```
+
+### Layouts inside a box
+
+The body can be a layout, or several on lines of their own. To centre the body, wrap it in [ITEM()](/reference/sharpmush-help/layout-functions/#item) with `-` as its width; each line is centred, at any width:
+
+```sharp
+> think box(item(Hello there.%rWelcome to the garden.,-),,30)
++============================+
+|        Hello there.        |
+|   Welcome to the garden.   |
++============================+
+```
+
+[FIELDS()](/reference/sharpmush-help/fields-function/#fields) above a [RULE()](/reference/sharpmush-help/rule-function/#rule) that divides the box:
+
+```sharp
+> think box(fields(,Sex,Male,Species,Human)%r[rule(Quote)]%rHooooo?,Mannaz,30)
++=========< Mannaz >=========+
+| Sex:     Male              |
+| Species: Human             |
++==========< Quote >=========+
+| Hooooo?                    |
++============================+
+```
+
+### A box in a box
+
+A box given a width keeps it inside a wider box, against the left. In a narrower one it takes the room it has. A box with no width fills the box around it:
+
+```sharp
+> think box(box(Hi,,12),,30)
++============================+
+| +==========+               |
+| | Hi       |               |
+| +==========+               |
++============================+
+```
+
+### Border examples
+
+A Unicode client sees this box in light lines with rounded corners. A client without Unicode is sent the ASCII form shown here:
+
+```sharp
+> think box(Hello there.,,30,{{"border":"rounded"}})
++----------------------------+
+| Hello there.               |
++----------------------------+
+```
+
+```sharp
+> think box(x,,20,{{"top":"-=","corner":"*"}})
+*-=-=-=-=-=-=-=-=-=*
+| x                |
+*==================*
+```
+
+```sharp
+> think box(Page one,Notes,20,{{"bottomtitles":\[{"text":"1/3","side":"right"}]}})
++=====< Notes >====+
+| Page one         |
++==========< 1/3 >=+
+```

@@ -1,0 +1,55 @@
+---
+title: "@halt"
+description: "SharpMUSH documentation for @halt"
+---
+
+<!-- help-article
+{
+  "corpus": "help",
+  "id": "halt-command",
+  "lookup": "@halt",
+  "aliases": ["@allhalt"],
+  "sections": [
+    {"id": "pid", "heading": "Cancelling one queue entry", "lookup": "@halt pid", "aliases": ["@halt/pid"]},
+    {"id": "all", "heading": "Halting everything", "lookup": "@halt all", "aliases": ["@halt/all"]}
+  ]
+}
+-->
+## @halt
+
+`@halt[/noeval] <object>[=<action list>]`<br>
+`@halt/pid <pid>`<br>
+`@halt/all`<br>
+`@allhalt`
+
+The @halt command removes all queued actions for `<object>`. If given, `<action list>` is placed in the queue for the object instead. If no action list is specified, the object is set HALT.
+
+If `<object>` is a player, it clears the queue for the player and all of their objects. You can use "@halt me" to clear your own queue without setting yourself HALT.
+
+Only wizards and objects with the halt @power can @halt other players' objects. Note that halting an object does NOT affect any objects waiting on it as a semaphore.
+
+- [@halt pid](/reference/sharpmush-help/halt-command/#cancelling-one-queue-entry): cancelling a single queue entry by its pid
+- [@halt all](/reference/sharpmush-help/halt-command/#halting-everything): halting every object in the game, for wizards
+
+### Cancelling one queue entry
+
+`@halt/pid <pid>`
+
+`@halt/pid` will cancel a single queue entry with the given pid (the number in parentheses before it in @ps). You must control the object that queued the command or have the halt power to do this.
+
+A cancelled entry that was waiting on a delay keeps its place in the queue count until the delay is removed. If @halt/pid reports that it could not remove it, the entry stays cancelled and still counts towards the queue limit: try `@halt/pid <pid>` again later.
+
+### Halting everything
+
+`@halt/all`<br>
+`@allhalt`
+
+`@halt/all` is a synonym for @allhalt, and is a wizard-only command which halts all objects in the game in an effort to free up the queue.
+
+::: seealso
+- [@wait](/reference/sharpmush-help/wait-command/#wait)
+- [@ps](/reference/sharpmush-help/ps-command/#ps)
+- [semaphores](/reference/sharpmush-help/semaphores/#semaphores)
+- [@drain](/reference/sharpmush-help/sharpcmd/#drain)
+- [@notify](/reference/sharpmush-help/notify-command/#notify)
+:::
