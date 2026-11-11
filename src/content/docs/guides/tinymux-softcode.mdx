@@ -18,11 +18,12 @@ This page covers:
 
 - the TinyMUX forms of shared functions, which work on every game;
 - `%m` and `%=<name>`, two TinyMUX substitutions;
+- commas in one-argument functions, and the `space_compress` setting;
 - the `mux_logic`, `mux_justify`, `mux_collation`, `innermost_tokens` and `rhost_list` settings;
 - what still has to be rewritten by hand.
 
 Every example below is in the game's help (`help compatibility arguments`, `help compatibility
-config`, `help compatibility parser`), and SharpMUSH's test suite runs them, with TinyMUX 2.14's own
+config`, `help compatibility parser`, `help compatibility dialects`), and SharpMUSH's test suite runs them, with TinyMUX 2.14's own
 answers as the expected output. The `rhost_list` section shows the call's form only.
 
 ## TinyMUX forms of shared functions
@@ -124,6 +125,29 @@ PennMUSH prints `m` for `%m`, and reads `%=` as the name of the attribute being 
 `%=<greeting>` there is that name followed by `<greeting>`. Importing a PennMUSH database lists every
 attribute that uses `%m` or `%=<`, so a game can check them.
 </Aside>
+
+## Commas in one-argument functions
+
+In code read in the `mux` dialect, a function that takes one argument reads any commas in it as text,
+as TinyMUX does, so `strlen(a,b)` is 3. That is code in an attribute with the `mux` flag, which a
+TinyMUX import sets on every attribute it brings in, and anything typed while the game's `dialect`
+setting is `mux`. Elsewhere `strlen(a,b)` passes two arguments. This covers `capstr()`, `escape()`,
+`flip()` (and `reverse()`), `lcstr()`, `lit()`, `s()`, `secure()`, `sha1()`, `strlen()`, `strmem()`,
+`t()` and `ucstr()`.
+
+With `dialect` set to `mux`:
+
+```sharp
+think strlen(a,b) ucstr(a, b)
+```
+
+Output: `3 A, B`
+
+## Spaces
+
+SharpMUSH makes each run of spaces in evaluated text one space, as PennMUSH and TinyMUX do by default.
+A game whose `netmux.conf` turns `space_compress` off keeps its spaces: importing that file turns
+SharpMUSH's `space_compress` setting off too, and `@config/set space_compress=no` does the same by hand.
 
 ## The settings
 
