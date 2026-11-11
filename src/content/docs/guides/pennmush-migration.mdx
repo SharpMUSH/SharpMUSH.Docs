@@ -136,7 +136,7 @@ their members, and each player's comsys aliases become `CHANALIAS` attributes.
 
 RhostMUSH reality levels become [reality layers](/reference/sharpmush-help/reality/), when the
 configuration file that names them is imported too. Each level's name works as a layer name in
-softcode, so `rxlevel(me,Umbra)` still reads. RhostMUSH totems become flags. A RhostMUSH cluster is
+softcode, so `rxlevel(me,Umbra)` still reads. RhostMUSH totems become roles named `totem-<name>`. A RhostMUSH cluster is
 merged into its first object, which takes the custom attributes the others held. Their built-in
 attributes, such as a description, and the other objects themselves are not imported, so look at
 them before you cut over. When two of the cluster's objects hold an attribute of the same name, the
@@ -152,7 +152,11 @@ RhostMUSH functions whose arguments differ from SharpMUSH's, such as `ljc()` and
 SharpMUSH call that gives the same answer. A call it can't rewrite safely, such as `ljc()` with a
 function call for its width, which the rewrite would run twice, is left as written and listed in the
 report; fix each one by hand, since SharpMUSH has no such function. RhostMUSH's `tag()` becomes `tagref()`, because
-SharpMUSH's `tag()` writes an HTML tag. The import also turns on the compatibility options the old server's
+SharpMUSH's `tag()` writes an HTML tag. In command code (`$`-commands, `^`-listens and attributes that start with
+`@`, `&`, `{`, `think` or `wmail`), RhostMUSH commands SharpMUSH spells differently are rewritten too: `join` and `grab`
+become `@teleport`, `@freeze` and `@thaw` become `@queue/pause` and `@queue/resume`, `@zone` becomes `@chzone`,
+`@lfunction` becomes `@function/local`, a call to a local function becomes `localfun()`, and `@dynhelp` becomes
+`textfile()`. Each rewrite is listed in the report, with what to check by hand. The import also turns on the compatibility options the old server's
 softcode expects, and lists them in its report.
 
 **What is left behind.** Destroyed objects, money, flags and toggles SharpMUSH has nothing for, and
