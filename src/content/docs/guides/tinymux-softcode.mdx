@@ -130,8 +130,9 @@ attribute that uses `%m` or `%=<`, so a game can check them.
 
 In code read in the `mux` dialect, a function that takes one argument reads any commas in it as text,
 as TinyMUX does, so `strlen(a,b)` is 3. That is code in an attribute with the `mux` flag, which a
-TinyMUX import sets on every attribute it brings in, and anything typed while the game's `dialect`
-setting is `mux`. Elsewhere `strlen(a,b)` passes two arguments. This covers `capstr()`, `escape()`,
+TinyMUX import sets on every attribute it brings in. While the game's `dialect` setting is `mux`, it is
+also anything typed and code in an attribute with no dialect flag. The `rhost` dialect reads these
+commas the same way (see the RhostMUSH guide); elsewhere `strlen(a,b)` passes two arguments. This covers `capstr()`, `escape()`,
 `flip()` (and `reverse()`), `lcstr()`, `lit()`, `s()`, `secure()`, `sha1()`, `strlen()`, `strmem()`,
 `t()` and `ucstr()`.
 
