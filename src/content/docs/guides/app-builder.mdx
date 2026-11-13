@@ -13,8 +13,8 @@ in.
 
 ## Starting an app
 
-Open **Build & manage**, **Application builder** (`/build/apps`). Every character can use it on an
-object they control. Pick a starting point:
+Open **Build & manage**, **Application builder** (`/build/apps`). Every player except guests can
+use it, and saves what they build on an object they control. Pick a starting point:
 
 - **Blank**: one empty page.
 - **Character sheet**: a few details, traits as chips and scores as tiles.
@@ -54,11 +54,13 @@ key `watch` and three choices: `dusk`, `midnight` and `dawn`.
 3. **Fill empty ones** names every empty attribute after the app and the key.
 
 A form only writes attributes on the person who sends it, and only ones they could set themselves
-with `&`.
+with `&`. A view or sheet reads the viewer's own attributes, or those of the character being
+looked at when it is a widget, and shows only what the viewer could read with `get()`.
 
 ## Saving
 
-The last step checks for problems and asks for the object to keep it on. Watch Duty goes on the
+The last step checks for problems and asks for the object to keep it on. Saving is refused on an
+object you do not control. Watch Duty goes on the
 Watch Office, `#55`, which God controls. The step lists the attributes it writes there,
 `` DATA`APP`WATCH-DUTY `` and three beside it, and then offers:
 
@@ -66,6 +68,9 @@ Watch Office, `#55`, which God controls. The step lists the attributes it writes
   the layout editor. This needs the `applications.admin` permission.
 - **Only save it** keeps it on the object, for staff to show later under **Applications**
   (`/admin/applications`).
+
+Without `applications.admin` there is only a **Save** button, and the page says to ask staff to
+show it.
 
 ## Filling it in
 
@@ -85,10 +90,14 @@ the attribute it saves to. Staff softcode can read the same attributes to draw u
 
 ## Changing it later
 
-**Your apps**, on the builder's first screen, lists what you have saved. Open one to change it,
-or give an object and address name under **Open a saved one**. **The game's apps** lists apps from
-installed packages whose layout the builder can change. A package upgrade keeps your change,
-and asks which to keep when the upgrade changes the same layout.
+**Your apps**, on the builder's first screen, lists apps kept on your own character and apps
+already shown in the portal. Open one to change it. For one kept elsewhere and not shown yet, such
+as Watch Duty on `#55` after **Only save it**, give the object and address name under **Open a
+saved one**.
+
+**The game's apps** lists portal apps whose layout is kept beside their route on the HTTP handler,
+such as ones packages install. Changing one needs control of the handler, so it is usually staff
+work. When a package upgrade changes a layout you changed, the package manager asks which to keep.
 
 ## Next steps
 
