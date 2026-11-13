@@ -23,6 +23,8 @@ move itself (rehearsal, checks, cutover and rollback) with the
 The import page (**Admin > Database import**, `/admin/import`) tells the formats apart from the file's
 contents, and you can choose the format there if it guesses wrong.
 
+![The import page's Selected file card: harbour-rhost.flat, with Database format set to Tell from the file and PennMUSH, RhostMUSH and TinyMUX as the other choices](../../../assets/guide/import-format.webp)
+
 | Game | Database | Mail | Channels | Configuration |
 |---|---|---|---|---|
 | RhostMUSH | the flatfile `@dump/flat` writes | `.dump.mail` from `wmail/unload`, with `.dump.folder` in the mail folders slot | not imported (see below) | `netrhost.conf` |
@@ -223,5 +225,9 @@ numbers the flatfile does not name, and exits whose destination is not an object
 
 When the import ends, the import page lists every rewritten attribute under **Rewritten softcode**. Open a
 line to see the code before and after. A line marked **check by hand** gives the reason; fix those before
-players connect. **Download import log** saves the whole report, including every rewrite, as a text file.
+players connect.
+**Download import log** saves the whole report, including every rewrite, as a text file.
 The [migration guide](/guides/pennmush-migration/#check-the-rewritten-softcode) shows the page and the log.
+
+
+![Rewritten softcode after a RhostMUSH import: seven lines, one opened to show a $+shout command whose ljc() call became ljust(left(...)), and others for colour codes, timefmt() formats, a renamed attribute and @femit](../../../assets/guide/import-rewrites.webp)
