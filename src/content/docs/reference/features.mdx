@@ -18,7 +18,7 @@ rather try it than read about it.
 Players connect with a MU\* client over telnet, play in the browser from the game's website, or
 speak from a linked Discord channel. Telnet clients get full negotiation, Unicode, and MXP or Pueblo
 links and pictures where they support them. MUD clients such as Mudlet get a map, gauges and chat
-windows over [GMCP](/guides/mud-clients/).
+windows over GMCP with the [gmcp package](/guides/mud-clients/).
 
 A browser that loses its connection, such as a phone moving from Wi-Fi to mobile data, picks up its
 session again and is sent what it missed, within a window of 24 hours by default. See
@@ -29,7 +29,8 @@ session again and is sent what it missed, within a window of 24 hours by default
 A login is an **account**, and an account holds several characters. A player switches character
 without reconnecting, and can sign in with
 [Discord, Google and other services](/guides/sign-in-services/). In a telnet client, `register` and
-`login` reach the account, and `make` and `play` create and connect its characters.
+`login` reach the account, `create` and `play` create and connect its characters, and `claim` adds
+a character the player already has.
 
 ### The web portal
 
@@ -96,8 +97,8 @@ Discord's Events tab.
 ### Softcode
 
 SharpMUSH runs PennMUSH softcode and adds to it: every command has an output the next command reads
-as `%>`, functions take [named arguments](/guides/named-arguments/), JSON has its own functions, and
-Markdown renders for every client. Each command runs under a time budget, so a runaway loop cannot
+as `%>`, functions take [named arguments](/guides/named-arguments/), and Markdown renders for every
+client. Each command runs under a time budget, so a runaway loop cannot
 stall the game. See [Your first softcode command](/guides/your-first-softcode-command/).
 
 ### Displays that adapt to the reader
