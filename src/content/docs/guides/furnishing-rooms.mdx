@@ -1,0 +1,134 @@
+---
+title: Furnishing a Room
+description: Describe a room, add objects to it, lock what should stay put, and write the messages people see when they take something or walk through an exit.
+---
+
+A room is more than its description. This page adds the things in it: an object to look at, a lock
+so it stays where it is, and the messages people see when they try it. It uses only commands every
+SharpMUSH game has.
+
+The examples follow Marrow, who owns the Lantern Shop (`#46`), and Tamsin, who is visiting. To dig
+the room itself, see [Letting Your Players Build](/guides/player-building/#building-your-area).
+
+## Describing the room
+
+Stand in the room and set its description:
+
+```
+> @desc here=Brass lanterns hang from every beam. A counter runs along the back wall.
+Lantern Shop/DESCRIBE - Set.
+```
+
+## Adding an object
+
+`@create` makes a thing and puts it in your hands. Describe it, then `drop` it to leave it in the
+room:
+
+```
+> @create Brass lantern
+Created: Object #48.
+> @desc Brass lantern=A small lantern with a green glass chimney.
+Brass lantern/DESCRIBE - Set.
+> drop Brass lantern
+You drop Brass lantern.
+> look
+=< Lantern Shop(#46Rn) >======================================================
+Brass lanterns hang from every beam. A counter runs along the back wall.
+Contents:
+Brass lantern
+Obvious exits:
+Back Room <B>
+```
+
+Each object takes one slot of your building quota, like a room or an exit.
+
+## Locking it in place
+
+Anyone can pick up an unlocked object. A lock says who may. `me` lets only you:
+
+```
+> @lock Brass lantern=me
+Brass lantern(#48) - Basic locked.
+```
+
+A lock can name a character, an object someone must carry, a flag, or several of these joined with
+`&` (and) and `|` (or). `help @lock` lists them all.
+
+## Messages for success and failure
+
+Four attributes say what happens when someone tries the lantern. The ones starting with `o` are
+seen by everyone else in the room, after the person's name.
+
+```
+> @succ Brass lantern=You lift the lantern off its hook.
+> @fail Brass lantern=It is chained to the counter.
+> @ofail Brass lantern=tugs at the lantern, but it is chained down.
+```
+
+When Tamsin tries to take it:
+
+```
+> get Brass lantern
+It is chained to the counter.
+```
+
+and Marrow, in the same room, sees `Tamsin tugs at the lantern, but it is chained down.` When Marrow
+takes it, Marrow sees `You lift the lantern off its hook.` Without an `@osucc`, the room sees the
+game's own `Marrow takes Brass lantern.`
+
+## Exits work the same way
+
+An exit takes the same lock and messages. Here the back room's curtain only lets Marrow through:
+
+```
+> @lock back=me
+> @succ back=You duck under the curtain.
+> @osucc back=ducks under the curtain into the back room.
+> @fail back=The curtain is pinned shut.
+> @ofail back=tries the curtain, but it is pinned shut.
+```
+
+When Marrow goes `back`:
+
+```
+> back
+You duck under the curtain.
+=< Back Room(#49Rn) >=========================================================
+```
+
+and Tamsin, left in the shop, sees `Marrow ducks under the curtain into the back room.` When Tamsin
+tries it, Tamsin gets `The curtain is pinned shut.` and Marrow sees `Tamsin tries the curtain, but it is
+pinned shut.`
+
+`@odrop` on an exit is what the room on the far side sees when someone comes through:
+
+```
+> @odrop back=comes in from the shop, brushing past the curtain.
+```
+
+Anyone already in the back room sees `Marrow comes in from the shop, brushing past the curtain.`
+
+## A command on an object
+
+An object can carry its own commands. A new object has the `NO_COMMAND` flag, which turns them
+off, so clear it first:
+
+```
+> @set Brass lantern=!no_command
+Brass lantern - NO_COMMAND reset.
+> &CMD`LIGHT Brass lantern=$light lantern:@emit The lantern flares green.
+Brass lantern/CMD`LIGHT - Set.
+> light lantern
+The lantern flares green.
+```
+
+Anyone in the room can now type `light lantern`.
+`@lock/use Brass lantern=me` keeps the command to you. [Your first softcode
+command](/guides/your-first-softcode-command) goes further.
+
+## Next steps
+
+- [Mapping Your Rooms](/guides/builder-graph) shows how your rooms connect.
+- [Letting Your Players Build](/guides/player-building) covers quotas and joining an area to the
+  grid.
+- `help @lock`, `help @succ` and `help @create` in the game.
