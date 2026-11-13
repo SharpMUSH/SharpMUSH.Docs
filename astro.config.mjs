@@ -178,6 +178,7 @@ export default defineConfig({
                               { label: 'Notifications', slug: 'guides/notifications' },
                               { label: 'Bulletin Boards', slug: 'guides/bboards' },
                               { label: 'Radio', slug: 'guides/radio' },
+                              { label: 'Writing the Wiki', slug: 'guides/writing-the-wiki' },
                               { label: 'Reading the Wiki In-Game', slug: 'guides/wiki-reader' },
                               { label: 'Wiki Facts', slug: 'guides/wiki-facts' },
                               { label: 'Discord', slug: 'guides/discord' },
