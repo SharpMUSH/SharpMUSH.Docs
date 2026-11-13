@@ -23,8 +23,16 @@ way to get the shape of this page.
 ## First run
 
 The first visitor to **`/setup`** claims the admin account, which is made in advance and linked to
-God (#1). The setup wizard then offers to import a PennMUSH database, sets the HTTP and event handler
-objects, and lets the admin choose the bundled packages. It stays open until the admin finishes it.
+God (#1). The setup wizard then walks through five more steps:
+
+1. Import a PennMUSH, TinyMUX or RhostMUSH database, or start fresh.
+2. Introduce the game: its name and a first step for new players. This can wait until later.
+3. Choose the staff roles that sit beside Player, Builder, Royalty and Wizard: SharpMUSH's helper and
+   moderator, or RhostMUSH's staff levels.
+4. Choose the objects that answer HTTP requests and events.
+5. Choose the bundled packages.
+
+The wizard stays open until the admin finishes it, and comes back to the step they left.
 
 <Aside type="danger">
 Until someone completes `/setup`, anyone who reaches it takes ownership of the game. Deploy and
@@ -195,11 +203,14 @@ wizard bit. The pages are grouped as the portal's sidebar groups them.
 ### Server
 
 - **`/admin/server`** — uptime, connections, queue, storage and backups, read live.
+- **`/admin/backups`** — encrypted copies of the world sent to remote storage, on a schedule. See
+  [Deployment Reference](/guides/deployment/).
 - **`/admin/config`** — the server's configuration, grouped into categories and rendered as typed
   form fields, including array and dictionary values as editable lists. Its sub-pages are
   `/admin/config/restrictions` (command and function restrictions), `/admin/config/sitelock`,
   `/admin/config/bannednames` (disallowed character names), `/admin/config/secrets`,
-  `/admin/config/mssp`, `/admin/config/asciitranslations` and `/admin/config/import`.
+  `/admin/config/mssp`, `/admin/config/asciitranslations`, `/admin/config/import` and
+  `/admin/config/apps` (the [apps that may act for players](/guides/connected-apps/#registering-an-app)).
 - **`/admin/import`** — bring a PennMUSH, RhostMUSH or TinyMUX database into this game. With
   `/admin/config/import` this is a staged, one-way operation; use the
   [migration runbook](/guides/pennmush-migration), not the upload form alone, to plan rehearsal,
@@ -211,7 +222,7 @@ wizard bit. The pages are grouped as the portal's sidebar groups them.
 
 **`/softcode`** is a Monaco-based editor for attribute code, with multi-tab editing, syntax
 highlighting, hover help drawn from the helpfiles, and signature help for functions. It shares its
-analysis engine with the [language server](/reference/features#lsp-support), so the diagnostics it
+analysis engine with the [language server](/guides/editor-support/), so the diagnostics it
 shows are the real parser's, not an approximation.
 
 ## Next steps

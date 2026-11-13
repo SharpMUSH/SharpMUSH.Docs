@@ -1,83 +1,140 @@
 ---
 title: SharpMUSH
-description: Discover and get set up with SharpMUSH.
+description: A MUSH server for roleplay games, run from a browser, that keeps the commands, softcode and clients MUSH players already use.
 template: splash
 hero:
-  tagline: Build your own multiplayer text world. Create places, tell stories, and bring your community together.
+  title: 'Spend your time on the story, not the server.'
+  tagline: 'SharpMUSH is a MUSH server for roleplay games. Most of running one happens in a browser: setting it up, taking applications, answering jobs, changing settings, adding systems and keeping backups.'
   image:
     html: |
       <div class="sharpie-welcome">
         <img src="/sharpie/sharpie-welcome-perch.svg" width="640" height="520" alt="Sharpie, our mascot, welcomes you with her paws resting on her name." loading="eager" decoding="async" />
       </div>
   actions:
-    - text: Documentation
-      link: /guides/get-started/
+    - text: Launch a server
+      link: /guides/one-click-hosting/
       icon: right-arrow
-    - text: See SharpMUSH Live
+    - text: Visit the example game
       link: https://mush.sharpmush.com
       icon: external
       attrs:
         class: hero-demo-cta
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
 import '../../styles/sharpie-welcome.css';
+import '../../styles/front-page.css';
+import setupPackages from '../../assets/guide/front-setup-e-packages.webp';
+import wikiHome from '../../assets/guide/front-tour-wiki.webp';
+import themeEmber from '../../assets/guide/front-theme-phosphor.webp';
+import themeCrystal from '../../assets/guide/front-theme-crystal-epic.webp';
+import themeLumen from '../../assets/guide/front-theme-lumen-grid.webp';
+import themeCyberpunk from '../../assets/guide/front-theme-cyberpunk.webp';
 
-## Get started with SharpMUSH
+<div class="front-row">
+  <div>
+    <h2>Up in a few minutes</h2>
+    <p>A [one-click installer](/guides/one-click-hosting/) sets up a rented server. The first visitor claims the admin account, then picks staff roles and the systems the game needs.</p>
+  </div>
+  <Image src={setupPackages} width={1280} alt="The setup wizard's package step, with systems grouped under Web portal and Essentials." />
+</div>
 
-<CardGrid stagger>
-	<Card title="Why SharpMUSH?" icon="magnifier">
-		SharpMUSH is a MUSH server for games that play out in a MU\* client, a browser and a
-		Discord server at once. It keeps the softcode MUSH builders know, and lets a game write
-		its own systems in it. Read the [design premise](/about/design-premise/).
+<div class="front-row front-row--flip">
+  <div>
+    <h2>A wiki for the setting</h2>
+    <p>Staff write the game's setting, rules and guides in the browser, and visitors can read them before they make a character.</p>
+  </div>
+  <Image src={wikiHome} width={1280} alt="The game's wiki home, with category cards and recently changed pages." />
+</div>
+
+## Less to look after
+
+<CardGrid>
+	<Card title="Systems as packages" icon="puzzle">
+		Chargen, scenes, boards and jobs come as [packages](/guides/packages/). Installing one takes
+		seconds from the admin pages, with no install script to paste into the game. See what it will
+		change first, and roll it back if you change your mind.
 	</Card>
-	<Card title="Play from anywhere" icon="laptop">
-		Players connect with a MU\* client or the [web portal](/guides/web-portal/), which has a
-		Play terminal, mail, scenes and the wiki, and works on a phone and with
-		[screen readers](/guides/screen-readers/). MUD clients such as Mudlet get a map and gauges
-		over [GMCP](/guides/mud-clients/).
+	<Card title="Backups while people play" icon="document">
+		[Copy the live world](/guides/operator-handbook/) without stopping the game, on a schedule if
+		you like.
 	</Card>
-	<Card title="Bridge Discord and the game" icon="discord">
-		[Link Discord channels](/guides/discord/) to the game: a line said in the game is posted
-		in the channel, and a member's message comes back in as the character they chose.
-		Players can [sign in with Discord](/guides/sign-in-services/), Google and others.
+	<Card title="Updates keep players connected" icon="rocket">
+		Restarting the game server for an update [doesn't drop anyone](/technical/connections/).
 	</Card>
-	<Card title="Tools for roleplay and staff" icon="comment">
-		[Scenes](/guides/scenes/) log roleplay as it happens. The wiki holds pages with
-		[facts](/guides/wiki-facts/), such as a spell's level, that the portal and softcode can
-		search. [Jobs](/guides/jobs/) track what players ask staff for.
+	<Card title="Roles, not one wizard bit" icon="setting">
+		Give a staffer the jobs queue or the wiki without giving them the whole game. See
+		[roles](/reference/sharpmush-help/roles/).
 	</Card>
-	<Card title="Softcode first" icon="puzzle">
-		Game systems are softcode, shipped as [packages](/guides/packages/) you install, upgrade
-		and remove. [Portal pages](/guides/applications/) can be softcode too. When softcode is not
-		enough, a [C# plugin](/guides/plugins/) adds to the engine without a fork.
+</CardGrid>
+
+## What stays the same
+
+Players and coders carry on as they are.
+
+<CardGrid>
+	<Card title="Commands and softcode" icon="pencil">
+		SharpMUSH runs PennMUSH commands and softcode, and coders can write it from their client as
+		before. The [differences](/reference/compatibility/) are listed.
 	</Card>
-	<Card title="Bring your world" icon="rocket">
-		[Import](/guides/pennmush-migration/) a PennMUSH, RhostMUSH or TinyMUX database with its mail.
-		SharpMUSH runs PennMUSH softcode, with the [differences](/reference/compatibility/) listed,
-		and understands much of [TinyMUX](/guides/tinymux-softcode/) and
-		[RhostMUSH](/guides/rhostmush-softcode/) softcode too.
+	<Card title="Clients" icon="laptop">
+		Any MU\* client connects over telnet, with MXP, Pueblo and [GMCP](/guides/mud-clients/) for the
+		clients that use them.
 	</Card>
-	<Card title="Let other tools in" icon="pencil">
-		[Apps](/guides/connected-apps/) such as a character sheet site act as a character, with only
-		the rights its player allowed and no password. Editors check softcode as you type through
-		the [language server](/guides/editor-support/).
+	<Card title="Bring your game" icon="random">
+		[Import](/guides/pennmush-migration/) a PennMUSH, TinyMUX or RhostMUSH database with its mail.
+		Code from TinyMUX and RhostMUSH is rewritten where it can be, and the import lists every change
+		for you to check.
 	</Card>
-	<Card title="Run it from a browser" icon="setting">
-		Set up, configure, moderate and back up your game from the
-		[web portal](/guides/web-portal/), without editing config files.
+</CardGrid>
+
+## Easier to build with
+
+<CardGrid>
+	<Card title="Character profiles from your own sheets" icon="information">
+		The website's character list and profile pages are answered by softcode on the game's HTTP
+		handler, so they show your game's own sheet, fields and groups. `json_fill()` fills a JSON
+		template kept in an attribute, and [named arguments](/guides/named-arguments/) (`%<name>`) and
+		`chain()` keep that code short.
 	</Card>
-	<Card title="Runs on Docker" icon="seti:docker">
-		Booting up a game is a single [Docker Compose command](/guides/docker-quickstart/).
-		The same stack runs on a €4–6/month VPS.
+	<Card title="Forms written in softcode" icon="list-format">
+		Chargen, applications and staff requests can be [forms on the website](/guides/applications/),
+		written in softcode the way a `+command` is, or put together in the portal's App Builder.
+		[`@http`](/guides/web-requests/) lets the same code call outside web services.
 	</Card>
-	<Card title="See it running" icon="external">
-		Our [live example game](https://mush.sharpmush.com) runs the current build.
-		Create a character, or look around as a guest, with nothing to install.
+	<Card title="Layouts in the game's look" icon="seti:html">
+		`box()`, `fields()`, `datatable()` and `gauge()` describe a display once. Each player sees it
+		drawn in the game's [layout theme](/guides/layout-themes/) at their own screen width, and a
+		screen reader reads it in order. See [visual layouts](/guides/visual-layouts/).
 	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in our [SharpMUSH docs](/guides/get-started/).
-		Looking for a specific command or function? Check out the [Helpfile Reference](/reference/sharpmush-help/sharptop/),
-		generated from the server's own help topics.
+	<Card title="Plugins for the rest" icon="seti:c-sharp">
+		When softcode isn't enough, a [C# plugin](/guides/plugins/) adds commands, functions and
+		services to the server, without a fork.
 	</Card>
+</CardGrid>
+
+## Players get a better game too
+
+Their own client or a browser, on a computer or a phone. [Scenes](/guides/scenes/) logged as they
+pose. One account for all their characters. [Screen-reader](/guides/screen-readers/) support in
+both.
+
+## Make it look like your game
+
+Staff pick the portal's [theme](/guides/portal-themes/), and each player can choose their own.
+
+<div class="front-themes">
+  <figure><Image src={themeEmber} width={720} alt="The wiki in the Ember theme: green accents on dark grey cards." /><figcaption>Ember</figcaption></figure>
+  <figure><Image src={themeCrystal} width={720} alt="The wiki in the Crystal Epic theme: tall glass crystals behind dark cards." /><figcaption>Crystal Epic</figcaption></figure>
+  <figure><Image src={themeLumen} width={720} alt="The wiki in the Lumen Grid theme: a glowing teal floor grid under neon-edged cards." /><figcaption>Lumen Grid</figcaption></figure>
+  <figure><Image src={themeCyberpunk} width={720} alt="The wiki in the Cyberpunk theme: magenta highlights and cyan-edged panels on black." /><figcaption>Cyberpunk</figcaption></figure>
+</div>
+
+## Where to start
+
+<CardGrid>
+	<LinkCard title="What is SharpMUSH?" href="/about/what-is/" description="What a MUSH is, and what SharpMUSH adds around one." />
+	<LinkCard title="Get started" href="/guides/get-started/" description="Run a game on your own computer or a rented server." />
+	<LinkCard title="Helpfile reference" href="/reference/sharpmush-help/sharptop/" description="Every command and function, from the server's own help." />
 </CardGrid>
