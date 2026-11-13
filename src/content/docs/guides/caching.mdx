@@ -141,9 +141,11 @@ else. So `memo()` refuses code that could do otherwise, and keeps nothing:
   `set()`, `pemit()`, `create()` or a web request, anywhere in it, even in a branch that is not
   taken. Code reached through `u()` while it runs counts too. A form of such a function that only
   reads, such as `name(<object>)`, is allowed.
-- **`#-1 MEMO REFUSES NONDETERMINISTIC FUNCTIONS`** when the code calls a function whose answer
-  changes from call to call: the random ones (`rand()`, `shuffle()`, `die()`, `roll()` and the like)
-  and the ones that read the clock (`secs()`, `time()`, and `timefmt()` without a time).
+- **`#-1 MEMO REFUSES NONDETERMINISTIC FUNCTIONS`** when the code uses something whose answer
+  changes from call to call: the random functions (`rand()`, `shuffle()`, `die()`, `roll()` and
+  the like), the ones that read the clock (`secs()`, `time()`, and `timefmt()` without a time), the
+  connection ones (`idle()`, `conn()`, `pid()` and the like), and the substitutions `%c`, `%m`,
+  `%u`, `%j`, `%>`, `%|` and `%?`.
 
 ```sharp
 > &MARK me=[set(me,SEEN:1)]done
@@ -161,13 +163,15 @@ or change the caller's registers, so pass what it needs as arguments.
 ### When a kept answer is dropped
 
 - an attribute the code read now reads differently, has appeared, or is gone; this is checked on
-  every hit;
+  every hit, and covers listings such as `lattr()` and `grep()`, so a new attribute in a listing
+  counts;
 - the code itself is changed;
 - `memo_window` seconds have passed; or
 - memory is full, and it is the least recently used answer.
 
-Other changes, such as a name, location, flag or lock, are not seen until the window passes. An
-answer that hit a function limit, or is longer than 65,536 characters, is never kept. Messages the
+Other changes, such as a name, location, flag, lock or `@function`, are not seen until the window
+passes. An answer that hit a function limit, read attributes through `indexed()` or an alias, or is
+longer than 65,536 characters, is never kept. Messages the
 code sends, such as `I can't see that here.`, are only sent when it runs.
 
 ### memo() settings
