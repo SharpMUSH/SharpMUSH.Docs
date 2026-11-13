@@ -213,10 +213,11 @@ setting off, both return `#-1 FUNCTION DISABLED`.
 ### mux_quiet
 
 The `/quiet` switch of `drop`, `get`, `give`, `goto`, `enter`, `leave` and `@teleport` does what
-TinyMUX's does. It takes effect only on what you control, and there it leaves out the o-message and the
-action. `give/quiet` is for wizards and leaves out the usual notices, and `@teleport/quiet` keeps leaving
-and arriving quiet but still runs `@move`. With the setting off, `/quiet` leaves out your own message and
-the o-message, and the action still runs.
+TinyMUX's does, and only on what you control. `drop`, `get` and `goto` leave out the o-message and the
+action. `enter` and `leave` leave out the object's enter or leave messages, but still run its action and
+your `@move`. `give/quiet` is for wizards and leaves out the usual notices, and `@teleport/quiet` keeps
+leaving and arriving quiet but still runs `@move`. With the setting off, `/quiet` leaves out your own
+message and the o-message, and the action still runs.
 
 ### mux_function_caller
 
