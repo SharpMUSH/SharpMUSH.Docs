@@ -40,6 +40,7 @@ export default defineConfig({
                     { label: 'What is SharpMUSH', slug: 'about/what-is' },
                     { label: 'Design Premise', slug: 'about/design-premise' },
                     { label: 'Get Started', slug: 'guides/get-started' },
+                    { label: 'Try It on Your Computer', slug: 'guides/try-locally' },
                     { label: 'Live Example Game', link: 'https://mush.sharpmush.com', attrs: { target: '_blank', rel: 'noopener' } }
                 ]
               },
