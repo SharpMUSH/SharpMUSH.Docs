@@ -151,3 +151,9 @@ test('catches a diagram on its own line inside a longer paragraph', () => {
   const root = diagramFixture('<svg/>', 'Introduction\n![How a request flows](../../../assets/guide/flow.svg)\nExplanation');
   assert.equal(validateContent({ root, requiredRoutes: ['guides/test'] }).length, 1);
 });
+
+test('checks each copy of a diagram against its own paragraph', () => {
+  const image = '![How a request flows](../../../assets/guide/flow.svg)';
+  const root = diagramFixture('<svg/>', `${image}\n\nIntroduction\n${image}\nExplanation`);
+  assert.equal(validateContent({ root, requiredRoutes: ['guides/test'] }).length, 1);
+});

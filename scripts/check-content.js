@@ -30,11 +30,16 @@ export function validateContent({ root = process.cwd(), requiredRoutes = ['guide
 
   for (const file of markdownFiles(docsRoot)) {
     const text = fs.readFileSync(file, 'utf8').replace(/```[\s\S]*?```/g, '');
+    for (const paragraph of text.split(/\n[ \t]*\n/)) {
+      for (const match of paragraph.matchAll(/!\[[^\]]*\]\(([^)]*assets\/guide\/([^/)]+\.svg))\)/g)) {
+        if (!KEEP_AS_IMAGE.has(match[2]) && paragraph.trim() !== match[0]) {
+          failures.push(`${path.relative(root, file)} puts ${match[2]} inside other text: a diagram needs a paragraph of its own to draw in the site's colours`);
+        }
+      }
+    }
     for (const match of text.matchAll(/!\[([^\]]*)\]\(([^)]+)\)/g)) {
       const [, alt, target] = match;
-      if (/assets\/guide\/[^/]+\.svg$/.test(target) && !KEEP_AS_IMAGE.has(path.basename(target)) && !text.split(/\n[ \t]*\n/).some((paragraph) => paragraph.trim() === match[0])) {
-        failures.push(`${path.relative(root, file)} puts ${path.basename(target)} inside other text: a diagram needs a paragraph of its own to draw in the site's colours`);
-      }
+
       if (!alt.trim() || /^(image|screenshot|git clone)$/i.test(alt.trim())) failures.push(`${path.relative(root, file)} has non-descriptive image text: ${alt || '(empty)'}`);
       if (!/^(https?:|data:)/.test(target)) {
         const assetPath = safeDecode(target.split(/[?#]/, 1)[0]);
