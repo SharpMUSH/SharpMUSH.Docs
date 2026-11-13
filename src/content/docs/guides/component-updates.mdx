@@ -64,20 +64,29 @@ Before anything starts, the panel asks you to confirm and says how many connecti
 server update will drop.
 
 While an update runs, the panel shows which part it is on. The page loses the game server for a few
-seconds when that part restarts, then picks up where it was. If something fails, for example Docker
-Hub refuses the download, the update stops there and the panel shows the reason. The parts already
-updated stay updated.
+seconds when that part restarts, then picks up where it was.
+
+The agent downloads every new image before it replaces anything, so a failed download, for example
+Docker Hub refusing it, changes nothing and the game stays on its version. After it replaces a part,
+the agent waits for that part to come back up before it moves on. If the new game server does not
+come back within ten minutes, the update stops there and the connection server is not replaced, so
+nobody is disconnected. Players who were warned are told the update was called off. The panel shows
+the reason for any failure.
 
 <Aside type="caution">
 A game's data is upgraded when a newer game server first opens it, and an older game server refuses
-it after that. Moving back to an earlier release works only until then. Take a backup before moving
-to a new release.
+it after that. So the version list offers only releases newer than the one running, and a game that
+follows `dev` cannot move to a release from the panel. Take a backup before moving to a new release.
 </Aside>
 
 ## Turning it on
 
-One-click installs include the agent; there is nothing to do. A game installed before the agent
-existed gets its token the next time you run `sharpmush-configure`.
+One-click installs include the agent; there is nothing to do. To add it to a game installed before
+the agent existed, run the install command again on the server. It keeps your earlier answers.
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/SharpMUSH/SharpMUSH/main/deploy/oneclick/install.sh | sudo bash
+```
 
 For the Compose stacks in `deploy/`, run these commands from the `deploy` folder on the host:
 
