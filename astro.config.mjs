@@ -47,6 +47,7 @@ export default defineConfig({
               {
                   label: 'Play',
                   items: [
+                      { label: 'Playing a Game', slug: 'guides/playing' },
                       { label: 'The Web Portal', slug: 'guides/web-portal' },
                       { label: 'Portal Navigation', slug: 'guides/portal-navigation' },
                       { label: 'The Command Palette', slug: 'guides/command-palette' },
@@ -61,6 +62,7 @@ export default defineConfig({
                   label: 'Build',
                   items: [
                       { label: 'Letting Your Players Build', slug: 'guides/player-building' },
+                      { label: 'Furnishing a Room', slug: 'guides/furnishing-rooms' },
                       { label: 'Mapping Your Rooms', slug: 'guides/builder-graph' },
                       { label: 'The World Map', slug: 'guides/world-map' },
                       { label: 'Large Maps', slug: 'guides/large-maps' },
