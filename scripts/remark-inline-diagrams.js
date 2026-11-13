@@ -43,6 +43,7 @@ function scopeCss(css, rootId) {
 }
 
 export function prepareSvg(text, slug, label) {
+	if (!label.trim()) throw new Error(`${slug}.svg needs alt text: it is the diagram's only label`);
 	const ids = [...text.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]);
 	for (const id of ids) {
 		const ref = escapeRegExp(id);
@@ -50,9 +51,11 @@ export function prepareSvg(text, slug, label) {
 			.replace(new RegExp(`(\\sid=")${ref}"`, 'g'), `$1${slug}-${id}"`)
 			.replace(new RegExp(`url\\(#${ref}\\)`, 'g'), `url(#${slug}-${id})`)
 			.replace(new RegExp(`(href=")#${ref}"`, 'g'), `$1#${slug}-${id}"`)
-			.replace(new RegExp(`#${ref}(?![\\w-])`, 'g'), `#${slug}-${id}`);
+			// Id selectors live only in <style>; text elsewhere (a label such as "#d") is left alone.
+			.replace(/(<style[^>]*>)([\s\S]*?)(<\/style>)/g, (_, open, css, close) =>
+				open + css.replace(new RegExp(`#${ref}(?![\\w-])`, 'g'), `#${slug}-${id}`) + close);
 	}
-	text = text.replace(/\saria-(labelledby|describedby)="[^"]*"/g, '');
+	text = text.replace(/\saria-(labelledby|describedby|roledescription)="[^"]*"/g, '');
 	const tree = fromHtml(text, { fragment: true });
 	const svg = tree.children.find((node) => node.type === 'element' && node.tagName === 'svg');
 	if (!svg) throw new Error(`${slug}.svg has no <svg> element`);
@@ -85,6 +88,8 @@ function diagramPath(image, file) {
 
 export default function remarkInlineDiagrams() {
 	return (tree, file) => {
+		// A diagram shown twice on one page gets a second prefix, so its ids stay unique.
+		const seen = new Map();
 		const walk = (parent) => {
 			parent.children?.forEach((node, index) => {
 				if (node.type === 'paragraph') {
@@ -92,7 +97,10 @@ export default function remarkInlineDiagrams() {
 					const image = content.length === 1 && content[0].type === 'image' ? content[0] : null;
 					const source = image && diagramPath(image, file);
 					if (source) {
-						const slug = path.basename(source, '.svg');
+						const name = path.basename(source, '.svg');
+						const count = (seen.get(name) ?? 0) + 1;
+						seen.set(name, count);
+						const slug = count === 1 ? name : `${name}-${count}`;
 						parent.children[index] = {
 							type: 'diagram',
 							data: {

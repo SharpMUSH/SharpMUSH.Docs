@@ -100,3 +100,41 @@ test('catches a guide image no page uses', () => {
   fs.writeFileSync(path.join(root, 'src/assets/guide/before.webp'), 'webp');
   assert.deepEqual(validateContent({ root, requiredRoutes: ['guides/test'] }), ['src/assets/guide/before.webp is not used by any page']);
 });
+
+function diagramFixture(svg, page = '![How a request flows](../../../assets/guide/flow.svg)') {
+  const root = fixture(page);
+  fs.mkdirSync(path.join(root, 'src/assets/guide'), { recursive: true });
+  fs.mkdirSync(path.join(root, 'src/styles'), { recursive: true });
+  fs.writeFileSync(path.join(root, 'src/styles/diagrams.css'), ':root { --dg-text: #000; --dg-blue-fill: #00f; }');
+  fs.writeFileSync(path.join(root, 'src/assets/guide/flow.svg'), svg);
+  return root;
+}
+
+test('accepts a diagram coloured with the tokens', () => {
+  const root = diagramFixture('<svg><title id="t">Colours #fff</title><rect style="fill:var(--dg-blue-fill);stroke:currentColor"/><text>#d</text></svg>');
+  assert.deepEqual(validateContent({ root, requiredRoutes: ['guides/test'] }), []);
+});
+
+test('catches a diagram with its own colours', () => {
+  const root = diagramFixture('<svg><style>.a{background:hsl(0,0%,90%)}</style><rect fill="#abc"/></svg>');
+  assert.deepEqual(validateContent({ root, requiredRoutes: ['guides/test'] }), [
+    'src/assets/guide/flow.svg draws with fill #abc: use a --dg-* colour (see src/assets/guide/README.md)',
+    'src/assets/guide/flow.svg has a colour outside the --dg-* tokens: hsl(0,0%,90%)',
+    'src/assets/guide/flow.svg has a colour outside the --dg-* tokens: #abc',
+  ]);
+});
+
+test('catches an undefined token and an unscoped style rule', () => {
+  const root = diagramFixture('<svg><style>@media (min-width: 1px) { .a { fill: var(--dg-text) } }</style><rect style="fill:var(--dg-nope)"/></svg>');
+  assert.deepEqual(validateContent({ root, requiredRoutes: ['guides/test'] }), [
+    'src/assets/guide/flow.svg uses --dg-nope, which src/styles/diagrams.css does not define',
+    'src/assets/guide/flow.svg has an at-rule or comment in its <style>, which the page would not scope to the diagram',
+  ]);
+});
+
+test('catches a diagram that shares its paragraph', () => {
+  const root = diagramFixture('<svg/>', 'See ![How a request flows](../../../assets/guide/flow.svg) here.');
+  assert.deepEqual(validateContent({ root, requiredRoutes: ['guides/test'] }), [
+    'src/content/docs/guides/test.mdx puts flow.svg inside other text: a diagram needs a paragraph of its own to draw in the site\'s colours',
+  ]);
+});

@@ -17,7 +17,7 @@
     <!-- the catalogue -->
     <rect x="24" y="190" width="250" height="160" rx="10" style="fill:var(--dg-card);stroke:var(--dg-line)"/>
     <text x="149" y="218" text-anchor="middle" font-size="15" font-weight="600">scene-verse, on the Logger</text>
-    <rect x="40" y="234" width="218" height="102" rx="8" style="fill:var(--dg-blue-fill);stroke:var(--dg-blue-fill)"/>
+    <rect x="40" y="234" width="218" height="102" rx="8" style="fill:var(--dg-blue-fill);stroke:var(--dg-blue-line)"/>
     <text x="52" y="256" font-size="13" font-weight="600">DETAIL`VERSE</text>
     <text x="52" y="278" font-size="12.5" font-family="ui-monospace, monospace">label: Verse</text>
     <text x="52" y="298" font-size="12.5" font-family="ui-monospace, monospace">hint: The setting ...</text>
@@ -39,16 +39,16 @@
     <line x1="600" y1="180" x2="652" y2="180" stroke-width="2" marker-end="url(#arrow)" style="stroke:var(--dg-muted)"/>
     <rect x="656" y="30" width="280" height="320" rx="10" style="fill:var(--dg-card);stroke:var(--dg-line)"/>
     <text x="796" y="58" text-anchor="middle" font-size="15" font-weight="600">Where it shows</text>
-    <rect x="672" y="74" width="248" height="56" rx="8" style="fill:var(--dg-green-fill);stroke:var(--dg-green-fill)"/>
+    <rect x="672" y="74" width="248" height="56" rx="8" style="fill:var(--dg-green-fill);stroke:var(--dg-green-line)"/>
     <text x="684" y="96" font-size="13" font-weight="600">+scene 1</text>
     <text x="684" y="118" font-size="12.5" style="fill:var(--dg-text)">a Details row on the card</text>
-    <rect x="672" y="140" width="248" height="56" rx="8" style="fill:var(--dg-green-fill);stroke:var(--dg-green-fill)"/>
+    <rect x="672" y="140" width="248" height="56" rx="8" style="fill:var(--dg-green-fill);stroke:var(--dg-green-line)"/>
     <text x="684" y="162" font-size="13" font-weight="600">+scene/list verse=Marvel</text>
     <text x="684" y="184" font-size="12.5" style="fill:var(--dg-text)">after the title; filters the list</text>
-    <rect x="672" y="206" width="248" height="56" rx="8" style="fill:var(--dg-green-fill);stroke:var(--dg-green-fill)"/>
+    <rect x="672" y="206" width="248" height="56" rx="8" style="fill:var(--dg-green-fill);stroke:var(--dg-green-line)"/>
     <text x="684" y="228" font-size="13" font-weight="600">+scene/log</text>
     <text x="684" y="250" font-size="12.5" style="fill:var(--dg-text)">a line under the title</text>
-    <rect x="672" y="272" width="248" height="62" rx="8" style="fill:var(--dg-amber-fill);stroke:var(--dg-amber-fill)"/>
+    <rect x="672" y="272" width="248" height="62" rx="8" style="fill:var(--dg-amber-fill);stroke:var(--dg-amber-line)"/>
     <text x="684" y="294" font-size="13" font-weight="600">The portal</text>
     <text x="684" y="316" font-size="12.5" style="fill:var(--dg-text)">scene page, cards and search</text>
   </g>

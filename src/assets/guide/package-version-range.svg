@@ -25,10 +25,10 @@
   <text x="471" y="114" text-anchor="middle" font-size="13" style="fill:var(--dg-amber-ink)">Installs, with a warning</text>
   <text x="471" y="132" text-anchor="middle" font-size="12" style="fill:var(--dg-amber-ink)">newer major than verified</text>
 
-  <rect x="572" y="64" width="164" height="80" rx="8" style="fill:var(--dg-amber-fill);stroke:var(--dg-amber-ink)"/>
-  <text x="654" y="92" text-anchor="middle" font-weight="600" style="fill:var(--dg-amber-ink)">4.0 and later</text>
-  <text x="654" y="114" text-anchor="middle" font-size="13" style="fill:var(--dg-amber-ink)">Asks to confirm</text>
-  <text x="654" y="132" text-anchor="middle" font-size="12" style="fill:var(--dg-amber-ink)">past maximum_server</text>
+  <rect x="572" y="64" width="164" height="80" rx="8" style="fill:var(--dg-purple-fill);stroke:var(--dg-purple-ink)"/>
+  <text x="654" y="92" text-anchor="middle" font-weight="600" style="fill:var(--dg-purple-ink)">4.0 and later</text>
+  <text x="654" y="114" text-anchor="middle" font-size="13" style="fill:var(--dg-purple-ink)">Asks to confirm</text>
+  <text x="654" y="132" text-anchor="middle" font-size="12" style="fill:var(--dg-purple-ink)">past maximum_server</text>
 
   <path d="M24 176 L736 176" stroke-width="1.5" fill="none" marker-end="url(#a)" style="stroke:var(--dg-muted)"/>
   <text x="736" y="200" text-anchor="end" font-size="12" style="fill:var(--dg-muted)">newer SharpMUSH</text>

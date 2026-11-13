@@ -15,7 +15,7 @@
 
     <line x1="254" y1="144" x2="326" y2="144" stroke-width="2" marker-end="url(#arrow)" style="stroke:var(--dg-muted)"/>
 
-    <rect x="330" y="96" width="260" height="96" rx="10" style="fill:var(--dg-blue-fill);stroke:var(--dg-blue-fill)"/>
+    <rect x="330" y="96" width="260" height="96" rx="10" style="fill:var(--dg-blue-fill);stroke:var(--dg-blue-line)"/>
     <text x="460" y="124" text-anchor="middle" font-size="15" font-weight="600">The Scene Safety object</text>
     <text x="460" y="152" text-anchor="middle" font-size="14" font-family="ui-monospace, monospace">@scene/notice</text>
     <text x="460" y="176" text-anchor="middle" font-size="13" style="fill:var(--dg-muted)">sends it under its own name</text>
