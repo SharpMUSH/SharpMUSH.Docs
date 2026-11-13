@@ -36,6 +36,11 @@ description: "SharpMUSH documentation for Roles"
       "lookup": "roles rhost"
     },
     {
+      "id": "roles-totems",
+      "heading": "RhostMUSH's totems",
+      "lookup": "roles totems"
+    },
+    {
       "id": "roles-flags",
       "heading": "Roles, flags and powers",
       "lookup": "roles flags"
@@ -54,6 +59,11 @@ description: "SharpMUSH documentation for Roles"
       "id": "roles-staff",
       "heading": "Staff permissions",
       "lookup": "roles staff"
+    },
+    {
+      "id": "roles-hidden",
+      "heading": "Hidden roles",
+      "lookup": "roles hidden"
     },
     {
       "id": "roles-everyday",
@@ -143,6 +153,10 @@ Setup can give a game RhostMUSH's staff levels in place of `helper` and `moderat
 
 RhostMUSH's royalty is the `wizard` role. As in RhostMUSH, each level controls what is held below it: an architect controls players and their things, a councilor architects too. Immortal, councilor and architect are guarded (see [roles guards](/reference/sharpmush-help/roles/#guarded-roles)), which keeps each below the levels above it, and a wizard controls a councilor or an architect but not an immortal. The setup step removes the roles of the set not chosen, except any role someone holds.
 
+### RhostMUSH's totems
+
+RhostMUSH's totems are roles. A RhostMUSH import makes each totem a role named `totem-` and the totem's name (SHINY is `totem-shiny`), in the Totems category, at priority 1, that allows nothing, and gives it to the objects that held the totem. Imported softcode reads `hastotem()` as `hasrole()`, `andtotem()` and `ortotem()` as `and()` and `or()` of `hasrole()`, `ltotems()` from `roles(<object>,Totems)`, and `@totem` as `@role/assign` and `@role/unassign`, which only someone who may assign the role can run.
+
 ### Roles, flags and powers
 
 The privilege flags and the PennMUSH powers are roles and permissions:
@@ -204,6 +218,19 @@ These take parts of a wizard's standing over other players' things, so a role or
 | `game.override.movement` | passing enter, leave and exit locks; no role allows it |
 
 Each can carry a reach (see [@permission reach](/reference/sharpmush-help/permission-command/#reach)). On `game.noforce` and `game.noboot` a reach names who is kept out: with reach `architect`, nobody ranked at or below architect may force you.
+
+### Hidden roles
+
+`game.hide.roles` hides your roles from players ranked below you. They see no WIZARD or ROYALTY flag on you in examine, flags(), lflags() or your name, no Roles or Overrides line when they examine you, only `everyone` from roles(), and a refusal from @role/player. hasflag() and hasrole() still answer, so softcode checks work as before. No role allows it.
+
+With a reach it hides from players ranked at or below the reach instead: with reach `wizard`, other wizards do not see your roles either. A RhostMUSH import gives it to players with the HIDEBIT power, at the power's level.
+
+```sharp
+> @permission/allow *Ariel=game.hide.roles
+> think roles(*Ariel)
+everyone
+```
+Output: what a mortal is told about a wizard who hides their roles. Ariel and God still get `wizard everyone`.
 
 ### Everyday permissions
 

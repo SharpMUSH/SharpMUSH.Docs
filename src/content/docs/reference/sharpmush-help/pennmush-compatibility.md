@@ -19,6 +19,7 @@ description: "SharpMUSH documentation for PennMUSH Compatibility"
 SharpMUSH targets PennMUSH 1.8.8 softcode compatibility. Where it differs, the difference is one of three things, and this profile keeps them apart (see [pennmush compatibility kinds](/reference/sharpmush-help/pennmush-compatibility/#choices-unresolved-differences-and-defects)).
 
   [COMPATIBILITY CONFIG](/reference/sharpmush-help/compatibility-config/#compatibility-config)    settings that change how your code evaluates<br>
+  [COMPATIBILITY DIALECTS](/reference/sharpmush-help/compatibility-dialects/#compatibility-dialects)  RhostMUSH and TinyMUX parsing in their dialects<br>
   [COMPATIBILITY PARSER](/reference/sharpmush-help/compatibility-parser/#compatibility-parser)    evaluation, dispatch and error handling<br>
   [COMPATIBILITY COMMANDS](/reference/sharpmush-help/compatibility-commands/#compatibility-commands)  command tables, configuration and handlers<br>
   [COMPATIBILITY ARGUMENTS](/reference/sharpmush-help/compatibility-arguments/#compatibility-arguments) functions that take a different number of arguments<br>
@@ -26,6 +27,7 @@ SharpMUSH targets PennMUSH 1.8.8 softcode compatibility. Where it differs, the d
   [COMPATIBILITY OUTPUT](/reference/sharpmush-help/compatibility-output/#compatibility-output)    rendering a string for something outside the game<br>
   [COMPATIBILITY ECONOMY](/reference/sharpmush-help/compatibility-economy/#compatibility-economy)   money, pennies and costs<br>
   [COMPATIBILITY NAMES](/reference/sharpmush-help/compatibility-names/#compatibility-names)     functions and commands that exist here and not there<br>
+  [COMPATIBILITY LEFT OUT](/reference/sharpmush-help/compatibility-left-out/#compatibility-left-out)  RhostMUSH and TinyMUX names SharpMUSH leaves out<br>
   [COMPATIBILITY MAIL](/reference/sharpmush-help/compatibility-mail/#compatibility-mail)      @mail forwarding, filters and folders<br>
   [COMPATIBILITY UNRESOLVED](/reference/sharpmush-help/compatibility-unresolved/#compatibility-unresolved) known differences with no decision yet<br>
   [COMPATIBILITY DEFECTS](/reference/sharpmush-help/compatibility-defects/#compatibility-defects)   known differences that are bugs

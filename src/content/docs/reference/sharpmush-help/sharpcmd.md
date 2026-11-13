@@ -57,17 +57,18 @@ These '@' commands are general utility and programming commands:
 | [@decompile](/reference/sharpmush-help/decompile-command/#decompile) | [@doing](/reference/sharpmush-help/sharpcmd/#doing)     | [@dolist](/reference/sharpmush-help/dolist-command/#dolist)    | [@drain](/reference/sharpmush-help/sharpcmd/#drain)     | [@edit](/reference/sharpmush-help/edit-command/#edit)      |
 | [@emit](/reference/sharpmush-help/sharpcmd/#emit)      | [@entrances](/reference/sharpmush-help/sharpcmd/#entrances) | [@eval](/reference/sharpmush-help/eval-command/#eval)      | [@find](/reference/sharpmush-help/sharpcmd/#find)      | [@folder](/reference/sharpmush-help/folder-command/#folder)    |
 | [@force](/reference/sharpmush-help/force-command/#force)     | [@function](/reference/sharpmush-help/function-command/#function)  | [@gedit](/reference/sharpmush-help/edit-command/#edit)     | [@grep](/reference/sharpmush-help/sharpcmd/#grep)      | [@halt](/reference/sharpmush-help/halt-command/#halt)      |
-| [@if](/reference/sharpmush-help/if-command/#if)        | [@include](/reference/sharpmush-help/include-command/#include)   | [@input](/reference/sharpmush-help/input-command/#input)     | [@job](/reference/sharpmush-help/jobs/#recurring-jobs)       | [@lemit](/reference/sharpmush-help/sharpcmd/#lemit)     |
-| [@list](/reference/sharpmush-help/list-command/#list)      | [@listmotd](/reference/sharpmush-help/motd-command/#motd)  | [@locale](/reference/sharpmush-help/sharpcmd/#locale)    | [@ltag](/reference/sharpmush-help/tag-command/#tag)      | [@mail](/reference/sharpmush-help/sharpmail/#mail)      |
-| [@malias](/reference/sharpmush-help/malias-command/#malias)    | [@map](/reference/sharpmush-help/sharpcmd/#map)       | [@message](/reference/sharpmush-help/message-command/#message)   | [@notify](/reference/sharpmush-help/notify-command/#notify)    | [@nsemit](/reference/sharpmush-help/sharpcmd/#nspemit)    |
-| [@nslemit](/reference/sharpmush-help/sharpcmd/#nspemit)   | [@nsoemit](/reference/sharpmush-help/sharpcmd/#nspemit)   | [@nspemit](/reference/sharpmush-help/sharpcmd/#nspemit)   | [@nsprompt](/reference/sharpmush-help/sharpcmd/#nspemit)  | [@nsremit](/reference/sharpmush-help/sharpcmd/#nspemit)   |
-| [@nszemit](/reference/sharpmush-help/sharpcmd/#nspemit)   | [@oemit](/reference/sharpmush-help/oemit-command/#oemit)     | [@password](/reference/sharpmush-help/sharpcmd/#password)  | [@pemit](/reference/sharpmush-help/pemit-command/#pemit)     | [@pipe](/reference/sharpmush-help/pipe-command/#pipe)      |
-| [@profile](/reference/sharpmush-help/profile-command/#profile)   | [@prompt](/reference/sharpmush-help/sharpcmd/#prompt)    | [@ps](/reference/sharpmush-help/ps-command/#ps)        | [@queue](/reference/sharpmush-help/queuecontrol/#queue)     | [@remit](/reference/sharpmush-help/sharpcmd/#remit)     |
-| [@restart](/reference/sharpmush-help/sharpcmd/#restart)   | [@retry](/reference/sharpmush-help/retry-command/#retry)     | [@roll](/reference/sharpmush-help/roll-command/#roll)      | [@rollback](/reference/sharpmush-help/rollback-command/#rollback)  | [@scan](/reference/sharpmush-help/sharpcmd/#scan)      |
-| [@search](/reference/sharpmush-help/search-command/#search)    | [@select](/reference/sharpmush-help/switch-command/#switch)    | [@sockset](/reference/sharpmush-help/sockset-command/#sockset)   | [@stats](/reference/sharpmush-help/sharpcmd/#stats)     | [@sweep](/reference/sharpmush-help/sharpcmd/#sweep)     |
-| [@switch](/reference/sharpmush-help/switch-command/#switch)    | [@teleport](/reference/sharpmush-help/teleport-command/#teleport)  | [@theme](/reference/sharpmush-help/theme-command/#theme)     | [@trigger](/reference/sharpmush-help/trigger-command/#trigger)   | [@verb](/reference/sharpmush-help/verb-command/#verb)      |
-| [@version](/reference/sharpmush-help/sharpcmd/#version)   | [@wait](/reference/sharpmush-help/wait-command/#wait)      | [@warnings](/reference/sharpmush-help/warnings-command/#warnings)  | [@wcheck](/reference/sharpmush-help/sharpcmd/#wcheck)    | [@whereis](/reference/sharpmush-help/sharpcmd/#whereis)   |
-| [@wiki](/reference/sharpmush-help/wiki/#wiki)      | [@zemit](/reference/sharpmush-help/sharpcmd/#zemit)     |              |              |              |
+| [@if](/reference/sharpmush-help/if-command/#if)        | [@include](/reference/sharpmush-help/include-command/#include)   | [@input](/reference/sharpmush-help/input-command/#input)     | [@job](/reference/sharpmush-help/jobs/#recurring-jobs)       | [@last](/reference/sharpmush-help/last-command/#last)      |
+| [@lemit](/reference/sharpmush-help/sharpcmd/#lemit)     | [@list](/reference/sharpmush-help/list-command/#list)      | [@listmotd](/reference/sharpmush-help/motd-command/#motd)  | [@locale](/reference/sharpmush-help/sharpcmd/#locale)    | [@ltag](/reference/sharpmush-help/tag-command/#tag)      |
+| [@mail](/reference/sharpmush-help/sharpmail/#mail)      | [@malias](/reference/sharpmush-help/malias-command/#malias)    | [@map](/reference/sharpmush-help/sharpcmd/#map)       | [@message](/reference/sharpmush-help/message-command/#message)   | [@notify](/reference/sharpmush-help/notify-command/#notify)    |
+| [@nsemit](/reference/sharpmush-help/sharpcmd/#nspemit)    | [@nslemit](/reference/sharpmush-help/sharpcmd/#nspemit)   | [@nsoemit](/reference/sharpmush-help/sharpcmd/#nspemit)   | [@nspemit](/reference/sharpmush-help/sharpcmd/#nspemit)   | [@nsprompt](/reference/sharpmush-help/sharpcmd/#nspemit)  |
+| [@nsremit](/reference/sharpmush-help/sharpcmd/#nspemit)   | [@nszemit](/reference/sharpmush-help/sharpcmd/#nspemit)   | [@oemit](/reference/sharpmush-help/oemit-command/#oemit)     | [@password](/reference/sharpmush-help/sharpcmd/#password)  | [@pemit](/reference/sharpmush-help/pemit-command/#pemit)     |
+| [@pipe](/reference/sharpmush-help/pipe-command/#pipe)      | [@profile](/reference/sharpmush-help/profile-command/#profile)   | [@program](/reference/sharpmush-help/program-command/#program)   | [@progreset](/reference/sharpmush-help/progreset-command/#progreset) | [@prompt](/reference/sharpmush-help/sharpcmd/#prompt)    |
+| [@ps](/reference/sharpmush-help/ps-command/#ps)        | [@queue](/reference/sharpmush-help/queuecontrol/#queue)     | [@remit](/reference/sharpmush-help/sharpcmd/#remit)     | [@restart](/reference/sharpmush-help/sharpcmd/#restart)   | [@retry](/reference/sharpmush-help/retry-command/#retry)     |
+| [@roll](/reference/sharpmush-help/roll-command/#roll)      | [@rollback](/reference/sharpmush-help/rollback-command/#rollback)  | [@scan](/reference/sharpmush-help/sharpcmd/#scan)      | [@search](/reference/sharpmush-help/search-command/#search)    | [@select](/reference/sharpmush-help/switch-command/#switch)    |
+| [@sockset](/reference/sharpmush-help/sockset-command/#sockset)   | [@stats](/reference/sharpmush-help/sharpcmd/#stats)     | [@sweep](/reference/sharpmush-help/sharpcmd/#sweep)     | [@switch](/reference/sharpmush-help/switch-command/#switch)    | [@teleport](/reference/sharpmush-help/teleport-command/#teleport)  |
+| [@theme](/reference/sharpmush-help/theme-command/#theme)     | [@toggle](/reference/sharpmush-help/toggle-command/#toggle)    | [@trigger](/reference/sharpmush-help/trigger-command/#trigger)   | [@verb](/reference/sharpmush-help/verb-command/#verb)      | [@version](/reference/sharpmush-help/sharpcmd/#version)   |
+| [@wait](/reference/sharpmush-help/wait-command/#wait)      | [@warnings](/reference/sharpmush-help/warnings-command/#warnings)  | [@wcheck](/reference/sharpmush-help/sharpcmd/#wcheck)    | [@whereis](/reference/sharpmush-help/sharpcmd/#whereis)   | [@wiki](/reference/sharpmush-help/wiki/#wiki)      |
+| [@zemit](/reference/sharpmush-help/sharpcmd/#zemit)     |              |              |              |              |
 
 From plugins: [@discord](/reference/sharpmush-help/discord-command/#discord)
 
@@ -76,19 +77,20 @@ These '@' commands are only usable by wizards or privileged players:
 
 |                 |                 |                 |                 |                 |
 |-----------------|-----------------|-----------------|-----------------|-----------------|
-| [@account](/reference/sharpmush-help/account-command/#account)      | [@allhalt](/reference/sharpmush-help/halt-command/#halt)      | [@allquota](/reference/sharpmush-help/quota-command/#administrative-quota-changes)     | [@ascii](/reference/sharpmush-help/ascii-command/#ascii)        | [@backup](/reference/sharpmush-help/backup-command/#backup)       |
-| [@blacklist](/reference/sharpmush-help/blacklist-command/#blacklist)    | [@boot](/reference/sharpmush-help/sharpcmd/#boot)         | [@chownall](/reference/sharpmush-help/sharpcmd/#chownall)     | [@chzoneall](/reference/sharpmush-help/sharpcmd/#chzoneall)    | [@comment](/reference/sharpmush-help/sharpcmd/#comment)      |
-| [@dbck](/reference/sharpmush-help/sharpcmd/#dbck)         | [@disable](/reference/sharpmush-help/sharpcmd/#enable)      | [@dump](/reference/sharpmush-help/sharpcmd/#dump)         | [@enable](/reference/sharpmush-help/sharpcmd/#enable)       | [@feed](/reference/sharpmush-help/feed-command/#feed)         |
-| [@flag](/reference/sharpmush-help/flag-command/#flag)         | [@hide](/reference/sharpmush-help/sharpcmd/#hide)         | [@hook](/reference/sharpmush-help/hook/#hook)         | [@http]         | [@kick](/reference/sharpmush-help/sharpcmd/#kick)         |
-| [@leveldefault](/reference/sharpmush-help/rxlevel-command/#rxlevel) | [@livewire](/reference/sharpmush-help/livewire-command/#livewire)     | [@log](/reference/sharpmush-help/sharpcmd/#log)          | [@logwipe](/reference/sharpmush-help/sharpcmd/#logwipe)      | [@mapsql](/reference/sharpmush-help/mapsql-command/#mapsql)       |
-| [@motd](/reference/sharpmush-help/motd-command/#motd)         | [@newpassword](/reference/sharpmush-help/sharpcmd/#newpassword)  | [@package](/reference/sharpmush-help/sharpcmd/#package)      | [@pcreate](/reference/sharpmush-help/sharpcmd/#pcreate)      | [@permission](/reference/sharpmush-help/permission-command/#permission)   |
-| [@plugin](/reference/sharpmush-help/plugin-command/#plugin)       | [@poll](/reference/sharpmush-help/sharpcmd/#poll)         | [@poor](/reference/sharpmush-help/sharpcmd/#poor)         | [@power](/reference/sharpmush-help/power-command/#power)        | [@purge](/reference/sharpmush-help/sharpcmd/#purge)        |
-| [@push](/reference/sharpmush-help/push-command/#push)         | [@quota](/reference/sharpmush-help/quota-command/#quota)        | [@readcache](/reference/sharpmush-help/sharpcmd/#readcache)    | [@reality](/reference/sharpmush-help/reality/#reality)      | [@rejectmotd](/reference/sharpmush-help/motd-command/#motd)   |
+| [@account](/reference/sharpmush-help/account-command/#account)      | [@addcommand](/reference/sharpmush-help/addcommand-command/#addcommand)   | [@allhalt](/reference/sharpmush-help/halt-command/#halt)      | [@allquota](/reference/sharpmush-help/quota-command/#administrative-quota-changes)     | [@ascii](/reference/sharpmush-help/ascii-command/#ascii)        |
+| [@backup](/reference/sharpmush-help/backup-command/#backup)       | [@blacklist](/reference/sharpmush-help/blacklist-command/#blacklist)    | [@boot](/reference/sharpmush-help/sharpcmd/#boot)         | [@chownall](/reference/sharpmush-help/sharpcmd/#chownall)     | [@chzoneall](/reference/sharpmush-help/sharpcmd/#chzoneall)    |
+| [@comment](/reference/sharpmush-help/sharpcmd/#comment)      | [@dbck](/reference/sharpmush-help/sharpcmd/#dbck)         | [@disable](/reference/sharpmush-help/sharpcmd/#enable)      | [@dump](/reference/sharpmush-help/sharpcmd/#dump)         | [@email](/reference/sharpmush-help/email-command/#email)        |
+| [@enable](/reference/sharpmush-help/sharpcmd/#enable)       | [@feed](/reference/sharpmush-help/feed-command/#feed)         | [@flag](/reference/sharpmush-help/flag-command/#flag)         | [@flagdef](/reference/sharpmush-help/flagdef-command/#flagdef)      | [@hide](/reference/sharpmush-help/sharpcmd/#hide)         |
+| [@hook](/reference/sharpmush-help/hook/#hook)         | [@http]         | [@icmd](/reference/sharpmush-help/icmd-command/#icmd)         | [@kick](/reference/sharpmush-help/sharpcmd/#kick)         | [@leveldefault](/reference/sharpmush-help/rxlevel-command/#rxlevel) |
+| [@livewire](/reference/sharpmush-help/livewire-command/#livewire)     | [@log](/reference/sharpmush-help/sharpcmd/#log)          | [@logwipe](/reference/sharpmush-help/sharpcmd/#logwipe)      | [@mapsql](/reference/sharpmush-help/mapsql-command/#mapsql)       | [@motd](/reference/sharpmush-help/motd-command/#motd)         |
+| [@newpassword](/reference/sharpmush-help/sharpcmd/#newpassword)  | [@package](/reference/sharpmush-help/sharpcmd/#package)      | [@pcreate](/reference/sharpmush-help/sharpcmd/#pcreate)      | [@permission](/reference/sharpmush-help/permission-command/#permission)   | [@plugin](/reference/sharpmush-help/plugin-command/#plugin)       |
+| [@poll](/reference/sharpmush-help/sharpcmd/#poll)         | [@poor](/reference/sharpmush-help/sharpcmd/#poor)         | [@power](/reference/sharpmush-help/power-command/#power)        | [@purge](/reference/sharpmush-help/sharpcmd/#purge)        | [@push](/reference/sharpmush-help/push-command/#push)         |
+| [@query](/reference/sharpmush-help/query-command/#query)        | [@quota](/reference/sharpmush-help/quota-command/#quota)        | [@readcache](/reference/sharpmush-help/sharpcmd/#readcache)    | [@reality](/reference/sharpmush-help/reality/#reality)      | [@rejectmotd](/reference/sharpmush-help/motd-command/#motd)   |
 | [@respond](/reference/sharpmush-help/respond/#respond)      | [@role](/reference/sharpmush-help/role-command/#role)         | [@rxlevel](/reference/sharpmush-help/rxlevel-command/#rxlevel)      | [@secret](/reference/sharpmush-help/secret-command/#secret)       | [@shutdown](/reference/sharpmush-help/sharpcmd/#shutdown)     |
 | [@site](/reference/sharpmush-help/site-command/#site)         | [@sitelock](/reference/sharpmush-help/sitelock-command/#sitelock)     | [@slave](/reference/sharpmush-help/sharpcmd/#slave)        | [@snapshot](/reference/sharpmush-help/snapshots/#object-snapshots)     | [@sql](/reference/sharpmush-help/sql-command/#sql)          |
-| [@squota](/reference/sharpmush-help/quota-command/#administrative-quota-changes)       | [@storage](/reference/sharpmush-help/storage-command/#storage)      | [@suggest](/reference/sharpmush-help/sharpcmd/#suggest)      | [@tag](/reference/sharpmush-help/tag-command/#tag)          | [@txlevel](/reference/sharpmush-help/rxlevel-command/#rxlevel)      |
-| [@uptime](/reference/sharpmush-help/uptime-command/#uptime)       | [@wall](/reference/sharpmush-help/sharpcmd/#wall)         | [@wizmotd](/reference/sharpmush-help/motd-command/#motd)      | [@wizwall](/reference/sharpmush-help/sharpcmd/#wall)      | [cd]            |
-| [ch]            | [cv]            |                 |                 |                 |
+| [@squota](/reference/sharpmush-help/quota-command/#administrative-quota-changes)       | [@storage](/reference/sharpmush-help/storage-command/#storage)      | [@suggest](/reference/sharpmush-help/sharpcmd/#suggest)      | [@tag](/reference/sharpmush-help/tag-command/#tag)          | [@toggledef](/reference/sharpmush-help/toggledef-command/#toggledef)    |
+| [@txlevel](/reference/sharpmush-help/rxlevel-command/#rxlevel)      | [@uptime](/reference/sharpmush-help/uptime-command/#uptime)       | [@wall](/reference/sharpmush-help/sharpcmd/#wall)         | [@wizmotd](/reference/sharpmush-help/motd-command/#motd)      | [@wizwall](/reference/sharpmush-help/sharpcmd/#wall)      |
+| [cd]            | [ch]            | [cv]            |                 |                 |
 
 From plugins: [@scene](/reference/sharpmush-help/scene-command/#scene)
 
@@ -2063,7 +2065,7 @@ Animation set to 'on'
 `SOCKSET terminal=<name|auto>`<br>
 `@SOCKSET [me|<descriptor>]=terminal,<name|auto>`
 
-SharpMUSH works out which terminal you use from the terminal type your client reports, or from its answer when you use 'SOCKSET graphics=auto' or 'SOCKSET graphics=detect'. That decides which links are sent (see [HYPERLINKS](/reference/sharpmush-help/sharpcmd/#hyperlinks)) and, once pictures are on, how they are drawn (see [GRAPHICS](/reference/sharpmush-help/graphics/#graphics)). Most clients report a generic type such as xterm-256color, which names no terminal.
+SharpMUSH works out which terminal you use from the first terminal type your client reports (its own name), or from its answer when you use 'SOCKSET graphics=detect' (or 'SOCKSET graphics=auto' on a terminal SharpMUSH knows). That decides which links are sent (see [HYPERLINKS](/reference/sharpmush-help/sharpcmd/#hyperlinks)) and, once pictures are on, how they are drawn (see [GRAPHICS](/reference/sharpmush-help/graphics/#graphics)). Most clients report a generic type such as xterm or xterm-256color, which names no terminal.
 
 Naming your terminal here tells SharpMUSH what it is, for one that does not say (Windows Terminal never does). 'auto' goes back to what your client reported. SOCKSET shows the terminal in use, as "auto (&lt;terminal&gt;)" when you have not named one.
 
@@ -2138,6 +2140,8 @@ Note that @startups are NEVER inherited from parent objects.
 :::
 ## @stats
 `@stats [<player>]`<br>
+`@stats/all`<br>
+`@stats/me`<br>
 `@stats/tables`<br>
 `@stats/flags`<br>
 `@stats/chunks`<br>
@@ -2145,18 +2149,20 @@ Note that @startups are NEVER inherited from parent objects.
 `@stats/paging`<br>
 `@stats/freespace`
 
-In its first form, display the number of objects in the game broken down by object types: `<total> objects = <rooms> rooms, <exits> exits, <things> things, <players> players.` With a `<player>`, only the objects that player owns are counted. Anyone may count their own objects (`@stats me`) or the whole game's; counting another player's objects needs the Search power or wizard/royalty privileges. The whole-game count ends with the garbage count, the free numbers (see [garbage](/reference/sharpmush-help/sharptop/#garbage)), which the total includes.
+In its first form, display the number of objects in the game broken down by object types: `<total> objects = <rooms> rooms, <exits> exits, <things> things, <players> players.` With a `<player>`, only the objects that player owns are counted. Anyone may count their own objects (`@stats me`) or the whole game's; counting another player's objects needs the Search power or wizard/royalty privileges. The whole-game count ends with the garbage count, the free numbers (see [garbage](/reference/sharpmush-help/sharptop/#garbage)), which the total includes. `@stats/all` counts the whole game, and `@stats/me` the objects your owner owns (your own, for a player), whatever the argument.
 
 `@stats/tables` lists SharpMUSH's lookup tables (built-in functions, @functions, commands, flags, powers, attribute definitions, config options and connections) with the number of entries in each.<br>
 `@stats/flags` reports, for the FLAG and POWER flagspaces, how many definitions each has and how objects' sets of flags are distributed.
 
 `@stats/chunks`, `/regions`, `/paging` and `/freespace` report PennMUSH's attribute-chunk allocator. SharpMUSH keeps attributes in its database provider and has no chunk allocator, so these switches say so and return `#-1 NOT SUPPORTED`. For how much disk the database itself uses, see `@storage`.
 ## @sweep
-`@sweep[/connected][/here][/inventory][/exits]`
+`@sweep[/connected][/here][/inventory][/exits][/commands][/listeners][/players]`
 
 @sweep gives you a list of the objects that are listening in your location, including the room you are in. Most objects only listen for a particular string or phrase, so they normally do not pose a problem if you need privacy. You will have to be careful of players and puppets since they will hear everything you say and do. (And might post the same to r.g.m!)
 
 The options are switches; an argument is ignored. With `/connected`, only connected players and puppets owned by connected players are shown. `/here` checks only your location, `/inventory` only the objects you carry, and `/exits` only AUDIBLE exits in your room.
+
+`/commands` lists only objects with $-commands, `/listeners` only those that hear (players, puppets, ^-listens and AUDIBLE objects), and `/players` every player and puppet, connected or not. They may be combined; `/connected` and `/exits` list what they list whichever are given.
 
 
 ::: seealso
@@ -2256,7 +2262,7 @@ Tells the player the name of the MUSH, which version of the code is currently ru
 - [VERSION()](/reference/sharpmush-help/sharpfunc/#version)
 :::
 ## @wall
-`@wall[/emit][/noeval][/admin|/wizard] <message>`<br>
+`@wall[/emit][/noeval][/pose][/admin|/wizard] <message>`<br>
 `@rwall[/emit][/noeval] <message>`<br>
 `@wizwall[/emit][/noeval] <message>`
 
@@ -2266,7 +2272,7 @@ Tells the player the name of the MUSH, which version of the code is currently ru
 
 The message is prefixed with the value of the wall_prefix, rwall_prefix or wizwall_prefix options, depending on the command used.
 
-TinyMUX's `@wall/admin` is @rwall, and `@wall/wizard` is @wizwall.
+TinyMUX's `@wall/admin` is @rwall, and `@wall/wizard` is @wizwall. `@wall/pose` puts your name before the message.
 
 
 ::: seealso
@@ -2308,11 +2314,11 @@ To avoid being found this way, just do: `@set me=UNFINDABLE`
 - [LOC()](/reference/sharpmush-help/sharpfunc/#loc)
 :::
 ## @wipe
-`@wipe <object>[/<attribute pattern>]`
+`@wipe[/regexp] <object>[/<attribute pattern>]`
 
 This command clears attributes from `<object>`, with the exception of attributes changeable only by wizards, and attributes not controlled by the object's owner (i.e. locked attributes owned by someone else). Only God may use @wipe to clear wiz-changeable-only attributes. The SAFE flag protects objects from @wipe.
 
-If no `<pattern>` is given, this gets rid of all the attributes, with exceptions as given above. If `<pattern>` is given, it gets rid of all attributes which match that pattern. Note that the restrictions above still apply.
+If no `<pattern>` is given, this gets rid of all the attributes, with exceptions as given above. If `<pattern>` is given, it gets rid of all attributes which match that pattern. With `/regexp`, the pattern is a case-insensitive regular expression matched anywhere in the attribute's name. Note that the restrictions above still apply.
 
 When wiping an attribute that is the root of an attribute tree, all attributes in that tree will also be removed.
 ## @zemit
@@ -2835,6 +2841,13 @@ A deliberate divergence: PennMUSH has no bare `version` at the login screen, onl
 `QUIT`
 
 Log out and leave the game. Must be in all capitals.
+
+Only the connection you type it on closes, and only that connection gets the goodbye message. Your character's other connections stay in the game and are told you partially disconnected, as they are after a LOGOUT, an @boot or a dropped connection.
+
+```
+> QUIT
+```
+Output: the goodbye message on this connection, and "You have partially disconnected." on each of your others.
 ## unfollow
 `unfollow`<br>
 `unfollow <object>`

@@ -16,11 +16,14 @@ description: "SharpMUSH documentation for Functions"
 | [LFLAGS()](/reference/sharpmush-help/sharpfunc/#lflags)            | [NATTR()](/reference/sharpmush-help/sharpfunc/#nattr)             | [OBJ()](/reference/sharpmush-help/sharpfunc/#obj)               | [OWNER()](/reference/sharpmush-help/sharpfunc/#owner)             |
 | [PFUN()](/reference/sharpmush-help/pfun-function/#pfun)              | [POSS()](/reference/sharpmush-help/sharpfunc/#poss)              | [REGLATTR()](/reference/sharpmush-help/lattr-function/#lattr)          | [REGREP()](/reference/sharpmush-help/sharpfunc/#grep)            |
 | [REGREPI()](/reference/sharpmush-help/sharpfunc/#grep)           | [REGXATTR()](/reference/sharpmush-help/sharpfunc/#xattr)          | [SET()](/reference/sharpmush-help/sharpfunc/#set)               | [STREVAL()](/reference/sharpmush-help/ueval-function/#ueval-and-streval)           |
-| [SUBJ()](/reference/sharpmush-help/sharpfunc/#subj)              | [SYNTAXDIAGNOSTICS()](/reference/sharpmush-help/sharpfunc/#syntaxdiagnostics) | [U()](/reference/sharpmush-help/u-function/#u)                 | [U2()](/reference/sharpmush-help/u2local-function/#u2local)                |
-| [U2DEFAULT()](/reference/sharpmush-help/u2default-function/#u2default)         | [U2LDEFAULT()](/reference/sharpmush-help/u2default-function/#u2default)        | [U2LOCAL()](/reference/sharpmush-help/u2local-function/#u2local)           | [UARGS()](/reference/sharpmush-help/uargs-function/#uargs)             |
-| [UDEFAULT()](/reference/sharpmush-help/sharpfunc/#udefault)          | [UEVAL()](/reference/sharpmush-help/ueval-function/#ueval-and-streval)             | [UFUN()](/reference/sharpmush-help/u-function/#u)              | [ULAMBDA()](/reference/sharpmush-help/u-function/#u)           |
-| [ULDEFAULT()](/reference/sharpmush-help/sharpfunc/#udefault)         | [ULOCAL()](/reference/sharpmush-help/ulocal-function/#ulocal)            | [V()](/reference/sharpmush-help/sharpfunc/#v)                 | [WILDGREP()](/reference/sharpmush-help/sharpfunc/#grep)          |
-| [WILDGREPI()](/reference/sharpmush-help/sharpfunc/#grep)         | [XATTR()](/reference/sharpmush-help/sharpfunc/#xattr)             | [XGET()](/reference/sharpmush-help/sharpfunc/#get)              | [ZFUN()](/reference/sharpmush-help/sharpfunc/#zfun)              |
+| [SUBJ()](/reference/sharpmush-help/sharpfunc/#subj)              | [SYNTAXDIAGNOSTICS()](/reference/sharpmush-help/sharpfunc/#syntaxdiagnostics) | [TOGGLE()](/reference/sharpmush-help/toggle-function/#toggle)            | [U()](/reference/sharpmush-help/u-function/#u)                 |
+| [U2()](/reference/sharpmush-help/u2local-function/#u2local)                | [U2DEFAULT()](/reference/sharpmush-help/u2default-function/#u2default)         | [U2LDEFAULT()](/reference/sharpmush-help/u2default-function/#u2default)        | [U2LOCAL()](/reference/sharpmush-help/u2local-function/#u2local)           |
+| [UARGS()](/reference/sharpmush-help/uargs-function/#uargs)             | [UDEFAULT()](/reference/sharpmush-help/sharpfunc/#udefault)          | [UEVAL()](/reference/sharpmush-help/ueval-function/#ueval-and-streval)             | [UFUN()](/reference/sharpmush-help/u-function/#u)              |
+| [ULAMBDA()](/reference/sharpmush-help/u-function/#u)           | [ULDEFAULT()](/reference/sharpmush-help/sharpfunc/#udefault)         | [ULOCAL()](/reference/sharpmush-help/ulocal-function/#ulocal)            | [V()](/reference/sharpmush-help/sharpfunc/#v)                 |
+| [WILDGREP()](/reference/sharpmush-help/sharpfunc/#grep)          | [WILDGREPI()](/reference/sharpmush-help/sharpfunc/#grep)         | [XATTR()](/reference/sharpmush-help/sharpfunc/#xattr)             | [XGET()](/reference/sharpmush-help/sharpfunc/#get)              |
+| [ZFUN()](/reference/sharpmush-help/sharpfunc/#zfun)              | [ZFUN2()](/reference/sharpmush-help/zfun2local-function/#zfun2local)             | [ZFUN2DEFAULT()](/reference/sharpmush-help/zfun2local-function/#zfun2local)      | [ZFUN2LDEFAULT()](/reference/sharpmush-help/zfun2local-function/#zfun2local)     |
+| [ZFUN2LOCAL()](/reference/sharpmush-help/zfun2local-function/#zfun2local)        | [ZFUNDEFAULT()](/reference/sharpmush-help/zfun2local-function/#zfun2local)       | [ZFUNEVAL()](/reference/sharpmush-help/zfun2local-function/#zfun2local)          | [ZFUNLDEFAULT()](/reference/sharpmush-help/zfun2local-function/#zfun2local)      |
+| [ZFUNLOCAL()](/reference/sharpmush-help/zfun2local-function/#zfun2local)         |                       |                       |                       |
 
 ::: seealso
 - [attributes](/reference/sharpmush-help/attributes/#attributes)
@@ -78,31 +81,37 @@ description: "SharpMUSH documentation for Functions"
 |                  |                  |                  |                  |
 |------------------|------------------|------------------|------------------|
 | [ADDRLOG()](/reference/sharpmush-help/sharpfunc/#addrlog)      | [CLIENTZONE()](/reference/sharpmush-help/sharpfunc/#clientzone)   | [CLOAK()](/reference/sharpmush-help/cloak-function/#cloak)        | [CMDS()](/reference/sharpmush-help/sharpfunc/#cmds)         |
-| [CONN()](/reference/sharpmush-help/sharpfunc/#conn)         | [CONNLOG()](/reference/sharpmush-help/connlog-function/#connlog)      | [CONNRECORD()](/reference/sharpmush-help/sharpfunc/#connrecord)   | [DOING()](/reference/sharpmush-help/sharpfunc/#doing)        |
-| [GMCPSUPPORTS()](/reference/sharpmush-help/gmcpsupports-function/#gmcpsupports) | [HEIGHT()](/reference/sharpmush-help/sharpfunc/#width)       | [HIDDEN()](/reference/sharpmush-help/sharpfunc/#hidden)       | [HOST()](/reference/sharpmush-help/sharpfunc/#host)         |
-| [IDLE()](/reference/sharpmush-help/sharpfunc/#idle)         | [IPADDR()](/reference/sharpmush-help/sharpfunc/#ipaddr)       | [LPORTS()](/reference/sharpmush-help/sharpfunc/#lports)       | [LWHO()](/reference/sharpmush-help/sharpfunc/#lwho)         |
-| [LWHOID()](/reference/sharpmush-help/sharpfunc/#lwho)       | [MWHO()](/reference/sharpmush-help/sharpfunc/#mwho)         | [MWHOID()](/reference/sharpmush-help/sharpfunc/#mwho)       | [NMWHO()](/reference/sharpmush-help/sharpfunc/#nmwho)        |
-| [NWHO()](/reference/sharpmush-help/sharpfunc/#nmwho)         | [PLAYER()](/reference/sharpmush-help/sharpfunc/#player)       | [PORTS()](/reference/sharpmush-help/sharpfunc/#lports)        | [PUEBLO()](/reference/sharpmush-help/sharppueb/#pueblo)       |
-| [RECV()](/reference/sharpmush-help/sharpfunc/#recv)         | [SENT()](/reference/sharpmush-help/sharpfunc/#sent)         | [SSL()](/reference/sharpmush-help/sharpfunc/#ssl)          | [TERMINFO()](/reference/sharpmush-help/terminfo-function/#terminfo)     |
-| [TOTCMDS()](/reference/sharpmush-help/totcmds-function/#totcmds)      | [WIDTH()](/reference/sharpmush-help/sharpfunc/#width)        | [XMWHO()](/reference/sharpmush-help/sharpfunc/#xwho)        | [XMWHOID()](/reference/sharpmush-help/sharpfunc/#xwho)      |
-| [XWHO()](/reference/sharpmush-help/sharpfunc/#xwho)         | [XWHOID()](/reference/sharpmush-help/sharpfunc/#xwho)       | [ZMWHO()](/reference/sharpmush-help/sharpfunc/#zwho)        | [ZWHO()](/reference/sharpmush-help/sharpfunc/#zwho)         |
+| [COLORDEPTH()](/reference/sharpmush-help/colordepth-function/#colordepth)   | [CONN()](/reference/sharpmush-help/sharpfunc/#conn)         | [CONNLAST()](/reference/sharpmush-help/connstats-function/#conntotal)     | [CONNLEFT()](/reference/sharpmush-help/connstats-function/#conntotal)     |
+| [CONNLOG()](/reference/sharpmush-help/connlog-function/#connlog)      | [CONNMAX()](/reference/sharpmush-help/connstats-function/#conntotal)      | [CONNNUM()](/reference/sharpmush-help/connstats-function/#conntotal)      | [CONNRECORD()](/reference/sharpmush-help/sharpfunc/#connrecord)   |
+| [CONNTOTAL()](/reference/sharpmush-help/connstats-function/#conntotal)    | [DOING()](/reference/sharpmush-help/sharpfunc/#doing)        | [GMCPSUPPORTS()](/reference/sharpmush-help/gmcpsupports-function/#gmcpsupports) | [HEIGHT()](/reference/sharpmush-help/sharpfunc/#width)       |
+| [HIDDEN()](/reference/sharpmush-help/sharpfunc/#hidden)       | [HOST()](/reference/sharpmush-help/sharpfunc/#host)         | [IDLE()](/reference/sharpmush-help/sharpfunc/#idle)         | [IPADDR()](/reference/sharpmush-help/sharpfunc/#ipaddr)       |
+| [LOOKUP_SITE()](/reference/sharpmush-help/lookup-site-function/#lookupsite)  | [LPORTS()](/reference/sharpmush-help/sharpfunc/#lports)       | [LWHO()](/reference/sharpmush-help/sharpfunc/#lwho)         | [LWHOID()](/reference/sharpmush-help/sharpfunc/#lwho)       |
+| [MWHO()](/reference/sharpmush-help/sharpfunc/#mwho)         | [MWHOID()](/reference/sharpmush-help/sharpfunc/#mwho)       | [NMWHO()](/reference/sharpmush-help/sharpfunc/#nmwho)        | [NWHO()](/reference/sharpmush-help/sharpfunc/#nmwho)         |
+| [PLAYER()](/reference/sharpmush-help/sharpfunc/#player)       | [PORTS()](/reference/sharpmush-help/sharpfunc/#lports)        | [PUEBLO()](/reference/sharpmush-help/sharppueb/#pueblo)       | [RECV()](/reference/sharpmush-help/sharpfunc/#recv)         |
+| [SENT()](/reference/sharpmush-help/sharpfunc/#sent)         | [SSL()](/reference/sharpmush-help/sharpfunc/#ssl)          | [TERMINFO()](/reference/sharpmush-help/terminfo-function/#terminfo)     | [TOTCMDS()](/reference/sharpmush-help/totcmds-function/#totcmds)      |
+| [WIDTH()](/reference/sharpmush-help/sharpfunc/#width)        | [XMWHO()](/reference/sharpmush-help/sharpfunc/#xwho)        | [XMWHOID()](/reference/sharpmush-help/sharpfunc/#xwho)      | [XWHO()](/reference/sharpmush-help/sharpfunc/#xwho)         |
+| [XWHOID()](/reference/sharpmush-help/sharpfunc/#xwho)       | [ZMWHO()](/reference/sharpmush-help/sharpfunc/#zwho)        | [ZWHO()](/reference/sharpmush-help/sharpfunc/#zwho)         |                  |
 
 ## Dbref Functions
   Dbref functions return a dbref or list of dbrefs related to some value on an object.
 
-|               |               |               |               |
-|---------------|---------------|---------------|---------------|
-| [CHILDREN()](/reference/sharpmush-help/lsearch-function/#lsearch)  | [CON()](/reference/sharpmush-help/sharpfunc/#con)       | [ENTRANCES()](/reference/sharpmush-help/sharpfunc/#entrances) | [EXIT()](/reference/sharpmush-help/sharpfunc/#exit)      |
-| [EXITMAP()](/reference/sharpmush-help/exitmap-function/#exitmap)   | [FOLLOWERS()](/reference/sharpmush-help/sharpfunc/#followers) | [FOLLOWING()](/reference/sharpmush-help/sharpfunc/#following) | [HOME()](/reference/sharpmush-help/sharpfunc/#home)      |
-| [LCON()](/reference/sharpmush-help/sharpfunc/#lcon)      | [LEXITS()](/reference/sharpmush-help/sharpfunc/#lexits)    | [LOC()](/reference/sharpmush-help/sharpfunc/#loc)       | [LOCATE()](/reference/sharpmush-help/locate-function/#locate)    |
-| [LPARENT()](/reference/sharpmush-help/sharpfunc/#lparent)   | [LPLAYERS()](/reference/sharpmush-help/sharpfunc/#lplayers)  | [LROOMS()](/reference/sharpmush-help/sharpfunc/#lrooms)    | [LSEARCH()](/reference/sharpmush-help/lsearch-function/#lsearch)   |
-| [LTHINGS()](/reference/sharpmush-help/sharpfunc/#lthings)   | [LVCON()](/reference/sharpmush-help/sharpfunc/#lvcon)     | [LVEXITS()](/reference/sharpmush-help/sharpfunc/#lvexits)   | [LVPLAYERS()](/reference/sharpmush-help/sharpfunc/#lvplayers) |
-| [LVTHINGS()](/reference/sharpmush-help/sharpfunc/#lvthings)  | [NAMELIST()](/reference/sharpmush-help/sharpfunc/#namelist)  | [NCON()](/reference/sharpmush-help/sharpfunc/#nvcon)      | [NEXITS()](/reference/sharpmush-help/sharpfunc/#nvexits)    |
-| [NEXT()](/reference/sharpmush-help/sharpfunc/#next)      | [NEXTDBREF()](/reference/sharpmush-help/sharpfunc/#nextdbref) | [NPLAYERS()](/reference/sharpmush-help/sharpfunc/#nvplayers)  | [NTHINGS()](/reference/sharpmush-help/sharpfunc/#nvthings)   |
-| [NUM()](/reference/sharpmush-help/sharpfunc/#num)       | [OWNER()](/reference/sharpmush-help/sharpfunc/#owner)     | [PARENT()](/reference/sharpmush-help/sharpfunc/#parent)    | [PARENTS()](/reference/sharpmush-help/parents-function/#parents)   |
-| [PFIND()](/reference/sharpmush-help/pfind-function/#pfind)     | [PMATCH()](/reference/sharpmush-help/sharpfunc/#pmatch)    | [RLOC()](/reference/sharpmush-help/sharpfunc/#rloc)      | [RNUM()](/reference/sharpmush-help/sharpfunc/#rnum)      |
-| [ROOM()](/reference/sharpmush-help/sharpfunc/#room)      | [WHERE()](/reference/sharpmush-help/sharpfunc/#where)     | [XCON()](/reference/sharpmush-help/sharpfunc/#xvcon)      | [XEXITS()](/reference/sharpmush-help/sharpfunc/#xvexits)    |
-| [XPLAYERS()](/reference/sharpmush-help/sharpfunc/#xvplayers)  | [XTHINGS()](/reference/sharpmush-help/sharpfunc/#xvthings)   | [ZFIND()](/reference/sharpmush-help/sharpfunc/#zfind)     | [ZONE()](/reference/sharpmush-help/sharpfunc/#zone)      |
+|                   |                   |                   |                   |
+|-------------------|-------------------|-------------------|-------------------|
+| [CHILDREN()](/reference/sharpmush-help/lsearch-function/#lsearch)      | [CON()](/reference/sharpmush-help/sharpfunc/#con)           | [ENTRANCES()](/reference/sharpmush-help/sharpfunc/#entrances)     | [EXIT()](/reference/sharpmush-help/sharpfunc/#exit)          |
+| [EXITMAP()](/reference/sharpmush-help/exitmap-function/#exitmap)       | [FOLLOWERS()](/reference/sharpmush-help/sharpfunc/#followers)     | [FOLLOWING()](/reference/sharpmush-help/sharpfunc/#following)     | [HOME()](/reference/sharpmush-help/sharpfunc/#home)          |
+| [INZONE()](/reference/sharpmush-help/zchildren-function/#zchildren)        | [LCON()](/reference/sharpmush-help/sharpfunc/#lcon)          | [LEXITS()](/reference/sharpmush-help/sharpfunc/#lexits)        | [LOC()](/reference/sharpmush-help/sharpfunc/#loc)           |
+| [LOCATE()](/reference/sharpmush-help/locate-function/#locate)        | [LPARENT()](/reference/sharpmush-help/sharpfunc/#lparent)       | [LPLAYERS()](/reference/sharpmush-help/sharpfunc/#lplayers)      | [LROOMS()](/reference/sharpmush-help/sharpfunc/#lrooms)        |
+| [LSEARCH()](/reference/sharpmush-help/lsearch-function/#lsearch)       | [LTHINGS()](/reference/sharpmush-help/sharpfunc/#lthings)       | [LVCON()](/reference/sharpmush-help/sharpfunc/#lvcon)         | [LVEXITS()](/reference/sharpmush-help/sharpfunc/#lvexits)       |
+| [LVPLAYERS()](/reference/sharpmush-help/sharpfunc/#lvplayers)     | [LVTHINGS()](/reference/sharpmush-help/sharpfunc/#lvthings)      | [LZONE()](/reference/sharpmush-help/lzone-function/#lzone)         | [NAMELIST()](/reference/sharpmush-help/sharpfunc/#namelist)      |
+| [NCON()](/reference/sharpmush-help/sharpfunc/#nvcon)          | [NEXITS()](/reference/sharpmush-help/sharpfunc/#nvexits)        | [NEXT()](/reference/sharpmush-help/sharpfunc/#next)          | [NEXTDBREF()](/reference/sharpmush-help/sharpfunc/#nextdbref)     |
+| [NPLAYERS()](/reference/sharpmush-help/sharpfunc/#nvplayers)      | [NTHINGS()](/reference/sharpmush-help/sharpfunc/#nvthings)       | [NUM()](/reference/sharpmush-help/sharpfunc/#num)           | [OWNER()](/reference/sharpmush-help/sharpfunc/#owner)         |
+| [PARENT()](/reference/sharpmush-help/sharpfunc/#parent)        | [PARENTS()](/reference/sharpmush-help/parents-function/#parents)       | [PFIND()](/reference/sharpmush-help/pfind-function/#pfind)         | [PMATCH()](/reference/sharpmush-help/sharpfunc/#pmatch)        |
+| [RLOC()](/reference/sharpmush-help/sharpfunc/#rloc)          | [RNUM()](/reference/sharpmush-help/sharpfunc/#rnum)          | [ROOM()](/reference/sharpmush-help/sharpfunc/#room)          | [SEARCHNG()](/reference/sharpmush-help/searchng-function/#searchng)      |
+| [SEARCHNGOBJID()](/reference/sharpmush-help/searchng-function/#searchng) | [SEARCHOBJID()](/reference/sharpmush-help/searchng-function/#searchng)   | [WHERE()](/reference/sharpmush-help/sharpfunc/#where)         | [XCON()](/reference/sharpmush-help/sharpfunc/#xvcon)          |
+| [XEXITS()](/reference/sharpmush-help/sharpfunc/#xvexits)        | [XPLAYERS()](/reference/sharpmush-help/sharpfunc/#xvplayers)      | [XTHINGS()](/reference/sharpmush-help/sharpfunc/#xvthings)       | [ZCHILDREN()](/reference/sharpmush-help/zchildren-function/#zchildren)     |
+| [ZEXITS()](/reference/sharpmush-help/zchildren-function/#zchildren)        | [ZFIND()](/reference/sharpmush-help/sharpfunc/#zfind)         | [ZLCON()](/reference/sharpmush-help/zlcon-function/#zlcon)         | [ZONE()](/reference/sharpmush-help/sharpfunc/#zone)          |
+| [ZONECMD()](/reference/sharpmush-help/zonecmd-function/#zonecmd)       | [ZROOMS()](/reference/sharpmush-help/zchildren-function/#zchildren)        | [ZSEARCH()](/reference/sharpmush-help/zsearch-function/#zsearch)       | [ZSEARCHOBJID()](/reference/sharpmush-help/zsearch-function/#zsearch)  |
+| [ZTHINGS()](/reference/sharpmush-help/zchildren-function/#zchildren)       |                   |                   |                   |
 
 ::: seealso
 - [database](/reference/sharpmush-help/database/#database)
@@ -120,21 +129,23 @@ description: "SharpMUSH documentation for Functions"
 | [DOWNMOTD()](/reference/sharpmush-help/sharpfunc/#motd)     | [ELOCK()](/reference/sharpmush-help/sharpfunc/#elock)        | [ERROR()](/reference/sharpmush-help/sharpfunc/#error)        | [FINDABLE()](/reference/sharpmush-help/sharpfunc/#findable)     |
 | [FLAGS()](/reference/sharpmush-help/sharpfunc/#flags)        | [FULLALIAS()](/reference/sharpmush-help/sharpfunc/#alias)    | [FULLMOTD()](/reference/sharpmush-help/sharpfunc/#motd)     | [FULLNAME()](/reference/sharpmush-help/sharpfunc/#fullname)     |
 | [GETPIDS()](/reference/sharpmush-help/sharpfunc/#getpids)      | [GLOBALROOM()](/reference/sharpmush-help/globalroom-function/#globalroom)   | [HASATTR()](/reference/sharpmush-help/sharpfunc/#hasattr)      | [HASATTRP()](/reference/sharpmush-help/sharpfunc/#hasattr)     |
-| [HASFLAG()](/reference/sharpmush-help/sharpfunc/#hasflag)      | [HASPOWER()](/reference/sharpmush-help/sharpfunc/#haspower)     | [HASROLE()](/reference/sharpmush-help/sharpfunc/#hasrole)      | [HASRXLEVEL()](/reference/sharpmush-help/rxlevel-function/#rxlevel)   |
-| [HASTXLEVEL()](/reference/sharpmush-help/rxlevel-function/#rxlevel)   | [HASTYPE()](/reference/sharpmush-help/sharpfunc/#hastype)      | [INAME()](/reference/sharpmush-help/sharpfunc/#iname)        | [ISAPPROVED()](/reference/sharpmush-help/sharpfunc/#isapproved)   |
-| [ISTAG()](/reference/sharpmush-help/tagref-function/#tagref)        | [LFLAGS()](/reference/sharpmush-help/sharpfunc/#lflags)       | [LISTCOMMANDS()](/reference/sharpmush-help/listcommands-function/#listcommands) | [LISTFLAGS()](/reference/sharpmush-help/listflags-function/#listflags)    |
-| [LISTRLEVELS()](/reference/sharpmush-help/rxlevel-function/#rxlevel)  | [LISTTAGS()](/reference/sharpmush-help/tagref-function/#tagref)     | [LIVEWIRE()](/reference/sharpmush-help/livewire-function/#livewire)     | [LLOCKFLAGS()](/reference/sharpmush-help/sharpfunc/#llockflags)   |
-| [LOCK()](/reference/sharpmush-help/sharpfunc/#lock)         | [LOCKFLAGS()](/reference/sharpmush-help/sharpfunc/#lockflags)    | [LOCKOWNER()](/reference/sharpmush-help/sharpfunc/#lockowner)    | [LOCKS()](/reference/sharpmush-help/sharpfunc/#llocks)        |
-| [LPIDS()](/reference/sharpmush-help/sharpfunc/#lpids)        | [LSTATS()](/reference/sharpmush-help/sharpfunc/#lstats)       | [MONEY()](/reference/sharpmush-help/sharpfunc/#money)        | [MONIKER()](/reference/sharpmush-help/sharpfunc/#moniker)      |
-| [MOTD()](/reference/sharpmush-help/sharpfunc/#motd)         | [MSECS()](/reference/sharpmush-help/sharpfunc/#mtime)        | [MTIME()](/reference/sharpmush-help/sharpfunc/#mtime)        | [MUDNAME()](/reference/sharpmush-help/sharpfunc/#mudname)      |
-| [MUDURL()](/reference/sharpmush-help/sharpfunc/#mudname)       | [NAME()](/reference/sharpmush-help/sharpfunc/#name)         | [NATTR()](/reference/sharpmush-help/sharpfunc/#nattr)        | [NEARBY()](/reference/sharpmush-help/sharpfunc/#nearby)       |
-| [OBJID()](/reference/sharpmush-help/sharpfunc/#objid)        | [OBJMEM()](/reference/sharpmush-help/sharpfunc/#objmem)       | [ORFLAGS()](/reference/sharpmush-help/sharpfunc/#orflags)      | [ORLFLAGS()](/reference/sharpmush-help/sharpfunc/#orflags)     |
-| [ORLPOWERS()](/reference/sharpmush-help/sharpfunc/#orlpowers)    | [PERMISSION()](/reference/sharpmush-help/sharpfunc/#permission)   | [PIDINFO()](/reference/sharpmush-help/sharpfunc/#pidinfo)      | [PLAYERMEM()](/reference/sharpmush-help/sharpfunc/#playermem)    |
-| [PLAYMEM()](/reference/sharpmush-help/playmem-function/#playmem)      | [POLL()](/reference/sharpmush-help/sharpfunc/#poll)         | [POWERS()](/reference/sharpmush-help/sharpfunc/#powers)       | [QUOTA()](/reference/sharpmush-help/sharpfunc/#quota)        |
-| [RESTARTS()](/reference/sharpmush-help/sharpfunc/#restarts)     | [ROLES()](/reference/sharpmush-help/sharpfunc/#roles)        | [RXDESC()](/reference/sharpmush-help/rxdesc-function/#rxdesc)       | [RXLEVEL()](/reference/sharpmush-help/rxlevel-function/#rxlevel)      |
-| [SIZE()](/reference/sharpmush-help/size-function/#size)         | [TAGMATCH()](/reference/sharpmush-help/tagref-function/#tagref)     | [TAGREF()](/reference/sharpmush-help/tagref-function/#tagref)       | [TXLEVEL()](/reference/sharpmush-help/rxlevel-function/#rxlevel)      |
-| [TYPE()](/reference/sharpmush-help/sharpfunc/#type)         | [VATTRCNT()](/reference/sharpmush-help/vattrcnt-function/#vattrcnt)     | [VERSION()](/reference/sharpmush-help/sharpfunc/#version)      | [VISIBLE()](/reference/sharpmush-help/sharpfunc/#visible)      |
-| [WIZMOTD()](/reference/sharpmush-help/sharpfunc/#motd)      |                  |                  |                  |
+| [HASDEPOWER()](/reference/sharpmush-help/hasdepower-function/#hasdepower)   | [HASFLAG()](/reference/sharpmush-help/sharpfunc/#hasflag)      | [HASPOWER()](/reference/sharpmush-help/sharpfunc/#haspower)     | [HASQUOTA()](/reference/sharpmush-help/hasquota-function/#hasquota)     |
+| [HASROLE()](/reference/sharpmush-help/sharpfunc/#hasrole)      | [HASRXLEVEL()](/reference/sharpmush-help/rxlevel-function/#rxlevel)   | [HASTOGGLE()](/reference/sharpmush-help/hastoggle-function/#hastoggle)    | [HASTXLEVEL()](/reference/sharpmush-help/rxlevel-function/#rxlevel)   |
+| [HASTYPE()](/reference/sharpmush-help/sharpfunc/#hastype)      | [INAME()](/reference/sharpmush-help/sharpfunc/#iname)        | [ISAPPROVED()](/reference/sharpmush-help/sharpfunc/#isapproved)   | [ISTAG()](/reference/sharpmush-help/tagref-function/#tagref)        |
+| [LASTCREATE()](/reference/sharpmush-help/lastcreate-function/#lastcreate)   | [LDEPOWERS()](/reference/sharpmush-help/hasdepower-function/#hasdepower)    | [LFLAGS()](/reference/sharpmush-help/sharpfunc/#lflags)       | [LISTCOMMANDS()](/reference/sharpmush-help/listcommands-function/#listcommands) |
+| [LISTFLAGS()](/reference/sharpmush-help/listflags-function/#listflags)    | [LISTRLEVELS()](/reference/sharpmush-help/rxlevel-function/#rxlevel)  | [LISTTAGS()](/reference/sharpmush-help/tagref-function/#tagref)     | [LISTTOGGLES()](/reference/sharpmush-help/listtoggles-function/#listtoggles)  |
+| [LIVEWIRE()](/reference/sharpmush-help/livewire-function/#livewire)     | [LLOCKFLAGS()](/reference/sharpmush-help/sharpfunc/#llockflags)   | [LOCK()](/reference/sharpmush-help/sharpfunc/#lock)         | [LOCKCHECK()](/reference/sharpmush-help/lockencode-function/#lockencode)    |
+| [LOCKDECODE()](/reference/sharpmush-help/lockencode-function/#lockencode)   | [LOCKENCODE()](/reference/sharpmush-help/lockencode-function/#lockencode)   | [LOCKFLAGS()](/reference/sharpmush-help/sharpfunc/#lockflags)    | [LOCKOWNER()](/reference/sharpmush-help/sharpfunc/#lockowner)    |
+| [LOCKS()](/reference/sharpmush-help/sharpfunc/#llocks)        | [LPIDS()](/reference/sharpmush-help/sharpfunc/#lpids)        | [LSTATS()](/reference/sharpmush-help/sharpfunc/#lstats)       | [LTOGGLES()](/reference/sharpmush-help/ltoggles-function/#ltoggles)     |
+| [MONEY()](/reference/sharpmush-help/sharpfunc/#money)        | [MONIKER()](/reference/sharpmush-help/sharpfunc/#moniker)      | [MOTD()](/reference/sharpmush-help/sharpfunc/#motd)         | [MSECS()](/reference/sharpmush-help/sharpfunc/#mtime)        |
+| [MTIME()](/reference/sharpmush-help/sharpfunc/#mtime)        | [MUDNAME()](/reference/sharpmush-help/sharpfunc/#mudname)      | [MUDURL()](/reference/sharpmush-help/sharpfunc/#mudname)       | [NAME()](/reference/sharpmush-help/sharpfunc/#name)         |
+| [NATTR()](/reference/sharpmush-help/sharpfunc/#nattr)        | [NEARBY()](/reference/sharpmush-help/sharpfunc/#nearby)       | [OBJID()](/reference/sharpmush-help/sharpfunc/#objid)        | [OBJMEM()](/reference/sharpmush-help/sharpfunc/#objmem)       |
+| [ORFLAGS()](/reference/sharpmush-help/sharpfunc/#orflags)      | [ORLFLAGS()](/reference/sharpmush-help/sharpfunc/#orflags)     | [ORLPOWERS()](/reference/sharpmush-help/sharpfunc/#orlpowers)    | [PERMISSION()](/reference/sharpmush-help/sharpfunc/#permission)   |
+| [PID()](/reference/sharpmush-help/pid-function/#pid)          | [PIDINFO()](/reference/sharpmush-help/sharpfunc/#pidinfo)      | [PLAYERMEM()](/reference/sharpmush-help/sharpfunc/#playermem)    | [PLAYMEM()](/reference/sharpmush-help/playmem-function/#playmem)      |
+| [POLL()](/reference/sharpmush-help/sharpfunc/#poll)         | [POWERS()](/reference/sharpmush-help/sharpfunc/#powers)       | [QUOTA()](/reference/sharpmush-help/sharpfunc/#quota)        | [RESTARTS()](/reference/sharpmush-help/sharpfunc/#restarts)     |
+| [ROLES()](/reference/sharpmush-help/sharpfunc/#roles)        | [RXDESC()](/reference/sharpmush-help/rxdesc-function/#rxdesc)       | [RXLEVEL()](/reference/sharpmush-help/rxlevel-function/#rxlevel)      | [SIZE()](/reference/sharpmush-help/size-function/#size)         |
+| [TAGMATCH()](/reference/sharpmush-help/tagref-function/#tagref)     | [TAGREF()](/reference/sharpmush-help/tagref-function/#tagref)       | [TXLEVEL()](/reference/sharpmush-help/rxlevel-function/#rxlevel)      | [TYPE()](/reference/sharpmush-help/sharpfunc/#type)         |
+| [VATTRCNT()](/reference/sharpmush-help/vattrcnt-function/#vattrcnt)     | [VERSION()](/reference/sharpmush-help/sharpfunc/#version)      | [VISIBLE()](/reference/sharpmush-help/sharpfunc/#visible)      | [WIZMOTD()](/reference/sharpmush-help/sharpfunc/#motd)      |
 
 ::: seealso
 - [Dbref functions](/reference/sharpmush-help/sharpfunc/#dbref-functions)
@@ -156,13 +167,14 @@ description: "SharpMUSH documentation for Functions"
 | [LISTSET()](/reference/sharpmush-help/sharpfunc/#listset)     | [LISTUNION()](/reference/sharpmush-help/listdiff-function/#listdiff)   | [LOCKFILTER()](/reference/sharpmush-help/lockfilter-function/#lockfilter)  | [LREPLACE()](/reference/sharpmush-help/sharpfunc/#lreplace)    |
 | [LREST()](/reference/sharpmush-help/butlast-function/#butlast)       | [MAP()](/reference/sharpmush-help/map-function/#map)         | [MATCH()](/reference/sharpmush-help/element-function/#element)       | [MATCHALL()](/reference/sharpmush-help/element-function/#element)    |
 | [MEMBER()](/reference/sharpmush-help/sharpfunc/#member)      | [MIX()](/reference/sharpmush-help/mix-function/#mix)         | [MUNGE()](/reference/sharpmush-help/munge-function/#munge)       | [NAMEGRAB()](/reference/sharpmush-help/sharpfunc/#namegrab)    |
-| [NAMEGRABALL()](/reference/sharpmush-help/sharpfunc/#namegrab) | [NSITER()](/reference/sharpmush-help/nsiter-function/#nsiter)      | [RANDEXTRACT()](/reference/sharpmush-help/sharpfunc/#randextract) | [RANDWORD()](/reference/sharpmush-help/sharpfunc/#randword)    |
-| [REMFLAGS()](/reference/sharpmush-help/keepflags-function/#keepflags-and-remflags)    | [REMOVE()](/reference/sharpmush-help/sharpfunc/#remove)      | [REMTYPE()](/reference/sharpmush-help/keeptype-function/#keeptype-and-remtype)     | [REST()](/reference/sharpmush-help/sharpfunc/#rest)        |
-| [REVWORDS()](/reference/sharpmush-help/sharpfunc/#revwords)    | [SETDIFF()](/reference/sharpmush-help/sharpfunc/#setdiff)     | [SETINTER()](/reference/sharpmush-help/sharpfunc/#setinter)    | [SETSYMDIFF()](/reference/sharpmush-help/sharpfunc/#setsymdiff)  |
-| [SETUNION()](/reference/sharpmush-help/sharpfunc/#setunion)    | [SHUFFLE()](/reference/sharpmush-help/sharpfunc/#shuffle)     | [SOME()](/reference/sharpmush-help/sharpfunc/#e)        | [SORT()](/reference/sharpmush-help/sharpfunc/#sort)        |
-| [SORTBY()](/reference/sharpmush-help/sharpfunc/#sortby)      | [SORTKEY()](/reference/sharpmush-help/sharpfunc/#sortkey)     | [SPLICE()](/reference/sharpmush-help/sharpfunc/#splice)      | [STEP()](/reference/sharpmush-help/sharpfunc/#step)        |
-| [STEPARGS()](/reference/sharpmush-help/sharpfunc/#stepargs)    | [TABLE()](/reference/sharpmush-help/sharpfunc/#table)       | [TOTMEMBER()](/reference/sharpmush-help/totmember-function/#totmember)   | [UNIQUE()](/reference/sharpmush-help/sharpfunc/#unique)      |
-| [WHILE()](/reference/sharpmush-help/while-function/#while)       | [WORDPOS()](/reference/sharpmush-help/sharpfunc/#wordpos)     | [WORDS()](/reference/sharpmush-help/sharpfunc/#words)       | [WRAPCOLUMNS()](/reference/sharpmush-help/wrapcolumns-function/#wrapcolumns) |
+| [NAMEGRABALL()](/reference/sharpmush-help/sharpfunc/#namegrab) | [NSITER()](/reference/sharpmush-help/nsiter-function/#nsiter)      | [NUMMEMBER()](/reference/sharpmush-help/nummember-function/#nummember)   | [RANDEXTRACT()](/reference/sharpmush-help/sharpfunc/#randextract) |
+| [RANDWORD()](/reference/sharpmush-help/sharpfunc/#randword)    | [REMFLAGS()](/reference/sharpmush-help/keepflags-function/#keepflags-and-remflags)    | [REMOVE()](/reference/sharpmush-help/sharpfunc/#remove)      | [REMTYPE()](/reference/sharpmush-help/keeptype-function/#keeptype-and-remtype)     |
+| [REST()](/reference/sharpmush-help/sharpfunc/#rest)        | [REVWORDS()](/reference/sharpmush-help/sharpfunc/#revwords)    | [SETDIFF()](/reference/sharpmush-help/sharpfunc/#setdiff)     | [SETINTER()](/reference/sharpmush-help/sharpfunc/#setinter)    |
+| [SETSYMDIFF()](/reference/sharpmush-help/sharpfunc/#setsymdiff)  | [SETUNION()](/reference/sharpmush-help/sharpfunc/#setunion)    | [SHUFFLE()](/reference/sharpmush-help/sharpfunc/#shuffle)     | [SOME()](/reference/sharpmush-help/sharpfunc/#e)        |
+| [SORT()](/reference/sharpmush-help/sharpfunc/#sort)        | [SORTBY()](/reference/sharpmush-help/sharpfunc/#sortby)      | [SORTKEY()](/reference/sharpmush-help/sharpfunc/#sortkey)     | [SPLICE()](/reference/sharpmush-help/sharpfunc/#splice)      |
+| [STEP()](/reference/sharpmush-help/sharpfunc/#step)        | [STEPARGS()](/reference/sharpmush-help/sharpfunc/#stepargs)    | [TABLE()](/reference/sharpmush-help/sharpfunc/#table)       | [TOTMEMBER()](/reference/sharpmush-help/totmember-function/#totmember)   |
+| [UNIQUE()](/reference/sharpmush-help/sharpfunc/#unique)      | [WHILE()](/reference/sharpmush-help/while-function/#while)       | [WORDPOS()](/reference/sharpmush-help/sharpfunc/#wordpos)     | [WORDS()](/reference/sharpmush-help/sharpfunc/#words)       |
+| [WRAPCOLUMNS()](/reference/sharpmush-help/wrapcolumns-function/#wrapcolumns) |                 |                 |                 |
 
 ::: seealso
 - [LISTS](/reference/sharpmush-help/sharptop/#lists)
@@ -261,10 +273,11 @@ description: "SharpMUSH documentation for Functions"
 | [IF()](/reference/sharpmush-help/sharpfunc/#if)                   | [IFELSE()](/reference/sharpmush-help/sharpfunc/#if)               | [LCSTR()](/reference/sharpmush-help/sharpfunc/#lcstr)                | [LEFT()](/reference/sharpmush-help/sharpfunc/#left)                 |
 | [LIT()](/reference/sharpmush-help/sharpfunc/#lit)                  | [LJUST()](/reference/sharpmush-help/sharpfunc/#ljust)                | [LPAD()](/reference/sharpmush-help/sharpfunc/#lpad)                 | [LPOS()](/reference/sharpmush-help/sharpfunc/#lpos)                 |
 | [MERGE()](/reference/sharpmush-help/sharpfunc/#merge)                | [MID()](/reference/sharpmush-help/sharpfunc/#mid)                  | [ORD()](/reference/sharpmush-help/sharpfunc/#chr)                  | [ORDINAL()](/reference/sharpmush-help/sharpfunc/#ordinal)              |
-| [PARSESTR()](/reference/sharpmush-help/parsestr-function/#parsestr)             | [POS()](/reference/sharpmush-help/sharpfunc/#pos)                  | [PRINTF()](/reference/sharpmush-help/printf-function/#printf)               | [REGEDIT()](/reference/sharpmush-help/sharpfunc/#regedit)              |
-| [REGMATCH()](/reference/sharpmush-help/regmatch-function/#regmatch)             | [RENDER()](/reference/sharpmush-help/sharpfunc/#render)               | [RENDERMARKDOWN()](/reference/sharpmush-help/render-markdown/#rendermarkdown)       | [RENDERMARKDOWNCUSTOM()](/reference/sharpmush-help/render-markdown-custom/#rendermarkdowncustom) |
-| [REPEAT()](/reference/sharpmush-help/sharpfunc/#repeat)               | [RIGHT()](/reference/sharpmush-help/sharpfunc/#right)                | [RJUST()](/reference/sharpmush-help/sharpfunc/#rjust)                | [RPAD()](/reference/sharpmush-help/sharpfunc/#rpad)                 |
-| [SCRAMBLE()](/reference/sharpmush-help/sharpfunc/#scramble)             | [SECURE()](/reference/sharpmush-help/sharpfunc/#secure)               | [SHA0()](/reference/sharpmush-help/sharpfunc/#sha0)                 | [SHA1()](/reference/sharpmush-help/sha1-function/#sha1)                 |
+| [PARENMATCH()](/reference/sharpmush-help/parenmatch-function/#parenmatch)           | [PARENSTR()](/reference/sharpmush-help/parenstr-function/#parenstr)             | [PARSESTR()](/reference/sharpmush-help/parsestr-function/#parsestr)             | [POS()](/reference/sharpmush-help/sharpfunc/#pos)                  |
+| [PRINTF()](/reference/sharpmush-help/printf-function/#printf)               | [RANDPOS()](/reference/sharpmush-help/randpos-function/#randpos)              | [REGEDIT()](/reference/sharpmush-help/sharpfunc/#regedit)              | [REGMATCH()](/reference/sharpmush-help/regmatch-function/#regmatch)             |
+| [RENDER()](/reference/sharpmush-help/sharpfunc/#render)               | [RENDERMARKDOWN()](/reference/sharpmush-help/render-markdown/#rendermarkdown)       | [RENDERMARKDOWNCUSTOM()](/reference/sharpmush-help/render-markdown-custom/#rendermarkdowncustom) | [REPEAT()](/reference/sharpmush-help/sharpfunc/#repeat)               |
+| [RIGHT()](/reference/sharpmush-help/sharpfunc/#right)                | [RJUST()](/reference/sharpmush-help/sharpfunc/#rjust)                | [RPAD()](/reference/sharpmush-help/sharpfunc/#rpad)                 | [SCRAMBLE()](/reference/sharpmush-help/sharpfunc/#scramble)             |
+| [SECURE()](/reference/sharpmush-help/sharpfunc/#secure)               | [SETQMATCH()](/reference/sharpmush-help/setqmatch-function/#setqmatch)            | [SHA0()](/reference/sharpmush-help/sharpfunc/#sha0)                 | [SHA1()](/reference/sharpmush-help/sha1-function/#sha1)                 |
 | [SPACE()](/reference/sharpmush-help/sharpfunc/#space)                | [SPELLNUM()](/reference/sharpmush-help/sharpfunc/#spellnum)             | [SQUISH()](/reference/sharpmush-help/sharpfunc/#squish)               | [STANDIN()](/reference/sharpmush-help/standin-function/#standin)              |
 | [STRALLOF()](/reference/sharpmush-help/sharpfunc/#strfirstof)             | [STRCAT()](/reference/sharpmush-help/sharpfunc/#cat)               | [STRDELETE()](/reference/sharpmush-help/sharpfunc/#strdelete)            | [STRDISTANCE()](/reference/sharpmush-help/strdistance-function/#strdistance)          |
 | [STRFIRSTOF()](/reference/sharpmush-help/sharpfunc/#strfirstof)           | [STRINSERT()](/reference/sharpmush-help/sharpfunc/#strinsert)            | [STRIP()](/reference/sharpmush-help/sharpfunc/#strip)                | [STRIPACCENTS()](/reference/sharpmush-help/sharpfunc/#stripaccents)         |
@@ -283,11 +296,12 @@ description: "SharpMUSH documentation for Functions"
 |                 |                 |                 |                 |
 |-----------------|-----------------|-----------------|-----------------|
 | [CONVSECS()](/reference/sharpmush-help/sharpfunc/#convsecs)    | [CONVTIME()](/reference/sharpmush-help/convtime-function/#convtime)    | [CONVUTCSECS()](/reference/sharpmush-help/sharpfunc/#convsecs) | [CONVUTCTIME()](/reference/sharpmush-help/convtime-function/#convtime) |
-| [CTIME()](/reference/sharpmush-help/sharpfunc/#ctime)       | [DATEPARSE()](/reference/sharpmush-help/dateparse-function/#dateparse)   | [ETIME()](/reference/sharpmush-help/sharpfunc/#etime)       | [ETIMEFMT()](/reference/sharpmush-help/etimefmt-function/#etimefmt)    |
-| [ISDAYLIGHT()](/reference/sharpmush-help/sharpfunc/#isdaylight)  | [MOON()](/reference/sharpmush-help/sharpfunc/#moon)        | [MTIME()](/reference/sharpmush-help/sharpfunc/#mtime)       | [RESTARTTIME()](/reference/sharpmush-help/sharpfunc/#starttime) |
-| [SECS()](/reference/sharpmush-help/sharpfunc/#secs)        | [STARTTIME()](/reference/sharpmush-help/sharpfunc/#starttime)   | [STRINGSECS()](/reference/sharpmush-help/sharpfunc/#stringsecs)  | [TIME()](/reference/sharpmush-help/time-function/#time)        |
+| [CTIME()](/reference/sharpmush-help/sharpfunc/#ctime)       | [DATEPARSE()](/reference/sharpmush-help/dateparse-function/#dateparse)   | [DIGITTIME()](/reference/sharpmush-help/exptime-function/#exptime)   | [ETIME()](/reference/sharpmush-help/sharpfunc/#etime)       |
+| [ETIMEFMT()](/reference/sharpmush-help/etimefmt-function/#etimefmt)    | [EXPTIME()](/reference/sharpmush-help/exptime-function/#exptime)     | [ISDAYLIGHT()](/reference/sharpmush-help/sharpfunc/#isdaylight)  | [MOON()](/reference/sharpmush-help/sharpfunc/#moon)        |
+| [MTIME()](/reference/sharpmush-help/sharpfunc/#mtime)       | [RESTARTSECS()](/reference/sharpmush-help/sharpfunc/#starttime) | [RESTARTTIME()](/reference/sharpmush-help/sharpfunc/#starttime) | [SECS()](/reference/sharpmush-help/sharpfunc/#secs)        |
+| [SINGLETIME()](/reference/sharpmush-help/exptime-function/#exptime)  | [STARTTIME()](/reference/sharpmush-help/sharpfunc/#starttime)   | [STRINGSECS()](/reference/sharpmush-help/sharpfunc/#stringsecs)  | [TIME()](/reference/sharpmush-help/time-function/#time)        |
 | [TIMECALC()](/reference/sharpmush-help/timecalc-function/#timecalc)    | [TIMEFMT()](/reference/sharpmush-help/timefmt-function/#timefmt)     | [TIMESTRING()](/reference/sharpmush-help/sharpfunc/#timestring)  | [UPTIME()](/reference/sharpmush-help/sharpfunc/#uptime)      |
-| [UTCTIME()](/reference/sharpmush-help/time-function/#time)     |                 |                 |                 |
+| [UTCTIME()](/reference/sharpmush-help/time-function/#time)     | [WRITETIME()](/reference/sharpmush-help/exptime-function/#exptime)   |                 |                 |
 
 ::: seealso
 - [timezones](/reference/sharpmush-help/timezones/#timezones)
@@ -298,29 +312,31 @@ description: "SharpMUSH documentation for Functions"
 |                    |                    |                    |                    |
 |--------------------|--------------------|--------------------|--------------------|
 | [@@()]             | [ALLOF()](/reference/sharpmush-help/sharpfunc/#allof)          | [ANDCHR()](/reference/sharpmush-help/andchr-function/#andchr)         | [ANSI()](/reference/sharpmush-help/ansi-function/#ansi)           |
-| [ATRLOCK()](/reference/sharpmush-help/sharpfunc/#atrlock)        | [BEEP()](/reference/sharpmush-help/sharpfunc/#beep)           | [BENCHMARK()](/reference/sharpmush-help/sharpfunc/#benchmark)      | [CHECKPASS()](/reference/sharpmush-help/sharpfunc/#checkpass)      |
-| [CLONE()](/reference/sharpmush-help/sharpfunc/#clone)          | [CMDLINK()](/reference/sharpmush-help/sharppueb/#cmdlink)        | [COLORS()](/reference/sharpmush-help/colors-function/#colors)         | [CREATE()](/reference/sharpmush-help/sharpfunc/#create)         |
-| [DESTROY()](/reference/sharpmush-help/sharpfunc/#destroy)        | [DIE()](/reference/sharpmush-help/sharpfunc/#die)            | [DIG()](/reference/sharpmush-help/sharpfunc/#dig)            | [ENDTAG()](/reference/sharpmush-help/sharppueb/#endtag)         |
-| [FIRSTOF()](/reference/sharpmush-help/sharpfunc/#firstof)        | [FN()](/reference/sharpmush-help/fn-function/#fn)             | [FUNCTIONS()](/reference/sharpmush-help/sharpfunc/#functions)      | [HTML()](/reference/sharpmush-help/sharppueb/#html-1)           |
-| [IBREAK()](/reference/sharpmush-help/sharpfunc/#ibreak)         | [ILEV()](/reference/sharpmush-help/ilev-function/#ilev)           | [INUM()](/reference/sharpmush-help/ilev-function/#ilev)           | [ISALNUM()](/reference/sharpmush-help/isalpha-function/#character-tests)        |
-| [ISALPHA()](/reference/sharpmush-help/isalpha-function/#character-tests)        | [ISDBREF()](/reference/sharpmush-help/isdbref-function/#isdbref)        | [ISDIGIT()](/reference/sharpmush-help/isalpha-function/#character-tests)        | [ISINT()](/reference/sharpmush-help/sharpfunc/#isint)          |
-| [ISLOWER()](/reference/sharpmush-help/isalpha-function/#character-tests)        | [ISNUM()](/reference/sharpmush-help/sharpfunc/#isnum)          | [ISOBJID()](/reference/sharpmush-help/isdbref-function/#isdbref)        | [ISPUNCT()](/reference/sharpmush-help/isalpha-function/#character-tests)        |
-| [ISRAT()](/reference/sharpmush-help/israt-function/#israt)          | [ISREGEXP()](/reference/sharpmush-help/sharpfunc/#isregexp)       | [ISSPACE()](/reference/sharpmush-help/isalpha-function/#character-tests)        | [ISUPPER()](/reference/sharpmush-help/isalpha-function/#character-tests)        |
-| [ISWORD()](/reference/sharpmush-help/sharpfunc/#isword)         | [ISXDIGIT()](/reference/sharpmush-help/isalpha-function/#character-tests)       | [ITEXT()](/reference/sharpmush-help/ilev-function/#ilev)          | [LETQ()](/reference/sharpmush-help/sharpfunc/#letq)           |
-| [LINK()](/reference/sharpmush-help/sharpfunc/#link)           | [LIST()](/reference/sharpmush-help/list-function/#list)           | [LISTQ()](/reference/sharpmush-help/sharpfunc/#listq)          | [LNUM()](/reference/sharpmush-help/sharpfunc/#lnum)           |
-| [LOCALIZE()](/reference/sharpmush-help/sharpfunc/#localize)       | [LSET()](/reference/sharpmush-help/sharpfunc/#lset)           | [MOVE()](/reference/sharpmush-help/move-function/#move)           | [NAMEQ()](/reference/sharpmush-help/nameq-function/#nameq)          |
-| [NAMEQM()](/reference/sharpmush-help/nameqm-function/#nameqm)         | [NULL()](/reference/sharpmush-help/sharpfunc/)           | [NUMPOS()](/reference/sharpmush-help/numpos-function/#numpos)         | [NUMVERSION()](/reference/sharpmush-help/sharpfunc/#version)     |
-| [OBJEVAL()](/reference/sharpmush-help/sharpfunc/#objeval)        | [OBJEVALS()](/reference/sharpmush-help/sharpfunc/#objevals)       | [OPEN()](/reference/sharpmush-help/sharpfunc/#open)           | [PCREATE()](/reference/sharpmush-help/sharpfunc/#pcreate)        |
-| [PRIVATIZE()](/reference/sharpmush-help/privatize-function/#privatize)      | [R()](/reference/sharpmush-help/sharpfunc/#r)              | [RAND()](/reference/sharpmush-help/sharpfunc/#rand)           | [REGISTERS()](/reference/sharpmush-help/sharpfunc/#registers)      |
+| [ATRLOCK()](/reference/sharpmush-help/sharpfunc/#atrlock)        | [BEEP()](/reference/sharpmush-help/sharpfunc/#beep)           | [BENCHMARK()](/reference/sharpmush-help/sharpfunc/#benchmark)      | [BYPASS()](/reference/sharpmush-help/bypass-function/#bypass)         |
+| [CHECKPASS()](/reference/sharpmush-help/sharpfunc/#checkpass)      | [CLONE()](/reference/sharpmush-help/sharpfunc/#clone)          | [CMDLINK()](/reference/sharpmush-help/sharppueb/#cmdlink)        | [COLORS()](/reference/sharpmush-help/colors-function/#colors)         |
+| [CREATE()](/reference/sharpmush-help/sharpfunc/#create)         | [DESTROY()](/reference/sharpmush-help/sharpfunc/#destroy)        | [DIE()](/reference/sharpmush-help/sharpfunc/#die)            | [DIG()](/reference/sharpmush-help/sharpfunc/#dig)            |
+| [ENDTAG()](/reference/sharpmush-help/sharppueb/#endtag)         | [FIRSTOF()](/reference/sharpmush-help/sharpfunc/#firstof)        | [FN()](/reference/sharpmush-help/fn-function/#fn)             | [FUNCTIONS()](/reference/sharpmush-help/sharpfunc/#functions)      |
+| [HTML()](/reference/sharpmush-help/sharppueb/#html-1)           | [IBREAK()](/reference/sharpmush-help/sharpfunc/#ibreak)         | [ILEV()](/reference/sharpmush-help/ilev-function/#ilev)           | [INUM()](/reference/sharpmush-help/ilev-function/#ilev)           |
+| [ISALNUM()](/reference/sharpmush-help/isalpha-function/#character-tests)        | [ISALPHA()](/reference/sharpmush-help/isalpha-function/#character-tests)        | [ISDBREF()](/reference/sharpmush-help/isdbref-function/#isdbref)        | [ISDIGIT()](/reference/sharpmush-help/isalpha-function/#character-tests)        |
+| [ISINT()](/reference/sharpmush-help/sharpfunc/#isint)          | [ISLOWER()](/reference/sharpmush-help/isalpha-function/#character-tests)        | [ISNUM()](/reference/sharpmush-help/sharpfunc/#isnum)          | [ISOBJID()](/reference/sharpmush-help/isdbref-function/#isdbref)        |
+| [ISPUNCT()](/reference/sharpmush-help/isalpha-function/#character-tests)        | [ISRAT()](/reference/sharpmush-help/israt-function/#israt)          | [ISREGEXP()](/reference/sharpmush-help/sharpfunc/#isregexp)       | [ISSPACE()](/reference/sharpmush-help/isalpha-function/#character-tests)        |
+| [ISUPPER()](/reference/sharpmush-help/isalpha-function/#character-tests)        | [ISWORD()](/reference/sharpmush-help/sharpfunc/#isword)         | [ISXDIGIT()](/reference/sharpmush-help/isalpha-function/#character-tests)       | [ITEXT()](/reference/sharpmush-help/ilev-function/#ilev)          |
+| [LETQ()](/reference/sharpmush-help/sharpfunc/#letq)           | [LINK()](/reference/sharpmush-help/sharpfunc/#link)           | [LIST()](/reference/sharpmush-help/list-function/#list)           | [LISTQ()](/reference/sharpmush-help/sharpfunc/#listq)          |
+| [LNUM()](/reference/sharpmush-help/sharpfunc/#lnum)           | [LOCALIZE()](/reference/sharpmush-help/sharpfunc/#localize)       | [LSET()](/reference/sharpmush-help/sharpfunc/#lset)           | [MOVE()](/reference/sharpmush-help/move-function/#move)           |
+| [NAMEQ()](/reference/sharpmush-help/nameq-function/#nameq)          | [NAMEQM()](/reference/sharpmush-help/nameqm-function/#nameqm)         | [NULL()](/reference/sharpmush-help/sharpfunc/)           | [NUMPOS()](/reference/sharpmush-help/numpos-function/#numpos)         |
+| [NUMVERSION()](/reference/sharpmush-help/sharpfunc/#version)     | [OBJEVAL()](/reference/sharpmush-help/sharpfunc/#objeval)        | [OBJEVALS()](/reference/sharpmush-help/sharpfunc/#objevals)       | [OFPARSE()](/reference/sharpmush-help/ofparse-function/#ofparse)        |
+| [OPEN()](/reference/sharpmush-help/sharpfunc/#open)           | [PCREATE()](/reference/sharpmush-help/sharpfunc/#pcreate)        | [POSE()](/reference/sharpmush-help/pose-function/#pose)           | [PRIVATIZE()](/reference/sharpmush-help/privatize-function/#privatize)      |
+| [PUSHREGS()](/reference/sharpmush-help/pushregs-function/#pushregs)       | [R()](/reference/sharpmush-help/sharpfunc/#r)              | [RAND()](/reference/sharpmush-help/sharpfunc/#rand)           | [REGISTERS()](/reference/sharpmush-help/sharpfunc/#registers)      |
 | [RESTRICTEDEXPR()](/reference/sharpmush-help/restrictedexpr/#restrictedexpr) | [ROLL()](/reference/sharpmush-help/roll-function/#roll)           | [ROLLINFO()](/reference/sharpmush-help/rollinfo-function/#rollinfo)       | [S()](/reference/sharpmush-help/sharpfunc/#s)              |
-| [SCAN()](/reference/sharpmush-help/sharpfunc/#scan)           | [SECUREX()](/reference/sharpmush-help/securex-function/#securex)        | [SET()](/reference/sharpmush-help/sharpfunc/#set)            | [SETQ()](/reference/sharpmush-help/setq-function/#setq)           |
-| [SETQM()](/reference/sharpmush-help/setqm-function/#setqm)          | [SETR()](/reference/sharpmush-help/setq-function/#setq)           | [SETRM()](/reference/sharpmush-help/setqm-function/#setqm)          | [SLEV()](/reference/sharpmush-help/sharpfunc/#stext)           |
-| [SOUNDEX()](/reference/sharpmush-help/soundex-function/#soundex)        | [SOUNDSLIKE()](/reference/sharpmush-help/sharpfunc/#soundlike)     | [SPEAK()](/reference/sharpmush-help/speak/#speak)          | [STEXT()](/reference/sharpmush-help/sharpfunc/#stext)          |
-| [STOPEVENT()](/reference/sharpmush-help/stopevent-function/#stopevent)      | [STR()](/reference/sharpmush-help/str-function/#str)            | [STRFUNC()](/reference/sharpmush-help/strfunc-function/#strfunc)        | [SUBEVAL()](/reference/sharpmush-help/subeval-function/#subeval)        |
-| [SUGGEST()](/reference/sharpmush-help/sharpfunc/#suggest)        | [TAG()](/reference/sharpmush-help/sharppueb/#tag)            | [TAGWRAP()](/reference/sharpmush-help/tagwrap-function/#tagwrap)        | [TEL()](/reference/sharpmush-help/sharpfunc/#tel)            |
-| [TESTLOCK()](/reference/sharpmush-help/sharpfunc/#testlock)       | [TEXTENTRIES()](/reference/sharpmush-help/textfile-function/#textfile)    | [TEXTFILE()](/reference/sharpmush-help/textfile-function/#textfile)       | [TOTPOS()](/reference/sharpmush-help/totpos-function/#totpos)         |
-| [TRIGGER()](/reference/sharpmush-help/sharpfunc/#trigger)        | [UNSETQ()](/reference/sharpmush-help/sharpfunc/#listq)         | [UPTIME()](/reference/sharpmush-help/sharpfunc/#uptime)         | [URL_UNESCAPE()](/reference/sharpmush-help/url-unescape-function/#urlunescape)   |
-| [VALID()](/reference/sharpmush-help/valid-function/#valid)          | [VERB()](/reference/sharpmush-help/sharpfunc/#verb)           | [WIPE()](/reference/sharpmush-help/sharpfunc/#wipe)           |                    |
+| [SANDBOX()](/reference/sharpmush-help/sandbox-function/#sandbox)        | [SCAN()](/reference/sharpmush-help/sharpfunc/#scan)           | [SECUREX()](/reference/sharpmush-help/securex-function/#securex)        | [SET()](/reference/sharpmush-help/sharpfunc/#set)            |
+| [SETQ()](/reference/sharpmush-help/setq-function/#setq)           | [SETQM()](/reference/sharpmush-help/setqm-function/#setqm)          | [SETR()](/reference/sharpmush-help/setq-function/#setq)           | [SETRM()](/reference/sharpmush-help/setqm-function/#setqm)          |
+| [SLEV()](/reference/sharpmush-help/sharpfunc/#stext)           | [SOUNDEX()](/reference/sharpmush-help/soundex-function/#soundex)        | [SOUNDSLIKE()](/reference/sharpmush-help/sharpfunc/#soundlike)     | [SPEAK()](/reference/sharpmush-help/speak/#speak)          |
+| [STEXT()](/reference/sharpmush-help/sharpfunc/#stext)          | [STOPEVENT()](/reference/sharpmush-help/stopevent-function/#stopevent)      | [STR()](/reference/sharpmush-help/str-function/#str)            | [STRFUNC()](/reference/sharpmush-help/strfunc-function/#strfunc)        |
+| [SUBEVAL()](/reference/sharpmush-help/subeval-function/#subeval)        | [SUCCESSES()](/reference/sharpmush-help/successes-function/#successes)      | [SUGGEST()](/reference/sharpmush-help/sharpfunc/#suggest)        | [TAG()](/reference/sharpmush-help/sharppueb/#tag)            |
+| [TAGWRAP()](/reference/sharpmush-help/tagwrap-function/#tagwrap)        | [TEL()](/reference/sharpmush-help/sharpfunc/#tel)            | [TESTLOCK()](/reference/sharpmush-help/sharpfunc/#testlock)       | [TEXTENTRIES()](/reference/sharpmush-help/textfile-function/#textfile)    |
+| [TEXTFILE()](/reference/sharpmush-help/textfile-function/#textfile)       | [TOTPOS()](/reference/sharpmush-help/totpos-function/#totpos)         | [TRACE()](/reference/sharpmush-help/trace-function/#trace)          | [TRIGGER()](/reference/sharpmush-help/sharpfunc/#trigger)        |
+| [UNSETQ()](/reference/sharpmush-help/sharpfunc/#listq)         | [UPTIME()](/reference/sharpmush-help/sharpfunc/#uptime)         | [URL_UNESCAPE()](/reference/sharpmush-help/url-unescape-function/#urlunescape)   | [VALID()](/reference/sharpmush-help/valid-function/#valid)          |
+| [VERB()](/reference/sharpmush-help/sharpfunc/#verb)           | [WIPE()](/reference/sharpmush-help/sharpfunc/#wipe)           |                    |                    |
 
 ## Wiki Functions
   Wiki functions read the shared wiki: the same pages the web portal serves.
@@ -445,9 +461,14 @@ Ariel Brand
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
 :::
 ## after()
-`after(<string1>, <string2>)`
+`after(<string1>[, <string2>])`
 
-  Returns the portion of `<string1>` that occurs after `<string2>`. If `<string2>` isn't in `<string1>`, the function returns nothing. This is case-sensitive.
+  Returns the portion of `<string1>` that occurs after `<string2>`. If `<string2>` isn't in `<string1>`, the function returns nothing. This is case-sensitive. An empty `<string2>` is a space. Without `<string2>`, as TinyMUX takes it, the spaces at both ends of `<string1>` are trimmed first.
+
+```sharp
+think after(%b%babc def ghi)
+def ghi
+```
 
   Examples:
 ```sharp
@@ -464,9 +485,10 @@ You say, "r baz"
 - [REST()](/reference/sharpmush-help/sharpfunc/#rest)
 :::
 ## allof()
-`allof(<expr>[, ... , <exprN>], <osep>)`
+`allof(<expr>[, ... , <exprN>], <osep>)`<br>
+`allof(<expr>)`
 
-  Evaluates every `<expr>` argument (including side-effects) and returns the results of those which are true, in a list separated by `<osep>`. The output separator argument is required, and can be a string of any length (including an empty string; use %b for a space).
+  Evaluates every `<expr>` argument (including side-effects) and returns the results of those which are true, in a list separated by `<osep>`. The output separator can be a string of any length (including an empty string; use %b for a space). With one argument, as TinyMUX takes it, that argument is the only `<expr>`.
 
   The meaning of true or false depends on configuration options as explained in the 'BOOLEAN VALUES' help topics.
 ```sharp
@@ -700,9 +722,14 @@ You say, "r baz"
   Returns `<number>` "alert" bell characters. `<number>` must be in the range 1 to 5, or, if unspecified, defaults to 1. This function may only be used by royalty and wizards.
 
 ## before()
-`before(<string1>, <string2>)`
+`before(<string1>[, <string2>])`
 
-  Returns the portion of `<string1>` that occurs before `<string2>`. If `<string2>` isn't in `<string1>`, `<string1>` is returned. This is case-sensitive.
+  Returns the portion of `<string1>` that occurs before `<string2>`. If `<string2>` isn't in `<string1>`, `<string1>` is returned. This is case-sensitive. An empty `<string2>` is a space. Without `<string2>`, as TinyMUX takes it, the spaces at both ends of `<string1>` are trimmed first.
+
+```sharp
+think before(%b%babc def)
+abc
+```
 
   Examples:
 ```sharp
@@ -1082,12 +1109,14 @@ think config(command_aliases)
 - [CONTROL](/reference/sharpmush-help/sharptop/#control)
 :::
 ## convsecs()
-`convsecs(<seconds>[, <timezone>])`<br>
+`convsecs(<seconds>[, <timezone>[, <places>]])`<br>
 `convutcsecs(<seconds>)`
 
   This function converts `<seconds>` (the number of seconds which have elapsed since midnight on January 1, 1970 UTC) to a time string. Because it's based on UTC, but returns local time, convsecs(0) is not going to be "Thu Jan 1 00:00:00 1970" unless you're in the UTC (GMT) timezone.
 
   If a `<timezone>` argument is given, the return value is based on that timezone instead of the MUSH server's local time. See [timezones](/reference/sharpmush-help/timezones/#timezones) for more information on valid timezones.
+
+  A third argument, as TinyMUX takes it, gives the seconds up to `<places>` decimal places, at most 7; trailing zeros are dropped, and an empty or `local` timezone is the server's. `think convsecs(1000000000.5,utc,3)` gives `Sun Sep 09 01:46:40.5 2001`.
 
   Negative values for `<seconds>`, representing dates prior to 1970, are allowed.
 
@@ -1781,7 +1810,10 @@ You say, "Huh?  (Type "help" for help.)"
 :::
 ## eval()
 `eval(<object>, <attribute>)`<br>
+`eval(<string>)`<br>
 `get_eval(<object>/<attribute>)`
+
+  eval() with one argument, as TinyMUX takes it, evaluates `<string>` once more, as s() does: `think eval(lit([add(1,2)]))` gives `3`.
 
   eval() and get_eval() are similar to ufun(), in that they evaluate the given `<attribute>` on `<object>`. However, they change the enactor (%#) to the object executing the eval (%!). It does not modify the stack (%0-%9), so the attribute being evaled sees the same values for them that the calling code does. Unless you need this behavior, it is better to use u() instead, which hides the caller's stack.
 
@@ -2727,11 +2759,12 @@ think lcmds(me, |, ^)
 `nattr(<object>[/<attribute pattern>])`<br>
 `nattrp(<object>[/<attribute pattern>])`<br>
 `regnattr(<object>[/<regexp>])`<br>
+`regnattr(<object>, <regexp>)`<br>
 `regnattrp(<object>[/<regexp>])`
 
   nattr() returns the number of attributes on `<object>` that you can see which match the given `<attribute pattern>`. It is considerably faster than words(lattr()) and doesn't suffer from buffer length constraints. It's designed primarily for statistical purposes. `<attribute pattern>` defaults to "*", which does not include branches in attribute trees; use "**" if you need to count attribute trees.
 
-  regnattr() matches attribute names against the regular expression `<regexp>`.
+  regnattr() matches attribute names against the regular expression `<regexp>`. TinyMUX's form gives `<regexp>` as a second argument, so it may hold a `/`.
 
   nattrp() and regnattrp() also count matching attributes on the parent.
 
@@ -3375,6 +3408,8 @@ th lt(1,3,2)
   `<status>` can be used to include "#-1" dbrefs for unconnected ports, and must be one of "all", "online" (the default) or "offline". It is primarily useful when using a `<status>` with lports(), to make the dbrefs and ports match up. Only See_All players can see offline dbrefs.
 
   lwhoid() returns a list of objid's instead.
+
+  With the `mux_arguments` @config option on, as after a TinyMUX import, lwho() with one argument is TinyMUX's: a true argument lists each connection as `#<dbref>:<descriptor>` for a See_All player, and a false one lists what lwho() does.
 
 
 ::: seealso
@@ -4702,14 +4737,18 @@ You say, "-   foo-"
 - [ROOM()](/reference/sharpmush-help/sharpfunc/#room)
 :::
 ## roles()
-`roles(<object>)`
+`roles(<object>[, <category>])`
 
-  Returns the short names of the roles `<object>` holds, its own and its account's, highest priority first, with `everyone` last.
+  Returns the short names of the roles `<object>` holds, its own and its account's, highest priority first, with `everyone` last. With `<category>`, only the roles in that category.
+
+  A player holding `game.hide.roles` hides its roles from players ranked below it, and they get only `everyone`; hasrole() still answers them. See [roles](/reference/sharpmush-help/roles/#roles).
 
   Example:
 ```sharp
 think roles(*Ariel)
 moderator player everyone
+think roles(*Ariel,Staff)
+moderator
 ```
 
 
@@ -4973,7 +5012,7 @@ You say, "bar gleep"
 
   listq() returns a space-separated list of set q-registers with values available in the current q-register scope. If `<pattern>` is provided, then only those that match the wildcard pattern `<pattern>` will be returned.
 
-  unsetq() without arguments clears all registers. Otherwise, unsetq() treats its argument as a list of register name patterns, and will unset all those registers within the local scope.
+  unsetq() without arguments clears all registers. Otherwise, unsetq() treats its arguments as lists of register name patterns, and will unset all those registers within the local scope. TinyMUX names one register an argument: `unsetq(a,b)` clears a and b.
 
   If unsetq() is inside of a letq(), and does not have an argument, it will clear the registers that letq() has protected. unsetq() with arguments clears the specified registers.
 
@@ -5030,7 +5069,7 @@ LOC
 
   This function returns the union of two sets -- i.e., all the elements of both `<list1>` and `<list2>`, minus any duplicate elements. The list returned is sorted. Natural sorting is the default. You can change this with the fourth argument, which is a sort type as defined in [SORTING](/reference/sharpmush-help/sorting/#sorting). With four arguments, an empty fourth joins without separators. Otherwise it is a sort type; unknown types keep the default sort. Output uses the input delimiter unless you supply `<osep>` as argument five.
 
-  TinyMUX writes the output separator before the sort type: `setunion(<list1>, <list2>, <delimiter>, <osep>, <sort type>)`. When the fourth argument names no sort type and the fifth does, it is read that way. The same goes for setdiff(), setinter() and setsymdiff().
+  TinyMUX writes `<osep>` before `<sort type>`. A fourth argument that names no sort type, before a fifth that does, is read that way; under the `mux_arguments` @config option the fourth is always `<osep>` (`@@` for none). The same goes for setdiff(), setinter() and setsymdiff().
 
     > say setunion(B a c, b, %b, |, a)<br>
     You say, "B|a|b|c"
@@ -5263,12 +5302,12 @@ first
 - [SPELLNUM()](/reference/sharpmush-help/sharpfunc/#spellnum)
 :::
 ## splice()
-`splice(<list1>, <list2>, <word>[, <delimiter>])`
+`splice(<list1>, <list2>, <word>[, <delimiter>[, <osep>]])`
 
   This function splices `<list1>` and `<list2>` together. `<list1>` and `<list2>` are space-separated lists of words.
 
   If a word in `<list1>` is the same as `<word>`, it is replaced by the word in the corresponding position in `<list2>`. Both lists must have the same<br>
-  number of words.
+  number of words. The result is joined by `<osep>`, the delimiter unless given; `@@` is none.
 
   Example:
 ```sharp
@@ -5366,9 +5405,10 @@ You don\'t say
 :::
 ## starttime()
 `starttime()`<br>
-`restarttime()`
+`restarttime()`<br>
+`restartsecs()`
 
-  starttime() returns the time the MUSH was last started, and restarttime() returns the time it was last restarted, including @shutdown/reboots. The times are in the same format as time().
+  starttime() returns the time the MUSH was last started, and restarttime() returns the time it was last restarted, including @shutdown/reboots. The times are in the same format as time(). restartsecs() returns the restart time in seconds since 1970, as secs() does; it comes from TinyMUX.
 
   Example:
 ```sharp
@@ -5462,11 +5502,13 @@ Output: `Bob has 3 posts.` and `Alice has 1 post.`, one per line.
 :::
 ## strfirstof()
 `strfirstof(<expr>[, ... , <exprN>], <default>)`<br>
-`strallof(<expr>[, ... , <exprN>], <osep>)`
+`strallof(<expr>[, ... , <exprN>], <osep>)`<br>
+`strfirstof(<expr>)`<br>
+`strallof(<expr>)`
 
   strfirstof() returns the first `<expr>` which evaluates to a non-empty string (a string at least 1 character long). If all `<expr>`s evaluate empty, `<default>` is returned instead.
 
-  strallof() returns all `<expr>`s which evaluate to non-empty strings, with each expression separated by `<osep>`.
+  strallof() returns all `<expr>`s which evaluate to non-empty strings, with each expression separated by `<osep>`. With one argument, as TinyMUX takes it, that argument is the only `<expr>`; strfirstof() with one returns it.
 
   Examples:
 ```sharp
@@ -5796,11 +5838,17 @@ You say, "foo bar!"
 - [AND()](/reference/sharpmush-help/sharpfunc/#and)
 :::
 ## table()
-`table(<list>[, <field width>[, <line length>[, <delimiter>[, <osep>]]]])`
+`table(<list>[, <field width>[, <line length>[, <delimiter>[, <osep>[, <fill>]]]]])`
 
   This function returns the elements of `<list>` in a tabular format. All other parameters are optional. `<field width>` specifies how wide each table entry is allowed to be, and defaults to 10. If `<field width>` begins with a "`<", it is left-aligned. ">`" makes it right-aligned, and "-" makes it centered. Elements longer than `<field width>` are truncated to fit.
 
-  `<line length>` is how wide a table row can be, and defaults to 78. `<delimiter>` is the delimiter used in `<list>`, and defaults to a space. `<osep>` is a single character to be used between entries in the table, and also defaults to a space.
+  `<line length>` is how wide a table row can be, and defaults to 78. `<delimiter>` is the delimiter used in `<list>`, and defaults to a space. `<osep>` is a single character to be used between entries in the table, and also defaults to a space. `<fill>` pads each entry in place of spaces.
+
+```sharp
+think table(a b c,3,8,%b,|,.)
+a..|b..
+c..
+```
 
   Examples:
 ```sharp
@@ -5858,9 +5906,9 @@ a          b          areallylon d
 - [JSON PATHS](/reference/sharpmush-help/sharpfunc/#json-paths)
 :::
 ## isjson()
-`isjson(<text>)`
+`isjson(<text>[, <type>])`
 
-  This function returns 1 if its argument is valid JSON, 0 if not.
+  This function returns 1 if its argument is valid JSON, 0 if not. With a `<type>` it also asks what the JSON is: `string`, `number`, `object`, `array`, `true`, `false`, `null` or `boolean`. Any other type returns `#-1 UNKNOWN JSON TYPE`.
 
   Examples:
 ```sharp
@@ -6659,11 +6707,14 @@ think words(1 2%b%b3, %b)
 - [zones](/reference/sharpmush-help/zones/#zones)
 :::
 ## zfun()
-`zfun(<attribute>[, <arg0>[, <arg1>[, ... , <arg29>]]])`
+`zfun(<attribute>[, <arg0>[, <arg1>[, ... , <arg29>]]])`<br>
+`zfun(<zone>/<attribute>[, <arg0>[, <arg1>[, ... , <arg29>]]])`
 
   This function evaluates an attribute on the caller's Zone object. It is essentially identical to
 
 `ufun(zone(me)/<attribute>[, <arg0>[, ... , <arg29>]])`
+
+  An object in several zones can name the one: `<zone>/<attribute>` is that zone's attribute, and a zone the caller is not in gives `#-1 INVALID ZONE`. See [ZFUN2()](/reference/sharpmush-help/zfun2local-function/#zfun2local) for the rest of the family.
 
 
 ::: seealso
@@ -6672,6 +6723,7 @@ think words(1 2%b%b3, %b)
 - [ZONE()](/reference/sharpmush-help/sharpfunc/#zone)
 - [ZEMIT()](/reference/sharpmush-help/sharpfunc/#zemit)
 - [ZWHO()](/reference/sharpmush-help/sharpfunc/#zwho)
+- [ZFUN2()](/reference/sharpmush-help/zfun2local-function/#zfun2local)
 - [zones](/reference/sharpmush-help/zones/#zones)
 :::
 ## zone()
@@ -6788,9 +6840,12 @@ AARDVARK AARDVARKS AARDVARK'S etc...
 - [@HTTP](/reference/sharpmush-help/http-command/#http)
 :::
 ## hmac()
-`HMAC(<digest>, <key>, <text>[, <encoding>])`
+`HMAC(<digest>, <key>, <text>[, <encoding>])`<br>
+`HMAC(<text>, <key>[, <digest>])`
 
   Computes the HMAC (message authentication code) hash for `<text>` using the passphrase `<key>` and the given hash function `<digest>`, which can be any supported by digest(). `<encoding>` can be base16 (The default) or base64.
+
+  The second form is TinyMUX's: `<digest>` defaults to sha256 and the answer is upper-case hexadecimal. Two arguments always mean it; three mean it with the `mux_arguments` @config option on, as after a TinyMUX import.
 
   Example:
 ```sharp

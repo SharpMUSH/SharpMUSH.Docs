@@ -200,14 +200,16 @@ The /nuke switch destroys the post office, erasing all @mail everywhere. It may 
 
 ## Mail Functions
 
-Mail functions work with @mail.
+Mail functions work with @mail. Some come from TinyMUX (see [tinymux mail functions](/reference/sharpmush-help/mux-mail-functions/#tinymux-mail-functions)) and some from RhostMUSH (see [rhostmush mail functions](/reference/sharpmush-help/rhost-mail-functions/#rhostmush-mail-functions)).
 
-|                 |                 |                 |                 |
-|-----------------|-----------------|-----------------|-----------------|
-| [FOLDERSTATS()](/reference/sharpmush-help/sharpmail/#folderstats) | [MAIL()](/reference/sharpmush-help/sharpmail/#mail-1)        | [MAILALIAS()](/reference/sharpmush-help/mailalias-function/#mailalias)   | [MAILDSTATS()](/reference/sharpmush-help/sharpmail/#mailstats)  |
-| [MAILFROM()](/reference/sharpmush-help/sharpmail/#mailfrom)    | [MAILFSTATS()](/reference/sharpmush-help/sharpmail/#mailstats)  | [MAILLIST()](/reference/sharpmush-help/sharpmail/#maillist)    | [MAILSEND()](/reference/sharpmush-help/sharpmail/#mailsend)    |
-| [MAILSTATS()](/reference/sharpmush-help/sharpmail/#mailstats)   | [MAILSTATUS()](/reference/sharpmush-help/sharpmail/#mailfrom)  | [MAILSUBJECT()](/reference/sharpmush-help/sharpmail/#mailfrom) | [MAILTIME()](/reference/sharpmush-help/sharpmail/#mailfrom)    |
-| [MALIAS()](/reference/sharpmush-help/sharpmail/#malias)      |                 |                 |                 |
+|                   |                   |                   |                   |
+|-------------------|-------------------|-------------------|-------------------|
+| [FOLDERCURRENT()](/reference/sharpmush-help/rhost-mail-functions/#foldercurrent) | [FOLDERLIST()](/reference/sharpmush-help/rhost-mail-functions/#foldercurrent)    | [FOLDERSTATS()](/reference/sharpmush-help/sharpmail/#folderstats)   | [MAIL()](/reference/sharpmush-help/sharpmail/#mail-1)          |
+| [MAILALIAS()](/reference/sharpmush-help/mailalias-function/#mailalias)     | [MAILCOUNT()](/reference/sharpmush-help/mux-mail-functions/#mailcount)     | [MAILDSTATS()](/reference/sharpmush-help/sharpmail/#mailstats)    | [MAILFLAGS()](/reference/sharpmush-help/mux-mail-functions/#mailflags)     |
+| [MAILFROM()](/reference/sharpmush-help/sharpmail/#mailfrom)      | [MAILFSTATS()](/reference/sharpmush-help/sharpmail/#mailstats)    | [MAILINFO()](/reference/sharpmush-help/mux-mail-functions/#mailinfo)      | [MAILLIST()](/reference/sharpmush-help/sharpmail/#maillist)      |
+| [MAILQUICK()](/reference/sharpmush-help/rhost-mail-functions/#mailquick)     | [MAILQUOTA()](/reference/sharpmush-help/rhost-mail-functions/#mailquota)     | [MAILREAD()](/reference/sharpmush-help/rhost-mail-functions/#mailread)      | [MAILREVIEW()](/reference/sharpmush-help/mux-mail-functions/#mailreview)    |
+| [MAILSEND()](/reference/sharpmush-help/sharpmail/#mailsend)      | [MAILSIZE()](/reference/sharpmush-help/mux-mail-functions/#mailcount)      | [MAILSTATS()](/reference/sharpmush-help/sharpmail/#mailstats)     | [MAILSTATUS()](/reference/sharpmush-help/sharpmail/#mailfrom)    |
+| [MAILSUBJECT()](/reference/sharpmush-help/sharpmail/#mailfrom)   | [MAILTIME()](/reference/sharpmush-help/sharpmail/#mailfrom)      | [MALIAS()](/reference/sharpmush-help/sharpmail/#malias)        | [MSIZETOT()](/reference/sharpmush-help/rhost-mail-functions/#mailquota)      |
 
 ## folderstats()
 
@@ -311,8 +313,9 @@ The mail*stats() functions return data like @mail/*stats does. You either must u
 ## mailsend()
 
 - `mailsend(<player>,[<subject>/]<message>)`
+- `mailsend(<players>,<subject>,<message>)`
 
-This function sends a message to a player, just like @mail/send. It returns nothing if successful, or an error message.
+This function sends a message to a player, just like @mail/send. It returns nothing if successful, or an error message. The three-argument form is TinyMUX's: the subject is given apart, and it returns 1 once the mail is delivered.
 
 ## malias()
 

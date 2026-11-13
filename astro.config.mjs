@@ -71,6 +71,7 @@ export default defineConfig({
                       { label: 'Launch a Server', slug: 'guides/one-click-hosting' },
                       { label: 'Run with Docker', slug: 'guides/docker-quickstart' },
                       { label: 'Migrate from another MUSH', slug: 'guides/pennmush-migration' },
+                      { label: 'Moving a RhostMUSH or TinyMUX Game', slug: 'guides/rhostmush-tinymux-import' },
                       { label: 'Operator Handbook', slug: 'guides/operator-handbook' },
                       { label: 'Deployment Reference', slug: 'guides/deployment' },
                       { label: 'Storage and History Retention', slug: 'guides/storage-and-retention' },

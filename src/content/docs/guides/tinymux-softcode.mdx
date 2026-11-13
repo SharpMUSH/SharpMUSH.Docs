@@ -85,10 +85,9 @@ think setunion(B a c,b, ,|,a)
 
 Output: `B|a|b|c`
 
-With four arguments the two servers disagree in a way no rule can settle: TinyMUX reads the fourth as
-the separator and PennMUSH as the sort type. SharpMUSH reads it as PennMUSH does, so a TinyMUX
-`setunion(<list1>,<list2>,<delimiter>,<osep>)` has to become
-`setunion(<list1>,<list2>,<delimiter>,,<osep>)`.
+With four arguments TinyMUX reads the fourth as the separator and PennMUSH as the sort type.
+SharpMUSH reads it as PennMUSH does, unless [`mux_arguments`](#mux_arguments) is on, which a TinyMUX
+import turns on.
 
 ## %m and %=&lt;name&gt;
 
@@ -197,6 +196,41 @@ whose action is running, wherever the token is written, as TinyMUX does. They al
 of an attribute the pattern calls, such as through `u()`. With it off, they read the outermost one
 whose text they are written in, as PennMUSH does.
 
+### mux_arguments
+
+A few functions read the same arguments differently on the two servers. With `mux_arguments` on they
+read them as TinyMUX does: the set functions take a fourth argument as the output separator, `hmac()`
+takes its digest third, `lwho()` with one argument lists connections, `channels()` takes TinyMUX's
+arguments, and `textfile()` (like `dynhelp()`) reads an object's `HELP_` attributes when its first argument names no
+text file. See
+[the option's help](/reference/sharpmush-help/compatibility-config/#tinymux-argument-meanings-mux_arguments).
+
+### mux_queue_functions
+
+`trigger()` and `verb()` queue an attribute's actions from inside a function, as TinyMUX's do. With the
+setting off, both return `#-1 FUNCTION DISABLED`.
+
+### mux_quiet
+
+The `/quiet` switch of `drop`, `get`, `give`, `goto`, `enter`, `leave` and `@teleport` does what
+TinyMUX's does, and only on what you control. `drop`, `get` and `goto` leave out the o-message and the
+action. `enter` and `leave` leave out the object's enter or leave messages, but still run its action and
+your `@move`. `give/quiet` is for wizards and leaves out the usual notices, and `@teleport/quiet` keeps
+leaving and arriving quiet but still runs `@move`. With the setting off, `/quiet` leaves out your own
+message and the o-message, and the action still runs.
+
+### mux_function_caller
+
+A global `@function` defined without `/privileged` runs as whoever calls it, as on TinyMUX. With it off,
+it runs as the object that holds its attribute, as on PennMUSH.
+
+### protection_flags and attribute_eval_flags
+
+These two are shared with RhostMUSH. `protection_flags` makes the NOEXAMINE and NOMODIFY flags protect
+what holds them from everyone below wizard and royalty. `attribute_eval_flags` makes an attribute set
+`noeval` give its value as written, and a `$`-command set `noparse` match the command as typed. See
+[compatibility config](/reference/sharpmush-help/compatibility-config/).
+
 ### rhost_list
 
 PennMUSH's `list()` names the game's functions, commands, flags and so on. TinyMUX's
@@ -212,7 +246,6 @@ for either server. With it on, `@list` still names the game's functions, command
 ## What still needs rewriting
 
 - `trim()` takes its arguments in TinyMUX's order when `tiny_trim_fun` is on; `trimtiny()` always does.
-- TinyMUX's four-argument set functions, described above.
 - `columns()` is RhostMUSH's, `columns(<text>, <width>, <columns>, ...)`, which takes the number of
   columns as its third argument. TinyMUX's `columns(<list>, <width>[, <delimiter>[, <indent>]])` is a
   different function, so calls to it have to be rewritten, for example with `table()` or `align()`.

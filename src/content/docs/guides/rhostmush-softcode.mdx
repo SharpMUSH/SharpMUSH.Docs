@@ -456,6 +456,17 @@ think hasflag(me,SIDEFX) [permission(me,softcode.sidefx)]
 
 Output for a wizard, with `sidefx_flag` on: `0 1`
 
+### rhost_lrooms
+
+`lrooms()` takes any depth, as on RhostMUSH, and a depth of 0 follows exits as far as they lead, up to
+1,000 rooms. With it off, the depth runs from 0 to 50 and 0 lists nothing, as on TinyMUX.
+
+### Settings shared with TinyMUX
+
+A RhostMUSH import also turns on `mux_logic`, `tiny_trim_fun`, `protection_flags` and
+`attribute_eval_flags`. The [TinyMUX Softcode](/guides/tinymux-softcode/#the-settings) guide describes
+them.
+
 ## The connection handle is %j
 
 `%j` is the connection the command was typed on, the number `@pemit/port` takes. `%d` is the

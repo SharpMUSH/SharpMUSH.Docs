@@ -64,7 +64,7 @@ In the `<list>` that is evaluated, or the `<default>`, "#$" stands for `<str>`. 
 
 case() and caseall() set "#$" to `<str>` in the `<list>` or `<default>` they evaluate, as if() and ifelse() set it to their condition. When a switch() runs around or inside one of them, #$ names the switch() instead, as it does in PennMUSH, where case() leaves #$ as text. See [compatibility parser in case and if](/reference/sharpmush-help/compatibility-parser/#in-case-and-if).
 
-With the `innermost_tokens` option on, #$ names the innermost switch, case(), if() or ifelse() whose `<list>`, `<default>` or branch is running, as TinyMUX's does, and it also works in the code of an attribute that `<list>` calls. See [compatibility config innermost loop tokens](/reference/sharpmush-help/compatibility-config/#innermost-loop-tokens).
+With the `innermost_tokens` option on, #$ names the innermost switch, case(), if() or ifelse() whose `<list>`, `<default>` or branch is running, as TinyMUX's does, and it also works in the code of an attribute that `<list>` calls. See [compatibility config innermost loop tokens](/reference/sharpmush-help/compatibility-config/#innermost-loop-tokens-innermosttokens).
 
 ### Pattern selection examples
 

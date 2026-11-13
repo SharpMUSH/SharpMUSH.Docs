@@ -11,6 +11,8 @@ description: "SharpMUSH documentation for @hook"
   "aliases": [],
   "sections": [
     {"id": "override-extend", "heading": "Overriding and extending", "lookup": "@hook override and extend"},
+    {"id": "permit-fail-args", "heading": "Permitting and rewriting", "lookup": "@hook permit"},
+    {"id": "list", "heading": "Listing hooks", "lookup": "@hook list"},
     {
       "id": "evaluation",
       "heading": "Hook evaluation",
@@ -64,7 +66,9 @@ description: "SharpMUSH documentation for @hook"
 - @hook/before: The attribute is evaluated before the built-in command is run.
 - @hook/after: The attribute is evaluated after the built-in command is run.
 
-The `/override` and `/extend` switches run a $-command in place of the built-in command; see [@hook override and extend](/reference/sharpmush-help/hook/#overriding-and-extending).
+The `/permit`, `/fail` and `/args` switches decide whether the command runs and rewrite its arguments; see [@hook permit](/reference/sharpmush-help/hook/#permitting-and-rewriting). The `/override` and `/extend` switches run a $-command in place of the built-in command; see [@hook override and extend](/reference/sharpmush-help/hook/#overriding-and-extending).
+
+`@hook/list` lists hooks; see [@hook list](/reference/sharpmush-help/hook/#listing-hooks).
 
 ### Overriding and extending
 
@@ -72,6 +76,43 @@ The `/override` and `/extend` switches run a $-command in place of the built-in 
 - @hook/override/inline: Same as `@hook/override`, but the resulting matches are run immediately - not queued for later execution!
 - @hook/extend: If an invalid switch is given to the command, attempt to run a matching $-command in `<object>[/<attribute>]` instead of giving an error. Allows extending built-in commands in softcode without having to rewrite the core functionality.
 - @hook/extend/inline: As above, but the $-command won't be queued.
+
+### Permitting and rewriting
+
+- @hook/permit: The attribute is evaluated before the built-in command is run, after `/ignore`. If it returns a false value, the command is refused with "Permission denied." An attribute that is empty, or has gone, lets the command through.
+- @hook/fail: Evaluated in place of the "Permission denied." message when `/permit` refuses the command.
+- @hook/args: Evaluated once for each argument, after `/before`, and the argument becomes what it returns. `%0` and `%1` are the command's two sides, `%2` the list item being rewritten for a command whose right side is a list, `%3` the argument's position (from 0; list items from 2), and `%4` the switches given.
+
+`/permit` and `/args` keep their q-registers to themselves: those set in them are gone once they finish.
+```sharp
+> &canpage #123=not(hasflag(%#,GAGGED))
+> &nopage #123=pemit(%#,You cannot page while gagged.)
+> @hook/permit page=#123, canpage
+> @hook/fail page=#123, nopage
+> &trimmed #123=trim(switch(%3,0,%0,1,%1,%2))
+> @hook/args @emit=#123, trimmed
+```
+
+### Listing hooks
+
+`@hook/list` with no command lists every command that has a hook.
+
+`@hook/list <command>` lists that command's hooks, in the order they run.
+
+```
+@hook/list look
+```
+
+Output:
+
+```
++=====================< Hooks on LOOK >======================+
+| Hook    Object  Attribute   Options                         |
+| ----------------------------------------------------------- |
+| before  #12     B_LOOK                                      |
+| after   #12     A_LOOK      inline localize                 |
++=============================================================+
+```
 
 ### Hook evaluation
 
@@ -110,7 +151,15 @@ This behaviour can be altered by adding the following switches to `@hook/inline`
 
 This leaves the built-in WHO command working as normal, but adds two new switches for filtering the output in different ways.
 
-`@hook/igswitch` is an alias for `@hook/extend`, for Rhost compatability.
+`@hook/igswitch` is an alias for `@hook/extend`.
+
+`@hook/extend <command>=*` names no object: a switch the command does not know makes the whole line softcode's, matched against $-commands wherever they are (as if there were no built-in), then Huh?. This is TinyMUX's and RhostMUSH's `@hook/igswitch`.
+```sharp
+> &look`hello #123=$look/hello:@pemit %#=Hello from softcode.
+> @hook/extend look=*
+> look/hello
+Hello from softcode.
+```
 
 ### Before and after examples
 

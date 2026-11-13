@@ -90,81 +90,17 @@ differences.
 
 ## Importing from RhostMUSH or TinyMUX
 
-The import tells the three formats apart from the file's first lines: a TinyMUX flatfile starts `+X`,
-TinyMUX's `netmux.sqlite` starts `SQLite format 3`, and a PennMUSH database and a RhostMUSH flatfile both start `+V` and differ in the line after it. If it
-guesses wrong, choose the format on the import page. A start-up import reads
+The import page takes a RhostMUSH flatfile, a TinyMUX flatfile or TinyMUX 2.14's `netmux.sqlite`,
+with their mail, channels and configuration files. It tells the formats apart from the file's first
+lines; choose the format on the page if it guesses wrong. A start-up import reads
 `PENNMUSH_DATABASE_FORMAT` (`auto`, `pennmush`, `rhostmush` or `tinymux`) beside
 `PENNMUSH_DATABASE_PATH`.
 
-| Format | Database | Mail | Channels |
-|---|---|---|---|
-| PennMUSH | the flatfile | `maildb` | `chatdb` |
-| RhostMUSH | the flatfile `@dump/flat` writes | `.dump.mail` from `wmail/unload`, with `.dump.folder` in the mail folders slot | none, see below |
-| TinyMUX | the flatfile (versions 1 to 5) | `mail.db` | `comsys.db` in the chat slot |
-| TinyMUX 2.14 | `game/data/netmux.sqlite` | in the database | in the database |
-
-TinyMUX 2.14 keeps the game, its channels and its mail in `netmux.sqlite`, so that one file is the
-whole upload. TinyMUX writes changes to `netmux.sqlite-wal` first, and the import reads only the main
-file, so stop the game before you copy it. A clean shutdown moves everything into the main file and
-removes `netmux.sqlite-wal`. If that file is still there and not empty (after a crash, say), make sure
-nothing has the database open and run `sqlite3 netmux.sqlite "PRAGMA wal_checkpoint(TRUNCATE);"` in
-`game/data` before you copy it. A mail or chat file uploaded with it is refused. To import a flatfile
-instead, run `./db_unload netmux netmux.flat -C comsys.db -m mail.db` and upload `mail.db` and
-`comsys.db` in the mail and chat slots beside it.
-
-The configuration slot takes PennMUSH's `mush.cnf`, TinyMUX's `netmux.conf` or RhostMUSH's
-`netrhost.conf`. A setting the two TinyMUSH-family servers name differently, such as
-`player_starting_room`, sets the option PennMUSH calls `player_start`. Upload the files it includes,
-such as `alias.conf` and `compat.conf`, in the slot beside it: each `include` line reads the uploaded
-file of that name, whatever folder the line gives, so two included files may not share a name. The
-report names each included file that was not uploaded. The configuration and its included files are
-uploaded as plain text; the database, mail, chat and mail folder files may be gzipped, as PennMUSH
-writes its dumps.
-
-**What comes across.** Objects keep their numbers, names, owners, parents, zones, locks, attributes
-and creation times. Flags and powers become SharpMUSH's where one matches: a wizard gets the `wizard`
-role, and a TinyMUX power such as `control_all` becomes the permission it stands for. RhostMUSH's staff
-levels become roles of their own, each placed just above the role with the same rights: `guildmaster`
-above `player`, `architect` above `builder`, `councilor` above `royalty` and `immortal` above
-`wizard`. Two also get a little more: `guildmaster` may view players and inspect the queue, and
-`immortal` may run the server. All four are made, whether or not anyone holds them, and setup's
-staff step starts on RhostMUSH's levels. A flag or power with no match is kept as
-a custom flag or power, so `hasflag()` still sees it. Passwords keep working: each form these servers
-store is checked at login and replaced with SharpMUSH's own the first time the player connects. Mail
-comes across, in RhostMUSH's folders when the folder dump is given. TinyMUX channels come across with
-their members, and each player's comsys aliases become `CHANALIAS` attributes.
-
-RhostMUSH reality levels become [reality layers](/reference/sharpmush-help/reality/), when the
-configuration file that names them is imported too. Each level's name works as a layer name in
-softcode, so `rxlevel(me,Umbra)` still reads. RhostMUSH totems become roles named `totem-<name>`. A RhostMUSH cluster is
-merged into its first object, which takes the custom attributes the others held. Their built-in
-attributes, such as a description, and the other objects themselves are not imported, so look at
-them before you cut over. When two of the cluster's objects hold an attribute of the same name, the
-first one's value is kept, and the report lists each such attribute. RhostMUSH tags come
-across as tags, so `#weather` still names the same object, and each player's own tags stay theirs.
-
-**What the import changes in softcode.** Colour written as `%c` or `%x` codes, such as
-`%crRed%cn`, becomes `ansi()`, here `ansi(r,Red)`, because in SharpMUSH `%c` is the last command and
-`%x` an attribute. A code the import can't turn into `ansi()`, such as one built by a function at run
-time, is removed, and the report warns about each attribute it was removed from. A RhostMUSH import
-also rewrites its character codes (`%<065>` becomes `A`), literal `timefmt()` formats, and calls to
-RhostMUSH functions whose arguments differ from SharpMUSH's, such as `ljc()` and `streq()`, as the
-SharpMUSH call that gives the same answer. A call it can't rewrite safely, such as `ljc()` with a
-function call for its width, which the rewrite would run twice, is left as written and listed in the
-report; fix each one by hand, since SharpMUSH has no such function. RhostMUSH's `tag()` becomes `tagref()`, because
-SharpMUSH's `tag()` writes an HTML tag. In command code (`$`-commands, `^`-listens and attributes that start with
-`@`, `&`, `{`, `think` or `wmail`), RhostMUSH commands SharpMUSH spells differently are rewritten too: `join` and `grab`
-become `@teleport`, `@freeze` and `@thaw` become `@queue/pause` and `@queue/resume`, `@thaw/delete` becomes `@halt/pid`, `@zone` becomes `@chzone`,
-`@lfunction` becomes `@function/local`, a call to a local function becomes `localfun()`, and `@dynhelp` becomes
-`textfile()`. Each rewrite is listed in the report, with what to check by hand. A `join` or `grab` aimed at a pronoun such as `him`, or at text that is not one name, dbref or substitution, is left as written without a note, so search for those by hand. The import also turns on the compatibility options the old server's
-softcode expects, and lists them in its report.
-
-**What is left behind.** Destroyed objects, money, flags and toggles SharpMUSH has nothing for, and
-attribute numbers the flatfile does not name. RhostMUSH exits that lead HOME are left unlinked, as a
-PennMUSH import leaves them. RhostMUSH channels are not imported: a stock RhostMUSH runs them in
-softcode, which comes across with the objects that hold it. A bcrypt password cannot be checked, so
-those players need a new password from a wizard. TinyMUX squeezes runs of spaces in evaluated text and
-SharpMUSH does not, so output that relied on it may show extra spaces.
+Such an import rewrites the softcode that would read differently here (colour codes, `@hook`,
+`@femit`, RhostMUSH's commands, functions and totems, and attribute names SharpMUSH refuses), sets the
+game's dialect and turns on the settings its code expects. Read
+[Moving a RhostMUSH or TinyMUX Game](/guides/rhostmush-tinymux-import/) before the first rehearsal: it
+lists which files to upload, what comes across, every rewrite and what is left out.
 
 ### Check the rewritten softcode
 
