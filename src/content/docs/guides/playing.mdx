@@ -54,7 +54,7 @@ client and adds a few panes around them:
 
 1. The channels you have joined, and below them your recent pages.
 2. Exits in the output are links: click one to walk through it.
-3. **Here** lists who and what is in the room, and **Exits** the ways out.
+3. **Here** lists who and what is in the room, and **Exits** below it the ways out.
 4. Type commands here and press Enter.
 
 ## Looking and moving
@@ -119,7 +119,7 @@ CHAT: You join channel <Newbie>.
 ```
 
 `+<channel> <message>` talks on a channel you have joined, and `+<channel> :<pose>` poses there.
-`@channel/recall Newbie` shows the last lines you missed, `@channel/who Newbie` who is listening,
+`@channel/recall Newbie` shows the channel's last lines, `@channel/who Newbie` who is listening,
 and `@channel/off Newbie` leaves it.
 
 ## Mail
@@ -141,9 +141,12 @@ The part before `/` is the subject. Tamsin's inbox then lists it:
 1  N      Marrow    Dock rota   Fri Nov 13 09:03
 ==============================================================================
 1 message, 1 unread.
+Flags: N new, U urgent, F forwarded, C cleared, + tagged.
+==============================================================================
 ```
 
-`@mail 1` reads message 1 and `@mail/clear 1` deletes it. The website's Mail page shows the same
+`@mail 1` reads message 1. `@mail/clear 1` marks it for deletion, and `@mail/purge` removes what
+you cleared. The website's Mail page shows the same
 inbox.
 
 ## Describing yourself
