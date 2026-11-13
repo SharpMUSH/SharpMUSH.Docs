@@ -10,8 +10,9 @@ covers the whole account, so every character on it is shut out together. Names a
 blocked before anyone connects. Each of these actions is written to the audit log, whether it was
 taken in the portal or in the game.
 
-These need the `players.moderate` permission, which the `moderator` and `wizard` roles hold. See
-[Staff Roles and Permissions](/guides/roles).
+The Moderation page, `@boot` and `@sitelock` need the `players.moderate` permission, which the
+`moderator` and `wizard` roles hold. `@account`, banned names in the portal and the portal's sitelock
+editor are for wizards. See [Staff Roles and Permissions](/guides/roles).
 
 The examples follow Pip, a character on the account Pellow.
 
@@ -23,11 +24,12 @@ The examples follow Pip, a character on the account Pellow.
 
 1. Find the character by name. The line shows its account and whether it is online.
 2. Write a reason. Warn and Ban need one, and it goes into the audit log.
-3. Choose how long a ban lasts, or make it permanent.
+3. Choose how long a ban lasts: 1, 3, 7 or 30 days, or **Until lifted**.
 4. Act:
    - **Warn** runs the game's ``PLAYER`WARN`` event. What a warning does is up to the game's event
      handler.
-   - **Boot** disconnects the character. It is only available while they are online.
+   - **Boot** closes the character's most recent connection. It is only available while they are
+     online.
    - **Ban account** signs out the account and every character on it, and keeps them out until the
      ban ends.
    - **Unlink** takes the character off its account.
@@ -45,11 +47,11 @@ This account is banned until 2026-11-20 09:35 UTC.
 
 The same work has commands, for staff who stay in a MU\* client.
 
-`@boot *Pip` disconnects a character at once. Pip can connect again straight away, so pair it with
-a warning or a ban.
+`@boot *Pip` closes Pip's most recent connection at once. Pip can connect again straight away, so
+pair it with a warning or a ban.
 
-`@account/disable` keeps an account out until `@account/enable` lets it back in. It signs out the
-account's characters at once:
+A wizard can also turn an account off. `@account/disable` keeps it out until `@account/enable`
+lets it back in, and signs out the account's characters at once:
 
 ```
 > @account/disable Pellow
@@ -65,7 +67,7 @@ state.
 
 ## Blocking names
 
-`@sitelock/name` stops new characters from taking a name. `*` and `?` work as wildcards:
+`@sitelock/name` stops anyone from taking a name, for a new character or by renaming one. `*` and `?` work as wildcards:
 
 ```
 > @sitelock/name Grief*
@@ -101,7 +103,7 @@ the portal or the game, and its details:
 
 ![The audit log showing a ban lifted and a ban added in the portal, with the reason and end date, and an account disabled and enabled in the game by God](../../../assets/guide/moderation-audit.webp)
 
-Filter it by action, by who acted, by target, or by date.
+Filter it by action, by who acted, by words in the target or details, or by date.
 
 ## Next steps
 
