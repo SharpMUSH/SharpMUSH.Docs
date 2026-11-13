@@ -32,7 +32,7 @@ export function validateContent({ root = process.cwd(), requiredRoutes = ['guide
     const text = fs.readFileSync(file, 'utf8').replace(/```[\s\S]*?```/g, '');
     for (const match of text.matchAll(/!\[([^\]]*)\]\(([^)]+)\)/g)) {
       const [, alt, target] = match;
-      if (/assets\/guide\/[^/]+\.svg$/.test(target) && !KEEP_AS_IMAGE.has(path.basename(target)) && !text.split('\n').some((line) => line.trim() === match[0])) {
+      if (/assets\/guide\/[^/]+\.svg$/.test(target) && !KEEP_AS_IMAGE.has(path.basename(target)) && !text.split(/\n[ \t]*\n/).some((paragraph) => paragraph.trim() === match[0])) {
         failures.push(`${path.relative(root, file)} puts ${path.basename(target)} inside other text: a diagram needs a paragraph of its own to draw in the site's colours`);
       }
       if (!alt.trim() || /^(image|screenshot|git clone)$/i.test(alt.trim())) failures.push(`${path.relative(root, file)} has non-descriptive image text: ${alt || '(empty)'}`);
@@ -77,7 +77,8 @@ export function validateContent({ root = process.cwd(), requiredRoutes = ['guide
       if (!name.endsWith('.svg') || KEEP_AS_IMAGE.has(name)) continue;
       const where = `src/assets/guide/${name}`;
       const svg = fs.readFileSync(path.join(guideAssets, name), 'utf8')
-        .replace(/<(title|desc|text|tspan)\b[^>]*>[\s\S]*?<\/\1>/g, '');
+        // Drop the words between tags (labels, titles), keeping every tag and its attributes and each <style>.
+        .replace(/(<style[^>]*>[\s\S]*?<\/style>)|>[^<]*(?=<)/g, (all, style) => style ?? '>');
       for (const match of svg.matchAll(/\b(fill|stroke|stop-color|flood-color|color)\s*[:=]\s*["']?([^;"'}>]+)/gi)) {
         const value = match[2].trim();
         if (!/^(none|transparent|inherit|currentcolor|context-fill|context-stroke|var\(--dg-[a-z-]+\)|url\(#[^)]+\))(\s*!important)?$/i.test(value)) {
@@ -85,7 +86,7 @@ export function validateContent({ root = process.cwd(), requiredRoutes = ['guide
         }
       }
       for (const match of svg.matchAll(/#[0-9a-f]{3,8}\b(?![\w-])|\b(?:rgba?|hsla?)\([^)]*\)/gi)) {
-        if (!/^#[0-9a-f]+$/i.test(match[0]) || !svg.includes(`id="${match[0].slice(1)}"`)) failures.push(`${where} has a colour outside the --dg-* tokens: ${match[0]}`);
+        if (!/^#[0-9a-f]+$/i.test(match[0]) || !new RegExp(`\\sid=["']${match[0].slice(1)}["']`).test(svg)) failures.push(`${where} has a colour outside the --dg-* tokens: ${match[0]}`);
       }
       for (const match of svg.matchAll(/var\((--dg-[a-z-]+)\)/g)) {
         if (!tokens.has(match[1])) failures.push(`${where} uses ${match[1]}, which src/styles/diagrams.css does not define`);

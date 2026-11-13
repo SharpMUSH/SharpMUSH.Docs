@@ -44,13 +44,13 @@ function scopeCss(css, rootId) {
 
 export function prepareSvg(text, slug, label) {
 	if (!label.trim()) throw new Error(`${slug}.svg needs alt text: it is the diagram's only label`);
-	const ids = [...text.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]);
+	const ids = [...text.matchAll(/\sid=(["'])([^"']+)\1/g)].map((m) => m[2]);
 	for (const id of ids) {
 		const ref = escapeRegExp(id);
 		text = text
-			.replace(new RegExp(`(\\sid=")${ref}"`, 'g'), `$1${slug}-${id}"`)
+			.replace(new RegExp(`(\\sid=(["']))${ref}\\2`, 'g'), `$1${slug}-${id}$2`)
 			.replace(new RegExp(`url\\(#${ref}\\)`, 'g'), `url(#${slug}-${id})`)
-			.replace(new RegExp(`(href=")#${ref}"`, 'g'), `$1#${slug}-${id}"`)
+			.replace(new RegExp(`(href=(["']))#${ref}\\2`, 'g'), `$1#${slug}-${id}$2`)
 			// Id selectors live only in <style>; text elsewhere (a label such as "#d") is left alone.
 			.replace(/(<style[^>]*>)([\s\S]*?)(<\/style>)/g, (_, open, css, close) =>
 				open + css.replace(new RegExp(`#${ref}(?![\\w-])`, 'g'), `#${slug}-${id}`) + close);

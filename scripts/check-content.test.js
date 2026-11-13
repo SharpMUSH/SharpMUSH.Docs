@@ -138,3 +138,16 @@ test('catches a diagram that shares its paragraph', () => {
     'src/content/docs/guides/test.mdx puts flow.svg inside other text: a diagram needs a paragraph of its own to draw in the site\'s colours',
   ]);
 });
+
+test('checks the colours on text elements but not their words', () => {
+  const root = diagramFixture('<svg><text fill="white">#fff label</text><text style="fill:var(--dg-missing)">Two</text></svg>');
+  assert.deepEqual(validateContent({ root, requiredRoutes: ['guides/test'] }), [
+    'src/assets/guide/flow.svg draws with fill white: use a --dg-* colour (see src/assets/guide/README.md)',
+    'src/assets/guide/flow.svg uses --dg-missing, which src/styles/diagrams.css does not define',
+  ]);
+});
+
+test('catches a diagram on its own line inside a longer paragraph', () => {
+  const root = diagramFixture('<svg/>', 'Introduction\n![How a request flows](../../../assets/guide/flow.svg)\nExplanation');
+  assert.equal(validateContent({ root, requiredRoutes: ['guides/test'] }).length, 1);
+});
