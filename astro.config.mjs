@@ -89,6 +89,7 @@ export default defineConfig({
                   label: 'Portal Pages and Looks',
                   items: [
                       { label: 'Portal Applications', slug: 'guides/applications' },
+                      { label: 'The Application Builder', slug: 'guides/app-builder' },
                       { label: 'Building Portal Applications', slug: 'guides/building-applications' },
                       { label: 'Character Galleries', slug: 'guides/galleries' },
                       { label: 'Portal Themes', slug: 'guides/portal-themes' },
