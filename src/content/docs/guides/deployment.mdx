@@ -393,6 +393,9 @@ always finds a recent one. The live world at `/data/lightning` is deliberately l
 A wizard can make a copy at any time in the game with `@backup`, and list the copies on disk with
 `@backup/list`.
 
+To schedule and start the uploads from the portal instead, and see each one's result there, see
+[Remote Backups in the Portal](/guides/remote-backups).
+
 The portal makes a copy into `pre-package/<timestamp>` before every package install, rollback or
 uninstall, and refuses to go ahead if that copy fails. It is the way back if the operation is
 interrupted. It copies the world only: an installed plugin's folder (`lightning.plugins/<id>/`, see [Plugins](#plugins)) is not in it.
