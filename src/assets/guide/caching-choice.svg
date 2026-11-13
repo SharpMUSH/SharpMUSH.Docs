@@ -17,7 +17,7 @@
     <text x="155" y="263" font-weight="600" style="fill:var(--dg-blue-ink)">cache()</text>
     <text x="155" y="285" font-size="13" style="fill:var(--dg-blue-ink)">one stored answer, up to a window old</text>
     <text x="605" y="263" font-weight="600" style="fill:var(--dg-green-ink)">memo()</text>
-    <text x="605" y="285" font-size="13" style="fill:var(--dg-green-ink)">kept per call, dropped when its reads change</text>
+    <text x="605" y="285" font-size="13" style="fill:var(--dg-green-ink)">per call, dropped when reads change</text>
   </g>
   <g stroke-width="1.5" fill="none" marker-end="url(#a)" style="stroke:var(--dg-muted)">
     <path d="M250 80 L160 232"/>
