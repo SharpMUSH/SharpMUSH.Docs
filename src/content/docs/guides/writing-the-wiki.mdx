@@ -19,7 +19,13 @@ character without them can read but not write:
 WIKI: You can't edit 'The Harbour Watch': needs wiki.edit.
 ```
 
-[Approving a character](/guides/roles/#approving-a-character) gives them both.
+[Approving a character](/guides/roles/#approving-a-character) gives them `wiki.create` and
+`wiki.edit`. Deleting a page needs `wiki.delete`, which only staff hold:
+
+```
+> @wiki/delete the_harbour_watch
+WIKI: You can't delete 'The Harbour Watch': needs wiki.delete.
+```
 
 ## Writing a page in the portal
 
@@ -32,7 +38,8 @@ it will look on the right:
 2. The toolbar adds bold, italics, headings, lists, quotes, links and pictures.
 3. The preview updates as you type.
 4. Type a category and press Enter to file the page in it.
-5. **Published** is ticked for a page everyone can read. Untick it to keep the page a draft.
+5. **Published** is ticked for a page everyone can read. Staff can untick it to make the page a
+   draft.
 6. **Publish changes** saves the page.
 
 The saved page:
@@ -67,8 +74,15 @@ WIKI: Appended to 'The Harbour Watch' (now rev 2).
 keeps the text as typed. `%r` puts in a line break when you do want evaluation:
 `@wiki/create Docks=The docks.%r%r## Berths`.
 
-`@wiki/edit` replaces the whole text of a page, and `@wiki/md` shows a page's Markdown so you can
-copy it first. `@wiki <page>` reads it.
+`@wiki/md` shows a page's Markdown, and `@wiki/edit/noeval` replaces the whole text with what you
+paste back. `@wiki <page>` reads the page.
+
+`@wiki/category` sets a page's categories:
+
+```
+> @wiki/category the_harbour_watch=Organisations, Places
+WIKI: 'The Harbour Watch' categories: Organisations, Places.
+```
 
 ## Undoing an edit
 
@@ -91,8 +105,8 @@ Every save is a revision. `@wiki/history` lists them:
 WIKI: Restored 'The Harbour Watch' to r1 (now rev 3).
 ```
 
-In the portal, **History** does the same: pick two revisions and **Compare selected** shows what
-changed, and the restore button beside a revision puts it back.
+In the portal, **History** does the same. Pick an old and a new revision and **Compare selected**
+shows what changed. The restore button beside a revision puts it back.
 
 ## Protecting a page
 
