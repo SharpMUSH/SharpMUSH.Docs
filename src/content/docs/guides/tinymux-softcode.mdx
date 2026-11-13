@@ -201,7 +201,8 @@ whose text they are written in, as PennMUSH does.
 A few functions read the same arguments differently on the two servers. With `mux_arguments` on they
 read them as TinyMUX does: the set functions take a fourth argument as the output separator, `hmac()`
 takes its digest third, `lwho()` with one argument lists connections, `channels()` takes TinyMUX's
-arguments, and `textfile()` reads an object's `HELP_` attributes. See
+arguments, and `textfile()` (like `dynhelp()`) reads an object's `HELP_` attributes when its first argument names no
+text file. See
 [the option's help](/reference/sharpmush-help/compatibility-config/#tinymux-argument-meanings-mux_arguments).
 
 ### mux_queue_functions
@@ -211,8 +212,11 @@ setting off, both return `#-1 FUNCTION DISABLED`.
 
 ### mux_quiet
 
-The `/quiet` switch of `drop`, `get`, `give`, `goto`, `enter`, `leave` and `@teleport` leaves out what
-TinyMUX's leaves out. With it off, `/quiet` hides the messages and keeps the actions.
+The `/quiet` switch of `drop`, `get`, `give`, `goto`, `enter`, `leave` and `@teleport` does what
+TinyMUX's does. It takes effect only on what you control, and there it leaves out the o-message and the
+action. `give/quiet` is for wizards and leaves out the usual notices, and `@teleport/quiet` keeps leaving
+and arriving quiet but still runs `@move`. With the setting off, `/quiet` leaves out your own message and
+the o-message, and the action still runs.
 
 ### mux_function_caller
 

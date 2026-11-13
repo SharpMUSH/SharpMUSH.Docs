@@ -21,7 +21,7 @@ move itself (rehearsal, checks, cutover and rollback) with the
 ## What to upload
 
 The import page (**Admin > Database import**, `/admin/import`) tells the formats apart from the file's
-first lines, and you can choose the format there if it guesses wrong.
+contents, and you can choose the format there if it guesses wrong.
 
 | Game | Database | Mail | Channels | Configuration |
 |---|---|---|---|---|
@@ -40,13 +40,15 @@ database.
 
 **RhostMUSH without a flatfile.** If all you have is a stopped game's native backup (`netrhost.db` with its
 QDBM or MDBX cache files), the `RhostExport` tool in the SharpMUSH repository turns it into the flatfile and
-mail dumps the import reads. It supports RhostMUSH's default cache layout on Linux x64.
+mail dumps the import reads. It supports RhostMUSH's default cache layout on Linux x64. It is run from a
+SharpMUSH source checkout (`tools/RhostExport`), and it needs RhostMUSH's `dbconvert` exporter and a matching
+profile, built from the one RhostMUSH revision the tool supports; the tool's README gives the steps.
 
 ## What comes across
 
 - **Objects** keep their numbers, names, owners, parents, zones, locks, attributes and creation times.
-- **Flags** become SharpMUSH's where one matches. One with no match is kept as a flag of its own, so
-  `hasflag()` still finds it.
+- **Flags** become SharpMUSH's where one matches. Most with no match are kept as a flag of its own, so
+  `hasflag()` still finds them; the import report lists any that are dropped.
 - **RhostMUSH toggles** become flags of their own, so `@toggle` and `hastoggle()` keep working.
 - **Staff.** A wizard gets the `wizard` role. RhostMUSH's royalty is a wizard here too. RhostMUSH's staff
   levels become roles of their own, each just above the role with the same rights: `guildmaster` above
@@ -61,8 +63,8 @@ mail dumps the import reads. It supports RhostMUSH's default cache layout on Lin
   `netrhost.conf` names them. `rxlevel(me,Umbra)` still reads.
 - **RhostMUSH tags** come across, so `#weather` still names the same object.
 - **Passwords** keep working. Each player's stored password is checked at login and replaced with
-  SharpMUSH's own form the first time they connect. A bcrypt password cannot be checked, so those players
-  need a new password from a wizard.
+  SharpMUSH's own form the first time they connect. A password that is empty, or stored in a form
+  SharpMUSH does not recognise, needs a new password from a wizard; the import report lists those players.
 - **Mail** comes across, in RhostMUSH's folders when the folder dump is given.
 - **TinyMUX channels** come across with their members, and each player's comsys aliases become
   `CHANALIAS` attributes. RhostMUSH's stock channels are softcode, which comes across with the objects
@@ -93,7 +95,7 @@ become SharpMUSH's.
 
 ### Attribute names
 
-SharpMUSH attribute names take no `:`, `(` or `)`. The import renames such an attribute, changing each
+SharpMUSH attribute names refuse some characters, such as `:`, `(`, `)` and spaces. The import renames such an attribute, changing each
 character it refuses to `_`, and rewrites the code that names it in full. A name that would then clash
 with another gets `_2`, `_3` and so on.
 
@@ -195,7 +197,7 @@ everywhere, and the old name works under the dialect:
 | `@last` | `@dialect_last` | both |
 | `@program`, `@quitprogram` | `@dialect_program`, `@dialect_quitprogram` | both |
 | `@icmd` | `@dialect_icmd` | both |
-| `@email` | `@dialect_email` | both |
+| `@email` | `@dialect_email` | `mux` |
 | `@addcommand`, `@delcommand`, `@listcommands` | `@dialect_addcommand`, `@dialect_delcommand`, `@dialect_listcommands` | `mux` |
 | `@query` | `@dialect_query` | `mux` |
 | `@folder` | `@mux_folder` | `mux` |
@@ -214,7 +216,7 @@ names each use. The full list, with what to use instead, is
 [compatibility left out](/reference/sharpmush-help/compatibility-left-out/).
 
 Also not imported: destroyed objects, money, flags and toggles SharpMUSH has nothing for, attribute
-numbers the flatfile does not name, and RhostMUSH exits that lead HOME (they are left unlinked).
+numbers the flatfile does not name, and exits whose destination is not an object, HOME or a variable destination (they are left unlinked).
 
 
 ## Checking the import
