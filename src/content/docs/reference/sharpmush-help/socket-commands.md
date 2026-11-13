@@ -25,6 +25,7 @@ These commands can only be entered through a client, on the connection they are 
 - [OUTPUTPREFIX](/reference/sharpmush-help/sharpcmd/#outputprefix)
 - [OUTPUTSUFFIX](/reference/sharpmush-help/sharpcmd/#outputprefix)
 - [PROMPT_NEWLINES](/reference/sharpmush-help/sharpcmd/#promptnewlines)
+- [PUEBLOCLIENT](/reference/sharpmush-help/puebloclient/#puebloclient)
 - [QUIT](/reference/sharpmush-help/sharpcmd/#quit)
 - [SCREENREADER](/reference/sharpmush-help/screenreader/#screen-readers)
 - [SCREENWIDTH](/reference/sharpmush-help/sharpfunc/#width)

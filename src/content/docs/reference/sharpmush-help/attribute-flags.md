@@ -53,6 +53,7 @@ These flags restrict access or alter attribute behavior. Propagation depends on 
 - `no_inherit (i)`    Attribute will not be inherited by the children of this object.
 - `no_clone (c)`      Attribute will not be copied if the object is `@clone`'d.
 - `mortal_dark (m)`   Attribute cannot be seen by mortals. This flag can only be set by royalty and wizards. "hidden" is a synonym.
+- `wizard_dark`       Only God can read it or set the flag (TinyMUX's `dark`).
 - `wizard (w)`        Attribute can only be set by wizards. This flag can only be set by royalty and wizards.
 - `veiled (V)`        Attribute value won't be shown on default examine, but is still otherwise accessible (for spammy attribs).
 - `nearby (n)`        Even if the attribute is visual, it can only be retrieved if you're near the object (see **[NEARBY()](/reference/sharpmush-help/sharpfunc/#nearby)**).
@@ -105,6 +106,11 @@ Formatting never rewrites the stored attribute; `@decompile` and the raw value r
 - `mux`               The same for TinyMUX: `strtrunc()` runs `left()`, `iadd()` runs `add()`, `@qmail` runs `@mail/quick`.
 
 Attribute names follow the flag too: in an attribute flagged `mux`, `get(me/kill)` reads `DEATH` and `@reject me=...` sets `HAVEN`, the names a TinyMUX import stores those attributes by. The full lists are in [compatibility config other servers attribute names](/reference/sharpmush-help/compatibility-config/#other-servers-attribute-names).
+
+- `noeval (E)`       TinyMUX's: the attribute is text, never code. u(), get_eval(), a description and the other messages give its value as written, and an action attribute set `noeval`, such as `AUSE` or `ASUCC`, does not run when its event happens. `@trigger` still runs it.
+- `noparse (P)`       TinyMUX's and RhostMUSH's: the `$`-command is matched against the command as it was typed, before its functions and substitutions are evaluated, and `%0` and the rest take their text from that.
+
+`noeval` and `noparse` do nothing unless the `attribute_eval_flags` option is on, which a TinyMUX or RhostMUSH import turns on. See [compatibility config attribute eval flags](/reference/sharpmush-help/compatibility-config/#noeval-and-noparse-attributes-attributeevalflags).
 
 An attribute without the flag reads the game's `dialect` option instead, as typed commands do. A RhostMUSH or TinyMUX database import sets the option and its flag on every attribute it brings in. See [compatibility config](/reference/sharpmush-help/compatibility-config/#compatibility-config).
 

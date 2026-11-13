@@ -62,7 +62,7 @@ If `<expr>` is a regexp or a wildcard glob, then $0-$9 will be set with capture 
 
 ### The #$ token
 
-In an `<action>` or the `<default>`, "#$" stands for the evaluated `<string>`, and a queued `<action>` keeps it. The value is never evaluated as code. In nested switches #$ refers to the outermost one whose `<action>` it is written in; for the current one, use %$0 or stext(0). Like switch()'s, #$ counts only in the `<action>` as written: in an `<expr>`, in the code of an attribute the `<action>` triggers or calls, and inside lit() or after \, it is plain text. With the `innermost_tokens` option on, #$ names the innermost switch instead, wherever it is written. See [compatibility config innermost loop tokens](/reference/sharpmush-help/compatibility-config/#innermost-loop-tokens).
+In an `<action>` or the `<default>`, "#$" stands for the evaluated `<string>`, and a queued `<action>` keeps it. The value is never evaluated as code. In nested switches #$ refers to the outermost one whose `<action>` it is written in; for the current one, use %$0 or stext(0). Like switch()'s, #$ counts only in the `<action>` as written: in an `<expr>`, in the code of an attribute the `<action>` triggers or calls, and inside lit() or after \, it is plain text. With the `innermost_tokens` option on, #$ names the innermost switch instead, wherever it is written. See [compatibility config innermost loop tokens](/reference/sharpmush-help/compatibility-config/#innermost-loop-tokens-innermosttokens).
 
 ### Switches
 
