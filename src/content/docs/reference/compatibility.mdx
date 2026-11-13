@@ -23,6 +23,8 @@ suite runs their examples against the server.
 | [Identity](/reference/sharpmush-help/compatibility-identity/) | Object identity, timestamps and numbers |
 | [Mail](/reference/sharpmush-help/compatibility-mail/) | The differences in `@mail` |
 | [Economy](/reference/sharpmush-help/compatibility-economy/) | Currency and `money()` |
+| [Dialects](/reference/sharpmush-help/compatibility-dialects/) | What the `mux` and `rhost` dialects read differently: RhostMUSH substitutions, commas in one-argument functions |
+| [Left out](/reference/sharpmush-help/compatibility-left-out/) | The RhostMUSH and TinyMUX functions, commands and switches SharpMUSH leaves out, and what to use instead |
 | [Defects](/reference/sharpmush-help/compatibility-defects/) | Differences that are bugs, expected to change |
 | [Unresolved](/reference/sharpmush-help/compatibility-unresolved/) | Differences with no decision yet; don't depend on either behaviour |
 
@@ -33,6 +35,8 @@ such as `switch(x,default)` or `ifelse(x,yes)`, is answered as those servers ans
 servers give the same code different answers, SharpMUSH keeps PennMUSH's unless a setting says
 otherwise. [TinyMUX Softcode](/guides/tinymux-softcode) and
 [RhostMUSH Softcode](/guides/rhostmush-softcode) cover each in full.
+[Moving a RhostMUSH or TinyMUX Game](/guides/rhostmush-tinymux-import/) lists what an import brings
+across and what it rewrites.
 
 ## What an import turns on
 
@@ -40,9 +44,9 @@ Importing a database turns on the settings its softcode expects, and the import 
 
 | Imported from | Settings turned on |
 |---|---|
-| PennMUSH | `paren_groups`, `http_qregisters` |
-| TinyMUX | `paren_groups`, `mux_logic`, `mux_justify`, `mux_collation`, `rhost_list`, `innermost_tokens`, `tiny_trim_fun`, `tiny_math`, `null_eq_zero`, and `function_recursion_limit` raised to at least 500 |
-| RhostMUSH | `paren_groups`, `tiny_trim_fun`, `rhost_edit`, `rhost_lattr`, `rhost_printf`, `rhost_map_args`, `rhost_list`, `sidefx_flag`, and `mail` as a name for `@mail` |
+| PennMUSH | `paren_groups`, `http_qregisters`, `mapsql_sync` |
+| TinyMUX | `dialect` set to `mux`; `paren_groups`, `null_eq_zero`, `tiny_trim_fun`, `tiny_math`, `mux_logic`, `mux_justify`, `mux_collation`, `mux_arguments`, `mux_queue_functions`, `mux_quiet`, `mux_function_caller`, `innermost_tokens`, `rhost_list`, `protection_flags`, `attribute_eval_flags`; and `function_recursion_limit` set to 500 |
+| RhostMUSH | `dialect` set to `rhost`; `paren_groups`, `tiny_trim_fun`, `mux_logic`, `rhost_edit`, `rhost_lattr`, `rhost_printf`, `rhost_map_args`, `rhost_list`, `rhost_lrooms`, `sidefx_flag`, `protection_flags`, `attribute_eval_flags`; and `mail` as a name for `@mail` |
 
 The configuration file you give the import (`mush.cnf`, `netmux.conf` or `netrhost.conf`) is applied
 too. The [Config](/reference/sharpmush-help/compatibility-config/) page says what each setting does.
