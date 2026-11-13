@@ -1,32 +1,41 @@
 ---
 title: "Comparison"
-description: "SharpMUSH compared to PennMUSH"
+description: "How a game on SharpMUSH differs from one on PennMUSH, and what to weigh before moving."
 ---
 
-import { Card } from '@astrojs/starlight/components';
-import { Aside } from '@astrojs/starlight/components';
+SharpMUSH runs PennMUSH softcode and imports PennMUSH databases. This page lists what a PennMUSH
+game gains by moving and what it gives up. For softcode that behaves differently, see
+[Compatibility](/reference/compatibility/).
 
+## What a game gains
 
-<Card title="Advantages">
+| | PennMUSH | SharpMUSH |
+|---|---|---|
+| Where the world is kept | In memory, written to a flatfile on each dump | An LMDB database; each change is a transaction written as it happens |
+| Backups | A copy of the last dump | `@backup` copies the live world while players stay connected |
+| Configuration | `mush.cnf`, edited on the server's disk | Stored by the server, edited in the portal or with `@config` |
+| Staff powers | WIZARD, ROYALTY and powers | The same, held as [roles](/reference/sharpmush-help/roles/); a game adds its own roles and permissions |
+| Logins | One character per login | An account with several characters; sign-in with Discord, Google and others |
+| Website | Separate, if the game runs one | Built in: terminal, mail, scenes, wiki, profiles, admin pages |
+| Discord | Separate bot, if any | Channels linked to the game by the [Discord plugin](/guides/discord/) |
+| Installing softcode | Paste a file | [Packages](/guides/packages/) with review, upgrade and rollback |
+| Longest function result | 8,192 characters | 5 MiB (64 KiB for a guest) |
+| Extending the server | Patch and rebuild the C source | Load a [C# plugin](/guides/plugins/) into a running server |
 
-* A real database layer to store, access and maintain its data, built on [LMDB](http://www.lmdb.tech/doc/) embedded in the server process - as well as expanding upon its capabilities. Database transactions make every update atomic and greatly diminish the chance of database corruption.
-* Full Unicode support, as well as both Websocket and Telnet negotiation and communication.
-* A buffer size that does not get in the way, allowing for better integration with modern web applications, use cases, and avoids user confusion.
-* Written in [C#](https://dotnet.microsoft.com/en-us/languages/csharp), allowing memory safety and easier community maintenance and improvements with support for all Operating Systems.
-* Designed with a wide range of [Unit Tests](https://tunit.dev/), ensuring the performance and capability remains as the project matures: from Telnet to ANSI to commands and function parsing.
-* Uses [Docker](https://www.docker.com/) to make Installation as easy as possible.
-* Attribute Flags to enable syntax highlighting for Functions and Commands in examine output, as well as syntax error detection.
-* A strict parser to make errors easier to find and fix.
-* A [web portal](/guides/web-portal) with an admin panel, wiki, mail, scene logs and an in-browser terminal - configuration is edited in a form, not a `mush.cnf` file, and takes effect without a restart.
-* A [package manager](/guides/packages) for softcode, so global code can be installed and upgraded from a repository. Pasting in a `.mush` file still works, but a package is safer and easier to keep up to date.
-* [C# plugins](/guides/plugins) loaded at runtime, letting you add compiled commands, functions and services without forking the server.
+`examine` can also lay out and colour an attribute's code, when the attribute has the `cmdsyntax` or
+`funsyntax` [attribute flag](/reference/sharpmush-help/attribute-flags/).
 
-</Card>
+## What to weigh
 
-<Card title="Disadvantages">
-
-* A less mature code base.
-* [One-way database transfers](/guides/pennmush-migration) - SharpMUSH imports a PennMUSH flatfile into its own store but does not export a PennMUSH flatfile. A safe move therefore keeps the original world and rehearses rollback before cutover.
-* No support for the more esoteric features of PennMUSH, such as full recursion parsing. See our [Compatibility](/reference/compatibility) for more details.
-
-</Card>
+- **A younger code base.** PennMUSH has decades of use behind it. SharpMUSH has a large test suite and
+  a [parity harness](/guides/local-install/#comparing-with-pennmush) that replays sessions against PennMUSH, but fewer games
+  have run on it.
+- **The move is one way.** SharpMUSH imports a PennMUSH flatfile but does not write one. Keep the
+  original game until the new one has proved itself; the
+  [migration guide](/guides/pennmush-migration/) covers rehearsal and rollback.
+- **Some behaviour differs on purpose.** Where PennMUSH's behaviour was a defect or clashed with a
+  SharpMUSH feature, SharpMUSH chose differently. Every case is listed in
+  [Compatibility](/reference/compatibility/).
+- **More moving parts.** A game runs as three services (the game server, the connection server and
+  the renderer) and a NATS message broker. The [Docker setup](/guides/docker-quickstart/) runs them
+  together on one small server.

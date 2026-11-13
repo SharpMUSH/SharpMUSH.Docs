@@ -1,140 +1,155 @@
 ---
 title: Features
-description: "Features of SharpMUSH"
+description: "What SharpMUSH does, grouped by who uses it, with a link to the guide for each."
 ---
 
 import SharpieIllustration from '../../../components/SharpieIllustration.astro';
 import { Aside } from '@astrojs/starlight/components';
 
-SharpMUSH is still pre-release, and this page tracks what is in `main` today. Everything below is
-implemented; visit the [live example game](https://mush.sharpmush.com) if you would rather poke at
-it than read about it.
+Everything on this page runs on the [live example game](https://mush.sharpmush.com), if you would
+rather try it than read about it.
 
 <SharpieIllustration scene="reference" />
 
-## Web Portal
+## Playing
 
-Every SharpMUSH server ships a web portal alongside the telnet game. Players get a wiki, mail,
-character profiles and scene logs; staff get an admin panel covering configuration, moderation,
-roles, and site restrictions. There is an in-browser terminal, so a player can connect without a
-MU\* client at all.
+### One world, three ways in
 
-See [The Web Portal](/guides/web-portal) for a tour.
+Players connect with a MU\* client over telnet, play in the browser from the game's website, or
+speak from a linked Discord channel. Telnet clients get full negotiation, Unicode, and MXP or Pueblo
+links and pictures where they support them. MUD clients such as Mudlet get a map, gauges and chat
+windows over [GMCP](/guides/mud-clients/).
 
-## Accounts, separate from characters
+A browser that loses its connection, such as a phone moving from Wi-Fi to mobile data, picks up its
+session again and is sent what it missed, within a window of 24 hours by default. See
+[Connections During Updates](/technical/connections/).
 
-Logins are **accounts**, and an account can own several characters. That makes it possible to switch
-characters without reconnecting, to recover a login by email rather than by asking staff, and to run
-guest access that upgrades cleanly into a real character. A first-run setup wizard creates the first
-account and the God character.
+### Accounts and characters
 
-## Softcode Package Manager
+A login is an **account**, and an account holds several characters. A player switches character
+without reconnecting, and can sign in with
+[Discord, Google and other services](/guides/sign-in-services/). In a telnet client, `register` and
+`login` reach the account, and `make` and `play` create and connect its characters.
 
-Global softcode can be installed from a **package repository**. Pasting in a `.mush` file still works
-as it does on any MUSH, but a package is safer and much easier to upgrade and maintain.
-Packages are declarative YAML — the objects, attributes, flags, locks and parents that should exist —
-and installing one runs a plan/apply cycle: the server computes a changeset against the live
-database, you review it, and only then is anything written. Upgrades three-way-merge against a
-stored baseline, so local edits survive, and every apply is a revision that can be rolled back.
+### The web portal
 
-See [Softcode Packages](/guides/packages).
+Every server serves a [web portal](/guides/web-portal/) from the same address as the game: a Play
+terminal, mail, scene logs, the wiki, character profiles and galleries, and the staff's admin pages.
+It works on a phone and with [screen readers](/guides/screen-readers/), and each player can choose a
+[theme](/guides/portal-themes/). The [command palette](/guides/command-palette/) runs a game command
+from any page.
 
-## C# Plugins
+### Roleplay tools
 
-Compiled `net11.0` assemblies can contribute commands, functions, DI services, database migrations,
-engine flags and hooks without forking the server. Authoring uses the same `[SharpCommand]` and
-`[SharpFunction]` attributes as in-tree code. Command-, function- and hook-only plugins can be
-hot-unloaded; plugins that touch the DI container, the database or the message bridge are load-once.
+The systems a roleplay game expects are [packages](/guides/package-library/), installed from the
+portal: [scene logging](/guides/scenes/) that streams to the portal as it is posed, scheduling,
+[safety tools](/guides/scene-safety/), [character applications](/guides/character-applications/),
+[finger profiles](/guides/finger/), [jobs](/guides/jobs/), [bulletin boards](/guides/bboards/),
+[a character roster](/guides/roster/) and more.
 
-See [Writing Plugins](/guides/plugins).
+## Running a game
 
-## Dynamic Applications
+### Roles instead of a wizard bit
 
-Applications — chargen, job requests, whatever your game needs — are declared as a schema in
-softcode and rendered by the portal as a real form, with validation and a submit route. No Blazor
-and no rebuild: an admin defines the schema, and the page appears.
+Staff powers are **roles**, held by characters, objects and accounts. WIZARD and ROYALTY are the
+`wizard` and `royalty` roles, and each PennMUSH power is a permission a role can allow. A game makes
+its own roles with `@role` or on the portal's Roles page, each allowing or denying permissions, and
+orders them so that a role manages only those below it. See
+[roles](/reference/sharpmush-help/roles/) and [security](/reference/sharpmush-help/security/).
 
-See [Portal Applications](/guides/applications).
+### Run it from a browser
 
-## Adaptive layouts, themes, and images
+Configuration, roles, moderation, sitelock, backups, packages and database imports all have pages in
+the portal. Settings are stored by the server and edited from the portal or with `@config`; there is
+no `mush.cnf` to keep in step. See [The Web Portal](/guides/web-portal/#the-admin-panel).
 
-Softcode can describe a display with semantic layout functions—boxes, rules, responsive columns,
-labelled fields, trees, tables, gauges, lists, and figures—instead of hard-coding one grid of spaces.
-The same display becomes Unicode or ASCII terminal art, responsive portal structure, or clean
-screen-reader reading order.
+### Backups while the game runs
 
-Games can establish a shared visual language with borders and layout themes. Players can choose an
-`@theme` for their own MU\* client, while explicitly themed displays retain their intended identity.
-Images carry descriptions and can provide terminal art, so a visual presentation does not discard
-the experience for text-only clients or screen readers.
+The world is an **LMDB** database inside the server process: one directory on disk and no separate
+database server. `@backup` writes a consistent copy of the live world while players stay connected,
+and can run on a schedule. [Object snapshots](/reference/sharpmush-help/snapshots/) recover a single
+room or code object without restoring the whole world. See the
+[Operator Handbook](/guides/operator-handbook/).
 
-See [Visual Layouts and Images](/guides/visual-layouts).
+### Hosting
 
-## Scene Logging
+A game runs from one Docker Compose file, and a [one-click installer](/guides/one-click-hosting/)
+sets one up on a rented server. The connection server holds players' connections while the game
+server is updated, so most updates disconnect no one.
 
-Scenes can be started, joined and captured in-game, then read back on the web, with live scenes
-streaming to the portal as they happen. The scene system is also the reference example of
-SharpMUSH's extensibility split — a C# plugin ships the mechanism, a softcode package ships the
-policy — so any part of it a game dislikes can be replaced.
+### Bring your world
 
-## HTTP Endpoints
+The portal [imports](/guides/pennmush-migration/) a PennMUSH, TinyMUX or RhostMUSH database with its
+mail and configuration. TinyMUX and RhostMUSH softcode is rewritten where it can be, and every
+rewrite is listed for review. SharpMUSH runs PennMUSH softcode, and the
+[Compatibility](/reference/compatibility/) pages list where it differs.
 
-A game can serve HTTP directly. Requests to `/http/<path>` run the HTTP Handler object's verb
-attribute (`&GET`, `&POST`, and so on) with the path in `%0` and the body in `%1`, and `@respond`
-sets the status and headers. A new database is seeded with a working handler at `#8`, so there is no
-setup ceremony — you extend the API by adding routed sub-attributes.
+### Discord
 
-See [HTTP](/reference/sharpmush-help/http/).
+The [Discord plugin](/guides/discord/) links Discord channels to the game. Lines said in the game
+are posted in the channel, and a linked member's message comes back in as the character they chose.
+Game roles can give Discord roles, a game ban can ban on Discord, and scheduled scenes can appear in
+Discord's Events tab.
 
-## Events
+## Building the game's systems
 
-An event system dispatches to softcode handlers when things happen in the world, with each handler
-running under its own permissions rather than the triggering player's. As with HTTP, a fresh
-database is pre-populated with a handler object, so events work out of the box. Several packages can
-hear the same event, each with an attribute of its own below the event's, and a stoppable event lets
-one of them stop the rest.
+### Softcode
 
-See the [Events guide](/guides/events/) and the [event list](/reference/sharpmush-help/sharpevents/).
+SharpMUSH runs PennMUSH softcode and adds to it: every command has an output the next command reads
+as `%>`, functions take [named arguments](/guides/named-arguments/), JSON has its own functions, and
+Markdown renders for every client. Each command runs under a time budget, so a runaway loop cannot
+stall the game. See [Your first softcode command](/guides/your-first-softcode-command/).
 
-## Modern Connections
+### Displays that adapt to the reader
 
-Telnet with full negotiation, WebSocket, and full Unicode throughout. Sessions survive a
-disconnect: a reconnecting client replays what it missed from the message bus, and a detached
-session stays pinned for hours, so a phone moving from WiFi to cellular does not lose the scene.
-Out-of-band data drives live portal panes.
+[Layout functions](/guides/visual-layouts/) describe a display as boxes, tables, columns, gauges and
+figures, not as a grid of spaces. The same display is drawn as Unicode art in a terminal, ASCII for a
+client without UTF-8, HTML in the portal, and plain reading order for a screen reader.
+[Layout themes](/guides/layout-themes/) give a game one look, and players can pick their own.
 
-## LSP Support
+### Packages
 
-SharpMUSH supports the Language Server Protocol (LSP) for syntax highlighting, code completion, hover
-help and diagnostics.
-[Softcode in Your Editor](/guides/editor-support) explains how to set it up in VS Code, Neovim or Emacs.
-The portal's built-in softcode editor uses the same analysis engine.
+Softcode is installed as [packages](/guides/packages/): YAML that declares the objects, attributes,
+flags and locks that should exist. The server shows what an install or upgrade will change before it
+writes anything. Upgrades keep local edits, and every change can be rolled back. The
+[package library](/guides/package-library/) holds the systems listed above.
 
-## MCP Endpoint
+### Portal pages from softcode
 
-The server can host an authenticated [Model Context Protocol](https://modelcontextprotocol.io)
-endpoint, letting AI tooling validate softcode against the **real parser** and the running world's
-registered functions and commands. It ships as an optional plugin, disabled by default outside
-development, and authenticates with a game character's own name and password. A remote LSP endpoint
-ships beside it. See [Remote MCP and LSP Analysis](/guides/mcp).
+[Portal applications](/guides/applications/) are pages and forms that softcode describes and the
+portal draws, such as a character generator or a request form. They need no change to the portal
+itself. Staff lay out a page's sections in the portal's App Builder.
+
+### The wiki and its facts
+
+The portal's wiki holds the game's setting and rules. A page can state [facts](/guides/wiki-facts/),
+such as a spell's level, that the portal and softcode can search.
+
+### Events and HTTP
+
+Softcode answers [events](/guides/events/) in the world and [HTTP requests](/reference/sharpmush-help/http/)
+to `/http/<path>`. A new game has a handler object for each, so both work without setup.
+
+### Editor support and analysis
+
+The [language server](/guides/editor-support/) checks softcode as you type in VS Code, Neovim or
+Emacs, and the portal's softcode editor uses the same analysis. An optional
+[MCP endpoint](/guides/mcp/) lets AI tools check softcode against the game's real parser.
 
 <Aside type="caution">
-The MCP endpoint uses HTTP Basic authentication, which sends the password on every request. Only
+The MCP endpoint uses HTTP Basic authentication, which sends the password with every request. Only
 expose it over TLS.
 </Aside>
 
-## Markdown Support
+## Extending the server
 
-SharpMUSH supports Markdown for all text-based files.
-It additionally allows for ANSI rendering of Markdown, and HTML rendering of Markdown.
-It includes a custom SharpMUSH function that allows for custom rendering of Markdown, with ANSI colors and styles. See [the Markdown help](/reference/sharpmush-help/render-markdown/) for more details.
+### C# plugins
 
-## Embedded Database
+[Plugins](/guides/plugins/) are compiled assemblies that add commands, functions, services and hooks
+without forking the server. A plugin that adds only commands, functions and hooks can be turned off
+while the game runs.
 
-SharpMUSH stores the game in **LMDB**, embedded in the server process — one directory on disk, with
-no separate database server to run, tune or back up. That is what makes the single-small-VM deployment
-in the [Docker guide](/guides/docker-quickstart) practical.
+### Apps that act for a player
 
-Because the store is in-process, a copy is taken with LMDB's own copy routine rather than by stopping
-the game: `@backup` writes a consistent, point-in-time copy of the live world while players stay
-connected.
+A tool outside the game, such as a character sheet site, can [act as a character](/guides/connected-apps/)
+with only the permissions its player allowed, and without the player's password.

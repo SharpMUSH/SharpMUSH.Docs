@@ -35,25 +35,30 @@ export default defineConfig({
           ],
           sidebar: [
               {
-                label: 'About SharpMUSH',
+                label: 'Start Here',
                 items: [
-                    { label: 'What is SharpMUSH',slug: 'about/what-is' },
-                    { label: 'Design Premise',slug: 'about/design-premise' },
+                    { label: 'What is SharpMUSH', slug: 'about/what-is' },
+                    { label: 'Design Premise', slug: 'about/design-premise' },
+                    { label: 'Get Started', slug: 'guides/get-started' },
                     { label: 'Live Example Game', link: 'https://mush.sharpmush.com', attrs: { target: '_blank', rel: 'noopener' } }
                 ]
               },
               {
-                  label: 'Run a Game',
+                  label: 'Play',
                   items: [
-                      { label: 'Get Started', slug: 'guides/get-started' },
-                      { label: 'Launch a Server', slug: 'guides/one-click-hosting' },
-                      { label: 'Run with Docker', slug: 'guides/docker-quickstart' },
-                      { label: 'Migrate from another MUSH', slug: 'guides/pennmush-migration' },
-                      { label: 'Operator Handbook', slug: 'guides/operator-handbook' },
-                      { label: 'Deployment Reference', slug: 'guides/deployment' },
-                      { label: 'Storage and History Retention', slug: 'guides/storage-and-retention' },
-                      { label: 'Secrets', slug: 'guides/secrets' },
-                      { label: 'Listing Your Game', slug: 'guides/mssp' },
+                      { label: 'The Web Portal', slug: 'guides/web-portal' },
+                      { label: 'Portal Navigation', slug: 'guides/portal-navigation' },
+                      { label: 'The Command Palette', slug: 'guides/command-palette' },
+                      { label: 'Chat Cards', slug: 'guides/chat-cards' },
+                      { label: 'Discord for Players', slug: 'guides/discord-players' },
+                      { label: 'Apps That Act for You', slug: 'guides/connected-apps' },
+                      { label: 'Screen Readers', slug: 'guides/screen-readers' },
+                      { label: 'Colour Vision', slug: 'guides/colour-vision' },
+                  ],
+              },
+              {
+                  label: 'Build',
+                  items: [
                       { label: 'Letting Your Players Build', slug: 'guides/player-building' },
                       { label: 'Mapping Your Rooms', slug: 'guides/builder-graph' },
                       { label: 'The World Map', slug: 'guides/world-map' },
@@ -61,27 +66,28 @@ export default defineConfig({
                   ],
               },
               {
-                  label: 'Web Portal',
+                  label: 'Run a Game',
                   items: [
-                      { label: 'The Web Portal', slug: 'guides/web-portal' },
-                      { label: 'Portal Applications', slug: 'guides/applications' },
-                      { label: 'Building Portal Applications', slug: 'guides/building-applications' },
+                      { label: 'Launch a Server', slug: 'guides/one-click-hosting' },
+                      { label: 'Run with Docker', slug: 'guides/docker-quickstart' },
+                      { label: 'Migrate from another MUSH', slug: 'guides/pennmush-migration' },
+                      { label: 'Operator Handbook', slug: 'guides/operator-handbook' },
+                      { label: 'Deployment Reference', slug: 'guides/deployment' },
+                      { label: 'Storage and History Retention', slug: 'guides/storage-and-retention' },
+                      { label: 'Secrets', slug: 'guides/secrets' },
                       { label: 'Signing In with Discord or Google', slug: 'guides/sign-in-services' },
-                      { label: 'Apps That Act for You', slug: 'guides/connected-apps' },
-                      { label: 'Character Galleries', slug: 'guides/galleries' },
-                      { label: 'The Command Palette', slug: 'guides/command-palette' },
-                      { label: 'Portal Navigation', slug: 'guides/portal-navigation' },
-                      { label: 'Chat Cards', slug: 'guides/chat-cards' },
-                      { label: 'Portal Themes', slug: 'guides/portal-themes' },
+                      { label: 'Listing Your Game', slug: 'guides/mssp' },
                   ],
               },
               {
-                  label: 'Look and Access',
+                  label: 'Portal Pages and Looks',
                   items: [
+                      { label: 'Portal Applications', slug: 'guides/applications' },
+                      { label: 'Building Portal Applications', slug: 'guides/building-applications' },
+                      { label: 'Character Galleries', slug: 'guides/galleries' },
+                      { label: 'Portal Themes', slug: 'guides/portal-themes' },
                       { label: 'Visual Layouts and Images', slug: 'guides/visual-layouts' },
                       { label: 'Layout Themes', slug: 'guides/layout-themes' },
-                      { label: 'Colour Vision', slug: 'guides/colour-vision' },
-                      { label: 'Screen Readers', slug: 'guides/screen-readers' },
                   ],
               },
               {
@@ -169,7 +175,6 @@ export default defineConfig({
                               { label: 'Reading the Wiki In-Game', slug: 'guides/wiki-reader' },
                               { label: 'Wiki Facts', slug: 'guides/wiki-facts' },
                               { label: 'Discord', slug: 'guides/discord' },
-                              { label: 'Discord for Players', slug: 'guides/discord-players' },
                           ],
                       },
                       {
