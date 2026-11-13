@@ -1,0 +1,184 @@
+---
+title: Caching Slow Softcode
+description: Keep the answer of slow softcode with cache() and memo(), and choose between them.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Some softcode is slow and called often with the same result: counting every player with a
+`lsearch()`, or working out a character's derived stats for each line of a listing. SharpMUSH has
+two functions that keep such an answer so the code does not run every time.
+
+- **`cache()`** stores the answer in an attribute and gives it back while the attribute is newer
+  than a window you choose. The code may do anything.
+- **`memo()`** runs an attribute as `u()` does and keeps the answer in memory, per call. The code
+  may not change anything, and the answer is dropped as soon as an attribute it read changes.
+
+| You want to | Read |
+|---|---|
+| pick one | [Which to use](#which-to-use) |
+| keep one answer for a while | [cache()](#cache) |
+| keep the answers of a function without them going stale | [memo()](#memo) |
+| set how much memory memo() takes | [memo() settings](#memo-settings) |
+
+In the game, `help cache()` and `help memo()` cover the same functions in short form.
+
+## Which to use
+
+![Choosing between cache() and memo(): code that changes things or uses rand() or the clock goes to cache(); code whose answer must follow attribute changes at once, or differs by caller or arguments, goes to memo(); the rest goes to cache()](../../../assets/guide/caching-choice.svg)
+
+| | `cache()` | `memo()` |
+|---|---|---|
+| Where the answer is kept | an attribute you name | the server's memory |
+| After a restart | still there | gone |
+| One answer for | everyone who calls it | each object, enactor and set of arguments |
+| Goes stale when | the window passes | an attribute the code read changes, or the window passes |
+| Code that changes things | allowed | refused |
+| `rand()`, `secs()` and other changing answers | allowed | refused |
+| Who may call it | someone who controls the object | anyone who may call `u()` on it |
+
+Use `cache()` when an answer a few minutes old is fine and it is the same for everyone: the
+number of players, a summary built from many objects, a slow web lookup. Use `memo()` when the
+answer depends on its arguments and must never be out of date after an attribute changes: a
+character's derived stats, a formatted sheet row.
+
+## cache()
+
+```sharp
+cache(<object>, <attribute>, <value>[, <window>[, <sliding>]])
+```
+
+`cache()` looks at `<attribute>` on `<object>`. If it was written less than `<window>` seconds ago,
+it returns what is there. If not, it evaluates `<value>`, writes the result to the attribute and
+returns it. `<value>` is only evaluated on a miss, so the slow code does not run on a hit.
+
+```sharp
+> think cache(me,ANSWER,first)
+first
+> think cache(me,ANSWER,second)
+first
+```
+
+Output: `first` both times. The second call was a hit, so `second` was never used.
+
+- `<window>` is in seconds and is an hour when left out. `0` always misses, which runs the code and
+  stores the result every time.
+- A true `<sliding>` writes the stored value again on every hit, which starts its window over. An
+  answer read at least once a window never goes stale.
+- The attribute holds just the value, so `get()` and `u()` read it like any other.
+- The executor must control `<object>`. Nothing is printed when the value is written.
+- `cache()` writes an attribute, so with the `function_side_effects` option off it answers
+  `#-1 FUNCTION DISABLED`.
+
+```sharp
+> think cache(me,NOW,one,0)
+one
+> think cache(me,NOW,two,0)
+two
+```
+
+Output: a window of 0 runs the code every time.
+
+### Clearing a cached answer
+
+Clear the attribute and the next call runs the code again. That is how code that changes the
+facts behind an answer makes it fresh at once:
+
+```sharp
+> &ANSWER me
+> think cache(me,ANSWER,second)
+second
+```
+
+Output: `second`, because ANSWER was cleared.
+
+If the game refuses to store the value, for example because it is too long or the attribute is
+locked, `cache()` still returns it and simply misses again next time.
+
+### When an attribute was written
+
+Every attribute keeps the time its value was last written. `mtime()` and `msecs()` read it when
+given `<object>/<attribute>`:
+
+```sharp
+> &NOTE me=hello
+> think msecs(me/NOTE)
+1794600600
+```
+
+Output: the seconds since 1970 when NOTE was written. `mtime(me/NOTE)` gives the same time as a
+date string. Setting an attribute under it, such as `NOTE`BELOW`, does not change NOTE's time.
+
+## memo()
+
+```sharp
+memo([<object>/]<attribute>[, <arg0>[, ... , <arg29>]])
+```
+
+`memo()` runs `<attribute>` as `u()` does and keeps the answer. A later call that runs the same
+code on the same object, from the same executor and enactor, with the same arguments, gets the
+kept answer back without running the code. Colour in an argument counts. `<attribute>` may also be
+a `#lambda`.
+
+```sharp
+> &BONUS me=10
+> &TOTAL me=add(%0,v(BONUS))
+> think memo(TOTAL,5)
+15
+> &BONUS me=20
+> think memo(TOTAL,5)
+25
+```
+
+Output: `25`, because TOTAL read BONUS and BONUS changed.
+
+### What memo() refuses
+
+A kept answer is only safe if running the code again would give the same answer and do nothing
+else. So `memo()` refuses code that could do otherwise, and keeps nothing:
+
+- **`#-1 MEMO REFUSES SIDE EFFECTS`** when the code names a function that changes something, such as
+  `set()`, `pemit()`, `create()` or a web request, anywhere in it, even in a branch that is not
+  taken. Code reached through `u()` while it runs counts too. A form of such a function that only
+  reads, such as `name(<object>)`, is allowed.
+- **`#-1 MEMO REFUSES NONDETERMINISTIC FUNCTIONS`** when the code calls a function whose answer
+  changes from call to call: the random ones (`rand()`, `shuffle()`, `die()`, `roll()` and the like)
+  and the ones that read the clock (`secs()`, `time()`, and `timefmt()` without a time).
+
+```sharp
+> &MARK me=[set(me,SEEN:1)]done
+> think memo(MARK)
+#-1 MEMO REFUSES SIDE EFFECTS
+```
+
+Output: `#-1 MEMO REFUSES SIDE EFFECTS`, and SEEN was not set.
+
+<Aside>
+The code starts with no `%q` registers and the ones it sets are gone when it ends. It cannot read
+or change the caller's registers, so pass what it needs as arguments.
+</Aside>
+
+### When a kept answer is dropped
+
+- an attribute the code read now reads differently, has appeared, or is gone; this is checked on
+  every hit;
+- the code itself is changed;
+- `memo_window` seconds have passed; or
+- memory is full, and it is the least recently used answer.
+
+Other changes, such as a name, location, flag or lock, are not seen until the window passes. An
+answer that hit a function limit, or is longer than 65,536 characters, is never kept. Messages the
+code sends, such as `I can't see that here.`, are only sent when it runs.
+
+### memo() settings
+
+These are under `@config limits`:
+
+| Option | Default | What it does |
+|---|---|---|
+| `memo_window` | 3600 | Seconds an answer is kept at most. `0` means no time limit. |
+| `memo_max_entries` | 10000 | Answers kept at most; past it the least recently used goes. `0` keeps none. |
+| `memo_max_bytes` | 16777216 | Memory the answers may take, in bytes (16 MiB); past it the least recently used goes. `0` keeps none. |
+
+A long window is safe for code that only reads attributes, since a change to one drops the answer
+at once. Shorten it when the code reads names, locations, flags or locks.

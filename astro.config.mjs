@@ -115,6 +115,7 @@ export default defineConfig({
                       { label: 'Extension Points', slug: 'guides/extension-points' },
                       { label: 'Bridge Packages', slug: 'guides/bridge-packages' },
                       { label: 'Attribute Indexes', slug: 'guides/attribute-indexes' },
+                      { label: 'Caching Slow Softcode', slug: 'guides/caching' },
                       { label: 'Calling Web Services', slug: 'guides/web-requests' },
                       { label: 'RhostMUSH Softcode', slug: 'guides/rhostmush-softcode' },
                       { label: 'TinyMUX Softcode', slug: 'guides/tinymux-softcode' },

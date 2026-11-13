@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 320" width="760" height="320" font-family="system-ui, sans-serif" font-size="15">
+  <rect width="760" height="320" rx="12" style="fill:var(--dg-canvas)"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" style="fill:var(--dg-muted)"/></marker>
+  </defs>
+  <g stroke-width="1.5" style="fill:var(--dg-card);stroke:var(--dg-muted)">
+    <rect x="170" y="20" width="420" height="60" rx="8"/>
+    <rect x="300" y="126" width="430" height="60" rx="8"/>
+  </g>
+  <rect x="30" y="236" width="250" height="64" rx="32" stroke-width="1.5" style="fill:var(--dg-blue-fill);stroke:var(--dg-blue-line)"/>
+  <rect x="480" y="236" width="250" height="64" rx="32" stroke-width="1.5" style="fill:var(--dg-green-fill);stroke:var(--dg-green-line)"/>
+  <g text-anchor="middle" style="fill:var(--dg-text)">
+    <text x="380" y="45" font-weight="600">Does the code change anything,</text>
+    <text x="380" y="67" font-weight="600">or use rand() or the clock?</text>
+    <text x="515" y="151" font-weight="600">Must the answer follow attribute changes</text>
+    <text x="515" y="173" font-weight="600">at once, or differ by caller or arguments?</text>
+    <text x="155" y="263" font-weight="600" style="fill:var(--dg-blue-ink)">cache()</text>
+    <text x="155" y="285" font-size="13" style="fill:var(--dg-blue-ink)">one stored answer, up to a window old</text>
+    <text x="605" y="263" font-weight="600" style="fill:var(--dg-green-ink)">memo()</text>
+    <text x="605" y="285" font-size="13" style="fill:var(--dg-green-ink)">kept per call, dropped when its reads change</text>
+  </g>
+  <g stroke-width="1.5" fill="none" marker-end="url(#a)" style="stroke:var(--dg-muted)">
+    <path d="M250 80 L160 232"/>
+    <path d="M440 80 L480 122"/>
+    <path d="M420 186 L260 232"/>
+    <path d="M605 186 L605 232"/>
+  </g>
+  <g font-size="13" style="fill:var(--dg-muted)">
+    <text x="172" y="140">yes</text>
+    <text x="470" y="104">no</text>
+    <text x="320" y="200">no</text>
+    <text x="615" y="214">yes</text>
+  </g>
+</svg>
