@@ -1,24 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" font-family="system-ui, sans-serif" font-size="14">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" width="720" height="300" font-family="system-ui, sans-serif" font-size="14">
   <title>What happens when a job is filed</title>
   <defs>
     <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-      <path d="M0 0L10 5L0 10z" fill="#5b6770"/>
+      <path d="M0 0L10 5L0 10z" style="fill:var(--dg-muted)"/>
     </marker>
   </defs>
   <style>
-    .box { fill: #f4f6f8; stroke: #8a96a0; stroke-width: 1.5; }
-    .ask { fill: #fff8e6; stroke: #c9a227; stroke-width: 1.5; }
-    .end { fill: #e8f5ec; stroke: #3f8f5a; stroke-width: 1.5; }
-    .t { fill: #1f2933; }
-    .s { fill: #52606d; font-size: 12px; }
-    .l { stroke: #5b6770; stroke-width: 1.5; fill: none; marker-end: url(#a); }
-    @media (prefers-color-scheme: dark) {
-      .box { fill: #1f2933; stroke: #7b8794; }
-      .ask { fill: #3a3218; stroke: #c9a227; }
-      .end { fill: #1c3326; stroke: #57b077; }
-      .t { fill: #e4e7eb; }
-      .s { fill: #9aa5b1; }
-    }
+    .box { fill: var(--dg-canvas); stroke: var(--dg-line); stroke-width: 1.5; }
+    .ask { fill: var(--dg-amber-fill); stroke: var(--dg-amber-line); stroke-width: 1.5; }
+    .end { fill: var(--dg-green-fill); stroke: var(--dg-green-ink); stroke-width: 1.5; }
+    .t { fill: var(--dg-text); }
+    .s { fill: var(--dg-muted); font-size: 12px; }
+    .l { stroke: var(--dg-muted); stroke-width: 1.5; fill: none; marker-end: url(#a); }
+    
   </style>
   <rect class="box" x="20" y="120" width="130" height="56" rx="8"/>
   <text class="t" x="85" y="145" text-anchor="middle">Player files</text>

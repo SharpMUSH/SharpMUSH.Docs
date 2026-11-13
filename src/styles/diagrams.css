@@ -1,0 +1,68 @@
+/* Diagram colours. Every diagram in src/assets/guide draws with these tokens, so it follows the site's
+   light and dark themes; see src/assets/guide/README.md. Each colour family has a fill (a box's
+   background), a line (borders and arrows that should stand out) and an ink (text and outlines on
+   that fill). */
+:root {
+	--dg-canvas: #1d2027;
+	--dg-card: #262a33;
+	--dg-surface: #2f333d;
+	--dg-line-soft: #3d424d;
+	--dg-line: #6b707c;
+	--dg-muted: #a9adb7;
+	--dg-text: #eceef2;
+
+	--dg-green-fill: #10291f;
+	--dg-green-line: #34c88a;
+	--dg-green-ink: #a3edc8;
+	--dg-blue-fill: #12243a;
+	--dg-blue-line: #5b97f5;
+	--dg-blue-ink: #b0cdfb;
+	--dg-amber-fill: #2f2512;
+	--dg-amber-line: #e3a73a;
+	--dg-amber-ink: #f4d595;
+	--dg-red-fill: #341a1d;
+	--dg-red-line: #f0737c;
+	--dg-red-ink: #ffb8bd;
+	--dg-purple-fill: #251c3b;
+	--dg-purple-line: #a98cf8;
+	--dg-purple-ink: #d5c6ff;
+}
+
+:root[data-theme='light'] {
+	--dg-canvas: #f8fafc;
+	--dg-card: #ffffff;
+	--dg-surface: #eef1f5;
+	--dg-line-soft: #cbd5e1;
+	--dg-line: #94a3b8;
+	--dg-muted: #475569;
+	--dg-text: #1e293b;
+
+	--dg-green-fill: #dcfce7;
+	--dg-green-line: #16a34a;
+	--dg-green-ink: #166534;
+	--dg-blue-fill: #dbeafe;
+	--dg-blue-line: #2563eb;
+	--dg-blue-ink: #1e40af;
+	--dg-amber-fill: #fef3c7;
+	--dg-amber-line: #d97706;
+	--dg-amber-ink: #78350f;
+	--dg-red-fill: #fee2e2;
+	--dg-red-line: #dc2626;
+	--dg-red-ink: #7f1d1d;
+	--dg-purple-fill: #ede9fe;
+	--dg-purple-line: #7c3aed;
+	--dg-purple-ink: #4c1d95;
+}
+
+/* An inlined diagram scales down to the column and never past its drawn size. */
+.sl-markdown-content .diagram {
+	margin-block: 1.5rem;
+	overflow-x: auto;
+}
+.sl-markdown-content .diagram > svg {
+	display: block;
+	width: 100%;
+	height: auto;
+	/* Text and shapes a diagram leaves uncoloured take the diagram's ink, as black would on paper. */
+	fill: var(--dg-text);
+}

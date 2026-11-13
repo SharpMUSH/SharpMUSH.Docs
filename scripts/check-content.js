@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { KEEP_AS_IMAGE } from './remark-inline-diagrams.js';
 
 const markdownFiles = (root) => fs.readdirSync(root, { recursive: true, withFileTypes: true })
   .filter((entry) => entry.isFile() && /\.mdx?$/.test(entry.name))
@@ -66,6 +67,16 @@ export function validateContent({ root = process.cwd(), requiredRoutes = ['guide
       .join('\n');
     for (const name of fs.readdirSync(guideAssets)) {
       if (/\.(png|webp|jpe?g|gif|svg)$/i.test(name) && !sources.includes(name)) failures.push(`src/assets/guide/${name} is not used by any page`);
+    }
+    for (const name of fs.readdirSync(guideAssets)) {
+      if (!name.endsWith('.svg') || KEEP_AS_IMAGE.has(name)) continue;
+      const svg = fs.readFileSync(path.join(guideAssets, name), 'utf8').replace(/<(title|desc)>[\s\S]*?<\/\1>/g, '');
+      for (const match of svg.matchAll(/\b(fill|stroke|stop-color|flood-color|color)\s*[:=]\s*["']?([^;"'}>]+)/g)) {
+        const value = match[2].trim();
+        if (!/^(none|transparent|inherit|currentColor|var\(--dg-[a-z-]+\)|url\(#[^)]+\))(\s*!important)?$/.test(value)) {
+          failures.push(`src/assets/guide/${name} draws with ${match[1]} ${value}: use a --dg-* colour (see src/assets/guide/README.md)`);
+        }
+      }
     }
   }
 

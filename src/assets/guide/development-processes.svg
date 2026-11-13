@@ -3,22 +3,22 @@
   <desc id="d">Your browser loads the portal from the portal dev server and calls the game server's API. The browser terminal and MU* clients connect to the connection server, which formats output through the rendering worker. The connection server and game server talk through NATS, which runs in Docker. Only the game server reads and writes the world folder.</desc>
   <defs>
     <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+      <path d="M0,0 L10,5 L0,10 z" style="fill:var(--dg-muted)"/>
     </marker>
     <style>
-      .box text { font-family: system-ui, sans-serif; fill: #0f172a; text-anchor: middle; }
+      .box text { font-family: system-ui, sans-serif; fill: var(--dg-text); text-anchor: middle; }
       .name { font-size: 16px; font-weight: 600; }
       .sub { font-size: 13px; }
-      .code { font-size: 12px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; fill: #334155; }
-      .lbl { font-family: system-ui, sans-serif; font-size: 12px; fill: #334155; }
-      .ln { stroke: #475569; stroke-width: 1.6; fill: none; }
-      .proc { fill: #e0e7ff; stroke: #4f46e5; stroke-width: 1.5; }
-      .ext { fill: #f1f5f9; stroke: #64748b; stroke-width: 1.5; }
-      .nats { fill: #fef3c7; stroke: #d97706; stroke-width: 1.5; }
-      .data { fill: #dcfce7; stroke: #16a34a; stroke-width: 1.5; }
+      .code { font-size: 12px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; fill: var(--dg-text); }
+      .lbl { font-family: system-ui, sans-serif; font-size: 12px; fill: var(--dg-text); }
+      .ln { stroke: var(--dg-muted); stroke-width: 1.6; fill: none; }
+      .proc { fill: var(--dg-blue-fill); stroke: var(--dg-purple-line); stroke-width: 1.5; }
+      .ext { fill: var(--dg-canvas); stroke: var(--dg-muted); stroke-width: 1.5; }
+      .nats { fill: var(--dg-amber-fill); stroke: var(--dg-amber-ink); stroke-width: 1.5; }
+      .data { fill: var(--dg-green-fill); stroke: var(--dg-green-ink); stroke-width: 1.5; }
     </style>
   </defs>
-  <rect x="0" y="0" width="1190" height="440" rx="12" fill="#f8fafc"/>
+  <rect x="0" y="0" width="1190" height="440" rx="12" style="fill:var(--dg-canvas)"/>
 
   <!-- Row 1 -->
   <g class="box"><rect class="ext" x="20" y="60" width="220" height="70" rx="8"/>

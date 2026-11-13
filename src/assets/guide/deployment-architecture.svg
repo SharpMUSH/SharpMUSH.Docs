@@ -2,12 +2,12 @@
   <title id="title">SharpMUSH single-host deployment architecture</title>
   <desc id="desc">Three horizontal lanes show player traffic, runtime services and state, and recovery storage. Browser traffic reaches Server and SocketServer through web ingress; telnet reaches SocketServer directly. Server and SocketServer exchange messages through NATS, SocketServer calls RenderingWorker, and Server owns LMDB and wiki assets. Server creates point-in-time world copies which Restic sends with wiki assets to off-host storage. Health checks and Prometheus observe runtime services.</desc>
   <defs>
-    <marker id="arrow" markerWidth="11" markerHeight="11" refX="9" refY="4" orient="auto"><path d="M0,0 L0,8 L10,4 z" fill="#47647b"/></marker>
-    <marker id="arrow-green" markerWidth="11" markerHeight="11" refX="9" refY="4" orient="auto"><path d="M0,0 L0,8 L10,4 z" fill="#38724a"/></marker>
+    <marker id="arrow" markerWidth="11" markerHeight="11" refX="9" refY="4" orient="auto"><path d="M0,0 L0,8 L10,4 z" style="fill:var(--dg-muted)"/></marker>
+    <marker id="arrow-green" markerWidth="11" markerHeight="11" refX="9" refY="4" orient="auto"><path d="M0,0 L0,8 L10,4 z" style="fill:var(--dg-green-ink)"/></marker>
     <style>
-      .canvas{fill:#e9eef4}.lane{fill:#f8fafc;stroke:#c7d2df;stroke-width:2;rx:18}.lane-title{font:700 22px system-ui,sans-serif;fill:#263746;letter-spacing:.04em}
-      .service{fill:#fff;stroke:#47647b;stroke-width:2.5;rx:14}.client{fill:#eef8f1;stroke:#38724a;stroke-width:2.5;rx:14}.state{fill:#fff7e7;stroke:#986b28;stroke-width:2.5;rx:14}.ops{fill:#f3effb;stroke:#7457a6;stroke-width:2.5;rx:14}
-      .name{font:700 20px system-ui,sans-serif;fill:#172532}.detail{font:16px system-ui,sans-serif;fill:#4a5c6d}.edge{fill:none;stroke:#47647b;stroke-width:3;marker-end:url(#arrow)}.edge-green{fill:none;stroke:#38724a;stroke-width:3;marker-end:url(#arrow-green)}.observe{fill:none;stroke:#7457a6;stroke-width:2.5;stroke-dasharray:8 7}.label-box{fill:#f8fafc;stroke:#c7d2df;stroke-width:1;rx:6}.edge-label{font:600 15px system-ui,sans-serif;fill:#405568;paint-order:stroke fill;stroke:#f8fafc;stroke-width:9;stroke-linejoin:round}.gap-label{stroke:#e9eef4}.legend{font:15px system-ui,sans-serif;fill:#526575}
+      .canvas{fill:var(--dg-surface)}.lane{fill:var(--dg-canvas);stroke:var(--dg-line-soft);stroke-width:2;rx:18}.lane-title{font:700 22px system-ui,sans-serif;fill:var(--dg-text);letter-spacing:.04em}
+      .service{fill:var(--dg-card);stroke:var(--dg-muted);stroke-width:2.5;rx:14}.client{fill:var(--dg-green-fill);stroke:var(--dg-green-ink);stroke-width:2.5;rx:14}.state{fill:var(--dg-amber-fill);stroke:var(--dg-amber-ink);stroke-width:2.5;rx:14}.ops{fill:var(--dg-purple-fill);stroke:var(--dg-purple-line);stroke-width:2.5;rx:14}
+      .name{font:700 20px system-ui,sans-serif;fill:var(--dg-blue-ink)}.detail{font:16px system-ui,sans-serif;fill:var(--dg-muted)}.edge{fill:none;stroke:var(--dg-muted);stroke-width:3;marker-end:url(#arrow)}.edge-green{fill:none;stroke:var(--dg-green-ink);stroke-width:3;marker-end:url(#arrow-green)}.observe{fill:none;stroke:var(--dg-purple-line);stroke-width:2.5;stroke-dasharray:8 7}.label-box{fill:var(--dg-canvas);stroke:var(--dg-line-soft);stroke-width:1;rx:6}.edge-label{font:600 15px system-ui,sans-serif;fill:var(--dg-muted);paint-order:stroke fill;stroke:var(--dg-canvas);stroke-width:9;stroke-linejoin:round}.gap-label{stroke:var(--dg-surface)}.legend{font:15px system-ui,sans-serif;fill:var(--dg-muted)}
     </style>
   </defs>
 
