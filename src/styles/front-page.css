@@ -1,0 +1,32 @@
+/* Front page: picture rows and the theme gallery. Colours come from Starlight's tokens. */
+.front-row {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+	gap: 2rem;
+	align-items: center;
+	margin-block: 2.5rem;
+}
+.front-row--flip > div { order: 2; }
+.front-row h2 { margin-top: 0; }
+.front-row img,
+.front-themes img {
+	width: 100%;
+	height: auto;
+	border-radius: 0.5rem;
+	border: 1px solid var(--sl-color-gray-5);
+}
+.front-themes {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+	gap: 1rem;
+}
+.front-themes figure { margin: 0; }
+.front-themes figcaption {
+	font-size: var(--sl-text-sm);
+	color: var(--sl-color-gray-3);
+	margin-top: 0.4rem;
+}
+@media (max-width: 50rem) {
+	.front-row { grid-template-columns: 1fr; }
+	.front-row--flip > div { order: 0; }
+}
