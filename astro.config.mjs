@@ -76,6 +76,8 @@ export default defineConfig({
                       { label: 'Migrate from another MUSH', slug: 'guides/pennmush-migration' },
                       { label: 'Moving a RhostMUSH or TinyMUX Game', slug: 'guides/rhostmush-tinymux-import' },
                       { label: 'Operator Handbook', slug: 'guides/operator-handbook' },
+                      { label: 'Staff Roles and Permissions', slug: 'guides/roles' },
+                      { label: 'Moderation', slug: 'guides/moderation' },
                       { label: 'Deployment Reference', slug: 'guides/deployment' },
                       { label: 'Storage and History Retention', slug: 'guides/storage-and-retention' },
                       { label: 'Secrets', slug: 'guides/secrets' },
