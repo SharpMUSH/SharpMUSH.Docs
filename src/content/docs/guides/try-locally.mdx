@@ -1,0 +1,75 @@
+---
+title: Try It on Your Computer
+description: Run a SharpMUSH game on your own computer with one Docker command, sign in as its administrator, and connect with a MU* client.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+The quickest way to run SharpMUSH yourself is one container on your own computer. It holds the
+whole game: the game server, the web portal, telnet and everything they need. Nothing else is
+installed, and the world is kept in a Docker volume, so it is still there the next time you start it.
+
+You need [Docker](https://docs.docker.com/get-started/get-docker/). On Windows and macOS that is
+Docker Desktop.
+
+<Steps>
+
+1. Start the game.
+
+   ```bash
+   docker run -d --name sharpmush -p 8000:8000 -p 4201:4201 -e SHARPMUSH_GUARD=off -v sharpmush:/data sharpmush/sharpmush-allinone:dev
+   ```
+
+2. Open [http://localhost:8000](http://localhost:8000) in your browser.
+
+   The first start takes a little longer while the world is created. Reload the page if it is not
+   there yet.
+
+3. Claim the administrator account.
+
+   The setup page asks for a username and password for the administrator, who is God (`#1`). Then it
+   walks you through the rest: start fresh or import a game, name the game, choose staff roles, and
+   pick the packages you want.
+
+4. Connect with a MU\* client, if you use one.
+
+   Point it at `localhost`, port `4201`. The administrator's character is God, so log in with
+   `connect God <password>`, using the password you chose in setup.
+
+</Steps>
+
+<Aside>
+`SHARPMUSH_GUARD=off` lets anyone who can reach port 8000 open the setup page, which is fine on your
+own computer. Leave it out on a machine others can reach: the game then answers only the setup link
+it prints in its log (`docker logs sharpmush`) until setup is done. On your own computer, change that
+link's `https://` to `http://`.
+</Aside>
+
+## Stop, start and update
+
+```bash
+docker stop sharpmush     # stop the game
+docker start sharpmush    # start it again, with the same world
+```
+
+To update to the newest build, pull the image and start a new container on the same volume:
+
+```bash
+docker pull sharpmush/sharpmush-allinone:dev
+docker rm -f sharpmush
+docker run -d --name sharpmush -p 8000:8000 -p 4201:4201 -e SHARPMUSH_GUARD=off -v sharpmush:/data sharpmush/sharpmush-allinone:dev
+```
+
+To throw the game away and start over, remove the container and its volume:
+
+```bash
+docker rm -f sharpmush
+docker volume rm sharpmush
+```
+
+## Next steps
+
+- [Web Portal](/guides/web-portal/) shows what the website does for players and staff.
+- [Launch a Server](/guides/one-click-hosting/) puts a game on the internet for others to join.
+- [Run with Docker](/guides/docker-quickstart/) is the Compose setup for a game you host yourself.
+- [Develop SharpMUSH](/guides/local-install/) builds the server from source.
