@@ -3,20 +3,20 @@
   <desc id="d">A visitor signed in to the portal chooses Report on an image and writes a reason. The server checks that the event handler answers GALLERY`REPORT, with that attribute or a package's attribute under it, and runs them as the reporter. The jobs package's GALLERY`REPORT`JOBS files a job in the Staff bucket; a game can write its own instead. With neither, the portal shows no Report button.</desc>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-      <path d="M0 0 L10 5 L0 10 z" fill="#64748b"/>
+      <path d="M0 0 L10 5 L0 10 z" style="fill:var(--dg-muted)"/>
     </marker>
   </defs>
   <style>
-    text { font-family: system-ui, sans-serif; font-size: 15px; fill: #0f172a; }
-    .small { font-size: 13px; fill: #334155; }
+    text { font-family: system-ui, sans-serif; font-size: 15px; fill: var(--dg-text); }
+    .small { font-size: 13px; fill: var(--dg-text); }
     .code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; }
-    .box { fill: #ffffff; stroke: #94a3b8; stroke-width: 1.5; }
-    .check { fill: #eff6ff; stroke: #60a5fa; stroke-width: 1.5; }
-    .ok { fill: #f0fdf4; stroke: #4ade80; stroke-width: 1.5; }
-    .no { fill: #fef2f2; stroke: #f87171; stroke-width: 1.5; }
-    .line { stroke: #64748b; stroke-width: 2; fill: none; }
+    .box { fill: var(--dg-card); stroke: var(--dg-line); stroke-width: 1.5; }
+    .check { fill: var(--dg-canvas); stroke: var(--dg-blue-line); stroke-width: 1.5; }
+    .ok { fill: var(--dg-green-fill); stroke: var(--dg-green-line); stroke-width: 1.5; }
+    .no { fill: var(--dg-red-fill); stroke: var(--dg-red-line); stroke-width: 1.5; }
+    .line { stroke: var(--dg-muted); stroke-width: 2; fill: none; }
   </style>
-  <rect x="0" y="0" width="975" height="250" rx="12" fill="#f8fafc"/>
+  <rect x="0" y="0" width="975" height="250" rx="12" style="fill:var(--dg-canvas)"/>
 
   <rect class="box" x="20" y="70" width="180" height="70" rx="8"/>
   <text x="110" y="98" text-anchor="middle">Visitor on the portal</text>

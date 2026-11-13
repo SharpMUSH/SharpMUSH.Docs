@@ -3,20 +3,20 @@
   <desc id="d">The invitation desk sends Raya a card. Raya clicks +invite/accept 1, and her client sends that line as if she had typed it. Mannaz types the same line. Both reach the same command, which checks that invitation 1 exists and is addressed to whoever sent the line. Raya's passes and the invitation is accepted; Mannaz's is refused.</desc>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-      <path d="M0 0 L10 5 L0 10 z" fill="#64748b"/>
+      <path d="M0 0 L10 5 L0 10 z" style="fill:var(--dg-muted)"/>
     </marker>
   </defs>
   <style>
-    text { font-family: system-ui, sans-serif; font-size: 15px; fill: #0f172a; }
-    .small { font-size: 13px; fill: #334155; }
+    text { font-family: system-ui, sans-serif; font-size: 15px; fill: var(--dg-text); }
+    .small { font-size: 13px; fill: var(--dg-text); }
     .code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; }
-    .box { fill: #ffffff; stroke: #94a3b8; stroke-width: 1.5; }
-    .check { fill: #eff6ff; stroke: #60a5fa; stroke-width: 1.5; }
-    .ok { fill: #f0fdf4; stroke: #4ade80; stroke-width: 1.5; }
-    .no { fill: #fef2f2; stroke: #f87171; stroke-width: 1.5; }
-    .line { stroke: #64748b; stroke-width: 2; fill: none; }
+    .box { fill: var(--dg-card); stroke: var(--dg-line); stroke-width: 1.5; }
+    .check { fill: var(--dg-canvas); stroke: var(--dg-blue-line); stroke-width: 1.5; }
+    .ok { fill: var(--dg-green-fill); stroke: var(--dg-green-line); stroke-width: 1.5; }
+    .no { fill: var(--dg-red-fill); stroke: var(--dg-red-line); stroke-width: 1.5; }
+    .line { stroke: var(--dg-muted); stroke-width: 2; fill: none; }
   </style>
-  <rect x="0" y="0" width="975" height="310" rx="12" fill="#f8fafc"/>
+  <rect x="0" y="0" width="975" height="310" rx="12" style="fill:var(--dg-canvas)"/>
 
   <rect class="box" x="20" y="30" width="140" height="56" rx="8"/>
   <text x="90" y="63" text-anchor="middle">Invite Desk</text>

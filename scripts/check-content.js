@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { KEEP_AS_IMAGE } from './remark-inline-diagrams.js';
 
 const markdownFiles = (root) => fs.readdirSync(root, { recursive: true, withFileTypes: true })
   .filter((entry) => entry.isFile() && /\.mdx?$/.test(entry.name))
@@ -29,8 +30,16 @@ export function validateContent({ root = process.cwd(), requiredRoutes = ['guide
 
   for (const file of markdownFiles(docsRoot)) {
     const text = fs.readFileSync(file, 'utf8').replace(/```[\s\S]*?```/g, '');
+    for (const paragraph of text.split(/\n[ \t]*\n/)) {
+      for (const match of paragraph.matchAll(/!\[[^\]]*\]\(([^)]*assets\/guide\/([^/)]+\.svg))\)/g)) {
+        if (!KEEP_AS_IMAGE.has(match[2]) && paragraph.trim() !== match[0]) {
+          failures.push(`${path.relative(root, file)} puts ${match[2]} inside other text: a diagram needs a paragraph of its own to draw in the site's colours`);
+        }
+      }
+    }
     for (const match of text.matchAll(/!\[([^\]]*)\]\(([^)]+)\)/g)) {
       const [, alt, target] = match;
+
       if (!alt.trim() || /^(image|screenshot|git clone)$/i.test(alt.trim())) failures.push(`${path.relative(root, file)} has non-descriptive image text: ${alt || '(empty)'}`);
       if (!/^(https?:|data:)/.test(target)) {
         const assetPath = safeDecode(target.split(/[?#]/, 1)[0]);
@@ -66,6 +75,30 @@ export function validateContent({ root = process.cwd(), requiredRoutes = ['guide
       .join('\n');
     for (const name of fs.readdirSync(guideAssets)) {
       if (/\.(png|webp|jpe?g|gif|svg)$/i.test(name) && !sources.includes(name)) failures.push(`src/assets/guide/${name} is not used by any page`);
+    }
+    const tokenFile = path.join(root, 'src/styles/diagrams.css');
+    const tokens = new Set(fs.existsSync(tokenFile) ? [...fs.readFileSync(tokenFile, 'utf8').matchAll(/(--dg-[a-z-]+):/g)].map((m) => m[1]) : []);
+    for (const name of fs.readdirSync(guideAssets)) {
+      if (!name.endsWith('.svg') || KEEP_AS_IMAGE.has(name)) continue;
+      const where = `src/assets/guide/${name}`;
+      const svg = fs.readFileSync(path.join(guideAssets, name), 'utf8')
+        // Drop the words between tags (labels, titles), keeping every tag and its attributes and each <style>.
+        .replace(/(<style[^>]*>[\s\S]*?<\/style>)|>[^<]*(?=<)/g, (all, style) => style ?? '>');
+      for (const match of svg.matchAll(/\b(fill|stroke|stop-color|flood-color|color)\s*[:=]\s*["']?([^;"'}>]+)/gi)) {
+        const value = match[2].trim();
+        if (!/^(none|transparent|inherit|currentcolor|context-fill|context-stroke|var\(--dg-[a-z-]+\)|url\(#[^)]+\))(\s*!important)?$/i.test(value)) {
+          failures.push(`${where} draws with ${match[1]} ${value}: use a --dg-* colour (see src/assets/guide/README.md)`);
+        }
+      }
+      for (const match of svg.matchAll(/#[0-9a-f]{3,8}\b(?![\w-])|\b(?:rgba?|hsla?)\([^)]*\)/gi)) {
+        if (!/^#[0-9a-f]+$/i.test(match[0]) || !new RegExp(`\\sid=["']${match[0].slice(1)}["']`).test(svg)) failures.push(`${where} has a colour outside the --dg-* tokens: ${match[0]}`);
+      }
+      for (const match of svg.matchAll(/var\((--dg-[a-z-]+)\)/g)) {
+        if (!tokens.has(match[1])) failures.push(`${where} uses ${match[1]}, which src/styles/diagrams.css does not define`);
+      }
+      for (const style of svg.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)) {
+        if (/@|\/\*/.test(style[1])) failures.push(`${where} has an at-rule or comment in its <style>, which the page would not scope to the diagram`);
+      }
     }
   }
 

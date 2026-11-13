@@ -2,10 +2,14 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import netlify from '@astrojs/netlify';
+import remarkInlineDiagrams from './scripts/remark-inline-diagrams.js';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://sharpmush.com',
+  markdown: {
+      remarkPlugins: [remarkInlineDiagrams],
+  },
   integrations: [
       starlight({
           title: 'SharpMUSH',
@@ -20,7 +24,7 @@ export default defineConfig({
               { tag: 'meta', attrs: { name: 'twitter:image:alt', content: 'SharpMUSH Docs: guides for your next text world. Sharpie shows an illustrated world-building manual.' } },
           ],
           logo: { src : './src/assets/logo.svg' },
-          customCss: ['./src/styles/colors.css'],
+          customCss: ['./src/styles/colors.css', './src/styles/diagrams.css'],
           social: [
               {
                   label: 'GitHub',
