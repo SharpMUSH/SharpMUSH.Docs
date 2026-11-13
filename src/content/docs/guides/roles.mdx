@@ -61,16 +61,6 @@ Marrow now holds approved.
 
 Softcode checks it with `isapproved()` or `hasrole(<character>,approved)`.
 
-## A role for every character on an account
-
-`/account` gives the role to the account the character belongs to, so all of that player's
-characters hold it:
-
-```
-> @role/assign/account *Tamsin=storyteller
-Tamsin (account Wren) now holds storyteller.
-```
-
 ## Making your own role
 
 A role goes in a category. Make the category, then the role, then say where it ranks and what it
@@ -90,6 +80,16 @@ Role Storyteller: allows wiki.delete, media.admin.
 `@permission` lists every permission a role can allow. Priority only decides who may manage whom:
 you can change roles, and the people holding them, only below your own highest role. It never
 decides what someone may do.
+
+## A role for every character on an account
+
+`/account` gives the role to the account the character belongs to, so all of that player's
+characters hold it:
+
+```
+> @role/assign/account *Tamsin=storyteller
+Tamsin (account Wren) now holds storyteller.
+```
 
 ## One permission for one character
 
