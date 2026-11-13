@@ -41,9 +41,24 @@ Docker Desktop.
 <Aside>
 `SHARPMUSH_GUARD=off` lets anyone who can reach port 8000 open the setup page, which is fine on your
 own computer. Leave it out on a machine others can reach: the game then answers only the setup link
-it prints in its log (`docker logs sharpmush`) until setup is done. On your own computer, change that
-link's `https://` to `http://`.
+it prints in its log (`docker logs sharpmush`) until setup is done.
 </Aside>
+
+## Play from other computers
+
+To reach the game from other computers on your network, tell it the address they use, with the port:
+
+```bash
+docker run -d --name sharpmush -p 8000:8000 -p 4201:4201 -e SHARPMUSH_DOMAIN=192.168.1.10:8000 -v sharpmush:/data sharpmush/sharpmush-allinone:dev
+```
+
+Browsers run the portal only over HTTPS, except at `localhost`, so the game then serves port 8000 with
+a certificate it made itself. The first visit from each browser shows a warning that the connection
+is not private; accept it to continue. The setup link in `docker logs sharpmush` starts with
+`https://192.168.1.10:8000`.
+
+Telnet clients connect to `192.168.1.10`, port `4201`, without a certificate. To put a game on the
+internet, use [Launch a Server](/guides/one-click-hosting/) instead.
 
 ## Stop, start and update
 
@@ -52,7 +67,8 @@ docker stop sharpmush     # stop the game
 docker start sharpmush    # start it again, with the same world
 ```
 
-To update to the newest build, pull the image and start a new container on the same volume:
+To update to the newest build, pull the image and start a new container on the same volume, with the
+same `-e` settings as before:
 
 ```bash
 docker pull sharpmush/sharpmush-allinone:dev
