@@ -1,0 +1,118 @@
+---
+title: Updating from the Portal
+description: Update the renderer, the game server and the connection server from the portal's Server page, or move the game to another release.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+The **Updates** panel on the portal's **Server** page (`/admin/server`) shows which version of each
+part of the game is running and whether a newer one is out. It can update one part, all of them, or
+move the game to another release, without logging in to the host.
+
+It needs the `server.admin` permission, and it works on games run with Docker Compose: every
+one-click install, and the stacks in the [Deployment Reference](/guides/deployment).
+
+## The three parts
+
+| Part | What it does | What updating it does to players |
+|------|--------------|----------------------------------|
+| Renderer | Turns game output into what each client understands | Nothing. Output waits a moment. |
+| Game server | Runs the game and the portal | Players see a restart notice and stay connected. The portal reconnects. |
+| Connection server | Holds every telnet and web terminal connection | Every player is disconnected and has to reconnect. |
+
+An update always runs in that order, so the connection server goes last.
+
+## How it works
+
+![The admin presses Update in the browser; the game server queues it; the update agent, which polls the game server, picks it up, warns players through the game server if the connection server is included, and has Docker replace the renderer, the game server and the connection server in that order](../../../assets/guide/component-updates-flow.svg)
+
+The game server never touches Docker. A separate small container, the **update agent**, holds the
+Docker socket. Every ten seconds it tells the game server what is running and asks whether an update
+is waiting. When one is, it fetches the new image and restarts that one container with it, using the
+same Compose files the game was started with.
+
+The agent only ever replaces those three containers, and it only accepts release versions
+(`1.2.0`, `1.2.0-rc.1`), `latest` or `dev`. It talks to the game server with a token that the two
+share. Anyone holding that token can ask for these updates, so keep `.env` readable by root only.
+
+Every update is recorded in the audit log as `server.update`.
+
+## The Updates panel
+
+Each part shows its version (or, for a moving tag such as `dev`, the start of the build's commit) and
+one of three states:
+
+- **Up to date**: Docker Hub has nothing newer for the tag the game follows.
+- **Newer build available**: the tag now points at a newer image.
+- **Not checked yet**: the agent has not reached Docker Hub. It checks every 15 minutes.
+
+From there:
+
+- **Update** on a row fetches the newest image of the current tag for that part.
+- **Update all** does that for all three, in order.
+- **Version** and **Move to this version** switch all three parts to another release. The game moves
+  as one piece: a connection server and a renderer from different builds can disagree.
+- **Warn players before the connection server restarts** sets how long players are warned when the
+  connection server is part of the update: no warning, 1, 5, 10 or 30 minutes. They get a message
+  like this as soon as you confirm:
+
+  ```
+  GAME: The connection server will be updated in 5 minutes. You will be disconnected; reconnect a minute later.
+  ```
+
+Before anything starts, the panel asks you to confirm and says how many connections the connection
+server update will drop.
+
+While an update runs, the panel shows which part it is on. The page loses the game server for a few
+seconds when that part restarts, then picks up where it was. If something fails, for example Docker
+Hub refuses the download, the update stops there and the panel shows the reason. The parts already
+updated stay updated.
+
+<Aside type="caution">
+A game's data is upgraded when a newer game server first opens it, and an older game server refuses
+it after that. Moving back to an earlier release works only until then. Take a backup before moving
+to a new release.
+</Aside>
+
+## Turning it on
+
+One-click installs include the agent; there is nothing to do. A game installed before the agent
+existed gets its token the next time you run `sharpmush-configure`.
+
+For the Compose stacks in `deploy/`:
+
+<Steps>
+
+1. Add two lines to `.env`: a random token, and the full path of the `deploy` folder.
+
+   ```bash
+   echo "SHARPMUSH_UPDATE_AGENT_TOKEN=$(openssl rand -hex 32)" >> .env
+   echo "SHARPMUSH_DEPLOY_DIR=$PWD" >> .env
+   ```
+
+2. Add the update agent's file to your stack and start the agent and the game server, so the game
+   server reads the token. Players see a restart notice and stay connected.
+
+   ```bash
+   # Start with docker-compose.cloudflare.yml instead if that is your stack.
+   export COMPOSE_FILE=docker-compose.prod.yml:docker-compose.update-agent.yml
+   docker compose up -d --build update-agent
+   docker compose up -d sharpmush-server
+   ```
+
+   Keep `docker-compose.update-agent.yml` in `COMPOSE_FILE` from now on. The agent runs Compose with
+   the files the game was last started with.
+
+3. Open **Server** in the portal. The **Updates** panel shows the three parts once the agent has
+   checked in.
+
+</Steps>
+
+To move between releases, the Compose files must take their version from `SHARPMUSH_IMAGE_TAG` in
+`.env`, as the supplied files do. A file that names a fixed version shows its parts, and they can
+still be updated, but **Move to this version** is not offered.
+
+## Other hosts
+
+Fly.io, Railway, the all-in-one image started with `docker run`, and a server run with `dotnet` have
+no update agent. The panel says so; update those games as their own guides describe.

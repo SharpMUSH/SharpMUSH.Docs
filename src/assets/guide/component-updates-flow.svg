@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" width="760" height="300" role="img" font-family="system-ui, sans-serif" font-size="15">
+  <rect x="0" y="0" width="760" height="300" rx="12" style="fill:var(--dg-canvas)"/>
+  <defs>
+    <marker id="cu-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" style="fill:var(--dg-text)"/>
+    </marker>
+  </defs>
+  <g style="stroke:var(--dg-muted);fill:var(--dg-surface)">
+    <rect x="20" y="40" width="150" height="60" rx="6"/>
+    <rect x="300" y="40" width="160" height="60" rx="6"/>
+    <rect x="580" y="40" width="160" height="60" rx="6"/>
+    <rect x="300" y="200" width="160" height="60" rx="6"/>
+    <rect x="580" y="170" width="160" height="110" rx="6"/>
+  </g>
+  <g style="fill:var(--dg-text)" text-anchor="middle">
+    <text x="95" y="66">Admin's browser</text>
+    <text x="95" y="86" font-size="13">Server &gt; Updates</text>
+    <text x="380" y="66">Game server</text>
+    <text x="380" y="86" font-size="13">queues the update</text>
+    <text x="660" y="66">Update agent</text>
+    <text x="660" y="86" font-size="13">holds the Docker socket</text>
+    <text x="380" y="226">Players</text>
+    <text x="380" y="246" font-size="13">warned first</text>
+    <text x="660" y="194">Docker</text>
+    <text x="660" y="218" font-size="13">1. renderer</text>
+    <text x="660" y="238" font-size="13">2. game server</text>
+    <text x="660" y="258" font-size="13">3. connection server</text>
+  </g>
+  <g style="stroke:var(--dg-text);fill:none" stroke-width="1.5">
+    <line x1="170" y1="70" x2="296" y2="70" marker-end="url(#cu-arrow)"/>
+    <line x1="576" y1="62" x2="464" y2="62" marker-end="url(#cu-arrow)"/>
+    <line x1="464" y1="80" x2="576" y2="80" stroke-dasharray="4 3" marker-end="url(#cu-arrow)"/>
+    <line x1="380" y1="100" x2="380" y2="196" marker-end="url(#cu-arrow)"/>
+    <line x1="660" y1="100" x2="660" y2="166" marker-end="url(#cu-arrow)"/>
+  </g>
+  <g style="fill:var(--dg-text)" font-size="13">
+    <text x="233" y="62" text-anchor="middle">Update</text>
+    <text x="520" y="54" text-anchor="middle">polls</text>
+    <text x="520" y="98" text-anchor="middle">the job</text>
+    <text x="388" y="152">broadcast</text>
+    <text x="668" y="138">pull, up</text>
+  </g>
+</svg>
