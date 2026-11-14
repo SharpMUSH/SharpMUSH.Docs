@@ -71,8 +71,8 @@ To update to the newest release, pull the image and start a new container on the
 same `-e` settings as before:
 
 ```bash
-docker pull sharpmush/sharpmush-allinone:latest
-docker rm -f sharpmush
+docker pull sharpmush/sharpmush-allinone:latest && \
+docker rm -f sharpmush && \
 docker run -d --name sharpmush -p 8000:8000 -p 4201:4201 -e SHARPMUSH_GUARD=off -v sharpmush:/data sharpmush/sharpmush-allinone:latest
 ```
 
