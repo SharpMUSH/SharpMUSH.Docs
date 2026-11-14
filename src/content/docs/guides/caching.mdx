@@ -123,6 +123,9 @@ copy of that attribute changes, with `@attribute/watch`. The event handler (#9) 
 
 Output: `7`. The total is kept for a day, but setting LEVEL ran the watch, which cleared
 CACHE\`LEVELS, so the second call added the levels up again.
+The watch runs as a queue entry of its own after the command that set LEVEL, so a read later in
+the same command list can still get the old total. Code that needs the new total at once clears
+the attribute itself.
 
 If the game refuses to store the value, for example because it is too long or the attribute is
 locked, `cache()` still returns it and simply misses again next time.
