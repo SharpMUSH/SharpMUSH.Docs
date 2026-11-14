@@ -17,7 +17,7 @@ Docker Desktop.
 1. Start the game.
 
    ```bash
-   docker run -d --name sharpmush -p 8000:8000 -p 4201:4201 -e SHARPMUSH_GUARD=off -v sharpmush:/data sharpmush/sharpmush-allinone:dev
+   docker run -d --name sharpmush -p 8000:8000 -p 4201:4201 -e SHARPMUSH_GUARD=off -v sharpmush:/data sharpmush/sharpmush-allinone:latest
    ```
 
 2. Open [http://localhost:8000](http://localhost:8000) in your browser.
@@ -49,7 +49,7 @@ it prints in its log (`docker logs sharpmush`) until setup is done.
 To reach the game from other computers on your network, tell it the address they use, with the port:
 
 ```bash
-docker run -d --name sharpmush -p 8000:8000 -p 4201:4201 -e SHARPMUSH_DOMAIN=192.168.1.10:8000 -v sharpmush:/data sharpmush/sharpmush-allinone:dev
+docker run -d --name sharpmush -p 8000:8000 -p 4201:4201 -e SHARPMUSH_DOMAIN=192.168.1.10:8000 -v sharpmush:/data sharpmush/sharpmush-allinone:latest
 ```
 
 Browsers run the portal only over HTTPS, except at `localhost`, so the game then serves port 8000 with
@@ -67,13 +67,13 @@ docker stop sharpmush     # stop the game
 docker start sharpmush    # start it again, with the same world
 ```
 
-To update to the newest build, pull the image and start a new container on the same volume, with the
+To update to the newest release, pull the image and start a new container on the same volume, with the
 same `-e` settings as before:
 
 ```bash
-docker pull sharpmush/sharpmush-allinone:dev
-docker rm -f sharpmush
-docker run -d --name sharpmush -p 8000:8000 -p 4201:4201 -e SHARPMUSH_GUARD=off -v sharpmush:/data sharpmush/sharpmush-allinone:dev
+docker pull sharpmush/sharpmush-allinone:latest && \
+docker rm -f sharpmush && \
+docker run -d --name sharpmush -p 8000:8000 -p 4201:4201 -e SHARPMUSH_GUARD=off -v sharpmush:/data sharpmush/sharpmush-allinone:latest
 ```
 
 To throw the game away and start over, remove the container and its volume:
