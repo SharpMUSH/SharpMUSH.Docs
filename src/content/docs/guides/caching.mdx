@@ -53,13 +53,15 @@ it returns what is there. If not, it evaluates `<value>`, writes the result to t
 returns it. `<value>` is only evaluated on a miss, so the slow code does not run on a hit.
 
 ```sharp
-> think cache(me,ANSWER,first)
-first
-> think cache(me,ANSWER,second)
-first
+> think cache(me,CACHE`ROOMS,words(lsearch(all,type,room)),600)
+12
+> @dig Annex
+> think cache(me,CACHE`ROOMS,words(lsearch(all,type,room)),600)
+12
 ```
 
-Output: `first` both times. The second call was a hit, so `second` was never used.
+Output: `12` both times. The second call read CACHE\`ROOMS instead of searching, so Annex is not
+counted until the 600 seconds have passed.
 
 - `<window>` is in seconds and is an hour when left out. `0` always misses, which runs the code and
   stores the result every time.
@@ -79,18 +81,51 @@ two
 
 Output: a window of 0 runs the code every time.
 
+A sliding window suits an answer that is read often and costs a lot to build:
+
+```sharp
+> think cache(me,CACHE`THINGS,words(lsearch(all,type,thing)),300,1)
+40
+```
+
+Output: the number of things. Called again within five minutes, it returns 40 without searching
+and keeps it for five minutes more from then. Left unread for five minutes, the next call searches
+again.
+
 ### Clearing a cached answer
 
 Clear the attribute and the next call runs the code again. That is how code that changes the
 facts behind an answer makes it fresh at once:
 
 ```sharp
-> &ANSWER me
-> think cache(me,ANSWER,second)
-second
+> &CACHE`ROOMS me
+> think cache(me,CACHE`ROOMS,words(lsearch(all,type,room)),600)
+13
 ```
 
-Output: `second`, because ANSWER was cleared.
+Output: `13`, because CACHE\`ROOMS was cleared, so the call searched again and counted Annex.
+
+When the answer is built from a standard attribute, staff can have the game clear it whenever any
+copy of that attribute changes, with `@attribute/watch`. The event handler (#9) then runs its
+`WATCH` attributes for every change, by any command or function:
+
+```sharp
+> @attribute/access LEVEL=none
+> @attribute/watch LEVEL
+> &WATCH`LEVEL`CACHE #9=&CACHE`LEVELS #9
+> &LEVEL me=5
+> think cache(#9,CACHE`LEVELS,ladd(iter(lsearch(all,type,player),get(##/LEVEL))),86400)
+5
+> &LEVEL me=7
+> think cache(#9,CACHE`LEVELS,ladd(iter(lsearch(all,type,player),get(##/LEVEL))),86400)
+7
+```
+
+Output: `7`. The total is kept for a day, but setting LEVEL ran the watch, which cleared
+CACHE\`LEVELS, so the second call added the levels up again.
+The watch runs as a queue entry of its own after the command that set LEVEL, so a read later in
+the same command list can still get the old total. Code that needs the new total at once clears
+the attribute itself.
 
 If the game refuses to store the value, for example because it is too long or the attribute is
 locked, `cache()` still returns it and simply misses again next time.
@@ -119,6 +154,24 @@ memo([<object>/]<attribute>[, <arg0>[, ... , <arg29>]])
 code on the same object, from the same executor and enactor, with the same arguments, gets the
 kept answer back without running the code. Colour in an argument counts. `<attribute>` may also be
 a `#lambda`.
+
+Memoizing pays most where the same answers are needed over and over. A recursive Fibonacci works
+out each smaller number again every time it needs one, so `u()` needs about 2.7 million calls for
+the 30th:
+
+```sharp
+> &FIB me=if(lt(%0,2),%0,add(u(FIB,sub(%0,1)),u(FIB,sub(%0,2))))
+> think u(FIB,30)
+#-1 FUNCTION INVOCATION LIMIT EXCEEDED
+> &MFIB me=if(lt(%0,2),%0,add(memo(MFIB,sub(%0,1)),memo(MFIB,sub(%0,2))))
+> think memo(MFIB,30)
+832040
+```
+
+Output: `832040`. FIB runs out of function calls; MFIB keeps each answer, so it works out each
+number once and finishes at once.
+
+A kept answer follows the attributes it read:
 
 ```sharp
 > &BONUS me=10
