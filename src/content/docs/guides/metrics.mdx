@@ -32,8 +32,9 @@ Nothing is sent anywhere: a scraper has to come and read the numbers. Prometheus
 anything that reads the Prometheus format can.
 
 A metrics port answers `/metrics` and nothing else, and no other port answers `/metrics`, so a
-reverse proxy cannot publish them by accident. Setting the port to `0` turns metrics off for that
-program.
+reverse proxy cannot publish them by accident. Setting a metrics port to `0` does not turn metrics
+off: it closes that port and moves `/metrics` onto the program's main web port, which your reverse
+proxy may publish to the internet. Leave both ports set.
 
 The ports are not on the internet:
 
@@ -272,17 +273,19 @@ storage figures behind the backup and map alerts, and has two more disk alerts.
 Prometheus adds `job` and `instance` labels to every series, and SharpMUSH adds `otel_scope_name` and
 `otel_scope_version`. Counters end in `_total`, timings in `_milliseconds`, and sizes are in bytes.
 
-Both programs publish the player, connection and health gauges below, but only one of them counts
-each. Read players and connections from `job="sharpmush-server"`: the connection server always
-reports 0 for them.
+Both programs publish the player, connection and health gauges below, but only one of them keeps
+each up to date. Read players, connections and `sharpmush_server_health` from
+`job="sharpmush-server"`, and `sharpmush_connectionserver_health` from
+`job="sharpmush-socketserver"`. The other program reports a fixed 0 for players and connections, and a
+fixed 1 for the other's health.
 
 ### Players and connections
 
 | Metric | What it is | Labels |
 |---|---|---|
-| `sharpmush_players_logged_in` | Characters logged in now | |
+| `sharpmush_players_logged_in` | Connections logged in to a character now; a character connected twice counts twice | |
 | `sharpmush_connections_active` | Connections now, logged in or not | |
-| `sharpmush_connection_events_total` | Connections opened and closed, logins and logouts | `event_type`: `connected`, `disconnected`, `logged_in`, `logged_out`, `account_mode` |
+| `sharpmush_connection_events_total` | Connections opened and closed, logins and logouts, from the game server only | `event_type`: `connected`, `disconnected`, `logged_in`, `logged_out`, `account_mode` |
 | `sharpmush_server_health` | 1 while the game server runs | |
 | `sharpmush_connectionserver_health` | 1 while the connection server runs | |
 
