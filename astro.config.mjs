@@ -223,7 +223,6 @@ export default defineConfig({
                     { label: 'Package Declarations', slug: 'reference/package-declarations'},
                     { label: 'Application, Plugin and UI Packages', slug: 'reference/package-kinds'},
                     { label: 'Portal Theme Parts', slug: 'reference/portal-theme-parts'},
-                    { label: 'SharpMUSH Helpfiles', autogenerate: { directory: 'reference/sharpmush-help', collapsed: true }},
                     {
                       label: 'Technical',
                       items: [
@@ -231,6 +230,11 @@ export default defineConfig({
                         { label: 'Connections During Updates', slug: 'technical/connections' },
                         { label: 'How Plugins Load', slug: 'technical/plugin-system' },
                       ]
+                    },
+                    {
+                      label: 'SharpMUSH Helpfiles',
+                      collapsed: true,
+                      autogenerate: { directory: 'reference/sharpmush-help' },
                     },
                   ]
               },
