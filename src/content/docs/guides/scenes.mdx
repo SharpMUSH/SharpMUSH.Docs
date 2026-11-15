@@ -181,14 +181,16 @@ It records poses at once. When staff set `+config scene/default-status=new`, a n
 [SCENE] Done: Scene 1 finished.
 ```
 
-The others in the room are told when a scene there starts, pauses, resumes or ends. A public scene's start
-names the command that joins it, unless only invited players may join. A private scene is announced only to
-its members. While a scene runs, the room is also told when a pose in it is edited. Staff turn all of
-this off with `+config scene/announce=no`.
+A scene's members, wherever they are, and the others in its room are told when it starts, pauses,
+resumes or ends. A public scene's start names the command that joins it, unless only invited players
+may join. A private scene is announced only to its members. While a scene runs, they are also told
+when a pose in it is edited, or an edit is undone or redone. Staff turn all of this off with
+`+config scene/announce=no`.
 
 ```
 [SCENE] Mira started scene 1: Smugglers at the Harbour · +scene/join 1 to join
 [SCENE] Tobin edited their pose 2 in scene 1.
+[SCENE] Tobin undid an edit to their pose 2 in scene 1.
 [SCENE] Mira finished scene 1: Smugglers at the Harbour
 ```
 
