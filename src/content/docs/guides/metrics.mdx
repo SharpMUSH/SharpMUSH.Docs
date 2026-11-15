@@ -32,9 +32,8 @@ Nothing is sent anywhere: a scraper has to come and read the numbers. Prometheus
 anything that reads the Prometheus format can.
 
 A metrics port answers `/metrics` and nothing else, and no other port answers `/metrics`, so a
-reverse proxy cannot publish them by accident. Setting a metrics port to `0` does not turn metrics
-off: it closes that port and moves `/metrics` onto the program's main web port, which your reverse
-proxy may publish to the internet. Leave both ports set.
+reverse proxy cannot publish them by accident. Setting a metrics port to `0` turns metrics off for
+that program: no port answers `/metrics`.
 
 The ports are not on the internet:
 
