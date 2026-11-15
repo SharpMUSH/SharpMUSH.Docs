@@ -20,10 +20,27 @@ SharpMUSH lets game admins set up, configure, and run a text-based roleplay serv
 - [Helpfile Reference](https://sharpmush.com/reference/sharpmush-help/sharptop/): Complete command and function reference sourced directly from the SharpMUSH server helpfiles.
 - [PennMUSH Compatibility & Differences](https://sharpmush.com/reference/compatibility/): Details on supported PennMUSH commands and softcode, database imports (PennMUSH, TinyMUX, RhostMUSH), and behavioral differences.
 - [Visual Layouts](https://sharpmush.com/guides/visual-layouts/): Guide to responsive, accessible softcode layout functions (`box()`, `fields()`, `datatable()`, `gauge()`).
-- [Web Portal & HTTP Handlers](https://sharpmush.com/guides/applications/): Building browser-based character profiles, softcode forms, App Builder workflows, and outbound `@http` integrations.
+- [Web Portal Applications](https://sharpmush.com/guides/applications/): Building browser-based character profiles, softcode forms, and App Builder workflows.
+- [HTTP Handlers](https://sharpmush.com/reference/sharpmush-help/http/): Serving web pages and JSON from softcode through the pre-installed HTTP Handler object.
+- [Calling Web Services](https://sharpmush.com/guides/web-requests/): Outbound `@http` integrations, with headers, stored secrets, and reading the reply.
 - [C# Plugins](https://sharpmush.com/guides/plugins/): Extending the server with custom commands, functions, and services in C# without forking the core codebase.
 
 ## Community & Source
 
 - [GitHub Repository](https://github.com/SharpMUSH/SharpMUSH): Source code, issue tracker, and release notes.
 - [Discord Community](https://discord.gg/jYErRbqaC9): Community chat for server admins, softcoders, and players.
+
+## Optional
+
+- [Launch a Server](https://sharpmush.com/guides/one-click-hosting/): One-click setup on a rented server, with prices per host.
+- [Run with Docker](https://sharpmush.com/guides/docker-quickstart/): Running the server, connection server, and renderer with Docker Compose on your own machine or host.
+- [Migrate from PennMUSH](https://sharpmush.com/guides/pennmush-migration/): Importing a PennMUSH database, mail, and `mush.cnf`.
+- [Moving a RhostMUSH or TinyMUX Game](https://sharpmush.com/guides/rhostmush-tinymux-import/): Which files to upload and which commands the import rewrites.
+- [Commands Overview](https://sharpmush.com/reference/sharpmush-help/commands-index/): Index of every built-in command.
+- [Functions Overview](https://sharpmush.com/reference/sharpmush-help/functions/): Index of every built-in function.
+- [Your First Softcode Command](https://sharpmush.com/guides/your-first-softcode-command/): A worked `$`-command from attribute to working command.
+- [Using an AI Coding Assistant](https://sharpmush.com/guides/using-an-ai-coding-assistant/): How to point a coding assistant at the softcode skill and help reference, and how to check its output.
+- [Remote MCP and LSP Analysis](https://sharpmush.com/guides/mcp/): Softcode analysis for editors and AI tools over LSP and MCP.
+- [Package Format](https://sharpmush.com/reference/package-format/): The file format of a softcode package.
+- [SharpMUSH.Guide](https://github.com/SharpMUSH/SharpMUSH.Guide): The help reference in Markdown and the `writing-sharpmush-softcode` skill for AI coding assistants.
+- [Package Library](https://github.com/SharpMUSH/SharpMUSH.Packages): Source of the official softcode packages.
