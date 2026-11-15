@@ -110,10 +110,13 @@ https://github.com/SharpMUSH/SharpMUSH.Packages
 ```
 
 It is added once, the first time the game starts, unless a remote already points at the library or
-is named **SharpMUSH Official**. If you remove it, it stays removed; add it again under
+is named **SharpMUSH Official**. If you remove it, it stays removed, except when a release moves a
+package the game has installed out of the server and into the library: the server then adds the
+library again so that package keeps getting updates. Add it again yourself under
 **Admin → Packages → Remotes**, where any other repository is added too.
 
-Browse a remote, pick a package and a version, review the changeset, and apply.
+**Browse** starts with the official library selected. Pick a remote, browse it, pick a package and a
+version, review the changeset, and apply.
 
 **Browse** lists a repository's packages by [category and subcategory](/reference/package-declarations#subcategory-and-bridges-format-120).
 Each row says what the package ships (softcode, wiki pages, an application, a plugin), its version,
