@@ -30,3 +30,5 @@
 	.front-row { grid-template-columns: 1fr; }
 	.front-row--flip > div { order: 0; }
 }
+/* Three hero buttons fit on one row from about 1150px wide with a 1rem gap; Starlight's 2rem wraps the third. */
+.hero .actions { column-gap: 1rem; }
