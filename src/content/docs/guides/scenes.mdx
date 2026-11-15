@@ -181,9 +181,24 @@ It records poses at once. When staff set `+config scene/default-status=new`, a n
 [SCENE] Done: Scene 1 finished.
 ```
 
+The others in the room are told when a scene there starts, pauses, resumes or ends. A public scene's start
+names the command that joins it, unless only invited players may join. A private scene is announced only to
+its members. While a scene runs, the room is also told when a pose in it is edited. Staff turn all of
+this off with `+config scene/announce=no`.
+
+```
+[SCENE] Mira started scene 1: Smugglers at the Harbour · +scene/join 1 to join
+[SCENE] Tobin edited their pose 2 in scene 1.
+[SCENE] Mira finished scene 1: Smugglers at the Harbour
+```
+
 Anyone holding the `scene.close` permission can finish a scene they do not own with
 `+scene/finish <id>`. The scene package defines it; allow it on a role with
 `@role/allow helper=scene.close`.
+
+A scene's page in the portal has the same controls for its owner: edit, pause, start, finish and,
+for a scene that has not started, cancel. Finish and cancel ask once before they run. Anyone holding
+`scene.manage` sees every control on any scene, and anyone holding `scene.close` sees finish.
 
 ### Who can read it
 
