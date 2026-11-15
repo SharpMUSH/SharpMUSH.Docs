@@ -103,13 +103,24 @@ game put on one of the package's objects itself, since the apply runs that too.
 
 ## Getting packages
 
-Add a repository under **Admin → Packages → Remotes**. The official one is:
+A game comes with the official package library as the remote **SharpMUSH Official**:
 
 ```
-https://github.com/SharpMUSH/SharpMUSH-Packages
+https://github.com/SharpMUSH/SharpMUSH.Packages
 ```
 
-Then browse, pick a package and a version, review the changeset, and apply.
+It is added once, the first time the game starts, unless a remote already points at the library or
+is named **SharpMUSH Official**. A remote that already points at the library is the library under its
+own name. A remote named **SharpMUSH Official** at another address is not the library; rename or
+remove it, then add the library under **Admin → Packages → Remotes**.
+
+If you remove the library, it stays removed, except when a release moves a
+package the game has installed out of the server and into the library: the server then adds the
+library again so that package keeps getting updates. Add it again yourself under
+**Admin → Packages → Remotes**, where any other repository is added too.
+
+**Browse** starts with the official library selected when the game has it. Pick a remote, browse it, pick a package and a
+version, review the changeset, and apply.
 
 **Browse** lists a repository's packages by [category and subcategory](/reference/package-declarations#subcategory-and-bridges-format-120).
 Each row says what the package ships (softcode, wiki pages, an application, a plugin), its version,
