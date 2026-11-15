@@ -1,0 +1,388 @@
+---
+title: Collecting Metrics
+description: Read SharpMUSH's Prometheus metrics, run Prometheus and Grafana beside the game, import the timings dashboard, set alerts, and what each metric means.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+SharpMUSH reports how it is doing as numbers: players online, how long commands and functions take,
+how full the world's disk is, and whether messages between its parts are piling up. This page shows
+how to collect those numbers with Prometheus, look at them in Grafana, and get an alert when one goes
+wrong.
+
+It is written for the Docker Compose stacks: the one-click install from
+[Launch a Server](/guides/one-click-hosting), and the files in `deploy/` described in the
+[Deployment Reference](/guides/deployment).
+
+![Prometheus reads /metrics from the game server on port 9092 and the connection server on port 9091 inside the game's Docker network; Grafana reads Prometheus; your browser reaches Grafana through an ssh tunnel](../../../assets/guide/metrics-flow.svg)
+
+## Where the metrics are
+
+Two of SharpMUSH's programs publish metrics. Each answers `GET /metrics` with plain HTTP, in the
+Prometheus text format, on a port of its own:
+
+| Program | Container | Port | Setting |
+|---|---|---|---|
+| Game server | `sharpmush-server` | 9092 | `Metrics:Port` (environment variable `Metrics__Port`) |
+| Connection server | `sharpmush-socketserver` | 9091 | `ConnectionServer:MetricsPort` (`ConnectionServer__MetricsPort`) |
+
+The rendering worker has no metrics.
+
+Nothing is sent anywhere: a scraper has to come and read the numbers. Prometheus does that here, but
+anything that reads the Prometheus format can.
+
+A metrics port answers `/metrics` and nothing else, and no other port answers `/metrics`, so a
+reverse proxy cannot publish them by accident. Setting a metrics port to `0` does not turn metrics
+off: it closes that port and moves `/metrics` onto the program's main web port, which your reverse
+proxy may publish to the internet. Leave both ports set.
+
+The ports are not on the internet:
+
+| Stack | 9092 | 9091 |
+|---|---|---|
+| One-click install | The server's loopback address (`127.0.0.1:9092`) | The server's loopback address (`127.0.0.1:9091`) |
+| `deploy/docker-compose.prod.yml` or `docker-compose.cloudflare.yml` | The server's loopback address | The game's Docker network only |
+
+To check the game server is publishing, run this on the machine the game runs on:
+
+```bash
+curl -s http://127.0.0.1:9092/metrics | grep '^sharpmush_players_logged_in'
+```
+
+Output:
+
+```
+sharpmush_players_logged_in{otel_scope_name="SharpMUSH",otel_scope_version="1.0.0"} 0
+```
+
+## Run Prometheus and Grafana beside the game
+
+The simplest setup runs Prometheus and Grafana as a second Compose project on the same machine,
+joined to the game's Docker network. Prometheus then reads both programs by container name, and
+neither metrics port has to be published anywhere new.
+
+<Steps>
+
+1. Find the name of the game's network:
+
+   ```bash
+   docker network ls --filter name=sharpmush-net --format '{{.Name}}'
+   ```
+
+   A one-click install prints `sharpmush_sharpmush-net`. A stack started from the `deploy/` folder
+   prints `deploy_sharpmush-net`.
+
+2. Make a folder for the monitoring files, next to the game's files but not inside them:
+
+   ```bash
+   mkdir ~/sharpmush-monitoring && cd ~/sharpmush-monitoring
+   ```
+
+3. Save this as `prometheus.yml`. It reads both programs every 15 seconds:
+
+   ```yaml
+   global:
+     scrape_interval: 15s
+
+   scrape_configs:
+     - job_name: sharpmush-server
+       static_configs:
+         - targets: ["sharpmush-server:9092"]
+     - job_name: sharpmush-socketserver
+       static_configs:
+         - targets: ["sharpmush-socketserver:9091"]
+
+   rule_files:
+     - /etc/prometheus/alerts.yml
+   ```
+
+4. Save the rules from [Alerts](#alerts) below as `alerts.yml`.
+
+5. Save this as `grafana-datasource.yml`, so Grafana starts already connected to Prometheus:
+
+   ```yaml
+   apiVersion: 1
+   datasources:
+     - name: Prometheus
+       type: prometheus
+       access: proxy
+       url: http://prometheus:9090
+       isDefault: true
+   ```
+
+6. Save this as `compose.yml`. If step 1 printed another network name, put it in place of
+   `sharpmush_sharpmush-net` on the last lines:
+
+   ```yaml
+   name: sharpmush-monitoring
+
+   services:
+     prometheus:
+       image: prom/prometheus:v3.5.0
+       command:
+         - --config.file=/etc/prometheus/prometheus.yml
+         - --storage.tsdb.retention.time=30d
+       volumes:
+         - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+         - ./alerts.yml:/etc/prometheus/alerts.yml:ro
+         - prometheus-data:/prometheus
+       ports:
+         - "127.0.0.1:9090:9090"
+       networks:
+         - game
+       restart: unless-stopped
+
+     grafana:
+       image: grafana/grafana:12.1.0
+       volumes:
+         - ./grafana-datasource.yml:/etc/grafana/provisioning/datasources/prometheus.yml:ro
+         - grafana-data:/var/lib/grafana
+       ports:
+         - "127.0.0.1:3000:3000"
+       networks:
+         - game
+       restart: unless-stopped
+
+   volumes:
+     prometheus-data:
+     grafana-data:
+
+   networks:
+     game:
+       name: sharpmush_sharpmush-net
+       external: true
+   ```
+
+   Prometheus keeps 30 days of readings in its own volume. Both ports are on the loopback address
+   only.
+
+7. Start them:
+
+   ```bash
+   docker compose up -d
+   ```
+
+8. Check that Prometheus can read both programs:
+
+   ```bash
+   curl -s http://127.0.0.1:9090/api/v1/targets | grep -o '"health":"[a-z]*"'
+   ```
+
+   Output:
+
+   ```
+   "health":"up"
+   "health":"up"
+   ```
+
+   A `"health":"down"` means Prometheus cannot reach that program. Check the network name in
+   `compose.yml` and that the game is running.
+
+</Steps>
+
+<Aside type="caution" title="Change Grafana's password first">
+Grafana starts with the user `admin` and the password `admin`, and asks for a new password at the
+first sign-in. Sign in and change it before doing anything else.
+</Aside>
+
+## Open Grafana
+
+Grafana listens on the game machine's loopback address, so reach it through an ssh tunnel. On your
+own computer:
+
+```bash
+ssh -N -L 3000:127.0.0.1:3000 root@<your-server-ip>
+```
+
+Leave that running and open `http://localhost:3000`. Use the same kind of tunnel, with port 9090,
+to open Prometheus itself.
+
+### The timings dashboard
+
+SharpMUSH ships a Grafana dashboard for function and command timings: the slowest functions and
+commands, where the time goes, and the call and failure rates. To add it:
+
+<Steps>
+
+1. Download it on your own computer:
+
+   ```bash
+   curl -fsSL https://raw.githubusercontent.com/SharpMUSH/SharpMUSH/main/deploy/grafana/sharpmush-invocations.json -o sharpmush-invocations.json
+   ```
+
+2. In Grafana, open **Dashboards**, then **New**, then **Import**.
+
+3. Select **Upload dashboard JSON file**, pick the file, then select **Import**.
+
+</Steps>
+
+The dashboard is called **SharpMUSH function and command timings**. Its **Prometheus** menu picks the
+data source, and starts on the one set up above. Its **Function** and **Command** menus narrow every
+panel to the names you pick.
+
+## Alerts
+
+These rules cover the failures an operator most needs to hear about. Save them as `alerts.yml`:
+
+```yaml
+groups:
+  - name: sharpmush
+    rules:
+      - alert: SharpMUSHDown
+        expr: up{job=~"sharpmush-.*"} == 0
+        for: 2m
+        annotations:
+          summary: "{{ $labels.job }} has not answered a scrape for 2 minutes"
+      - alert: SharpMUSHBackupWillNotStart
+        expr: sharpmush_storage_backup_fits == 0
+        annotations:
+          summary: "The next backup would not find enough free disk"
+      - alert: SharpMUSHMapNearlyFull
+        expr: sharpmush_storage_bytes{kind="map_headroom"} < ignoring(kind) 2 * sharpmush_storage_bytes{kind="live"}
+        annotations:
+          summary: "The world is close to its map limit; raise SHARPMUSH_LIGHTNING_MAPSIZE"
+      - alert: SharpMUSHBusStreamFilling
+        expr: max by (stream) (sharpmush_messaging_stream_bytes{stream=~"SHARPMUSH-.*"} / sharpmush_messaging_stream_max_bytes) > 0.8
+        for: 10m
+        annotations:
+          summary: "Bus stream {{ $labels.stream }} is over 80% of its byte budget"
+      - alert: SharpMUSHBusRefusing
+        expr: sum by (stream, reason) (increase(sharpmush_messaging_publish_rejected_total[10m])) > 0
+        annotations:
+          summary: "The bus refused messages on {{ $labels.stream }} ({{ $labels.reason }})"
+      - alert: SharpMUSHMessagesDropped
+        expr: sum by (job, consumer, reason) (increase(sharpmush_messaging_handler_terminal_failures_total[10m])) > 0
+        annotations:
+          summary: "{{ $labels.consumer }} gave up on messages ({{ $labels.reason }})"
+      - alert: SharpMUSHBacklog
+        expr: sum by (job, consumer) (sharpmush_messaging_consumer_pending) > 1000
+        for: 5m
+        annotations:
+          summary: "{{ $labels.consumer }} has over 1000 messages waiting"
+```
+
+A firing alert shows on Prometheus's **Alerts** page. To have one sent to you by email, Discord or
+another service, set up a contact point in Grafana's **Alerting** section, or run Prometheus's
+Alertmanager.
+
+[Storage and History Retention](/guides/storage-and-retention#what-a-backup-run-needs) explains the
+storage figures behind the backup and map alerts, and has two more disk alerts.
+
+## What the metrics mean
+
+Prometheus adds `job` and `instance` labels to every series, and SharpMUSH adds `otel_scope_name` and
+`otel_scope_version`. Counters end in `_total`, timings in `_milliseconds`, and sizes are in bytes.
+
+Both programs publish the player, connection and health gauges below, but only one of them keeps
+each up to date. Read players, connections and `sharpmush_server_health` from
+`job="sharpmush-server"`, and `sharpmush_connectionserver_health` from
+`job="sharpmush-socketserver"`. The other program reports a fixed 0 for players and connections, and a
+fixed 1 for the other's health.
+
+### Players and connections
+
+| Metric | What it is | Labels |
+|---|---|---|
+| `sharpmush_players_logged_in` | Connections logged in to a character now; a character connected twice counts twice | |
+| `sharpmush_connections_active` | Connections now, logged in or not | |
+| `sharpmush_connection_events_total` | Connections opened and closed, logins and logouts, from the game server only | `event_type`: `connected`, `disconnected`, `logged_in`, `logged_out`, `account_mode` |
+| `sharpmush_server_health` | 1 while the game server runs | |
+| `sharpmush_connectionserver_health` | 1 while the connection server runs | |
+
+A health gauge cannot report 0 for a program that has stopped, so alert on Prometheus's own `up`
+instead, as `SharpMUSHDown` does.
+
+Logins in the last hour:
+
+```
+sum(increase(sharpmush_connection_events_total{event_type="logged_in"}[1h]))
+```
+
+### Function and command timings
+
+| Metric | Labels |
+|---|---|
+| `sharpmush_function_invocation_duration_milliseconds` | `function_name`, `success` |
+| `sharpmush_command_invocation_duration_milliseconds` | `command_name`, `success` |
+
+Each is a histogram of the time one call took, from the game server. A call's time is its own work:
+the time spent on its arguments and on calls inside it is counted where it was spent. A label holds
+the built-in's name in capitals, whatever the caller typed, so `@pe` is counted as `@PEMIT`. The
+[Deployment Reference](/guides/deployment#metrics) has the details.
+
+The slowest functions, at the 95th percentile:
+
+```
+topk(10, histogram_quantile(0.95, sum by (le, function_name) (rate(sharpmush_function_invocation_duration_milliseconds_bucket[5m]))))
+```
+
+### The world's storage
+
+From the game server.
+
+| Metric | What it is | Labels |
+|---|---|---|
+| `sharpmush_storage_bytes` | The world's sizes: map limit, file, disk used, live data, free space and what a backup needs | `kind` |
+| `sharpmush_storage_backup_fits` | 1 when the next backup would find enough free disk, 0 when it would not start | |
+| `sharpmush_storage_attribute_index_bytes` | Space each attribute index takes | `index` |
+| `sharpmush_storage_stale_readers_cleared_total` | Read slots freed because the program holding them died mid-read | |
+| `sharpmush_storage_writer_wait_milliseconds` | How long each write waited for its turn | |
+| `sharpmush_storage_writer_hold_milliseconds` | How long each write took, saving to disk included | |
+| `sharpmush_storage_writer_queued` | Writes waiting now | |
+| `sharpmush_storage_read_duration_milliseconds` | How long each read stayed open | |
+| `sharpmush_storage_reads_active` | Reads open now | |
+
+Writes run one at a time. A rising wait means writes are queueing behind each other:
+
+```
+histogram_quantile(0.99, sum by (le) (rate(sharpmush_storage_writer_wait_milliseconds_bucket[5m])))
+```
+
+The `kind` values of `sharpmush_storage_bytes` are listed in
+[Storage and History Retention](/guides/storage-and-retention#disk-space).
+
+### Feeds
+
+From the game server, once feeds hold lines.
+
+| Metric | What it is | Labels |
+|---|---|---|
+| `sharpmush_feed_lines` | Lines held by each kind of feed | `kind` |
+| `sharpmush_feed_stored_bytes` | Space those lines take in the world | `kind` |
+
+### The message bus
+
+The game server and the connection server pass commands and output to each other through NATS.
+Both publish these, and each reports the consumers it reads from.
+
+| Metric | What it is | Labels |
+|---|---|---|
+| `sharpmush_messaging_stream_bytes` | Bytes a stream holds | `stream` |
+| `sharpmush_messaging_stream_max_bytes` | A stream's byte budget, or -1 for none | `stream` |
+| `sharpmush_messaging_stream_messages` | Messages a stream holds | `stream` |
+| `sharpmush_messaging_consumer_pending` | Messages not yet delivered to a consumer | `stream`, `consumer` |
+| `sharpmush_messaging_consumer_ack_pending` | Messages delivered and not yet finished | `stream`, `consumer` |
+| `sharpmush_messaging_consumer_redelivered` | Messages a consumer was given more than once | `stream`, `consumer` |
+| `sharpmush_messaging_publish_rejected_total` | Messages the bus refused or did not confirm in time | `stream`, `reason` |
+| `sharpmush_messaging_handler_retries_total` | Messages tried again after a failure | `consumer` |
+| `sharpmush_messaging_handler_terminal_failures_total` | Messages given up on | `consumer`, `reason` |
+| `sharpmush_messaging_handler_duplicates_total` | Messages delivered again after they were handled, and skipped | `consumer` |
+| `sharpmush_messaging_jetstream_storage_used_bytes` | Disk the bus uses | |
+| `sharpmush_messaging_jetstream_storage_available_bytes` | Disk the bus may still use, when it has a limit | |
+
+The streams are read every 30 seconds. `SHARPMUSH-CS` carries players' input to the game server and
+`SHARPMUSH-MS` carries output back. When one of them is full, the bus refuses new messages on it
+(`sharpmush_messaging_publish_rejected_total` with `reason="full"`) until the other side catches up;
+nothing already queued is lost. Each gets 512 MiB unless `SHARPMUSH_NATS_MAX_BYTES` (in bytes) is set
+on both programs. `TERMINAL_REPLAY_V2` keeps recent browser terminal output for reconnects and drops
+its oldest output when full, so it is normal for it to sit near its budget.
+
+### .NET and HTTP
+
+Both programs also publish the standard .NET runtime metrics (`dotnet_*`: memory, garbage
+collection, threads, CPU time) and ASP.NET Core's web server metrics (`http_server_*`, `kestrel_*`).
+CPU use of each program, in cores:
+
+```
+sum by (job) (rate(dotnet_process_cpu_time_seconds_total[5m]))
+```

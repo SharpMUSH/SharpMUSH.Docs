@@ -84,6 +84,7 @@ export default defineConfig({
                       { label: 'Moderation', slug: 'guides/moderation' },
                       { label: 'Deployment Reference', slug: 'guides/deployment' },
                       { label: 'Storage and History Retention', slug: 'guides/storage-and-retention' },
+                      { label: 'Collecting Metrics', slug: 'guides/metrics' },
                       { label: 'Remote Backups in the Portal', slug: 'guides/remote-backups' },
                       { label: 'Updating from the Portal', slug: 'guides/component-updates' },
                       { label: 'Secrets', slug: 'guides/secrets' },

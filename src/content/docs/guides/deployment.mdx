@@ -333,9 +333,10 @@ the call errored, was refused, or hit a limit. A command is timed only once it s
 `success` is `false` only when it throws.
 
 `deploy/grafana/sharpmush-invocations.json` is a Grafana dashboard with these and the call and failure
-rates for both. Import it in Grafana (Dashboards, New, Import) and pick the Prometheus data source that
-scrapes the server. The storage metrics are described in
-[Storage and History Retention](/guides/storage-and-retention).
+rates for both. Import it in Grafana (Dashboards, New, Import), then pick the Prometheus data source that
+scrapes the server from the dashboard's **Prometheus** menu. The storage metrics are described in
+[Storage and History Retention](/guides/storage-and-retention). [Collecting Metrics](/guides/metrics)
+sets up Prometheus and Grafana beside the game, with alerts, and lists every metric.
 
 ## Starting on boot
 

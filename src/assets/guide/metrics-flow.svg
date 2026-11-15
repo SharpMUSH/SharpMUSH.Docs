@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 380" width="860" height="380" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="14">
+  <title id="t">How metrics get from SharpMUSH to Grafana</title>
+  <desc id="d">Inside the game's Docker network, Prometheus reads /metrics from the game server on port 9092 and from the connection server on port 9091 every 15 seconds, and keeps the readings. Grafana reads Prometheus. The rendering worker has no metrics. Your browser reaches Grafana through an ssh tunnel to port 3000 on the server's loopback address.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" style="fill:var(--dg-muted)"/>
+    </marker>
+    <marker id="p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" style="fill:var(--dg-purple-line)"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="860" height="380" rx="12" style="fill:var(--dg-canvas)"/>
+
+  <rect x="20" y="20" width="614" height="340" rx="10" stroke-dasharray="6 4" style="fill:var(--dg-surface);stroke:var(--dg-line)"/>
+  <text x="36" y="44" font-weight="600" style="fill:var(--dg-muted)">The game's Docker network (sharpmush-net)</text>
+
+  <rect x="44" y="66" width="230" height="72" rx="8" style="fill:var(--dg-blue-fill);stroke:var(--dg-blue-line)"/>
+  <text x="159" y="94" text-anchor="middle" font-weight="600" style="fill:var(--dg-blue-ink)">Game server</text>
+  <text x="159" y="118" text-anchor="middle" font-family="ui-monospace, monospace" font-size="12" style="fill:var(--dg-blue-ink)">sharpmush-server:9092</text>
+
+  <rect x="44" y="164" width="230" height="72" rx="8" style="fill:var(--dg-blue-fill);stroke:var(--dg-blue-line)"/>
+  <text x="159" y="192" text-anchor="middle" font-weight="600" style="fill:var(--dg-blue-ink)">Connection server</text>
+  <text x="159" y="216" text-anchor="middle" font-family="ui-monospace, monospace" font-size="12" style="fill:var(--dg-blue-ink)">sharpmush-socketserver:9091</text>
+
+  <rect x="44" y="262" width="230" height="72" rx="8" stroke-dasharray="4 3" style="fill:var(--dg-card);stroke:var(--dg-line)"/>
+  <text x="159" y="290" text-anchor="middle" font-weight="600" style="fill:var(--dg-muted)">Rendering worker</text>
+  <text x="159" y="314" text-anchor="middle" font-size="12" style="fill:var(--dg-muted)">no metrics</text>
+
+  <rect x="400" y="115" width="220" height="72" rx="8" style="fill:var(--dg-purple-fill);stroke:var(--dg-purple-line)"/>
+  <text x="510" y="143" text-anchor="middle" font-weight="600" style="fill:var(--dg-purple-ink)">Prometheus</text>
+  <text x="510" y="167" text-anchor="middle" font-size="12" style="fill:var(--dg-purple-ink)">reads every 15 s, keeps 30 days</text>
+
+  <path d="M400 140 L276 104" stroke-width="2" fill="none" marker-end="url(#p)" style="stroke:var(--dg-purple-line)"/>
+  <path d="M400 164 L276 198" stroke-width="2" fill="none" marker-end="url(#p)" style="stroke:var(--dg-purple-line)"/>
+  <text x="352" y="100" text-anchor="middle" font-size="12" style="fill:var(--dg-muted)">GET /metrics</text>
+  <text x="352" y="220" text-anchor="middle" font-size="12" style="fill:var(--dg-muted)">GET /metrics</text>
+
+  <rect x="400" y="262" width="220" height="72" rx="8" style="fill:var(--dg-green-fill);stroke:var(--dg-green-line)"/>
+  <text x="510" y="290" text-anchor="middle" font-weight="600" style="fill:var(--dg-green-ink)">Grafana</text>
+  <text x="510" y="314" text-anchor="middle" font-family="ui-monospace, monospace" font-size="12" style="fill:var(--dg-green-ink)">127.0.0.1:3000</text>
+
+  <path d="M510 262 L510 189" stroke-width="1.5" fill="none" marker-end="url(#a)" style="stroke:var(--dg-muted)"/>
+  <text x="520" y="230" font-size="12" style="fill:var(--dg-muted)">queries</text>
+
+  <rect x="700" y="262" width="140" height="72" rx="8" style="fill:var(--dg-card);stroke:var(--dg-line)"/>
+  <text x="770" y="290" text-anchor="middle" font-weight="600">Your browser</text>
+  <text x="770" y="314" text-anchor="middle" font-size="12" style="fill:var(--dg-muted)">on your computer</text>
+
+  <path d="M700 298 L622 298" stroke-width="1.5" fill="none" marker-end="url(#a)" style="stroke:var(--dg-muted)"/>
+  <text x="667" y="288" text-anchor="middle" font-size="12" style="fill:var(--dg-muted)">ssh tunnel</text>
+</svg>
