@@ -1,0 +1,29 @@
+# SharpMUSH
+
+> SharpMUSH is a modern, PennMUSH-compatible MUSH server and web portal built for text-based roleplay games, combining traditional telnet/MU* client support with browser-based administration, setting wikis, package management, and C# extensibility.
+
+SharpMUSH lets game admins set up, configure, and run a text-based roleplay server primarily from a web browser while preserving compatibility with existing MU* workflows. Players can connect via classic telnet MU* clients (with MXP, Pueblo, and GMCP support) or play directly in a browser on desktop and mobile with built-in screen-reader support. Existing games can migrate by importing PennMUSH, TinyMUX, or RhostMUSH databases and mail.
+
+## Core Concepts & Overview
+
+- [What is SharpMUSH?](https://sharpmush.com/about/what-is/): Overview of what a MUSH is, how SharpMUSH works, and what its web portal adds around the core server.
+- [Example Game](https://mush.sharpmush.com/): Live demonstration environment showcasing the player portal, setting wiki, and gameplay experience.
+
+## Setup & Administration Guides
+
+- [Get Started](https://sharpmush.com/guides/get-started/): Step-by-step instructions for launching a SharpMUSH server locally or on a rented host using the setup wizard.
+- [Staff Roles & Permissions](https://sharpmush.com/guides/roles/): How to assign granular staff permissions (such as jobs queues or wiki editing) instead of relying on a single wizard bit.
+- [System Packages](https://sharpmush.com/guides/packages/): Installing, previewing, and rolling back modular game systems (chargen, scenes, boards, jobs) from the admin portal.
+
+## Building & Softcode Reference
+
+- [Helpfile Reference](https://sharpmush.com/reference/sharpmush-help/sharptop/): Complete command and function reference sourced directly from the SharpMUSH server helpfiles.
+- [PennMUSH Compatibility & Differences](https://sharpmush.com/reference/compatibility/): Details on supported PennMUSH commands and softcode, database imports (PennMUSH, TinyMUX, RhostMUSH), and behavioral differences.
+- [Visual Layouts](https://sharpmush.com/guides/visual-layouts/): Guide to responsive, accessible softcode layout functions (`box()`, `fields()`, `datatable()`, `gauge()`).
+- [Web Portal & HTTP Handlers](https://sharpmush.com/guides/applications/): Building browser-based character profiles, softcode forms, App Builder workflows, and outbound `@http` integrations.
+- [C# Plugins](https://sharpmush.com/guides/plugins/): Extending the server with custom commands, functions, and services in C# without forking the core codebase.
+
+## Community & Source
+
+- [GitHub Repository](https://github.com/SharpMUSH/SharpMUSH): Source code, issue tracker, and release notes.
+- [Discord Community](https://discord.gg/jYErRbqaC9): Community chat for server admins, softcoders, and players.
