@@ -182,8 +182,8 @@ It records poses at once. When staff set `+config scene/default-status=new`, a n
 ```
 
 A scene's members, wherever they are, and the others in its room are told when it starts, pauses,
-resumes or ends. A public scene's start names the command that joins it, unless only invited players
-may join. A private scene is announced only to its members. While a scene runs, they are also told
+resumes or ends. A scene's start names the command that joins it, unless only invited players may
+join. The end of a private scene is announced only to its members. While a scene runs, they are also told
 when a pose in it is edited, or an edit is undone or redone. Staff turn all of this off with
 `+config scene/announce=no`.
 
@@ -205,8 +205,10 @@ for a scene that has not started, cancel. Finish and cancel ask once before they
 ### Who can read it
 
 A scene is public: it is listed in `+scene` and anyone holding `scene.view` can read its log. `+scene/private [<id>]`
-hides it and its log from everyone but its members, and `+scene/public [<id>]` puts it back. Who may
-pose is decided by who has joined, not by this setting.
+makes it private, and `+scene/public [<id>]` puts it back. A private scene runs like any other: it
+shows in its room, anyone there may join it, and its owner and cast pose in it. Once it is finished
+or cancelled, it and its log are hidden from everyone but those who took part, who still find it in
+`+scene/mine` and **Your scenes**.
 
 ```
 > +scene/private 2
