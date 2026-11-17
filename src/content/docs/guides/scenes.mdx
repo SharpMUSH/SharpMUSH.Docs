@@ -74,6 +74,21 @@ recorded into. Joining needs the `scene.join` permission; see [Who can take part
 - `+scene/deactivate` keeps you a member but stops recording you. `+scene/activate <id>` starts
   again.
 
+`+scene/go <id>` takes you to the room a scene is running in, so you can join it there. Only a
+running scene: one that is scheduled, paused, finished or cancelled is refused. A FIXED character
+can't go, and going needs the `scene.join` permission. In the `+scene` list, a running scene's room
+is a link that does the same, and in the portal the room name on a running scene's card, page and
+live view takes your character there and opens **Play**.
+
+```
+> +scene/go 1
+=< Harbour Tavern >============================================================
+You see nothing special.
+Contents:
+Mira
+[SCENE] Done: You go to scene 1. +scene/join 1 joins it.
+```
+
 ## Posing
 
 Once you have joined, `pose`, `say`, `semipose` and `@emit` in the scene's room are recorded as you
