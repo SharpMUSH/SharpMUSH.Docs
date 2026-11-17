@@ -67,7 +67,10 @@ recorded into. Joining needs the `scene.join` permission; see [Who can take part
 [SCENE] Done: Joined and focused on scene 1.
 ```
 
-- `+scene/leave` leaves your focused scene. If you never posed, you leave no trace.
+- `+scene/leave` leaves your focused scene. You stay on its cast as inactive while it has poses of
+  yours; with none, or only deleted ones, you leave no trace. A scene's owner can't leave it: their
+  `+scene/leave` makes them inactive, as `+scene/deactivate` does, and the portal shows them
+  **Go inactive** instead of **Leave scene**.
 - `+scene/deactivate` keeps you a member but stops recording you. `+scene/activate <id>` starts
   again.
 
