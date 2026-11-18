@@ -250,7 +250,8 @@ in the copy goes back there and the copy is removed:
 [SCENE] Scene 3 is over, so its room copy is gone.
 ```
 
-A paused scene keeps its copy for a week; after that `+scene/start/copy` makes a new one.
+A copy lasts 30 days at most, even while its scene runs, and a paused scene keeps its copy for a
+week. After either, `+scene/start/copy` makes a new one.
 
 The copy takes the room's `DESCRIBE`, `DESCFORMAT`, `CONFORMAT` and `EXITFORMAT`, and its parent, so
 formats built on a parent still work. It never takes map data: coordinates and anything else under
@@ -279,6 +280,7 @@ installed.
 | `exit` | `out;o` | The copy's exit and its aliases |
 | `per-player` | `1` | Copies one player may have at a time |
 | `total` | `25` | Copies the game may have at a time |
+| `max-days` | `30` | How many days a copy lasts at most, whatever its scene is doing; `0` sets no limit |
 | `keep-paused` | `604800` (a week) | How long a paused scene keeps its copy; `0` keeps it |
 
 ### Who can read it
