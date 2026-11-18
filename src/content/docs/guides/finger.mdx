@@ -340,6 +340,7 @@ on the Finger object, and they go away when that package is uninstalled.
 | `locked` | Keys only staff set. | none |
 | `columns` | How many columns the other fields are dealt into, 1 to 4. | 2 |
 | `length` | The longest value, in characters. | 1000 |
+| `portalhide` | Keys the portal profile leaves out. Only with `finger-profile` installed. | none |
 
 `sections` and `locked` take only keys the game has fields for. For example, to let only staff
 set Occupation:
@@ -358,9 +359,34 @@ A player who tries is told so:
 
 ### The portal's profile page
 
-A player's values are their ``PROFILE`<KEY>`` attributes. The `profile-handler` package, which
-serves the portal's profile page, reads the same attributes for any field a game adds to its
-schema, so that page and `+finger` show the same text.
+The `finger-profile` package puts the fields on each character's profile page in the portal. It
+ships with the server but is not installed: install it from **Packages** like `finger`. It needs
+`finger` and `profile-handler`, which serves the profile page.
+
+Once it is installed, a character's profile is their `+finger`: a section called **In character**
+with the `+finger` fields, in place of the profile's **Identity** section (when the character was
+made and its object ID). The `+oocfinger` fields stay in the game. Each field is read as `+finger`
+shows it to whoever is looking:
+
+- A field nobody filled in is left out.
+- A field the player hid shows only to them and to staff who look after profiles.
+- A visitor who is not signed in sees what everyone sees.
+- The fields in the `sections` setting take the whole width of the section and keep their colour.
+
+![Ash's profile page in the portal: an In character section with Full Name, Species, Occupation and the quote](../../../assets/guide/finger-profile-portal.webp)
+
+Ash's age is missing above because she hid it.
+
+A field added as in [Choosing the fields](#choosing-the-fields) shows there too. To leave a field off the portal but keep it in
+`+finger`, add its key to `portalhide`:
+
+```
+> +config/add finger/portalhide=occupation
+[CONFIG] Done: finger/portalhide is now occupation, was none.
+```
+
+Uninstalling `finger-profile` puts the profile page back as it was, and the players keep their
+values.
 
 ### Drawing your own screen
 
