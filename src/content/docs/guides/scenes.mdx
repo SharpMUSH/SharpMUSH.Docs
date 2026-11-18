@@ -220,6 +220,67 @@ A scene's page in the portal has the same controls for its owner: edit, pause, s
 for a scene that has not started, cancel. Finish and cancel ask once before they run. Anyone holding
 `scene.manage` sees every control on any scene, and anyone holding `scene.close` sees finish.
 
+### In a copy of the room
+
+With the `scene-rooms` package installed, a scene can run in a copy of the room you stand in: the
+same name and look, somewhere nobody walks in by accident. One command copies the room, binds the
+scene to the copy and takes you there.
+
+- `+scene/create/copy <title>[=<pitch>]` creates the scene in a copy.
+- `+scene/start/copy [<id>]` starts or resumes your scene in a copy. A running scene moves to the
+  copy, and a scene that already has one goes back to it.
+- `+scene/room [<id>]` says where the copy came from and when it goes.
+- `+scene/room/name [<id>=]<name>` and `+scene/room/desc [<id>=]<text>` change the copy.
+
+```
+> +scene/create/copy The Docks at Night
+[SCENE] Done: Scene 3 created and focused (status: active).
+```
+
+Those left in the room you copied are told, and follow with `+scene/go`:
+
+```
+[SCENE] Mira took scene 3 to a copy of this room. +scene/go 3 follows.
+```
+
+The copy has one exit, `out`, back to the room it was copied from. When the scene finishes, everyone
+in the copy goes back there and the copy is removed:
+
+```
+[SCENE] Scene 3 is over, so its room copy is gone.
+```
+
+A paused scene keeps its copy for a week; after that `+scene/start/copy` makes a new one.
+
+The copy takes the room's `DESCRIBE`, `DESCFORMAT`, `CONFORMAT` and `EXITFORMAT`, and its parent, so
+formats built on a parent still work. It never takes map data: coordinates and anything else under
+`MAP`, `ENVIRONMENT`, `AREA` or the zone. A parent that holds map data is left off, and the copy
+takes the parent's look instead. The copy belongs to the owner of the Scene Logger and is set
+MISTRUST, so code copied from the room controls nothing but the copy.
+
+In the portal, the Scenes page's start form has **Run it in a copy of the room I'm in**, a paused or
+scheduled scene's page has **Start in a copy of the room I'm in**, and the Play page links to the
+form when no scene runs in your room.
+
+`+config scene-rooms` lists the settings and `+config scene-rooms/<setting>=<value>` changes one, with
+the `config.admin` permission. They come with the `scene-rooms-config` bridge wherever `+config` is
+installed.
+
+```
+> +config/add scene-rooms/include=NAMEFORMAT
+> +config scene-rooms/per-player=2
+```
+
+
+| Setting | Default | What it does |
+|---|---|---|
+| `include` | `DESCRIBE DESCFORMAT CONFORMAT EXITFORMAT` | Attributes copied, by name or pattern (`*` one level, `**` any depth) |
+| `exclude` | ``MAP MAP`** ENVIRONMENT AREA`` | Attributes never copied, even when `include` names them |
+| `exit` | `out;o` | The copy's exit and its aliases |
+| `per-player` | `1` | Copies one player may have at a time |
+| `total` | `25` | Copies the game may have at a time |
+| `keep-paused` | `604800` (a week) | How long a paused scene keeps its copy; `0` keeps it |
+
 ### Who can read it
 
 A scene is public: it is listed in `+scene` and anyone holding `scene.view` can read its log. `+scene/private [<id>]`
@@ -394,6 +455,7 @@ Other packages add to scenes. Each has its own page:
 | `scene-here` | The command palette's entries for the scene in your room | [The Command Palette](/guides/command-palette/) |
 | `scene-verse` | A verse and a canon on each scene (in the package library) | [Scene Details](/guides/scene-details/) |
 | `scene-safety` | A content warning on each scene, lines, veils, pause and skip | [Scene Safety](/guides/scene-safety/) |
+| `scene-rooms` | Scenes in a temporary copy of a room | [In a copy of the room](#in-a-copy-of-the-room) |
 | `scene-availability` | When each character is free, and who can make a scene | [Scene Availability](/guides/scene-availability/) |
 | `highlights` | Favourite poses, and a page of them | [Highlights](/guides/highlights/) |
 | `summary` | A one-line summary of a long pose | [Pose Summaries](/guides/summary/) |
