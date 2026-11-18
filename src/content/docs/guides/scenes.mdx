@@ -237,7 +237,7 @@ scene to the copy and takes you there.
 [SCENE] Done: Scene 3 created and focused (status: active).
 ```
 
-Those left in the room you copied are told, and follow with `+scene/go`:
+Those left in the room you copied are told, and follow with `+scene/go <id>`:
 
 ```
 [SCENE] Mira took scene 3 to a copy of this room. +scene/go 3 follows.
@@ -250,13 +250,14 @@ in the copy goes back there and the copy is removed:
 [SCENE] Scene 3 is over, so its room copy is gone.
 ```
 
-A copy lasts 30 days at most, even while its scene runs, and a paused scene keeps its copy for a
-week. After either, `+scene/start/copy` makes a new one.
+By default a copy lasts 30 days at most, even while its scene runs, and a paused scene keeps its
+copy for a week; staff can change both (see the settings below). An hourly sweep removes copies past
+either limit. After that, `+scene/start/copy` makes a new one.
 
 The copy takes the room's `DESCRIBE`, `DESCFORMAT`, `CONFORMAT` and `EXITFORMAT`, and its parent, so
-formats built on a parent still work. It never takes map data: coordinates and anything else under
-`MAP`, `ENVIRONMENT`, `AREA` or the zone. A parent that holds map data is left off, and the copy
-takes the parent's look instead. The copy belongs to the owner of the Scene Logger and is set
+formats built on a parent still work. It never takes the zone, and by default leaves out map data:
+`MAP` and everything under it, `ENVIRONMENT` and `AREA` (the `exclude` setting). A parent that holds
+map data is left off, and the copy takes the parent's look instead. The copy belongs to the owner of the Scene Logger and is set
 MISTRUST, so code copied from the room controls nothing but the copy.
 
 In the portal, the Scenes page's start form has **Run it in a copy of the room I'm in**, a paused or
