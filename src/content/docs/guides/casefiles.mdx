@@ -1,33 +1,50 @@
 ---
 title: Case files
-description: Private wiki pages built around a plot, shared with chosen characters and roles, with a briefing for newcomers and the developments that followed.
+description: Private wiki pages built around a plot, shared with chosen characters and roles, with a briefing for newcomers, the developments that followed, and the scenes that belong to it.
 ---
 
 A case file is one wiki page built around a plot, filed in the **Case Files** category. It opens
-with a **briefing**, which a newcomer reads first, and its **Developments** section records what
-happened, newest first. Only its members, and staff with the wiki.admin permission, can read it.
-Everyone else finds nothing: it is not listed in Case Files, searched or shown anywhere.
+with a **briefing**, which a newcomer reads first. Its **Developments** section records what
+happened, newest first, and its **Scenes** section lists the scenes played for it. Only its members,
+and staff with the wiki.admin permission, can read it. Everyone else finds nothing: it is not listed,
+searched or shown anywhere.
 
 | You want to | Read |
 |---|---|
+| turn case files on | [Installing](#installing) |
 | open a case file for a plot | [Opening a case file](#opening-a-case-file) |
 | let people in, or take them out | [Members](#members) |
-| post what happened, or edit the page | [Developments and editing](#developments-and-editing) |
+| post what happened | [Developments](#developments) |
+| file a scene into a case file | [Scenes](#scenes) |
 | catch up on a plot | [Reading a case file](#reading-a-case-file) |
-| do the same in the game | [In the game](#in-the-game) |
 
 The examples follow **Harbour Fire**, a plot about a warehouse fire. Marta runs it, Ines writes in
 it, and everyone with the City Watch role may read it.
 
+## Installing
+
+Case files come as four packages. Install them from **Packages** in Build & manage:
+
+| Package | Adds |
+|---|---|
+| casefiles | `+casefile` and its help |
+| casefiles-app | the **Case files** page in the portal, under Play |
+| casefiles-scene | `+casefile/scene` and a line on the `+scene` card. Needs the Scene System |
+| casefiles-help | `+casefile` in `+help`. Needs the plus-help package |
+
 ## Opening a case file
 
-In the portal, open **Wiki**, then **Case files**, and press **Open a case file**. Give it a title and
-a briefing. It becomes a page in the Case Files category, and you become its **lead**.
+In the portal, open **Case files** and fill in **Open a case file**: a title and a briefing. It
+becomes a page in the Case Files category, and you become its **lead**. In the game:
 
-![The Case files page with the Open a case file form: a Title box holding Quiet Pier and a Briefing box below it.](../../../assets/guide/casefiles-open.webp)
+```
+> +casefile/create Harbour Fire=Who set the fire at the east docks, and why.
+[CASEFILE] Done: Opened Harbour Fire. You are its lead. Let people in with +casefile/add Harbour Fire=<player>.
+```
 
-Opening one needs the wiki.create permission, which approved characters hold, and a title no other
-page has.
+![The Case files page for Marta: her case files with her level, member count and last change, and the Open a case file form.](../../../assets/guide/casefiles-open.webp)
+
+Opening one needs the wiki.create permission and a title no other page has.
 
 ## Members
 
@@ -37,70 +54,99 @@ later, so a case file needs no role or permission of its own. Each member has a 
 | Level | May |
 |---|---|
 | reader | read the page |
-| contributor | also edit it and post developments |
+| contributor | also post developments, file scenes, and edit the page |
 | lead | also let people in and out, and change levels |
 
-A lead sees a level list and a remove button beside each member, and a box under them. Type a
-character's name, or `role:` and a role, such as `role:city-watch`, pick a level and press
-**Let in**. A case file always keeps at least one character as its lead.
+A lead sees a **Members** form on the case file. Type a character's name, or `role:` and a role,
+such as `role:city-watch`, pick a level and press **Let in**. **Take out** removes a member. A case
+file always keeps at least one character as its lead.
 
-![Harbour Fire as Marta, its lead: the briefing, three developments, and the members Marta, Ines, Pip and everyone with the city-watch role, each with a level list.](../../../assets/guide/casefiles-lead.webp)
+![Harbour Fire as Marta, its lead: the members Marta, Ines, Pip and role city-watch with their levels, then the Post a development form.](../../../assets/guide/casefiles-lead.webp)
+
+In the game:
+
+```
+> +casefile/add Harbour Fire=Ines/contributor
+[CASEFILE] Done: Ines is now a contributor of Harbour Fire.
+> +casefile/add Harbour Fire=role:city-watch
+[CASEFILE] Done: Everyone with the city-watch role is now a reader of Harbour Fire.
+> +casefile/remove Harbour Fire=Marta
+[CASEFILE] Warning: A case file keeps at least one character as its lead. Name another lead first.
+```
 
 Membership never lets anyone do more than the wiki's own permissions allow. A contributor who lacks
-wiki.edit reads the case file like a reader and sees no **Post a development** or **Edit**.
+wiki.edit cannot post.
 
-## Developments and editing
+## Developments
 
-To record what happened, press **Post a development** and write what happened. The entry goes first
-under the page's Developments heading, with the date and your name.
+To record what happened, fill in **Post a development** on the case file: a few words for the title,
+and what happened. The entry goes first under the page's Developments heading, dated and signed.
 
-![The Post a development form: What happened holds A key goes missing, and Details the text.](../../../assets/guide/casefiles-post.webp)
+![Harbour Fire as Ines, a contributor, just after posting: the notice Posted Lamp oil on the stairs to Harbour Fire.](../../../assets/guide/casefiles-post.webp)
 
-**Edit** opens the page in the wiki editor, for changing the briefing or anything else on it.
-**History** shows every post and edit: who made it and when.
+In the game:
+
+```
+> +casefile/post Harbour Fire=Lamp oil on the stairs/The watch found a cracked oil flask on the counting-room stairs.
+[CASEFILE] Done: Posted Lamp oil on the stairs to Harbour Fire.
+```
+
+What you type in the game is evaluated as you, as `say` is. To keep `[`, `]` or `%` as they are, put
+a `\` before each.
+
+The case file is an ordinary wiki page, so **Edit** in the wiki changes the briefing or anything
+else on it, and **History** shows every post and edit: who made it and when.
+
+![The Harbour Fire wiki page: the briefing, then Developments, newest first, each dated and signed.](../../../assets/guide/casefiles-page.webp)
+
+## Scenes
+
+With casefiles-scene installed, a contributor or lead files a scene into a case file: one they were
+in, or a public one.
+
+```
+> +casefile/scene Harbour Fire=1
+[CASEFILE] Done: Added scene 1 to Harbour Fire.
+> +casefile/scene Harbour Fire=1
+[CASEFILE] Warning: Scene 1 is already in Harbour Fire.
+```
+
+The scene goes first under the page's Scenes heading, linked to its log.
+
+![The bottom of the Harbour Fire page: the oldest developments, then Scenes with a link to Scene 1: Smoke over Saltmarket.](../../../assets/guide/casefiles-scenes.webp)
+
+The scene's `+scene` card ends with the case files it is in, shown only to their members:
+
+```
+> +scene 1
+======================< Scene 1: Smoke over Saltmarket >======================
+...
+Owner   Ines                                                                 1
+Case file: Harbour Fire
+==============================================================================
+```
+
+Who may read the scene's log is still up to the Scene System, not the case file.
 
 ## Reading a case file
 
-Readers see the same page without the controls: the briefing first, then the developments, and who
-else is in it. The page itself is also listed in the Case Files category, for members only.
+Readers see the case file without the forms: who is in it, and links to the page.
 
-![Harbour Fire as Rui, a reader through the City Watch role: the briefing and developments, with History but no Post a development, Edit or member controls.](../../../assets/guide/casefiles-reader.webp)
+![Harbour Fire as Rui, a reader through the City Watch role: the members table and no forms.](../../../assets/guide/casefiles-reader.webp)
 
-![The Case files category as Rui: one page, Harbour Fire, marked locked.](../../../assets/guide/casefiles-category.webp)
-
-Someone outside the case file who follows a link to it is told there is no such case file, and a link
-to its page finds no page. If they try to create a page or a case file with its title, they are told
-only that the title is taken.
-
-![The case file page as Tomas, who is not in it: No such case file. It does not exist, or you are not in it.](../../../assets/guide/casefiles-outsider.webp)
-
-Staff with wiki.admin see every case file and act as a lead in each.
-
-## In the game
-
-`@casefile` does the same in the game:
+`+casefile` lists your case files, `+casefile <case file>` shows one with its members, and
+`@wiki <case file>` reads the page. A reader who tries to post is refused:
 
 ```
-> @casefile
-+=============================< Your case files >============================+
-| Case file     You are  Members  Updated                                    |
-| -------------------------------------------------------------------------- |
-| Harbour Fire  lead           4  2026-11-21                                 |
-+============================================================================+
-> @casefile/add Harbour Fire=Ines/contributor
-CASEFILE: Ines is now a contributor of Harbour Fire.
-> @casefile/add Harbour Fire=role:city-watch
-CASEFILE: Everyone with the city-watch role is now a reader of Harbour Fire.
-> @casefile/post Harbour Fire=Night watch orders/The watch captain moved the patrol to the east quay at nine, an hour before the fire.
-CASEFILE: Posted to Harbour Fire.
+> +casefile/post Harbour Fire=Saw it/I was there.
+[CASEFILE] Warning: Permission denied. Posting a development needs a contributor or lead of the case file.
 ```
 
-`@casefile <case file>` shows who is in one, and `@wiki <case file>` reads the page. A reader who
-tries to post, or a contributor who tries to let someone in, is refused:
+Someone outside the case file who follows a link to it is told there is no such case file, and its
+wiki page looks like a page that does not exist. If they try to open a case file with its title,
+they are told only that the title is taken.
 
-```
-> @casefile/post Harbour Fire=Saw it/I was there.
-CASEFILE: Permission denied. Posting a development needs a contributor or lead of the case file.
-```
+![The case file as Tomas, who is not in it: No such case file.](../../../assets/guide/casefiles-outsider.webp)
 
-See `help @casefile` in the game for every switch.
+Staff with wiki.admin see every case file and act as a lead in each. See `+help casefile` in the game
+for every switch.
