@@ -94,10 +94,12 @@ In the game:
 What you type in the game is evaluated as you, as `say` is. To keep `[`, `]` or `%` as they are, put
 a `\` before each.
 
-The case file is an ordinary wiki page, so **Edit** in the wiki changes the briefing or anything
-else on it, and **History** shows every post and edit: who made it and when.
+The case file shows the whole page: the briefing, then the developments, newest first, each dated
+and signed.
 
-![The Harbour Fire wiki page: the briefing, then Developments, newest first, each dated and signed.](../../../assets/guide/casefiles-page.webp)
+![Harbour Fire in the Case files page: the briefing, then Developments, newest first, each dated and signed.](../../../assets/guide/casefiles-page.webp)
+
+`+casefile/history <case file>` shows every post and change: who made it and when.
 
 ## Scenes
 
@@ -112,8 +114,6 @@ in, or a public one.
 ```
 
 The scene goes first under the page's Scenes heading, linked to its log.
-
-![The bottom of the Harbour Fire page: the oldest developments, then Scenes with a link to Scene 1: Smoke over Saltmarket.](../../../assets/guide/casefiles-scenes.webp)
 
 The scene's `+scene` card ends with the case files it is in, shown only to their members:
 
@@ -130,12 +130,12 @@ Who may read the scene's log is still up to the Scene System, not the case file.
 
 ## Reading a case file
 
-Readers see the case file without the forms: who is in it, and links to the page.
+Readers see the same case file without the forms: the page, its scenes, and who is in it.
 
-![Harbour Fire as Rui, a reader through the City Watch role: the members table and no forms.](../../../assets/guide/casefiles-reader.webp)
+![Harbour Fire as Rui, a reader through the City Watch role: the last developments, Scenes with a link to Scene 1: Smoke over Saltmarket, and the members table, with no forms.](../../../assets/guide/casefiles-reader.webp)
 
-`+casefile` lists your case files, `+casefile <case file>` shows one with its members, and
-`@wiki <case file>` reads the page. A reader who tries to post is refused:
+`+casefile` lists your case files, and `+casefile <case file>` reads one: the page, your level and
+who is in it. A reader who tries to post is refused:
 
 ```
 > +casefile/post Harbour Fire=Saw it/I was there.
