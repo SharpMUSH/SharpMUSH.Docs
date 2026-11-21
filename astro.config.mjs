@@ -190,6 +190,7 @@ export default defineConfig({
                               { label: 'Writing the Wiki', slug: 'guides/writing-the-wiki' },
                               { label: 'Reading the Wiki In-Game', slug: 'guides/wiki-reader' },
                               { label: 'Wiki Facts', slug: 'guides/wiki-facts' },
+                              { label: 'Casefiles', slug: 'guides/casefiles' },
                               { label: 'Discord', slug: 'guides/discord' },
                           ],
                       },
