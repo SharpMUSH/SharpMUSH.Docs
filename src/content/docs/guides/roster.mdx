@@ -321,7 +321,7 @@ applications one account may have open. It is 3.
 
 Two functions answer which account a character is on, without the roster:
 
-- `account(<player>)` is the account's id, and empty when the character is on none.
+- `account(<player>)` is the account's `#acct:<key>`, and empty when the character is on none.
   `account(<player>, name)` is the account's username.
 - `accountchars(<player>)` lists the objids of every character on the same account.
 
@@ -331,11 +331,11 @@ login:
 
 ```
 > think account(Wren) / [accountchars(Mara)]
-node_accounts/2 / #15:1792041887040 #16:1792041895280 #48:1792044477789
+#acct:2 / #15:1792041887040 #16:1792041895280 #48:1792044477789
 ```
 
 When an account changes, the game raises the [events](/guides/events) `player`link` and
-`player`unlink`, with `%<objid>` the character and `%<account>` the account's id.
+`player`unlink`, with `%<objid>` the character and `%<account>` the account's `#acct:<key>`.
 
 ### Changing the roster
 
