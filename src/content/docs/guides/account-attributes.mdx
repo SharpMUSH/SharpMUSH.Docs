@@ -60,8 +60,12 @@ Pacific/Kiritimati
 Fri Jan 15 22:00:00 2027
 ```
 
-The time package's `+timezone` keeps a player's zone there, and the bulletin boards can keep what
-each player has read on the account too: see [Time and Time Zones](/guides/time/) and
+`timezone()` reads `TZ` the way `get()` does. Someone who may not read it gets
+`#-1 NO PERMISSION TO GET ATTRIBUTE`, and `time()` gives them the server's zone instead.
+
+None of this needs a package: any code that sets `TZ` on the account works. Where the time package
+is installed, its `+timezone` sets it for players, and the bulletin boards can keep what each player
+has read on the account too: see [Time and Time Zones](/guides/time/) and
 [Bulletin Boards](/guides/bboards/#read-marks-on-the-account).
 
 ## Who reads and writes them

@@ -131,14 +131,33 @@ else who asks is told you keep it to yourself, and other packages read nothing:
 
 `+timezone/unhide` shows it again. A zone you hide stays hidden when you change it.
 
-Your zone is a `TZ` attribute, the one PennMUSH keeps it in. The game keeps it on your account, so
-every character you play from that account shares one zone; a game set to keep one per character, or
-a character on no account, keeps it on the character. `time(*<name>)` and `timezone(*<name>)` read it
-either way. Hiding it clears the attribute's `visual` flag.
+Your zone is a `TZ` attribute, the one PennMUSH keeps it in. It can be on your account, shared by
+every character you play from that account, or on one character. A character's own comes first, so
+`time(*<name>)` and `timezone(*<name>)` read the character's, then the account's. Hiding it clears
+the attribute's `visual` flag.
 
-A character's own `TZ` comes before the account's. Setting your zone takes it off the character you
-typed on, but another character on the account that already had one keeps it, and shows it even when
-the account's is hidden. Setting your zone once on that character too takes its own off.
+`+timezone/account <zone>` sets the zone for every character on your account, and
+`+timezone/character <zone>` gives the character you are on its own:
+
+```
+> +timezone/account eastern
+[TIME] Done: Your time zone is America/New_York (UTC-05:00). It is Mon 23 Nov 2026, 10:51 for you. It is the same for every character on your account.
+> +timezone/character asia/tokyo
+[TIME] Done: Your time zone is Asia/Tokyo (UTC+09:00). It is Tue 24 Nov 2026, 00:51 for you. It is this character's own: +timezone/account <zone> sets one for your whole account.
+```
+
+`+timezone <zone>` changes the zone in use: the character's own when it has one, else the account's.
+`+timezone/clear` clears the zone in use, so a character's own gives way to the account's:
+
+```
+> +timezone/clear
+[TIME] Done: This character's own time zone is cleared. It uses your account's, America/New_York.
+```
+
+Setting the account's zone takes the character's own off the character you typed on. Another
+character with its own keeps it. A game can keep zones only on accounts or only on characters
+instead (see [Settings](#settings)); then `+timezone <zone>` writes there, and `/account` and
+`/character` are refused. A character on no account keeps its zone on the character.
 
 ### Your zone from your client
 
@@ -368,7 +387,7 @@ The number on your game will differ.
 | Setting | What it is | Default |
 |---|---|---|
 | `zone` | The game's zone, the one `+time` calls game time. | `UTC` |
-| `zone-store` | Where `+timezone` keeps a player's zone. `account` keeps it on their account, shared by every character on it; `character` keeps one on each character. A character on no account keeps it on the character either way. Changing it moves nothing: a zone already on an account still serves its characters that have none, and only staff clear it, with `&TZ #acct:<key>`. | `account` |
+| `zone-store` | Where `+timezone` keeps a player's zone. `both` keeps one on their account and lets a character have its own, which comes first; `+timezone/account` and `+timezone/character` choose. `account` keeps it on the account only, shared by every character on it; `character` keeps one on each character. A character on no account keeps it on the character either way. Changing it moves nothing: a zone already on an account still serves its characters that have none, and only staff clear it, with `&TZ #acct:<key>`. | `both` |
 | `format` | How a time is written, in [`timefmt()`](/reference/sharpmush-help/timefmt-function/)'s codes. | `$a $d $b $Y, $H:$M` |
 | `detect` | What a zone a player's client reports does when they set none. `set` fills it in, hidden, and tells them; `offer` tells them at login, and `+timezone/detect` sets it; `off` does nothing. | `set` |
 | `detect-ip` | What to do for a player who set no zone and whose client reports none. `set` and `offer` look the zone up from the player's address at login, through `ip-service`, then work as for `detect`; `off` sends nothing. | `off` |
