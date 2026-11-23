@@ -13,7 +13,8 @@ description: "SharpMUSH documentation for Wiki Administration"
     {"id": "revision-history", "heading": "Revision history", "lookup": "wiki revision history", "aliases": ["@WIKI/HISTORY"]},
     {"id": "permissions", "heading": "Wiki permissions", "lookup": "wiki permissions", "aliases": ["WIKI-PERMISSIONS"]},
     {"id": "combining", "heading": "How requirements combine", "lookup": "wiki requirements combined"},
-    {"id": "requirements", "heading": "Wiki requirements", "lookup": "wiki requirements", "aliases": ["@WIKI/REQUIRE", "@WIKI/ACCESS"]}
+    {"id": "requirements", "heading": "Wiki requirements", "lookup": "wiki requirements", "aliases": ["@WIKI/REQUIRE", "@WIKI/ACCESS"]},
+    {"id": "private-pages", "heading": "Private pages", "lookup": "wiki private pages", "aliases": ["@WIKI/MEMBER", "@WIKI/PRIVATE", "WIKI-MEMBERS"]}
   ],
   "redirects": {"wiki administration commands": "wiki administration"}
 }
@@ -31,6 +32,7 @@ Deleting needs `wiki.delete` and whatever the page requires to edit and delete i
 - [wiki permissions](/reference/sharpmush-help/wiki-administration/#wiki-permissions): what each wiki permission allows
 - [wiki requirements combined](/reference/sharpmush-help/wiki-administration/#how-requirements-combine): how requirements add up
 - [wiki requirements](/reference/sharpmush-help/wiki-administration/#wiki-requirements): setting and checking requirements
+- [wiki private pages](/reference/sharpmush-help/wiki-administration/#private-pages): pages only their members read
 
 ### Revision history
 
@@ -65,6 +67,8 @@ Filing a page in a category is an edit under its current categories and under th
 
 New games start with the system namespace requiring `wiki.admin` to create, edit and delete its pages.
 
+A page can also be private, with members instead of a permission. It is read only by its members, and written only by its contributors and leads, on top of everything above. See [wiki private pages](/reference/sharpmush-help/wiki-administration/#private-pages).
+
 ### Wiki requirements
 
 - `@wiki/require <target>=<action> [<permission> ...][, <action> ...]`
@@ -93,4 +97,25 @@ From softcode, `wikiaccess(<page>, <action>[, <player>])` returns 1 or 0.
 - [WIKIACCESS()](/reference/sharpmush-help/sharpwiki/#wikiaccess)
 - [roles](/reference/sharpmush-help/roles/#roles)
 - [@permission](/reference/sharpmush-help/permission-command/#permission)
+:::
+
+### Private pages
+
+- `@wiki/create/private <title>=<markdown>`
+- `@wiki/member <page>[=<player or role:slug>[/<level>]]`
+
+A private page is read only by its members and `wiki.admin` holders; to anyone else it does not exist. A member is a character, or everyone holding a role (`role:<slug>`). A `reader` reads, a `contributor` also edits, and a `lead` also lets people in and out. Membership never lifts other requirements: a contributor still needs `wiki.edit`.
+
+`/create/private` makes you the page's lead. `@wiki/member <page>` lists the members; `=<who>/<level>` lets someone in or changes their level, and `=<who>` takes them out. Only a lead does these, and the page always keeps one character as its lead. Only `wiki.admin` makes a public page private. Someone who may not see a private page is told only that its title is taken.
+
+```sharp
+> @wiki/member Harbour Fire=Ines/contributor
+WIKI: Ines is now a contributor of 'Harbour Fire'.
+```
+
+Output: one line. The `casefiles` package builds its case files on private pages.
+
+::: seealso
+- [WIKIMEMBERS()](/reference/sharpmush-help/sharpwiki/#wikimembers)
+- [WIKIMEMBER()](/reference/sharpmush-help/sharpwiki/#wikimember)
 :::

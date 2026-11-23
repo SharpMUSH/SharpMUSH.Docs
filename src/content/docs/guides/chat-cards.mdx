@@ -72,15 +72,14 @@ you are, set it up, and move it to the Master Room last.
 ```sharp
 @create Invite Desk
 @set Invite Desk=!no_command
-@power Invite Desk=Send_OOB
 &DATA Invite Desk=Invitations, one branch per invitation number.
 @set Invite Desk/DATA=no_command
 ```
 
 - A new thing is created `NO_COMMAND`, which stops its `$`-commands from being found. The second
   line clears it.
-- `cmdlink()` needs a Wizard or the `Send_OOB` power, and checks the object running the code: here,
-  the desk. A Wizard grants `Send_OOB`. Without it, every link is `#-1 PERMISSION DENIED`.
+- `cmdlink()` needs no power: anyone may make a link, since a click only sends a command the reader
+  could type.
 - Each invitation is a branch under `DATA`: `` DATA`1`FROM ``, `` DATA`1`TO ``, `` DATA`1`WHAT ``.
   `no_command` on `DATA` stops anything stored there from being taken for a command.
 
@@ -215,7 +214,6 @@ check: they can still type the command.
 
 ## Checklist
 
-- The object that draws the card has `Send_OOB`, or `cmdlink()` refuses.
 - Each link names an id the command can look up, never a name or player text.
 - Each command checks, with `%#`, that the clicker may do this, and that the thing it names still
   exists and is still waiting.

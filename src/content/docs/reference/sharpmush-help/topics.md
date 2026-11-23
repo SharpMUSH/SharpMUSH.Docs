@@ -40,25 +40,25 @@ Help is available on the following topics:
 | [HOMES](/reference/sharpmush-help/sharptop/#homes)                       | [HTTP](/reference/sharpmush-help/http/#http)                        | [IMAGE ATTRIBUTES](/reference/sharpmush-help/image-attributes/#image)            |
 | [INTERIORS](/reference/sharpmush-help/interiors/#interiors)                   | [INTERNATIONALIZATION](/reference/sharpmush-help/sharpcode/#internationalization)        | [LINKING](/reference/sharpmush-help/sharptop/#linking)                     |
 | [LISTENING](/reference/sharpmush-help/listening/#listening)                   | [LISTS](/reference/sharpmush-help/sharptop/#lists)                       | [LOOPING](/reference/sharpmush-help/sharptop/#looping)                     |
-| [MASTER ROOM](/reference/sharpmush-help/sharptop/#master-room)                 | [MATCHING](/reference/sharpmush-help/sharptop/#matching)                    | [ME]                          |
+| [MARKDOWN](/reference/sharpmush-help/markdown/#markdown)                    | [MASTER ROOM](/reference/sharpmush-help/sharptop/#master-room)                 | [MATCHING](/reference/sharpmush-help/sharptop/#matching)                    |
 
 ### Additional topics
 
 |                           |                           |                           |
 |---------------------------|---------------------------|---------------------------|
-| [MESSAGES](/reference/sharpmush-help/messages/#messages)                | [MONEY](/reference/sharpmush-help/sharptop/#money)                   | [MUSHCODE](/reference/sharpmush-help/mushcode/#mushcode)                |
-| [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/sharptop/#non-standard-attributes) | [OBJECT SNAPSHOTS](/reference/sharpmush-help/snapshots/#object-snapshots)        | [PARENTS](/reference/sharpmush-help/parent/#parents)                 |
-| [PENNMUSH COMPATIBILITY](/reference/sharpmush-help/pennmush-compatibility/#pennmush-compatibility)  | [PIPING](/reference/sharpmush-help/piping/#piping)                  | [PLUGIN HELP](/reference/sharpmush-help/plugin-help/#plugin-help)             |
-| [@POWER](/reference/sharpmush-help/power-command/#power)                  | [PUPPETS](/reference/sharpmush-help/puppets/#puppets)                 | [QUEUE](/reference/sharpmush-help/queue/#queue)                   |
-| [QUEUE BUDGETS](/reference/sharpmush-help/queue-budgets/#queue-budgets)           | [RECURRING JOBS](/reference/sharpmush-help/jobs/#recurring-jobs)          | [REGEXPS](/reference/sharpmush-help/regexp/#regular-expressions)                 |
-| [REGISTERS](/reference/sharpmush-help/registers/#registers)               | [ROLES](/reference/sharpmush-help/roles/#roles)                   | [SECURITY](/reference/sharpmush-help/security/#security)                |
-| [SEMAPHORES](/reference/sharpmush-help/semaphores/#semaphores)              | [SETTING-ATTRIBUTES](/reference/sharpmush-help/sharptop/#setting-attributes)      | [SHARPMUSH FEATURES](/reference/sharpmush-help/sharpmush-features/#sharpmush-features)      |
-| [SPOOFING](/reference/sharpmush-help/sharptop/#spoofing)                | [STACK](/reference/sharpmush-help/sharptop/#stack)                   | [STRINGS](/reference/sharpmush-help/sharptop/#strings)                 |
-| [SUBSTITUTIONS](/reference/sharpmush-help/substitutions/#substitutions)           | [SUCCESS](/reference/sharpmush-help/sharptop/#success)                 | [SWITCHES](/reference/sharpmush-help/sharptop/#switches)                |
-| [TIMEZONES](/reference/sharpmush-help/timezones/#timezones)               | [TYPES OF OBJECTS](/reference/sharpmush-help/sharptop/#types-of-objects)        | [UNICODE](/reference/sharpmush-help/sharptop/#unicode)                 |
-| [USER-DEFINED COMMANDS](/reference/sharpmush-help/commands/#commands)   | [VERBS](/reference/sharpmush-help/verbs/#verbs)                   | [WARNINGS](/reference/sharpmush-help/sharptop/#warnings)                |
-| [WIKI](/reference/sharpmush-help/wiki/#wiki)                    | [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)               | [ZONE MASTER ROOMS](/reference/sharpmush-help/sharptop/#zone-master-rooms)       |
-| [ZONE MASTERS](/reference/sharpmush-help/zone-masters/#zone-masters)            | [ZONES](/reference/sharpmush-help/zones/#zones)                   |                           |
+| [ME]                      | [MESSAGES](/reference/sharpmush-help/messages/#messages)                | [MONEY](/reference/sharpmush-help/sharptop/#money)                   |
+| [MUSHCODE](/reference/sharpmush-help/mushcode/#mushcode)                | [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/sharptop/#non-standard-attributes) | [OBJECT SNAPSHOTS](/reference/sharpmush-help/snapshots/#object-snapshots)        |
+| [PARENTS](/reference/sharpmush-help/parent/#parents)                 | [PENNMUSH COMPATIBILITY](/reference/sharpmush-help/pennmush-compatibility/#pennmush-compatibility)  | [PIPING](/reference/sharpmush-help/piping/#piping)                  |
+| [PLUGIN HELP](/reference/sharpmush-help/plugin-help/#plugin-help)             | [@POWER](/reference/sharpmush-help/power-command/#power)                  | [PUPPETS](/reference/sharpmush-help/puppets/#puppets)                 |
+| [QUEUE](/reference/sharpmush-help/queue/#queue)                   | [QUEUE BUDGETS](/reference/sharpmush-help/queue-budgets/#queue-budgets)           | [RECURRING JOBS](/reference/sharpmush-help/jobs/#recurring-jobs)          |
+| [REGEXPS](/reference/sharpmush-help/regexp/#regular-expressions)                 | [REGISTERS](/reference/sharpmush-help/registers/#registers)               | [ROLES](/reference/sharpmush-help/roles/#roles)                   |
+| [SECURITY](/reference/sharpmush-help/security/#security)                | [SEMAPHORES](/reference/sharpmush-help/semaphores/#semaphores)              | [SETTING-ATTRIBUTES](/reference/sharpmush-help/sharptop/#setting-attributes)      |
+| [SHARPMUSH FEATURES](/reference/sharpmush-help/sharpmush-features/#sharpmush-features)      | [SPOOFING](/reference/sharpmush-help/sharptop/#spoofing)                | [STACK](/reference/sharpmush-help/sharptop/#stack)                   |
+| [STRINGS](/reference/sharpmush-help/sharptop/#strings)                 | [SUBSTITUTIONS](/reference/sharpmush-help/substitutions/#substitutions)           | [SUCCESS](/reference/sharpmush-help/sharptop/#success)                 |
+| [SWITCHES](/reference/sharpmush-help/sharptop/#switches)                | [TIMEZONES](/reference/sharpmush-help/timezones/#timezones)               | [TYPES OF OBJECTS](/reference/sharpmush-help/sharptop/#types-of-objects)        |
+| [UNICODE](/reference/sharpmush-help/sharptop/#unicode)                 | [USER-DEFINED COMMANDS](/reference/sharpmush-help/commands/#commands)   | [VERBS](/reference/sharpmush-help/verbs/#verbs)                   |
+| [WARNINGS](/reference/sharpmush-help/sharptop/#warnings)                | [WIKI](/reference/sharpmush-help/wiki/#wiki)                    | [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)               |
+| [ZONE MASTER ROOMS](/reference/sharpmush-help/sharptop/#zone-master-rooms)       | [ZONE MASTERS](/reference/sharpmush-help/zone-masters/#zone-masters)            | [ZONES](/reference/sharpmush-help/zones/#zones)                   |
 
 Type 'help `<topic name>`' for help.<br>
 For a list of all topics, see [help search](/reference/sharpmush-help/help-search/#help-search). For what SharpMUSH adds to PennMUSH, see [sharpmush features](/reference/sharpmush-help/sharpmush-features/#sharpmush-features).

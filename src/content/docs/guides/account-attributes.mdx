@@ -1,0 +1,127 @@
+---
+title: Account Attributes and Attribute Keys
+description: Keep data on a player's account that every one of their characters shares, and let a role read or write one attribute on every object and account without controlling them.
+---
+
+Some data belongs to the person, not to one character: experience shared between alts, a badge, a
+staff note. Each account keeps attributes of its own for that. Some jobs need one attribute and
+nothing else: a clerk who sets experience, a sheet reader. An **attribute key** lets a role read or
+write one attribute everywhere, without the power to change anything else.
+
+The examples follow Ariel, who plays Ariel and Brand on the account `ariel-plays`, and Morgan, a
+staff member who keeps the experience ledger.
+
+## An account's attributes
+
+`account(<player>, ref)` gives the account's reference, `#acct:<key>`. Attribute commands and
+functions take it where they take an object:
+
+```
+> &XP account(*Ariel, ref)=10
+Account 2/XP - Set.
+> think get(account(*Brand, ref)/XP)
+10
+```
+
+Ariel and Brand share an account, so both read the same XP. `&`, `@set`, `@atrlock`, `@wipe`,
+`@cpattr`, `@mvattr`, `@edit`, `@atrchown`, `examine`, `@decompile`, `get()`, `xget()`, `lattr()`,
+`nattr()`, `hasattr()`, `lflags()`, `set()`, `attrib_set()` and `wipe()` all reach an account. It is
+not an object: it has no location, flags or owner, and no code runs on it, so `u()`, `@trigger` and
+`$`-commands never reach it.
+
+Staff see an account with `examine`, and `@decompile` writes its attributes back:
+
+```
+> examine #acct:2
+Account 2(#acct:2)
+Username: ariel-plays
+Characters: Ariel(#34PenA), Brand(#35PenA)
+XP [#1]: 10
+> @decompile #acct:2
+&XP #acct:2=10
+```
+
+In the portal's Softcode Editor, search for `account(*Ariel, ref)` to open the account's attributes.
+
+## Who reads and writes them
+
+| Who | Reads | Writes |
+|---|---|---|
+| the wizard and moderator roles (`players.moderate`) | yes | yes |
+| the royalty and helper roles (`players.view`) | yes | no |
+| the account's own characters, and objects they own | yes | no |
+| anyone else | no | no |
+
+A player reads their own account's attributes but does not change them:
+
+```
+> think get(account(me, ref)/XP)
+10
+> &NOTE account(me, ref)=hi
+Permission denied. You do not control Account 2.
+```
+
+Attribute flags work as they do on an object. `visual` lets anyone read an attribute, `mortal_dark`
+hides it from everyone without `game.wizard`, and `wizard` lets only `game.wizard` change it.
+
+## Attribute keys
+
+A standard attribute can have a **read key** and a **write key** in the attribute table. Whoever
+passes the read key may read that attribute on every object and account; whoever passes the write
+key may set it. Neither needs to control what they read or set. Staff with `config.admin` set keys,
+on an attribute already in the table:
+
+```
+> @role/create xpclerk=Staff/XP clerk
+Role XP clerk (xpclerk) created in Staff at priority 1. Set what it allows with @role/allow.
+> @role/assign *Morgan=xpclerk
+Morgan now holds xpclerk.
+> @attribute/access XP=none
+XP -- Attribute permissions now:
+> @attribute/lock/write XP=role^xpclerk
+XP - write key set.
+> @attribute/lock/read XP=role^xpclerk
+XP - read key set.
+```
+
+Morgan may now read and set XP on every account and object, and nothing else there:
+
+```
+> &XP #acct:2=10
+Account 2/XP - Set.
+> think get(#acct:2/XP)
+10
+> &BADGE #acct:2=Veteran
+Permission denied. You do not control Account 2.
+```
+
+`account(<player>, ref)` for another player needs `players.view`, so a clerk who finds accounts by
+character name needs that permission too, or the reference from staff.
+
+A key is any lock key. `role^<role>` and `perm^<permission>` pass for every character holding that
+role or permission, through their account too. An evaluation key such as `CHECK/1` never passes on
+an account, which runs no code.
+
+What a key does not do:
+
+- It only grants. Someone who may already read or set the attribute still may.
+- A write key sets the value only. It never clears the attribute or changes its flags; clearing and
+  `@wipe` still need control.
+- Attribute flags still apply: `wizard`, `locked` and `safe` still refuse a write, and `mortal_dark`
+  still hides.
+- It does not let anyone run the attribute as a command.
+
+The nearest key up the attribute tree applies, so a key on `STATS` covers `` STATS`STR `` unless
+that attribute has a key of its own. `@attribute/lock/write <attribute>` with no `=` shows the key,
+and an empty key takes it off. `@attribute <attribute>` shows both keys to `config.admin`:
+
+```
+> @attribute XP
+@attribute: Information for 'XP'
+  Default flags: none
+  Read key: ROLE^xpclerk
+  Write key: ROLE^xpclerk
+```
+
+In the portal, **Configuration** has an **Attribute keys** page under Security that lists every
+attribute with a key and sets or clears both keys at once.

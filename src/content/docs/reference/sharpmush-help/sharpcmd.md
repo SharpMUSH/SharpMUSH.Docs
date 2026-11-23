@@ -264,7 +264,7 @@ Sets the message shown to a player who fails to use an object via the 'use' comm
 
 Note that these attributes are @ufail, NOT @ufailure, for TinyMUSH compatibility.
 
-Although the Use @lock also restricts who can trigger $-commands or ^-listens on an object, these attributes will not be triggered for those failures. Instead, the COMMAND_LOCK`* and LISTEN_LOCK`* attributes are triggered. See [failure](/reference/sharpmush-help/failure/#failure) for more information.
+Although the Use @lock also restricts who can trigger $-commands or ^-listens on an object, these attributes will not be triggered for those failures. Instead, the `` COMMAND_LOCK`* `` and `` LISTEN_LOCK`* `` attributes are triggered. See [failure](/reference/sharpmush-help/failure/#failure) for more information.
 
 ::: seealso
 - [use](/reference/sharpmush-help/sharpcmd/#use)
@@ -957,8 +957,8 @@ from memory to disk; a SharpMUSH game commits every change as it is made, so the
 already current and a copy of it is the dump. The switches and check interval are accepted for
 PennMUSH code and ignored.
 
-Everyone sees dump_message as the copy starts and dump_complete when it is written, and the dump
-events are raised (see [event dump](/reference/sharpmush-help/sharpevents/#dump-events)). Scheduled copies run every SHARPMUSH_BACKUP_INTERVAL, a server
+Connected wizards and royalty see dump_message as the copy starts and dump_complete when it is
+written; other players see nothing. The dump events are raised (see [event dump](/reference/sharpmush-help/sharpevents/#dump-events)). Scheduled copies run every SHARPMUSH_BACKUP_INTERVAL, a server
 setting, rather than PennMUSH's dump_interval.
 
 
@@ -2458,7 +2458,7 @@ The ? wildcard matches a single character except a backtick (`).<br>
 The ** wildcard matches any number of characters, including backticks.<br>
 For example, to see all the attributes that began with a 'v' you could do ex `<object>`/v**
 
-`examine` outputs the dbref of the object examined.
+`examine` outputs the dbref of the object examined. `examine #acct:<key>` shows an account instead; see [accounts examine](/reference/sharpmush-help/accounts/#examining-and-decompiling-an-account).
 
 The `/brief` switch is equivalent to the 'brief' command.<br>
 The `/debug` switch is wizard-only and shows raw values for certain fields in an object.<br>
@@ -2471,6 +2471,7 @@ The `/opaque` switch omits contents listings.
 ::: seealso
 - [attribute trees](/reference/sharpmush-help/attribute-trees/#attribute-trees)
 - [brief](/reference/sharpmush-help/sharpcmd/#brief)
+- [accounts examine](/reference/sharpmush-help/accounts/#examining-and-decompiling-an-account)
 - [LATTR()](/reference/sharpmush-help/lattr-function/#lattr)
 - [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)
 :::
@@ -2741,7 +2742,9 @@ One possible use: `@adesc me=think %n just looked at you.`
 `connect "<player with spaces>" [<password>]`<br>
 `connect guest`
 
-Connects you to a character from the login screen. Quote a name that contains spaces. A character with no password takes no password argument, and `connect guest` takes the next free guest character if the game offers them.
+Connects you to a character from the login screen. Quote a name that contains spaces, and quote the name when the password contains spaces. A character with no password takes no password argument, and `connect guest` takes the next free guest character if the game offers them.
+
+The password is the character's own or that of the account the character is linked to, so a character made on the web portal without a password of its own connects with its account's password. A password staff set for you to change opens no character until you change it on the portal.
 
 See [cd], [ch] and [cv] to connect dark, hidden or visible.
 
@@ -2979,7 +2982,7 @@ Attempts to run a user-defined command on a specific object. If the `/room` swit
 
 This socket command shows what the game reports to MUD crawlers and bots through the MUD Server Status Protocol (MSSP), as tab-separated `NAME<tab>value` lines between `MSSP-REPLY-START` and `MSSP-REPLY-END`. The MSSP telnet option sends the same report.
 
-The server fills in what it knows: the game's name (`mud_name`), the players connected, when it started, its ports (`port`, `ssl_port`), its website (`mud_url`), the codebase, and the protocols it speaks. Everything else (genre, contact address, Discord, and so on) is the `mssp` configuration option, set from the portal's MSSP page under Configuration. A PennMUSH `mush.cnf` import carries over its `mssp name/value` lines.
+The server fills in what it knows: the game's name (`mud_name`), the players connected, when it started, its ports (`port`, `ssl_port`), its website (`mud_url`) and telnet over WebSocket at that address's `/telnet`, the codebase, and the protocols it speaks. Everything else (genre, contact address, Discord, and so on) is the `mssp` configuration option, set from the portal's MSSP page under Configuration. A PennMUSH `mush.cnf` import carries over its `mssp name/value` lines.
 
 A variable with several values repeats its name on one line per value, the default last. For the variables crawlers read, see https://tintin.mudhalla.net/protocols/mssp/
 

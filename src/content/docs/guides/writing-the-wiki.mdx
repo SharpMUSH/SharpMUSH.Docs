@@ -1,6 +1,6 @@
 ---
 title: Writing the Wiki
-description: Write and edit wiki pages in the portal or the game, link pages together, file them in categories, roll back a bad edit and protect a page.
+description: Write and edit wiki pages in the portal or the game, link pages together, file them in categories, roll back a bad edit, protect a page and keep one private.
 ---
 
 Every SharpMUSH game has a wiki for its longer writing: the setting, its people and places, the
@@ -26,6 +26,10 @@ WIKI: You can't edit 'The Harbour Watch': needs wiki.edit.
 > @wiki/delete the_harbour_watch
 WIKI: You can't delete 'The Harbour Watch': needs wiki.delete.
 ```
+
+A character's biography belongs to that character. Only a character on the account that owns it, or
+staff who control it, may write, edit or delete it. Staff with `wiki.admin` may change any
+biography.
 
 ## Writing a page in the portal
 
@@ -80,6 +84,11 @@ keeps the text as typed. `%r` puts in a line break when you do want evaluation:
 `@wiki/md` shows a page's Markdown, and `@wiki/edit/noeval` replaces the whole text with what you
 paste back. `@wiki <page>` reads the page.
 
+`@wiki/insert <page>=<heading>/<text>` puts the text first under that heading, so a log of
+sessions or events reads newest first. A page without the heading gets it at the end. Add `/quiet`
+to `/create`, `/category`, `/insert` or `/member` to leave out the line saying it was done, when
+your own softcode says what happened in its own words.
+
 `@wiki/category` sets a page's categories:
 
 ```
@@ -124,6 +133,41 @@ Marrow, trying to add to it, gets
 `WIKI: You can't edit 'The Harbour Watch': the page requires wiki.admin.`
 `@wiki/unprotect` lifts it. A whole namespace or category can require a permission in the same way:
 see `help wiki requirements`.
+
+## Private pages
+
+A private page is read only by its members and by staff with `wiki.admin`. To anyone else it does
+not exist: it is not listed, searched or shown. `@wiki/create/private` makes one, with you as its
+lead:
+
+```
+> @wiki/create/private Harbour Fire=Who set the fire at the east docks?
+WIKI: Created page 'Harbour Fire' (main:harbour_fire).
+```
+
+A member is a character, or everyone holding a role, written `role:<slug>`. Each member has a level:
+
+| Level | May |
+|---|---|
+| reader | read the page |
+| contributor | also edit it |
+| lead | also let people in and out, and change levels |
+
+`@wiki/member <page>` lists the members. `=<who>/<level>` lets someone in or changes their level,
+and `=<who>` takes them out:
+
+```
+> @wiki/member Harbour Fire=Ines/contributor
+WIKI: Ines is now a contributor of 'Harbour Fire'.
+```
+
+Only a lead changes the members, and a page always keeps one character as its lead. Membership never
+lets anyone do more than the wiki's own permissions allow: a contributor still needs `wiki.edit`.
+Only `wiki.admin` may make a public page private. In softcode, `wikimembers(<page>)` lists the
+members and `wikimember(<page>)` gives your level.
+
+[Case files](/guides/casefiles) are private pages built around a plot, with their own commands and
+portal page.
 
 ## Next steps
 

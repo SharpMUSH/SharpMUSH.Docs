@@ -117,6 +117,7 @@ export default defineConfig({
                       { label: 'Extension Points', slug: 'guides/extension-points' },
                       { label: 'Bridge Packages', slug: 'guides/bridge-packages' },
                       { label: 'Attribute Indexes', slug: 'guides/attribute-indexes' },
+                      { label: 'Account Attributes and Attribute Keys', slug: 'guides/account-attributes' },
                       { label: 'Caching Slow Softcode', slug: 'guides/caching' },
                       { label: 'Calling Web Services', slug: 'guides/web-requests' },
                       { label: 'RhostMUSH Softcode', slug: 'guides/rhostmush-softcode' },
@@ -169,6 +170,8 @@ export default defineConfig({
                           items: [
                               { label: 'Character Applications', slug: 'guides/character-applications' },
                               { label: 'Finger Profiles', slug: 'guides/finger' },
+                              { label: 'Descriptions and Outfits', slug: 'guides/multidescer' },
+                              { label: 'Achievements', slug: 'guides/achievements' },
                               { label: 'Info Files and Journals', slug: 'guides/info' },
                               { label: 'Relationships', slug: 'guides/relationships' },
                               { label: 'Character Roster', slug: 'guides/roster' },
