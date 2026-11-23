@@ -119,6 +119,10 @@ attribute needs a person to read it.
 Test each listed attribute on the rehearsed world, and fix the check-by-hand ones before players
 connect.
 
+The import rewrites only code it can match exactly. Code that builds an attribute name or an objid
+while it runs is not rewritten and not always reported; [Conversion Pitfalls](/guides/conversion-pitfalls/)
+shows how to find and fix it.
+
 ### Keep the import log
 
 The **Download import log** button at the bottom of the import page saves the whole report as a text

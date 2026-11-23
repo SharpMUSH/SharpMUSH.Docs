@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 372" width="760" height="372" font-family="system-ui, sans-serif" font-size="15">
+  <rect width="760" height="372" rx="12" style="fill:var(--dg-canvas)"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" style="fill:var(--dg-muted)"/></marker>
+  </defs>
+  <g font-weight="600" style="fill:var(--dg-muted)">
+    <text x="30" y="34">In the old game's code</text>
+    <text x="500" y="34">After the import</text>
+  </g>
+  <rect x="30" y="56" width="370" height="48" rx="8" stroke-width="1.5" style="fill:var(--dg-card);stroke:var(--dg-line)"/>
+  <text x="46" y="77" font-family="ui-monospace, monospace" font-size="14" style="fill:var(--dg-text)">get(me/POSE/BEFORE)</text>
+  <text x="46" y="96" font-size="13" style="fill:var(--dg-muted)">name written whole</text>
+  <path d="M404 80 L494 80" stroke-width="1.5" fill="none" marker-end="url(#a)" style="stroke:var(--dg-muted)"/>
+  <rect x="500" y="56" width="230" height="48" rx="24" stroke-width="1.5" style="fill:var(--dg-green-fill);stroke:var(--dg-green-line)"/>
+  <text x="615" y="77" text-anchor="middle" font-weight="600" style="fill:var(--dg-green-ink)">rewritten</text>
+  <text x="615" y="96" text-anchor="middle" font-size="13" font-family="ui-monospace, monospace" style="fill:var(--dg-green-ink)">get(me/POSE`BEFORE)</text>
+  <rect x="30" y="116" width="370" height="48" rx="8" stroke-width="1.5" style="fill:var(--dg-card);stroke:var(--dg-line)"/>
+  <text x="46" y="137" font-family="ui-monospace, monospace" font-size="14" style="fill:var(--dg-text)">#1:1789145410</text>
+  <text x="46" y="156" font-size="13" style="fill:var(--dg-muted)">objid stored in an attribute</text>
+  <path d="M404 140 L494 140" stroke-width="1.5" fill="none" marker-end="url(#a)" style="stroke:var(--dg-muted)"/>
+  <rect x="500" y="116" width="230" height="48" rx="24" stroke-width="1.5" style="fill:var(--dg-green-fill);stroke:var(--dg-green-line)"/>
+  <text x="615" y="137" text-anchor="middle" font-weight="600" style="fill:var(--dg-green-ink)">rewritten</text>
+  <text x="615" y="156" text-anchor="middle" font-size="13" font-family="ui-monospace, monospace" style="fill:var(--dg-green-ink)">#1:1789145410000</text>
+  <rect x="30" y="176" width="370" height="48" rx="8" stroke-width="1.5" style="fill:var(--dg-card);stroke:var(--dg-line)"/>
+  <text x="46" y="197" font-family="ui-monospace, monospace" font-size="14" style="fill:var(--dg-text)">get(me/MERIT.LANGUAGE_\(%0\))</text>
+  <text x="46" y="216" font-size="13" style="fill:var(--dg-muted)">name built at run time</text>
+  <path d="M404 200 L494 200" stroke-width="1.5" fill="none" marker-end="url(#a)" style="stroke:var(--dg-muted)"/>
+  <rect x="500" y="176" width="230" height="48" rx="24" stroke-width="1.5" style="fill:var(--dg-amber-fill);stroke:var(--dg-amber-line)"/>
+  <text x="615" y="197" text-anchor="middle" font-weight="600" style="fill:var(--dg-amber-ink)">you edit it</text>
+  <text x="615" y="216" text-anchor="middle" font-size="13" style="fill:var(--dg-amber-ink)">not in the report</text>
+  <rect x="30" y="236" width="370" height="48" rx="8" stroke-width="1.5" style="fill:var(--dg-card);stroke:var(--dg-line)"/>
+  <text x="46" y="257" font-family="ui-monospace, monospace" font-size="14" style="fill:var(--dg-text)">lattr(me/POSE/*)</text>
+  <text x="46" y="276" font-size="13" style="fill:var(--dg-muted)">wildcard pattern</text>
+  <path d="M404 260 L494 260" stroke-width="1.5" fill="none" marker-end="url(#a)" style="stroke:var(--dg-muted)"/>
+  <rect x="500" y="236" width="230" height="48" rx="24" stroke-width="1.5" style="fill:var(--dg-amber-fill);stroke:var(--dg-amber-line)"/>
+  <text x="615" y="257" text-anchor="middle" font-weight="600" style="fill:var(--dg-amber-ink)">you edit it</text>
+  <text x="615" y="276" text-anchor="middle" font-size="13" style="fill:var(--dg-amber-ink)">not in the report</text>
+  <rect x="30" y="296" width="370" height="48" rx="8" stroke-width="1.5" style="fill:var(--dg-card);stroke:var(--dg-line)"/>
+  <text x="46" y="317" font-family="ui-monospace, monospace" font-size="14" style="fill:var(--dg-text)">[num(%#)]:[csecs(%#)]</text>
+  <text x="46" y="336" font-size="13" style="fill:var(--dg-muted)">objid built at run time</text>
+  <path d="M404 320 L494 320" stroke-width="1.5" fill="none" marker-end="url(#a)" style="stroke:var(--dg-muted)"/>
+  <rect x="500" y="296" width="230" height="48" rx="24" stroke-width="1.5" style="fill:var(--dg-amber-fill);stroke:var(--dg-amber-line)"/>
+  <text x="615" y="317" text-anchor="middle" font-weight="600" style="fill:var(--dg-amber-ink)">you edit it</text>
+  <text x="615" y="336" text-anchor="middle" font-size="13" style="fill:var(--dg-amber-ink)">listed in the report</text>
+</svg>

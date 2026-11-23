@@ -1,0 +1,420 @@
+---
+title: Conversion Pitfalls
+description: Where a PennMUSH, TinyMUX or RhostMUSH game's softcode needs a hand edit after the import, how to find those places, and how to fix them.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+The import rewrites the softcode it can read: an attribute name written out in full, an objid stored in
+an attribute, a colour code, a `@hook` line. It cannot rewrite what the code works out while it runs: a
+name put together from `%0`, a wildcard pattern, an objid built from two functions, text compared with
+text. Those places keep working on the old server and fail here, and most of them fail quietly. This
+page lists each kind, shows how to find it in your world, and shows the fix.
+
+Read it alongside the [migration guide](/guides/pennmush-migration/), which covers the rehearsal,
+cutover and rollback, and [Moving a RhostMUSH or TinyMUX Game](/guides/rhostmush-tinymux-import/),
+which lists every rewrite the import makes.
+
+| You want to | Read |
+|---|---|
+| see what the import fixes and what it leaves to you | [What the import can and cannot rewrite](#what-the-import-can-and-cannot-rewrite) |
+| find the code that needs a hand edit | [Finding the code](#finding-the-code) |
+| fix code that uses renamed attributes | [Renamed attributes](#renamed-attributes) |
+| fix code that stores or builds objids | [Objids](#objids) |
+| check objects that changed number | [Objects with a new number](#objects-with-a-new-number) |
+| fix substitutions that mean something else here | [Substitutions that mean something else](#substitutions-that-mean-something-else) |
+| fix code that does not parse | [Code that does not parse](#code-that-does-not-parse) |
+| deal with commands and functions SharpMUSH does not have | [Commands and functions](#commands-and-functions) |
+| check the settings the import changed | [Settings](#settings) |
+
+## What the import can and cannot rewrite
+
+![Five lines of old code. get(me/POSE/BEFORE), a name written whole, is rewritten to get(me/POSE`BEFORE). #1:1789145410, an objid stored in an attribute, is rewritten to #1:1789145410000. get() of MERIT.LANGUAGE_ with %0 in escaped parentheses, a name built at run time, and lattr(me/POSE/*), a wildcard pattern, are left for you to edit and are not in the report. [num(%#)]:[csecs(%#)], an objid built at run time, is left for you to edit and is listed in the report.](../../../assets/guide/conversion-what-is-rewritten.svg)
+
+The rule behind every section below: the import changes text it can match exactly. Anything your code
+assembles, searches for with a pattern, or compares as text is yours to check.
+
+The examples on this page come from one PennMUSH object, Gadget (`#9`), imported with these
+attributes:
+
+```text
+MERIT.LANGUAGE_(FRENCH)   Fluent
+MERIT.LANGUAGE_(GERMAN)   Basic
+POSE                      Poses
+POSE/BEFORE               <OOC>
+OWNER_REF                 #1:1789145410
+CMD_LANG    $+lang *:@pemit %#=[get(me/MERIT.LANGUAGE_\(%0\))]
+CMD_LANGS   $+langs:@pemit %#=[iter(lattr(me/MERIT.LANGUAGE_*),before(after(##,\(),\)))]
+CMD_LEARN   $+learn *=*:&MERIT.LANGUAGE_\(%0\) me=%1
+CMD_PP      $+pp *:@emit [get(me/POSE/BEFORE)] %0
+CMD_PPLIST  $+pplist:@pemit %#=[lattr(me/POSE/*)]
+CMD_PPSET   $+ppset *=*:&POSE/%0 me=%1
+CMD_MINE    $+mine:@pemit %#=[strmatch(v(OWNER_REF),[num(%#)]:[csecs(%#)])]
+```
+
+Output: the object as the PennMUSH flatfile held it. Of its seven commands, only `+pp` works unchanged
+after the import.
+
+## Finding the code
+
+Start with the import report. Warnings marked as needing action, the **Rewritten softcode** list and the
+**Download import log** button are described in the
+[migration guide](/guides/pennmush-migration/#check-the-rewritten-softcode). The report names each
+renamed attribute, each objid it rewrote, and each place it knows needs you. It does not name code that
+builds a name at run time, because it cannot see one.
+
+To find those, search the attribute text of the whole world for the part of the old name that stays
+fixed. `grep()` lists the attributes on one object whose text contains a string, and `lsearch(all)`
+lists every object:
+
+```sharp
+> think iter(lsearch(all),iter(grep(%i0,**,POSE/),%i1/%i0))
+#9/CMD_PPLIST #9/CMD_PPSET
+```
+
+Output: every attribute in the world whose code still mentions `POSE/`, as object and attribute.
+`CMD_PP` is not listed, because the import already rewrote it. It
+reads every attribute of every object, so run it on the rehearsed world.
+
+`@grep <object>/**=<text>` does the same for one object and says where it looked:
+
+```sharp
+> @grep #9/**=LANGUAGE
+Matches of 'LANGUAGE' on Gadget(#9): CMD_LANG CMD_LANGS CMD_LEARN
+```
+
+Search for each renamed attribute's fixed part, for `csecs(`, and for `%|`, `%>` and `%m` if the game
+came from PennMUSH.
+
+<Aside type="caution" title="A broken command often prints nothing">
+When a `$`-command's action fails, the error goes to the object running it, not to the player who typed
+the command. In the examples below, `+learn` and `+ppset` refuse their attribute name and the player
+sees nothing at all. Test each command and check that it did what it should, not only that no error
+appeared.
+</Aside>
+
+## Renamed attributes
+
+SharpMUSH refuses some characters in an attribute name that the old servers took: `:`, `(`, `)`, `/`
+and others. The import renames each such attribute and writes the code that names it in full under the
+new name. The report has one line for each rename:
+
+```text
+Attribute MERIT.LANGUAGE_(FRENCH): imported as MERIT.LANGUAGE__FRENCH_, as SharpMUSH takes no ( ) or
+other such characters in an attribute name; code that names it whole is rewritten, a name built at run
+time is not
+Attribute POSE/BEFORE: imported as POSE`BEFORE, as SharpMUSH takes no / in an attribute name, where it
+separates an object from its attribute; code that names it whole is rewritten, a name built at run time
+is not
+```
+
+Output: two lines of the report for Gadget.
+
+- Each refused character becomes `_`, so `MERIT.LANGUAGE_(FRENCH)` becomes `MERIT.LANGUAGE__FRENCH_`.
+- A `/` becomes a backtick, SharpMUSH's [attribute tree](/reference/sharpmush-help/attribute-trees/)
+  separator, so `POSE/BEFORE` becomes ``POSE`BEFORE``, a leaf under `POSE`.
+- A name that would then clash with another gets `_2`, `_3` and so on.
+- A name that looks like a function call, such as `NAME()`, is renamed, but code naming it is not
+  rewritten, since every call of a function by that name would match. The report says so; change that
+  code by hand.
+- A name with a `/` is rewritten in code only where code names an attribute: after `&`, `(`, `,` or
+  `/`. A `$`-command pattern such as `$pose/before *` and a command line such as
+  `@force %#=pose/before x` keep the `/`.
+
+That covers `+pp`. Its code named `POSE/BEFORE` whole, so the import rewrote it:
+
+```sharp
+> +pp waves.
+<OOC> waves.
+```
+
+### Names built at run time
+
+`+lang` puts the name together from `%0`. The import cannot see the finished name, so the code still
+asks for `MERIT.LANGUAGE_(FRENCH)`, which SharpMUSH refuses:
+
+```sharp
+> +lang FRENCH
+#-1 INVALID OBJECT/ATTRIBUTE VALUE
+```
+
+`+langs` lists the attributes with a wildcard and cuts the language out from between the parentheses.
+`MERIT.LANGUAGE_*` still matches the renamed attributes, but there are no parentheses left to cut
+between, so every name comes out empty:
+
+```sharp
+> +langs
+
+```
+
+Output: an empty line.
+
+### Setting new names
+
+Code that creates an attribute under a name it builds is refused for the same reason, and the refusal
+goes to Gadget, not to the player. Typed by hand, it reads:
+
+```sharp
+> &MERIT.LANGUAGE_(SPANISH) #9=Fair
+That's not a good name for an attribute.
+> &POSE/AFTER #9=x
+That's not a good name for an attribute.
+```
+
+So `+learn SPANISH=Fair` and `+ppset AFTER=</OOC>` print nothing and store nothing.
+
+### Wildcards and trees
+
+A `/` in a pattern now separates the object from the attribute, so `lattr(me/POSE/*)` is an error:
+
+```sharp
+> +pplist
+#-1 BAD ARGUMENT FORMAT TO LATTR
+```
+
+A renamed `/` name is now a leaf of a tree, and the `*` and `?` wildcards do not match a backtick.
+`POSE*` no longer reaches what was `POSE/BEFORE`; ``POSE`*`` reaches the leaves under `POSE`, and `POSE**`
+reaches `POSE` and everything under it:
+
+```sharp
+> think lattr(#9/POSE*)
+POSE
+> think lattr(#9/POSE`*)
+POSE`BEFORE
+> think lattr(#9/POSE**)
+POSE POSE`BEFORE
+```
+
+The same applies to `examine` and every other command or function that takes an attribute pattern.
+
+### Fixing them
+
+You can write the code against the mechanical new names, but a name such as `MERIT.LANGUAGE__FRENCH_`
+is hard to take apart again: a language whose name holds `_` ends up ambiguous. Moving the data into a
+tree usually gives simpler code. `@mvattr` moves an attribute and keeps its value:
+
+```sharp
+> @mvattr #9/MERIT.LANGUAGE__FRENCH_=#9/MERIT`LANGUAGE`FRENCH
+Attribute moved to 1 destination.
+> @mvattr #9/MERIT.LANGUAGE__GERMAN_=#9/MERIT`LANGUAGE`GERMAN
+Attribute moved to 1 destination.
+> &CMD_LANG #9=$+lang *:@pemit %#=[get(me/MERIT`LANGUAGE`%0)]
+> &CMD_LANGS #9=$+langs:@pemit %#=[iter(lattr(me/MERIT`LANGUAGE`*),last(##,`))]
+> &CMD_LEARN #9=$+learn *=*:&MERIT`LANGUAGE`%0 me=%1
+> &CMD_PPLIST #9=$+pplist:@pemit %#=[lattr(me/POSE`*)]
+> &CMD_PPSET #9=$+ppset *=*:&POSE`%0 me=%1
+```
+
+Now every command works:
+
+```sharp
+> +lang FRENCH
+Fluent
+> +learn SPANISH=Fair
+> +langs
+FRENCH GERMAN SPANISH
+> +ppset AFTER=</OOC>
+> +pplist
+POSE`AFTER POSE`BEFORE
+```
+
+When the data lives on many objects, such as every character's stats, write the `@mvattr` lines with
+`@dolist` over the characters, and test them on the rehearsed world first. Third-party code that builds
+such names, a character generator for instance, needs the same change in every place that reads or
+writes them, so check whether a version written for SharpMUSH exists before editing it by hand.
+
+## Objids
+
+An objid is `<dbref>:<creation time>`. PennMUSH, TinyMUX and RhostMUSH count the creation time in
+seconds; SharpMUSH counts milliseconds. An imported object keeps its creation time, so its objid is the
+old one with `000` added:
+
+```sharp
+> think objid(me)
+#1:1789145410000
+```
+
+What the import does with the old objids:
+
+- **In attributes.** Each `#<dbref>:<stamp>` in attribute text whose stamp is in the seconds range
+  (100000000 to 99999999999) is rewritten to milliseconds, under the number its object was imported
+  as. Gadget's `OWNER_REF` now holds `#1:1789145410000`. The report lists every attribute it changed.
+- **Outside the game.** An objid kept in a SQL table, a web service or a player's notes still finds its
+  object, because SharpMUSH reads a stamp in the seconds range as seconds:
+
+  ```sharp
+  > think name(#1:1789145410)
+  One
+  ```
+
+- **Compared as text.** The two forms are different text, so a comparison fails. Put both through
+  `objid()` first:
+
+  ```sharp
+  > think strmatch(#1:1789145410,objid(me))
+  0
+  > think strmatch(objid(#1:1789145410),objid(me))
+  1
+  ```
+
+### Objids built from csecs()
+
+`[num(%#)]:[csecs(%#)]` was a common way to write an objid. `csecs()` answers whole seconds here too,
+so the result has no milliseconds. It finds an imported object, but not one created after the import:
+
+```sharp
+> @create Lantern
+Created: Object #19.
+> think strmatch([num(lantern)]:[csecs(lantern)],objid(lantern))
+0
+> think name([num(lantern)]:[csecs(lantern)])
+#-1 NO SUCH OBJECT VISIBLE
+```
+
+Gadget's `+mine` compares the stored objid, now in milliseconds, with one built in seconds, so it fails
+even for the imported owner:
+
+```sharp
+> +mine
+0
+```
+
+The report lists each attribute that builds an objid this way. Use `objid()`, or `csecs(<object>,ms)`
+where you need the number alone:
+
+```sharp
+> think csecs(me) [csecs(me,ms)]
+1789145410 1789145410000
+> &CMD_MINE #9=$+mine:@pemit %#=[strmatch(v(OWNER_REF),objid(%#))]
+> +mine
+1
+```
+
+### Objids in attribute names
+
+An attribute name cannot hold a `:`, so code that keys data by objid, such as `&DATA.%: me=...`, is
+refused:
+
+```sharp
+> &DATA.#1:1789145410000 #9=x
+That's not a good name for an attribute.
+```
+
+Turn the objid into a tree key instead:
+
+```sharp
+> think edit(after(objid(me),#),:,`)
+1`1789145410000
+```
+
+[compatibility identity](/reference/sharpmush-help/compatibility-identity/) has the rest of the
+differences in times and objids.
+
+## Objects with a new number
+
+Every object keeps its dbref, with three exceptions. SharpMUSH's `#0` must be a room, `#1` a player and
+`#2` a room (the master room). If the old game's `#0`, `#1` or `#2` is another type, that object gets
+the next free number, and the report says so:
+
+```text
+#<number> (<name>) is a <type>, but SharpMUSH's #<number> must stay a <room or player>; it was imported as #<new number>.
+```
+
+Softcode that names the old number is not rewritten, because a dbref in text cannot be told apart from
+other text reliably. The report lists each attribute that mentions it, under a warning that starts
+`<count> attribute(s) mention #<number>, which was imported as #<new number>`. Change those by hand.
+
+A new SharpMUSH game keeps its own HTTP handler, event handler and package objects at `#3` to `#9`. An
+import removes them, since the old game's objects take those numbers. Choose the handlers in the setup
+wizard's handler step before you test web requests or events.
+
+## Substitutions that mean something else
+
+Some `%` codes do something here that they did not do on the old server. The import does not rewrite
+them; it lists each attribute that uses one, as a warning needing action.
+
+| Code | On the old server | Here | Reported for | Write instead |
+|---|---|---|---|---|
+| `%>` | `>` | the last command's output | all three | `>` |
+| `%*<text>` | `*<text>` | a marked [list separator](/reference/sharpmush-help/list-separators/) | all three | `*<text>` |
+| `%\|`, `;\|` | `\|`, and a `;` before a command starting with `\|` | piping a command's output | PennMUSH, RhostMUSH | `\|` |
+| `%m` | `m` | the running command, as on TinyMUX | PennMUSH | `m` |
+| `%=<name>` | `=<name>` | an attribute or argument, as on TinyMUX | PennMUSH | `=<name>` |
+
+A TinyMUX or RhostMUSH game's `%c` and `%x` colour codes are rewritten to `ansi()`. A colour code
+built at run time, such as `%c0X[printf(...)]`, cannot be, so the import deletes it and warns about each
+attribute it was removed from. That text is uncoloured until you colour it again with `ansi()`.
+
+[compatibility parser](/reference/sharpmush-help/compatibility-parser/) explains each substitution.
+
+## Code that does not parse
+
+Inside `[ ]`, a `]` in a function's argument or in braces closes the brackets. The old servers read some
+of these anyway; SharpMUSH fails with `#-1 PARSER FAILURE` when the attribute runs. The import reports
+each attribute that does not parse, with the place it stopped:
+
+```text
+Softcode: <count> attribute(s) do not parse, so they fail with #-1 PARSER FAILURE when they run. Inside [ ],
+a ] in a function's argument or in braces closes the [ ], and the import cannot tell which one was
+meant; escape it as \]. First in <object>/<attribute> (<reason>).
+```
+
+Escape the `]` that is text as `\]`.
+
+A related report line covers `beep()` given as the delimiter of a list function that takes colour off
+its arguments, such as `words()` or `member()`. Those take the bell off too, so the list does not
+split. A marked separator, `%*<|>`, splits the same way in every function.
+
+## Commands and functions
+
+The import reads every attribute that runs as code and warns about each function, command, switch or
+argument count SharpMUSH does not have, naming where it is used first. Each one fails when that code
+runs: an unknown function gives `#-1 FUNCTION (<NAME>) NOT FOUND`, an unknown command `Huh?`.
+
+- Some TinyMUX and RhostMUSH functions, commands and switches are left out on purpose. The warning
+  points to [compatibility left out](/reference/sharpmush-help/compatibility-left-out/), which says what
+  to use instead.
+- Some TinyMUX and RhostMUSH commands work only under the game's dialect, and have a name of their own
+  that works everywhere, such as `@dialect_last`. Code moved into a game without that dialect needs the
+  other name; see
+  [commands under a dialect](/guides/rhostmush-tinymux-import/#commands-under-a-dialect).
+- `@function` lines that register names the code computes, such as `@function [rest(##,.)]=...`, are
+  reported, since nothing can check those names until they run.
+- A command name or function name your code builds at run time, such as `@force me=@[v(cmd)]`, is not
+  seen by the scan or the rewrites. Search for it as in [Finding the code](#finding-the-code).
+- TinyMUX and RhostMUSH `@hook` lines are rewritten in full. Hooks the old configuration turned on at
+  startup are added to God's `STARTUP`, because SharpMUSH keeps hooks only while it runs; check that
+  attribute if you move hooks around later.
+
+## Settings
+
+The import applies the old game's configuration file first, and turns on the settings the old code
+expects. The report lists each one. A PennMUSH import, for example, reports:
+
+```text
+The PennMUSH import turned paren_groups on. See help compatibility config parenthesis groups paren groups.
+The PennMUSH import turned http_qregisters on. See help compatibility config pennmush http registers http qregisters.
+The PennMUSH import turned mapsql_sync on. See help compatibility config pennmush mapsql order mapsql sync.
+```
+
+Leave them on while the game runs its old code; [compatibility config](/reference/sharpmush-help/compatibility-config/)
+says what each does if you later turn one off. Two settings are worth checking by hand:
+
+- **`call_limit 0`.** PennMUSH reads 0 as no limit. The import sets SharpMUSH's highest limit, 10000,
+  and says so; a high limit is safer than none.
+- **Settings it skipped.** Each skipped line of the configuration file is listed. Recreate the ones
+  SharpMUSH supports with `@config/set` or on the portal's Configuration page.
+
+## Before players connect
+
+- Every report warning needing action has been read, and fixed or written down as accepted.
+- Every renamed attribute's fixed part has been searched for, and each command that builds the name has
+  been changed and tested.
+- `csecs(` objids are gone, and objids compared as text go through `objid()`.
+- Each important command has been run on the rehearsed world, checking what it did, not only what it
+  printed.
+- The fixes are written down, so you can repeat them on the final import at cutover.
+
+That last point matters: the cutover imports a fresh flatfile, so every hand edit made on the rehearsal
+must be made again. Keep them as a script of `&`, `@mvattr` and `@dolist` lines you can paste into the
+new world.
