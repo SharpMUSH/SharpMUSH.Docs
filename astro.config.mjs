@@ -79,6 +79,7 @@ export default defineConfig({
                       { label: 'Run with Docker', slug: 'guides/docker-quickstart' },
                       { label: 'Migrate from another MUSH', slug: 'guides/pennmush-migration' },
                       { label: 'Moving a RhostMUSH or TinyMUX Game', slug: 'guides/rhostmush-tinymux-import' },
+                      { label: 'Conversion Pitfalls', slug: 'guides/conversion-pitfalls' },
                       { label: 'Operator Handbook', slug: 'guides/operator-handbook' },
                       { label: 'Staff Roles and Permissions', slug: 'guides/roles' },
                       { label: 'Moderation', slug: 'guides/moderation' },
