@@ -25,7 +25,8 @@ Account 2/XP - Set.
 
 Ariel and Brand share an account, so both read the same XP. `&`, `@set`, `@atrlock`, `@wipe`,
 `@cpattr`, `@mvattr`, `@edit`, `@atrchown`, `examine`, `@decompile`, `get()`, `xget()`, `lattr()`,
-`nattr()`, `hasattr()`, `lflags()`, `set()`, `attrib_set()` and `wipe()` all reach an account. It is
+`nattr()`, `hasattr()`, `hasflag()` (with an attribute, as `hasflag(#acct:2/XP, visual)`),
+`lflags()`, `set()`, `attrib_set()` and `wipe()` all reach an account. It is
 not an object: it has no location, flags or owner, and no code runs on it, so `u()`, `@trigger` and
 `$`-commands never reach it.
 
@@ -42,6 +43,31 @@ XP [#1]: 10
 ```
 
 In the portal's Softcode Editor, search for `account(*Ariel, ref)` to open the account's attributes.
+
+## A time zone for every character
+
+A `TZ` on the account is the zone of every character on it that has no `TZ` of its own.
+[`time()`](/reference/sharpmush-help/time-function/), `timefmt()`, `convsecs()` and `convtime()`
+read it when given a player, `dateparse()` reads the caller's with no zone given, and `timezone()`
+names the zone in use:
+
+```
+> &TZ account(*Ariel, ref)=Pacific/Kiritimati
+Account 2/TZ - Set.
+> think timezone(*Brand)
+Pacific/Kiritimati
+> think convsecs(1800000000, *Brand)
+Fri Jan 15 22:00:00 2027
+```
+
+`timezone()` reads `TZ` the way `get()` does. Someone who may not read it gets
+`#-1 NO PERMISSION TO GET ATTRIBUTE`, and `time()` gives them the server's zone instead.
+
+None of this needs a package: any code that sets `TZ` on the account works. Where the time package
+is installed, `+timezone/account` sets it for players (and plain `+timezone` does too, unless the
+character has a zone of its own or the game keeps zones per character), and the bulletin boards can keep what each player
+has read on the account too: see [Time and Time Zones](/guides/time/) and
+[Bulletin Boards](/guides/bboards/#read-marks-on-the-account).
 
 ## Who reads and writes them
 
