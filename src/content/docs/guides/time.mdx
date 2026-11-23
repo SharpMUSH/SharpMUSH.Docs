@@ -131,8 +131,10 @@ else who asks is told you keep it to yourself, and other packages read nothing:
 
 `+timezone/unhide` shows it again. A zone you hide stays hidden when you change it.
 
-Your zone is your `TZ` attribute, the one PennMUSH keeps it in, so `time(*<name>)` reads it too.
-Hiding it clears the attribute's `visual` flag, so `@set me/TZ=!visual` does the same.
+Your zone is a `TZ` attribute, the one PennMUSH keeps it in. The game keeps it on your account, so
+every character you play from that account shares one zone; a game set to keep one per character, or
+a character on no account, keeps it on the character. `time(*<name>)` and `timezone(*<name>)` read it
+either way. Hiding it clears the attribute's `visual` flag.
 
 ### Your zone from your client
 
@@ -362,6 +364,7 @@ The number on your game will differ.
 | Setting | What it is | Default |
 |---|---|---|
 | `zone` | The game's zone, the one `+time` calls game time. | `UTC` |
+| `zone-store` | Where `+timezone` keeps a player's zone. `account` keeps it on their account, shared by every character on it; `character` keeps one on each character. A character on no account keeps it on the character either way. | `account` |
 | `format` | How a time is written, in [`timefmt()`](/reference/sharpmush-help/timefmt-function/)'s codes. | `$a $d $b $Y, $H:$M` |
 | `detect` | What a zone a player's client reports does when they set none. `set` fills it in, hidden, and tells them; `offer` tells them at login, and `+timezone/detect` sets it; `off` does nothing. | `set` |
 | `detect-ip` | What to do for a player who set no zone and whose client reports none. `set` and `offer` look the zone up from the player's address at login, through `ip-service`, then work as for `detect`; `off` sends nothing. | `off` |
@@ -492,7 +495,7 @@ VISUAL object, so any object may call them, a player's included.
 | ``u(<Clock>/FUN`IC`SECS,<seconds>)`` | The IC clock's moment, in seconds, before the years are added. |
 | ``u(<Clock>/FUN`OOC`FOR,<seconds>,<player>)`` | That moment in the player's zone, or the game's when they set none. |
 | ``u(<Clock>/FUN`OOC`SHOW,<seconds>,<zone>)`` | That moment in a zone; the game's when it is left empty. |
-| ``u(<Clock>/FUN`ZONE`OF,<player>)`` | The player's zone, or nothing. |
+| ``u(<Clock>/FUN`ZONE`OF,<player>)`` | The player's zone, theirs or their account's, or nothing. |
 | ``u(<Clock>/FUN`ZONE`GAME)`` | The game's zone. |
 | ``u(<Clock>/FUN`ZONE`FIND,<text>)`` | The zone a player's text names, short names included, or nothing. |
 | ``u(<Clock>/FUN`DATE`INSTANT,<date>,<hour>,<minute>,<zone>)`` | A date such as `2026-10-20` at that hour and minute in that zone, in seconds. |
