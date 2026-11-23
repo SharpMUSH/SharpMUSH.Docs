@@ -8,9 +8,10 @@ description: "SharpMUSH documentation for Wiki Editing"
   "corpus": "help",
   "id": "wiki-editing",
   "lookup": "wiki editing",
-  "aliases": ["WIKI-EDITING", "@WIKI/CREATE", "@WIKI/EDIT", "@WIKI/APPEND"],
+  "aliases": ["WIKI-EDITING", "@WIKI/CREATE", "@WIKI/EDIT", "@WIKI/APPEND", "@WIKI/INSERT", "@WIKI/QUIET"],
   "sections": [
     {"id": "creating", "heading": "Creating and editing", "lookup": "wiki creating"},
+    {"id": "linebreaks", "heading": "Line breaks", "lookup": "wiki line breaks"},
     {"id": "rollback", "heading": "Rolling back", "lookup": "wiki rollback", "aliases": ["@WIKI/ROLLBACK"]},
     {"id": "translating", "heading": "Translating pages", "lookup": "wiki translating", "aliases": ["@WIKI/TRANSLATE"]},
     {"id": "example", "heading": "Example", "lookup": "wiki example"}
@@ -23,11 +24,13 @@ description: "SharpMUSH documentation for Wiki Editing"
 - `@wiki/create <title>=<markdown>`
 - `@wiki/edit <page>=<markdown>`
 - `@wiki/append <page>=<markdown>`
+- `@wiki/insert <page>=<heading>/<markdown>`
 - `@wiki/rollback <page>=<revision #>`
 
-Creating a page needs `wiki.create`, and editing one `wiki.edit`, along with whatever the page's namespace, categories and the page itself require (see [wiki permissions](/reference/sharpmush-help/wiki-administration/#wiki-permissions)); translations count as edits. A character's own biography is no exception: writing it needs `wiki.create`, and editing it or changing its gallery on the portal needs `wiki.edit`, as for any other page. A new game gives both permissions to the `approved` role and, through `wiki.admin`, to staff (see [roles](/reference/sharpmush-help/roles/#roles)). Each page records its author and last editor by dbref.
+Creating a page needs `wiki.create`, and editing one `wiki.edit`, along with whatever the page's namespace, categories and the page itself require (see [wiki permissions](/reference/sharpmush-help/wiki-administration/#wiki-permissions)); translations count as edits. A character's own biography is no exception: writing it needs `wiki.create`, and editing it or changing its gallery on the portal needs `wiki.edit`, as for any other page. A biography also belongs to its character: only a character on the account that owns it, or someone who controls it (staff), creates, edits or deletes it. A `wiki.admin` holder may change any biography. A new game gives both permissions to the `approved` role and, through `wiki.admin`, to staff (see [roles](/reference/sharpmush-help/roles/#roles)). Each page records its author and last editor by dbref.
 
 - [wiki creating](/reference/sharpmush-help/wiki-editing/#creating-and-editing): creating, replacing and appending to pages
+- [wiki line breaks](/reference/sharpmush-help/wiki-editing/#line-breaks): keeping a line on its own
 - [wiki rollback](/reference/sharpmush-help/wiki-editing/#rolling-back): restoring an earlier revision
 - [wiki translating](/reference/sharpmush-help/wiki-editing/#translating-pages): writing a page's translation
 - [wiki example](/reference/sharpmush-help/wiki-editing/#example): a short session
@@ -38,7 +41,24 @@ Creating a page needs `wiki.create`, and editing one `wiki.edit`, along with wha
 
 @wiki/edit replaces a page's entire Markdown body. @wiki/append adds the given Markdown as a new paragraph at the end, handy for building up a page from a telnet client one block at a time. Every edit records a revision; see [wiki administration](/reference/sharpmush-help/wiki-administration/#wiki-administration).
 
+@wiki/insert puts the Markdown first under the page's `#` heading of that name, of any level and in any case (an underlined heading does not count, nor one inside a code block), and adds the heading as `## <heading>` at the end when the page has none. A log of developments or sessions grows newest first this way. The revision's summary is `Added to <heading>`.
+
+`@wiki/create/private <title>=<markdown>` creates a private page with you as its lead; see [wiki private pages](/reference/sharpmush-help/wiki-administration/#private-pages).
+
+Add `/quiet` to `/create`, `/category`, `/insert` or `/member` to leave out the line saying it was done. A refusal is still shown. Softcode that runs `@wiki` for a player uses it to say what happened in its own words.
+
 To change a page's existing text, read its source with `@wiki/md` first (see [wiki reading source](/reference/sharpmush-help/wiki/#reading-source)).
+
+### Line breaks
+
+Pages are Markdown, which joins lines that follow each other into one paragraph. To keep a line on its own, end it with a backslash (`\`) or two spaces. A blank line starts a new paragraph. Raw HTML such as `<br>` is not allowed.
+
+```
+Sense where a situation is about to go wrong.\
+Find the one weak point in a plan.
+```
+
+Output: the two sentences on two lines of one paragraph.
 
 ### Rolling back
 

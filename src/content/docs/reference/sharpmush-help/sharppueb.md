@@ -49,7 +49,7 @@ HTML Functions are used to output HTML tags to HTML capable users: Pueblo and MX
 |                    |                    |                    |                    |
 |--------------------|--------------------|--------------------|--------------------|
 | [CMDLINK()](/reference/sharpmush-help/sharppueb/#cmdlink)        | [ENDTAG()](/reference/sharpmush-help/sharppueb/#endtag)         | [HTML()](/reference/sharpmush-help/sharppueb/#html-1)           | [TAG()](/reference/sharpmush-help/sharppueb/#tag)            |
-| [TAGWRAP()](/reference/sharpmush-help/tagwrap-function/#tagwrap)        | [WSHTML()](/reference/sharpmush-help/wshtml-function/#wshtml)         |                    |                    |
+| [TAGWRAP()](/reference/sharpmush-help/tagwrap-function/#tagwrap)        | [WSHTML()](/reference/sharpmush-help/wshtml-function/#wshtml)         | [WSJSON()](/reference/sharpmush-help/wsjson-function/#wsjson)         |                    |
 
 Things a client may have that are not tags (a sound, a picture, a pane, a screen to clear) are written once and rendered by each client in its own way. See [MEDIA FUNCTIONS](/reference/sharpmush-help/sharppueb/#media-functions).
 
@@ -60,7 +60,7 @@ Things a client may have that are not tags (a sound, a picture, a pane, a screen
 > say wshtml(<a href="https://sharpmush.com">SharpMUSH</a>)
 ```
 
-Mortals are restricted in the tags they may use. Most standard HTML tags are ok; command links (cmdlink(), and the SEND and XCH_CMD parameters) can only be sent by Wizards or those with the Send_OOB @power.
+Mortals are restricted in the tags they may use. Most standard HTML tags are ok; the SEND and XCH_CMD parameters can only be sent by Wizards or those with the Send_OOB @power. cmdlink() is open to everyone.
 
 ## html()
 
@@ -109,7 +109,7 @@ Outputs *&lt;string&gt;* as a link that runs *&lt;command&gt;* when clicked. *&l
 
 Each client gets the link in its own dialect: `<a xch_cmd>` for Pueblo, `<send href>` for MXP, a clickable link in the web portal. Every other client gets *&lt;string&gt;* alone. This is why a command link is a function of its own: one written with tagwrap() works in only one of those clients.
 
-cmdlink() is SharpMUSH's own. It needs a Wizard or the Send_OOB @power, as PennMUSH requires for XCH_CMD; anyone else gets `#-1 PERMISSION DENIED`. A *&lt;command&gt;* containing a control character (a line break, a tab, an escape) is `#-1 INVALID ARGUMENT`: a line break would have the client send the rest as a second command, and the others are not part of any command a player could type.
+cmdlink() is SharpMUSH's own. Anyone may use it, so a room, a description or a player's pose can carry a link. A click runs the command as the reader, as if typed. `@function/restrict` can close it again (see [restrict built-in](/reference/sharpmush-help/restrict/#changing-a-built-ins-restriction)). A *&lt;command&gt;* containing a control character (a line break, a tab, an escape) is `#-1 INVALID ARGUMENT`: a line break would have the client send the rest as a second command, and the others are not part of any command a player could type.
 
 Clicking a link sends *&lt;command&gt;* as if the reader had typed it, so it runs as whoever clicks, not as the object that made the link, and anyone can type the same line. A command behind a link checks who is running it (`%#`) the way any command does. [Chat Cards](https://sharpmush.com/guides/chat-cards/) on the SharpMUSH documentation site works through an example.
 
@@ -137,7 +137,7 @@ figure() is a picture with text art and text flowing round it; it is described w
 
 None of them leaves anything in the plain text, so `strlen()` and listen patterns see what they saw before, except where a function stands words in for what a client cannot show, such as a picture's description.
 
-All but preformat() need a Wizard or the Send_OOB @power, as [CMDLINK()](/reference/sharpmush-help/sharppueb/#cmdlink) does: they make a client fetch a file, play it, or clear what the player is looking at. Laying text out does not, so preformat() is open to anyone. image() and figure() also accept the Send_Image @power, which allows pictures and nothing else; the approved role holds it, so an approved character can show a picture in a pose or a description.
+All but preformat() need a Wizard or the Send_OOB @power: they make a client fetch a file, play it, or clear what the player is looking at. Laying text out does not, so preformat() is open to anyone. image() and figure() also accept the Send_Image @power, which allows pictures and nothing else; the approved role holds it, so an approved character can show a picture in a pose or a description.
 
 ::: seealso
 - [HTML FUNCTIONS](/reference/sharpmush-help/sharppueb/#html-functions)
@@ -227,7 +227,7 @@ A client with no panes shows the text where it is, which is why the text is insi
 
 Says *&lt;text&gt;* is laid out by its own spacing: a table, a map, a listing.
 
-A client reading the stream as HTML (a Pueblo client, the portal) collapses runs of spaces and uses a variable width font, so anything drawn with spaces needs this around it or its columns will not line up. Pueblo gets `<xch_mudtext>`, the portal `<pre>`, and a terminal the text unchanged, since a terminal lays it out that way already.
+The portal collapses runs of spaces and uses a variable width font, so anything drawn with spaces needs this around it or its columns will not line up there. The portal gets `<pre>`. A Pueblo client and a terminal get the text with its spaces as they are, since they lay it out that way already.
 
 [align()](/reference/sharpmush-help/align/#align), [align()](/reference/sharpmush-help/align/#align) and [TABLE()](/reference/sharpmush-help/sharpfunc/#table) already say it for themselves, as do tables and code blocks in help and wiki text. This is for columns you draw yourself.
 
@@ -246,7 +246,7 @@ A client reading the stream as HTML (a Pueblo client, the portal) collapses runs
 
 `clearscreen()`
 
-Clears what the player has been shown. A terminal is sent the ANSI sequence for it, Pueblo `<xch_page clear="text">`, and the portal an element it acts on. MXP has no such instruction, and an MXP client is sent nothing.
+Clears what the player has been shown. A terminal and an MXP client are sent the ANSI sequence for it, Pueblo `<xch_page clear="text">`, and the portal an element it acts on.
 
 ## prefetch()
 

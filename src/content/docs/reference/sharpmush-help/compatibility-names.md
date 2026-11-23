@@ -16,9 +16,9 @@ description: "SharpMUSH documentation for Compatibility Names"
       "lookup": "compatibility names argument order ctitle and cstatus"
     },
     {
-      "id": "wshtml-accepts-but-does-not-use-default-string-there-is-no-wsjson",
-      "heading": "`wshtml()` accepts but does not use `<default string>`; there is no `wsjson()`",
-      "lookup": "compatibility names wshtml accepts but does not use default string there is no wsjson"
+      "id": "wshtml-accepts-but-does-not-use-default-string",
+      "heading": "`wshtml()` accepts but does not use `<default string>`",
+      "lookup": "compatibility names wshtml accepts but does not use default string"
     },
     {
       "id": "sharpmush-only-functions",
@@ -44,6 +44,11 @@ description: "SharpMUSH documentation for Compatibility Names"
       "id": "a-player-s-totcmds-counts-their-commands",
       "heading": "A player's `TOTCMDS` counts their commands",
       "lookup": "compatibility names a player s totcmds counts their commands"
+    },
+    {
+      "id": "no-slash-in-an-attribute-name",
+      "heading": "No `/` in an attribute name",
+      "lookup": "compatibility names no slash in an attribute name"
     }
   ]
 }
@@ -70,14 +75,14 @@ On a game with a `Public` channel you have joined:
 ON
 ```
 
-### `wshtml()` accepts but does not use `<default string>`; there is no `wsjson()`
+### `wshtml()` accepts but does not use `<default string>`
 
 **A choice.**
 
-**PennMUSH**'s `wshtml(<html>, <default>)` and `wsjson(<json>, <default>)` write the payload into the line as an out-of-band region and the `<default>` as the reading for a client without WebSockets, because its output buffer holds raw bytes and cannot degrade a tag on its own. `think` shows only the `<default>`.<br>
-**SharpMUSH**'s output is markup, which can. `wshtml(<html>)` parses the fragment into tags over text, the same value `tagwrap()` builds one tag at a time: a WebSocket, Pueblo or MXP client gets the tags, an ANSI client gets the styling it can show for `<b>`, `<i>`, `<u>` and `<s>` and the words for everything else, and everything else gets the words. The `<default>` argument is accepted, so softcode written for PennMUSH runs unchanged, but it is not used: a client without HTML sees the fragment's own text rather than `<default>` (`wshtml(<b>x</b>,y)` reads `x`, where PennMUSH shows `y`). `wsjson()` does not exist.<br>
-**Why.** The words of the fragment are already its plain reading, so there is no second string to supply. JSON is data for a program, not text with a plain reading.<br>
-**Workaround.** If the plain reading matters, make the fragment's own text say it. Send JSON with `oob()`, which delivers it where a connection can receive it, over GMCP or the WebSocket.
+**PennMUSH**'s `wshtml(<html>, <default>)` writes the payload into the line as an out-of-band region and the `<default>` as the reading for a client without WebSockets, because its output buffer holds raw bytes and cannot degrade a tag on its own. `think` shows only the `<default>`.<br>
+**SharpMUSH**'s output is markup, which can. `wshtml(<html>)` parses the fragment into tags over text, the same value `tagwrap()` builds one tag at a time: a WebSocket, Pueblo or MXP client gets the tags, an ANSI client gets the styling it can show for `<b>`, `<i>`, `<u>` and `<s>` and the words for everything else, and everything else gets the words. The `<default>` argument is accepted, so softcode written for PennMUSH runs unchanged, but it is not used: a client without HTML sees the fragment's own text rather than `<default>` (`wshtml(<b>x</b>,y)` reads `x`, where PennMUSH shows `y`). `wsjson()` keeps its `<default>`, as PennMUSH does: see [wsjson()](/reference/sharpmush-help/wsjson-function/#wsjson).<br>
+**Why.** The words of the fragment are already its plain reading, so there is no second string to supply.<br>
+**Workaround.** If the plain reading matters, make the fragment's own text say it.
 
 PennMUSH shows nothing for the first line:
 
@@ -100,7 +105,7 @@ hi
   `gmcpsupports()`, `exitmap()`: the GMCP modules a client listed in Core.Supports, and a room's exits as JSON for a client's mapper.<br>
   `formq()`, the wiki functions and the scene functions: SharpMUSH subsystems with no PennMUSH counterpart.
 
-There is no `websocket_html()`: HTML for a client is markup in the text, from `wshtml()` or `tagwrap()`, and JSON goes by `oob()`. `objmem()` always answers 0.
+There is no `websocket_html()`: HTML for a client is markup in the text, from `wshtml()` or `tagwrap()`, and JSON goes by `wsjson()` or `oob()`. `objmem()` always answers 0.
 
 ### Functions from TinyMUX and RhostMUSH
 
@@ -137,3 +142,20 @@ PennMUSH has none of these. `pack()` and `unpack()` come from TinyMUX and RhostM
 **Why.** RhostMUSH code reads the count, and `totcmds()` needs the sessions that have ended.<br>
 **Workaround.** None is needed for PennMUSH code; it never reads `TOTCMDS`. Code that lists every attribute of a player sees one more.<br>
 **Example.** The parity case `choice.totcmds` in `tools/parity/scenarios/40-compat-choices.scn` runs it on both servers.
+
+### No `/` in an attribute name
+
+**A choice.**
+
+**PennMUSH** takes `/` in an attribute name: `&POSE/BEFORE me=x` sets `POSE/BEFORE`.<br>
+**SharpMUSH** reads `/` as the end of the object in `<object>/<attribute>`, so a new name holding one is refused. An attribute a world already holds under such a name still reads, changes and clears.<br>
+**Why.** `get(me/pose/before)` would otherwise have two readings, and SharpMUSH's tree separator `` ` `` already says what such a name usually means.<br>
+**Workaround.** None needed for an imported database: the import renames each such attribute to a tree, `POSE/BEFORE` to ``POSE`BEFORE``, rewrites the code that names it whole, and lists each rename in its report. A `/` that would start, end or double a tree separator becomes `_`. A name the code builds at run time is not rewritten.<br>
+**Example.**
+
+```sharp
+> &POSE/BEFORE me=x
+That's not a good name for an attribute.
+> &POSE`BEFORE me=x
+Set.
+```

@@ -50,4 +50,5 @@ Output: the number of your connections that took Room.Info. A Mudlet that listed
 
 ::: seealso
 - [json()](/reference/sharpmush-help/json-function/#json)
+- [wsjson()](/reference/sharpmush-help/wsjson-function/#wsjson)
 :::

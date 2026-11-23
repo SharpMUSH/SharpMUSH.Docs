@@ -68,4 +68,5 @@ en
 - [WIKISEARCH()](/reference/sharpmush-help/sharpwiki/#wikisearch)
 - [WIKIRECENT()](/reference/sharpmush-help/sharpwiki/#wikirecent)
 - [WIKIACCESS()](/reference/sharpmush-help/sharpwiki/#wikiaccess)
+- [WIKIMEMBERS()](/reference/sharpmush-help/sharpwiki/#wikimembers)
 :::

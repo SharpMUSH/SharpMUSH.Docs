@@ -75,6 +75,7 @@ search() and lsearch() also take the one-argument form RhostMUSH and TinyMUSH us
 - [@find](/reference/sharpmush-help/sharpcmd/#find)
 - [LPARENT()](/reference/sharpmush-help/sharpfunc/#lparent)
 - [LSTATS()](/reference/sharpmush-help/sharpfunc/#lstats)
+- [cache()](/reference/sharpmush-help/cache-function/#cache)
 :::
 
 ### The INDEX class

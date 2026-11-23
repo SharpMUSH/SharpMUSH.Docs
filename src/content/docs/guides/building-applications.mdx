@@ -212,6 +212,7 @@ Each `field` element has a `type`:
 |---|---|
 | `text` | A one-line box. This is the type when none is given. |
 | `textarea` | A box several lines tall. |
+| `textart` | A box for text art: a fixed-width font, lines that do not wrap, and room for up to 26 lines. |
 | `mstring` | A box several lines tall that keeps colour and other markup. |
 | `number` | A box for a number, with up and down arrows. |
 | `slider` | A slider. Set its ends with `min` and `max` in `validation`. |
@@ -220,6 +221,10 @@ Each `field` element has a `type`:
 | `multiselect` | A list to pick several choices from. Needs `options`. |
 | `radio` | A set of round buttons to pick one choice from. Needs `options`. |
 | `date` | A calendar to pick a date from. |
+| `image` | A picture's address, with a preview. A reader with `media.upload` can upload a picture (SVG, PNG, JPEG, GIF or WebP), and one with `media.admin` can pick one already uploaded. |
+| `list` | Free text, one value at a time, each shown as a chip that can be removed. A value may hold a comma. Give it a JSON array in the data, and it sends one back. |
+| `rows` | A list of rows, each showing its `item_fields` side by side, with buttons to move a row up or down, remove it, and add one. Its value is a JSON array of objects. |
+| `graph` | Steps joined by outcomes, on a map you drag them around on and in an outline that reads the same steps as a list. Its `graph` setting says what kinds of step there are. |
 | `hidden` | Nothing. It carries a value along with the answers without showing it. |
 
 A `field` can also have:
@@ -243,11 +248,55 @@ A `field` can also have:
 | `keyvalue` | A list of names and values. A value sent as `{ "text": "...", "link": "..." }` shows as a link. | `fields`: the data keys to show. |
 | `graph` | People or things joined by labelled lines, drawn around one in the middle. | `src_field`: the data key holding `{ "nodes": [...], "edges": [...] }`. A node has an `id`, a `label`, an optional `image`, and `focus` on the one in the middle. An edge has `from`, `to`, a `label`, a `tone` for its colour, and `directed` for an arrow. `link` makes each node a link, with `{label}` or any other node key filled in; `empty` is shown when there are no edges. |
 | `timeline` | A list of dated entries, like comments on a job. | `rows_field`: the data key holding the entries. |
+| `stats` | A row of tiles, each a small label over a large value. | `rows_field`: the data key holding the tiles. See [Stat tiles](#stat-tiles). |
+| `chips` | Small chips or pills under a label. | `src_field`: the data key holding a list. See [Chips and pills](#chips-and-pills). |
 | `divider` | A line across the section. | Nothing. |
 | `button` | A button. | `label`: its text; `action`: the action it runs. `confirm` asks a question first. `values` adds values to the answers it sends; `color` and `variant` style it. |
 
 A section can set `"columns": 2` (or more) to put its elements side by side. On a phone
 they stack in one column.
+
+### Stat tiles
+
+Each row of a `stats` element is a tile. It has a `label`, a `value`, an optional `caption` under the
+value, and a `color` for its top edge. A row with a `max` above 0 also draws `current` against it, as
+a bar, or as one pip per point when `pips` is true. A row with an empty `value` is left out, and
+`empty` is shown when no tiles are left.
+
+Tiles next to each other with the same `stack` are drawn one above the other in one place, the first
+on top. A slot board uses it to draw a coat over the shirt it hides.
+
+```json
+[
+  { "label": "outer", "value": "Grey coat", "stack": "torso", "color": "primary" },
+  { "label": "top", "value": "Linen shirt", "caption": "Hidden", "stack": "torso" },
+  { "label": "Hero Points", "value": "2", "current": 2, "max": 3, "pips": true, "color": "warning" }
+]
+```
+
+### Chips and pills
+
+A `chips` element draws its data key's list under `label`, with `empty` shown when the list is
+empty. An entry is a piece of text, or `{ "text": "Frightened 1", "color": "error" }`.
+
+An entry can instead be a pill with a look of its own:
+
+```json
+{ "text": "Keeper of Lore", "background": "#1b3a5c", "foreground": "#f5e9c8",
+  "style": "bold italic", "typeface": "title", "css": "letter-spacing: 0.1em",
+  "hint": "Kept the archive.", "link": "/apps/achievements" }
+```
+
+Only `text` is needed.
+
+| Setting | What it does |
+|---|---|
+| `background`, `foreground` | The pill's two colours, each `#rrggbb`. They go together: with only one, the pill takes the theme's chip colours. Pick a pair with a contrast of 4.5:1 or more, so it reads in every colour vision. |
+| `style` | Any of `bold`, `italic` and `underline`. |
+| `typeface` | `title` or `mono`, the theme's own title and monospace faces, or `serif`, `sans` or `script`, the same in every theme. |
+| `css` | More CSS declarations for the pill, up to 500 characters. The portal leaves out any that sets a colour, opacity, a filter, the face, position, display or visibility, and drops the whole value if it holds braces, angle brackets, a backslash, `@`, quotes, a comment or `url(`. |
+| `hint` | Shown while the pill is pointed at or focused. A screen reader reads it as the pill's description. |
+| `link` | A portal page or an `http(s)` address the pill opens. |
 
 ### Actions
 
