@@ -13,7 +13,7 @@ page lists each kind, shows how to find it in your world, and shows the fix.
 
 Read it alongside the [migration guide](/guides/pennmush-migration/), which covers the rehearsal,
 cutover and rollback, and [Moving a RhostMUSH or TinyMUX Game](/guides/rhostmush-tinymux-import/),
-which lists every rewrite the import makes.
+which lists the rewrites made for a TinyMUX or RhostMUSH game.
 
 | You want to | Read |
 |---|---|
@@ -60,8 +60,9 @@ after the import.
 Start with the import report. Warnings marked as needing action, the **Rewritten softcode** list and the
 **Download import log** button are described in the
 [migration guide](/guides/pennmush-migration/#check-the-rewritten-softcode). The report names each
-renamed attribute, each objid it rewrote, and each place it knows needs you. It does not name code that
-builds a name at run time, because it cannot see one.
+renamed attribute, the attributes whose objids it rewrote, and the places it knows need you. A warning
+that covers many attributes names the first few and gives the count, and no warning names code that
+builds a name at run time, because the import cannot see one.
 
 To find those, search the attribute text of the whole world for the part of the old name that stays
 fixed. `grep()` lists the attributes on one object whose text contains a string, and `lsearch(all)`
@@ -83,8 +84,9 @@ reads every attribute of every object, so run it on the rehearsed world.
 Matches of 'LANGUAGE' on Gadget(#9): CMD_LANG CMD_LANGS CMD_LEARN
 ```
 
-Search for each renamed attribute's fixed part, for `csecs(`, and for `%|`, `%>` and `%m` if the game
-came from PennMUSH.
+Search for each renamed attribute's fixed part, for `csecs(`, and for `%>` and `%*<`. Search for `%|`
+and `;|` too if the game came from PennMUSH or RhostMUSH, and for `%m` and `%=<` if it came from
+PennMUSH.
 
 <Aside type="caution" title="A broken command often prints nothing">
 When a `$`-command's action fails, the error goes to the object running it, not to the player who typed
@@ -238,7 +240,7 @@ What the import does with the old objids:
 
 - **In attributes.** Each `#<dbref>:<stamp>` in attribute text whose stamp is in the seconds range
   (100000000 to 99999999999) is rewritten to milliseconds, under the number its object was imported
-  as. Gadget's `OWNER_REF` now holds `#1:1789145410000`. The report lists every attribute it changed.
+  as. Gadget's `OWNER_REF` now holds `#1:1789145410000`. The report names the attributes it changed: the first 20, then how many more.
 - **Outside the game.** An objid kept in a SQL table, a web service or a player's notes still finds its
   object, because SharpMUSH reads a stamp in the seconds range as seconds:
 
@@ -279,7 +281,8 @@ even for the imported owner:
 0
 ```
 
-The report lists each attribute that builds an objid this way. Use `objid()`, or `csecs(<object>,ms)`
+The report counts the attributes that build an objid this way and names the first few; search for
+`csecs(` to find the rest. Use `objid()`, or `csecs(<object>,ms)`
 where you need the number alone:
 
 ```sharp
@@ -321,7 +324,7 @@ the next free number, and the report says so:
 ```
 
 Softcode that names the old number is not rewritten, because a dbref in text cannot be told apart from
-other text reliably. The report lists each attribute that mentions it, under a warning that starts
+other text reliably. The report names the attributes that mention it (the first 20, then how many more), under a warning that starts
 `<count> attribute(s) mention #<number>, which was imported as #<new number>`. Change those by hand.
 
 A new SharpMUSH game keeps its own HTTP handler, event handler and package objects at `#3` to `#9`. An
@@ -331,7 +334,8 @@ wizard's handler step before you test web requests or events.
 ## Substitutions that mean something else
 
 Some `%` codes do something here that they did not do on the old server. The import does not rewrite
-them; it lists each attribute that uses one, as a warning needing action.
+them; it warns about each code, naming the attributes that use it (the first 20, then how many more).
+Search for the rest as in [Finding the code](#finding-the-code).
 
 | Code | On the old server | Here | Reported for | Write instead |
 |---|---|---|---|---|
@@ -379,7 +383,8 @@ runs: an unknown function gives `#-1 FUNCTION (<NAME>) NOT FOUND`, an unknown co
   other name; see
   [commands under a dialect](/guides/rhostmush-tinymux-import/#commands-under-a-dialect).
 - `@function` lines that register names the code computes, such as `@function [rest(##,.)]=...`, are
-  reported, since nothing can check those names until they run.
+  reported when the scan also finds calls of functions it cannot place, since those may be the computed
+  names.
 - A command name or function name your code builds at run time, such as `@force me=@[v(cmd)]`, is not
   seen by the scan or the rewrites. Search for it as in [Finding the code](#finding-the-code).
 - TinyMUX and RhostMUSH `@hook` lines are rewritten in full. Hooks the old configuration turned on at
