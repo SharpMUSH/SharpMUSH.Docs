@@ -76,7 +76,9 @@ recorded into. Joining needs the `scene.join` permission; see [Who can take part
 
 `+scene/go <id>` takes you to the room a scene is running in, so you can join it there. Only a
 running scene: one that is scheduled, paused, finished or cancelled is refused. A FIXED character
-can't go, and going needs the `scene.join` permission. In the `+scene` list, a running scene's room
+can't go, and going needs the `scene.join` permission. An invite-only scene takes only its members,
+the players invited to it, staff who manage scenes and wizards; anyone else is told
+`Permission denied. Scene 1 is invite-only, so only the players invited to it can go there.` In the `+scene` list, a running scene's room
 is a link that does the same, and in the portal the room name on a running scene's card, page and
 live view takes your character there and opens **Play**.
 
@@ -298,8 +300,9 @@ members and the players invited to it, who still find it in `+scene/mine` and **
 ```
 
 A private scene that is also invite-only is hidden from the start. Only its owner, its members and
-the players invited to it see it, in `+scene`, `+scene/upcoming`, its room and the portal. Anyone
-else is told `No such scene`.
+the players invited to it see it, in `+scene`, `+scene/upcoming`, its room and the portal. Staff
+holding `scene.manage` see it in the game too, and wizards in the game and the portal. Anyone else
+is told `No such scene`.
 
 ### Inviting players
 
