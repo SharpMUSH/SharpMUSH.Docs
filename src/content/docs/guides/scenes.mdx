@@ -353,8 +353,10 @@ time, such as `tomorrow 7pm` or `2026-12-31 20:00`, or a time from now: `+3d`, `
 ```
 
 `+scene/schedule/private`, `+scene/schedule/invite-only` or `+scene/schedule/private/invite-only`
-schedules a scene that is private, invite-only or both from the moment it exists, so no one else can
-read or join it before you change it.
+sets these from the moment the scene exists. `/private` alone hides the scene only once it ends; until
+then anyone may read and join it. `/invite-only` alone lets only invited players join, RSVP or go to
+it, but anyone may read it. `/private/invite-only` hides it from the start: only its owner, its
+members and the players invited to it see it.
 
 ```
 > +scene/schedule/private/invite-only +2d/Quiet plans=Not for everyone.
