@@ -297,6 +297,48 @@ or cancelled, it and its log are hidden from everyone but those who took part, w
 [SCENE] Done: Scene 2 is now private.
 ```
 
+A private scene that is also invite-only is hidden from the start. Only its owner, its members and
+the players invited to it see it, in `+scene`, `+scene/upcoming`, its room and the portal. Anyone
+else is told `No such scene`.
+
+### Inviting players
+
+`+scene/policy <id>=invite-only` lets only invited players join or RSVP. `+scene/invite
+<id>=<player>[,<player>...]` invites players and tells each one. `+scene/uninvite
+<id>=<player>[,<player>...]` takes invitations back. Only the scene's owner, a wizard, or someone
+holding `scene.manage` may invite.
+
+```
+> +scene/policy 1=invite-only
+[SCENE] Done: Joining policy set to invite-only. Scene 1 is private, so only its owner, its members and the players invited to it can see it.
+> +scene/invite 1=Tobin, Juno, Nobody
+[SCENE] Done: Invited Tobin to scene 1.
+[SCENE] Done: Invited Juno to scene 1.
+[SCENE] Warning: No such player: Nobody
+```
+
+Each invited player is told:
+
+```
+[SCENE] Mira invited you to scene 1: Smugglers at the Harbour (Nov 26 08:51PM game time). +scene 1 tells you about it; +scene/join 1 joins it.
+```
+
+`+scene <id>` lists who is invited under **Invited**. A player who is not invited gets a refusal:
+
+```
+> +scene/join 2
+[SCENE] Warning: This scene is invite-only. Ask its owner for an invitation.
+```
+
+In the portal, the **Schedule a scene** form and a scene's **Edit** form have **Only invited players
+may join** and **Invite players**, which takes names separated by commas. The Edit form shows each
+invitation as a chip; closing a chip takes that invitation back when you save. A name the game
+refuses is shown with the reason and stays in the field. A scene's page lists who is invited.
+
+![The Schedule a scene form: Let anyone watch is off, Only invited players may join is on, and Invite players holds Tobin, Juno, Nobody. A note says only you, the players in it and the players you invite can see this scene.](../../../assets/guide/scene-invite-schedule.webp)
+
+![A scene's Edit form with Tobin and Ash as invitation chips, Nobody left in the Invite players field, and the warning No such player: Nobody below.](../../../assets/guide/scene-invite-edit.webp)
+
 ## Scheduling
 
 `+scene/schedule <title>=<when>` announces a scene before it happens. `<when>` is a date and time,
