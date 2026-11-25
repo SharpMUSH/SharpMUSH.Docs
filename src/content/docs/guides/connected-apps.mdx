@@ -16,6 +16,7 @@ This page covers:
 - [What an app can do](#what-an-app-can-do)
 - [Taking it back](#taking-it-back)
 - [Registering an app](#registering-an-app)
+- [Apps that describe themselves](#apps-that-describe-themselves)
 - [Keeping apps away from a command](#keeping-apps-away-from-a-command)
 - [Writing an app](#writing-an-app)
 - [Reading scenes from a desktop app](#reading-scenes-from-a-desktop-app)
@@ -78,7 +79,7 @@ removing the app does the same.
 
 ## Registering an app
 
-An app has to be registered before it can ask anyone. You need the `config.admin` permission. Open
+Staff can register an app so it may ask players, or let apps [describe themselves](#apps-that-describe-themselves). You need the `config.admin` permission. Open
 **Admin**, then **Configuration**, and under **Security** choose **Apps**. Fill in **Register an
 app** and press **Save**.
 
@@ -96,6 +97,58 @@ app** and press **Save**.
   PKCE alone.
 
 Deleting an app takes back every grant players gave it.
+
+## Apps that describe themselves
+
+An app can skip registration: its client id is an `https` address that serves a short JSON
+description of it, following OAuth Client ID Metadata Documents. The game reads the description the
+first time a player is sent its way, and again at most once an hour.
+
+```json
+{
+  "client_id": "https://valyria.example.com/oauth/client.json",
+  "client_name": "Valyria",
+  "client_uri": "https://valyria.example.com/",
+  "redirect_uris": ["http://127.0.0.1/callback"],
+  "scope": "profile scenes.read",
+  "token_endpoint_auth_method": "none"
+}
+```
+
+- `client_id` must be the address the description is served from: `https`, a host name (not an IP
+  address), and a path.
+- The app is public: no `client_secret`, and `token_endpoint_auth_method` is `none` when given. It
+  uses PKCE alone.
+- `redirect_uris` (1 to 10) must be `https` on the same host, `http` on `127.0.0.1` or `[::1]`, or
+  the host's reversed name as a scheme, such as `com.example.valyria:/callback`.
+- `scope` is the most it may ask for; without it, only `profile`. `client_uri` is shown as its
+  homepage when it is on the same host.
+- The description is at most 5 KB, and the game reads it only from a public internet address,
+  without following redirects.
+
+On the **Apps** page, **Apps that describe themselves** chooses what happens:
+
+- **Staff allow each one first** (the default): the app is listed under **Self-described apps**, and
+  a player sent to it is told it is waiting for staff. Press **Allow** to let it ask.
+- **Accept them, marked as not reviewed**: it may ask at once, and the Allow an app page says
+  **Not reviewed by staff**. Until staff allow it, it may ask only for `profile` and `scenes.read`.
+- **Refuse them**: only registered apps, and apps staff allowed before, are accepted. No address is
+  read.
+
+![Self-described apps on the Apps page: Scene Notes, not reviewed, with Allow and Block buttons, and Valyria, blocked, with an Allow button.](../../../assets/guide/connected-apps-self-described.webp)
+
+![The Allow an app page for Scene Notes, marked Not reviewed by staff, with Details from localhost under the title.](../../../assets/guide/connected-apps-not-reviewed.webp)
+
+**Block** refuses an app, takes back every grant players gave it and stops its tokens. It blocks
+that one address; add its domain to **Blocked domains** to refuse every app on it and its
+subdomains. The bin button forgets an app, so its description is read afresh next time.
+
+An allowed app whose description later asks for more scopes or redirect addresses, or changes its
+name, waits for staff again. At most 100 apps wait for staff, 5 from one host.
+
+The same settings are the `oauth_app_policy` and `oauth_blocked_domains` options (`help @config
+oauth`). The server's metadata says `client_id_metadata_document_supported` unless the policy refuses
+such apps.
 
 ## Keeping apps away from a command
 
