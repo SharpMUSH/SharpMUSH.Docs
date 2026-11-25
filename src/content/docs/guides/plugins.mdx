@@ -257,9 +257,11 @@ The repository's `examples/plugins/scene-behavior` folder holds this plugin in f
 What your plugin gets from its dependency is the dependency's own assembly and every assembly that one
 references. Your plugin's other private assemblies stay its own.
 
-If the dependency is not running (turned off, failed, or not installed), your plugin still loads
-when it can, and fails when it needs the dependency's types. The Plugins tab then shows it as failed:
-"It threw while loading, and it depends on 'scene', which is not running."
+If the dependency is installed but not running (turned off or failed), your plugin is not loaded
+either. The Plugins tab shows it as failed: "It depends on 'scene', which is not running." If the
+dependency is not installed at all, your plugin still loads, and fails if it needs the dependency's
+types: "It threw while loading, and it depends on 'scene', which is not running; the server log has
+the error."
 
 A plugin that another running plugin depends on can't be turned off, unloaded or reloaded until that
 one is off:

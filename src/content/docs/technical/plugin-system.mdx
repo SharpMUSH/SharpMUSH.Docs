@@ -69,9 +69,10 @@ The server loads each DLL exactly once, in a single pass:
    the Plugins tab or with `@plugin/disable`, is recorded in `plugins.state.json` there and not loaded.
 2. **Ordering.** Every plugin loads after the plugins it depends on. Plugins with no dependency on
    each other are ordered by `Priority`, then `Id`. Dependency loops are found and logged, and the
-   plugins in the loop are skipped; the rest still load. A missing dependency is logged and the
-   plugin that needs it still loads; if it then fails, the Plugins tab says which dependency is not
-   running.
+   plugins in the loop are skipped; the rest still load. A dependency that is installed but did not
+   load (turned off, incompatible, or failed) keeps the plugin that names it from loading, and the
+   Plugins tab says which dependency is not running. A dependency that is not installed at all is
+   logged, and the plugin that names it still loads.
 3. **Loading.** Each plugin is loaded, its `[SharpPlugin]` type found and created. A plugin that
    fails is logged and skipped. **One bad DLL never stops the server from starting.**
 
