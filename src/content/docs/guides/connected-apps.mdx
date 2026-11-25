@@ -18,6 +18,7 @@ This page covers:
 - [Registering an app](#registering-an-app)
 - [Keeping apps away from a command](#keeping-apps-away-from-a-command)
 - [Writing an app](#writing-an-app)
+- [Reading scenes from a desktop app](#reading-scenes-from-a-desktop-app)
 - [Packages that run commands](#packages-that-run-commands)
 
 ## Allowing an app
@@ -42,6 +43,7 @@ Each line on the page is one **scope**.
 | Scope | What the app may do |
 |---|---|
 | Run commands | Type commands and edit softcode as your character, with its locks, quota and control, and manage its own queue, recurring jobs and snapshots |
+| Read your scenes | See the scenes your character can see, their logs and new poses as they arrive. It cannot join, pose or change anything |
 | Wiki and media | Use your wiki and media permissions |
 | Building and code | Use your application and package permissions, and the Builder power |
 | Portal administration | Use your staff permissions in the portal: configuration, roles, players, jobs, the queue |
@@ -55,6 +57,10 @@ builder. Allowed **Run commands** alone, the app sees no Builder power: `think [
 says `0`. Allowed **Building and code** too, it says `1`. A wizard who allows the same two scopes is
 a builder to the app, not a wizard. Anything the app's commands queue, such as an `@trigger`, runs
 the same way.
+
+**Read your scenes** reads exactly what your character reads in the portal: public scenes, and the
+private ones it owns, is in or is invited to. An app acting for a wizard sees hidden scenes only
+when it was also allowed **Staff powers in the game**.
 
 You are only asked about scopes in which your character holds something. A player with no building
 permissions is not asked about **Building and code**, and the app does not get it. If you are given
@@ -80,7 +86,10 @@ app** and press **Save**.
 
 - **Name**, **What it does** and **Homepage** are what players see when the app asks.
 - **Redirect addresses** are where the portal may send a player back to. Use `https`, or `http` on
-  `localhost` for an app on the player's own computer.
+  `127.0.0.1`, `[::1]` or `localhost` for an app on the player's own computer. On `127.0.0.1` and
+  `[::1]` the app may come back on any port, so register `http://127.0.0.1/callback` and it can
+  listen on whatever port is free. On a port it did not register, the player is asked every time,
+  even for an app they allowed before. `localhost` has to match exactly, port included.
 - **May ask for** is what the app may ask for. It can ask for less.
 - **Runs on a server it controls** gives the app a secret. The secret is shown once; **New secret**
   replaces it. An app that runs in a browser or on a player's computer cannot keep one, and uses
@@ -185,9 +194,53 @@ An access token lasts an hour. Before then, trade the refresh token for a new pa
 endpoint with `grant_type=refresh_token`. A refresh token works once and lasts 30 days from its last
 use. `POST /api/oauth/revoke` with `token` and `client_id` forgets a token, for an app that signs out.
 
-The token reaches `api/commands`, `api/commands/eval`, `api/oauth/me`, and the portal endpoints whose
-permission its scopes cover. It cannot reach the account: its characters, its sign-ins or its
+The token reaches `api/commands`, `api/commands/eval`, `api/oauth/me`, the scene reads with
+`scenes.read`, and the portal endpoints whose permission its scopes cover. It cannot reach the account: its characters, its sign-ins or its
 connected apps.
+
+## Reading scenes from a desktop app
+
+A MU\* client on the player's computer can show the player's scenes with `scenes.read`. It cannot
+keep a secret, so it is registered without one and uses PKCE alone, and it gets its code by
+listening on a loopback port (RFC 8252).
+
+1. Register the app with the redirect address `http://127.0.0.1/callback` and **May ask for**
+   set to **Read your scenes**.
+
+2. When the player signs in, listen on any free port, say 51234, and send them to:
+
+   ```
+   https://game.example.com/oauth/authorize?response_type=code
+     &client_id=<client id>
+     &redirect_uri=http%3A%2F%2F127.0.0.1%3A51234%2Fcallback
+     &scope=scenes.read
+     &state=<state>
+     &code_challenge=<challenge>
+     &code_challenge_method=S256
+   ```
+
+   Trade the code as in [Writing an app](#writing-an-app), with the same `redirect_uri`, port
+   included.
+
+3. Read the scenes with the access token. `filter=mine` is the character's own agenda:
+
+   ```
+   curl "https://game.example.com/api/scenes?filter=mine" -H "Authorization: Bearer smat_…"
+   ```
+
+   `api/scenes/<id>` is one scene, `api/scenes/<id>/poses` its log, and `api/scenes/<id>/members`
+   who is in it. A scene the character cannot see answers `404`, as one that does not exist does.
+
+4. Follow a scene live on the SignalR hub `/hubs/scene` with the same token, as
+   `Authorization: Bearer` or, from a browser's WebSocket, as `access_token` in the query. Call
+   `JoinScene("<id>")` and new poses arrive as `ReceiveSceneMessage`. The hub closes the connection
+   when the token expires, and within a minute of the player revoking the app; connect again with a
+   fresh token.
+
+A token without `scenes.read` gets `403` with `WWW-Authenticate: Bearer error="insufficient_scope"`,
+and an expired or revoked one `401` with `error="invalid_token"`: refresh it, or ask the player
+again. The token cannot join, pose, move or change a scene, and cannot keep a draft or a calendar
+link.
 
 ## Packages that run commands
 
