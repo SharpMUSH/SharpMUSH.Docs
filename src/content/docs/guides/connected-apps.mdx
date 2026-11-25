@@ -15,8 +15,9 @@ This page covers:
 - [Allowing an app](#allowing-an-app)
 - [What an app can do](#what-an-app-can-do)
 - [Taking it back](#taking-it-back)
-- [Registering an app](#registering-an-app)
+- [Managing apps](#managing-apps)
 - [Apps that describe themselves](#apps-that-describe-themselves)
+- [Registering an app](#registering-an-app)
 - [Keeping apps away from a command](#keeping-apps-away-from-a-command)
 - [Writing an app](#writing-an-app)
 - [Reading scenes from a desktop app](#reading-scenes-from-a-desktop-app)
@@ -77,26 +78,24 @@ each acts as, its scopes, and when it was last used.
 **Revoke** stops the app at once. Unlinking the character from your account, a ban, or staff
 removing the app does the same.
 
-## Registering an app
+## Managing apps
 
-Staff can register an app so it may ask players, or let apps [describe themselves](#apps-that-describe-themselves). You need the `config.admin` permission. Open
-**Admin**, then **Configuration**, and under **Security** choose **Apps**. Fill in **Register an
-app** and press **Save**.
+Staff see every app on the game on the **Apps** page. You need the `config.admin` permission. Open
+**Admin**, then **Configuration**, and under **Security** choose **Apps**.
 
-![The Apps page under Security in the configuration pages: the Register an app form with name, homepage, what it does, redirect addresses and the scopes it may ask for, and Grid Builder in the list of registered apps.](../../../assets/guide/connected-apps-admin-apps.webp)
+![The Apps page: one list of apps. Scene Notes from localhost, not reviewed, may read your scenes now and run commands once allowed, with Allow and Block. Valyria, not reviewed, may read your scenes. Grid Builder, registered, may run commands and use building and code.](../../../assets/guide/connected-apps-self-described.webp)
 
-- **Name**, **What it does** and **Homepage** are what players see when the app asks.
-- **Redirect addresses** are where the portal may send a player back to. Use `https`, or `http` on
-  `127.0.0.1`, `[::1]` or `localhost` for an app on the player's own computer. On `127.0.0.1` and
-  `[::1]` the app may come back on any port, so register `http://127.0.0.1/callback` and it can
-  listen on whatever port is free. On a port it did not register, the player is asked every time,
-  even for an app they allowed before. `localhost` has to match exactly, port included.
-- **May ask for** is what the app may ask for. It can ask for less.
-- **Runs on a server it controls** gives the app a secret. The secret is shown once; **New secret**
-  replaces it. An app that runs in a browser or on a player's computer cannot keep one, and uses
-  PKCE alone.
+An app appears in the list the first time a player signs in with it. Each row says where the app
+came from, what it may ask a player for, and when it was first used; for an app not yet reviewed it
+says what it may ask for now and what only once you allow it. The app's name links to its homepage.
 
-Deleting an app takes back every grant players gave it.
+- **Allow** lets an app that is not reviewed ask for everything it describes, not only `profile`
+  and `scenes.read`.
+- **Block** turns the app away, takes back every grant players gave it and stops its tokens. It
+  blocks that one address; add its domain to **Blocked domains** to turn away every app on it and its
+  subdomains. **Allow** undoes a block.
+- The bin button forgets an app, so its description is read afresh the next time a player uses it.
+- A registered app has **Change**, **New secret** and **Delete** instead.
 
 ## Apps that describe themselves
 
@@ -126,29 +125,46 @@ first time a player is sent its way, and again at most once an hour.
 - The description is at most 5 KB, and the game reads it only from a public internet address,
   without following redirects.
 
-On the **Apps** page, **Apps that describe themselves** chooses what happens:
-
-- **Staff allow each one first** (the default): the app is listed under **Self-described apps**, and
-  a player sent to it is told it is waiting for staff. Press **Allow** to let it ask.
-- **Accept them, marked as not reviewed**: it may ask at once, and the Allow an app page says
-  **Not reviewed by staff**. Until staff allow it, it may ask only for `profile` and `scenes.read`.
-- **Refuse them**: only registered apps, and apps staff allowed before, are accepted. No address is
-  read.
-
-![Self-described apps on the Apps page: Scene Notes, not reviewed, with Allow and Block buttons, and Valyria, blocked, with an Allow button.](../../../assets/guide/connected-apps-self-described.webp)
+By default such an app may ask at once. The Allow an app page says **Not reviewed by staff** and
+where its details came from, and until staff allow it, it may ask only for `profile` and
+`scenes.read`.
 
 ![The Allow an app page for Scene Notes, marked Not reviewed by staff, with Details from localhost under the title.](../../../assets/guide/connected-apps-not-reviewed.webp)
 
-**Block** refuses an app, takes back every grant players gave it and stops its tokens. It blocks
-that one address; add its domain to **Blocked domains** to refuse every app on it and its
-subdomains. The bin button forgets an app, so its description is read afresh next time.
+**Apps players bring**, at the bottom of the **Apps** page, changes that:
+
+- **Accept them** (the default): as above.
+- **Hold each one until staff allow it**: a player sent to the app is told it is waiting for staff,
+  and it asks nobody until staff press **Allow**.
+- **Turn them away**: only registered apps work. No address is read.
 
 An allowed app whose description later asks for more scopes or redirect addresses, or changes its
-name, waits for staff again. At most 100 apps wait for staff, 5 from one host.
+name, goes back to not reviewed. At most 100 apps are not reviewed at once, 5 from one host.
 
 The same settings are the `oauth_app_policy` and `oauth_blocked_domains` options (`help @config
 oauth`). The server's metadata says `client_id_metadata_document_supported` unless the policy refuses
 such apps.
+
+## Registering an app
+
+Most apps need no registration: they [describe themselves](#apps-that-describe-themselves). Register
+an app that runs on its own server and keeps a secret, or one your game's policy would otherwise
+turn away. On the **Apps** page press **Register an app**, fill in the form and press **Save**.
+
+![The Register an app form for Roster Bot: name, homepage, what it does, a redirect address, Run commands ticked under May ask for, and Runs on its own server and keeps a secret ticked.](../../../assets/guide/connected-apps-admin-apps.webp)
+
+- **Name**, **What it does** and **Homepage** are what players see when the app asks.
+- **Redirect addresses** are where the portal may send a player back to. Use `https`, or `http` on
+  `127.0.0.1`, `[::1]` or `localhost` for an app on the player's own computer. On `127.0.0.1` and
+  `[::1]` the app may come back on any port, so register `http://127.0.0.1/callback` and it can
+  listen on whatever port is free. On a port it did not register, the player is asked every time,
+  even for an app they allowed before. `localhost` has to match exactly, port included.
+- **May ask for** is what the app may ask for. It can ask for less.
+- **Runs on its own server and keeps a secret** gives the app a secret. The secret is shown once; **New secret**
+  replaces it. An app that runs in a browser or on a player's computer cannot keep one, and uses
+  PKCE alone.
+
+Deleting an app takes back every grant players gave it.
 
 ## Keeping apps away from a command
 
@@ -254,11 +270,13 @@ connected apps.
 ## Reading scenes from a desktop app
 
 A MU\* client on the player's computer can show the player's scenes with `scenes.read`. It cannot
-keep a secret, so it is registered without one and uses PKCE alone, and it gets its code by
-listening on a loopback port (RFC 8252).
+keep a secret, so it uses PKCE alone, and it gets its code by listening on a loopback port
+(RFC 8252).
 
-1. Register the app with the redirect address `http://127.0.0.1/callback` and **May ask for**
-   set to **Read your scenes**.
+1. Publish a [description of the app](#apps-that-describe-themselves) with the redirect address
+   `http://127.0.0.1/callback` and the scope `profile scenes.read`. Its address is the client id,
+   and works on every game that accepts apps players bring. On a game that turns them away, staff
+   [register the app](#registering-an-app) instead, with **May ask for** set to **Read your scenes**.
 
 2. When the player signs in, listen on any free port, say 51234, and send them to:
 
