@@ -165,3 +165,33 @@ Each part is an attribute on the page: `data-texture`, `data-texture-strength`, 
 `[data-scheme="dark"][data-texture="paper"] { ... }`.
 
 Every part's values, and the built-in themes that use each, are listed in [Portal Theme Parts](/reference/portal-theme-parts).
+
+## Themes from packages
+
+A theme can also come from a [theme package](/reference/package-kinds#theme-packages), installed under
+**Admin → Packages** like any other. Its themes join the theme menu as soon as it is applied, in every open tab.
+In **Admin → Themes** they carry a **Package** tag, and the editor names the package and version that installed
+each. They are read-only: **Duplicate** one to make the game's own copy, colours and stylesheet included, and
+change that.
+
+A new version of the package replaces its themes. Uninstalling removes them, and is refused while one is the
+game's default, so make another theme the default first. Characters who chose a theme that is removed see the
+game's default.
+
+### Packaging your own theme
+
+Start from a theme you made in the editor: its colours and choices are the `tokens:` of the package, and its
+stylesheet is the `.css` file. Pictures go in the package beside it, and the stylesheet names them by their path:
+
+```css
+.phosphor-shell {
+	background:
+		linear-gradient(color-mix(in srgb, var(--bg) 35%, transparent), color-mix(in srgb, var(--bg) 82%, transparent)),
+		url(images/harbor-night.svg) center bottom / cover no-repeat fixed,
+		var(--bg);
+}
+```
+
+Installing stores each picture with the game's media and points the `url()` at it. **Harbor Lights**
+(`theme-harbor-lights`) in the official package library is a complete example: two themes, a light and a dark,
+each with a stylesheet, a background picture and a compass mark beside page titles.

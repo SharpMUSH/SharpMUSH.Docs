@@ -226,7 +226,7 @@ export default defineConfig({
                     { label: 'Comparison', slug: 'reference/comparison'},
                     { label: 'Package Format', slug: 'reference/package-format'},
                     { label: 'Package Declarations', slug: 'reference/package-declarations'},
-                    { label: 'Application, Plugin and UI Packages', slug: 'reference/package-kinds'},
+                    { label: 'Application, Plugin, UI and Theme Packages', slug: 'reference/package-kinds'},
                     { label: 'Portal Theme Parts', slug: 'reference/portal-theme-parts'},
                     {
                       label: 'Technical',
