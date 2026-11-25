@@ -198,6 +198,8 @@ themes:                           # required for kind: theme, 1 to 20 themes, no
   pictures by their path in the package, `url(images/harbor-night.svg)` or `url(./images/…)`; a path
   the theme does not list under `images:` is refused. Installing points each at where the game
   serves it.
+- **Paths.** A stylesheet or picture path is relative to the package folder, uses `/` between
+  folders, holds only letters, digits, `.`, `_` and `-`, and never `..`.
 - **Images.** PNG, JPEG, GIF, WebP, AVIF or SVG, each at most 4 MiB and 32 MiB for the package. A
   file must be what its extension says, and an SVG must not hold script.
 - **Ids and names.** A theme's id and name must not be taken by a built-in theme, the game's own
