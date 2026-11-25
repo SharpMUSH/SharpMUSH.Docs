@@ -1,0 +1,90 @@
+---
+title: Alerts in Play
+description: Rules that colour a line, play a sound or raise a browser notification when a word you care about comes up in Play.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+An **alert** is a rule you set in the website's **Play** page. It looks for words in each new line
+the game sends. A line it matches can be coloured, play a sound, or raise a notification while
+the tab is in the background. Most MU\* clients call these highlights or triggers.
+
+Your rules are kept on your account, so every browser you sign in on uses the same ones.
+
+| You want to | Read |
+|---|---|
+| add a rule | [Adding a rule](#adding-a-rule) |
+| choose what a rule looks for | [What a rule looks for](#what-a-rule-looks-for) |
+| hear or be notified of a line | [Sounds and notifications](#sounds-and-notifications) |
+| know why an alert did not repeat | [After a reload or a reconnect](#after-a-reload-or-a-reconnect) |
+
+## Adding a rule
+
+1. On **Play**, open the terminal settings (the sliders button) and choose **Alerts…**.
+2. Choose **Add rule** and type what to look for, such as your character's name.
+3. Pick a colour, a sound, **Notify**, or any mix of them.
+4. Type or paste a line under **Try a line** to see what the rules would do to it.
+5. Choose **Save**.
+
+A rule changes the lines that arrive after you save it, not the ones already on screen.
+
+Alerts need a signed-in account. A guest does not see **Alerts…**.
+
+## What a rule looks for
+
+**Look for** is read one of three ways, chosen under **Read as**:
+
+| Read as | Matches | Example | Matches | Does not match |
+|---|---|---|---|---|
+| Whole words | the words as typed, not inside a longer word | `Ann` | `Ann waves.` | `Anne waves.` |
+| Wildcards | the whole line; `*` is any run of characters, `?` one, `\` makes the next one plain | `* pages: *` | `Ann pages: hi` | `Ann says, "pages: hi"` |
+| Regular expression | a .NET regular expression found anywhere in the line | `\bOOC\b` | `<OOC> Ann says hi` | `Snooc` |
+
+Letters match in either case unless **Match case** is ticked.
+
+**In** narrows a rule to some lines:
+
+- **Every line**.
+- **Pages**: lines the game marks as a page.
+- **Channels**: lines the game marks as a channel line.
+- **Everything else**: the room, emits and the game's replies.
+
+The game marks pages and channel lines itself, so these work whatever the game's channel format
+looks like.
+
+The commands you type are never matched.
+
+When several rules match one line, the first rule in the list with a colour sets the colour, the
+first with a sound sets the sound, and the line notifies if any of them notifies.
+
+A rule can have at most 200 characters, and an account keeps at most 50 rules. A regular expression
+that takes too long on a line counts as no match for that line.
+
+## Colours
+
+The colours are the theme's own: **Accent**, **Second accent**, **Third accent**, **Info**,
+**Success**, **Warning** and **Danger**. A coloured line gets a tint and a bar down its left edge,
+so it still stands out for a reader who cannot tell the colours apart. It arrives a little
+brighter and settles over two seconds.
+
+## Sounds and notifications
+
+There are three sounds: **Chime**, **Ping** and **Knock**. Choosing one plays it, and the play
+button beside it plays it again. Many lines arriving together play one sound, not one each.
+
+**Notify** shows a browser notification with the character's name and the line, but only while
+the Play tab is not in front. Clicking it brings the tab back. The first time you tick it, the
+browser asks whether the site may show notifications; allow it. If the browser blocks them, the
+dialog says so: allow notifications for the site in the browser's settings, or use a sound.
+
+<Aside>
+These notifications come from the open Play tab. To be told of a page or new mail when no tab is
+open, use the game's [Notifications](/guides/notifications) instead.
+</Aside>
+
+## After a reload or a reconnect
+
+The game numbers every line it sends you. When the page reloads or the connection drops, the
+game sends again the lines you missed, and the page keeps the number of the last line that played
+a sound or notified. A line that already alerted you does not alert again, and the screen a reload
+brings back is coloured but stays quiet.

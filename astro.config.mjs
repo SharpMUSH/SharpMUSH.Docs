@@ -56,6 +56,7 @@ export default defineConfig({
                       { label: 'Portal Navigation', slug: 'guides/portal-navigation' },
                       { label: 'The Command Palette', slug: 'guides/command-palette' },
                       { label: 'Chat Cards', slug: 'guides/chat-cards' },
+                      { label: 'Alerts in Play', slug: 'guides/play-alerts' },
                       { label: 'Discord for Players', slug: 'guides/discord-players' },
                       { label: 'Apps That Act for You', slug: 'guides/connected-apps' },
                       { label: 'Screen Readers', slug: 'guides/screen-readers' },
