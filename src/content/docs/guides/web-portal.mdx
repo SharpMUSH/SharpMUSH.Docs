@@ -127,16 +127,19 @@ The terminal settings menu (the sliders button in Play's header) has **Input sho
 set three things:
 
 - **Keys.** A key runs a command line, exactly as you wrote it, wherever you are on Play, except
-  while you type in another field. Function keys F1 to F4 and F7 to F10 and the number pad keys can
-  be bound, with or without Ctrl, Alt and Shift. F5, F6, F11, F12, Ctrl+F4, Alt+F4, the zoom keys
-  and letters are left to the browser. A command line may hold several lines; each is sent as its
+  while you type in another field or a dialog or menu is open. Function keys F1 to F4 and F7 to F10
+  and the number pad keys can be bound, with or without Ctrl, Alt and Shift. F5, F6, F11, F12,
+  Ctrl+F4, Alt+F4, Ctrl with a number pad digit, plus or minus, and letters are left to the browser. A command line may hold several lines; each is sent as its
   own command.
 - **Channel leads.** A lead is a short start of a line that sends the rest of it to a channel. A
-  lead can never start with `:`, `;` or `"`, which pose and say. A lead that ends in a letter or a
+  lead can never start with `:`, `;` or `"`, which pose and say. A lead that starts with a character
+  MUSH commands start with (`@`, `&`, `+`, `\`, `#`, `$`) must end in a letter or a digit, so `+pub`
+  works but `+` alone would take every `+` command and is refused. A lead that ends in a letter or a
   digit needs a space after it, so the lead `pub` leaves `publish` alone; one that ends in a symbol
   does not, so `,hello` works.
 - **Escape character**, `/` unless you change it. A line that starts with it skips the leads and is
-  sent as typed, without the character. With no leads set, every line goes as typed and `/` is an
+  sent as typed, without the character. It can be any symbol except `:`, `;`, `"` and the
+  characters commands start with. With no leads set, every line goes as typed and `/` is an
   ordinary character.
 
 With the lead `,` set to the channel Public and F2 bound to `look`:
