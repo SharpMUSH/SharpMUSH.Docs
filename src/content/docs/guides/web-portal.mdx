@@ -121,6 +121,40 @@ only when the clear names the prompt's session, or names none (sent after a reco
 session is waiting). A one-off prompt has no `session`. A client that ignores these fields shows
 each prompt as an ordinary line.
 
+### Keeping and exporting a log
+
+Play can keep a longer log of what the game shows a character. Open **Terminal settings** (the
+button above the terminal on the right) and tick **Keep longer logs**. From then on the game's output
+for that character is kept in this browser, up to 20,000 lines for 30 days, and **Show earlier
+lines** at the top of the terminal brings it back after a reload. What you type is not kept, since a
+line you send can hold a password. Anyone who uses the same browser profile can read the log, and
+unticking the setting deletes it.
+
+While the log is on, **Export log…** in the same menu saves part of it as a file:
+
+1. Choose the stretch: the last hour, the last 24 hours, the last 7 days, everything kept, or two
+   times of your own.
+2. Choose **Plain text (.txt)** or **Web page with colours (.html)**. The web page keeps the game's
+   colours and tables in your current portal theme and opens in any browser with nothing else.
+3. Leave **Start each line with its time** ticked to stamp each line, or untick it for the lines
+   alone.
+4. Choose **Export**. The browser saves the file, named for the character and the stretch, for
+   example `Ada 2026-11-25 1700 to 2026-11-25 1800.txt`.
+
+A plain-text export looks like this:
+
+```
+Ada, 2026-11-25 17:00 to 2026-11-25 18:00
+
+[2026-11-25 17:02:11] Ada says, "Good evening."
+[2026-11-25 17:02:40] Bram waves.
+```
+
+Times are your browser's. The export covers only the character Play is connected as, and only what
+was kept while the log was on. When nothing was kept in the stretch, the dialog says so and saves
+nothing. Sounds, music and other media are not kept, so a saved web page only shows text and
+pictures; it runs no scripts.
+
 ## For players
 
 <CardGrid>
