@@ -156,8 +156,9 @@ touch the DI container, the database, the message bridge, web endpoints or porta
 ## Load order and collisions
 
 Load order is resolved from declared dependencies: list another plugin's `id` in your `dependencies`
-to guarantee you load after it. Cycles are detected and skipped. `priority` breaks ties between
-plugins with no dependency relationship, lower first.
+to guarantee you load after it, and to use its types (see [Building on another plugin](#building-on-another-plugin)).
+Cycles are detected and skipped. `priority` breaks ties between plugins with no dependency relationship,
+lower first.
 
 A plugin command or function whose name collides with an existing engine entry — or with an
 earlier-loaded plugin — is **logged and skipped**. The existing definition wins.
@@ -189,6 +190,86 @@ A softcode package that calls your plugin's commands or functions should list th
 `plugins:` (see [Plugins a package calls](/reference/package-declarations#plugins-a-package-calls-format-17)).
 The package manager then refuses it while the plugin is not running, and removes it when an
 administrator turns the plugin off, instead of leaving commands that call names that are not there.
+
+## Building on another plugin
+
+A plugin can use another plugin's public types, for example to add a behavior to the Scene System
+without changing the Scene plugin. Three things make that work:
+
+1. **Name it in `plugin.json`.** List its `id` under `dependencies`. The server loads it first, adds
+   its services first, and gives your plugin its assemblies.
+
+   ```json
+   {
+     "id": "scene-untitled",
+     "version": "1.0.0",
+     "dependencies": [ "scene" ],
+     "priority": 0,
+     "minServerVersion": ">=4.0"
+   }
+   ```
+
+2. **Compile against it, but don't carry it.** Reference its project or DLL with
+   `<Private>false</Private>` and `<ExcludeAssets>runtime</ExcludeAssets>`, as you do for
+   `SharpMUSH.Library`. Your plugin then uses the copy the other plugin loaded, so `ISceneSystemBuilder`
+   in your code is the same type the Scene plugin registered. A copy in your own folder is ignored.
+
+   ```xml
+   <ProjectReference Include="..\SharpMUSH.Plugins.Scene\SharpMUSH.Plugins.Scene.csproj">
+     <Private>false</Private>
+     <ExcludeAssets>runtime</ExcludeAssets>
+   </ProjectReference>
+   ```
+
+3. **Use what it registered.** The Scene plugin adds its `ISceneSystemBuilder` to the service
+   collection before yours runs, so `RegisterServices` can find it and add a behavior:
+
+   ```csharp
+   [SharpPlugin]
+   public sealed class SceneBehaviorPlugin : PluginBase, IServiceRegistrar
+   {
+       public override string Id => "scene-untitled";
+
+       public void RegisterServices(IServiceCollection services) =>
+           services.Where(d => d.ServiceType == typeof(ISceneSystemBuilder))
+               .Select(d => d.ImplementationInstance)
+               .OfType<ISceneSystemBuilder>()
+               .Single()
+               .AddBehavior<UntitledSceneBehavior>();
+   }
+   ```
+
+   A behavior implements `ISceneServiceBehavior` and takes the next `ISceneService` in the chain as its
+   first constructor argument. `UntitledSceneBehavior` gives a scene created without a title the title
+   "Untitled scene" and passes every other call through unchanged:
+
+   ```text
+   > think scenecreate(here, me)
+   1
+   > think scene(1, title)
+   Untitled scene
+   ```
+
+   Output: the new scene's id, then its title.
+
+The repository's `examples/plugins/scene-behavior` folder holds this plugin in full.
+
+What your plugin gets from its dependency is the dependency's own assembly and every assembly that one
+references. Your plugin's other private assemblies stay its own.
+
+If the dependency is not running (turned off, failed, or not installed), your plugin still loads
+when it can, and fails when it needs the dependency's types. The Plugins tab then shows it as failed:
+"It threw while loading, and it depends on 'scene', which is not running."
+
+A plugin that another running plugin depends on can't be turned off, unloaded or reloaded until that
+one is off:
+
+```text
+> @plugin/disable scene
+Cannot turn off 'scene': resolve package dependencies [scene, scene-config, scene-help, scene-here] and plugin dependencies [scene-untitled] first.
+```
+
+Output: the refusal, naming the packages and plugins that need it.
 
 ## Contributing services, flags, migrations and live updates
 

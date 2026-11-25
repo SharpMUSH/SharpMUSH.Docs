@@ -28,6 +28,11 @@ their attributes, the parser interface and `CallState`, and the contribution int
 The hook interfaces live in `SharpMUSH.Library`, which plugins reference without copying, so they
 line up automatically.
 
+A plugin that names other plugins under `dependencies` in its `plugin.json` also shares their types. Its
+context resolves each dependency's entry assembly, and every assembly that one references, from the
+dependency's own context. A type the Scene plugin defines is then the same type in a plugin that adds a
+Scene behavior. The plugin's other assemblies stay private to it.
+
 <Aside type="note">
 The loader resolves `SharpMUSH.Library`'s dependencies against the server's own files, so a server
 that loads plugins must ship all of its dependencies beside its binary. Don't trim it.
@@ -65,7 +70,8 @@ The server loads each DLL exactly once, in a single pass:
 2. **Ordering.** Every plugin loads after the plugins it depends on. Plugins with no dependency on
    each other are ordered by `Priority`, then `Id`. Dependency loops are found and logged, and the
    plugins in the loop are skipped; the rest still load. A missing dependency is logged and the
-   plugin that needs it still loads.
+   plugin that needs it still loads; if it then fails, the Plugins tab says which dependency is not
+   running.
 3. **Loading.** Each plugin is loaded, its `[SharpPlugin]` type found and created. A plugin that
    fails is logged and skipped. **One bad DLL never stops the server from starting.**
 
@@ -101,6 +107,10 @@ because they were taken are not recorded), so unloading never removes a built-in
 entry. Unloading removes those entries and releases the plugin's isolated context. The command trie is
 rebuilt from the live tables for every command, so nothing else needs undoing. Turning off a load-once
 plugin takes effect at the next restart.
+
+A plugin that another running plugin depends on stays loaded until that one is unloaded, because the
+dependent holds its types: unloading or reloading it is refused and names the dependent. Reloading a
+dependent loads it against the same dependencies.
 
 SharpMUSH's tests check that an unloaded plugin's context is really freed from memory, not just
 marked as unloaded.
