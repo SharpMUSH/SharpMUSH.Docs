@@ -13,13 +13,13 @@ staff member who keeps the experience ledger.
 
 ## An account's attributes
 
-`account(<player>, ref)` gives the account's reference, `#acct:<key>`. Attribute commands and
+`account(<player>)` gives the account's reference, `#acct:<key>`. Attribute commands and
 functions take it where they take an object:
 
 ```
-> &XP account(*Ariel, ref)=10
+> &XP account(*Ariel)=10
 Account 2/XP - Set.
-> think get(account(*Brand, ref)/XP)
+> think get(account(*Brand)/XP)
 10
 ```
 
@@ -42,7 +42,7 @@ XP [#1]: 10
 &XP #acct:2=10
 ```
 
-In the portal's Softcode Editor, search for `account(*Ariel, ref)` to open the account's attributes.
+In the portal's Softcode Editor, search for `account(*Ariel)` to open the account's attributes.
 
 ## A time zone for every character
 
@@ -52,7 +52,7 @@ read it when given a player, `dateparse()` reads the caller's with no zone given
 names the zone in use:
 
 ```
-> &TZ account(*Ariel, ref)=Pacific/Kiritimati
+> &TZ account(*Ariel)=Pacific/Kiritimati
 Account 2/TZ - Set.
 > think timezone(*Brand)
 Pacific/Kiritimati
@@ -81,9 +81,9 @@ has read on the account too: see [Time and Time Zones](/guides/time/) and
 A player reads their own account's attributes but does not change them:
 
 ```
-> think get(account(me, ref)/XP)
+> think get(account(me)/XP)
 10
-> &NOTE account(me, ref)=hi
+> &NOTE account(me)=hi
 Permission denied. You do not control Account 2.
 ```
 
@@ -121,7 +121,7 @@ Account 2/XP - Set.
 Permission denied. You do not control Account 2.
 ```
 
-`account(<player>, ref)` for another player needs `players.view`, so a clerk who finds accounts by
+`account(<player>)` for another player needs `players.view`, so a clerk who finds accounts by
 character name needs that permission too, or the reference from staff.
 
 A key is any lock key. `role^<role>` and `perm^<permission>` pass for every character holding that
