@@ -1,13 +1,15 @@
 ---
 title: Alerts in Play
-description: Rules that colour a line, play a sound or raise a browser notification when a word you care about comes up in Play.
+description: Rules that colour or style a line or the words in it, play a sound or raise a browser notification when something you care about comes up in Play.
 ---
 
 import { Aside } from '@astrojs/starlight/components';
 
-An **alert** is a rule you set in the website's **Play** page. It looks for words in each new line
-the game sends. A line it matches can be coloured, play a sound, or raise a notification while
-the tab is in the background. Most MU\* clients call these highlights or triggers.
+An **alert** is a rule you set in the website's **Play** page. It looks for text in each new line
+the game sends. It can colour or style the line, or only the words it found, play a sound, or
+raise a notification while the tab is in the background. Under **Advanced**, a rule can also hide
+a line or show other text in place of what it found. Most MU\* clients call these highlights or
+triggers.
 
 Your rules are kept on your account, so every browser you sign in on uses the same ones.
 
@@ -15,6 +17,8 @@ Your rules are kept on your account, so every browser you sign in on uses the sa
 |---|---|
 | add a rule | [Adding a rule](#adding-a-rule) |
 | choose what a rule looks for | [What a rule looks for](#what-a-rule-looks-for) |
+| colour only a name, not the whole line | [What a rule colours](#what-a-rule-colours) |
+| hide a line or change its text | [Advanced](#advanced) |
 | hear or be notified of a line | [Sounds and notifications](#sounds-and-notifications) |
 | know why an alert did not repeat | [After a reload or a reconnect](#after-a-reload-or-a-reconnect) |
 
@@ -32,11 +36,13 @@ Alerts need a signed-in account. A guest does not see **Alerts…**.
 
 ## What a rule looks for
 
-**Look for** is read one of three ways, chosen under **Read as**:
+**Look for** is read one of five ways, chosen under **Read as**:
 
 | Read as | Matches | Example | Matches | Does not match |
 |---|---|---|---|---|
 | Whole words | the words as typed, not inside a longer word | `Ann` | `Ann waves.` | `Anne waves.` |
+| Contains | the text as typed, anywhere, inside a longer word too | `ann` | `Joanna waves.` | `Bob waves.` |
+| Starts with | the text as typed, at the start of the line | `<OOC>` | `<OOC> Ann: hi` | `Ann says <OOC>` |
 | Wildcards | the whole line; `*` is any run of characters, `?` one, `\` makes the next one plain | `* pages: *` | `Ann pages: hi` | `Ann says, "pages: hi"` |
 | Regular expression | a .NET regular expression found anywhere in the line | `\bOOC\b` | `<OOC> Ann says hi` | `Snooc` |
 
@@ -54,18 +60,58 @@ looks like.
 
 The commands you type are never matched.
 
-When several rules match one line, the first rule in the list with a colour sets the colour, the
-first with a sound sets the sound, and the line notifies if any of them notifies.
+When several rules match one line, the first rule in the list that colours the whole line sets
+its colour, the first with a sound sets the sound, and the line notifies if any of them notifies.
+Where two rules colour the same words, the earlier rule wins.
 
 A rule can have at most 200 characters, and an account keeps at most 50 rules. A regular expression
 that takes too long on a line counts as no match for that line.
+
+## What a rule colours
+
+**Apply to** says which part of the line a rule's colour, style and rewrite go on:
+
+| Apply to | Colours | Example rule | On `Bob waves to Ann.` |
+|---|---|---|---|
+| Whole line | the line | `Ann` | the whole line |
+| Each match | every place the rule found, and nothing else | `Ann` | only `Ann` |
+| One group | one part of what the rule found, named under **Group** | `* waves to *`, group `1` | only `Bob` |
+
+Groups come from wildcards and regular expressions. A wildcard numbers each `*` and `?` from 1,
+left to right, and a `*` takes as little of the line as it can, so in `* pages: *` group 1 is the
+name before the first `pages:`. A regular expression numbers its `( )` groups from 1, and a named
+group `(?<who>…)` can be given by name, as `who`. Group `0` is all of what the rule found. **Whole
+words**, **Contains** and **Starts with** have only group `0`. A rule that names a group its
+pattern does not have cannot be saved.
 
 ## Colours
 
 The colours are the theme's own: **Accent**, **Second accent**, **Third accent**, **Info**,
 **Success**, **Warning** and **Danger**. A coloured line gets a tint and a bar down its left edge,
 so it still stands out for a reader who cannot tell the colours apart. It arrives a little
-brighter and settles over two seconds.
+brighter and settles over two seconds. Coloured words get the tint behind them.
+
+## Advanced
+
+Each rule has an **Advanced** section, closed until you open it:
+
+| Choice | What it does |
+|---|---|
+| **Colour as** | **Tint behind**, the default, or **Text colour**, which colours the letters instead. Text the game already coloured keeps its own colour inside a whole line. |
+| **Bold**, **Italic**, **Underline**, **Strike-through** | Styles added to what the rule applies to. They work with or without a colour. |
+| **Show instead** | Text shown in place of what the rule applies to. `$1`, `$2` and so on put in a group, `${who}` a named group, `$0` all of what was found, and `$$` a dollar sign. |
+| **Hide the line** | The line is not shown. It still plays its sound and notifies, and the log keeps it. |
+| **Skip later rules** | Rules below this one are not tried on a line it matches. |
+
+For example, a regular expression rule with **Look for** `<(\w+)>`, **Apply to** **Each match**
+and **Show instead** `[$1]` shows `<OOC> Ann: hi` as `[OOC] Ann: hi`.
+
+**Show instead** and **Hide the line** change only what the terminal shows. The kept log and an
+exported log hold the line as the game sent it, and a line brought back from the log is shown the
+way the rules show it.
+
+A rule with **Skip later rules** and nothing else is a way to keep some lines away from the rules
+after it: put it first, with what those lines look like.
 
 ## Sounds and notifications
 
