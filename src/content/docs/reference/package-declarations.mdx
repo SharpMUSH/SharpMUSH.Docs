@@ -1,6 +1,6 @@
 ---
 title: Package Declarations
-description: The package.yaml blocks that bring roles, permissions, settings, wiki pages, attribute entries, engine ranges, plugins and a category, with the format version each needs.
+description: The package.yaml blocks that bring roles, permissions, settings, wiki pages, attribute entries, engine ranges, plugins, a category and player preferences, with the format version each needs.
 ---
 
 These are the `package.yaml` blocks a softcode package uses beside its `objects:`, each with the
@@ -412,3 +412,74 @@ spaces made one, and packages that share one, ignoring case, listed together. A 
 category and no subcategory is listed first in its category, before the headings. In a manifest whose
 `format` is below 1.20, both keys are ignored with a warning. A `bridge: true` with fewer than two
 packages in `depends:` is an error.
+
+## Player preferences (format 1.21)
+
+`preferences:` declares settings each player chooses for themselves, such as keyboard shortcuts or
+how a sheet is shown. It maps a group name (lowercase letters, digits and hyphens) to the group's
+`scope`, `label`, `description` and `keys`. The group's id is `<package>.<group>`.
+
+- `scope: account` keeps the values on the player's account, so every character and every computer
+  shares them. `scope: character` keeps them on each character.
+- Each key (lowercase letters, digits and underscores) has a `type`: `text`, `number`, `integer`,
+  `boolean`, `choice` or `json`. A `default` is checked the way a value written to the key is.
+  `values` lists a choice's options, `min` and `max` bound a number, and `max_length` caps text or
+  JSON (4096 unless given, at most 65536). `label` and `description` are what the portal shows.
+- A `json` key may name the `version` of its value's shape (format 1.23): a whole number, 1 unless
+  given.
+
+```yaml
+format: "1.23"
+package: client-prefs
+title: Client preferences
+version: 1.0.0
+preferences:
+  keyboard:
+    scope: account
+    label: Keyboard shortcuts
+    keys:
+      volume:
+        type: integer
+        default: 70
+        min: 0
+        max: 100
+      triggers:
+        type: json
+        version: 2
+        default: '[]'
+  sheet:
+    scope: character
+    keys:
+      compact:
+        type: boolean
+        default: off
+```
+
+A value is the attribute ``PREF`<PACKAGE>`<GROUP>`<KEY>`` on the account (`#acct:<key>`) or the
+character, set `no_command`. Players change it on the portal's **Settings → Game preferences** page,
+and a portal application reads and writes it through `api/preferences/<package>.<group>`. Softcode
+reads it as any attribute:
+
+```sharp
+think default(account(%#)/PREF`CLIENT-PREFS`KEYBOARD`VOLUME, 70)
+```
+
+Output: `70` while the player has set nothing.
+
+### JSON values and their version
+
+A `json` value is stored with the version of its shape, as `{"version":<n>,"value":<the JSON>}`.
+When a new version of the package changes what a JSON value holds, it raises the key's `version`,
+and its code moves a value of an older version to the new shape when it reads one. A value stored
+without a version, such as one softcode wrote directly, counts as version 1.
+
+```sharp
+think json_query(get(account(%#)/PREF`CLIENT-PREFS`KEYBOARD`TRIGGERS), get, value)
+think json_query(get(account(%#)/PREF`CLIENT-PREFS`KEYBOARD`TRIGGERS), get, version)
+```
+
+Output: the list the player saved, such as `[{"match":"page"}]`, then `2`.
+
+The portal shows a stored value the declaration no longer allows as the default. Uninstalling the
+package leaves the values in place, and installing it again picks them up. Below format 1.21 the
+`preferences:` block is ignored with a warning, and below 1.23 a key's `version` is.
