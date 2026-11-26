@@ -483,3 +483,62 @@ Output: the list the player saved, such as `[{"match":"page"}]`, then `2`.
 The portal shows a stored value the declaration no longer allows as the default. Uninstalling the
 package leaves the values in place, and installing it again picks them up. Below format 1.21 the
 `preferences:` block is ignored with a warning, and below 1.23 a key's `version` is.
+
+## Commands (format 1.24)
+
+`commands:` lists the commands a softcode package adds. Each entry names the command, the `object` that
+runs it (a ref under `objects:`) and the `attribute` on that object. The attribute holds a `$`-command
+that matches what the player types.
+
+```yaml
+format: "1.24"
+package: greeter
+title: Greeter
+version: 1.0.0
+commands:
+  - name: "+greet"
+    object: greeter
+    attribute: CMD`GREET
+objects:
+  - ref: greeter
+    type: thing
+    name: Greeter
+    location: "{{$master_room}}"
+    attributes:
+      CMD`GREET: |-
+        $+greet *:@pemit %#=Hello, %0!
+```
+
+After installing it:
+
+```sharp
++greet [name(me)]
+```
+
+Output: `Hello, Ada!` for a player named Ada. The argument is evaluated as the player who typed it,
+as a built-in command's argument is.
+
+The server adds each command when the package is installed and again every time it starts, and
+removes it when the package is uninstalled. An upgrade adds the commands the new version lists and
+removes the ones it no longer lists, and a rollback puts back the ones of the version it returns to.
+The package needs no `STARTUP` attribute, and its object needs no WIZARD flag, to have commands.
+
+A command runs its attribute as if the game had it built in: the attribute's code runs at once, in
+place of the command, with registers of its own, so a register the argument sets never reaches the
+code. Give `nobreak: true` to keep an `@break` in that code from stopping the rest of an action list
+that ran the command:
+
+```yaml
+commands:
+  - name: "+greet"
+    object: greeter
+    attribute: CMD`GREET
+    nobreak: true
+```
+
+A command name has no spaces and none of `: ; " # \ & [ ] = /`. Quote a name that starts with `@`,
+such as `"@editor"`, since a bare `@` starts no YAML value. The review screen under **Admin →
+Packages** lists the commands with what each one runs. A command that is built in, comes from a
+plugin, is another name for one of those, or belongs to another installed package can't be added,
+and the review shows why. Below format 1.24 the `commands:` block is ignored with a warning.
+
