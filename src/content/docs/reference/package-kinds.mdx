@@ -1,10 +1,10 @@
 ---
-title: Application, Plugin and UI Packages
-description: The package.yaml reference for application packages, compiled plugin packages and hosted UI packages.
+title: Application, Plugin, UI and Theme Packages
+description: The package.yaml reference for application packages, compiled plugin packages, hosted UI packages and portal theme packages.
 ---
 
 Most packages are softcode packages, described in [Package Format](/reference/package-format).
-`kind:` picks one of the other three described here.
+`kind:` picks one of the other four described here.
 
 ## Application packages
 
@@ -144,3 +144,79 @@ binaries:
   checked against `configSchema`. Uninstalling is refused while an application still uses the page,
   unless the uninstall is forced, which removes those applications too.
 - **Rollback.** A UI package has no snapshot rollback; apply the version you want instead.
+
+## Theme packages
+
+A **theme** package (`kind: theme`, format 1.22) installs portal themes: the looks players pick on
+the **Theme** page of the account menu. It owns no objects and changes nothing in the game, so it carries
+`themes:` and the common keys only; `objects:`, `configure:`, `settings:`, `roles:`, `permissions:`,
+`categories:`, `attributes:`, `grants:`, `wiki:`, `wiki_properties:`, `plugins:`, `application:` and
+`binaries:` are refused.
+
+```yaml
+format: "1.22"
+package: theme-harbor-lights
+title: Harbor Lights
+version: 1.0.0
+kind: theme
+category: Themes
+
+themes:                           # required for kind: theme, 1 to 20 themes, not allowed otherwise
+  - id: harbor-night              # lower-case letters, digits and hyphens, at most 40; not "default"
+    name: Harbor Night            # 1 to 40 characters, unique in the package
+    dark: true                    # required: true for a dark theme, false for a light one
+    tokens:                       # required: colours and style choices, as the Themes editor saves them
+      bg: "#0b1622"
+      surface: "#11202f"
+      surface-2: "#172a3c"
+      surface-3: "#0e1c2a"
+      rail-bg: "#07101a"
+      text: "#e8eef3"
+      text-dim: "#a9bccb"
+      text-faint: "#8ea3b4"
+      border: "#27425b"
+      border-soft: "#1b3145"
+      accent: "#ffc56b"
+      warn: "#ff9f6b"
+      link-missing: "#ff8f8f"
+      font-display: marcellus
+      frame: lifted
+      mode: custom                # a stylesheet applies only to a custom theme
+    stylesheet: harbor-night.css  # optional: a .css file in the package
+    images:                       # optional: pictures the stylesheet shows, at most 20
+      - images/harbor-night.svg
+```
+
+- **Tokens** are the keys the Themes editor writes: the thirteen colours (`bg`, `surface`,
+  `surface-2`, `surface-3`, `rail-bg`, `text`, `text-dim`, `text-faint`, `border`, `border-soft`,
+  `accent`, `warn`, `link-missing`), the decorative `accent-2` and `accent-3`, and the style choices
+  (`font-display`, `frame`, `texture` and the rest). The thirteen colours are required, each
+  `#rrggbb` or `#rgb`; a missing colour, an unknown key or a choice that does not exist is refused. A style
+  choice left out takes its default, as in the editor.
+- **Stylesheet.** Checked as one written in the editor is (see
+  [Portal Themes](/guides/portal-themes#write-your-own-css)), at most 64 KiB of UTF-8. It names its
+  pictures by their path in the package, `url(images/harbor-night.svg)` or `url(./images/…)`; a path
+  the theme does not list under `images:` is refused. Installing points each at where the game
+  serves it.
+- **Paths.** A stylesheet or picture path is relative to the package folder, uses `/` between
+  folders, holds only letters, digits, `.`, `_` and `-`, and never `..`.
+- **Images.** PNG, JPEG, GIF, WebP, AVIF or SVG, each at most 4 MiB and 32 MiB for the package. A
+  file must be what its extension says, and an SVG must not hold script.
+- **Ids and names.** A theme's id and name must not be taken by a built-in theme, the game's own
+  themes or another package's. The review screen shows each clash.
+
+Applying the package adds its themes to every character's theme menu, and open portal tabs list them
+without a reload. In **Admin → Themes** they carry a **Package** tag and are read-only: **Duplicate**
+one to make the game's own copy. A new version replaces the package's themes; a theme it drops is
+removed, and characters who chose it see the game's default. The review screen lists each theme as
+added, updated, removed or blocked.
+
+Some changes wait for an administrator:
+
+- A version that drops a theme which is the game's default, or turns the default into the other
+  mode, is blocked until another theme is made the default.
+- Uninstalling is refused while one of the package's themes is the game's default. A forced
+  uninstall removes it, and Phosphor (dark) or Daylight (light) takes its place.
+- A theme package has no rollback; apply the version you want instead.
+
+[Theme packages](/guides/portal-themes#themes-from-packages) in the themes guide covers writing one.

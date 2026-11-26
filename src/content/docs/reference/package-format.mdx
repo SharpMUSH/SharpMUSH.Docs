@@ -9,7 +9,7 @@ This is the reference for `package.yaml`, the file that describes a SharpMUSH pa
 packages are and how to install them, start with [Softcode Packages](/guides/packages).
 [Package Declarations](/reference/package-declarations) covers the roles, settings, wiki pages,
 attribute entries and other blocks a package brings beside its objects, and
-[Application, Plugin and UI Packages](/reference/package-kinds) the other kinds of package.
+[Application, Plugin, UI and Theme Packages](/reference/package-kinds) the other kinds of package.
 
 A package is a folder with a `package.yaml` in it. The file describes **the result you want**, not a
 script: there is no ordering, no `@create` lines, and **no dbrefs**. Objects are named with
@@ -127,14 +127,14 @@ attributes:                     # optional (1.5): attribute entries, as @attribu
 ```
 
 The sections below cover the manifest itself. The blocks from `categories:` on are in
-[Package Declarations](/reference/package-declarations), and `kind:`, `application:` and `binaries:` in
-[Application, Plugin and UI Packages](/reference/package-kinds).
+[Package Declarations](/reference/package-declarations), and `kind:`, `application:`, `binaries:` and `themes:` in
+[Application, Plugin, UI and Theme Packages](/reference/package-kinds).
 
 ## Format versions
 
 `format:` names the version of this format the manifest is written for. A server warns about a newer
 minor version and ignores the keys it doesn't know; it refuses a newer major version. This server reads
-format 1.20.
+format 1.23.
 
 | Format | Adds |
 |---|---|
@@ -159,8 +159,11 @@ format 1.20.
 | 1.18 | Text, decimal and date wiki properties |
 | 1.19 | An object's `function_invocation_limit:` |
 | 1.20 | [`subcategory:` and `bridge:`](/reference/package-declarations#subcategory-and-bridges-format-120) |
+| 1.21 | [`preferences:`](/reference/package-declarations#player-preferences-format-121) |
+| 1.22 | [Theme packages](/reference/package-kinds#theme-packages): `kind: theme` and `themes:` |
+| 1.23 | [A json preference's `version`](/reference/package-declarations#json-values-and-their-version) |
 
-Write `"1.10"` and `"1.20"` in quotes, so YAML tools don't read them as 1.1 and 1.2.
+Write `"1.10"`, `"1.20"` and `"1.22"` in quotes, so YAML tools don't read them as 1.1 and 1.2.
 
 ## Writing softcode in YAML
 

@@ -56,6 +56,7 @@ export default defineConfig({
                       { label: 'Portal Navigation', slug: 'guides/portal-navigation' },
                       { label: 'The Command Palette', slug: 'guides/command-palette' },
                       { label: 'Chat Cards', slug: 'guides/chat-cards' },
+                      { label: 'Alerts in Play', slug: 'guides/play-alerts' },
                       { label: 'Discord for Players', slug: 'guides/discord-players' },
                       { label: 'Apps That Act for You', slug: 'guides/connected-apps' },
                       { label: 'Screen Readers', slug: 'guides/screen-readers' },
@@ -226,7 +227,7 @@ export default defineConfig({
                     { label: 'Comparison', slug: 'reference/comparison'},
                     { label: 'Package Format', slug: 'reference/package-format'},
                     { label: 'Package Declarations', slug: 'reference/package-declarations'},
-                    { label: 'Application, Plugin and UI Packages', slug: 'reference/package-kinds'},
+                    { label: 'Application, Plugin, UI and Theme Packages', slug: 'reference/package-kinds'},
                     { label: 'Portal Theme Parts', slug: 'reference/portal-theme-parts'},
                     {
                       label: 'Technical',

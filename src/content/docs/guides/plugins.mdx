@@ -156,8 +156,9 @@ touch the DI container, the database, the message bridge, web endpoints or porta
 ## Load order and collisions
 
 Load order is resolved from declared dependencies: list another plugin's `id` in your `dependencies`
-to guarantee you load after it. Cycles are detected and skipped. `priority` breaks ties between
-plugins with no dependency relationship, lower first.
+to guarantee you load after it, and to use its types (see [Building on another plugin](#building-on-another-plugin)).
+Cycles are detected and skipped. `priority` breaks ties between plugins with no dependency relationship,
+lower first.
 
 A plugin command or function whose name collides with an existing engine entry — or with an
 earlier-loaded plugin — is **logged and skipped**. The existing definition wins.
@@ -189,6 +190,132 @@ A softcode package that calls your plugin's commands or functions should list th
 `plugins:` (see [Plugins a package calls](/reference/package-declarations#plugins-a-package-calls-format-17)).
 The package manager then refuses it while the plugin is not running, and removes it when an
 administrator turns the plugin off, instead of leaving commands that call names that are not there.
+
+## Building on another plugin
+
+A plugin can use another plugin's public types, for example to add a behavior to the Scene System
+without changing the Scene plugin. Three things make that work:
+
+1. **Name it in `plugin.json`.** List its `id` under `dependencies`. The server loads it first, adds
+   its services first, and gives your plugin its assemblies.
+
+   ```json
+   {
+     "id": "scene-untitled",
+     "version": "1.0.0",
+     "dependencies": [ "scene" ],
+     "priority": 0,
+     "minServerVersion": ">=4.0"
+   }
+   ```
+
+2. **Compile against its interface, but don't carry it.** Reference the other plugin's interface
+   project, never the plugin itself. For the Scene plugin that is `SharpMUSH.Plugins.Scene.Abstractions`,
+   which holds `ISceneService`, `ISceneServiceBehavior`, `ISceneSystemBuilder` and the scene models.
+   Use `<Private>false</Private>` and `<ExcludeAssets>runtime</ExcludeAssets>`, as you do for
+   `SharpMUSH.Library`. Your plugin then uses the copy the other plugin loaded, so `ISceneSystemBuilder`
+   in your code is the same type the Scene plugin registered. A copy in your own folder is ignored.
+
+   ```xml
+   <ProjectReference Include="..\SharpMUSH.Plugins.Scene.Abstractions\SharpMUSH.Plugins.Scene.Abstractions.csproj">
+     <Private>false</Private>
+     <ExcludeAssets>runtime</ExcludeAssets>
+   </ProjectReference>
+   ```
+
+3. **Use what it registered.** The Scene plugin adds its `ISceneSystemBuilder` to the service
+   collection before yours runs, so `RegisterServices` can find it and add a behavior:
+
+   ```csharp
+   [SharpPlugin]
+   public sealed class SceneBehaviorPlugin : PluginBase, IServiceRegistrar
+   {
+       public override string Id => "scene-untitled";
+
+       public void RegisterServices(IServiceCollection services) =>
+           services.Where(d => d.ServiceType == typeof(ISceneSystemBuilder))
+               .Select(d => d.ImplementationInstance)
+               .OfType<ISceneSystemBuilder>()
+               .Single()
+               .AddBehavior<UntitledSceneBehavior>();
+   }
+   ```
+
+   A behavior implements `ISceneServiceBehavior` and takes the next `ISceneService` in the chain as its
+   first constructor argument. `UntitledSceneBehavior` gives a scene created without a title the title
+   "Untitled scene" and passes every other call through unchanged:
+
+   ```text
+   > think scenecreate(here, me)
+   1
+   > think scene(1, title)
+   Untitled scene
+   ```
+
+   Output: the new scene's id, then its title.
+
+The repository's `examples/plugins/scene-behavior` folder holds this plugin in full.
+
+What your plugin gets from its dependency is the dependency's own assembly and every assembly that one
+references, its interface assembly among them. Your plugin's other private assemblies stay its own.
+
+If the dependency is installed but not running (turned off or failed), your plugin is not loaded
+either. The Plugins tab shows it as failed: "It depends on 'scene', which is not running." If the
+dependency is not installed at all, your plugin still loads, and fails if it needs the dependency's
+types: "It threw while loading, and it depends on 'scene', which is not running; the server log has
+the error."
+
+A plugin that another running plugin depends on can't be turned off, unloaded or reloaded until that
+one is off:
+
+```text
+> @plugin/disable scene
+Cannot turn off 'scene': resolve package dependencies [scene, scene-config, scene-help, scene-here] and plugin dependencies [scene-untitled] first.
+```
+
+Output: the refusal, naming the packages and plugins that need it.
+
+
+## Letting other plugins build on yours
+
+Put the types another plugin should use in a project of their own, named after your plugin with
+`.Abstractions` on the end: the interfaces, the models they pass, and the builder a plugin calls to
+add to yours. Keep everything else, such as storage, commands and controllers, in the plugin.
+
+1. **Reference the interface project from your plugin normally.** Its DLL is then built beside your
+   plugin's, and both go in your plugin's folder. Add `PrivateAssets="all"` so a project that builds
+   your plugin, such as a test project, doesn't pick it up by accident.
+
+   ```xml
+   <ProjectReference Include="..\MyPlugin.Abstractions\MyPlugin.Abstractions.csproj" PrivateAssets="all" />
+   ```
+
+2. **Name the entry DLL in `plugin.json`.** A folder with more than one DLL needs `entry`, so the
+   server knows which one is the plugin:
+
+   ```json
+   {
+     "id": "my-plugin",
+     "entry": "MyPlugin.dll",
+     "version": "1.0.0"
+   }
+   ```
+
+3. **Share the interface project, not the plugin.** Another plugin compiles against
+   `MyPlugin.Abstractions` only, as in [Building on another plugin](#building-on-another-plugin). At
+   run time the server gives it the copy your plugin loaded.
+
+The plugins that ship with the server are laid out this way. Each interface assembly is in the plugin's
+folder beside the plugin, and is published as a NuGet package of the same name:
+
+| Plugin | Interface assembly | What another plugin can use |
+|---|---|---|
+| `scene` | `SharpMUSH.Plugins.Scene.Abstractions` | `ISceneService`, `ISceneServiceBehavior`, `ISceneSystemBuilder` and the scene models |
+| `world` | `SharpMUSH.Plugins.World.Abstractions` | `IWorldMaps`: a stored map, a place's terrain and record, and the room standing on a place |
+| `discord` | `SharpMUSH.Plugins.Discord.Abstractions` | `IDiscordClientHandler` to attach to the bot's gateway client, `IDiscordMessages` and `IDiscordLinkedAccounts` |
+
+A plugin that uses one of these names that plugin's id under `dependencies` and resolves the interface
+from the services, for example `parser.ServiceProvider.GetRequiredService<IWorldMaps>()` in a function.
 
 ## Contributing services, flags, migrations and live updates
 
@@ -399,7 +526,7 @@ says what the administrator confirms before one installs, where its files go, an
 <LinkCard
   title="Package Format"
   href="/reference/package-format"
-  description="The package.yaml reference, with Application, Plugin and UI Packages for plugin packages."
+  description="The package.yaml reference, with Application, Plugin, UI and Theme Packages for plugin packages."
 />
 
 <LinkCard

@@ -251,7 +251,7 @@ Wed 21 Oct  20:00  22:00  2h
 ==============================================================================
 For Ann, Bob, and Cleo * at least 2h * times in America/New_York
 Cleo set no times, so count as free throughout.
-Book the first: +scene/schedule <title>=1792105200
+Book the first: +scene/schedule 1792105200/<title>=<pitch>
 ==============================================================================
 ```
 
@@ -260,11 +260,11 @@ Book the first: +scene/schedule <title>=1792105200
 On Wednesday Bob's football runs to 20:00 in New York, so that evening starts later. A player who has
 set no times counts as free throughout, and is named under the list.
 
-The last line books the first time as a scene. `+scene/schedule` reads the time in seconds:
+The last line books the first time as a scene. `+scene/schedule` takes the time in seconds before the title:
 
 ```
-> +scene/schedule Lighthouse keeper=1792105200
-[SCENE] Done: Scheduled scene 3 "Lighthouse keeper" for Thu Oct 15 23:00:00 2026.
+> +scene/schedule 1792105200/Lighthouse keeper=Watch the light.
+[SCENE] Done: Scheduled scene 3 "Lighthouse keeper" for 2026-10-15 23:00:00 +00:00 (UTC).
 ```
 
 `+avail/find Bob=3h` asks for three hours, and drops Wednesday.
