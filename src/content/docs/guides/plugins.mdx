@@ -305,9 +305,17 @@ add to yours. Keep everything else, such as storage, commands and controllers, i
    `MyPlugin.Abstractions` only, as in [Building on another plugin](#building-on-another-plugin). At
    run time the server gives it the copy your plugin loaded.
 
-The Scene plugin is laid out this way: `SharpMUSH.Plugins.Scene` is the plugin, and
-`SharpMUSH.Plugins.Scene.Abstractions` is what other plugins reference. Both DLLs are in
-`plugins/scene/`.
+The plugins that ship with the server are laid out this way. Each interface assembly is in the plugin's
+folder beside the plugin, and is published as a NuGet package of the same name:
+
+| Plugin | Interface assembly | What another plugin can use |
+|---|---|---|
+| `scene` | `SharpMUSH.Plugins.Scene.Abstractions` | `ISceneService`, `ISceneServiceBehavior`, `ISceneSystemBuilder` and the scene models |
+| `world` | `SharpMUSH.Plugins.World.Abstractions` | `IWorldMaps`: a stored map, a place's terrain and record, and the room standing on a place |
+| `discord` | `SharpMUSH.Plugins.Discord.Abstractions` | `IDiscordClientHandler` to attach to the bot's gateway client, `IDiscordMessages` and `IDiscordLinkedAccounts` |
+
+A plugin that uses one of these names that plugin's id under `dependencies` and resolves the interface
+from the services, for example `parser.ServiceProvider.GetRequiredService<IWorldMaps>()` in a function.
 
 ## Contributing services, flags, migrations and live updates
 

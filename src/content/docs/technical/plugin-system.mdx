@@ -33,7 +33,8 @@ context resolves each dependency's entry assembly, and every assembly that one r
 dependency's own context. A type the Scene plugin's interface assembly,
 `SharpMUSH.Plugins.Scene.Abstractions`, defines is then the same type in a plugin that adds a Scene
 behavior, which compiles against that interface assembly alone. The plugin's other assemblies stay
-private to it.
+private to it. The World and Discord plugins have interface assemblies of their own,
+`SharpMUSH.Plugins.World.Abstractions` and `SharpMUSH.Plugins.Discord.Abstractions`.
 
 <Aside type="note">
 The loader resolves `SharpMUSH.Library`'s dependencies against the server's own files, so a server
