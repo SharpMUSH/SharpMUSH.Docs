@@ -209,13 +209,15 @@ without changing the Scene plugin. Three things make that work:
    }
    ```
 
-2. **Compile against it, but don't carry it.** Reference its project or DLL with
-   `<Private>false</Private>` and `<ExcludeAssets>runtime</ExcludeAssets>`, as you do for
+2. **Compile against its interface, but don't carry it.** Reference the other plugin's interface
+   project, never the plugin itself. For the Scene plugin that is `SharpMUSH.Plugins.Scene.Abstractions`,
+   which holds `ISceneService`, `ISceneServiceBehavior`, `ISceneSystemBuilder` and the scene models.
+   Use `<Private>false</Private>` and `<ExcludeAssets>runtime</ExcludeAssets>`, as you do for
    `SharpMUSH.Library`. Your plugin then uses the copy the other plugin loaded, so `ISceneSystemBuilder`
    in your code is the same type the Scene plugin registered. A copy in your own folder is ignored.
 
    ```xml
-   <ProjectReference Include="..\SharpMUSH.Plugins.Scene\SharpMUSH.Plugins.Scene.csproj">
+   <ProjectReference Include="..\SharpMUSH.Plugins.Scene.Abstractions\SharpMUSH.Plugins.Scene.Abstractions.csproj">
      <Private>false</Private>
      <ExcludeAssets>runtime</ExcludeAssets>
    </ProjectReference>
@@ -255,7 +257,7 @@ without changing the Scene plugin. Three things make that work:
 The repository's `examples/plugins/scene-behavior` folder holds this plugin in full.
 
 What your plugin gets from its dependency is the dependency's own assembly and every assembly that one
-references. Your plugin's other private assemblies stay its own.
+references, its interface assembly among them. Your plugin's other private assemblies stay its own.
 
 If the dependency is installed but not running (turned off or failed), your plugin is not loaded
 either. The Plugins tab shows it as failed: "It depends on 'scene', which is not running." If the
@@ -272,6 +274,48 @@ Cannot turn off 'scene': resolve package dependencies [scene, scene-config, scen
 ```
 
 Output: the refusal, naming the packages and plugins that need it.
+
+
+## Letting other plugins build on yours
+
+Put the types another plugin should use in a project of their own, named after your plugin with
+`.Abstractions` on the end: the interfaces, the models they pass, and the builder a plugin calls to
+add to yours. Keep everything else, such as storage, commands and controllers, in the plugin.
+
+1. **Reference the interface project from your plugin normally.** Its DLL is then built beside your
+   plugin's, and both go in your plugin's folder. Add `PrivateAssets="all"` so a project that builds
+   your plugin, such as a test project, doesn't pick it up by accident.
+
+   ```xml
+   <ProjectReference Include="..\MyPlugin.Abstractions\MyPlugin.Abstractions.csproj" PrivateAssets="all" />
+   ```
+
+2. **Name the entry DLL in `plugin.json`.** A folder with more than one DLL needs `entry`, so the
+   server knows which one is the plugin:
+
+   ```json
+   {
+     "id": "my-plugin",
+     "entry": "MyPlugin.dll",
+     "version": "1.0.0"
+   }
+   ```
+
+3. **Share the interface project, not the plugin.** Another plugin compiles against
+   `MyPlugin.Abstractions` only, as in [Building on another plugin](#building-on-another-plugin). At
+   run time the server gives it the copy your plugin loaded.
+
+The plugins that ship with the server are laid out this way. Each interface assembly is in the plugin's
+folder beside the plugin, and is published as a NuGet package of the same name:
+
+| Plugin | Interface assembly | What another plugin can use |
+|---|---|---|
+| `scene` | `SharpMUSH.Plugins.Scene.Abstractions` | `ISceneService`, `ISceneServiceBehavior`, `ISceneSystemBuilder` and the scene models |
+| `world` | `SharpMUSH.Plugins.World.Abstractions` | `IWorldMaps`: a stored map, a place's terrain and record, and the room standing on a place |
+| `discord` | `SharpMUSH.Plugins.Discord.Abstractions` | `IDiscordClientHandler` to attach to the bot's gateway client, `IDiscordMessages` and `IDiscordLinkedAccounts` |
+
+A plugin that uses one of these names that plugin's id under `dependencies` and resolves the interface
+from the services, for example `parser.ServiceProvider.GetRequiredService<IWorldMaps>()` in a function.
 
 ## Contributing services, flags, migrations and live updates
 

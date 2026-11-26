@@ -30,8 +30,11 @@ line up automatically.
 
 A plugin that names other plugins under `dependencies` in its `plugin.json` also shares their types. Its
 context resolves each dependency's entry assembly, and every assembly that one references, from the
-dependency's own context. A type the Scene plugin defines is then the same type in a plugin that adds a
-Scene behavior. The plugin's other assemblies stay private to it.
+dependency's own context. A type the Scene plugin's interface assembly,
+`SharpMUSH.Plugins.Scene.Abstractions`, defines is then the same type in a plugin that adds a Scene
+behavior, which compiles against that interface assembly alone. The plugin's other assemblies stay
+private to it. The World and Discord plugins have interface assemblies of their own,
+`SharpMUSH.Plugins.World.Abstractions` and `SharpMUSH.Plugins.Discord.Abstractions`.
 
 <Aside type="note">
 The loader resolves `SharpMUSH.Library`'s dependencies against the server's own files, so a server
@@ -154,7 +157,9 @@ directly; the server's own tests only check what goes over the wire.
 
 ## The scene system as a plugin
 
-The scene system is a full plugin, `SharpMUSH.Plugins.Scene`, built into `plugins/scene/`:
+The scene system is a full plugin, `SharpMUSH.Plugins.Scene`, built into `plugins/scene/` beside its
+interface assembly, `SharpMUSH.Plugins.Scene.Abstractions`. The interface assembly holds the scene models,
+`ISceneService`, `ISceneServiceBehavior` and `ISceneSystemBuilder`; other plugins reference only that one.
 
 | What | How it is added |
 |---|---|
