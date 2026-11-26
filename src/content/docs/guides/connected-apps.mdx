@@ -83,17 +83,17 @@ removing the app does the same.
 Staff see every app on the game on the **Apps** page. You need the `config.admin` permission. Open
 **Admin**, then **Configuration**, and under **Security** choose **Apps**.
 
-![The Apps page: one list of apps. Scene Notes from localhost, not reviewed, may read your scenes now and run commands once allowed, with Allow and Block. Valyria, not reviewed, may read your scenes. Grid Builder, registered, may run commands and use building and code.](../../../assets/guide/connected-apps-self-described.webp)
+![The Apps page: one list of apps. Scene Notes from localhost may read your scenes and run commands, with Block. Valyria may read your scenes. Grid Builder, registered, may run commands and use building and code.](../../../assets/guide/connected-apps-self-described.webp)
 
 An app appears in the list the first time a player signs in with it. Each row says where the app
-came from, what it may ask a player for, and when it was first used; for an app not yet reviewed it
-says what it may ask for now and what only once you allow it. The app's name links to its homepage.
+came from, what it may ask a player for, and when it was first used. The app's name links to its
+homepage.
 
-- **Allow** lets an app that is not reviewed ask for everything it describes, not only `profile`
-  and `scenes.read`.
-- **Block** turns the app away, takes back every grant players gave it and stops its tokens. It
-  blocks that one address; add its domain to **Blocked domains** to turn away every app on it and its
-  subdomains. **Allow** undoes a block.
+- **Block** refuses the app, takes back every grant players gave it and stops its tokens. It blocks
+  that one address; add its domain to **Blocked domains** to refuse every app on it and its
+  subdomains.
+- **Allow** appears under **Approval process** and **Whitelist & blacklist**. It lets the app be
+  used, and undoes a block. Under **Allow all**, **Unblock** undoes one.
 - The bin button forgets an app, so its description is read afresh the next time a player uses it.
 - A registered app has **Change**, **New secret** and **Delete** instead.
 
@@ -125,21 +125,20 @@ first time a player is sent its way, and again at most once an hour.
 - The description is at most 5 KB, and the game reads it only from a public internet address,
   without following redirects.
 
-By default such an app may ask at once. The Allow an app page says **Not reviewed by staff** and
-where its details came from, and until staff allow it, it may ask only for `profile` and
-`scenes.read`.
+By default such an app may ask at once, for any scope it describes. The Allow an app page says
+**Not reviewed by staff** and where its details came from.
 
-![The Allow an app page for Scene Notes, marked Not reviewed by staff, with Details from localhost under the title.](../../../assets/guide/connected-apps-not-reviewed.webp)
+![The Allow an app page for Scene Notes, marked Not reviewed by staff, with Details from localhost under the title, asking to run commands.](../../../assets/guide/connected-apps-not-reviewed.webp)
 
-**Apps players bring**, at the bottom of the **Apps** page, changes that:
+**App access**, at the bottom of the **Apps** page, changes that:
 
-- **Accept them** (the default): as above.
-- **Hold each one until staff allow it**: a player sent to the app is told it is waiting for staff,
-  and it asks nobody until staff press **Allow**.
-- **Turn them away**: only registered apps work. No address is read.
+- **Allow all** (the default): as above.
+- **Approval process**: new apps wait for staff to press **Allow**. Players are told the app is
+  waiting.
+- **Whitelist & blacklist**: only apps you register or allow work. No address is read.
 
-An allowed app whose description later asks for more scopes or redirect addresses, or changes its
-name, goes back to not reviewed. At most 100 apps are not reviewed at once, 5 from one host.
+Under **Approval process**, an allowed app whose description later asks for more scopes or redirect
+addresses, or changes its name, waits again. At most 100 apps are not reviewed at once, 5 from one host.
 
 The same settings are the `oauth_app_policy` and `oauth_blocked_domains` options (`help @config
 oauth`). The server's metadata says `client_id_metadata_document_supported` unless the policy refuses
