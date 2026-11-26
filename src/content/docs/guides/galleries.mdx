@@ -111,6 +111,80 @@ Option set.
 80
 ```
 
+## Moderation
+
+A game can take more control of its galleries with five options in the Gallery group of `@config`,
+also on the portal's configuration page at `/admin/config/gallery`. Each is off by default, which
+leaves a gallery to its owner. Staff here are those who hold `media.admin`: moderators, royalty and
+wizards unless the game changes the roles.
+
+| Option | What it does |
+| --- | --- |
+| `gallery_consent_text` | Terms an uploader accepts before every upload. Empty asks for nothing. |
+| `max_gallery_megabytes` | How many megabytes one character's images take together. `0` sets no limit. |
+| `gallery_limit_skips_official` | Official art counts toward neither limit. |
+| `gallery_portrait_approval` | A player's new portrait waits for staff. |
+| `gallery_staff_only` | Only staff add, change or remove images. |
+
+### Terms
+
+With `gallery_consent_text` set, the portal shows the terms before every upload, and before an image
+is picked from the library. The image keeps who accepted them, when, and the words they read. Staff
+see that record under **Edit** in the image viewer; players do not. An upload sent without accepting,
+or after the terms changed while the uploader read them, is refused.
+
+```sharp
+> @config/set gallery_consent_text=I made this picture, or its artist lets me use it here.
+```
+
+### Space
+
+`max_gallery_megabytes` limits how much one character's images take, beside the count in
+`max_gallery_images`. An upload past it is refused with what is used and what the file needs:
+
+```
+This gallery's images take 0.7 MB of its 1 MB, and this one needs 0.7 MB. Remove an image or add a smaller one.
+```
+
+**Official art** is a portrait staff approved, or an image staff marked with **Official art** in the
+image viewer. With `gallery_limit_skips_official` on, it counts toward neither limit, so staff can
+give a character a portrait without using up the player's room.
+
+### Portrait approval
+
+With `gallery_portrait_approval` on, a player's new avatar waits for staff, and the current one stays
+until they approve it. The button in the image viewer reads **Ask to set as profile icon**, and the
+image shows a waiting badge to its owner and to staff until someone decides. The owner can withdraw
+the request. Only the latest request waits.
+
+Staff decide at `/admin/portraits`, which sets each request beside the portrait it would replace, or
+in the image viewer:
+
+- **Approve** makes the image the portrait and marks it official art.
+- **Decline** leaves the image in the gallery as an ordinary picture.
+- **Clear portrait** removes the current portrait, and the profile shows the default until staff
+  approve another.
+
+While approval is on, no image becomes the avatar by being first, and removing the avatar leaves
+none. Two events tell the game what happened: ``GALLERY`SUBMIT`` when a player asks, and
+``GALLERY`PORTRAIT`` when staff decide (see the [event reference](/reference/sharpmush-help/sharpevents/)).
+
+### Lock
+
+With `gallery_staff_only` on, only staff add, change or remove images, on any character. Players
+still view and report them, and a player who tries to change one is told:
+
+```
+Only staff change galleries in this game.
+```
+
+### Softcode
+
+While any of these options is on, ``PROFILE`GALLERY`` carries the `wizard` attribute flag, so
+softcode cannot forge a terms record or official art. While portraits wait for approval or galleries
+are locked, so do `IMAGE`, ``IMAGE`BANNER`` and ``IMAGE`ALT``, so a player cannot set their portrait by
+hand. The flags follow the options at the next change made in the portal.
+
 ## Reports
 
 A visitor signed in to the portal can report an image they think breaks the game's rules. SharpMUSH
@@ -203,6 +277,11 @@ display order. Each object has:
 - `Tags`: a list of words, or null;
 - `Order`: its place, counting from 0;
 - `IsIcon` and `IsBanner`: whether it is the avatar or the banner.
+- `Official`: staff approved it as the portrait or marked it official art; left out when false;
+- `PortraitPending`: its owner asked for it to be the portrait, and it waits for staff; left out when
+  false;
+- `Consent`: the terms the uploader accepted, as `Text`, `By` (their objid) and `At`; left out when
+  the game asked for none.
 
 Counting the images and reading the first one's caption:
 
