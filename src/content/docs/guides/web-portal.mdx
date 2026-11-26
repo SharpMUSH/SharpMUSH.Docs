@@ -121,6 +121,43 @@ only when the clear names the prompt's session, or names none (sent after a reco
 session is waiting). A one-off prompt has no `session`. A client that ignores these fields shows
 each prompt as an ordinary line.
 
+### Saving and exporting a log
+
+Play saves what the game shows a character in this browser, up to 20,000 lines for 30 days, and
+**Show earlier lines** at the top of the terminal brings it back after a reload. What you type is not
+saved, since a line you send can hold a password, but anything the game shows back, such as a prompt
+or a page you sent, is saved like the rest of its output. Anyone who uses the same browser profile can read
+the saved log. To stop it, open **Terminal settings** (the button above the terminal on the right)
+and untick **Save log in this browser**; that also deletes what was saved.
+
+**Export log…** in the same menu saves part of the output as a file. With the saved log off, a
+warning mark sits beside it: the export then has only what the terminal holds now, up to 2,000
+lines from this visit, and the dialog says so.
+
+1. Choose the stretch: the last hour, the last 24 hours, the last 7 days, everything saved (or
+   everything on screen, with the saved log off), or two times of your own.
+2. Choose **Plain text (.txt)** or **Web page with colours (.html)**. The web page keeps the game's
+   colours and tables in your current portal theme and opens in any browser with nothing else.
+3. Leave **Start each line with its time** ticked to stamp each line, or untick it for the lines
+   alone.
+4. Choose **Export**. The browser saves the file, named for the character and the stretch, for
+   example `Ada 2026-11-25 1700 to 2026-11-25 1800.txt`.
+
+A plain-text export looks like this:
+
+```
+Ada, 2026-11-25 17:00 to 2026-11-25 18:00
+
+[2026-11-25 17:02:11] Ada says, "Good evening."
+[2026-11-25 17:02:40] Bram waves.
+```
+
+Times are your browser's. From the saved log, the export covers only the character Play is
+connected as, and only what was kept while the log was on. A visitor or guest, or anyone with the
+saved log off, exports what the terminal holds now instead. When nothing was kept in the stretch, the dialog says so and saves
+nothing. Sounds, music and other media are not kept, so a saved web page only shows text and
+pictures; it runs no scripts.
+
 ## For players
 
 <CardGrid>
