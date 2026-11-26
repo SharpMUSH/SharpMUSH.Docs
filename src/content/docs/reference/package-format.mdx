@@ -124,9 +124,14 @@ attributes:                     # optional (1.5): attribute entries, as @attribu
   BBS`READ:
     flags: [no_command, wizard]
     index: true                 # optional (1.8): an index, as @attribute/index makes it
+
+commands:                       # optional (1.24): commands the package adds
+  - name: "+bbread"
+    object: bbs_global          # the object whose attribute runs
+    attribute: CMD_+BBREAD      # holds the $-command that matches what is typed
 ```
 
-The sections below cover the manifest itself. The blocks from `categories:` on are in
+The sections below cover the manifest itself. The blocks from `categories:` on, `commands:` among them, are in
 [Package Declarations](/reference/package-declarations), and `kind:`, `application:`, `binaries:` and `themes:` in
 [Application, Plugin, UI and Theme Packages](/reference/package-kinds).
 
@@ -134,7 +139,7 @@ The sections below cover the manifest itself. The blocks from `categories:` on a
 
 `format:` names the version of this format the manifest is written for. A server warns about a newer
 minor version and ignores the keys it doesn't know; it refuses a newer major version. This server reads
-format 1.23.
+format 1.24.
 
 | Format | Adds |
 |---|---|
@@ -162,6 +167,7 @@ format 1.23.
 | 1.21 | [`preferences:`](/reference/package-declarations#player-preferences-format-121) |
 | 1.22 | [Theme packages](/reference/package-kinds#theme-packages): `kind: theme` and `themes:` |
 | 1.23 | [A json preference's `version`](/reference/package-declarations#json-values-and-their-version) |
+| 1.24 | [`commands:`](/reference/package-declarations#commands-format-124) |
 
 Write `"1.10"`, `"1.20"` and `"1.22"` in quotes, so YAML tools don't read them as 1.1 and 1.2.
 
@@ -401,7 +407,7 @@ the installer accepts. They are published in the official package repository,
 | `scene-help`, `scene-config` | Bridge packages: two attach entries joining `scene` to `plus-help`, and one joining it to `plus-config` (see [Bridge Packages](/guides/bridge-packages/)). Every bundled package with topics or settings has the same pair, such as `jobs-help` and `jobs-config` |
 | `scene-safety` | Changing another package's output without editing it: a scene detail and `+scene` filters attached to the Scene Logger (see [Scene Details](/guides/scene-details#changing-what-scene-shows)) |
 | `chargen` + `chargen-app` | A portal application: the softcode routes in one package, the application registered by another, with a configurable role |
-| `jobs` + `jobs-app` | A complete system: commands added with `@command/add` and `@hook/override/inline`, a role and permission category, eight permissions and eight roles declared by the package, per-object hooks, `+help` topics, and a portal application driven by the same code |
+| `jobs` + `jobs-app` | A complete system: fourteen commands listed under `commands:`, a role and permission category, eight permissions and eight roles declared by the package, per-object hooks, `+help` topics, and a portal application driven by the same code |
 | `messages` | A configuration option (`messages_object`) pointed at the package's own object (format 1.3) |
 | `bboards` | An attribute entry (`BBOARD`, wizard and no_command by default) declared in the manifest (format 1.5) |
 | `builder-graph` | A UI package: a hosted HTML and JavaScript page |
