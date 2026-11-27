@@ -182,6 +182,39 @@ inbox.
 On a game with the Mail Composer, `+compose` writes a longer message a line at a time, with prompts
 for who it is to and its subject. See [The Mail Composer](/guides/mail-composer/).
 
+### Replies and conversations
+
+`@mail/reply` answers the sender of a message, under its subject with `Re: ` before it.
+`@mail/replyall` answers the sender and everyone else the sender wrote to:
+
+```
+> @mail/replyall 4=Count me in.
+MAIL: You sent your message to Bob.
+MAIL: You sent your message to Ann.
+```
+
+Add `/quote` to put the original under your message. A message sent to several people is one
+message, and every reply to it joins its conversation. `@mail/thread` lists that conversation,
+oldest first, with each message you sent or received in it:
+
+```
+> @mail/thread 6
+=< Mail thread: Dinner >=======================================
+  #  From      To        Subject     Sent
+---------------------------------------------------------------
+0:6  Bob       Ann, Cy   Dinner      Fri Nov 27 23:45
+  -  Ann       Bob       Re: Dinner  Fri Nov 27 23:45
+0:7  Cy        Bob, Ann  Re: Dinner  Fri Nov 27 23:46
+===============================================================
+3 messages. Thread 01a21f66-7e2c-79b0-b543-c4f7a4ceee69
+# is where you keep it; - is mail you sent and do not hold.
+===============================================================
+```
+
+The `#` column is where you keep your copy, and `-` marks a message you sent and do not hold. The
+website's Mail page shows the same conversation under the message, with Reply and Reply all
+buttons. See `help mail-replying` and `help mail-threads`.
+
 ## Describing yourself
 
 `@desc me=` sets what others see when they look at you:
