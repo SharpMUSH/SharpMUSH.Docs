@@ -5,8 +5,8 @@ description: Write a longer mail message a line at a time with +compose, with pr
 
 import { Aside } from '@astrojs/starlight/components';
 
-**`+compose`** writes a mail message a line at a time. It asks who the message is to, who gets a
-copy and the subject, then takes each line you type as the next line of the message until you send
+**`+compose`** writes a mail message a line at a time. It asks who the message is to and the subject,
+then takes each line you type as the next line of the message until you send
 it. Nothing you type is run or evaluated while you write, so brackets, percent signs and semicolons
 go in exactly as typed. It works from any MU\* client and from the website's Play terminal.
 
@@ -25,16 +25,12 @@ one-line message; see [Playing a Game](/guides/playing/#mail).
 
 ## Writing a message
 
-`+compose` on its own asks for each part in turn. Press Enter at Cc or Bcc for nobody:
+`+compose` on its own asks who the message is to, then the subject:
 
 ```text
 > +compose
 To (player names, or .abort to stop):
-> Tamsin
-Cc (Enter or .cc for none):
-> Old Pete
-Bcc (Enter or .bcc for none):
-> Wren
+> Tamsin, Old Pete
 Subject:
 > Dock rota
 [MAIL] Write your message a line at a time. .send sends it, .proof shows it, .help lists the rest.
@@ -52,9 +48,7 @@ Line 4> .send to send · .help for more
 ```text
 > .proof
 ===================================< Draft >==================================
-To: Tamsin
-Cc: Old Pete
-Bcc: Wren
+To: Tamsin, Old Pete
 Subject: Dock rota
 ==============================================================================
   1: Morning watch is yours this week.
@@ -65,7 +59,6 @@ Line 4> .send to send · .help for more
 > .send
 MAIL: You sent your message to Tamsin.
 MAIL: You sent your message to Old Pete.
-MAIL: You sent your message to Wren.
 ```
 
 Separate players with commas or spaces. A part between commas that is one player's whole name is
@@ -76,10 +69,10 @@ A line that has to start with a dot starts with two instead: `..send` adds the l
 
 ### In the Play terminal
 
-The website's Play terminal does not send an empty line. There, type `.cc` at the Cc prompt and
-`.bcc` at the Bcc prompt for nobody, and a line of only `.` for a blank line in the message:
+The website's Play terminal does not send an empty line. There, type a line of only `.` for a blank
+line in the message:
 
-![The Play terminal as Marrow: .cc and .bcc answer the copy prompts, a line of only a dot leaves line 2 blank, and .proof shows the draft to Tamsin with the subject Supper on Friday](../../../assets/guide/mail-composer-play.webp)
+![The Play terminal as Marrow: a line of only a dot leaves line 2 blank, and .proof shows the draft to Tamsin with the subject Supper on Friday](../../../assets/guide/mail-composer-play.webp)
 
 ## Starting with the names
 
@@ -92,8 +85,6 @@ straight to the message:
 Line 1> .send to send · .help for more
 ```
 
-`.cc` and `.bcc` add copies from there.
-
 ## Editing
 
 | Type | To |
@@ -104,8 +95,6 @@ Line 1> .send to send · .help for more
 | `.insert <n> <text>` | put a line before line `<n>` |
 | `.delete <n>` | take out line `<n>` |
 | `.to <players>` | change who it is to |
-| `.cc <players>` | change who gets a copy; `.cc` alone for nobody |
-| `.bcc <players>` | change who gets a hidden copy; `.bcc` alone for nobody |
 | `.subject <text>` | change the subject, at most 60 characters |
 | `.urgent` | send it urgent, or not |
 | `.quit` | stop, and keep the draft for later |
@@ -143,28 +132,24 @@ MAIL: You sent your message to Tamsin.
 
 ## What readers see
 
-The message comes from you, as `@mail` sends it, with your mail signature. When it goes to more
-than one reader by To or Cc, it starts with `To:` and `Cc:` lines, so each reader knows who else
-has it. Bcc readers are never named. Tamsin, Old Pete and Wren each read this:
+The message comes from you, as `@mail` sends it, with your mail signature, and holds exactly the
+lines you wrote. Tamsin and Old Pete each read this:
 
 ```text
-> @mail 1
-=< Message 0:1 >==============================================================
+> @mail 6
+=< Message 0:6 >==============================================================
 From:    Marrow
-Date:    Fri Nov 27 22:31 2026
+Date:    Fri Nov 27 22:59 2026
 Status:  Unread
 Subject: Dock rota
 ==============================================================================
-To: Tamsin
-Cc: Old Pete
-
 Morning watch is yours this week.
 
 Bring the lantern [the brass one] and 20% more oil; the last was short.
 ==============================================================================
 ```
 
-A message to one reader has no `To:` line.
+A player named twice, or named and also in a mail alias you name, gets one copy.
 
 ## Stopping and going on later
 
@@ -208,6 +193,7 @@ Each refusal says what to do, and the composer stays open unless it says otherwi
 | mistype a command, as `.sned` | `There is no .sned command. .help lists them. To write a line that starts with a dot, start it with two.` The line is not added. |
 | give a line number that is not there | `Type .edit <n> <text> with a line number from 1 to 1. .proof numbers the lines.` |
 | give a subject over 60 characters | `A subject is at most 60 characters, so it was cut to: ...` |
+| add, edit or insert past the game's longest message | `That would make the message longer than <limit> bytes, so the draft is unchanged.` (`That line would make...` for a new line, which is left out) |
 | send to someone whose mail lock refuses you | `@mail`'s own reason, then `Not sent. Your draft is still open.` |
 | start a new message with a draft kept | `You have an unsent draft to Tamsin, Old Pete (Harbour fees). Type +compose on its own to go on with it.` |
 
