@@ -159,6 +159,32 @@ reads in Discord:
 | `semipose` (`;'s back.`) | `*Ann's back.*` |
 | `/as Ghost/...` | the text, under the name Ghost |
 
+### Pictures
+
+A post carries its speaker's portrait as its avatar: the picture the character's portal
+gallery shows as its portrait, which is the character's `IMAGE` attribute (`help IMAGE`).
+
+| Line | Avatar in Discord |
+|---|---|
+| a character's say, pose or semipose | the character's portrait |
+| a character with no portrait | the Discord member's own avatar, for a line they posted from Discord; otherwise the webhook's avatar |
+| a member without a game account, in an unrestricted channel | their Discord avatar |
+| an emit, an announcement, or a line sent `/as` another name | the webhook's avatar |
+
+Discord fetches the picture itself, so it must be on the internet:
+
+- A picture uploaded to the portal is fetched from the game's website address, `mud_url`
+  (`@config net`). With no `mud_url` set, posts go out with the webhook's avatar.
+- A picture on this machine or a home network (`localhost`, `192.168.x.x`, `*.local`,
+  `*.lan` and the like) is left out, because Discord cannot reach it, and so is an address
+  that carries a username and password.
+- A portrait the game stores as WebP is sent as PNG, from `/pictures/png/`.
+- Only a visible portrait goes out: an `IMAGE` attribute without the `visual` flag is left
+  out, as the portal's profiles leave it out.
+
+Avatars cost no extra requests to Discord: the picture rides on the post the line is in, so a
+busy channel posts no slower with them.
+
 Colour and other markup become Discord's own formatting where it has one, and are dropped
 where it doesn't. Characters Discord treats as formatting, such as `*` and `_`, are posted
 as typed. A line never pings anyone, even when it names `@everyone` or a role.
@@ -212,6 +238,9 @@ channel goes to one Discord channel, and each Discord channel to one game channe
 - **A line from Discord reads like any other** on the game channel, with the channel's own
   prefix: `<Public> God says, "..."`. A member without a game account, in an unrestricted
   channel, shows as their Discord name behind `[D]`: `<Public> [D] Mercutio says, "..."`.
+- **The portal shows a picture beside a line from Discord:** the character's portrait, or
+  the member's Discord avatar when the character has none or the member has no game
+  account. A telnet client gets the text only.
 - **Renaming the game channel parts it** from Discord. Join it again under its new name.
 
 A line goes one way only, so nothing comes back round: a line from Discord is not sent
