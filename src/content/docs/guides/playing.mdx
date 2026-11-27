@@ -57,6 +57,12 @@ client and adds a few panes around them:
 3. **Here** lists who and what is in the room, you first, and **Exits** below it the ways out.
 4. Type commands here and press Enter.
 
+Pressing a channel or a page in the left column opens its view in place of the terminal, and Esc
+brings the terminal back. A view's box sends what you type to that channel or person and nothing
+else: `look` typed there is a message, not a command, so commands go in the terminal. Enter sends,
+Shift+Enter starts a new line, and each line goes as a message of its own. The box grows as you type,
+up to the terminal's **Input lines** setting, then scrolls.
+
 ## Looking and moving
 
 `look` shows the room you are in. Exits are listed at the bottom; type an exit's name to go through
