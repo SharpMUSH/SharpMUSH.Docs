@@ -193,7 +193,7 @@ Each refusal says what to do, and the composer stays open unless it says otherwi
 | mistype a command, as `.sned` | `There is no .sned command. .help lists them. To write a line that starts with a dot, start it with two.` The line is not added. |
 | give a line number that is not there | `Type .edit <n> <text> with a line number from 1 to 1. .proof numbers the lines.` |
 | give a subject over 60 characters | `A subject is at most 60 characters, so it was cut to: ...` |
-| add, edit or insert past the game's longest message | `That would make the message longer than <limit> bytes, so the draft is unchanged.` (`That line would make...` for a new line, which is left out) |
+| edit or insert past the longest message the game keeps | `That would make the message longer than <limit> bytes, so the draft is unchanged.` A new line that is too long is left out the same way. |
 | send to someone whose mail lock refuses you | `@mail`'s own reason, then `Not sent. Your draft is still open.` |
 | start a new message with a draft kept | `You have an unsent draft to Tamsin, Old Pete (Harbour fees). Type +compose on its own to go on with it.` |
 
