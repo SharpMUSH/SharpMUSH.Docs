@@ -1,6 +1,6 @@
 ---
 title: Writing the Wiki
-description: Write and edit wiki pages in the portal or the game, link pages together, file them in categories, roll back a bad edit, protect a page and keep one private.
+description: Write and edit wiki pages in the portal or the game, link pages together, file them in categories, roll back a bad edit, protect a page, keep one private and arrange the wiki home.
 ---
 
 Every SharpMUSH game has a wiki for its longer writing: the setting, its people and places, the
@@ -168,6 +168,35 @@ members and `wikimember(<page>)` gives your level.
 
 [Case files](/guides/casefiles) are private pages built around a plot, with their own commands and
 portal page.
+
+## Arranging the wiki home
+
+The portal's wiki home shows a card for each pinned category, with its newest pages. Staff with
+`wiki.admin` choose which categories are pinned and the order of their cards.
+
+1. Open **Wiki pages** in the portal's admin area (`/admin/wiki`).
+2. On the **Categories** card, click a category's pin to pin it or take it off. A newly pinned
+   category goes to the end of the order.
+3. On the **Wiki home order** card, drag a category to its place, or move it with its arrows.
+4. Click **Save order**. **Reset** puts back the order last saved.
+
+![The Wiki home order card: Getting Started, Places, Character, Help, Theme, History, Factions, Peoples and Policies, each with a drag handle, its place number, its key and up and down arrows, the Reset and Save order buttons, and a note that the changes are not saved yet](../../../assets/guide/wiki-home-order.webp)
+
+Until you save, the wiki home keeps its current order. If the order cannot be saved, for example
+because the connection dropped, the card keeps your unsaved order so you can try again.
+
+The wiki home then shows the cards in that order:
+
+![The wiki home with the category cards Getting Started, Places, Help, Theme, History, Factions, Peoples and Policies, in the order staff saved](../../../assets/guide/wiki-home-cards.webp)
+
+A pinned category shows a card once it holds a page of its own. A category whose only members are
+other categories' pages has none. In the game, `@wiki/pin` lists the pinned categories in the order
+of their cards:
+
+```sharp
+> @wiki/pin
+WIKI: Pinned to the wiki home: Getting Started, Places, Character, Help, Theme, History, Factions, Peoples, Policies, Setting.
+```
 
 ## Next steps
 
