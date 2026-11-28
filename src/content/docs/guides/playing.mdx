@@ -193,27 +193,30 @@ MAIL: You sent your message to Bob.
 MAIL: You sent your message to Ann.
 ```
 
-Add `/quote` to put the original under your message. A message sent to several people is one
-message, and every reply to it joins its conversation. `@mail/thread` lists that conversation,
-oldest first, with each message you sent or received in it:
+Add `/quote` to put the original under your message. Reply all reaches the people the message
+was addressed to as they are when you reply: a mail alias goes to its members at that time. Mail
+received before the server was upgraded to conversations replies to its sender only.
+
+A message sent to several people is one message, and every reply to it joins its conversation.
+`@mail/thread` lists that conversation, with each reply under the message it answers. Here Ann and
+Bob replied to each other on their own, then Ann replied to everyone:
 
 ```
-> @mail/thread 6
-=< Mail thread: Dinner >=======================================
-  #  From      To        Subject     Sent
----------------------------------------------------------------
-0:6  Bob       Ann, Cy   Dinner      Fri Nov 27 23:45
-  -  Ann       Bob       Re: Dinner  Fri Nov 27 23:45
-0:7  Cy        Bob, Ann  Re: Dinner  Fri Nov 27 23:46
+> @mail/thread 13
+=< Mail thread: Lunch >========================================
+0:13 Bob to Ann, Cy * Sat Nov 28 00:45
+|- Ann to Bob * Sat Nov 28 00:45
+|  `- 0:14 Bob to Ann * Sat Nov 28 00:46
+`- Ann to Bob, Cy * Sat Nov 28 00:46
 ===============================================================
-3 messages. Thread 01a21f66-7e2c-79b0-b543-c4f7a4ceee69
-# is where you keep it; - is mail you sent and do not hold.
-===============================================================
+4 messages. Thread 01a21f9d-5ec1-7700-b6a9-ed0b1fdef88b
 ```
 
-The `#` column is where you keep your copy, and `-` marks a message you sent and do not hold. The
-website's Mail page shows the same conversation under the message, with Reply and Reply all
-buttons. See `help mail-replying` and `help mail-threads`.
+The number is where you keep your copy. A message without one is mail you sent and do not hold.
+You see only the messages you sent or received, so Cy's list has Bob's message and Ann's reply
+to everyone, and nothing of the two in between. The website's Mail page shows the same
+conversation under the message, with Reply and Reply all buttons. See `help mail-replying` and
+`help mail-threads`.
 
 ## Describing yourself
 
