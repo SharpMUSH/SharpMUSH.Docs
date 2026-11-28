@@ -29,45 +29,6 @@ Give it a **Name**, shown as its title and in the menu. The address name follows
 `Watch Duty` becomes `/apps/watch-duty`. Then say whether people read it or fill it in and send
 it, and whether it is a page of its own or a widget placed on other pages.
 
-### Showing a widget only for some characters
-
-A widget also takes **Shows only for characters who pass this lock**, a
-[lock key](/reference/sharpmush-help/lock-keys/). On a profile or a name card the key is checked against the
-character being looked at; on any other layout, against the character looking. A character
-who fails it gets no widget at all: no card, no "Nothing to display", no gap. Left empty, the
-widget shows for everyone.
-
-A character sheet widget on profiles that should skip staff characters, who have no sheet:
-
-```
-!ROLE^wizard
-```
-
-Some other keys:
-
-| Key | Shows the widget for |
-| --- | --- |
-| `!ROLE^wizard&!ROLE^royalty` | characters with neither role |
-| `ROLE^approved` | characters staff have approved |
-| ``SHEET`DONE:yes`` | characters whose ``SHEET`DONE`` attribute is `yes` |
-| `PERM^sheet.use` | characters allowed the `sheet.use` permission |
-
-Staff characters usually hold the Player role as well, so a permission allowed on Player passes
-for them too, and God passes every `PERM^` key. To leave staff out, use `!ROLE^`.
-
-The key is kept as the lock ``APP`<ADDRESS NAME>`` on the object the app is saved on, so
-staff can also set or read it in game. For an app with the address name `sheet` saved on the
-Sheet Office, `#55`:
-
-```
-> @lock/user:APP`SHEET #55=!ROLE^wizard
-Sheet Office(#55) - APP`SHEET locked.
-> think lock(#55/user:APP`SHEET)
-!ROLE^wizard
-```
-
-Saving refuses a key that is not a lock key and keeps nothing.
-
 ## Laying it out
 
 ![The Lay it out step: the outline with Page 1, a section and two fields, the Which watch field's label, key and choices, and a preview of the form](../../../assets/guide/app-builder-layout.webp)
@@ -95,6 +56,49 @@ key `watch` and three choices: `dusk`, `midnight` and `dawn`.
 A form only writes attributes on the person who sends it, and only ones they could set themselves
 with `&`. A view or sheet reads the viewer's own attributes, or those of the character being
 looked at when it is a widget, and shows only what the viewer could read with `get()`.
+
+### Who sees a widget
+
+A widget's Values step ends with **Who sees it**:
+
+| Choice | The widget shows for |
+| --- | --- |
+| Every character | everyone |
+| Characters with a role | characters holding the role you pick |
+| Characters without a role | characters not holding it |
+| Characters with a permission | characters allowed the permission you name, such as `sheet.use` |
+| Characters who pass a lock | characters who pass a [lock key](/reference/sharpmush-help/lock-keys/) |
+
+On a profile or a name card it is checked against the character being looked at; on any other
+layout, against the character looking. For a character it does not show for, the widget is not
+there at all: no card, no "Nothing to display", no gap.
+
+A character sheet widget on profiles that should skip staff characters, who have no sheet, takes
+**Characters without a role** and **wizard**. Staff characters usually hold the Player role as
+well, so a permission allowed on Player passes for them too, and God passes every permission.
+To leave staff out, pick the role they have.
+
+Staff who manage roles pick the role from a list; anyone else types its name.
+
+**Characters who pass a lock** takes any lock key, for a rule the other choices can't say:
+
+| Key | Shows the widget for |
+| --- | --- |
+| `!ROLE^wizard&!ROLE^royalty` | characters with neither role |
+| ``SHEET`DONE:yes`` | characters whose ``SHEET`DONE`` attribute is `yes` |
+
+Whichever you choose is kept as the lock ``APP`<ADDRESS NAME>`` on the object the app is saved
+on, so staff can also set or read it in game. For an app with the address name `sheet` saved on
+the Sheet Office, `#55`:
+
+```
+> @lock/user:APP`SHEET #55=!ROLE^wizard
+Sheet Office(#55) - APP`SHEET locked.
+> think lock(#55/user:APP`SHEET)
+!ROLE^wizard
+```
+
+Saving refuses a key that is not a lock key and keeps nothing.
 
 ## Saving
 
