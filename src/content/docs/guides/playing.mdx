@@ -182,6 +182,42 @@ inbox.
 On a game with the Mail Composer, `+compose` writes a longer message a line at a time, with prompts
 for who it is to and its subject. See [The Mail Composer](/guides/mail-composer/).
 
+### Replies and conversations
+
+`@mail/reply` answers the sender of a message, under its subject with `Re: ` before it.
+`@mail/replyall` answers the sender and everyone else the sender wrote to:
+
+```
+> @mail/replyall 4=Count me in.
+MAIL: You sent your message to Bob.
+MAIL: You sent your message to Ann.
+```
+
+Add `/quote` to put the original under your message. Reply all reaches the people the message
+was addressed to as they are when you reply: a mail alias goes to its members at that time. Mail
+received before the server was upgraded to conversations replies to its sender only.
+
+A message sent to several people is one message, and every reply to it joins its conversation.
+`@mail/thread` lists that conversation, with each reply under the message it answers. Here Ann and
+Bob replied to each other on their own, then Ann replied to everyone:
+
+```
+> @mail/thread 13
+=< Mail thread: Lunch >========================================
+0:13 Bob to Ann, Cy * Sat Nov 28 00:45
+|- Ann to Bob * Sat Nov 28 00:45
+|  `- 0:14 Bob to Ann * Sat Nov 28 00:46
+`- Ann to Bob, Cy * Sat Nov 28 00:46
+===============================================================
+4 messages. Thread 01a21f9d-5ec1-7700-b6a9-ed0b1fdef88b
+```
+
+The number is where you keep your copy. A message without one is mail you sent and do not hold.
+You see only the messages you sent or received, so Cy's list has Bob's message and Ann's reply
+to everyone, and nothing of the two in between. The website's Mail page shows the same
+conversation under the message, with Reply and Reply all buttons. See `help mail-replying` and
+`help mail-threads`.
+
 ## Describing yourself
 
 `@desc me=` sets what others see when they look at you:
