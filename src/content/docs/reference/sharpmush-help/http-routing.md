@@ -36,12 +36,12 @@ Before dispatching, the router sets:
 - *%q&lt;attrpath&gt;*: the path mapped to attribute form: leading slash and query stripped, remaining slashes become backticks (``api`users``)
 - *%q&lt;fields&gt;*: the [FORMQ()](/reference/sharpmush-help/formq-function/#formq)-decoded query parameter name list; each parameter is readable as *%q<form.*>*
 
-- [http adding routes]: what a route receives, and adding one
-- [http stock routes]: the routes the web portal uses
-- [http roster]: the `/http/characters` roster
-- [http online]: the `/http/online` connection list
-- [http kept rows]: how both lists keep their rows with memo()
-- [http profiles]: the `/http/profile` routes
+- [http adding routes](/reference/sharpmush-help/http-routing/#adding-a-route): what a route receives, and adding one
+- [http stock routes](/reference/sharpmush-help/http-routing/#stock-routes): the routes the web portal uses
+- [http roster](/reference/sharpmush-help/http-routing/#the-roster): the `/http/characters` roster
+- [http online](/reference/sharpmush-help/http-routing/#the-connection-list): the `/http/online` connection list
+- [http kept rows](/reference/sharpmush-help/http-routing/#kept-rows): how both lists keep their rows with memo()
+- [http profiles](/reference/sharpmush-help/http-routing/#profiles): the `/http/profile` routes
 
 ### Adding a route
 

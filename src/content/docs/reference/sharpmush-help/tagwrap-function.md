@@ -25,8 +25,8 @@ The tag is markup on *&lt;string&gt;*, not text in it. A Pueblo client, an MXP c
 
 A particularly important use of this function is `tagwrap(pre, <string>)`. Because Pueblo works like an html browser, spaces and tabs are compressed to a single space. If you have code (a +who function, for example) that relies on exact spacing, surround its output with a tagwrap(pre,...) so that Pueblo will render it as "preformatted" text.
 
-- [tagwrap() example]: a link, and tags that differ between clients
-- [tagwrap() allowed tags]: the tags and parameters allowed without Send_OOB
+- [tagwrap() example](/reference/sharpmush-help/tagwrap-function/#example): a link, and tags that differ between clients
+- [tagwrap() allowed tags](/reference/sharpmush-help/tagwrap-function/#allowed-tags): the tags and parameters allowed without Send_OOB
 
 ### Example
 

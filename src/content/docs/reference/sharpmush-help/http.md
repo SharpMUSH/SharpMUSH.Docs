@@ -40,17 +40,17 @@ A request to `http://<mush>/http/<path>` runs the handler's attribute for the re
 
 `http_handler` names the handler object; `http_per_second` must be positive to enable requests. Both are set on a fresh instance; change them only to move or disable HTTP.
 
-- [http requests]: the path, `%0` and `%1`
-- [http output]: how output becomes the response
-- [http budget]: the request rate limit and the 429 answer
-- [http setup]: a handler of your own, status and type
-- [http time limit]: the evaluation deadline and the 503
-- [http headers and limits]: request headers and limits
-- [http credentials]: hidden credentials and the viewer
-- [http response size]: the response size limit and the 500
-- [http routing]: the seeded verb routers and stock routes
-- [http examples]: simple handlers, GET and POST
-- [http sitelock]: blocking addresses, methods and paths
+- [http requests](/reference/sharpmush-help/http/#how-a-request-runs): the path, `%0` and `%1`
+- [http output](/reference/sharpmush-help/http/#output-is-the-response): how output becomes the response
+- [http budget](/reference/sharpmush-help/http/#request-budget): the request rate limit and the 429 answer
+- [http setup](/reference/sharpmush-help/http/#handler-setup): a handler of your own, status and type
+- [http time limit](/reference/sharpmush-help/http/#time-limit): the evaluation deadline and the 503
+- [http headers and limits](/reference/sharpmush-help/http/#request-headers-and-limits): request headers and limits
+- [http credentials](/reference/sharpmush-help/http/#credentials-and-the-viewer): hidden credentials and the viewer
+- [http response size](/reference/sharpmush-help/http/#response-size): the response size limit and the 500
+- [http routing](/reference/sharpmush-help/http-routing/#http-routing): the seeded verb routers and stock routes
+- [http examples](/reference/sharpmush-help/http-examples/#http-examples): simple handlers, GET and POST
+- [http sitelock](/reference/sharpmush-help/http/#access-rules): blocking addresses, methods and paths
 
 <nav class="help-see-also help-see-also-names" aria-label="See also">
 <span class="help-see-also-label">See Also</span>
@@ -73,7 +73,7 @@ These, the headers and the viewer below are named arguments (see [named argument
 
 ### Output is the response
 
-Anything sent to the HTTP Handler player during evaluation of this code is included in the body sent to the HTTP client, up to the limit in [http response size]. To modify the status or the response headers, use [@respond](/reference/sharpmush-help/respond/#respond).
+Anything sent to the HTTP Handler player during evaluation of this code is included in the body sent to the HTTP client, up to the limit in [http response size](/reference/sharpmush-help/http/#response-size). To modify the status or the response headers, use [@respond](/reference/sharpmush-help/respond/#respond).
 
 Immediately when the `@include` finishes, the HTTP request is complete. Any queued entries (such as `@wait`, `$-commands`, etc.) are not going to be sent to the HTTP client: you'll need to code using `@include`, `/inline` switches, and the like.
 

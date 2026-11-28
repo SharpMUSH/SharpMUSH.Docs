@@ -35,8 +35,8 @@ A message from a system, such as `+job` or `+scene`: *&lt;source&gt;* as a badge
 - `error` - `Error:`; a real error: the player may not do this, or something broke
 - `muted` - nothing, in grey
 
-- [notice() screen readers]: what a screen reader is sent, and the colours
-- [notice() examples]: a package name, and one notice of each kind
+- [notice() screen readers](/reference/sharpmush-help/notice-function/#screen-readers-and-colour): what a screen reader is sent, and the colours
+- [notice() examples](/reference/sharpmush-help/notice-function/#examples): a package name, and one notice of each kind
 
 <nav class="help-see-also help-see-also-names" aria-label="See also">
 <span class="help-see-also-label">See Also</span>

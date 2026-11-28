@@ -34,9 +34,9 @@ description: "SharpMUSH documentation for tree()"
 
 Items with the items under them, joined by guide lines. The top-level items sit at the left edge; each level below is drawn after a guide. An item is any text or layout, or a [NODE()](/reference/sharpmush-help/layout-functions/#node) with items of its own. An item too long for its line wraps under itself. In the web portal it is a nested list with the guides drawn as lines.
 
-- [tree() options]: borders, theme, width, guide style and guide pieces
-- [tree() examples]: channels, and a board with rounded guides
-- [tree() guide examples]: ASCII guides, and guide pieces of your own
+- [tree() options](/reference/sharpmush-help/tree-function/#options): borders, theme, width, guide style and guide pieces
+- [tree() examples](/reference/sharpmush-help/tree-function/#examples): channels, and a board with rounded guides
+- [tree() guide examples](/reference/sharpmush-help/tree-function/#guide-examples): ASCII guides, and guide pieces of your own
 
 <nav class="help-see-also help-see-also-names" aria-label="See also">
 <span class="help-see-also-label">See Also</span>

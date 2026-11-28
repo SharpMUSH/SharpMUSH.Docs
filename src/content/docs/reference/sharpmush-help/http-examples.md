@@ -20,7 +20,7 @@ description: "SharpMUSH documentation for HTTP Examples"
 -->
 ## HTTP Examples
 
-These examples show the **simple, direct-verb** style: the whole `&GET`/`&POST` attribute answers the request itself. Note this *replaces* the seeded verb routers, so the examples set up their own dedicated handler to avoid clobbering the pre-populated #8 routers. For a real game you would usually keep the seeded routers on #8 and add routed sub-attributes instead (see [http routing]).
+These examples show the **simple, direct-verb** style: the whole `&GET`/`&POST` attribute answers the request itself. Note this *replaces* the seeded verb routers, so the examples set up their own dedicated handler to avoid clobbering the pre-populated #8 routers. For a real game you would usually keep the seeded routers on #8 and add routed sub-attributes instead (see [http routing](/reference/sharpmush-help/http-routing/#http-routing)).
 
 Examples all assume the following dedicated handler:
 

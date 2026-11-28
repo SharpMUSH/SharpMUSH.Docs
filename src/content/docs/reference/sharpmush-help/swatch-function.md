@@ -24,7 +24,7 @@ description: "SharpMUSH documentation for swatch()"
 
 A table of *&lt;theme&gt;*'s colours: each colour's name, a sample drawn in it, the colour, the standard colour a sixteen-colour client is sent, and how far it stands out from the background. A colour that stands out less than its use needs is marked with what it needs. A standard colour on its own shows `client`, since it looks however the reader's client draws it. The table is drawn in the theme. *&lt;width&gt;* is the table's width; see [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions) for leaving it out.
 
-- [swatch() example]: the colours of nord, with what each needs
+- [swatch() example](/reference/sharpmush-help/swatch-function/#example): the colours of nord, with what each needs
 
 <nav class="help-see-also help-see-also-names" aria-label="See also">
 <span class="help-see-also-label">See Also</span>

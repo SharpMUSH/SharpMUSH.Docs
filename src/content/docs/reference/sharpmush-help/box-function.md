@@ -42,15 +42,15 @@ description: "SharpMUSH documentation for box()"
 
 `box(<body>[, <title>[, <width>[, <options>]]])`
 
-Draws a frame round *&lt;body&gt;*, with *&lt;title&gt;* set into the top edge. A [RULE()](/reference/sharpmush-help/rule-function/#rule) on a line of its own in the body becomes a divider across the box; a [FLEX()](/reference/sharpmush-help/flex-function/#flex), [FIELDS()](/reference/sharpmush-help/fields-function/#fields) or [TREE()](/reference/sharpmush-help/tree-function/#tree) keeps its layout inside it. A flex() with `"join":true` splits the box into panes that share its edges; see [flex() panes].
+Draws a frame round *&lt;body&gt;*, with *&lt;title&gt;* set into the top edge. A [RULE()](/reference/sharpmush-help/rule-function/#rule) on a line of its own in the body becomes a divider across the box; a [FLEX()](/reference/sharpmush-help/flex-function/#flex), [FIELDS()](/reference/sharpmush-help/fields-function/#fields) or [TREE()](/reference/sharpmush-help/tree-function/#tree) keeps its layout inside it. A flex() with `"join":true` splits the box into panes that share its edges; see [flex() panes](/reference/sharpmush-help/flex-function/#panes).
 
 *&lt;width&gt;* is the whole box, borders included; see [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions) for an empty width.
 
-- [box() options]: borders, theme, title placement, more titles and padding
-- [box() examples]: a centred title, one on the left, and two columns
-- [box() nesting examples]: a centred body, and fields with a divider
-- [box() in a box]: a box inside another keeps its width
-- [box() border examples]: a rounded border, pieces of your own, and a bottom title
+- [box() options](/reference/sharpmush-help/box-function/#options): borders, theme, title placement, more titles and padding
+- [box() examples](/reference/sharpmush-help/box-function/#examples): a centred title, one on the left, and two columns
+- [box() nesting examples](/reference/sharpmush-help/box-function/#layouts-inside-a-box): a centred body, and fields with a divider
+- [box() in a box](/reference/sharpmush-help/box-function/#a-box-in-a-box): a box inside another keeps its width
+- [box() border examples](/reference/sharpmush-help/box-function/#border-examples): a rounded border, pieces of your own, and a bottom title
 
 <nav class="help-see-also help-see-also-names" aria-label="See also">
 <span class="help-see-also-label">See Also</span>

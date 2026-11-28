@@ -174,3 +174,15 @@ test('other containers become a block of their own, and fences in code stay as w
   const out = convertHelpContainers('::: center\nHi\n:::\n\n```\n::: seealso\n- [go]\n:::\n```');
   assert.equal(out, '<div class="help-container help-container-center">\n\nHi\n\n</div>\n\n\n```\n::: seealso\n- [go]\n:::\n```');
 });
+
+test('a bracketed name the game can look up links in prose, however short or whatever it names', () => {
+  useLinkData({ lookups: helpLookups({ http: '# http\n\n## HTTP requests\n', sharpcmd: '# go\n' }) });
+  try {
+    assert.equal(
+      convertInternalLinks('See [http], [go] and [nameq(total)].'),
+      'See [http](/reference/sharpmush-help/http/#http), [go](/reference/sharpmush-help/sharpcmd/#go) and [nameq(total)].'
+    );
+  } finally {
+    useLinkData({ mappings: {}, anchors: {}, lookups: {} });
+  }
+});

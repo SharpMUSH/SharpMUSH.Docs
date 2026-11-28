@@ -8,7 +8,7 @@ description: "SharpMUSH documentation for Functions"
 
 |                       |                       |                       |                       |
 |-----------------------|-----------------------|-----------------------|-----------------------|
-| [APOSS()](/reference/sharpmush-help/sharpfunc/#aposs)             | [ATTRIB_SET#()]       | [ATTRIB_SET()](/reference/sharpmush-help/sharpfunc/#attrib_set)        | [ATTRWATCH()](/reference/sharpmush-help/attrwatch-function/#attrwatch)         |
+| [APOSS()](/reference/sharpmush-help/sharpfunc/#aposs)             | [ATTRIB_SET#()](/reference/sharpmush-help/sharpfunc/#attrib_set-1)       | [ATTRIB_SET()](/reference/sharpmush-help/sharpfunc/#attrib_set)        | [ATTRWATCH()](/reference/sharpmush-help/attrwatch-function/#attrwatch)         |
 | [CACHE()](/reference/sharpmush-help/cache-function/#cache)             | [DEFAULT()](/reference/sharpmush-help/sharpfunc/#default)           | [EDEFAULT()](/reference/sharpmush-help/sharpfunc/#edefault)          | [EVAL()](/reference/sharpmush-help/sharpfunc/#eval)              |
 | [FLAGS()](/reference/sharpmush-help/sharpfunc/#flags)             | [GET()](/reference/sharpmush-help/sharpfunc/#get)               | [GREP()](/reference/sharpmush-help/sharpfunc/#grep)              | [GREPI()](/reference/sharpmush-help/sharpfunc/#grep)             |
 | [HASARG()](/reference/sharpmush-help/hasarg/#hasarg)            | [HASATTR()](/reference/sharpmush-help/sharpfunc/#hasattr)           | [HASATTRP()](/reference/sharpmush-help/sharpfunc/#hasattr)          | [HASATTRVAL()](/reference/sharpmush-help/sharpfunc/#hasattr)        |
@@ -355,7 +355,7 @@ description: "SharpMUSH documentation for Functions"
 
 |                    |                    |                    |                    |
 |--------------------|--------------------|--------------------|--------------------|
-| [@@()]             | [ALLOF()](/reference/sharpmush-help/sharpfunc/#allof)          | [ANDCHR()](/reference/sharpmush-help/andchr-function/#andchr)         | [ANSI()](/reference/sharpmush-help/ansi-function/#ansi)           |
+| [@@()](/reference/sharpmush-help/sharpfunc/)             | [ALLOF()](/reference/sharpmush-help/sharpfunc/#allof)          | [ANDCHR()](/reference/sharpmush-help/andchr-function/#andchr)         | [ANSI()](/reference/sharpmush-help/ansi-function/#ansi)           |
 | [ATRLOCK()](/reference/sharpmush-help/sharpfunc/#atrlock)        | [BEEP()](/reference/sharpmush-help/sharpfunc/#beep)           | [BENCHMARK()](/reference/sharpmush-help/sharpfunc/#benchmark)      | [BYPASS()](/reference/sharpmush-help/bypass-function/#bypass)         |
 | [CHECKPASS()](/reference/sharpmush-help/sharpfunc/#checkpass)      | [CLONE()](/reference/sharpmush-help/sharpfunc/#clone)          | [CMDLINK()](/reference/sharpmush-help/sharppueb/#cmdlink)        | [COLORS()](/reference/sharpmush-help/colors-function/#colors)         |
 | [CREATE()](/reference/sharpmush-help/sharpfunc/#create)         | [DESTROY()](/reference/sharpmush-help/sharpfunc/#destroy)        | [DIE()](/reference/sharpmush-help/sharpfunc/#die)            | [DIG()](/reference/sharpmush-help/sharpfunc/#dig)            |

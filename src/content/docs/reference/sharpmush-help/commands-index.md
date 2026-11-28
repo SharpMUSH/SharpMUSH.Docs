@@ -25,13 +25,13 @@ Help is available for the following MUSH commands:
 | [ahelp](/reference/sharpmush-help/sharpcmd/#ahelp)     | [anews](/reference/sharpmush-help/sharpcmd/#ahelp)     | [brief](/reference/sharpmush-help/sharpcmd/#brief)     | [buy](/reference/sharpmush-help/sharpcmd/#buy-1)       | [desert](/reference/sharpmush-help/sharpcmd/#desert)    |
 | [dismiss](/reference/sharpmush-help/sharpcmd/#dismiss)   | [DOING](/reference/sharpmush-help/who/#who)     | [drop](/reference/sharpmush-help/sharpcmd/#drop)      | [empty](/reference/sharpmush-help/sharpcmd/#empty)     | [enter](/reference/sharpmush-help/sharpcmd/#enter)     |
 | [events](/reference/sharpmush-help/events/#events)    | [examine](/reference/sharpmush-help/sharpcmd/#examine)   | [follow](/reference/sharpmush-help/sharpcmd/#follow-1)    | [get](/reference/sharpmush-help/sharpcmd/#get)       | [give](/reference/sharpmush-help/sharpcmd/#give-1)      |
-| [go]        | [help](/reference/sharpmush-help/sharptop/#help)      | [home](/reference/sharpmush-help/sharptop/#homes)      | [inventory](/reference/sharpmush-help/sharpcmd/#inventory) | [leave](/reference/sharpmush-help/sharpcmd/#leave-1)     |
+| [go](/reference/sharpmush-help/sharpcmd/#go)        | [help](/reference/sharpmush-help/sharptop/#help)      | [home](/reference/sharpmush-help/sharptop/#homes)      | [inventory](/reference/sharpmush-help/sharpcmd/#inventory) | [leave](/reference/sharpmush-help/sharpcmd/#leave-1)     |
 | [LOGOUT](/reference/sharpmush-help/sharpcmd/#logout)    | [look](/reference/sharpmush-help/look/#look)      | [lpage](/reference/sharpmush-help/lpage-command/#lpage)     | [move](/reference/sharpmush-help/sharpcmd/#go)      | [mrpage](/reference/sharpmush-help/mrpage-command/#mrpage)    |
 | [news](/reference/sharpmush-help/sharpcmd/#news)      | [page](/reference/sharpmush-help/page/#page)      | [pose](/reference/sharpmush-help/pose/)      | [QUIT](/reference/sharpmush-help/sharpcmd/#quit)      | [read](/reference/sharpmush-help/look/#look)      |
 | [say](/reference/sharpmush-help/sharpcmd/#-4)       | [score](/reference/sharpmush-help/sharpcmd/#score)     | [teach](/reference/sharpmush-help/sharpcmd/#teach)     | [think](/reference/sharpmush-help/sharpcmd/#think)     | [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow-1)  |
 | [use](/reference/sharpmush-help/sharpcmd/#use)       | [walk](/reference/sharpmush-help/sharpcmd/#walk)      | [whisper](/reference/sharpmush-help/sharpcmd/#whisper)   | [WHO](/reference/sharpmush-help/who/#who)       | [with](/reference/sharpmush-help/sharpcmd/#with)      |
-| ["]         | [:]         | [;]         | [+]         | [&]         |
-| [~]         | [}]         |             |             |             |
+| ["](/reference/sharpmush-help/sharpcmd/#-4)         | [:](/reference/sharpmush-help/pose/)         | [;](/reference/sharpmush-help/pose/)         | [+](/reference/sharpmush-help/sharpchat/#chat-1)         | [&](/reference/sharpmush-help/sharpcmd/#-2)         |
+| [~](/reference/sharpmush-help/sharpcmd/#-3)         | [}](/reference/sharpmush-help/sharpcmd/)         |             |             |             |
 
 The `]` prefix runs a command without evaluating its arguments; see [literal command](/reference/sharpmush-help/literal-command/).
 

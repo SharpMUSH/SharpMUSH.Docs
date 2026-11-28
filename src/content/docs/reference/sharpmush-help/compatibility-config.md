@@ -318,7 +318,7 @@ x (a,b)c
 **PennMUSH** hands HTTP softcode its values in q-registers. An `@http` callback gets `%q<status>`, `%q<content-type>` and `%q<http-overflow>`, and the `http_handler` gets `%q<headers>` and a `%q<hdr.<name>>` for each request header. `@http` reads `%q<content-type>` as the type of what it sends and `%q<userpass>` as a login.<br>
 **SharpMUSH**, with `http_qregisters` off, hands the same values as named arguments only: `%<status>`, `%<content-type>`, `%<http-overflow>`, `%<headers>` and `%<hdr.<name>>`. `@http` takes its content type and login in its headers argument and reads no q-register.<br>
 **Why.** A q-register outlives the code that set it, so a register left over from other code could decide where a password goes.<br>
-**Workaround.** Read the named arguments; they are set with the option on as well. See [@http] and [http].
+**Workaround.** Read the named arguments; they are set with the option on as well. See [@http](/reference/sharpmush-help/http-command/#http) and [http](/reference/sharpmush-help/http/#http).
 
 An `@http` callback that shows the status, as code written for PennMUSH reads it:
 

@@ -47,7 +47,7 @@ These are the events a SharpMUSH game raises. To see the help for a type, type `
 
 - [event player](/reference/sharpmush-help/player-events/#player-events) - player\`create, player\`connect, player\`disconnect, player\`inactivity, player\`channels, player\`warn, player\`link, player\`unlink, role\`assign, role\`unassign
 - [event socket](/reference/sharpmush-help/socket-events/#socket-events) - socket\`connect, socket\`disconnect, socket\`loginfail, socket\`createfail, socket\`gmcp, socket\`timezone
-- [event http] - http\`blocked, http\`fail, http\`command
+- [event http](/reference/sharpmush-help/sharpevents/#http-events) - http\`blocked, http\`fail, http\`command
 - [event room](/reference/sharpmush-help/sharpevents/#room-events) - room\`contents
 - [event channel](/reference/sharpmush-help/sharpevents/#channel-events) - channel\`message, channel\`who
 - [event page](/reference/sharpmush-help/sharpevents/#page-events) - page\`message

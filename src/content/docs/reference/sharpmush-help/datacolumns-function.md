@@ -29,10 +29,10 @@ description: "SharpMUSH documentation for datacolumns()"
 
 The same table as [DATATABLE()](/reference/sharpmush-help/datatable-function/#datatable), given a column at a time instead of a row at a time. Each column is its heading and then its cells, split by `|` or by the `delim` option, so a list another function made is a column as it stands. A column shorter than the others is filled out with empty cells.
 
-It takes [datatable() options], splits as [datatable() delimiters] describes, and gives way on a narrow screen as [datatable() narrow screens] describes.
+It takes [datatable() options](/reference/sharpmush-help/datatable-function/#options), splits as [datatable() delimiters](/reference/sharpmush-help/datatable-function/#delimiters) describes, and gives way on a narrow screen as [datatable() narrow screens](/reference/sharpmush-help/datatable-function/#narrow-screens) describes.
 
-- [datacolumns() examples]: a who list, and a room's contents and exits in a box
-- [datacolumns() lists]: columns made by [ITER()](/reference/sharpmush-help/iter-function/#iter), [LWHO()](/reference/sharpmush-help/sharpfunc/#lwho) and other functions
+- [datacolumns() examples](/reference/sharpmush-help/datacolumns-function/#examples): a who list, and a room's contents and exits in a box
+- [datacolumns() lists](/reference/sharpmush-help/datacolumns-function/#lists-from-other-functions): columns made by [ITER()](/reference/sharpmush-help/iter-function/#iter), [LWHO()](/reference/sharpmush-help/sharpfunc/#lwho) and other functions
 
 <nav class="help-see-also help-see-also-names" aria-label="See also">
 <span class="help-see-also-label">See Also</span>

@@ -39,10 +39,10 @@ description: "SharpMUSH documentation for flex()"
 
 Puts the items side by side, sharing the width. When they do not fit, because an item would fall under its least width, they stack one under the other instead; in the web portal they wrap onto rows of their own. An item is any text or layout, or an [ITEM()](/reference/sharpmush-help/layout-functions/#item) that says how wide it wants to be. Items that do not say share what the others leave.
 
-- [flex() options]: borders, theme, width, gap, separator and alignment
-- [flex() examples]: separated columns, spread items and centred items
-- [flex() panes]: a row that splits a box into panes sharing its edges
-- [flex() pane rules]: widths, titles, pictures, and when panes are an ordinary row
+- [flex() options](/reference/sharpmush-help/flex-function/#options): borders, theme, width, gap, separator and alignment
+- [flex() examples](/reference/sharpmush-help/flex-function/#examples): separated columns, spread items and centred items
+- [flex() panes](/reference/sharpmush-help/flex-function/#panes): a row that splits a box into panes sharing its edges
+- [flex() pane rules](/reference/sharpmush-help/flex-function/#how-panes-are-drawn): widths, titles, pictures, and when panes are an ordinary row
 
 <nav class="help-see-also help-see-also-names" aria-label="See also">
 <span class="help-see-also-label">See Also</span>
@@ -67,7 +67,7 @@ Options (the first argument, which may be empty):
 - `"justify":"<where>"` - `start`, `end`, `center` or `between`: where spare width goes when no item takes it.
 - `"align":"<where>"` - `top`, `center` or `bottom`: where a shorter item sits against the tallest.
 - `"vertical":true` - always one under the other.
-- `"join":true` - inside a [BOX()](/reference/sharpmush-help/box-function/#box), the items are panes that share the box's edges; see [flex() panes].
+- `"join":true` - inside a [BOX()](/reference/sharpmush-help/box-function/#box), the items are panes that share the box's edges; see [flex() panes](/reference/sharpmush-help/flex-function/#panes).
 
 ### Examples
 
@@ -104,11 +104,11 @@ With `"join":true`, a flex() that is a part of a [BOX()](/reference/sharpmush-he
 +======================================+
 ```
 
-See [flex() pane rules] for widths, titles, pictures and when panes are an ordinary row.
+See [flex() pane rules](/reference/sharpmush-help/flex-function/#how-panes-are-drawn) for widths, titles, pictures and when panes are an ordinary row.
 
 ### How panes are drawn
 
-How [flex() panes] are drawn:
+How [flex() panes](/reference/sharpmush-help/flex-function/#panes) are drawn:
 - An [ITEM()](/reference/sharpmush-help/layout-functions/#item) keeps its width. The last pane takes the width left over, so the row always reaches the right side. `"justify"` has no effect on panes.
 - `"align"` places a shorter pane at the top, middle or bottom.
 - A title in an edge is never cut by a line; the line meets the edge without a junction there.

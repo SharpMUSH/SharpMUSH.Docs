@@ -46,9 +46,9 @@ LOGOUT leaves your character but keeps the connection: you return to the screen 
 
 In addition, the following commands can only be used at the login screen:
 
-- [cd]
-- [ch]
-- [cv]
+- [cd](/reference/sharpmush-help/sharpcmd/#cd)
+- [ch](/reference/sharpmush-help/sharpcmd/#cd)
+- [cv](/reference/sharpmush-help/sharpcmd/#cd)
 - [claim](/reference/sharpmush-help/sharpcmd/#claim)
 - [connect](/reference/sharpmush-help/sharpcmd/#connect)
 - [create](/reference/sharpmush-help/sharpcmd/#create-1)
