@@ -55,11 +55,15 @@ b a B A
 
 `attr:<attribute>` sorts dbrefs by the value of that attribute on each, case-sensitive; `attri:<attribute>` does the same, ignoring case. For instance, `attri:SPECIES` groups characters by their SPECIES attribute.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SORT()](/reference/sharpmush-help/sharpfunc/#sort)
 - [SORTBY()](/reference/sharpmush-help/sharpfunc/#sortby)
 - [SORTKEY()](/reference/sharpmush-help/sharpfunc/#sortkey)
 - [SETUNION()](/reference/sharpmush-help/sharpfunc/#setunion)
 - [SETINTER()](/reference/sharpmush-help/sharpfunc/#setinter)
 - [SETDIFF()](/reference/sharpmush-help/sharpfunc/#setdiff)
-:::
+
+</nav>
+

@@ -106,7 +106,11 @@ Output: #-1 'title' is a scene field already, so it can't be a detail
 
 Output: Canon|AU, when `verse` takes several values and its choices are Canon and AU.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [scene functions](/reference/sharpmush-help/scene-functions/#scene-functions)
 - [scene write functions](/reference/sharpmush-help/scene-write-functions/#scene-write-functions)
-:::
+
+</nav>
+

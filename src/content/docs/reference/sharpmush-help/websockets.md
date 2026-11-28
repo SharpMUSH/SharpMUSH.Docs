@@ -48,11 +48,15 @@ See [OOB()](/reference/sharpmush-help/oob-function/#oob) for sending a JSON obje
 
 See [@prompt](/reference/sharpmush-help/sharpcmd/#prompt) for information about sending telnet GOAHEAD prompts. The web portal shows a prompt in its own row below the output.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [HTML FUNCTIONS](/reference/sharpmush-help/sharppueb/#html-functions)
 - [json()](/reference/sharpmush-help/json-function/#json)
 - [pueblo](/reference/sharpmush-help/pueblo/#pueblo)
 - [WSHTML()](/reference/sharpmush-help/wshtml-function/#wshtml)
 - [WSJSON()](/reference/sharpmush-help/wsjson-function/#wsjson)
 - [OOB()](/reference/sharpmush-help/oob-function/#oob)
-:::
+
+</nav>
+

@@ -69,7 +69,9 @@ You can control where to look with:<br>
 
 Just string all the parameters together. Spaces are ignored, so you can use spaces between paramaters for clarity if you wish.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [NUM()](/reference/sharpmush-help/sharpfunc/#num)
 - [RNUM()](/reference/sharpmush-help/sharpfunc/#rnum)
 - [PMATCH()](/reference/sharpmush-help/sharpfunc/#pmatch)
@@ -77,7 +79,9 @@ Just string all the parameters together. Spaces are ignored, so you can use spac
 - [WHERE()](/reference/sharpmush-help/sharpfunc/#where)
 - [RLOC()](/reference/sharpmush-help/sharpfunc/#rloc)
 - [FINDABLE()](/reference/sharpmush-help/sharpfunc/#findable)
-:::
+
+</nav>
+
 
 ### Matching examples
 

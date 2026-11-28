@@ -24,8 +24,12 @@ The game says it speaks Pueblo only while the `pueblo` option is on, and the cli
 > PUEBLOCLIENT 2.50 md5="0123456789abcdef0123456789abcdef"
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [pueblo](/reference/sharpmush-help/pueblo/#pueblo)
 - [SOCKSET](/reference/sharpmush-help/sockset-command/#sockset)
 - [Socket Commands](/reference/sharpmush-help/socket-commands/#socket-commands)
-:::
+
+</nav>
+

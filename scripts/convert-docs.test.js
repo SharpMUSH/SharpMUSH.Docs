@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { convertInternalLinks, escapeArgumentTags, helpLookups, topicAnchors, useLinkData } from './convert-docs.js';
+import { convertHelpContainers, convertInternalLinks, escapeArgumentTags, helpLookups, topicAnchors, useLinkData } from './convert-docs.js';
 
 test('links a help topic in plain text', () => {
   assert.equal(convertInternalLinks('See [@lock].'), 'See [@lock](/reference/sharpmush-help/sharpcmd/#lock).');
@@ -131,4 +131,46 @@ test('leaves a quoted attribute value alone', () => {
 
 test('keeps blockquote prefixes on an HTML block', () => {
   assert.equal(escapeArgumentTags('> <span>\n> <width>\n> </span>\n'), '> <span>\n> &lt;width&gt;\n> </span>\n');
+});
+
+test('a See Also block is a labelled row of links, short topic names included', () => {
+  const pages = { sharpcmd: '# go\n\nText.\n', substitutions: '# %\n\nText.\n', sharpflag: '# LINK_OK\n\nText.\n' };
+  useLinkData({ lookups: helpLookups(pages), anchors: topicAnchors(pages) });
+  try {
+    const source = 'Text.\n\n::: seealso\n- [go]\n- [%]\n- [LINK_OK]\n- `[NO_TEL]`\n:::\n\nMore.';
+    assert.equal(convertHelpContainers(convertInternalLinks(source)), [
+      'Text.',
+      '',
+      '<nav class="help-see-also help-see-also-names" aria-label="See also">',
+      '<span class="help-see-also-label">See Also</span>',
+      '',
+      '- [go](/reference/sharpmush-help/sharpcmd/#go)',
+      '- [%](/reference/sharpmush-help/substitutions/)',
+      '- [LINK_OK](/reference/sharpmush-help/sharpflag/#link_ok)',
+      '- `[NO_TEL]`',
+      '',
+      '</nav>',
+      '',
+      '',
+      'More.',
+    ].join('\n'));
+  } finally {
+    useLinkData({ mappings: {}, anchors: {}, lookups: {} });
+  }
+});
+
+test('a See Also item that says more than a name stays a list, and code keeps its brackets', () => {
+  useLinkData({ lookups: helpLookups({ pose: '# :\n\nText.\n' }) });
+  try {
+    const out = convertHelpContainers('::: seealso\n- `pose` (`[:]`): [:]\n:::');
+    assert.match(out, /^<nav class="help-see-also" aria-label="See also">/);
+    assert.match(out, /^- `pose` \(`\[:\]`\): \[:\]\(\/reference\/sharpmush-help\/pose\/#?\)$/m);
+  } finally {
+    useLinkData({ mappings: {}, anchors: {}, lookups: {} });
+  }
+});
+
+test('other containers become a block of their own, and fences in code stay as written', () => {
+  const out = convertHelpContainers('::: center\nHi\n:::\n\n```\n::: seealso\n- [go]\n:::\n```');
+  assert.equal(out, '<div class="help-container help-container-center">\n\nHi\n\n</div>\n\n\n```\n::: seealso\n- [go]\n:::\n```');
 });

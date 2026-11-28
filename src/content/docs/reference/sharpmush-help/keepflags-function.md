@@ -37,8 +37,12 @@ keepflags() and remflags() come from RhostMUSH.
 #-1 FUNCTION REQUIRES '&' OR '|' FOR FLAG MATCHES
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [keeptype()](/reference/sharpmush-help/keeptype-function/#keeptype-and-remtype)
 - [andflags()](/reference/sharpmush-help/sharpfunc/#andflags)
 - [orflags()](/reference/sharpmush-help/sharpfunc/#orflags)
-:::
+
+</nav>
+

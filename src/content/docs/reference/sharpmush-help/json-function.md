@@ -44,15 +44,19 @@ When `<type>` is "array" or "object", it's recommended that subsequent JSON argu
 
 A large structure that is mostly the same each time, such as a portal form, is faster stored as JSON in an attribute and completed with json_fill().
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [OOB()](/reference/sharpmush-help/oob-function/#oob)
 - [ISJSON()](/reference/sharpmush-help/sharpfunc/#isjson)
-- [json_array()](/reference/sharpmush-help/json-array-function/#jsonarray)
-- [json_fill()](/reference/sharpmush-help/json-fill-function/#jsonfill)
-- [json_query()](/reference/sharpmush-help/json-query-function/#jsonquery)
-- [json_map()](/reference/sharpmush-help/json-map-function/#jsonmap)
+- [json_array()](/reference/sharpmush-help/json-array-function/#json_array)
+- [json_fill()](/reference/sharpmush-help/json-fill-function/#json_fill)
+- [json_query()](/reference/sharpmush-help/json-query-function/#json_query)
+- [json_map()](/reference/sharpmush-help/json-map-function/#json_map)
 - [RENDER()](/reference/sharpmush-help/sharpfunc/#render)
-:::
+
+</nav>
+
 
 ### Value construction examples
 

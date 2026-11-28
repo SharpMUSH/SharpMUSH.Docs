@@ -31,8 +31,12 @@ Created: Object #52.
 #52
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [CREATE()](/reference/sharpmush-help/sharpfunc/#create)
 - [DIG()](/reference/sharpmush-help/sharpfunc/#dig)
 - [NEXTDBREF()](/reference/sharpmush-help/sharpfunc/#nextdbref)
-:::
+
+</nav>
+

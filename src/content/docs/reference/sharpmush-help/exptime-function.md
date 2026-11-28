@@ -45,8 +45,12 @@ These functions come from TinyMUX.
 3h / 1d 10:17 / 1h 0s
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ETIMEFMT()](/reference/sharpmush-help/etimefmt-function/#etimefmt)
 - [TIMESTRING()](/reference/sharpmush-help/sharpfunc/#timestring)
 - [CONVSECS()](/reference/sharpmush-help/sharpfunc/#convsecs)
-:::
+
+</nav>
+

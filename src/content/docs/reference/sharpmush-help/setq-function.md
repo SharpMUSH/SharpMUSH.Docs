@@ -62,7 +62,9 @@ The setq() and setr() functions are used to copy strings into local registers as
 
 With exactly three arguments, the third is a label: another name for the register (see [setq register labels](/reference/sharpmush-help/setq-function/#register-labels)).
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [setqm()](/reference/sharpmush-help/setqm-function/#setqm)
 - [R()](/reference/sharpmush-help/sharpfunc/#r)
 - [LISTQ()](/reference/sharpmush-help/sharpfunc/#listq)
@@ -71,7 +73,9 @@ With exactly three arguments, the third is a label: another name for the registe
 - [ulocal()](/reference/sharpmush-help/ulocal-function/#ulocal)
 - [REGISTERS()](/reference/sharpmush-help/sharpfunc/#registers)
 - [nameq()](/reference/sharpmush-help/nameq-function/#nameq)
-:::
+
+</nav>
+
 
 ### Reading registers
 

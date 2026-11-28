@@ -46,8 +46,12 @@ The table is kept with the game's configuration and is the same one the web port
 ```
 Output: the game says a middle dot is now sent to clients without Unicode as a space, a dash and a space. A title written as Wren, a middle dot, then Scene 3 reaches an ASCII client as `Wren - Scene 3` rather than `Wren * Scene 3`.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [CHARSET](/reference/sharpmush-help/charset/#charset)
 - [@SOCKSET](/reference/sharpmush-help/sockset-command/#sockset)
 - [LAYOUT BORDERS ASCII](/reference/sharpmush-help/layout-borders/#ascii-clients)
-:::
+
+</nav>
+

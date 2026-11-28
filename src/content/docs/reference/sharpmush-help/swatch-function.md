@@ -26,11 +26,15 @@ A table of *&lt;theme&gt;*'s colours: each colour's name, a sample drawn in it, 
 
 - [swatch() example]: the colours of nord, with what each needs
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [THEMES()](/reference/sharpmush-help/layout-functions/#themes)
 - [THEME()](/reference/sharpmush-help/layout-functions/#theme)
 - [LAYOUT THEMES](/reference/sharpmush-help/layout-themes/#layout-themes)
-:::
+
+</nav>
+
 
 ### Example
 

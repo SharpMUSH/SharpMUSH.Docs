@@ -161,10 +161,14 @@ Examples:
     > @command/restrict @emit=!flag^suspect&!flag^gagged
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@command](/reference/sharpmush-help/command/#command)
 - [@function](/reference/sharpmush-help/function-command/#function)
 - [@attribute](/reference/sharpmush-help/attribute-command/#attribute)
 - [roles](/reference/sharpmush-help/roles/#roles)
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
-:::
+
+</nav>
+

@@ -79,10 +79,14 @@ Example:
 > @recover/refs #42
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [garbage](/reference/sharpmush-help/sharptop/#garbage)
 - [@destroy](/reference/sharpmush-help/destroy-command/#destroy)
 - [@undestroy](/reference/sharpmush-help/sharpcmd/#undestroy)
 - [@purge](/reference/sharpmush-help/sharpcmd/#purge)
 - [object snapshots](/reference/sharpmush-help/snapshots/#object-snapshots)
-:::
+
+</nav>
+

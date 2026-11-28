@@ -35,7 +35,11 @@ This function comes from RhostMUSH.
 2 #-1 PERMISSION DENIED: CANNOT USE SUB
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LOCALIZE()](/reference/sharpmush-help/sharpfunc/#localize)
 - [@function](/reference/sharpmush-help/function-command/#function)
-:::
+
+</nav>
+

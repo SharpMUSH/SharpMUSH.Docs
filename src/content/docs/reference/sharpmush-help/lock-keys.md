@@ -84,9 +84,13 @@ You can group together different sets of keys by enclosing each group in parenth
 allows non-players to pass, or players who do not have the "unregistered" flag set.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
 - [locktypes](/reference/sharpmush-help/locktypes/#lock-types)
 - [@CHANNEL CLOCK](/reference/sharpmush-help/channel-clock-command/#channel-clock)
 - [OBJID()](/reference/sharpmush-help/sharpfunc/#objid)
-:::
+
+</nav>
+

@@ -37,9 +37,13 @@ F160
 For details of how the algorithm works, see [soundex algorithm](/reference/sharpmush-help/soundex-function/#soundex-algorithm).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SOUNDLIKE()](/reference/sharpmush-help/sharpfunc/#soundlike)
-:::
+
+</nav>
+
 
 ### Soundex algorithm
 

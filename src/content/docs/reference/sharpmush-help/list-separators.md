@@ -142,12 +142,16 @@ Mannaz%*<\^>12%*<|>Raya%*<\^>9
 
 PennMUSH, RhostMUSH and TinyMUX have no `%*` substitution and print `*<|>` for `%*<|>`. Importing a PennMUSH database names every attribute that uses `%*<`.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [unmark()](/reference/sharpmush-help/sharpfunc/#unmark)
-- [SHOW_SEPARATORS](/reference/sharpmush-help/sharpflag/#showseparators)
+- [SHOW_SEPARATORS](/reference/sharpmush-help/sharpflag/#show_separators)
 - [decompose()](/reference/sharpmush-help/sharpfunc/#decompose)
 - [@dolist](/reference/sharpmush-help/dolist-command/#dolist)
 - [iter()](/reference/sharpmush-help/iter-function/#iter)
 - [substitutions](/reference/sharpmush-help/substitutions/#substitutions)
 - [compatibility parser](/reference/sharpmush-help/compatibility-parser/#compatibility-parser)
-:::
+
+</nav>
+

@@ -39,9 +39,13 @@ The answer is an unsigned 32-bit number. A number that is negative, or an argume
 
 Output: 12 is 1100 and 10 is 1010 in binary.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [band()](/reference/sharpmush-help/sharpfunc/#band)
 - [bor()](/reference/sharpmush-help/sharpfunc/#bor)
 - [bxor()](/reference/sharpmush-help/sharpfunc/#bxor)
 - [tobin()](/reference/sharpmush-help/tobin-function/#tobin)
-:::
+
+</nav>
+

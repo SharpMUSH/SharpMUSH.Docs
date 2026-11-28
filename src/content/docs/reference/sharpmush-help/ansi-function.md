@@ -46,13 +46,17 @@ For example, "ansi(+orange/#0000ff,Test)" would color "Test" in orange, on a blu
 
 The second form is TinyMUX's: each `<string>` is marked up with the `<codes>` before it, and the pieces are joined in order, so ansi(r,Red,g,Green) is "Red" in red then "Green" in green. An odd number of arguments is an error.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ANSI](/reference/sharpmush-help/sharpflag/#ansi)
 - [COLOR](/reference/sharpmush-help/sharpflag/#color)
 - [@SOCKSET](/reference/sharpmush-help/sockset-command/#sockset)
 - [COLORSTYLE](/reference/sharpmush-help/sharpcmd/#colorstyle)
 - [colors()](/reference/sharpmush-help/colors-function/#colors)
-:::
+
+</nav>
+
 
 ### Legacy color codes
 

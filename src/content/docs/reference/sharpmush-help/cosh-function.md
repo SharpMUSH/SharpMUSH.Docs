@@ -35,8 +35,12 @@ These functions come from RhostMUSH.
 1.5430806348152437
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [cos()](/reference/sharpmush-help/sharpfunc/#cos)
 - [sin()](/reference/sharpmush-help/sharpfunc/#sin)
 - [tan()](/reference/sharpmush-help/sharpfunc/#tan)
-:::
+
+</nav>
+

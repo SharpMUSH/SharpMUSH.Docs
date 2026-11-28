@@ -43,9 +43,13 @@ isdbref() returns 1 if `<string>` is the dbref or objid of an existing object. A
 0
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [database](/reference/sharpmush-help/database/#database)
 - [OBJIDS](/reference/sharpmush-help/sharptop/#object-ids)
 - [NUM()](/reference/sharpmush-help/sharpfunc/#num)
 - [OBJID()](/reference/sharpmush-help/sharpfunc/#objid)
-:::
+
+</nav>
+

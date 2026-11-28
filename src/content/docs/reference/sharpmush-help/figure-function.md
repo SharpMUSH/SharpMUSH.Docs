@@ -38,11 +38,15 @@ A picture, the text art a terminal shows instead of it, and the text that goes b
 - [figure() who sees the picture]: who is shown the picture, and who the art
 - [figure() example]: a cat with text beside it
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [IMAGE()](/reference/sharpmush-help/sharppueb/#image)
 - [MEDIA FUNCTIONS](/reference/sharpmush-help/sharppueb/#media-functions)
 - [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions)
-:::
+
+</nav>
+
 
 ### Arguments
 

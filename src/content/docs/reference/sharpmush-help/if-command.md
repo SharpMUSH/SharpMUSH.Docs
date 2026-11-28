@@ -37,12 +37,16 @@ For RhostMUSH compatability, @skip runs the action list `<false>` when `<boolean
 
 @ifelse and `@skip/ifelse` are aliases for @if.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@break](/reference/sharpmush-help/break-command/#break)
 - [@switch](/reference/sharpmush-help/switch-command/#switch)
 - [IF()](/reference/sharpmush-help/sharpfunc/#if)
 - [boolean values](/reference/sharpmush-help/boolean-values/#boolean-values)
-:::
+
+</nav>
+
 
 ### Conditional examples
 

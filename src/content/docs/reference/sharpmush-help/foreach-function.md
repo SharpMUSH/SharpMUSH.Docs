@@ -57,7 +57,11 @@ You say, "1 1 1 1 0 "
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MAP()](/reference/sharpmush-help/map-function/#map)
 - [anonymous attributes](/reference/sharpmush-help/anonymous-attributes/#anonymous-attributes)
-:::
+
+</nav>
+

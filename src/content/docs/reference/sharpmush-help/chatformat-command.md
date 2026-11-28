@@ -43,13 +43,17 @@ The chatformat attribute is evaluated when an object receives a channel message.
 ```
 Output: when Walker says Hello. on Public, you see `<Public> Walker: Hello.`
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@chat](/reference/sharpmush-help/sharpchat/#chat-1)
 - [@pageformat](/reference/sharpmush-help/pageformat-command/#pageformat)
 - [@message](/reference/sharpmush-help/message-command/#message)
 - [speak()](/reference/sharpmush-help/speak/#speak)
 - [@CHANNEL ADMIN](/reference/sharpmush-help/channel-admin-command/#channel-admin)
-:::
+
+</nav>
+
 
 ### Registers
 

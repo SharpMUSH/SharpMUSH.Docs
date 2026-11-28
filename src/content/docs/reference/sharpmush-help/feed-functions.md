@@ -132,6 +132,10 @@ Ann: Coming in.
 Bo: Copy that.
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@feed](/reference/sharpmush-help/feed-command/#feed)
-:::
+
+</nav>
+

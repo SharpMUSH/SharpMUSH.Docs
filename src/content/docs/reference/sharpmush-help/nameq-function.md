@@ -49,12 +49,16 @@ With three arguments the second is ignored; leave it empty. With a number other 
 
 nameq() comes from RhostMUSH. RhostMUSH's `nameq()` with an empty first argument returns how many registers it has; here registers are named freely, so that is an error.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [setq()](/reference/sharpmush-help/setq-function/#setq)
 - [setqm()](/reference/sharpmush-help/setqm-function/#setqm)
 - [r()](/reference/sharpmush-help/sharpfunc/#r)
 - [registers](/reference/sharpmush-help/registers/#registers)
-:::
+
+</nav>
+
 
 ### Setting a label
 

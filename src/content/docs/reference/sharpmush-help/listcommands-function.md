@@ -32,7 +32,11 @@ listcommands() comes from RhostMUSH.
 1
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@command](/reference/sharpmush-help/command/#command)
 - [lcmds()](/reference/sharpmush-help/sharpfunc/#lcmds)
-:::
+
+</nav>
+

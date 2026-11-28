@@ -22,7 +22,11 @@ Works like [pmatch()](/reference/sharpmush-help/sharpfunc/#pmatch), except that 
 
 This function comes from TinyMUX.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [PMATCH()](/reference/sharpmush-help/sharpfunc/#pmatch)
 - [LOCATE()](/reference/sharpmush-help/locate-function/#locate)
-:::
+
+</nav>
+

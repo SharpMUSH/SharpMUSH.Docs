@@ -53,8 +53,12 @@ These are privileges, not locks. A privilege says which *kind* of thing the chan
 @channel/privs Public=P Q o C
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@channel joining](/reference/sharpmush-help/channel-joining-command/#channel-joining)
 - [@CHANNEL CLOCK](/reference/sharpmush-help/channel-clock-command/#channel-clock)
 - [cflags()](/reference/sharpmush-help/channel-functions/#cflags)
-:::
+
+</nav>
+

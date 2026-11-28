@@ -73,9 +73,13 @@ Ore        12
 
 A wide character takes two columns: `printf(lit(%4s|%-4s),chr(30028),chr(128512))` pads a Chinese character and an emoji each with two spaces, to four columns.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [DISPLAYWIDTH()](/reference/sharpmush-help/sharpfunc/#displaywidth)
 - [align()](/reference/sharpmush-help/align/#align)
 - [TABLE()](/reference/sharpmush-help/sharpfunc/#table)
 - [WRAP()](/reference/sharpmush-help/wrap-function/#wrap)
-:::
+
+</nav>
+

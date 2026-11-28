@@ -27,7 +27,11 @@ listflags() comes from RhostMUSH. lflags() with no argument lists the names alon
 ABODE(A)
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [lflags()](/reference/sharpmush-help/sharpfunc/#lflags)
 - [@flag](/reference/sharpmush-help/flag-command/#flag)
-:::
+
+</nav>
+

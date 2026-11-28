@@ -48,7 +48,9 @@ The @pemit command can take the following additional switches:
 You cannot @pemit to objects set HAVEN, or objects whose @lock/page you do not pass, unless you are set WIZARD or have the Pemit_All @power.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@emit](/reference/sharpmush-help/sharpcmd/#emit)
 - [@nspemit](/reference/sharpmush-help/sharpcmd/#nspemit)
 - [@oemit](/reference/sharpmush-help/oemit-command/#oemit)
@@ -56,4 +58,6 @@ You cannot @pemit to objects set HAVEN, or objects whose @lock/page you do not p
 - [NOSPOOF](/reference/sharpmush-help/sharpflag/#nospoof)
 - [SPOOFING](/reference/sharpmush-help/sharptop/#spoofing)
 - [page](/reference/sharpmush-help/page/#page)
-:::
+
+</nav>
+

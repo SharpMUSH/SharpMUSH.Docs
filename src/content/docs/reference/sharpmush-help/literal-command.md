@@ -51,13 +51,17 @@ This can be used to pass unevaluated MUSHcode to softcoded commands without havi
 See [literal command examples](/reference/sharpmush-help/literal-command/#literal-command-examples) for more examples.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LIT()](/reference/sharpmush-help/sharpfunc/#lit)
 - [DECOMPOSE()](/reference/sharpmush-help/sharpfunc/#decompose)
 - [ESCAPE()](/reference/sharpmush-help/sharpfunc/#escape)
 - [@command](/reference/sharpmush-help/command/#command)
-- [}]
-:::
+- [}](/reference/sharpmush-help/sharpcmd/)
+
+</nav>
+
 
 ### Literal command examples
 

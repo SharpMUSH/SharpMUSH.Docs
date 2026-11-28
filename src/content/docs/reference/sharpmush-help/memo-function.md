@@ -42,11 +42,15 @@ The code sees only its arguments: it starts with no q-registers and the ones it 
 
 `<attribute>` may also be a #lambda (see [anonymous attributes](/reference/sharpmush-help/anonymous-attributes/#anonymous-attributes)).
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [u()](/reference/sharpmush-help/u-function/#u)
 - [ulocal()](/reference/sharpmush-help/ulocal-function/#ulocal)
 - [cache()](/reference/sharpmush-help/cache-function/#cache)
-:::
+
+</nav>
+
 
 ### Refused code
 

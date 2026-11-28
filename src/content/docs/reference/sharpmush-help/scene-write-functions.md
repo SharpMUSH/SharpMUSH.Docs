@@ -155,7 +155,11 @@ Works on plots and returns the plot's id. `<op>` is one of:
 
 Any other `<op>` is `#-1 BAD ARGUMENT FORMAT TO SCENEPLOT`.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [scene functions](/reference/sharpmush-help/scene-functions/#scene-functions)
 - [scene type functions](/reference/sharpmush-help/scene-type-functions/#scene-type-and-detail-functions)
-:::
+
+</nav>
+

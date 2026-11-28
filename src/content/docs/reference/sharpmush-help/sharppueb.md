@@ -14,11 +14,15 @@ HTML tags are stripped when sent to any other client.
 Pueblo and MXP are different dialects, not one extending the other. Most formatting tags are spelled alike, but a command link is not: Pueblo writes `<a xch_cmd="...">` and MXP writes `<send href="...">`, and each client prints the other's as text. Use [CMDLINK()](/reference/sharpmush-help/sharppueb/#cmdlink) for a command link, and each client gets its own.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [HTML FUNCTIONS](/reference/sharpmush-help/sharppueb/#html-functions)
 - [pueblo](/reference/sharpmush-help/pueblo/#pueblo)
 - [HTML()](/reference/sharpmush-help/sharppueb/#html-1)
-:::
+
+</nav>
+
 
 ## pueblo()
 
@@ -31,16 +35,24 @@ If used on a player/descriptor which is not connected, pueblo() returns #-1 NOT 
 When used with a *&lt;player&gt;* argument, the most recently active connection is used if the *&lt;player&gt;* is logged in more than once.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [TERMINFO()](/reference/sharpmush-help/terminfo-function/#terminfo)
 - [HTML()](/reference/sharpmush-help/sharppueb/#html-1)
 - [pueblo](/reference/sharpmush-help/pueblo/#pueblo)
-:::
 
-::: seealso
+</nav>
+
+
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [HTML](/reference/sharpmush-help/sharppueb/#html)
 - [pueblo](/reference/sharpmush-help/pueblo/#pueblo)
-:::
+
+</nav>
+
 
 ## HTML Functions
 
@@ -69,11 +81,15 @@ Mortals are restricted in the tags they may use. Most standard HTML tags are ok;
 In PennMUSH this wizard-only function outputs *&lt;string&gt;* as a single HTML tag. SharpMUSH's markup is a span over the text it applies to, so it has no single tag to write, and html() returns `#-1 USE TAGWRAP INSTEAD`. Use [TAGWRAP()](/reference/sharpmush-help/tagwrap-function/#tagwrap).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [pueblo](/reference/sharpmush-help/pueblo/#pueblo)
 - [HTML](/reference/sharpmush-help/sharppueb/#html)
 - [HTML FUNCTIONS](/reference/sharpmush-help/sharppueb/#html-functions)
-:::
+
+</nav>
+
 
 ## tag()
 
@@ -82,11 +98,15 @@ In PennMUSH this wizard-only function outputs *&lt;string&gt;* as a single HTML 
 In PennMUSH this outputs an opening HTML/Pueblo tag. SharpMUSH's markup is a span over the text it applies to, so it has no tag without an end, and tag() returns `#-1 USE TAGWRAP INSTEAD`. Use [TAGWRAP()](/reference/sharpmush-help/tagwrap-function/#tagwrap).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ENDTAG()](/reference/sharpmush-help/sharppueb/#endtag)
 - [TAGWRAP()](/reference/sharpmush-help/tagwrap-function/#tagwrap)
 - [HTML()](/reference/sharpmush-help/sharppueb/#html-1)
-:::
+
+</nav>
+
 
 ## endtag()
 
@@ -95,11 +115,15 @@ In PennMUSH this outputs an opening HTML/Pueblo tag. SharpMUSH's markup is a spa
 In PennMUSH this outputs a closing HTML/Pueblo tag. As with [TAG()](/reference/sharpmush-help/sharppueb/#tag), SharpMUSH returns `#-1 USE TAGWRAP INSTEAD`. Use [TAGWRAP()](/reference/sharpmush-help/tagwrap-function/#tagwrap).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [TAG()](/reference/sharpmush-help/sharppueb/#tag)
 - [TAGWRAP()](/reference/sharpmush-help/tagwrap-function/#tagwrap)
 - [HTML()](/reference/sharpmush-help/sharppueb/#html-1)
-:::
+
+</nav>
+
 
 ## cmdlink()
 
@@ -118,10 +142,14 @@ Clicking a link sends *&lt;command&gt;* as if the reader had typed it, so it run
 > think cmdlink(Who is online?,+who,List the connected players)
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [TAGWRAP()](/reference/sharpmush-help/tagwrap-function/#tagwrap)
 - [HTML FUNCTIONS](/reference/sharpmush-help/sharppueb/#html-functions)
-:::
+
+</nav>
+
 
 ## Media Functions
 
@@ -139,9 +167,13 @@ None of them leaves anything in the plain text, so `strlen()` and listen pattern
 
 All but preformat() need a Wizard or the Send_OOB @power: they make a client fetch a file, play it, or clear what the player is looking at. Laying text out does not, so preformat() is open to anyone. image() and figure() also accept the Send_Image @power, which allows pictures and nothing else; the approved role holds it, so an approved character can show a picture in a pose or a description.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [HTML FUNCTIONS](/reference/sharpmush-help/sharppueb/#html-functions)
-:::
+
+</nav>
+
 
 ## sound()
 
@@ -158,11 +190,15 @@ A client such as Mudlet that lists Client.Media in GMCP Core.Supports is sent GM
 > @pemit %#=[sound(door.wav,80)]The door creaks open.
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MUSIC()](/reference/sharpmush-help/sharppueb/#music)
 - [STOPSOUND()](/reference/sharpmush-help/sharppueb/#stopsound)
 - [MEDIA FUNCTIONS](/reference/sharpmush-help/sharppueb/#media-functions)
-:::
+
+</nav>
+
 
 ## music()
 
@@ -172,10 +208,14 @@ As [SOUND()](/reference/sharpmush-help/sharppueb/#sound), for background music: 
 
 Mudlet is sent Client.Media.Play as music under the key `music`, so a new piece replaces the one playing.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SOUND()](/reference/sharpmush-help/sharppueb/#sound)
 - [STOPSOUND()](/reference/sharpmush-help/sharppueb/#stopsound)
-:::
+
+</nav>
+
 
 ## stopsound()
 
@@ -185,10 +225,14 @@ Silences what is playing. *&lt;channel&gt;* is `effects` or `music`; with none, 
 
 Mudlet is sent Client.Media.Stop for sounds, for music, or with nothing named, for everything.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SOUND()](/reference/sharpmush-help/sharppueb/#sound)
 - [MUSIC()](/reference/sharpmush-help/sharppueb/#music)
-:::
+
+</nav>
+
 
 ## image()
 
@@ -236,11 +280,15 @@ The portal collapses runs of spaces and uses a variable width font, so anything 
 > &cmd`who Globals=$+who: @nspemit %#=preformat(u(fun`who))
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [align()](/reference/sharpmush-help/align/#align)
 - [TABLE()](/reference/sharpmush-help/sharpfunc/#table)
 - [pueblo client enhancements](/reference/sharpmush-help/pueblo/#client-enhancements)
-:::
+
+</nav>
+
 
 ## clearscreen()
 
@@ -260,6 +308,10 @@ Asks the client to fetch something now that it will want soon, so it is already 
 
 Makes links already on the player's screen stop working: those in *&lt;group&gt;*, or every one when no group is named. MXP acts on it, the portal is told, and a client with neither leaves its old links working.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [CMDLINK()](/reference/sharpmush-help/sharppueb/#cmdlink)
-:::
+
+</nav>
+

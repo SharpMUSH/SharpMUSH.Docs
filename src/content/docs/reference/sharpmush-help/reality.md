@@ -133,7 +133,11 @@ The web portal and the object API follow the same rules. Room events go only to 
 
 The configuration and each object's settings are kept in the world database and travel with its backups. A change takes effect once it is saved. After a restart the saved configuration is loaded before reality is applied.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [administrative capabilities](/reference/sharpmush-help/capabilities/#administrative-capabilities)
 - [look](/reference/sharpmush-help/look/#look)
-:::
+
+</nav>
+

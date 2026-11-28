@@ -24,11 +24,15 @@ Returns `<text>`, sent as `<stand-in>` to a client that cannot show it. A client
 
 - [standin() examples]: a pinned mark, and a check mark
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [CHARSET](/reference/sharpmush-help/charset/#charset)
 - [@ASCII](/reference/sharpmush-help/ascii-command/#ascii)
 - [STRIPACCENTS()](/reference/sharpmush-help/sharpfunc/#stripaccents)
-:::
+
+</nav>
+
 
 ### Examples
 

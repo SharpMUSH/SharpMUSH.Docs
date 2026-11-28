@@ -45,14 +45,18 @@ Register names follow the same rules as in setq(), and a name is evaluated too, 
 
 setqm() and setrm() come from RhostMUSH and take the same arguments.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [setq()](/reference/sharpmush-help/setq-function/#setq)
 - [LETQ()](/reference/sharpmush-help/sharpfunc/#letq)
 - [R()](/reference/sharpmush-help/sharpfunc/#r)
 - [LISTQ()](/reference/sharpmush-help/sharpfunc/#listq)
 - [UNSETQ()](/reference/sharpmush-help/sharpfunc/#listq)
 - [nameq()](/reference/sharpmush-help/nameq-function/#nameq)
-:::
+
+</nav>
+
 
 ### Examples
 

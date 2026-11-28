@@ -38,8 +38,12 @@ You say, "----.NEAT.====="
 You say, "12345hello154321"
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [align()](/reference/sharpmush-help/align/#align)
 - [LJUST()](/reference/sharpmush-help/sharpfunc/#ljust)
 - [RJUST()](/reference/sharpmush-help/sharpfunc/#rjust)
-:::
+
+</nav>
+

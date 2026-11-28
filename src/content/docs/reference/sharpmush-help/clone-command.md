@@ -53,9 +53,13 @@ To clone a room and all its exits, use code like:
 > @dolist lexits(%q0)=@clone ##
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@create](/reference/sharpmush-help/sharpcmd/#create)
 - [CLONE()](/reference/sharpmush-help/sharpfunc/#clone)
 - [CREATE()](/reference/sharpmush-help/sharpfunc/#create)
 - [@cpattr](/reference/sharpmush-help/cpattr-command/#cpattr)
-:::
+
+</nav>
+

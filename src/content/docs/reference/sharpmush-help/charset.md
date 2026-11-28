@@ -46,10 +46,14 @@ Each of these takes as many columns as the character it replaces, so columns sta
 
 A game can choose its own stand-ins, which come before the ones above; see [@ASCII](/reference/sharpmush-help/ascii-command/#ascii).
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@SOCKSET](/reference/sharpmush-help/sockset-command/#sockset)
 - [TERMINFO()](/reference/sharpmush-help/terminfo-function/#terminfo)
 - [LAYOUT BORDERS](/reference/sharpmush-help/layout-borders/#layout-borders)
 - [STRIPACCENTS()](/reference/sharpmush-help/sharpfunc/#stripaccents)
 - [@ASCII](/reference/sharpmush-help/ascii-command/#ascii)
-:::
+
+</nav>
+

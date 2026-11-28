@@ -48,11 +48,15 @@ think etimefmt($2mm $2ss, 500) - [timestring(500)]
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [TIMESTRING()](/reference/sharpmush-help/sharpfunc/#timestring)
 - [timefmt()](/reference/sharpmush-help/timefmt-function/#timefmt)
 - [ETIME()](/reference/sharpmush-help/sharpfunc/#etime)
-:::
+
+</nav>
+
 
 ### Duration escape codes
 

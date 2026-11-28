@@ -49,8 +49,12 @@ Existing games which have softcoded 'who' commands can maintain separation from 
 Note: The WHO command available at the login screen is totally separate from the in-game WHO command, and is not affected by any changes to the in-game WHO.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@doing](/reference/sharpmush-help/sharpcmd/#doing)
 - [@poll](/reference/sharpmush-help/sharpcmd/#poll)
 - [SESSION](/reference/sharpmush-help/sharpcmd/#session)
-:::
+
+</nav>
+

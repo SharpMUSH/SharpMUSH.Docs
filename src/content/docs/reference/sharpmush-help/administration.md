@@ -33,4 +33,4 @@ These topics are for the people who run the game: wizards, royalty and anyone a 
 |           | [mail administration](/reference/sharpmush-help/sharpmail/#mail-administration)         |                    |                  |
 |           | [@reality administration](/reference/sharpmush-help/reality/#administration)     | [@tag](/reference/sharpmush-help/tag-command/#tag)             |                  |
 
-Every command only staff can use is listed in [@-wizard](/reference/sharpmush-help/sharpcmd/#wizard). Topics this game's staff wrote for themselves are in [ahelp](/reference/sharpmush-help/sharpcmd/#ahelp).
+Every command only staff can use is listed in [@-wizard](/reference/sharpmush-help/sharpcmd/#-wizard). Topics this game's staff wrote for themselves are in [ahelp](/reference/sharpmush-help/sharpcmd/#ahelp).

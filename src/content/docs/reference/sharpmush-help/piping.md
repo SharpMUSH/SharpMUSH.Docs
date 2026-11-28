@@ -48,9 +48,13 @@ Colors: red - green
 
 PennMUSH has neither: it reads `%|` as a plain `|`, and runs `;|` as `;` followed by a command starting with `|`, which is no command there either.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [command output](/reference/sharpmush-help/command-output/#command-output)
 - [substitutions](/reference/sharpmush-help/substitutions/#substitutions)
 - [stripansi()](/reference/sharpmush-help/sharpfunc/#stripansi)
-:::
+
+</nav>
+

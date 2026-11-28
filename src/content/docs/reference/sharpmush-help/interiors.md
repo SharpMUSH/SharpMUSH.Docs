@@ -50,11 +50,15 @@ Now, if you want people inside to be able to hear and communicate with the outsi
 (The filters will keep people on the outside from seeing the 'o' messages and people on the inside from seeing the 'ox' messages which is a good thing.)
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [enter](/reference/sharpmush-help/sharpcmd/#enter)
 - [leave](/reference/sharpmush-help/sharpcmd/#leave-1)
 - [@prefix](/reference/sharpmush-help/sharpcmd/#prefix)
 - [@filter](/reference/sharpmush-help/filter-command/#filter)
 - [AUDIBLE](/reference/sharpmush-help/sharpflag/#audible)
 - [@listen](/reference/sharpmush-help/listen-command/#listen)
-:::
+
+</nav>
+

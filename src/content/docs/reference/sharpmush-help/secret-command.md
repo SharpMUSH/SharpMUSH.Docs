@@ -95,8 +95,12 @@ http.github.token is set. Its value is never shown again.
 email.password is cleared.
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@config](/reference/sharpmush-help/config-command/#config)
 - [@sql](/reference/sharpmush-help/sql-command/#sql)
-- [@http]
-:::
+- [@http](/reference/sharpmush-help/http-command/#http)
+
+</nav>
+

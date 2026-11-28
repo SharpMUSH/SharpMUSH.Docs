@@ -56,7 +56,7 @@ Help is available on the following topics:
 | [SHARPMUSH FEATURES](/reference/sharpmush-help/sharpmush-features/#sharpmush-features)      | [SPOOFING](/reference/sharpmush-help/sharptop/#spoofing)                | [STACK](/reference/sharpmush-help/sharptop/#stack)                   |
 | [STRINGS](/reference/sharpmush-help/sharptop/#strings)                 | [SUBSTITUTIONS](/reference/sharpmush-help/substitutions/#substitutions)           | [SUCCESS](/reference/sharpmush-help/sharptop/#success)                 |
 | [SWITCHES](/reference/sharpmush-help/sharptop/#switches)                | [TIMEZONES](/reference/sharpmush-help/timezones/#timezones)               | [TYPES OF OBJECTS](/reference/sharpmush-help/sharptop/#types-of-objects)        |
-| [UNICODE](/reference/sharpmush-help/sharptop/#unicode)                 | [USER-DEFINED COMMANDS](/reference/sharpmush-help/commands/#commands)   | [VERBS](/reference/sharpmush-help/verbs/#verbs)                   |
+| [UNICODE](/reference/sharpmush-help/sharptop/#unicode)                 | [USER-DEFINED COMMANDS](/reference/sharpmush-help/commands/#-commands)   | [VERBS](/reference/sharpmush-help/verbs/#verbs)                   |
 | [WARNINGS](/reference/sharpmush-help/sharptop/#warnings)                | [WIKI](/reference/sharpmush-help/wiki/#wiki)                    | [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)               |
 | [ZONE MASTER ROOMS](/reference/sharpmush-help/sharptop/#zone-master-rooms)       | [ZONE MASTERS](/reference/sharpmush-help/zone-masters/#zone-masters)            | [ZONES](/reference/sharpmush-help/zones/#zones)                   |
 

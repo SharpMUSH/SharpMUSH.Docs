@@ -1,0 +1,50 @@
+/* Help reference pages. A help entry's See Also block (::: seealso in the game's help) is a labelled
+   row of the topics it points on to, as the portal's help draws it; a block whose items say more
+   than a name keeps them as a list under the label. */
+.sl-markdown-content nav.help-see-also {
+	margin-top: 1.5rem;
+	padding-top: 0.75rem;
+	border-top: 1px solid var(--sl-color-hairline);
+}
+
+.sl-markdown-content .help-see-also-label {
+	display: block;
+	margin-bottom: 0.5rem;
+	font-size: var(--sl-text-sm);
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: var(--sl-color-gray-3);
+}
+
+.sl-markdown-content nav.help-see-also > ul {
+	margin-top: 0;
+}
+
+.sl-markdown-content nav.help-see-also-names > ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	padding: 0;
+	list-style: none;
+	font-family: var(--__sl-font-mono);
+	font-size: var(--sl-text-sm);
+}
+
+.sl-markdown-content nav.help-see-also-names > ul > li {
+	margin: 0;
+}
+
+.sl-markdown-content nav.help-see-also-names a,
+.sl-markdown-content nav.help-see-also-names code {
+	display: inline-block;
+	padding: 0.125rem 0.625rem;
+	border: 1px solid var(--sl-color-gray-5);
+	border-radius: 0.375rem;
+	background: none;
+	text-decoration: none;
+}
+
+.sl-markdown-content nav.help-see-also-names a:hover,
+.sl-markdown-content nav.help-see-also-names a:focus-visible {
+	border-color: var(--sl-color-accent);
+}

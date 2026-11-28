@@ -48,10 +48,12 @@ They can also be filled with information that is passed by an `@trigger` command
 Please see [setq()](/reference/sharpmush-help/setq-function/#setq) for more information about the setq registers.
 
 
-::: seealso
-- [%]
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [%](/reference/sharpmush-help/substitutions/#substitutions)
 - [@trigger](/reference/sharpmush-help/trigger-command/#trigger)
-- [$-commands]
+- [$-commands](/reference/sharpmush-help/commands/#-commands)
 - [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)
 - [setq()](/reference/sharpmush-help/setq-function/#setq)
 - [V()](/reference/sharpmush-help/sharpfunc/#v)
@@ -60,4 +62,6 @@ Please see [setq()](/reference/sharpmush-help/setq-function/#setq) for more info
 - [LISTQ()](/reference/sharpmush-help/sharpfunc/#listq)
 - [LETQ()](/reference/sharpmush-help/sharpfunc/#letq)
 - [STRMATCH()](/reference/sharpmush-help/sharpfunc/#strmatch)
-:::
+
+</nav>
+

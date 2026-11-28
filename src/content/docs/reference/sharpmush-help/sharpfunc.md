@@ -8,7 +8,7 @@ description: "SharpMUSH documentation for Functions"
 
 |                       |                       |                       |                       |
 |-----------------------|-----------------------|-----------------------|-----------------------|
-| [APOSS()](/reference/sharpmush-help/sharpfunc/#aposs)             | [ATTRIB_SET#()]       | [ATTRIB_SET()](/reference/sharpmush-help/sharpfunc/#attribset)        | [ATTRWATCH()](/reference/sharpmush-help/attrwatch-function/#attrwatch)         |
+| [APOSS()](/reference/sharpmush-help/sharpfunc/#aposs)             | [ATTRIB_SET#()]       | [ATTRIB_SET()](/reference/sharpmush-help/sharpfunc/#attrib_set)        | [ATTRWATCH()](/reference/sharpmush-help/attrwatch-function/#attrwatch)         |
 | [CACHE()](/reference/sharpmush-help/cache-function/#cache)             | [DEFAULT()](/reference/sharpmush-help/sharpfunc/#default)           | [EDEFAULT()](/reference/sharpmush-help/sharpfunc/#edefault)          | [EVAL()](/reference/sharpmush-help/sharpfunc/#eval)              |
 | [FLAGS()](/reference/sharpmush-help/sharpfunc/#flags)             | [GET()](/reference/sharpmush-help/sharpfunc/#get)               | [GREP()](/reference/sharpmush-help/sharpfunc/#grep)              | [GREPI()](/reference/sharpmush-help/sharpfunc/#grep)             |
 | [HASARG()](/reference/sharpmush-help/hasarg/#hasarg)            | [HASATTR()](/reference/sharpmush-help/sharpfunc/#hasattr)           | [HASATTRP()](/reference/sharpmush-help/sharpfunc/#hasattr)          | [HASATTRVAL()](/reference/sharpmush-help/sharpfunc/#hasattr)        |
@@ -25,10 +25,14 @@ description: "SharpMUSH documentation for Functions"
 | [ZFUN2DEFAULT()](/reference/sharpmush-help/zfun2local-function/#zfun2local)      | [ZFUN2LDEFAULT()](/reference/sharpmush-help/zfun2local-function/#zfun2local)     | [ZFUN2LOCAL()](/reference/sharpmush-help/zfun2local-function/#zfun2local)        | [ZFUNDEFAULT()](/reference/sharpmush-help/zfun2local-function/#zfun2local)       |
 | [ZFUNEVAL()](/reference/sharpmush-help/zfun2local-function/#zfun2local)          | [ZFUNLDEFAULT()](/reference/sharpmush-help/zfun2local-function/#zfun2local)      | [ZFUNLOCAL()](/reference/sharpmush-help/zfun2local-function/#zfun2local)         |                       |
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [attributes](/reference/sharpmush-help/attributes/#attributes)
 - [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/sharptop/#non-standard-attributes)
-:::
+
+</nav>
+
 ## Bitwise Functions
   These functions treat integers as a sequence of binary bits (either 0 or 1) and manipulate them.
 
@@ -55,10 +59,14 @@ description: "SharpMUSH documentation for Functions"
 | [NAND()](/reference/sharpmush-help/sharpfunc/#nand)     | [NEQ()](/reference/sharpmush-help/sharpfunc/#neq)      | [NOR()](/reference/sharpmush-help/sharpfunc/#nor)      | [NOT()](/reference/sharpmush-help/sharpfunc/#not)      |
 | [OR()](/reference/sharpmush-help/sharpfunc/#or)       | [ORBOOL()](/reference/sharpmush-help/andbool-function/#andbool)   | [T()](/reference/sharpmush-help/sharpfunc/#t)        | [XOR()](/reference/sharpmush-help/sharpfunc/#xor)      |
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [boolean values](/reference/sharpmush-help/boolean-values/#boolean-values)
 - [@config](/reference/sharpmush-help/config-command/#config)
-:::
+
+</nav>
+
 ## Communication Functions
   Communication functions are side-effect functions that send a message to an object or objects. [PAGERECALL()](/reference/sharpmush-help/page-functions/#pagerecall) and [PAGECONVERSATIONS()](/reference/sharpmush-help/page-functions/#pageconversations) are the exception: they read your own page log and send nothing (SharpMUSH extensions).
 
@@ -70,10 +78,14 @@ description: "SharpMUSH documentation for Functions"
 | [PAGECONVERSATIONS()](/reference/sharpmush-help/page-functions/#pageconversations) | [PAGERECALL()](/reference/sharpmush-help/page-functions/#pagerecall)        | [PEMIT()](/reference/sharpmush-help/sharpfunc/#pemit)             | [PROMPT()](/reference/sharpmush-help/sharpfunc/#pemit)            |
 | [REMIT()](/reference/sharpmush-help/sharpfunc/#remit)             | [ZEMIT()](/reference/sharpmush-help/sharpfunc/#zemit)             |                       |                       |
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [channel functions](/reference/sharpmush-help/channel-functions/#channel-functions)
 - [Mail Functions](/reference/sharpmush-help/sharpmail/#mail-functions)
-:::
+
+</nav>
+
 
 ## Connection Functions
   Connection functions return information about the connections open on a game, or about specific connections.
@@ -85,7 +97,7 @@ description: "SharpMUSH documentation for Functions"
 | [CONNLOG()](/reference/sharpmush-help/connlog-function/#connlog)      | [CONNMAX()](/reference/sharpmush-help/connstats-function/#conntotal)      | [CONNNUM()](/reference/sharpmush-help/connstats-function/#conntotal)      | [CONNRECORD()](/reference/sharpmush-help/sharpfunc/#connrecord)   |
 | [CONNTOTAL()](/reference/sharpmush-help/connstats-function/#conntotal)    | [DOING()](/reference/sharpmush-help/sharpfunc/#doing)        | [GMCPSUPPORTS()](/reference/sharpmush-help/gmcpsupports-function/#gmcpsupports) | [HEIGHT()](/reference/sharpmush-help/sharpfunc/#width)       |
 | [HIDDEN()](/reference/sharpmush-help/sharpfunc/#hidden)       | [HOST()](/reference/sharpmush-help/sharpfunc/#host)         | [IDLE()](/reference/sharpmush-help/sharpfunc/#idle)         | [IPADDR()](/reference/sharpmush-help/sharpfunc/#ipaddr)       |
-| [LOOKUP_SITE()](/reference/sharpmush-help/lookup-site-function/#lookupsite)  | [LPORTS()](/reference/sharpmush-help/sharpfunc/#lports)       | [LWHO()](/reference/sharpmush-help/sharpfunc/#lwho)         | [LWHOID()](/reference/sharpmush-help/sharpfunc/#lwho)       |
+| [LOOKUP_SITE()](/reference/sharpmush-help/lookup-site-function/#lookup_site)  | [LPORTS()](/reference/sharpmush-help/sharpfunc/#lports)       | [LWHO()](/reference/sharpmush-help/sharpfunc/#lwho)         | [LWHOID()](/reference/sharpmush-help/sharpfunc/#lwho)       |
 | [MWHO()](/reference/sharpmush-help/sharpfunc/#mwho)         | [MWHOID()](/reference/sharpmush-help/sharpfunc/#mwho)       | [NMWHO()](/reference/sharpmush-help/sharpfunc/#nmwho)        | [NWHO()](/reference/sharpmush-help/sharpfunc/#nmwho)         |
 | [PLAYER()](/reference/sharpmush-help/sharpfunc/#player)       | [PORTS()](/reference/sharpmush-help/sharpfunc/#lports)        | [PUEBLO()](/reference/sharpmush-help/sharppueb/#pueblo)       | [RECV()](/reference/sharpmush-help/sharpfunc/#recv)         |
 | [SENT()](/reference/sharpmush-help/sharpfunc/#sent)         | [SSL()](/reference/sharpmush-help/sharpfunc/#ssl)          | [TERMINFO()](/reference/sharpmush-help/terminfo-function/#terminfo)     | [TOTCMDS()](/reference/sharpmush-help/totcmds-function/#totcmds)      |
@@ -113,10 +125,14 @@ description: "SharpMUSH documentation for Functions"
 | [ZONECMD()](/reference/sharpmush-help/zonecmd-function/#zonecmd)       | [ZROOMS()](/reference/sharpmush-help/zchildren-function/#zchildren)        | [ZSEARCH()](/reference/sharpmush-help/zsearch-function/#zsearch)       | [ZSEARCHOBJID()](/reference/sharpmush-help/zsearch-function/#zsearch)  |
 | [ZTHINGS()](/reference/sharpmush-help/zchildren-function/#zchildren)       |                   |                   |                   |
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [database](/reference/sharpmush-help/database/#database)
 - [Information functions](/reference/sharpmush-help/sharpfunc/#information-functions)
-:::
+
+</nav>
+
 ## Information Functions
   Information functions return values related to objects or the game.
 
@@ -147,9 +163,13 @@ description: "SharpMUSH documentation for Functions"
 | [TAGMATCH()](/reference/sharpmush-help/tagref-function/#tagref)     | [TAGREF()](/reference/sharpmush-help/tagref-function/#tagref)       | [TXLEVEL()](/reference/sharpmush-help/rxlevel-function/#rxlevel)      | [TYPE()](/reference/sharpmush-help/sharpfunc/#type)         |
 | [VATTRCNT()](/reference/sharpmush-help/vattrcnt-function/#vattrcnt)     | [VERSION()](/reference/sharpmush-help/sharpfunc/#version)      | [VISIBLE()](/reference/sharpmush-help/sharpfunc/#visible)      | [WIZMOTD()](/reference/sharpmush-help/sharpfunc/#motd)      |
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Dbref functions](/reference/sharpmush-help/sharpfunc/#dbref-functions)
-:::
+
+</nav>
+
 
 ## List Functions
   List functions take at least one list of elements and return transformed lists or one or more members of those lists. Most of these functions can take an arbitrary `<delimiter>` argument to specify what delimits list elements; if none is provided, a space is used by default.
@@ -176,9 +196,13 @@ description: "SharpMUSH documentation for Functions"
 | [UNIQUE()](/reference/sharpmush-help/sharpfunc/#unique)      | [WHILE()](/reference/sharpmush-help/while-function/#while)       | [WORDPOS()](/reference/sharpmush-help/sharpfunc/#wordpos)     | [WORDS()](/reference/sharpmush-help/sharpfunc/#words)       |
 | [WRAPCOLUMNS()](/reference/sharpmush-help/wrapcolumns-function/#wrapcolumns) |                 |                 |                 |
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LISTS](/reference/sharpmush-help/sharptop/#lists)
-:::
+
+</nav>
+
 
 ## Math Functions
   Math functions take one or more floating point numbers and return a numeric value.
@@ -211,9 +235,13 @@ description: "SharpMUSH documentation for Functions"
   Math functions are affected by a number of @config options, including the TinyMUSH compatability options null_eq_zero and tiny_math.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Vector functions](/reference/sharpmush-help/sharpfunc/#vector-functions)
-:::
+
+</nav>
+
 ## Vector Functions
   These functions operate on n-dimensional vectors. A vector is a delimiter-separated list of numbers (space-separated, by default):
 
@@ -225,9 +253,13 @@ description: "SharpMUSH documentation for Functions"
 
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Math functions](/reference/sharpmush-help/sharpfunc/#math-functions)
-:::
+
+</nav>
+
 
 ## Regular Expression Functions
   These functions take a regular expression (regexp, or re) and match it against assorted things.
@@ -242,10 +274,14 @@ description: "SharpMUSH documentation for Functions"
 | [REGXATTR()](/reference/sharpmush-help/sharpfunc/#xattr)     | [REGXATTRP()](/reference/sharpmush-help/sharpfunc/#xattr)    | [RESWITCH()](/reference/sharpmush-help/sharpfunc/#reswitch)     | [RESWITCHALL()](/reference/sharpmush-help/sharpfunc/#reswitch)  |
 | [RESWITCHALLI()](/reference/sharpmush-help/sharpfunc/#reswitch) | [RESWITCHI()](/reference/sharpmush-help/sharpfunc/#reswitch)    |                  |                  |
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [String functions](/reference/sharpmush-help/sharpfunc/#string-functions)
 - [regexp](/reference/sharpmush-help/regexp/#regular-expressions)
-:::
+
+</nav>
+
 
 ## SQL Functions
   These functions perform queries or other operations on an SQL database to which the MUSH is connected, if SQL support is available and enabled.
@@ -286,10 +322,14 @@ description: "SharpMUSH documentation for Functions"
 | [TR()](/reference/sharpmush-help/sharpfunc/#tr)                   | [TRANSLATE()](/reference/sharpmush-help/translate-function/#translate)            | [TRIM()](/reference/sharpmush-help/trim-function/#trim)                 | [UCSTR()](/reference/sharpmush-help/sharpfunc/#ucstr)                |
 | [UNMARK()](/reference/sharpmush-help/sharpfunc/#unmark)               | [URLDECODE()](/reference/sharpmush-help/sharpfunc/#urldecode)            | [URLENCODE()](/reference/sharpmush-help/sharpfunc/#urlencode)            | [WRAP()](/reference/sharpmush-help/wrap-function/#wrap)                 |
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [STRINGS](/reference/sharpmush-help/sharptop/#strings)
 - [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions)
-:::
+
+</nav>
+
 ## Time Functions
   These functions return times or format times.
 
@@ -303,9 +343,13 @@ description: "SharpMUSH documentation for Functions"
 | [TIMECALC()](/reference/sharpmush-help/timecalc-function/#timecalc)    | [TIMEFMT()](/reference/sharpmush-help/timefmt-function/#timefmt)     | [TIMESTRING()](/reference/sharpmush-help/sharpfunc/#timestring)  | [UPTIME()](/reference/sharpmush-help/sharpfunc/#uptime)      |
 | [UTCTIME()](/reference/sharpmush-help/time-function/#time)     | [WRITETIME()](/reference/sharpmush-help/exptime-function/#exptime)   |                 |                 |
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [timezones](/reference/sharpmush-help/timezones/#timezones)
-:::
+
+</nav>
+
 ## Utility Functions
   These functions don't quite fit into any other category.
 
@@ -335,7 +379,7 @@ description: "SharpMUSH documentation for Functions"
 | [SUBEVAL()](/reference/sharpmush-help/subeval-function/#subeval)        | [SUCCESSES()](/reference/sharpmush-help/successes-function/#successes)      | [SUGGEST()](/reference/sharpmush-help/sharpfunc/#suggest)        | [TAG()](/reference/sharpmush-help/sharppueb/#tag)            |
 | [TAGWRAP()](/reference/sharpmush-help/tagwrap-function/#tagwrap)        | [TEL()](/reference/sharpmush-help/sharpfunc/#tel)            | [TESTLOCK()](/reference/sharpmush-help/sharpfunc/#testlock)       | [TEXTENTRIES()](/reference/sharpmush-help/textfile-function/#textfile)    |
 | [TEXTFILE()](/reference/sharpmush-help/textfile-function/#textfile)       | [TOTPOS()](/reference/sharpmush-help/totpos-function/#totpos)         | [TRACE()](/reference/sharpmush-help/trace-function/#trace)          | [TRIGGER()](/reference/sharpmush-help/sharpfunc/#trigger)        |
-| [UNSETQ()](/reference/sharpmush-help/sharpfunc/#listq)         | [UPTIME()](/reference/sharpmush-help/sharpfunc/#uptime)         | [URL_UNESCAPE()](/reference/sharpmush-help/url-unescape-function/#urlunescape)   | [VALID()](/reference/sharpmush-help/valid-function/#valid)          |
+| [UNSETQ()](/reference/sharpmush-help/sharpfunc/#listq)         | [UPTIME()](/reference/sharpmush-help/sharpfunc/#uptime)         | [URL_UNESCAPE()](/reference/sharpmush-help/url-unescape-function/#url_unescape)   | [VALID()](/reference/sharpmush-help/valid-function/#valid)          |
 | [VERB()](/reference/sharpmush-help/sharpfunc/#verb)           | [WIPE()](/reference/sharpmush-help/sharpfunc/#wipe)           |                    |                    |
 
 ## Wiki Functions
@@ -347,9 +391,13 @@ description: "SharpMUSH documentation for Functions"
 | [WIKISEARCH()](/reference/sharpmush-help/sharpwiki/#wikisearch)   | [WIKIACCESS()](/reference/sharpmush-help/sharpwiki/#wikiaccess)   | [WIKIFACT()](/reference/sharpmush-help/sharpwiki/#wikifact)     | [WIKIQUERY()](/reference/sharpmush-help/sharpwiki/#wikiquery)    |
 | [WIKIMEMBERS()](/reference/sharpmush-help/sharpwiki/#wikimembers)  | [WIKIMEMBER()](/reference/sharpmush-help/sharpwiki/#wikimember)   |                  |                  |
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [wiki](/reference/sharpmush-help/wiki/#wiki)
-:::
+
+</nav>
+
 
 ## @@()
 `@@(<expression>)`<br>
@@ -359,9 +407,13 @@ description: "SharpMUSH documentation for Functions"
 
   The null() function is similar, but does evaluate its argument(s), so side-effects can occur within a null(). Useful for eating the output of functions when you don't use that output.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@@](/reference/sharpmush-help/sharpcmd/#-1)
-:::
+
+</nav>
+
 
 ## abs()
 `abs(<number>)`
@@ -379,9 +431,13 @@ You say, "4"
 You say, "2"
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SIGN()](/reference/sharpmush-help/sharpfunc/#sign)
-:::
+
+</nav>
+
 
 ## account()
 `account(<player>[, <field>])`
@@ -399,11 +455,15 @@ think strmatch(account(*Ariel), account(*Brand))
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ACCOUNTCHARS()](/reference/sharpmush-help/sharpfunc/#accountchars)
 - [accounts](/reference/sharpmush-help/accounts/#accounts)
 - [@account](/reference/sharpmush-help/account-command/#account)
-:::
+
+</nav>
+
 ## accountchars()
 `accountchars(<player>)`
 
@@ -418,10 +478,14 @@ Ariel Brand
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ACCOUNT()](/reference/sharpmush-help/sharpfunc/#account)
 - [accounts](/reference/sharpmush-help/accounts/#accounts)
-:::
+
+</nav>
+
 ## accname()
 `accname(<object>)`
 
@@ -429,12 +493,16 @@ Ariel Brand
   @nameaccent, if any.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [NAME()](/reference/sharpmush-help/sharpfunc/#name)
 - [FULLNAME()](/reference/sharpmush-help/sharpfunc/#fullname)
 - [INAME()](/reference/sharpmush-help/sharpfunc/#iname)
 - [accents](/reference/sharpmush-help/accents/#accents)
-:::
+
+</nav>
+
 ## acos()
 `acos(<cosine>[, <angle type>])`
 
@@ -443,24 +511,32 @@ Ariel Brand
   See [angles](/reference/sharpmush-help/sharpfunc/#angles) for more on the `<angle type>`.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ASIN()](/reference/sharpmush-help/sharpfunc/#asin)
 - [ATAN()](/reference/sharpmush-help/sharpfunc/#atan)
 - [COS()](/reference/sharpmush-help/sharpfunc/#cos)
 - [CTU()](/reference/sharpmush-help/sharpfunc/#ctu)
 - [SIN()](/reference/sharpmush-help/sharpfunc/#sin)
 - [TAN()](/reference/sharpmush-help/sharpfunc/#tan)
-:::
+
+</nav>
+
 ## add()
 `add(<number1>[, <number2>, ... , <numberN>])`
 
   Returns the sum of the given numbers. As in TinyMUX, a single number is returned as it is: `add(5)` is 5.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Math functions](/reference/sharpmush-help/sharpfunc/#math-functions)
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
-:::
+
+</nav>
+
 ## after()
 `after(<string1>[, <string2>])`
 
@@ -481,10 +557,14 @@ You say, " baz"
 You say, "r baz"
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [BEFORE()](/reference/sharpmush-help/sharpfunc/#before)
 - [REST()](/reference/sharpmush-help/sharpfunc/#rest)
-:::
+
+</nav>
+
 ## allof()
 `allof(<expr>[, ... , <exprN>], <osep>)`<br>
 `allof(<expr>)`
@@ -513,12 +593,16 @@ You say, "r baz"
     You say, "foo bar baz"
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [FIRSTOF()](/reference/sharpmush-help/sharpfunc/#firstof)
 - [boolean values](/reference/sharpmush-help/boolean-values/#boolean-values)
 - [STRFIRSTOF()](/reference/sharpmush-help/sharpfunc/#strfirstof)
 - [FILTER()](/reference/sharpmush-help/sharpfunc/#filter)
-:::
+
+</nav>
+
 ## alphamax()
 `alphamax(<word>[, ... , <wordN>])`
 
@@ -526,10 +610,14 @@ You say, "r baz"
 
   This is equivalent to ```last(sort(`<word>` ... `<wordN>`,a))```.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ALPHAMIN()](/reference/sharpmush-help/sharpfunc/#alphamin)
 - [MAX()](/reference/sharpmush-help/sharpfunc/#max)
-:::
+
+</nav>
+
 ## alphamin()
 `alphamin(<word>[, ... , <wordN>])`
 
@@ -538,10 +626,14 @@ You say, "r baz"
   This is equivalent to first(sort(`<word>` ... `<wordN>`,a)).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ALPHAMAX()](/reference/sharpmush-help/sharpfunc/#alphamax)
 - [MIN()](/reference/sharpmush-help/sharpfunc/#min)
-:::
+
+</nav>
+
 ## and()
 `and(<boolean1>[, <boolean2>, ... , <booleanN>])`<br>
 `cand(<boolean1>[, <boolean2>, ... , <booleanN>])`
@@ -553,14 +645,18 @@ You say, "r baz"
   As in TinyMUX, a single argument is tested on its own: `and(1)` is 1. With the `mux_logic` @config option on, each argument is tested by its leading signed integer, as TinyMUX and RhostMUSH do, so `and(1,abc)` is 0. See [compatibility config](/reference/sharpmush-help/compatibility-config/#compatibility-config).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [boolean values](/reference/sharpmush-help/boolean-values/#boolean-values)
 - [NAND()](/reference/sharpmush-help/sharpfunc/#nand)
 - [OR()](/reference/sharpmush-help/sharpfunc/#or)
 - [XOR()](/reference/sharpmush-help/sharpfunc/#xor)
 - [NOT()](/reference/sharpmush-help/sharpfunc/#not)
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
-:::
+
+</nav>
+
 ## andflags()
 `andflags(<object>, <string of flag letters>)`<br>
 `andlflags(<object>, <list of flag names>)`
@@ -574,11 +670,15 @@ You say, "r baz"
     > say andlflags(%#, wizard dark !ansi)
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ORFLAGS()](/reference/sharpmush-help/sharpfunc/#orflags)
 - [FLAGS()](/reference/sharpmush-help/sharpfunc/#flags)
 - [LFLAGS()](/reference/sharpmush-help/sharpfunc/#lflags)
-:::
+
+</nav>
+
 ## andlpowers()
 `andlpowers(<object>, <list of powers>)`
 
@@ -589,22 +689,30 @@ You say, "r baz"
   If there is a syntax error like a ! without a following flag, '#-1 INVALID POWER' is returned. Unknown powers are treated as being not set.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [POWERS()](/reference/sharpmush-help/sharpfunc/#powers)
 - [ORLPOWERS()](/reference/sharpmush-help/sharpfunc/#orlpowers)
 - [@power](/reference/sharpmush-help/power-command/#power)
-:::
+
+</nav>
+
 ## aposs()
 `aposs(<object>)`
 
   Returns the absolute possessive pronoun - his/hers/its/theirs - for an object. The %a substitution returns the absolute possessive pronoun of the enactor.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [OBJ()](/reference/sharpmush-help/sharpfunc/#obj)
 - [POSS()](/reference/sharpmush-help/sharpfunc/#poss)
 - [SUBJ()](/reference/sharpmush-help/sharpfunc/#subj)
-:::
+
+</nav>
+
 ## art()
 `art(<string>)`
 
@@ -617,14 +725,18 @@ You say, "r baz"
   See [angles](/reference/sharpmush-help/sharpfunc/#angles) for more on the angle type.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ACOS()](/reference/sharpmush-help/sharpfunc/#acos)
 - [ATAN()](/reference/sharpmush-help/sharpfunc/#atan)
 - [COS()](/reference/sharpmush-help/sharpfunc/#cos)
 - [CTU()](/reference/sharpmush-help/sharpfunc/#ctu)
 - [SIN()](/reference/sharpmush-help/sharpfunc/#sin)
 - [TAN()](/reference/sharpmush-help/sharpfunc/#tan)
-:::
+
+</nav>
+
 ## atan()
 `atan(<tangent>[, <angle type>])`<br>
 `atan2(<number1>, <number2>[, <angle type>])`
@@ -636,14 +748,18 @@ You say, "r baz"
   See [angles](/reference/sharpmush-help/sharpfunc/#angles) for more on the angle type.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ACOS()](/reference/sharpmush-help/sharpfunc/#acos)
 - [ASIN()](/reference/sharpmush-help/sharpfunc/#asin)
 - [COS()](/reference/sharpmush-help/sharpfunc/#cos)
 - [CTU()](/reference/sharpmush-help/sharpfunc/#ctu)
 - [SIN()](/reference/sharpmush-help/sharpfunc/#sin)
 - [TAN()](/reference/sharpmush-help/sharpfunc/#tan)
-:::
+
+</nav>
+
 ## atrlock()
 `atrlock(<object>/<attrib>[, [on|off]])`
 
@@ -659,11 +775,15 @@ You say, "r baz"
   except that the attribute's owner is also changed when you lock it via atrlock().
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@atrlock](/reference/sharpmush-help/sharpcmd/#atrlock)
 - [@atrchown](/reference/sharpmush-help/sharpcmd/#atrchown)
 - [HASFLAG()](/reference/sharpmush-help/sharpfunc/#hasflag)
-:::
+
+</nav>
+
 ## attrib_set()
 `attrib_set(<object>/<attrib>[, <value>])`
 
@@ -680,38 +800,50 @@ think attrib_set(account(*Ariel, ref)/XP, 12)[get(account(*Ariel, ref)/XP)]
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SET()](/reference/sharpmush-help/sharpfunc/#set)
 - [@set](/reference/sharpmush-help/set-command/#set)
-- [ATTRIB_SET#()]
+- [ATTRIB_SET#()](/reference/sharpmush-help/sharpfunc/#attrib_set-1)
 - [accounts attributes](/reference/sharpmush-help/accounts/#account-attributes)
-:::
+
+</nav>
+
 ## attrib_set#()
 `attrib_set#(<object>/<attrib>[, <value>])`
 
-  Sets or clears an attribute exactly as [ATTRIB_SET()](/reference/sharpmush-help/sharpfunc/#attribset) does, and returns `<object>`'s name followed by the `<object>`/`<attribute>` pair it was given, rather than the empty string. Use it when the calling code wants to report what it just set. On failure it returns the same error attrib_set() would.
+  Sets or clears an attribute exactly as [ATTRIB_SET()](/reference/sharpmush-help/sharpfunc/#attrib_set) does, and returns `<object>`'s name followed by the `<object>`/`<attribute>` pair it was given, rather than the empty string. Use it when the calling code wants to report what it just set. On failure it returns the same error attrib_set() would.
 
   This is a SharpMUSH function; PennMUSH has no attrib_set#().
 
   **It cannot currently be called.** The parser's function-name token does not admit `#`, so
   `attrib_set#(me/foo, bar)` is never recognised as a call and the text is returned unchanged. Use
-  [ATTRIB_SET()](/reference/sharpmush-help/sharpfunc/#attribset) until that is fixed.
+  [ATTRIB_SET()](/reference/sharpmush-help/sharpfunc/#attrib_set) until that is fixed.
 
 
-::: seealso
-- [ATTRIB_SET()](/reference/sharpmush-help/sharpfunc/#attribset)
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [ATTRIB_SET()](/reference/sharpmush-help/sharpfunc/#attrib_set)
 - [SET()](/reference/sharpmush-help/sharpfunc/#set)
-:::
+
+</nav>
+
 ## band()
 `band(<integer>[, ... , <integerN>])`
 
   Does a bitwise AND of all its arguments, returning the result (a number with only the bits set in every argument set in it).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Bitwise functions](/reference/sharpmush-help/sharpfunc/#bitwise-functions)
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
-:::
+
+</nav>
+
 ## baseconv()
 `baseconv(<number>, <from base>, <to base>)`
 
@@ -761,10 +893,14 @@ You say, "foo b"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [AFTER()](/reference/sharpmush-help/sharpfunc/#after)
 - [FIRST()](/reference/sharpmush-help/sharpfunc/#first)
-:::
+
+</nav>
+
 ## benchmark()
 `benchmark(<expression>, <number>[, <sendto>])`
 
@@ -793,11 +929,15 @@ think between(1, 10, 10, 1)
 1
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [BOUND()](/reference/sharpmush-help/sharpfunc/#bound)
 - [GT()](/reference/sharpmush-help/sharpfunc/#gt)
 - [LT()](/reference/sharpmush-help/sharpfunc/#lt)
-:::
+
+</nav>
+
 ## bittype()
 `bittype([<object>])`
 
@@ -820,10 +960,14 @@ think bittype(#1)
 7
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [HASROLE()](/reference/sharpmush-help/sharpfunc/#hasrole)
 - [ROLES()](/reference/sharpmush-help/sharpfunc/#roles)
-:::
+
+</nav>
+
 ## brackets()
 `brackets(<string>)`
 
@@ -841,28 +985,40 @@ think brackets(v(desc))
   Returns `<integer1>` with every bit that was set in `<integer2>` cleared.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Bitwise functions](/reference/sharpmush-help/sharpfunc/#bitwise-functions)
-:::
+
+</nav>
+
 ## bnot()
 `bnot(<integer>)`
 
   Returns the bitwise complement of `<integer>`. Every bit set in it is cleared, and every clear bit is set.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Bitwise functions](/reference/sharpmush-help/sharpfunc/#bitwise-functions)
-:::
+
+</nav>
+
 ## bor()
 `bor(<integer>[, ... , <integerN>])`
 
   Does a bitwise OR of all its arguments, returning the result. (A number with a bit set if that bit appears in any of its arguments).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Bitwise functions](/reference/sharpmush-help/sharpfunc/#bitwise-functions)
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
-:::
+
+</nav>
+
 ## bound()
 `bound(<number>, <lower bound>[, <higher bound>])`
 
@@ -871,20 +1027,28 @@ think brackets(v(desc))
   If you just want to know whether `<number>` is within the range of `<lower>` to `<higher>`, consider using lte(`<lower>`, `<number>`, `<higher>`) instead to get a boolean result.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ROUND()](/reference/sharpmush-help/sharpfunc/#round)
 - [TRUNC()](/reference/sharpmush-help/sharpfunc/#trunc)
-:::
+
+</nav>
+
 ## bxor()
 `bxor(<integer>[, ... , <integerN>])`
 
   Does a bitwise XOR of all its arguments, returning the result. (A number with a bit set if it's set in only one of its arguments).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Bitwise functions](/reference/sharpmush-help/sharpfunc/#bitwise-functions)
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
-:::
+
+</nav>
+
 ## capstr()
 `capstr(<string>)`
 
@@ -897,10 +1061,14 @@ Foo bar baz
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LCSTR()](/reference/sharpmush-help/sharpfunc/#lcstr)
 - [UCSTR()](/reference/sharpmush-help/sharpfunc/#ucstr)
-:::
+
+</nav>
+
 ## cat()
 `cat(<string>[, ... , <stringN>])`<br>
 `strcat(<string1>[, ... , <stringN>])`
@@ -922,10 +1090,14 @@ You say, "foo barbaz blech"
   This function needs the `players.moderate` permission (see [roles](/reference/sharpmush-help/roles/#roles)).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@password](/reference/sharpmush-help/sharpcmd/#password)
 - [@newpassword](/reference/sharpmush-help/sharpcmd/#newpassword)
-:::
+
+</nav>
+
 ## choose()
 `choose(<items>, <weights>[, <delimiter>])`
 
@@ -941,11 +1113,15 @@ think choose(red|blue|green, 5 1 0, |)
 red
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [PICKRAND()](/reference/sharpmush-help/sharpfunc/#randword)
 - [RAND()](/reference/sharpmush-help/sharpfunc/#rand)
 - [DISTRIBUTE()](/reference/sharpmush-help/sharpfunc/#distribute)
-:::
+
+</nav>
+
 ## chr()
 `chr(<number>)`<br>
 `ord(<character>)`
@@ -974,12 +1150,16 @@ think clientzone(me)
 Europe/Paris
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SSL()](/reference/sharpmush-help/sharpfunc/#ssl)
 - [TERMINFO()](/reference/sharpmush-help/terminfo-function/#terminfo)
 - [TIME()](/reference/sharpmush-help/time-function/#time)
 - [EVENTS](/reference/sharpmush-help/events/#events)
-:::
+
+</nav>
+
 ## clone()
 `clone(<object>[, <new name>[, <dbref>[, preserve]]])`
 
@@ -991,12 +1171,16 @@ Europe/Paris
   Note: If @create or @clone is restricted or disabled, clone() will also be restricted/disabled.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@clone](/reference/sharpmush-help/clone-command/#clone)
 - [CREATE()](/reference/sharpmush-help/sharpfunc/#create)
 - [DIG()](/reference/sharpmush-help/sharpfunc/#dig)
 - [OPEN()](/reference/sharpmush-help/sharpfunc/#open)
-:::
+
+</nav>
+
 ## cmds()
 `cmds(<player|descriptor>)`
 
@@ -1005,9 +1189,13 @@ Europe/Paris
   You must be a Wizard, Royalty or See_All to use this function on anyone but yourself.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Connection functions](/reference/sharpmush-help/sharpfunc/#connection-functions)
-:::
+
+</nav>
+
 ## sent()
 `sent(<player|descriptor>)`
 
@@ -1016,9 +1204,13 @@ Europe/Paris
   You must be a Wizard, Royalty or See_All to use this function on anyone but yourself.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Connection functions](/reference/sharpmush-help/sharpfunc/#connection-functions)
-:::
+
+</nav>
+
 ## recv()
 `recv(<player|descriptor>)`
 
@@ -1027,9 +1219,13 @@ Europe/Paris
   You must be a Wizard, Royalty or See_All to use this function on anyone but yourself.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Connection functions](/reference/sharpmush-help/sharpfunc/#connection-functions)
-:::
+
+</nav>
+
 ## comp()
 `comp(<value1>, <value2>[, <type>])`
 
@@ -1048,10 +1244,14 @@ Europe/Paris
 
   With the `mux_collation` @config option on, a comparison with no `<type>` orders text as TinyMUX does, by letter first and lower case before upper case: `comp(a,B)` is -1, where it is otherwise 1. See [compatibility config](/reference/sharpmush-help/compatibility-config/#compatibility-config).
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [STRMATCH()](/reference/sharpmush-help/sharpfunc/#strmatch)
 - [EQ()](/reference/sharpmush-help/sharpfunc/#eq)
-:::
+
+</nav>
+
 ## con()
 `con(<object>)`
 
@@ -1060,10 +1260,14 @@ Europe/Paris
   You can get the complete contents of any container you may examine, regardless of whether or not objects are dark. You can get the partial contents (obeying DARK/LIGHT/etc.) of your current location or the enactor (%#). You CANNOT get the contents of anything else, regardless of whether or not you have objects in it.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LCON()](/reference/sharpmush-help/sharpfunc/#lcon)
 - [NEXT()](/reference/sharpmush-help/sharpfunc/#next)
-:::
+
+</nav>
+
 ## cond()
 `cond(<cond>, <expr>[, ... , <condN>, <exprN>][, <default>])`<br>
 `condall(<cond>, <expr>[, ... , <condN>, <exprN>][, <default>])`<br>
@@ -1089,10 +1293,14 @@ You say, "This is true"
     You say, "This is falseThis is also false"
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [FIRSTOF()](/reference/sharpmush-help/sharpfunc/#firstof)
 - [ALLOF()](/reference/sharpmush-help/sharpfunc/#allof)
-:::
+
+</nav>
+
 ## config()
 `config([<option>])`
 
@@ -1114,19 +1322,27 @@ think config(command_aliases)
   This function returns -1 for invalid `<player|descriptor>`s, offline players and players who are dark, if the caller is not able to see them.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Connection functions](/reference/sharpmush-help/sharpfunc/#connection-functions)
-:::
+
+</nav>
+
 ## controls()
 `controls(<object>, <victim>[/<attribute>])`
 
   With no `<attribute>`, this function returns 1 if `<object>` controls `<victim>`, or 0, if it does not. With an `<attribute>`, it will return 1 if `<object>` could successfully set `<attribute>` on `<victim>` (or alter `<attribute>`, if it already exists). If `<object>` or `<victim>` cannot be matched, it returns #-1 ARG1 NOT FOUND or #-1 ARG2 NOT FOUND, and an `<attribute>` that is not a valid name returns #-1 BAD ATTR NAME. You must control `<object>` or `<victim>`, or be See_All; otherwise it returns #-1 PERMISSION DENIED.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [VISIBLE()](/reference/sharpmush-help/sharpfunc/#visible)
 - [CONTROL](/reference/sharpmush-help/sharptop/#control)
-:::
+
+</nav>
+
 ## convsecs()
 `convsecs(<seconds>[, <timezone>[, <places>]])`<br>
 `convutcsecs(<seconds>)`
@@ -1155,11 +1371,15 @@ You say, "709395750"
     You say, "Wed Jun 24 14:22:30 1992"
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [CONVTIME()](/reference/sharpmush-help/convtime-function/#convtime)
 - [time()](/reference/sharpmush-help/time-function/#time)
 - [timefmt()](/reference/sharpmush-help/timefmt-function/#timefmt)
-:::
+
+</nav>
+
 ## cos()
 `cos(<angle>[, <angle type>])`
 
@@ -1177,14 +1397,18 @@ You say, "0"
 
   See [angles](/reference/sharpmush-help/sharpfunc/#angles) for more on the angle type.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ACOS()](/reference/sharpmush-help/sharpfunc/#acos)
 - [ASIN()](/reference/sharpmush-help/sharpfunc/#asin)
 - [ATAN()](/reference/sharpmush-help/sharpfunc/#atan)
 - [CTU()](/reference/sharpmush-help/sharpfunc/#ctu)
 - [SIN()](/reference/sharpmush-help/sharpfunc/#sin)
 - [TAN()](/reference/sharpmush-help/sharpfunc/#tan)
-:::
+
+</nav>
+
 ## cpad()
 `cpad(<string>, <width>[, <fill>])`
 
@@ -1198,11 +1422,15 @@ think cpad(foo,12,=+)
 =+=+foo+=+=+
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [CENTER()](/reference/sharpmush-help/center-function/#center)
 - [LPAD()](/reference/sharpmush-help/sharpfunc/#lpad)
 - [RPAD()](/reference/sharpmush-help/sharpfunc/#rpad)
-:::
+
+</nav>
+
 ## crc32()
 `crc32([<string1>[, ... <stringN>]])`
 
@@ -1216,9 +1444,13 @@ think crc32(M, UX)
 629126998
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [DIGEST()](/reference/sharpmush-help/sharpfunc/#digest)
-:::
+
+</nav>
+
 ## pcreate()
 `pcreate(<name>, <password>[, <dbref>])`
 
@@ -1227,12 +1459,16 @@ think crc32(M, UX)
   The optional third argument can be used to specify an unused dbref for the new player.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@pcreate](/reference/sharpmush-help/sharpcmd/#pcreate)
 - [CREATE()](/reference/sharpmush-help/sharpfunc/#create)
 - [DIG()](/reference/sharpmush-help/sharpfunc/#dig)
 - [OPEN()](/reference/sharpmush-help/sharpfunc/#open)
-:::
+
+</nav>
+
 ## create()
 `create(<object>[, <cost>[, <dbref>]])`
 
@@ -1241,12 +1477,16 @@ think crc32(M, UX)
    Wizards and objects with the PICK_DBREFS power may also specify an unused `<dbref>` for the new object.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@create](/reference/sharpmush-help/sharpcmd/#create)
 - [PCREATE()](/reference/sharpmush-help/sharpfunc/#pcreate)
 - [DIG()](/reference/sharpmush-help/sharpfunc/#dig)
 - [OPEN()](/reference/sharpmush-help/sharpfunc/#open)
-:::
+
+</nav>
+
 ## ctime()
 `ctime(<object>[, <utc>])`<br>
 `csecs(<object>[, <precision>])`
@@ -1256,12 +1496,16 @@ think crc32(M, UX)
   csecs() returns the time as the number of seconds since the epoch. Anyone can get the creation time of any object in the game.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MTIME()](/reference/sharpmush-help/sharpfunc/#mtime)
 - [time()](/reference/sharpmush-help/time-function/#time)
 - [SECS()](/reference/sharpmush-help/sharpfunc/#secs)
 - [OBJID()](/reference/sharpmush-help/sharpfunc/#objid)
-:::
+
+</nav>
+
 ## Angles
 
   In any function which accepts an angle type, the argument can be one of 'd' for degrees, 'r' for radians, or 'g' for gradians. Gradians are not used often, but it's included for completeness.
@@ -1269,7 +1513,9 @@ think crc32(M, UX)
   As a refresher, there are 180 degrees in pi radians in 200 gradians.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ACOS()](/reference/sharpmush-help/sharpfunc/#acos)
 - [ASIN()](/reference/sharpmush-help/sharpfunc/#asin)
 - [ATAN()](/reference/sharpmush-help/sharpfunc/#atan)
@@ -1277,7 +1523,9 @@ think crc32(M, UX)
 - [CTU()](/reference/sharpmush-help/sharpfunc/#ctu)
 - [SIN()](/reference/sharpmush-help/sharpfunc/#sin)
 - [TAN()](/reference/sharpmush-help/sharpfunc/#tan)
-:::
+
+</nav>
+
 ## ctu()
 `ctu(<angle>, <from>, <to>)`
 
@@ -1290,14 +1538,18 @@ You say, "90 degrees is 1.570796 radians"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ACOS()](/reference/sharpmush-help/sharpfunc/#acos)
 - [ASIN()](/reference/sharpmush-help/sharpfunc/#asin)
 - [ATAN()](/reference/sharpmush-help/sharpfunc/#atan)
 - [COS()](/reference/sharpmush-help/sharpfunc/#cos)
 - [SIN()](/reference/sharpmush-help/sharpfunc/#sin)
 - [TAN()](/reference/sharpmush-help/sharpfunc/#tan)
-:::
+
+</nav>
+
 ## dec()
 `dec(<integer>)`<br>
 `dec(<string-ending-in-integer>)`
@@ -1326,10 +1578,14 @@ You say, "90 degrees is 1.570796 radians"
   If the null_eq_zero @config option is on, using dec() on a string which does not end in an integer will return `<string>`-1. When null_eq_zero is turned off, it will return an error.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [INC()](/reference/sharpmush-help/sharpfunc/#inc)
 - [SUB()](/reference/sharpmush-help/sharpfunc/#sub)
-:::
+
+</nav>
+
 ## decomposeweb()
 `decomposeweb(<string>)`
 
@@ -1344,11 +1600,15 @@ a&lt;b&gt; <span style="color: var(--ms-ansi-9, #ff5555)">red</span>
   This is a SharpMUSH function; PennMUSH has no decomposeweb().
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [DECOMPOSE()](/reference/sharpmush-help/sharpfunc/#decompose)
 - [ansi()](/reference/sharpmush-help/ansi-function/#ansi)
 - [RENDER()](/reference/sharpmush-help/sharpfunc/#render)
-:::
+
+</nav>
+
 ## decompose()
 `decompose(<string>)`
 
@@ -1375,11 +1635,15 @@ think decompose(box(Hello,Greeting,30,{{"border":"ascii"}}))
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@decompile output switches](/reference/sharpmush-help/decompile-command/#output-switches)
 - [ESCAPE()](/reference/sharpmush-help/sharpfunc/#escape)
 - [SECURE()](/reference/sharpmush-help/sharpfunc/#secure)
-:::
+
+</nav>
+
 ## default()
 `default([<obj>/]<attr>[, ... ,[<objN>]/<attrN>], <default>)`
 
@@ -1399,23 +1663,31 @@ You say, "apple orange banana"
     You say, "No fruits!"
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [GET()](/reference/sharpmush-help/sharpfunc/#get)
 - [HASATTR()](/reference/sharpmush-help/sharpfunc/#hasattr)
 - [u()](/reference/sharpmush-help/u-function/#u)
 - [EDEFAULT()](/reference/sharpmush-help/sharpfunc/#edefault)
 - [UDEFAULT()](/reference/sharpmush-help/sharpfunc/#udefault)
 - [STRFIRSTOF()](/reference/sharpmush-help/sharpfunc/#strfirstof)
-:::
+
+</nav>
+
 ## destroy()
 `destroy(<object>)`
 
   Does what `@destroy <object>` does, and returns nothing. @destroy's messages are sent to you. The function is refused when you may not use @destroy, and when side-effect functions are turned off.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@destroy](/reference/sharpmush-help/destroy-command/#destroy)
 - [CREATE()](/reference/sharpmush-help/sharpfunc/#create)
-:::
+
+</nav>
+
 ## strdelete()
 `strdelete(<string>, <first>, <len>)`
 
@@ -1440,12 +1712,16 @@ You say, "abcfgh"
   delete() is an alias for strdelete(), for backwards compatability.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [STRREPLACE()](/reference/sharpmush-help/sharpfunc/#strreplace)
 - [STRINSERT()](/reference/sharpmush-help/sharpfunc/#strinsert)
 - [MID()](/reference/sharpmush-help/sharpfunc/#mid)
 - [LDELETE()](/reference/sharpmush-help/sharpfunc/#ldelete)
-:::
+
+</nav>
+
 ## die()
 `die(<number of times to roll die>, <number of sides on die>[, <show>])`
 
@@ -1459,10 +1735,14 @@ think die(3, 6, 1)
 5 2 1
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [RAND()](/reference/sharpmush-help/sharpfunc/#rand)
 - [ROLL()](/reference/sharpmush-help/roll-function/#roll)
-:::
+
+</nav>
+
 ## dig()
 `dig(<name>[, <exit to>[, <exit from>[, <room dbref>, <to dbref>, <from dbref>]]])`
 
@@ -1471,13 +1751,17 @@ think die(3, 6, 1)
   Wizards and objects with the PICK_DBREFS power can supply optional fourth through sixth arguments to specify unused dbrefs for the new room and exits.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@dig](/reference/sharpmush-help/dig-command/#dig)
 - [OPEN()](/reference/sharpmush-help/sharpfunc/#open)
 - [@open](/reference/sharpmush-help/sharpcmd/#open)
 - [CREATE()](/reference/sharpmush-help/sharpfunc/#create)
 - [PCREATE()](/reference/sharpmush-help/sharpfunc/#pcreate)
-:::
+
+</nav>
+
 ## digest()
 `digest(list)`<br>
 `digest(<algorithm>, <string>)`
@@ -1500,31 +1784,43 @@ SHA256(foo) => 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ENCODE64()](/reference/sharpmush-help/sharpfunc/#encode64)
 - [ENCRYPT()](/reference/sharpmush-help/sharpfunc/#encrypt)
 - [HMAC()](/reference/sharpmush-help/sharpfunc/#hmac)
-:::
+
+</nav>
+
 ## dist2d()
 `dist2d(<x1>, <y1>, <x2>, <y2>)`
 
   Returns the distance between two points in the Cartesian plane that have coordinates (`<x1>`, `<y1>`) and (`<x2>`, `<y2>`).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [DIST3D()](/reference/sharpmush-help/sharpfunc/#dist3d)
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
-:::
+
+</nav>
+
 ## dist3d()
 `dist3d(<x1>, <y1>, <z1>, <x2>, <y2>, <z2>)`
 
   Returns the distance between two points in space, with coordinates (`<x1>`, `<y1>`, `<z1>`) and (`<x2>`, `<y2>`, `<z2>`).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [DIST2D()](/reference/sharpmush-help/sharpfunc/#dist2d)
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
-:::
+
+</nav>
+
 ## distribute()
 `distribute(<points>, <bins>[, <osep>])`
 
@@ -1540,11 +1836,15 @@ think distribute(100, 4)
 27 22 26 25
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [CHOOSE()](/reference/sharpmush-help/sharpfunc/#choose)
 - [DIE()](/reference/sharpmush-help/sharpfunc/#die)
 - [LRAND()](/reference/sharpmush-help/sharpfunc/#lrand)
-:::
+
+</nav>
+
 ## div()
 `div(<number1>, <number2>[, ... , <numberN>])`<br>
 `fdiv(<number1>, <number2>[, ... , <numberN>])`<br>
@@ -1568,21 +1868,29 @@ think distribute(100, 4)
   Note that add(mul(div(%0,%1),%1),remainder(%0,%1)) always yields %0, and add(mul(floordiv(%0,%1),%1),modulo(%0,%1)) also always yields %0.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MOD()](/reference/sharpmush-help/sharpfunc/#mod)
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
-:::
+
+</nav>
+
 ## doing()
 `doing(<player|descriptor>)`
 
   When given the name of a player or descriptor, doing() returns the player's @doing. If no matching player or descriptor is found, or the descriptor is not yet connected to a player, an empty string is returned.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@poll](/reference/sharpmush-help/sharpcmd/#poll)
 - [@doing](/reference/sharpmush-help/sharpcmd/#doing)
 - [POLL()](/reference/sharpmush-help/sharpfunc/#poll)
-:::
+
+</nav>
+
 ## e()
 `every([<object>/]<attribute>, <list>[, <delimiter>[, <register>]])`<br>
 `some([<object>/]<attribute>, <list>[, <delimiter>[, <register>]])`
@@ -1605,12 +1913,16 @@ think distribute(100, 4)
   The same shape works as a command guard: `@assert every(ISNUM, %0, , bad)=@pemit %#=Not numbers: %q<bad>`
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [FILTER()](/reference/sharpmush-help/sharpfunc/#filter)
 - [FILTERQ()](/reference/sharpmush-help/sharpfunc/#filterq)
 - [setq()](/reference/sharpmush-help/setq-function/#setq)
 - [CHAIN()](/reference/sharpmush-help/chain-function/#chain)
-:::
+
+</nav>
+
 ## exp()
 `e([<number>])`
 
@@ -1620,10 +1932,14 @@ think distribute(100, 4)
 
   exp() is an alias for e().
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [POWER()](/reference/sharpmush-help/sharpfunc/#power)
 - [LOG()](/reference/sharpmush-help/sharpfunc/#log)
-:::
+
+</nav>
+
 ## edefault()
 `edefault([<obj>/]<attr>, <default case>)`
 
@@ -1641,14 +1957,18 @@ You say, "You have lost 6 marbles."
     You say, "You have no marbles."
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [GET()](/reference/sharpmush-help/sharpfunc/#get)
 - [EVAL()](/reference/sharpmush-help/sharpfunc/#eval)
 - [u()](/reference/sharpmush-help/u-function/#u)
 - [DEFAULT()](/reference/sharpmush-help/sharpfunc/#default)
 - [UDEFAULT()](/reference/sharpmush-help/sharpfunc/#udefault)
 - [HASATTR()](/reference/sharpmush-help/sharpfunc/#hasattr)
-:::
+
+</nav>
+
 ## edit()
 `edit(<string>, <search>, <replace>[, ... , <searchN>, <replaceN>])`
 
@@ -1670,10 +1990,14 @@ You say, "I think this is an exam."
   With the `rhost_edit` option on, edit() takes RhostMUSH's form, `edit(<string>, <search>, <replace>[, <first only>[, <ansi mode>]])`: a fourth argument starting with a nonzero number replaces only the first match, and the fifth is accepted and ignored. This form comes from RhostMUSH; see [compatibility config](/reference/sharpmush-help/compatibility-config/#compatibility-config).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@edit](/reference/sharpmush-help/edit-command/#edit)
 - [REGEDIT()](/reference/sharpmush-help/sharpfunc/#regedit)
-:::
+
+</nav>
+
 ## elements()
 `elements(<list of words>, <list of numbers>[, <delim>[, <osep>]])`
 
@@ -1694,11 +2018,15 @@ You say, "Ack Moo"
     You say, "foo"
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [EXTRACT()](/reference/sharpmush-help/sharpfunc/#extract)
 - [INDEX()](/reference/sharpmush-help/sharpfunc/#index)
 - [GRAB()](/reference/sharpmush-help/sharpfunc/#grab)
-:::
+
+</nav>
+
 ## elock()
 `elock(<object>[/<locktype>], <victim>)`
 
@@ -1718,13 +2046,17 @@ think elock(Dancing Slippers/drop, Princess)
     0
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
 - [locktypes](/reference/sharpmush-help/locktypes/#lock-types)
 - [TESTLOCK()](/reference/sharpmush-help/sharpfunc/#testlock)
 - [LOCKFILTER()](/reference/sharpmush-help/lockfilter-function/#lockfilter)
 - [@lset](/reference/sharpmush-help/sharpcmd/#lset)
-:::
+
+</nav>
+
 ## emit()
 `emit(<message>)`<br>
 `nsemit(<message>)`
@@ -1734,13 +2066,17 @@ think elock(Dancing Slippers/drop, Princess)
   nsemit() works like @nsemit.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [PEMIT()](/reference/sharpmush-help/sharpfunc/#pemit)
 - [REMIT()](/reference/sharpmush-help/sharpfunc/#remit)
 - [NSLEMIT()](/reference/sharpmush-help/sharpfunc/#nslemit)
 - [OEMIT()](/reference/sharpmush-help/sharpfunc/#oemit)
 - [ZEMIT()](/reference/sharpmush-help/sharpfunc/#zemit)
-:::
+
+</nav>
+
 ## encode64()
 `encode64(<string>)`<br>
 `decode64(<string>)`
@@ -1750,10 +2086,14 @@ think elock(Dancing Slippers/drop, Princess)
   decode64() converts a base-64 encoded `<string>` back to its original form.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ENCRYPT()](/reference/sharpmush-help/sharpfunc/#encrypt)
 - [DIGEST()](/reference/sharpmush-help/sharpfunc/#digest)
-:::
+
+</nav>
+
 ## encrypt()
 `encrypt(<string>, <password>[, <encode>])`<br>
 `decrypt(<string>, <password>[, <encoded>])`
@@ -1765,10 +2105,14 @@ think elock(Dancing Slippers/drop, Princess)
   decrypt() decrypts a string encrypted with encrypt(). The `<encoded>` argument indicates that the encrypted string was base-64 encoded.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ENCODE64()](/reference/sharpmush-help/sharpfunc/#encode64)
 - [DIGEST()](/reference/sharpmush-help/sharpfunc/#digest)
-:::
+
+</nav>
+
 ## entrances()
 `entrances([<object>[, <type>[, <begin>[, <end>]]]])`
 
@@ -1782,20 +2126,28 @@ think elock(Dancing Slippers/drop, Princess)
   You can also limit the range of the dbrefs searched by giving `<begin>` and `<end>`. If you control `<object>`, or have the Search or See_All powers, all objects linked to `<object>` are returned. Otherwise, only objects you can examine will be included.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [lsearch()](/reference/sharpmush-help/lsearch-function/#lsearch)
 - [@entrances](/reference/sharpmush-help/sharpcmd/#entrances)
-:::
+
+</nav>
+
 ## eq()
 `eq(<number1>, <number2>[, ... , <numberN>])`
 
   Takes two or more `<number>`s, and returns 1 if they are all equal, and 0 otherwise.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [NEQ()](/reference/sharpmush-help/sharpfunc/#neq)
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
-:::
+
+</nav>
+
 ## error()
 `error([<object>])`
 
@@ -1807,9 +2159,13 @@ say error()
 You say, "Huh?  (Type "help" for help.)"
 ```
 
-::: seealso
-- [HUH_COMMAND](/reference/sharpmush-help/sharpcmd/#huhcommand)
-:::
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [HUH_COMMAND](/reference/sharpmush-help/sharpcmd/#huh_command)
+
+</nav>
+
 ## escape()
 `escape(<string>)`
 
@@ -1822,11 +2178,15 @@ You say, "Huh?  (Type "help" for help.)"
   Marked list separators in `<string>` lose their mark, as with unmark(): see [list separators](/reference/sharpmush-help/list-separators/#list-separators).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [DECOMPOSE()](/reference/sharpmush-help/sharpfunc/#decompose)
 - [SECURE()](/reference/sharpmush-help/sharpfunc/#secure)
 - [UNMARK()](/reference/sharpmush-help/sharpfunc/#unmark)
-:::
+
+</nav>
+
 ## eval()
 `eval(<object>, <attribute>)`<br>
 `eval(<string>)`<br>
@@ -1846,11 +2206,15 @@ test
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [GET()](/reference/sharpmush-help/sharpfunc/#get)
 - [u()](/reference/sharpmush-help/u-function/#u)
 - [EDEFAULT()](/reference/sharpmush-help/sharpfunc/#edefault)
-:::
+
+</nav>
+
 ## exit()
 `exit(<object>)`
 
@@ -1859,10 +2223,14 @@ test
   You can get the complete exit list of any room you may examine, regardless of whether or not exits are dark. You can get the partial exit list (obeying DARK/LIGHT/etc.) of your current location or the enactor (%#). You CANNOT get the exit list of anything else, regardless of whether or not you have objects in it.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LEXITS()](/reference/sharpmush-help/sharpfunc/#lexits)
 - [NEXT()](/reference/sharpmush-help/sharpfunc/#next)
-:::
+
+</nav>
+
 ## extract()
 `extract(<list>[, <first>[, <length>[, <delimiter>[, <osep>]]]])`
 
@@ -1887,11 +2255,15 @@ b-c
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [INDEX()](/reference/sharpmush-help/sharpfunc/#index)
 - [ELEMENTS()](/reference/sharpmush-help/sharpfunc/#elements)
 - [GRAB()](/reference/sharpmush-help/sharpfunc/#grab)
-:::
+
+</nav>
+
 ## filter()
 `filter([<obj>/]<attr>, <list>[, <delimiter>[, <osep>[, ..., <argN>]]])`<br>
 `filterbool([<obj>]/<attr>, <list>[, <delimiter>[, <osep>[, ..., <argN>]]])`
@@ -1910,7 +2282,9 @@ You say, "1 3 5"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [anonymous attributes](/reference/sharpmush-help/anonymous-attributes/#anonymous-attributes)
 - [FIRSTOF()](/reference/sharpmush-help/sharpfunc/#firstof)
 - [ALLOF()](/reference/sharpmush-help/sharpfunc/#allof)
@@ -1918,7 +2292,9 @@ You say, "1 3 5"
 - [FILTERQ()](/reference/sharpmush-help/sharpfunc/#filterq)
 - [E()](/reference/sharpmush-help/sharpfunc/#e)
 - [boolean values](/reference/sharpmush-help/boolean-values/#boolean-values)
-:::
+
+</nav>
+
 ## filterq()
 `filterq(<register>, [<object>/]<attribute>, <list>[, <delimiter>[, <osep>[, <arg1>[, ... , <argN>]]]])`
 
@@ -1934,11 +2310,15 @@ Kept: 12 7 / Dropped: apples pears
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [FILTER()](/reference/sharpmush-help/sharpfunc/#filter)
 - [E()](/reference/sharpmush-help/sharpfunc/#e)
 - [setq()](/reference/sharpmush-help/setq-function/#setq)
-:::
+
+</nav>
+
 ## findable()
 `findable(<object>, <victim>)`
 
@@ -1947,23 +2327,31 @@ Kept: 12 7 / Dropped: apples pears
   The object executing the function needs to be see_all or control either `<object>` or `<victim>`.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [locate()](/reference/sharpmush-help/locate-function/#locate)
 - [LOC()](/reference/sharpmush-help/sharpfunc/#loc)
-:::
+
+</nav>
+
 ## first()
 `first(<list>[, <delimiter>])`
 
   Returns the first element of a list.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [BEFORE()](/reference/sharpmush-help/sharpfunc/#before)
 - [REST()](/reference/sharpmush-help/sharpfunc/#rest)
 - [LAST()](/reference/sharpmush-help/sharpfunc/#last)
 - [FIRSTOF()](/reference/sharpmush-help/sharpfunc/#firstof)
 - [STRFIRSTOF()](/reference/sharpmush-help/sharpfunc/#strfirstof)
-:::
+
+</nav>
+
 ## firstof()
 `firstof([<expr>, ... , <exprN>][, <default>])`
 
@@ -1989,12 +2377,16 @@ You say, "2"
     You say, ""
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ALLOF()](/reference/sharpmush-help/sharpfunc/#allof)
 - [boolean values](/reference/sharpmush-help/boolean-values/#boolean-values)
 - [STRFIRSTOF()](/reference/sharpmush-help/sharpfunc/#strfirstof)
 - [FILTER()](/reference/sharpmush-help/sharpfunc/#filter)
-:::
+
+</nav>
+
 ## flags()
 `flags()`<br>
 `flags([<object>[/<attribute>]])`
@@ -2017,10 +2409,14 @@ Tnp
     $vp
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LFLAGS()](/reference/sharpmush-help/sharpfunc/#lflags)
 - [LIST()](/reference/sharpmush-help/list-function/#list)
-:::
+
+</nav>
+
 ## lflags()
 `lflags()`<br>
 `lflags(<object>[/<attribute>])`
@@ -2041,10 +2437,14 @@ NO_COMMAND PUPPET
     NO_COMMAND VISUAL
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [FLAGS()](/reference/sharpmush-help/sharpfunc/#flags)
 - [LIST()](/reference/sharpmush-help/list-function/#list)
-:::
+
+</nav>
+
 ## flip()
 `flip(<string>)`
 
@@ -2057,9 +2457,13 @@ You say, "zab rab oof"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [REVWORDS()](/reference/sharpmush-help/sharpfunc/#revwords)
-:::
+
+</nav>
+
 ## fmod()
 `fmod(<number>, <divisor>)`
 
@@ -2071,33 +2475,45 @@ think fmod(6.1,2.5)
 1.1
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [DIV()](/reference/sharpmush-help/sharpfunc/#div)
 - [MOD()](/reference/sharpmush-help/sharpfunc/#mod)
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
-:::
+
+</nav>
+
 ## followers()
 `followers(<object>)`
 
   Returns the list of things and players following object. You must control `<object>`.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [FOLLOWING()](/reference/sharpmush-help/sharpfunc/#following)
 - [follow](/reference/sharpmush-help/sharpcmd/#follow-1)
 - [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow-1)
-:::
+
+</nav>
+
 ## following()
 `following(<object>)`
 
   Returns the list of things and players that the object is following. You must control `<object>`.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [FOLLOWERS()](/reference/sharpmush-help/sharpfunc/#followers)
 - [follow](/reference/sharpmush-help/sharpcmd/#follow-1)
 - [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow-1)
-:::
+
+</nav>
+
 ## fraction()
 `fraction(<number>[, <whole>])`
 
@@ -2139,22 +2555,30 @@ You say, "South;sout;sou;so;s"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [NAME()](/reference/sharpmush-help/sharpfunc/#name)
 - [ACCNAME()](/reference/sharpmush-help/sharpfunc/#accname)
 - [INAME()](/reference/sharpmush-help/sharpfunc/#iname)
 - [ALIAS()](/reference/sharpmush-help/sharpfunc/#alias)
-:::
+
+</nav>
+
 ## functions()
 `functions([<type>])`
 
   Returns a space-separated list of the names of functions. If `<type>` is "local", only @functions are listed. If "builtin", only builtin functions. If "all" or omitted, both are returned.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LIST()](/reference/sharpmush-help/list-function/#list)
 - [CONFIG()](/reference/sharpmush-help/sharpfunc/#config)
-:::
+
+</nav>
+
 ## get()
 `get(<object>/<attribute>)`<br>
 `xget(<object>, <attribute>)`
@@ -2177,27 +2601,35 @@ think get(account(me, ref)/XP)
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [HASATTR()](/reference/sharpmush-help/sharpfunc/#hasattr)
 - [VISIBLE()](/reference/sharpmush-help/sharpfunc/#visible)
 - [accounts attributes](/reference/sharpmush-help/accounts/#account-attributes)
 - [u()](/reference/sharpmush-help/u-function/#u)
 - [DEFAULT()](/reference/sharpmush-help/sharpfunc/#default)
 - [UDEFAULT()](/reference/sharpmush-help/sharpfunc/#udefault)
-:::
+
+</nav>
+
 ## getpids()
 `getpids(<object>[/<attribute>])`
 
   Returns a space-separated list of semaphore queue process ids waiting on the given `<object>` and semaphore `<attribute>`. If `<attribute>` is not given, pids for all semaphores on the object are returned. You must control `<object>`, unless you are a Wizard or Royalty or have the See_Queue power.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@ps](/reference/sharpmush-help/ps-command/#ps)
 - [@wait](/reference/sharpmush-help/wait-command/#wait)
 - [LPIDS()](/reference/sharpmush-help/sharpfunc/#lpids)
 - [PIDINFO()](/reference/sharpmush-help/sharpfunc/#pidinfo)
 - [semaphores](/reference/sharpmush-help/semaphores/#semaphores)
-:::
+
+</nav>
+
 ## syntaxdiagnostics()
 `syntaxdiagnostics(<object>/<attribute>[, function|command])`
 
@@ -2215,11 +2647,15 @@ think syntaxdiagnostics(me/TOTAL,function)
 
   Output: `[]`, since the code parses.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@editor](/reference/sharpmush-help/editor-command/#editor)
 - [GET()](/reference/sharpmush-help/sharpfunc/#get)
 - [attribute flags](/reference/sharpmush-help/attribute-flags/#attribute-flags)
-:::
+
+</nav>
+
 ## grab()
 `grab(<list>, <pattern>[, <delimiter>])`<br>
 `regrab(<list>, <regexp>[, <delimiter>[, <osep>]])`<br>
@@ -2232,13 +2668,17 @@ think syntaxdiagnostics(me/TOTAL,function)
   or the regular expression variation thereof.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [GRABALL()](/reference/sharpmush-help/sharpfunc/#graball)
 - [element()](/reference/sharpmush-help/element-function/#element)
 - [EXTRACT()](/reference/sharpmush-help/sharpfunc/#extract)
 - [ELEMENTS()](/reference/sharpmush-help/sharpfunc/#elements)
 - [regmatch()](/reference/sharpmush-help/regmatch-function/#regmatch)
-:::
+
+</nav>
+
 ## graball()
 `graball(<list>, <pattern>[, <delim>[, <osep>]])`<br>
 `regraball(<list>, <regexp>[, <delim>[, <osep>]])`<br>
@@ -2257,11 +2697,15 @@ You say, "This is"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [element()](/reference/sharpmush-help/element-function/#element)
 - [GRAB()](/reference/sharpmush-help/sharpfunc/#grab)
 - [regmatch()](/reference/sharpmush-help/regmatch-function/#regmatch)
-:::
+
+</nav>
+
 ## grep()
 `grep(<object>, <attrs>, <substring>)`<br>
 `wildgrep(<object>, <attrs>, <pattern>)`<br>
@@ -2281,39 +2725,51 @@ You say, "This is"
   pgrep() works like grep(), but also checks attributes inherited from parents.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@grep](/reference/sharpmush-help/sharpcmd/#grep)
 - [LATTR()](/reference/sharpmush-help/lattr-function/#lattr)
 - [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)
-:::
+
+</nav>
+
 ## gt()
 `gt(<number1>, <number2>[, ... , <numberN>])`
 
   Takes two or more numbers, and returns 1 if and only if each number is greater than the number after it, and 0 otherwise.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [GTE()](/reference/sharpmush-help/sharpfunc/#gte)
 - [LT()](/reference/sharpmush-help/sharpfunc/#lt)
 - [LTE()](/reference/sharpmush-help/sharpfunc/#lte)
 - [EQ()](/reference/sharpmush-help/sharpfunc/#eq)
 - [NEQ()](/reference/sharpmush-help/sharpfunc/#neq)
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
-:::
+
+</nav>
+
 ## gte()
 `gte(<number1>, <number2>[, ... , <numberN>])`
 
   Takes two or more numbers, and returns 1 if and only if each number is greater than or equal to the number after it, and 0 otherwise.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [GT()](/reference/sharpmush-help/sharpfunc/#gt)
 - [LT()](/reference/sharpmush-help/sharpfunc/#lt)
 - [LTE()](/reference/sharpmush-help/sharpfunc/#lte)
 - [EQ()](/reference/sharpmush-help/sharpfunc/#eq)
 - [NEQ()](/reference/sharpmush-help/sharpfunc/#neq)
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
-:::
+
+</nav>
+
 ## hasattr()
 `hasattr(<object>[/<attribute>][, <attribute>])`<br>
 `hasattrp(<object>[/<attribute>][, <attribute>])`<br>
@@ -2334,10 +2790,14 @@ You say, "This is"
   single argument carrying no `/` is `#-1 BAD ARGUMENT FORMAT TO <function>`.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [VISIBLE()](/reference/sharpmush-help/sharpfunc/#visible)
 - [LATTR()](/reference/sharpmush-help/lattr-function/#lattr)
-:::
+
+</nav>
+
 ## hasflag()
 `hasflag(<object>[/<attrib>], <flag>)`
 
@@ -2352,7 +2812,9 @@ think hasflag(me, wizard)
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ORFLAGS()](/reference/sharpmush-help/sharpfunc/#orflags)
 - [ANDFLAGS()](/reference/sharpmush-help/sharpfunc/#andflags)
 - [FLAGS()](/reference/sharpmush-help/sharpfunc/#flags)
@@ -2361,7 +2823,9 @@ think hasflag(me, wizard)
 - [@flag](/reference/sharpmush-help/flag-command/#flag)
 - [HASPOWER()](/reference/sharpmush-help/sharpfunc/#haspower)
 - [HASTYPE()](/reference/sharpmush-help/sharpfunc/#hastype)
-:::
+
+</nav>
+
 ## haspower()
 `haspower(<object>, <power>)`
 
@@ -2370,10 +2834,14 @@ think hasflag(me, wizard)
   You can check the powers of any object, whether you control it or not.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@power](/reference/sharpmush-help/power-command/#power)
 - [HASFLAG()](/reference/sharpmush-help/sharpfunc/#hasflag)
-:::
+
+</nav>
+
 ## hasrole()
 `hasrole(<object>, <role>[, <at least>])`
 
@@ -2389,11 +2857,15 @@ think hasrole(*Ariel, royalty, 1)
 1
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ROLES()](/reference/sharpmush-help/sharpfunc/#roles)
 - [PERMISSION()](/reference/sharpmush-help/sharpfunc/#permission)
 - [@role](/reference/sharpmush-help/role-command/#role)
-:::
+
+</nav>
+
 ## hastype()
 `hastype(<object>, <type list>)`
 
@@ -2409,28 +2881,40 @@ think hastype(test object, PLAYER THING)
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [TYPES OF OBJECTS](/reference/sharpmush-help/sharptop/#types-of-objects)
 - [TYPE()](/reference/sharpmush-help/sharpfunc/#type)
-:::
+
+</nav>
+
 ## hidden()
 `hidden(<player|descriptor>)`
 
   If you can see hidden players, this function returns 1 if `<player>` (or the player connected to `<descriptor>`) is hidden, and 0 otherwise. If you cannot see hidden players, hidden() returns #-1.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@hide](/reference/sharpmush-help/sharpcmd/#hide)
-:::
+
+</nav>
+
 ## home()
 `home(<object>)`
 
   Returns the object's 'home', where it is @link'd to. This is the home for a player or thing, the drop-to of a room, or source of an exit.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@link](/reference/sharpmush-help/sharpcmd/#link)
-:::
+
+</nav>
+
 ## host()
 `host(<player|descriptor>)`
 
@@ -2441,11 +2925,15 @@ think hastype(test object, PLAYER THING)
   hostname() is an alias for host().
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Connection functions](/reference/sharpmush-help/sharpfunc/#connection-functions)
 - [IPADDR()](/reference/sharpmush-help/sharpfunc/#ipaddr)
 - [LPORTS()](/reference/sharpmush-help/sharpfunc/#lports)
-:::
+
+</nav>
+
 ## idle()
 `idle(<player|descriptor>[, <precision>])`<br>
 `idlesecs([<player|descriptor>[, <precision>]])`
@@ -2455,17 +2943,21 @@ think hastype(test object, PLAYER THING)
   idlesecs() is the same as idle(), except that with no argument it returns your own idle time (that of your least idle connection).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Connection functions](/reference/sharpmush-help/sharpfunc/#connection-functions)
 - [CONN()](/reference/sharpmush-help/sharpfunc/#conn)
-:::
+
+</nav>
+
 ## if()
 `if(<condition>, <true expression>[, <false expression>])`<br>
 `ifelse(<condition>, <true expression>[, <false expression>])`
 
   These functions evaluate the `<condition>` and return `<true expression>` if the `<condition>` is true, or `<false expression>` (if provided) if the `<condition>` is false. Only the returned `<expression>` is evaluated. The two are the same function: PennMUSH requires all three arguments of ifelse(), RhostMUSH does not.
 
-  In the expression that is evaluated, "#$" stands for the evaluated `<condition>`, unless a switch() around or inside it names its own `<string>`. The value is never evaluated as code. The branch also counts as a switch on the `<condition>` for stext(), %$0 and slev(). See [compatibility parser in case and if](/reference/sharpmush-help/compatibility-parser/#in-case-and-if).
+  In the expression that is evaluated, "#$" stands for the evaluated `<condition>`, unless a switch() around or inside it names its own `<string>`. The value is never evaluated as code. The branch also counts as a switch on the `<condition>` for stext(), %$0 and slev(). See [compatibility parser in case and if](/reference/sharpmush-help/compatibility-parser/#-in-case-and-if).
 
 ```sharp
 > think if(abc,You typed #$.)
@@ -2473,26 +2965,34 @@ You typed abc.
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [boolean values](/reference/sharpmush-help/boolean-values/#boolean-values)
 - [switch()](/reference/sharpmush-help/switch-function/#switch)
 - [@if](/reference/sharpmush-help/if-command/#if)
 - [@break](/reference/sharpmush-help/break-command/#break)
 - [COND()](/reference/sharpmush-help/sharpfunc/#cond)
-:::
+
+</nav>
+
 ## iname()
 `iname(<object>)`
 
   iname() returns the name of `<object>` as seen from inside it: its NAMEFORMAT evaluated with %0 the object's dbref and %1 its accented name, or the accented name when it has no NAMEFORMAT. You must control `<object>`, be See_All, or be inside it; otherwise it returns #-1 PERMISSION DENIED.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@nameformat](/reference/sharpmush-help/sharpcmd/#nameformat)
 - [@nameaccent](/reference/sharpmush-help/sharpcmd/#nameaccent)
 - [NAME()](/reference/sharpmush-help/sharpfunc/#name)
 - [FULLNAME()](/reference/sharpmush-help/sharpfunc/#fullname)
 - [ACCNAME()](/reference/sharpmush-help/sharpfunc/#accname)
-:::
+
+</nav>
+
 ## inc()
 `inc(<integer>)`<br>
 `inc(<string-ending-in-integer>)`
@@ -2516,11 +3016,15 @@ think inc(3)
   If the null_eq_zero @config option is on, using inc() on a string which does not end in an integer will return `<string>`1. When null_eq_zero is turned off, it will return an error.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [DEC()](/reference/sharpmush-help/sharpfunc/#dec)
 - [ADD()](/reference/sharpmush-help/sharpfunc/#add)
 - [SUB()](/reference/sharpmush-help/sharpfunc/#sub)
-:::
+
+</nav>
+
 ## index()
 `index(<list>, <character>, <first>, <length>)`
 
@@ -2538,11 +3042,15 @@ You say, "Mug of Beer"
     cute doll"
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [EXTRACT()](/reference/sharpmush-help/sharpfunc/#extract)
 - [ELEMENTS()](/reference/sharpmush-help/sharpfunc/#elements)
 - [GRAB()](/reference/sharpmush-help/sharpfunc/#grab)
-:::
+
+</nav>
+
 ## insert()
 `linsert(<list>, <position>, <new item>[, <delim>[, <osep>]])`
 
@@ -2567,21 +3075,29 @@ You say, "a-b-c"
   insert() is an alias for linsert(), for backwards compatability.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LREPLACE()](/reference/sharpmush-help/sharpfunc/#lreplace)
 - [LDELETE()](/reference/sharpmush-help/sharpfunc/#ldelete)
 - [STRINSERT()](/reference/sharpmush-help/sharpfunc/#strinsert)
-:::
+
+</nav>
+
 ## isdaylight()
 `isdaylight([<secs>[, <timezone>]])`
 
   Returns 1 if it's daylight savings in the specified timezone at the given time. Defaults to UTC (which never has daylight savings) and the current time if not specified.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [timezones](/reference/sharpmush-help/timezones/#timezones)
 - [SECS()](/reference/sharpmush-help/sharpfunc/#secs)
-:::
+
+</nav>
+
 ## isapproved()
 `isapproved(<object>)`
 
@@ -2599,38 +3115,54 @@ think isapproved(me)
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [HASROLE()](/reference/sharpmush-help/sharpfunc/#hasrole)
 - [@role assigning](/reference/sharpmush-help/role-command/#assigning-roles)
 - [roles](/reference/sharpmush-help/roles/#roles)
-:::
+
+</nav>
+
 ## isint()
 `isint(<string>)`
 
   Returns 1 if its argument is an integer, and 0 otherwise. Integers can begin with a '+' or '-' sign, but the rest of the string must be digits.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ISNUM()](/reference/sharpmush-help/sharpfunc/#isnum)
-:::
+
+</nav>
+
 ## isnum()
 `isnum(<string>)`
 
   This function returns 1 if `<string>` is a number, and 0 if it is not. Numbers can begin with a '-' sign (for negatives), but the rest of the characters in the string must be digits, and an optional decimal point.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ISINT()](/reference/sharpmush-help/sharpfunc/#isint)
-:::
+
+</nav>
+
 ## isregexp()
 `isregexp(<string>)`
 
   This function returns 1 if `<string>` is a valid regular expression, and 0 if it is not.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [regexp](/reference/sharpmush-help/regexp/#regular-expressions)
-:::
+
+</nav>
+
 ## isword()
 `isword(<string>)`
 
@@ -2650,9 +3182,13 @@ think isapproved(me)
    Another way to think about this is that items() counts the number of times `<delim>` appears in `<list>`, and adds 1.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [WORDS()](/reference/sharpmush-help/sharpfunc/#words)
-:::
+
+</nav>
+
 ## itemize()
 `itemize(<list>[, <delim>[, <conjunction>[, <punctuation>]]])`<br>
 `elist(<list>[, <conjunction>[, <delim>[, <osep>[, <punctuation>]]]])`
@@ -2691,10 +3227,14 @@ You say, "Test 1! Test 2! Test 3!"
     You say, "1a 2a 3a 1b 2b 3b 1c "
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [iter()](/reference/sharpmush-help/iter-function/#iter)
 - [ilev()](/reference/sharpmush-help/ilev-function/#ilev)
-:::
+
+</nav>
+
 ## ipaddr()
 `ipaddr(<player|descriptor>)`
 
@@ -2703,11 +3243,15 @@ You say, "Test 1! Test 2! Test 3!"
   The caller can use the function on himself, but using on any other player requires privileged power such as Wizard, Royalty or SEE_ALL.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Connection functions](/reference/sharpmush-help/sharpfunc/#connection-functions)
 - [HOST()](/reference/sharpmush-help/sharpfunc/#host)
 - [LPORTS()](/reference/sharpmush-help/sharpfunc/#lports)
-:::
+
+</nav>
+
 ## jiter()
 `jiter(<attribute list>, <input>[, <osep>])`
 
@@ -2726,25 +3270,33 @@ You say, "One|PLAYER"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [CHAIN()](/reference/sharpmush-help/chain-function/#chain)
 - [MAP()](/reference/sharpmush-help/map-function/#map)
 - [iter()](/reference/sharpmush-help/iter-function/#iter)
 - [fold()](/reference/sharpmush-help/fold-function/#fold)
 - [u()](/reference/sharpmush-help/u-function/#u)
-:::
+
+</nav>
+
 ## last()
 `last(<list>[, <delimiter>])`
 
   Returns the last element of a list. Elements in `<list>` are separated by `<delimiter>`, if given, or by a space if not.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [FIRST()](/reference/sharpmush-help/sharpfunc/#first)
 - [REST()](/reference/sharpmush-help/sharpfunc/#rest)
 - [BEFORE()](/reference/sharpmush-help/sharpfunc/#before)
 - [AFTER()](/reference/sharpmush-help/sharpfunc/#after)
-:::
+
+</nav>
+
 ## lattrcmds()
 `lattrcmds(<object>[/<pattern>])`
 
@@ -2758,11 +3310,15 @@ think lattrcmds(me/CMD.*)
 CMD.HELLO
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LCMDS()](/reference/sharpmush-help/sharpfunc/#lcmds)
 - [LATTR()](/reference/sharpmush-help/lattr-function/#lattr)
-- [user-defined commands](/reference/sharpmush-help/commands/#commands)
-:::
+- [user-defined commands](/reference/sharpmush-help/commands/#-commands)
+
+</nav>
+
 ## lcmds()
 `lcmds(<object>[/<pattern>][, <osep>[, <type>]])`
 
@@ -2778,11 +3334,15 @@ think lcmds(me, |, ^)
 * waves
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LATTRCMDS()](/reference/sharpmush-help/sharpfunc/#lattrcmds)
 - [LATTR()](/reference/sharpmush-help/lattr-function/#lattr)
-- [user-defined commands](/reference/sharpmush-help/commands/#commands)
-:::
+- [user-defined commands](/reference/sharpmush-help/commands/#-commands)
+
+</nav>
+
 ## nattr()
 `nattr(<object>[/<attribute pattern>])`<br>
 `nattrp(<object>[/<attribute pattern>])`<br>
@@ -2799,12 +3359,16 @@ think lcmds(me, |, ^)
   attrcnt() and attrpcnt() are aliases for nattr() and nattrp() respectively.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LATTR()](/reference/sharpmush-help/lattr-function/#lattr)
 - [HASATTR()](/reference/sharpmush-help/sharpfunc/#hasattr)
 - [XATTR()](/reference/sharpmush-help/sharpfunc/#xattr)
 - [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)
-:::
+
+</nav>
+
 ## lcon()
 `lcon(<object>[, <type>])`
 
@@ -2822,14 +3386,18 @@ think lcmds(me, |, ^)
     puppet             - return only THINGs set PUPPET
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LEXITS()](/reference/sharpmush-help/sharpfunc/#lexits)
 - [LPLAYERS()](/reference/sharpmush-help/sharpfunc/#lplayers)
 - [LTHINGS()](/reference/sharpmush-help/sharpfunc/#lthings)
 - [CON()](/reference/sharpmush-help/sharpfunc/#con)
 - [NEXT()](/reference/sharpmush-help/sharpfunc/#next)
 - [LVCON()](/reference/sharpmush-help/sharpfunc/#lvcon)
-:::
+
+</nav>
+
 ## lcstr()
 `lcstr(<string>)`<br>
 `lcstr2(<string>)`
@@ -2845,10 +3413,14 @@ You say, "foo bar baz"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [CAPSTR()](/reference/sharpmush-help/sharpfunc/#capstr)
 - [UCSTR()](/reference/sharpmush-help/sharpfunc/#ucstr)
-:::
+
+</nav>
+
 ## ldelete()
 `ldelete(<list>, <position(s)>[, <delimiter>[, <osep>]])`
 
@@ -2869,11 +3441,15 @@ You say, "foo ~ bar ~ boing"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [STRDELETE()](/reference/sharpmush-help/sharpfunc/#strdelete)
 - [REMOVE()](/reference/sharpmush-help/sharpfunc/#remove)
 - [INSERT()](/reference/sharpmush-help/sharpfunc/#insert)
-:::
+
+</nav>
+
 ## ledit()
 `ledit(<list>, <find>, <replace>[, <delimiter>[, <osep>]])`
 
@@ -2891,22 +3467,30 @@ think ledit(a b c, d, x)
 a b c
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [EDIT()](/reference/sharpmush-help/sharpfunc/#edit)
 - [LREPLACE()](/reference/sharpmush-help/sharpfunc/#lreplace)
 - [LDELETE()](/reference/sharpmush-help/sharpfunc/#ldelete)
-:::
+
+</nav>
+
 ## left()
 `left(<string>, <length>)`
 
   Returns the first `<length>` characters from `<string>`.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [RIGHT()](/reference/sharpmush-help/sharpfunc/#right)
 - [MID()](/reference/sharpmush-help/sharpfunc/#mid)
 - [LJUST()](/reference/sharpmush-help/sharpfunc/#ljust)
-:::
+
+</nav>
+
 ## nslemit()
 `lemit(<message>)`<br>
 `nslemit(<message>)`
@@ -2916,10 +3500,14 @@ a b c
   nslemit() like @nslemit.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@lemit](/reference/sharpmush-help/sharpcmd/#lemit)
 - [REMIT()](/reference/sharpmush-help/sharpfunc/#remit)
-:::
+
+</nav>
+
 ## letq()
 `letq([<reg1>, <value1>[, ... , <regN>, <valueN>], ]<expr>)`
 
@@ -2936,13 +3524,17 @@ think setr(A, 1)[setr(B,1)]:[letq(A, 2, %qA[setr(B,2)])]:%qA%qB
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [setq()](/reference/sharpmush-help/setq-function/#setq)
 - [LISTQ()](/reference/sharpmush-help/sharpfunc/#listq)
 - [LOCALIZE()](/reference/sharpmush-help/sharpfunc/#localize)
 - [ulocal()](/reference/sharpmush-help/ulocal-function/#ulocal)
 - [R()](/reference/sharpmush-help/sharpfunc/#r)
-:::
+
+</nav>
+
 ## lexits()
 `lexits(<room>)`
 
@@ -2951,12 +3543,16 @@ think setr(A, 1)[setr(B,1)]:[letq(A, 2, %qA[setr(B,2)])]:%qA%qB
   You can get the complete exit list of any room you may examine, regardless of whether or not exits are dark. You can get the partial exit list (obeying DARK/LIGHT/etc.) of your current location or the enactor (%#). You CANNOT get the exit list of anything else, regardless of whether or not you have objects in it.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LCON()](/reference/sharpmush-help/sharpfunc/#lcon)
 - [EXIT()](/reference/sharpmush-help/sharpfunc/#exit)
 - [NEXT()](/reference/sharpmush-help/sharpfunc/#next)
 - [LVEXITS()](/reference/sharpmush-help/sharpfunc/#lvexits)
-:::
+
+</nav>
+
 ## ljust()
 `ljust(<string>, <length>[, <fill>[, <truncate?>]])`
 
@@ -2982,22 +3578,30 @@ You say, "foo   "
     You say, "This is t"
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [align()](/reference/sharpmush-help/align/#align)
 - [CENTER()](/reference/sharpmush-help/center-function/#center)
 - [RJUST()](/reference/sharpmush-help/sharpfunc/#rjust)
 - [LEFT()](/reference/sharpmush-help/sharpfunc/#left)
-:::
+
+</nav>
+
 ## link()
 `link(<object>, <destination>[, <preserve>])`
 
   This function links `<object>` to `<destination>`. While normally used on exits, it has all of the other capabilities of @link as well. It returns #-1 or 0 on failure, 1 on success. If the optional third argument is true, acts like @link/preserve.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@link](/reference/sharpmush-help/sharpcmd/#link)
 - [OPEN()](/reference/sharpmush-help/sharpfunc/#open)
-:::
+
+</nav>
+
 
 `llocks()`
 ## lit()
@@ -3017,9 +3621,13 @@ You say, "foo   "
   Leaving out the {}'s will not work in the above.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [DECOMPOSE()](/reference/sharpmush-help/sharpfunc/#decompose)
-:::
+
+</nav>
+
 ## lmath()
 `lmath(<op>, <list>[, <delim>])`
 
@@ -3046,9 +3654,13 @@ think lmath(add, 1|2|3, |)
   Returns the natural log of `<number>`. This is equivalent to `log(<number>, e)`.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LOG()](/reference/sharpmush-help/sharpfunc/#log)
-:::
+
+</nav>
+
 ## lnum()
 `lnum([<number>])`<br>
 `lnum(<start number>, <end number>[, <output separator>[, <step>]])`
@@ -3073,7 +3685,9 @@ think lmath(add, 1|2|3, |)
   You can also get the location of the enactor using the %L substitution, whether you are near to/can examine it or not.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [locate()](/reference/sharpmush-help/locate-function/#locate)
 - [RLOC()](/reference/sharpmush-help/sharpfunc/#rloc)
 - [HOME()](/reference/sharpmush-help/sharpfunc/#home)
@@ -3083,7 +3697,9 @@ think lmath(add, 1|2|3, |)
 - [@link](/reference/sharpmush-help/sharpcmd/#link)
 - [UNFINDABLE](/reference/sharpmush-help/sharpflag/#unfindable)
 - [@whereis](/reference/sharpmush-help/sharpcmd/#whereis)
-:::
+
+</nav>
+
 ## localize()
 `localize(<code>)`
 
@@ -3103,13 +3719,17 @@ You say, "Outside-Inside-Inside"
     You say, "Outside-Inside-Outside"
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LETQ()](/reference/sharpmush-help/sharpfunc/#letq)
 - [setq()](/reference/sharpmush-help/setq-function/#setq)
 - [R()](/reference/sharpmush-help/sharpfunc/#r)
 - [ulocal()](/reference/sharpmush-help/ulocal-function/#ulocal)
 - [UDEFAULT()](/reference/sharpmush-help/sharpfunc/#udefault)
-:::
+
+</nav>
+
 ## lock()
 `lock(<object>[/<locktype>][, <new value>])`
 
@@ -3118,7 +3738,9 @@ You say, "Outside-Inside-Inside"
   If a `<new value>` is given, lock() attempts to change the lock as @lock would first. You must control the object.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
 - [locktypes](/reference/sharpmush-help/locktypes/#lock-types)
 - [ELOCK()](/reference/sharpmush-help/sharpfunc/#elock)
@@ -3128,7 +3750,9 @@ You say, "Outside-Inside-Inside"
 - [LLOCKS()](/reference/sharpmush-help/sharpfunc/#llocks)
 - [LOCKOWNER()](/reference/sharpmush-help/sharpfunc/#lockowner)
 - [LOCKFILTER()](/reference/sharpmush-help/lockfilter-function/#lockfilter)
-:::
+
+</nav>
+
 ## llocks()
 `llocks([<object>])`<br>
 `locks(<object>)`
@@ -3147,13 +3771,17 @@ Basic USER:ITSME Use
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LOCK()](/reference/sharpmush-help/sharpfunc/#lock)
 - [LSET()](/reference/sharpmush-help/sharpfunc/#lset)
 - [LOCKFLAGS()](/reference/sharpmush-help/sharpfunc/#lockflags)
 - [LLOCKFLAGS()](/reference/sharpmush-help/sharpfunc/#llockflags)
 - [LOCKOWNER()](/reference/sharpmush-help/sharpfunc/#lockowner)
-:::
+
+</nav>
+
 ## lockflags()
 `lockflags(<object>[/<locktype>])`<br>
 `lockflags()`
@@ -3163,13 +3791,17 @@ Basic USER:ITSME Use
   Given no arguments, this function returns a string consisting of all the flag letters the server knows.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LLOCKFLAGS()](/reference/sharpmush-help/sharpfunc/#llockflags)
 - [LSET()](/reference/sharpmush-help/sharpfunc/#lset)
 - [LOCK()](/reference/sharpmush-help/sharpfunc/#lock)
 - [LLOCKS()](/reference/sharpmush-help/sharpfunc/#llocks)
 - [LOCKOWNER()](/reference/sharpmush-help/sharpfunc/#lockowner)
-:::
+
+</nav>
+
 ## llockflags()
 `llockflags(<object>[/<locktype>])`<br>
 `llockflags()`
@@ -3179,26 +3811,34 @@ Basic USER:ITSME Use
   Given no arguments, this function returns a space-separated list of all the names of all lock flags known to the server.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LOCKFLAGS()](/reference/sharpmush-help/sharpfunc/#lockflags)
 - [LSET()](/reference/sharpmush-help/sharpfunc/#lset)
 - [LOCK()](/reference/sharpmush-help/sharpfunc/#lock)
 - [LLOCKS()](/reference/sharpmush-help/sharpfunc/#llocks)
 - [LOCKOWNER()](/reference/sharpmush-help/sharpfunc/#lockowner)
-:::
+
+</nav>
+
 ## lockowner()
 `lockowner(<object>[/<locktype>])`
 
   This function returns the dbref of the executor who set the `<locktype>` lock on `<object>`, or the Basic lock if no `<locktype>` is given. You must be able to examine the lock. Legacy locks with an unknown creator return `#-1`; absent or inaccessible locks return `#-1 NO SUCH LOCK`.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LOCKFLAGS()](/reference/sharpmush-help/sharpfunc/#lockflags)
 - [LLOCKFLAGS()](/reference/sharpmush-help/sharpfunc/#llockflags)
 - [LSET()](/reference/sharpmush-help/sharpfunc/#lset)
 - [LOCK()](/reference/sharpmush-help/sharpfunc/#lock)
 - [LLOCKS()](/reference/sharpmush-help/sharpfunc/#llocks)
-:::
+
+</nav>
+
 ## listset()
 `listset(<list>,<position>,<replacement>[,<input delimiter>[,<output delimiter>]])`
 
@@ -3206,10 +3846,14 @@ Basic USER:ITSME Use
 
   List replacement uses `listset()`. `lset()` sets lock flags.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LREPLACE()](/reference/sharpmush-help/sharpfunc/#lreplace)
 - [LSET()](/reference/sharpmush-help/sharpfunc/#lset)
-:::
+
+</nav>
+
 ## lset()
 `lset(<object>/<locktype>,[!]<flag>)`
 
@@ -3218,21 +3862,29 @@ Basic USER:ITSME Use
   See [@lset](/reference/sharpmush-help/sharpcmd/#lset) for more information on what flags are available.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LOCKFLAGS()](/reference/sharpmush-help/sharpfunc/#lockflags)
 - [LLOCKFLAGS()](/reference/sharpmush-help/sharpfunc/#llockflags)
 - [LOCK()](/reference/sharpmush-help/sharpfunc/#lock)
 - [LOCKOWNER()](/reference/sharpmush-help/sharpfunc/#lockowner)
-:::
+
+</nav>
+
 ## log()
 `log(<number>[, <base>])`
 
   Returns the logarithm (base 10, or the given base) of `<number>`. `<base>` can be a floating-point number, or 'e' for the natural logarithm.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LN()](/reference/sharpmush-help/sharpfunc/#ln)
-:::
+
+</nav>
+
 ## lpad()
 `lpad(<string>, <width>[, <fill>])`
 
@@ -3246,44 +3898,60 @@ think lpad(foo,12,=+)
 foo+=+=+=+=+
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LJUST()](/reference/sharpmush-help/sharpfunc/#ljust)
 - [RPAD()](/reference/sharpmush-help/sharpfunc/#rpad)
 - [CPAD()](/reference/sharpmush-help/sharpfunc/#cpad)
-:::
+
+</nav>
+
 ## lparent()
 `lparent(<object>)`
 
   This function returns a list consisting of `<object>`'s dbref (as per num()), the dbref of its parent, grandparent, greatgrandparent, etc. The list will not, however, show parents of objects which the player is not privileged to examine. Ancestor objects are not included.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [PARENT()](/reference/sharpmush-help/sharpfunc/#parent)
 - [lsearch()](/reference/sharpmush-help/lsearch-function/#lsearch)
 - [parent](/reference/sharpmush-help/parent/#parents)
 - [ANCESTORS](/reference/sharpmush-help/sharptop/#ancestors)
-:::
+
+</nav>
+
 ## lplayers()
 `lplayers(<object>)`
 
   This function returns the dbrefs of all players, connected or not, in `<object>`. DARK wizards aren't listed to mortals or those without the see_all power. You must be in `<object>` or control it to use this function.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LVPLAYERS()](/reference/sharpmush-help/sharpfunc/#lvplayers)
 - [LCON()](/reference/sharpmush-help/sharpfunc/#lcon)
 - [LTHINGS()](/reference/sharpmush-help/sharpfunc/#lthings)
-:::
+
+</nav>
+
 ## lthings()
 `lthings(<object>)`
 
   This function returns the dbrefs of all things, dark or not, in `<object>`. You must be in `<object>` or control it to use this function.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LVTHINGS()](/reference/sharpmush-help/sharpfunc/#lvthings)
 - [LCON()](/reference/sharpmush-help/sharpfunc/#lcon)
-:::
+
+</nav>
+
 ## lpos()
 `lpos(<string>, <character>)`
 
@@ -3298,12 +3966,16 @@ You say, "1 4 8"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [POS()](/reference/sharpmush-help/sharpfunc/#pos)
 - [MEMBER()](/reference/sharpmush-help/sharpfunc/#member)
 - [element()](/reference/sharpmush-help/element-function/#element)
 - [WORDPOS()](/reference/sharpmush-help/sharpfunc/#wordpos)
-:::
+
+</nav>
+
 ## lrand()
 `lrand(<low>, <high>, <count>[, <osep>])`
 
@@ -3317,11 +3989,15 @@ think lrand(5, 5, 3, |)
 5|5|5
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [DIE()](/reference/sharpmush-help/sharpfunc/#die)
 - [RAND()](/reference/sharpmush-help/sharpfunc/#rand)
 - [DISTRIBUTE()](/reference/sharpmush-help/sharpfunc/#distribute)
-:::
+
+</nav>
+
 ## lstats()
 `lstats([<player>])`
 
@@ -3338,9 +4014,13 @@ think lrand(5, 5, 3, |)
 
   stats() is an alias for lstats().
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [lsearch()](/reference/sharpmush-help/lsearch-function/#lsearch)
-:::
+
+</nav>
+
 ## lt()
 `lt(<number1>, <number2>[, ... , <numberN>])`
 
@@ -3357,74 +4037,98 @@ th lt(1,3,2)
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LTE()](/reference/sharpmush-help/sharpfunc/#lte)
 - [GT()](/reference/sharpmush-help/sharpfunc/#gt)
 - [GTE()](/reference/sharpmush-help/sharpfunc/#gte)
 - [LNUM()](/reference/sharpmush-help/sharpfunc/#lnum)
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
-:::
+
+</nav>
+
 ## lte()
 `lte(<number1>, <number2>[, ... , <numberN>])`
 
   Takes two or more numbers, and returns 1 if and only if each number is less than or equal to the number after it, and 0 otherwise.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LT()](/reference/sharpmush-help/sharpfunc/#lt)
 - [GT()](/reference/sharpmush-help/sharpfunc/#gt)
 - [GTE()](/reference/sharpmush-help/sharpfunc/#gte)
 - [LNUM()](/reference/sharpmush-help/sharpfunc/#lnum)
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
-:::
+
+</nav>
+
 ## lvcon()
 `lvcon(<object>)`
 
   This function returns the dbrefs of all objects that are inside `<object>` and visible (non-dark). You must be in `<object>` or control it to use this function.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LCON()](/reference/sharpmush-help/sharpfunc/#lcon)
 - [LVPLAYERS()](/reference/sharpmush-help/sharpfunc/#lvplayers)
 - [LVTHINGS()](/reference/sharpmush-help/sharpfunc/#lvthings)
 - [LVEXITS()](/reference/sharpmush-help/sharpfunc/#lvexits)
-:::
+
+</nav>
+
 ## lvexits()
 `lvexits(<room>)`
 
   This function returns the dbrefs of all visible (non-dark) exits from `<room>`. You must be in the room or control it to use this function.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LEXITS()](/reference/sharpmush-help/sharpfunc/#lexits)
 - [LVCON()](/reference/sharpmush-help/sharpfunc/#lvcon)
 - [LVPLAYERS()](/reference/sharpmush-help/sharpfunc/#lvplayers)
 - [LVTHINGS()](/reference/sharpmush-help/sharpfunc/#lvthings)
-:::
+
+</nav>
+
 ## lvplayers()
 `lvplayers(<object>)`
 
   This function returns the dbrefs of all connected and non-dark players in an object. You must be in the object or control it to use this function.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LPLAYERS()](/reference/sharpmush-help/sharpfunc/#lplayers)
 - [LVCON()](/reference/sharpmush-help/sharpfunc/#lvcon)
 - [LVTHINGS()](/reference/sharpmush-help/sharpfunc/#lvthings)
 - [LVEXITS()](/reference/sharpmush-help/sharpfunc/#lvexits)
-:::
+
+</nav>
+
 ## lvthings()
 `lvthings(<object>)`
 
   This function returns the dbrefs of all non-dark things inside an object. You must be in the object or control it to use this function.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LTHINGS()](/reference/sharpmush-help/sharpfunc/#lthings)
 - [LVPLAYERS()](/reference/sharpmush-help/sharpfunc/#lvplayers)
 - [LVCON()](/reference/sharpmush-help/sharpfunc/#lvcon)
 - [LVEXITS()](/reference/sharpmush-help/sharpfunc/#lvexits)
-:::
+
+</nav>
+
 ## lwho()
 `lwho([<viewer>[, <status>]])`<br>
 `lwhoid([<viewer>[, <status>]])`
@@ -3440,24 +4144,32 @@ th lt(1,3,2)
   With the `mux_arguments` @config option on, as after a TinyMUX import, lwho() with one argument is TinyMUX's: a true argument lists each connection as `#<dbref>:<descriptor>` for a See_All player, and a false one lists what lwho() does.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MWHO()](/reference/sharpmush-help/sharpfunc/#mwho)
 - [NMWHO()](/reference/sharpmush-help/sharpfunc/#nmwho)
 - [XWHO()](/reference/sharpmush-help/sharpfunc/#xwho)
 - [LPORTS()](/reference/sharpmush-help/sharpfunc/#lports)
-:::
+
+</nav>
+
 ## max()
 `max(<number1>[, ... , <numberN>])`
 
   This function returns the largest number in its list of arguments. It can take any number of arguments.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MIN()](/reference/sharpmush-help/sharpfunc/#min)
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
 - [BOUND()](/reference/sharpmush-help/sharpfunc/#bound)
 - [ALPHAMAX()](/reference/sharpmush-help/sharpfunc/#alphamax)
-:::
+
+</nav>
+
 ## avg()
 `mean(<number1>[, ... , <numberN>])`
 
@@ -3466,22 +4178,30 @@ th lt(1,3,2)
   avg() is an alias for mean(), for Rhost compatibility.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MEDIAN()](/reference/sharpmush-help/sharpfunc/#median)
 - [STDDEV()](/reference/sharpmush-help/sharpfunc/#stddev)
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
-:::
+
+</nav>
+
 ## median()
 `median(<number>[, ... , <numberN>])`
 
   Returns the median (the middlemost numerically) of its arguments.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [AVG()](/reference/sharpmush-help/sharpfunc/#avg)
 - [STDDEV()](/reference/sharpmush-help/sharpfunc/#stddev)
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
-:::
+
+</nav>
+
 ## member()
 `member(<list>, <word>[, <delimiter>])`
 
@@ -3490,12 +4210,16 @@ th lt(1,3,2)
   member() is case-sensitive, and does not perform wildcard matching. If you need to do a wildcard match, use match(). To compare two strings (instead of a word and list elements), consider comp().
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [element()](/reference/sharpmush-help/element-function/#element)
 - [GRAB()](/reference/sharpmush-help/sharpfunc/#grab)
 - [COMP()](/reference/sharpmush-help/sharpfunc/#comp)
 - [STRMATCH()](/reference/sharpmush-help/sharpfunc/#strmatch)
-:::
+
+</nav>
+
 ## merge()
 `merge(<string1>, <string2>, <characters>)`
 
@@ -3516,10 +4240,14 @@ You say, "ABcdEF"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SPLICE()](/reference/sharpmush-help/sharpfunc/#splice)
 - [TR()](/reference/sharpmush-help/sharpfunc/#tr)
-:::
+
+</nav>
+
 ## message()
 `message(<recipients>, <message>, [<object>/]<attribute>[, <arg0>[, ... , <arg9>][, <switches>]])`
 
@@ -3541,12 +4269,16 @@ Formatted> Foo Bar Baz
   Formatted> Backwards Compatability Is Annoying Sometimes
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@message](/reference/sharpmush-help/message-command/#message)
 - [OEMIT()](/reference/sharpmush-help/sharpfunc/#oemit)
 - [REMIT()](/reference/sharpmush-help/sharpfunc/#remit)
 - [speak()](/reference/sharpmush-help/speak/#speak)
-:::
+
+</nav>
+
 ## mid()
 `mid(<string>, <first>, <length>)`
 
@@ -3561,23 +4293,31 @@ You say, "es"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LEFT()](/reference/sharpmush-help/sharpfunc/#left)
 - [RIGHT()](/reference/sharpmush-help/sharpfunc/#right)
 - [STRDELETE()](/reference/sharpmush-help/sharpfunc/#strdelete)
-:::
+
+</nav>
+
 ## min()
 `min(<number1>[, ... , <numberN>])`
 
   This function returns the smallest number in its list of arguments. It can take any number of arguments.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MAX()](/reference/sharpmush-help/sharpfunc/#max)
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
 - [BOUND()](/reference/sharpmush-help/sharpfunc/#bound)
 - [ALPHAMIN()](/reference/sharpmush-help/sharpfunc/#alphamin)
-:::
+
+</nav>
+
 ## mod()
 `modulo(<number>, <number>[, ..., <numberN>])`<br>
 `remainder(<number>, <number>[, ..., <numberN>])`
@@ -3598,10 +4338,14 @@ You say, "es"
   mod() and modulus() are aliases for modulo().
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [DIV()](/reference/sharpmush-help/sharpfunc/#div)
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
-:::
+
+</nav>
+
 ## money()
 `money(<integer>)`<br>
 `money(<object>)`
@@ -3615,9 +4359,13 @@ You say, "es"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [score](/reference/sharpmush-help/sharpcmd/#score)
-:::
+
+</nav>
+
 ## mtime()
 `mtime(<object>[, <utc?>])`<br>
 `mtime(<object>/<attribute>[, <utc?>])`<br>
@@ -3640,14 +4388,18 @@ think msecs(me/NOTE)
   Output: the number of seconds since the epoch at which NOTE was set.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [CTIME()](/reference/sharpmush-help/sharpfunc/#ctime)
 - [time()](/reference/sharpmush-help/time-function/#time)
 - [SECS()](/reference/sharpmush-help/sharpfunc/#secs)
 - [CONVTIME()](/reference/sharpmush-help/convtime-function/#convtime)
 - [CONVSECS()](/reference/sharpmush-help/sharpfunc/#convsecs)
 - [CACHE()](/reference/sharpmush-help/cache-function/#cache)
-:::
+
+</nav>
+
 ## mudname()
 `mudname()`<br>
 `mudurl()`
@@ -3663,19 +4415,27 @@ You say, "http://www.testmush.com"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [CONFIG()](/reference/sharpmush-help/sharpfunc/#config)
-:::
+
+</nav>
+
 ## mul()
 `mul(<number1>[, <number2>, ... , <numberN>])`
 
   Returns the product of some numbers. As in TinyMUX, a single number is returned as it is: `mul(3)` is 3.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
 - [DIV()](/reference/sharpmush-help/sharpfunc/#div)
-:::
+
+</nav>
+
 ## mwho()
 `mwho()`<br>
 `mwhoid()`
@@ -3685,10 +4445,14 @@ You say, "http://www.testmush.com"
   mwhoid() returns a list of objids instead.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LWHO()](/reference/sharpmush-help/sharpfunc/#lwho)
 - [NMWHO()](/reference/sharpmush-help/sharpfunc/#nmwho)
-:::
+
+</nav>
+
 ## alias()
 `alias(<object>[, <new alias>])`<br>
 `fullalias(<object>)`
@@ -3708,9 +4472,13 @@ You say, "$;No;Nol;Noli;Nolt"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [FULLNAME()](/reference/sharpmush-help/sharpfunc/#fullname)
-:::
+
+</nav>
+
 ## name()
 `name(<object>[, <new name>])`
 
@@ -3719,27 +4487,35 @@ You say, "$;No;Nol;Noli;Nolt"
   With two arguments, name() attempts to rename `<object>` to `<new name>`, as per @name.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [FULLNAME()](/reference/sharpmush-help/sharpfunc/#fullname)
 - [ACCNAME()](/reference/sharpmush-help/sharpfunc/#accname)
 - [INAME()](/reference/sharpmush-help/sharpfunc/#iname)
 - [ALIAS()](/reference/sharpmush-help/sharpfunc/#alias)
 - [MONIKER()](/reference/sharpmush-help/sharpfunc/#moniker)
-:::
+
+</nav>
+
 ## moniker()
 `moniker(<object>)`
 
   Returns `<object>`'s accented name, with the color template from its @moniker applied. moniker() always returns the colored name, even if monikers are disabled via @config.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [monikers](/reference/sharpmush-help/monikers/#monikers)
 - [@moniker](/reference/sharpmush-help/sharpcmd/#moniker)
 - [NAME()](/reference/sharpmush-help/sharpfunc/#name)
 - [MONIKER()](/reference/sharpmush-help/sharpfunc/#moniker)
 - [INAME()](/reference/sharpmush-help/sharpfunc/#iname)
 - [ACCNAME()](/reference/sharpmush-help/sharpfunc/#accname)
-:::
+
+</nav>
+
 ## moon()
 `moon([<seconds>[, <numeric>]])`
 
@@ -3768,10 +4544,14 @@ think moon(948000000, 1)
 74
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SECS()](/reference/sharpmush-help/sharpfunc/#secs)
 - [TIME()](/reference/sharpmush-help/time-function/#time)
-:::
+
+</nav>
+
 ## namelist()
 `namelist(<player-list>[, [<object>/]<attribute>])`
 
@@ -3788,13 +4568,17 @@ You say, "#1 #7 #56 #-1"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [NAMEGRAB()](/reference/sharpmush-help/sharpfunc/#namegrab)
 - [NAME()](/reference/sharpmush-help/sharpfunc/#name)
 - [locate()](/reference/sharpmush-help/locate-function/#locate)
 - [NUM()](/reference/sharpmush-help/sharpfunc/#num)
 - [PMATCH()](/reference/sharpmush-help/sharpfunc/#pmatch)
-:::
+
+</nav>
+
 ## namegrab()
 `namegrab(<dbref list>, <name>[, <delimiter>])`<br>
 `namegraball(<dbref list>, <name>[, <delimiter>])`
@@ -3812,10 +4596,14 @@ You say, "#1 #7 #56 #-1"
     You say, "#0 #2"
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [NAMELIST()](/reference/sharpmush-help/sharpfunc/#namelist)
 - [locate()](/reference/sharpmush-help/locate-function/#locate)
-:::
+
+</nav>
+
 ## nand()
 `nand(<boolean1>[, ... , <booleanN>])`<br>
 `ncand(<boolean1>[, ... , <booleanN>])`<br>
@@ -3826,33 +4614,45 @@ You say, "#1 #7 #56 #-1"
   Equivalent to not(and()) and not(cand()), but more efficient.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
 - [AND()](/reference/sharpmush-help/sharpfunc/#and)
 - [OR()](/reference/sharpmush-help/sharpfunc/#or)
 - [NOR()](/reference/sharpmush-help/sharpfunc/#nor)
-:::
+
+</nav>
+
 ## nearby()
 `nearby(<object 1>, <object 2>)`
 
   Returns 1 if `<object 1>` is "nearby" `<object 2>`, and 0 otherwise. "Nearby" means the objects are in the same location, or that one is located inside the other. You must control at least one of the objects; if you don't, or if one of the objects can't be found, nearby() returns #-1.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [locate()](/reference/sharpmush-help/locate-function/#locate)
 - [FINDABLE()](/reference/sharpmush-help/sharpfunc/#findable)
-:::
+
+</nav>
+
 ## neq()
 `neq(<number1>, <number2>[, ... , <numberN>])`
 
   Returns 0 if all the given `<number>`s are the same, and 1 otherwise. Basically the same as `[not(eq(<number1>, <number2>[, ... , <numberN>]))]` but more efficient.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [EQ()](/reference/sharpmush-help/sharpfunc/#eq)
 - [NOT()](/reference/sharpmush-help/sharpfunc/#not)
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
-:::
+
+</nav>
+
 ## next()
 `next(<object>)`
 
@@ -3861,22 +4661,30 @@ You say, "#1 #7 #56 #-1"
   You can get the complete contents of any container you may examine, regardless of whether or not objects are dark. You can get the partial contents (obeying DARK/LIGHT/etc.) of your current location or the enactor (%#). You CANNOT get the contents of anything else, regardless of whether or not you have objects in it. These rules apply to exits, as well.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LCON()](/reference/sharpmush-help/sharpfunc/#lcon)
 - [LEXITS()](/reference/sharpmush-help/sharpfunc/#lexits)
 - [CON()](/reference/sharpmush-help/sharpfunc/#con)
 - [EXIT()](/reference/sharpmush-help/sharpfunc/#exit)
-:::
+
+</nav>
+
 ## nextdbref()
 `nextdbref()`
 
   This function returns the dbref the next object @created (or @dug, or @opened, or @pcreated, etc.) will have: the free number that has waited longest, once it is due, or else the next unused one (see [garbage](/reference/sharpmush-help/sharptop/#garbage)).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@stats](/reference/sharpmush-help/sharpcmd/#stats)
 - [LSTATS()](/reference/sharpmush-help/sharpfunc/#lstats)
-:::
+
+</nav>
+
 ## nor()
 `nor(<boolean1>[, ... , <booleanN>])`<br>
 `ncor(<boolean1>[, ... , <booleanN>])`
@@ -3886,14 +4694,18 @@ You say, "#1 #7 #56 #-1"
   Equivalent to not(or()) and not(cor()), but more efficient.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [AND()](/reference/sharpmush-help/sharpfunc/#and)
 - [OR()](/reference/sharpmush-help/sharpfunc/#or)
 - [XOR()](/reference/sharpmush-help/sharpfunc/#xor)
 - [NOT()](/reference/sharpmush-help/sharpfunc/#not)
 - [NAND()](/reference/sharpmush-help/sharpfunc/#nand)
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
-:::
+
+</nav>
+
 ## not()
 `not(<boolean>)`
 
@@ -3902,25 +4714,33 @@ You say, "#1 #7 #56 #-1"
   The definition of truth and falsehood depends on configuration settings; see [boolean values](/reference/sharpmush-help/boolean-values/#boolean-values) for details.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Boolean functions](/reference/sharpmush-help/sharpfunc/#boolean-functions)
 - [T()](/reference/sharpmush-help/sharpfunc/#t)
 - [AND()](/reference/sharpmush-help/sharpfunc/#and)
 - [OR()](/reference/sharpmush-help/sharpfunc/#or)
 - [NOR()](/reference/sharpmush-help/sharpfunc/#nor)
 - [XOR()](/reference/sharpmush-help/sharpfunc/#xor)
-:::
+
+</nav>
+
 ## num()
 `num(<object>)`
 
   Returns the dbref number of `<object>`. `<object>` must reference a valid object, as per [MATCHING](/reference/sharpmush-help/sharptop/#matching).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [locate()](/reference/sharpmush-help/locate-function/#locate)
 - [RNUM()](/reference/sharpmush-help/sharpfunc/#rnum)
 - [PMATCH()](/reference/sharpmush-help/sharpfunc/#pmatch)
-:::
+
+</nav>
+
 ## nvcon()
 `ncon(<object>)`<br>
 `nvcon(<object>)`
@@ -3928,13 +4748,17 @@ You say, "#1 #7 #56 #-1"
   These functions return a the number of objects inside `<object>`. They are identical to words(lcon(`<object>`)) and words(lvcon(`<object>`)), respectively, but are more efficient and do not suffer from buffer constraints.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [NVEXITS()](/reference/sharpmush-help/sharpfunc/#nvexits)
 - [NVPLAYERS()](/reference/sharpmush-help/sharpfunc/#nvplayers)
 - [XVCON()](/reference/sharpmush-help/sharpfunc/#xvcon)
 - [LCON()](/reference/sharpmush-help/sharpfunc/#lcon)
 - [LVCON()](/reference/sharpmush-help/sharpfunc/#lvcon)
-:::
+
+</nav>
+
 ## nvexits()
 `nexits(<room>)`<br>
 `nvexits(<room>)`
@@ -3942,13 +4766,17 @@ You say, "#1 #7 #56 #-1"
   These functions return a count of the exits in a room. They are equivalent to words(lexits(`<room>`)) and words(lvexits(`<room>`)) respectively, though are more efficient, and don't suffer from buffer constraints.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [NVCON()](/reference/sharpmush-help/sharpfunc/#nvcon)
 - [NVPLAYERS()](/reference/sharpmush-help/sharpfunc/#nvplayers)
 - [XVEXITS()](/reference/sharpmush-help/sharpfunc/#xvexits)
 - [LEXITS()](/reference/sharpmush-help/sharpfunc/#lexits)
 - [LVEXITS()](/reference/sharpmush-help/sharpfunc/#lvexits)
-:::
+
+</nav>
+
 ## nvplayers()
 `nplayers(<object>)`<br>
 `nvplayers(<object>)`
@@ -3956,13 +4784,17 @@ You say, "#1 #7 #56 #-1"
   These functions return a count of the players in `<object>`. They are equivalent to words(lplayers(`<object>`)) and words(lvplayers(`<object>`)) respectively, though are more efficient and do not suffer from buffer constraints.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [NVCON()](/reference/sharpmush-help/sharpfunc/#nvcon)
 - [NVEXITS()](/reference/sharpmush-help/sharpfunc/#nvexits)
 - [XVPLAYERS()](/reference/sharpmush-help/sharpfunc/#xvplayers)
 - [LPLAYERS()](/reference/sharpmush-help/sharpfunc/#lplayers)
 - [LVPLAYERS()](/reference/sharpmush-help/sharpfunc/#lvplayers)
-:::
+
+</nav>
+
 ## nvthings()
 `nthings(<object>)`<br>
 `nvthings(<object>)`
@@ -3970,13 +4802,17 @@ You say, "#1 #7 #56 #-1"
   These functions return a count of the things in a container. They are equivalent to words(lthings(`<object>`)) and words(lvthings(`<object>`)) respectively, though are more efficient and do not suffer from buffer constraints.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [NVCON()](/reference/sharpmush-help/sharpfunc/#nvcon)
 - [NVEXITS()](/reference/sharpmush-help/sharpfunc/#nvexits)
 - [XVTHINGS()](/reference/sharpmush-help/sharpfunc/#xvthings)
 - [LTHINGS()](/reference/sharpmush-help/sharpfunc/#lthings)
 - [LVTHINGS()](/reference/sharpmush-help/sharpfunc/#lvthings)
-:::
+
+</nav>
+
 ## nmwho()
 `nwho([<viewer>])`<br>
 `nmwho()`
@@ -3988,32 +4824,44 @@ You say, "#1 #7 #56 #-1"
   These functions are equivalent to `words(lwho([<viewer>]))` and `words(mwho())`, but are more efficient, and don't suffer from buffer constraints.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LWHO()](/reference/sharpmush-help/sharpfunc/#lwho)
 - [MWHO()](/reference/sharpmush-help/sharpfunc/#mwho)
 - [XWHO()](/reference/sharpmush-help/sharpfunc/#xwho)
-:::
+
+</nav>
+
 ## obj()
 `obj(<object>)`
 
   Returns the objective pronoun - him/her/it - for an object. The %o substitution will return the objective pronoun of the enactor.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SUBJ()](/reference/sharpmush-help/sharpfunc/#subj)
 - [POSS()](/reference/sharpmush-help/sharpfunc/#poss)
 - [APOSS()](/reference/sharpmush-help/sharpfunc/#aposs)
-:::
+
+</nav>
+
 ## objeval()
 `objeval(<object>, <expression>)`
 
   Allows you to evaluate `<expression>` from the viewpoint of `<object>`. If side-effect functions are enabled, you must control `<object>`; if not, you must either control `<object>` or have the see_all power. If `<object>` does not exist or you don't meet one of the criterion, the expression evaluates with your privileges.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [S()](/reference/sharpmush-help/sharpfunc/#s)
 - [OBJEVALS()](/reference/sharpmush-help/sharpfunc/#objevals)
-:::
+
+</nav>
+
 ## objevals()
 `objevals(<object>, <text>)`
 
@@ -4027,10 +4875,14 @@ think objevals(me,v(DATA`TEXT))
 
   Output: `[add(1,2)] for %n` from `objeval()`, then `3 for` and your name from `objevals()`.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [OBJEVAL()](/reference/sharpmush-help/sharpfunc/#objeval)
 - [S()](/reference/sharpmush-help/sharpfunc/#s)
-:::
+
+</nav>
+
 ## objid()
 `objid(<object>)`
 
@@ -4041,11 +4893,15 @@ think objevals(me,v(DATA`TEXT))
   The substitution %: returns the object id of the enactor.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [NUM()](/reference/sharpmush-help/sharpfunc/#num)
 - [CTIME()](/reference/sharpmush-help/sharpfunc/#ctime)
-- [%#]
-:::
+- [%#](/reference/sharpmush-help/sharptop/#enactor)
+
+</nav>
+
 ## objmem()
 `objmem(<object>)`
 
@@ -4054,9 +4910,13 @@ think objevals(me,v(DATA`TEXT))
   **Not implemented.** SharpMUSH always answers 0, whatever object it is asked about, so no caller can tell a large object from a small one.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [PLAYERMEM()](/reference/sharpmush-help/sharpfunc/#playermem)
-:::
+
+</nav>
+
 ## oemit()
 `oemit([<room>/]<object> [... <object>], <message>)`<br>
 `nsoemit([<room>/]<object> [... <object>], <message>)`
@@ -4077,14 +4937,18 @@ think objevals(me,v(DATA`TEXT))
   It returns the dbref of the newly created exit, or #-1 on error.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@open](/reference/sharpmush-help/sharpcmd/#open)
 - [@link](/reference/sharpmush-help/sharpcmd/#link)
 - [DIG()](/reference/sharpmush-help/sharpfunc/#dig)
 - [LINK()](/reference/sharpmush-help/sharpfunc/#link)
 - [CREATE()](/reference/sharpmush-help/sharpfunc/#create)
 - [PCREATE()](/reference/sharpmush-help/sharpfunc/#pcreate)
-:::
+
+</nav>
+
 ## or()
 `or(<boolean1>[, <boolean2>, ... , <booleanN>])`<br>
 `cor(<boolean1>[, <boolean2>, ... , <booleanN>])`
@@ -4096,14 +4960,18 @@ think objevals(me,v(DATA`TEXT))
   As in TinyMUX, a single argument is tested on its own: `or(0)` is 0. With the `mux_logic` @config option on, each argument is tested by its leading signed integer, as TinyMUX and RhostMUSH do, so `or(0,abc)` is 0. See [compatibility config](/reference/sharpmush-help/compatibility-config/#compatibility-config).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [boolean values](/reference/sharpmush-help/boolean-values/#boolean-values)
 - [AND()](/reference/sharpmush-help/sharpfunc/#and)
 - [NOR()](/reference/sharpmush-help/sharpfunc/#nor)
 - [FIRSTOF()](/reference/sharpmush-help/sharpfunc/#firstof)
 - [ALLOF()](/reference/sharpmush-help/sharpfunc/#allof)
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
-:::
+
+</nav>
+
 ## orflags()
 `orflags(<object>, <string of flag characters>)`<br>
 `orlflags(<object>, <list of flag names>)`
@@ -4117,12 +4985,16 @@ think objevals(me,v(DATA`TEXT))
     > say orlflags(%#, wizard dark !ansi)
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ANDFLAGS()](/reference/sharpmush-help/sharpfunc/#andflags)
 - [FLAGS()](/reference/sharpmush-help/sharpfunc/#flags)
 - [LFLAGS()](/reference/sharpmush-help/sharpfunc/#lflags)
 - [ORLPOWERS()](/reference/sharpmush-help/sharpfunc/#orlpowers)
-:::
+
+</nav>
+
 ## orlpowers()
 `orlpowers(<object>, <list of powers>)`
 
@@ -4133,12 +5005,16 @@ think objevals(me,v(DATA`TEXT))
   If there is a syntax error like a ! without a following power, '#-1 INVALID POWER' is returned. Unknown powers are treated as being not set.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [POWERS()](/reference/sharpmush-help/sharpfunc/#powers)
 - [ANDLPOWERS()](/reference/sharpmush-help/sharpfunc/#andlpowers)
 - [@power](/reference/sharpmush-help/power-command/#power)
 - [ORFLAGS()](/reference/sharpmush-help/sharpfunc/#orflags)
-:::
+
+</nav>
+
 ## owner()
 `owner(<object>[/<attribute>][, <new owner>[, preserve]])`
 
@@ -4147,11 +5023,15 @@ think objevals(me,v(DATA`TEXT))
   Given a `<new owner>`, owner() changes the owner as @chown does, or as @atrchown does for an object/attribute pair, and returns 1 if it changed and 0 if it did not. `preserve` is @chown/preserve. Changing ownership needs function side effects and permission to use @chown.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LOCKOWNER()](/reference/sharpmush-help/sharpfunc/#lockowner)
 - [@chown](/reference/sharpmush-help/sharpcmd/#chown)
 - [@atrchown](/reference/sharpmush-help/sharpcmd/#atrchown)
-:::
+
+</nav>
+
 
 ## pack()
 `pack(<number>[, <radix>[, <baseconv digits>]])`
@@ -4181,10 +5061,14 @@ think pack(-629126998)
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [UNPACK()](/reference/sharpmush-help/sharpfunc/#unpack)
 - [BASECONV()](/reference/sharpmush-help/sharpfunc/#baseconv)
-:::
+
+</nav>
+
 
 ## parent()
 `parent(<object>[, <new parent>])`
@@ -4192,12 +5076,16 @@ think pack(-629126998)
   This function returns the dbref number of an object's parent. You must be able to examine the object to do this. If you specify a second argument, parent() attempts to change the parent first. You must control `<object>`, and be allowed to @parent to `<new parent>`.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@parent](/reference/sharpmush-help/sharpcmd/#parent)
 - [ANCESTORS](/reference/sharpmush-help/sharptop/#ancestors)
 - [pfun()](/reference/sharpmush-help/pfun-function/#pfun)
 - [LPARENT()](/reference/sharpmush-help/sharpfunc/#lparent)
-:::
+
+</nav>
+
 ## pemit()
 `pemit(<object list|port numbers>, <message>)`<br>
 `nspemit(<object list|port numbers>, <message>)`<br>
@@ -4211,11 +5099,15 @@ think pack(-629126998)
   prompt() adds a telnet GOAHEAD to the end of the message, as per the @prompt command. nsprompt() that works like @nsprompt.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@prompt](/reference/sharpmush-help/sharpcmd/#prompt)
 - [@nspemit](/reference/sharpmush-help/sharpcmd/#nspemit)
-- [PROMPT_NEWLINES](/reference/sharpmush-help/sharpcmd/#promptnewlines)
-:::
+- [PROMPT_NEWLINES](/reference/sharpmush-help/sharpcmd/#prompt_newlines)
+
+</nav>
+
 ## permission()
 `permission(<object>, <permission>)`
 
@@ -4228,11 +5120,15 @@ think permission(me, wiki.delete)
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [HASROLE()](/reference/sharpmush-help/sharpfunc/#hasrole)
 - [roles](/reference/sharpmush-help/roles/#roles)
 - [@role](/reference/sharpmush-help/role-command/#role)
-:::
+
+</nav>
+
 ## pi()
 `pi()`
 
@@ -4258,11 +5154,15 @@ think pidinfo(lpids(me,semaphore),queue object command,|)
   Output: `semaphore|<your dbref>|think Done`.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@ps](/reference/sharpmush-help/ps-command/#ps)
 - [LPIDS()](/reference/sharpmush-help/sharpfunc/#lpids)
 - [GETPIDS()](/reference/sharpmush-help/sharpfunc/#getpids)
-:::
+
+</nav>
+
 ## playermem()
 `playermem(<player>)`
 
@@ -4271,18 +5171,26 @@ think pidinfo(lpids(me,semaphore),queue object command,|)
   **Not implemented.** SharpMUSH always answers 0, whatever player it is asked about.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [OBJMEM()](/reference/sharpmush-help/sharpfunc/#objmem)
-:::
+
+</nav>
+
 ## player()
 `player(<port>)`
 
   Returns the dbref of the player connected to a given port. Mortals can only use this function on their own ports, while See_All players can use it on any port.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LPORTS()](/reference/sharpmush-help/sharpfunc/#lports)
-:::
+
+</nav>
+
 ## pmatch()
 `pmatch(<name>)`
 
@@ -4291,11 +5199,15 @@ think pidinfo(lpids(me,semaphore),queue object command,|)
   pmatch() does not check for the string "me". If you wish to do that, you should use locate (for example, locate(`<player>`, `<name>`, PFym)).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [NUM()](/reference/sharpmush-help/sharpfunc/#num)
 - [NAMELIST()](/reference/sharpmush-help/sharpfunc/#namelist)
 - [locate()](/reference/sharpmush-help/locate-function/#locate)
-:::
+
+</nav>
+
 ## motd()
 `motd()`<br>
 `wizmotd()`<br>
@@ -4309,22 +5221,30 @@ think pidinfo(lpids(me,semaphore),queue object command,|)
   These are SharpMUSH functions; PennMUSH exposes the same text only through [@motd](/reference/sharpmush-help/motd-command/#motd).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@motd](/reference/sharpmush-help/motd-command/#motd)
 - [POLL()](/reference/sharpmush-help/sharpfunc/#poll)
 - [@poll](/reference/sharpmush-help/sharpcmd/#poll)
-:::
+
+</nav>
+
 ## poll()
 `poll()`
 
   This function returns the current @poll.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@poll](/reference/sharpmush-help/sharpcmd/#poll)
 - [DOING()](/reference/sharpmush-help/sharpfunc/#doing)
 - [@doing](/reference/sharpmush-help/sharpcmd/#doing)
-:::
+
+</nav>
+
 ## lpids()
 `lpids([<object>[, <queue types>]])`
 
@@ -4337,11 +5257,15 @@ think pidinfo(lpids(me,semaphore),queue object command,|)
   If not specified, it defaults to "wait semaphore". Wait queue pids come first, soonest first, then semaphore pids. Any other word returns #-1 INVALID ARGUMENT.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@ps](/reference/sharpmush-help/ps-command/#ps)
 - [GETPIDS()](/reference/sharpmush-help/sharpfunc/#getpids)
 - [PIDINFO()](/reference/sharpmush-help/sharpfunc/#pidinfo)
-:::
+
+</nav>
+
 ## lports()
 `lports([<viewer>[, <status>]])`<br>
 `ports(<player name>)`
@@ -4355,34 +5279,46 @@ think pidinfo(lpids(me,semaphore),queue object command,|)
   These port numbers also appear in the wizard WHO, and can be used with @boot/port, page/port, and the functions that return information about a connection to make them use a specific connection rather than the least-idle one when a player has multiple connections open. Players can get information about their own connections. See_all is needed to use them to get information about other people's ports.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LWHO()](/reference/sharpmush-help/sharpfunc/#lwho)
 - [PLAYER()](/reference/sharpmush-help/sharpfunc/#player)
 - [Connection functions](/reference/sharpmush-help/sharpfunc/#connection-functions)
-:::
+
+</nav>
+
 ## pos()
 `pos(<needle>, <haystack>)`
 
   This function returns the position that `<needle>` begins in `<haystack>`. Unlike most other string functions, the first character of `<haystack>` is numbered 1, not 0. If `<needle>` is not present in `<haystack>`, pos() returns #-1.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MEMBER()](/reference/sharpmush-help/sharpfunc/#member)
 - [element()](/reference/sharpmush-help/element-function/#element)
 - [LPOS()](/reference/sharpmush-help/sharpfunc/#lpos)
 - [WORDPOS()](/reference/sharpmush-help/sharpfunc/#wordpos)
-:::
+
+</nav>
+
 ## poss()
 `poss(<object>)`
 
   Returns the possessive pronoun - his/her/its - for an object. The %p substitution also returns the possessive pronoun of the enactor.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SUBJ()](/reference/sharpmush-help/sharpfunc/#subj)
 - [OBJ()](/reference/sharpmush-help/sharpfunc/#obj)
 - [APOSS()](/reference/sharpmush-help/sharpfunc/#aposs)
-:::
+
+</nav>
+
 ## power()
 `power(<number>, <exponent>)`
 
@@ -4391,9 +5327,13 @@ think pidinfo(lpids(me,semaphore),queue object command,|)
   (For the functional version of @power, see [POWERS()](/reference/sharpmush-help/sharpfunc/#powers).)
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ROOT()](/reference/sharpmush-help/sharpfunc/#root)
-:::
+
+</nav>
+
 ## powers()
 `powers()`<br>
 `powers(<object>)`<br>
@@ -4404,11 +5344,15 @@ think pidinfo(lpids(me,semaphore),queue object command,|)
   With two arguments, it attempts to set `<power>` on `<object>`, as per @power `<object>`=`<power>`.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ANDLPOWERS()](/reference/sharpmush-help/sharpfunc/#andlpowers)
 - [ORLPOWERS()](/reference/sharpmush-help/sharpfunc/#orlpowers)
 - [@power](/reference/sharpmush-help/power-command/#power)
-:::
+
+</nav>
+
 ## quota()
 `quota(<player>)`
 
@@ -4417,12 +5361,16 @@ think pidinfo(lpids(me,semaphore),queue object command,|)
   You must control `<player>` or have the See_All or Quotas @powers to use this function.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@quota](/reference/sharpmush-help/quota-command/#quota)
 - [@quota administrative quota changes](/reference/sharpmush-help/quota-command/#administrative-quota-changes)
 - [QUOTAS](/reference/sharpmush-help/sharptop/#quotas)
 - [@power](/reference/sharpmush-help/power-command/#power)
-:::
+
+</nav>
+
 ## r()
 `r(<register>[, <type>])`
 
@@ -4439,7 +5387,9 @@ think pidinfo(lpids(me,semaphore),queue object command,|)
   qregisters can also be accessed via the %qX (for one-char register names) or `%q<X>` (for registers with longer names) substitutions.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [setq()](/reference/sharpmush-help/setq-function/#setq)
 - [LETQ()](/reference/sharpmush-help/sharpfunc/#letq)
 - [LISTQ()](/reference/sharpmush-help/sharpfunc/#listq)
@@ -4447,7 +5397,9 @@ think pidinfo(lpids(me,semaphore),queue object command,|)
 - [V()](/reference/sharpmush-help/sharpfunc/#v)
 - [ilev()](/reference/sharpmush-help/ilev-function/#ilev)
 - [STEXT()](/reference/sharpmush-help/sharpfunc/#stext)
-:::
+
+</nav>
+
 ## rand()
 `rand()`<br>
 `rand(<num>)`<br>
@@ -4465,9 +5417,13 @@ think pidinfo(lpids(me,semaphore),queue object command,|)
   beginning with #-1.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [RANDWORD()](/reference/sharpmush-help/sharpfunc/#randword)
-:::
+
+</nav>
+
 ## randword()
 `randword(<list>[, <delimiter>])`
 
@@ -4476,10 +5432,14 @@ think pidinfo(lpids(me,semaphore),queue object command,|)
   pickrand() is an alias for randword().
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [RAND()](/reference/sharpmush-help/sharpfunc/#rand)
 - [RANDEXTRACT()](/reference/sharpmush-help/sharpfunc/#randextract)
-:::
+
+</nav>
+
 ## randextract()
 `randextract(<list>[, <count>[, <delim>[, <type>[, <osep>]]]])`
 
@@ -4503,10 +5463,14 @@ You say, "this test is this is is"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [RAND()](/reference/sharpmush-help/sharpfunc/#rand)
 - [RANDWORD()](/reference/sharpmush-help/sharpfunc/#randword)
-:::
+
+</nav>
+
 ## regedit()
 `regedit(<string>, <regexp>, <replace>[, ... , <regexpN>, <replaceN>])`<br>
 `regediti(<string>, <regexp>, <replace>[, ... , <regexpN>, <replaceN>])`<br>
@@ -4528,12 +5492,16 @@ You say, "this Trash is the Brash string"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [EDIT()](/reference/sharpmush-help/sharpfunc/#edit)
 - [@edit](/reference/sharpmush-help/edit-command/#edit)
 - [regmatch()](/reference/sharpmush-help/regmatch-function/#regmatch)
 - [GRAB()](/reference/sharpmush-help/sharpfunc/#grab)
-:::
+
+</nav>
+
 ## regreplace()
 `regreplace(<string>, <regexp>, <replacement>[, <flags>])`
 
@@ -4546,11 +5514,15 @@ You say, "this Trash is the Brash string"
   This is a SharpMUSH function. PennMUSH spells the same idea [REGEDIT()](/reference/sharpmush-help/sharpfunc/#regedit), which takes alternating pattern/replacement pairs instead of a flags argument and uses `$1` / `$<name>` softcode capture substitutions.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [REGEDIT()](/reference/sharpmush-help/sharpfunc/#regedit)
 - [regmatch()](/reference/sharpmush-help/regmatch-function/#regmatch)
 - [regexp syntax](/reference/sharpmush-help/regexp-syntax/#regular-expression-syntax)
-:::
+
+</nav>
+
 ## remit()
 `remit(<object list>, <message>)`<br>
 `nsremit(<object list>, <message>)`
@@ -4560,11 +5532,15 @@ You say, "this Trash is the Brash string"
   nsremit() works like @nsremit/list.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@remit](/reference/sharpmush-help/sharpcmd/#remit)
 - [PEMIT()](/reference/sharpmush-help/sharpfunc/#pemit)
 - [NSLEMIT()](/reference/sharpmush-help/sharpfunc/#nslemit)
-:::
+
+</nav>
+
 ## remove()
 `remove(<list>, <words>[, <delimiter>[, <osep>]])`
 
@@ -4581,11 +5557,15 @@ a-c
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [INSERT()](/reference/sharpmush-help/sharpfunc/#insert)
 - [LDELETE()](/reference/sharpmush-help/sharpfunc/#ldelete)
 - [SETDIFF()](/reference/sharpmush-help/sharpfunc/#setdiff)
-:::
+
+</nav>
+
 ## render()
 `render(<string>, <formats>)`
 
@@ -4604,14 +5584,18 @@ You say, "&lt;Test 1&gt; &amp; <u>Test 2</u>"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [STRIPACCENTS()](/reference/sharpmush-help/sharpfunc/#stripaccents)
 - [STRIPANSI()](/reference/sharpmush-help/sharpfunc/#stripansi)
 - [pueblo](/reference/sharpmush-help/pueblo/#pueblo)
 - [@sql](/reference/sharpmush-help/sql-command/#sql)
 - [TAGWRAP()](/reference/sharpmush-help/tagwrap-function/#tagwrap)
 - [json()](/reference/sharpmush-help/json-function/#json)
-:::
+
+</nav>
+
 ## repeat()
 `repeat(<string>, <number>)`
 
@@ -4624,9 +5608,13 @@ You say, "TestTestTestTestTest"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SPACE()](/reference/sharpmush-help/sharpfunc/#space)
-:::
+
+</nav>
+
 ## lreplace()
 `lreplace(<list>, <position(s)>, <new item>[, <delimiter>[, <osep>]])`
 
@@ -4652,13 +5640,17 @@ You say, "Turn south at the junction"
   replace() is an alias for lreplace(), for backwards compatability.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LDELETE()](/reference/sharpmush-help/sharpfunc/#ldelete)
 - [INSERT()](/reference/sharpmush-help/sharpfunc/#insert)
 - [SETDIFF()](/reference/sharpmush-help/sharpfunc/#setdiff)
 - [SPLICE()](/reference/sharpmush-help/sharpfunc/#splice)
 - [STRREPLACE()](/reference/sharpmush-help/sharpfunc/#strreplace)
-:::
+
+</nav>
+
 ## lrooms()
 `lrooms(<room>[, <depth>[, <all>[, <objid>]]])`
 
@@ -4674,21 +5666,29 @@ think lrooms(here)
 #123
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LEXITS()](/reference/sharpmush-help/sharpfunc/#lexits)
 - [EXITMAP()](/reference/sharpmush-help/exitmap-function/#exitmap)
-:::
+
+</nav>
+
 ## rest()
 `rest(<list>[, <delimiter>])`
 
   Returns a list minus its first element.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [AFTER()](/reference/sharpmush-help/sharpfunc/#after)
 - [FIRST()](/reference/sharpmush-help/sharpfunc/#first)
 - [LAST()](/reference/sharpmush-help/sharpfunc/#last)
-:::
+
+</nav>
+
 ## revwords()
 `revwords(<list>[, <delimiter>[, <output separator>]])`
 
@@ -4701,19 +5701,27 @@ You say, "eep baz bar foo"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [FLIP()](/reference/sharpmush-help/sharpfunc/#flip)
-:::
+
+</nav>
+
 ## right()
 `right(<string>, <length>)`
 
   Returns the `<length>` rightmost characters from `<string>`.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LEFT()](/reference/sharpmush-help/sharpfunc/#left)
 - [MID()](/reference/sharpmush-help/sharpfunc/#mid)
-:::
+
+</nav>
+
 ## rjust()
 `rjust(<string>, <length>[, <fill>[, <truncate?>]])`
 
@@ -4739,12 +5747,16 @@ You say, "-   foo-"
     You say, " too long"
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [align()](/reference/sharpmush-help/align/#align)
 - [CENTER()](/reference/sharpmush-help/center-function/#center)
 - [LJUST()](/reference/sharpmush-help/sharpfunc/#ljust)
 - [RIGHT()](/reference/sharpmush-help/sharpfunc/#right)
-:::
+
+</nav>
+
 ## rloc()
 `rloc(<object>, <levels>)`
 
@@ -4753,13 +5765,17 @@ You say, "-   foo-"
   If rloc() encounters a room, the dbref of that room is returned. If rloc() encounters an exit, the dbref of that exit's source room is returned. You must control `<object>`, be near it, or it must be a findable player.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LOC()](/reference/sharpmush-help/sharpfunc/#loc)
 - [WHERE()](/reference/sharpmush-help/sharpfunc/#where)
 - [ROOM()](/reference/sharpmush-help/sharpfunc/#room)
 - [RNUM()](/reference/sharpmush-help/sharpfunc/#rnum)
 - [locate()](/reference/sharpmush-help/locate-function/#locate)
-:::
+
+</nav>
+
 ## rnum()
 `rnum(<container>, <object>)`
 
@@ -4770,12 +5786,16 @@ You say, "-   foo-"
   This function is deprecated; locate(`<container>`, `<object>`, i) should be used instead.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [locate()](/reference/sharpmush-help/locate-function/#locate)
 - [NUM()](/reference/sharpmush-help/sharpfunc/#num)
 - [RLOC()](/reference/sharpmush-help/sharpfunc/#rloc)
 - [ROOM()](/reference/sharpmush-help/sharpfunc/#room)
-:::
+
+</nav>
+
 ## roles()
 `roles(<object>[, <category>])`
 
@@ -4792,11 +5812,15 @@ moderator
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [HASROLE()](/reference/sharpmush-help/sharpfunc/#hasrole)
 - [PERMISSION()](/reference/sharpmush-help/sharpfunc/#permission)
 - [@role](/reference/sharpmush-help/role-command/#role)
-:::
+
+</nav>
+
 ## roman()
 `roman(<number>)`
 
@@ -4817,12 +5841,16 @@ dcclxxvMMDCCLXXVII
   Returns the "absolute" location of an object. This is always a room; it is the container of all other containers of the object. The "absolute" location of an object is the place @lemit messages are sent to and NO_TEL status determined. You must control the object, be See_All, or be near the object in order for this function to work. The exception to this are players; if `<object>` is a player, the ROOM() function may be used to find the player's absolute location if the player is not set UNFINDABLE.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LOC()](/reference/sharpmush-help/sharpfunc/#loc)
 - [RLOC()](/reference/sharpmush-help/sharpfunc/#rloc)
 - [RNUM()](/reference/sharpmush-help/sharpfunc/#rnum)
 - [WHERE()](/reference/sharpmush-help/sharpfunc/#where)
-:::
+
+</nav>
+
 ## root()
 `root(<number>, <n>)`
 
@@ -4837,10 +5865,14 @@ think power(3, 3)
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SQRT()](/reference/sharpmush-help/sharpfunc/#sqrt)
 - [POWER()](/reference/sharpmush-help/sharpfunc/#power)
-:::
+
+</nav>
+
 ## round()
 `round(<number>, <places>[, <pad>])`<br>
 `floor(<number>)`<br>
@@ -4863,10 +5895,14 @@ think floor(3.14159)
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [BOUND()](/reference/sharpmush-help/sharpfunc/#bound)
 - [TRUNC()](/reference/sharpmush-help/sharpfunc/#trunc)
-:::
+
+</nav>
+
 ## rpad()
 `rpad(<string>, <width>[, <fill>])`
 
@@ -4880,11 +5916,15 @@ think =[rpad(bar,5,.)]=
 =..bar=
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [RJUST()](/reference/sharpmush-help/sharpfunc/#rjust)
 - [LPAD()](/reference/sharpmush-help/sharpfunc/#lpad)
 - [CPAD()](/reference/sharpmush-help/sharpfunc/#cpad)
-:::
+
+</nav>
+
 ## s()
 `s(<string>)`
 
@@ -4898,10 +5938,14 @@ You say, "When we eval [ucstr(test)], we get TEST"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [OBJEVAL()](/reference/sharpmush-help/sharpfunc/#objeval)
 - [DECOMPOSE()](/reference/sharpmush-help/sharpfunc/#decompose)
-:::
+
+</nav>
+
 ## scan()
 `scan(<looker>, <command>[, <switches>])`<br>
 `scan(<command>)`
@@ -4923,13 +5967,17 @@ You say, "When we eval [ucstr(test)], we get TEST"
   The order of searching for the "break" switch is the same as the order for normal $-command matching, as described in [evaluation order](/reference/sharpmush-help/evaluation-order/#evaluation-order).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@scan](/reference/sharpmush-help/sharpcmd/#scan)
 - [@sweep](/reference/sharpmush-help/sharpcmd/#sweep)
 - [MASTER ROOM](/reference/sharpmush-help/sharptop/#master-room)
 - [evaluation order](/reference/sharpmush-help/evaluation-order/#evaluation-order)
-- [$-commands]
-:::
+- [$-commands](/reference/sharpmush-help/commands/#-commands)
+
+</nav>
+
 ## scramble()
 `scramble(<string>)`
 
@@ -4942,9 +5990,13 @@ You say, "cfaedb"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SHUFFLE()](/reference/sharpmush-help/sharpfunc/#shuffle)
-:::
+
+</nav>
+
 ## secs()
 `secs([<precision>])`<br>
 `secs(<zone>[, <digits>])`
@@ -4962,10 +6014,14 @@ think secs(utc, 3)
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [CONVSECS()](/reference/sharpmush-help/sharpfunc/#convsecs)
 - [time()](/reference/sharpmush-help/time-function/#time)
-:::
+
+</nav>
+
 ## secure()
 `secure(<string>)`
 
@@ -4976,11 +6032,15 @@ think secs(utc, 3)
   Marked list separators in `<string>` lose their mark, as with unmark(): see [list separators](/reference/sharpmush-help/list-separators/#list-separators).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [DECOMPOSE()](/reference/sharpmush-help/sharpfunc/#decompose)
 - [ESCAPE()](/reference/sharpmush-help/sharpfunc/#escape)
 - [UNMARK()](/reference/sharpmush-help/sharpfunc/#unmark)
-:::
+
+</nav>
+
 ## set()
 `set(<object>[/<attribute pattern>], <flag>)`<br>
 `set(<object>, <attribute>:<value>)`
@@ -4990,11 +6050,15 @@ think secs(utc, 3)
   The attribute-setting ability of set() is deprecated. You should use attrib_set() instead; it's easier to read, and allows you to clear attributes, too.
 
 
-::: seealso
-- [ATTRIB_SET()](/reference/sharpmush-help/sharpfunc/#attribset)
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [ATTRIB_SET()](/reference/sharpmush-help/sharpfunc/#attrib_set)
 - [@set](/reference/sharpmush-help/set-command/#set)
 - [WIPE()](/reference/sharpmush-help/sharpfunc/#wipe)
-:::
+
+</nav>
+
 ## setdiff()
 `setdiff(<list1>, <list2>[, <delimiter>[, <sort type>[, <osep>]]])`
 
@@ -5007,11 +6071,15 @@ You say, "baz foo"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SETINTER()](/reference/sharpmush-help/sharpfunc/#setinter)
 - [SETSYMDIFF()](/reference/sharpmush-help/sharpfunc/#setsymdiff)
 - [SETUNION()](/reference/sharpmush-help/sharpfunc/#setunion)
-:::
+
+</nav>
+
 ## setsymdiff()
 `setsymdiff(<list1>, <list2>[, <delimiter>[, <sort type>[, <osep>]]])`
 
@@ -5024,11 +6092,15 @@ You say, "baz foo moof"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SETDIFF()](/reference/sharpmush-help/sharpfunc/#setdiff)
 - [SETINTER()](/reference/sharpmush-help/sharpfunc/#setinter)
 - [SETUNION()](/reference/sharpmush-help/sharpfunc/#setunion)
-:::
+
+</nav>
+
 ## setinter()
 `setinter(<list1>, <list2>[, <delimiter>[, <sort type>[, <osep>]]])`
 
@@ -5041,11 +6113,15 @@ You say, "bar gleep"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SETDIFF()](/reference/sharpmush-help/sharpfunc/#setdiff)
 - [SETSYMDIFF()](/reference/sharpmush-help/sharpfunc/#setsymdiff)
 - [SETUNION()](/reference/sharpmush-help/sharpfunc/#setunion)
-:::
+
+</nav>
+
 ## listq()
 `listq([<pattern>])`<br>
 `unsetq([<pattern1> [<pattern2> [...]]])`
@@ -5071,14 +6147,18 @@ LOC
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [setq()](/reference/sharpmush-help/setq-function/#setq)
 - [LETQ()](/reference/sharpmush-help/sharpfunc/#letq)
 - [R()](/reference/sharpmush-help/sharpfunc/#r)
 - [LOCALIZE()](/reference/sharpmush-help/sharpfunc/#localize)
 - [REGISTERS()](/reference/sharpmush-help/sharpfunc/#registers)
 - [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)
-:::
+
+</nav>
+
 ## registers()
 `registers([<pattern>[, <types>[, <osep>]]])`
 
@@ -5095,7 +6175,9 @@ LOC
   The list returned may contain duplicates (for instance, if %0 and %q0 both have a value, the list will include "0" twice), and is not sorted in any particular order.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LISTQ()](/reference/sharpmush-help/sharpfunc/#listq)
 - [setq()](/reference/sharpmush-help/setq-function/#setq)
 - [LETQ()](/reference/sharpmush-help/sharpfunc/#letq)
@@ -5103,7 +6185,9 @@ LOC
 - [V()](/reference/sharpmush-help/sharpfunc/#v)
 - [STEXT()](/reference/sharpmush-help/sharpfunc/#stext)
 - [ilev()](/reference/sharpmush-help/ilev-function/#ilev)
-:::
+
+</nav>
+
 ## setunion()
 `setunion(<list1>, <list2>[, <delimiter>[, <sort type>[, <osep>]]])`
 
@@ -5127,38 +6211,54 @@ You say, "bar baz foo gleep moof"
     You say, "1.0 1.1"
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SETDIFF()](/reference/sharpmush-help/sharpfunc/#setdiff)
 - [SETINTER()](/reference/sharpmush-help/sharpfunc/#setinter)
 - [SETSYMDIFF()](/reference/sharpmush-help/sharpfunc/#setsymdiff)
-:::
+
+</nav>
+
 ## sha0()
 `sha0(<string>)`
 
   Returns the SHA-0 cryptographic hash of the string. See RFC 3174 for more information. Deprecated; use digest() and higher strength algorithms instead. SharpMUSH does not provide SHA-0, so this always returns #-1 NOT SUPPORTED.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [digest()](/reference/sharpmush-help/sharpfunc/#digest)
-:::
+
+</nav>
+
 ## shl()
 `shl(<number>, <count>)`
 
   Performs a leftwards bit-shift on `<number>`, shifting it `<count>` times. This is equivalent to mul(`<number>`, power(2, `<count>`), but much faster.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SHR()](/reference/sharpmush-help/sharpfunc/#shr)
-:::
+
+</nav>
+
 ## shr()
 `shr(<number>, <count>)`
 
   Performs a rightwards bit-shift on `<number>`, shifting it `<count>` times. This is equivalent to div(`<number>`, power(2, `<count>`), but much faster.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SHL()](/reference/sharpmush-help/sharpfunc/#shl)
-:::
+
+</nav>
+
 ## shuffle()
 `shuffle(<list>[, <delimiter>[, <osep>]])`
 
@@ -5173,10 +6273,14 @@ You say, "baz foo gleep bar"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SCRAMBLE()](/reference/sharpmush-help/sharpfunc/#scramble)
 - [RANDWORD()](/reference/sharpmush-help/sharpfunc/#randword)
-:::
+
+</nav>
+
 ## sign()
 `sign(<number>)`
 
@@ -5195,10 +6299,14 @@ You say, "-1"
     You say, "0"
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ABS()](/reference/sharpmush-help/sharpfunc/#abs)
 - [BOUND()](/reference/sharpmush-help/sharpfunc/#bound)
-:::
+
+</nav>
+
 ## sin()
 `sin(<angle>[, <angle type>])`
 
@@ -5207,14 +6315,18 @@ You say, "-1"
   See [angles](/reference/sharpmush-help/sharpfunc/#angles) for more on the angle type.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ACOS()](/reference/sharpmush-help/sharpfunc/#acos)
 - [ASIN()](/reference/sharpmush-help/sharpfunc/#asin)
 - [ATAN()](/reference/sharpmush-help/sharpfunc/#atan)
 - [COS()](/reference/sharpmush-help/sharpfunc/#cos)
 - [CTU()](/reference/sharpmush-help/sharpfunc/#ctu)
 - [TAN()](/reference/sharpmush-help/sharpfunc/#tan)
-:::
+
+</nav>
+
 ## sort()
 `sort(<list>[, <sort type>[, <delimiter>[, <osep>]]])`
 
@@ -5227,10 +6339,14 @@ You say, "-1"
   With the `mux_collation` @config option on, a sort with no sort type orders text as TinyMUX does, by letter first and lower case before upper case: `sort(b A a B)` is `a A b B`, where it is otherwise `A a b B`. See [compatibility config](/reference/sharpmush-help/compatibility-config/#compatibility-config).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SORTBY()](/reference/sharpmush-help/sharpfunc/#sortby)
 - [SORTKEY()](/reference/sharpmush-help/sharpfunc/#sortkey)
-:::
+
+</nav>
+
 ## sortby()
 `sortby([<obj>/]<attrib>, <list>[, <delimiter>[, <output separator>]])`
 
@@ -5249,12 +6365,16 @@ You say, "-1"
   Warning: the function invocation limit applies to this function. If this limit is exceeded, the function will fail _silently_. List and function sizes should be kept reasonable.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [anonymous attributes](/reference/sharpmush-help/anonymous-attributes/#anonymous-attributes)
 - [SORTING](/reference/sharpmush-help/sorting/#sorting)
 - [SORT()](/reference/sharpmush-help/sharpfunc/#sort)
 - [SORTKEY()](/reference/sharpmush-help/sharpfunc/#sortkey)
-:::
+
+</nav>
+
 ## sortkey()
 `sortkey([<obj>/]<attrib>, <list>[, <sort type>[, <delimiter>[, <osep>]]])`
 
@@ -5273,11 +6393,15 @@ You say, "-1"
     You say, "#2 #3 #1"
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [anonymous attributes](/reference/sharpmush-help/anonymous-attributes/#anonymous-attributes)
 - [SORTING](/reference/sharpmush-help/sorting/#sorting)
 - [SORTBY()](/reference/sharpmush-help/sharpfunc/#sortby)
-:::
+
+</nav>
+
 ## soundlike()
 `soundslike(<word>, <word>[, <hash type>])`<br>
 `soundlike(<word>, <word>[, <hash type>])`
@@ -5293,9 +6417,13 @@ think soundslike(robin,roebuck, phone)
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [soundex()](/reference/sharpmush-help/soundex-function/#soundex)
-:::
+
+</nav>
+
 ## space()
 `space(<number>)`
 
@@ -5308,9 +6436,13 @@ Amberyl says, "a     b"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [REPEAT()](/reference/sharpmush-help/sharpfunc/#repeat)
-:::
+
+</nav>
+
 ## spellnum()
 `spellnum(<number>)`
 
@@ -5323,9 +6455,13 @@ twelve thousand three hundred forty-five
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ORDINAL()](/reference/sharpmush-help/sharpfunc/#ordinal)
-:::
+
+</nav>
+
 ## ordinal()
 `ordinal(<integer>)`
 
@@ -5338,9 +6474,13 @@ first
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SPELLNUM()](/reference/sharpmush-help/sharpfunc/#spellnum)
-:::
+
+</nav>
+
 ## splice()
 `splice(<list1>, <list2>, <word>[, <delimiter>[, <osep>]])`
 
@@ -5356,9 +6496,13 @@ You say, "foo moof baz"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MERGE()](/reference/sharpmush-help/sharpfunc/#merge)
-:::
+
+</nav>
+
 ## SQL Examples
 
   Example of using sqlescape() to prevent injection attacks:<br>
@@ -5410,21 +6554,29 @@ You don\'t say
   Anyone may use this function. If SQL is not enabled, it returns #-1 SQL IS NOT ENABLED.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SQL()](/reference/sharpmush-help/sql-function/#sql)
 - [MAPSQL()](/reference/sharpmush-help/mapsql-function/#mapsql)
 - [@sql](/reference/sharpmush-help/sql-command/#sql)
 - [@mapsql](/reference/sharpmush-help/mapsql-command/#mapsql)
-:::
+
+</nav>
+
 ## sqrt()
 `sqrt(<number>)`
 
   Returns the square root of `<number>`. `<number>` cannot be negative.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ROOT()](/reference/sharpmush-help/sharpfunc/#root)
-:::
+
+</nav>
+
 ## squish()
 `squish(<string>[, <character>])`
 
@@ -5440,9 +6592,13 @@ You don\'t say
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [TRIM()](/reference/sharpmush-help/trim-function/#trim)
-:::
+
+</nav>
+
 ## starttime()
 `starttime()`<br>
 `restarttime()`<br>
@@ -5462,28 +6618,40 @@ Tue Sep 22 13:54:04 2015"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [CONVTIME()](/reference/sharpmush-help/convtime-function/#convtime)
 - [RESTARTS()](/reference/sharpmush-help/sharpfunc/#restarts)
-:::
+
+</nav>
+
 ## restarts()
 `restarts()`
 
   Returns the number of times the server has been rebooted with @shutdown/reboot since the last full startup.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [STARTTIME()](/reference/sharpmush-help/sharpfunc/#starttime)
-:::
+
+</nav>
+
 ## ssl()
 `ssl(<player|descriptor>)`
 
   This function returns 1 if the player is using an SSL connection, and 0 otherwise. If SSL connections are disabled, it always returns 0. You must be See_All to use this function on another player.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [TERMINFO()](/reference/sharpmush-help/terminfo-function/#terminfo)
-:::
+
+</nav>
+
 ## step()
 `step([<obj>/]<attr>, <list>, <step>[, <delim>[, <osep>]])`
 
@@ -5504,14 +6672,18 @@ d - e -
     d - e
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [STEPARGS()](/reference/sharpmush-help/sharpfunc/#stepargs)
 - [MAP()](/reference/sharpmush-help/map-function/#map)
 - [iter()](/reference/sharpmush-help/iter-function/#iter)
 - [fold()](/reference/sharpmush-help/fold-function/#fold)
 - [anonymous attributes](/reference/sharpmush-help/anonymous-attributes/#anonymous-attributes)
 - [REGISTERS()](/reference/sharpmush-help/sharpfunc/#registers)
-:::
+
+</nav>
+
 ## stepargs()
 `stepargs([<obj>/]<attr>, <list>, <names>[, <delim>[, <osep>]])`
 
@@ -5524,22 +6696,30 @@ think stepargs(ROW, Bob 3 Alice 1, name count,, %r)
 ```
 Output: `Bob has 3 posts.` and `Alice has 1 post.`, one per line.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [STEP()](/reference/sharpmush-help/sharpfunc/#step)
 - [UARGS()](/reference/sharpmush-help/uargs-function/#uargs)
 - [substitutions](/reference/sharpmush-help/substitutions/#substitutions)
-:::
+
+</nav>
+
 ## stddev()
 `stddev(<number1>[, ... , <numberN>])`
 
   Returns the sample standard deviation of its arguments.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [AVG()](/reference/sharpmush-help/sharpfunc/#avg)
 - [MEDIAN()](/reference/sharpmush-help/sharpfunc/#median)
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
-:::
+
+</nav>
+
 ## strfirstof()
 `strfirstof(<expr>[, ... , <exprN>], <default>)`<br>
 `strallof(<expr>[, ... , <exprN>], <osep>)`<br>
@@ -5563,14 +6743,18 @@ You say, "foo"
     You say, "foo| |bar|baz|#-1"
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ALLOF()](/reference/sharpmush-help/sharpfunc/#allof)
 - [FIRSTOF()](/reference/sharpmush-help/sharpfunc/#firstof)
 - [FIRST()](/reference/sharpmush-help/sharpfunc/#first)
 - [STRLEN()](/reference/sharpmush-help/sharpfunc/#strlen)
 - [CAT()](/reference/sharpmush-help/sharpfunc/#cat)
 - [DEFAULT()](/reference/sharpmush-help/sharpfunc/#default)
-:::
+
+</nav>
+
 ## strinsert()
 `strinsert(<string>, <position>, <insert>)`
 
@@ -5587,11 +6771,15 @@ My name
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [STRDELETE()](/reference/sharpmush-help/sharpfunc/#strdelete)
 - [INSERT()](/reference/sharpmush-help/sharpfunc/#insert)
 - [STRREPLACE()](/reference/sharpmush-help/sharpfunc/#strreplace)
-:::
+
+</nav>
+
 ## strip()
 `strip(<string>[, <characters>[, <keep>]])`
 
@@ -5607,11 +6795,15 @@ think strip(This is a test,is,1)
 isiss
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [STRIPANSI()](/reference/sharpmush-help/sharpfunc/#stripansi)
 - [EDIT()](/reference/sharpmush-help/sharpfunc/#edit)
 - [TR()](/reference/sharpmush-help/sharpfunc/#tr)
-:::
+
+</nav>
+
 ## stripaccents()
 `stripaccents(<string>[, <smart>])`
 
@@ -5620,25 +6812,33 @@ isiss
  If the second argument is true, it does more a intelligent conversion that might result in one character being turned into several. When it's false, or not given, one character in the input string corresponds to one character in the result.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [accent()](/reference/sharpmush-help/accent-function/#accent)
 - [@nameaccent](/reference/sharpmush-help/sharpcmd/#nameaccent)
 - [ACCNAME()](/reference/sharpmush-help/sharpfunc/#accname)
 - [STRIPANSI()](/reference/sharpmush-help/sharpfunc/#stripansi)
 - [RENDER()](/reference/sharpmush-help/sharpfunc/#render)
-:::
+
+</nav>
+
 ## stripansi()
 `stripansi(<string>)`
 
   Returns the string with all ansi and HTML codes removed. Marked list separators stay marked: see [list separators](/reference/sharpmush-help/list-separators/#list-separators).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [STRIPACCENTS()](/reference/sharpmush-help/sharpfunc/#stripaccents)
 - [ansi()](/reference/sharpmush-help/ansi-function/#ansi)
 - [TAG()](/reference/sharpmush-help/sharppueb/#tag)
 - [RENDER()](/reference/sharpmush-help/sharpfunc/#render)
-:::
+
+</nav>
+
 
 ## displaywidth()
 `displaywidth(<string>)`
@@ -5649,11 +6849,15 @@ isiss
 
   Examples: `displaywidth(chr(30028))` returns `2`; `graphemecount(chr(30028))` returns `1`. `chr(30028)` is a wide CJK character.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [STRLEN()](/reference/sharpmush-help/sharpfunc/#strlen)
 - [GRAPHEMECOUNT()](/reference/sharpmush-help/sharpfunc/#graphemecount)
 - [GRAPHEMES()](/reference/sharpmush-help/sharpfunc/#graphemes)
-:::
+
+</nav>
+
 
 ## graphemecount()
 `graphemecount(<string>)`
@@ -5662,10 +6866,14 @@ isiss
 
   Examples: `graphemecount(e[chr(769)])` returns `1`, an e and its combining accent; `graphemecount([chr(128105)][chr(8205)][chr(128105)][chr(8205)][chr(128103)][chr(8205)][chr(128102)])` returns `1`, a family emoji built from four emoji and three zero-width joiners.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [DISPLAYWIDTH()](/reference/sharpmush-help/sharpfunc/#displaywidth)
 - [GRAPHEMES()](/reference/sharpmush-help/sharpfunc/#graphemes)
-:::
+
+</nav>
+
 
 ## graphemes()
 `graphemes(<string>[, <output-separator>])`
@@ -5676,11 +6884,15 @@ isiss
 
   All three Unicode functions take normally evaluated arguments and use the usual function invocation and recursion limits. The evaluator permits at most 5,242,880 UTF-16 code units per function result. GRAPHEMES checks the expanded length before constructing its output and returns `#-1 OUTPUT EXCEEDED MAXIMUM SIZE` if it would exceed that ceiling. Cluster length itself has no separate fixed limit. Text is not normalized; malformed UTF-16 is retained under the library's segmentation policy.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [DISPLAYWIDTH()](/reference/sharpmush-help/sharpfunc/#displaywidth)
 - [GRAPHEMECOUNT()](/reference/sharpmush-help/sharpfunc/#graphemecount)
 - [FLIP()](/reference/sharpmush-help/sharpfunc/#flip)
-:::
+
+</nav>
+
 
 ## strlen()
 `strlen(<string>[, <count controls>])`
@@ -5700,10 +6912,14 @@ You say, "2"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [WORDS()](/reference/sharpmush-help/sharpfunc/#words)
 - [STRFIRSTOF()](/reference/sharpmush-help/sharpfunc/#strfirstof)
-:::
+
+</nav>
+
 ## strmatch()
 `strmatch(<string>, <pattern>[, <register list>])`
 
@@ -5730,13 +6946,17 @@ You say, "1"
     You say, "1/foo/bar/baz"
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [COMP()](/reference/sharpmush-help/sharpfunc/#comp)
 - [element()](/reference/sharpmush-help/element-function/#element)
 - [setq()](/reference/sharpmush-help/setq-function/#setq)
 - [R()](/reference/sharpmush-help/sharpfunc/#r)
 - [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)
-:::
+
+</nav>
+
 ## strmem()
 `strmem(<string>)`
 
@@ -5750,9 +6970,13 @@ think strmem(chr(233))
 2
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [STRLEN()](/reference/sharpmush-help/sharpfunc/#strlen)
-:::
+
+</nav>
+
 ## strreplace()
 `strreplace(<string>, <start>, <length>, <text>)`
 
@@ -5772,35 +6996,47 @@ You say, "abcdefgh"
     Fix the typo
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [STRDELETE()](/reference/sharpmush-help/sharpfunc/#strdelete)
 - [STRINSERT()](/reference/sharpmush-help/sharpfunc/#strinsert)
 - [LDELETE()](/reference/sharpmush-help/sharpfunc/#ldelete)
 - [LREPLACE()](/reference/sharpmush-help/sharpfunc/#lreplace)
-:::
+
+</nav>
+
 ## sub()
 `sub(<number1>, <number>[, ... , <number>])`
 
   sub() subtracts `<number>` from `<number1>`. If more than one `<number>` argument is given, each is subtracted from the result of the previous subtraction in turn. The result of the final subtraction is returned.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ADD()](/reference/sharpmush-help/sharpfunc/#add)
 - [DEC()](/reference/sharpmush-help/sharpfunc/#dec)
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
 - [VSUB()](/reference/sharpmush-help/sharpfunc/#vsub)
-:::
+
+</nav>
+
 ## subj()
 `subj(<object>)`
 
   Returns the subjective pronoun - he/she/it - for an object. You can also use the %s substitution to get the subjective pronoun of the enactor.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [APOSS()](/reference/sharpmush-help/sharpfunc/#aposs)
 - [OBJ()](/reference/sharpmush-help/sharpfunc/#obj)
 - [POSS()](/reference/sharpmush-help/sharpfunc/#poss)
-:::
+
+</nav>
+
 ## reswitch()
 `reswitch(<str>, <re1>, <list1>[, ... , <reN>, <listN>][, <default>])`<br>
 `reswitchall(<str>, <re1>, <list1>[, ... , <reN>, <listN>][, <default>])`<br>
@@ -5816,12 +7052,16 @@ You say, "abcdefgh"
   In the `<list>` that is evaluated, or the `<default>`, "#$" stands for `<str>`, as it does in switch(). You can also use $N in `<list>` to refer to the Nth subpattern which matched in `<re>`, with $0 being the entire matching string. Use $`<name>` (the '<>' are literal) to refer to named subpatterns.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [switch()](/reference/sharpmush-help/switch-function/#switch)
 - [regmatch()](/reference/sharpmush-help/regmatch-function/#regmatch)
 - [REGEDIT()](/reference/sharpmush-help/sharpfunc/#regedit)
 - [regexp](/reference/sharpmush-help/regexp/#regular-expressions)
-:::
+
+</nav>
+
 ## Switch Wildcards
   @switch, @select, switch(), and switchall() normally do wildcard matching between their first argument and the `<expr>`ession arguments, with the normal * and ? special characters. However, if one of the `<expr>`essions starts with "`<" or ">`", a less-than or greater-than check is done instead of wildcard matching for that pair.
 
@@ -5838,9 +7078,13 @@ You say, "abcdefgh"
   If you need to have a leading `< or >` that's treated like a normal character in a wildcard match, use `\\<` or `\\>` (the \\ will turn into \ when the argument is evaluated, and then that single \ will stop the greater/less than check).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)
-:::
+
+</nav>
+
 ## stext()
 `slev()`<br>
 `stext([<n>])`<br>
@@ -5858,25 +7102,33 @@ You say, "foo bar!"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [switch()](/reference/sharpmush-help/switch-function/#switch)
 - [RESWITCH()](/reference/sharpmush-help/sharpfunc/#reswitch)
 - [@switch](/reference/sharpmush-help/switch-command/#switch)
-:::
+
+</nav>
+
 ## t()
 `t(<expression>)`
 
   Returns 1 if `<expression>` is a true boolean value, and 0 otherwise. The definitions of true and false vary depending on the value of the 'tiny_booleans' @config option. See [boolean values](/reference/sharpmush-help/boolean-values/#boolean-values) for details.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [NOT()](/reference/sharpmush-help/sharpfunc/#not)
 - [IF()](/reference/sharpmush-help/sharpfunc/#if)
 - [COND()](/reference/sharpmush-help/sharpfunc/#cond)
 - [@break](/reference/sharpmush-help/break-command/#break)
 - [OR()](/reference/sharpmush-help/sharpfunc/#or)
 - [AND()](/reference/sharpmush-help/sharpfunc/#and)
-:::
+
+</nav>
+
 ## table()
 `table(<list>[, <field width>[, <line length>[, <delimiter>[, <osep>[, <fill>]]]]])`
 
@@ -5901,39 +7153,51 @@ a          b          areallylon d
     brown     |fox
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [align()](/reference/sharpmush-help/align/#align)
-:::
+
+</nav>
+
 ## tan()
 `tan(<angle>[, <angle type>])`
 
   Returns the tangent of `<angle>`, which should be expressed in the given angle type, or radians by default. See HELP ANGLES for more information.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ACOS()](/reference/sharpmush-help/sharpfunc/#acos)
 - [ASIN()](/reference/sharpmush-help/sharpfunc/#asin)
 - [ATAN()](/reference/sharpmush-help/sharpfunc/#atan)
 - [COS()](/reference/sharpmush-help/sharpfunc/#cos)
 - [CTU()](/reference/sharpmush-help/sharpfunc/#ctu)
 - [SIN()](/reference/sharpmush-help/sharpfunc/#sin)
-:::
+
+</nav>
+
 ## tel()
 `tel(<object>, <destination>[, <silent>[, <inside>]])`
 
   This function will teleport `<object>` to `<destination>`, exactly as @teleport `<object>`=`<destination>`. `<silent>` is an optional boolean that, if true, makes the function act like @teleport/silent. `<inside>` is an optional boolean that, if true, makes the function act like @teleport/inside.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@teleport](/reference/sharpmush-help/teleport-command/#teleport)
-:::
+
+</nav>
+
 ## JSON Functions
   JSON functions are used to create and modify JSON objects.
 
 |                   |                   |                   |                   |
 |-------------------|-------------------|-------------------|-------------------|
-| [ISJSON()](/reference/sharpmush-help/sharpfunc/#isjson)        | [JSON()](/reference/sharpmush-help/json-function/#json)          | [JSON_ARRAY()](/reference/sharpmush-help/json-array-function/#jsonarray)    | [JSON_FILL()](/reference/sharpmush-help/json-fill-function/#jsonfill)     |
-| [JSON_GROUP_BY()](/reference/sharpmush-help/sharpfunc/#jsongroupby) | [JSON_MAP()](/reference/sharpmush-help/json-map-function/#jsonmap)      | [JSON_MOD()](/reference/sharpmush-help/json-mod-function/#jsonmod)      | [JSON_QUERY()](/reference/sharpmush-help/json-query-function/#jsonquery)    |
+| [ISJSON()](/reference/sharpmush-help/sharpfunc/#isjson)        | [JSON()](/reference/sharpmush-help/json-function/#json)          | [JSON_ARRAY()](/reference/sharpmush-help/json-array-function/#json_array)    | [JSON_FILL()](/reference/sharpmush-help/json-fill-function/#json_fill)     |
+| [JSON_GROUP_BY()](/reference/sharpmush-help/sharpfunc/#json_group_by) | [JSON_MAP()](/reference/sharpmush-help/json-map-function/#json_map)      | [JSON_MOD()](/reference/sharpmush-help/json-mod-function/#json_mod)      | [JSON_QUERY()](/reference/sharpmush-help/json-query-function/#json_query)    |
 | [APPFIELDS()](/reference/sharpmush-help/application-drafts/#appdraft)     |                   |                   |                   |
 
   oob() sends a JSON object to GMCP and WebSocket connections, and wsjson() embeds one in a line for WebSocket connections. gmcpsupports() says which GMCP packages a client asked for, and exitmap() builds the exits object a client's mapper reads.
@@ -5942,9 +7206,13 @@ a          b          areallylon d
 |------------------|------------------|------------------|------------------|
 | [EXITMAP()](/reference/sharpmush-help/exitmap-function/#exitmap)      | [GMCPSUPPORTS()](/reference/sharpmush-help/gmcpsupports-function/#gmcpsupports) | [OOB()](/reference/sharpmush-help/oob-function/#oob)          | [WSJSON()](/reference/sharpmush-help/wsjson-function/#wsjson)       |
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [JSON PATHS](/reference/sharpmush-help/sharpfunc/#json-paths)
-:::
+
+</nav>
+
 ## isjson()
 `isjson(<text>[, <type>])`
 
@@ -5963,9 +7231,13 @@ think isjson("quoted")
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [json()](/reference/sharpmush-help/json-function/#json)
-:::
+
+</nav>
+
 ## json_group_by()
 `json_group_by([<object>/]<attribute>, <list>[, <delimiter>])`
 
@@ -5981,14 +7253,18 @@ think isjson("quoted")
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [json()](/reference/sharpmush-help/json-function/#json)
-- [json_array()](/reference/sharpmush-help/json-array-function/#jsonarray)
-- [json_query()](/reference/sharpmush-help/json-query-function/#jsonquery)
+- [json_array()](/reference/sharpmush-help/json-array-function/#json_array)
+- [json_query()](/reference/sharpmush-help/json-query-function/#json_query)
 - [FILTER()](/reference/sharpmush-help/sharpfunc/#filter)
 - [MAP()](/reference/sharpmush-help/map-function/#map)
 - [CHAIN()](/reference/sharpmush-help/chain-function/#chain)
-:::
+
+</nav>
+
 ## JSON Paths
 
   json_mod() and the extract argument for json_query() take a path string that describes what part of a JSON object or array to act on. All paths start with a $ to indicate the base JSON value, and 0 or more specifiers in the following formats:
@@ -5997,10 +7273,14 @@ think isjson("quoted")
   `[N]`    - the Nth element of a JSON array. Note that the brackets need to be escaped.
 
 
-::: seealso
-- [json_mod()](/reference/sharpmush-help/json-mod-function/#jsonmod)
-- [json_query()](/reference/sharpmush-help/json-query-function/#jsonquery)
-:::
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [json_mod()](/reference/sharpmush-help/json-mod-function/#json_mod)
+- [json_query()](/reference/sharpmush-help/json-query-function/#json_query)
+
+</nav>
+
 ## testlock()
 `testlock(<key>, <victim>)`
 
@@ -6021,13 +7301,17 @@ think testlock(\\+FOO:BAR,*Walker)
 
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
 - [LOCK()](/reference/sharpmush-help/sharpfunc/#lock)
 - [ELOCK()](/reference/sharpmush-help/sharpfunc/#elock)
 - [LOCKFILTER()](/reference/sharpmush-help/lockfilter-function/#lockfilter)
 - [locktypes](/reference/sharpmush-help/locktypes/#lock-types)
-:::
+
+</nav>
+
 ## etime()
 `etime(<seconds>[, <width>[, <precision>]])`
 
@@ -6048,11 +7332,15 @@ think etime(61, 5)
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [etimefmt()](/reference/sharpmush-help/etimefmt-function/#etimefmt)
 - [TIMESTRING()](/reference/sharpmush-help/sharpfunc/#timestring)
 - [STRINGSECS()](/reference/sharpmush-help/sharpfunc/#stringsecs)
-:::
+
+</nav>
+
 ## timestring()
 `timestring(<seconds>[, <pad flag>[, <precision>]])`
 
@@ -6069,12 +7357,16 @@ You say, "00d 00h 05m 01s"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [STRINGSECS()](/reference/sharpmush-help/sharpfunc/#stringsecs)
 - [CONVSECS()](/reference/sharpmush-help/sharpfunc/#convsecs)
 - [ETIME()](/reference/sharpmush-help/sharpfunc/#etime)
 - [etimefmt()](/reference/sharpmush-help/etimefmt-function/#etimefmt)
-:::
+
+</nav>
+
 ## stringsecs()
 `stringsecs(<timestring>[, <precision>])`
 
@@ -6090,12 +7382,16 @@ You say, "301"
     You say, "95232300"
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [TIMESTRING()](/reference/sharpmush-help/sharpfunc/#timestring)
 - [etimefmt()](/reference/sharpmush-help/etimefmt-function/#etimefmt)
 - [CONVTIME()](/reference/sharpmush-help/convtime-function/#convtime)
 - [ETIME()](/reference/sharpmush-help/sharpfunc/#etime)
-:::
+
+</nav>
+
 ## tr()
 `tr(<string>, <find>, <replace>)`
 
@@ -6110,10 +7406,14 @@ You say, "hello"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MERGE()](/reference/sharpmush-help/sharpfunc/#merge)
 - [SPLICE()](/reference/sharpmush-help/sharpfunc/#splice)
-:::
+
+</nav>
+
 ## trigger()
 `trigger(<object>/<attribute>[, <arg0>[, ... <argN>]])`
 
@@ -6128,11 +7428,15 @@ think trigger(me/GREET, world)
 Hello, world!
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@trigger](/reference/sharpmush-help/trigger-command/#trigger)
 - [VERB()](/reference/sharpmush-help/sharpfunc/#verb)
 - [compatibility config](/reference/sharpmush-help/compatibility-config/#compatibility-config)
-:::
+
+</nav>
+
 ## trunc()
 `trunc(<string>)`
 
@@ -6149,11 +7453,15 @@ You say, "101"
   val() is an alias for trunc().
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ROUND()](/reference/sharpmush-help/sharpfunc/#round)
 - [BOUND()](/reference/sharpmush-help/sharpfunc/#bound)
 - [LEFT()](/reference/sharpmush-help/sharpfunc/#left)
-:::
+
+</nav>
+
 ## type()
 `type(<object>)`
 
@@ -6171,10 +7479,14 @@ ROOM
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [HASTYPE()](/reference/sharpmush-help/sharpfunc/#hastype)
 - [TYPES OF OBJECTS](/reference/sharpmush-help/sharptop/#types-of-objects)
-:::
+
+</nav>
+
 ## ucstr()
 `ucstr(<string>)`<br>
 `ucstr2(<string>)`
@@ -6193,10 +7505,14 @@ say ucstr2(gr[chr(252)]n)
   The second example says "GRUN" with an umlaut on the U; `chr(252)` is u with an umlaut.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LCSTR()](/reference/sharpmush-help/sharpfunc/#lcstr)
 - [CAPSTR()](/reference/sharpmush-help/sharpfunc/#capstr)
-:::
+
+</nav>
+
 ## udefault()
 `udefault([<object>/]<attribute>, <default case>[, <arg0>[, ... , <arg29>]])`<br>
 `uldefault([<object>/]<attribute>, <default case>[, <arg0>[, ... <arg29>]])`
@@ -6218,7 +7534,9 @@ You say, "-- BOOM --"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [GET()](/reference/sharpmush-help/sharpfunc/#get)
 - [EVAL()](/reference/sharpmush-help/sharpfunc/#eval)
 - [u()](/reference/sharpmush-help/u-function/#u)
@@ -6226,7 +7544,9 @@ You say, "-- BOOM --"
 - [EDEFAULT()](/reference/sharpmush-help/sharpfunc/#edefault)
 - [ulocal()](/reference/sharpmush-help/ulocal-function/#ulocal)
 - [LOCALIZE()](/reference/sharpmush-help/sharpfunc/#localize)
-:::
+
+</nav>
+
 ## unique()
 `unique(<list>[, <sort type>[, <delim>[, <osep>]]])`
 
@@ -6243,10 +7563,14 @@ think unique(1|2|3|3, n, |, _)
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SETUNION()](/reference/sharpmush-help/sharpfunc/#setunion)
 - [SORT()](/reference/sharpmush-help/sharpfunc/#sort)
-:::
+
+</nav>
+
 ## unpack()
 `unpack(<string>[, <radix>[, <baseconv digits>]])`
 
@@ -6267,10 +7591,14 @@ think unpack(ff,16)
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [PACK()](/reference/sharpmush-help/sharpfunc/#pack)
 - [BASECONV()](/reference/sharpmush-help/sharpfunc/#baseconv)
-:::
+
+</nav>
+
 ## unmark()
 `unmark(<string>)`
 
@@ -6285,12 +7613,16 @@ think words(unmark(a%*<|>b), %*<|>)
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [list separators](/reference/sharpmush-help/list-separators/#list-separators)
 - [SECURE()](/reference/sharpmush-help/sharpfunc/#secure)
 - [ESCAPE()](/reference/sharpmush-help/sharpfunc/#escape)
 - [DECOMPOSE()](/reference/sharpmush-help/sharpfunc/#decompose)
-:::
+
+</nav>
+
 ## v()
 `v(<variable>)`<br>
 `v(<integer>)`<br>
@@ -6307,14 +7639,18 @@ think words(unmark(a%*<|>b), %*<|>)
   The final form of this function is equivalent to get(me/`<attribute>`), but is usually slightly more efficient.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [STACK](/reference/sharpmush-help/sharptop/#stack)
 - [registers](/reference/sharpmush-help/registers/#registers)
-- [%]
+- [%](/reference/sharpmush-help/substitutions/#substitutions)
 - [GET()](/reference/sharpmush-help/sharpfunc/#get)
 - [R()](/reference/sharpmush-help/sharpfunc/#r)
 - [attributes](/reference/sharpmush-help/attributes/#attributes)
-:::
+
+</nav>
+
 ## vadd()
 `vadd(<vector1>, <vector2>[, <delimiter>[, <osep>]])`
 
@@ -6326,9 +7662,13 @@ think words(unmark(a%*<|>b), %*<|>)
   1|2|3
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Vector functions](/reference/sharpmush-help/sharpfunc/#vector-functions)
-:::
+
+</nav>
+
 ## vcross()
 `vcross(<vector1>, <vector2>[, <delimiter>[, <osep>]])`
 
@@ -6342,9 +7682,13 @@ think words(unmark(a%*<|>b), %*<|>)
   -3 6 -3
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Vector functions](/reference/sharpmush-help/sharpfunc/#vector-functions)
-:::
+
+</nav>
+
 ## vdim()
 `vdim(<vector>[, <delimiter>])`
 
@@ -6354,9 +7698,13 @@ think words(unmark(a%*<|>b), %*<|>)
   4
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Vector functions](/reference/sharpmush-help/sharpfunc/#vector-functions)
-:::
+
+</nav>
+
 ## vdot()
 `vdot(<vector1>, <vector2>[, <delimiter>[, <osep>]])`
 
@@ -6366,9 +7714,13 @@ think words(unmark(a%*<|>b), %*<|>)
   20
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Vector functions](/reference/sharpmush-help/sharpfunc/#vector-functions)
-:::
+
+</nav>
+
 ## verb()
 `verb(<victim>[, <actor>[, <what>, <whatd>, <owhat>, <owhatd>, <awhat>[, <arg0>, ... <argN>]]])`
 
@@ -6384,11 +7736,15 @@ think verb(obj, me, XTEST, Default, OXTEST, odefault)
 You test the object.
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@verb](/reference/sharpmush-help/verb-command/#verb)
 - [TRIGGER()](/reference/sharpmush-help/sharpfunc/#trigger)
 - [compatibility config](/reference/sharpmush-help/compatibility-config/#compatibility-config)
-:::
+
+</nav>
+
 ## vmin()
 `vmin(<vector1>, <vector2>[, <delimiter>[, <osep>]])`
 
@@ -6398,9 +7754,13 @@ You test the object.
   1 1 2
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Vector functions](/reference/sharpmush-help/sharpfunc/#vector-functions)
-:::
+
+</nav>
+
 ## vmax()
 `vmax(<vector1>, <vector2>[, <delimiter>[, <osep>]])`
 
@@ -6410,9 +7770,13 @@ You test the object.
   4 2 3
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Vector functions](/reference/sharpmush-help/sharpfunc/#vector-functions)
-:::
+
+</nav>
+
 ## version()
 `version()`<br>
 `numversion()`
@@ -6428,9 +7792,13 @@ You say, "2000000000"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@version](/reference/sharpmush-help/sharpcmd/#version)
-:::
+
+</nav>
+
 ## visible()
 `visible(<object>, <victim>[/<attribute>])`
 
@@ -6439,10 +7807,14 @@ You say, "2000000000"
   If `<attribute>` does not exist, the function returns 0. If `<object>` or `<victim>` cannot be found, it returns a #-1 error.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [CONTROLS()](/reference/sharpmush-help/sharpfunc/#controls)
 - [VISUAL](/reference/sharpmush-help/sharpflag/#visual)
-:::
+
+</nav>
+
 ## vmag()
 `vmag(<vector>[, <delimiter>])`
 
@@ -6452,9 +7824,13 @@ You say, "2000000000"
   5
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Vector functions](/reference/sharpmush-help/sharpfunc/#vector-functions)
-:::
+
+</nav>
+
 ## vmul()
 `vmul(<vector1|number1>, <vector2|number2>[, <delimiter>[, <osep>]])`
 
@@ -6466,9 +7842,13 @@ You say, "2000000000"
   2 6 12
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Vector functions](/reference/sharpmush-help/sharpfunc/#vector-functions)
-:::
+
+</nav>
+
 ## vsub()
 `vsub(<vector1>, <vector2>[, <delimiter>[, <osep>]])`
 
@@ -6478,9 +7858,13 @@ You say, "2000000000"
   0 2 4
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Vector functions](/reference/sharpmush-help/sharpfunc/#vector-functions)
-:::
+
+</nav>
+
 ## vunit()
 `vunit(<vector>[, <delimiter>])`
 
@@ -6492,9 +7876,13 @@ You say, "2000000000"
   5 6 7
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Vector functions](/reference/sharpmush-help/sharpfunc/#vector-functions)
-:::
+
+</nav>
+
 ## width()
 `width(<player|descriptor>[, <default>])`<br>
 `height(<player|descriptor>[, <default>])`
@@ -6515,14 +7903,18 @@ You say, "2000000000"
   will return the latter). A room's "real" location is always Nothing (the LOC() function will return its drop-to).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ROOM()](/reference/sharpmush-help/sharpfunc/#room)
 - [LOC()](/reference/sharpmush-help/sharpfunc/#loc)
 - [RNUM()](/reference/sharpmush-help/sharpfunc/#rnum)
 - [locate()](/reference/sharpmush-help/locate-function/#locate)
 - [HOME()](/reference/sharpmush-help/sharpfunc/#home)
 - [@whereis](/reference/sharpmush-help/sharpcmd/#whereis)
-:::
+
+</nav>
+
 ## wipe()
 `wipe(<object>[/<attribute pattern>])`
 
@@ -6531,11 +7923,15 @@ You say, "2000000000"
   If you do not control `<object>`, it tells you why, as @wipe does, and returns `#-1 PERMISSION DENIED: NOT CONTROLLED`.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@wipe](/reference/sharpmush-help/sharpcmd/#wipe)
-- [ATTRIB_SET()](/reference/sharpmush-help/sharpfunc/#attribset)
+- [ATTRIB_SET()](/reference/sharpmush-help/sharpfunc/#attrib_set)
 - [SET()](/reference/sharpmush-help/sharpfunc/#set)
-:::
+
+</nav>
+
 ## wordpos()
 `wordpos(<list>, <number>[, <delimiter>])`
 
@@ -6548,10 +7944,14 @@ You say, "2"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MEMBER()](/reference/sharpmush-help/sharpfunc/#member)
 - [POS()](/reference/sharpmush-help/sharpfunc/#pos)
-:::
+
+</nav>
+
 ## words()
 `words(<list>[, <delimiter>])`
 
@@ -6569,10 +7969,14 @@ think words(1 2%b%b3, %b)
     4
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [STRLEN()](/reference/sharpmush-help/sharpfunc/#strlen)
 - [ITEMS()](/reference/sharpmush-help/sharpfunc/#items)
-:::
+
+</nav>
+
 ## xattr()
 `xattr(<object>[/<attribute pattern>], <start>, <count>[, <osep>])`<br>
 `xattrp(<object>[/<attribute pattern>], <start>, <count>[, <osep>])`<br>
@@ -6589,12 +7993,16 @@ think words(1 2%b%b3, %b)
   xattrp() and regxattrp() will include attributes from parents. Do note that parent attributes are listed _after_ child attributes, not sorted alphabetically.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [NATTR()](/reference/sharpmush-help/sharpfunc/#nattr)
 - [LATTR()](/reference/sharpmush-help/lattr-function/#lattr)
 - [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)
 - [regexp](/reference/sharpmush-help/regexp/#regular-expressions)
-:::
+
+</nav>
+
 ## xor()
 `xor(<boolean1>[, <boolean2>, ... , <booleanN>])`
 
@@ -6603,14 +8011,18 @@ think words(1 2%b%b3, %b)
   With the `mux_logic` @config option on, xor() is TinyMUX's and RhostMUSH's: each argument is tested by its leading signed integer, and the answer is 1 when an odd number of them are true, so `xor(1,1,1)` is 1. See [compatibility config](/reference/sharpmush-help/compatibility-config/#compatibility-config).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [boolean values](/reference/sharpmush-help/boolean-values/#boolean-values)
 - [AND()](/reference/sharpmush-help/sharpfunc/#and)
 - [OR()](/reference/sharpmush-help/sharpfunc/#or)
 - [NOT()](/reference/sharpmush-help/sharpfunc/#not)
 - [NOR()](/reference/sharpmush-help/sharpfunc/#nor)
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
-:::
+
+</nav>
+
 ## xvcon()
 `xcon(<object>, <start>, <count>)`<br>
 `xvcon(<object>, <start>, <count>)`
@@ -6622,11 +8034,15 @@ think words(1 2%b%b3, %b)
   xvcon() is identical, but follows the restrictions of lvcon().
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [NVCON()](/reference/sharpmush-help/sharpfunc/#nvcon)
 - [LCON()](/reference/sharpmush-help/sharpfunc/#lcon)
 - [LVCON()](/reference/sharpmush-help/sharpfunc/#lvcon)
-:::
+
+</nav>
+
 ## xvexits()
 `xexits(<room>, <start>, <count>)`<br>
 `xvexits(<room>, <start>, <count>)`
@@ -6638,11 +8054,15 @@ think words(1 2%b%b3, %b)
   xvexits() is identical, but follows the restrictions of lvexits().
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [NVEXITS()](/reference/sharpmush-help/sharpfunc/#nvexits)
 - [LEXITS()](/reference/sharpmush-help/sharpfunc/#lexits)
 - [LVEXITS()](/reference/sharpmush-help/sharpfunc/#lvexits)
-:::
+
+</nav>
+
 ## xvplayers()
 `xplayers(<object>, <start>, <count>)`<br>
 `xvplayers(<object>, <start>, <count>)`
@@ -6654,13 +8074,17 @@ think words(1 2%b%b3, %b)
   xvplayers() is identical, but follows the restrictions of lvplayers().
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [NVPLAYERS()](/reference/sharpmush-help/sharpfunc/#nvplayers)
 - [LPLAYERS()](/reference/sharpmush-help/sharpfunc/#lplayers)
 - [LVPLAYERS()](/reference/sharpmush-help/sharpfunc/#lvplayers)
 - [XVTHINGS()](/reference/sharpmush-help/sharpfunc/#xvthings)
 - [XVEXITS()](/reference/sharpmush-help/sharpfunc/#xvexits)
-:::
+
+</nav>
+
 ## xvthings()
 `xthings(<object>, <start>, <count>)`<br>
 `xvthings(<object>, <start>, <count>)`
@@ -6672,13 +8096,17 @@ think words(1 2%b%b3, %b)
   xvthings() is identical, except it follows the restrictions of lvthings().
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [NVTHINGS()](/reference/sharpmush-help/sharpfunc/#nvthings)
 - [LTHINGS()](/reference/sharpmush-help/sharpfunc/#lthings)
 - [LVTHINGS()](/reference/sharpmush-help/sharpfunc/#lvthings)
 - [XVPLAYERS()](/reference/sharpmush-help/sharpfunc/#xvplayers)
 - [XVEXITS()](/reference/sharpmush-help/sharpfunc/#xvexits)
-:::
+
+</nav>
+
 ## xwho()
 `xwho([<looker>, ]<start>, <count>)`<br>
 `xmwho(<start>, <count>)`<br>
@@ -6694,12 +8122,16 @@ think words(1 2%b%b3, %b)
   xwhoid() and xmwhoid() return objids instead of dbrefs.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LWHO()](/reference/sharpmush-help/sharpfunc/#lwho)
 - [MWHO()](/reference/sharpmush-help/sharpfunc/#mwho)
 - [NMWHO()](/reference/sharpmush-help/sharpfunc/#nmwho)
 - [ZWHO()](/reference/sharpmush-help/sharpfunc/#zwho)
-:::
+
+</nav>
+
 ## zfind()
 `zfind(<zone>[, <osep>])`
 
@@ -6710,12 +8142,16 @@ think words(1 2%b%b3, %b)
   This is a SharpMUSH function; PennMUSH offers the zone lists through [lsearch()](/reference/sharpmush-help/lsearch-function/#lsearch) and [ZWHO()](/reference/sharpmush-help/sharpfunc/#zwho).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ZWHO()](/reference/sharpmush-help/sharpfunc/#zwho)
 - [ZONE()](/reference/sharpmush-help/sharpfunc/#zone)
 - [@chzone](/reference/sharpmush-help/chzone-command/#chzone)
 - [lsearch()](/reference/sharpmush-help/lsearch-function/#lsearch)
-:::
+
+</nav>
+
 ## zwho()
 `zwho(<object>[, <viewer>])`<br>
 `zmwho(<object>)`
@@ -6725,13 +8161,17 @@ think words(1 2%b%b3, %b)
   See_All players can pass a `<viewer>` argument to zwho() to get only those players that `<viewer>` can see is online.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LWHO()](/reference/sharpmush-help/sharpfunc/#lwho)
 - [NMWHO()](/reference/sharpmush-help/sharpfunc/#nmwho)
 - [ZONE()](/reference/sharpmush-help/sharpfunc/#zone)
 - [ZFUN()](/reference/sharpmush-help/sharpfunc/#zfun)
 - [ZEMIT()](/reference/sharpmush-help/sharpfunc/#zemit)
-:::
+
+</nav>
+
 ## zemit()
 `zemit(<zone>, <message>)`<br>
 `nszemit(<zone>, <message>)`
@@ -6741,13 +8181,17 @@ think words(1 2%b%b3, %b)
   nszemit() works like @nszemit.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@zemit](/reference/sharpmush-help/sharpcmd/#zemit)
 - [ZONE()](/reference/sharpmush-help/sharpfunc/#zone)
 - [ZFUN()](/reference/sharpmush-help/sharpfunc/#zfun)
 - [ZWHO()](/reference/sharpmush-help/sharpfunc/#zwho)
 - [zones](/reference/sharpmush-help/zones/#zones)
-:::
+
+</nav>
+
 ## zfun()
 `zfun(<attribute>[, <arg0>[, <arg1>[, ... , <arg29>]]])`<br>
 `zfun(<zone>/<attribute>[, <arg0>[, <arg1>[, ... , <arg29>]]])`
@@ -6759,7 +8203,9 @@ think words(1 2%b%b3, %b)
   An object in several zones can name the one: `<zone>/<attribute>` is that zone's attribute, and a zone the caller is not in gives `#-1 INVALID ZONE`. See [ZFUN2()](/reference/sharpmush-help/zfun2local-function/#zfun2local) for the rest of the family.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [u()](/reference/sharpmush-help/u-function/#u)
 - [GET()](/reference/sharpmush-help/sharpfunc/#get)
 - [ZONE()](/reference/sharpmush-help/sharpfunc/#zone)
@@ -6767,7 +8213,9 @@ think words(1 2%b%b3, %b)
 - [ZWHO()](/reference/sharpmush-help/sharpfunc/#zwho)
 - [ZFUN2()](/reference/sharpmush-help/zfun2local-function/#zfun2local)
 - [zones](/reference/sharpmush-help/zones/#zones)
-:::
+
+</nav>
+
 ## zone()
 `zone(<object>[, <new zone>])`
 
@@ -6776,13 +8224,17 @@ think words(1 2%b%b3, %b)
   If a `<new zone>` is given, zone() attempts to change the zone of `<object>` to `<new zone>` first - see help @chzone for details.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@chzone](/reference/sharpmush-help/chzone-command/#chzone)
 - [ZFUN()](/reference/sharpmush-help/sharpfunc/#zfun)
 - [ZWHO()](/reference/sharpmush-help/sharpfunc/#zwho)
 - [zemit()](/reference/sharpmush-help/sharpfunc/#zemit)
 - [ZONES](/reference/sharpmush-help/zones/#zones)
-:::
+
+</nav>
+
 ## uptime()
 `UPTIME([<type>[, <precision>]])`
 
@@ -6797,7 +8249,9 @@ think words(1 2%b%b3, %b)
     warnings  - The time of the next automatic warnings check, or -1 if automated warnings are disabled.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@uptime](/reference/sharpmush-help/uptime-command/#uptime)
 - [SECS()](/reference/sharpmush-help/sharpfunc/#secs)
 - [CONVSECS()](/reference/sharpmush-help/sharpfunc/#convsecs)
@@ -6810,7 +8264,9 @@ think words(1 2%b%b3, %b)
 - [@config](/reference/sharpmush-help/config-command/#config)
 - [@dump](/reference/sharpmush-help/sharpcmd/#dump)
 - [@shutdown](/reference/sharpmush-help/sharpcmd/#shutdown)
-:::
+
+</nav>
+
 ## suggest()
 `SUGGEST(<category>, <word>[, <seperator>[, <limit>]])`
 
@@ -6827,9 +8283,13 @@ AARDVARK AARDVARKS AARDVARK'S etc...
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@SUGGEST](/reference/sharpmush-help/sharpcmd/#suggest)
-:::
+
+</nav>
+
 ## connrecord()
 `CONNRECORD(<id>[, <osep>])`
 
@@ -6844,9 +8304,13 @@ AARDVARK AARDVARKS AARDVARK'S etc...
   This function must be enabled (by the use_connlog @config option); if disabled, it returns #-1.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [connlog()](/reference/sharpmush-help/connlog-function/#connlog)
-:::
+
+</nav>
+
 ## addrlog()
 `ADDRLOG([<count>, ]ip|hostname, <pattern>[, <osep>])`
 
@@ -6857,30 +8321,42 @@ AARDVARK AARDVARKS AARDVARK'S etc...
   This function must be enabled (by the use_connlog @config option); if disabled, it returns #-1.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [connlog()](/reference/sharpmush-help/connlog-function/#connlog)
 - [CONNRECORD()](/reference/sharpmush-help/sharpfunc/#connrecord)
-:::
+
+</nav>
+
 ## urlencode()
 `URLENCODE(<string>)`
 
   This function converts its argument to a URL-encoded string where everything but a-z, A-Z, 0-9, -, ., _, and ~ are converted into %NN where NN is a hex code for their character value.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [URLDECODE()](/reference/sharpmush-help/sharpfunc/#urldecode)
 - [@HTTP](/reference/sharpmush-help/http-command/#http)
-:::
+
+</nav>
+
 ## urldecode()
 `URLDECODE(<string>)`
 
   This function takes a URL-encoded string and returns it in its decoded form. Unprintable characters are converted to question marks.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [URLENCODE()](/reference/sharpmush-help/sharpfunc/#urlencode)
 - [@HTTP](/reference/sharpmush-help/http-command/#http)
-:::
+
+</nav>
+
 ## hmac()
 `HMAC(<digest>, <key>, <text>[, <encoding>])`<br>
 `HMAC(<text>, <key>[, <digest>])`
@@ -6898,6 +8374,10 @@ lZj9lZYz8qZKfX6YWWZ3SqbzNLyALlszAXcuyO1u7Vo=
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [DIGEST()](/reference/sharpmush-help/sharpfunc/#digest)
-:::
+
+</nav>
+

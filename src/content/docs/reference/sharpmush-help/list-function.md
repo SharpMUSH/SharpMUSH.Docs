@@ -50,11 +50,15 @@ description: "SharpMUSH documentation for list()"
     1
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@list](/reference/sharpmush-help/list-command/#list)
 - [FLAGS()](/reference/sharpmush-help/sharpfunc/#flags)
 - [LFLAGS()](/reference/sharpmush-help/sharpfunc/#lflags)
 - [CONFIG()](/reference/sharpmush-help/sharpfunc/#config)
 - [FUNCTIONS()](/reference/sharpmush-help/sharpfunc/#functions)
 - [@motd](/reference/sharpmush-help/motd-command/#motd)
-:::
+
+</nav>
+

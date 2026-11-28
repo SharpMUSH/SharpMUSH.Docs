@@ -46,7 +46,9 @@ You say, "*HELLO*!"
   WRAP wraps the base "hello" in the side-arg "*" to make "*hello*"; that result becomes %0 for SHOUT, which upper-cases it and appends "!".
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [fold()](/reference/sharpmush-help/fold-function/#fold)
 - [MAP()](/reference/sharpmush-help/map-function/#map)
 - [iter()](/reference/sharpmush-help/iter-function/#iter)
@@ -54,4 +56,6 @@ You say, "*HELLO*!"
 - [JITER()](/reference/sharpmush-help/sharpfunc/#jiter)
 - [u()](/reference/sharpmush-help/u-function/#u)
 - [@include attribute pipelines](/reference/sharpmush-help/include-command/#attribute-pipelines)
-:::
+
+</nav>
+

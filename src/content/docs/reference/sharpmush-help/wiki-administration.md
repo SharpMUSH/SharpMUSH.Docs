@@ -38,11 +38,15 @@ Deleting needs `wiki.delete` and whatever the page requires to edit and delete i
 
 @wiki/history lists every revision with its editor, date, and edit summary, for the revision stream of your own locale. Each locale is numbered independently starting from 1, so "rev 3" of a French translation is unrelated to "rev 3" of the source; `@wiki/history/source` shows the source locale's stream. An edit summary is prose about unpublished content, so a draft's revisions are withheld exactly as its body is: `@wiki/history/draft` shows them, to a `wiki.drafts` holder or the author.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [wiki](/reference/sharpmush-help/wiki/#wiki)
 - [wiki editing](/reference/sharpmush-help/wiki-editing/#wiki-editing)
 - [wiki permissions](/reference/sharpmush-help/wiki-administration/#wiki-permissions)
-:::
+
+</nav>
+
 
 ### Wiki permissions
 
@@ -92,12 +96,16 @@ WIKI: What Alice may do with 'Combat Primer':
 
 From softcode, `wikiaccess(<page>, <action>[, <player>])` returns 1 or 0.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [wiki administration](/reference/sharpmush-help/wiki-administration/#wiki-administration)
 - [WIKIACCESS()](/reference/sharpmush-help/sharpwiki/#wikiaccess)
 - [roles](/reference/sharpmush-help/roles/#roles)
 - [@permission](/reference/sharpmush-help/permission-command/#permission)
-:::
+
+</nav>
+
 
 ### Private pages
 
@@ -115,7 +123,11 @@ WIKI: Ines is now a contributor of 'Harbour Fire'.
 
 Output: one line. The `casefiles` package builds its case files on private pages.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [WIKIMEMBERS()](/reference/sharpmush-help/sharpwiki/#wikimembers)
 - [WIKIMEMBER()](/reference/sharpmush-help/sharpwiki/#wikimember)
-:::
+
+</nav>
+

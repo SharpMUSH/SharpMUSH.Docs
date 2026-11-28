@@ -70,11 +70,15 @@ However, make sure you include your name somewhere, so people know who's talking
 To talk to someone who isn't in the room with you, use `page`: `page Lisa=Hi there!` sends Lisa a message anywhere in the game. To speak to one person in the room without the others hearing, use `whisper`: `whisper Lisa=Over here.` See [page](/reference/sharpmush-help/page/#page) and [whisper](/reference/sharpmush-help/sharpcmd/#whisper).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [gs chat](/reference/sharpmush-help/gs-chat/#getting-started-chat)
 - [say](/reference/sharpmush-help/sharpcmd/#-4)
 - [pose](/reference/sharpmush-help/pose/)
 - [@emit](/reference/sharpmush-help/sharpcmd/#emit)
 - [page](/reference/sharpmush-help/page/#page)
 - [whisper](/reference/sharpmush-help/sharpcmd/#whisper)
-:::
+
+</nav>
+

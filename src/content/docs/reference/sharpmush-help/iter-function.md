@@ -32,20 +32,24 @@ description: "SharpMUSH documentation for iter()"
 
 For each word in `<list>`, iter() evaluates `<pattern>` once, and returns a list of the results of those evaluations. Words in `<list>` are separated by `<delimiter>`, if given, and spaces if not. Words in the resulting list are separated by the given `<output separator>`, or a space if no output separator is given. An empty `<output separator>` puts nothing between them.
 
-In `<pattern>`, "##" stands for the current word and "#@" for its position in `<list>`, counting from 1. The word is never evaluated as code, so ## is safe on user input. See [compatibility parser in iter is data not code](/reference/sharpmush-help/compatibility-parser/#in-iter-is-data-not-code).
+In `<pattern>`, "##" stands for the current word and "#@" for its position in `<list>`, counting from 1. The word is never evaluated as code, so ## is safe on user input. See [compatibility parser in iter is data not code](/reference/sharpmush-help/compatibility-parser/#-in-iter-is-data-not-code).
 
 parse() is an alias for iter().
 
-- [iter nesting](/reference/sharpmush-help/iter-function/#nesting-and-where-counts): nested iter()s, where ## and #@ count, and `innermost_tokens`
+- [iter nesting](/reference/sharpmush-help/iter-function/#nesting-and-where--counts): nested iter()s, where ## and #@ count, and `innermost_tokens`
 - [iter iteration examples](/reference/sharpmush-help/iter-function/#iteration-examples): patterns, positions, and calling an attribute
 - [iter separator examples](/reference/sharpmush-help/iter-function/#separator-and-safety-examples): an output separator, and keeping code-looking input as text
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ilev()](/reference/sharpmush-help/ilev-function/#ilev)
 - [IBREAK()](/reference/sharpmush-help/sharpfunc/#ibreak)
 - [MAP()](/reference/sharpmush-help/map-function/#map)
 - [@dolist](/reference/sharpmush-help/dolist-command/#dolist)
-:::
+
+</nav>
+
 
 ### Nesting and where ## counts
 
@@ -53,7 +57,7 @@ If you nest iter()s, ## and #@ refer to the first/outermost iter(). For the curr
 
 "##" and "#@" count only where they are written in the iter() itself. In the code of an attribute the pattern calls, such as u(), they are plain text unless that code runs an iter() of its own. They are also plain text outside any iter() or @dolist, and inside lit() or after \.
 
-With the `innermost_tokens` option on, ## and #@ name the innermost iter() or @dolist that is running, as TinyMUX's do, and they also work in the code of an attribute the pattern calls. See [compatibility config innermost loop tokens](/reference/sharpmush-help/compatibility-config/#innermost-loop-tokens-innermosttokens).
+With the `innermost_tokens` option on, ## and #@ name the innermost iter() or @dolist that is running, as TinyMUX's do, and they also work in the code of an attribute the pattern calls. See [compatibility config innermost loop tokens](/reference/sharpmush-help/compatibility-config/#innermost-loop-tokens-innermost_tokens).
 
 ### Iteration examples
 

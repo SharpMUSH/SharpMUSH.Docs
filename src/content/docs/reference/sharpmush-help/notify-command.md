@@ -61,9 +61,13 @@ Hello, Walker!
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [semaphores](/reference/sharpmush-help/semaphores/#semaphores)
 - [@drain](/reference/sharpmush-help/sharpcmd/#drain)
 - [@wait](/reference/sharpmush-help/wait-command/#wait)
 - [@halt](/reference/sharpmush-help/halt-command/#halt)
-:::
+
+</nav>
+

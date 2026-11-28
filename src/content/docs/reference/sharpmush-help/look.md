@@ -51,7 +51,9 @@ If a room is set DARK, when you look you will not see any of the exits or conten
 'look' may be abbreviated 'l', and is sometimes aliased as 'read'.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [OPAQUE](/reference/sharpmush-help/sharpflag/#opaque)
 - [flags](/reference/sharpmush-help/flags/#flags)
 - [@describe](/reference/sharpmush-help/sharpcmd/#describe)
@@ -60,4 +62,6 @@ If a room is set DARK, when you look you will not see any of the exits or conten
 - [LIGHT](/reference/sharpmush-help/sharpflag/#light)
 - [TRANSPARENT](/reference/sharpmush-help/sharpflag/#transparent)
 - [CLOUDY](/reference/sharpmush-help/sharpflag/#cloudy)
-:::
+
+</nav>
+

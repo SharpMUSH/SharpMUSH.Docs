@@ -34,7 +34,11 @@ RhostMUSH's other lists (/permit, /trust, /noauth, /nohost, /passprox, /passapi,
 SITE: Removed forbid for 192.0.2.0/24.
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@sitelock](/reference/sharpmush-help/sitelock-command/#sitelock)
 - [@blacklist](/reference/sharpmush-help/blacklist-command/#blacklist)
-:::
+
+</nav>
+

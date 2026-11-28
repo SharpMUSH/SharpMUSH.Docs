@@ -110,7 +110,7 @@ Attribute names follow the flag too: in an attribute flagged `mux`, `get(me/kill
 - `noeval (E)`       TinyMUX's: the attribute is text, never code. u(), get_eval(), a description and the other messages give its value as written, and an action attribute set `noeval`, such as `AUSE` or `ASUCC`, does not run when its event happens. `@trigger` still runs it.
 - `noparse (P)`       TinyMUX's and RhostMUSH's: the `$`-command is matched against the command as it was typed, before its functions and substitutions are evaluated, and `%0` and the rest take their text from that.
 
-`noeval` and `noparse` do nothing unless the `attribute_eval_flags` option is on, which a TinyMUX or RhostMUSH import turns on. See [compatibility config attribute eval flags](/reference/sharpmush-help/compatibility-config/#noeval-and-noparse-attributes-attributeevalflags).
+`noeval` and `noparse` do nothing unless the `attribute_eval_flags` option is on, which a TinyMUX or RhostMUSH import turns on. See [compatibility config attribute eval flags](/reference/sharpmush-help/compatibility-config/#noeval-and-noparse-attributes-attribute_eval_flags).
 
 An attribute without the flag reads the game's `dialect` option instead, as typed commands do. A RhostMUSH or TinyMUX database import sets the option and its flag on every attribute it brings in. See [compatibility config](/reference/sharpmush-help/compatibility-config/#compatibility-config).
 
@@ -122,10 +122,14 @@ Two functions are shown exactly as you stored them, however long they get and wh
 
 What sits between `{ ... }` braces is prose to the formatter: a `,` or `;` there is data, not a separator, so a braced branch stays on one line however long it is, and a function name written inside braces is left exactly as you typed it. The `{` itself can start a new line, and a `[ ... ]` inside the braces is laid out normally, since brackets are the one thing that make code out of a brace body again. A `@switch` whose branches are wrapped in `{}`, the most common style, therefore shows one line per branch, with any bracketed call inside a branch indented under it.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@set](/reference/sharpmush-help/set-command/#set)
 - [@attribute](/reference/sharpmush-help/attribute-command/#attribute)
 - [attribute trees](/reference/sharpmush-help/attribute-trees/#attribute-trees)
 - [examine](/reference/sharpmush-help/sharpcmd/#examine)
 - [@grep](/reference/sharpmush-help/sharpcmd/#grep)
-:::
+
+</nav>
+

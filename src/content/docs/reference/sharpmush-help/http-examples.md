@@ -29,11 +29,15 @@ Examples all assume the following dedicated handler:
 > @config/set http_handler=num(*HTTPHandler)
 ```
 
-::: seealso
-- [http simple]
-- [http get]
-- [http post]
-:::
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [http simple](/reference/sharpmush-help/http-examples/#simple-handlers)
+- [http get](/reference/sharpmush-help/http-examples/#get-handlers)
+- [http post](/reference/sharpmush-help/http-examples/#post-handlers)
+
+</nav>
+
 
 ### Simple handlers
 
@@ -133,9 +137,13 @@ To accept either, depending on whether the client sends JSON:
 
 Check: POST either form data or JSON.
 
-::: seealso
-- [http examples]
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [http examples](/reference/sharpmush-help/http-examples/#http-examples)
 - [FORMDECODE()](/reference/sharpmush-help/formdecode-function/#formdecode)
-- [json_query()](/reference/sharpmush-help/json-query-function/#jsonquery)
-:::
+- [json_query()](/reference/sharpmush-help/json-query-function/#json_query)
+
+</nav>
+
 

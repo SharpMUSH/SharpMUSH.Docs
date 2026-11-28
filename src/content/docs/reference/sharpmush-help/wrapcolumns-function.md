@@ -33,8 +33,12 @@ This function comes from TinyMUX.
 <three|six  >
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [COLUMNS()](/reference/sharpmush-help/columns-function/#columns)
 - [WRAP()](/reference/sharpmush-help/wrap-function/#wrap)
 - [TABLE()](/reference/sharpmush-help/sharpfunc/#table)
-:::
+
+</nav>
+

@@ -34,8 +34,12 @@ tsstst
 
 Output: where `t` is, and every `s` or `t` in order.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [pos()](/reference/sharpmush-help/sharpfunc/#pos)
 - [numpos()](/reference/sharpmush-help/numpos-function/#numpos)
 - [creplace()](/reference/sharpmush-help/creplace-function/#creplace)
-:::
+
+</nav>
+

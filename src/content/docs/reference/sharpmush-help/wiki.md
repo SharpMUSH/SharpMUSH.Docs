@@ -45,9 +45,13 @@ Page content is Markdown; see [rendermarkdown supported markdown features](/refe
 - [wiki categories](/reference/sharpmush-help/wiki-categories/#wiki-categories): filing pages in categories, and pinning
 - [wiki facts](/reference/sharpmush-help/wiki-facts/#wiki-facts): a page's facts, like a spell's level
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [WIKI()](/reference/sharpmush-help/wiki-function/#wiki)
-:::
+
+</nav>
+
 
 ### Viewing and discovery
 
@@ -71,11 +75,15 @@ Listings (`@wiki/list`, `@wiki/search`, `@wiki/recent`) print every page's ident
 
 Not every page is listed for everybody. Drafts are left out for anyone who may not read them (see [wiki reading drafts](/reference/sharpmush-help/wiki/#reading-drafts)). A page you may not read because its namespace, a category it is in, or the page itself requires a permission you lack (see [wiki permissions](/reference/sharpmush-help/wiki-administration/#wiki-permissions)) is left out of every listing and answers as a page that does not exist.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [WIKILIST()](/reference/sharpmush-help/sharpwiki/#wikilist)
 - [WIKISEARCH()](/reference/sharpmush-help/sharpwiki/#wikisearch)
 - [WIKIRECENT()](/reference/sharpmush-help/sharpwiki/#wikirecent)
-:::
+
+</nav>
+
 
 ### Reading source
 
@@ -134,8 +142,12 @@ The link is clickable under `@wiki` and nowhere else. The same page text through
 
 `[[Category:Lore]]` is an ordinary link to a category's page; it does not file the page in that category (see [wiki categories](/reference/sharpmush-help/wiki-categories/#wiki-categories)).
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [WIKI()](/reference/sharpmush-help/wiki-function/#wiki)
 - [RENDERMARKDOWN()](/reference/sharpmush-help/render-markdown/#rendermarkdown)
 - [RENDERMARKDOWNCUSTOM()](/reference/sharpmush-help/render-markdown-custom/#rendermarkdowncustom)
-:::
+
+</nav>
+

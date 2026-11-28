@@ -177,11 +177,15 @@ Using @function on an already-added @function will delete the old one and instal
 This creates a new version of ansi() that doesn't do any colorization, and that needs two arguments, like the built-in version. It will be restricted to non-guest players.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [restrict](/reference/sharpmush-help/restrict/#restrict)
 - [named arguments](/reference/sharpmush-help/named-arguments/#named-arguments)
 - [functions](/reference/sharpmush-help/functions/#functions)
 - [@startup](/reference/sharpmush-help/sharpcmd/#startup)
 - [fn()](/reference/sharpmush-help/fn-function/#fn)
 - [valid()](/reference/sharpmush-help/valid-function/#valid)
-:::
+
+</nav>
+

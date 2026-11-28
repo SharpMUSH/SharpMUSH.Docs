@@ -48,8 +48,12 @@ You can send a message to more than one person at a time, just include the names
 You can do other, slightly more complex things with the mail system, too, like filing your messages into different folders. See [@mail](/reference/sharpmush-help/sharpmail/#mail) for more information.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MAIL](/reference/sharpmush-help/sharpmail/#mail)
 - [@mail](/reference/sharpmush-help/sharpmail/#mail)
 - [gs chat](/reference/sharpmush-help/gs-chat/#getting-started-chat)
-:::
+
+</nav>
+

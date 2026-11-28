@@ -30,7 +30,11 @@ vattrcnt() comes from RhostMUSH, which keeps the count on the object and rebuild
 2
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [nattr()](/reference/sharpmush-help/sharpfunc/#nattr)
 - [attrcnt()](/reference/sharpmush-help/sharpfunc/#nattr)
-:::
+
+</nav>
+

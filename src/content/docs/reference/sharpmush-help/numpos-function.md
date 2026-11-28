@@ -35,8 +35,12 @@ With a `<type>` of 1, it returns how many characters of `<string>` are any of th
 
 Output: three t's; three overlapping aa's; six characters that are s or t.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [pos()](/reference/sharpmush-help/sharpfunc/#pos)
 - [matchall()](/reference/sharpmush-help/element-function/#element)
 - [creplace()](/reference/sharpmush-help/creplace-function/#creplace)
-:::
+
+</nav>
+

@@ -43,8 +43,12 @@ PSMx
 1
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [TESTLOCK()](/reference/sharpmush-help/sharpfunc/#testlock)
 - [LOCK()](/reference/sharpmush-help/sharpfunc/#lock)
 - [@LOCK](/reference/sharpmush-help/locking/#locking)
-:::
+
+</nav>
+

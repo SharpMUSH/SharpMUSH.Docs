@@ -133,10 +133,14 @@ Custom permissions have a category list of their own, apart from the role catego
 > @permission/define bbs.moderate=Boards/Moderate any board
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@role](/reference/sharpmush-help/role-command/#role)
 - [roles](/reference/sharpmush-help/roles/#roles)
 - [PERMISSION()](/reference/sharpmush-help/sharpfunc/#permission)
 - [@power](/reference/sharpmush-help/power-command/#power)
 - [lock keys](/reference/sharpmush-help/lock-keys/#lock-keys)
-:::
+
+</nav>
+

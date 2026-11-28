@@ -37,6 +37,10 @@ PAGE: disabled.
 Troll: PAGE disabled
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@command](/reference/sharpmush-help/command/#command)
-:::
+
+</nav>
+

@@ -37,11 +37,15 @@ object, array or null    valid JSON, for instance from json() or json_array()
 
 Values are plain text: colour and markup are removed. If the template is not valid JSON, or a pointer or value is wrong, json_fill() returns an error starting with #-1 that names the pointer.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [json()](/reference/sharpmush-help/json-function/#json)
-- [json_mod()](/reference/sharpmush-help/json-mod-function/#jsonmod)
-- [json_query()](/reference/sharpmush-help/json-query-function/#jsonquery)
-:::
+- [json_mod()](/reference/sharpmush-help/json-mod-function/#json_mod)
+- [json_query()](/reference/sharpmush-help/json-query-function/#json_query)
+
+</nav>
+
 
 ### Fill examples
 

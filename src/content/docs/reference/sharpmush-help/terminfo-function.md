@@ -51,7 +51,7 @@ These elements describe what the client can draw:
 
 | Element | Present when |
 | --- | --- |
-| `prompt_newlines` | see [PROMPT_NEWLINES](/reference/sharpmush-help/sharpcmd/#promptnewlines) |
+| `prompt_newlines` | see [PROMPT_NEWLINES](/reference/sharpmush-help/sharpcmd/#prompt_newlines) |
 | `stripaccents` | the client is sent 7-bit ASCII, with no accented characters |
 | `hyperlinks` | web links are sent as clickable OSC 8 links; see [HYPERLINKS](/reference/sharpmush-help/sharpcmd/#hyperlinks) |
 | `commandlinks` | command links are sent as clickable MSLP links; see [HYPERLINKS](/reference/sharpmush-help/sharpcmd/#hyperlinks) |
@@ -75,10 +75,14 @@ In the web portal with Screen reader mode on:
 SHARPMUSH-PORTAL screenreader websocket commandlinks truecolor
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [PUEBLO()](/reference/sharpmush-help/sharppueb/#pueblo)
 - [WIDTH()](/reference/sharpmush-help/sharpfunc/#width)
 - [SSL()](/reference/sharpmush-help/sharpfunc/#ssl)
 - [@SOCKSET](/reference/sharpmush-help/sockset-command/#sockset)
 - [OOB()](/reference/sharpmush-help/oob-function/#oob)
-:::
+
+</nav>
+

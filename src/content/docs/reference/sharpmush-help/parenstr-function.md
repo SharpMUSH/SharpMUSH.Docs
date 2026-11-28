@@ -30,7 +30,11 @@ The parser still reads the argument to find where it ends, so a `)` that closes 
 
 Output: the brackets coloured; the second `)` is red.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [parenmatch()](/reference/sharpmush-help/parenmatch-function/#parenmatch)
 - [syntaxdiagnostics()](/reference/sharpmush-help/sharpfunc/#syntaxdiagnostics)
-:::
+
+</nav>
+

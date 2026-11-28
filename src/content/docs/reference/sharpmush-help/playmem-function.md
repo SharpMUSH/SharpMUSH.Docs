@@ -22,7 +22,11 @@ The TinyMUX form of [playermem()](/reference/sharpmush-help/sharpfunc/#playermem
 
 This function comes from TinyMUX.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [PLAYERMEM()](/reference/sharpmush-help/sharpfunc/#playermem)
 - [OBJMEM()](/reference/sharpmush-help/sharpfunc/#objmem)
-:::
+
+</nav>
+

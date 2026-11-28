@@ -102,13 +102,17 @@ Sets the theme every layout is drawn in for a player: boxes, tables, gauges and 
 - [@theme/add](/reference/sharpmush-help/theme-command/#adding-a-theme): adding a theme to the game's list
 - [@theme/list example](/reference/sharpmush-help/theme-command/#replacing-a-built-in-theme): replacing a built-in theme with the game's own
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@THEME/LIST](/reference/sharpmush-help/theme-command/#the-games-themes)
 - [LAYOUT THEMES](/reference/sharpmush-help/layout-themes/#layout-themes)
 - [THEMES()](/reference/sharpmush-help/layout-functions/#themes)
 - [SWATCH()](/reference/sharpmush-help/swatch-function/#swatch)
 - [ANCESTORS](/reference/sharpmush-help/sharptop/#ancestors)
-:::
+
+</nav>
+
 
 ### Light and dark
 
@@ -237,8 +241,12 @@ Theme set.
 #-1 UNKNOWN THEME
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@THEME](/reference/sharpmush-help/theme-command/#theme)
 - [LAYOUT THEMES](/reference/sharpmush-help/layout-themes/#layout-themes)
 - [THEMES()](/reference/sharpmush-help/layout-functions/#themes)
-:::
+
+</nav>
+

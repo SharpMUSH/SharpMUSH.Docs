@@ -30,12 +30,16 @@ Items are separated by `<delimiter>`, or by spaces. Results are separated by `<o
 
 while() comes from RhostMUSH, which has it from TinyMUSH 3, and takes the same arguments. Its attributes run as map()'s do here, as the object that holds them.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MAP()](/reference/sharpmush-help/map-function/#map)
 - [STEP()](/reference/sharpmush-help/sharpfunc/#step)
 - [FOREACH()](/reference/sharpmush-help/foreach-function/#foreach)
 - [inf()](/reference/sharpmush-help/inf-function/#inf)
-:::
+
+</nav>
+
 
 ### Examples
 

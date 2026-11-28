@@ -29,7 +29,11 @@ Row 1: Alice
 Row 2: Bob
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@mapsql](/reference/sharpmush-help/mapsql-command/#mapsql)
 - [@sql](/reference/sharpmush-help/sql-command/#sql)
-:::
+
+</nav>
+

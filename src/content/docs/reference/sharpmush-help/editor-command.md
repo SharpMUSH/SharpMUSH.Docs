@@ -43,8 +43,12 @@ Ordinary input appends one literal line. Nothing in a line is evaluated. A line 
 
 A syntax error keeps the editor open and leaves the stored attribute unchanged; each error names its line and column, as `.l` numbers them. A best-effort conflict check also refuses a save when the attribute or its syntax flag changed after the editor opened it or last saved it. The editor stays open until one of its quit commands: when [@input](/reference/sharpmush-help/input-command/#input)'s hour runs out it opens again with the draft as it was. `@input/cancel` remains the unconditional escape and saves nothing. Finish active editor sessions before upgrading, rolling back or uninstalling the package.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@input](/reference/sharpmush-help/input-command/#input)
 - [@edit](/reference/sharpmush-help/edit-command/#edit)
 - [attribute flags](/reference/sharpmush-help/attribute-flags/#attribute-flags)
-:::
+
+</nav>
+

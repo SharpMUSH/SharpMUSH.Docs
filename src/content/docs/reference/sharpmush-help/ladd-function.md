@@ -53,13 +53,17 @@ ladd(), lsub(), lmul(), ldiv(), lavg(), lmax() and lmin() come from RhostMUSH an
 - [ladd items](/reference/sharpmush-help/ladd-function/#reading-the-items): how items count as numbers, delimiters, and an empty list
 - [ladd examples](/reference/sharpmush-help/ladd-function/#examples): each function on a short list
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
 - [ADD()](/reference/sharpmush-help/sharpfunc/#add)
 - [FDIV()](/reference/sharpmush-help/sharpfunc/#div)
 - [MEAN()](/reference/sharpmush-help/sharpfunc/#avg)
 - [land()](/reference/sharpmush-help/land-function/#land)
-:::
+
+</nav>
+
 
 ### Reading the items
 

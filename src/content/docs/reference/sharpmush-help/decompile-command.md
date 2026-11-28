@@ -86,10 +86,14 @@ Set your Options -> Grab Password
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [CLIENTS](/reference/sharpmush-help/clients/#clients)
 - [attributes](/reference/sharpmush-help/attributes/#attributes)
 - [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)
 - [mushcode](/reference/sharpmush-help/mushcode/#mushcode)
 - [accounts examine](/reference/sharpmush-help/accounts/#examining-and-decompiling-an-account)
-:::
+
+</nav>
+

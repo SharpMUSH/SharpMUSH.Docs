@@ -74,11 +74,15 @@ A translation keeps its own title, revision numbers and draft flag; the page's c
 
 If somebody else saves the same translation between your reading it and your sending the command, you are told so and *nothing is written*; re-read the page and re-apply your text. The command never retries by itself, because a retry would put your older text on top of theirs.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [wiki](/reference/sharpmush-help/wiki/#wiki)
 - [wiki administration](/reference/sharpmush-help/wiki-administration/#wiki-administration)
 - [wiki locale selection](/reference/sharpmush-help/wiki/#translations-and-locales)
-:::
+
+</nav>
+
 
 ### Example
 
@@ -93,6 +97,10 @@ WIKI: Wrote the fr translation of 'Combat Primer' (now rev 1).
 WIKI: a translation needs an explicit language: @wiki/translate <page>/<lang>=<text>
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [wiki editing](/reference/sharpmush-help/wiki-editing/#wiki-editing)
-:::
+
+</nav>
+

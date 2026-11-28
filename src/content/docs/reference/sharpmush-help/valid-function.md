@@ -42,12 +42,16 @@ The valid() function checks to see if `<string>` can be used as a valid `<catego
 - [valid names](/reference/sharpmush-help/valid-function/#name-and-value-categories): object, attribute, player, command, function, flag and register names
 - [valid other categories](/reference/sharpmush-help/valid-function/#other-categories): colors, channels, timezones, locks, roles, permissions and rolls
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [colors()](/reference/sharpmush-help/colors-function/#colors)
 - [ansi()](/reference/sharpmush-help/ansi-function/#ansi)
 - [@role](/reference/sharpmush-help/role-command/#role)
 - [@permission](/reference/sharpmush-help/permission-command/#permission)
-:::
+
+</nav>
+
 
 ### Name and value categories
 

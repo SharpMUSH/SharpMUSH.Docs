@@ -44,10 +44,14 @@ When the attribute is called, %0 will be the type of the json object and %1 will
 
 `<osep>` defaults to a space.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [json()](/reference/sharpmush-help/json-function/#json)
-- [json_query()](/reference/sharpmush-help/json-query-function/#jsonquery)
-:::
+- [json_query()](/reference/sharpmush-help/json-query-function/#json_query)
+
+</nav>
+
 
 ### Mapping primitive values
 

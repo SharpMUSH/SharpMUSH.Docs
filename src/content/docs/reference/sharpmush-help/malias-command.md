@@ -50,9 +50,13 @@ The @malias command is used to create, view, and manipulate @mail aliases, or li
 `@malias` with a single argument (the name of an alias) lists the members of that alias, if you're allowed to see them. Other forms of the same command are `@malias/members <alias>` or `@malias/who <alias>`
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@malias creating and naming aliases](/reference/sharpmush-help/malias-command/#creating-and-naming-aliases)
-:::
+
+</nav>
+
 
 ### Creating and naming aliases
 
@@ -70,9 +74,13 @@ The first form above creates a new alias for the given list of players.
 `@malias/destroy` destroys the alias completely.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@malias managing recipients](/reference/sharpmush-help/malias-command/#managing-recipients)
-:::
+
+</nav>
+
 
 ### Managing recipients
 
@@ -87,9 +95,13 @@ The first form above creates a new alias for the given list of players.
 `@malias/remove` removes players from the alias. If a player is on the alias more than once, a single remove will remove only one instance of that player.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@malias alias permissions](/reference/sharpmush-help/malias-command/#alias-permissions)
-:::
+
+</nav>
+
 
 ### Alias permissions
 
@@ -105,9 +117,13 @@ An empty permission list allows any player. The permission list may also be a sp
 By default, the owner and alias members may see and use the alias, but only the owner may list the members. Note that admin may always list aliases and their members, regardless of these settings, but are treated like anyone else when trying to @mail with an alias.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@malias administrative alias operations](/reference/sharpmush-help/malias-command/#administrative-alias-operations)
-:::
+
+</nav>
+
 
 ### Administrative alias operations
 

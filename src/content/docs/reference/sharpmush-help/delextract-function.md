@@ -27,8 +27,12 @@ This function comes from TinyMUX.
 a d e
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [EXTRACT()](/reference/sharpmush-help/sharpfunc/#extract)
 - [LDELETE()](/reference/sharpmush-help/sharpfunc/#ldelete)
 - [REMOVE()](/reference/sharpmush-help/sharpfunc/#remove)
-:::
+
+</nav>
+

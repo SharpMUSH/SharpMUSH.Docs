@@ -91,7 +91,11 @@ How many of the messages you sent are in *\<player\>*'s mailbox, or the text of 
 4
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Mail Functions](/reference/sharpmush-help/sharpmail/#mail-functions)
 - [mail()](/reference/sharpmush-help/sharpmail/#mail-1)
-:::
+
+</nav>
+

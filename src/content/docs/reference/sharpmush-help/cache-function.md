@@ -42,12 +42,16 @@ You must control `<object>`, or cache() returns #-1 NO PERMISSION TO SET ATTRIBU
 - [cache clearing](/reference/sharpmush-help/cache-function/#clearing-a-cache): making the next call evaluate, by hand or when data changes
 - [cache examples](/reference/sharpmush-help/cache-function/#cache-examples)
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [memo()](/reference/sharpmush-help/memo-function/#memo)
 - [mtime()](/reference/sharpmush-help/sharpfunc/#mtime)
 - [lsearch()](/reference/sharpmush-help/lsearch-function/#lsearch)
 - [sql()](/reference/sharpmush-help/sql-function/#sql)
-:::
+
+</nav>
+
 
 ### Cache windows
 

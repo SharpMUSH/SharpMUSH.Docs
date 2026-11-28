@@ -29,6 +29,10 @@ totcmds() comes from RhostMUSH.
 1532
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [cmds()](/reference/sharpmush-help/sharpfunc/#cmds)
-:::
+
+</nav>
+

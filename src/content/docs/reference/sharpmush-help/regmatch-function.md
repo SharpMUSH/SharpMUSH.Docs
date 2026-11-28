@@ -47,14 +47,18 @@ description: "SharpMUSH documentation for regmatch()"
 An invalid `<regexp>` returns `#-1 REGEXP ERROR: INVALID REGULAR EXPRESSION`. A match that exceeds its time budget returns `#-1 REGEXP TIMEOUT`. On a failed match, requested q-registers are cleared; a `-` destination discards a capture.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [GRAB()](/reference/sharpmush-help/sharpfunc/#grab)
 - [REGEDIT()](/reference/sharpmush-help/sharpfunc/#regedit)
 - [valid()](/reference/sharpmush-help/valid-function/#valid)
 - [RESWITCH()](/reference/sharpmush-help/sharpfunc/#reswitch)
 - [STRMATCH()](/reference/sharpmush-help/sharpfunc/#strmatch)
 - [regexp syntax](/reference/sharpmush-help/regexp-syntax/#regular-expression-syntax)
-:::
+
+</nav>
+
 
 ### Register lists
 

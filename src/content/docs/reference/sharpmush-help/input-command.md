@@ -122,8 +122,12 @@ Typed text is never evaluated: storing it, or substituting `%0` or a register ho
 
 Output: a note typed as `[add(1,2)] for %n` is saved as `3 for` and the player's name. `objevals()` evaluates as the player only when the object controls them, as a wizard-owned object does; otherwise it evaluates as the object itself, so evaluate typed text only from an object that controls its players.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@prompt](/reference/sharpmush-help/sharpcmd/#prompt)
 - [@trigger](/reference/sharpmush-help/trigger-command/#trigger)
 - [@include](/reference/sharpmush-help/include-command/#include)
-:::
+
+</nav>
+

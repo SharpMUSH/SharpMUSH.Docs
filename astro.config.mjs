@@ -24,7 +24,7 @@ export default defineConfig({
               { tag: 'meta', attrs: { name: 'twitter:image:alt', content: 'SharpMUSH Docs: guides for your next text world. Sharpie shows an illustrated world-building manual.' } },
           ],
           logo: { src : './src/assets/logo.svg' },
-          customCss: ['./src/styles/colors.css', './src/styles/diagrams.css'],
+          customCss: ['./src/styles/colors.css', './src/styles/diagrams.css', './src/styles/help.css'],
           social: [
               {
                   label: 'GitHub',

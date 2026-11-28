@@ -49,7 +49,9 @@ You can see the list of flags set on an object in several ways:
 Note: The object type (player, thing, room or exit) is not actually a flag. See [TYPES OF OBJECTS](/reference/sharpmush-help/sharptop/#types-of-objects) for more information.
 
 
-::: seealso
+<nav class="help-see-also" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [examine](/reference/sharpmush-help/sharpcmd/#examine)
 - [FLAGS()](/reference/sharpmush-help/sharpfunc/#flags)
 - [HASFLAG()](/reference/sharpmush-help/sharpfunc/#hasflag)
@@ -63,4 +65,6 @@ Note: The object type (player, thing, room or exit) is not actually a flag. See 
 - [@set](/reference/sharpmush-help/set-command/#set)
 - [SET()](/reference/sharpmush-help/sharpfunc/#set)
 - [attribute flags](/reference/sharpmush-help/attribute-flags/#attribute-flags)
-:::
+
+</nav>
+

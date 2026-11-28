@@ -194,8 +194,12 @@ New switches on commands PennMUSH has:
 - An internal error is reported as an [exception](/reference/sharpmush-help/sharpcode/#exception) with an id the server log can be searched for.
 - The server reports Prometheus metrics at `/metrics`. With the update agent, the portal updates the game's containers.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [pennmush compatibility](/reference/sharpmush-help/pennmush-compatibility/#pennmush-compatibility)
 - [Getting Started](/reference/sharpmush-help/sharptop/#getting-started)
 - [topics](/reference/sharpmush-help/topics/#topics)
-:::
+
+</nav>
+

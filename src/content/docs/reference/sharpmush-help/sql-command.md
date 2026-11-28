@@ -54,9 +54,13 @@ Prepared statements:
 > @sql/prepare v(QUERY),active,123
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SQL()](/reference/sharpmush-help/sql-function/#sql)
 - [SQLESCAPE()](/reference/sharpmush-help/sharpfunc/#sqlescape)
 - [MAPSQL()](/reference/sharpmush-help/mapsql-function/#mapsql)
 - [@mapsql](/reference/sharpmush-help/mapsql-command/#mapsql)
-:::
+
+</nav>
+

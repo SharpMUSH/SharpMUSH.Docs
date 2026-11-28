@@ -55,10 +55,14 @@ The full lists are in [COMMANDS](/reference/sharpmush-help/commands-index/#comma
 
 Please note that just because there is help available on a command does not necessarily mean that the command can be used on this MUSH. The siteadmin of the MUSH can choose to turn off some commands. If there's something that you would like available, and it isn't, please ask a wizard why not.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Getting Started](/reference/sharpmush-help/sharptop/#getting-started)
 - [help search](/reference/sharpmush-help/help-search/#help-search)
 - [COMMANDS](/reference/sharpmush-help/commands-index/#commands)
 - [topics](/reference/sharpmush-help/topics/#topics)
 - [sharpmush features](/reference/sharpmush-help/sharpmush-features/#sharpmush-features)
-:::
+
+</nav>
+

@@ -32,14 +32,18 @@ If `<room>` is specified (usually as a dbref), this command shows `<message>` to
 The `/noeval` switch prevents the MUSH from evaluating `<message>`.<br>
 The `/spoof` switch causes nospoof notifications to show the enactor's dbref instead of the executor's dbref, and requires control over the enactor or the Can_spoof power.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@emit](/reference/sharpmush-help/sharpcmd/#emit)
 - [@pemit](/reference/sharpmush-help/pemit-command/#pemit)
 - [@nspemit](/reference/sharpmush-help/sharpcmd/#nspemit)
 - [OEMIT()](/reference/sharpmush-help/sharpfunc/#oemit)
 - [NOSPOOF](/reference/sharpmush-help/sharpflag/#nospoof)
 - [SPOOFING](/reference/sharpmush-help/sharptop/#spoofing)
-:::
+
+</nav>
+
 
 ### Location targeting examples
 

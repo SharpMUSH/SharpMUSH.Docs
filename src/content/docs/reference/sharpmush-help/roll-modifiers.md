@@ -122,8 +122,12 @@ Output: the two 1s counted as 2.
 
 `x`, `xo`, `r`, `rr`, `cs`, `cf`, `df`, `sf` and `ms` can name the faces they act on: a number (`r2`), or a comparison with `=`, `>`, `>=`, `<` or `<=` (`x>=9`, `cs>=8`, `sf<3`). The number may be a bracketed formula, such as `cs>=(@difficulty)`.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [roll()](/reference/sharpmush-help/roll-function/#roll)
 - [ROLL DICE](/reference/sharpmush-help/roll-dice/#roll-dice)
 - [ROLL POOLS](/reference/sharpmush-help/roll-pools/#roll-pools)
-:::
+
+</nav>
+

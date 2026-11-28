@@ -133,7 +133,11 @@ A restore is refused before any change when the snapshot is malformed or in an u
 
 Snapshots do not replace [@backup](/reference/sharpmush-help/backup-command/#backup) for the whole world, or package rollback for packages.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [administrative capabilities](/reference/sharpmush-help/capabilities/#administrative-capabilities)
 - [@backup](/reference/sharpmush-help/backup-command/#backup)
-:::
+
+</nav>
+

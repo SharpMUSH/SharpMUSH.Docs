@@ -50,8 +50,12 @@ You may set a channel's locks if you own it, if you pass its mod lock, or if you
 @clock/speak Public=
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
 - [lock keys](/reference/sharpmush-help/lock-keys/#lock-keys)
 - [@CHANNEL PRIVS](/reference/sharpmush-help/channel-privs-command/#channel-privs)
-:::
+
+</nav>
+

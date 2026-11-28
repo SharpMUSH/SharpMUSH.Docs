@@ -54,9 +54,13 @@ A key does not let anyone run the attribute. Who may trigger `$`-commands and `^
 
 The portal's Configuration has an Attribute keys page under Security, for holders of `config.admin`. It lists every attribute that has a key, and sets or clears an attribute's two keys at once. When the game refuses a key, the page says why.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@attribute lock](/reference/sharpmush-help/attribute-command/#keys-in-the-attribute-table)
 - [locktypes](/reference/sharpmush-help/locktypes/#lock-types)
 - [attribute flags](/reference/sharpmush-help/attribute-flags/#attribute-flags)
 - [@attribute](/reference/sharpmush-help/attribute-command/#attribute)
-:::
+
+</nav>
+

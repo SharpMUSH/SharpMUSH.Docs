@@ -37,6 +37,10 @@ Tag weather added for #42:1793154718015.
 
 Output: `#weather` is `#42`, so the second line triggers `#42/UPDATE`.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [tagref()](/reference/sharpmush-help/tagref-function/#tagref)
-:::
+
+</nav>
+

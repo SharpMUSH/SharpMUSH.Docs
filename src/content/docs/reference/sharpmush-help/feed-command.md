@@ -280,8 +280,12 @@ Tuned to 101.5.
 
 `feedsof()` and the other read functions are in [feed functions](/reference/sharpmush-help/feed-functions/#feed-functions).
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [feed functions](/reference/sharpmush-help/feed-functions/#feed-functions)
 - [roles](/reference/sharpmush-help/roles/#roles)
 - [lock keys](/reference/sharpmush-help/lock-keys/#lock-keys)
-:::
+
+</nav>
+

@@ -47,10 +47,14 @@ These functions come from RhostMUSH. With no `/<role>`, ueval() is `#-1 NO LEVEL
 [add(1,2)] x
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [u()](/reference/sharpmush-help/u-function/#u)
 - [roles](/reference/sharpmush-help/roles/#roles)
-:::
+
+</nav>
+
 
 ### Levels
 

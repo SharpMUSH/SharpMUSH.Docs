@@ -30,9 +30,13 @@ These functions come from TinyMUX.
 CMD_GO CMD_LOOK
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [REGLATTR()](/reference/sharpmush-help/lattr-function/#lattr)
 - [REGNATTR()](/reference/sharpmush-help/sharpfunc/#nattr)
 - [LATTR()](/reference/sharpmush-help/lattr-function/#lattr)
 - [regexp](/reference/sharpmush-help/regexp/#regular-expressions)
-:::
+
+</nav>
+

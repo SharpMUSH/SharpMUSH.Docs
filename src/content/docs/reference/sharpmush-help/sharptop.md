@@ -32,7 +32,7 @@ This is the index to the MUSH online help files.
 |                                            |                           |
 |--------------------------------------------|---------------------------|
 | Settings, players, roles, backups:         | help [administration](/reference/sharpmush-help/administration/#administration)     |
-| Commands only staff can use:               | help [@-wizard](/reference/sharpmush-help/sharpcmd/#wizard)           |
+| Commands only staff can use:               | help [@-wizard](/reference/sharpmush-help/sharpcmd/#-wizard)           |
 | The configuration of this MUSH:            | `@config`                 |
 
 For information about SharpMUSH, see [code](/reference/sharpmush-help/sharpcode/#contact). If the help text has an error, tell a wizard on this game or report it to SharpMUSH at https://github.com/SharpMUSH/SharpMUSH/issues.
@@ -67,10 +67,14 @@ For information about SharpMUSH, see [code](/reference/sharpmush-help/sharpcode/
   Note that the choice of which ancestor to look up is based on the type of the *child* object, as is the check of the ORPHAN flag. Also note that ancestors are *not* checked for `$-commands` or ^-commands; you should use the master room for global commands, instead.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [parent](/reference/sharpmush-help/parent/#parents)
 - [ORPHAN](/reference/sharpmush-help/sharpflag/#orphan)
-:::
+
+</nav>
+
 
 ## Attribute Ownership
   The latest person to set an attribute on an object is the owner of that attribute. If you lock an attribute, using the `@atrlock` command, only the person who owns the attribute will be able to alter the attribute. This allows you to create standard commands on objects and then `@chown` them to others without letting them alter them.
@@ -79,12 +83,16 @@ For information about SharpMUSH, see [code](/reference/sharpmush-help/sharpcode/
 
   You must control an object in order to set attributes on it.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@atrlock](/reference/sharpmush-help/sharpcmd/#atrlock)
 - [@atrchown](/reference/sharpmush-help/sharpcmd/#atrchown)
 - [OWNER()](/reference/sharpmush-help/sharpfunc/#owner)
 - [attributes](/reference/sharpmush-help/attributes/#attributes)
-:::
+
+</nav>
+
 
 ## Control
   Controlling an object basically means that you have the power to change the object's characteristics such as flags and attributes. It may also mean that you have the ability to destroy it.
@@ -108,11 +116,15 @@ For information about SharpMUSH, see [code](/reference/sharpmush-help/sharpcode/
   13. O does not control V
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [CONTROLS()](/reference/sharpmush-help/sharpfunc/#controls)
 - [zones](/reference/sharpmush-help/zones/#zones)
 - [zone masters](/reference/sharpmush-help/zone-masters/#zone-masters)
-:::
+
+</nav>
+
 
 ## Costs
   SharpMUSH has no money, so building and searching cost no pennies. The only cost is quota: when the 'use_quota' `@config` option is on, each object you create counts 'quota_cost' against your quota. See [quotas](/reference/sharpmush-help/sharptop/#quotas).
@@ -120,21 +132,29 @@ For information about SharpMUSH, see [code](/reference/sharpmush-help/sharpcode/
   The penny cost options in '`@config`/list costs' (object_cost, exit_cost, link_cost, room_cost, queue_cost, find_cost) are accepted but have no effect.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MONEY](/reference/sharpmush-help/sharptop/#money)
 - [MONEY()](/reference/sharpmush-help/sharpfunc/#money)
 - [score](/reference/sharpmush-help/sharpcmd/#score)
-:::
+
+</nav>
+
 
 ## Credits
   Developers: Mercutio (Harry Cordewener)
 
   Big thanks to the developers of PennMUSH and all of the history it is derived from, as well as most of these helpfiles.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [code](/reference/sharpmush-help/sharpcode/#contact)
 - [copyright](/reference/sharpmush-help/copyright/#copyright)
-:::
+
+</nav>
+
 
 ## Object IDs
   When an object is destroyed, its dbref number can later be given to a newly created object (for example by a creator with the Pick_DBRefs `@power`). This can cause problems in code, particularly in database code which stores members of a group, as code which was meant to refer to the old object ends up referring to the new one by mistake.
@@ -144,11 +164,15 @@ For information about SharpMUSH, see [code](/reference/sharpmush-help/sharpcode/
   The `objid()` function returns the object id of an object, and the %: substitution evaluates to the objid of the enactor.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [OBJID()](/reference/sharpmush-help/sharpfunc/#objid)
 - [@LOCK-SIMPLE](/reference/sharpmush-help/sharplock/#lock-simple)
 - [database](/reference/sharpmush-help/database/#database)
-:::
+
+</nav>
+
 
 ## Drop-tos
   When you use the `@link` command on a room, it sets another room or object as the DROP-TO location. By default, any non-STICKY object that someone drops in the room will automatically be transported to the drop-to location, rather than staying in the room. Any STICKY object dropped in the room will go to its home.
@@ -159,12 +183,16 @@ For information about SharpMUSH, see [code](/reference/sharpmush-help/sharpcode/
 
   If the room has a `@lock/dropto` set on it, only objects that pass the lock will be transported (either immediately or when the last player leaves if the room is STICKY). This can be used to prevent the dropto from acting on, say, objects containing connected players.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@link](/reference/sharpmush-help/sharpcmd/#link)
 - [STICKY](/reference/sharpmush-help/sharpflag/#sticky)
-- [LINK_OK](/reference/sharpmush-help/sharpflag/#linkok)
+- [LINK_OK](/reference/sharpmush-help/sharpflag/#link_ok)
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
-:::
+
+</nav>
+
 
 ## Enactor
   The enactor is the object which causes something to happen. This is an important concept in MUSH, because the way many commands work will depend on who enters the command (ie, who the enactor is). Note that while the enactor is the object which -caused- code/a command to run, it is not necessarily the object which is running the code (that's the executor). Any type of object can be an enactor.
@@ -179,12 +207,16 @@ For information about SharpMUSH, see [code](/reference/sharpmush-help/sharpcode/
 
   If, for example, you have an `@osuccess` on an object that includes the %n subtitution, whenever someone picks up the object, that %n will evaluate to the name of the enactor (the person who typed 'get `<object>`' in this case).
 
-::: seealso
-- [%!]
-- [%@]
-- [%]
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [%!](/reference/sharpmush-help/sharptop/#executor)
+- [%@](/reference/sharpmush-help/sharptop/#caller)
+- [%](/reference/sharpmush-help/substitutions/#substitutions)
 - [database](/reference/sharpmush-help/database/#database)
-:::
+
+</nav>
+
 
 ## Executor
   The executor of a command is the object actually carrying out the command or running the code. This differs from the enactor, because the enactor is the object that sets off the command. In some cases, the enactor and the executor will be the same. The substitution %! evaluates to the dbref of the executor of the code.
@@ -202,11 +234,15 @@ For information about SharpMUSH, see [code](/reference/sharpmush-help/sharpcode/
 
   In the first case, Cyclonus directly entered the command and was therefore both the enactor and the executor. In the second, Cyclonus set off the command on the box, so Cyclonus was still the enactor, but the box was the object that was actually doing the `@emit`, and was thus the executor.
 
-::: seealso
-- [%#]
-- [%@]
-- [%]
-:::
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [%#](/reference/sharpmush-help/sharptop/#enactor)
+- [%@](/reference/sharpmush-help/sharptop/#caller)
+- [%](/reference/sharpmush-help/substitutions/#substitutions)
+
+</nav>
+
 
 ## Caller
   The caller is the object which causes an attribute to be evaluated (for instance, by using `ufun()` or a similar function). The substitution %@ evaluates to the caller's dbref. It's particularly useful for functions with side-effects, to check that the object evaluating the function has permission.
@@ -223,10 +259,14 @@ For information about SharpMUSH, see [code](/reference/sharpmush-help/sharpcode/
     > &wizfun Foo=if(hasflag(%@, Wizard), ufun(wizfun2), #-1 Sorry)
 ```
 
-::: seealso
-- [%#]
-- [%!]
-:::
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [%#](/reference/sharpmush-help/sharptop/#enactor)
+- [%!](/reference/sharpmush-help/sharptop/#executor)
+
+</nav>
+
 
 ## Gender
   Gender on a MUSH is entirely up to you. You can set yourself (or any of your objects) to be male, female, neuter, or plural. If whatever is in the SEX attribute is not recognizable, the MUSH will assume the object is plural (they/them). Setting a gender attribute will enable pronoun substitution by the MUSH. The SEX attribute is visual to anyone who wants to see it.
@@ -237,20 +277,28 @@ For information about SharpMUSH, see [code](/reference/sharpmush-help/sharpcode/
 
   A game can keep gender in another attribute with the `gender_attr` option (see [@config attribs](/reference/sharpmush-help/sharpconf/#config-attribs)); pronouns then read that attribute instead of SEX. `@gender` sets whichever attribute that is, while `@sex` always sets SEX.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@gender](/reference/sharpmush-help/sharpcmd/#gender)
 - [@sex](/reference/sharpmush-help/sharpcmd/#sex)
-- [%]
-:::
+- [%](/reference/sharpmush-help/substitutions/#substitutions)
+
+</nav>
+
 
 ## Globals
   A command is "global" if it can be used anywhere in the world of the MUSH. The standard/built-in MUSH commands are all global, so this term is usually used to refer to user-defined commands on objects in the Master Room of the MUSH. Global commands very greatly from MUSH to MUSH, but you can usually find MUSH-specific help on them by typing "`+help`".
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MASTER ROOM](/reference/sharpmush-help/sharptop/#master-room)
-- [$-commands]
+- [$-commands](/reference/sharpmush-help/commands/#-commands)
 - [evaluation order](/reference/sharpmush-help/evaluation-order/#evaluation-order)
-:::
+
+</nav>
+
 
 ## here
   The word 'here' refers to the room you are in. For example, to rename the room you're in (if you control it), you could use:
@@ -259,9 +307,13 @@ For information about SharpMUSH, see [code](/reference/sharpmush-help/sharpcode/
     > @name here=<new name>
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MATCHING](/reference/sharpmush-help/sharptop/#matching)
-:::
+
+</nav>
+
 
 ## Homes
   Every thing or player has a home, which is usually the room where it was created. You can reset your home or the home of any object you own with the `@link` command: `@link [me | <object>]=<location>`. You must also control `<location>`, unless that location (room or thing) is set ABODE or LINK_OK.
@@ -281,44 +333,60 @@ For information about SharpMUSH, see [code](/reference/sharpmush-help/sharpcode/
 
   The home of a room is its drop-to.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [DROP-TOS](/reference/sharpmush-help/sharptop/#drop-tos)
 - [@link](/reference/sharpmush-help/sharpcmd/#link)
 - [STICKY](/reference/sharpmush-help/sharpflag/#sticky)
-- [LINK_OK](/reference/sharpmush-help/sharpflag/#linkok)
+- [LINK_OK](/reference/sharpmush-help/sharpflag/#link_ok)
 - [FIXED](/reference/sharpmush-help/sharpflag/#fixed)
 - [EXITS](/reference/sharpmush-help/sharptop/#exits)
 - [HOME()](/reference/sharpmush-help/sharpfunc/#home)
 - [LOC()](/reference/sharpmush-help/sharpfunc/#loc)
-:::
+
+</nav>
+
 
 ## LAST
   LAST and LASTLOGOUT
 
   These attributes show the last times you connected and disconnected from the MUSH.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LASTSITE](/reference/sharpmush-help/sharptop/#lastsite)
-:::
+
+</nav>
+
 
 ## LASTSITE
   LASTSITE and LASTIP
 
   The LASTSITE attribute gives the name of the site you last connected from. The LASTIP attribute gives the IP address you last connected from. Mortals cannot set them.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LAST](/reference/sharpmush-help/sharptop/#last)
-:::
+
+</nav>
+
 
 ## Linking
 
   You can link to a room if you control it, or if it is set LINK_OK or ABODE. Being able to link means you can set the homes of objects or yourself to that room if it is set ABODE, and can set the destination of exits to that room if it is LINK_OK.
 
-::: seealso
-- [LINK_OK](/reference/sharpmush-help/sharpflag/#linkok)
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [LINK_OK](/reference/sharpmush-help/sharpflag/#link_ok)
 - [ABODE](/reference/sharpmush-help/sharpflag/#abode)
 - [@link](/reference/sharpmush-help/sharpcmd/#link)
-:::
+
+</nav>
+
 
 ## Lists
   The word "list" is used in the help files to refer to a string that is a series of smaller strings separated by one or more spaces. A list can also have its elements separated by some other kind of character -- the separating character is called the "delimiter". For example, the following are all lists:
@@ -332,11 +400,15 @@ For information about SharpMUSH, see [code](/reference/sharpmush-help/sharpcode/
   list is made up of similar items (so the fourth list in the example<br>
   is NOT a typical one).
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [STRINGS](/reference/sharpmush-help/sharptop/#strings)
 - [List functions](/reference/sharpmush-help/sharpfunc/#list-functions)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
-:::
+
+</nav>
+
 
 ## Looping
   Looping in an object can have its good parts and its bad parts. The good part is when you activate part of a program multiple times to exhaustively perform an operation. This can be done like this:
@@ -349,23 +421,31 @@ For information about SharpMUSH, see [code](/reference/sharpmush-help/sharpcode/
 
   The `@retry` and `@include` commands, and %= substitution, can also be useful for building code which needs to loop.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@ps](/reference/sharpmush-help/ps-command/#ps)
 - [HALTED](/reference/sharpmush-help/sharpflag/#halt)
 - [COSTS](/reference/sharpmush-help/sharptop/#costs)
 - [@trigger](/reference/sharpmush-help/trigger-command/#trigger)
 - [@retry](/reference/sharpmush-help/retry-command/#retry)
 - [substitutions](/reference/sharpmush-help/substitutions/#substitutions)
-:::
+
+</nav>
+
 
 ## Master Room
 
   The Master Room enables global commands and exits. Exits in the Master Room may be used from any location on the MUSH. All objects left in the Master Room are checked for user-defined `$-commands`. Those `$-commands` are considered global, meaning that they can be used anywhere on the MUSH. Normally, only wizards will have access to the Master Room; if you have a global command that you would like to see enabled for the MUSH, speak to a wizard.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [evaluation order](/reference/sharpmush-help/evaluation-order/#evaluation-order)
 - [GLOBALS](/reference/sharpmush-help/sharptop/#globals)
-:::
+
+</nav>
+
 
 ## me
   The word 'me' refers to yourself. Some things to do when starting out:<br>
@@ -374,13 +454,17 @@ For information about SharpMUSH, see [code](/reference/sharpmush-help/sharpcode/
   3) lock yourself:                     `@lock` me==me<br>
   4) set your gender:                   `@sex` me=`<male|female|neuter|plural>`
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [newbie](/reference/sharpmush-help/newbie/#newbie)
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
 - [@describe](/reference/sharpmush-help/sharpcmd/#describe)
 - [@sex](/reference/sharpmush-help/sharpcmd/#sex)
 - [MATCHING](/reference/sharpmush-help/sharptop/#matching)
-:::
+
+</nav>
+
 
 ## Money
   SharpMUSH has no money system. Players get no starting money or daily allowance, and queued commands and building cost nothing.
@@ -390,7 +474,9 @@ For information about SharpMUSH, see [code](/reference/sharpmush-help/sharpcode/
   The "score" command says that money is not tracked.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [COSTS](/reference/sharpmush-help/sharptop/#costs)
 - [give](/reference/sharpmush-help/sharpcmd/#give-1)
 - [@cost](/reference/sharpmush-help/sharpcmd/#cost)
@@ -400,7 +486,9 @@ For information about SharpMUSH, see [code](/reference/sharpmush-help/sharpcode/
 - [@buy](/reference/sharpmush-help/sharpcmd/#buy)
 - [score](/reference/sharpmush-help/sharpcmd/#score)
 - [MONEY()](/reference/sharpmush-help/sharpfunc/#money)
-:::
+
+</nav>
+
 
 ## Non-standard Attributes
   While there are many standard attributes in MUSH, objects can also have an enormous number of attributes, with any name you wish to use. The attributes VA-VZ, WA-WZ and XA-XZ are standard attributes anyone can use. It is strongly recommended that you use non-standard attributes and meaningful names in order to make maintaining your MUSHCode easier.
@@ -413,13 +501,17 @@ For information about SharpMUSH, see [code](/reference/sharpmush-help/sharpcode/
   You can get the value of attributes using the functions `v()`, `get()`, and `xget()`. You can evaluate attributes using `u()`, `eval()`, and `get_eval()`. All attributes can be used in attribute locks and can be 'owned' independent of object ownership.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [attributes](/reference/sharpmush-help/attributes/#attributes)
 - [ATTRIB-OWNERSHIP](/reference/sharpmush-help/sharptop/#attribute-ownership)
 - [Attribute functions](/reference/sharpmush-help/sharpfunc/#attribute-functions)
 - [attribute trees](/reference/sharpmush-help/attribute-trees/#attribute-trees)
 - [attribute flags](/reference/sharpmush-help/attribute-flags/#attribute-flags)
-:::
+
+</nav>
+
 
 ## Quotas
   The Quota system controls how many objects a player may own. It is only used of the 'use_quota' `@config` option is set to Yes.
@@ -431,11 +523,15 @@ For information about SharpMUSH, see [code](/reference/sharpmush-help/sharpcode/
   You can view your current quota with the `@quota` command. Wizards can adjust a specific player's quota qith the `@squota` command, and God can see or alter all players' quotas with `@allquota`.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@quota](/reference/sharpmush-help/quota-command/#quota)
 - [QUOTA()](/reference/sharpmush-help/sharpfunc/#quota)
 - [@power](/reference/sharpmush-help/power-command/#power)
-:::
+
+</nav>
+
 
 ## Regexp Examples
   The regexp pattern '.' is equivalent to the wildcard '?'; it matches one and only one of an arbitrary character.
@@ -458,10 +554,14 @@ RQUOTA [#1m+]: 11
 Output: Alice may build 11 more objects.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@quota](/reference/sharpmush-help/quota-command/#quota)
 - [@quota administrative quota changes](/reference/sharpmush-help/quota-command/#administrative-quota-changes)
-:::
+
+</nav>
+
 
 ## Setting Attributes
   Standard attributes are set using @`<attrib>` `<obj>`=`<value>`<br>
@@ -477,16 +577,20 @@ Output: Alice may build 11 more objects.
   Empty attributes retain their flags and atrlock status. Wiped attributes are gone forever.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [attributes](/reference/sharpmush-help/attributes/#attributes)
 - [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/sharptop/#non-standard-attributes)
 - [@set](/reference/sharpmush-help/set-command/#set)
 - [@wipe](/reference/sharpmush-help/sharpcmd/#wipe)
-- [ATTRIB_SET()](/reference/sharpmush-help/sharpfunc/#attribset)
+- [ATTRIB_SET()](/reference/sharpmush-help/sharpfunc/#attrib_set)
 - [SET()](/reference/sharpmush-help/sharpfunc/#set)
 - [WIPE()](/reference/sharpmush-help/sharpfunc/#wipe)
 - [attribute flags](/reference/sharpmush-help/attribute-flags/#attribute-flags)
-:::
+
+</nav>
+
 
 ## Spoofing
   Spoofing is the act of making other characters think that a person said or did something that they did not. This is very easy to accomplish, and has some good effects, which is why it is allowed. However, abusing it is very twinkish and will most likely get you in hot water with your wizards. Note that if you are being spoofed and want to know who is doing it, you can set yourself NOSPOOF and you will be notified who is making the `@emits`.
@@ -496,13 +600,17 @@ Output: Alice may build 11 more objects.
   Some @*emit commands also take a /spoof switch, which causes nospoof information to show that sound originated from the enactor (%#) instead of the executor (%!). This switch allows staff to write global `$-commands` for speech which show more helpful nospoof tags.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@emit](/reference/sharpmush-help/sharpcmd/#emit)
 - [@pemit](/reference/sharpmush-help/pemit-command/#pemit)
 - [@remit](/reference/sharpmush-help/sharpcmd/#remit)
 - [@oemit](/reference/sharpmush-help/oemit-command/#oemit)
 - [NOSPOOF](/reference/sharpmush-help/sharpflag/#nospoof)
-:::
+
+</nav>
+
 
 ## Stack
   For those unfamiliar with the term stack, it refers to a programming data structure that follows a LIFO (Last-In-First-Out) principle. The stack in MUSH holds the REGISTERS. The first ten registers can be accessed via the %0-%9 %-substitutions and v(0)-v(29), while all 30 registers can be accessed via the `r()` function (r(0, args) up to v(29,args)).
@@ -510,11 +618,15 @@ Output: Alice may build 11 more objects.
   When using regexp `$-commands` with named subpatterns, the named arguments can be accessed via r(`<name>`, args).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [registers](/reference/sharpmush-help/registers/#registers)
 - [R()](/reference/sharpmush-help/sharpfunc/#r)
 - [V()](/reference/sharpmush-help/sharpfunc/#v)
-:::
+
+</nav>
+
 
 ## Strings
   A string is simply a bunch of characters. A word is a string that begins and ends with the space character. A sentence is a string made up of smaller substrings that are words. Please note that a "word" or "sentence" in this technical sense does not have to make sense in English (or in any other language, for that matter). As far as mush functions and commands are concerned, this is a perfectly good sentence:
@@ -522,9 +634,13 @@ Output: Alice may build 11 more objects.
         Foozle 09blert bar baz foo.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [String functions](/reference/sharpmush-help/sharpfunc/#string-functions)
-:::
+
+</nav>
+
 
 ## Success
   A "success" normally occurs when you attempt to do something that is restricted by an `@lock` and you pass the `@lock`. (Note that if no lock is set, you automatically pass it.) For example, the "basic" lock restricts who can pick up a player/thing or who can go through an exit. Whenever you successfully do either of these things, you will set off the basic success messages on the object whose lock you have just successfully passed.
@@ -532,13 +648,17 @@ Output: Alice may build 11 more objects.
   Many other actions can also be locked - see `@lock` and locktypes for more information. Many of these actions have standard attributes that you can set messages in for when someone succeeds.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [failure](/reference/sharpmush-help/failure/#failure)
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
 - [attributes](/reference/sharpmush-help/attributes/#attributes)
 - [@asuccess](/reference/sharpmush-help/sharpcmd/#asuccess)
-:::
+
+</nav>
+
 
 ## Switches
 
@@ -567,10 +687,14 @@ Output: Alice may build 11 more objects.
   The `@stats` command lists how many objects of each type currently exits in the database.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [TYPE()](/reference/sharpmush-help/sharpfunc/#type)
 - [HASTYPE()](/reference/sharpmush-help/sharpfunc/#hastype)
-:::
+
+</nav>
+
 
 ## Players
   Players can be created at the login screen (or with `@pcreate`) and connected to. They can also receive `@mail`, and have a number of attributes set on them by the MUSH automatically, including LAST, LASTSITE, etc. They can have multiple `@aliases`, and are checked for `$-commands` and ^-listens.
@@ -578,12 +702,16 @@ Output: Alice may build 11 more objects.
   `@linking` a player sets their home.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [TYPES OF OBJECTS](/reference/sharpmush-help/sharptop/#types-of-objects)
 - [TYPE()](/reference/sharpmush-help/sharpfunc/#type)
 - [HASTYPE()](/reference/sharpmush-help/sharpfunc/#hastype)
 - [@pcreate](/reference/sharpmush-help/sharpcmd/#pcreate)
-:::
+
+</nav>
+
 
 ## Rooms
   Rooms are outermost-containers: they cannot be moved. They are created with `@dig`. Rooms can contain exits. They are checked for `$-commands` and ^-listens. Rooms do not have aliases.
@@ -591,13 +719,17 @@ Output: Alice may build 11 more objects.
   `@linking` a room creates a drop-to. Rooms have no location; `loc()` on a room returns its drop-to (as does `home()`).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [TYPES OF OBJECTS](/reference/sharpmush-help/sharptop/#types-of-objects)
 - [TYPE()](/reference/sharpmush-help/sharpfunc/#type)
 - [HASTYPE()](/reference/sharpmush-help/sharpfunc/#hastype)
 - [@dig](/reference/sharpmush-help/dig-command/#dig)
 - [DROP-TOS](/reference/sharpmush-help/sharptop/#drop-tos)
-:::
+
+</nav>
+
 
 ## Things
   Things are created with `@create`. They can move around the MUSH, be entered and carried. They are checked for `$-commands` and ^-listens. Things do not have aliases.
@@ -605,12 +737,16 @@ Output: Alice may build 11 more objects.
   `@linking` a thing sets its home.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [TYPES OF OBJECTS](/reference/sharpmush-help/sharptop/#types-of-objects)
 - [TYPE()](/reference/sharpmush-help/sharpfunc/#type)
 - [HASTYPE()](/reference/sharpmush-help/sharpfunc/#hastype)
 - [@create](/reference/sharpmush-help/sharpcmd/#create)
-:::
+
+</nav>
+
 
 ## Exits
   Exits are created with `@open`. They link rooms together, and can be used by players and things to move from one room to another with the GOTO command. Exits cannot move (though they can be `@teleported` to another room). They can have multiple aliases in their `@alias`. They are NOT checked for `$-commands` or ^-listens. Exits can have variable destinations; see [@destination](/reference/sharpmush-help/sharpcmd/#destination) for more information.
@@ -622,7 +758,9 @@ Output: Alice may build 11 more objects.
   Sound is propagated through exits which are set AUDIBLE, as long as their source room (home) is also set AUDIBLE.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [TYPES OF OBJECTS](/reference/sharpmush-help/sharptop/#types-of-objects)
 - [TYPE()](/reference/sharpmush-help/sharpfunc/#type)
 - [HASTYPE()](/reference/sharpmush-help/sharpfunc/#hastype)
@@ -630,7 +768,9 @@ Output: Alice may build 11 more objects.
 - [@link](/reference/sharpmush-help/sharpcmd/#link)
 - [@destination](/reference/sharpmush-help/sharpcmd/#destination)
 - [AUDIBLE](/reference/sharpmush-help/sharpflag/#audible)
-:::
+
+</nav>
+
 
 ## Garbage
   SharpMUSH keeps no garbage objects. A destroyed object waits on the recover list under its own number (see [@recover](/reference/sharpmush-help/recover-command/#recover)); once its entry expires or is purged, the number is free. `@stats`, `lstats()` and `hastype(#<n>, GARBAGE)` count free numbers as garbage.
@@ -638,11 +778,15 @@ Output: Alice may build 11 more objects.
   A new object takes the free number that has waited longest, once it is due, and otherwise the next unused one. A number freed early with `@purge` is due when its entry would have expired; one the configuration names, such as the master room, is never taken unasked. A creator with the Pick_DBRefs `@power` can ask for any free number. A reused number gets a new creation time, so its objid differs. `@recover/free` lists the free numbers.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@destroy](/reference/sharpmush-help/destroy-command/#destroy)
 - [@recover](/reference/sharpmush-help/recover-command/#recover)
 - [@stats](/reference/sharpmush-help/sharpcmd/#stats)
-:::
+
+</nav>
+
 
 ## Warnings
 
@@ -658,11 +802,15 @@ Output: Alice may build 11 more objects.
   Zone Master Rooms are useful either if you need global exits for the zone, or if the zone has a lot of `$-commands` which need to be restricted to different groups, as they can go on separate use-locked objects.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [zones](/reference/sharpmush-help/zones/#zones)
 - [MASTER ROOM](/reference/sharpmush-help/sharptop/#master-room)
 - [evaluation order](/reference/sharpmush-help/evaluation-order/#evaluation-order)
-:::
+
+</nav>
+
 
 ## Matching
   Matching is the process the MUSH uses to determine which object you mean when you try to do something with an object. Different commands and functions do matching in different ways, but most will allow you to specify an object as:
@@ -689,14 +837,18 @@ Output: Alice may build 11 more objects.
 
   Several commands and functions take a descriptor as an argument, or return the descriptor(s) associated with a player's connection.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [who](/reference/sharpmush-help/who/#who)
-- [%]
+- [%](/reference/sharpmush-help/substitutions/#substitutions)
 - [LPORTS()](/reference/sharpmush-help/sharpfunc/#lports)
 - [PLAYER()](/reference/sharpmush-help/sharpfunc/#player)
 - [@boot](/reference/sharpmush-help/sharpcmd/#boot)
 - [Connection functions](/reference/sharpmush-help/sharpfunc/#connection-functions)
-:::
+
+</nav>
+
 
 ## Unicode
 

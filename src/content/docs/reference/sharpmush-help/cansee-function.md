@@ -34,7 +34,11 @@ Neither checks DARK, locks or where the two are. You must control both objects. 
 
 Output: `#10` transmits only `ghost`, which you do not receive, while it receives your `normal`.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [rxlevel()](/reference/sharpmush-help/rxlevel-function/#rxlevel)
 - [@reality perception rules](/reference/sharpmush-help/reality/#perception-rules)
-:::
+
+</nav>
+

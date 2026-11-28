@@ -41,9 +41,13 @@ This function comes from TinyMUX.
 4
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
 - [DIV()](/reference/sharpmush-help/sharpfunc/#div)
 - [MOD()](/reference/sharpmush-help/sharpfunc/#mod)
 - [MEDIAN()](/reference/sharpmush-help/sharpfunc/#median)
-:::
+
+</nav>
+

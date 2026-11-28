@@ -28,7 +28,11 @@ toggle() comes from RhostMUSH.
 1
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@toggle](/reference/sharpmush-help/toggle-command/#toggle)
 - [set()](/reference/sharpmush-help/sharpfunc/#set)
-:::
+
+</nav>
+

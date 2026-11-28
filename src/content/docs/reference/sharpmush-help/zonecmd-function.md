@@ -39,8 +39,12 @@ zonecmd() comes from RhostMUSH.
 #20 #21
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@chzone](/reference/sharpmush-help/chzone-command/#chzone)
 - [@chzone several zones](/reference/sharpmush-help/chzone-command/#several-zones)
 - [LZONE()](/reference/sharpmush-help/lzone-function/#lzone)
-:::
+
+</nav>
+

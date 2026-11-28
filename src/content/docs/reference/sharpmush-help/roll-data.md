@@ -61,9 +61,13 @@ When `<data>` starts with `{`, it is a JSON object. A name is matched exactly fi
 1dF[-1] + DEXTERITY(1d6[5] + SPEED(2)) + skills.stealth(3) = 9
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [roll()](/reference/sharpmush-help/roll-function/#roll)
 - [ROLL DICE](/reference/sharpmush-help/roll-dice/#roll-dice)
 - [get()](/reference/sharpmush-help/sharpfunc/#get)
 - [json()](/reference/sharpmush-help/json-function/#json)
-:::
+
+</nav>
+

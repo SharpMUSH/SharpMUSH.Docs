@@ -36,7 +36,11 @@ The arguments become %0-%9 for each run, evaluated before every run with the %0-
 end-5
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@retry](/reference/sharpmush-help/retry-command/#retry)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
-:::
+
+</nav>
+

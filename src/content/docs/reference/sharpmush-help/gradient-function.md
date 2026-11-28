@@ -64,12 +64,16 @@ Given a layout, such as a [BOX()](/reference/sharpmush-help/box-function/#box) o
 - [gradient() layout examples]: a box and a table
 - [gradient() target examples]: shading only the borders, or only the text
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ANSI()](/reference/sharpmush-help/ansi-function/#ansi)
 - [TONE()](/reference/sharpmush-help/tone-function/#tone)
 - [GAUGE()](/reference/sharpmush-help/gauge-function/#gauge)
 - [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions)
-:::
+
+</nav>
+
 
 ### Options
 

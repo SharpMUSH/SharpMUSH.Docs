@@ -40,10 +40,14 @@ DESCRIBE SPECIAL
 
 Output: you receive both layers, and an import gave the `ghost` layer the attribute `SPECIAL`.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [rxlevel()](/reference/sharpmush-help/rxlevel-function/#rxlevel)
 - [@reality](/reference/sharpmush-help/reality/#reality)
-:::
+
+</nav>
+
 
 ### One layer
 

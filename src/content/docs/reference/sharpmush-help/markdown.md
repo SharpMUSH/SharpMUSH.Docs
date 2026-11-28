@@ -84,9 +84,13 @@ a|b     | a or b
 
 Output: a table whose first cell is the code a|b.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [rendermarkdown()](/reference/sharpmush-help/render-markdown/#rendermarkdown)
 - [rendermarkdowncustom()](/reference/sharpmush-help/render-markdown-custom/#rendermarkdowncustom)
 - [wiki editing](/reference/sharpmush-help/wiki-editing/#wiki-editing)
 - [help](/reference/sharpmush-help/sharptop/#help)
-:::
+
+</nav>
+

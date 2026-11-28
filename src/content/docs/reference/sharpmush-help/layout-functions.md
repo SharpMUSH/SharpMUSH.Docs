@@ -17,12 +17,16 @@ The built-in ones are `sharpmush`, the portal's teal on black, which a game is d
 sharpmush
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [THEME()](/reference/sharpmush-help/layout-functions/#theme)
 - [SWATCH()](/reference/sharpmush-help/swatch-function/#swatch)
 - [LAYOUT THEMES](/reference/sharpmush-help/layout-themes/#layout-themes)
 - [@THEME/LIST](/reference/sharpmush-help/theme-command/#the-games-themes)
-:::
+
+</nav>
+
 
 ## theme()
 
@@ -45,11 +49,15 @@ The result is read back as it is, so it can be edited and passed on.
 "#81a1c1"
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [THEMES()](/reference/sharpmush-help/layout-functions/#themes)
 - [SWATCH()](/reference/sharpmush-help/swatch-function/#swatch)
 - [LAYOUT THEMES](/reference/sharpmush-help/layout-themes/#layout-themes)
-:::
+
+</nav>
+
 
 ## lflex()
 
@@ -65,11 +73,15 @@ The text of a layout is its box art, so a list of layouts needs a delimiter its 
 Strength   | Agility    | Wits
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [FLEX()](/reference/sharpmush-help/flex-function/#flex)
 - [ITEM()](/reference/sharpmush-help/layout-functions/#item)
 - [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions)
-:::
+
+</nav>
+
 
 ## item()
 
@@ -85,10 +97,14 @@ Used on its own, item() draws its content as a single column.
                Right
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [FLEX()](/reference/sharpmush-help/flex-function/#flex)
 - [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions)
-:::
+
+</nav>
+
 
 ## lfields()
 
@@ -113,11 +129,15 @@ Origin:  Super Robot Wars AG
 #-1 NUMBER OF WORDS MUST BE EQUAL
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [FIELDS()](/reference/sharpmush-help/fields-function/#fields)
 - [LALIGN()](/reference/sharpmush-help/align/#align)
 - [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions)
-:::
+
+</nav>
+
 
 ## ltree()
 
@@ -137,11 +157,15 @@ Staff
 `- +admin
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [TREE()](/reference/sharpmush-help/tree-function/#tree)
 - [LNODE()](/reference/sharpmush-help/layout-functions/#lnode)
 - [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions)
-:::
+
+</nav>
+
 
 ## node()
 
@@ -157,10 +181,14 @@ Mail
 `- Sent
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [TREE()](/reference/sharpmush-help/tree-function/#tree)
 - [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions)
-:::
+
+</nav>
+
 
 ## lnode()
 
@@ -177,11 +205,15 @@ Mail
 `- Drafts
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [NODE()](/reference/sharpmush-help/layout-functions/#node)
 - [LTREE()](/reference/sharpmush-help/layout-functions/#ltree)
 - [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions)
-:::
+
+</nav>
+
 
 ## grid()
 
@@ -208,11 +240,15 @@ Ilse      Quill     Ottoline
 Bram
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [BULLETS()](/reference/sharpmush-help/bullets-function/#bullets)
 - [DATATABLE()](/reference/sharpmush-help/datatable-function/#datatable)
 - [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions)
-:::
+
+</nav>
+
 
 ## ldatatable()
 
@@ -243,12 +279,16 @@ Mannaz  Hooooo?
 Raya    Writing a scene
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [DATATABLE()](/reference/sharpmush-help/datatable-function/#datatable)
 - [DATACOLUMNS()](/reference/sharpmush-help/datacolumns-function/#datacolumns)
 - [ITER()](/reference/sharpmush-help/iter-function/#iter)
 - [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions)
-:::
+
+</nav>
+
 
 ## badge()
 
@@ -262,8 +302,12 @@ Raya    Writing a scene
 Mannaz [Online] Raya [Away]
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ANSI()](/reference/sharpmush-help/ansi-function/#ansi)
 - [NOTICE()](/reference/sharpmush-help/notice-function/#notice)
 - [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions)
-:::
+
+</nav>
+

@@ -64,8 +64,12 @@ A TinyMUX import makes each channel object the channel's mogrifier, so these com
 ```
 Output: when Walker joins Public, whose mogrifier is #123, Walker sees `Welcome to the channel, Walker. Be kind.`
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@CHANNEL ADMIN](/reference/sharpmush-help/channel-admin-command/#channel-admin)
 - [@chatformat](/reference/sharpmush-help/chatformat-command/#chatformat)
 - [named arguments](/reference/sharpmush-help/named-arguments/#named-arguments)
-:::
+
+</nav>
+

@@ -28,7 +28,9 @@ A *&lt;player-list&gt;* is a space-separated list of recipients, which may be:
 * An alias name (see [@malias](/reference/sharpmush-help/malias-command/#malias))
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MAIL-SENDING](/reference/sharpmush-help/sharpmail/#sending-mail)
 - [MAIL-READING](/reference/sharpmush-help/sharpmail/#reading-mail)
 - [MAIL-FOLDERS](/reference/sharpmush-help/sharpmail/#mail-folders)
@@ -38,7 +40,9 @@ A *&lt;player-list&gt;* is a space-separated list of recipients, which may be:
 - [@malias](/reference/sharpmush-help/malias-command/#malias)
 - [MAIL-REVIEWING](/reference/sharpmush-help/sharpmail/#reviewing-mail)
 - [@MAILQUOTA](/reference/sharpmush-help/sharpmail/#mailquota)
-:::
+
+</nav>
+
 
 ## Reading Mail
 
@@ -108,9 +112,13 @@ The MUSH mail system allows each player 16 folders, numbered from 0 to 15. Mail 
 * A name none of your folders has yet makes a new folder of that name, with the lowest folder number not in use.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@MAILFILTER](/reference/sharpmush-help/sharpmail/#mailfilter)
-:::
+
+</nav>
+
 
 ## Reviewing Mail
 
@@ -160,9 +168,13 @@ The same, reading the flags by name:
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MAIL-FOLDERS](/reference/sharpmush-help/sharpmail/#mail-folders)
-:::
+
+</nav>
+
 
 ## @mailsignature
 
@@ -176,10 +188,14 @@ When set, this attribute is evaluated and appended to any @mail messages sent by
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MAIL](/reference/sharpmush-help/sharpmail/#mail)
 - [MAIL-SENDING](/reference/sharpmush-help/sharpmail/#sending-mail)
-:::
+
+</nav>
+
 
 ## Mail Administration
 
@@ -221,9 +237,13 @@ Mail functions work with @mail. Some come from TinyMUX (see [tinymux mail functi
 folderstats() returns the number of read, unread, and cleared messages in a specific folder, or, if none is given, the player's current folder. Only Wizards may use forms which get other players' mail information.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [mailstats()](/reference/sharpmush-help/sharpmail/#mailstats)
-:::
+
+</nav>
+
 
 ## mail()
 
@@ -243,10 +263,14 @@ When given numeric arguments, mail() returns the text of the corresponding messa
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [maillist()](/reference/sharpmush-help/sharpmail/#maillist)
 - [mailfrom()](/reference/sharpmush-help/sharpmail/#mailfrom)
-:::
+
+</nav>
+
 
 ## maillist()
 
@@ -265,10 +289,14 @@ maillist() returns a list of all *&lt;player&gt;*'s @mail messages which match t
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MAIL](/reference/sharpmush-help/sharpmail/#mail)
 - [mailfrom()](/reference/sharpmush-help/sharpmail/#mailfrom)
-:::
+
+</nav>
+
 
 ## mailfrom()
 
@@ -283,10 +311,14 @@ maillist() returns a list of all *&lt;player&gt;*'s @mail messages which match t
 * mailstatus() returns the mail's status characters (as per @mail/list).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MAIL](/reference/sharpmush-help/sharpmail/#mail)
 - [maillist()](/reference/sharpmush-help/sharpmail/#maillist)
-:::
+
+</nav>
+
 
 ## mailstats()
 
@@ -306,9 +338,13 @@ The mail*stats() functions return data like @mail/*stats does. You either must u
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [folderstats()](/reference/sharpmush-help/sharpmail/#folderstats)
-:::
+
+</nav>
+
 
 ## mailsend()
 

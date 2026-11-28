@@ -25,11 +25,15 @@ The toggle commands and functions take RhostMUSH's names and touch only these fl
 1 MONITOR
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@toggle](/reference/sharpmush-help/toggle-command/#toggle)
 - [@toggledef](/reference/sharpmush-help/toggledef-command/#toggledef)
 - [hastoggle()](/reference/sharpmush-help/hastoggle-function/#hastoggle)
 - [ltoggles()](/reference/sharpmush-help/ltoggles-function/#ltoggles)
 - [listtoggles()](/reference/sharpmush-help/listtoggles-function/#listtoggles)
 - [toggle()](/reference/sharpmush-help/toggle-function/#toggle)
-:::
+
+</nav>
+

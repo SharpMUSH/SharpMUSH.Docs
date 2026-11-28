@@ -94,7 +94,9 @@ roll() returns an error starting with #-1 when the formula cannot be read (namin
 1
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ROLL DICE](/reference/sharpmush-help/roll-dice/#roll-dice)
 - [ROLL MODIFIERS](/reference/sharpmush-help/roll-modifiers/#roll-modifiers)
 - [ROLL POOLS](/reference/sharpmush-help/roll-pools/#roll-pools)
@@ -104,4 +106,6 @@ roll() returns an error starting with #-1 when the formula cannot be read (namin
 - [die()](/reference/sharpmush-help/sharpfunc/#die)
 - [rand()](/reference/sharpmush-help/sharpfunc/#rand)
 - [valid()](/reference/sharpmush-help/valid-function/#valid)
-:::
+
+</nav>
+

@@ -36,7 +36,9 @@ You can set the regexp flag on the filter attribute to use regular expressions i
 Sounds are only forwarded if the speaker also passes `<object>`'s @lock/filter, which receives the sound heard as %0.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [AUDIBLE](/reference/sharpmush-help/sharpflag/#audible)
 - [@infilter](/reference/sharpmush-help/sharpcmd/#infilter)
 - [attribute flags](/reference/sharpmush-help/attribute-flags/#attribute-flags)
@@ -44,7 +46,9 @@ Sounds are only forwarded if the speaker also passes `<object>`'s @lock/filter, 
 - [@forwardlist](/reference/sharpmush-help/sharpcmd/#forwardlist)
 - [@prefix](/reference/sharpmush-help/sharpcmd/#prefix)
 - [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)
-:::
+
+</nav>
+
 
 ### Audible exit example
 

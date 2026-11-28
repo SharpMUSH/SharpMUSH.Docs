@@ -72,9 +72,13 @@ Code may use the stack of the player whose command it is running (`%#`), or of a
 
 Errors: `#-1 NO SUCH PLAYER`, `#-1 PERMISSION DENIED`, `#-1 INVALID CONTEXT NAME`, `#-1 CONTEXT VALUES MUST BE A JSON OBJECT OF TEXT`, `#-1 INVALID CONTEXT LIFETIME`, `#-1 CONTEXT INFO TOO LONG` (over 512 characters).
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [context()](/reference/sharpmush-help/context-function/#context)
 - [palette entries](/reference/sharpmush-help/palette/#palette-entries)
 - [@input](/reference/sharpmush-help/input-command/#input)
 - [events](/reference/sharpmush-help/events/#events)
-:::
+
+</nav>
+

@@ -38,7 +38,9 @@ When returning large numbers of attributes, the results may be truncated due to 
 
 With the `rhost_lattr` option on, lattr() and lattrp() take RhostMUSH's arguments instead of an output separator: `lattr(<object>[/<pattern>][, <target>[, <type>[, <flags>[, <regexp>[, <tree>]]]]])`. This form comes from RhostMUSH; see [compatibility config](/reference/sharpmush-help/compatibility-config/#compatibility-config) for what each argument does.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [NATTR()](/reference/sharpmush-help/sharpfunc/#nattr)
 - [XATTR()](/reference/sharpmush-help/sharpfunc/#xattr)
 - [HASATTR()](/reference/sharpmush-help/sharpfunc/#hasattr)
@@ -46,4 +48,6 @@ With the `rhost_lattr` option on, lattr() and lattrp() take RhostMUSH's argument
 - [accounts attributes](/reference/sharpmush-help/accounts/#account-attributes)
 - [GREP()](/reference/sharpmush-help/sharpfunc/#grep)
 - [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)
-:::
+
+</nav>
+

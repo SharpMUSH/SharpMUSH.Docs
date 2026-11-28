@@ -50,13 +50,17 @@ Most of it comes from saying what a thing is, rather than drawing it:
 - [screenreader support colour](/reference/sharpmush-help/screenreader-support/#words-not-colour): meaning that colour alone carries.
 - [screenreader support terminfo](/reference/sharpmush-help/screenreader-support/#checking-for-a-screen-reader): telling a screen reader's connection apart, for what nothing else covers.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [screenreader](/reference/sharpmush-help/screenreader/#screen-readers)
 - [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions)
 - [FIGURE()](/reference/sharpmush-help/figure-function/#figure)
 - [NOTICE()](/reference/sharpmush-help/notice-function/#notice)
 - [TERMINFO()](/reference/sharpmush-help/terminfo-function/#terminfo)
-:::
+
+</nav>
+
 
 ### Use the layout functions
 

@@ -29,7 +29,11 @@ Only wizards may use @email. It is off until email_server and email_from are set
 @email: sent to player@example.com.
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@secret](/reference/sharpmush-help/secret-command/#secret)
 - [@config net email](/reference/sharpmush-help/config-net-command/#email)
-:::
+
+</nav>
+

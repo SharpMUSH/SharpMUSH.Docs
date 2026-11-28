@@ -49,10 +49,14 @@ If an attribute exists, Penn defaults to **200 OK**, and Content-Type **"text/pl
 If `@respond` is run outside of an HTTP Context, the enactor will see "(HTTP): ..." for debugging, but it isn't buffered for output as if it was an active http request.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@respond examples](/reference/sharpmush-help/respond/#response-examples)
 - [@respond requirements](/reference/sharpmush-help/respond/#response-requirements)
-:::
+
+</nav>
+
 
 ### Response examples
 

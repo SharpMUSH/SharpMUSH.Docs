@@ -61,8 +61,12 @@ first
 
 Output: the elements go before, after or in place of the element at the position.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [insert()](/reference/sharpmush-help/sharpfunc/#insert)
 - [replace()](/reference/sharpmush-help/sharpfunc/#lreplace)
 - [ldelete()](/reference/sharpmush-help/sharpfunc/#ldelete)
-:::
+
+</nav>
+

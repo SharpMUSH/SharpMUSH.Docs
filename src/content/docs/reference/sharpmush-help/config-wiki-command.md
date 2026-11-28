@@ -18,6 +18,10 @@ Options for the web portal's wiki.
 
 - `wiki_default_locale=<string>`: The locale a wiki page falls back to when it has no translation for the reader's locale. A language tag such as `en`, `fr` or `pt-BR`; `en` by default. A tag that is not one is refused.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [wiki](/reference/sharpmush-help/wiki/#wiki)
-:::
+
+</nav>
+

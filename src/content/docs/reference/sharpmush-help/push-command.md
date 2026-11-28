@@ -60,8 +60,12 @@ sent
 none
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@secret](/reference/sharpmush-help/secret-command/#secret)
 - [@config limits](/reference/sharpmush-help/config-limits-command/#config-limits)
 - [roles](/reference/sharpmush-help/roles/#roles)
-:::
+
+</nav>
+

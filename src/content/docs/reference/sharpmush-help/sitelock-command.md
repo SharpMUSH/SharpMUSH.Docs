@@ -52,11 +52,15 @@ The @sitelock command adds rules controlling a host's level of access to the MUS
 - [@sitelock allow and deny options](/reference/sharpmush-help/sitelock-command/#allow-and-deny-options): the options a rule can set
 - [@sitelock remove](/reference/sharpmush-help/sitelock-command/#removing-rules): removing rules
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)
 - [IPADDR()](/reference/sharpmush-help/sharpfunc/#ipaddr)
 - [HOST()](/reference/sharpmush-help/sharpfunc/#host)
-:::
+
+</nav>
+
 
 ### Banned names
 

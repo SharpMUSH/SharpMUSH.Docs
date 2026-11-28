@@ -28,6 +28,10 @@ description: "SharpMUSH documentation for @progreset"
 Program prompt customized.
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@program](/reference/sharpmush-help/program-command/#program)
-:::
+
+</nav>
+

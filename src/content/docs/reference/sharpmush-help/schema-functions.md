@@ -43,11 +43,15 @@ schemacheck() returns nothing when the document is sound, or one problem per lin
 - [schemacheck() problems]: what it reports
 - [schemarender() examples]: a finger sheet and a broken one
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions)
 - [FIELDS()](/reference/sharpmush-help/fields-function/#fields)
 - [DATATABLE()](/reference/sharpmush-help/datatable-function/#datatable)
-:::
+
+</nav>
+
 
 ### Options
 

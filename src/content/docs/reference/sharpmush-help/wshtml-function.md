@@ -46,10 +46,14 @@ description: "SharpMUSH documentation for wshtml()"
 
   A player on the web portal or a Pueblo/MXP client sees a link reading SharpMUSH; a telnet player, and any listening object, sees `SharpMUSH`.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [WEBSOCKETS](/reference/sharpmush-help/websockets/#websockets)
 - [pueblo](/reference/sharpmush-help/pueblo/#pueblo)
 - [HTML FUNCTIONS](/reference/sharpmush-help/sharppueb/#html-functions)
 - [JSON FUNCTIONS](/reference/sharpmush-help/sharpfunc/#json-functions)
 - [WSJSON()](/reference/sharpmush-help/wsjson-function/#wsjson)
-:::
+
+</nav>
+

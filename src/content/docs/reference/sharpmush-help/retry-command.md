@@ -35,12 +35,16 @@ Please note: @retry only restarts the action list it is currently in. If you hav
 Each `@retry` invocation has an independent hard cap of 1,000 retry iterations. If the condition remains true, it stops at that cap without a separate limit notification. Execution budgets and function-invocation limits can stop evaluation sooner. Write a terminating condition rather than relying on the cap.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [boolean values](/reference/sharpmush-help/boolean-values/#boolean-values)
 - [@break](/reference/sharpmush-help/break-command/#break)
 - [@include](/reference/sharpmush-help/include-command/#include)
-:::
+
+</nav>
+
 
 ### Retry examples
 

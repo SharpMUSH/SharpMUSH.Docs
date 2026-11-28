@@ -46,7 +46,11 @@ FF 10 31 5
 
 Output: the same kind of number, written in another base.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [baseconv()](/reference/sharpmush-help/sharpfunc/#baseconv)
 - [mask()](/reference/sharpmush-help/mask-function/#mask)
-:::
+
+</nav>
+

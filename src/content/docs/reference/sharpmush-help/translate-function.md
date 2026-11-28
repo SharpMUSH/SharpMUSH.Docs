@@ -27,7 +27,11 @@ This function comes from TinyMUX, where type 1 writes `%c` colour codes. SharpMU
 red line
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [DECOMPOSE()](/reference/sharpmush-help/sharpfunc/#decompose)
 - [STRIPANSI()](/reference/sharpmush-help/sharpfunc/#stripansi)
-:::
+
+</nav>
+

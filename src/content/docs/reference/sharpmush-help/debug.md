@@ -40,11 +40,15 @@ Objects run under this flag are computationally expensive, and can generate larg
 There's also a DEBUG attribute flag, which only affects a single attribute; see [attribute flags](/reference/sharpmush-help/attribute-flags/#attribute-flags) for more information. You can also use the "}" command prefix to run a command with DEBUG output just once.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [VERBOSE](/reference/sharpmush-help/sharpflag/#verbose)
 - [PUPPET](/reference/sharpmush-help/sharpflag/#puppet)
-- [}]
-:::
+- [}](/reference/sharpmush-help/sharpcmd/)
+
+</nav>
+
 
 ### Debugging example
 

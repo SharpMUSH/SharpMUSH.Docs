@@ -29,7 +29,11 @@ KEEPALIVE(K) MONITOR(M)
 
 On a game imported from RhostMUSH the list holds every toggle.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ltoggles()](/reference/sharpmush-help/ltoggles-function/#ltoggles)
 - [listflags()](/reference/sharpmush-help/listflags-function/#listflags)
-:::
+
+</nav>
+

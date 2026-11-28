@@ -64,11 +64,15 @@ help:markdown_guide
 help
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [WIKI()](/reference/sharpmush-help/wiki-function/#wiki)
 - [WIKILIST()](/reference/sharpmush-help/sharpwiki/#wikilist)
 - [wiki](/reference/sharpmush-help/wiki/#wiki)
-:::
+
+</nav>
+
 
 ## wikilist()
 
@@ -90,10 +94,14 @@ so this list is the same whatever your `LOCALE` is. Pass a reference from it to
 help:markdown_guide
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [WIKI()](/reference/sharpmush-help/wiki-function/#wiki)
 - [WIKISEARCH()](/reference/sharpmush-help/sharpwiki/#wikisearch)
-:::
+
+</nav>
+
 
 ## wikisearch()
 
@@ -113,10 +121,14 @@ the first 100 matches.
 combat_primer house_rules
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [WIKI()](/reference/sharpmush-help/wiki-function/#wiki)
 - [WIKILIST()](/reference/sharpmush-help/sharpwiki/#wikilist)
-:::
+
+</nav>
+
 
 ## wikirecent()
 
@@ -127,10 +139,14 @@ Returns a space-separated list of the most recently edited page references,
 newest first. *&lt;count&gt;* defaults to 10 and must be 1-50; any other value is
 an error.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [WIKI()](/reference/sharpmush-help/wiki-function/#wiki)
 - [WIKILIST()](/reference/sharpmush-help/sharpwiki/#wikilist)
-:::
+
+</nav>
+
 
 ## wikifact()
 
@@ -154,10 +170,14 @@ pf2e:level pf2e:tradition
 arcane|primal
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [WIKI()](/reference/sharpmush-help/wiki-function/#wiki)
 - [wiki facts](/reference/sharpmush-help/wiki-facts/#wiki-facts)
-:::
+
+</nav>
+
 
 ## wikiquery()
 
@@ -188,10 +208,14 @@ main:shield
 main:fireball main:magic_missile main:shield
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [WIKIFACT()](/reference/sharpmush-help/sharpwiki/#wikifact)
 - [wiki fact queries](/reference/sharpmush-help/wiki-facts/#queries)
-:::
+
+</nav>
+
 
 ## wikiaccess()
 

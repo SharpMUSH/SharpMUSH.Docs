@@ -27,6 +27,10 @@ With `<kind>` `funceval`, returns the game's function invocation limit, then the
 
 Output: the game allows 25000 calls, `#21` 100000 with the override on, and its owner has no limit of its own.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@livewire](/reference/sharpmush-help/livewire-command/#livewire)
-:::
+
+</nav>
+

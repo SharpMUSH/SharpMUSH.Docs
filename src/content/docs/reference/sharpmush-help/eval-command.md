@@ -26,6 +26,10 @@ Hello
 > @eval [add(1, 2)]
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [think](/reference/sharpmush-help/sharpcmd/#think)
-:::
+
+</nav>
+

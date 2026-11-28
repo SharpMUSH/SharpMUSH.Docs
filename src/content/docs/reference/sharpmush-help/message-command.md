@@ -44,14 +44,18 @@ If one of the arguments matches "##", it will be replaced with the dbref of the 
 - [@message speech format examples](/reference/sharpmush-help/message-command/#speech-format-examples): speech formats, and a rough @chatformat
 - [@message language system example](/reference/sharpmush-help/message-command/#language-system-example): a basic language system
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MESSAGE()](/reference/sharpmush-help/sharpfunc/#message)
 - [@chatformat](/reference/sharpmush-help/chatformat-command/#chatformat)
 - [@pageformat](/reference/sharpmush-help/pageformat-command/#pageformat)
 - [@oemit](/reference/sharpmush-help/oemit-command/#oemit)
 - [@remit](/reference/sharpmush-help/sharpcmd/#remit)
 - [speak()](/reference/sharpmush-help/speak/#speak)
-:::
+
+</nav>
+
 
 ### Switches
 

@@ -38,11 +38,15 @@ A message from a system, such as `+job` or `+scene`: *&lt;source&gt;* as a badge
 - [notice() screen readers]: what a screen reader is sent, and the colours
 - [notice() examples]: a package name, and one notice of each kind
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [BADGE()](/reference/sharpmush-help/layout-functions/#badge)
 - [LAYOUT THEMES](/reference/sharpmush-help/layout-themes/#layout-themes)
 - [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions)
-:::
+
+</nav>
+
 
 ### Screen readers and colour
 

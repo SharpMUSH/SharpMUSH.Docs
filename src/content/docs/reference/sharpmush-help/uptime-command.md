@@ -33,7 +33,11 @@ Reports the server start time, last reboot, total reboot count, current time, ti
 
 Wizard output includes the process ID, current and peak working-set memory, and current and peak paged memory. These figures come from the server's .NET process information and depend on the host operating system. They describe the SharpMUSH process; they are not the host machine's shell uptime or a database-dump countdown.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@stats](/reference/sharpmush-help/sharpcmd/#stats)
 - [@list](/reference/sharpmush-help/list-command/#list)
-:::
+
+</nav>
+

@@ -350,8 +350,12 @@ Output:
 
 (2-space indentation on all quote lines)
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [rendermarkdowncustom()](/reference/sharpmush-help/render-markdown-custom/#rendermarkdowncustom)
 - `[MARKUP]`
 - [ANSI](/reference/sharpmush-help/sharpflag/#ansi)
-:::
+
+</nav>
+

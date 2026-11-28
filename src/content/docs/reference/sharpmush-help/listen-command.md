@@ -64,8 +64,12 @@ Recorder records: Whee!
 ```
 
 
-::: seealso
+<nav class="help-see-also" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [listening](/reference/sharpmush-help/listening/#listening)
 - `AHEAR`, `AMHEAR`, and `AAHEAR`: [@ahear](/reference/sharpmush-help/sharpcmd/#ahear)
 - [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)
-:::
+
+</nav>
+

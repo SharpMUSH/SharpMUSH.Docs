@@ -45,8 +45,12 @@ Uninstalled scene. Scene System is off. Scene System stops when the server resta
 > @shutdown/reboot
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@shutdown](/reference/sharpmush-help/sharpcmd/#shutdown)
 - [@package](/reference/sharpmush-help/sharpcmd/#package)
 - [plugin help](/reference/sharpmush-help/plugin-help/#plugin-help)
-:::
+
+</nav>
+

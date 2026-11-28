@@ -40,9 +40,13 @@ The difference between this and an attribute lock is that the *&lt;attribute&gt;
 The person trying to pass the lock is %# and *&lt;object&gt;* is %! when the evaluation takes place. The evaluation is done with the powers of *&lt;object&gt;*. If you try to do something (like `[get(%#/*<attribute>*)]`) and *&lt;object&gt;* doesn't have permission to do that, the person will automatically fail to pass the lock.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@lock-evaluation evaluation lock example](/reference/sharpmush-help/lock-evaluation-command/#evaluation-lock-example)
-:::
+
+</nav>
+
 
 ### Evaluation lock example
 
@@ -57,6 +61,10 @@ Whenever someone tries to pass through the exit, the attribute "whichday" will b
 If you have an evaluation lock that just does `[hasflag(%#,FLAGNAME)]`, you should probably use a bit lock instead.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@LOCK-BIT](/reference/sharpmush-help/bit-locks/#bit-locks)
-:::
+
+</nav>
+

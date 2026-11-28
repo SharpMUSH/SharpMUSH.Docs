@@ -34,7 +34,11 @@ parenmatch() comes from RhostMUSH.
 
 Output: the code spaced out; the second `)` is red.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [parenstr()](/reference/sharpmush-help/parenstr-function/#parenstr)
 - [syntaxdiagnostics()](/reference/sharpmush-help/sharpfunc/#syntaxdiagnostics)
-:::
+
+</nav>
+

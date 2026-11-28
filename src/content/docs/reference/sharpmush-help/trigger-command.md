@@ -86,11 +86,15 @@ Note that you have to pass %0 and %1 yourself. For some $-commands or listens, t
 Walker slaps himself around with a trout
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@include](/reference/sharpmush-help/include-command/#include)
 - [u()](/reference/sharpmush-help/u-function/#u)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
-:::
+
+</nav>
+
 
 ### Trigger examples
 

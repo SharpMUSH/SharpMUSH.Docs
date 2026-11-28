@@ -27,7 +27,11 @@ This function comes from TinyMUX.
 hello world!
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [URLDECODE()](/reference/sharpmush-help/sharpfunc/#urldecode)
 - [URLENCODE()](/reference/sharpmush-help/sharpfunc/#urlencode)
-:::
+
+</nav>
+

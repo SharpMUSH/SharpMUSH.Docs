@@ -32,11 +32,15 @@ A bar filled to *&lt;value&gt;*'s share of *&lt;maximum&gt;*, with *&lt;label&gt
 - [gauge() options]: width, figures, pieces, ends, gradient and theme
 - [gauge() examples]: bars with percent, value, no figures and a gradient
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [GRADIENT()](/reference/sharpmush-help/gradient-function/#gradient)
 - [DATATABLE()](/reference/sharpmush-help/datatable-function/#datatable)
 - [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions)
-:::
+
+</nav>
+
 
 ### Options
 

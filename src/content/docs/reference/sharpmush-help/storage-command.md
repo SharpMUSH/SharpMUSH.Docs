@@ -91,7 +91,11 @@ Feed lines, attribute values and mail are stored compressed with zstd dictionari
 
 `@storage/dictionaries <kind> <id>` goes back to dictionary `<id>`: new values use it, and every compressed value is rewritten with it before the command answers. Later dictionaries stay. Only a value's size depends on its dictionary, never its text.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@backup](/reference/sharpmush-help/backup-command/#backup)
 - [@stats](/reference/sharpmush-help/sharpcmd/#stats)
-:::
+
+</nav>
+

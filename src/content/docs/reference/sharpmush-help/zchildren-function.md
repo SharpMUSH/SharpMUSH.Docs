@@ -41,9 +41,13 @@ These functions come from TinyMUX, and inzone()'s second form from RhostMUSH.
 #31 #40 / #40 / 1
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LZONE()](/reference/sharpmush-help/lzone-function/#lzone)
 - [ZFIND()](/reference/sharpmush-help/sharpfunc/#zfind)
 - [ZONE()](/reference/sharpmush-help/sharpfunc/#zone)
 - [zones](/reference/sharpmush-help/zones/#zones)
-:::
+
+</nav>
+

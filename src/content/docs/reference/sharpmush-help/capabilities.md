@@ -95,9 +95,13 @@ System roles keep their name and priority, are never deleted, and are never assi
 
 `@role/player` and the portal's effective-permission view report which rule decided each scope, and which roles.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [roles](/reference/sharpmush-help/roles/#roles)
 - [@role](/reference/sharpmush-help/role-command/#role)
 - [@permission](/reference/sharpmush-help/permission-command/#permission)
 - [security](/reference/sharpmush-help/security/#security)
-:::
+
+</nav>
+

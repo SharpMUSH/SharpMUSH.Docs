@@ -42,9 +42,13 @@ are never sent to anyone in-game; they stay in the log, reachable by `id`.
 This is a real error return, so softcode can test for it: `#-1 EXCEPTION:` is
 always the prefix, and the rest is always valid JSON.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [pennmush compatibility](/reference/sharpmush-help/pennmush-compatibility/#pennmush-compatibility)
-:::
+
+</nav>
+
 
 ## Internationalization
 SharpMUSH supports Unicode: server strings use UTF-16 internally, and network

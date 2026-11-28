@@ -44,8 +44,12 @@ Normally each object has its own queue count, but if the 'owner_queues' option i
 `queue_chunk`, `queue_cost`, and `queue_loss` are accepted compatibility settings, but the SharpMUSH scheduler does not read them. PennMUSH uses them for command batches and refundable or occasional lost penny charges; SharpMUSH has no built-in penny balance and does not charge for queueing. See [compatibility economy](/reference/sharpmush-help/compatibility-economy/#compatibility-economy).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@ps](/reference/sharpmush-help/ps-command/#ps)
 - [LOOPING](/reference/sharpmush-help/sharptop/#looping)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
-:::
+
+</nav>
+

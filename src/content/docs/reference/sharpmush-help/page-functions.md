@@ -58,8 +58,12 @@ Airwolf pages: hello!
 Airwolf pages: hello!
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [page](/reference/sharpmush-help/page/#page)
 - [page log](/reference/sharpmush-help/page/#page-log)
 - [crecall()](/reference/sharpmush-help/channel-functions/#crecall)
-:::
+
+</nav>
+

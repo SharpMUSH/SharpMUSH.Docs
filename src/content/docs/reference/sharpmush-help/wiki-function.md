@@ -62,11 +62,15 @@ Home
 en
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [WIKICATEGORY()](/reference/sharpmush-help/sharpwiki/#wikicategory)
 - [WIKILIST()](/reference/sharpmush-help/sharpwiki/#wikilist)
 - [WIKISEARCH()](/reference/sharpmush-help/sharpwiki/#wikisearch)
 - [WIKIRECENT()](/reference/sharpmush-help/sharpwiki/#wikirecent)
 - [WIKIACCESS()](/reference/sharpmush-help/sharpwiki/#wikiaccess)
 - [WIKIMEMBERS()](/reference/sharpmush-help/sharpwiki/#wikimembers)
-:::
+
+</nav>
+

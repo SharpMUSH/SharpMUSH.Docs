@@ -88,11 +88,15 @@ For all four of these commands, you can specify a single channel to affect, or o
 
 These are all your OWN settings on a channel. There is no command for muting or gagging somebody else; to stop a member speaking, lock the channel with `@clock/speak` (see [@CHANNEL CLOCK](/reference/sharpmush-help/channel-clock-command/#channel-clock)).
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@channel joining](/reference/sharpmush-help/channel-joining-command/#channel-joining)
 - [cstatus()](/reference/sharpmush-help/channel-functions/#cstatus)
 - [cowner()](/reference/sharpmush-help/channel-functions/#cowner)
 - [cflags()](/reference/sharpmush-help/channel-functions/#cflags)
 - [channels()](/reference/sharpmush-help/channel-functions/#channels)
 - [@CHANNEL ADMIN](/reference/sharpmush-help/channel-admin-command/#channel-admin)
-:::
+
+</nav>
+

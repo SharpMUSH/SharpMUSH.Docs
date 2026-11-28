@@ -210,7 +210,9 @@ A hook can't refuse its command, so when a command named with `...` is given an 
 - Regexp $-commands: each named capture.
 - mapsql(): each column, by its name.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [uargs()](/reference/sharpmush-help/uargs-function/#uargs)
 - [stepargs()](/reference/sharpmush-help/sharpfunc/#stepargs)
 - [@function](/reference/sharpmush-help/function-command/#function)
@@ -219,4 +221,6 @@ A hook can't refuse its command, so when a command named with `...` is given an 
 - [@include](/reference/sharpmush-help/include-command/#include)
 - [r()](/reference/sharpmush-help/sharpfunc/#r)
 - [substitutions](/reference/sharpmush-help/substitutions/#substitutions)
-:::
+
+</nav>
+

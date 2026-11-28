@@ -86,8 +86,12 @@ You say, "Done?"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [PUPPET](/reference/sharpmush-help/sharpflag/#puppet)
 - [database](/reference/sharpmush-help/database/#database)
 - [OBJEVAL()](/reference/sharpmush-help/sharpfunc/#objeval)
-:::
+
+</nav>
+

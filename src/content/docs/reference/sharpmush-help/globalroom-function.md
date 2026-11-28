@@ -27,6 +27,10 @@ globalroom() comes from RhostMUSH.
 #2
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [master room](/reference/sharpmush-help/sharptop/#master-room)
-:::
+
+</nav>
+

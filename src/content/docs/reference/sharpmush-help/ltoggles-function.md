@@ -29,8 +29,12 @@ ltoggles() comes from RhostMUSH.
 MONITOR
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [hastoggle()](/reference/sharpmush-help/hastoggle-function/#hastoggle)
 - [listtoggles()](/reference/sharpmush-help/listtoggles-function/#listtoggles)
 - [lflags()](/reference/sharpmush-help/sharpfunc/#lflags)
-:::
+
+</nav>
+

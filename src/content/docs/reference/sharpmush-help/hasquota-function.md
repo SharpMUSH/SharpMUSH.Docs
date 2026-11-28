@@ -31,7 +31,11 @@ This function comes from TinyMUX and RhostMUSH.
 1
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [QUOTA()](/reference/sharpmush-help/sharpfunc/#quota)
 - [@QUOTA](/reference/sharpmush-help/quota-command/#quota)
-:::
+
+</nav>
+

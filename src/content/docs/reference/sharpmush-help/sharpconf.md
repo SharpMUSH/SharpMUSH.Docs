@@ -104,11 +104,15 @@ An object set NO_COMMAND is not checked for `$`-commands. Use `@set <object>=!NO
 ones that carry them, or drop the flag from `thing_flags` if your game puts `$`-commands on things
 as a matter of course.
 
-::: seealso
-- [NO_COMMAND](/reference/sharpmush-help/sharpflag/#nocommand)
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [NO_COMMAND](/reference/sharpmush-help/sharpflag/#no_command)
 - [@set](/reference/sharpmush-help/set-command/#set)
 - [FLAG LIST](/reference/sharpmush-help/flag-list/#flag-list)
-:::
+
+</nav>
+
 
 ## @config funcs
 These options affect the behavior of some functions.

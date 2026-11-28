@@ -32,11 +32,15 @@ Each item of *&lt;list&gt;* on its own line after a bullet or a number. *&lt;del
 - [bullets() options]: borders, theme, width, style, start and marker
 - [bullets() examples]: wrapped, numbered, roman and marked lists
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [GRID()](/reference/sharpmush-help/layout-functions/#grid)
 - [TREE()](/reference/sharpmush-help/tree-function/#tree)
 - [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions)
-:::
+
+</nav>
+
 
 ### Options
 

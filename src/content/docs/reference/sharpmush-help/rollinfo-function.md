@@ -29,8 +29,12 @@ Output: `roller` is the player the roll was made for. When an object's code roll
 
 Anyone can read any kept roll. A number with no roll behind it, or a roll the game no longer keeps, returns `#-1 NO SUCH ROLL`.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ROLL RECORDS](/reference/sharpmush-help/roll-records/#roll-records)
 - [@roll](/reference/sharpmush-help/roll-command/#roll)
-- [json_query()](/reference/sharpmush-help/json-query-function/#jsonquery)
-:::
+- [json_query()](/reference/sharpmush-help/json-query-function/#json_query)
+
+</nav>
+

@@ -43,6 +43,10 @@ You say, "potato^cheese"
 You say, "name,hobby,like,like"
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [FORMQ()](/reference/sharpmush-help/formq-function/#formq)
-:::
+
+</nav>
+

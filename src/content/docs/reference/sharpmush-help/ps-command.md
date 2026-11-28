@@ -36,10 +36,14 @@ See [@ps/history](/reference/sharpmush-help/sharpcmd/#pshistory) for recent outc
 `@ps/debug <pid>` shows a single queue entry: its owner, the object and attribute used as a semaphore (if any), the command, and the seconds left before it runs (for waits). Without `/debug`, the argument is taken as an object, not a pid. To halt a specific queue entry, use `@halt/pid`.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@wait](/reference/sharpmush-help/wait-command/#wait)
 - [@halt](/reference/sharpmush-help/halt-command/#halt)
 - [@notify](/reference/sharpmush-help/notify-command/#notify)
 - [@drain](/reference/sharpmush-help/sharpcmd/#drain)
 - [semaphores](/reference/sharpmush-help/semaphores/#semaphores)
-:::
+
+</nav>
+

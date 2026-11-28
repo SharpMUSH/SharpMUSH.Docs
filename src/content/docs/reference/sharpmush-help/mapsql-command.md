@@ -88,9 +88,13 @@ A prepared statement:
 > @mapsql/prepare me/showresult=v(QUERY),active
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@sql](/reference/sharpmush-help/sql-command/#sql)
 - [SQL()](/reference/sharpmush-help/sql-function/#sql)
 - [SQLESCAPE()](/reference/sharpmush-help/sharpfunc/#sqlescape)
 - [MAPSQL()](/reference/sharpmush-help/mapsql-function/#mapsql)
-:::
+
+</nav>
+

@@ -26,7 +26,11 @@ Alice pages: Lunch?  (to Bob and you)
 You paged Alice and Bob with 'Yes'.
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [page](/reference/sharpmush-help/page/#page)
 - [lpage](/reference/sharpmush-help/lpage-command/#lpage)
-:::
+
+</nav>
+

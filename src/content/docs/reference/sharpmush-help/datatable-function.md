@@ -44,13 +44,17 @@ Rows under headings. The headings and each row's cells are split by `|`, or by t
 - [datatable() delimiters]: splitting cells on something other than `|`
 - [datatable() examples]: one table at three widths
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [DATACOLUMNS()](/reference/sharpmush-help/datacolumns-function/#datacolumns)
 - [LDATATABLE()](/reference/sharpmush-help/layout-functions/#ldatatable)
 - [GRID()](/reference/sharpmush-help/layout-functions/#grid)
 - [FIELDS()](/reference/sharpmush-help/fields-function/#fields)
 - [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions)
-:::
+
+</nav>
+
 
 ### Narrow screens
 

@@ -211,8 +211,12 @@ The JSON object given to `@discord/event <key>=<json>` holds:
 - `description`: up to 1000 characters
 - `server`: the server's id, needed only when the bot is in more than one. A key's event stays in its server: `/end` it there before publishing the key in another
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@feed](/reference/sharpmush-help/feed-command/#feed)
 - [@role](/reference/sharpmush-help/role-command/#role)
 - [@secret](/reference/sharpmush-help/secret-command/#secret)
-:::
+
+</nav>
+

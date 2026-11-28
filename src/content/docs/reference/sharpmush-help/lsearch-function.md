@@ -69,14 +69,18 @@ lsearchr() is like an lsearch() run through revwords(). Results are returned fro
 search() and lsearch() also take the one-argument form RhostMUSH and TinyMUSH use, `search([<player>] <class>=<restriction>[, <low>[, <high>]])`; see [lsearch rhostmush one argument form](/reference/sharpmush-help/lsearch-function/#rhostmush-one-argument-form).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [indexed()](/reference/sharpmush-help/indexed-function/#indexed)
 - [@search](/reference/sharpmush-help/search-command/#search)
 - [@find](/reference/sharpmush-help/sharpcmd/#find)
 - [LPARENT()](/reference/sharpmush-help/sharpfunc/#lparent)
 - [LSTATS()](/reference/sharpmush-help/sharpfunc/#lstats)
 - [cache()](/reference/sharpmush-help/cache-function/#cache)
-:::
+
+</nav>
+
 
 ### The INDEX class
 

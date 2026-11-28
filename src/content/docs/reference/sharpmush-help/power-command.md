@@ -53,11 +53,15 @@ God can add, delete, and otherwise manipulate power definitions.
 - [@power letters](/reference/sharpmush-help/power-command/#power-letters): one-character abbreviations for powers
 - [@power registry behavior](/reference/sharpmush-help/power-command/#power-registry-behavior): what a new power starts with, and how to adjust it
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [POWERS()](/reference/sharpmush-help/sharpfunc/#powers)
 - [@flag](/reference/sharpmush-help/flag-command/#flag)
 - [roles](/reference/sharpmush-help/roles/#roles)
-:::
+
+</nav>
+
 
 ### Granting and revoking powers
 

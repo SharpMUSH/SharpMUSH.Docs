@@ -33,7 +33,11 @@ Text is kept only until @pipe/off: a restart loses it. When the text reaches the
 Hello
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@set](/reference/sharpmush-help/set-command/#set)
 - [piping](/reference/sharpmush-help/piping/#piping)
-:::
+
+</nav>
+
