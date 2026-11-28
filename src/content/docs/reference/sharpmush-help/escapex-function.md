@@ -41,7 +41,11 @@ escapex() comes from RhostMUSH.
 \%b[x]
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [escape()](/reference/sharpmush-help/sharpfunc/#escape)
 - [secure()](/reference/sharpmush-help/sharpfunc/#secure)
-:::
+
+</nav>
+

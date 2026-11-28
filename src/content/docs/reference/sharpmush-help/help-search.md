@@ -51,9 +51,13 @@ help `<textname>` is how to see a help file.
 help/search lists the entries whose text contains a string, see [help search content search](/reference/sharpmush-help/help-search/#content-search) for more.
 
 
-::: seealso
+<nav class="help-see-also" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [TEXTFILE()](/reference/sharpmush-help/textfile-function/#textfile): `textfile()` reads an entry, `textentries()` lists matching topic names, and `textsearch()` searches entry content.
-:::
+
+</nav>
+
 
 ### Name patterns and text search
 

@@ -91,7 +91,7 @@ Softcode reads links with [account()](/reference/sharpmush-help/sharpfunc/#accou
 
 ### Account attributes
 
-An account keeps attributes of its own on `#acct:<key>`, which `account(<player>, ref)` returns. Use them for what belongs to the player rather than to one character: experience shared between alts, a badge, a staff note. The reference is not an object: it has no dbref, flags, location or owner of its own, and no code runs on it, so `u()`, [@trigger](/reference/sharpmush-help/trigger-command/#trigger) and `$`-commands never reach it. Only the attribute commands and functions find it: `&`, [@set](/reference/sharpmush-help/set-command/#set) (attributes only), [@atrlock](/reference/sharpmush-help/sharpcmd/#atrlock), [@wipe](/reference/sharpmush-help/sharpcmd/#wipe), [@cpattr](/reference/sharpmush-help/cpattr-command/#cpattr), [@mvattr](/reference/sharpmush-help/cpattr-command/#cpattr), [@edit](/reference/sharpmush-help/edit-command/#edit), [@atrchown](/reference/sharpmush-help/sharpcmd/#atrchown), [examine](/reference/sharpmush-help/sharpcmd/#examine), [@decompile](/reference/sharpmush-help/decompile-command/#decompile), [get()](/reference/sharpmush-help/sharpfunc/#get), [xget()](/reference/sharpmush-help/sharpfunc/#get), [lattr()](/reference/sharpmush-help/lattr-function/#lattr), [nattr()](/reference/sharpmush-help/sharpfunc/#nattr), [hasattr()](/reference/sharpmush-help/sharpfunc/#hasattr), [lflags()](/reference/sharpmush-help/sharpfunc/#lflags), [set()](/reference/sharpmush-help/sharpfunc/#set), [attrib_set()](/reference/sharpmush-help/sharpfunc/#attribset) and [wipe()](/reference/sharpmush-help/sharpfunc/#wipe).
+An account keeps attributes of its own on `#acct:<key>`, which `account(<player>, ref)` returns. Use them for what belongs to the player rather than to one character: experience shared between alts, a badge, a staff note. The reference is not an object: it has no dbref, flags, location or owner of its own, and no code runs on it, so `u()`, [@trigger](/reference/sharpmush-help/trigger-command/#trigger) and `$`-commands never reach it. Only the attribute commands and functions find it: `&`, [@set](/reference/sharpmush-help/set-command/#set) (attributes only), [@atrlock](/reference/sharpmush-help/sharpcmd/#atrlock), [@wipe](/reference/sharpmush-help/sharpcmd/#wipe), [@cpattr](/reference/sharpmush-help/cpattr-command/#cpattr), [@mvattr](/reference/sharpmush-help/cpattr-command/#cpattr), [@edit](/reference/sharpmush-help/edit-command/#edit), [@atrchown](/reference/sharpmush-help/sharpcmd/#atrchown), [examine](/reference/sharpmush-help/sharpcmd/#examine), [@decompile](/reference/sharpmush-help/decompile-command/#decompile), [get()](/reference/sharpmush-help/sharpfunc/#get), [xget()](/reference/sharpmush-help/sharpfunc/#get), [lattr()](/reference/sharpmush-help/lattr-function/#lattr), [nattr()](/reference/sharpmush-help/sharpfunc/#nattr), [hasattr()](/reference/sharpmush-help/sharpfunc/#hasattr), [lflags()](/reference/sharpmush-help/sharpfunc/#lflags), [set()](/reference/sharpmush-help/sharpfunc/#set), [attrib_set()](/reference/sharpmush-help/sharpfunc/#attrib_set) and [wipe()](/reference/sharpmush-help/sharpfunc/#wipe).
 
 In the portal's Softcode Editor, search for `account(*<name>, ref)` to open an account's attributes.
 
@@ -220,7 +220,9 @@ Output:
 
 Anyone who may not read the account is refused both: "Permission denied. #acct:3 is not your account, and you need the players.view permission."
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [claim](/reference/sharpmush-help/sharpcmd/#claim)
 - [create](/reference/sharpmush-help/sharpcmd/#create-1)
 - [login](/reference/sharpmush-help/sharpcmd/#login)
@@ -228,4 +230,6 @@ Anyone who may not read the account is refused both: "Permission denied. #acct:3
 - [ACCOUNT()](/reference/sharpmush-help/sharpfunc/#account)
 - [ACCOUNTCHARS()](/reference/sharpmush-help/sharpfunc/#accountchars)
 - [roles](/reference/sharpmush-help/roles/#roles)
-:::
+
+</nav>
+

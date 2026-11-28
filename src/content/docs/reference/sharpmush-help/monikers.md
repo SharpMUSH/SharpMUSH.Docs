@@ -51,8 +51,12 @@ Words may be shortened, and !&lt;word&gt; removes one. The default is "alltypes 
 @config/set monikers=everywhere players !who
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@moniker](/reference/sharpmush-help/sharpcmd/#moniker)
 - [MONIKER()](/reference/sharpmush-help/sharpfunc/#moniker)
 - [MONIKER](/reference/sharpmush-help/sharpflag/#moniker)
-:::
+
+</nav>
+

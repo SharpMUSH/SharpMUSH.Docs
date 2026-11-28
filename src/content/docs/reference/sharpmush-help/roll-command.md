@@ -34,8 +34,12 @@ Output: everyone in the room sees the line, with the roll's number at the end.
 
 A name in `<formula>` is one of your own attributes. After `=`, name another object to read its attributes instead, or give a JSON object; both are read as roll() reads its data. Both sides are evaluated, so a $-command can pass `%0` on. `/noeval` takes `<formula>` as typed, for labels in `[ ]` and pools in `{ }`. `%>` after `@roll` is the roll's number.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ROLL RECORDS](/reference/sharpmush-help/roll-records/#roll-records)
 - [roll()](/reference/sharpmush-help/roll-function/#roll)
 - [rollinfo()](/reference/sharpmush-help/rollinfo-function/#rollinfo)
-:::
+
+</nav>
+

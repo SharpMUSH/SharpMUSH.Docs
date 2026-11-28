@@ -42,12 +42,16 @@ In all cases, the elements of `<list>` are separated by `<delimiter>`, which def
 
 SharpMUSH also registers regmatchalli() for reglmatchalli(). Despite the name it searches a list and returns positions, as the rest of this family does; it is not a case-insensitive [regmatch()](/reference/sharpmush-help/regmatch-function/#regmatch).
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [regmatch()](/reference/sharpmush-help/regmatch-function/#regmatch)
 - [GRAB()](/reference/sharpmush-help/sharpfunc/#grab)
 - [element()](/reference/sharpmush-help/element-function/#element)
 - [regexp syntax](/reference/sharpmush-help/regexp-syntax/#regular-expression-syntax)
-:::
+
+</nav>
+
 
 ### Regular expression examples
 

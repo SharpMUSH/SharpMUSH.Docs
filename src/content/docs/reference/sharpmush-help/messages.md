@@ -66,8 +66,12 @@ The stored texts SharpMUSH ships follow the same layout, as an ASCII client 78 c
 > &MOTD Messages=%rWelcome back, [name(%#)]. [words(lwho())] connected.
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@motd](/reference/sharpmush-help/motd-command/#motd)
 - [@listmotd](/reference/sharpmush-help/motd-command/#motd)
 - [@package](/reference/sharpmush-help/sharpcmd/#package)
-:::
+
+</nav>
+

@@ -52,18 +52,22 @@ A request to `http://<mush>/http/<path>` runs the handler's attribute for the re
 - [http examples]: simple handlers, GET and POST
 - [http sitelock]: blocking addresses, methods and paths
 
-::: seealso
-- [http sitelock examples]
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [http sitelock examples](/reference/sharpmush-help/http/#access-rule-examples)
 - [@respond](/reference/sharpmush-help/respond/#respond)
 - [EVENT HTTP](/reference/sharpmush-help/sharpevents/#http-events)
-:::
+
+</nav>
+
 
 ### How a request runs
 
 The HTTP surface is served under a dedicated **`/http/`** path, so it can't shadow the web portal's own routes. When a request to `http://<mush>/http/<path>` arrives, SharpMUSH invisibly runs the HTTP Handler object (`@config http_handler`), executing an `@include me/<method>`, e.g. `@include me/GET`.
 
 - *%0*, also `%<path>`, will be the pathname **with the `/http` prefix stripped**: a request to `/http/path/to?foo=bar` arrives as *%0* = `/path/to?foo=bar`. So *%0* is `/`, `/path/to`, `/foo?bar=baz`, etc.
-- *%1*, also `%<body>`, will be the body of the request. If it's JSON, use [json_query()](/reference/sharpmush-help/json-query-function/#jsonquery) to deal with it. If it's form-encoded, look at [FORMDECODE()](/reference/sharpmush-help/formdecode-function/#formdecode).
+- *%1*, also `%<body>`, will be the body of the request. If it's JSON, use [json_query()](/reference/sharpmush-help/json-query-function/#json_query) to deal with it. If it's form-encoded, look at [FORMDECODE()](/reference/sharpmush-help/formdecode-function/#formdecode).
 
 These, the headers and the viewer below are named arguments (see [named arguments](/reference/sharpmush-help/named-arguments/#named-arguments)): `@include` passes them on, but a u() function does not see them, so pass what it needs as an argument.
 
@@ -73,10 +77,14 @@ Anything sent to the HTTP Handler player during evaluation of this code is inclu
 
 Immediately when the `@include` finishes, the HTTP request is complete. Any queued entries (such as `@wait`, `$-commands`, etc.) are not going to be sent to the HTTP client: you'll need to code using `@include`, `/inline` switches, and the like.
 
-::: seealso
-- [http headers and limits]
-- [http routing]
-:::
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [http headers and limits](/reference/sharpmush-help/http/#request-headers-and-limits)
+- [http routing](/reference/sharpmush-help/http-routing/#http-routing)
+
+</nav>
+
 
 ### Request budget
 
@@ -86,9 +94,13 @@ That limit is one budget for the whole game, not an allowance per caller: the ga
 
 The web portal draws on this same budget (its character directory, online list, profiles and Dynamic Application routes are all handler routes), so the shipped default is higher than PennMUSH's. Raise it if a busy portal starts seeing 429s. The server's own internal use of a handler route (validating an application's schema endpoint when a wizard registers it) does not go through the HTTP surface and is neither counted nor sitelocked.
 
-::: seealso
-- [http sitelock]
-:::
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [http sitelock](/reference/sharpmush-help/http/#access-rules)
+
+</nav>
+
 
 ### Handler setup
 
@@ -114,12 +126,16 @@ Handler evaluation shares the configured `queue_entry_cpu_time` elapsed-time lim
 
 The ``HTTP`COMMAND`` completion event is queued once the response is assembled, as in PennMUSH, and runs with its own time limit; the response does not wait for it. It is omitted after expiry.
 
-::: seealso
-- [http examples]
-- [http headers and limits]
-- [http sitelock]
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [http examples](/reference/sharpmush-help/http-examples/#http-examples)
+- [http headers and limits](/reference/sharpmush-help/http/#request-headers-and-limits)
+- [http sitelock](/reference/sharpmush-help/http/#access-rules)
 - [EVENT HTTP](/reference/sharpmush-help/sharpevents/#http-events)
-:::
+
+</nav>
+
 
 ### Request headers and limits
 
@@ -145,13 +161,17 @@ HTTP responses are limited to 5,242,880 UTF-16 code units, the same ceiling used
 
 Exceeding the limit discards the partial body, status, content type, and custom headers and returns a complete plain-text **500 Internal Server Error** with `#-1 OUTPUT EXCEEDED MAXIMUM SIZE`.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@respond](/reference/sharpmush-help/respond/#respond)
 - [FORMDECODE()](/reference/sharpmush-help/formdecode-function/#formdecode)
-- [json_query()](/reference/sharpmush-help/json-query-function/#jsonquery)
+- [json_query()](/reference/sharpmush-help/json-query-function/#json_query)
 - [URLENCODE()](/reference/sharpmush-help/sharpfunc/#urlencode)
 - [URLDECODE()](/reference/sharpmush-help/sharpfunc/#urldecode)
-:::
+
+</nav>
+
 
 ### Access rules
 
@@ -195,7 +215,11 @@ Allow `12.34.56.78` to POST to `/admin/*`, allow POSTs to `/do/*` from anywhere,
 > @sitelock *\`POST\`*=!connect,[config(http_handler)]
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@sitelock](/reference/sharpmush-help/sitelock-command/#sitelock)
-- [http]
-:::
+- [http](/reference/sharpmush-help/http/#http)
+
+</nav>
+

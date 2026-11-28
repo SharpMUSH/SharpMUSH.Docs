@@ -32,7 +32,11 @@ This function comes from TinyMUX.
 2
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [DIE()](/reference/sharpmush-help/sharpfunc/#die)
 - [ROLL()](/reference/sharpmush-help/roll-function/#roll)
-:::
+
+</nav>
+

@@ -124,11 +124,15 @@ For example:
 This locks *&lt;object&gt;* to players (and the objects of players) currently connected from the computer the MUSH is running on.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [IPADDR()](/reference/sharpmush-help/sharpfunc/#ipaddr)
 - [HOST()](/reference/sharpmush-help/sharpfunc/#host)
 - [LASTSITE](/reference/sharpmush-help/sharptop/#lastsite)
-:::
+
+</nav>
+
 
 ## @lock/basic
 
@@ -138,47 +142,63 @@ For players and things, it controls who can "get" the object.<br>
 For rooms, it determines whether the @success or @failure verbs are triggered when someone "look"s at the room. However, even when the lock is failed, the "look" still occurs.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@asuccess](/reference/sharpmush-help/sharpcmd/#asuccess)
 - [@afailure](/reference/sharpmush-help/sharpcmd/#afailure)
-- [go]
+- [go](/reference/sharpmush-help/sharpcmd/#go)
 - [get](/reference/sharpmush-help/sharpcmd/#get)
 - [look](/reference/sharpmush-help/look/#look)
-:::
+
+</nav>
+
 
 ### Enter Lock
 For players and things, the Enter lock controls who can "enter" an ENTER_OK object, as well as who can "empty" it. It has no meaning for exits or rooms.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@aenter](/reference/sharpmush-help/sharpcmd/#aenter)
 - [@aefail](/reference/sharpmush-help/sharpcmd/#aefail)
-- [ENTER_OK](/reference/sharpmush-help/sharpflag/#enterok)
+- [ENTER_OK](/reference/sharpmush-help/sharpflag/#enter_ok)
 - [enter](/reference/sharpmush-help/sharpcmd/#enter)
 - [empty](/reference/sharpmush-help/sharpcmd/#empty)
-:::
+
+</nav>
+
 
 ### Leave Lock
 For players, things and rooms, the Leave lock controls who can leave the object, via "leave", "@teleport" or "goto". It has no meaning for exits.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@leave](/reference/sharpmush-help/sharpcmd/#leave)
 - [@lfail](/reference/sharpmush-help/sharpcmd/#lfail)
 - [leave](/reference/sharpmush-help/sharpcmd/#leave-1)
-:::
+
+</nav>
+
 
 ### Teleport Lock
 For rooms, the Teleport lock controls who can "@teleport" into the room, if it has the JUMP_OK flag set. It has no meaning for players, things or exits.
 
 
-::: seealso
-- [JUMP_OK](/reference/sharpmush-help/sharpflag/#jumpok)
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [JUMP_OK](/reference/sharpmush-help/sharpflag/#jump_ok)
 - [@teleport](/reference/sharpmush-help/teleport-command/#teleport)
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
 - [locktypes](/reference/sharpmush-help/locktypes/#lock-types)
 - [lock keys](/reference/sharpmush-help/lock-keys/#lock-keys)
-:::
+
+</nav>
+
 
 ## @lock/follow
 
@@ -186,32 +206,44 @@ For rooms, the Teleport lock controls who can "@teleport" into the room, if it h
 For players and things, controls who may "follow" the object. Has no meaning for rooms or exits.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [failure](/reference/sharpmush-help/failure/#failure)
-:::
+
+</nav>
+
 
 ### Forward Lock
 For players, things and rooms, controls who can forward sound to an object, via @forwardlist or @debugforwardlist. Meaningless for exits.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@forwardlist](/reference/sharpmush-help/sharpcmd/#forwardlist)
 - [@debugforwardlist](/reference/sharpmush-help/sharpcmd/#debugforwardlist)
 - [@LOCK/PAGE](/reference/sharpmush-help/sharplock/#lockpage)
-:::
+
+</nav>
+
 
 ### Dropto Lock
 For rooms, only objects which pass this lock will be sent to the rooms Drop-To. Has no meaning for players, things or exits.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [DROP-TOS](/reference/sharpmush-help/sharptop/#drop-tos)
 - [drop](/reference/sharpmush-help/sharpcmd/#drop)
 - [empty](/reference/sharpmush-help/sharpcmd/#empty)
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
 - [locktypes](/reference/sharpmush-help/locktypes/#lock-types)
 - [lock keys](/reference/sharpmush-help/lock-keys/#lock-keys)
-:::
+
+</nav>
+
 
 ## @lock/use
 
@@ -219,31 +251,43 @@ For rooms, only objects which pass this lock will be sent to the rooms Drop-To. 
 For players, things and rooms, this lock controls who may "use" the object. You must also pass an object's Use lock to trigger $-commands or ^-listens on it (as well as the Command/Listen lock; see below). When an object is used as a Channel Mogrifier, only players who pass the object's Use lock will have their speech on the channel mogrified. Has no meaning for exits.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@ause](/reference/sharpmush-help/sharpcmd/#ause)
 - [@aufail](/reference/sharpmush-help/sharpcmd/#aufail)
 - [use](/reference/sharpmush-help/sharpcmd/#use)
-- [$-commands]
+- [$-commands](/reference/sharpmush-help/commands/#-commands)
 - [listening listen patterns](/reference/sharpmush-help/listening/#listen-patterns)
 - [@CHANNEL ADMIN](/reference/sharpmush-help/channel-admin-command/#channel-admin)
-:::
+
+</nav>
+
 
 ### Command Lock
 For players, things and rooms, you must pass this lock (as well as the Use lock) to trigger $-commands on the object. Meaningless for exits.
 
 
-::: seealso
-- [$-commands]
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [$-commands](/reference/sharpmush-help/commands/#-commands)
 - [failure](/reference/sharpmush-help/failure/#failure)
-:::
+
+</nav>
+
 
 ### Listen Lock
 For players, things and rooms, you must pass this lock (as well as the Use lock) to trigger ^-listen patterns on the object when it's set MONITOR. Meaningless for exits.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [listening listen patterns](/reference/sharpmush-help/listening/#listen-patterns)
-:::
+
+</nav>
+
 
 ## @lock/page
 
@@ -251,36 +295,52 @@ For players, things and rooms, you must pass this lock (as well as the Use lock)
 For players, things and rooms, you must pass this lock to page or @pemit to the object, or @remit inside it. Meaningless for exits.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [failure](/reference/sharpmush-help/failure/#failure)
 - [@haven](/reference/sharpmush-help/sharpcmd/#haven)
-:::
+
+</nav>
+
 
 ### Speech Lock
 Controls who can speak (via say, pose, @*emit or teach) inside an object. Meaningless for exits.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [failure](/reference/sharpmush-help/failure/#failure)
-:::
+
+</nav>
+
 
 ### Mail Lock
 Controls who can send @mail to this object.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MAIL](/reference/sharpmush-help/sharpmail/#mail)
 - [failure](/reference/sharpmush-help/failure/#failure)
-:::
+
+</nav>
+
 
 ### Mailforward Lock
 Controls who can forward @mail to this object via @mailforward.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MAIL](/reference/sharpmush-help/sharpmail/#mail)
 - [@LOCK/FOLLOW](/reference/sharpmush-help/sharplock/#lockfollow)
-:::
+
+</nav>
+
 
 ### Interact Lock
 Controls whose indirect speech you'll hear (from say, pose, channels, @emit, etc). Does not block sound directed specifically at you, such as page, whisper, @pemit, etc; use @lock/page for those. **Note**: if sound is blocked by the interact lock, the speaker will not be informed.
@@ -291,10 +351,14 @@ Controls whose indirect speech you'll hear (from say, pose, channels, @emit, etc
 For players and things, controls who can drop the object. Has no meaning for exits. On rooms, has the same meaning as @lock/dropin.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [drop](/reference/sharpmush-help/sharpcmd/#drop)
 - [empty](/reference/sharpmush-help/sharpcmd/#empty)
-:::
+
+</nav>
+
 
 ### Dropin Lock
 When set on a player, thing or room, controls who can drop objects into them. Has no meaning for exits.
@@ -315,11 +379,15 @@ Controls what may be given to this object.
 Controls who can take from this container.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [give](/reference/sharpmush-help/sharpcmd/#give-1)
 - [buy](/reference/sharpmush-help/sharpcmd/#buy-1)
 - [@LOCK/BASIC](/reference/sharpmush-help/sharplock/#lockbasic)
-:::
+
+</nav>
+
 
 ## @lock/filter
 
@@ -327,10 +395,14 @@ Controls who can take from this container.
 These are lock versions of @filter and @infilter, respectively. Anyone who fails to pass the lock will have their speech filtered. The sound being made is passed to evaluation locks as %0.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@filter](/reference/sharpmush-help/filter-command/#filter)
 - [@infilter](/reference/sharpmush-help/sharpcmd/#infilter)
-:::
+
+</nav>
+
 
 ## @lock/control
 
@@ -338,27 +410,39 @@ These are lock versions of @filter and @infilter, respectively. Anyone who fails
 Allows objects which would not normally control something to do so. Does not work for players.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [CONTROL](/reference/sharpmush-help/sharptop/#control)
-:::
+
+</nav>
+
 
 ### Destroy Lock
 Limits who can @destroy a DESTROY_OK object.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@destroy](/reference/sharpmush-help/destroy-command/#destroy)
-- [DESTROY_OK](/reference/sharpmush-help/sharpflag/#destroyok)
-:::
+- [DESTROY_OK](/reference/sharpmush-help/sharpflag/#destroy_ok)
+
+</nav>
+
 
 ### Examine Lock
 Limits who can examine a VISUAL object.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [examine](/reference/sharpmush-help/sharpcmd/#examine)
 - [VISUAL](/reference/sharpmush-help/sharpflag/#visual)
-:::
+
+</nav>
+
 
 ## @lock/user
 
@@ -372,10 +456,14 @@ User-defined locks have no hardcoded meaning. They allow you to set locks for an
 and then test it with `elock(War Hammer/wield, %#)`.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ELOCK()](/reference/sharpmush-help/sharpfunc/#elock)
 - [valid()](/reference/sharpmush-help/valid-function/#valid)
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
 - [locktypes](/reference/sharpmush-help/locktypes/#lock-types)
 - [lock keys](/reference/sharpmush-help/lock-keys/#lock-keys)
-:::
+
+</nav>
+

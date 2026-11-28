@@ -28,57 +28,81 @@ Objects which pass a SHARED player's @lock/zone control all the objects the shar
 - [@lock/zone link](/reference/sharpmush-help/lock-zone-command/#link-lock): who can @link this exit, or link an exit here
 - [@lock/zone open](/reference/sharpmush-help/lock-zone-command/#open-lock): who can @open an exit from this OPEN_OK room
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@chzone](/reference/sharpmush-help/chzone-command/#chzone)
 - [SHARED](/reference/sharpmush-help/sharpflag/#shared)
 - [zones](/reference/sharpmush-help/zones/#zones)
 - [ZONE MASTER ROOMS](/reference/sharpmush-help/sharptop/#zone-master-rooms)
-:::
+
+</nav>
+
 
 ### Chzone lock
 
 If set, controls who can @chzone an object to this zone.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@chzone](/reference/sharpmush-help/chzone-command/#chzone)
 - [zones](/reference/sharpmush-help/zones/#zones)
-:::
+
+</nav>
+
 
 ### Chown lock
 
 If set, controls who can change the owner of this CHOWN_OK object via @chown.
 
-::: seealso
-- [CHOWN_OK](/reference/sharpmush-help/sharpflag/#chownok)
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [CHOWN_OK](/reference/sharpmush-help/sharpflag/#chown_ok)
 - [@chown](/reference/sharpmush-help/sharpcmd/#chown)
-:::
+
+</nav>
+
 
 ### Parent lock
 
 Controls who can @parent something to this LINK_OK object.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@parent](/reference/sharpmush-help/sharpcmd/#parent)
-- [LINK_OK](/reference/sharpmush-help/sharpflag/#linkok)
-:::
+- [LINK_OK](/reference/sharpmush-help/sharpflag/#link_ok)
+
+</nav>
+
 
 ### Link lock
 
 Controls who can @link this unlinked exit, or who can @link an exit to this LINK_OK room/thing.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@link](/reference/sharpmush-help/sharpcmd/#link)
-- [LINK_OK](/reference/sharpmush-help/sharpflag/#linkok)
+- [LINK_OK](/reference/sharpmush-help/sharpflag/#link_ok)
 - [@power](/reference/sharpmush-help/power-command/#power)
-:::
+
+</nav>
+
 
 ### Open lock
 
 Controls who can @open an exit from this OPEN_OK room.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@open](/reference/sharpmush-help/sharpcmd/#open)
 - [@dig](/reference/sharpmush-help/dig-command/#dig)
-- [OPEN_OK](/reference/sharpmush-help/sharpflag/#openok)
+- [OPEN_OK](/reference/sharpmush-help/sharpflag/#open_ok)
 - [@power](/reference/sharpmush-help/power-command/#power)
-:::
+
+</nav>
+

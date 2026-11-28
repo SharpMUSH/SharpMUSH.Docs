@@ -54,7 +54,9 @@ With no args, SOCKSET shows the current value of the socket options. With an `<o
 
 Changing pueblo or telnet may stop your client from reading or showing output correctly; only change them if you know what you're doing.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [socket commands](/reference/sharpmush-help/socket-commands/#socket-commands)
 - [TERMINFO()](/reference/sharpmush-help/terminfo-function/#terminfo)
 - [pueblo](/reference/sharpmush-help/pueblo/#pueblo)
@@ -64,4 +66,6 @@ Changing pueblo or telnet may stop your client from reading or showing output co
 - [TERMINAL](/reference/sharpmush-help/sharpcmd/#terminal)
 - [CHARSET](/reference/sharpmush-help/charset/#charset)
 - [@prompt](/reference/sharpmush-help/sharpcmd/#prompt)
-:::
+
+</nav>
+

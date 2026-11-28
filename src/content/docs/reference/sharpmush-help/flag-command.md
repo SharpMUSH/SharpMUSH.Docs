@@ -37,12 +37,16 @@ This command manipulates the list of flags in the database. With no switches, th
 - [@flag managing](/reference/sharpmush-help/flag-command/#managing-flags): the God-only switches that change the flag table
 - [@flag adding flags](/reference/sharpmush-help/flag-command/#adding-flags): adding a new flag, and its arguments
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [flags](/reference/sharpmush-help/flags/#flags)
 - [@set](/reference/sharpmush-help/set-command/#set)
 - [@power](/reference/sharpmush-help/power-command/#power)
 - [flag permissions](/reference/sharpmush-help/sharpcmd/#flag-permissions)
-:::
+
+</nav>
+
 
 ### Managing flags
 

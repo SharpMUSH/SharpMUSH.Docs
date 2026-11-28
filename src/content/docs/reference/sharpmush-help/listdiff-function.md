@@ -40,11 +40,15 @@ listdiff(), listinter() and listunion() come from RhostMUSH and take the same ar
 
 - [listdiff examples](/reference/sharpmush-help/listdiff-function/#examples): each function, and keeping repeated items
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SETDIFF()](/reference/sharpmush-help/sharpfunc/#setdiff)
 - [SETINTER()](/reference/sharpmush-help/sharpfunc/#setinter)
 - [SETUNION()](/reference/sharpmush-help/sharpfunc/#setunion)
-:::
+
+</nav>
+
 
 ### Examples
 

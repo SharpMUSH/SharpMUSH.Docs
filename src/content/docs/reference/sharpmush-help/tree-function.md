@@ -38,12 +38,16 @@ Items with the items under them, joined by guide lines. The top-level items sit 
 - [tree() examples]: channels, and a board with rounded guides
 - [tree() guide examples]: ASCII guides, and guide pieces of your own
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [NODE()](/reference/sharpmush-help/layout-functions/#node)
 - [LTREE()](/reference/sharpmush-help/layout-functions/#ltree)
 - [LAYOUT BORDERS](/reference/sharpmush-help/layout-borders/#layout-borders)
 - [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions)
-:::
+
+</nav>
+
 
 ### Options
 

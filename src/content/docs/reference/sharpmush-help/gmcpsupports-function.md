@@ -52,8 +52,12 @@ Output: the list Mudlet sends, then 1 because Room covers Room.Info, then 0 beca
 
 To send a package only to clients that asked for it, give oob() its fourth argument, `supported`, rather than testing gmcpsupports() first.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [oob()](/reference/sharpmush-help/oob-function/#oob)
 - [terminfo()](/reference/sharpmush-help/terminfo-function/#terminfo)
 - [event socket](/reference/sharpmush-help/socket-events/#socket-events)
-:::
+
+</nav>
+

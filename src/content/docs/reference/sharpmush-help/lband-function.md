@@ -33,9 +33,13 @@ These functions come from TinyMUX.
 6 7 240
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [BAND()](/reference/sharpmush-help/sharpfunc/#band)
 - [BOR()](/reference/sharpmush-help/sharpfunc/#bor)
 - [BXOR()](/reference/sharpmush-help/sharpfunc/#bxor)
 - [LAND()](/reference/sharpmush-help/land-function/#land)
-:::
+
+</nav>
+

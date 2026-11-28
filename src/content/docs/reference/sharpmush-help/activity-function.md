@@ -45,18 +45,22 @@ activity() needs the `players.view` permission, since the reports name players. 
 
 Output: the last 30 days next to the 30 before. 36 approved characters posed, as many as before, with 5666 poses against 7498.
 
-Read one value with [json_query()](/reference/sharpmush-help/json-query-function/#jsonquery):
+Read one value with [json_query()](/reference/sharpmush-help/json-query-function/#json_query):
 
 ```sharp
 > think json_query(activity(summary,{{"days":7}}),extract,$.posed)
 31
 ```
 
-::: seealso
-- [json_query()](/reference/sharpmush-help/json-query-function/#jsonquery)
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [json_query()](/reference/sharpmush-help/json-query-function/#json_query)
 - [isapproved()](/reference/sharpmush-help/sharpfunc/#isapproved)
 - [roles](/reference/sharpmush-help/roles/#roles)
-:::
+
+</nav>
+
 
 ### Options
 

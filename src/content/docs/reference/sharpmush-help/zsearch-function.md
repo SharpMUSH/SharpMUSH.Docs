@@ -30,8 +30,12 @@ These functions come from RhostMUSH.
 #40
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LSEARCH()](/reference/sharpmush-help/lsearch-function/#lsearch)
 - [SEARCHNG()](/reference/sharpmush-help/searchng-function/#searchng)
 - [LZONE()](/reference/sharpmush-help/lzone-function/#lzone)
-:::
+
+</nav>
+

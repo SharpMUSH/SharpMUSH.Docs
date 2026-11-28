@@ -34,11 +34,15 @@ It takes [datatable() options], splits as [datatable() delimiters] describes, an
 - [datacolumns() examples]: a who list, and a room's contents and exits in a box
 - [datacolumns() lists]: columns made by [ITER()](/reference/sharpmush-help/iter-function/#iter), [LWHO()](/reference/sharpmush-help/sharpfunc/#lwho) and other functions
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [DATATABLE()](/reference/sharpmush-help/datatable-function/#datatable)
 - [LDATATABLE()](/reference/sharpmush-help/layout-functions/#ldatatable)
 - [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions)
-:::
+
+</nav>
+
 
 ### Examples
 

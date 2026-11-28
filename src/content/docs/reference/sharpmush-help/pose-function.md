@@ -27,8 +27,12 @@ Alice waves.
 <OOC>Alice says, "Hello"
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SPEAK()](/reference/sharpmush-help/speak/#speak)
 - [POSE](/reference/sharpmush-help/pose/)
 - [SAY](/reference/sharpmush-help/sharpcmd/#-4)
-:::
+
+</nav>
+

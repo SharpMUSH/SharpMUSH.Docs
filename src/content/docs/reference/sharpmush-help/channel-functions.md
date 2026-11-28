@@ -298,9 +298,13 @@ ON COMBINE
 pub
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@channel](/reference/sharpmush-help/sharpchat/#channel)
 - [@chat](/reference/sharpmush-help/sharpchat/#chat-1)
 - [@CEMIT](/reference/sharpmush-help/sharpchat/#cemit)
 - [@CHANNEL CLOCK](/reference/sharpmush-help/channel-clock-command/#channel-clock)
-:::
+
+</nav>
+

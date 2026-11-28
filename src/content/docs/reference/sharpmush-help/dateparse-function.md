@@ -64,7 +64,11 @@ With the reference `1792152000`, which is 16 October 2026 at 12:00 UTC:
 #-1 INCOMPLETE DATE: CLOCK TIME REQUIRED; ADD A TIME SUCH AS 19:00 OR NOON
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [convtime()](/reference/sharpmush-help/convtime-function/#convtime)
 - [timezones](/reference/sharpmush-help/timezones/#timezones)
-:::
+
+</nav>
+

@@ -36,10 +36,14 @@ Examples:
 
 inf() comes from RhostMUSH and takes the same arguments.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [iter()](/reference/sharpmush-help/iter-function/#iter)
 - [IBREAK()](/reference/sharpmush-help/sharpfunc/#ibreak)
 - [nsiter()](/reference/sharpmush-help/nsiter-function/#nsiter)
 - [citer()](/reference/sharpmush-help/citer-function/#citer)
 - [while()](/reference/sharpmush-help/while-function/#while)
-:::
+
+</nav>
+

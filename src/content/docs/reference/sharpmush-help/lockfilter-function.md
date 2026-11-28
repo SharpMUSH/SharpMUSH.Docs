@@ -57,11 +57,15 @@ A backslash before a character in an attribute name makes it part of the name, s
 Mike Walker Qon
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
 - [LOCK()](/reference/sharpmush-help/sharpfunc/#lock)
 - [ELOCK()](/reference/sharpmush-help/sharpfunc/#elock)
 - [lock keys](/reference/sharpmush-help/lock-keys/#lock-keys)
 - [FILTER()](/reference/sharpmush-help/sharpfunc/#filter)
 - [TESTLOCK()](/reference/sharpmush-help/sharpfunc/#testlock)
-:::
+
+</nav>
+

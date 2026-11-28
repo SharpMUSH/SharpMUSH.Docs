@@ -70,8 +70,12 @@ think Done
 2
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LPIDS()](/reference/sharpmush-help/sharpfunc/#lpids)
 - [PIDINFO()](/reference/sharpmush-help/sharpfunc/#pidinfo)
 - [@ps](/reference/sharpmush-help/ps-command/#ps)
-:::
+
+</nav>
+

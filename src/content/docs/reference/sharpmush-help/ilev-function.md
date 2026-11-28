@@ -38,11 +38,15 @@ These functions return the equivalent of ## (itext) or #@ (inum) for iter() and 
 
 ilev() returns the current nesting depth, or -1 when used outside an iter() or @dolist. Thus, itext(ilev()) will return the outermost ##, equivalent to %iL.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [iter()](/reference/sharpmush-help/iter-function/#iter)
 - [IBREAK()](/reference/sharpmush-help/sharpfunc/#ibreak)
 - [@dolist](/reference/sharpmush-help/dolist-command/#dolist)
-:::
+
+</nav>
+
 
 ### Nested iteration examples
 
@@ -75,7 +79,11 @@ You say, "green:fish green:shoe"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [iter()](/reference/sharpmush-help/iter-function/#iter)
 - [@dolist](/reference/sharpmush-help/dolist-command/#dolist)
-:::
+
+</nav>
+

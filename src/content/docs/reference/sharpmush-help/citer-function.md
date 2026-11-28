@@ -32,8 +32,12 @@ b WHEE b@o WHEE o@b WHEE b
 
 citer() comes from RhostMUSH and takes the same arguments.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [iter()](/reference/sharpmush-help/iter-function/#iter)
 - [nsiter()](/reference/sharpmush-help/nsiter-function/#nsiter)
 - [inf()](/reference/sharpmush-help/inf-function/#inf)
-:::
+
+</nav>
+

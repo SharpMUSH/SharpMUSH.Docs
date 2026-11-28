@@ -60,11 +60,15 @@ If a command would match, but the enactor can't pass the lock, the object may de
 *BE SURE TO `@LOCK`/USE ME==ME IF YOU SET `$-COMMANDS` ON YOURSELF!*
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [GLOBALS](/reference/sharpmush-help/sharptop/#globals)
 - [evaluation order](/reference/sharpmush-help/evaluation-order/#evaluation-order)
 - [STACK](/reference/sharpmush-help/sharptop/#stack)
-- [%]
+- [%](/reference/sharpmush-help/substitutions/#substitutions)
 - [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
-:::
+
+</nav>
+

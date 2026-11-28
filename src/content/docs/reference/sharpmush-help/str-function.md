@@ -31,8 +31,12 @@ quick fox
 
 Output: the rest of the string from `qu`, and `#-1` when case does not match.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [after()](/reference/sharpmush-help/sharpfunc/#after)
 - [before()](/reference/sharpmush-help/sharpfunc/#before)
 - [pos()](/reference/sharpmush-help/sharpfunc/#pos)
-:::
+
+</nav>
+

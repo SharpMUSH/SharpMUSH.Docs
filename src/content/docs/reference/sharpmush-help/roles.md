@@ -269,11 +269,15 @@ An upgrade keeps your edits. A field you changed on the package's role or permis
 
 Uninstalling, or a version that drops an item, removes it unless the game still relies on it: a role someone holds, a permission a role still sets, or a category with something in it is kept and becomes the game's own. Removing a permission clears every override of it.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@role](/reference/sharpmush-help/role-command/#role)
 - [@permission](/reference/sharpmush-help/permission-command/#permission)
 - [ROLES()](/reference/sharpmush-help/sharpfunc/#roles)
 - [HASROLE()](/reference/sharpmush-help/sharpfunc/#hasrole)
 - [PERMISSION()](/reference/sharpmush-help/sharpfunc/#permission)
 - [lock keys](/reference/sharpmush-help/lock-keys/#lock-keys)
-:::
+
+</nav>
+

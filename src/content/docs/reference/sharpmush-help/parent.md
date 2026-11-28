@@ -100,11 +100,15 @@ If you are "mass-marketing" your objects, you can create blank copies, and `@par
 Locks can also be inherited, but are flagged no-inherit by default. Use `@lset` to change that on a per-lock basis.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@parent](/reference/sharpmush-help/sharpcmd/#parent)
-- [$-commands]
+- [$-commands](/reference/sharpmush-help/commands/#-commands)
 - [attributes](/reference/sharpmush-help/attributes/#attributes)
 - [ANCESTORS](/reference/sharpmush-help/sharptop/#ancestors)
 - [ORPHAN](/reference/sharpmush-help/sharpflag/#orphan)
 - [pfun()](/reference/sharpmush-help/pfun-function/#pfun)
-:::
+
+</nav>
+

@@ -33,8 +33,12 @@ Toggles: MONITOR
 @toggle: all toggles cleared.
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [toggles](/reference/sharpmush-help/toggles/#toggles)
 - [toggle()](/reference/sharpmush-help/toggle-function/#toggle)
 - [@set](/reference/sharpmush-help/set-command/#set)
-:::
+
+</nav>
+

@@ -39,7 +39,11 @@ HELLO now runs #12/CMD.
 Hello, world!
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@command](/reference/sharpmush-help/command/#command)
 - [@hook](/reference/sharpmush-help/hook/#hook)
-:::
+
+</nav>
+

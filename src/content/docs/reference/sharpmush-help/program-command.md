@@ -36,6 +36,10 @@ What is your favourite colour?
 blue
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@progreset](/reference/sharpmush-help/progreset-command/#progreset)
-:::
+
+</nav>
+

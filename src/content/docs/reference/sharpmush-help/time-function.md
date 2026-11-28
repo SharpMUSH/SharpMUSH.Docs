@@ -59,10 +59,14 @@ Fri Mar 02 03:19:54.125 2012
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [timefmt()](/reference/sharpmush-help/timefmt-function/#timefmt)
 - [TIMESTRING()](/reference/sharpmush-help/sharpfunc/#timestring)
 - [CONVSECS()](/reference/sharpmush-help/sharpfunc/#convsecs)
 - [CONVTIME()](/reference/sharpmush-help/convtime-function/#convtime)
 - [timezones](/reference/sharpmush-help/timezones/#timezones)
-:::
+
+</nav>
+

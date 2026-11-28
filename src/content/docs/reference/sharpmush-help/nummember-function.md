@@ -37,8 +37,12 @@ Count the elements of `<list>` that match `<word>`.
 
 Output: `test` three times; `*e*` and `*ed` both match `fred`.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [totmember()](/reference/sharpmush-help/totmember-function/#totmember)
 - [member()](/reference/sharpmush-help/sharpfunc/#member)
 - [matchall()](/reference/sharpmush-help/element-function/#element)
-:::
+
+</nav>
+

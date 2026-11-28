@@ -62,8 +62,12 @@ Output: the lowest of `1d20-1d4` takes the d20's 1 and the d4's 4.
 
 min and max leave out explosions and rerolls, so `2d6x` reaches at most 12. A formula that could divide by zero has no lowest or highest. Through abs() and %, min and max are limits the roll may not reach, and the text shows only the number.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [roll()](/reference/sharpmush-help/roll-function/#roll)
 - [ROLL MODIFIERS](/reference/sharpmush-help/roll-modifiers/#roll-modifiers)
 - [json()](/reference/sharpmush-help/json-function/#json)
-:::
+
+</nav>
+

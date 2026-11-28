@@ -31,8 +31,12 @@ In RhostMUSH the letter `a` in `<keep>` also keeps its colour substitutions. Sha
 
 Output: the brackets go unless they are kept.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [secure()](/reference/sharpmush-help/sharpfunc/#secure)
 - [escape()](/reference/sharpmush-help/sharpfunc/#escape)
 - [escapex()](/reference/sharpmush-help/escapex-function/#escapex)
-:::
+
+</nav>
+

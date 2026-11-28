@@ -56,7 +56,9 @@ A binary column (BLOB, BINARY) comes back as the text its bytes spell, read as U
 
 The command that runs a query waits for its answer, and so does the rest of the queue. When its queue entry's time runs out, the query is cancelled where the database client supports it. SQLite finishes a statement it has started.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SQLESCAPE()](/reference/sharpmush-help/sharpfunc/#sqlescape)
 - [MAPSQL()](/reference/sharpmush-help/mapsql-function/#mapsql)
 - [@sql](/reference/sharpmush-help/sql-command/#sql)
@@ -64,4 +66,6 @@ The command that runs a query waits for its answer, and so does the rest of the 
 - [R()](/reference/sharpmush-help/sharpfunc/#r)
 - [@mapsql](/reference/sharpmush-help/mapsql-command/#mapsql)
 - [cache()](/reference/sharpmush-help/cache-function/#cache)
-:::
+
+</nav>
+

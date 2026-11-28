@@ -38,13 +38,17 @@ In both cases, elements of `<list>` are separated by `<delimiter>`, if it's give
 
 To get the matching elements, instead of the indexes of where they appear in the list, use grab()/graball(). To see if a single string matches a wildcard pattern, use strmatch().
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [GRAB()](/reference/sharpmush-help/sharpfunc/#grab)
 - [STRMATCH()](/reference/sharpmush-help/sharpfunc/#strmatch)
 - [MEMBER()](/reference/sharpmush-help/sharpfunc/#member)
 - [reglmatch()](/reference/sharpmush-help/reglmatch-function/#reglmatch)
 - [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)
-:::
+
+</nav>
+
 
 ### Wildcard examples
 

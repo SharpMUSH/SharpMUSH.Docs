@@ -27,10 +27,14 @@ These '@' command set other standard attributes on objects that don't follow the
 | [@pageformat](/reference/sharpmush-help/pageformat-command/#pageformat)  | [@prefix](/reference/sharpmush-help/sharpcmd/#prefix)      | [@runout](/reference/sharpmush-help/charges-command/#charges)      | [@sex](/reference/sharpmush-help/sharpcmd/#sex)         | [@startup](/reference/sharpmush-help/sharpcmd/#startup)     |
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [attributes](/reference/sharpmush-help/attributes/#attributes)
 - [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/sharptop/#non-standard-attributes)
-:::
+
+</nav>
+
 
 ## @-building
 These '@' commands are building-related (they create or modify objects):
@@ -100,9 +104,13 @@ From plugins: [@scene](/reference/sharpmush-help/scene-command/#scene)
 In order for debug to be shown for triggered $-commands, you must either control the object(s) the matching $-commands are on, or be in the object's DEBUGFORWARDLIST attribute.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [debug](/reference/sharpmush-help/debug/#debug)
-:::
+
+</nav>
+
 ## @@
 `@@ [<text>]`
 
@@ -116,9 +124,13 @@ The "@@" command does nothing; it does not evaluate its input or show any messag
 ```
 
 
-::: seealso
-- [@@()]
-:::
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [@@()](/reference/sharpmush-help/sharpfunc/)
+
+</nav>
+
 ## @aclone
 `@aclone <object>=<action list>`
 
@@ -127,11 +139,15 @@ Sets the actions to be taken by `<object>` whenever it's @cloned. This command c
 Please note that there are no @clone or @oclone attributes.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@clone](/reference/sharpmush-help/clone-command/#clone)
 - [@create](/reference/sharpmush-help/sharpcmd/#create)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
-:::
+
+</nav>
+
 ## @aconnect
 `@aconnect <object>=<action list>`
 
@@ -147,20 +163,28 @@ One argument is passed to @aconnect:<br>
 > @aconnect me=+who ; +bbscan
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@adisconnect](/reference/sharpmush-help/sharpcmd/#adisconnect)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [EVENTS](/reference/sharpmush-help/events/#events)
-:::
+
+</nav>
+
 ## @amail
 `@amail <object>=<action list>`
 
 Sets the actions to be taken by `<object>` whenever it receives @mail. Admin-only, and is only triggered if enabled via the amail configuration option.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MAIL](/reference/sharpmush-help/sharpmail/#mail)
-:::
+
+</nav>
+
 ## @adescribe
 `@odescribe <object>[=<message>]`<br>
 `@adescribe <object>[=<action list>]`
@@ -174,12 +198,16 @@ These attributes contain the message shown to others in the enactor's location w
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [look](/reference/sharpmush-help/look/#look)
 - [@describe](/reference/sharpmush-help/sharpcmd/#describe)
 - [@idescribe](/reference/sharpmush-help/sharpcmd/#idescribe)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
-:::
+
+</nav>
+
 ## @adestroy
 `@adestroy <object>[=<action list>]`
 
@@ -188,11 +216,15 @@ The adestroy attribute is triggered when `<object>` is @destroyed. It can only b
 Please note that there are no destroy or odestroy attributes.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@destroy](/reference/sharpmush-help/destroy-command/#destroy)
 - [@undestroy](/reference/sharpmush-help/sharpcmd/#undestroy)
 - [EVENTS](/reference/sharpmush-help/events/#events)
-:::
+
+</nav>
+
 ## @adisconnect
 `@adisconnect <object>[=<action list>]`
 
@@ -206,14 +238,18 @@ One argument is passed to @adisconnect:<br>
 > @adisconnect me = home
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@aconnect](/reference/sharpmush-help/sharpcmd/#aconnect)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [RECV()](/reference/sharpmush-help/sharpfunc/#recv)
 - [SENT()](/reference/sharpmush-help/sharpfunc/#sent)
 - [CMDS()](/reference/sharpmush-help/sharpfunc/#cmds)
 - [EVENTS](/reference/sharpmush-help/events/#events)
-:::
+
+</nav>
+
 ## @adrop
 `@drop <object>[=<message>]`<br>
 `@odrop <object>[=<message>]`<br>
@@ -233,13 +269,17 @@ When `<object>` is an exit, @drop is shown to objects going through `<object>`, 
 > @odrop South=arrives from the North.
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [drop](/reference/sharpmush-help/sharpcmd/#drop)
 - [empty](/reference/sharpmush-help/sharpcmd/#empty)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
 - [@asuccess](/reference/sharpmush-help/sharpcmd/#asuccess)
-:::
+
+</nav>
+
 ## @aefail
 `@efail <object>[=<message>]`<br>
 `@oefail <object>[=<message>]`<br>
@@ -248,13 +288,17 @@ When `<object>` is an exit, @drop is shown to objects going through `<object>`, 
 These attributes contain the message shown to someone who fails to enter `<object>`, the message shown to others when someone fails to enter `<object>`, and the actions to be taken when someone fails to enter it, respectively.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [enter](/reference/sharpmush-help/sharpcmd/#enter)
 - [@aenter](/reference/sharpmush-help/sharpcmd/#aenter)
 - [failure](/reference/sharpmush-help/failure/#failure)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
-:::
+
+</nav>
+
 ## @aufail
 `@ufail <object>=[<message>]`<br>
 `@oufail <object>=[<message>]`<br>
@@ -266,13 +310,17 @@ Note that these attributes are @ufail, NOT @ufailure, for TinyMUSH compatibility
 
 Although the Use @lock also restricts who can trigger $-commands or ^-listens on an object, these attributes will not be triggered for those failures. Instead, the `` COMMAND_LOCK`* `` and `` LISTEN_LOCK`* `` attributes are triggered. See [failure](/reference/sharpmush-help/failure/#failure) for more information.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [use](/reference/sharpmush-help/sharpcmd/#use)
 - [@ause](/reference/sharpmush-help/sharpcmd/#ause)
 - [failure](/reference/sharpmush-help/failure/#failure)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
-:::
+
+</nav>
+
 ## @afailure
 `@failure <object>[=<message>]`<br>
 `@ofailure <object>[=<message>]`<br>
@@ -283,14 +331,18 @@ Although the Use @lock also restricts who can trigger $-commands or ^-listens on
 For players and things, this means failure to get/take. For exits, it means failure to go through the exit. For rooms the lock is checked when objects "look" inside the room, though failure to pass the lock does not prevent the object from looking.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [get](/reference/sharpmush-help/sharpcmd/#get)
-- [go]
+- [go](/reference/sharpmush-help/sharpcmd/#go)
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
 - [@asuccess](/reference/sharpmush-help/sharpcmd/#asuccess)
-:::
+
+</nav>
+
 ## @follow
 `@follow <object>[=<message>]`<br>
 `@ofollow <object>[=<message>]`<br>
@@ -298,14 +350,18 @@ For players and things, this means failure to get/take. For exits, it means fail
 
 Sets the message shown to someone who begins following `<object>`, the message shown to others in the room, and the actions to be taken by `<object>` when someone begins following it, respectively. The name of the person following `<object>` is automatically prepended to the @ofollow message.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [follow](/reference/sharpmush-help/sharpcmd/#follow-1)
 - [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow-1)
 - [@unfollow](/reference/sharpmush-help/sharpcmd/#unfollow)
 - [FOLLOWERS()](/reference/sharpmush-help/sharpfunc/#followers)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
-:::
+
+</nav>
+
 ## @unfollow
 `@unfollow <object>[=<message>]`<br>
 `@ounfollow <object>[=<message>]`<br>
@@ -313,14 +369,18 @@ Sets the message shown to someone who begins following `<object>`, the message s
 
 Sets the message shown to someone who stops following `<object>` with "unfollow `<object>`", the message shown to others in the room, and the actions to be taken by `<object>` when someone stops following it, respectively. The name of the person stopping following `<object>` is automatically prepended to the @ounfollow message.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [follow](/reference/sharpmush-help/sharpcmd/#follow-1)
 - [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow-1)
 - [@follow](/reference/sharpmush-help/sharpcmd/#follow)
 - [FOLLOWERS()](/reference/sharpmush-help/sharpfunc/#followers)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
-:::
+
+</nav>
+
 ## @ahear
 `@ahear <object>[=<action list>]`<br>
 `@amhear <object>[=<action list>]`<br>
@@ -329,11 +389,15 @@ Sets the message shown to someone who stops following `<object>` with "unfollow 
 Sets the actions to be taken after the object's @listen is matched. @ahear will only be triggered by sound made by other objects, and @amhear is only triggered by sound made by `<object>` itself. @aahear will be triggered by all matching sound, regardless of the source.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@listen](/reference/sharpmush-help/listen-command/#listen)
 - [listening](/reference/sharpmush-help/listening/#listening)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
-:::
+
+</nav>
+
 ## @leave
 `@leave <object>[=<message>]`<br>
 `@oleave <object>[=<message>]`<br>
@@ -345,13 +409,17 @@ These attributes contain the message shown to anyone leaving `<object>`, the mes
 The leaver's new location is passed in %0, if `<object>` has permission to see it there.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [leave](/reference/sharpmush-help/sharpcmd/#leave-1)
 - [@leave](/reference/sharpmush-help/sharpcmd/#leave)
 - [@lfail](/reference/sharpmush-help/sharpcmd/#lfail)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
-:::
+
+</nav>
+
 ## @lfail
 `@lfail <object>[=<message>]`<br>
 `@olfail <object>[=<message>]`<br>
@@ -362,13 +430,17 @@ These attributes contain the message shown to objects who try to leave `<object>
 Such a failure usually occurs because `<object>` is set NO_LEAVE, or because the person trying to leave does not pass `<object>`'s @lock/leave.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [leave](/reference/sharpmush-help/sharpcmd/#leave-1)
 - [@leave](/reference/sharpmush-help/sharpcmd/#leave)
 - [locktypes](/reference/sharpmush-help/locktypes/#lock-types)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
-:::
+
+</nav>
+
 ## @alias
 `@alias <player>[=<name1>[;<name2>[;...;<nameN>]]]`<br>
 `@alias <object>[=<string>]`
@@ -384,10 +456,14 @@ An exit's aliases are set with @alias, not in its name.
 For other types of object, @alias has no special meaning.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@name](/reference/sharpmush-help/sharpcmd/#name)
 - [ALIAS()](/reference/sharpmush-help/sharpfunc/#alias)
-:::
+
+</nav>
+
 ## @move
 `@move <object>[=<message>]`<br>
 `@omove <object>[=<message>]`<br>
@@ -406,12 +482,16 @@ The `<object>`'s new location is in %0 and the old location it moved from in %1.
 ```
 
 
-::: seealso
-- [go]
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [go](/reference/sharpmush-help/sharpcmd/#go)
 - [@move](/reference/sharpmush-help/sharpcmd/#move)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
-:::
+
+</nav>
+
 ## @aenter
 `@enter <object>[=<message>]`<br>
 `@oenter <object>[=<message>]`<br>
@@ -431,13 +511,17 @@ The old location of the entering object is passed in %0, if `<object>` had permi
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [enter](/reference/sharpmush-help/sharpcmd/#enter)
 - [@ealias](/reference/sharpmush-help/sharpcmd/#ealias)
 - [leave](/reference/sharpmush-help/sharpcmd/#leave-1)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
-:::
+
+</nav>
+
 ## @apayment
 `@payment <object>[=<message>]`<br>
 `@opayment <object>[=<message>]`<br>
@@ -453,14 +537,18 @@ These attributes can be set, but SharpMUSH has no money: "give" never pays an ob
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [give](/reference/sharpmush-help/sharpcmd/#give-1)
 - [@cost](/reference/sharpmush-help/sharpcmd/#cost)
 - [buy](/reference/sharpmush-help/sharpcmd/#buy-1)
 - [MONEY](/reference/sharpmush-help/sharptop/#money)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
-:::
+
+</nav>
+
 ## @atport
 `@tport <object>[=<message>]`<br>
 `@otport <object>[=<message>]`<br>
@@ -479,11 +567,15 @@ In all of these attributes, %0 is the object which teleported `<object>`, and %1
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@teleport](/reference/sharpmush-help/teleport-command/#teleport)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
-:::
+
+</nav>
+
 ## @atrchown
 `@atrchown <object>/<attribute>=<new owner>`
 
@@ -496,13 +588,17 @@ This command changes the ownership of the attribute `<attribute>` on `<object>` 
 Output: one "Attribute &lt;name&gt; owner changed." line for each attribute under CMD on Widget.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@atrlock](/reference/sharpmush-help/sharpcmd/#atrlock)
 - [@chown](/reference/sharpmush-help/sharpcmd/#chown)
 - [OWNER()](/reference/sharpmush-help/sharpfunc/#owner)
 - [attributes](/reference/sharpmush-help/attributes/#attributes)
 - [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/sharptop/#non-standard-attributes)
-:::
+
+</nav>
+
 ## @atrlock
 `@atrlock <object>/<attribute>`<br>
 `@atrlock <object>/<attribute>=[on|off]`
@@ -520,12 +616,16 @@ If you wish to lock an attribute without gaining ownership, you can set it "lock
 Output: one "Attribute &lt;name&gt; locked." line for each attribute directly under CMD on Widget.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ATRLOCK()](/reference/sharpmush-help/sharpfunc/#atrlock)
 - [@atrchown](/reference/sharpmush-help/sharpcmd/#atrchown)
 - [attributes](/reference/sharpmush-help/attributes/#attributes)
 - [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/sharptop/#non-standard-attributes)
-:::
+
+</nav>
+
 ## @asuccess
 `@success <object>[=<message>]`<br>
 `@osuccess <object>[=<message>]`<br>
@@ -549,16 +649,20 @@ In all cases, %0 is the dbref of the moving object's original location.
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [get](/reference/sharpmush-help/sharpcmd/#get)
-- [go]
+- [go](/reference/sharpmush-help/sharpcmd/#go)
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
 - [SUCCESS](/reference/sharpmush-help/sharptop/#success)
 - [failure](/reference/sharpmush-help/failure/#failure)
 - [@adrop](/reference/sharpmush-help/sharpcmd/#adrop)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
-:::
+
+</nav>
+
 ## @ause
 `@use <object>[=<message>]`<br>
 `@ouse <object>[=<message>]`<br>
@@ -577,12 +681,16 @@ Note that, if `<object>` has a CHARGES attribute set and it does not contain a n
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [use](/reference/sharpmush-help/sharpcmd/#use)
 - [@charges](/reference/sharpmush-help/charges-command/#charges)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
-:::
+
+</nav>
+
 ## @away
 `@away <player>[=<message>]`
 
@@ -594,10 +702,14 @@ If `<message>` evaluates to something non-null, it is shown to anyone who pages 
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@idle](/reference/sharpmush-help/sharpcmd/#idle)
 - [@haven](/reference/sharpmush-help/sharpcmd/#haven)
-:::
+
+</nav>
+
 ## @boot
 `@boot[/silent] <player>`<br>
 `@boot/port[/silent] <descriptor number>`<br>
@@ -614,10 +726,14 @@ The `/me` switch disconnects the connection you typed the command on.
 Anyone may @boot their own connections. Only holders of `players.moderate` and those with the "boot" power can @boot other players, and each time they do it is recorded in the audit log.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [QUIT](/reference/sharpmush-help/sharpcmd/#quit)
 - [LOGOUT](/reference/sharpmush-help/sharpcmd/#logout)
-:::
+
+</nav>
+
 ## @chown
 `@chown[/preserve] <object>=<player>`
 
@@ -634,13 +750,17 @@ To change the owner of an attribute, use [@atrchown](/reference/sharpmush-help/s
 ```
 
 
-::: seealso
-- [CHOWN_OK](/reference/sharpmush-help/sharpflag/#chownok)
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [CHOWN_OK](/reference/sharpmush-help/sharpflag/#chown_ok)
 - [zone masters](/reference/sharpmush-help/zone-masters/#zone-masters)
 - [@chownall](/reference/sharpmush-help/sharpcmd/#chownall)
 - [OWNER()](/reference/sharpmush-help/sharpfunc/#owner)
 - [@atrchown](/reference/sharpmush-help/sharpcmd/#atrchown)
-:::
+
+</nav>
+
 ## @chownall
 `@chownall[/preserve][/<types>] <player>[=<new owner>]`
 
@@ -651,29 +771,41 @@ If one or more of `/things`, `/rooms` or `/exits` are provided, only objects of 
 This command can only be used by Wizards.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@chown](/reference/sharpmush-help/sharpcmd/#chown)
-:::
+
+</nav>
+
 ## @chzoneall
 `@chzoneall[/preserve] <player>=<zone object>`
 
 Changes the zone of all objects owned by `<player>` to `<zone object>`. If `<zone object>` is "none", the zone is reset to NOTHING. Only wizards may use this command.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@chzone](/reference/sharpmush-help/chzone-command/#chzone)
 - [zones](/reference/sharpmush-help/zones/#zones)
-:::
+
+</nav>
+
 ## @comment
 `@comment <object>[=<comment>]`
 
 This is a wizard-only command which sets a COMMENT attribute on `<object>`. The attribute can only be seen by those with the See_All power.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@@](/reference/sharpmush-help/sharpcmd/#-1)
-- [@@()]
-:::
+- [@@()](/reference/sharpmush-help/sharpfunc/)
+
+</nav>
+
 ## @conformat
 `@conformat <object>[=<format>]`
 
@@ -695,14 +827,18 @@ Show just the object names (with no ansi) in a table:
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [look](/reference/sharpmush-help/look/#look)
 - [@exitformat](/reference/sharpmush-help/sharpcmd/#exitformat)
 - [@nameformat](/reference/sharpmush-help/sharpcmd/#nameformat)
 - [@descformat](/reference/sharpmush-help/sharpcmd/#descformat)
 - [@invformat](/reference/sharpmush-help/sharpcmd/#invformat)
 - [@idescformat](/reference/sharpmush-help/sharpcmd/#idescformat)
-:::
+
+</nav>
+
 
 ## @invformat
 `@invformat <object>[=<format>]`
@@ -717,14 +853,18 @@ You're holding: Red Ball, Pickle, and Piano
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [inventory](/reference/sharpmush-help/sharpcmd/#inventory)
 - [@conformat](/reference/sharpmush-help/sharpcmd/#conformat)
 - [@exitformat](/reference/sharpmush-help/sharpcmd/#exitformat)
 - [@nameformat](/reference/sharpmush-help/sharpcmd/#nameformat)
 - [@descformat](/reference/sharpmush-help/sharpcmd/#descformat)
 - [@idescformat](/reference/sharpmush-help/sharpcmd/#idescformat)
-:::
+
+</nav>
+
 ## @descformat
 `@descformat <object>[=<format>]`
 
@@ -740,14 +880,18 @@ Q-registers (set via setq() and similar functions) are inherited from the @namef
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [look](/reference/sharpmush-help/look/#look)
 - [@exitformat](/reference/sharpmush-help/sharpcmd/#exitformat)
 - [@nameformat](/reference/sharpmush-help/sharpcmd/#nameformat)
 - [@conformat](/reference/sharpmush-help/sharpcmd/#conformat)
 - [@idescformat](/reference/sharpmush-help/sharpcmd/#idescformat)
 - [@invformat](/reference/sharpmush-help/sharpcmd/#invformat)
-:::
+
+</nav>
+
 ## @idescformat
 `@idescformat <object>[=<format>]`
 
@@ -765,14 +909,18 @@ Q-registers (set via setq() and similar functions) are inherited from the @namef
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [look](/reference/sharpmush-help/look/#look)
 - [@exitformat](/reference/sharpmush-help/sharpcmd/#exitformat)
 - [@nameformat](/reference/sharpmush-help/sharpcmd/#nameformat)
 - [@conformat](/reference/sharpmush-help/sharpcmd/#conformat)
 - [@descformat](/reference/sharpmush-help/sharpcmd/#descformat)
 - [@invformat](/reference/sharpmush-help/sharpcmd/#invformat)
-:::
+
+</nav>
+
 ## @nameaccent
 `@nameaccent <object>[=<accent template>]`
 
@@ -783,13 +931,17 @@ The `<accent template>` is explained in [accents](/reference/sharpmush-help/acce
 If a container has both a @nameaccent and a @nameformat, the @nameformat is used.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [accent()](/reference/sharpmush-help/accent-function/#accent)
 - [@nameformat](/reference/sharpmush-help/sharpcmd/#nameformat)
 - [ACCNAME()](/reference/sharpmush-help/sharpfunc/#accname)
 - [STRIPACCENTS()](/reference/sharpmush-help/sharpfunc/#stripaccents)
 - [INAME()](/reference/sharpmush-help/sharpfunc/#iname)
-:::
+
+</nav>
+
 ## @nameformat
 `@nameformat <object>[=<format>]`
 
@@ -811,7 +963,9 @@ The same, reading the arguments by name:
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [look](/reference/sharpmush-help/look/#look)
 - [@exitformat](/reference/sharpmush-help/sharpcmd/#exitformat)
 - [@conformat](/reference/sharpmush-help/sharpcmd/#conformat)
@@ -820,20 +974,26 @@ The same, reading the arguments by name:
 - [@invformat](/reference/sharpmush-help/sharpcmd/#invformat)
 - [@idescformat](/reference/sharpmush-help/sharpcmd/#idescformat)
 - [INAME()](/reference/sharpmush-help/sharpfunc/#iname)
-:::
+
+</nav>
+
 ## @cost
 `@cost <object>[=<amount>]`
 
 The COST attribute can be set, but SharpMUSH has no money: "give" with a number only answers "Money transfer will not be implemented.", so COST is never read and @payment, @opayment and @apayment never run.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [give](/reference/sharpmush-help/sharpcmd/#give-1)
 - [MONEY](/reference/sharpmush-help/sharptop/#money)
 - [@payment](/reference/sharpmush-help/sharpcmd/#apayment)
 - [MONEY()](/reference/sharpmush-help/sharpfunc/#money)
 - [buy](/reference/sharpmush-help/sharpcmd/#buy-1)
-:::
+
+</nav>
+
 ## @create
 `@create <name>[=<cost>[,<dbref>]]`
 
@@ -846,7 +1006,9 @@ When quotas are enabled, each object you create uses part of your building quota
 Wizards and objects with the PICK_DBREFS power can also specify the `<dbref>` of a garbage object to use when creating the object. Otherwise, the object is given the next available dbref.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [give](/reference/sharpmush-help/sharpcmd/#give-1)
 - [@quota](/reference/sharpmush-help/quota-command/#quota)
 - [MONEY](/reference/sharpmush-help/sharptop/#money)
@@ -855,7 +1017,9 @@ Wizards and objects with the PICK_DBREFS power can also specify the `<dbref>` of
 - [@dig](/reference/sharpmush-help/dig-command/#dig)
 - [@open](/reference/sharpmush-help/sharpcmd/#open)
 - [@pcreate](/reference/sharpmush-help/sharpcmd/#pcreate)
-:::
+
+</nav>
+
 ## @dbck
 `@dbck`
 
@@ -867,10 +1031,14 @@ PennMUSH's `@dbck` checks the live database's links. SharpMUSH keeps its links c
 writes them, so its `@dbck` checks the copy you would restore instead, and runs only when asked. Take
 a copy with `@backup` first.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@backup](/reference/sharpmush-help/backup-command/#backup)
 - [event db](/reference/sharpmush-help/sharpevents/#database-events)
-:::
+
+</nav>
+
 ## @describe
 `@describe <object>[=<description>]`
 
@@ -883,12 +1051,16 @@ When inside a thing or player, you will see its @idescribe instead, if one is se
 @describe can be abbreviated as @desc.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [look](/reference/sharpmush-help/look/#look)
 - [@adescribe](/reference/sharpmush-help/sharpcmd/#adescribe)
 - [@idescribe](/reference/sharpmush-help/sharpcmd/#idescribe)
 - [@descformat](/reference/sharpmush-help/sharpcmd/#descformat)
-:::
+
+</nav>
+
 ## @undestroy
 `@undestroy <object>`
 
@@ -901,12 +1073,16 @@ If `<object>` is a player and the 'destroy_possessions' @config option is on, al
 @unrecycle is an alias for @undestroy.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@destroy](/reference/sharpmush-help/destroy-command/#destroy)
 - [@recover](/reference/sharpmush-help/recover-command/#recover)
 - [GOING](/reference/sharpmush-help/sharpflag/#going)
 - [@startup](/reference/sharpmush-help/sharpcmd/#startup)
-:::
+
+</nav>
+
 ## @doing
 `@doing <object>[=<message>]`
 
@@ -923,11 +1099,15 @@ The object comes first, so `@doing Exploring` looks for an object named Explorin
 To change the message shown above player @doings in WHO, use @poll.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@poll](/reference/sharpmush-help/sharpcmd/#poll)
 - [who](/reference/sharpmush-help/who/#who)
 - [DOING()](/reference/sharpmush-help/sharpfunc/#doing)
-:::
+
+</nav>
+
 ## @drain
 `@drain[/any][/all] <object>[/<attribute>][=<number>]`
 
@@ -942,12 +1122,16 @@ If the `/all` switch is given, then all queue entries associated with the select
 You may not specify both the `/any` switch and a specific attribute. Similarly, you may not specify both the `/all` switch and a number.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [semaphores](/reference/sharpmush-help/semaphores/#semaphores)
 - [@wait](/reference/sharpmush-help/wait-command/#wait)
 - [@notify](/reference/sharpmush-help/notify-command/#notify)
 - [@halt](/reference/sharpmush-help/halt-command/#halt)
-:::
+
+</nav>
+
 ## @dump
 `@dump`<br>
 `@dump[/paranoid|/debug|/nofork] [<check interval>]`
@@ -962,10 +1146,14 @@ written; other players see nothing. The dump events are raised (see [event dump]
 setting, rather than PennMUSH's dump_interval.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@backup](/reference/sharpmush-help/backup-command/#backup)
 - [@shutdown](/reference/sharpmush-help/sharpcmd/#shutdown)
-:::
+
+</nav>
+
 ## @ealias
 `@ealias <object>[=<enter alias1>[; ... ; <enter aliasN>]]`<br>
 `@lalias <object>[=<leave alias1>[; ... ; <leave aliasN>]]`
@@ -981,12 +1169,16 @@ These attributes only have meaning for players and things (as rooms/exits cannot
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [enter](/reference/sharpmush-help/sharpcmd/#enter)
 - [leave](/reference/sharpmush-help/sharpcmd/#leave-1)
-- [go]
-- [ENTER_OK](/reference/sharpmush-help/sharpflag/#enterok)
-:::
+- [go](/reference/sharpmush-help/sharpcmd/#go)
+- [ENTER_OK](/reference/sharpmush-help/sharpflag/#enter_ok)
+
+</nav>
+
 ## @elock
 `@elock <object>[=<key>]`<br>
 `@eunlock <object>`
@@ -999,12 +1191,16 @@ and<br>
 `@lock/enter <object>`
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
 - [locktypes](/reference/sharpmush-help/locktypes/#lock-types)
 - [enter](/reference/sharpmush-help/sharpcmd/#enter)
-- [ENTER_OK](/reference/sharpmush-help/sharpflag/#enterok)
-:::
+- [ENTER_OK](/reference/sharpmush-help/sharpflag/#enter_ok)
+
+</nav>
+
 ## @emit
 `@emit[/<switch>] <message>`<br>
 `emit[/<switch>] <message>`<br>
@@ -1019,7 +1215,9 @@ The `/room` switch sends `<message>` to your outermost container instead, as @le
 @emit can be abbreviated as `\`, and `emit` is another name for it.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@nspemit](/reference/sharpmush-help/sharpcmd/#nspemit)
 - [EMIT()](/reference/sharpmush-help/sharpfunc/#emit)
 - [@pemit](/reference/sharpmush-help/pemit-command/#pemit)
@@ -1031,7 +1229,9 @@ The `/room` switch sends `<message>` to your outermost container instead, as @le
 - [@SPEECHMOD](/reference/sharpmush-help/sharpcmd/#speechmod)
 - [NOSPOOF](/reference/sharpmush-help/sharpflag/#nospoof)
 - [SPOOFING](/reference/sharpmush-help/sharptop/#spoofing)
-:::
+
+</nav>
+
 ## @enable
 `@enable <option>`<br>
 `@disable <option>`
@@ -1044,9 +1244,13 @@ These wizard-only commands change any boolean @config option (see [@config param
 Like @config/set, the change is stored and lasts across restarts.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@config](/reference/sharpmush-help/config-command/#config)
-:::
+
+</nav>
+
 ## @zenter
 `@zenter <object>[=<message>]`<br>
 `@ozenter <object>[=<message>]`<br>
@@ -1059,13 +1263,17 @@ Entry into a new zone is said to occur when a player goes from a room not in the
 Zone entry is assumed to occur before room entry, so these are triggered before the room's `@[oa]enter`.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@zleave](/reference/sharpmush-help/sharpcmd/#zleave)
 - [zones](/reference/sharpmush-help/zones/#zones)
 - [@zemit](/reference/sharpmush-help/sharpcmd/#zemit)
 - [ZWHO()](/reference/sharpmush-help/sharpfunc/#zwho)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
-:::
+
+</nav>
+
 ## @zleave
 `@zleave <object>[=<message>]`<br>
 `@ozleave <object>[=<message>]`<br>
@@ -1078,13 +1286,17 @@ Leaving a zone is said to occur when a player goes from a room in the zone to a 
 Zone leaving is assumed to occur after room leaving, so these are triggered after the room's `@[oa]leave`.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@zenter](/reference/sharpmush-help/sharpcmd/#zenter)
 - [zones](/reference/sharpmush-help/zones/#zones)
 - [@zemit](/reference/sharpmush-help/sharpcmd/#zemit)
 - [ZWHO()](/reference/sharpmush-help/sharpfunc/#zwho)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
-:::
+
+</nav>
+
 ## @entrances
 `@entrances[/<switch>] [<object>][=<begin>[, <end>]]`
 
@@ -1101,11 +1313,15 @@ You can use any combination of switches to limit the types of objects:
 If you control `<object>`, or have the Search or See_All powers, all objects linked to `<object>` are listed. Otherwise, only objects which you can examine will be shown.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@link](/reference/sharpmush-help/sharpcmd/#link)
 - [@search](/reference/sharpmush-help/search-command/#search)
 - [ENTRANCES()](/reference/sharpmush-help/sharpfunc/#entrances)
-:::
+
+</nav>
+
 ## @exitformat
 `@exitformat <object>[=<format>]`
 
@@ -1124,12 +1340,16 @@ The same, reading the exits by name:
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [TRANSPARENT](/reference/sharpmush-help/sharpflag/#transparent)
 - [@conformat](/reference/sharpmush-help/sharpcmd/#conformat)
 - [@nameformat](/reference/sharpmush-help/sharpcmd/#nameformat)
 - [@descformat](/reference/sharpmush-help/sharpcmd/#descformat)
-:::
+
+</nav>
+
 ## @firstexit
 `@firstexit <exit1>[, ... , <exitN>]`
 
@@ -1153,11 +1373,15 @@ One, Two, and Three
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [EXITS](/reference/sharpmush-help/sharptop/#exits)
 - [@open](/reference/sharpmush-help/sharpcmd/#open)
 - [@link](/reference/sharpmush-help/sharpcmd/#link)
-:::
+
+</nav>
+
 ## @find
 `@find [<name>][=<begin>, <end>]`
 
@@ -1168,11 +1392,15 @@ Displays the name and dbref of every room, thing, or player you control whose na
 You may wish to use the @search command instead, which can filter the results more complexly.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@search](/reference/sharpmush-help/search-command/#search)
 - [lsearch()](/reference/sharpmush-help/lsearch-function/#lsearch)
 - [@entrances](/reference/sharpmush-help/sharpcmd/#entrances)
-:::
+
+</nav>
+
 ## @forwardlist
 `@forwardlist <object>[=<list of dbrefs>]`
 
@@ -1181,14 +1409,18 @@ If `<object>` is set AUDIBLE, any sound it hears which passes its @filter and @l
 In order to forward to an object, you must either control it, have the pemit_all power, or pass its @lock/forward. (If you want to allow all objects you own to forward to you, regardless of whether or not they control you, use `@lock/forward me=$me`)
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@filter](/reference/sharpmush-help/filter-command/#filter)
 - [@prefix](/reference/sharpmush-help/sharpcmd/#prefix)
 - [AUDIBLE](/reference/sharpmush-help/sharpflag/#audible)
 - [PUPPET](/reference/sharpmush-help/sharpflag/#puppet)
 - [@debugforwardlist](/reference/sharpmush-help/sharpcmd/#debugforwardlist)
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
-:::
+
+</nav>
+
 ## @debugforwardlist
 `@debugforwardlist <object>[=<list of dbrefs>]`
 
@@ -1197,11 +1429,15 @@ When `<object>` has an @debugforwardlist attribute set, any debug output it prod
 The @debugforwardlist must be a space-seperated list of dbrefs. In order to forward to an object, you must either control it, have the pemit_all power, or pass its @lock/forward.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [debug](/reference/sharpmush-help/debug/#debug)
 - [@forwardlist](/reference/sharpmush-help/sharpcmd/#forwardlist)
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
-:::
+
+</nav>
+
 ## Flag Permissions
 The following permissions can be used when specifying whether `<actor>` may set or clear a flag on an `<object>` they control:
 
@@ -1234,10 +1470,14 @@ By default, attributes which contain the string `<pattern>` are returned. Howeve
 For backwards compatability, the `/list` switch provides the default behaviour of listing attributes without printing the values, and `/ilist` and `/iprint` are aliases for `/list/nocase` and `/print/nocase`.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [GREP()](/reference/sharpmush-help/sharpfunc/#grep)
 - [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)
-:::
+
+</nav>
+
 ## @haven
 `@haven <player>[=<message>]`
 
@@ -1250,13 +1490,17 @@ When someone tries to page `<player>` and cannot, either because `<player>` is s
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [HAVEN](/reference/sharpmush-help/sharpflag/#haven)
 - [page](/reference/sharpmush-help/page/#page)
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
 - [@away](/reference/sharpmush-help/sharpcmd/#away)
 - [@idle](/reference/sharpmush-help/sharpcmd/#idle)
-:::
+
+</nav>
+
 ## @hide
 `@hide[/<switch>] <descriptor>`<br>
 `@hide[/<switch>] [<player>]`
@@ -1268,13 +1512,17 @@ The first form of this command affects the single connection specified by *\<des
 The `/on` and `/yes` switches hide connections, while `/off` and `/no` unhide connections. If no switch is given, the command acts as a toggle: for a single descriptor, the hide status is reversed. For a player, if all their connections are hidden, they will be unhidden. If any are unhidden, they will all be hidden.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [HIDDEN()](/reference/sharpmush-help/sharpfunc/#hidden)
 - [who](/reference/sharpmush-help/who/#who)
 - [LWHO()](/reference/sharpmush-help/sharpfunc/#lwho)
 - [LPORTS()](/reference/sharpmush-help/sharpfunc/#lports)
 - [PORTS()](/reference/sharpmush-help/sharpfunc/#lports)
-:::
+
+</nav>
+
 ## @idescribe
 `@idescribe <object>[=<description>]`<br>
 `@oidescribe <object>[=<message>]`<br>
@@ -1287,15 +1535,19 @@ The @oidescribe attribute is shown to others inside `<object>` when someone look
 If there is no IDESCRIBE set for an object, those who enter or look inside it will see its @describe. In this case, others in the object will see nothing, and the @aidescribe will not be triggered. If you want to use @aidescribe without @idescribe, set @idescribe to a blank string, or to u(describe) to show the description.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [enter](/reference/sharpmush-help/sharpcmd/#enter)
 - [@aenter](/reference/sharpmush-help/sharpcmd/#aenter)
-- [ENTER_OK](/reference/sharpmush-help/sharpflag/#enterok)
+- [ENTER_OK](/reference/sharpmush-help/sharpflag/#enter_ok)
 - [@describe](/reference/sharpmush-help/sharpcmd/#describe)
 - [look](/reference/sharpmush-help/look/#look)
 - [@idescformat](/reference/sharpmush-help/sharpcmd/#idescformat)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
-:::
+
+</nav>
+
 ## HUH_COMMAND
 This internal command is run whenever someone attempts to run a command which doesn't match any built-in or softcoded commands. The huh_command command cannot be run directly, but it can be @hook'd to perform custom actions when an invalid command is entered.
 
@@ -1321,12 +1573,16 @@ Announcement: Room Zero shouts, "Dunce wins his first typo trophy!"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@hook](/reference/sharpmush-help/hook/#hook)
 - [evaluation order](/reference/sharpmush-help/evaluation-order/#evaluation-order)
-- [WARN_ON_MISSING](/reference/sharpmush-help/sharpcmd/#warnonmissing)
-- [UNIMPLEMENTED_COMMAND](/reference/sharpmush-help/sharpcmd/#unimplementedcommand)
-:::
+- [WARN_ON_MISSING](/reference/sharpmush-help/sharpcmd/#warn_on_missing)
+- [UNIMPLEMENTED_COMMAND](/reference/sharpmush-help/sharpcmd/#unimplemented_command)
+
+</nav>
+
 ## @idle
 `@idle <player>[=<message>]`
 
@@ -1340,10 +1596,14 @@ This message is sent in return to every page which reaches you, if it evaluates 
 Players paging me will only see the "I'm idle" message if I've been idle for over 2 minutes (120 seconds).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@away](/reference/sharpmush-help/sharpcmd/#away)
 - [@haven](/reference/sharpmush-help/sharpcmd/#haven)
-:::
+
+</nav>
+
 ## @infilter
 `@infilter <object>[=<pattern 1>[, <pattern 2>[, ..., <pattern N>]]]`
 
@@ -1354,13 +1614,17 @@ Sounds are only forwarded if the speaker also passes `<object>`'s @lock/infilter
 For an explanation of infilter patterns, see the help for "@filter".
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@filter](/reference/sharpmush-help/filter-command/#filter)
 - [@listen](/reference/sharpmush-help/listen-command/#listen)
 - [@inprefix](/reference/sharpmush-help/sharpcmd/#inprefix)
 - [AUDIBLE](/reference/sharpmush-help/sharpflag/#audible)
 - [listening](/reference/sharpmush-help/listening/#listening)
-:::
+
+</nav>
+
 ## @inprefix
 `@inprefix <object>[=<message>]`
 
@@ -1380,21 +1644,29 @@ From outside, Test bounces.
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@prefix](/reference/sharpmush-help/sharpcmd/#prefix)
 - [@listen](/reference/sharpmush-help/listen-command/#listen)
 - [@infilter](/reference/sharpmush-help/sharpcmd/#infilter)
-:::
+
+</nav>
+
 ## @kick
 `@kick <player>`
 
 Disconnects every connection `<player>` has, telling each one "You have been disconnected." It needs the `server.operate` permission. See [@boot](/reference/sharpmush-help/sharpcmd/#boot) to disconnect a single connection.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@ps](/reference/sharpmush-help/ps-command/#ps)
 - [queue](/reference/sharpmush-help/queue/#queue)
-:::
+
+</nav>
+
 ## @lemit
 `@lemit[/<switch>] <message>`
 
@@ -1405,10 +1677,14 @@ The `/noeval` switch prevents `<message>` from being evaluated.<br>
 The `/spoof` switch causes nospoof notifications to show the enactor's dbref instead of the executor's dbref, and requires control over the enactor or the Can_spoof power.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@remit](/reference/sharpmush-help/sharpcmd/#remit)
 - [@nspemit](/reference/sharpmush-help/sharpcmd/#nspemit)
-:::
+
+</nav>
+
 ## @link
 `@link[/preserve] <object>=[<dbref> | here | home | variable]`
 
@@ -1423,13 +1699,17 @@ If the destination is "home", those who travel through the exit will be sent to 
 LINK_OK objects can also be used as semaphores, and any object can be @parented to them.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [EXITS](/reference/sharpmush-help/sharptop/#exits)
 - [@open](/reference/sharpmush-help/sharpcmd/#open)
 - [@dig](/reference/sharpmush-help/dig-command/#dig)
 - [DROP-TOS](/reference/sharpmush-help/sharptop/#drop-tos)
 - [HOMES](/reference/sharpmush-help/sharptop/#homes)
-:::
+
+</nav>
+
 ## @destination
 `@destination <exit>[=<destination>]`<br>
 `@exitto <exit>[=<destination>]`
@@ -1451,13 +1731,17 @@ Note that, unlike most attributes, @destination cannot be abbreviated and must b
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [EXITS](/reference/sharpmush-help/sharptop/#exits)
 - [@link](/reference/sharpmush-help/sharpcmd/#link)
 - [@open](/reference/sharpmush-help/sharpcmd/#open)
-- [LINK_OK](/reference/sharpmush-help/sharpflag/#linkok)
+- [LINK_OK](/reference/sharpmush-help/sharpflag/#link_ok)
 - [@power](/reference/sharpmush-help/power-command/#power)
-:::
+
+</nav>
+
 ## @lset
 `@lset <object>/<lock type>=[!]<flag>`
 
@@ -1471,12 +1755,16 @@ Valid flags include:
 - locked (+) This lock can only be set by the owner of the lock.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
 - [LOCKFLAGS()](/reference/sharpmush-help/sharpfunc/#lockflags)
 - [LLOCKFLAGS()](/reference/sharpmush-help/sharpfunc/#llockflags)
 - [LSET()](/reference/sharpmush-help/sharpfunc/#lset)
-:::
+
+</nav>
+
 ## @log
 `@log[/<switch>] <message>`<br>
 `@log/recall/<switch> [<number>]`
@@ -1486,9 +1774,13 @@ This command writes `<message>` to the server log, tagged with the object execut
 Adding the `/recall` switch displays the last `<number>` entries in that category: 100 if omitted, and at most 1000.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@logwipe](/reference/sharpmush-help/sharpcmd/#logwipe)
-:::
+
+</nav>
+
 ## @logwipe
 `@logwipe/<log>[/<switch>] <password>`
 
@@ -1497,9 +1789,13 @@ In PennMUSH this God-only command erases one of the game's log files: `<log>` is
 SharpMUSH owns no log files. Its logs go to the logging sinks named in its configuration (the console, by default), and rotating, trimming or clearing them is done there. @logwipe therefore performs no operation: it tells God which policy on which log cannot be carried out, returns `#-1 NOT SUPPORTED`, and records the attempt in the server log.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@log](/reference/sharpmush-help/sharpcmd/#log)
-:::
+
+</nav>
+
 ## @moniker
 `@moniker <object>[=<moniker>]`
 
@@ -1519,13 +1815,17 @@ Show the first letter in orange, and the rest with no color
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [monikers](/reference/sharpmush-help/monikers/#monikers)
 - [MONIKER()](/reference/sharpmush-help/sharpfunc/#moniker)
 - [ansi()](/reference/sharpmush-help/ansi-function/#ansi)
 - [@nameformat](/reference/sharpmush-help/sharpcmd/#nameformat)
 - [@nameaccent](/reference/sharpmush-help/sharpcmd/#nameaccent)
-:::
+
+</nav>
+
 ## @name
 `@name <object>=<new name>`<br>
 `@name <player|exit>=<new name>[;<alias1>[;<aliasN>]]`
@@ -1551,12 +1851,16 @@ Name set.
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@alias](/reference/sharpmush-help/sharpcmd/#alias)
 - [@ONAME](/reference/sharpmush-help/sharpcmd/#oname)
 - [NAME()](/reference/sharpmush-help/sharpfunc/#name)
 - [FULLNAME()](/reference/sharpmush-help/sharpfunc/#fullname)
-:::
+
+</nav>
+
 
 Config options: player_name_spaces, player_name_len, only_ascii_in_names
 ## @oname
@@ -1572,11 +1876,15 @@ Whenever `<object>`'s name is changed (via @name), others in the same location w
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@name](/reference/sharpmush-help/sharpcmd/#name)
 - [NAME()](/reference/sharpmush-help/sharpfunc/#name)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
-:::
+
+</nav>
+
 ## @newpassword
 `@newpassword <player>=<password>`<br>
 `@newpassword/generate <player>`
@@ -1589,10 +1897,14 @@ If the `/generate` switch is given, a new, random password is generated automati
 The `<password>` must not contain whitespace, unprintable characters, or '='.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@password](/reference/sharpmush-help/sharpcmd/#password)
 - [CHECKPASS()](/reference/sharpmush-help/sharpfunc/#checkpass)
-:::
+
+</nav>
+
 ## @nspemit
 `@nsemit[/room][/silent|/noisy][/noeval][/spoof] [<message>]`<br>
 `@nslemit[/silent|/noisy][/noeval][/spoof] <message>`<br>
@@ -1605,7 +1917,9 @@ The `<password>` must not contain whitespace, unprintable characters, or '='.
 These commands work like @emit, @lemit, @pemit, @prompt, @remit, @oemit, and @zemit, respectively, but will not include nospoof information if used by Wizards or someone with the Can_spoof @power. They are meant to be used by commands in the master room where the nospoof information is just useless noise. Each switch works as it does on the respective command; @nspemit has no `/contents` or `/spoof`. SharpMUSH also supports the privileged `/port` and `/port/list` forms on @nspemit.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@emit](/reference/sharpmush-help/sharpcmd/#emit)
 - [@lemit](/reference/sharpmush-help/sharpcmd/#lemit)
 - [@pemit](/reference/sharpmush-help/pemit-command/#pemit)
@@ -1619,8 +1933,10 @@ These commands work like @emit, @lemit, @pemit, @prompt, @remit, @oemit, and @ze
 - [REMIT()](/reference/sharpmush-help/sharpfunc/#remit)
 - [OEMIT()](/reference/sharpmush-help/sharpfunc/#oemit)
 - [ZEMIT()](/reference/sharpmush-help/sharpfunc/#zemit)
-- [PROMPT_NEWLINES](/reference/sharpmush-help/sharpcmd/#promptnewlines)
-:::
+- [PROMPT_NEWLINES](/reference/sharpmush-help/sharpcmd/#prompt_newlines)
+
+</nav>
+
 ## @open
 `@open <exit name>[=<destination>,<return exit name>,<source room>,<dbref>,<return dbref>]`
 
@@ -1642,24 +1958,32 @@ To open an exit in a room, you must control the room, have the Open_Anywhere @po
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [EXITS](/reference/sharpmush-help/sharptop/#exits)
 - [@link](/reference/sharpmush-help/sharpcmd/#link)
 - [@dig](/reference/sharpmush-help/dig-command/#dig)
 - [OPEN()](/reference/sharpmush-help/sharpfunc/#open)
-:::
+
+</nav>
+
 ## @parent
 `@parent <object>[=<parent>]`
 
 This command sets the parent of `<object>` to `<parent>`. If no `<parent>` is given, or `<parent>` is "none", `<object>`'s parent is cleared. You must control `<object>`, and must either control `<parent>` or it must be set LINK_OK and you must pass its @lock/parent.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [parent](/reference/sharpmush-help/parent/#parents)
 - [PARENT()](/reference/sharpmush-help/sharpfunc/#parent)
 - [LPARENT()](/reference/sharpmush-help/sharpfunc/#lparent)
 - [ANCESTORS](/reference/sharpmush-help/sharptop/#ancestors)
-:::
+
+</nav>
+
 ## @package
 `@package/scan <objects>`<br>
 `@package <objects>=<package-id>[,<version>[,<description>[,<title>]]]`
@@ -1675,9 +1999,13 @@ This single-step export only succeeds when the selection is **self-contained**: 
 `@package` obeys the same visibility rules as `@decompile`: an object must pass your examine permission, and only the attributes you can see (VEILED attributes excluded) are scanned or written into the manifest.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@decompile](/reference/sharpmush-help/decompile-command/#decompile)
-:::
+
+</nav>
+
 ## @password
 `@password <old password>=<new password>`
 
@@ -1685,10 +2013,14 @@ This changes your password. Please note that passwords ARE case-sensitive. The a
 The `<new password>` must not contain whitespace, unprintable characters, or '='.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@newpassword](/reference/sharpmush-help/sharpcmd/#newpassword)
 - [CHECKPASS()](/reference/sharpmush-help/sharpfunc/#checkpass)
-:::
+
+</nav>
+
 ## @receive
 `@receive <recipient>[=<message>]`<br>
 `@oreceive <recipient>[=<message>]`<br>
@@ -1699,14 +2031,18 @@ These attributes contain the message shown `<recipient>` when he receives an obj
 In all cases, %0 is the dbref of the object received. If the object was 'give'n, %1 will be the dbref of the giver.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [give](/reference/sharpmush-help/sharpcmd/#give-1)
 - [get](/reference/sharpmush-help/sharpcmd/#get)
 - [@give](/reference/sharpmush-help/sharpcmd/#give)
 - [@asuccess](/reference/sharpmush-help/sharpcmd/#asuccess)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
-:::
+
+</nav>
+
 ## @give
 `@give <giver>[=<message>]`<br>
 `@ogive <giver>[=<message>]`<br>
@@ -1717,12 +2053,16 @@ These attributes contain the message shown to `<giver>` when he gives an object,
 In all cases, %0 is the dbref of the object being given, and %1 is the dbref of the recipient.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [give](/reference/sharpmush-help/sharpcmd/#give-1)
 - [@receive](/reference/sharpmush-help/sharpcmd/#receive)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
-:::
+
+</nav>
+
 ## @pcreate
 `@pcreate <name>=<password>[, <dbref>]`
 
@@ -1731,9 +2071,13 @@ This wizard-only command creates a player with the given name and password. If s
 `@pcreate` outputs the new player's dbref, as `pcreate()` returns it.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [PCREATE()](/reference/sharpmush-help/sharpfunc/#pcreate)
-:::
+
+</nav>
+
 ## @prompt
 `@prompt[/<switch>] <dbref list>[=<message>]`
 
@@ -1744,12 +2088,16 @@ If `<message>` is omitted, an empty prompt is sent.
 @prompt supports the following @pemit switches: `/silent`, `/noisy`, `/spoof`, `/noeval`
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@pemit](/reference/sharpmush-help/pemit-command/#pemit)
 - [@nspemit](/reference/sharpmush-help/sharpcmd/#nspemit)
 - [PEMIT()](/reference/sharpmush-help/sharpfunc/#pemit)
-- [PROMPT_NEWLINES](/reference/sharpmush-help/sharpcmd/#promptnewlines)
-:::
+- [PROMPT_NEWLINES](/reference/sharpmush-help/sharpcmd/#prompt_newlines)
+
+</nav>
+
 ## PROMPT_NEWLINES
 `PROMPT_NEWLINES [1|0]`
 
@@ -1758,12 +2106,16 @@ This socket-level command is used to indicate whether a newline should be sent a
 Some clients, like TinyFugue, are smart enough to interpret GOAHEAD and treat prompts specially by putting them into their input window. These clients do not require the newline, and sending the newline results in a blank line in their output window. The 'PROMPT_NEWLINES 0' command can be used to disable the newline and is recommended for users with these clients.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@prompt](/reference/sharpmush-help/sharpcmd/#prompt)
 - [PEMIT()](/reference/sharpmush-help/sharpfunc/#pemit)
 - [TERMINFO()](/reference/sharpmush-help/terminfo-function/#terminfo)
 - [@SOCKSET](/reference/sharpmush-help/sockset-command/#sockset)
-:::
+
+</nav>
+
 ## @poll
 `@poll`<br>
 `@poll <message>`<br>
@@ -1772,31 +2124,43 @@ Some clients, like TinyFugue, are smart enough to interpret GOAHEAD and treat pr
 This command manipulate the message at the top of WHO/DOING. By itself, it displays the current poll. Wizards and those with the poll @power can set or clear the message.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@doing](/reference/sharpmush-help/sharpcmd/#doing)
 - [who](/reference/sharpmush-help/who/#who)
-:::
+
+</nav>
+
 ## @poor
 `@poor <player>`
 
 This command sets `<player>`'s building quota to 0, so they cannot build until it is raised again with [@quota](/reference/sharpmush-help/quota-command/#quota). It needs the `players.moderate` permission, and refuses when quotas are disabled.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MONEY](/reference/sharpmush-help/sharptop/#money)
 - [give](/reference/sharpmush-help/sharpcmd/#give-1)
-:::
+
+</nav>
+
 ## @prefix
 `@prefix <object>[=<message>]`
 
 This attribute is meant to be used with the AUDIBLE flag. It is evaluated, with %0 the message, and prepended to the sound an AUDIBLE object passes on to its @forwardlist; without one, the sound starts "From `<object>`, ". SharpMUSH does not propagate sound through AUDIBLE exits yet, so @prefix is not used for them.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@inprefix](/reference/sharpmush-help/sharpcmd/#inprefix)
 - [AUDIBLE](/reference/sharpmush-help/sharpflag/#audible)
 - [@listen](/reference/sharpmush-help/listen-command/#listen)
-:::
+
+</nav>
+
 ## @purge
 `@purge`<br>
 `@purge[/confirm] #<number>`<br>
@@ -1814,11 +2178,15 @@ Example:
 > @purge/confirm/time 90
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@recover](/reference/sharpmush-help/recover-command/#recover)
 - [@destroy](/reference/sharpmush-help/destroy-command/#destroy)
 - [@dbck](/reference/sharpmush-help/sharpcmd/#dbck)
-:::
+
+</nav>
+
 ## @readcache
 `@readcache`
 
@@ -1827,9 +2195,13 @@ This command rereads the text files and rebuilds the indexes for help, news and 
 @readcache does not reload configuration; game options are changed with [@config](/reference/sharpmush-help/config-command/#config).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@shutdown](/reference/sharpmush-help/sharpcmd/#shutdown)
-:::
+
+</nav>
+
 ## @remit
 `@remit[/switches] <object>=<message>`
 
@@ -1843,14 +2215,18 @@ The `/spoof` switch causes nospoof notifications to show the enactor's dbref ins
 The `/noeval` switch causes `<message>` to not be evaluated.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@emit](/reference/sharpmush-help/sharpcmd/#emit)
 - [@pemit](/reference/sharpmush-help/pemit-command/#pemit)
 - [@oemit](/reference/sharpmush-help/oemit-command/#oemit)
 - [SPOOFING](/reference/sharpmush-help/sharptop/#spoofing)
 - [NOSPOOF](/reference/sharpmush-help/sharpflag/#nospoof)
 - [CONTROL](/reference/sharpmush-help/sharptop/#control)
-:::
+
+</nav>
+
 ## @restart
 `@restart <object>`<br>
 `@restart/all`
@@ -1858,11 +2234,15 @@ The `/noeval` switch causes `<message>` to not be evaluated.
 This command halts `<object>` (as described in @halt), and then triggers the STARTUP attribute on the object, if set. If `<object>` is a player, it affects the player and all of their objects. Players can use `@restart me` to restart their own objects. The `/all` switch halts all objects (see @allhalt) and restarts them, and can only be used by a wizard.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@halt](/reference/sharpmush-help/halt-command/#halt)
 - [@startup](/reference/sharpmush-help/sharpcmd/#startup)
 - [@shutdown](/reference/sharpmush-help/sharpcmd/#shutdown)
-:::
+
+</nav>
+
 ## @scan
 `@scan[/<switches>] <command>`
 
@@ -1879,10 +2259,14 @@ This command any combination of these four switches:
 If no switch is given, all locations are checked. `<command>` must be entered exactly as you would type it (so, to match the $-command `$foo *:` you must type '`@scan foo <something>`', not just '`@scan foo`').
 
 
-::: seealso
-- [$-commands]
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [$-commands](/reference/sharpmush-help/commands/#-commands)
 - [evaluation order](/reference/sharpmush-help/evaluation-order/#evaluation-order)
-:::
+
+</nav>
+
 ## &
 `&<attribute> <object>[=<value>]`
 
@@ -1891,11 +2275,15 @@ Sets `<attribute>` on `<object>` to `<value>`, and clears it when `<value>` is o
 The attribute name is evaluated before the attribute is set, so `&hdr_%q1 me=...` stores into whatever `%q1` holds. The value is NOT evaluated: what you type is what is stored, and braces around it are kept, so `&cmd me={think [add(1,2)]}` stores the code rather than the number 3.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@set](/reference/sharpmush-help/set-command/#set)
 - [attributes](/reference/sharpmush-help/attributes/#attributes)
-- [~]
-:::
+- [~](/reference/sharpmush-help/sharpcmd/#-3)
+
+</nav>
+
 ## ~
 `~<command>`
 
@@ -1906,11 +2294,15 @@ This is narrower than it sounds, and it is **not** what makes a malformed expres
 Nesting is limited by the `max_depth` configuration option, as it is for [@@](/reference/sharpmush-help/sharpcmd/#-1) and the other command modifiers.
 
 
-::: seealso
-- [&]
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [&](/reference/sharpmush-help/sharpcmd/#-2)
 - [@@](/reference/sharpmush-help/sharpcmd/#-1)
 - [restrictedexpr](/reference/sharpmush-help/restrictedexpr/#restrictedexpr)
-:::
+
+</nav>
+
 ## ATTRIB_SET
 `&<attr> <object>[=<value>]`<br>
 `@_<attr> <object>[=<value>]`<br>
@@ -1921,10 +2313,14 @@ The `&<attr>` and `@_<attr>` commands can be used to set or clear an attribute f
 ATTRIB_SET is the internal command which powers &attr and @_attr setting; it cannot be used directly, but can be restricted or @hook'd to change the behaviour of &attr/@_attr-setting.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@set](/reference/sharpmush-help/set-command/#set)
-- [ATTRIB_SET()](/reference/sharpmush-help/sharpfunc/#attribset)
-:::
+- [ATTRIB_SET()](/reference/sharpmush-help/sharpfunc/#attrib_set)
+
+</nav>
+
 ## @gender
 `@gender <object>[=<gender>]`
 
@@ -1943,12 +2339,16 @@ Output: "Yourname/SEX - Set." on a game that keeps gender in SEX, or the name of
 Output: "Yourname/SEX - Cleared." on a game that keeps gender in SEX.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@sex](/reference/sharpmush-help/sharpcmd/#sex)
 - [@config attribs](/reference/sharpmush-help/sharpconf/#config-attribs)
 - [GENDER](/reference/sharpmush-help/sharptop/#gender)
 - [SUBJ()](/reference/sharpmush-help/sharpfunc/#subj)
-:::
+
+</nav>
+
 ## @sex
 `@sex <player>[=<gender>]`
 
@@ -1967,7 +2367,9 @@ You can use this command to set yourself or any of your objects to be male, fema
 `@sex` always sets the SEX attribute, as it does in PennMUSH. If the game keeps gender in another attribute (the `gender_attr` option), use [@gender](/reference/sharpmush-help/sharpcmd/#gender) instead.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@gender](/reference/sharpmush-help/sharpcmd/#gender)
 - [@config attribs](/reference/sharpmush-help/sharpconf/#config-attribs)
 - [GENDER](/reference/sharpmush-help/sharptop/#gender)
@@ -1975,7 +2377,9 @@ You can use this command to set yourself or any of your objects to be male, fema
 - [POSS()](/reference/sharpmush-help/sharpfunc/#poss)
 - [APOSS()](/reference/sharpmush-help/sharpfunc/#aposs)
 - [OBJ()](/reference/sharpmush-help/sharpfunc/#obj)
-:::
+
+</nav>
+
 ## @shutdown
 `@shutdown[/panic][/reboot][/paranoid]`
 
@@ -2010,12 +2414,16 @@ SharpMUSH determines 'auto' from the terminal type your client reports (RFC 1091
 In the event that your client receives a color that it is unable to display, SharpMUSH will attempt to find a close match that can fit your client's capabilities.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ANSI](/reference/sharpmush-help/sharpflag/#ansi)
 - [COLOR](/reference/sharpmush-help/sharpflag/#color)
 - [XTERM256](/reference/sharpmush-help/sharpflag/#xterm256)
 - [@SOCKSET](/reference/sharpmush-help/sockset-command/#sockset)
-:::
+
+</nav>
+
 ## hyperlinks
 `SOCKSET hyperlinks=<on|off|auto>`<br>
 `SOCKSET commandlinks=<on|off|auto>`
@@ -2036,11 +2444,15 @@ Hyperlinks set to 'on'
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@SOCKSET](/reference/sharpmush-help/sockset-command/#sockset)
 - [GRAPHICS](/reference/sharpmush-help/graphics/#graphics)
 - [TERMINFO()](/reference/sharpmush-help/terminfo-function/#terminfo)
-:::
+
+</nav>
+
 ## animation
 `SOCKSET animation=<on|off>`<br>
 `@SOCKSET [me|<descriptor>]=animation,<on|off>`
@@ -2056,11 +2468,15 @@ Animation set to 'on'
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [GRAPHICS](/reference/sharpmush-help/graphics/#graphics)
 - [TERMINAL](/reference/sharpmush-help/sharpcmd/#terminal)
 - [@SOCKSET](/reference/sharpmush-help/sockset-command/#sockset)
-:::
+
+</nav>
+
 ## terminal
 `SOCKSET terminal=<name|auto>`<br>
 `@SOCKSET [me|<descriptor>]=terminal,<name|auto>`
@@ -2080,12 +2496,16 @@ Terminal set to 'windows-terminal'
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [GRAPHICS](/reference/sharpmush-help/graphics/#graphics)
 - [ANIMATION](/reference/sharpmush-help/sharpcmd/#animation)
 - [HYPERLINKS](/reference/sharpmush-help/sharpcmd/#hyperlinks)
 - [@SOCKSET](/reference/sharpmush-help/sockset-command/#sockset)
-:::
+
+</nav>
+
 ## @speechmod
 `@speechmod <object>[=<modifier>]`
 
@@ -2113,13 +2533,17 @@ Test
 ```
 
 
-::: seealso
-- ["]
-- [:]
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- ["](/reference/sharpmush-help/sharpcmd/#-4)
+- [:](/reference/sharpmush-help/pose/)
 - [@emit](/reference/sharpmush-help/sharpcmd/#emit)
 - [@chatformat](/reference/sharpmush-help/chatformat-command/#chatformat)
 - [@pageformat](/reference/sharpmush-help/pageformat-command/#pageformat)
-:::
+
+</nav>
+
 ## @startup
 `@startup <object>[=<action list>]`
 
@@ -2130,14 +2554,18 @@ Sets the list of actions on `<object>` that will happen whenever the MUSH is res
 Note that @startups are NEVER inherited from parent objects.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@restart](/reference/sharpmush-help/sharpcmd/#restart)
 - [@undestroy](/reference/sharpmush-help/sharpcmd/#undestroy)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [@function](/reference/sharpmush-help/function-command/#function)
 - [@command](/reference/sharpmush-help/command/#command)
 - [@hook](/reference/sharpmush-help/hook/#hook)
-:::
+
+</nav>
+
 ## @stats
 `@stats [<player>]`<br>
 `@stats/all`<br>
@@ -2165,9 +2593,13 @@ The options are switches; an argument is ignored. With `/connected`, only connec
 `/commands` lists only objects with $-commands, `/listeners` only those that hear (players, puppets, ^-listens and AUDIBLE objects), and `/players` every player and puppet, connected or not. They may be combined; `/connected` and `/exits` list what they list whichever are given.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@scan](/reference/sharpmush-help/sharpcmd/#scan)
-:::
+
+</nav>
+
 ## @ulock
 `@ulock <object>[=<key>]`<br>
 `@uunlock <object>`
@@ -2185,11 +2617,15 @@ To only lock who can use $-commands, use `@lock/command`. To only lock who can t
 Example: if I want everyone but Bob to be able to use my toy, I would "`@lock/use toy=!*Bob`". If I want only Bob to be able to use it, I would "`@lock/use toy==*Bob`".
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
 - [use](/reference/sharpmush-help/sharpcmd/#use)
 - [locktypes](/reference/sharpmush-help/locktypes/#lock-types)
-:::
+
+</nav>
+
 ## @unlink
 `@unlink <exit>`<br>
 `@unlink <room>`
@@ -2199,20 +2635,28 @@ The first form of this command unlinks an exit from its destination room. Unlink
 The second form removes the DROP-TO on the room.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@link](/reference/sharpmush-help/sharpcmd/#link)
 - [DROP-TOS](/reference/sharpmush-help/sharptop/#drop-tos)
-:::
+
+</nav>
+
 ## @unlock
 `@unlock[/<switch>] <object>`
 
 Removes the lock on `<object>`. It can take as many switches as @lock can.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
 - [locktypes](/reference/sharpmush-help/locktypes/#lock-types)
-:::
+
+</nav>
+
 ## @locale
 `@locale`<br>
 `@locale <tag>`<br>
@@ -2227,9 +2671,13 @@ The web portal shares the setting. Choosing a language in the portal's language 
 This is a SharpMUSH command; PennMUSH has no @locale.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@set](/reference/sharpmush-help/set-command/#set)
-:::
+
+</nav>
+
 ## @map
 `@map[/<switches>] <object>[/<attribute>]=<list>`
 
@@ -2244,12 +2692,16 @@ Switches are the queue-control set shared with [@dolist](/reference/sharpmush-he
 This is a SharpMUSH command; PennMUSH spells the same idea with [@dolist](/reference/sharpmush-help/dolist-command/#dolist) and [MAP()](/reference/sharpmush-help/map-function/#map).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@dolist](/reference/sharpmush-help/dolist-command/#dolist)
 - [@include](/reference/sharpmush-help/include-command/#include)
 - [MAP()](/reference/sharpmush-help/map-function/#map)
 - [@queue](/reference/sharpmush-help/queuecontrol/#queue)
-:::
+
+</nav>
+
 ## @version
 `@version`
 
@@ -2258,9 +2710,13 @@ Tells the player the name of the MUSH, which version of the code is currently ru
 `@version` outputs the version, as `version()` returns it.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [VERSION()](/reference/sharpmush-help/sharpfunc/#version)
-:::
+
+</nav>
+
 ## @wall
 `@wall[/emit][/noeval][/pose][/admin|/wizard] <message>`<br>
 `@rwall[/emit][/noeval] <message>`<br>
@@ -2275,9 +2731,13 @@ The message is prefixed with the value of the wall_prefix, rwall_prefix or wizwa
 TinyMUX's `@wall/admin` is @rwall, and `@wall/wizard` is @wizwall. `@wall/pose` puts your name before the message.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@wall](/reference/sharpmush-help/sharpcmd/#wall)
-:::
+
+</nav>
+
 ## @wcheck
 `@wcheck <object>`<br>
 `@wcheck/all`<br>
@@ -2290,10 +2750,14 @@ The second form of the command runs @wcheck on every object in the database and 
 The third runs it on all objects the player owns that aren't set NO_WARN.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@warnings](/reference/sharpmush-help/warnings-command/#warnings)
 - [WARNINGS](/reference/sharpmush-help/sharptop/#warnings)
-:::
+
+</nav>
+
 ## @whereis
 `@whereis <player>`
 
@@ -2309,10 +2773,14 @@ To avoid being found this way, just do: `@set me=UNFINDABLE`
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [UNFINDABLE](/reference/sharpmush-help/sharpflag/#unfindable)
 - [LOC()](/reference/sharpmush-help/sharpfunc/#loc)
-:::
+
+</nav>
+
 ## @wipe
 `@wipe[/regexp] <object>[/<attribute pattern>]`
 
@@ -2329,13 +2797,17 @@ Emits a message to all rooms in `<zone>`. You must have control `<zone>` in orde
 The `/silent` switch suppresses the confirmation message, and `/noisy` causes it to be shown. With neither switch, the silent_pemit @config option determines whether or not the message is shown. The confirmation message is only shown if you are not in a room which would receive `<message>`.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@nspemit](/reference/sharpmush-help/sharpcmd/#nspemit)
 - [ZEMIT()](/reference/sharpmush-help/sharpfunc/#zemit)
 - [ZONE()](/reference/sharpmush-help/sharpfunc/#zone)
 - [ZWHO()](/reference/sharpmush-help/sharpfunc/#zwho)
 - [zones](/reference/sharpmush-help/zones/#zones)
-:::
+
+</nav>
+
 ## ahelp
 `ahelp[/search] [<topic>]`<br>
 `anews[/search] [<topic>]`
@@ -2349,9 +2821,13 @@ This command works like an abbreviated version of "examine", showing information
 `<object>` defaults to "here".
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [examine](/reference/sharpmush-help/sharpcmd/#examine)
-:::
+
+</nav>
+
 ## cd
 `cd <name> <password>`<br>
 `ch <name> <password>`<br>
@@ -2366,10 +2842,14 @@ Connecting using 'cv' causes the Dark flag to be cleared prior to connection mes
 None of those commands affect the hidden status of other connections, if you're reconnecting.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [DARK](/reference/sharpmush-help/sharpflag/#dark)
 - [@hide](/reference/sharpmush-help/sharpcmd/#hide)
-:::
+
+</nav>
+
 ## OUTPUTPREFIX
 `OUTPUTPREFIX <string>`<br>
 `OUTPUTSUFFIX <string>`
@@ -2383,10 +2863,14 @@ This command does nothing. It does not reset a connection's idle time. It is use
 Some routers will only consider a connection alive if text is received, as well as sent. If you give a `<string>` with the IDLE command, that same `<string>` will be sent back to you for this purpose.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [KEEPALIVE](/reference/sharpmush-help/sharpflag/#keepalive)
 - [@idle](/reference/sharpmush-help/sharpcmd/#idle)
-:::
+
+</nav>
+
 ## teach
 `teach <command>`<br>
 `teach/list <action list>`
@@ -2417,10 +2901,14 @@ You say, "Third"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@trigger](/reference/sharpmush-help/trigger-command/#trigger)
 - [@include](/reference/sharpmush-help/include-command/#include)
-:::
+
+</nav>
+
 ## drop
 `drop <object>`
 
@@ -2431,12 +2919,16 @@ In order to drop an object, you must pass it's Drop lock and your location's Dro
 `drop/quiet` leaves out the drop message and @odrop; @adrop still runs. With the `mux_quiet` @config option on, it leaves out @odrop and @adrop instead, and only when you control the object; you still see the drop message.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [empty](/reference/sharpmush-help/sharpcmd/#empty)
 - [get](/reference/sharpmush-help/sharpcmd/#get)
 - [STICKY](/reference/sharpmush-help/sharpflag/#sticky)
 - [DROP-TOS](/reference/sharpmush-help/sharptop/#drop-tos)
-:::
+
+</nav>
+
 ## enter
 `enter <object>`
 
@@ -2468,27 +2960,35 @@ The `/all` switch shows the values of VEILED attributes.<br>
 The `/opaque` switch omits contents listings.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [attribute trees](/reference/sharpmush-help/attribute-trees/#attribute-trees)
 - [brief](/reference/sharpmush-help/sharpcmd/#brief)
 - [accounts examine](/reference/sharpmush-help/accounts/#examining-and-decompiling-an-account)
 - [LATTR()](/reference/sharpmush-help/lattr-function/#lattr)
 - [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)
-:::
+
+</nav>
+
 ## follow
 `follow <object>`
 
 You begin following `<object>`, a player or thing, if you pass its follow lock (see [@lock/follow](/reference/sharpmush-help/sharplock/#lockfollow)). As the object moves around (except if it @teleports away or goes home), you will automatically move around with it, so long as you pass all the locks and enter/leave locks on the exits and things the object moves through. This doesn't prevent you from going somewhere else on your own.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow-1)
 - [dismiss](/reference/sharpmush-help/sharpcmd/#dismiss)
 - [desert](/reference/sharpmush-help/sharpcmd/#desert)
 - [FOLLOWERS()](/reference/sharpmush-help/sharpfunc/#followers)
 - [FOLLOWING()](/reference/sharpmush-help/sharpfunc/#following)
 - [@follow](/reference/sharpmush-help/sharpcmd/#follow)
-:::
+
+</nav>
+
 ## dismiss
 `dismiss <object>`<br>
 `dismiss`
@@ -2496,12 +2996,16 @@ You begin following `<object>`, a player or thing, if you pass its follow lock (
 The dismiss command stops `<object>` from following you. If no object is given, it stops everyone from following you.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [follow](/reference/sharpmush-help/sharpcmd/#follow-1)
 - [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow-1)
 - [desert](/reference/sharpmush-help/sharpcmd/#desert)
 - [FOLLOWERS()](/reference/sharpmush-help/sharpfunc/#followers)
-:::
+
+</nav>
+
 ## desert
 `desert <object>`<br>
 `desert`
@@ -2509,13 +3013,17 @@ The dismiss command stops `<object>` from following you. If no object is given, 
 The desert command stops `<object>` from following you and stops you from following `<object>`. That is, it's shorthand for 'unfollow `<object>`' and 'dismiss `<object>`'. If no object is given, it stops everyone from following or leading you.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [follow](/reference/sharpmush-help/sharpcmd/#follow-1)
 - [unfollow](/reference/sharpmush-help/sharpcmd/#unfollow-1)
 - [dismiss](/reference/sharpmush-help/sharpcmd/#dismiss)
 - [FOLLOWERS()](/reference/sharpmush-help/sharpfunc/#followers)
 - [FOLLOWING()](/reference/sharpmush-help/sharpfunc/#following)
-:::
+
+</nav>
+
 ## empty
 `empty <object>`
 
@@ -2524,10 +3032,14 @@ The empty command attempts to move all the contents of `<object>` to `<object>`'
 The empty command assumes that all `<object>`'s items pass through the hands of the player running the command. Therefore, the same kinds of locks and messages that are applied in a possessive get (and, possibly, a drop) are applied to each item in `<object>`. It is therefore possible to fail to empty an object for many reasons, even when you could do so using "extraphysical" methods (teleporting items, forcing the object to drop them, or forcing the items to leave the object.)
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [get](/reference/sharpmush-help/sharpcmd/#get)
 - [drop](/reference/sharpmush-help/sharpcmd/#drop)
-:::
+
+</nav>
+
 ## get
 `get <object>`<br>
 `get <box>'s <object>`
@@ -2543,14 +3055,18 @@ To get an object from someone else's inventory, the possessive_get @config optio
 `get/quiet` leaves out the success message and @osuccess; @asuccess still runs. With the `mux_quiet` @config option on, it leaves out @osuccess and @asuccess instead, and only when you control the object; you still see the success message.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
-- [ENTER_OK](/reference/sharpmush-help/sharpflag/#enterok)
+- [ENTER_OK](/reference/sharpmush-help/sharpflag/#enter_ok)
 - [give](/reference/sharpmush-help/sharpcmd/#give-1)
 - [drop](/reference/sharpmush-help/sharpcmd/#drop)
 - [@asuccess](/reference/sharpmush-help/sharpcmd/#asuccess)
 - [inventory](/reference/sharpmush-help/sharpcmd/#inventory)
-:::
+
+</nav>
+
 ## @buy
 `@buy <object>[=<message>]`<br>
 `@obuy <object>[=<message>]`<br>
@@ -2559,7 +3075,9 @@ To get an object from someone else's inventory, the possessive_get @config optio
 These attributes can be set, but they are never shown or run: SharpMUSH has no money, and the "buy" command is not implemented.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [buy](/reference/sharpmush-help/sharpcmd/#buy-1)
 - [@pricelist](/reference/sharpmush-help/sharpcmd/#pricelist)
 - [MONEY](/reference/sharpmush-help/sharptop/#money)
@@ -2567,33 +3085,43 @@ These attributes can be set, but they are never shown or run: SharpMUSH has no m
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
 - [@cost](/reference/sharpmush-help/sharpcmd/#cost)
 - [give](/reference/sharpmush-help/sharpcmd/#give-1)
-:::
+
+</nav>
+
 ## @pricelist
 `@pricelist <object>=<item1>:<price1>[,<price2>][ <item2>:...]`
 
 The PRICELIST attribute can be set, but nothing reads it: SharpMUSH has no money, and the "buy" command is not implemented.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [buy](/reference/sharpmush-help/sharpcmd/#buy-1)
 - [@buy](/reference/sharpmush-help/sharpcmd/#buy)
 - [MONEY](/reference/sharpmush-help/sharptop/#money)
 - [@cost](/reference/sharpmush-help/sharpcmd/#cost)
 - [give](/reference/sharpmush-help/sharpcmd/#give-1)
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
-:::
+
+</nav>
+
 ## buy
 `buy <item>[ from <vendor>][ for <cost>]`
 
 SharpMUSH does not track money, so buy only says so, as [money()](/reference/sharpmush-help/sharpfunc/#money) does: "The buy command is not supported. SharpMUSH does not track money or pennies." It reads no PRICELIST, checks no @lock/pay and runs no @buy attributes. See [compatibility economy](/reference/sharpmush-help/compatibility-economy/#compatibility-economy).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@buy](/reference/sharpmush-help/sharpcmd/#buy)
 - [@pricelist](/reference/sharpmush-help/sharpcmd/#pricelist)
 - [give](/reference/sharpmush-help/sharpcmd/#give-1)
 - [@cost](/reference/sharpmush-help/sharpcmd/#cost)
-:::
+
+</nav>
+
 ## give
 `give <recipient>=<object>`
 
@@ -2604,7 +3132,9 @@ SharpMUSH has no money: `give <recipient>=<number>` only answers "Money transfer
 This command gives an `<object>` from your inventory to `<recipient>`. The recipient must be set ENTER_OK or controlled by you, and you must pass his @lock/from. You must also pass `<object>`'s @lock/give, and `<object>` must pass `<recipient>`'s @lock/receive. When you give an object successfully, your GIVE/OGIVE/AGIVE attributes, `<recipient>`'s RECEIVE/ORECEIVE/ARECEIVE attributes, and `<object>`'s SUCCESS/ASUCCESS/OSUCCESS attributes are all triggered.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@payment](/reference/sharpmush-help/sharpcmd/#apayment)
 - [@cost](/reference/sharpmush-help/sharpcmd/#cost)
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
@@ -2613,7 +3143,9 @@ This command gives an `<object>` from your inventory to `<recipient>`. The recip
 - [@give](/reference/sharpmush-help/sharpcmd/#give)
 - [buy](/reference/sharpmush-help/sharpcmd/#buy-1)
 - [@asuccess](/reference/sharpmush-help/sharpcmd/#asuccess)
-:::
+
+</nav>
+
 ## go
 `go[to] <direction>`<br>
 `go[to] home`<br>
@@ -2629,23 +3161,31 @@ Moving outputs the dbref of the room you arrive in.
 `goto/quiet` leaves out the exit's success and drop messages and your @move and @omove; the action attributes still run. With the `mux_quiet` @config option on, it leaves out the exit's @osuccess, @asuccess, @odrop and @adrop instead, and only when you control the exit; you still see its success and drop messages.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [walk](/reference/sharpmush-help/sharpcmd/#walk)
 - [HOMES](/reference/sharpmush-help/sharptop/#homes)
 - [@link](/reference/sharpmush-help/sharpcmd/#link)
 - [@ealias](/reference/sharpmush-help/sharpcmd/#ealias)
 - [EXITS](/reference/sharpmush-help/sharptop/#exits)
 - [movement](/reference/sharpmush-help/movement/#movement)
-:::
+
+</nav>
+
 ## INFO
 `INFO`
 
 This command returns some information about the MUSH you are on, such as its version number, time of last restart, number of players currently connected, and size of database. It can be issued from the connect screen.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MSSP-REQUEST](/reference/sharpmush-help/sharpcmd/#mssp-request)
-:::
+
+</nav>
+
 ## inventory
 `inventory`
 
@@ -2656,14 +3196,18 @@ Lists what you are carrying. Can be abbreviated by just 'i', or 'inv'. If you ar
 Note that on some MUSHes it is possible to take things that are in someone else's inventory. To be safe, @lock any objects that you do not want to lose.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [score](/reference/sharpmush-help/sharpcmd/#score)
 - [get](/reference/sharpmush-help/sharpcmd/#get)
 - [drop](/reference/sharpmush-help/sharpcmd/#drop)
 - [OPAQUE](/reference/sharpmush-help/sharpflag/#opaque)
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
 - [@invformat](/reference/sharpmush-help/sharpcmd/#invformat)
-:::
+
+</nav>
+
 ## leave
 `leave`
 
@@ -2676,14 +3220,18 @@ The command leave allows you to exit an object you have enter'ed into. When you 
 The NO_LEAVE flag may be enabled on some MUSHes. Objects set with this flag cannot be left. @lock/leave may also be enabled on some MUSHes, which allows you to set who can leave the object. If you fail to leave, the object's @lfail/@olfail/@alfail messages/actions will be triggered.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [enter](/reference/sharpmush-help/sharpcmd/#enter)
 - [@leave](/reference/sharpmush-help/sharpcmd/#leave)
 - [@lfail](/reference/sharpmush-help/sharpcmd/#lfail)
 - [@ealias](/reference/sharpmush-help/sharpcmd/#ealias)
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
 - [interiors](/reference/sharpmush-help/interiors/#interiors)
-:::
+
+</nav>
+
 ## LOGOUT
 `LOGOUT`
 
@@ -2703,26 +3251,34 @@ If you have a SPEECHMOD attribute set, it will be evaluated with `<message>` pas
 If `<message>` begins with a double-quote and the chat_strip_quote @config option is on, the leading " will be stripped.
 
 
-::: seealso
-- [:]
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [:](/reference/sharpmush-help/pose/)
 - [whisper](/reference/sharpmush-help/sharpcmd/#whisper)
 - [@SPEECHMOD](/reference/sharpmush-help/sharpcmd/#speechmod)
 - [@emit](/reference/sharpmush-help/sharpcmd/#emit)
 - [page](/reference/sharpmush-help/page/#page)
-:::
+
+</nav>
+
 ## score
 `score`
 
 The score command is not supported: SharpMUSH does not track money, so it only says so. To find looping objects, see [@ps](/reference/sharpmush-help/ps-command/#ps).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LOOPING](/reference/sharpmush-help/sharptop/#looping)
 - [@ps](/reference/sharpmush-help/ps-command/#ps)
 - [queue](/reference/sharpmush-help/queue/#queue)
 - [MONEY](/reference/sharpmush-help/sharptop/#money)
-- [TRACK_MONEY](/reference/sharpmush-help/sharpflag/#trackmoney)
-:::
+- [TRACK_MONEY](/reference/sharpmush-help/sharpflag/#track_money)
+
+</nav>
+
 ## think
 `think[/noeval] <message>`
 
@@ -2733,10 +3289,14 @@ You can use this command to send a private message to yourself. Pronoun substitu
 One possible use: `@adesc me=think %n just looked at you.`
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@pemit](/reference/sharpmush-help/pemit-command/#pemit)
 - [@@](/reference/sharpmush-help/sharpcmd/#-1)
-:::
+
+</nav>
+
 ## connect
 `connect <player> [<password>]`<br>
 `connect "<player with spaces>" [<password>]`<br>
@@ -2749,12 +3309,16 @@ The password is the character's own or that of the account the character is link
 See [cd], [ch] and [cv] to connect dark, hidden or visible.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [QUIT](/reference/sharpmush-help/sharpcmd/#quit)
 - [login](/reference/sharpmush-help/sharpcmd/#login)
 - [register](/reference/sharpmush-help/sharpcmd/#register)
 - [who](/reference/sharpmush-help/who/#who)
-:::
+
+</nav>
+
 ## register
 `register <name> [<email>] <password>`
 
@@ -2765,12 +3329,16 @@ The game may refuse the command from your address; see [@sitelock](/reference/sh
 This is a SharpMUSH command; PennMUSH's `register` mails a password for a new character instead.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [login](/reference/sharpmush-help/sharpcmd/#login)
 - [create](/reference/sharpmush-help/sharpcmd/#create-1)
 - [play](/reference/sharpmush-help/sharpcmd/#play)
 - [@account](/reference/sharpmush-help/account-command/#account)
-:::
+
+</nav>
+
 ## login
 `login <name-or-email> <password>`
 
@@ -2779,12 +3347,16 @@ Authenticates to an existing account from the login screen and puts your connect
 This is a SharpMUSH command; PennMUSH has no account layer.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [register](/reference/sharpmush-help/sharpcmd/#register)
 - [play](/reference/sharpmush-help/sharpcmd/#play)
 - [create](/reference/sharpmush-help/sharpcmd/#create-1)
 - [connect](/reference/sharpmush-help/sharpcmd/#connect)
-:::
+
+</nav>
+
 ## create
 `create <character> <password>`
 
@@ -2793,11 +3365,15 @@ Creates a character, links it to the account you are logged in to, and connects 
 PennMUSH's `create` makes a character with no account before you log in. SharpMUSH's needs an account: before [login](/reference/sharpmush-help/sharpcmd/#login) or [register](/reference/sharpmush-help/sharpcmd/#register), it tells you to use one of them first.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [login](/reference/sharpmush-help/sharpcmd/#login)
 - [play](/reference/sharpmush-help/sharpcmd/#play)
 - [register](/reference/sharpmush-help/sharpcmd/#register)
-:::
+
+</nav>
+
 ## play
 `play <character>`
 
@@ -2806,12 +3382,16 @@ Connects you to one of the characters linked to the account you are logged in to
 This is a SharpMUSH command; PennMUSH has no account layer.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [login](/reference/sharpmush-help/sharpcmd/#login)
 - [create](/reference/sharpmush-help/sharpcmd/#create-1)
 - [claim](/reference/sharpmush-help/sharpcmd/#claim)
 - [connect](/reference/sharpmush-help/sharpcmd/#connect)
-:::
+
+</nav>
+
 ## claim
 `claim <character> <password>`
 
@@ -2822,12 +3402,16 @@ A character with no password cannot be claimed; staff can link it for you. Once 
 This is a SharpMUSH command; PennMUSH has no account layer.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [accounts](/reference/sharpmush-help/accounts/#accounts)
 - [login](/reference/sharpmush-help/sharpcmd/#login)
 - [play](/reference/sharpmush-help/sharpcmd/#play)
 - [create](/reference/sharpmush-help/sharpcmd/#create-1)
-:::
+
+</nav>
+
 ## version
 `version`
 
@@ -2836,10 +3420,14 @@ Reports the game's name, its address if one is published, and the server version
 A deliberate divergence: PennMUSH has no bare `version` at the login screen, only `@version` in-game. Crawlers and players arriving from MUX-family servers type it unprefixed, and it publishes nothing that `INFO` does not.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@version](/reference/sharpmush-help/sharpcmd/#version)
 - [connect](/reference/sharpmush-help/sharpcmd/#connect)
-:::
+
+</nav>
+
 ## QUIT
 `QUIT`
 
@@ -2858,13 +3446,17 @@ Output: the goodbye message on this connection, and "You have partially disconne
 This command stops you from following an object that you were formerly following. If no object is given, you stop following everyone you were following.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [follow](/reference/sharpmush-help/sharpcmd/#follow-1)
 - [dismiss](/reference/sharpmush-help/sharpcmd/#dismiss)
 - [desert](/reference/sharpmush-help/sharpcmd/#desert)
 - [FOLLOWERS()](/reference/sharpmush-help/sharpfunc/#followers)
 - [@follow](/reference/sharpmush-help/sharpcmd/#follow)
-:::
+
+</nav>
+
 ## use
 `use <object>`
 
@@ -2873,12 +3465,16 @@ This command attempts to "use" `<object>`. If you do not pass `<object>`'s @lock
 If you pass the lock, you will see `<object>`'s USE attribute, and others in your location will see `<object>`'s OUSE. Depending on `<object>`'s CHARGES attribute, one of `<object>`'s AUSE or RUNOUT attributes will be triggered - see [@charges](/reference/sharpmush-help/charges-command/#charges) for more information.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@ause](/reference/sharpmush-help/sharpcmd/#ause)
 - [@charges](/reference/sharpmush-help/charges-command/#charges)
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
 - [@aufail](/reference/sharpmush-help/sharpcmd/#aufail)
-:::
+
+</nav>
+
 ## walk
 `walk <exit> [<exit> ...]`
 
@@ -2902,11 +3498,15 @@ Output: the Lighthouse, then "You can't go that way." You stay in the Lighthouse
 Output: the Quay, then the Lighthouse.
 
 
-::: seealso
-- [go]
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [go](/reference/sharpmush-help/sharpcmd/#go)
 - [EXITS](/reference/sharpmush-help/sharptop/#exits)
 - [movement](/reference/sharpmush-help/movement/#movement)
-:::
+
+</nav>
+
 ## WARN_ON_MISSING
 This internal command is run when someone attempts to run a command which starts with a function, for example:
 ```sharp
@@ -2915,22 +3515,30 @@ This internal command is run when someone attempts to run a command which starts
 By default it sends the owner of the offending object a message, so they can fix the code to use a command instead of a function, and the command line is not run. The command is disabled in a new game; enable it with `@command/enable warn_on_missing` (or the `restrict_command` configuration). It can be @hooked to set custom behaviour.
 
 
-::: seealso
-- [HUH_COMMAND](/reference/sharpmush-help/sharpcmd/#huhcommand)
-- [UNIMPLEMENTED_COMMAND](/reference/sharpmush-help/sharpcmd/#unimplementedcommand)
-:::
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [HUH_COMMAND](/reference/sharpmush-help/sharpcmd/#huh_command)
+- [UNIMPLEMENTED_COMMAND](/reference/sharpmush-help/sharpcmd/#unimplemented_command)
+
+</nav>
+
 ## UNIMPLEMENTED_COMMAND
 This command shows the message "This command has not been implemented." It can be typed directly and @hooked like any other command.
 
 A command added with @command/add and not @hooked shows the same message, but it does so itself: it does not run UNIMPLEMENTED_COMMAND, so a hook on UNIMPLEMENTED_COMMAND does not change it. To change what an added command does, @hook the added command. This differs from PennMUSH; see [compatibility commands](/reference/sharpmush-help/compatibility-commands/#compatibility-commands).
 
 
-::: seealso
-- [HUH_COMMAND](/reference/sharpmush-help/sharpcmd/#huhcommand)
-- [WARN_ON_MISSING](/reference/sharpmush-help/sharpcmd/#warnonmissing)
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [HUH_COMMAND](/reference/sharpmush-help/sharpcmd/#huh_command)
+- [WARN_ON_MISSING](/reference/sharpmush-help/sharpcmd/#warn_on_missing)
 - [@command](/reference/sharpmush-help/command/#command)
 - [@hook](/reference/sharpmush-help/hook/#hook)
-:::
+
+</nav>
+
 ## whisper
 `whisper <player>=<message>`<br>
 `whisper/silent <player>=<message>`<br>
@@ -2947,11 +3555,15 @@ With the `/noisy` switch, other players in the room may be informed who you whis
 The `/list` switch lets you whisper to multiple people at once. In this case, `<players>` is a space-separated list of names, and names with spaces should be enclosed in double-quotes, as per page/list.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [page](/reference/sharpmush-help/page/#page)
-- [:]
+- [:](/reference/sharpmush-help/pose/)
 - [@pemit](/reference/sharpmush-help/pemit-command/#pemit)
-:::
+
+</nav>
+
 ## SESSION
 `SESSION [<pattern>]`
 
@@ -2960,9 +3572,13 @@ The SESSION command is the same as the admin WHO, but instead of showing the hos
 Anyone who is not a wizard or royalty and lacks the See_All power gets the listing a mortal sees from [WHO](/reference/sharpmush-help/who/#who) instead.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [who](/reference/sharpmush-help/who/#who)
-:::
+
+</nav>
+
 ## with
 `with[/room][/noeval] <obj>=<command>`
 
@@ -2973,10 +3589,14 @@ Attempts to run a user-defined command on a specific object. If the `/room` swit
 `<obj>` must be an object near you, an object you control, your ZMO or (if the `/room` switch is given) the Master Room.
 
 
-::: seealso
-- [$-commands]
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [$-commands](/reference/sharpmush-help/commands/#-commands)
 - [evaluation order](/reference/sharpmush-help/evaluation-order/#evaluation-order)
-:::
+
+</nav>
+
 ## MSSP-REQUEST
 `MSSP-REQUEST`
 
@@ -2987,9 +3607,13 @@ The server fills in what it knows: the game's name (`mud_name`), the players con
 A variable with several values repeats its name on one line per value, the default last. For the variables crawlers read, see https://tintin.mudhalla.net/protocols/mssp/
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [INFO](/reference/sharpmush-help/sharpcmd/#info)
-:::
+
+</nav>
+
 ## @suggest
 `@suggest[/list]`<br>
 `@suggest/add <category>=<word>`<br>
@@ -3011,9 +3635,13 @@ BIRD
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SUGGEST()](/reference/sharpmush-help/sharpfunc/#suggest)
-:::
+
+</nav>
+
 
 
 ## @ps/history

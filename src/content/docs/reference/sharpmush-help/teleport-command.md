@@ -51,10 +51,14 @@ With the `mux_quiet` @config option on, `/quiet` does what TinyMUX's does instea
 As a special case, using "home" as the `<room>` has the same effect as the home command, and does not act like a normal teleport.
 
 
-::: seealso
-- [JUMP_OK](/reference/sharpmush-help/sharpflag/#jumpok)
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [JUMP_OK](/reference/sharpmush-help/sharpflag/#jump_ok)
 - `[NO_TEL]`
 - `[Z_TEL]`
 - [@atport](/reference/sharpmush-help/sharpcmd/#atport)
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
-:::
+
+</nav>
+

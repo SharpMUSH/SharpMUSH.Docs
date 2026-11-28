@@ -33,8 +33,12 @@ These functions come from RhostMUSH.
 #31 #52
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LSEARCH()](/reference/sharpmush-help/lsearch-function/#lsearch)
 - [ZSEARCH()](/reference/sharpmush-help/zsearch-function/#zsearch)
 - [OBJID()](/reference/sharpmush-help/sharpfunc/#objid)
-:::
+
+</nav>
+

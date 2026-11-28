@@ -157,8 +157,12 @@ WIKI: The fact index is building: 512 of 4711 pages.
 WIKI: The fact index is ready: 4711 pages.
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [WIKIFACT()](/reference/sharpmush-help/sharpwiki/#wikifact)
 - [WIKIQUERY()](/reference/sharpmush-help/sharpwiki/#wikiquery)
 - [wiki categories](/reference/sharpmush-help/wiki-categories/#wiki-categories)
-:::
+
+</nav>
+

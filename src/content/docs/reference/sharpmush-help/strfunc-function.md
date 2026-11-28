@@ -29,7 +29,11 @@ strfunc() comes from RhostMUSH.
 a[b] c
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [fn()](/reference/sharpmush-help/fn-function/#fn)
 - [ladd()](/reference/sharpmush-help/ladd-function/#ladd)
-:::
+
+</nav>
+

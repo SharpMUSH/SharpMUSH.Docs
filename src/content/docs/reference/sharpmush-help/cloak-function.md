@@ -29,7 +29,11 @@ Only wizards may use cloak(). It comes from RhostMUSH, where a hidden wizard is 
 0
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@hide](/reference/sharpmush-help/sharpcmd/#hide)
 - [hidden()](/reference/sharpmush-help/sharpfunc/#hidden)
-:::
+
+</nav>
+

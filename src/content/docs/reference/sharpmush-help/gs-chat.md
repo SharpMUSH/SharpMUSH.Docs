@@ -52,8 +52,12 @@ Some games customize the appearance of channels a little (for instance, adding c
 
 There's much more you can do with the channel system - see [@channel](/reference/sharpmush-help/sharpchat/#channel) for the other commands, and [@channel joining](/reference/sharpmush-help/channel-joining-command/#channel-joining) for joining and leaving.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [gs talking](/reference/sharpmush-help/gs-talking/#getting-started-talking)
 - [@channel](/reference/sharpmush-help/sharpchat/#channel)
 - [@chat](/reference/sharpmush-help/sharpchat/#chat-1)
-:::
+
+</nav>
+

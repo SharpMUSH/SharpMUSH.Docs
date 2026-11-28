@@ -46,8 +46,12 @@ Each exit appears under its name up to the first `;`, so `North;n` is `North`. W
 
 Output: an object with one entry, the exit back to the room you came from, numbered by that room's dbref.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [lexits()](/reference/sharpmush-help/sharpfunc/#lexits)
 - [oob()](/reference/sharpmush-help/oob-function/#oob)
 - [look](/reference/sharpmush-help/look/#look)
-:::
+
+</nav>
+

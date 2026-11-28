@@ -159,9 +159,13 @@ The server is the only writer of job definitions.
 
 Checking permissions and reading the attribute count against the firing's own execution budget. Saving the status afterwards gets one separate attempt; a firing whose status could not be saved is never run a second time because of it.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [administrative capabilities](/reference/sharpmush-help/capabilities/#administrative-capabilities)
 - [execution budget](/reference/sharpmush-help/execution-budget/#execution-budget)
 - [timezones](/reference/sharpmush-help/timezones/#timezones)
 - [@queue](/reference/sharpmush-help/queuecontrol/#queue)
-:::
+
+</nav>
+

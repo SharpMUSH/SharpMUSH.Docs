@@ -60,10 +60,14 @@ Source-based constraits:
 Others:
     * count - if given, instead of returning a list of connections, returns the total number of matching connections.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ADDRLOG()](/reference/sharpmush-help/sharpfunc/#addrlog)
 - [CONNRECORD()](/reference/sharpmush-help/sharpfunc/#connrecord)
-:::
+
+</nav>
+
 
 ### Connection search examples
 

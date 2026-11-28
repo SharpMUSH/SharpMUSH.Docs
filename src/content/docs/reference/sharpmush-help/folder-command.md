@@ -40,7 +40,11 @@ description: "SharpMUSH documentation for @folder"
 > @folder 1=1
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@mail](/reference/sharpmush-help/sharpmail/#mail)
 - [mail-folders](/reference/sharpmush-help/sharpmail/#mail-folders)
-:::
+
+</nav>
+

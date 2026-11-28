@@ -36,10 +36,14 @@ Whoever may edit the character's biography may edit the gallery: the account tha
 
 The avatar and the banner are copied into `IMAGE` and ``IMAGE`BANNER``, and the avatar's caption into ``IMAGE`ALT``, every time the gallery changes, so softcode and clients read the same picture (see [IMAGE](/reference/sharpmush-help/image-attributes/#image)).
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [IMAGE](/reference/sharpmush-help/image-attributes/#image)
 - [event gallery](/reference/sharpmush-help/sharpevents/#gallery-events)
-:::
+
+</nav>
+
 
 ### Warnings and tags
 

@@ -77,12 +77,16 @@ In-place action lists (those run by @include, @trigger, @force, @switch/inplace,
 - /clearregs: Clears all q-registers before including the attribute.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@include attribute pipelines](/reference/sharpmush-help/include-command/#attribute-pipelines)
 - [@trigger](/reference/sharpmush-help/trigger-command/#trigger)
 - [u()](/reference/sharpmush-help/u-function/#u)
 - [@break](/reference/sharpmush-help/break-command/#break)
-:::
+
+</nav>
+
 
 ### Attribute pipelines
 
@@ -112,10 +116,14 @@ A `+set <number>` command that validates its input through a three-step chain:
 `+set high` stops at the first link: VALIDATE's @assert fails, so it @pemits the error and @breaks; RANGE and APPLY never run.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@include](/reference/sharpmush-help/include-command/#include)
 - [@include switches](/reference/sharpmush-help/include-command/#include-switches)
 - [@break](/reference/sharpmush-help/break-command/#break)
 - [@dolist](/reference/sharpmush-help/dolist-command/#dolist)
 - [@trigger](/reference/sharpmush-help/trigger-command/#trigger)
-:::
+
+</nav>
+

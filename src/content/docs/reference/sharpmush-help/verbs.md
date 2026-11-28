@@ -57,7 +57,11 @@ Example:
     Foo has been used by Sketch!
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@verb](/reference/sharpmush-help/verb-command/#verb)
 - [attribute flags](/reference/sharpmush-help/attribute-flags/#attribute-flags)
-:::
+
+</nav>
+

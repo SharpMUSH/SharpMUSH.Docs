@@ -42,7 +42,11 @@ You say, "-----> WOW <"
 You say, "Trim Test"
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SQUISH()](/reference/sharpmush-help/sharpfunc/#squish)
 - [EDIT()](/reference/sharpmush-help/sharpfunc/#edit)
-:::
+
+</nav>
+

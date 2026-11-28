@@ -44,10 +44,14 @@ size         The size of `<json>`; this is 0 for null objects, 1 for strings/num
 - [json_query types and array queries](/reference/sharpmush-help/json-query-function/#types-and-array-queries): examples on an array
 - [json_query object and nested queries](/reference/sharpmush-help/json-query-function/#object-and-nested-queries): examples on an object
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [json()](/reference/sharpmush-help/json-function/#json)
-- [json_map()](/reference/sharpmush-help/json-map-function/#jsonmap)
-:::
+- [json_map()](/reference/sharpmush-help/json-map-function/#json_map)
+
+</nav>
+
 
 ### Path actions
 

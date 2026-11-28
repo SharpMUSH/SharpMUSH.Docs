@@ -27,8 +27,12 @@ zlcon() comes from RhostMUSH.
 #52 #53
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LCON()](/reference/sharpmush-help/sharpfunc/#lcon)
 - [LZONE()](/reference/sharpmush-help/lzone-function/#lzone)
 - [zones](/reference/sharpmush-help/zones/#zones)
-:::
+
+</nav>
+

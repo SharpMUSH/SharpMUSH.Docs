@@ -37,12 +37,16 @@ description: "SharpMUSH documentation for tone()"
 - [tone() who sees what]: the colour each kind of reader sees
 - [tone() examples]: when to use it, an OOC remark and a coloured speech
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@THEME](/reference/sharpmush-help/theme-command/#theme)
 - [LAYOUT THEMES](/reference/sharpmush-help/layout-themes/#layout-themes)
 - [BADGE()](/reference/sharpmush-help/layout-functions/#badge)
 - [ANSI()](/reference/sharpmush-help/ansi-function/#ansi)
-:::
+
+</nav>
+
 
 ### Who sees what
 

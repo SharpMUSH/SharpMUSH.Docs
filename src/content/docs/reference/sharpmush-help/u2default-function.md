@@ -36,8 +36,12 @@ none
 
 u2default() and u2ldefault() come from RhostMUSH and take the same arguments.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [u2local()](/reference/sharpmush-help/u2local-function/#u2local)
 - [UDEFAULT()](/reference/sharpmush-help/sharpfunc/#udefault)
 - [ULDEFAULT()](/reference/sharpmush-help/sharpfunc/#udefault)
-:::
+
+</nav>
+

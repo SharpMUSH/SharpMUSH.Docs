@@ -62,9 +62,13 @@ With no switch, shows one account's details. `/list` lists every account, or tho
 
 `/link` adds a character to the account without its password: one made with [@pcreate](/reference/sharpmush-help/sharpcmd/#pcreate), imported, or whose holder lost its password. A character already on another account is refused until `/unlink` takes it off that one. Only God links God, and only a wizard links a wizard. `/unlink` takes a character off the account; the character itself is kept. God (#1) is never unlinked from its account. Players link their own characters with [claim](/reference/sharpmush-help/sharpcmd/#claim). See [accounts staff](/reference/sharpmush-help/accounts/#linking-a-character-for-someone).
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@pcreate](/reference/sharpmush-help/sharpcmd/#pcreate)
 - [@newpassword](/reference/sharpmush-help/sharpcmd/#newpassword)
 - [register](/reference/sharpmush-help/sharpcmd/#register)
 - [accounts](/reference/sharpmush-help/accounts/#accounts)
-:::
+
+</nav>
+

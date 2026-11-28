@@ -34,7 +34,11 @@ Under the RhostMUSH dialect (see [compatibility config](/reference/sharpmush-hel
 SNUFFED() set: wizard unset: royalty
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@flag](/reference/sharpmush-help/flag-command/#flag)
 - [@toggledef](/reference/sharpmush-help/toggledef-command/#toggledef)
-:::
+
+</nav>
+

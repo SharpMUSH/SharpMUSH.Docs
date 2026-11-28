@@ -72,8 +72,12 @@ Output: one "- no_inherit set." line for each attribute under CMD on you.
 ```
 Output: Test Object/LIST - Set. The value is "red,green,blue".
 
-::: seealso
-- [ATTRIB_SET](/reference/sharpmush-help/sharpcmd/#attribset)
-- [ATTRIB_SET()](/reference/sharpmush-help/sharpfunc/#attribset)
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [ATTRIB_SET](/reference/sharpmush-help/sharpcmd/#attrib_set)
+- [ATTRIB_SET()](/reference/sharpmush-help/sharpfunc/#attrib_set)
 - [SET()](/reference/sharpmush-help/sharpfunc/#set)
-:::
+
+</nav>
+

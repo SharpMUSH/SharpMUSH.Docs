@@ -38,11 +38,15 @@ The pose and semipose commands allow you to perform actions. Pose shows your nam
 
 If you have a SPEECHMOD attribute set, it will be evaluated with `<action>` as %0 or `%<message>` and either : (for pose) or ; (for semipose) as %1 or `%<type>`. The result is used instead of `<action>`, as long as it returns a non-empty string.
 
-::: seealso
-- ["]
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- ["](/reference/sharpmush-help/sharpcmd/#-4)
 - [@emit](/reference/sharpmush-help/sharpcmd/#emit)
 - [@SPEECHMOD](/reference/sharpmush-help/sharpcmd/#speechmod)
-:::
+
+</nav>
+
 
 ### Pose examples
 

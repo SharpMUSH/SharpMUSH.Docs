@@ -30,13 +30,17 @@ u2local() is to u2() what ulocal() is to u(): it runs the attribute as the calli
 
 u2() and u2local() come from RhostMUSH and take the same arguments. RhostMUSH's u() runs as the attribute's object in its usual build, as here, and u2() keeps its older behavior of running as the caller.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [u()](/reference/sharpmush-help/u-function/#u)
 - [ULOCAL()](/reference/sharpmush-help/ulocal-function/#ulocal)
 - [u2default()](/reference/sharpmush-help/u2default-function/#u2default)
 - [LOCALIZE()](/reference/sharpmush-help/sharpfunc/#localize)
 - [privatize()](/reference/sharpmush-help/privatize-function/#privatize)
-:::
+
+</nav>
+
 
 ### Examples
 

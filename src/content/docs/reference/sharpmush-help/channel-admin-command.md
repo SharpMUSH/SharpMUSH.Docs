@@ -60,8 +60,12 @@ description: "SharpMUSH documentation for @channel admin"
 
 Channel locks are managed by the separate `@clock` command, not by a `@channel` switch. See [@CHANNEL CLOCK](/reference/sharpmush-help/channel-clock-command/#channel-clock) for details.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@channel joining](/reference/sharpmush-help/channel-joining-command/#channel-joining)
 - [@CHANNEL ADMIN](/reference/sharpmush-help/channel-admin-command/#channel-admin)
 - [@CHANNEL CLOCK](/reference/sharpmush-help/channel-clock-command/#channel-clock)
-:::
+
+</nav>
+

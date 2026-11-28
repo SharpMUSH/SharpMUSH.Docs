@@ -48,7 +48,11 @@ Examples:
 Output: the number of your connections that took Room.Info. A Mudlet that listed `Room 1` counts; a client that listed modules without Room does not.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [json()](/reference/sharpmush-help/json-function/#json)
 - [wsjson()](/reference/sharpmush-help/wsjson-function/#wsjson)
-:::
+
+</nav>
+

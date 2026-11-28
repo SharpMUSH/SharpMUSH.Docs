@@ -34,11 +34,15 @@ These attributes can limit how many times an object can be successfully "use"d. 
 When the CHARGES attribute is present and AUSE is triggered, the value of the CHARGES attribute is automatically decreased by 1. When no CHARGES attribute is set, AUSE is always triggered.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [use](/reference/sharpmush-help/sharpcmd/#use)
 - [@ause](/reference/sharpmush-help/sharpcmd/#ause)
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
-:::
+
+</nav>
+
 
 ### Limited use example
 

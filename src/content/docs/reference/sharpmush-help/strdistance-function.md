@@ -55,8 +55,12 @@ Each input can be at most 65,536 characters long and hold at most 4,096 characte
 
 `chr(30028)` is a wide Chinese character, `chr(128512)` and `chr(128570)` two different emoji (a grinning face and a grinning cat face), and `e[chr(769)]` an e followed by an accent mark.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SUGGEST()](/reference/sharpmush-help/sharpfunc/#suggest)
 - [GRAPHEMECOUNT()](/reference/sharpmush-help/sharpfunc/#graphemecount)
 - [GRAPHEMES()](/reference/sharpmush-help/sharpfunc/#graphemes)
-:::
+
+</nav>
+

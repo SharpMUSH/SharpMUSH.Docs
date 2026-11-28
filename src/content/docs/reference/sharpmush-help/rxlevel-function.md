@@ -61,8 +61,12 @@ normal ghost
 
 Output: `#10` receives both layers, and transmits only `normal`.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@reality](/reference/sharpmush-help/reality/#reality)
 - [@rxlevel](/reference/sharpmush-help/rxlevel-command/#rxlevel)
 - [cansee()](/reference/sharpmush-help/cansee-function/#cansee)
-:::
+
+</nav>
+

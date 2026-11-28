@@ -153,14 +153,18 @@ John Lennon and Ringo: 1 page, last Wed Sep 30 18:21:07 2026
 PAGE: End of list
 ```
 
-::: seealso
+<nav class="help-see-also" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
 - [@alias](/reference/sharpmush-help/sharpcmd/#alias)
 - [@pageformat](/reference/sharpmush-help/pageformat-command/#pageformat)
-- `pose` and `semipose` (`:` and `;`): [:]
+- `pose` and `semipose` (`:` and `;`): [:](/reference/sharpmush-help/pose/)
 - [HAVEN](/reference/sharpmush-help/sharpflag/#haven)
 - [NOSPOOF](/reference/sharpmush-help/sharpflag/#nospoof)
 - [flags](/reference/sharpmush-help/flags/#flags)
 - [pagerecall()](/reference/sharpmush-help/page-functions/#pagerecall)
 - [pageconversations()](/reference/sharpmush-help/page-functions/#pageconversations)
-:::
+
+</nav>
+

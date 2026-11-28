@@ -30,8 +30,12 @@ Last connect: from client.example.com on Tue Nov 11 03:00:00 2026.
 No failed connect since then.
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LAST](/reference/sharpmush-help/sharptop/#last)
 - [LASTSITE](/reference/sharpmush-help/sharptop/#lastsite)
 - [connlog()](/reference/sharpmush-help/connlog-function/#connlog)
-:::
+
+</nav>
+

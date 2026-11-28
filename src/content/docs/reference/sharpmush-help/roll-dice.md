@@ -93,8 +93,12 @@ ternary(gt(1d6[5], 3), 1d4[2], 1d8[7]) = 2
 
 Output: every argument is rolled, and the text shows each one; only the chosen one counts.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [roll()](/reference/sharpmush-help/roll-function/#roll)
 - [ROLL MODIFIERS](/reference/sharpmush-help/roll-modifiers/#roll-modifiers)
 - [ROLL DATA](/reference/sharpmush-help/roll-data/#roll-data)
-:::
+
+</nav>
+

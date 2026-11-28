@@ -43,6 +43,10 @@ Functions over the tags [@tag](/reference/sharpmush-help/tag-command/#tag) and `
 
 Output: `weather` names `#42`.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@tag](/reference/sharpmush-help/tag-command/#tag)
-:::
+
+</nav>
+

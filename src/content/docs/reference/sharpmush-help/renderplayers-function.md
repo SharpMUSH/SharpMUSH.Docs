@@ -75,9 +75,13 @@ Output: only the executor's own name is a link, every time it is written.
 
 Output: `@jim, can you help?` with `@jim` in bold, if Jim Bob is a player.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [cmdlink()](/reference/sharpmush-help/sharppueb/#cmdlink)
 - [speak()](/reference/sharpmush-help/speak/#speak)
 - [foreach()](/reference/sharpmush-help/foreach-function/#foreach)
 - [STRING FUNCTIONS](/reference/sharpmush-help/sharpfunc/#string-functions)
-:::
+
+</nav>
+

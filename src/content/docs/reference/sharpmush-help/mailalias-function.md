@@ -30,7 +30,11 @@ Only wizards may use mailalias().
 #12 #15
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [malias()](/reference/sharpmush-help/sharpmail/#malias)
 - [@malias](/reference/sharpmush-help/malias-command/#malias)
-:::
+
+</nav>
+

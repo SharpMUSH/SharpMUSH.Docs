@@ -62,13 +62,17 @@ as the attribute is inherited (and evaluated by you, not the parent) - you don't
 This function is particularly useful when you want to inherit an attribute tree from a parent, but add further branches.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [u()](/reference/sharpmush-help/u-function/#u)
 - [GET()](/reference/sharpmush-help/sharpfunc/#get)
 - [PARENT()](/reference/sharpmush-help/sharpfunc/#parent)
 - [ZFUN()](/reference/sharpmush-help/sharpfunc/#zfun)
 - [parent](/reference/sharpmush-help/parent/#parents)
-:::
+
+</nav>
+
 
 ### Branch inheritance examples
 

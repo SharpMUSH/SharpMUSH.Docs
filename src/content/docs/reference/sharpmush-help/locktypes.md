@@ -49,9 +49,13 @@ Standard Lock Types:
 - [@lock/user:&lt;name&gt;] - User-defined. No built-in function of this lock, but users can test it with elock()
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [locktypes additional lock types](/reference/sharpmush-help/locktypes/#additional-lock-types)
-:::
+
+</nav>
+
 
 ### Additional lock types
 
@@ -87,9 +91,13 @@ Further standard lock types:
 - [@lock/chown](/reference/sharpmush-help/lock-zone-command/#chown-lock) - Who can @chown this CHOWN_OK object?
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
 - [@lset](/reference/sharpmush-help/sharpcmd/#lset)
 - [@CHANNEL CLOCK](/reference/sharpmush-help/channel-clock-command/#channel-clock)
 - [failure](/reference/sharpmush-help/failure/#failure)
-:::
+
+</nav>
+

@@ -35,13 +35,17 @@ SharpMUSH stores the resulting characters as Unicode text. Correct display depen
 For each character in `<string>`, the corresponding character of `<template>` is checked according to the table in [accents](/reference/sharpmush-help/accents/#accents), and a replacement done. If either the current `<string>` or `<template>` characters aren't in the table, the `<string>` character is passed through unchanged.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [STRIPACCENTS()](/reference/sharpmush-help/sharpfunc/#stripaccents)
 - `[NOACCENTS]`
 - [@nameaccent](/reference/sharpmush-help/sharpcmd/#nameaccent)
 - [ACCNAME()](/reference/sharpmush-help/sharpfunc/#accname)
 - [accents](/reference/sharpmush-help/accents/#accents)
-:::
+
+</nav>
+
 
 ### Accent examples
 

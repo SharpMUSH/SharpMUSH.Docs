@@ -40,15 +40,19 @@ To destroy objects set SAFE, you must use `@destroy/override` or @nuke. If the r
 
 @recycle is an alias for @destroy. Some MUSHes disable @destroy and only use @recycle, to avoid players mistyping. @nuke is an alias for `@destroy/override`.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@undestroy](/reference/sharpmush-help/sharpcmd/#undestroy)
 - [@recover](/reference/sharpmush-help/recover-command/#recover)
 - [@create](/reference/sharpmush-help/sharpcmd/#create)
 - [@dig](/reference/sharpmush-help/dig-command/#dig)
 - [@open](/reference/sharpmush-help/sharpcmd/#open)
-- [DESTROY_OK](/reference/sharpmush-help/sharpflag/#destroyok)
+- [DESTROY_OK](/reference/sharpmush-help/sharpflag/#destroy_ok)
 - [SAFE](/reference/sharpmush-help/sharpflag/#safe)
-:::
+
+</nav>
+
 
 ### Destruction lifecycle
 
@@ -61,7 +65,11 @@ A freed object goes onto the recover list, where `@recover` can bring it back un
 Players can only be @destroyed when they are not connected, and even then can only be destroyed by a Wizard player. If the destroy_possessions @config option is on, anything the player owns is @destroyed. If the really_safe option is also on, his SAFE possessions are spared. Any objects he owns which aren't destroyed are @chown'd to the Probate player (as per '@config probate_judge'), as are any @channels and @feed kinds the player owned.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [SAFE](/reference/sharpmush-help/sharpflag/#safe)
 - [EVENTS](/reference/sharpmush-help/events/#events)
-:::
+
+</nav>
+

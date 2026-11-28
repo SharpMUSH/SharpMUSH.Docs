@@ -31,12 +31,16 @@ Substitution will be performed on the contents of action lists before they are e
 
 Separating two commands with `;|` instead of `;` passes what the first one shows you to the second: see [piping](/reference/sharpmush-help/piping/#piping).
 
-::: seealso
-- [@-ATTRIBUTES](/reference/sharpmush-help/sharpcmd/#attributes)
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [@-ATTRIBUTES](/reference/sharpmush-help/sharpcmd/#-attributes)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
-- [$-commands]
+- [$-commands](/reference/sharpmush-help/commands/#-commands)
 - [piping](/reference/sharpmush-help/piping/#piping)
-:::
+
+</nav>
+
 
 ### Action list examples
 
@@ -61,9 +65,13 @@ Example 2:
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [attributes](/reference/sharpmush-help/attributes/#attributes)
-- [%]
+- [%](/reference/sharpmush-help/substitutions/#substitutions)
 - [@asuccess](/reference/sharpmush-help/sharpcmd/#asuccess)
 - [@dolist](/reference/sharpmush-help/dolist-command/#dolist)
-:::
+
+</nav>
+

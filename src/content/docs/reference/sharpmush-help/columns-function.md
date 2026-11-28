@@ -64,8 +64,12 @@ test      of        columns
 ab  cd|e
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ALIGN()](/reference/sharpmush-help/align/#align)
 - [TABLE()](/reference/sharpmush-help/sharpfunc/#table)
 - [WRAP()](/reference/sharpmush-help/wrap-function/#wrap)
-:::
+
+</nav>
+

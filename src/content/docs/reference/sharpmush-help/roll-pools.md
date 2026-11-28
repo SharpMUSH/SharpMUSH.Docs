@@ -51,8 +51,12 @@ A label in square brackets after a term names it. Labels show in the text and JS
 2d6[3, 4] fire + 1d4[2] cold = 9
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [roll()](/reference/sharpmush-help/roll-function/#roll)
 - [ROLL MODIFIERS](/reference/sharpmush-help/roll-modifiers/#roll-modifiers)
 - [ROLL OPTIONS](/reference/sharpmush-help/roll-options/#roll-options)
-:::
+
+</nav>
+

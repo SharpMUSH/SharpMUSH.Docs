@@ -38,8 +38,12 @@ keeptype() and remtype() come from RhostMUSH.
 #0-#-1
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [keepflags()](/reference/sharpmush-help/keepflags-function/#keepflags-and-remflags)
 - [type()](/reference/sharpmush-help/sharpfunc/#type)
 - [lsearch()](/reference/sharpmush-help/lsearch-function/#lsearch)
-:::
+
+</nav>
+

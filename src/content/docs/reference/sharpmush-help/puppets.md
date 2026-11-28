@@ -55,8 +55,12 @@ An example of a puppet:
 
 To have an object relay things it hears to players other than its owner, use `@forwardlist`.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [PUPPET](/reference/sharpmush-help/sharpflag/#puppet)
 - [@force](/reference/sharpmush-help/force-command/#force)
 - [database](/reference/sharpmush-help/database/#database)
-:::
+
+</nav>
+

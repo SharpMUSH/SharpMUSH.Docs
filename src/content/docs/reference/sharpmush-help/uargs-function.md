@@ -48,11 +48,15 @@ think uargs(me/SHOW, a, 1, a, 2)
 
 Output: `1 2 2`
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [named arguments](/reference/sharpmush-help/named-arguments/#named-arguments)
 - [hasarg()](/reference/sharpmush-help/hasarg/#hasarg)
 - [u()](/reference/sharpmush-help/u-function/#u)
 - [r()](/reference/sharpmush-help/sharpfunc/#r)
 - [substitutions](/reference/sharpmush-help/substitutions/#substitutions)
 - [ulocal()](/reference/sharpmush-help/ulocal-function/#ulocal)
-:::
+
+</nav>
+

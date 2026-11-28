@@ -39,7 +39,11 @@ b
 
 The default HTTP verb handlers (see [http examples]) call formq() on the query string for you, so route sub-attributes can read *%q<form.*>* immediately.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [FORMDECODE()](/reference/sharpmush-help/formdecode-function/#formdecode)
 - [setq()](/reference/sharpmush-help/setq-function/#setq)
-:::
+
+</nav>
+

@@ -294,10 +294,14 @@ A theme made once can be used again without making it each time. [THEME()](/refe
 +==================+
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [THEMES()](/reference/sharpmush-help/layout-functions/#themes)
 - [THEME()](/reference/sharpmush-help/layout-functions/#theme)
 - [SWATCH()](/reference/sharpmush-help/swatch-function/#swatch)
 - [LAYOUT BORDERS](/reference/sharpmush-help/layout-borders/#layout-borders)
 - [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions)
-:::
+
+</nav>
+

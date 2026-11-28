@@ -25,8 +25,12 @@ move() comes from RhostMUSH.
 There's no place like home...
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [goto](/reference/sharpmush-help/sharpcmd/#go)
 - [home](/reference/sharpmush-help/sharptop/#homes)
 - [tel()](/reference/sharpmush-help/sharpfunc/#tel)
-:::
+
+</nav>
+

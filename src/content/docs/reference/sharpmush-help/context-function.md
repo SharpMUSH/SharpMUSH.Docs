@@ -65,8 +65,12 @@ Output: the labels, as links in a client that shows them. The attribute's result
 
 Errors: `#-1 NO SUCH PLAYER`, `#-1 PERMISSION DENIED`, `#-1 ARGUMENT MUST BE POSITIVE INTEGER`.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@context](/reference/sharpmush-help/context-command/#context)
 - [palette entries](/reference/sharpmush-help/palette/#palette-entries)
 - [cmdlink()](/reference/sharpmush-help/sharppueb/#cmdlink)
-:::
+
+</nav>
+

@@ -109,11 +109,15 @@ Normally, semaphores use the SEMAPHORE attribute. However, other attributes can 
 See the help on `@wait`, `@notify` and `@drain` for details, but, briefly, you can use named semaphores with `<object>`/`<attribute>` where you would normally just use `<object>` in those commands. This means you can't have an untimed semaphore on an attribute with a numeric name.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@wait](/reference/sharpmush-help/wait-command/#wait)
 - [@drain](/reference/sharpmush-help/sharpcmd/#drain)
 - [@notify](/reference/sharpmush-help/notify-command/#notify)
-:::
+
+</nav>
+
 
 ### Named semaphore example
 

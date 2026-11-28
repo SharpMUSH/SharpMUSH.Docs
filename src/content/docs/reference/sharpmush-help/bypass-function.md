@@ -29,7 +29,11 @@ done
 
 Output: bypass() adds nothing.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [fn()](/reference/sharpmush-help/fn-function/#fn)
 - [@function](/reference/sharpmush-help/function-command/#function)
-:::
+
+</nav>
+

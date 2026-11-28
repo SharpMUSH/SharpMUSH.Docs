@@ -37,8 +37,12 @@ The game keeps running throughout. The copy holds the world as it was the moment
 
 Older copies are deleted as new ones arrive, keeping 2 unless the server is set to keep more. Where the copies go, how many are kept, and whether one is also taken on an interval are set on the server process, not with `@config`: `SHARPMUSH_BACKUP_PATH`, `SHARPMUSH_BACKUP_KEEP` and `SHARPMUSH_BACKUP_INTERVAL` (such as `6h`). A scheduled copy warns connected wizards and royalty five minutes and one minute before it, with dump_warning_5min and dump_warning_1min.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@dump](/reference/sharpmush-help/sharpcmd/#dump)
 - [@dbck](/reference/sharpmush-help/sharpcmd/#dbck)
 - [@shutdown](/reference/sharpmush-help/sharpcmd/#shutdown)
-:::
+
+</nav>
+

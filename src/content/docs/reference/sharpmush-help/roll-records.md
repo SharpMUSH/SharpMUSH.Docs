@@ -65,9 +65,13 @@ Output: what roll 57 came to, and who rolled it.
 
 A game can set how long rolls are kept (`SHARPMUSH_HISTORY_ROLLS_MAX_AGE`); a roll older than that returns `#-1 NO SUCH ROLL`. A roll's number is never given to another roll.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@roll](/reference/sharpmush-help/roll-command/#roll)
 - [rollinfo()](/reference/sharpmush-help/rollinfo-function/#rollinfo)
 - [roll()](/reference/sharpmush-help/roll-function/#roll)
 - [ROLL OPTIONS](/reference/sharpmush-help/roll-options/#roll-options)
-:::
+
+</nav>
+

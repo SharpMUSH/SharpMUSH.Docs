@@ -48,10 +48,14 @@ Broadcast: [Event Handler]: On descriptor 3, from IP '127.0.0.1', a failed conne
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [event examples player creation example](/reference/sharpmush-help/event-examples/#player-creation-example)
 - [event examples discord presence example](/reference/sharpmush-help/event-examples/#discord-presence-example)
-:::
+
+</nav>
+
 
 ### Player creation example
 

@@ -29,7 +29,11 @@ strlenraw() comes from RhostMUSH.
 1
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [strlen()](/reference/sharpmush-help/sharpfunc/#strlen)
 - [ansi()](/reference/sharpmush-help/ansi-function/#ansi)
-:::
+
+</nav>
+

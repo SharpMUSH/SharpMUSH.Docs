@@ -376,9 +376,13 @@ Every element the renderer can be asked to style is in the list above. What is l
 - Returns `#-1 ERROR RENDERING MARKDOWN: <error>` if markdown parsing fails
 - Falls back to default rendering if template attribute evaluation fails
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [rendermarkdown()](/reference/sharpmush-help/render-markdown/#rendermarkdown)
 - [GET()](/reference/sharpmush-help/sharpfunc/#get)
 - [u()](/reference/sharpmush-help/u-function/#u)
 - [ANSI](/reference/sharpmush-help/sharpflag/#ansi)
-:::
+
+</nav>
+

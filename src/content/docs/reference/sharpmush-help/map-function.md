@@ -47,8 +47,12 @@ You say, "10 8 6 4 2"
 You say, "2;4;6;8;10"
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [anonymous attributes](/reference/sharpmush-help/anonymous-attributes/#anonymous-attributes)
 - [iter()](/reference/sharpmush-help/iter-function/#iter)
 - [@dolist](/reference/sharpmush-help/dolist-command/#dolist)
-:::
+
+</nav>
+

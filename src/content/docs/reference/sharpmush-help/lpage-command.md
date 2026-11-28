@@ -27,7 +27,11 @@ You paged Alice with 'Hello'.
 You paged Alice with '2+2=4'.
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [page](/reference/sharpmush-help/page/#page)
 - [mrpage](/reference/sharpmush-help/mrpage-command/#mrpage)
-:::
+
+</nav>
+

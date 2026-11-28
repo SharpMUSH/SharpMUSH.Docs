@@ -100,10 +100,14 @@ If multiple `<class>` and `<restrictions>` are given, objects must meet all crit
 
 @search is only mildly computationally expensive for most of the search classes. Computationally expensive searches are the evaluating searches (EVAL, EPLAYER, ETHING, EROOM, EEXIT), the attribute pattern searches (COMMAND, LISTEN), and ELOCK searches which perform evaluation searches (attr/value) or indirect locks (@obj/lock).
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [lsearch()](/reference/sharpmush-help/lsearch-function/#lsearch)
 - [@find](/reference/sharpmush-help/sharpcmd/#find)
-:::
+
+</nav>
+
 
 ### Object search examples
 

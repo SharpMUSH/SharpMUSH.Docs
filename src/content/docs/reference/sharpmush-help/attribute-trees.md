@@ -103,9 +103,13 @@ The same principles apply to lattr(). `@decompile obj` is a special case, and di
 
 Branch attributes will be displayed with a \` in the attribute flags on examine. 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)
-:::
+
+</nav>
+
 
 ### Permissions
 

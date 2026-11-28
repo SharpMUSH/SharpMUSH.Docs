@@ -515,7 +515,7 @@ With `rhost_lattr` off, lattr() and lattrp() take an object and pattern and an o
 
 `lattr(<object>[/<pattern>][, <target>[, <type>[, <flags>[, <regexp>[, <tree>]]]]])`
 
-What each argument does is in [rhostmush arguments lattr](/reference/sharpmush-help/rhostmush-arguments/#lattr-with-rhostlattr).
+What each argument does is in [rhostmush arguments lattr](/reference/sharpmush-help/rhostmush-arguments/#lattr-with-rhost_lattr).
 
 ```sharp rhost_lattr
 > &RHOSTDOC_LATTR_CMD me=$rhostdoc:think hi
@@ -532,7 +532,7 @@ RHOSTDOC_LATTR_CMD RHOSTDOC_LATTR_TEXT
 
 Off by default; meant for a game moved from RhostMUSH or TinyMUX, and importing a RhostMUSH or TinyMUX database turns it on. PennMUSH's `list()` names the game's functions, commands, flags and so on. RhostMUSH's `list(<list>, <eval>[, <delimiter>][, <header>][, <target>])` evaluates `<eval>` for each element, as `iter()` does, and tells each result to the enactor on a line of its own instead of returning it. Its first three arguments are TinyMUX's `list()`, so this one option serves code written for either game. With `rhost_list` on, `list()` is RhostMUSH's and returns nothing, and `list(functions)` is an argument-count error.
 
-What each further argument does is in [rhostmush arguments list](/reference/sharpmush-help/rhostmush-arguments/#list-with-rhostlist).
+What each further argument does is in [rhostmush arguments list](/reference/sharpmush-help/rhostmush-arguments/#list-with-rhost_list).
 
 With `rhost_list` on, this tells you `Words:`, then `a:1`, then `b:2`, and `list()` itself returns nothing:
 

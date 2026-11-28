@@ -43,11 +43,15 @@ With two arguments, colors() returns information about specific colors. It can b
 - [colors formats](/reference/sharpmush-help/colors-function/#color-information-formats): the formats for information about specific colors
 - [colors palette examples](/reference/sharpmush-help/colors-function/#palette-examples): listing names, and converting between formats
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ansi()](/reference/sharpmush-help/ansi-function/#ansi)
 - [valid()](/reference/sharpmush-help/valid-function/#valid)
 - [COLORSTYLE](/reference/sharpmush-help/sharpcmd/#colorstyle)
-:::
+
+</nav>
+
 
 ### Color information formats
 

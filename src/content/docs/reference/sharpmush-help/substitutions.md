@@ -132,14 +132,18 @@ Register, argument and list substitutions:<br>
     RhostMUSH's `%+!`, `%-`, `%-#`, `%-n`, `%-k`, `%-m`, `%-p`, `%-h`, `%f` and `%w` read as on RhostMUSH in its dialect: see [compatibility dialects rhostmush substitutions](/reference/sharpmush-help/compatibility-dialects/#rhostmush-substitutions).<br>
     %`$N` = equivalent of stext(N), the `<string>` in `switch()`/`@switch`.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [evaluation order](/reference/sharpmush-help/evaluation-order/#evaluation-order)
-- [%#]
-- [%!]
+- [%#](/reference/sharpmush-help/sharptop/#enactor)
+- [%!](/reference/sharpmush-help/sharptop/#executor)
 - [database](/reference/sharpmush-help/database/#database)
 - [registers](/reference/sharpmush-help/registers/#registers)
 - [V()](/reference/sharpmush-help/sharpfunc/#v)
-:::
+
+</nav>
+
 
 ### Substitution examples
 

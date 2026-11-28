@@ -31,8 +31,12 @@ randpos() comes from RhostMUSH.
 
 Output: the three places `i` is, in any order; then nothing.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [totpos()](/reference/sharpmush-help/totpos-function/#totpos)
 - [numpos()](/reference/sharpmush-help/numpos-function/#numpos)
 - [shuffle()](/reference/sharpmush-help/sharpfunc/#shuffle)
-:::
+
+</nav>
+

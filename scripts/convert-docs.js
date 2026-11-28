@@ -4,6 +4,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { fromMarkdown } from 'mdast-util-from-markdown';
+import { slug } from 'github-slugger';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -156,14 +157,10 @@ export function useLinkData({ mappings = DOC_MAPPINGS, anchors = TOPIC_ANCHORS, 
   HELP_LOOKUPS = lookups;
 }
 
+// A heading's id as the site gives it: Starlight names headings with github-slugger, which keeps
+// underscores (LINK_OK is #link_ok) and drops other punctuation ($-commands is #-commands).
 function createSlugFromTitle(title) {
-  return title.toLowerCase()
-    .replace(/[()]/g, '') // Remove parentheses
-    .replace(/[@]/g, '') // Remove @ symbols
-    .replace(/[^a-z0-9\s-]/g, '') // Remove other special chars
-    .replace(/\s+/g, '-') // Replace spaces with hyphens
-    .replace(/-+/g, '-') // Replace multiple hyphens with single
-    .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+  return slug(title);
 }
 
 // The HTML tags help prose may use: a line break and the styling the game's terminal renderer reads.
@@ -286,6 +283,66 @@ export function convertInternalLinks(content) {
   });
   
   return processedSections.join('');
+}
+
+// Help groups lines in CommonMark custom containers, a ::: name fence line, the contents, then a bare
+// ::: line. The game reads ::: seealso as the topics an entry points on to; Starlight reads none of
+// them, so each becomes HTML around its contents here. A See Also block is a labelled navigation
+// block, as the portal draws it, and every bracketed name in it is a help topic: it links whenever
+// the game can look it up, short names such as [%] and [go] included. Code stays as written.
+export const SEE_ALSO_LABEL = 'See Also';
+
+export function convertHelpContainers(content) {
+  const out = [];
+  const open = [];
+  let fenced = false;
+  let seeAlso = null;
+  for (const line of content.split('\n')) {
+    if (/^[ \t]*```/.test(line)) fenced = !fenced;
+    const start = fenced ? null : line.match(/^:::[ \t]*([A-Za-z][\w-]*)\b.*$/);
+    const end = !fenced && open.length > 0 && /^:::[ \t]*\r?$/.test(line);
+    if (start && !seeAlso) {
+      const name = start[1].toLowerCase();
+      open.push(name);
+      if (name === 'seealso') seeAlso = [];
+      else out.push(`<div class="help-container help-container-${name}">`, '');
+    } else if (end) {
+      if (open.pop() === 'seealso') {
+        out.push(...seeAlsoBlock(seeAlso));
+        seeAlso = null;
+      } else {
+        out.push('', '</div>', '');
+      }
+    } else if (seeAlso) {
+      seeAlso.push(fenced ? line : linkSeeAlsoTopics(line));
+    } else {
+      out.push(line);
+    }
+  }
+  if (seeAlso) out.push(...seeAlsoBlock(seeAlso));
+  return out.join('\n');
+}
+
+// A See Also block whose every line is one list item naming one topic, a link or a code span, is a
+// row of names; one whose items say more keeps them as a list under the label.
+function seeAlsoBlock(lines) {
+  const body = lines.filter((line) => line.trim() !== '');
+  const names = body.length > 0 && body.every((line) => /^- (\[[^\]\n]+\]\([^)\s]+\)|`[^`\n]+`)[ \t]*\r?$/.test(line));
+  return [
+    `<nav class="help-see-also${names ? ' help-see-also-names' : ''}" aria-label="See also">`,
+    `<span class="help-see-also-label">${SEE_ALSO_LABEL}</span>`,
+    '',
+    ...body,
+    '',
+    '</nav>',
+    '',
+  ];
+}
+
+function linkSeeAlsoTopics(line) {
+  return line.split(/((?<![\\`])`+[^`]*?`+)/).map((part, i) => i % 2 === 1 ? part
+    : part.replace(/(?<![\\\]])\[([^\]\n]+)\](?!\()/g, (match, topic) =>
+      HELP_LOOKUPS[topic.toUpperCase().trim()] ? convertTopicToLink(topic, topic) : match)).join('');
 }
 
 function convertTopicToLink(topic, displayText) {
@@ -416,6 +473,9 @@ async function convertFile(sourceFile, targetFile) {
     
     // Convert internal links
     content = convertInternalLinks(content);
+
+    // Draw ::: containers, such as See Also, as the game does
+    content = convertHelpContainers(content);
     
     // Add Starlight frontmatter
     content = addFrontmatter(content, path.basename(sourceFile));

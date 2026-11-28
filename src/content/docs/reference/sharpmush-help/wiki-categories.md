@@ -69,8 +69,12 @@ WIKI: Category 'Rules' is now pinned to the wiki home.
 WIKI: Pinned to the wiki home: Character, Help, Rules.
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [wiki](/reference/sharpmush-help/wiki/#wiki)
 - [wiki editing](/reference/sharpmush-help/wiki-editing/#wiki-editing)
 - [WIKICATEGORY()](/reference/sharpmush-help/sharpwiki/#wikicategory)
-:::
+
+</nav>
+

@@ -35,7 +35,11 @@ BLACKLIST: 192.0.2.7/32 added to the Blacklist.
 BLACKLIST: Blacklist: 1, NoGuest blacklist: 0, Register blacklist: 0.
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@sitelock](/reference/sharpmush-help/sitelock-command/#sitelock)
 - [@site](/reference/sharpmush-help/site-command/#site)
-:::
+
+</nav>
+

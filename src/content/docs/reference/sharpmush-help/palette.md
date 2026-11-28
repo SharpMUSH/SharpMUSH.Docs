@@ -60,7 +60,9 @@ The portal's command palette (Ctrl+K) runs game commands as well as going to pag
 
 The value is data and is never evaluated, except the `lock`. An object offers at most 32 entries and one palette at most 400; the farthest are left out first. Someone who may examine an object sees, below the empty palette, which of its entries are not valid and why.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [palette rising](/reference/sharpmush-help/palette/#what-the-palette-shows-first)
 - [palette keys](/reference/sharpmush-help/palette/#palette-entry-keys)
 - [palette display keys](/reference/sharpmush-help/palette/#palette-display-keys)
@@ -69,7 +71,9 @@ The value is data and is never evaluated, except the `lock`. An object offers at
 - [palette pins](/reference/sharpmush-help/palette/#palette-pins)
 - [@context](/reference/sharpmush-help/context-command/#context)
 - [context()](/reference/sharpmush-help/context-function/#context)
-:::
+
+</nav>
+
 
 ### What the palette shows first
 

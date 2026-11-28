@@ -27,7 +27,11 @@ This function comes from TinyMUX.
 1 1 0
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ISINT()](/reference/sharpmush-help/sharpfunc/#isint)
 - [ISNUM()](/reference/sharpmush-help/sharpfunc/#isnum)
-:::
+
+</nav>
+

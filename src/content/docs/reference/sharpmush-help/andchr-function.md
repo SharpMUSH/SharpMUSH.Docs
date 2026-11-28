@@ -47,7 +47,11 @@ These functions come from RhostMUSH.
 
 Output: `aa` needs two a's unless `<each once>` is given.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [strmatch()](/reference/sharpmush-help/sharpfunc/#strmatch)
 - [numpos()](/reference/sharpmush-help/numpos-function/#numpos)
-:::
+
+</nav>
+

@@ -50,8 +50,12 @@ When `<attr>` is a wildcard pattern (see [wildcards](/reference/sharpmush-help/w
 ```
 Output: one "Attribute &lt;name&gt; copied to 1 destination." line for each attribute under CMD on "box". Each copy on "cube" has the same name as its original.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [attributes](/reference/sharpmush-help/attributes/#attributes)
 - [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/sharptop/#non-standard-attributes)
 - [@set](/reference/sharpmush-help/set-command/#set)
-:::
+
+</nav>
+

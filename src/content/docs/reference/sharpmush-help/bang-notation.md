@@ -46,12 +46,16 @@ The idea comes from RhostMUSH. PennMUSH has no bangs: there `!strlen(abc)` is te
 - [bang notation placement](/reference/sharpmush-help/bang-notation/#where-a-bang-works): where a bang is read, and bangs in substitutions
 - [bang notation examples](/reference/sharpmush-help/bang-notation/#bang-examples): bangs on functions and registers
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [t()](/reference/sharpmush-help/sharpfunc/#t)
 - [not()](/reference/sharpmush-help/sharpfunc/#not)
 - [substitutions](/reference/sharpmush-help/substitutions/#substitutions)
 - [@function](/reference/sharpmush-help/function-command/#function)
-:::
+
+</nav>
+
 
 ### Where a bang works
 

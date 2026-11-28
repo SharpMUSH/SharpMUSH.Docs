@@ -88,7 +88,11 @@ Bob says, "<hello>"
 
 Output: only the pieces between the delimiters are changed.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [iter()](/reference/sharpmush-help/iter-function/#iter)
 - [speak()](/reference/sharpmush-help/speak/#speak)
-:::
+
+</nav>
+

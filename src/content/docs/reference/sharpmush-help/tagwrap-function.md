@@ -45,9 +45,13 @@ The tag is written as given, so it has to mean something in the reader's client.
 
 Without Send_OOB, *&lt;name&gt;* must be one of PennMUSH's allowed tags (A, B, I, U, FONT, PRE, IMG, TABLE and the like; anything else is `#-1 PERMISSION DENIED`), and the *&lt;parameters&gt;* are kept only if every one is on SharpMUSH's list of presentational attributes (href, src, color, face, size, align, width, height, title, xch_hint, class, and a few more), with any href or src naming an http, https, mailto, ftp or tel address. If any parameter fails, all of them are dropped. This is stricter than PennMUSH because the web portal renders the tag in a browser. A *&lt;name&gt;* that is not letters and digits is `#-1 INVALID TAG NAME` for everyone.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [CMDLINK()](/reference/sharpmush-help/sharppueb/#cmdlink)
 - [TAG()](/reference/sharpmush-help/sharppueb/#tag)
 - [ENDTAG()](/reference/sharpmush-help/sharppueb/#endtag)
 - [HTML()](/reference/sharpmush-help/sharppueb/#html-1)
-:::
+
+</nav>
+

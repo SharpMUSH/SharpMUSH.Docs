@@ -45,7 +45,7 @@ Before dispatching, the router sets:
 
 ### Adding a route
 
-The sub-attribute receives *%0* = the raw request body, and the request's named arguments (`%<path>`, `%<body>`, `%<viewer>`, `%<hdr.<name>>`), which `@include` passes on. The body is left raw on purpose: check `%<hdr.content-type>` and use [FORMQ()](/reference/sharpmush-help/formq-function/#formq) or [json_query()](/reference/sharpmush-help/json-query-function/#jsonquery) on *%0* as appropriate. Sub-attributes read the decoded *%q<form.*>* registers, and the raw query string is still `after(%<path>,?)`.
+The sub-attribute receives *%0* = the raw request body, and the request's named arguments (`%<path>`, `%<body>`, `%<viewer>`, `%<hdr.<name>>`), which `@include` passes on. The body is left raw on purpose: check `%<hdr.content-type>` and use [FORMQ()](/reference/sharpmush-help/formq-function/#formq) or [json_query()](/reference/sharpmush-help/json-query-function/#json_query) on *%0* as appropriate. Sub-attributes read the decoded *%q<form.*>* registers, and the raw query string is still `after(%<path>,?)`.
 
 To serve `GET /api/users`:
 
@@ -92,7 +92,7 @@ The connection list is `/http/online`.
 
 ### Row separators
 
-Both routes pass `%r` as the [json_array()](/reference/sharpmush-help/json-array-function/#jsonarray) separator rather than taking the default. `json_array()` splits its input *before* parsing each element, and rows embed player names, which routinely contain spaces; with the default separator a name like `Package Manager` is shredded into fragments that are no longer valid JSON. Keep the separator to something your rows cannot contain if you rewrite these.
+Both routes pass `%r` as the [json_array()](/reference/sharpmush-help/json-array-function/#json_array) separator rather than taking the default. `json_array()` splits its input *before* parsing each element, and rows embed player names, which routinely contain spaces; with the default separator a name like `Package Manager` is shredded into fragments that are no longer valid JSON. Keep the separator to something your rows cannot contain if you rewrite these.
 
 ### Kept rows
 
@@ -117,8 +117,12 @@ Profiles are served at `/http/profile`.
 - `banner`: ``IMAGE`BANNER``, falling back to `IMAGE`.
 - `color`: ``PROFILE`COLOR``, the game-defined name colour, accepted only as `#rrggbb` because the page puts it in a CSS custom property.
 
-::: seealso
-- [http]
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [http](/reference/sharpmush-help/http/#http)
 - [FORMQ()](/reference/sharpmush-help/formq-function/#formq)
-:::
+
+</nav>
+
 

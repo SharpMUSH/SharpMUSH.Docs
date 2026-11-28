@@ -34,7 +34,11 @@ WATCH`HP WATCH`HP`*
 
 Output: HP is not in the table at first. Once it is, it is not watched, so the second think prints nothing. Watched with the default pattern, it returns the pattern.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@attribute](/reference/sharpmush-help/attribute-command/#attribute)
 - [events](/reference/sharpmush-help/events/#events)
-:::
+
+</nav>
+

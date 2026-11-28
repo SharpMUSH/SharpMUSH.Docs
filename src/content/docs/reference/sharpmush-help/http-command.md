@@ -152,12 +152,16 @@ Logging in with a stored secret, as a wizard:
 ```
 Output: `200 {"authenticated":true}`
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [URLENCODE()](/reference/sharpmush-help/sharpfunc/#urlencode)
 - [URLDECODE()](/reference/sharpmush-help/sharpfunc/#urldecode)
 - [ENCODE64()](/reference/sharpmush-help/sharpfunc/#encode64)
 - [JSON()](/reference/sharpmush-help/json-function/#json)
-- [JSON_QUERY()](/reference/sharpmush-help/json-query-function/#jsonquery)
+- [JSON_QUERY()](/reference/sharpmush-help/json-query-function/#json_query)
 - [@secret](/reference/sharpmush-help/secret-command/#secret)
 - [named arguments](/reference/sharpmush-help/named-arguments/#named-arguments)
-:::
+
+</nav>
+

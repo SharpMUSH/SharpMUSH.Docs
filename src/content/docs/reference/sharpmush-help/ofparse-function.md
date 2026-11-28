@@ -41,7 +41,11 @@ first
 
 Output: the first true value.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [firstof()](/reference/sharpmush-help/sharpfunc/#firstof)
 - [allof()](/reference/sharpmush-help/sharpfunc/#allof)
-:::
+
+</nav>
+

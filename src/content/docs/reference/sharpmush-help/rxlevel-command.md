@@ -38,7 +38,11 @@ Reality settings updated for #10:1793154718015.
 
 Output: `#10` first transmits only `ghost`, then `normal` again.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [rxlevel()](/reference/sharpmush-help/rxlevel-function/#rxlevel)
 - [@reality administration](/reference/sharpmush-help/reality/#administration)
-:::
+
+</nav>
+

@@ -53,9 +53,13 @@ Dates before 1970 return a negative number.
 -315619200
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [CONVSECS()](/reference/sharpmush-help/sharpfunc/#convsecs)
 - [time()](/reference/sharpmush-help/time-function/#time)
 - [dateparse()](/reference/sharpmush-help/dateparse-function/#dateparse)
 - [timezones](/reference/sharpmush-help/timezones/#timezones)
-:::
+
+</nav>
+

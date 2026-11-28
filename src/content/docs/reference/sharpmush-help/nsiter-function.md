@@ -32,8 +32,12 @@ a-1b-2c-3
 
 nsiter() comes from RhostMUSH and takes the same arguments.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [iter()](/reference/sharpmush-help/iter-function/#iter)
 - [citer()](/reference/sharpmush-help/citer-function/#citer)
 - [inf()](/reference/sharpmush-help/inf-function/#inf)
-:::
+
+</nav>
+

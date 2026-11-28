@@ -39,7 +39,9 @@ By default, information is shown in upper-case. Add the `/lowercase` switch to s
 
 "commands" and "functions" show built-in and local commands/functions by default. The `/builtin` or `/local` switches can be given to limit this; `/all` asks for both, which is the default.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LIST()](/reference/sharpmush-help/list-function/#list)
 - [@config](/reference/sharpmush-help/config-command/#config)
 - [CONFIG()](/reference/sharpmush-help/sharpfunc/#config)
@@ -52,4 +54,6 @@ By default, information is shown in upper-case. Add the `/lowercase` switch to s
 - [@attribute](/reference/sharpmush-help/attribute-command/#attribute)
 - [@motd](/reference/sharpmush-help/motd-command/#motd)
 - [locktypes](/reference/sharpmush-help/locktypes/#lock-types)
-:::
+
+</nav>
+

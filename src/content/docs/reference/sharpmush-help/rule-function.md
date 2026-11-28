@@ -32,11 +32,15 @@ A line across the width, with *&lt;title&gt;* set into it. On a line of its own 
 - [rule() options]: borders, theme, title placement and more titles
 - [rule() examples]: titled lines, and a title on each side
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [BOX()](/reference/sharpmush-help/box-function/#box)
 - [LAYOUT BORDERS](/reference/sharpmush-help/layout-borders/#layout-borders)
 - [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions)
-:::
+
+</nav>
+
 
 ### Options
 

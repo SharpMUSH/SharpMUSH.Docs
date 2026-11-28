@@ -31,7 +31,11 @@ The chain stops at an object you cannot examine, unless you control `<object>`, 
 
 Output: `#20`'s parent is `#21`, whose parent is `#22`.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [lparent()](/reference/sharpmush-help/sharpfunc/#lparent)
 - [parent()](/reference/sharpmush-help/sharpfunc/#parent)
-:::
+
+</nav>
+

@@ -19,8 +19,8 @@ description: "SharpMUSH documentation for RhostMUSH Arguments"
 
 What the arguments of RhostMUSH's forms of lattr() and list() do. Each form is used only while its option is on; see [compatibility config](/reference/sharpmush-help/compatibility-config/#compatibility-config).
 
-- [rhostmush arguments lattr](/reference/sharpmush-help/rhostmush-arguments/#lattr-with-rhostlattr): the target, type, flags, regexp and tree arguments
-- [rhostmush arguments list](/reference/sharpmush-help/rhostmush-arguments/#list-with-rhostlist): the delimiter, header and target arguments, and what is told
+- [rhostmush arguments lattr](/reference/sharpmush-help/rhostmush-arguments/#lattr-with-rhost_lattr): the target, type, flags, regexp and tree arguments
+- [rhostmush arguments list](/reference/sharpmush-help/rhostmush-arguments/#list-with-rhost_list): the delimiter, header and target arguments, and what is told
 
 ### lattr() with rhost_lattr
 

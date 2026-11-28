@@ -57,11 +57,15 @@ SOCKSET also shows separate evidence for Kitty, iTerm2 and Sixel: supported or u
 
 Use [graphics methods](/reference/sharpmush-help/graphics/#drawing-methods) to select auto or request another probe.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@SOCKSET](/reference/sharpmush-help/sockset-command/#sockset)
 - [ANIMATION](/reference/sharpmush-help/sharpcmd/#animation)
 - [TERMINAL](/reference/sharpmush-help/sharpcmd/#terminal)
 - [HYPERLINKS](/reference/sharpmush-help/sharpcmd/#hyperlinks)
 - [TERMINFO()](/reference/sharpmush-help/terminfo-function/#terminfo)
 - [FIGURE()](/reference/sharpmush-help/figure-function/#figure)
-:::
+
+</nav>
+

@@ -35,8 +35,12 @@ x
 
 Output: register 0 back to one; register a back to x.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [setq()](/reference/sharpmush-help/setq-function/#setq)
 - [localize()](/reference/sharpmush-help/sharpfunc/#localize)
 - [REGISTERS](/reference/sharpmush-help/registers/#registers)
-:::
+
+</nav>
+

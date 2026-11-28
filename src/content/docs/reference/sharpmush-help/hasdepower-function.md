@@ -35,8 +35,12 @@ PAGE
 
 hasdepower() and ldepowers() come from RhostMUSH, where a depower is a level. Here an object holds a depower or does not, and the level is the reach of its Deny (see [@permission reach](/reference/sharpmush-help/permission-command/#reach)).
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [haspower()](/reference/sharpmush-help/sharpfunc/#haspower)
 - [permission()](/reference/sharpmush-help/sharpfunc/#permission)
 - [@permission](/reference/sharpmush-help/permission-command/#permission)
-:::
+
+</nav>
+

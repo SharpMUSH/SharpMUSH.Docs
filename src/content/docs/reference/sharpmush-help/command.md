@@ -104,11 +104,15 @@ Any command added without both `/noparse` and `/rsnoparse` is provided with a `/
 
 Commands added with `@command/add`, like other standard commands, are always case-insensitive. Until it is hooked, an added command answers "This command has not been implemented."
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@hook](/reference/sharpmush-help/hook/#hook)
 - [restrict](/reference/sharpmush-help/restrict/#restrict)
 - [evaluation order](/reference/sharpmush-help/evaluation-order/#evaluation-order)
-:::
+
+</nav>
+
 
 ### Token commands
 
@@ -122,10 +126,14 @@ An added command whose name is one character is a token, like `"` or `:`: what i
 
 `.wild hello` runs `. wild hello`, so the hook's pattern sees `. wild hello`.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@command added commands](/reference/sharpmush-help/command/#adding-commands)
 - [@hook](/reference/sharpmush-help/hook/#hook)
-:::
+
+</nav>
+
 
 ### Added command example
 

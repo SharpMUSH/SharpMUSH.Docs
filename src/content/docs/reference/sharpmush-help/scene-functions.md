@@ -152,7 +152,11 @@ One field of a player's membership; `role` when no field is given. The others ar
 
 The id of the player's current scene, or `#-1 NOT FOUND` when they have none.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [scene system](/reference/sharpmush-help/scene-system/#scene-system)
 - [@scene](/reference/sharpmush-help/scene-command/#scene)
-:::
+
+</nav>
+

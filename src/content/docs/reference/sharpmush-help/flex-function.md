@@ -44,13 +44,17 @@ Puts the items side by side, sharing the width. When they do not fit, because an
 - [flex() panes]: a row that splits a box into panes sharing its edges
 - [flex() pane rules]: widths, titles, pictures, and when panes are an ordinary row
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ITEM()](/reference/sharpmush-help/layout-functions/#item)
 - [LFLEX()](/reference/sharpmush-help/layout-functions/#lflex)
 - [BOX()](/reference/sharpmush-help/box-function/#box)
 - [ALIGN()](/reference/sharpmush-help/align/#align)
 - [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions)
-:::
+
+</nav>
+
 
 ### Options
 

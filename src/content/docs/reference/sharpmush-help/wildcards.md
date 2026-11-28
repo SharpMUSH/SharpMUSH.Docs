@@ -32,7 +32,7 @@ The `*` matches anything, so `wave foo` and `wave bar` both work. `%0` to `%9` h
 Mike waves to Muse.
 ```
 
-- [wildcards escaping](/reference/sharpmush-help/wildcards/#escaping-and-regular-expressions): matching a literal * or ?, the ** wildcard, and regexps
+- [wildcards escaping](/reference/sharpmush-help/wildcards/#escaping--and-regular-expressions): matching a literal * or ?, the ** wildcard, and regexps
 
 ### Escaping, ** and regular expressions
 
@@ -51,9 +51,13 @@ The `**` wildcard matches attribute names across levels of an attribute tree: se
 
 Regular expressions match strings with more control than wildcards, and more to learn: see [regexp](/reference/sharpmush-help/regexp/#regular-expressions).
 
-::: seealso
-- [$-commands]
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [$-commands](/reference/sharpmush-help/commands/#-commands)
 - [regexp](/reference/sharpmush-help/regexp/#regular-expressions)
 - [STACK](/reference/sharpmush-help/sharptop/#stack)
 - [registers](/reference/sharpmush-help/registers/#registers)
-:::
+
+</nav>
+

@@ -37,13 +37,17 @@ If `<action list>` is given, it is executed instead of the rest of the commands 
 
 `@assert` does the inverse: it stops execution if `<boolean>` evaluates to false.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [action lists](/reference/sharpmush-help/action-lists/#action-lists)
 - [queue](/reference/sharpmush-help/queue/#queue)
 - [boolean values](/reference/sharpmush-help/boolean-values/#boolean-values)
 - [@switch](/reference/sharpmush-help/switch-command/#switch)
 - [@if](/reference/sharpmush-help/if-command/#if)
-:::
+
+</nav>
+
 
 ### Conditional break examples
 

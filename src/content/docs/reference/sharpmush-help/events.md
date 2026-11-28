@@ -53,8 +53,12 @@ With the comm-feed package installed, a page now runs PAGE\`MESSAGE (if it has a
 - On most events each attribute is queued as an entry of its own, as `@trigger` would queue it: one that fails or runs out of time does not affect the others.
 - A **stoppable** event runs them in turn in one queue entry instead, as `@include` would, so one can call [stopevent()](/reference/sharpmush-help/stopevent-function/#stopevent) to keep the ones after it from running. [event list](/reference/sharpmush-help/event-list/#event-list) marks the stoppable events.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [EVENT LIST](/reference/sharpmush-help/event-list/#event-list)
 - [event examples](/reference/sharpmush-help/event-examples/#event-examples)
 - [stopevent()](/reference/sharpmush-help/stopevent-function/#stopevent)
-:::
+
+</nav>
+

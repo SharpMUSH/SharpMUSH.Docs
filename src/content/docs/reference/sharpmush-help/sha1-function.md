@@ -25,7 +25,11 @@ This function comes from TinyMUX.
 A9993E364706816ABA3E25717850C26C9CD0D89D
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [DIGEST()](/reference/sharpmush-help/sharpfunc/#digest)
 - [CRC32()](/reference/sharpmush-help/sharpfunc/#crc32)
-:::
+
+</nav>
+

@@ -68,8 +68,12 @@ Example:
 ```
 Output: `Zone changed.`, and Lamp is in Market as well as its other zones.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [zones](/reference/sharpmush-help/zones/#zones)
 - [@chzoneall](/reference/sharpmush-help/sharpcmd/#chzoneall)
 - [ZONE()](/reference/sharpmush-help/sharpfunc/#zone)
-:::
+
+</nav>
+

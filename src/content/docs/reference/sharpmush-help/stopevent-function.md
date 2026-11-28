@@ -33,7 +33,11 @@ Called anywhere else, including from an event that is not stoppable, it returns 
 
 A client's Core.Hello now reaches only SOCKET\`GMCP\`A; every other package reaches both.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [events](/reference/sharpmush-help/events/#events)
 - [event socket](/reference/sharpmush-help/socket-events/#socket-events)
-:::
+
+</nav>
+

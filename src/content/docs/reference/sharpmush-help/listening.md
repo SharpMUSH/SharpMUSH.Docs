@@ -76,11 +76,15 @@ Additionally, unlike `$-commands`, ^-patterns are NOT inherited via `@parent`, u
 
 Listen patterns are checked after the object's normal `@listen` attribute.
 
-::: seealso
+<nav class="help-see-also" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@listen](/reference/sharpmush-help/listen-command/#listen)
 - [@ahear](/reference/sharpmush-help/sharpcmd/#ahear): `@ahear`, `@amhear`, and `@aahear` provide the three listener reaction attributes.
 - [MONITOR](/reference/sharpmush-help/sharpflag/#monitor)
 - `[LISTEN_PARENT]`
-- [$-commands]
+- [$-commands](/reference/sharpmush-help/commands/#-commands)
 - [interiors](/reference/sharpmush-help/interiors/#interiors)
-:::
+
+</nav>
+

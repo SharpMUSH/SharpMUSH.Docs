@@ -104,8 +104,12 @@ no
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Boolean functions](/reference/sharpmush-help/sharpfunc/#boolean-functions)
 - [NOT()](/reference/sharpmush-help/sharpfunc/#not)
 - [T()](/reference/sharpmush-help/sharpfunc/#t)
-:::
+
+</nav>
+

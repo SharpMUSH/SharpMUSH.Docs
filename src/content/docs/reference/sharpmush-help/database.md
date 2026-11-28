@@ -47,10 +47,14 @@ Example:
   
 The dbref number is indicated by the number/pound sign (#). Cyclonus's dbref is #3. The letters following the dbref are the abbreviations of the flags set on the object. NOTE: the abbreviation of the OPAQUE flag is 'O' (o), which looks like '0' (zero) on some clients. Make sure you have the right number before using it in your code!
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MYOPIC](/reference/sharpmush-help/sharpflag/#myopic)
 - [OPAQUE](/reference/sharpmush-help/sharpflag/#opaque)
 - [mushcode](/reference/sharpmush-help/mushcode/#mushcode)
 - [MATCHING](/reference/sharpmush-help/sharptop/#matching)
 - [OBJIDS](/reference/sharpmush-help/sharptop/#object-ids)
-:::
+
+</nav>
+

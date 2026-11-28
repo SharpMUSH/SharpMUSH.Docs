@@ -31,8 +31,12 @@ localhost
 127.0.0.1
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [HOST()](/reference/sharpmush-help/sharpfunc/#host)
 - [IPADDR()](/reference/sharpmush-help/sharpfunc/#ipaddr)
 - [PORTS()](/reference/sharpmush-help/sharpfunc/#lports)
-:::
+
+</nav>
+

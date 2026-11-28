@@ -30,9 +30,13 @@ These functions come from TinyMUX.
 one|two
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [REST()](/reference/sharpmush-help/sharpfunc/#rest)
 - [FIRST()](/reference/sharpmush-help/sharpfunc/#first)
 - [LAST()](/reference/sharpmush-help/sharpfunc/#last)
 - [EXTRACT()](/reference/sharpmush-help/sharpfunc/#extract)
-:::
+
+</nav>
+

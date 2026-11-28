@@ -29,8 +29,12 @@ abc
 a+b+c
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [CAT()](/reference/sharpmush-help/sharpfunc/#cat)
 - [STRCAT()](/reference/sharpmush-help/sharpfunc/#cat)
 - [GRAPHEMES()](/reference/sharpmush-help/sharpfunc/#graphemes)
-:::
+
+</nav>
+

@@ -50,7 +50,11 @@ cwho() lwho() mwho() nmwho() xwho() zwho()
   Returns the value of "pi" (3.14159265358979323846264338327, rounded to the game's float_precision setting).
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)
 - [help](/reference/sharpmush-help/sharptop/#help)
-:::
+
+</nav>
+

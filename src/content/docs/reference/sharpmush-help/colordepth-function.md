@@ -38,8 +38,12 @@ colordepth() comes from TinyMUX, where 24 means a player with the HTML flag; her
 
 Output: a client that draws 256 colours.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [terminfo()](/reference/sharpmush-help/terminfo-function/#terminfo)
 - [width()](/reference/sharpmush-help/sharpfunc/#width)
 - [ansi()](/reference/sharpmush-help/ansi-function/#ansi)
-:::
+
+</nav>
+

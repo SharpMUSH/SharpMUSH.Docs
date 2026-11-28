@@ -48,10 +48,14 @@ A cancelled entry that was waiting on a delay keeps its place in the queue count
 
 `@halt/all` is a synonym for @allhalt, and is a wizard-only command which halts all objects in the game in an effort to free up the queue.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@wait](/reference/sharpmush-help/wait-command/#wait)
 - [@ps](/reference/sharpmush-help/ps-command/#ps)
 - [semaphores](/reference/sharpmush-help/semaphores/#semaphores)
 - [@drain](/reference/sharpmush-help/sharpcmd/#drain)
 - [@notify](/reference/sharpmush-help/notify-command/#notify)
-:::
+
+</nav>
+

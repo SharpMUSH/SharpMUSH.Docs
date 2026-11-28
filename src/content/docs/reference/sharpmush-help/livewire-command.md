@@ -35,7 +35,11 @@ Output: code on `#21` may now make 100000 function calls in one command. `@livew
 
 A package sets the same limit with `function_invocation_limit:` in its `package.yaml`, on an object it creates or one it attaches to. RhostMUSH's `/queuemax` switch is not supported.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [livewire()](/reference/sharpmush-help/livewire-function/#livewire)
 - [@config limits](/reference/sharpmush-help/config-limits-command/#config-limits)
-:::
+
+</nav>
+

@@ -64,7 +64,9 @@ string
 A user-defined function may be as complex as you want it to be, subject to limits on recursion depth, number of function invocations, or cpu time that may be configured in the MUSH.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [anonymous attributes](/reference/sharpmush-help/anonymous-attributes/#anonymous-attributes)
 - [UDEFAULT()](/reference/sharpmush-help/sharpfunc/#udefault)
 - [GET()](/reference/sharpmush-help/sharpfunc/#get)
@@ -73,4 +75,6 @@ A user-defined function may be as complex as you want it to be, subject to limit
 - [pfun()](/reference/sharpmush-help/pfun-function/#pfun)
 - [attribute flags](/reference/sharpmush-help/attribute-flags/#attribute-flags)
 - [@include](/reference/sharpmush-help/include-command/#include)
-:::
+
+</nav>
+

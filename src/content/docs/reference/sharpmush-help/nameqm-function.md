@@ -27,7 +27,11 @@ nameqm() comes from RhostMUSH.
 red blue
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [nameq()](/reference/sharpmush-help/nameq-function/#nameq)
 - [setqm()](/reference/sharpmush-help/setqm-function/#setqm)
-:::
+
+</nav>
+

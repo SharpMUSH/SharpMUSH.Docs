@@ -259,7 +259,9 @@ attributes:
 ```
 Output: once the package is installed, ``@attribute HP`` shows ``Watch: WATCH`HP WATCH`HP`*``, and the package's ``WATCH`HP`<name>`` attribute on the event handler runs whenever an HP changes.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [events](/reference/sharpmush-help/events/#events)
 - [indexed()](/reference/sharpmush-help/indexed-function/#indexed)
 - [attrwatch()](/reference/sharpmush-help/attrwatch-function/#attrwatch)
@@ -269,4 +271,6 @@ Output: once the package is installed, ``@attribute HP`` shows ``Watch: WATCH`HP
 - [@atrchown](/reference/sharpmush-help/sharpcmd/#atrchown)
 - [@atrlock](/reference/sharpmush-help/sharpcmd/#atrlock)
 - [@list](/reference/sharpmush-help/list-command/#list)
-:::
+
+</nav>
+

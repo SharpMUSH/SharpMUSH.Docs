@@ -34,7 +34,11 @@ On a game imported from RhostMUSH:
 VPAGE(v) set: wizard unset: anyone
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [toggles](/reference/sharpmush-help/toggles/#toggles)
 - [@flag](/reference/sharpmush-help/flag-command/#flag)
-:::
+
+</nav>
+

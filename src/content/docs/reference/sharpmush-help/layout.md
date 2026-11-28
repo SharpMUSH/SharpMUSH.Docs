@@ -101,7 +101,9 @@ The result is text, so `strlen()`, `mid()`, `edit()` and listen patterns all wor
 
 Layouts nest. A `flex()`, `fields()` or `tree()` on a line of its own inside a `box()` body becomes columns, fields or a tree inside the box, and a `rule()` becomes a divider meeting the box's sides.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [BOX()](/reference/sharpmush-help/box-function/#box)
 - [RULE()](/reference/sharpmush-help/rule-function/#rule)
 - [FLEX()](/reference/sharpmush-help/flex-function/#flex)
@@ -119,7 +121,9 @@ Layouts nest. A `flex()`, `fields()` or `tree()` on a line of its own inside a `
 - [LAYOUT BORDERS](/reference/sharpmush-help/layout-borders/#layout-borders)
 - [LAYOUT THEMES](/reference/sharpmush-help/layout-themes/#layout-themes)
 - [ALIGN()](/reference/sharpmush-help/align/#align)
-:::
+
+</nav>
+
 
 ### Width
 

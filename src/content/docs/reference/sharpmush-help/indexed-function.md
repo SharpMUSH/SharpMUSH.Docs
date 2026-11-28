@@ -86,8 +86,12 @@ Every match is checked the way get() checks an attribute: an object is listed on
 
 For a wizard, `count` is the number of objects listed under the value. For anyone else it counts only the objects whose copy they could read, so a count tells you nothing get() would not.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@attribute](/reference/sharpmush-help/attribute-command/#attribute)
 - [lsearch()](/reference/sharpmush-help/lsearch-function/#lsearch)
 - [get()](/reference/sharpmush-help/sharpfunc/#get)
-:::
+
+</nav>
+

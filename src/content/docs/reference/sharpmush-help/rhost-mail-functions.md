@@ -95,7 +95,11 @@ One part of a message in the player's current folder. *\<message\>* is its numbe
 Incoming|Incoming Work
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [Mail Functions](/reference/sharpmush-help/sharpmail/#mail-functions)
 - [@mail](/reference/sharpmush-help/sharpmail/#mail)
-:::
+
+</nav>
+

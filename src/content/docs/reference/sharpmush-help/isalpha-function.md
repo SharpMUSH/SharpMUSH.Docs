@@ -55,7 +55,11 @@ These functions come from RhostMUSH.
 1 0 1 1
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [isnum()](/reference/sharpmush-help/sharpfunc/#isnum)
 - [isword()](/reference/sharpmush-help/sharpfunc/#isword)
-:::
+
+</nav>
+

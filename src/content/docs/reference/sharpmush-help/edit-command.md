@@ -71,9 +71,13 @@ Replace a literal '^' with 'v'
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [EDIT()](/reference/sharpmush-help/sharpfunc/#edit)
 - [REGEDIT()](/reference/sharpmush-help/sharpfunc/#regedit)
 - [attributes](/reference/sharpmush-help/attributes/#attributes)
 - [WILDCARDS](/reference/sharpmush-help/wildcards/#wildcards)
-:::
+
+</nav>
+

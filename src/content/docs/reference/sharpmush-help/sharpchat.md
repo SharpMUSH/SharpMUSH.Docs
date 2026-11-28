@@ -15,15 +15,19 @@ To speak on channels, use the `@chat` command.
 
 There are some aliases in place for players more familiar with the MUX comsys - see [MUXCOMSYS](/reference/sharpmush-help/sharpchat/#mux-comsys) for more details.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@channel](/reference/sharpmush-help/sharpchat/#channel)
 - [@chat](/reference/sharpmush-help/sharpchat/#chat-1)
 - [@CEMIT](/reference/sharpmush-help/sharpchat/#cemit)
 - [channel functions](/reference/sharpmush-help/channel-functions/#channel-functions)
-- [CHAN_USEFIRSTMATCH](/reference/sharpmush-help/sharpchat/#chanusefirstmatch)
+- [CHAN_USEFIRSTMATCH](/reference/sharpmush-help/sharpchat/#chan_usefirstmatch)
 - [@chatformat](/reference/sharpmush-help/chatformat-command/#chatformat)
 - [@CHANNEL CLOCK](/reference/sharpmush-help/channel-clock-command/#channel-clock)
-:::
+
+</nav>
+
 
 ## @chat
 
@@ -42,10 +46,14 @@ The `@chat` command is used to speak on channels. Everyone on the channel will s
 <Public> Mike waves
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@channel](/reference/sharpmush-help/sharpchat/#channel)
 - [@CEMIT](/reference/sharpmush-help/sharpchat/#cemit)
-:::
+
+</nav>
+
 
 ## CHAN_USEFIRSTMATCH
 
@@ -53,11 +61,15 @@ The `@chat` command is used to speak on channels. Everyone on the channel will s
 
 Normally, when an object attempts to speak on the channel system with @chat, using an ambiguous channel name produces an error message. With this flag set, it will instead speak on the first channel whose name is a match. Other commands in the chat system are not affected by the flag.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [CHAT](/reference/sharpmush-help/sharpchat/#chat)
 - [@chat](/reference/sharpmush-help/sharpchat/#chat-1)
 - [@CEMIT](/reference/sharpmush-help/sharpchat/#cemit)
-:::
+
+</nav>
+
 
 ## @cemit
 
@@ -78,9 +90,13 @@ cemit() and nscemit() work the same as @cemit/silent and @nscemit/silent, respec
 
 @cemit is intended for use in writing extended chat systems. 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@chat](/reference/sharpmush-help/sharpchat/#chat-1)
-:::
+
+</nav>
+
 
 ## Channel Pictures
 
@@ -92,9 +108,13 @@ The fourth argument to cemit() and nscemit(), *\<picture\>*, is a picture the we
 
 Output: `<Public> The tower bell rings.` In the web portal, the line has the bell picture beside it.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@cemit](/reference/sharpmush-help/sharpchat/#cemit)
-:::
+
+</nav>
+
 
 ## @channel
 
@@ -107,12 +127,16 @@ Help for `@channel` is split into a number of topics. For help on a specific swi
 - [@channel admin](/reference/sharpmush-help/channel-admin-command/#channel-admin) - Adding, deleting and modifying channels
 - [@channel clock](/reference/sharpmush-help/channel-clock-command/#channel-clock) - Locking who may join, speak on, see or moderate a channel
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [CHAT](/reference/sharpmush-help/sharpchat/#chat)
 - [@chat](/reference/sharpmush-help/sharpchat/#chat-1)
 - [@CEMIT](/reference/sharpmush-help/sharpchat/#cemit)
 - [channel functions](/reference/sharpmush-help/channel-functions/#channel-functions)
-:::
+
+</nav>
+
 
 ## @channel other
 
@@ -126,10 +150,14 @@ Help for `@channel` is split into a number of topics. For help on a specific swi
 
 `@channel/buffer` sets the recall buffer size for *\<channel\>* to *\<size\>*. Only channel admins can do this. A size of 0 disables the recall buffer.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@channel joining](/reference/sharpmush-help/channel-joining-command/#channel-joining)
 - [@CHANNEL ADMIN](/reference/sharpmush-help/channel-admin-command/#channel-admin)
-:::
+
+</nav>
+
 
 ## @channel list
 
@@ -153,11 +181,15 @@ CHAT: Channel list: Public, Admin
 ```
 which reads `(None)` when nothing matched.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@channel joining](/reference/sharpmush-help/channel-joining-command/#channel-joining)
 - [@CHANNEL ADMIN](/reference/sharpmush-help/channel-admin-command/#channel-admin)
 - [@CHANNEL CLOCK](/reference/sharpmush-help/channel-clock-command/#channel-clock)
-:::
+
+</nav>
+
 
 ## MUX Comsys
 
@@ -182,12 +214,16 @@ SharpMUSH provides the MUX comsys commands for players more familiar with them:
 
 Aliases are stored on you as `` CHANALIAS`<alias> `` attributes, so they survive a disconnect. These commands and aliases work only while the `use_muxcomm` option is on; otherwise they answer `Command disabled.` Where a command takes a channel name rather than an alias you must give enough of the name to identify it uniquely.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@channel](/reference/sharpmush-help/sharpchat/#channel)
 - [@chat](/reference/sharpmush-help/sharpchat/#chat-1)
-- [CHAN_USEFIRSTMATCH](/reference/sharpmush-help/sharpchat/#chanusefirstmatch)
+- [CHAN_USEFIRSTMATCH](/reference/sharpmush-help/sharpchat/#chan_usefirstmatch)
 - [MUX Channel Admin](/reference/sharpmush-help/sharpchat/#mux-channel-admin)
-:::
+
+</nav>
+
 
 ## MUX Channel Admin
 
@@ -210,11 +246,15 @@ TinyMUX's channel commands. Each runs the `@channel` command it stands for, as y
 
 Like `addcom`, they work only while `use_muxcomm` is on. `@cset` changes a channel's other settings.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@cset](/reference/sharpmush-help/sharpchat/#cset)
 - [MUX Comsys](/reference/sharpmush-help/sharpchat/#mux-comsys)
 - [@CHANNEL ADMIN](/reference/sharpmush-help/channel-admin-command/#channel-admin)
-:::
+
+</nav>
+
 
 ## @cset
 
@@ -242,8 +282,12 @@ Example:
 
 Output: `Player Object Quiet`
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [MUX Channel Admin](/reference/sharpmush-help/sharpchat/#mux-channel-admin)
 - [@channel/buffer](/reference/sharpmush-help/sharpchat/#channel-other)
 - [@CHANNEL CLOCK](/reference/sharpmush-help/channel-clock-command/#channel-clock)
-:::
+
+</nav>
+

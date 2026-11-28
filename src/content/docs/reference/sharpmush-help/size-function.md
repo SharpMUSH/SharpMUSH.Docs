@@ -27,7 +27,11 @@ Only wizards may use size().
 0
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [objmem()](/reference/sharpmush-help/sharpfunc/#objmem)
 - [playermem()](/reference/sharpmush-help/sharpfunc/#playermem)
-:::
+
+</nav>
+

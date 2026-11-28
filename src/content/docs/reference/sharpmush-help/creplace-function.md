@@ -55,8 +55,12 @@ XbYdXf
 
 Output: each line shows one type, and the last the list form.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [replace()](/reference/sharpmush-help/sharpfunc/#lreplace)
 - [mid()](/reference/sharpmush-help/sharpfunc/#mid)
 - [numpos()](/reference/sharpmush-help/numpos-function/#numpos)
-:::
+
+</nav>
+

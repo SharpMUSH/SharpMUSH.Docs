@@ -28,13 +28,17 @@ A "failure" usually occurs when you try to do something that is governed by an `
 See [LOCKING](/reference/sharpmush-help/locking/#locking)
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
 - [LOCKING](/reference/sharpmush-help/locking/#locking)
 - [@afailure](/reference/sharpmush-help/sharpcmd/#afailure)
 - [@aefail](/reference/sharpmush-help/sharpcmd/#aefail)
 - [@lfail](/reference/sharpmush-help/sharpcmd/#lfail)
-:::
+
+</nav>
+
 
 ### Failure attributes
 

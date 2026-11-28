@@ -45,10 +45,14 @@ Output: every argument is true, the word and the negative number included.
 0
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [AND()](/reference/sharpmush-help/sharpfunc/#and)
 - [OR()](/reference/sharpmush-help/sharpfunc/#or)
 - [CAND()](/reference/sharpmush-help/sharpfunc/#and)
 - [COR()](/reference/sharpmush-help/sharpfunc/#or)
 - [boolean values](/reference/sharpmush-help/boolean-values/#boolean-values)
-:::
+
+</nav>
+

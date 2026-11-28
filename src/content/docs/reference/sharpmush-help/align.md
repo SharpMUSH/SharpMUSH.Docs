@@ -59,12 +59,16 @@ Creates columns of text, each column designated by `<col>` arguments. Each `<col
 
 `<filler>` is a single character that, if given, is the character used to fill empty columns and remaining spaces. `<colsep>`, if given, is inserted between every column, on every row. `<rowsep>`, if given, is inserted between every line. By default, `<filler>` and `<colsep>` are a space, and `<rowsep>` is a newline.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [CENTER()](/reference/sharpmush-help/center-function/#center)
 - [LJUST()](/reference/sharpmush-help/sharpfunc/#ljust)
 - [RJUST()](/reference/sharpmush-help/sharpfunc/#rjust)
 - [TABLE()](/reference/sharpmush-help/sharpfunc/#table)
-:::
+
+</nav>
+
 
 ### Column specifications
 

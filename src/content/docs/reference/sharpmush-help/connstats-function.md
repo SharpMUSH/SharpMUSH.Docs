@@ -47,8 +47,12 @@ These functions come from TinyMUX, and a TinyMUX import keeps each player's reco
 12 1840 2d 3h 11m 2s
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [CONN()](/reference/sharpmush-help/sharpfunc/#conn)
 - [CONNLOG()](/reference/sharpmush-help/connlog-function/#connlog)
 - [TOTCMDS()](/reference/sharpmush-help/totcmds-function/#totcmds)
-:::
+
+</nav>
+

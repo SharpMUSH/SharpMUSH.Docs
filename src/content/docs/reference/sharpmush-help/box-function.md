@@ -52,11 +52,15 @@ Draws a frame round *&lt;body&gt;*, with *&lt;title&gt;* set into the top edge. 
 - [box() in a box]: a box inside another keeps its width
 - [box() border examples]: a rounded border, pieces of your own, and a bottom title
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [RULE()](/reference/sharpmush-help/rule-function/#rule)
 - [LAYOUT BORDERS](/reference/sharpmush-help/layout-borders/#layout-borders)
 - [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions)
-:::
+
+</nav>
+
 
 ### Options
 

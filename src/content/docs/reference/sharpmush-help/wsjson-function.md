@@ -42,9 +42,13 @@ description: "SharpMUSH documentation for wsjson()"
 
   Output for a telnet client: `Health: 7 of 10`. The web portal shows `Health: ` and is sent `{"type":"json","data":{"hp":7}}`.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [OOB()](/reference/sharpmush-help/oob-function/#oob)
 - [WSHTML()](/reference/sharpmush-help/wshtml-function/#wshtml)
 - [WEBSOCKETS](/reference/sharpmush-help/websockets/#websockets)
 - [JSON FUNCTIONS](/reference/sharpmush-help/sharpfunc/#json-functions)
-:::
+
+</nav>
+

@@ -29,8 +29,12 @@ This function comes from TinyMUX.
 A Tale of Two Cities
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [CAPSTR()](/reference/sharpmush-help/sharpfunc/#capstr)
 - [LCSTR()](/reference/sharpmush-help/sharpfunc/#lcstr)
 - [UCSTR()](/reference/sharpmush-help/sharpfunc/#ucstr)
-:::
+
+</nav>
+

@@ -178,8 +178,12 @@ The JSON fields are `label` (text), `presentation` (`prose`, `band`, `message`, 
 
 The [scene type functions](/reference/sharpmush-help/scene-type-functions/#scene-type-and-detail-functions) read the types from softcode.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [scene system](/reference/sharpmush-help/scene-system/#scene-system)
 - [scene functions](/reference/sharpmush-help/scene-functions/#scene-functions)
 - [scene write functions](/reference/sharpmush-help/scene-write-functions/#scene-write-functions)
-:::
+
+</nav>
+

@@ -172,7 +172,9 @@ As in PennMUSH, an object may give a role it holds to a thing it owns, or take i
 
 Player #1 is exempt from all of these. Role priority decides only who may manage roles; it never decides who controls whom.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [roles](/reference/sharpmush-help/roles/#roles)
 - [@permission](/reference/sharpmush-help/permission-command/#permission)
 - [ROLES()](/reference/sharpmush-help/sharpfunc/#roles)
@@ -180,4 +182,6 @@ Player #1 is exempt from all of these. Role priority decides only who may manage
 - [PERMISSION()](/reference/sharpmush-help/sharpfunc/#permission)
 - [@power](/reference/sharpmush-help/power-command/#power)
 - [lock keys](/reference/sharpmush-help/lock-keys/#lock-keys)
-:::
+
+</nav>
+

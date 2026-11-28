@@ -49,11 +49,15 @@ This will create the room as above, and also open an exit leading to it named `K
 This will do just the same as the above, except it will also create an exit named `Out <S>` with the aliases s, south, out and o coming back from the kitchen to whatever room you are currently in.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@open](/reference/sharpmush-help/sharpcmd/#open)
 - [@link](/reference/sharpmush-help/sharpcmd/#link)
 - [EXITS](/reference/sharpmush-help/sharptop/#exits)
 - [@create](/reference/sharpmush-help/sharpcmd/#create)
 - [database](/reference/sharpmush-help/database/#database)
 - [DIG()](/reference/sharpmush-help/sharpfunc/#dig)
-:::
+
+</nav>
+

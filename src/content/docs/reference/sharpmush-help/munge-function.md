@@ -60,6 +60,10 @@ You say, "#12 #234 #3"
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [anonymous attributes](/reference/sharpmush-help/anonymous-attributes/#anonymous-attributes)
-:::
+
+</nav>
+

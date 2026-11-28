@@ -42,11 +42,15 @@ The third form combines the first two: the enactor will execute `<command_list>`
 More forms that support semaphores on arbitrary attributes are described in [@wait named semaphores](/reference/sharpmush-help/wait-command/#named-semaphores).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [semaphores](/reference/sharpmush-help/semaphores/#semaphores)
 - [@drain](/reference/sharpmush-help/sharpcmd/#drain)
 - [@notify](/reference/sharpmush-help/notify-command/#notify)
-:::
+
+</nav>
+
 
 ### Named semaphores
 

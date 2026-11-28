@@ -44,14 +44,18 @@ land(), lor(), lxor(), lnor() and lxnor() come from RhostMUSH and take the same 
 
 - [land examples](/reference/sharpmush-help/land-function/#examples): each function on a short list
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [AND()](/reference/sharpmush-help/sharpfunc/#and)
 - [OR()](/reference/sharpmush-help/sharpfunc/#or)
 - [XOR()](/reference/sharpmush-help/sharpfunc/#xor)
 - [NOR()](/reference/sharpmush-help/sharpfunc/#nor)
 - [LMATH()](/reference/sharpmush-help/sharpfunc/#lmath)
 - [ladd()](/reference/sharpmush-help/ladd-function/#ladd)
-:::
+
+</nav>
+
 
 ### Examples
 

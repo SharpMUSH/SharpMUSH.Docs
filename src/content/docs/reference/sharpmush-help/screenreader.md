@@ -78,8 +78,12 @@ With it on:
 
 Every page starts with two links, Skip to main content and Skip to the text box. Each page has one main heading, and on Play the cards beside the terminal, such as Here and Exits, are headings too.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [screenreader support](/reference/sharpmush-help/screenreader-support/#screen-reader-support)
 - [terminfo()](/reference/sharpmush-help/terminfo-function/#terminfo)
 - [@SOCKSET](/reference/sharpmush-help/sockset-command/#sockset)
-:::
+
+</nav>
+

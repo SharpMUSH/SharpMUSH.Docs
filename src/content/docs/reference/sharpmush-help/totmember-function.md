@@ -31,8 +31,12 @@ Returns the position, counting from 1, of every element of `<list>` that is exac
 
 Output: `red` is the first and third element; `Red` matches nothing.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [member()](/reference/sharpmush-help/sharpfunc/#member)
 - [matchall()](/reference/sharpmush-help/element-function/#element)
 - [totpos()](/reference/sharpmush-help/totpos-function/#totpos)
-:::
+
+</nav>
+

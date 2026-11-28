@@ -54,12 +54,16 @@ In order to use this command, at least one of the following criterion must apply
 2. The object which did the @verb controls both `<actor>` and `<victim>`
 3. The thing which triggered the @verb (such as through a $-command on the object which did the @verb) must be `<actor>`, AND the object which did the @verb must be either privileged or control `<victim>` or `<victim>` must be VISUAL.
 
-::: seealso
-- [$-commands]
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [$-commands](/reference/sharpmush-help/commands/#-commands)
 - [STACK](/reference/sharpmush-help/sharptop/#stack)
 - [verbs](/reference/sharpmush-help/verbs/#verbs)
 - [@trigger](/reference/sharpmush-help/trigger-command/#trigger)
-:::
+
+</nav>
+
 
 ### Local verb example
 

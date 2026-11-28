@@ -40,12 +40,16 @@ When the value column would be narrower than ten cells, each label goes on a lin
 - [fields() examples]: plain fields, right-aligned labels, leaders and separators
 - [fields() wrapping examples]: a long value, and a narrow width
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LFIELDS()](/reference/sharpmush-help/layout-functions/#lfields)
 - [BOX()](/reference/sharpmush-help/box-function/#box)
 - [FLEX()](/reference/sharpmush-help/flex-function/#flex)
 - [LAYOUT FUNCTIONS](/reference/sharpmush-help/layout/#layout-functions)
-:::
+
+</nav>
+
 
 ### Options
 

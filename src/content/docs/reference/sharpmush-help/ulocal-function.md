@@ -50,10 +50,14 @@ You say, "bananas apples bananas oranges pears"
 In this second example, in SUB-FUNCTION, %q0 was set to "apples bananas oranges pears", so that when the u() "returned" and TOP-FUNCTION evaluated %q0, this is what was printed. In the first example, ulocal() reset the value of %q0 to its original "are delicious!"
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [u()](/reference/sharpmush-help/u-function/#u)
 - [setq()](/reference/sharpmush-help/setq-function/#setq)
 - [LETQ()](/reference/sharpmush-help/sharpfunc/#letq)
 - [R()](/reference/sharpmush-help/sharpfunc/#r)
 - [LOCALIZE()](/reference/sharpmush-help/sharpfunc/#localize)
-:::
+
+</nav>
+

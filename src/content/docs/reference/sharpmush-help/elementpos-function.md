@@ -34,8 +34,12 @@ d a d
 
 elementpos() comes from RhostMUSH and takes the same arguments.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ELEMENTS()](/reference/sharpmush-help/sharpfunc/#elements)
 - [MID()](/reference/sharpmush-help/sharpfunc/#mid)
 - [POS()](/reference/sharpmush-help/sharpfunc/#pos)
-:::
+
+</nav>
+

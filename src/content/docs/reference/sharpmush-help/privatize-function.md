@@ -42,12 +42,16 @@ With more arguments, privatize() evaluates `<code>` privately: see [privatize pr
 
 privatize() comes from RhostMUSH and takes the same arguments.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [LOCALIZE()](/reference/sharpmush-help/sharpfunc/#localize)
 - [ULOCAL()](/reference/sharpmush-help/ulocal-function/#ulocal)
 - [u2local()](/reference/sharpmush-help/u2local-function/#u2local)
 - [setq()](/reference/sharpmush-help/setq-function/#setq)
-:::
+
+</nav>
+
 
 ### Private evaluation
 

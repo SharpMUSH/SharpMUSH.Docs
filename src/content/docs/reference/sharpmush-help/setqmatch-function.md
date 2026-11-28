@@ -39,8 +39,12 @@ the sword
 
 Output: 1 and register 0; both wildcards; only the second.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [strmatch()](/reference/sharpmush-help/sharpfunc/#strmatch)
 - [setq()](/reference/sharpmush-help/setq-function/#setq)
 - [match()](/reference/sharpmush-help/element-function/#element)
-:::
+
+</nav>
+

@@ -41,13 +41,17 @@ description: "SharpMUSH documentation for @pageformat"
 Each value is passed by position and by the name shown (see [named arguments](/reference/sharpmush-help/named-arguments/#named-arguments)). Code written for PennMUSH reads the positions.
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [page](/reference/sharpmush-help/page/#page)
 - [speak()](/reference/sharpmush-help/speak/#speak)
 - [@chatformat](/reference/sharpmush-help/chatformat-command/#chatformat)
 - [@SPEECHMOD](/reference/sharpmush-help/sharpcmd/#speechmod)
 - [@message](/reference/sharpmush-help/message-command/#message)
-:::
+
+</nav>
+
 
 ### Page format examples
 

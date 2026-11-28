@@ -14,7 +14,9 @@ SharpMUSH decides who may do what in a few layers:
 - Site locks decide which addresses may connect, create characters or register accounts.
   See [@sitelock](/reference/sharpmush-help/sitelock-command/#sitelock).
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [roles](/reference/sharpmush-help/roles/#roles)
 - [@role](/reference/sharpmush-help/role-command/#role)
 - [@permission](/reference/sharpmush-help/permission-command/#permission)
@@ -23,4 +25,6 @@ SharpMUSH decides who may do what in a few layers:
 - [locktypes](/reference/sharpmush-help/locktypes/#lock-types)
 - [restrict](/reference/sharpmush-help/restrict/#restrict)
 - [@sitelock](/reference/sharpmush-help/sitelock-command/#sitelock)
-:::
+
+</nav>
+

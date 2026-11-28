@@ -38,11 +38,15 @@ Monday, the 17th day of July.
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [CONVSECS()](/reference/sharpmush-help/sharpfunc/#convsecs)
 - [etimefmt()](/reference/sharpmush-help/etimefmt-function/#etimefmt)
 - [timezones](/reference/sharpmush-help/timezones/#timezones)
-:::
+
+</nav>
+
 
 ### Date escape codes
 

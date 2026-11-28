@@ -23,11 +23,15 @@ hasarg() never evaluates the argument. Each u() call has arguments of its own; a
 
 - [hasarg examples](/reference/sharpmush-help/hasarg/#examples): testing an argument, and what an included attribute sees
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [named arguments](/reference/sharpmush-help/named-arguments/#named-arguments)
 - [uargs()](/reference/sharpmush-help/uargs-function/#uargs)
 - [@include](/reference/sharpmush-help/include-command/#include)
-:::
+
+</nav>
+
 
 ### Examples
 

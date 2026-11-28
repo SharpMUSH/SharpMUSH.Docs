@@ -35,7 +35,7 @@ Help is available for the following MUSH commands:
 
 The `]` prefix runs a command without evaluating its arguments; see [literal command](/reference/sharpmush-help/literal-command/).
 
-- [commands with @](/reference/sharpmush-help/commands-index/#commands-1): the @-commands, which have permanent effects
+- [commands with @](/reference/sharpmush-help/commands-index/#-commands): the @-commands, which have permanent effects
 - [commands at login](/reference/sharpmush-help/commands-index/#at-the-login-screen-and-on-a-connection): login-screen, account, connection and MUX channel commands
 - [commands the game runs](/reference/sharpmush-help/commands-index/#commands-the-game-runs): HUH_COMMAND, WARN_ON_MISSING and unimplemented commands
 
@@ -45,10 +45,10 @@ From plugins: [ooc](/reference/sharpmush-help/ooc-command/#ooc)
 
 In addition to these, there are several types of '@' commands. @-commands are usually commands which have permanent effects on the MUSH (such as creating a new object). Here are the help topics on @-commands:
 
-- [@-ATTRIBUTES](/reference/sharpmush-help/sharpcmd/#attributes)
-- [@-BUILDING](/reference/sharpmush-help/sharpcmd/#building)
-- [@-GENERAL](/reference/sharpmush-help/sharpcmd/#general)
-- [@-WIZARD](/reference/sharpmush-help/sharpcmd/#wizard)
+- [@-ATTRIBUTES](/reference/sharpmush-help/sharpcmd/#-attributes)
+- [@-BUILDING](/reference/sharpmush-help/sharpcmd/#-building)
+- [@-GENERAL](/reference/sharpmush-help/sharpcmd/#-general)
+- [@-WIZARD](/reference/sharpmush-help/sharpcmd/#-wizard)
 
 From plugins: [@world](/reference/sharpmush-help/world-command/#world)
 
@@ -60,4 +60,4 @@ Commands that act on your connection rather than your character are listed in [s
 
 ### Commands the game runs
 
-The game runs two commands itself, and either can be @hooked: [HUH_COMMAND](/reference/sharpmush-help/sharpcmd/#huhcommand) for a line no command matches, and [WARN_ON_MISSING](/reference/sharpmush-help/sharpcmd/#warnonmissing) for a line that starts with a function. [UNIMPLEMENTED_COMMAND](/reference/sharpmush-help/sharpcmd/#unimplementedcommand) says a command has not been implemented.
+The game runs two commands itself, and either can be @hooked: [HUH_COMMAND](/reference/sharpmush-help/sharpcmd/#huh_command) for a line no command matches, and [WARN_ON_MISSING](/reference/sharpmush-help/sharpcmd/#warn_on_missing) for a line that starts with a function. [UNIMPLEMENTED_COMMAND](/reference/sharpmush-help/sharpcmd/#unimplemented_command) says a command has not been implemented.

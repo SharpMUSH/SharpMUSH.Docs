@@ -49,9 +49,13 @@ These functions come from RhostMUSH.
 Hello, Ann from Wizard. / Hello, Ann from Zone B.
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [ZFUN()](/reference/sharpmush-help/sharpfunc/#zfun)
 - [u()](/reference/sharpmush-help/u-function/#u)
 - [U2()](/reference/sharpmush-help/u2local-function/#u2local)
 - [zones](/reference/sharpmush-help/zones/#zones)
-:::
+
+</nav>
+

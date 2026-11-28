@@ -30,8 +30,12 @@ One says [add(1,2)]
 
 Output: `%n` became the name of the player who typed the command, and the function call stayed as text.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [S()](/reference/sharpmush-help/sharpfunc/#s)
 - [OBJEVAL()](/reference/sharpmush-help/sharpfunc/#objeval)
 - [V()](/reference/sharpmush-help/sharpfunc/#v)
-:::
+
+</nav>
+

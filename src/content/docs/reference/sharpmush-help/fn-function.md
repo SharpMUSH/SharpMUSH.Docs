@@ -65,8 +65,12 @@ Example:
 ```
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@function](/reference/sharpmush-help/function-command/#function)
 - [restrict](/reference/sharpmush-help/restrict/#restrict)
 - [attribute flags](/reference/sharpmush-help/attribute-flags/#attribute-flags)
-:::
+
+</nav>
+

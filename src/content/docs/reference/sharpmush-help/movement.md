@@ -41,11 +41,15 @@ A silent move (`@teleport/silent`) suppresses only the `@move`/`@omove`/`@amove`
 
 After every move, the object looks at where it arrived. This look always happens, including on a silent move; a TERSE player sees the room's name and contents but not its description.
 
-::: seealso
-- [go]
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
+- [go](/reference/sharpmush-help/sharpcmd/#go)
 - [@teleport](/reference/sharpmush-help/teleport-command/#teleport)
 - [enter](/reference/sharpmush-help/sharpcmd/#enter)
 - [leave](/reference/sharpmush-help/sharpcmd/#leave-1)
 - [HOMES](/reference/sharpmush-help/sharptop/#homes)
 - [@listen](/reference/sharpmush-help/listen-command/#listen)
-:::
+
+</nav>
+

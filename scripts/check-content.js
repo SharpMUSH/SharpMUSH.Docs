@@ -67,6 +67,16 @@ export function validateContent({ root = process.cwd(), requiredRoutes = ['guide
     }
   }
 
+  // The help export's ::: containers (See Also and others) must reach the site converted, or the page
+  // shows the fence lines as text.
+  const helpRoot = path.join(docsRoot, 'reference', 'sharpmush-help');
+  if (fs.existsSync(helpRoot)) {
+    for (const name of fs.readdirSync(helpRoot).filter((file) => file.endsWith('.md'))) {
+      const text = fs.readFileSync(path.join(helpRoot, name), 'utf8').replace(/^[ \t]*```[\s\S]*?^[ \t]*```/gm, '');
+      if (/^:::/m.test(text)) failures.push(`src/content/docs/reference/sharpmush-help/${name} shows a ::: container as text: run npm run convert-docs`);
+    }
+  }
+
   const guideAssets = path.join(root, 'src/assets/guide');
   if (fs.existsSync(guideAssets)) {
     const sources = fs.readdirSync(path.join(root, 'src'), { recursive: true, withFileTypes: true })

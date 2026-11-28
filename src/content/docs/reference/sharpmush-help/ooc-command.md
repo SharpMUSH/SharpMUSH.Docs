@@ -31,8 +31,12 @@ When you are focused on the active scene of the room you are standing in, the li
 
 Output: the room sees `<OOC> Alice has to leave in five minutes.`
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [scene system](/reference/sharpmush-help/scene-system/#scene-system)
 - [say](/reference/sharpmush-help/sharpcmd/#-4)
 - [pose](/reference/sharpmush-help/pose/)
-:::
+
+</nav>
+

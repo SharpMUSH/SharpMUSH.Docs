@@ -45,12 +45,16 @@ There may be some objects on the game that you can go inside (wagons or cars, fo
 
 It's also sometimes possible to teleport from one room to another, using the '`@teleport`' command. However, most new players on a game probably won't be able to do that - it's mentioned here only for completeness.
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [look](/reference/sharpmush-help/look/#look)
-- [go]
+- [go](/reference/sharpmush-help/sharpcmd/#go)
 - [HOMES](/reference/sharpmush-help/sharptop/#homes)
 - [enter](/reference/sharpmush-help/sharpcmd/#enter)
 - [leave](/reference/sharpmush-help/sharpcmd/#leave-1)
 - [@teleport](/reference/sharpmush-help/teleport-command/#teleport)
 - [@link](/reference/sharpmush-help/sharpcmd/#link)
-:::
+
+</nav>
+

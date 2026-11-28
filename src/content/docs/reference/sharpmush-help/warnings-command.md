@@ -39,10 +39,14 @@ For a list of warnings, see [warnings list](/reference/sharpmush-help/warnings-l
 For examples, see [@warnings building warning profiles](/reference/sharpmush-help/warnings-command/#building-warning-profiles).
 
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@wcheck](/reference/sharpmush-help/sharpcmd/#wcheck)
 - `[NO_WARN]`
-:::
+
+</nav>
+
 
 ### Building warning profiles
 

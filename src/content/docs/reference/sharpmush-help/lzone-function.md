@@ -32,9 +32,13 @@ lzone() comes from RhostMUSH.
 #20 #21 / 1 2 / #40
 ```
 
-::: seealso
+<nav class="help-see-also help-see-also-names" aria-label="See also">
+<span class="help-see-also-label">See Also</span>
+
 - [@chzone several zones](/reference/sharpmush-help/chzone-command/#several-zones)
 - [ZCHILDREN()](/reference/sharpmush-help/zchildren-function/#zchildren)
 - [ZONE()](/reference/sharpmush-help/sharpfunc/#zone)
 - [zones](/reference/sharpmush-help/zones/#zones)
-:::
+
+</nav>
+
