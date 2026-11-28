@@ -30,9 +30,9 @@ description: "SharpMUSH documentation for renderplayers()"
 
   `<players>` is a list of dbrefs or objids to look for. Only those players are matched; anything in the list that is not a player is skipped. Left out or empty, every player is matched.
 
-- [renderplayers() matching]: whole words, aliases and which name wins
-- [renderplayers() options]: a prefix such as `@`, no aliases and first names
-- [renderplayers() examples]: linking names in a pose
+- [renderplayers() matching](/reference/sharpmush-help/renderplayers-function/#how-names-are-matched): whole words, aliases and which name wins
+- [renderplayers() options](/reference/sharpmush-help/renderplayers-function/#prefix-and-options): a prefix such as `@`, no aliases and first names
+- [renderplayers() examples](/reference/sharpmush-help/renderplayers-function/#examples): linking names in a pose
 
 ### How names are matched
 
@@ -42,7 +42,7 @@ description: "SharpMUSH documentation for renderplayers()"
 
   A name that two players answer to matches neither of them; a shorter name at the same place may match instead.
 
-  A first name (see [renderplayers() options]) is used only when no player has it as a full name, or as an alias when aliases are matched.
+  A first name (see [renderplayers() options](/reference/sharpmush-help/renderplayers-function/#prefix-and-options)) is used only when no player has it as a full name, or as an alias when aliases are matched.
 
 ### Prefix and options
 

@@ -63,7 +63,7 @@ The result is read back as it is, so it can be edited and passed on.
 
 `lflex(<options>, <items>[, <delimiter>])`
 
-[FLEX()](/reference/sharpmush-help/flex-function/#flex) with its items given as one list, split on *&lt;delimiter&gt;* (a space when none is given), so a row can be as long as a list another function made. Each item is text, a layout or an [ITEM()](/reference/sharpmush-help/layout-functions/#item), as in flex(). It takes [flex() options]. An empty list draws nothing.
+[FLEX()](/reference/sharpmush-help/flex-function/#flex) with its items given as one list, split on *&lt;delimiter&gt;* (a space when none is given), so a row can be as long as a list another function made. Each item is text, a layout or an [ITEM()](/reference/sharpmush-help/layout-functions/#item), as in flex(). It takes [flex() options](/reference/sharpmush-help/flex-function/#options). An empty list draws nothing.
 
 The text of a layout is its box art, so a list of layouts needs a delimiter its art never holds: `^` rather than `|` or a space.
 
@@ -114,7 +114,7 @@ Used on its own, item() draws its content as a single column.
 
 *&lt;delimiter&gt;* splits both lists; a space by default. Labels such as `Full Name` need another one. The two lists must have as many items as each other, or it returns `#-1 NUMBER OF WORDS MUST BE EQUAL`. Two empty lists draw nothing.
 
-*&lt;options&gt;* are [fields() options].
+*&lt;options&gt;* are [fields() options](/reference/sharpmush-help/fields-function/#options).
 
 ### Examples
 ```sharp
@@ -143,7 +143,7 @@ Origin:  Super Robot Wars AG
 
 `ltree(<options>, <items>[, <delimiter>])`
 
-[TREE()](/reference/sharpmush-help/tree-function/#tree) with its top-level items given as one list, split on *&lt;delimiter&gt;* (a space when none is given). Each item is text, a layout or a [NODE()](/reference/sharpmush-help/layout-functions/#node) or [LNODE()](/reference/sharpmush-help/layout-functions/#lnode), as in tree(). It takes [tree() options]. An empty list draws nothing.
+[TREE()](/reference/sharpmush-help/tree-function/#tree) with its top-level items given as one list, split on *&lt;delimiter&gt;* (a space when none is given). Each item is text, a layout or a [NODE()](/reference/sharpmush-help/layout-functions/#node) or [LNODE()](/reference/sharpmush-help/layout-functions/#lnode), as in tree(). It takes [tree() options](/reference/sharpmush-help/tree-function/#options). An empty list draws nothing.
 
 A tree's guide lines hold `|` and spaces, so a list of nodes needs another delimiter, such as `^`.
 
@@ -256,9 +256,9 @@ Bram
 
 [DATATABLE()](/reference/sharpmush-help/datatable-function/#datatable) with its rows given as one list, so one [ITER()](/reference/sharpmush-help/iter-function/#iter) can make a row for each record. It has two delimiters:
 - *&lt;delimiter&gt;* splits *&lt;rows&gt;* into rows. A space when none is given.
-- The `delim` option splits the headings and each row's cells. `|` by default; see [datatable() delimiters].
+- The `delim` option splits the headings and each row's cells. `|` by default; see [datatable() delimiters](/reference/sharpmush-help/datatable-function/#delimiters).
 
-It takes [datatable() options] and gives way on a narrow screen the same way. An empty list draws the headings alone.
+It takes [datatable() options](/reference/sharpmush-help/datatable-function/#options) and gives way on a narrow screen the same way. An empty list draws the headings alone.
 
 ### Examples
 ```sharp

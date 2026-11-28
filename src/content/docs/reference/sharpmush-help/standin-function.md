@@ -22,7 +22,7 @@ Returns `<text>`, sent as `<stand-in>` to a client that cannot show it. A client
 
 `<stand-in>` replaces the whole of `<text>` when any character in it would be replaced, and comes before the game's [@ASCII](/reference/sharpmush-help/ascii-command/#ascii) table. A client that shows all of `<text>` gets `<text>`, so a Latin-1 client keeps an accented letter. `<stand-in>` is plain ASCII, or empty to leave `<text>` out; anything else returns `#-1 INVALID ARGUMENT`. A table or a box lays the stand-in out at its own width, so columns stay lined up.
 
-- [standin() examples]: a pinned mark, and a check mark
+- [standin() examples](/reference/sharpmush-help/standin-function/#examples): a pinned mark, and a check mark
 
 <nav class="help-see-also help-see-also-names" aria-label="See also">
 <span class="help-see-also-label">See Also</span>

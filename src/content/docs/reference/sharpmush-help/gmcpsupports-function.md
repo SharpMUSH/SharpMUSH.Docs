@@ -28,8 +28,8 @@ With one argument, gmcpsupports() returns that list as the client sent it: each 
 
 With a `<package>`, it returns 1 when the client listed the package or a module it belongs to, and 0 otherwise. `Room` covers `Room.Info` and `Room.Players`, but `Room.Info` does not cover `Room`. Names match without regard to case.
 
-- [gmcpsupports() connections]: which connection is read, and who may read it
-- [gmcpsupports() examples]: what Mudlet sends, and sending only to clients that asked
+- [gmcpsupports() connections](/reference/sharpmush-help/gmcpsupports-function/#which-connection): which connection is read, and who may read it
+- [gmcpsupports() examples](/reference/sharpmush-help/gmcpsupports-function/#examples): what Mudlet sends, and sending only to clients that asked
 
 ### Which connection
 

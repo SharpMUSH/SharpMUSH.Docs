@@ -56,13 +56,13 @@ description: "SharpMUSH documentation for gradient()"
 
 Given a layout, such as a [BOX()](/reference/sharpmush-help/box-function/#box) or a [DATATABLE()](/reference/sharpmush-help/datatable-function/#datatable), the whole block is shaded, borders and all, over the colours the game's or the reader's theme gives its parts, and stays a layout: each reader still gets it at their own width, and the portal draws it as a card with its text and borders in the gradient. The `target` option shades only the borders, or only the text.
 
-- [gradient() options]: flow, colour space, mirror, repeat and target
-- [gradient() colour spaces]: how oklch, oklab and hsl blend
-- [gradient() fewer colours]: what a client with fewer colours is sent
-- [gradient() examples]: a name, words, mirror, repeat and colour space
-- [gradient() theme examples]: blending the game's theme colours
-- [gradient() layout examples]: a box and a table
-- [gradient() target examples]: shading only the borders, or only the text
+- [gradient() options](/reference/sharpmush-help/gradient-function/#options): flow, colour space, mirror, repeat and target
+- [gradient() colour spaces](/reference/sharpmush-help/gradient-function/#colour-spaces): how oklch, oklab and hsl blend
+- [gradient() fewer colours](/reference/sharpmush-help/gradient-function/#clients-with-fewer-colours): what a client with fewer colours is sent
+- [gradient() examples](/reference/sharpmush-help/gradient-function/#examples): a name, words, mirror, repeat and colour space
+- [gradient() theme examples](/reference/sharpmush-help/gradient-function/#theme-colour-examples): blending the game's theme colours
+- [gradient() layout examples](/reference/sharpmush-help/gradient-function/#layout-examples): a box and a table
+- [gradient() target examples](/reference/sharpmush-help/gradient-function/#border-and-text-examples): shading only the borders, or only the text
 
 <nav class="help-see-also help-see-also-names" aria-label="See also">
 <span class="help-see-also-label">See Also</span>

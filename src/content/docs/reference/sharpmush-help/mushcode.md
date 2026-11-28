@@ -35,11 +35,11 @@ If you would like to learn more about MUSHcoding and how to create `$-commands` 
   
 ### Related help topics
 - [attributes](/reference/sharpmush-help/attributes/#attributes)
-- [%]
+- [%](/reference/sharpmush-help/substitutions/#substitutions)
 - [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/sharptop/#non-standard-attributes)
-- [%#]
-- [%!]
-- [$-commands]
+- [%#](/reference/sharpmush-help/sharptop/#enactor)
+- [%!](/reference/sharpmush-help/sharptop/#executor)
+- [$-commands](/reference/sharpmush-help/commands/#-commands)
 - [database](/reference/sharpmush-help/database/#database)
 - [evaluation order](/reference/sharpmush-help/evaluation-order/#evaluation-order)
 - [TYPES OF OBJECTS](/reference/sharpmush-help/sharptop/#types-of-objects)

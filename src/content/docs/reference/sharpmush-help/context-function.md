@@ -27,8 +27,8 @@ Returns the commands `<player>`'s context stack puts first, in the order the com
 
 Without an attribute, it returns the entries whose every `<slot>` was filled from a context, each as a command link (see [cmdlink()](/reference/sharpmush-help/sharppueb/#cmdlink)) with the context's info, or the line, as its hover text. Code that may not make links gets the labels alone.
 
-- [context() attribute]: passing each entry to an attribute, and its named arguments
-- [context() examples]: whose stack code may read, examples, and errors
+- [context() attribute](/reference/sharpmush-help/context-function/#formatting-with-an-attribute): passing each entry to an attribute, and its named arguments
+- [context() examples](/reference/sharpmush-help/context-function/#examples-and-errors): whose stack code may read, examples, and errors
 
 ### Formatting with an attribute
 

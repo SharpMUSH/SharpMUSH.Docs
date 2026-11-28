@@ -29,8 +29,8 @@ description: "SharpMUSH documentation for gauge()"
 
 A bar filled to *&lt;value&gt;*'s share of *&lt;maximum&gt;*, with *&lt;label&gt;* before it and the figures after it. The bar takes whatever width the label and figures leave. A value below zero draws an empty bar and one above the maximum a full one. In the web portal it is a meter.
 
-- [gauge() options]: width, figures, pieces, ends, gradient and theme
-- [gauge() examples]: bars with percent, value, no figures and a gradient
+- [gauge() options](/reference/sharpmush-help/gauge-function/#options): width, figures, pieces, ends, gradient and theme
+- [gauge() examples](/reference/sharpmush-help/gauge-function/#examples): bars with percent, value, no figures and a gradient
 
 <nav class="help-see-also help-see-also-names" aria-label="See also">
 <span class="help-see-also-label">See Also</span>

@@ -30,9 +30,9 @@ Pages you may not read (see [wiki permissions](/reference/sharpmush-help/wiki-ad
 
 Returns #-1 NO SUCH WIKI PAGE when the page does not exist, is a draft, or is one you may not read.
 
-- [wiki() fields]: the fields the second argument selects
-- [wiki() locales]: the third argument, and fallback translations
-- [wiki() examples]: reading a title, a revision and a locale
+- [wiki() fields](/reference/sharpmush-help/wiki-function/#fields): the fields the second argument selects
+- [wiki() locales](/reference/sharpmush-help/wiki-function/#locales): the third argument, and fallback translations
+- [wiki() examples](/reference/sharpmush-help/wiki-function/#examples): reading a title, a revision and a locale
 
 ### Fields
 

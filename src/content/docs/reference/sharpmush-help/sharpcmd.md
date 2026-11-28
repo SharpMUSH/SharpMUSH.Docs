@@ -85,7 +85,7 @@ These '@' commands are only usable by wizards or privileged players:
 | [@backup](/reference/sharpmush-help/backup-command/#backup)       | [@blacklist](/reference/sharpmush-help/blacklist-command/#blacklist)    | [@boot](/reference/sharpmush-help/sharpcmd/#boot)         | [@chownall](/reference/sharpmush-help/sharpcmd/#chownall)     | [@chzoneall](/reference/sharpmush-help/sharpcmd/#chzoneall)    |
 | [@comment](/reference/sharpmush-help/sharpcmd/#comment)      | [@dbck](/reference/sharpmush-help/sharpcmd/#dbck)         | [@disable](/reference/sharpmush-help/sharpcmd/#enable)      | [@dump](/reference/sharpmush-help/sharpcmd/#dump)         | [@email](/reference/sharpmush-help/email-command/#email)        |
 | [@enable](/reference/sharpmush-help/sharpcmd/#enable)       | [@feed](/reference/sharpmush-help/feed-command/#feed)         | [@flag](/reference/sharpmush-help/flag-command/#flag)         | [@flagdef](/reference/sharpmush-help/flagdef-command/#flagdef)      | [@hide](/reference/sharpmush-help/sharpcmd/#hide)         |
-| [@hook](/reference/sharpmush-help/hook/#hook)         | [@http]         | [@icmd](/reference/sharpmush-help/icmd-command/#icmd)         | [@kick](/reference/sharpmush-help/sharpcmd/#kick)         | [@leveldefault](/reference/sharpmush-help/rxlevel-command/#rxlevel) |
+| [@hook](/reference/sharpmush-help/hook/#hook)         | [@http](/reference/sharpmush-help/http-command/#http)         | [@icmd](/reference/sharpmush-help/icmd-command/#icmd)         | [@kick](/reference/sharpmush-help/sharpcmd/#kick)         | [@leveldefault](/reference/sharpmush-help/rxlevel-command/#rxlevel) |
 | [@livewire](/reference/sharpmush-help/livewire-command/#livewire)     | [@log](/reference/sharpmush-help/sharpcmd/#log)          | [@logwipe](/reference/sharpmush-help/sharpcmd/#logwipe)      | [@mapsql](/reference/sharpmush-help/mapsql-command/#mapsql)       | [@motd](/reference/sharpmush-help/motd-command/#motd)         |
 | [@newpassword](/reference/sharpmush-help/sharpcmd/#newpassword)  | [@package](/reference/sharpmush-help/sharpcmd/#package)      | [@pcreate](/reference/sharpmush-help/sharpcmd/#pcreate)      | [@permission](/reference/sharpmush-help/permission-command/#permission)   | [@plugin](/reference/sharpmush-help/plugin-command/#plugin)       |
 | [@poll](/reference/sharpmush-help/sharpcmd/#poll)         | [@poor](/reference/sharpmush-help/sharpcmd/#poor)         | [@power](/reference/sharpmush-help/power-command/#power)        | [@purge](/reference/sharpmush-help/sharpcmd/#purge)        | [@push](/reference/sharpmush-help/push-command/#push)         |
@@ -94,7 +94,7 @@ These '@' commands are only usable by wizards or privileged players:
 | [@site](/reference/sharpmush-help/site-command/#site)         | [@sitelock](/reference/sharpmush-help/sitelock-command/#sitelock)     | [@slave](/reference/sharpmush-help/sharpcmd/#slave)        | [@snapshot](/reference/sharpmush-help/snapshots/#object-snapshots)     | [@sql](/reference/sharpmush-help/sql-command/#sql)          |
 | [@squota](/reference/sharpmush-help/quota-command/#administrative-quota-changes)       | [@storage](/reference/sharpmush-help/storage-command/#storage)      | [@suggest](/reference/sharpmush-help/sharpcmd/#suggest)      | [@tag](/reference/sharpmush-help/tag-command/#tag)          | [@toggledef](/reference/sharpmush-help/toggledef-command/#toggledef)    |
 | [@txlevel](/reference/sharpmush-help/rxlevel-command/#rxlevel)      | [@uptime](/reference/sharpmush-help/uptime-command/#uptime)       | [@wall](/reference/sharpmush-help/sharpcmd/#wall)         | [@wizmotd](/reference/sharpmush-help/motd-command/#motd)      | [@wizwall](/reference/sharpmush-help/sharpcmd/#wall)      |
-| [cd]            | [ch]            | [cv]            |                 |                 |
+| [cd](/reference/sharpmush-help/sharpcmd/#cd)            | [ch](/reference/sharpmush-help/sharpcmd/#cd)            | [cv](/reference/sharpmush-help/sharpcmd/#cd)            |                 |                 |
 
 From plugins: [@scene](/reference/sharpmush-help/scene-command/#scene)
 
@@ -3306,7 +3306,7 @@ Connects you to a character from the login screen. Quote a name that contains sp
 
 The password is the character's own or that of the account the character is linked to, so a character made on the web portal without a password of its own connects with its account's password. A password staff set for you to change opens no character until you change it on the portal.
 
-See [cd], [ch] and [cv] to connect dark, hidden or visible.
+See [cd](/reference/sharpmush-help/sharpcmd/#cd), [ch](/reference/sharpmush-help/sharpcmd/#cd) and [cv](/reference/sharpmush-help/sharpcmd/#cd) to connect dark, hidden or visible.
 
 
 <nav class="help-see-also help-see-also-names" aria-label="See also">

@@ -34,9 +34,9 @@ description: "SharpMUSH documentation for figure()"
 
 A picture, the text art a terminal shows instead of it, and the text that goes beside it.
 
-- [figure() arguments]: the address, description, art, float and text beside
-- [figure() who sees the picture]: who is shown the picture, and who the art
-- [figure() example]: a cat with text beside it
+- [figure() arguments](/reference/sharpmush-help/figure-function/#arguments): the address, description, art, float and text beside
+- [figure() who sees the picture](/reference/sharpmush-help/figure-function/#who-sees-the-picture): who is shown the picture, and who the art
+- [figure() example](/reference/sharpmush-help/figure-function/#example): a cat with text beside it
 
 <nav class="help-see-also help-see-also-names" aria-label="See also">
 <span class="help-see-also-label">See Also</span>

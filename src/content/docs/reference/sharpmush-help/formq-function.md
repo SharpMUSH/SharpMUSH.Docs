@@ -37,7 +37,7 @@ b
 1
 ```
 
-The default HTTP verb handlers (see [http examples]) call formq() on the query string for you, so route sub-attributes can read *%q<form.*>* immediately.
+The default HTTP verb handlers (see [http examples](/reference/sharpmush-help/http-examples/#http-examples)) call formq() on the query string for you, so route sub-attributes can read *%q<form.*>* immediately.
 
 <nav class="help-see-also help-see-also-names" aria-label="See also">
 <span class="help-see-also-label">See Also</span>

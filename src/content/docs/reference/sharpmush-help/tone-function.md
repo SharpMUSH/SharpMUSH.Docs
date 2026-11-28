@@ -34,8 +34,8 @@ description: "SharpMUSH documentation for tone()"
 - `highlight` - the text on a marked background, for a search hit or something new.
 - A hue: `red`, `orange`, `yellow`, `green`, `cyan`, `blue`, `purple` or `pink`. Each theme draws its own red, as a terminal's colour scheme does, so it still reads on that theme.
 
-- [tone() who sees what]: the colour each kind of reader sees
-- [tone() examples]: when to use it, an OOC remark and a coloured speech
+- [tone() who sees what](/reference/sharpmush-help/tone-function/#who-sees-what): the colour each kind of reader sees
+- [tone() examples](/reference/sharpmush-help/tone-function/#examples): when to use it, an OOC remark and a coloured speech
 
 <nav class="help-see-also help-see-also-names" aria-label="See also">
 <span class="help-see-also-label">See Also</span>

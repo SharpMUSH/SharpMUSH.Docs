@@ -36,9 +36,9 @@ Labels and their values, the `Sex: Male` part of a sheet. The labels make one co
 
 When the value column would be narrower than ten cells, each label goes on a line of its own with its value indented under it. In the web portal the fields are a definition list.
 
-- [fields() options]: label alignment, separator, leader, columns and stripes
-- [fields() examples]: plain fields, right-aligned labels, leaders and separators
-- [fields() wrapping examples]: a long value, and a narrow width
+- [fields() options](/reference/sharpmush-help/fields-function/#options): label alignment, separator, leader, columns and stripes
+- [fields() examples](/reference/sharpmush-help/fields-function/#examples): plain fields, right-aligned labels, leaders and separators
+- [fields() wrapping examples](/reference/sharpmush-help/fields-function/#wrapping-examples): a long value, and a narrow width
 
 <nav class="help-see-also help-see-also-names" aria-label="See also">
 <span class="help-see-also-label">See Also</span>

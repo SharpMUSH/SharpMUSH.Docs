@@ -35,7 +35,7 @@ To see the room you're in, type `look` (see [look](/reference/sharpmush-help/loo
 
 The first line is the name of the room you're in, followed by the room's description, a list of other people (and objects) in the room, and finally a list of exits to other rooms.
 
-To move through one of the exits, you can simply type its name (Out), or you can use the "goto" command (goto Out). See [go] and [EXITS](/reference/sharpmush-help/sharptop/#exits).
+To move through one of the exits, you can simply type its name (Out), or you can use the "goto" command (goto Out). See [go](/reference/sharpmush-help/sharpcmd/#go) and [EXITS](/reference/sharpmush-help/sharptop/#exits).
 
 ### Home and navigation
 

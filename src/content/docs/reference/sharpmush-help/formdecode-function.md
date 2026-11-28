@@ -18,7 +18,7 @@ description: "SharpMUSH documentation for formdecode()"
 
 `formdecode(<string>[, <paramname>[, <osep>]])`
 
-formdecode() is intended for use with the HTTP Handler. See [http] for more.
+formdecode() is intended for use with the HTTP Handler. See [http](/reference/sharpmush-help/http/#http) for more.
 
 formdecode() converts form-encoded data, such as HTTP GET paths (after the ?) or the contents of POST with form-urlencoded data. It searches for the parameter named *&lt;paramname&gt;* and returns with its decoded value.
 

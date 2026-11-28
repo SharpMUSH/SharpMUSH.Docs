@@ -244,6 +244,12 @@ export function convertInternalLinks(content) {
     // bracket followed by ( is already a Markdown link.
     const simpleLinkPattern = /(?<!\\)\[([^\]]+?)\](?!\()/g;
     textContent = textContent.replace(simpleLinkPattern, (match, topic) => {
+      // A name the game can look up is a topic link, as in game, whatever it looks like:
+      // [%], [go], [http requests], [@http reply].
+      if (HELP_LOOKUPS[topic.toUpperCase().trim()]) {
+        return convertTopicToLink(topic, topic);
+      }
+
       // Skip if this looks like it's already a markdown link
       if (topic.includes('](') || topic.includes('http') || match.includes('](')) {
         return match;

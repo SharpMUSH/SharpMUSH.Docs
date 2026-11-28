@@ -39,10 +39,10 @@ description: "SharpMUSH documentation for datatable()"
 
 Rows under headings. The headings and each row's cells are split by `|`, or by the text the `delim` option names. Each column is as wide as its widest cell. Begin a heading with `<`, `-` or `>`, as in [ALIGN()](/reference/sharpmush-help/align/#align), to place its column's text left, centred or right.
 
-- [datatable() narrow screens]: how a table too wide gives way
-- [datatable() options]: priority, widths, wrapping, growth, separators and stripes
-- [datatable() delimiters]: splitting cells on something other than `|`
-- [datatable() examples]: one table at three widths
+- [datatable() narrow screens](/reference/sharpmush-help/datatable-function/#narrow-screens): how a table too wide gives way
+- [datatable() options](/reference/sharpmush-help/datatable-function/#options): priority, widths, wrapping, growth, separators and stripes
+- [datatable() delimiters](/reference/sharpmush-help/datatable-function/#delimiters): splitting cells on something other than `|`
+- [datatable() examples](/reference/sharpmush-help/datatable-function/#examples): one table at three widths
 
 <nav class="help-see-also help-see-also-names" aria-label="See also">
 <span class="help-see-also-label">See Also</span>
@@ -74,7 +74,7 @@ Options (the first argument, which may be empty). The lists are split by `delim`
 - `"sep":"<text>"` - drawn between the columns instead of spaces. It does not split anything; `delim` does.
 - `"rule":"<text>"` - the line under the headings. `-` by default; `"rule":""` for none.
 - `"stripe":true` - lays every second row on a background of its own, to help the eye along a row: the theme's `surface` colour, or dark grey when the theme has none. `"stripe":"<codes>"` uses that colour instead, in [ANSI()](/reference/sharpmush-help/ansi-function/#ansi) codes: `"stripe":"/#203040"`. Rows shown as labelled values are not striped.
-- `"delim":"<text>"` - what splits the headings, cells and lists. `|` by default; see [datatable() delimiters].
+- `"delim":"<text>"` - what splits the headings, cells and lists. `|` by default; see [datatable() delimiters](/reference/sharpmush-help/datatable-function/#delimiters).
 
 ### Delimiters
 

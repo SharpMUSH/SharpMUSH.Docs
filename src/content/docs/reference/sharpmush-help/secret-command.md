@@ -60,7 +60,7 @@ With no argument, or `/list`, @secret lists every secret the server or a plugin 
 
 `@secret/host <name>=[<host> ...]`
 
-`/host` names the hosts @http may send the secret to, separated by spaces, replacing the ones named before; with none, it may be sent nowhere. `*.example.com` covers every host under example.com, but not example.com itself. Only a secret whose name starts with `http.` can be sent, and only over https; see [@http]. The hosts belong to the name, not the value: setting or clearing the value leaves them, and they hold for a value an override supplies.
+`/host` names the hosts @http may send the secret to, separated by spaces, replacing the ones named before; with none, it may be sent nowhere. `*.example.com` covers every host under example.com, but not example.com itself. Only a secret whose name starts with `http.` can be sent, and only over https; see [@http](/reference/sharpmush-help/http-command/#http). The hosts belong to the name, not the value: setting or clearing the value leaves them, and they hold for a value an override supplies.
 
 ### Overrides from outside the game
 

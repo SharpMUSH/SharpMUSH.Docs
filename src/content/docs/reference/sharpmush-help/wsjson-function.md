@@ -23,8 +23,8 @@ description: "SharpMUSH documentation for wsjson()"
 
   You must be a wizard or have the Send_OOB power (Pueblo_Send is its older name).
 
-- [wsjson() delivery]: what a WebSocket connection, a telnet client and a listener each get
-- [wsjson() example]: a status line with data for the portal
+- [wsjson() delivery](/reference/sharpmush-help/wsjson-function/#what-each-reader-gets): what a WebSocket connection, a telnet client and a listener each get
+- [wsjson() example](/reference/sharpmush-help/wsjson-function/#example): a status line with data for the portal
 
 ### What each reader gets
 

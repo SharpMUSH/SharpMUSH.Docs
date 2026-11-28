@@ -39,9 +39,9 @@ A field or value the data hides (`"visible":false`) or leaves out is not drawn. 
 
 schemacheck() returns nothing when the document is sound, or one problem per line.
 
-- [schemarender() options]: the page and the width
-- [schemacheck() problems]: what it reports
-- [schemarender() examples]: a finger sheet and a broken one
+- [schemarender() options](/reference/sharpmush-help/schema-functions/#options): the page and the width
+- [schemacheck() problems](/reference/sharpmush-help/schema-functions/#checking-a-document): what it reports
+- [schemarender() examples](/reference/sharpmush-help/schema-functions/#examples): a finger sheet and a broken one
 
 <nav class="help-see-also help-see-also-names" aria-label="See also">
 <span class="help-see-also-label">See Also</span>

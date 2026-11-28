@@ -25,8 +25,8 @@ Returns a JSON object of the exits in `<room>`, each exit's name to the number o
 
 You may map a room you can examine or are standing in, as with [lexits()](/reference/sharpmush-help/sharpfunc/#lexits). Mapping it as another viewer needs that too, or control of the viewer.
 
-- [exitmap() exits]: which exits a viewer sees, and how they are named and numbered
-- [exitmap() examples]: a map of a new room
+- [exitmap() exits](/reference/sharpmush-help/exitmap-function/#which-exits-are-listed): which exits a viewer sees, and how they are named and numbered
+- [exitmap() examples](/reference/sharpmush-help/exitmap-function/#examples): a map of a new room
 
 ### Which exits are listed
 

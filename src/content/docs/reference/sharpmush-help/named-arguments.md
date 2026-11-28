@@ -192,11 +192,11 @@ A hook can't refuse its command, so when a command named with `...` is given an 
 ### Arguments the game names
 
 - @hook attributes: `ARGS`, `LS`, `RS`, `EQUALS`, `SWITCHES`, `LSAC` and `LSA<n>` (see [@hook registers](/reference/sharpmush-help/hook/#argument-registers)).
-- @http callbacks: `%<status>` and `%<content-type>`, with the body in %0 (see [@http]).
+- @http callbacks: `%<status>` and `%<content-type>`, with the body in %0 (see [@http](/reference/sharpmush-help/http-command/#http)).
 - @input callbacks: `%<reason>` (see [@input](/reference/sharpmush-help/input-command/#input)).
 - Event handlers: each argument by the name the event shows, such as `%<destination>` for object\`move (see [event list](/reference/sharpmush-help/event-list/#event-list)).
 - @feed tie-ins and taps: `%<id>`, `%<key>`, `%<speaker>`, `%<style>`, `%<text>`, `%<name>` and the rest of their table (see [@feed tie-ins](/reference/sharpmush-help/feed-command/#tie-in-attributes)).
-- The http_handler: `%<path>`, `%<body>`, `%<viewer>`, `%<headers>` and `%<hdr.<name>>` for each header (see [http requests]).
+- The http_handler: `%<path>`, `%<body>`, `%<viewer>`, `%<headers>` and `%<hdr.<name>>` for each header (see [http requests](/reference/sharpmush-help/http/#how-a-request-runs)).
 - @chatformat and MOGRIFY\`FORMAT: `%<type>`, `%<channel>`, `%<message>`, `%<name>`, `%<title>`, `%<default>`, `%<says>`, `%<options>` (see [@chatformat](/reference/sharpmush-help/chatformat-command/#chatformat), [mogrifier](/reference/sharpmush-help/mogrifier/#mogrifier)).
 - The other MOGRIFY\` attributes: the same names, and `%<value>` for the part being rewritten (see [mogrifier](/reference/sharpmush-help/mogrifier/#mogrifier)).
 

@@ -129,7 +129,7 @@ A package is a set of softcode objects that installs, upgrades, rolls back and u
 
 - [@package](/reference/sharpmush-help/sharpcmd/#package) turns objects on the game into a package.
 - [@attribute packages](/reference/sharpmush-help/attribute-command/#attribute-entries-from-packages) shows which package declared each standard attribute.
-- Every new game has handler objects for [EVENTS](/reference/sharpmush-help/events/#events) and [http] requests, so packages can answer them with no setup.
+- Every new game has handler objects for [EVENTS](/reference/sharpmush-help/events/#events) and [http](/reference/sharpmush-help/http/#http) requests, so packages can answer them with no setup.
 
 ### Softcode
 
@@ -141,7 +141,7 @@ A package is a set of softcode objects that installs, upgrades, rolls back and u
 - [@attribute watch](/reference/sharpmush-help/attribute-command/#watched-attributes) runs event handler code whenever any copy of an attribute changes.
 - [restrictedexpr()](/reference/sharpmush-help/restrictedexpr/#restrictedexpr) evaluates code limited to the functions you allow, with its inputs as literal text.
 - Each command runs under an [execution budget](/reference/sharpmush-help/execution-budget/#execution-budget), and [queue budgets](/reference/sharpmush-help/queue-budgets/#queue-budgets) limit the work waiting in the queue.
-- [~] runs a command with strict argument parsing.
+- [~](/reference/sharpmush-help/sharpcmd/#-3) runs a command with strict argument parsing.
 
 ### Functions
 

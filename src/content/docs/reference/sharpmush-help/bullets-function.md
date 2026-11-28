@@ -29,8 +29,8 @@ description: "SharpMUSH documentation for bullets()"
 
 Each item of *&lt;list&gt;* on its own line after a bullet or a number. *&lt;delimiter&gt;* splits the list; a space when none is given. An item too long for its line wraps under its own text, not under the bullet; numbers line up on their right. In the web portal it is a bulleted or numbered list.
 
-- [bullets() options]: borders, theme, width, style, start and marker
-- [bullets() examples]: wrapped, numbered, roman and marked lists
+- [bullets() options](/reference/sharpmush-help/bullets-function/#options): borders, theme, width, style, start and marker
+- [bullets() examples](/reference/sharpmush-help/bullets-function/#examples): wrapped, numbered, roman and marked lists
 
 <nav class="help-see-also help-see-also-names" aria-label="See also">
 <span class="help-see-also-label">See Also</span>

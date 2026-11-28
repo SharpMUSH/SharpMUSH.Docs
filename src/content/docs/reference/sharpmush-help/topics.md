@@ -46,7 +46,7 @@ Help is available on the following topics:
 
 |                           |                           |                           |
 |---------------------------|---------------------------|---------------------------|
-| [ME]                      | [MESSAGES](/reference/sharpmush-help/messages/#messages)                | [MONEY](/reference/sharpmush-help/sharptop/#money)                   |
+| [ME](/reference/sharpmush-help/sharptop/#me)                      | [MESSAGES](/reference/sharpmush-help/messages/#messages)                | [MONEY](/reference/sharpmush-help/sharptop/#money)                   |
 | [MUSHCODE](/reference/sharpmush-help/mushcode/#mushcode)                | [NON-STANDARD ATTRIBUTES](/reference/sharpmush-help/sharptop/#non-standard-attributes) | [OBJECT SNAPSHOTS](/reference/sharpmush-help/snapshots/#object-snapshots)        |
 | [PARENTS](/reference/sharpmush-help/parent/#parents)                 | [PENNMUSH COMPATIBILITY](/reference/sharpmush-help/pennmush-compatibility/#pennmush-compatibility)  | [PIPING](/reference/sharpmush-help/piping/#piping)                  |
 | [PLUGIN HELP](/reference/sharpmush-help/plugin-help/#plugin-help)             | [@POWER](/reference/sharpmush-help/power-command/#power)                  | [PUPPETS](/reference/sharpmush-help/puppets/#puppets)                 |

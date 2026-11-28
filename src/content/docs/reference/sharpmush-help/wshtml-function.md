@@ -24,9 +24,9 @@ description: "SharpMUSH documentation for wshtml()"
 
   The fragment is read the way a browser reads it: an unclosed tag closes at the end, a stray closing tag is dropped, a bare `<` is text. An element that encloses nothing is dropped, since a tag has to cover something; `<br>` is a line break.
 
-- [wshtml() permissions]: which tags and attributes are allowed
-- [wshtml() compatibility]: PennMUSH's `<default>`
-- [wshtml() example]: a link, as each client sees it
+- [wshtml() permissions](/reference/sharpmush-help/wshtml-function/#permissions): which tags and attributes are allowed
+- [wshtml() compatibility](/reference/sharpmush-help/wshtml-function/#pennmush-compatibility): PennMUSH's `<default>`
+- [wshtml() example](/reference/sharpmush-help/wshtml-function/#example): a link, as each client sees it
 
 ### Permissions
 

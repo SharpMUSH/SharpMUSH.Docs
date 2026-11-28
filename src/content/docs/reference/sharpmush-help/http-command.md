@@ -52,14 +52,14 @@ Sends an HTTP request to `<URL>` and, when the reply arrives, queues the action 
 
 Restricted to objects set Wizard or with the Can_HTTP @Power.
 
-- [@http reply]: what the action list receives
-- [@http headers]: the request body, its headers, and logging in to the remote site
-- [@http secrets]: sending a password or token kept with @secret
-- [@http qregisters]: the q-registers a PennMUSH import reads
-- [@http examples]: requests and what they sent
-- [@http login examples]: logging in with Basic and a secret
+- [@http reply](/reference/sharpmush-help/http-command/#the-reply): what the action list receives
+- [@http headers](/reference/sharpmush-help/http-command/#data-and-headers): the request body, its headers, and logging in to the remote site
+- [@http secrets](/reference/sharpmush-help/http-command/#secrets): sending a password or token kept with @secret
+- [@http qregisters](/reference/sharpmush-help/http-command/#pennmush-registers): the q-registers a PennMUSH import reads
+- [@http examples](/reference/sharpmush-help/http-command/#examples): requests and what they sent
+- [@http login examples](/reference/sharpmush-help/http-command/#login-examples): logging in with Basic and a secret
 
-Incoming requests, which softcode answers, are described in [http].
+Incoming requests, which softcode answers, are described in [http](/reference/sharpmush-help/http/#http).
 
 ### The reply
 
