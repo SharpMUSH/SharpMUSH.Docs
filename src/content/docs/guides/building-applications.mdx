@@ -187,6 +187,14 @@ only to staff, leave `notes` out of the answer for everyone else. Don't send it 
 `"visible": false` instead: that only stops the page from showing it, and anyone can still
 read it in what their browser received.
 
+To leave a widget off a page altogether, answer `"hidden": true`. The widget draws nothing,
+not even "Nothing to display", and leaves no gap in the layout. A character sheet widget on
+profiles can answer it for a character who has no sheet:
+
+```json
+{ "fields": {}, "hidden": true }
+```
+
 On a form, the Data URL fills in boxes before the player starts typing, which is useful
 for an "edit your profile" page.
 

@@ -29,6 +29,45 @@ Give it a **Name**, shown as its title and in the menu. The address name follows
 `Watch Duty` becomes `/apps/watch-duty`. Then say whether people read it or fill it in and send
 it, and whether it is a page of its own or a widget placed on other pages.
 
+### Showing a widget only for some characters
+
+A widget also takes **Shows only for characters who pass this lock**, a
+[lock key](/reference/sharpmush-help/lock-keys/). On a profile or a name card the key is checked against the
+character being looked at; on any other layout, against the character looking. A character
+who fails it gets no widget at all: no card, no "Nothing to display", no gap. Left empty, the
+widget shows for everyone.
+
+A character sheet widget on profiles that should skip staff characters, who have no sheet:
+
+```
+!ROLE^wizard
+```
+
+Some other keys:
+
+| Key | Shows the widget for |
+| --- | --- |
+| `!ROLE^wizard&!ROLE^royalty` | characters with neither role |
+| `ROLE^approved` | characters staff have approved |
+| ``SHEET`DONE:yes`` | characters whose ``SHEET`DONE`` attribute is `yes` |
+| `PERM^sheet.use` | characters allowed the `sheet.use` permission |
+
+Staff characters usually hold the Player role as well, so a permission allowed on Player passes
+for them too, and God passes every `PERM^` key. To leave staff out, use `!ROLE^`.
+
+The key is kept as the lock ``APP`<ADDRESS NAME>`` on the object the app is saved on, so
+staff can also set or read it in game. For an app with the address name `sheet` saved on the
+Sheet Office, `#55`:
+
+```
+> @lock/user:APP`SHEET #55=!ROLE^wizard
+Sheet Office(#55) - APP`SHEET locked.
+> think lock(#55/user:APP`SHEET)
+!ROLE^wizard
+```
+
+Saving refuses a key that is not a lock key and keeps nothing.
+
 ## Laying it out
 
 ![The Lay it out step: the outline with Page 1, a section and two fields, the Which watch field's label, key and choices, and a preview of the form](../../../assets/guide/app-builder-layout.webp)
